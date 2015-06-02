@@ -19,7 +19,7 @@ return [
     | the role if it is in a different namespace.
     |
     */
-    'role' => 'Zizaco\Entrust\EntrustRole',
+    'role' => 'App\Nrgi\Entities\User\Role\Role',
 
     /*
     |--------------------------------------------------------------------------

@@ -1,0 +1,36 @@
+language: php
+
+php:
+  #- 5.4
+  - 5.5
+  #- 5.6
+
+env:
+  global:
+    - PROJECT=NRGI HIPCHAT_ROOM=Build-Bot
+    - secure: Aa1Rjp6IQVoPJLbikrTz+6Cq3tKrBztNBGTdn+U6gK+SScKG07dChOE0sveisZa8PulwuTUsFCIvr/hw46Z95atImZ1z3jWUnzMbXjhQ5btwaoyfZRczDKZ3Nrvdg1zNZs1MVRMHBz0TWxFYInCfloSZZoUx9J1V6jiVjnShfWVM2w9Y7P/SqNDTuWoL4AuzBRfwWk9+Ikl+0O5fewtmNFTfuom3MasiktIZI4A5I1UGBNq2iRAAY/CG1V19eeRB17kII6MXamGgi7sRyJwgrTOJvpQPGhEBeeNkc+m0x3mWoKMC/BtD/71ZeAV6HhRiMeKZdzcCz0DPjb4Q0pJQJA==
+
+before_install:
+  - wget https://gist.githubusercontent.com/geshan/fe3e5a634c34bdbc9ee0/raw/b37d4dce0fc457f52dc59dd32c5535162de89979/hipchat-notifier.py
+
+before_script:
+  - mkdir -p shippable/testresults
+  - mkdir -p build/logs
+  - composer self-update && composer --no-interaction --prefer-source install
+
+script:
+   - ./vendor/bin/phpunit  --log-junit shippable/testresults/junit.xml
+
+after_failure:
+  - python hipchat-notifier.py --project $PROJECT --room $HIPCHAT_ROOM --token $HIPCHAT_TOKEN
+
+after_success:
+  - python hipchat-notifier.py --project $PROJECT --room $HIPCHAT_ROOM --token $HIPCHAT_TOKEN -s
+  #we could have automated deployment to staging here if we can fully rely on tests
+
+notifications:
+   email:
+       recipients:
+           - manish.singh@yipl.com.np
+       on_success: always
+       on_failure: always
