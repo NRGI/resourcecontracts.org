@@ -135,6 +135,12 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+		/*
+         * External Package
+         */
+		'Zizaco\Entrust\EntrustServiceProvider',
+		'Illuminate\View\ViewServiceProvider',
+		'Illuminate\Html\HtmlServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -144,8 +150,10 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+        'App\Providers\RepositoriesServiceProvider',
 
-	],
+
+    ],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -192,7 +200,12 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-
+        /*
+         * External Package
+         */
+        'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
+        'Form'      => 'Illuminate\Html\FormFacade',
+        'HTML'      => 'Illuminate\Html\HtmlFacade',
 	],
 
 ];
