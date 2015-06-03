@@ -15,10 +15,12 @@ class RepositoriesServiceProvider extends ServiceProvider
             'App\Nrgi\Repositories\User\UserRepositoryInterface',
             'App\Nrgi\Repositories\User\UserRepository'
         );
-
         $this->app->bind(
             'App\Nrgi\Repositories\Contract\ContractRepositoryInterface',
-            'App\Nrgi\Repositories\Contract\ContractRepository'
+            'App\Nrgi\Repositories\Contract\ContractRepository');
+        $this->app->bind(
+            'Nrgi\Repositories\Contract\AnnotationRepositoryInterface',
+            'Nrgi\Repositories\Contract\AnnotationRepository'
         );
     }
 }
