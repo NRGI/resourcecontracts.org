@@ -14,7 +14,6 @@ class UserService
      */
     function __construct(UserRepositoryInterface $user)
     {
-
         $this->user = $user;
     }
 
