@@ -3,6 +3,3 @@
 @yield('content')
 
 @include('layout.partials.footer')
-
-
-

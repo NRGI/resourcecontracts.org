@@ -13,7 +13,7 @@
 
 $router->get('/', 'Auth\AuthController@getLogin');
 
-$router->get('home', 'HomeController@index');
+$router->get('home', 'MainController@index');
 
 $router->controllers(
     [
