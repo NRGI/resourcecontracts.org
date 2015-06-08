@@ -12,7 +12,6 @@
 */
 
 $router->get('/', 'Auth\AuthController@getLogin');
-
 $router->get('home', 'MainController@index');
 
 $router->controllers(
