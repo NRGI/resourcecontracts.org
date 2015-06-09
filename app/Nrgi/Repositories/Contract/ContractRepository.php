@@ -38,7 +38,7 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getAll()
     {
-        return $this->contract->all();
+        return $this->contract->orderBy('created_datetime', 'DESC')->get();
     }
 
     /**

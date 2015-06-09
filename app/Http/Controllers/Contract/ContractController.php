@@ -68,8 +68,9 @@ class ContractController extends Controller
     public function show($id)
     {
         $contract = $this->contract->find($id);
+        $status   = $this->contract->getStatus($id);
 
-        return view('contract.show', compact('contract'));
+        return view('contract.show', compact('contract', 'status'));
     }
 
     /**
@@ -109,9 +110,9 @@ class ContractController extends Controller
     public function destroy($id)
     {
         if ($this->contract->deleteContract($id)) {
-            return back()->withSuccess('Contract successfully deleted.');
+            return redirect()->route('contract.index')->withSuccess('Contract successfully deleted.');
         }
 
-        return back()->withSuccess('Contract could not be deleted.');
+        return redirect()->route('contract.index')->withSuccess('Contract could not be deleted.');
     }
 }

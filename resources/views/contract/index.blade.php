@@ -2,46 +2,84 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="overflow: hidden">
-                        Contracts
-                        <div class="pull-right"><a href="{{route('contract.create')}}" class="btn btn-primary">Add</a>
-                        </div>
+        <div class="top-container">
+            <div class="top-inner-container">
+                <div class="search-wrapper">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search for a document" class="text"/>
+                        <input type="submit" class="submit"/>
                     </div>
-                    <div class="panel-body">
-
-                        <table class="table">
-                            <tr>
-                                <th>Project Title</th>
-                                <th>Action</th>
-                            </tr>
-                            @if($contracts->count() > 0)
-                                @foreach($contracts as $contract)
-                                    <tr>
-                                        <td>{{$contract->metadata->project_title}}</td>
-                                        <td>
-                                            <a title="Edit Contract" style="float: left; margin-right: 5px;" class="btn btn-default"  href="{{route('contract.show', $contract->id)}}"><i
-                                                        class="glyphicon glyphicon-eye-open"></i></a>
-
-                                            <a title="View Contract" style="float: left; margin-right: 5px;" class="btn btn-default"  href="{{route('contract.edit', $contract->id)}}"><i
-                                                        class="glyphicon glyphicon-pencil"></i></a>
-
-                                            {!! Form::open(['route' => array('contract.destroy', $contract->id ), 'class'=>'form-inline', 'method'=>'delete']) !!}
-                                            <button onclick="if(confirm('Are you sure you want delete contract?')){ return true;} else {return false;}" class="btn btn-default"><i class="glyphicon glyphicon-trash"></i></button>
-                                        </td>
-                                @endforeach
-                            @else
-                                <tr>
-                                    <td colspan="2">Contract not found.</td>
-                                </tr>
-                            @endif
-                        </table>
-
+                    <span class="search-link open">Advanced Search</span>
+                    <span class="search-link close">Close Advanced Search</span>
+                    <div class="search-input-wrapper">
+                        <div class="search-input">
+                            <div class="input-wrapper">
+                                <label for="">Year (from)</label>
+                                <input type="date" />
+                            </div>
+                            <div class="input-wrapper">
+                                <label for="">Year (to)</label>
+                                <input type="date" />
+                            </div>
+                            <div class="input-wrapper">
+                                <label for="">Country</label>
+                                <select name="" id="">
+                                    <option value="">Afghanistan</option>
+                                    <option value="">Albania</option>
+                                    <option value="">Algeria</option>
+                                    <option value="">Andorra</option>
+                                    <option value="">Angola</option>
+                                </select>
+                            </div>
+                            <div class="input-wrapper">
+                                <label for="">Contract type</label>
+                                <select name="" id="">
+                                    <option value="">Contract1</option>
+                                    <option value="">Contract2</option>
+                                    <option value="">Contract3</option>
+                                    <option value="">Contract4</option>
+                                    <option value="">Contract5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <a href="#" class="btn search-btn">Search</a>
                     </div>
                 </div>
             </div>
+            <div class="breadcrumb-wrapper">
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="{{url('/')}}">Home</a></li>
+                        <li>All Contracts</li>
+                    </ul>
+                </div>
+                <a href="{{route('contract.create')}}" class="btn add-btn">Add Contract</a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="heading">
+                <h2>All Contracts</h2>
+            </div>
+            <div class="content-view list" id="contentView">
+                @if($contracts->count() > 0)
+                    @foreach($contracts as $contract)
+                        <div class="contract mix">
+                            <div class="left-contract-wrap">
+                                <div class="contract-name"><a href="{{route('contract.show', $contract->id)}}">{{$contract->metadata->project_title}}</a></div>
+                                <div class="language"><?php echo $contract->metadata->language;?></div>
+                            </div>
+                            <div class="right-contract-wrap">
+                                <div class="contract-size">{{getFileSize($contract->metadata->file_size)}}</div>
+                                <div class="date">{{$contract->created_datetime->format('F d, Y')}}</div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="contract mix">
+                        <td colspan="2">Contract not found.</td>
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
-@stop
+@endsection
