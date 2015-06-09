@@ -1,23 +1,74 @@
-## Laravel PHP Framework
+# NRGI
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Install
 
-## Official Documentation
+NRGI can be cloned from github repository and installed. Following the procedure given below:
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+* git clone GitHub url
+* cd nrgi
+* add `127.0.0.1 nrgi.dev` to your /etc/hosts file
+* change your apache host file
+* restart apache server
 
-## Contributing
+## Run
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+The app can be run with the command below:
 
-### License
+* install the application dependencies using command: ` composer install `
+* copy .env.example to .env and update your the database configurations
+* give read/write permission to the storage folder using `chmod -R 777 storage`
+* run migration using ` php artisan migrate `
+* seed dummy data using ` php artisan db:seed `
+* make a directory uploads inside public and give read/write permission to it
+* access `http://nrgi.dev`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+## Framework
+
+The application is written in PHP based on the [Laravel](http://laravel.com) framework, current version of Laravel 
+used for this project is 5.
+ 
+
+## Tools and packages
+
+This application uses many tools and packages, the packages can 
+be seen in the [composer.json](http://gitlab.yipl.com.np/web-apps/agentcis/blob/master/composer.json) file and javascript
+packages are listed in the [package.json](http://gitlab.yipl.com.np/web-apps/agentcis/blob/master/package.json) file.
+
+Some major PHP packages used are listed below:
+
+* [zizaco/entrust](https://packagist.org/packages/zizaco/entrust) - for user roles and permission
+
+## Structure
+
+The application is structured in a very simple way in `app\Nrgi` folder.
+
+Nrgi folder contains other 3 folders
+- Repositories: Contains all the classes for storage and retrival from database. 
+- Entities: Contains all the eloquent model classes.
+- Services: Contains the classes which serves as the intermediate for Controllers and Repositories. All the application logic are handled here. Logger is also implemented inside services. The purpose of using services is to keep our controllers slim.
+
+Classes inside each of the above directories are properly written within corresponding modules namespace. 
+
+## Check code quality
+
+We follow [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) for 
+coding standard  
+
+## Coding Conventions
+
+We follow PSR-2
+
+## Tests
+
+For this project we use `php` unit tests using `PHPUnit` framework integrated with Shippable CI.
+
+
+```
+phpunit or ./bin/vendor/phpunit
+```
+
+## Deployment
+
+We use Elastic Beanstalk CLI. 

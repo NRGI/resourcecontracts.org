@@ -2,15 +2,11 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Home</div>
-                    <div class="panel-body">
-                        Welcome !
-                    </div>
-                </div>
+        <div class="content">
+            <div class="heading">
+                <h2>Home</h2>
             </div>
+            <p>Welcome !</p>
         </div>
     </div>
 @endsection

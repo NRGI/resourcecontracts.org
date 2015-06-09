@@ -5,6 +5,7 @@ use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use Exception;
 use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -28,7 +29,12 @@ class ContractService
     /**
      * @var Filesystem
      */
-    private $filesystem;
+    protected $filesystem;
+
+    const CONTRACT_QUEUE = 0;
+    const CONTRACT_PENDING = 1;
+    const CONTRACT_COMPLETE = 2;
+
 
     /**
      * @param ContractRepositoryInterface $contract
@@ -80,8 +86,8 @@ class ContractService
     {
         if ($file = $this->uploadContract($formData['file'])) {
             $data = [
-                'file'     => $file['filePath'],
-                'filehash' => $file['fileHash'],
+                'file'     => $file['name'],
+                'filehash' => $file['hash'],
                 'user_id'  => $this->auth->user()->id,
                 'metadata' =>
                     [
@@ -91,8 +97,8 @@ class ContractService
                         'resource'       => $formData['resource'],
                         'signature_date' => $formData['signature_date'],
                         'signature_year' => $formData['signature_year'],
-                        'type_of_mining' => $formData['type_of_mining'],
                         'contract_term'  => $formData['contract_term'],
+                        'file_size'      => $file['size']
                     ]
             ];
 
@@ -110,6 +116,7 @@ class ContractService
     public function updateContract($contractID, array $formData)
     {
         $contract           = $this->contract->findContract($contractID);
+        $file_size          = $contract->metadata->file_size;
         $contract->metadata =
             [
                 'project_title'  => $formData['project_title'],
@@ -118,8 +125,8 @@ class ContractService
                 'resource'       => $formData['resource'],
                 'signature_date' => $formData['signature_date'],
                 'signature_year' => $formData['signature_year'],
-                'type_of_mining' => $formData['type_of_mining'],
                 'contract_term'  => $formData['contract_term'],
+                'file_size'      => $file_size
             ];
 
         return $contract->save();
@@ -144,8 +151,9 @@ class ContractService
 
             if ($data) {
                 return [
-                    'filePath' => $this->getS3FileURL($newFileName),
-                    'fileHash' => $newFileName,
+                    'name' => $newFileName,
+                    'size' => $file->getSize(),
+                    'hash' => $this->hashFileName($newFileName),
                 ];
             }
 
@@ -165,7 +173,7 @@ class ContractService
         $contract = $this->contract->findContract($id);
 
         if ($this->contract->delete($contract->id)) {
-            return $this->deleteFileFromS3($contract->filehash);
+            return $this->deleteFileFromS3($contract->file);
         }
 
         return false;
@@ -195,7 +203,7 @@ class ContractService
      */
     protected function hashFileName($name)
     {
-        return sha1(microtime() . $name);
+        return sha1(microtime() . $name); //$this->storage->disk('s3')->get($name);
     }
 
     /**
@@ -211,5 +219,43 @@ class ContractService
                              ->getAdapter()
                              ->getClient()
                              ->getObjectUrl(env('AWS_BUCKET'), $fileName);
+    }
+
+    /**
+     * Get Contract Status by ContractID
+     *
+     * @param $contractId
+     * @return int
+     */
+    public function getStatus($contractID)
+    {
+        $path = public_path('data/' . $contractID);
+
+        if ($this->filesystem->exists($path)) {
+            try {
+                $status = $this->filesystem->get(sprintf('%s/status.txt', $path));
+                $status = (integer) trim($status);
+                return $status === 1 ? self::CONTRACT_COMPLETE : self::CONTRACT_PENDING;
+            } catch (FileNotFoundException $e) {
+                return self::CONTRACT_PENDING;
+            }
+        }
+
+        return self::CONTRACT_QUEUE;
+    }
+
+    /**
+     * Save Page text
+     *
+     * @param $id
+     * @param $page
+     * @param $text
+     * @return int
+     */
+    public function savePageText($id, $page, $text)
+    {
+        $path = public_path(sprintf('data/%s/text/%s.txt', $id, $page));
+
+        return $this->filesystem->put($path, $text);
     }
 }

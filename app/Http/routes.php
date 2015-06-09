@@ -12,7 +12,7 @@
 */
 
 $router->get('/', 'Auth\AuthController@getLogin');
-$router->get('home', 'MainController@index');
+$router->get('home', 'Contract\ContractController@index');
 
 $router->controllers(
     [

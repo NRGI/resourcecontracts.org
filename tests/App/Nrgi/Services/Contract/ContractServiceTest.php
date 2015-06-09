@@ -34,7 +34,6 @@ class ContractServiceTest extends NrgiTestCase
             'resource'       => '',
             'signature_date' => '',
             'signature_year' => '',
-            'type_of_mining' => '',
             'contract_term'  => '',
         ];
     }
@@ -61,17 +60,16 @@ class ContractServiceTest extends NrgiTestCase
         $this->uploadedFile->shouldReceive('isValid')->once()->andReturn(true);
         $this->uploadedFile->shouldReceive('getClientOriginalName')->once()->andReturn('file');
         $this->uploadedFile->shouldReceive('getClientOriginalExtension')->once()->andReturn('pdf');
+        $this->uploadedFile->shouldReceive('getSize')->once()->andReturn('filesize');
         $this->storage->shouldReceive('disk->put')->once()->andReturn(true);
-        $this->storage->shouldReceive('disk->getDriver->getAdapter->getClient->getObjectUrl')
-                      ->once()
-                      ->andReturn('url');
         $this->filesystem->shouldReceive('get')->once()->with($this->uploadedFile)->andReturn('file');
         $contract = 'App\Nrgi\Entities\Contract\Contract';
         $this->contractRepository->shouldReceive('save')->once()->andReturn(
             m::mock($contract)
         );
 
-        $this->formData['file'] = $this->uploadedFile;
+        $this->formData['file']      = $this->uploadedFile;
+        $this->formData['file_size'] = 'filesize';
         $this->assertInstanceOf($contract, $this->contractService->saveContract($this->formData));
     }
 
@@ -94,19 +92,19 @@ class ContractServiceTest extends NrgiTestCase
         $this->assertFalse($this->contractService->saveContract($this->formData));
     }
 
-    function testItShouldDeleteContract()
+    public function testItShouldDeleteContract()
     {
         $contract = m::mock('App\Nrgi\Entities\Contract\Contract');
         $this->contractRepository->shouldReceive('findContract')->once()->with(1)->andReturn($contract);
         $contract->shouldReceive('getAttribute')->once()->with('id')->andReturn(1);
-        $contract->shouldReceive('getAttribute')->once()->with('filehash')->andReturn('filehash');
-        $this->storage->shouldReceive('disk->exists')->once()->with('filehash')->andReturn(true);
+        $contract->shouldReceive('getAttribute')->once()->with('file')->andReturn('file');
+        $this->storage->shouldReceive('disk->exists')->once()->with('file')->andReturn(true);
         $this->contractRepository->shouldReceive('delete')->once()->with(1)->andReturn(true);
-        $this->storage->shouldReceive('disk->delete')->once()->with('filehash')->andReturn(true);
+        $this->storage->shouldReceive('disk->delete')->once()->with('file')->andReturn(true);
         $this->assertTrue($this->contractService->deleteContract(1));
     }
 
-    function testItShouldNotDeleteContractWhenCantRemoveFromDB()
+    public function testItShouldNotDeleteContractWhenCantRemoveFromDB()
     {
         $contract = m::mock('App\Nrgi\Entities\Contract\Contract');
         $this->contractRepository->shouldReceive('findContract')->once()->with(1)->andReturn($contract);
@@ -115,13 +113,49 @@ class ContractServiceTest extends NrgiTestCase
         $this->assertFalse($this->contractService->deleteContract(1));
     }
 
-    function testItShouldUpdateContract()
+    public function testItShouldUpdateContract()
     {
         $contract = m::mock('App\Nrgi\Entities\Contract\Contract');
         $this->contractRepository->shouldReceive('findContract')->once()->with('1')->andReturn($contract);
         $contract->shouldReceive('save')->once()->andReturn(true);
+        $data                        = new stdClass();
+        $data->file_size             = 'size';
+        $this->formData['file_size'] = 'size';
+        $contract->shouldReceive('getAttribute')->once()->with('metadata')->andReturn($data);
         $contract->shouldReceive('setAttribute')->once()->with('metadata', $this->formData)->andReturn([]);
         $this->assertTrue($this->contractService->updateContract(1, $this->formData));
+    }
+
+    public function testItShouldReturnContractStatusQueue()
+    {
+        $path = public_path('data/1');
+        $this->filesystem->shouldReceive('exists')->once()->with($path)->andReturn(false);
+        $this->assertEquals(
+            ContractService::CONTRACT_QUEUE,
+            $this->contractService->getStatus(1)
+        );
+    }
+
+    public function testItShouldReturnContractStatusProcessing()
+    {
+        $path = public_path('data/1');
+        $this->filesystem->shouldReceive('exists')->once()->with($path)->andReturn(true);
+        $this->filesystem->shouldReceive('get')->once()->with(sprintf('%s/status.txt', $path))->andReturn(
+            0
+        );
+
+        $this->assertEquals(ContractService::CONTRACT_PENDING, $this->contractService->getStatus(1));
+    }
+
+    public function testItShouldReturnContractStatusComplete()
+    {
+        $path = public_path('data/1');
+        $this->filesystem->shouldReceive('exists')->once()->with($path)->andReturn(true);
+        $this->filesystem->shouldReceive('get')->once()->with(sprintf('%s/status.txt', $path))->andReturn(
+            1
+        );
+
+        $this->assertEquals(ContractService::CONTRACT_COMPLETE, $this->contractService->getStatus(1));
     }
 
     public function tearDown()
