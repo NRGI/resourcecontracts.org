@@ -50,10 +50,10 @@ return [
 
 		's3' => [
 			'driver' => 's3',
-			'key'    => env('AWS_KEY', 'your-key'),
-			'secret' => env('AWS_SECRET', 'your-secret'),
-			'region' => env('AWS_REGION', 'your-region'),
-			'bucket' => env('AWS_BUCKET', 'your-bucket'),
+			'key'    => env('AWS_KEY', $_SERVER['AWS_KEY']),
+			'secret' => env('AWS_SECRET', $_SERVER['AWS_SECRET']),
+			'region' => env('AWS_REGION', $_SERVER['AWS_REGION']),
+			'bucket' => env('AWS_BUCKET', $_SERVER['AWS_BUCKET']),
 		],
 
 		'rackspace' => [

@@ -6,3 +6,4 @@ $router->group(['namespace' => 'Api', 'prefix' => 'api'], function($router){
     $router->post('annotations','AnnotationApiController@save');
     $router->get('search', 'AnnotationApiController@search');
 });
+$router->resource('contract.annotations', 'Annotation\AnnotationController');
