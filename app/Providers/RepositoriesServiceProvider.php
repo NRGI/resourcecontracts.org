@@ -19,8 +19,8 @@ class RepositoriesServiceProvider extends ServiceProvider
             'App\Nrgi\Repositories\Contract\ContractRepositoryInterface',
             'App\Nrgi\Repositories\Contract\ContractRepository');
         $this->app->bind(
-            'Nrgi\Repositories\Contract\AnnotationRepositoryInterface',
-            'Nrgi\Repositories\Contract\AnnotationRepository'
+            'App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface',
+            'App\Nrgi\Repositories\Contract\AnnotationRepository'
         );
     }
 }

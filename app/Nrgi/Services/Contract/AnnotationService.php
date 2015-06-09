@@ -1,6 +1,6 @@
-<?php namespace Nrgi\Services\Contract;
+<?php namespace App\Nrgi\Services\Contract;
 
-use Nrgi\Repositories\Contract\AnnotationRepositoryInterface;
+use App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface;
 use Illuminate\Contracts\Auth\Guard;
 
 /**
@@ -41,7 +41,7 @@ class AnnotationService
         $data = json_decode($annotation, true);
         $contactAnnotationId = $this->annotationRepo->getAnnotationByRange($data['ranges'][0], $inputData['contract']);
         $contactAnnotation = $this->annotationRepo->findOrCreate($contactAnnotationId);
-        $contactAnnotation->annotation = $annotation;
+        $contactAnnotation->annotation = $data;
         $contactAnnotation->user_id = $this->user->id;
         $contactAnnotation->contract_id = $inputData['contract'];
         $contactAnnotation->url = $inputData['url'];
@@ -77,10 +77,19 @@ class AnnotationService
         $annotations = $this->annotationRepo->search($params);
 
         foreach ($annotations as $annotation) {
-            $annotationData[] = json_decode($annotation->annotation, true);
+            $annotationData[] = $annotation->annotation;
         }
 
         return array('total' => count($annotationData), 'rows' => $annotationData);
+    }
+
+    /**
+     * @param $contractId
+     * return List of annotation
+     */
+    public function getAllByContractId($contractId)
+    {
+        return $this->annotationRepo->getAllByContractId($contractId);
     }
 
 }

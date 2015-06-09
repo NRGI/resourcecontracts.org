@@ -63,4 +63,12 @@ class Contract extends Model
     {
         return $this->hasMany('App\Nrgi\Entities\Contract\Pages\Pages');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function annotations()
+    {
+        return $this->hasMany('App\Nrgi\Entities\Contract\Annotation');
+    }
 }

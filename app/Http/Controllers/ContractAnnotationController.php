@@ -1,5 +1,7 @@
 <?php namespace app\Http\Controllers;
 
+use App\Nrgi\Entities\Contract\Contract;
+
 /**
  * Class ContractAnnotationController
  * @package app\Http\Controllers
@@ -21,6 +23,7 @@ class ContractAnnotationController extends Controller
      */
     public function index()
     {
-        return view('annotator.index');
+        $contract = Contract::with('pages')->find(4);
+        return view('annotator.index',compact('contract'));
     }
 }
