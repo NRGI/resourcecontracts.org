@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contract\ContractRequest;
+use App\Nrgi\Services\Contract\AnnotationService;
 use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Http\Response;
 
@@ -65,12 +66,12 @@ class ContractController extends Controller
      *
      * @return Response
      */
-    public function show($id)
+    public function show($id,AnnotationService $annotation)
     {
         $contract = $this->contract->find($id);
         $status   = $this->contract->getStatus($id);
-
-        return view('contract.show', compact('contract', 'status'));
+        $annotations = $annotation->getAllByContractId($id);
+        return view('contract.show', compact('contract', 'status','annotations'));
     }
 
     /**

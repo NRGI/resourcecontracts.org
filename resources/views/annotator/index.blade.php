@@ -51,7 +51,7 @@
                                 //if loaded for the first time, load page 1
                                 //if loaded for the first time, load page 1
                                 var contractId = "{{$contract->id}}";
-                                pageLoader(contractId, 'ca40f91750147063d2ce5f1218656573dc4b8bb1_1');
+                                pageLoader(contractId, 1);
                                 //load the appropriate page when clicked
                                 $('#pagelist a').click(function () {
                                     var page = this.text.trim();

@@ -4,8 +4,8 @@ use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Entities\Contract\Pages\Pages;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\File;
-use Storage;
+use Illuminate\Filesystem\Filesystem as File;
+use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Process\Process;
@@ -37,13 +37,6 @@ class ProcessDocument extends Command
      * @var string
      */
     protected $name = 'process:document';
-
-    /**
-     * Folder path to generate.
-     *
-     * @var string
-     */
-    const PUBLIC_PATH = "document";
 
     /**
      * The console command description.
@@ -81,6 +74,9 @@ class ProcessDocument extends Command
                     if ($this->process($writeFolderPath, $readFilePath)) {
                         //insert to database by contract id
                         $this->save($contract, $writeFolderPath);
+                        $this->renameTxtFiles($writeFolderPath);
+                        $this->renamePdfFiles($writeFolderPath);
+
                         $this->info("<info>File Processing Done.</info>");
                     } else {
                         $this->error('Error Processing File');
@@ -102,8 +98,9 @@ class ProcessDocument extends Command
     {
         $publicPath = public_path();
         //get file from s3
-        $pdfFile = \Storage::disk('s3')->get($contract->file);
-        \Storage::disk('local')->put($contract->file, $pdfFile);
+        $this->file->makeDirectory($publicPath.'/data', 0775, true, true);
+        $pdfFile = $this->storage->disk('s3')->get($contract->file);
+        $this->storage->disk('local')->put($contract->file, $pdfFile);
         //mkdir folder with contract id in data folder
         $writeFolderPath = sprintf('%s/%s', $publicPath, 'data');
         $this->addDirectory($contract->id, $writeFolderPath);
@@ -146,7 +143,7 @@ class ProcessDocument extends Command
      */
     public function process($writeFolderPath, $readFilePath)
     {
-        \File::put($writeFolderPath.'/status.txt', '0'.PHP_EOL);
+        $this->file->put($writeFolderPath.'/status.txt', '0'.PHP_EOL);
         try {
             $this->processContractDocument($writeFolderPath, $readFilePath, 'text');
             $this->processContractDocument($writeFolderPath, $readFilePath, 'pages');
@@ -154,9 +151,9 @@ class ProcessDocument extends Command
             return false;
         }
 
-        \File::put($writeFolderPath.'/status.txt', '1'.PHP_EOL);
+        $this->file->put($writeFolderPath.'/status.txt', '1'.PHP_EOL);
         //todo delete temporary file from local storage
-        
+
         return true;
     }
 
@@ -166,7 +163,7 @@ class ProcessDocument extends Command
      */
     public function addDirectory($directory, $path)
     {
-        \File::makeDirectory($path.'/'.$directory, 0755, true);
+        $this->file->makeDirectory($path.'/'.$directory, 0755, true);
     }
 
     /**
@@ -185,6 +182,8 @@ class ProcessDocument extends Command
     /**
      * @param $writeFolderPath
      * @param $readFilePath
+     * @param $type
+     * @return bool
      */
     public function processContractDocument($writeFolderPath, $readFilePath, $type)
     {
@@ -200,22 +199,31 @@ class ProcessDocument extends Command
         return true;
     }
 
+    /**
+     * @param $contract
+     * @param $directory
+     * return bool// pages serivce /
+     */
     public function save($contract, $directory)
     {
-        $files = \File::files($directory.'/text');
+        //refactor to another service method
+        $files = $this->file->files($directory.'/text');
+
         foreach ($files as $file) {
-            $content = \File::get($file);
+            $content = $this->file->get($file);
             $pageNo = $this->getPageNo($file);
             $page = new Pages();
             $page->page_no = $pageNo;
             $page->text = $content;
             $pages[] = $page;
         }
-        $contract->pages()->saveMany($pages);
+
+        return $contract->pages()->saveMany($pages);
     }
 
     /**
      * @param $file
+     * @return int
      */
     public function getPageNo($file)
     {
@@ -223,5 +231,46 @@ class ProcessDocument extends Command
         $output    = explode("_", $fileName);
 
         return (int) $output[count($output) - 1];
+    }
+
+    /**
+     * @param $directory
+     * @return bool
+     */
+    public function renameTxtFiles($directory)
+    {
+        $filePath = $directory.'/text';
+        $files = $this->file->files($filePath);
+
+        foreach ($files as $file) {
+            $pageNo = $this->getPageNo($file);
+            if (!$this->file->move($file, $filePath.'/'.$pageNo.'.txt')) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * @param $directory
+     * @return bool
+     */
+    public function renamePdfFiles($directory)
+    {
+        $filePath = $directory.'/pages';
+        $files    = $this->file->files($filePath);
+
+        foreach ($files as $file) {
+            if ($this->file->extension($file) == 'pdf') {
+                $pageNo = $this->getPageNo($file);
+
+                if (!$this->file->move($file, $filePath.'/'.$pageNo.'.pdf')) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }
