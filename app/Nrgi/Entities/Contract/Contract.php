@@ -55,4 +55,12 @@ class Contract extends Model
     {
         $this->attributes['metadata'] = json_encode($metaData);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function pages()
+    {
+        return $this->hasMany('App\Nrgi\Entities\Contract\Pages\Pages');
+    }
 }

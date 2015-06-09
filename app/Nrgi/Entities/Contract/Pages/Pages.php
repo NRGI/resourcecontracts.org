@@ -9,25 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 class Pages extends Model
 {
     /**
-     * The name of the "created at" column.
-     *
-     * @var string
-     */
-    const CREATED_AT = 'created_datetime';
-
-    /**
-     * The name of the "updated at" column.
-     *
-     * @var string
-     */
-    const UPDATED_AT = 'last_updated_datetime';
-
-    /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'contract';
+    protected $table = 'contract_pages';
 
     /**
      * The attributes that are mass assignable.
