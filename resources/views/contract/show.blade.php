@@ -45,7 +45,7 @@
             <div class="view-wrapper">
                 <div class="view-links">
                     <a href="{{route('contract.pages', ['id'=>$contract->id])}}" class="btn">View Pages</a>
-                    <a href="#" class="btn">Annotate</a>
+                    <a href="{{route('contract.annotations.create', ['id'=>$contract->id])}}" class="btn">Annotate</a>
                 </div>
             </div>
             <div class="annotation-wrap">
@@ -53,24 +53,15 @@
 
                 <div class="annotation-list">
                     <ul>
+                        @foreach($annotations as $annotation)
                         <li>
-                            <span>Lorem Ipsum</span>
-
-                            <p>raft (Godwin) Shelley</p>
-                            <a href="#">ERRATA</a>
+                            <span>{{$annotation->annotation->text}}</span>
+                            <p>{{$annotation->annotation->quote}}</p>
+                            @foreach($annotation->annotation->tags as $tag)
+                                <a href="#">{{$tag}}</a>
+                            @endforeach
                         </li>
-                        <li>
-                            <span>Test</span>
-
-                            <p>days perpetually occupied</p>
-                            <a href="#">SUBRATLLAT</a>
-                        </li>
-                        <li>
-                            <span>Lorem Ipsum</span>
-
-                            <p>raft (Godwin) Shelley</p>
-                            <a href="#">ERRATA</a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

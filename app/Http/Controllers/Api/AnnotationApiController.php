@@ -1,7 +1,7 @@
 <?php namespace app\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Nrgi\Services\Contract\AnnotationService;
+use App\Nrgi\Services\Contract\AnnotationService;
 use Illuminate\Http\Request;
 
 /**
@@ -30,7 +30,7 @@ class AnnotationApiController extends Controller
         $content = $request->getContent();
         $response = $this->annotationService->save($content, $request->all());
 
-        return stripslashes($response->annotation);
+        return json_encode(['status' => 'success']);
     }
 
 

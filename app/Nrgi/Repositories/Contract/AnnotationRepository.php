@@ -1,6 +1,7 @@
-<?php namespace Nrgi\Repositories\Contract;
+<?php namespace App\Nrgi\Repositories\Contract;
 
-use Nrgi\Entities\Contract\Annotation;
+use App\Nrgi\Entities\Contract\Annotation;
+use App\Nrgi\Entities\Contract\Contract;
 
 /**
  * Contract Annotation Repository
@@ -14,12 +15,15 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      */
     protected $model;
 
+    protected $contract;
+
     /**
      * @param Annotation $annotation
      */
-    public function __construct(Annotation $annotation)
+    public function __construct(Annotation $annotation , Contract $contract)
     {
         $this->model = $annotation;
+        $this->contract = $contract;
     }
 
     /**
@@ -46,7 +50,6 @@ class AnnotationRepository implements AnnotationRepositoryInterface
 
         return $annotations;
     }
-
 
     /**
      * @param $range
@@ -105,5 +108,15 @@ class AnnotationRepository implements AnnotationRepositoryInterface
     public function getById($id)
     {
         return $this->model->findOrFail($id);
+    }
+
+    /**
+     * @param $contractId
+     * @return mixed
+     */
+    public  function getAllByContractId($contractId)
+    {
+        $contactAnnotion = $this->contract->with('annotations')->findOrFail($contractId);
+        return $contactAnnotion->annotations;
     }
 }

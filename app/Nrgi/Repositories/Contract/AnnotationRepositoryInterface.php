@@ -1,5 +1,5 @@
 <?php
-namespace Nrgi\Repositories\Contract;
+namespace App\Nrgi\Repositories\Contract;
 
 /**
  * Interface ContractAnnotationRepositoryInterface

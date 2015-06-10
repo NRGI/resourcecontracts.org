@@ -12,26 +12,26 @@
 
     <div class="document-view-wrapper">
         <h1 class="edit-title">
-            Editing
+            Annotate
             <div class="title">{{$contract->metadata->project_title}}</div>
         </h1>
         <div class="view-wrapper">
             <div id="pagelist"></div>
             <div class="document-wrap">
-                <div class="left-document-wrap">
-                    <div class="quill-wrapper">
+                <div class="left-document-wrap annotate">
+                    <div class="quill-wrappera">
                         <!-- Create the toolbar container -->
                         <div id="toolbar" class="ql-toolbar ql-snow">
-                            <button class="ql-bold">Bold</button>
-                            <button class="ql-italic">Italic</button>
+                            {{--<button class="ql-bold">Bold</button>--}}
+                            {{--<button class="ql-italic">Italic</button>--}}
                         </div>
                         <div id="editor" class="editor ql-container ql-snow">
-                            <div class="ql-editor" id="ql-editor-1" contenteditable="true">
+                            <div class="ql-editor" id="ql-editor-1" contenteditable="false">
 
                             </div>
-                            <div class="ql-paste-manager" contenteditable="true"></div>
+                            <div class="ql-paste-manager" contenteditable="false"></div>
                         </div>
-                        <button name="submit" value="submit" id="saveButton" class="btn">Save</button>
+                        {{--<button name="submit" value="submit" id="saveButton" class="btn">Save</button>--}}
                     </div>
                 </div>
                 <div class="right-document-wrap">
@@ -44,38 +44,10 @@
     <script>
         jQuery(function ($) {
             //if loaded for the first time, load page 1
-            pageLoader(fileFoler, 1);
+            var page = '{{$page}}';
+            pageLoader(fileFoler, page);
+            var contractId = "{{$contract->id}}"
             //load the appropriate page when clicked
-            $('#pagelist a').click(function () {
-                var page = this.text.trim();
-                $(this).parent().find('a').removeClass('active');
-                $(this).addClass('active');
-
-                pageLoader(fileFoler, page);
-                console.log($('#document_id').val(page));
-
-                setupAnnotator(content, 100);
-                console.log("testing here");
-                //call search for page
-            });
-
-            $('#saveButton').click(function () {
-                var htmlContent = editor.getHTML();
-                var page = $('#pagelist a.active').text().trim();
-                $.ajax({
-                    url: '{{route('contract.page.store', ['id'=>$contract->id])}}',
-                    data: {'text': htmlContent, 'page': page},
-                    type: 'POST'
-                }).done(function (response) {
-                    console.log(response);
-                })
-            });
-
-
-
-
-
-
             $.ajaxSetup({
                 headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
             });
@@ -88,18 +60,18 @@
                     // Attach the uri of the current page to all annotations to allow search.
                     annotationData: {
                         'url': url,
-                        'contract': '10',
+                        'contract': contractId,
                         'document_page_no': documentId
                     },
                     loadFromSearch: {
-                        'contract': '10',
+                        'contract': contractId,
                         'document_page_no': documentId,
                         'url': url
                     }
                 });
                 content.annotator('addPlugin', 'Tags');
             };
-            setupAnnotator(content, 1);
+            setupAnnotator(content, page);
 
         });
         //defining format to use .format function
@@ -112,16 +84,20 @@
             return formatted;
         };
 
-        var totalPages = 5;
+        var totalPages = '{{count($pages)}}';
         var fileFoler = '{{ $contract->id }}';
+        var page = '{{$page}}';
 
         //fill the page numbers
+        var divClass = "";
         for (var index = 1; index <= totalPages; ++index) {
-            if(index ==1)
-            $('#pagelist').append('<a class="active" href="#{0}">{0}</a>&nbsp;'.format(index));
-            else
-            $('#pagelist').append('<a href="#{0}">{0}</a>&nbsp;'.format(index));
-
+                if(index == page)
+                {
+                    divClass = "active";
+                }else {
+                    divClass = "";
+                }
+                $('#pagelist').append('<a class="{1}" href="{{URL::current()}}?page={0}">{0}</a>&nbsp;'.format(index, divClass));
         }
 
         //read the url content
@@ -133,8 +109,8 @@
             return xmlHttp.responseText;
         }
 
-        var editor = new Quill('#editor', {theme: 'snow'});
-        editor.addModule('toolbar', {container: '#toolbar'});
+        var editor = new Quill('#editor', {theme: 'snow',readOnly: true});
+        //editor.addModule('toolbar', {container: '#toolbar'});
 
         function pageLoader(fileFoler, page) {
             //create text and pdf location based on the defined structure
@@ -165,4 +141,3 @@
             });
         }
     </script>
-

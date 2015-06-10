@@ -49,14 +49,16 @@
                         <script>
                             jQuery(function ($) {
                                 //if loaded for the first time, load page 1
-                                pageLoader(fileFoler, 1);
+                                //if loaded for the first time, load page 1
+                                var contractId = "{{$contract->id}}";
+                                pageLoader(contractId, 1);
                                 //load the appropriate page when clicked
                                 $('#pagelist a').click(function () {
                                     var page = this.text.trim();
                                     pageLoader(fileFoler, page);
                                     console.log($('#document_id').val(page));
 
-                                    setupAnnotator(content, 100);
+                                    setupAnnotator(content, 30);
                                     console.log("testing here");
                                     //call search for page
                                 });
@@ -77,11 +79,11 @@
                                         // Attach the uri of the current page to all annotations to allow search.
                                         annotationData: {
                                             'url': url,
-                                            'contract': '10',
+                                            'contract': "{{$contract->id}}",
                                             'document_page_no': documentId
                                         },
                                         loadFromSearch: {
-                                            'contract': '10',
+                                            'contract': "{{$contract->id}}",
                                             'document_page_no': documentId,
                                             'url': url
                                         }
@@ -102,7 +104,7 @@
                             };
 
                             var totalPages = 21;
-                            var fileFoler = "in";
+                            var fileFoler = "{{$contract->id}}";
 
                             //fill the page numbers
                             for (var index = 1; index <= totalPages; ++index) {
@@ -122,7 +124,7 @@
                             editor.addModule('toolbar', {container: '#toolbar'});
 
                             function pageLoader(fileFoler, page) {
-                                page = 19;
+                                console.log(page);
                                 //create text and pdf location based on the defined structure
                                 var textLocation = "/data/{0}/text/{1}.txt".format(fileFoler, page);
                                 var pdfLocation = "/data/{0}/pages/{1}.pdf".format(fileFoler, page);
@@ -147,8 +149,7 @@
                                     });
                                 });
                             }
-                            //if loaded for the first time, load page 1
-                            pageLoader(fileFoler, 19);
+
                         </script>
                     </div>
                 </div>
