@@ -2,7 +2,9 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\ContractService;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -30,11 +32,13 @@ class PageController extends Controller
      *
      * @return Response
      */
-    public function index($id)
+    public function index($id, Filesystem $filesystem)
     {
-        $contract = $this->contract->find($id);
+        $contract    = $this->contract->find($id);
+        $files       = $filesystem->files(ContractService::UPLOAD_FOLDER . '/' . $id . '/pages');
+        $page_number = count($files);
 
-        return view('contract.page.index', compact('contract'));
+        return view('contract.page.index', compact('contract', 'page_number'));
     }
 
     /**

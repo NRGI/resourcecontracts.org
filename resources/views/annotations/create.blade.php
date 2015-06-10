@@ -9,12 +9,10 @@
     <link rel="stylesheet" href="{{ URL::asset('js/lib/quill/quill.snow.css') }}"/>
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}"/>
 
+    <div class="panel panel-default">
+        <div class="panel-heading">  Annotate {{$contract->metadata->project_title}}</div>
 
-    <div class="document-view-wrapper">
-        <h1 class="edit-title">
-            Annotate
-            <div class="title">{{$contract->metadata->project_title}}</div>
-        </h1>
+
         <div class="view-wrapper">
             <div id="pagelist"></div>
             <div class="document-wrap">
