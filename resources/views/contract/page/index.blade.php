@@ -1,16 +1,13 @@
 @extends('layout.app-full')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('js/lib/quill/quill.snow.css') }}"/>
+@stop
+
 @section('content')
-    <script src="{{ URL::asset('js/lib/quill/quill.js') }}"></script>
-    <script src="{{ URL::asset('js/lib/jquery.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/lib/annotator/annotator-full.min.js') }}"></script>
-    <script src="{{ URL::asset('js/lib/pdfjs/pdf.js') }}"></script>
-    <link rel="stylesheet" href="{{ URL::asset('js/lib/annotator/annotator.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('js/lib/quill/quill.snow.css') }}"/>
-    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}"/>
 
     <div class="panel panel-default">
-        <div class="panel-heading">  Editing {{$contract->metadata->project_title}}</div>
+        <div class="panel-heading"> Editing {{$contract->metadata->project_title}}</div>
 
         <div class="view-wrapper">
             <div id="pagelist"></div>
@@ -38,9 +35,16 @@
         </div>
 
     </div>
+@stop
 
+
+@section('script')
+
+    <script src="{{ asset('js/lib/quill/quill.js') }}"></script>
+    <script src="{{ asset('js/lib/pdfjs/pdf.js') }}"></script>
     <script>
         jQuery(function ($) {
+
             //if loaded for the first time, load page 1
             pageLoader(fileFoler, 1);
             //load the appropriate page when clicked
@@ -65,41 +69,11 @@
                     data: {'text': htmlContent, 'page': page},
                     type: 'POST'
                 }).done(function (response) {
-                    console.log(response);
+                    alert('Saved');
                 })
             });
-
-
-
-
-
-
-            $.ajaxSetup({
-                headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
-            });
-            var url = "{{Request::url()}}";
-            var content = $('.annotate').annotator();
-            var setupAnnotator = function (area, documentId) {
-                area.annotator('addPlugin', 'Store', {
-                    // The endpoint of the store on your server.
-                    prefix: '/api',
-                    // Attach the uri of the current page to all annotations to allow search.
-                    annotationData: {
-                        'url': url,
-                        'contract': '10',
-                        'document_page_no': documentId
-                    },
-                    loadFromSearch: {
-                        'contract': '10',
-                        'document_page_no': documentId,
-                        'url': url
-                    }
-                });
-                content.annotator('addPlugin', 'Tags');
-            };
-            setupAnnotator(content, 1);
-
         });
+
         //defining format to use .format function
         String.prototype.format = function () {
             var formatted = this;
@@ -110,36 +84,42 @@
             return formatted;
         };
 
-        var totalPages = {{$page_number}};
+        var totalPages = {{$contract->pages->count()}};
         var fileFoler = '{{ $contract->id }}';
 
         //fill the page numbers
         for (var index = 1; index <= totalPages; ++index) {
-            if(index ==1)
-            $('#pagelist').append('<a class="active" href="#{0}">{0}</a>&nbsp;'.format(index));
+            if (index == 1)
+                $('#pagelist').append('<a class="active" href="#{0}">{0}</a>&nbsp;'.format(index));
             else
-            $('#pagelist').append('<a href="#{0}">{0}</a>&nbsp;'.format(index));
+                $('#pagelist').append('<a href="#{0}">{0}</a>&nbsp;'.format(index));
 
-        }
-
-        //read the url content
-        function httpGet(theUrl) {
-            var xmlHttp = null;
-            xmlHttp = new XMLHttpRequest();
-            xmlHttp.open("GET", theUrl, false);
-            xmlHttp.send(null);
-            return xmlHttp.responseText;
         }
 
         var editor = new Quill('#editor', {theme: 'snow'});
         editor.addModule('toolbar', {container: '#toolbar'});
 
+
+        //read the url content
+        function loadPageText(page) {
+            var reText = '';
+            $.ajax({
+                url: '{{route('contract.page.get', ['id'=>$contract->id])}}',
+                data: {'page': page},
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (response) {
+                    editor.setHTML(response.message);
+                }
+            });
+        }
+
+
         function pageLoader(fileFoler, page) {
             //create text and pdf location based on the defined structure
-            var textLocation = "/data/{0}/text/{1}.txt".format(fileFoler, page);
             var pdfLocation = "/data/{0}/pages/{1}.pdf".format(fileFoler, page);
             console.log(pdfLocation)
-            editor.setHTML(httpGet(textLocation));
+            loadPageText(page);
 
             PDFJS.workerSrc = '/js/lib/pdfjs/pdf.worker.js';
 
@@ -163,3 +143,4 @@
             });
         }
     </script>
+@stop

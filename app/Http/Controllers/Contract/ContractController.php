@@ -91,8 +91,9 @@ class ContractController extends Controller
     public function edit($id)
     {
         $contract = $this->contract->find($id);
+        $country = $this->countries->lists();
 
-        return view('contract.edit', compact('contract'));
+        return view('contract.edit', compact('contract', 'country'));
     }
 
     /**

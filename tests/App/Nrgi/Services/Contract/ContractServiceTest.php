@@ -11,6 +11,8 @@ class ContractServiceTest extends NrgiTestCase
     protected $uploadedFile;
     protected $contractService;
     protected $filesystem;
+    protected $countryService;
+    protected $queue;
 
     public function setup()
     {
@@ -20,11 +22,15 @@ class ContractServiceTest extends NrgiTestCase
         $this->storage            = m::mock('Illuminate\Contracts\Filesystem\Factory');
         $this->filesystem         = m::mock('Illuminate\Filesystem\Filesystem');
         $this->uploadedFile       = m::mock('Symfony\Component\HttpFoundation\File\UploadedFile');
+        $this->countryService     = m::mock('App\Nrgi\Services\Contract\CountryService');
+        $this->queue              = m::mock('Illuminate\Contracts\Queue\Queue');
         $this->contractService    = new ContractService(
             $this->contractRepository,
             $this->auth,
             $this->storage,
-            $this->filesystem
+            $this->filesystem,
+            $this->countryService,
+            $this->queue
         );
 
         $this->formData = [
@@ -34,6 +40,7 @@ class ContractServiceTest extends NrgiTestCase
             "government_entity"    => '',
             "type_of_mining_title" => '',
             "signature_date"       => '',
+            "signature_year"       => '',
             "contract_term"        => '',
             "company"              => '',
             "license_name"         => '',
@@ -43,10 +50,13 @@ class ContractServiceTest extends NrgiTestCase
             "project_title"        => '',
             "project_identifier"   => '',
             "date_granted"         => '',
-            "date_ratification"    => '',
+            "year_granted"         => '',
+            "ratification_date"    => '',
+            "ratification_year"    => '',
             "Source_url"           => '',
             "date_retrieval"       => '',
             "location"             => '',
+            "category"             => '',
             'file_size'            => ''
         ];
     }
@@ -76,14 +86,25 @@ class ContractServiceTest extends NrgiTestCase
         $this->uploadedFile->shouldReceive('getSize')->once()->andReturn('filesize');
         $this->storage->shouldReceive('disk->put')->once()->andReturn(true);
         $this->filesystem->shouldReceive('get')->once()->with($this->uploadedFile)->andReturn('file');
-        $contract = 'App\Nrgi\Entities\Contract\Contract';
+        $contract = m::mock('App\Nrgi\Entities\Contract\Contract');
+        $contract->shouldReceive('getAttribute')->once()->with('id')->andReturn(1);
+        $this->countryService->shouldReceive('getInfoById')->once()->with('')->andReturn('');
+
         $this->contractRepository->shouldReceive('save')->once()->andReturn(
-            m::mock($contract)
+            $contract
         );
+
+        $this->queue->shouldReceive('push')->once()->with(
+            'App\Nrgi\Services\Queue\ProcessDocumentQueue',
+            ['contract_id' => 1]
+        )->andReturn('');
 
         $this->formData['file']      = $this->uploadedFile;
         $this->formData['file_size'] = 'filesize';
-        $this->assertInstanceOf($contract, $this->contractService->saveContract($this->formData));
+        $this->assertInstanceOf(
+            'App\Nrgi\Entities\Contract\Contract',
+            $this->contractService->saveContract($this->formData)
+        );
     }
 
     public function testItShouldNotSaveContractWhenInvalidFile()
@@ -136,6 +157,7 @@ class ContractServiceTest extends NrgiTestCase
         $this->formData['file_size'] = 'size';
         $contract->shouldReceive('getAttribute')->once()->with('metadata')->andReturn($data);
         $contract->shouldReceive('setAttribute')->once()->with('metadata', $this->formData)->andReturn([]);
+        $this->countryService->shouldReceive('getInfoById')->once()->with('')->andReturn('');
         $this->assertTrue($this->contractService->updateContract(1, $this->formData));
     }
 

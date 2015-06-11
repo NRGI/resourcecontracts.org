@@ -30,6 +30,15 @@ interface ContractRepositoryInterface
      */
     public function findContract($contractId);
 
+
+    /**
+     * Get Contract or throw exception
+     *
+     * @param $contractId
+     * @return Contract
+     */
+    public function findContractWithPages($contractId);
+
     /**
      * Delete contract
      *
