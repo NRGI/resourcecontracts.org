@@ -66,10 +66,10 @@ return [
 
 		'pgsql' => [
 			'driver'   => 'pgsql',
-			'host'     => env('DB_HOST', $_SERVER['DB_HOST']),
-			'database' => env('DB_DATABASE', $_SERVER['DB_DATABASE']),
-			'username' => env('DB_USERNAME', $_SERVER['DB_USERNAME']),
-			'password' => env('DB_PASSWORD', $_SERVER['DB_PASSWORD']),
+			'host'     => env('DB_HOST', 'DB_HOST'),
+			'database' => env('DB_DATABASE', 'DB_DATABASE'),
+			'username' => env('DB_USERNAME', 'DB_USERNAME'),
+			'password' => env('DB_PASSWORD', 'DB_PASSWORD'),
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
