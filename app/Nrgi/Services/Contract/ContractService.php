@@ -15,6 +15,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class ContractService
 {
     /**
+     * Contract upload folder
+     */
+    const UPLOAD_FOLDER = 'data';
+
+    /**
      * @var ContractRepositoryInterface
      */
     protected $contract;
@@ -31,8 +36,17 @@ class ContractService
      */
     protected $filesystem;
 
+    /**
+     * Contract on pipeline
+     */
     const CONTRACT_QUEUE = 0;
+    /**
+     * Contract on Pending
+     */
     const CONTRACT_PENDING = 1;
+    /**
+     * Contract Completed
+     */
     const CONTRACT_COMPLETE = 2;
 
 
@@ -91,14 +105,26 @@ class ContractService
                 'user_id'  => $this->auth->user()->id,
                 'metadata' =>
                     [
-                        'project_title'  => $formData['project_title'],
-                        'language'       => $formData['language'],
-                        'country'        => $formData['country'],
-                        'resource'       => $formData['resource'],
-                        'signature_date' => $formData['signature_date'],
-                        'signature_year' => $formData['signature_year'],
-                        'contract_term'  => $formData['contract_term'],
-                        'file_size'      => $file['size']
+                        "language"             => isset($formData["language"]) ?$formData["language"]: '',
+                        "country"              => isset($formData['country']) ?$formData['country']: '',
+                        "resource"             => isset($formData['resource']) ?$formData['resource']: '',
+                        "government_entity"    => isset($formData['government_entity']) ?$formData['government_entity']: '',
+                        "type_of_mining_title" => isset($formData['type_of_mining_title']) ?$formData['type_of_mining_title']: '',
+                        "signature_date"       => isset($formData['signature_date']) ?$formData['signature_date']: '',
+                        "contract_term"        => isset($formData['contract_term']) ?$formData['contract_term']: '',
+                        "company"              => isset($formData['company']) ?$formData['company']: '',
+                        "license_name"         => isset($formData['license_name']) ?$formData['license_name']: '',
+                        "license_identifier"   => isset($formData['license_identifier']) ?$formData['license_identifier']: '',
+                        "license_source_url"   => isset($formData['license_source_url']) ?$formData['license_source_url']: '',
+                        "license_type"         => isset($formData['license_type']) ?$formData['license_type']: '',
+                        "project_title"        => isset($formData['project_title']) ?$formData['project_title']: '',
+                        "project_identifier"   => isset($formData['project_identifier']) ?$formData['project_identifier']: '',
+                        "date_granted"         => isset($formData['date_granted']) ?$formData['date_granted']: '',
+                        "date_ratification"    => isset($formData['date_ratification']) ?$formData['date_ratification']: '',
+                        "Source_url"           => isset($formData['Source_url']) ?$formData['Source_url']: '',
+                        "date_retrieval"       => isset($formData['date_retrieval']) ?$formData['date_retrieval']: '',
+                        "category"             => isset($formData['category']) ?$formData['category']: '',
+                        'file_size'            => $file['size']
                     ]
             ];
 
@@ -119,14 +145,26 @@ class ContractService
         $file_size          = $contract->metadata->file_size;
         $contract->metadata =
             [
-                'project_title'  => $formData['project_title'],
-                'language'       => $formData['language'],
-                'country'        => $formData['country'],
-                'resource'       => $formData['resource'],
-                'signature_date' => $formData['signature_date'],
-                'signature_year' => $formData['signature_year'],
-                'contract_term'  => $formData['contract_term'],
-                'file_size'      => $file_size
+                "language"             => $formData["language"],
+                "country"              => $formData['country'],
+                "resource"             => $formData['resource'],
+                "government_entity"    => $formData['government_entity'],
+                "type_of_mining_title" => $formData['type_of_mining_title'],
+                "signature_date"       => $formData['signature_date'],
+                "contract_term"        => $formData['contract_term'],
+                "company"              => $formData['company'],
+                "license_name"         => $formData['license_name'],
+                "license_identifier"   => $formData['license_identifier'],
+                "license_source_url"   => $formData['license_source_url'],
+                "license_type"         => $formData['license_type'],
+                "project_title"        => $formData['project_title'],
+                "project_identifier"   => $formData['project_identifier'],
+                "date_granted"         => $formData['date_granted'],
+                "date_ratification"    => $formData['date_ratification'],
+                "Source_url"           => $formData['Source_url'],
+                "date_retrieval"       => $formData['date_retrieval'],
+                "location"             => $formData['location'],
+                'file_size'            => $file_size
             ];
 
         return $contract->save();
@@ -212,7 +250,7 @@ class ContractService
      * @param string $fileName
      * @return string
      */
-    protected function getS3FileURL($fileName = '')
+    public function getS3FileURL($fileName = '')
     {
         return $this->storage->disk('s3')
                              ->getDriver()
@@ -229,12 +267,13 @@ class ContractService
      */
     public function getStatus($contractID)
     {
-        $path = public_path('data/' . $contractID);
+        $path = public_path(self::UPLOAD_FOLDER . '/' . $contractID);
 
         if ($this->filesystem->exists($path)) {
             try {
                 $status = $this->filesystem->get(sprintf('%s/status.txt', $path));
                 $status = (integer) trim($status);
+
                 return $status === 1 ? self::CONTRACT_COMPLETE : self::CONTRACT_PENDING;
             } catch (FileNotFoundException $e) {
                 return self::CONTRACT_PENDING;
@@ -254,7 +293,8 @@ class ContractService
      */
     public function savePageText($id, $page, $text)
     {
-        $path = public_path(sprintf('data/%s/text/%s.txt', $id, $page));
+        $path = public_path(self::UPLOAD_FOLDER . '/' . $id . '/' . $page . '.txt');
+        echo $text;
 
         return $this->filesystem->put($path, $text);
     }
