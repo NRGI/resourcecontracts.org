@@ -89,7 +89,7 @@
                     <ul>
                         @foreach($annotations as $annotation)
                             <li>
-                                <span>{{$annotation->annotation->text}}</span>
+                                <span><a href="{{route('contract.annotations.create', ['id'=>$contract->id])}}?page={{$annotation->document_page_no}}"> {{$annotation->annotation->text}}</a></span>
 
                                 <p>{{$annotation->annotation->quote}}</p>
                                 @foreach($annotation->annotation->tags as $tag)
