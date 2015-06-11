@@ -28,13 +28,26 @@ class ContractServiceTest extends NrgiTestCase
         );
 
         $this->formData = [
-            'project_title'  => '',
-            'language'       => '',
-            'country'        => '',
-            'resource'       => '',
-            'signature_date' => '',
-            'signature_year' => '',
-            'contract_term'  => '',
+            "language"             => '',
+            "country"              => '',
+            "resource"             => '',
+            "government_entity"    => '',
+            "type_of_mining_title" => '',
+            "signature_date"       => '',
+            "contract_term"        => '',
+            "company"              => '',
+            "license_name"         => '',
+            "license_identifier"   => '',
+            "license_source_url"   => '',
+            "license_type"         => '',
+            "project_title"        => '',
+            "project_identifier"   => '',
+            "date_granted"         => '',
+            "date_ratification"    => '',
+            "Source_url"           => '',
+            "date_retrieval"       => '',
+            "location"             => '',
+            'file_size'            => ''
         ];
     }
 

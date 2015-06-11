@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Contract\ContractRequest;
 use App\Nrgi\Services\Contract\AnnotationService;
 use App\Nrgi\Services\Contract\ContractService;
+use App\Nrgi\Services\Contract\CountryService;
 use Illuminate\Http\Response;
 
 /**
@@ -17,11 +18,16 @@ class ContractController extends Controller
      * @var ContractService
      */
     protected $contract;
+    /**
+     * @var CountryService
+     */
+    protected $countries;
 
-    public function __construct(ContractService $contract)
+    public function __construct(ContractService $contract, CountryService $countries)
     {
         $this->middleware('auth');
         $this->contract = $contract;
+        $this->countries  = $countries;
     }
 
     /**
@@ -43,7 +49,8 @@ class ContractController extends Controller
      */
     public function create()
     {
-        return view('contract.create');
+        $country = $this->countries->lists();
+        return view('contract.create', compact('country'));
     }
 
     /**
@@ -66,12 +73,14 @@ class ContractController extends Controller
      *
      * @return Response
      */
-    public function show($id,AnnotationService $annotation)
+    public function show($id, AnnotationService $annotation)
     {
-        $contract = $this->contract->find($id);
-        $status   = $this->contract->getStatus($id);
+        $contract    = $this->contract->find($id);
+        $status      = $this->contract->getStatus($id);
         $annotations = $annotation->getAllByContractId($id);
-        return view('contract.show', compact('contract', 'status','annotations'));
+        $file        = $this->contract->getS3FileURL($contract->file);
+
+        return view('contract.show', compact('contract', 'status', 'annotations', 'file'));
     }
 
     /**

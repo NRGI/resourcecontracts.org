@@ -6226,8 +6226,86 @@ button.close {
     display: none !important;
   }
 }
-body,
-label,
-.checkbox label {
-  font-weight: 300;
+
+label.error {color:#d44950}
+input.error {border-color:#d44950}
+
+#pagelist {
+  background: #f6f6f6;
+  padding: 10px 0;
+  text-align: center;
+}
+#pagelist a {
+  color: #8B8B8B;
+  padding: 2px 10px;
+  border: 1px solid transparent;
+}
+#pagelist a:hover, #pagelist .active {
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  color: #404040;
+}
+
+.view-links {
+  text-align: center;
+  margin: 30px 0 24px;
+}
+.view-links a {
+  margin-right: 10px;
+}
+
+.annotation-wrap {
+  width: 960px;
+  margin: 0 auto;
+}
+.annotation-wrap h3 {
+  border-bottom: 1px solid #8b8b8b;
+  margin-bottom: 20px;
+  padding-bottom: 3px;
+}
+
+.annotation-list li {
+  margin-bottom: 20px;
+}
+.annotation-list li span {
+  font-size: 15px;
+  margin-bottom: 6px;
+  display: block;
+}
+.annotation-list li p {
+  color: #8b8b8b;
+}
+.annotation-list li a {
+  font-size: 12px;
+}
+
+.document-wrap {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  padding: 0 16px;
+}
+
+.left-document-wrap, .right-document-wrap {
+  background: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  flex: 1;
+  padding: 30px;
+}
+
+.left-document-wrap {
+  margin-right: 16px;
+}
+
+#toolbar {
+  margin-bottom: 20px;
+}
+#toolbar button {
+  margin-right: 10px;
+  padding: 0 4px;
 }

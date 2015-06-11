@@ -1,79 +1,107 @@
-@extends('layout.app-full')
+@extends('layout.app')
+
 @section('content')
-    <div class="document-view-wrapper">
-        <div class="top-document-wrapper">
-            <div class="left-document-wrapper">
-                <h1>{{$contract->metadata->project_title}}</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading">{{$contract->metadata->project_title}}</div>
 
-                <div class="modify-wrapper">
-                    Modified on
-                    <div class="date">{{$contract->last_updated_datetime->format('D F d Y')}}</div>
-                    <div class="language-wrap">
-                        <div class="language">{{$contract->metadata->language}}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="right-document-wrapper">
-                <div class="sector-wrap">
-                    <span class="sector">Resource(s)</span>
-                    <ul>
-                        <li><a href="#">{{$contract->metadata->resource}}</a></li>
-                    </ul>
-                </div>
-                <div class="country-year-wrap">
-                    <div class="country">
-                        <span>Country</span>
-
-                        <div class="country-name">{{$contract->metadata->country}}</div>
-                    </div>
-                    <div class="signature-year">
-                        <span>Year of Signature</span>
-
-                        <div class="year">{{$contract->metadata->signature_date}}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="action-btn">
-                {!!Form::open(['route'=>['contract.destroy', $contract->id], 'method'=>'delete'])!!}
-                {!!Form::button('', ['type'=>'submit','class'=>'remove confirm', 'data-confirm'=>"Are you sure you want to delete this contract?"])!!}
-                {!!Form::close()!!}
-                <a href="{{route('contract.edit', $contract->id)}}" class="edit">Edit</a>
-            </div>
+        <div class="action-btn pull-right" style="padding: 20px;">
+            {{--<a href="{{route('contract.edit', $contract->id)}}" class="btn btn-default">Edit</a>--}}
+            <a target="_blank" href="{{$file}}" class="btn btn-default">View Document</a>
+            {!!Form::open(['route'=>['contract.destroy', $contract->id], 'style'=>"display:inline",
+            'method'=>'delete'])!!}
+            {!!Form::button('Delete', ['type'=>'submit','class'=>'btn btn-danger confirm', 'data-confirm'=>"Are you sure
+            you want to delete this contract?"])!!}
+            {!!Form::close()!!}
         </div>
 
         @if($status === \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE)
-            <div class="view-wrapper">
-                <div class="view-links">
-                    <a href="{{route('contract.pages', ['id'=>$contract->id])}}" class="btn">View Pages</a>
-                    <a href="{{route('contract.annotations.create', ['id'=>$contract->id])}}" class="btn">Annotate</a>
-                </div>
-            </div>
+            <a href="{{route('contract.pages', ['id'=>$contract->id])}}" class="btn btn-default">View Pages</a>
+            <a href="{{route('contract.annotations.create', ['id'=>$contract->id])}}"
+               class="btn btn-default">Annotate</a>
+        @else
+            <p style="padding: 20px;;">Status : {{$status==0 ? 'Pipeline' : 'Processing'}}</p>
+        @endif
+
+        <table class="table">
+
+            <tr>
+                <td>Created date</td>
+                <td>{{$contract->created_datetime->format('D M, d Y')}}</td>
+            </tr>
+
+            <tr>
+                <td>Updated date</td>
+                <td>{{$contract->last_updated_datetime->format('D M, d Y h:i A')}}</td>
+            </tr>
+
+            @foreach($contract->metadata as $key => $value)
+                @if($key == 'file_size')
+                    <tr>
+                        <td width="20%">{{ ucfirst(str_replace('_', ' ',$key))}}</td>
+                        <td>{{getFileSize($value)}}</td>
+                    </tr>
+                @elseif(!is_array($value))
+                    <tr>
+                        <td width="20%">{{ ucfirst(str_replace('_', ' ',$key))}}</td>
+                        <td>{{$value}}</td>
+                    </tr>
+
+                @elseif($key =='resource')
+                    <tr>
+                        <td width="20%">{{ ucfirst(str_replace('_', ' ',$key))}}</td>
+                        <td>{{join(', ',$value)}}</td>
+                    </tr>
+
+                @elseif($key == 'company')
+                    @foreach($value as $k => $v)
+                        <tr>
+                            <td width="20%">{{ ucfirst(str_replace('_', ' ',$key))}}</td>
+                            <td>
+                                <p> Company Name : {{$v->name}}</p>
+
+                                <p> Jurisdiction Of Incorporation : {{$v->jurisdiction_of_incorporation}}</p>
+
+                                <p> Registration Agency : {{$v->registration_agency}}</p>
+
+                                <p> Incorporation Date : {{$v->company_founding_date}}</p>
+
+                                <p> Company Address : {{$v->company_address}}</p>
+
+                                <p> Company Role : {{$v->company_role}}</p>
+
+                                <p> Identifier at company register: {{$v->comp_id}}</p>
+
+                                <p> Parent company: {{$v->parent_company}}</p>
+                            </td>
+                        </tr>
+                    @endforeach
+
+
+                @endif
+            @endforeach
+        </table>
+
+        @if($status === \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE)
             <div class="annotation-wrap">
                 <h3>Annotations</h3>
 
                 <div class="annotation-list">
                     <ul>
                         @foreach($annotations as $annotation)
-                        <li>
-                            <span>{{$annotation->annotation->text}}</span>
-                            <p>{{$annotation->annotation->quote}}</p>
-                            @foreach($annotation->annotation->tags as $tag)
-                                <a href="#">{{$tag}}</a>
-                            @endforeach
-                        </li>
+                            <li>
+                                <span>{{$annotation->annotation->text}}</span>
+
+                                <p>{{$annotation->annotation->quote}}</p>
+                                @foreach($annotation->annotation->tags as $tag)
+                                    <a href="#">{{$tag}}</a>
+                                @endforeach
+                            </li>
                         @endforeach
+
                     </ul>
                 </div>
             </div>
-        @else
-            <div class="view-wrapper">
-                <div class="status-wrap">
-                    <div class="status-icon">
-                        <img src="{{asset('images/ic_hourglass.png')}}" alt=" {{$status}}" />
-                    </div>
-                    {{$status==0 ? 'Pipeline' : 'Processing'}}
-                </div>
-            </div>
         @endif
+
     </div>
 @stop
