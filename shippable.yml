@@ -16,7 +16,7 @@ before_install:
 before_script:
   - mkdir -p shippable/testresults
   - mkdir -p build/logs
-  - composer self-update && composer --no-interaction --prefer-source install
+  - composer self-update && composer --no-interaction --prefer-dist install
 
 script:
    - ./vendor/bin/phpunit  --log-junit shippable/testresults/junit.xml

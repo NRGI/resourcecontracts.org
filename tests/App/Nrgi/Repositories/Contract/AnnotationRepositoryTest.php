@@ -9,7 +9,6 @@ class AnnotationRepositoryTest extends NrgiTestCase
 
     public function setUp()
     {
-        $this->markTestSkipped();
         parent::setUp();
         $this->annotation = m::mock('App\Nrgi\Entities\Contract\Annotation');
         $this->contract = m::mock('App\Nrgi\Entities\Contract\Contract');
