@@ -18,6 +18,7 @@ class CountryService
 
     /**
      * Get List of Countries
+     * @return array
      */
     public function lists()
     {
@@ -28,5 +29,17 @@ class CountryService
         }
 
         return $data;
+    }
+
+    /**
+     * Get Country by information
+     * @param $id
+     * @return string
+     */
+    public function getInfoById($id)
+    {
+        $countries = $this->countries;
+
+        return isset($countries[$id]) ? $countries[$id] : '';
     }
 }

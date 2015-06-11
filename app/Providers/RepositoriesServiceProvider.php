@@ -17,10 +17,16 @@ class RepositoriesServiceProvider extends ServiceProvider
         );
         $this->app->bind(
             'App\Nrgi\Repositories\Contract\ContractRepositoryInterface',
-            'App\Nrgi\Repositories\Contract\ContractRepository');
+            'App\Nrgi\Repositories\Contract\ContractRepository'
+        );
+        $this->app->bind(
+            'App\Nrgi\Repositories\Contract\Pages\PagesRepositoryInterface',
+            'App\Nrgi\Repositories\Contract\Pages\PagesRepository'
+        );
         $this->app->bind(
             'App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface',
             'App\Nrgi\Repositories\Contract\AnnotationRepository'
         );
     }
+
 }

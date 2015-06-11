@@ -53,6 +53,17 @@ class ContractRepository implements ContractRepositoryInterface
     }
 
     /**
+     * Get Contract with pages or throw exception
+     *
+     * @param $contractId
+     * @return Contract
+     */
+    public function findContractWithPages($contractId)
+    {
+        return $this->contract->with('pages')->findOrFail($contractId);
+    }
+
+    /**
      * Delete contract
      *
      * @param $contractID
