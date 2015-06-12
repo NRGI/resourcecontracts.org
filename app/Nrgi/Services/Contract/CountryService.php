@@ -13,33 +13,27 @@ class CountryService
 
     function __construct()
     {
-        $this->countries = config('nrgi.country');
+        $this->countries = config('country');
     }
 
     /**
      * Get List of Countries
      * @return array
      */
-    public function lists()
+    public function all()
     {
-        $data = array();
-
-        foreach ($this->countries as $id => $country) {
-            $data[$id] = $country['name'];
-        }
-
-        return $data;
+        return $this->countries;
     }
 
     /**
      * Get Country by information
-     * @param $id
+     * @param $code
      * @return string
      */
-    public function getInfoById($id)
+    public function getInfoByCode($code)
     {
         $countries = $this->countries;
 
-        return isset($countries[$id]) ? $countries[$id] : '';
+        return isset($countries[$code]) ? ['code' => $code, 'name' => $countries[$code]] : '';
     }
 }

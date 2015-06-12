@@ -1,18 +1,80 @@
 @extends('layout.app')
 
-@section('content')
+
+@section('css')
     <style>
         ul {
             list-style: none
         }
-        ul li {padding: 5px 0px}
+
+        ul li {
+            padding: 5px 0px
+        }
+
+        .types label {
+            display: block;
+            cursor: pointer;
+            text-align: left;
+            padding: 15px;
+            font-size: 16px;
+            width: 50%;
+        }
+
+        .label-red {
+            background: #d9534f;
+            font-size: 13px
+        }
+
+        .label-yellow {
+            background: #f0ad4e;
+            font-size: 13px
+        }
+
+        .label-green {
+            background: #5cb85c;
+            font-size: 13px
+        }
+
     </style>
+@stop
+
+
+@section('script')
+    <script>
+        $(function () {
+            var form = $('.output-type-form');
+
+            $(form).on('submit', function (e) {
+                e.preventDefault();
+                var type = form.find('input[type=radio]:checked').val();
+                if (typeof type != 'undefined') {
+                    $.ajax({
+                        url: form.attr('action'),
+                        data: form.serialize(),
+                        type: 'POST',
+                        dataType: 'json'
+                    }).done(function (response) {
+                        window.location.reload()
+                    })
+                }
+                else {
+                    alert('Please select text type');
+                }
+            })
+        })
+    </script>
+@stop
+
+
+@section('content')
+
     <div class="panel panel-default">
         <div class="panel-heading">{{$contract->metadata->project_title}}</div>
 
         <div class="action-btn pull-right" style="padding: 20px;">
             <a href="{{route('contract.edit', $contract->id)}}" class="btn btn-default">Edit</a>
-            <a target="_blank" href="{{$file}}" class="btn btn-default">View Document</a>
+            <a target="_blank" href="{{$file}}"
+               class="btn btn-default">Download file [{{getFileSize($contract->metadata->file_size)}}]</a>
             {!!Form::open(['route'=>['contract.destroy', $contract->id], 'style'=>"display:inline",
             'method'=>'delete'])!!}
             {!!Form::button('Delete', ['type'=>'submit','class'=>'btn btn-danger confirm', 'data-confirm'=>"Are you sure
@@ -25,23 +87,82 @@
                 <a href="{{route('contract.pages', ['id'=>$contract->id])}}" class="btn btn-default">View Pages</a>
                 <a href="{{route('contract.annotations.index', ['id'=>$contract->id])}}"
                    class="btn btn-default">Annotate</a>
+                <br>
+                <br>
+
+                <p>Text type :
+
+                    <a href="#" data-key="{{$contract->textType}}" class="text-type-block"
+                       data-toggle="modal"
+                       data-target="#text-type-modal">
+                        @if($contract->textType =='')
+                            Choose
+
+                        @else
+                            <?php $label = $contract->getTextType();?>
+                            <span class="label label-{{$label->color}}"> {{$label->name}}</span>
+                        @endif
+
+                    </a></p>
+
+                <!-- Modal -->
+                <div class="modal fade" id="text-type-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            {!! Form::open(['route' => ['contract.output.save', $contract->id],
+                            'class'=>'output-type-form']) !!}
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Choose type of output Text</h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <ul class="types">
+                                    <li><label class="label label-success"> {!!Form::radio('text_type', 1,
+                                            ($contract->textType == 1) ) !!}
+                                            Acceptable</label>
+                                    <li><label class="label label-warning">{!!Form::radio('text_type', 2,
+                                            ($contract->textType == 2)) !!} Needs
+                                            editing</label>
+                                    <li><label class="label label-danger">{!!Form::radio('text_type', 3,
+                                            ($contract->textType == 3)) !!} Needs
+                                            full transcription</label>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         @else
             <p style="padding: 20px 40px;">Status : {{$status==0 ? 'Pipeline' : 'Processing'}}</p>
         @endif
 
         <ul>
-            <li><strong>File size:</strong> {{getFileSize($contract->metadata->file_size)}}</li>
-            <li><strong>Created date:</strong> {{$contract->created_datetime->format('D M, d Y')}}</li>
-            <li><strong>Updated date:</strong> {{$contract->last_updated_datetime->format('D M, d Y h:i A')}}</li>
+            <li><strong>Created on:</strong> {{$contract->created_datetime->format('D M, d Y h:i A')}}</li>
+            <li style="margin-bottom: 30px;"><strong>Updated
+                    on:</strong> {{$contract->last_updated_datetime->format('D M, d Y h:i A')}}</li>
+
             @if(isset($contract->metadata->language) && '' != $contract->metadata->language)
-                <li><strong>Language:</strong> {{$contract->metadata->language}}</li>
+                <?php $lang = config('metadata.language');?>
+                <li>
+                    <strong>Language:</strong> {{$lang[$contract->metadata->language]}}
+                    [{{$contract->metadata->language}}]
+                </li>
             @endif
             @if(isset($contract->metadata->country->name) && '' != $contract->metadata->country->name)
-                <li><strong>Country:</strong> {{$contract->metadata->country->name or ''}}</li>
-            @endif
-            @if(isset($contract->metadata->country->code) && '' != $contract->metadata->country->code)
-                <li><strong>Country ISO:</strong> {{$contract->metadata->country->code or ''}}</li>
+                <li>
+                    <strong>Country:</strong> {{$contract->metadata->country->name or ''}}
+                    [{{$contract->metadata->country->code or ''}}]
+                </li>
             @endif
 
             @if(is_array($contract->metadata->resource) && count($contract->metadata->resource)>0)
@@ -51,17 +172,30 @@
             @if(isset($contract->metadata->government_entity) && '' != $contract->metadata->government_entity)
                 <li><strong>Government entity:</strong> {{$contract->metadata->government_entity}}</li>
             @endif
-            @if(isset($contract->metadata->type_of_mining_title) && '' != $contract->metadata->type_of_mining_title)
-                <li><strong>Type of mining title:</strong> {{$contract->metadata->type_of_mining_title}}</li>
+
+            @if(isset($contract->metadata->government_identifier) && '' != $contract->metadata->government_identifier)
+                <li><strong>Government identifier:</strong> {{$contract->metadata->government_identifier}}</li>
+            @endif
+
+            @if(isset($contract->metadata->type_of_contract) && '' != $contract->metadata->type_of_contract)
+                <li><strong>Type of Contract:</strong> {{$contract->metadata->type_of_contract}}</li>
             @endif
             @if(isset($contract->metadata->signature_date) && '' != $contract->metadata->signature_date)
                 <li><strong>Signature date:</strong> {{$contract->metadata->signature_date}}</li>
             @endif
-            @if(isset($contract->metadata->signature_year) && '' != $contract->metadata->signature_year)
-                <li><strong>Signature year:</strong> {{$contract->metadata->signature_year}}</li>
+
+            @if(isset($contract->metadata->document_type) && '' != $contract->metadata->document_type)
+                <li><strong>Document Type:</strong> {{$contract->metadata->document_type}}</li>
             @endif
-            @if(isset($contract->metadata->contract_term) && '' != $contract->metadata->contract_term)
-                <li><strong>Contract term:</strong> {{$contract->metadata->contract_term}}</li>
+
+            @if(isset($contract->metadata->translation_from_original) && '' != $contract->metadata->translation_from_original)
+                <li><strong>Translation from original:</strong>
+                    @if($contract->metadata->translation_from_original ==1)
+                        Yes [$contract->metadata->translation_parent]
+                    @else
+                        No
+                    @endif
+                </li>
             @endif
 
             @if(isset($contract->metadata->company))
@@ -69,14 +203,17 @@
                 @if(count($companies)>0)
                     <li><h3>Company</h3>
                         @foreach($companies as $k => $v)
-                            <p> Company Name : {{$v->name}}</p>
-                            <p> Jurisdiction Of Incorporation : {{$v->jurisdiction_of_incorporation}}</p>
-                            <p> Registration Agency : {{$v->registration_agency}}</p>
-                            <p> Incorporation Date : {{$v->company_founding_date}}</p>
-                            <p> Company Address : {{$v->company_address}}</p>
-                            <p> Company Role : {{$v->company_role}}</p>
-                            <p> Identifier at company register: {{$v->comp_id}}</p>
-                            <p> Parent company: {{$v->parent_company}}</p>
+                            <p><strong>Company Name:</strong>  {{$v->name}}</p>
+                            <p><strong>Jurisdiction Of Incorporation :</strong> {{$v->jurisdiction_of_incorporation}}
+                            </p>
+                            <p><strong>Registration Agency :</strong> {{$v->registration_agency}}</p>
+                            <p><strong>Incorporation Date :</strong> {{$v->company_founding_date}}</p>
+                            <p><strong>Company Address :</strong> {{$v->company_address}}</p>
+                            <p><strong>Identifier at company register:</strong> {{$v->comp_id}}</p>
+                            <p><strong>Parent company:</strong> {{$v->parent_company}}</p>
+                            <p><strong>Open Corporate ID:</strong> @if(!empty($v->open_corporate_id)) <a target="_blank"
+                                                                                                         href="https://opencorporates.com/companies/{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
+                            </p>
                         @endforeach
                     </li>
                 @endif
@@ -126,8 +263,17 @@
                 <li><strong>Location:</strong> {{$contract->metadata->location}}</li>
             @endif
 
+            <?php $catConfig = config('metadata.category');?>
+
             @if(isset($contract->metadata->category) && is_array($contract->metadata->category) && count($contract->metadata->category)>0)
-                <li><strong>Category:</strong> {{join(', ', $contract->metadata->category)}}</li>
+                <li><strong>Category:</strong>
+                    <?php $cat = [];
+                    foreach($contract->metadata->category as $key):
+                        $cat[] = $catConfig[$key];
+                    endforeach;
+                    ?>
+                    {{join(', ', $cat)}}
+                </li>
             @endif
         </ul>
         @if($status === \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE)
