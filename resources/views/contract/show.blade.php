@@ -191,7 +191,7 @@
             @if(isset($contract->metadata->translation_from_original) && '' != $contract->metadata->translation_from_original)
                 <li><strong>Translation from original:</strong>
                     @if($contract->metadata->translation_from_original ==1)
-                        Yes [$contract->metadata->translation_parent]
+                        Yes [{{$contract->metadata->translation_parent}}]
                     @else
                         No
                     @endif

@@ -1,4 +1,4 @@
-<?php namespace app\Nrgi\Services\Contract\Page;
+<?php namespace App\Nrgi\Services\Contract\Page;
 
 use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Filesystem\Filesystem;

@@ -36,9 +36,10 @@ class ContractController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $contracts = $this->contract->getAll();
+        $filters = $request->only('resource','year','country');
+        $contracts = $this->contract->getAll($filters);
 
         return view('contract.index', compact('contracts'));
     }
