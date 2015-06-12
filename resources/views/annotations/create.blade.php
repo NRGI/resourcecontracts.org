@@ -1,35 +1,30 @@
 @extends('layout.app-full')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('js/lib/quill/quill.snow.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('js/lib/annotator/annotator.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+@stop
+
 @section('content')
-    <script src="{{ URL::asset('js/lib/quill/quill.js') }}"></script>
-    <script src="{{ URL::asset('js/lib/jquery.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/lib/annotator/annotator-full.min.js') }}"></script>
-    <script src="{{ URL::asset('js/lib/pdfjs/pdf.js') }}"></script>
-    <link rel="stylesheet" href="{{ URL::asset('js/lib/annotator/annotator.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('js/lib/quill/quill.snow.css') }}"/>
-    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}"/>
 
     <div class="panel panel-default">
-        <div class="panel-heading">  Annotate {{$contract->metadata->project_title}}</div>
-
+        <div class="panel-heading"> Annotate {{$contract->metadata->project_title}}</div>
 
         <div class="view-wrapper">
             <div id="pagelist"></div>
             <div class="document-wrap">
                 <div class="left-document-wrap annotate">
-                    <div class="quill-wrappera">
+                    <div class="quill-wrapper">
                         <!-- Create the toolbar container -->
                         <div id="toolbar" class="ql-toolbar ql-snow">
-                            {{--<button class="ql-bold">Bold</button>--}}
-                            {{--<button class="ql-italic">Italic</button>--}}
                         </div>
                         <div id="editor" class="editor ql-container ql-snow">
-                            <div class="ql-editor" id="ql-editor-1" contenteditable="false">
+                            <div class="ql-editor" id="ql-editor-1" contenteditable="true">
 
                             </div>
-                            <div class="ql-paste-manager" contenteditable="false"></div>
+                            <div class="ql-paste-manager" contenteditable="true"></div>
                         </div>
-                        {{--<button name="submit" value="submit" id="saveButton" class="btn">Save</button>--}}
                     </div>
                 </div>
                 <div class="right-document-wrap">
@@ -37,19 +32,22 @@
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
+@stop
+
+@section('script')
+    <script src="{{ asset('js/lib/quill/quill.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/lib/annotator/annotator-full.min.js') }}"></script>
+    <script src="{{ asset('js/lib/pdfjs/pdf.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.js') }}"></script>
     <script>
         jQuery(function ($) {
             //if loaded for the first time, load page 1
             var page = '{{$page}}';
             pageLoader(fileFoler, page);
             var contractId = "{{$contract->id}}"
-            //load the appropriate page when clicked
-            $.ajaxSetup({
-                headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
-            });
-            var url = "{{Request::url()}}";
+            var url = '{{route('contract.page.get', ['id'=>$contract->id])}}';
             var content = $('.annotate').annotator();
             var setupAnnotator = function (area, documentId) {
                 area.annotator('addPlugin', 'Store', {
@@ -67,7 +65,13 @@
                         'url': url
                     }
                 });
+                var availableTags = {!! json_encode(config('nrgi.annotation_tags')) !!};
+
                 content.annotator('addPlugin', 'Tags');
+                $('.annotate').data('annotator').plugins.Tags.input.autocomplete({
+                    source: availableTags,
+                    multiselect: true
+                });
             };
             setupAnnotator(content, page);
 
@@ -89,33 +93,32 @@
         //fill the page numbers
         var divClass = "";
         for (var index = 1; index <= totalPages; ++index) {
-                if(index == page)
-                {
-                    divClass = "active";
-                }else {
-                    divClass = "";
-                }
-                $('#pagelist').append('<a class="{1}" href="{{URL::current()}}?page={0}">{0}</a>&nbsp;'.format(index, divClass));
+            if (index == page) {
+                divClass = "active";
+            } else {
+                divClass = "";
+            }
+            $('#pagelist').append('<a class="{1}" href="{{route('contract.annotations.index', ['id'=>$contract->id])}}?page={0}">{0}</a>&nbsp;'.format(index, divClass));
         }
 
         //read the url content
-        function httpGet(theUrl) {
-            var xmlHttp = null;
-            xmlHttp = new XMLHttpRequest();
-            xmlHttp.open("GET", theUrl, false);
-            xmlHttp.send(null);
-            return xmlHttp.responseText;
+        function loadPageText(page) {
+            $.ajax({
+                url: '{{route('contract.page.get', ['id'=>$contract->id])}}',
+                data: {'page': page},
+                type: 'GET',
+                dataType: 'JSON',
+                success: function (response) {
+                    editor.setHTML(response.message);
+                }
+            });
         }
 
-        var editor = new Quill('#editor', {theme: 'snow',readOnly: true});
-        //editor.addModule('toolbar', {container: '#toolbar'});
-
+        var editor = new Quill('#editor', {theme: 'snow', readOnly: true});
         function pageLoader(fileFoler, page) {
             //create text and pdf location based on the defined structure
-            var textLocation = "/data/{0}/text/{1}.txt".format(fileFoler, page);
             var pdfLocation = "/data/{0}/pages/{1}.pdf".format(fileFoler, page);
-            console.log(pdfLocation)
-            editor.setHTML(httpGet(textLocation));
+            loadPageText(page);
 
             PDFJS.workerSrc = '/js/lib/pdfjs/pdf.worker.js';
 
@@ -139,3 +142,4 @@
             });
         }
     </script>
+@stop

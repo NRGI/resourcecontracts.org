@@ -1,8 +1,8 @@
 <?php namespace app\Http\Controllers\Annotation;
 
 use App\Http\Controllers\Controller;
-use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\AnnotationService;
+use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Http\Request;
 
 /**
@@ -25,7 +25,7 @@ class AnnotationController extends Controller
      * Constructor
      * Create a new ContractAnnotationController instance.
      */
-    public function __construct(AnnotationService $annotation, Contract $contract)
+    public function __construct(AnnotationService $annotation, ContractService $contract)
     {
         $this->contract = $contract;
         $this->annotation = $annotation;
@@ -33,26 +33,16 @@ class AnnotationController extends Controller
     }
 
     /**
-     * list of annotaions of Contract
+     * annotations for Contract
+     *
+     * @param Request $request
      * @param String $contractId
      * @return Response
      */
-    public function index($contractId)
-    {
-        $annotations = $this->annotation->getAllByContractId($contractId);
-
-        return view('annotations.list', compact('annotations'));
-    }
-
-    /**
-     * @param         $contractId
-     * @param Request $request
-     * @return \Illuminate\View\View
-     */
-    public function create($contractId ,Request $request)
+    public function index(Request $request, $contractId)
     {
         $page = $request->input('page', '1');
-        $contract = Contract::with('pages')->find($contractId);
+        $contract = $this->contract->findWithPages($contractId);
         $pages = $contract->pages;
 
         return view('annotations.create', compact('contract', 'pages', 'page'));
