@@ -1,4 +1,4 @@
-<?php namespace app\Console\Commands;
+<?php namespace App\Console\Commands;
 
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Entities\Contract\Pages\Pages;
