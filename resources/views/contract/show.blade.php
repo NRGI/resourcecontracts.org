@@ -23,7 +23,7 @@
         @if($status === \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE)
             <div style="padding: 40px;">
                 <a href="{{route('contract.pages', ['id'=>$contract->id])}}" class="btn btn-default">View Pages</a>
-                <a href="{{route('contract.annotations.create', ['id'=>$contract->id])}}"
+                <a href="{{route('contract.annotations.index', ['id'=>$contract->id])}}"
                    class="btn btn-default">Annotate</a>
             </div>
         @else
@@ -138,7 +138,7 @@
                     <ul>
                         @foreach($annotations as $annotation)
                             <li>
-                                <span><a href="{{route('contract.annotations.create', ['id'=>$contract->id])}}?page={{$annotation->document_page_no}}"> {{$annotation->annotation->text}}</a></span>
+                                <span><a href="{{route('contract.annotations.index', ['id'=>$contract->id])}}?page={{$annotation->document_page_no}}"> {{$annotation->annotation->text}}</a></span>
 
                                 <p>{{$annotation->annotation->quote}}</p>
                                 @foreach($annotation->annotation->tags as $tag)

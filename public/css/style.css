@@ -110,3 +110,7 @@ table td:not(:first-child) {
 .annotation-list ul {
     padding-left: 0;
 }
+
+.ui-widget-content {
+    padding-top: 40px!important;
+}

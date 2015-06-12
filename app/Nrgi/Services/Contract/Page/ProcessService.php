@@ -1,14 +1,14 @@
-<?php namespace App\Nrgi\Services\Contract\Page;
+<?php namespace app\Nrgi\Services\Contract\Page;
 
 use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
-use App\Nrgi\Services\Contract\Page\PageService;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 
 /**
  * Use for processing pages
  * Class ProcessService
+ *
  * @package App\Nrgi\Services\Contract\Page
  */
 class ProcessService
@@ -23,15 +23,18 @@ class ProcessService
      */
     protected $contract;
 
-    protected $page ;
+    /**
+     * @var PageService
+     */
+    protected $page;
 
     /**
      * @param Filesystem      $fileSystem
      * @param ContractService $contract
      * @param PageService     $page
      */
-    function __construct(Filesystem $fileSystem,
-                         ContractService $contract ,
+    public function __construct(Filesystem $fileSystem,
+                         ContractService $contract,
                          PageService $page, Storage $storage)
     {
         $this->fileSystem = $fileSystem;
@@ -48,28 +51,39 @@ class ProcessService
     {
         try {
             $contract = $this->contract->find($contractId);
+            
+            if (!$this->checkIfProcessed($contract)) {
+                list($writeFolderPath, $readFilePath) = $this->setup($contract);
 
-            try {
-                if (!$this->checkIfProcessed($contract)) {
+                if ($this->process($writeFolderPath, $readFilePath)) {
+                    $pages = $this->page->buildPages($writeFolderPath);
+                    $this->page->savePages($contractId, $pages);
+                    $this->updateContractPdfStructure($contract, $writeFolderPath);
 
-                    list($writeFolderPath, $readFilePath) = $this->setup($contract);
-                    if ($this->process($writeFolderPath, $readFilePath)) {
-                        //insert to database by contract id
-                        $pages = $this->page->buildPages($writeFolderPath);
-                        $this->page->savePages($contractId, $pages);
-                        $this->renameTxtFiles($writeFolderPath);
-                        $this->renamePdfFiles($writeFolderPath);
-                        return true;
-                    }
+                    return true;
                 }
-            } catch (\Exception $e) {
-                return false;
             }
-        } catch (ModelNotFoundException $e) {
+        } catch (\Exception $e) {
             return false;
         }
 
         return false;
+    }
+
+    /**
+     * @param $contract
+     * @param $writeFolderPath
+     * @return mixed
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    public function updateContractPdfStructure($contract, $writeFolderPath)
+    {
+        $content = $this->fileSystem->get(sprintf('%s/stats.json', $writeFolderPath));
+        $data = json_decode($content);
+        $contract->pdf_structure = ($data->structured ? "structured" : "scanned");
+
+        return $contract->save();
+        //return $this->contract->updatePdfStructure($contract->id, ($data->structured ? "structured" : "scanned"));
     }
 
     /**
@@ -82,8 +96,7 @@ class ProcessService
     {
         $this->processStatus($writeFolderPath, 0);
         try {
-            $this->processContractDocument($writeFolderPath, $readFilePath, 'text');
-            $this->processContractDocument($writeFolderPath, $readFilePath, 'pages');
+            $this->processContractDocument($writeFolderPath, $readFilePath);
         } catch (\Exception $e) {
             return false;
         }
@@ -100,10 +113,10 @@ class ProcessService
      * @param $type
      * @return bool
      */
-    public function processContractDocument($writeFolderPath, $readFilePath, $type)
+    public function processContractDocument($writeFolderPath, $readFilePath)
     {
-        $writeFolderPath = $writeFolderPath.'/'.$type;
-        $command = sprintf('docsplit %s %s --pages all -o %s', $type, $readFilePath, $writeFolderPath);
+        $commandPath = config('nrgi.pdf_process_path');
+        $command = sprintf('python %s/run.py -i %s -o %s', $commandPath, $readFilePath, $writeFolderPath);
         $process = new Process($command);
         $process->run();
         //executes after the command finishes
@@ -129,18 +142,6 @@ class ProcessService
     }
 
     /**
-     * @param $file
-     * @return int
-     */
-    public function getPageNo($file)
-    {
-        $fileName = pathinfo($file, PATHINFO_FILENAME);
-        $output    = explode("_", $fileName);
-
-        return (int) $output[count($output) - 1];
-    }
-
-    /**
      * @param $directory
      * @param $path
      */
@@ -150,80 +151,32 @@ class ProcessService
     }
 
     /**
-     * @param $directory
-     * @return bool
-     */
-    public function renameTxtFiles($directory)
-    {
-        $filePath = $directory.'/text';
-        $files = $this->fileSystem->files($filePath);
-
-        foreach ($files as $file) {
-            $pageNo = $this->getPageNo($file);
-            if (!$this->fileSystem->move($file, $filePath.'/'.$pageNo.'.txt')) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * @param $directory
-     * @return bool
-     */
-    public function renamePdfFiles($directory)
-    {
-        $filePath = $directory.'/pages';
-        $files    = $this->fileSystem->files($filePath);
-
-        foreach ($files as $file) {
-            if ($this->fileSystem->extension($file) == 'pdf') {
-                $pageNo = $this->getPageNo($file);
-
-                if (!$this->fileSystem->move($file, $filePath.'/'.$pageNo.'.pdf')) {
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
-
-    /**
      * @param $contract
      * @return array
      */
     public function setup($contract)
     {
-
         $publicPath = public_path();
-        //$this->file->makeDirectory($publicPath.'/data', 0775, true, true);
         $pdfFile = $this->storage->disk('s3')->get($contract->file);
         $this->storage->disk('local')->put($contract->file, $pdfFile);
-        //mkdir folder with contract id in data folder
         $writeFolderPath = sprintf('%s/%s', $publicPath, 'data');
         $this->addDirectory($contract->id, $writeFolderPath);
         $writeFolderPath = $writeFolderPath.'/'.$contract->id;
-        //get temporarary file from local storage
         $readFilePath = storage_path().'/app/'.$contract->file;
+
         return array($writeFolderPath, $readFilePath);
     }
 
     /**
-     * @param $newFileName
+     * @param $directory
      * @param $status
+     * @return int
      */
-    public function processStatus($newFileName, $status)
+    public function processStatus($directory, $status)
     {
-        $newFileContent = $status.PHP_EOL;
-        $newFileName = $newFileName.'/status.txt';
+        $fileContent = $status.PHP_EOL;
+        $filePath = $directory.'/status.txt';
 
-        if (file_put_contents($newFileName, $newFileContent) != false) {
-            return  "File created (" . basename($newFileName) . ")";
-        } else {
-            return  "Cannot create file (" . basename($newFileName) . ")";
-        }
-
+        return $this->fileSystem->put($filePath, $fileContent);
     }
 }
