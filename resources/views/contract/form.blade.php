@@ -10,11 +10,23 @@
         $('.date').datepicker({
             format: "yyyy-mm-dd"
         });
+        translation();
+        function translation() {
+            var div = $('.translation-parent');
+            if ($('.translation:checked').val() == 1) {
+                div.removeClass('hide');
+            }
+            else {
+                div.addClass('hide');
+            }
+        }
+        $('.translation').on('change', function () {
+            translation();
+        })
+
+
     </script>
 @stop
-
-
-
 
 @if($action == 'add')
     <div class="form-group">
@@ -29,7 +41,7 @@
 <div class="form-group">
     {!! Form::label('language', null, ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
-        {!! Form::select('language', config('nrgi.language'),
+        {!! Form::select('language', config('metadata.language'),
         isset($contract->metadata->language)?$contract->metadata->language:null, ["class"=>"form-control"])!!}
     </div>
 </div>
@@ -38,14 +50,14 @@
     {!! Form::label('country', null, ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
         {!! Form::select('country', $country ,
-        isset($contract->metadata->country->id)?$contract->metadata->country->id:null, ["class"=>"form-control"])!!}
+        isset($contract->metadata->country->code)?$contract->metadata->country->code:null, ["class"=>"form-control"])!!}
     </div>
 </div>
 
 <div class="form-group">
     {!! Form::label('resource', null, ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
-        {!! Form::select('resource[]', config('nrgi.resource'),
+        {!! Form::select('resource[]', config('metadata.resource'),
         isset($contract->metadata->resource)?$contract->metadata->resource:null, ['multiple'=>'multiple',
         "class"=>"form-control"])!!}
     </div>
@@ -61,10 +73,19 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('type_of_mining_title', null, ['class'=>'col-sm-2 control-label'])!!}
+    {!! Form::label('government_identifier', null, ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
-        {!! Form::text('type_of_mining_title',
-        isset($contract->metadata->type_of_mining_title)?$contract->metadata->type_of_mining_title:null,
+        {!! Form::text('government_identifier',
+        isset($contract->metadata->government_identifier)?$contract->metadata->government_identifier:null,
+        ["class"=>"form-control"])!!}
+    </div>
+</div>
+
+<div class="form-group">
+    {!! Form::label('type_of_contract', null, ['class'=>'col-sm-2 control-label'])!!}
+    <div class="col-sm-7">
+        {!! Form::text('type_of_contract',
+        isset($contract->metadata->type_of_contract)?$contract->metadata->type_of_contract:null,
         ["class"=>"form-control"])!!}
     </div>
 </div>
@@ -74,19 +95,44 @@
     <div class="col-sm-7">
         {!! Form::text('signature_date',
         isset($contract->metadata->signature_date)?$contract->metadata->signature_date:null,
-        ["class"=>"date form-control", 'plceholder' => 'YYYY-MM-DD'])!!}
+        ["class"=>"date form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
     </div>
 </div>
 
 <div class="form-group">
-    {!! Form::label('contract_term', 'Contract Term (duration) in Years', ['class'=>'col-sm-2 control-label'])!!}
+    {!! Form::label('document_type', 'Document Type', ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
-        {!! Form::text('contract_term',
-        isset($contract->metadata->contract_term)?$contract->metadata->contract_term:null,
-        ["class"=>"form-control"])!!}
+        {!! Form::select('document_type', config('metadata.document_type'),
+        isset($contract->metadata->document_type)?$contract->metadata->document_type:null, ["class"=>"form-control"])!!}
     </div>
 </div>
 
+<div class="form-group">
+    {!! Form::label('translation_from_original', 'Translation from original', ['class'=>'col-sm-2 control-label'])!!}
+    <div class="col-sm-7">
+        <label class="checkbox-inline">
+            {!! Form::radio('translation_from_original','1',
+            (isset($contract->metadata->translation_from_original) && (1 ==
+            $contract->metadata->translation_from_original))? true : null, ['class'=>'translation'])!!}
+            Yes
+        </label>
+        <label class="checkbox-inline">
+            {!! Form::radio('translation_from_original', '0',
+            (isset($contract->metadata->translation_from_original) && (0 ==
+            $contract->metadata->translation_from_original))? true : null, ['class'=>'translation'])!!}
+            No
+        </label>
+    </div>
+</div>
+
+<div class="form-group @if(isset($contract->metadata->translation_from_original) && $contract->metadata->translation_from_original !=1) hide @endif translation-parent">
+    {!! Form::label('translation_parent', null, ['class'=>'col-sm-2 control-label'])!!}
+    <div class="col-sm-7">
+        {!! Form::text('translation_parent',
+        isset($contract->metadata->translation_parent)?$contract->metadata->translation_parent:null,
+        ["class"=>"form-control"])!!}
+    </div>
+</div>
 
 <h3>Company</h3>
 <hr/>
@@ -125,7 +171,7 @@
     <div class="col-sm-7">
         {!! Form::text("company[0][company_founding_date]",
         isset($contract->metadata->company[0]->company_founding_date)?$contract->metadata->company[0]->company_founding_date:null,
-        ["class"=>"date form-control", 'plceholder' => 'YYYY-MM-DD'])!!}
+        ["class"=>"date form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
     </div>
 </div>
 
@@ -134,15 +180,6 @@
     <div class="col-sm-7">
         {!! Form::text("company[0][company_address]",
         isset($contract->metadata->company[0]->company_address)?$contract->metadata->company[0]->company_address:null,
-        ["class"=>"form-control"])!!}
-    </div>
-</div>
-
-<div class="form-group">
-    {!! Form::label('company_role', null, ['class'=>'col-sm-2 control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::text("company[0][company_role]",
-        isset($contract->metadata->company[0]->company_role)?$contract->metadata->company[0]->company_role:null,
         ["class"=>"form-control"])!!}
     </div>
 </div>
@@ -157,7 +194,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('parent_company', null, ['class'=>'col-sm-2 control-label'])!!}
+    {!! Form::label('parent_company', "Corporate Grouping", ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
         {!! Form::text("company[0][parent_company]",
         isset($contract->metadata->company[0]->parent_company)?$contract->metadata->company[0]->parent_company:null,
@@ -165,11 +202,23 @@
     </div>
 </div>
 
-<h3>Concession / license / Project</h3>
+
+<div class="form-group">
+    <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> {!!
+        Form::label('open_corporate_id', "Open Corporate ID", ['class'=>'col-sm-2 control-label'])!!}</a>
+
+    <div class="col-sm-7">
+        {!! Form::text("company[0][open_corporate_id]",
+        isset($contract->metadata->company[0]->open_corporate_id)?$contract->metadata->company[0]->open_corporate_id:null,
+        ["class"=>"digit form-control"])!!}
+    </div>
+</div>
+
+<h3>Concession / license and Project</h3>
 <hr/>
 
 <div class="form-group">
-    {!! Form::label('license_name', 'License Name', ['class'=>'col-sm-2 control-label'])!!}
+    {!! Form::label('license_name', 'Concession / License Name', ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
         {!! Form::text('license_name',
         isset($contract->metadata->license_name)?$contract->metadata->license_name:null,
@@ -179,33 +228,13 @@
 
 
 <div class="form-group">
-    {!! Form::label('license_identifier', 'License Identifier', ['class'=>'col-sm-2 control-label'])!!}
+    {!! Form::label('license_identifier', 'Concession / License Identifier', ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
         {!! Form::text('license_identifier',
         isset($contract->metadata->license_identifier)?$contract->metadata->license_identifier:null,
         ["class"=>"form-control"])!!}
     </div>
 </div>
-
-<div class="form-group">
-    {!! Form::label('license_source_url', 'License source URL', ['class'=>'col-sm-2 control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::text('license_source_url',
-        isset($contract->metadata->license_source_url)?$contract->metadata->license_identifier:null,
-        ["class"=>"form-control"])!!}
-    </div>
-</div>
-
-
-<div class="form-group">
-    {!! Form::label('license_type', 'License Type', ['class'=>'col-sm-2 control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::text('license_type',
-        isset($contract->metadata->license_type)?$contract->metadata->license_type:null,
-        ["class"=>"form-control"])!!}
-    </div>
-</div>
-
 
 <div class="form-group">
     {!! Form::label('project_title', null, ['class'=>'col-sm-2 control-label'])!!}
@@ -222,25 +251,6 @@
         {!! Form::text('project_identifier',
         isset($contract->metadata->project_identifier)?$contract->metadata->project_identifier:null,
         ["class"=>"form-control"])!!}
-    </div>
-</div>
-
-
-<div class="form-group">
-    {!! Form::label('date_granted', 'Date of issue of the license / concession', ['class'=>'col-sm-2 control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::text('date_granted',
-        isset($contract->metadata->date_granted)?$contract->metadata->date_granted:null,
-        ["class"=>"date form-control", 'plceholder' => 'YYYY-MM-DD'])!!}
-    </div>
-</div>
-
-<div class="form-group">
-    {!! Form::label('ratification_date', 'Date of ratification', ['class'=>'col-sm-2 control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::text('ratification_date',
-        isset($contract->metadata->ratification_date)?$contract->metadata->ratification_date:null,
-        ["class"=>"date form-control", 'plceholder' => 'YYYY-MM-DD'])!!}
     </div>
 </div>
 
@@ -261,34 +271,21 @@
     <div class="col-sm-7">
         {!! Form::text('date_retrieval',
         isset($contract->metadata->date_retrieval)?$contract->metadata->date_retrieval:null,
-        ["class"=>"date form-control", 'plceholder' => 'YYYY-MM-DD'])!!}
-    </div>
-</div>
-
-<div class="form-group">
-    {!! Form::label('location', 'Location', ['class'=>'col-sm-2 control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::text('location',
-        isset($contract->metadata->location)?$contract->metadata->location:null,
-        ["class"=>"form-control"])!!}
+        ["class"=>"date form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
     </div>
 </div>
 
 <div class="form-group">
     {!! Form::label('category', 'Category', ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
-        <label class="checkbox-inline">
-            {!! Form::checkbox('category[]','olc',
-            (isset($contract->metadata->category) && is_array($contract->metadata->category) && in_array('olc', $contract->metadata->category))? true : null)!!}
-            OpenLandContracts
-        </label>
-        <label class="checkbox-inline">
-            {!! Form::checkbox('category[]', 'rc',
-            (isset($contract->metadata->category) && is_array($contract->metadata->category) &&  in_array('rc', $contract->metadata->category))? true : null  )!!}
-            ResourceContracts.org
-        </label>
-
-
+        @foreach(config('metadata.category') as $key => $category)
+            <label class="checkbox-inline">
+                {!! Form::checkbox('category[]', $key,
+                (isset($contract->metadata->category) && is_array($contract->metadata->category) && in_array($key,
+                $contract->metadata->category))? true : null)!!}
+                {{$category}}
+            </label>
+        @endforeach
     </div>
 </div>
 

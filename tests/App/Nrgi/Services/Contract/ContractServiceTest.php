@@ -34,30 +34,25 @@ class ContractServiceTest extends NrgiTestCase
         );
 
         $this->formData = [
-            "language"             => '',
-            "country"              => '',
-            "resource"             => '',
-            "government_entity"    => '',
-            "type_of_mining_title" => '',
-            "signature_date"       => '',
-            "signature_year"       => '',
-            "contract_term"        => '',
-            "company"              => '',
-            "license_name"         => '',
-            "license_identifier"   => '',
-            "license_source_url"   => '',
-            "license_type"         => '',
-            "project_title"        => '',
-            "project_identifier"   => '',
-            "date_granted"         => '',
-            "year_granted"         => '',
-            "ratification_date"    => '',
-            "ratification_year"    => '',
-            "Source_url"           => '',
-            "date_retrieval"       => '',
-            "location"             => '',
-            "category"             => '',
-            'file_size'            => ''
+            "language"                  => '',
+            "country"                   => '',
+            "resource"                  => '',
+            "government_entity"         => '',
+            "government_identifier"     => '',
+            "type_of_contract"          => '',
+            "signature_date"            => '',
+            "signature_year"            => '',
+            "document_type"             => '',
+            "translation_from_original" => '',
+            "translation_parent"        => '',
+            "company"                   => '',
+            "license_name"              => '',
+            "license_identifier"        => '',
+            "project_title"             => '',
+            "project_identifier"        => '',
+            "Source_url"                => '',
+            "date_retrieval"            => '',
+            "category"                  => ''
         ];
     }
 
@@ -88,7 +83,7 @@ class ContractServiceTest extends NrgiTestCase
         $this->filesystem->shouldReceive('get')->once()->with($this->uploadedFile)->andReturn('file');
         $contract = m::mock('App\Nrgi\Entities\Contract\Contract');
         $contract->shouldReceive('getAttribute')->once()->with('id')->andReturn(1);
-        $this->countryService->shouldReceive('getInfoById')->once()->with('')->andReturn('');
+        $this->countryService->shouldReceive('getInfoByCode')->once()->with('')->andReturn('');
 
         $this->contractRepository->shouldReceive('save')->once()->andReturn(
             $contract
@@ -157,7 +152,7 @@ class ContractServiceTest extends NrgiTestCase
         $this->formData['file_size'] = 'size';
         $contract->shouldReceive('getAttribute')->once()->with('metadata')->andReturn($data);
         $contract->shouldReceive('setAttribute')->once()->with('metadata', $this->formData)->andReturn([]);
-        $this->countryService->shouldReceive('getInfoById')->once()->with('')->andReturn('');
+        $this->countryService->shouldReceive('getInfoByCode')->once()->with('')->andReturn('');
         $this->assertTrue($this->contractService->updateContract(1, $this->formData));
     }
 

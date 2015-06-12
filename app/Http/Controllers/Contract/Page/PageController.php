@@ -4,7 +4,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\Pages\PagesService;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -27,7 +26,7 @@ class PageController extends Controller
      * @param ContractService $contract
      * @param PagesService    $pages
      */
-    function __construct(ContractService $contract, PagesService $pages)
+    public function __construct(ContractService $contract, PagesService $pages)
     {
         $this->middleware('auth');
         $this->contract = $contract;
@@ -39,7 +38,7 @@ class PageController extends Controller
      *
      * @return Response
      */
-    public function index($id, Filesystem $filesystem)
+    public function index($id)
     {
         $contract = $this->contract->findWithPages($id);
 

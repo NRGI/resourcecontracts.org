@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Entities\Contract;
 
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
 
 /**
  * Class Contract
@@ -34,7 +35,7 @@ class Contract extends Model
      *
      * @var array
      */
-    protected $fillable = ['metadata', 'file', 'filehash', 'user_id'];
+    protected $fillable = ['metadata', 'file', 'filehash', 'user_id', 'textType'];
 
     /**
      * Convert json metadata to array
@@ -70,5 +71,26 @@ class Contract extends Model
     public function annotations()
     {
         return $this->hasMany('App\Nrgi\Entities\Contract\Annotation');
+    }
+
+
+    /**
+     * Get Text Type by Key
+     * @param null $key
+     * @return mixed
+     */
+    public function getTextType($key = null)
+    {
+        if (is_null($key)) {
+            $key = $this->textType;
+        }
+
+        $type = config('metadata.text_type');
+
+        if (array_key_exists($key, $type)) {
+            return (object) $type[$key];
+        }
+
+        throw new InvalidArgumentException;
     }
 }

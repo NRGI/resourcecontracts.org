@@ -125,50 +125,16 @@ class ContractService
     public function saveContract(array $formData)
     {
         if ($file = $this->uploadContract($formData['file'])) {
-            $data     = [
+
+            $metadata              = $this->processMetadata($formData);
+            $metadata['file_size'] = $file['size'];
+            $data                  = [
                 'file'     => $file['name'],
                 'filehash' => $file['hash'],
                 'user_id'  => $this->auth->user()->id,
-                'metadata' =>
-                    [
-                        "language"             => isset($formData["language"]) ? $formData["language"] : '',
-                        "country"              => isset($formData['country']) ? $this->countryService->getInfoById(
-                            $formData['country']
-                        ) : '',
-                        "resource"             => isset($formData['resource']) ? $formData['resource'] : '',
-                        "government_entity"    => isset($formData['government_entity']) ? $formData['government_entity'] : '',
-                        "type_of_mining_title" => isset($formData['type_of_mining_title']) ? $formData['type_of_mining_title'] : '',
-                        "signature_date"       => isset($formData['signature_date']) ? $formData['signature_date'] : '',
-                        "signature_year"       => (isset($formData['signature_date']) && $formData['signature_date'] != '') ? date(
-                            'Y',
-                            strtotime($formData['signature_date'])
-                        ) : '',
-                        "contract_term"        => isset($formData['contract_term']) ? $formData['contract_term'] : '',
-                        "company"              => isset($formData['company']) ? $formData['company'] : '',
-                        "license_name"         => isset($formData['license_name']) ? $formData['license_name'] : '',
-                        "license_identifier"   => isset($formData['license_identifier']) ? $formData['license_identifier'] : '',
-                        "license_source_url"   => isset($formData['license_source_url']) ? $formData['license_source_url'] : '',
-                        "license_type"         => isset($formData['license_type']) ? $formData['license_type'] : '',
-                        "project_title"        => isset($formData['project_title']) ? $formData['project_title'] : '',
-                        "project_identifier"   => isset($formData['project_identifier']) ? $formData['project_identifier'] : '',
-                        "date_granted"         => isset($formData['date_granted']) ? $formData['date_granted'] : '',
-                        "year_granted"         => (isset($formData['date_granted']) && $formData['date_granted'] != '') ? date(
-                            'Y',
-                            strtotime($formData['date_granted'])
-                        ) : '',
-                        "ratification_date"    => isset($formData['ratification_date']) ? $formData['ratification_date'] : '',
-                        "ratification_year"    => (isset($formData['ratification_date']) && $formData['ratification_date'] != '') ? date(
-                            'Y',
-                            strtotime($formData['ratification_date'])
-                        ) : '',
-                        "Source_url"           => isset($formData['Source_url']) ? $formData['Source_url'] : '',
-                        "date_retrieval"       => isset($formData['date_retrieval']) ? $formData['date_retrieval'] : '',
-                        "location"             => isset($formData['location']) ? $formData['location'] : '',
-                        "category"             => isset($formData['category']) ? $formData['category'] : '',
-                        'file_size'            => $file['size']
-                    ]
+                'metadata' => $metadata
             ];
-            $contract = $this->contract->save($data);
+            $contract              = $this->contract->save($data);
 
             if ($contract) {
                 $this->queue->push('App\Nrgi\Services\Queue\ProcessDocumentQueue', ['contract_id' => $contract->id]);
@@ -180,6 +146,40 @@ class ContractService
         return false;
     }
 
+
+    protected function processMetadata($formData)
+    {
+        $data = [
+            "language"                  => isset($formData["language"]) ? $formData["language"] : '',
+            "country"                   => isset($formData['country']) ? $this->countryService->getInfoByCode(
+                $formData['country']
+            ) : '',
+            "resource"                  => isset($formData['resource']) ? $formData['resource'] : '',
+            "government_entity"         => isset($formData['government_entity']) ? $formData['government_entity'] : '',
+            "government_identifier"     => isset($formData['government_identifier']) ? $formData['government_identifier'] : '',
+            "type_of_contract"          => isset($formData['type_of_contract']) ? $formData['type_of_contract'] : '',
+            "signature_date"            => isset($formData['signature_date']) ? $formData['signature_date'] : '',
+            "signature_year"            => (isset($formData['signature_date']) && $formData['signature_date'] != '') ? date(
+                'Y',
+                strtotime($formData['signature_date'])
+            ) : '',
+            "document_type"             => isset($formData['document_type']) ? $formData['document_type'] : '',
+            "translation_from_original" => isset($formData['translation_from_original']) ? $formData['translation_from_original'] : '',
+            "translation_parent"        => isset($formData['translation_parent']) ? $formData['translation_parent'] : '',
+            "company"                   => isset($formData['company']) ? $formData['company'] : '',
+            "license_name"              => isset($formData['license_name']) ? $formData['license_name'] : '',
+            "license_identifier"        => isset($formData['license_identifier']) ? $formData['license_identifier'] : '',
+            "project_title"             => isset($formData['project_title']) ? $formData['project_title'] : '',
+            "project_identifier"        => isset($formData['project_identifier']) ? $formData['project_identifier'] : '',
+            "Source_url"                => isset($formData['Source_url']) ? $formData['Source_url'] : '',
+            "date_retrieval"            => isset($formData['date_retrieval']) ? $formData['date_retrieval'] : '',
+            "category"                  => isset($formData['category']) ? $formData['category'] : '',
+        ];
+
+        return $data;
+
+    }
+
     /**
      * Update Contract
      * @param array $formData
@@ -187,46 +187,11 @@ class ContractService
      */
     public function updateContract($contractID, array $formData)
     {
-        $contract           = $this->contract->findContract($contractID);
-        $file_size          = $contract->metadata->file_size;
-        $contract->metadata =
-            [
-                "language"             => isset($formData["language"]) ? $formData["language"] : '',
-                "country"              => isset($formData['country']) ? $this->countryService->getInfoById(
-                    $formData['country']
-                ) : '',
-                "resource"             => isset($formData['resource']) ? $formData['resource'] : '',
-                "government_entity"    => isset($formData['government_entity']) ? $formData['government_entity'] : '',
-                "type_of_mining_title" => isset($formData['type_of_mining_title']) ? $formData['type_of_mining_title'] : '',
-                "signature_date"       => isset($formData['signature_date']) ? $formData['signature_date'] : '',
-                "signature_year"       => (isset($formData['signature_date']) && $formData['signature_date'] != '') ? date(
-                    'Y',
-                    strtotime($formData['signature_date'])
-                ) : '',
-                "contract_term"        => isset($formData['contract_term']) ? $formData['contract_term'] : '',
-                "company"              => isset($formData['company']) ? $formData['company'] : '',
-                "license_name"         => isset($formData['license_name']) ? $formData['license_name'] : '',
-                "license_identifier"   => isset($formData['license_identifier']) ? $formData['license_identifier'] : '',
-                "license_source_url"   => isset($formData['license_source_url']) ? $formData['license_source_url'] : '',
-                "license_type"         => isset($formData['license_type']) ? $formData['license_type'] : '',
-                "project_title"        => isset($formData['project_title']) ? $formData['project_title'] : '',
-                "project_identifier"   => isset($formData['project_identifier']) ? $formData['project_identifier'] : '',
-                "date_granted"         => isset($formData['date_granted']) ? $formData['date_granted'] : '',
-                "year_granted"         => (isset($formData['date_granted']) && $formData['date_granted'] != '') ? date(
-                    'Y',
-                    strtotime($formData['date_granted'])
-                ) : '',
-                "ratification_date"    => isset($formData['ratification_date']) ? $formData['ratification_date'] : '',
-                "ratification_year"    => (isset($formData['ratification_date']) && $formData['ratification_date'] != '') ? date(
-                    'Y',
-                    strtotime($formData['ratification_date'])
-                ) : '',
-                "Source_url"           => isset($formData['Source_url']) ? $formData['Source_url'] : '',
-                "date_retrieval"       => isset($formData['date_retrieval']) ? $formData['date_retrieval'] : '',
-                "location"             => isset($formData['location']) ? $formData['location'] : '',
-                "category"             => isset($formData['category']) ? $formData['category'] : '',
-                'file_size'            => $file_size
-            ];
+        $contract              = $this->contract->findContract($contractID);
+        $file_size             = $contract->metadata->file_size;
+        $metadata              = $this->processMetadata($formData);
+        $metadata['file_size'] = $file_size;
+        $contract->metadata    = $metadata;
 
         return $contract->save();
     }
@@ -359,4 +324,22 @@ class ContractService
 
         return $this->filesystem->put($path, $text);
     }
+
+    /**
+     * Save Pdf Output Type
+     * @param $contractID
+     * @param $textType
+     * @return Contract/bool
+     */
+    public function saveTextType($contractID, $textType)
+    {
+        $contract           = $this->contract->findContract($contractID);
+        $contract->textType = $textType;
+        if ($contract->save()) {
+            return $contract;
+        }
+
+        return false;
+    }
+
 }

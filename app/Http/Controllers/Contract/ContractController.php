@@ -6,6 +6,7 @@ use App\Http\Requests\Contract\ContractRequest;
 use App\Nrgi\Services\Contract\AnnotationService;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\CountryService;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 /**
@@ -26,8 +27,8 @@ class ContractController extends Controller
     public function __construct(ContractService $contract, CountryService $countries)
     {
         $this->middleware('auth');
-        $this->contract = $contract;
-        $this->countries  = $countries;
+        $this->contract  = $contract;
+        $this->countries = $countries;
     }
 
     /**
@@ -49,7 +50,8 @@ class ContractController extends Controller
      */
     public function create()
     {
-        $country = $this->countries->lists();
+        $country = $this->countries->all();
+
         return view('contract.create', compact('country'));
     }
 
@@ -91,7 +93,7 @@ class ContractController extends Controller
     public function edit($id)
     {
         $contract = $this->contract->find($id);
-        $country = $this->countries->lists();
+        $country  = $this->countries->all();
 
         return view('contract.edit', compact('contract', 'country'));
     }
@@ -126,4 +128,20 @@ class ContractController extends Controller
 
         return redirect()->route('contract.index')->withSuccess('Contract could not be deleted.');
     }
+
+    public function saveOutputType($id, Request $request)
+    {
+        $type     = $request->input('text_type');
+        $contract = $this->contract->saveTextType($id, $type);
+
+        if ($contract) {
+            return response()->json(
+                ['result' => 'success', 'type' => $contract->getTextType(), 'message' => 'Changes Saved.']
+            );
+        }
+
+        return response()->json(['result' => 'error', 'message' => 'Could not be updated.']);
+    }
+
+
 }
