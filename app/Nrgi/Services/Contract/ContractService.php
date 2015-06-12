@@ -86,11 +86,12 @@ class ContractService
     /**
      * Get all contract
      *
+     * @param $filters
      * @return Contract
      */
-    public function getAll()
+    public function getAll($filters)
     {
-        $contracts = $this->contract->getAll();
+        $contracts = $this->contract->getAll($filters);
 
         return $contracts;
     }

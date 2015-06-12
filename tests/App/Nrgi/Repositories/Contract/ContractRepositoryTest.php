@@ -36,8 +36,8 @@ class ContractRepositoryTest extends NrgiTestCase
 
     public function testItShouldReturnContractCollection()
     {
-        $this->contract->shouldReceive('orderBy->get')->once()->andReturn(m::mock('Illuminate\Database\Eloquent\Collection'));
-        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->contractRepository->getAll());
+        $this->contract->shouldReceive('select->orderBy->get')->once()->with()->andReturn(m::mock('Illuminate\Database\Eloquent\Collection'));
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->contractRepository->getAll(['year'=>'','country'=>'','resource'=>'']));
     }
 
     public function tearDown()

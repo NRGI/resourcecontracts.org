@@ -2,6 +2,7 @@
 
 use App\Nrgi\Entities\Contract\Contract;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class ContractRepository
@@ -34,11 +35,28 @@ class ContractRepository implements ContractRepositoryInterface
 
     /**
      * Get All Contracts
+     * @param array $filters
      * @return Collection|static[]
      */
-    public function getAll()
+    public function getAll(array $filters)
     {
-        return $this->contract->orderBy('created_datetime', 'DESC')->get();
+        $query   = $this->contract->select('*');
+        $filters = array_map('trim', $filters);
+        extract($filters);
+
+        if ($year != '' && $year != 'all') {
+            $query->whereRaw(sprintf("metadata->>'signature_year'='%s'", $year));
+        }
+
+       /* if ($resource != '' && $resource != 'all') {
+            $query->whereRaw(sprintf("metadata->>'resource'='%s'", $resource));
+        }*/
+
+        if ($country != '' && $country != 'all') {
+            $query->whereRaw(sprintf("metadata->'country'->>'code'='%s'", $country));
+        }
+
+        return $query->orderBy('created_datetime', 'DESC')->get();
     }
 
     /**

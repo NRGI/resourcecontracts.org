@@ -18,9 +18,10 @@ interface ContractRepositoryInterface
     /**
      * Get all Contracts
      *
+     * @param array $filters
      * @return Collection|null
      */
-    public function getAll();
+    public function getAll(array $filters);
 
     /**
      * Get Contract or throw exception
