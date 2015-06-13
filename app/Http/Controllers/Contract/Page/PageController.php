@@ -38,11 +38,16 @@ class PageController extends Controller
      *
      * @return Response
      */
-    public function index($id)
+    public function index(Request $request, $contractId)
     {
-        $contract = $this->contract->findWithPages($id);
+        $page = $request->input('page', '1');
+        $action = $request->input('action', '');
+        $canEdit = $action=="edit"?'true':'false';
+        $canAnnotate = $action=="annotate"?'true':'false';
+        $contract = $this->contract->findWithPages($contractId);
+        $pages = $contract->pages;
 
-        return view('contract.page.index', compact('contract'));
+        return view('contract.page.index', compact('contract', 'pages', 'page', 'canEdit', 'canAnnotate'));
     }
 
     /**
