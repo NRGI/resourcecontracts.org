@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -20,3 +19,7 @@ $router->controllers(
         'password' => 'Auth\PasswordController',
     ]
 );
+
+if (env('APP_ENV') == 'local') {
+    $router->get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+}

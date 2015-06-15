@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contract\ContractRequest;
 use App\Nrgi\Services\Contract\AnnotationService;
+use App\Nrgi\Services\Contract\ContractFilterService;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\CountryService;
 use Illuminate\Http\Request;
@@ -23,12 +24,25 @@ class ContractController extends Controller
      * @var CountryService
      */
     protected $countries;
+    /**
+     * @var ContractFilterService
+     */
+    protected $contractFilter;
 
-    public function __construct(ContractService $contract, CountryService $countries)
-    {
+    /**
+     * @param ContractService       $contract
+     * @param ContractFilterService $contractFilter
+     * @param CountryService        $countries
+     */
+    public function __construct(
+        ContractService $contract,
+        ContractFilterService $contractFilter,
+        CountryService $countries
+    ) {
         $this->middleware('auth');
-        $this->contract  = $contract;
-        $this->countries = $countries;
+        $this->contract       = $contract;
+        $this->countries      = $countries;
+        $this->contractFilter = $contractFilter;
     }
 
     /**
@@ -38,10 +52,12 @@ class ContractController extends Controller
      */
     public function index(Request $request)
     {
-        $filters = $request->only('resource','year','country');
-        $contracts = $this->contract->getAll($filters);
+        $filters   = $request->only('resource', 'year', 'country');
+        $contracts = $this->contractFilter->getAll($filters);
+        $years     = $this->contractFilter->getUniqueYears();
+        $countries = $this->contractFilter->getUniqueCountries();
 
-        return view('contract.index', compact('contracts'));
+        return view('contract.index', compact('contracts', 'years', 'countries'));
     }
 
     /**
@@ -143,6 +159,4 @@ class ContractController extends Controller
 
         return response()->json(['result' => 'error', 'message' => 'Could not be updated.']);
     }
-
-
 }

@@ -12,20 +12,9 @@
 
 
         <div class="panel-body">
-            <?php
-            $year = [];
-            for ($i = 1960; $i <= date('Y'); $i ++) {
-                $year[$i] = $i;
-            }
-            ?>
             {!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
-            {{--
-                        {!! Form::select('resource', ['all'=>'All'] + config('metadata.resource') , Input::get('resource') ,
-                        ['class' =>
-                        'form-control']) !!}
-            --}}
-            {!! Form::select('year', ['all'=>'Year'] + $year , Input::get('year') , ['class' => 'form-control']) !!}
-            {!! Form::select('country', ['all'=>'Country'] + config('country') , Input::get('country') , ['class' =>
+            {!! Form::select('year', ['all'=>'Year'] + $years , Input::get('year') , ['class' => 'form-control']) !!}
+            {!! Form::select('country', ['all'=>'Country'] + $countries , Input::get('country') , ['class' =>
             'form-control']) !!}
             {!! Form::submit('Search', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
