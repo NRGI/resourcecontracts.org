@@ -39,8 +39,7 @@ class AnnotationService
     public function save($annotation, $inputData)
     {
         $data = json_decode($annotation, true);
-        $contactAnnotationId = $this->annotationRepo->getAnnotationByRange($data['ranges'][0], $inputData['contract']);
-        $contactAnnotation = $this->annotationRepo->findOrCreate($contactAnnotationId);
+        $contactAnnotation = $this->annotationRepo->findOrCreate(isset($data['id'])?$data['id']:null);
         $contactAnnotation->annotation = $data;
         $contactAnnotation->user_id = $this->user->id;
         $contactAnnotation->contract_id = $inputData['contract'];
@@ -77,7 +76,9 @@ class AnnotationService
         $annotations = $this->annotationRepo->search($params);
 
         foreach ($annotations as $annotation) {
-            $annotationData[] = $annotation->annotation;
+            $json = $annotation->annotation;
+            $json->id = $annotation->id;
+            $annotationData[] = $json;
         }
 
         return array('total' => count($annotationData), 'rows' => $annotationData);
