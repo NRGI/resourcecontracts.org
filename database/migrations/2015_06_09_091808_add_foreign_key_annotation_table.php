@@ -26,7 +26,7 @@ class AddForeignKeyAnnotationTable extends Migration {
 	public function down()
 	{
 		Schema::table('contract_annotations', function(Blueprint $table) {
-			$table->dropForeign('contract_id');
+			$table->dropForeign('contract_annotations_contract_id_foreign');
 		});
 	}
 }
