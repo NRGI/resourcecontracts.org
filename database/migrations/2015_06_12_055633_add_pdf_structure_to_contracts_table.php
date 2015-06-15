@@ -25,7 +25,7 @@ class AddPdfStructureToContractsTable extends Migration {
 	public function down()
 	{
 		Schema::table('contracts', function(Blueprint $table) {
-			$table->drop('pdf_structure');
+			$table->dropColumn('pdf_structure');
 		});
 	}
 
