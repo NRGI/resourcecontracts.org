@@ -47,4 +47,16 @@ interface ContractRepositoryInterface
      * @return bool
      */
     public function delete($contractID);
+
+    /**
+     * Get unique countries
+     * @return Contract
+     */
+    public function getUniqueCountries();
+
+    /**
+     * Get unique years
+     * @return Contract
+     */
+    public function getUniqueYears();
 }

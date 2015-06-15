@@ -6,8 +6,11 @@ use Exception;
 use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Contracts\Logging\Log;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Queue\Queue;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -57,6 +60,10 @@ class ContractService
      * @var Queue
      */
     protected $queue;
+    /**
+     * @var Logger
+     */
+    protected $logger;
 
 
     /**
@@ -66,6 +73,7 @@ class ContractService
      * @param Filesystem                  $filesystem
      * @param CountryService              $countryService
      * @param Queue                       $queue
+     * @param Logger                      $logger
      */
     public function __construct(
         ContractRepositoryInterface $contract,
@@ -73,7 +81,8 @@ class ContractService
         Storage $storage,
         Filesystem $filesystem,
         CountryService $countryService,
-        Queue $queue
+        Queue $queue,
+        Log $logger
     ) {
         $this->contract       = $contract;
         $this->auth           = $auth;
@@ -81,19 +90,7 @@ class ContractService
         $this->filesystem     = $filesystem;
         $this->countryService = $countryService;
         $this->queue          = $queue;
-    }
-
-    /**
-     * Get all contract
-     *
-     * @param $filters
-     * @return Contract
-     */
-    public function getAll($filters)
-    {
-        $contracts = $this->contract->getAll($filters);
-
-        return $contracts;
+        $this->logger         = $logger;
     }
 
     /**
@@ -103,7 +100,15 @@ class ContractService
      */
     public function find($id)
     {
-        return $this->contract->findContract($id);
+        try {
+            return $this->contract->findContract($id);
+        } catch (ModelNotFoundException $e) {
+            $this->logger->error('Contract not found.', ['Contract ID' => $id]);
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+
+        return null;
     }
 
     /**
@@ -113,7 +118,15 @@ class ContractService
      */
     public function findWithPages($id)
     {
-        return $this->contract->findContractWithPages($id);
+        try {
+            return $this->contract->findContractWithPages($id);
+        } catch (ModelNotFoundException $e) {
+            $this->logger->error('Contract not found.', ['Contract ID' => $id]);
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+
+        return false;
     }
 
 
@@ -126,7 +139,6 @@ class ContractService
     public function saveContract(array $formData)
     {
         if ($file = $this->uploadContract($formData['file'])) {
-
             $metadata              = $this->processMetadata($formData);
             $metadata['file_size'] = $file['size'];
             $data                  = [
@@ -135,7 +147,18 @@ class ContractService
                 'user_id'  => $this->auth->user()->id,
                 'metadata' => $metadata
             ];
-            $contract              = $this->contract->save($data);
+            try {
+                $contract = $this->contract->save($data);
+                $this->logger->info(
+                    'Contract successfully created.',
+                    ['Contract Title' => $data['metadata']['project_title']]
+                );
+            } catch (Exception $e) {
+                $this->logger->error($e->getMessage());
+                $this->deleteFileFromS3($file['name']);
+
+                return false;
+            }
 
             if ($contract) {
                 $this->queue->push('App\Nrgi\Services\Queue\ProcessDocumentQueue', ['contract_id' => $contract->id]);
@@ -150,35 +173,9 @@ class ContractService
 
     protected function processMetadata($formData)
     {
-        $data = [
-            "language"                  => isset($formData["language"]) ? $formData["language"] : '',
-            "country"                   => isset($formData['country']) ? $this->countryService->getInfoByCode(
-                $formData['country']
-            ) : '',
-            "resource"                  => isset($formData['resource']) ? $formData['resource'] : '',
-            "government_entity"         => isset($formData['government_entity']) ? $formData['government_entity'] : '',
-            "government_identifier"     => isset($formData['government_identifier']) ? $formData['government_identifier'] : '',
-            "type_of_contract"          => isset($formData['type_of_contract']) ? $formData['type_of_contract'] : '',
-            "signature_date"            => isset($formData['signature_date']) ? $formData['signature_date'] : '',
-            "signature_year"            => (isset($formData['signature_date']) && $formData['signature_date'] != '') ? date(
-                'Y',
-                strtotime($formData['signature_date'])
-            ) : '',
-            "document_type"             => isset($formData['document_type']) ? $formData['document_type'] : '',
-            "translation_from_original" => isset($formData['translation_from_original']) ? $formData['translation_from_original'] : '',
-            "translation_parent"        => isset($formData['translation_parent']) ? $formData['translation_parent'] : '',
-            "company"                   => isset($formData['company']) ? $formData['company'] : '',
-            "license_name"              => isset($formData['license_name']) ? $formData['license_name'] : '',
-            "license_identifier"        => isset($formData['license_identifier']) ? $formData['license_identifier'] : '',
-            "project_title"             => isset($formData['project_title']) ? $formData['project_title'] : '',
-            "project_identifier"        => isset($formData['project_identifier']) ? $formData['project_identifier'] : '',
-            "Source_url"                => isset($formData['Source_url']) ? $formData['Source_url'] : '',
-            "date_retrieval"            => isset($formData['date_retrieval']) ? $formData['date_retrieval'] : '',
-            "category"                  => isset($formData['category']) ? $formData['category'] : '',
-        ];
-
-        return $data;
-
+        $formData['signature_year'] = (!empty($formData['signature_date']))? date('Y', strtotime($formData['signature_date'])): '';
+        $formData['country']  = $this->countryService->getInfoByCode($formData['country']);
+       return array_only($formData, ["language","country","resource","government_entity","government_identifier","type_of_contract","signature_date","document_type" ,  "translation_from_original" ,  "translation_parent" ,  "company" ,  "license_name" ,  "license_identifier","project_title","project_identifier","Source_url","date_retrieval","category","signature_year"]);
     }
 
     /**
@@ -188,13 +185,33 @@ class ContractService
      */
     public function updateContract($contractID, array $formData)
     {
-        $contract              = $this->contract->findContract($contractID);
+
+        try {
+            $contract = $this->contract->findContract($contractID);
+        } catch (Exception $e) {
+            $this->logger->error('Contract not found', ['Contract ID' => $contractID]);
+
+            return false;
+        }
+
         $file_size             = $contract->metadata->file_size;
         $metadata              = $this->processMetadata($formData);
         $metadata['file_size'] = $file_size;
         $contract->metadata    = $metadata;
 
-        return $contract->save();
+        try {
+            $contract->save();
+            $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
+
+            return true;
+        } catch (Exception $e) {
+            $this->logger->error(
+                sprintf('Contract could not be updated. %s', $e->getMessage()),
+                ['Contract ID' => $contractID]
+            );
+
+            return false;
+        }
     }
 
     /**
@@ -209,10 +226,16 @@ class ContractService
             $fileName    = $file->getClientOriginalName();
             $file_type   = $file->getClientOriginalExtension();
             $newFileName = sprintf("%s.%s", $this->hashFileName($fileName), $file_type);
-            $data        = $this->storage->disk('s3')->put(
-                $newFileName,
-                $this->filesystem->get($file)
-            );
+            try {
+                $data = $this->storage->disk('s3')->put(
+                    $newFileName,
+                    $this->filesystem->get($file)
+                );
+            } catch (Exception $e) {
+                $this->logger->error(sprintf('File could not be uploaded : %s', $e->getMessage()));
+
+                return false;
+            }
 
             if ($data) {
                 return [
@@ -221,7 +244,6 @@ class ContractService
                     'hash' => $this->hashFileName($newFileName),
                 ];
             }
-
         }
 
         return false;
@@ -235,11 +257,26 @@ class ContractService
      */
     function deleteContract($id)
     {
-        $contract = $this->contract->findContract($id);
+        try {
+            $contract = $this->contract->findContract($id);
+        } catch (Exception $e) {
+            $this->logger->error('Contract not found.', ['Contract ID' => $id]);
+
+            return false;
+        }
 
         if ($this->contract->delete($contract->id)) {
-            return $this->deleteFileFromS3($contract->file);
+            $this->logger->info('Contract successfully deleted.', ['Contract Id' => $id]);
+            try {
+                return $this->deleteFileFromS3($contract->file);
+            } catch (FileNotFoundException $e) {
+                $this->logger->info($e->getMessage(), ['Contract Id' => $id, 'file' => $contract->file]);
+
+                return false;
+            }
         }
+
+        $this->logger->error('Contract could not be deleted', ['Contract Id' => $id]);
 
         return false;
     }
@@ -254,7 +291,7 @@ class ContractService
     protected function deleteFileFromS3($file)
     {
         if (!$this->storage->disk('s3')->exists($file)) {
-            throw new Exception('File not found');
+            throw new FileNotFoundException(sprintf(' % not found', $file));
         }
 
         return $this->storage->disk('s3')->delete($file);

@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Repositories\Contract;
 
 use App\Nrgi\Entities\Contract\Contract;
+use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -14,13 +15,19 @@ class ContractRepository implements ContractRepositoryInterface
      * @var Contract
      */
     protected $contract;
+    /**
+     * @var DatabaseManager
+     */
+    protected $db;
 
     /**
-     * @param Contract $contract
+     * @param Contract        $contract
+     * @param DatabaseManager $db
      */
-    public function __construct(Contract $contract)
+    public function __construct(Contract $contract, DatabaseManager $db)
     {
         $this->contract = $contract;
+        $this->db = $db;
     }
 
     /**
@@ -48,15 +55,36 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw(sprintf("metadata->>'signature_year'='%s'", $year));
         }
 
-       /* if ($resource != '' && $resource != 'all') {
-            $query->whereRaw(sprintf("metadata->>'resource'='%s'", $resource));
-        }*/
-
         if ($country != '' && $country != 'all') {
             $query->whereRaw(sprintf("metadata->'country'->>'code'='%s'", $country));
         }
 
         return $query->orderBy('created_datetime', 'DESC')->get();
+    }
+
+
+    /**
+     * Get unique contract years
+     * @return contract
+     */
+    function getUniqueYears()
+    {
+        return $this->contract->select($this->db->raw("metadata->>'signature_year' years, count(metadata->>'signature_year')"))
+                              ->whereRaw("metadata->>'signature_year' !=''")
+                              ->groupBy($this->db->raw("metadata->>'signature_year'"))
+                              ->orderBy($this->db->raw("metadata->>'signature_year'"), "DESC")->get();
+    }
+
+    /**
+     * Get unique countries
+     * @return contract
+     */
+    function getUniqueCountries()
+    {
+        return $this->contract->select($this->db->raw("metadata->'country'->>'code' countries, count(metadata->'country'->>'code')"))
+                              ->whereRaw("metadata->'country'->>'code' !=''")
+                              ->groupBy($this->db->raw("metadata->'country'->>'code'"))
+                              ->orderBy($this->db->raw("metadata->'country'->>'code'"), "DESC")->get();
     }
 
     /**
