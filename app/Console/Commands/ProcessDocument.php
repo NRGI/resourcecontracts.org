@@ -2,6 +2,7 @@
 
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Entities\Contract\Pages\Pages;
+use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem as File;
@@ -51,7 +52,7 @@ class ProcessDocument extends Command
      * Create a new command instance.
      *
      */
-    public function __construct(Contract $contract, Storage $storage, File $file ,ProcessService $process)
+    public function __construct(ContractService $contract, Storage $storage, File $file ,ProcessService $process)
     {
         $this->storage = $storage;
         $this->contract = $contract;
@@ -67,9 +68,26 @@ class ProcessDocument extends Command
      */
     public function fire()
     {
+        $this->info('processing contract document');
         $contractId = $this->input->getArgument('contract_id');
-        $this->process->execute($contractId);
+        try{
+            $contract = $this->contract->find($contractId);
+            if($this->input->getOption('force'))
+            {
+                $contract->pages()->delete();
+            }
+            if($this->process->execute($contractId)){
+                $this->info('processing completed.');
+            }else{
+                $this->error('Error processing contract document.check log for detail');
+            }
 
+        }catch (ModelNotFoundException $exception){
+            $this->error('could cot find contract.'.$exception->getMessage());
+        }
+        catch (\Exception $exception){
+            $this->error('processing contract document.'.$exception->getMessage());
+        }
     }
 
     /**
@@ -92,7 +110,7 @@ class ProcessDocument extends Command
     protected function getOptions()
     {
         return [
-            ['example', null, InputOption::VALUE_OPTIONAL, 'An  option.', null],
+            ['force', null, InputOption::VALUE_NONE, 'Force the operation to run.', null],
         ];
     }
 
