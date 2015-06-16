@@ -1,114 +1,177 @@
+html,body {
+	height: 100%;
+}
+
 body {
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
 .alert > ul {
-    padding-left: 16px;
+	padding-left: 16px;
 }
 
 #sidebar-wrapper {
-    background: #404040;
+	background: #404040;
+	top: 0;
 }
 
 .sidebar-nav li {
-    color: #aaa;
+	color: #aaa;
 }
 
 .sidebar-nav li a {
-    color: #fff;
+	color: #fff;
+}
+
+.sidebar-nav li a.active {
+	background: rgba(255,255,255,0.2);
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: #ddd;
-    font-size: 14px;
-    text-transform: uppercase;
+	color: #ddd;
+	font-size: 14px;
+	text-transform: uppercase;
 }
 
 #menu-toggle {
-    margin-bottom: 20px;
-    background: url(../images/trigger.png) no-repeat left;
-    border: 0;
-    padding-left: 37px;
-    font-size: 14px;
+	margin: 15px 0;
+	background: url(../images/ic_trigger.png) no-repeat left;
+	border: 0;
+	padding-left: 37px;
+	font-size: 14px;
+	color: #fff;
 }
 
 #menu-toggle:focus {
-    outline: 0;
-    box-shadow: none;
+	outline: 0;
+	box-shadow: none;
 }
 
 .panel-default > .panel-heading {
-    font-size: 26px;
-    overflow: hidden;
+	font-size: 26px;
+	overflow: hidden;
+	background: #f0f0f0;
 }
 
-.table > tbody > tr > td:first-child {
-    border-top: 0;
+.panel-default > .panel-heading span {
+	color: #989898;
+	font-style: italic;
+}
+
+.table > tbody > tr > td {
+	padding: 16px 0;
+}
+
+.table > tbody > tr:first-child > td {
+	border-top: 0;
+	padding: 7px 0 17px;
+}
+
+.table > tbody > tr:last-child > td {
+	padding: 17px 0 7px;
 }
 
 .form-horizontal .control-label {
-    color: #5c5c5c;
-    font-weight: normal;
+	color: #5c5c5c;
+	font-weight: normal;
 }
 
 .form-group+h3 {
-    margin-top: 40px;
+	margin-top: 40px;
 }
 
 .select2-container {
-    width: 100%!important;
+	width: 100%!important;
 }
 
 .btn-lg, .btn-group-lg > .btn {
-    padding: 8px 16px;
-    font-size: 15px;
+  padding: 8px 16px;
+  font-size: 15px;
 }
 
 label.error {
-    font-weight: normal;
-    font-size: 13px;
+	font-weight: normal;
+	font-size: 13px;
 }
 
 .login-wrap {
-    float: none;
-    margin: 0 auto;
+	float: none;
+	margin: 0 auto;
 }
 
 @media (min-width: 992px) {
-    .col-md-offset-2 {
-        margin-left: 7.25%;
-    }
+	.col-md-offset-2 {
+	  margin-left: 6%;
+	}
 }
 
 .label-default {
-    background: #e3e3e3;
-    width: 30px;
-    line-height: 18px;
-    height: 18px;
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
-    -ms-border-radius: 9px;
-    border-radius: 9px;
-    font-size: 11px;
-    text-align: center;
-    margin-left: 10px;
-    color: rgba(64, 64, 64, 0.6);
-    font-weight: normal;
-    padding: 0;
-    display: inline-block;
+	background: #e3e3e3;
+	width: 30px;
+	line-height: 18px;
+	height: 18px;
+	-webkit-border-radius: 9px;
+	-moz-border-radius: 9px;
+	-ms-border-radius: 9px;
+	border-radius: 9px;
+	font-size: 11px;
+	text-align: center;
+	margin-left: 10px;
+	color: rgba(64, 64, 64, 0.6);
+	font-weight: normal;
+	padding: 0;
+	display: inline-block;
 }
 
 table td:not(:first-child) {
-    font-size: 12px;
-    color: #8b8b8b;
+	font-size: 12px;
+	color: #8b8b8b;
 }
 
 .annotation-wrap {
-    padding: 20px 40px;
+	padding: 20px 40px; 
+	background: #eee;
 }
 
 .annotation-list ul {
-    padding-left: 0;
+	padding-left: 0;
+}
+
+header {
+	padding: 0 35px;
+	background-color: #777;
+}
+
+.panel-body > table {
+	margin-bottom: 0;
+}
+
+.nav > .user-menu > a {
+	background: url(../images/ic_arrow.png) no-repeat 87%;
+	padding-right: 24px;
+}
+
+.navbar-nav > li > .dropdown-menu {
+	left: auto;
+	right: 0;
+}
+
+.navbar-nav > li > .dropdown-menu li:first-child {
+	padding: 6px 20px;
+	border-bottom: 1px solid #ddd;
+}
+
+.view-wrapper {
+	background: #f0f0f0;
+}
+
+.back-btn {
+	background: url(../images/ic_back.png) no-repeat 0 8px;
+	padding-left: 20px;
+}
+
+.back-btn:hover {
+	background-position: 0 -22px;
 }
 
 .ui-widget-content {
@@ -146,4 +209,64 @@ table td:not(:first-child) {
 
 .annotation-list li > div:empty,.annotation-list li > p:empty {
     display: none;
+}
+
+.text-type-block:hover {
+	text-decoration: none;
+}
+
+.modal-body > ul.types {
+	padding-left: 0;
+}
+
+.status {
+	padding: 20px 15px;
+}
+
+.contract-info li h3 {
+	border-bottom: 1px solid #bbb;
+	padding-bottom: 10px;
+	margin-bottom: 14px;
+}
+
+.contract-info {
+	padding: 0 40px;
+    list-style: none;
+    padding: 0 0 20px 15px;
+}
+
+.contract-info li {
+    padding: 5px 0px;
+}
+
+.contract-info li p {
+	padding-bottom: 2px;
+}
+
+.types label {
+    display: block;
+    cursor: pointer;
+    text-align: left;
+    padding: 15px;
+    font-size: 16px;
+    width: 50%;
+}
+
+.label-red {
+    background: #d9534f;
+    font-size: 13px;
+}
+
+.label-yellow {
+    background: #f0ad4e;
+    font-size: 13px;
+}
+
+.label-green {
+    background: #5cb85c;
+    font-size: 13px;
+}
+
+.container-login {
+	padding: 20px;
 }

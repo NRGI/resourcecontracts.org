@@ -9,7 +9,7 @@
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading"> Annotate {{$contract->metadata->project_title}}</div>
+        <div class="panel-heading"> Annotate <span>{{$contract->metadata->project_title}}</span></div>
 
         <div class="view-wrapper">
             <div id="pagelist"></div>

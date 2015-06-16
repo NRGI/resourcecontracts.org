@@ -1,44 +1,5 @@
 @extends('layout.app')
 
-
-@section('css')
-    <style>
-        ul {
-            list-style: none
-        }
-
-        ul li {
-            padding: 5px 0px
-        }
-
-        .types label {
-            display: block;
-            cursor: pointer;
-            text-align: left;
-            padding: 15px;
-            font-size: 16px;
-            width: 50%;
-        }
-
-        .label-red {
-            background: #d9534f;
-            font-size: 13px
-        }
-
-        .label-yellow {
-            background: #f0ad4e;
-            font-size: 13px
-        }
-
-        .label-green {
-            background: #5cb85c;
-            font-size: 13px
-        }
-
-    </style>
-@stop
-
-
 @section('script')
     <script>
         $(function () {
@@ -69,7 +30,7 @@
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading">{{$contract->metadata->project_title}}</div>
+        <div class="panel-heading">{{$contract->metadata->contract_name or $contract->metadata->project_title }}</div>
 
         <div class="action-btn pull-right" style="padding: 20px;">
             <a href="{{route('contract.edit', $contract->id)}}" class="btn btn-default">Edit</a>
@@ -84,10 +45,10 @@
 
         @if($status === \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE)
             <div style="padding: 40px;">
-                <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=edit" class="btn btn-default">View
-                    Pages</a>
+                <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=edit" class="btn btn-default">Review
+                    contract text </a>
                 <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate"
-                   class="btn btn-default">Annotate</a>
+                   class="btn btn-default">Annotate Contract</a>
                 <br>
                 <br>
                 @if($contract->pdf_structure != null)
@@ -96,7 +57,6 @@
                     </p>
                 @endif
                 <p>Text type :
-
                     <a href="#" data-key="{{$contract->textType}}" class="text-type-block"
                        data-toggle="modal"
                        data-target="#text-type-modal">
@@ -123,7 +83,6 @@
                                 <h4 class="modal-title" id="myModalLabel">Choose type of output Text</h4>
                             </div>
                             <div class="modal-body">
-
                                 <ul class="types">
                                     <li><label class="label label-success"> {!!Form::radio('text_type', 1,
                                             ($contract->textType == 1) ) !!}
@@ -144,39 +103,44 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         @else
-            <p style="padding: 20px 40px;">Status : {{$status==0 ? 'Pipeline' : 'Processing'}}</p>
+            <div class="status">Status : {{$status==0 ? 'Pipeline' : 'Processing'}}</div>
         @endif
 
-        <ul>
-            <li><strong>Created on:</strong> {{$contract->created_datetime->format('D M, d Y h:i A')}}</li>
-            <li style="margin-bottom: 30px;"><strong>Updated
-                    on:</strong> {{$contract->last_updated_datetime->format('D M, d Y h:i A')}}</li>
+        <ul class="contract-info">
+            <li><strong>Created by:</strong> {{ $contract->created_user->name }}
+                on {{$contract->created_datetime->format('D M d, Y h:i A')}} (GMT)
+            </li>
 
-            @if(isset($contract->metadata->contract_name) && '' != $contract->metadata->contract_name)
+
+            @if(!is_null($contract->updated_user))
+                <li><strong>Last modified by:</strong> {{$contract->updated_user->name}}
+                    on {{$contract->last_updated_datetime->format('D M d, Y h:i A')}} (GMT)
+                </li>
+            @endif
+
+            @if(isset($contract->metadata->contract_name))
                 <li>
                     <strong>Contract Name:</strong> {{$contract->metadata->contract_name}}
                 </li>
             @endif
 
-            @if(isset($contract->metadata->contract_identifier) && '' != $contract->metadata->contract_identifier)
+            @if(isset($contract->metadata->contract_identifier))
                 <li>
                     <strong>Contract Identifier:</strong> {{$contract->metadata->contract_identifier}}
                 </li>
             @endif
 
 
-            @if(isset($contract->metadata->language) && '' != $contract->metadata->language)
+            @if(isset($contract->metadata->language))
                 <?php $lang = config('metadata.language');?>
                 <li>
                     <strong>Language:</strong> {{$lang[$contract->metadata->language]}}
                     [{{$contract->metadata->language}}]
                 </li>
             @endif
-            @if(isset($contract->metadata->country->name) && '' != $contract->metadata->country->name)
+            @if(isset($contract->metadata->country->name))
                 <li>
                     <strong>Country:</strong> {{$contract->metadata->country->name or ''}}
                     [{{$contract->metadata->country->code or ''}}]
@@ -187,26 +151,26 @@
                 <li><strong>Resource: </strong>{{join(', ', $contract->metadata->resource)}}</li>
             @endif
 
-            @if(isset($contract->metadata->government_entity) && '' != $contract->metadata->government_entity)
+            @if(isset($contract->metadata->government_entity))
                 <li><strong>Government entity:</strong> {{$contract->metadata->government_entity}}</li>
             @endif
 
-            @if(isset($contract->metadata->government_identifier) && '' != $contract->metadata->government_identifier)
+            @if(isset($contract->metadata->government_identifier))
                 <li><strong>Government identifier:</strong> {{$contract->metadata->government_identifier}}</li>
             @endif
 
-            @if(isset($contract->metadata->type_of_contract) && '' != $contract->metadata->type_of_contract)
+            @if(isset($contract->metadata->type_of_contract))
                 <li><strong>Type of Contract:</strong> {{$contract->metadata->type_of_contract}}</li>
             @endif
-            @if(isset($contract->metadata->signature_date) && '' != $contract->metadata->signature_date)
+            @if(isset($contract->metadata->signature_date))
                 <li><strong>Signature date:</strong> {{$contract->metadata->signature_date}}</li>
             @endif
 
-            @if(isset($contract->metadata->document_type) && '' != $contract->metadata->document_type)
+            @if(isset($contract->metadata->document_type))
                 <li><strong>Document Type:</strong> {{$contract->metadata->document_type}}</li>
             @endif
 
-            @if(isset($contract->metadata->translation_from_original) && '' != $contract->metadata->translation_from_original)
+            @if(isset($contract->metadata->translation_from_original))
                 <li><strong>Translation from original:</strong>
                     @if($contract->metadata->translation_from_original ==1)
                         Yes [{{$contract->metadata->translation_parent}}]
@@ -239,45 +203,45 @@
 
 
             <li><h3>Concession / license / Project</h3></li>
-            @if(isset($contract->metadata->license_name) && '' != $contract->metadata->license_name)
+            @if(isset($contract->metadata->license_name))
                 <li><strong>License name:</strong> {{$contract->metadata->license_name}}</li>
             @endif
-            @if(isset($contract->metadata->license_identifier) && '' != $contract->metadata->license_identifier)
+            @if(isset($contract->metadata->license_identifier))
                 <li><strong>License identifier:</strong> {{$contract->metadata->license_identifier}}</li>
             @endif
-            @if(isset($contract->metadata->license_source_url) && '' != $contract->metadata->license_source_url)
+            @if(isset($contract->metadata->license_source_url))
                 <li><strong>License source url:</strong> {{$contract->metadata->license_source_url}}</li>
             @endif
-            @if(isset($contract->metadata->license_type) && '' != $contract->metadata->license_type)
+            @if(isset($contract->metadata->license_type))
                 <li><strong>License type:</strong> {{$contract->metadata->license_type}}</li>
             @endif
-            @if(isset($contract->metadata->project_title) && '' != $contract->metadata->project_title)
+            @if(isset($contract->metadata->project_title))
                 <li><strong>Project title:</strong> {{$contract->metadata->project_title}}</li>
             @endif
-            @if(isset($contract->metadata->project_identifier) && '' != $contract->metadata->project_identifier)
+            @if(isset($contract->metadata->project_identifier))
                 <li><strong>Project identifier:</strong> {{$contract->metadata->project_identifier}}</li>
             @endif
-            @if(isset($contract->metadata->date_granted) && '' != $contract->metadata->date_granted)
+            @if(isset($contract->metadata->date_granted))
                 <li><strong>Date granted:</strong> {{$contract->metadata->date_granted}}</li>
             @endif
-            @if(isset($contract->metadata->year_granted) && '' != $contract->metadata->year_granted)
+            @if(isset($contract->metadata->year_granted))
                 <li><strong>Year granted:</strong> {{$contract->metadata->year_granted}}</li>
             @endif
-            @if(isset($contract->metadata->ratification_date) && '' != $contract->metadata->ratification_date)
+            @if(isset($contract->metadata->ratification_date))
                 <li><strong>Date of ratification:</strong> {{$contract->metadata->ratification_date}}</li>
             @endif
-            @if(isset($contract->metadata->ratification_year) && '' != $contract->metadata->ratification_year)
+            @if(isset($contract->metadata->ratification_year))
                 <li><strong>Year of ratifciation:</strong> {{$contract->metadata->ratification_year}}</li>
             @endif
 
             <li><h3>Source</h3></li>
-            @if(isset($contract->metadata->Source_url) && '' != $contract->metadata->Source_url)
+            @if(isset($contract->metadata->Source_url))
                 <li><strong>Source URL:</strong> {{$contract->metadata->Source_url}}</li>
             @endif
-            @if(isset($contract->metadata->date_retrieval) && '' != $contract->metadata->date_retrieval)
+            @if(isset($contract->metadata->date_retrieval))
                 <li><strong>Date of retrieval:</strong> {{$contract->metadata->date_retrieval}}</li>
             @endif
-            @if(isset($contract->metadata->location) && '' != $contract->metadata->location)
+            @if(isset($contract->metadata->location))
                 <li><strong>Location:</strong> {{$contract->metadata->location}}</li>
             @endif
 
@@ -300,7 +264,7 @@
 
                 <div class="annotation-list">
                     <ul>
-                        @foreach($annotations as $annotation)
+                        @forelse($annotations as $annotation)
                             <li>
                                 <span><a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate&page={{$annotation->document_page_no}}">{{$annotation->annotation->quote}} </a>[Page {{$annotation->document_page_no}}]</span>
                                 <p>{{$annotation->annotation->text}}</p>
@@ -308,7 +272,9 @@
                                     <div>{{$tag}}</div>
                                 @endforeach
                             </li>
-                        @endforeach
+                        @empty
+                            <li>@lang('Annotation not created. Please create') <a style="font-size: 14px" href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate">here</a></li>
+                        @endforelse
 
                     </ul>
                 </div>

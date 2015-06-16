@@ -96,7 +96,7 @@ class ContractController extends Controller
     {
         $contract    = $this->contract->find($id);
         $status      = $this->contract->getStatus($id);
-        $annotations = $annotation->getAllByContractId($id);
+        $annotations = $contract->annotations;
         $file        = $this->contract->getS3FileURL($contract->file);
 
         return view('contract.show', compact('contract', 'status', 'annotations', 'file'));

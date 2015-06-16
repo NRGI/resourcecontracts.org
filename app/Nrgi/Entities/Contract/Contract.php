@@ -73,6 +73,21 @@ class Contract extends Model
         return $this->hasMany('App\Nrgi\Entities\Contract\Annotation');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function created_user()
+    {
+        return $this->belongsTo('App\Nrgi\Entities\User\User','user_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function updated_user()
+    {
+        return $this->belongsTo('App\Nrgi\Entities\User\User','updated_by');
+    }
 
     /**
      * Get Text Type by Key

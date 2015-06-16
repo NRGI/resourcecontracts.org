@@ -10,20 +10,20 @@
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading"> Editing {{$contract->metadata->project_title}}   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
+        <div class="panel-heading"> Editing <span>{{$contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
 
         <div class="view-wrapper" style="background: #F6F6F6">
             <div id="pagelist"></div>
+            <div id="message" style="padding: 0px 16px"></div>
             <div class="document-wrap">
             <div class="left-document-wrap annotate">
-                <span id="message"></span>
                     <div class="quill-wrapper">
                         <!-- Create the toolbar container -->
                         <div id="toolbar" class="ql-toolbar ql-snow">
                             <button class="ql-bold">Bold</button>
                             <button class="ql-italic">Italic</button>
                         </div>
-                        <div id="editor" class="editor ql-container ql-snow">
+                        <div id="editor" style="height: 750px" class="editor ql-container ql-snow">
                             <div class="ql-editor" id="ql-editor-1" contenteditable="true">
 
                             </div>
@@ -48,7 +48,7 @@
     <script src="{{ asset('js/lib/pdfjs/pdf.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
     <script src="{{ asset('js/jquery.twbsPagination.js') }}"></script>
-    <script>    
+    <script>
     //defining format to use .format function
     String.prototype.format = function () {
         var formatted = this;
@@ -57,20 +57,20 @@
             formatted = formatted.replace(regexp, arguments[i]);
         }
         return formatted;
-    };    
+    };
 
     var contract = {
-        id: {{$contract->id}},
-        filesBaseDir: {{$contract->id}},
-        totalPages: {{$contract->pages->count()}},
-        currentPage: {{$page}},
+        id: '{{$contract->id}}',
+        filesBaseDir: '{{$contract->id}}',
+        totalPages: '{{$contract->pages->count()}}',
+        currentPage: '{{$page}}',
         getPdfLocation: function() { return "/data/{0}/pages/{1}.pdf".format(this.filesBaseDir, this.currentPage);},
         viewUrl: "{{route('contract.pages', ['id'=>$contract->id])}}",
         textLoadAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
         textSaveAPI: "{{route('contract.page.store', ['id'=>$contract->id])}}",
         annotationAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
-        canEdit: {{$canEdit}},
-        canAnnotate: {{$canAnnotate}},
+        canEdit: '{{$canEdit}}',
+        canAnnotate: '{{$canAnnotate}}',
         getAction: function() {
             if(this.canEdit) return "action=edit";
             else if(this.canAnnotate) return "action=annotate";
@@ -90,13 +90,12 @@
 
             this.editor = new Quill('#editor', options);
             this.editor.addModule('toolbar', {container: '#toolbar'});
-            
+
             this.editor.on('text-change', function(delta, source) {
               if (source == 'api') {
                 //none
               } else if (source == 'user') {
                 this.textUpdated = true;
-                $('#message').text('Text updated.');
               }
             });
         },
@@ -121,8 +120,9 @@
                 type: 'POST'
             }).done(function (response) {
                 this.textUpdated = false;
-                $('#message').text('saved.');
-            });        
+                $('#message').html('<div class="alert alert-success">Saved</div>');
+                $('html,body').animate({ scrollTop: $('body').offset().top},'slow');
+            });
         },
     };
 
@@ -146,7 +146,7 @@
                     };
                     page.render(renderContext);
                 });
-            });            
+            });
         }
     };
 
@@ -163,7 +163,7 @@
                 onPageClick: function (event, page) {
                     location.href = '{0}?{1}&page={2}'.format(that.contract.viewUrl, that.contract.getAction(), page);
                 }
-            });             
+            });
         }
     };
 
@@ -171,9 +171,9 @@
         init: function(contract) {
             this.contract = contract;
             var options = (contract.canAnnotate)?{readOnly: false}:{readOnly: true};
-            this.content = $('.annotate').annotator(options);     
+            this.content = $('.annotate').annotator(options);
             this.content.annotator('addPlugin', 'Tags');
-            this.availableTags = {!! json_encode(config('nrgi.annotation_tags')) !!};
+            this.availableTags = '{!! json_encode(config("nrgi.annotation_tags")) !!}';
         },
         setup: function(page) {
             this.content.annotator('addPlugin', 'Store', {
