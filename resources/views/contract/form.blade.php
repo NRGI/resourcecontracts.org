@@ -7,9 +7,16 @@
     <script src="{{asset('js/contract.js')}}"></script>
 @stop
 
+@section('css')
+    <style>
+        .select2-search__field {width: 100% !important;}
+        .red {color:red}
+    </style>
+    @stop
+
 @if($action == 'add')
     <div class="form-group">
-        {!! Form::label('Select PDF', null, ['class'=>'col-sm-2 control-label'])!!}
+        <label for="Select PDF" class="col-sm-2 control-label">Contract file <span class="red">*</span></label>
         <div class="col-sm-7">
             {!! Form::file('file', ['class'=>'required'])!!}
             <p class="help-block">PDF file only.</p>
@@ -18,11 +25,11 @@
 @endif
 
 <div class="form-group">
-    {!! Form::label('contract_name', null, ['class'=>'col-sm-2 control-label'])!!}
+    <label for="contract_name" class="col-sm-2 control-label">Contract Name <span class="red">*</span></label>
     <div class="col-sm-7">
         {!! Form::text('contract_name',
         isset($contract->metadata->contract_name)?$contract->metadata->contract_name:null,
-        ["class"=>"form-control"])!!}
+        ["class"=>"required form-control"])!!}
     </div>
 </div>
 
@@ -44,10 +51,11 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('country', null, ['class'=>'col-sm-2 control-label'])!!}
+    <label for="country" class="col-sm-2 control-label">Country <span class="red">*</span></label>
     <div class="col-sm-7">
-        {!! Form::select('country', $country ,
-        isset($contract->metadata->country->code)?$contract->metadata->country->code:null, ["class"=>"form-control"])!!}
+        {!! Form::select('country', ['' => 'select'] + $country ,
+        isset($contract->metadata->country->code)?$contract->metadata->country->code:null, ["class"=>"required form-control"])!!}
+        <label id="country-error" class="error" for="country"></label>
     </div>
 </div>
 
@@ -88,11 +96,11 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('signature_date', null, ['class'=>'col-sm-2 control-label'])!!}
+    <label for="signature_date" class="col-sm-2 control-label">Signature Date <span class="red">*</span></label>
     <div class="col-sm-7">
         {!! Form::text('signature_date',
         isset($contract->metadata->signature_date)?$contract->metadata->signature_date:null,
-        ["class"=>"date form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
+        ["class"=>"date required form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
     </div>
 </div>
 
@@ -233,7 +241,7 @@
     <div class="col-sm-7">
         {!! Form::text('project_title',
         isset($contract->metadata->project_title)?$contract->metadata->project_title:null,
-        ["class"=>"form-control required"])!!}
+        ["class"=>"form-control"])!!}
     </div>
 </div>
 

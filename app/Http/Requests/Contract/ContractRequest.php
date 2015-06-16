@@ -8,8 +8,10 @@ class ContractRequest extends Request
     public function rules()
     {
         $rules = [
-            'project_title' => 'required',
-            'file'          => 'required|mimes:pdf|max:5000'
+            'contract_name'  => 'required',
+            'signature_date' => 'required',
+            'country'        => 'required',
+            'file'           => 'required|mimes:pdf|max:51200'
         ];
 
         if ($this->isMethod('PATCH')) {
@@ -36,7 +38,9 @@ class ContractRequest extends Request
     public function messages()
     {
         return [
-            'file.required' => 'Contract file is required',
+            'file.required' => 'Contract file is required.',
+            'file.mimes'    => 'The file must be a pdf.',
+            'file.max'      => 'You can upload file upto 50MB only.'
         ];
     }
 }
