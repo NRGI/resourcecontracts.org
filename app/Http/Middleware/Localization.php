@@ -54,6 +54,6 @@ class Localization
     {
         $lang = trim(strtolower($lang));
         app()->setLocale($lang);
-        setcookie($this->key, $lang, Carbon::now()->addYear(1)->timestamp);
+        setcookie($this->key, $lang, Carbon::now()->addYear(1)->timestamp, '/');
     }
 }

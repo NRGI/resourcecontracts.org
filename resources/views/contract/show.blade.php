@@ -31,29 +31,26 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">{{$contract->metadata->contract_name or $contract->metadata->project_title }}</div>
-
         <div class="action-btn pull-right" style="padding: 20px;">
-            <a href="{{route('contract.edit', $contract->id)}}" class="btn btn-default">Edit</a>
+            <a href="{{route('contract.edit', $contract->id)}}" class="btn btn-default">@lang('contract.edit')</a>
             <a target="_blank" href="{{$file}}"
-               class="btn btn-default">Download file [{{getFileSize($contract->metadata->file_size)}}]</a>
+               class="btn btn-default">@lang('contract.download_file') [{{getFileSize($contract->metadata->file_size)}}]</a>
             {!!Form::open(['route'=>['contract.destroy', $contract->id], 'style'=>"display:inline",
             'method'=>'delete'])!!}
-            {!!Form::button('Delete', ['type'=>'submit','class'=>'btn btn-danger confirm', 'data-confirm'=>"Are you sure
-            you want to delete this contract?"])!!}
+            {!!Form::button(trans('contract.delete'), ['type'=>'submit','class'=>'btn btn-danger confirm', 'data-confirm'=>trans('contract.confirm_delete')])!!}
             {!!Form::close()!!}
         </div>
 
         @if($status === \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE)
             <div style="padding: 40px;">
-                <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=edit" class="btn btn-default">Review
-                    contract text </a>
+                <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=edit" class="btn btn-default">@lang('contract.view_pages')</a>
                 <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate"
-                   class="btn btn-default">Annotate Contract</a>
+                   class="btn btn-default">@lang('contract.annotate_contract')</a>
                 <br>
                 <br>
                 @if($contract->pdf_structure != null)
                     <p>
-                        <strong>Pdf Type:</strong> {{ucfirst($contract->pdf_structure)}}
+                        <strong>@lang('contract.pdf_type')</strong> {{ucfirst($contract->pdf_structure)}}
                     </p>
                 @endif
                 <p>Text type :
@@ -61,7 +58,7 @@
                        data-toggle="modal"
                        data-target="#text-type-modal">
                         @if($contract->textType =='')
-                            Choose
+                           @lang('contract.choose')
 
                         @else
                             <?php $label = $contract->getTextType();?>
@@ -70,7 +67,6 @@
 
                     </a></p>
 
-                <!-- Modal -->
                 <div class="modal fade" id="text-type-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
@@ -86,18 +82,17 @@
                                 <ul class="types">
                                     <li><label class="label label-success"> {!!Form::radio('text_type', 1,
                                             ($contract->textType == 1) ) !!}
-                                            Acceptable</label>
+                                            @lang('contract.acceptable')</label>
                                     <li><label class="label label-warning">{!!Form::radio('text_type', 2,
-                                            ($contract->textType == 2)) !!} Needs
-                                            editing</label>
+                                            ($contract->textType == 2)) !!} @lang('contract.needs_editing')
+                                            </label>
                                     <li><label class="label label-danger">{!!Form::radio('text_type', 3,
-                                            ($contract->textType == 3)) !!} Needs
-                                            full transcription</label>
+                                            ($contract->textType == 3)) !!} @lang('contract.needs_full_transcription')</label>
                                 </ul>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('contract.close')</button>
+                                <button type="submit" class="btn btn-primary">@lang('contract.save_changes')s</button>
                             </div>
                             {!! Form::close() !!}
                         </div>
@@ -105,30 +100,29 @@
                 </div>
             </div>
         @else
-            <div class="status">Status : {{$status==0 ? 'Pipeline' : 'Processing'}}</div>
+            <div class="status">@lang('contract.status') : {{$status==0 ? 'Pipeline' : 'Processing'}}</div>
         @endif
 
         <ul class="contract-info">
-            <li><strong>Created by:</strong> {{ $contract->created_user->name }}
-                on {{$contract->created_datetime->format('D M d, Y h:i A')}} (GMT)
+            <li><strong>@lang('contract.created_by'):</strong>
+                {{$contract->created_user->name}} on {{$contract->created_datetime->format('D M d, Y h:i A')}} (GMT)
             </li>
 
-
             @if(!is_null($contract->updated_user))
-                <li><strong>Last modified by:</strong> {{$contract->updated_user->name}}
+                <li><strong>@lang('contract.last_modified_by'):</strong> {{$contract->updated_user->name}}
                     on {{$contract->last_updated_datetime->format('D M d, Y h:i A')}} (GMT)
                 </li>
             @endif
 
             @if(isset($contract->metadata->contract_name))
                 <li>
-                    <strong>Contract Name:</strong> {{$contract->metadata->contract_name}}
+                    <strong>@lang('contract.contract_name'):</strong> {{$contract->metadata->contract_name}}
                 </li>
             @endif
 
             @if(isset($contract->metadata->contract_identifier))
                 <li>
-                    <strong>Contract Identifier:</strong> {{$contract->metadata->contract_identifier}}
+                    <strong>@lang('contract.contract_identifier'):</strong> {{$contract->metadata->contract_identifier}}
                 </li>
             @endif
 
@@ -136,46 +130,46 @@
             @if(isset($contract->metadata->language))
                 <?php $lang = config('metadata.language');?>
                 <li>
-                    <strong>Language:</strong> {{$lang[$contract->metadata->language]}}
+                    <strong>@lang('contract.language'):</strong> {{$lang[$contract->metadata->language]}}
                     [{{$contract->metadata->language}}]
                 </li>
             @endif
             @if(isset($contract->metadata->country->name))
                 <li>
-                    <strong>Country:</strong> {{$contract->metadata->country->name or ''}}
+                    <strong>@lang('contract.country'):</strong> {{$contract->metadata->country->name or ''}}
                     [{{$contract->metadata->country->code or ''}}]
                 </li>
             @endif
 
             @if(is_array($contract->metadata->resource) && count($contract->metadata->resource)>0)
-                <li><strong>Resource: </strong>{{join(', ', $contract->metadata->resource)}}</li>
+                <li><strong>@lang('contract.resource'): </strong>{{join(', ', $contract->metadata->resource)}}</li>
             @endif
 
             @if(isset($contract->metadata->government_entity))
-                <li><strong>Government entity:</strong> {{$contract->metadata->government_entity}}</li>
+                <li><strong>@lang('contract.government_entity'):</strong> {{$contract->metadata->government_entity}}</li>
             @endif
 
             @if(isset($contract->metadata->government_identifier))
-                <li><strong>Government identifier:</strong> {{$contract->metadata->government_identifier}}</li>
+                <li><strong>@lang('contract.government_identifier'):</strong> {{$contract->metadata->government_identifier}}</li>
             @endif
 
             @if(isset($contract->metadata->type_of_contract))
-                <li><strong>Type of Contract:</strong> {{$contract->metadata->type_of_contract}}</li>
+                <li><strong>@lang('contract.type_of_contract'):</strong> {{$contract->metadata->type_of_contract}}</li>
             @endif
             @if(isset($contract->metadata->signature_date))
-                <li><strong>Signature date:</strong> {{$contract->metadata->signature_date}}</li>
+                <li><strong>@lang('contract.signature_date'):</strong> {{$contract->metadata->signature_date}}</li>
             @endif
 
             @if(isset($contract->metadata->document_type))
-                <li><strong>Document Type:</strong> {{$contract->metadata->document_type}}</li>
+                <li><strong>@lang('contract.document_type'):</strong> {{$contract->metadata->document_type}}</li>
             @endif
 
             @if(isset($contract->metadata->translation_from_original))
-                <li><strong>Translation from original:</strong>
+                <li><strong>@lang('contract.translation_from_original'):</strong>
                     @if($contract->metadata->translation_from_original ==1)
-                        Yes [{{$contract->metadata->translation_parent}}]
+                        @lang('contract.yes') [{{$contract->metadata->translation_parent}}]
                     @else
-                        No
+                        @lang('contract.no')
                     @endif
                 </li>
             @endif
@@ -183,17 +177,17 @@
             @if(isset($contract->metadata->company))
                 <?php $companies = array_filter($contract->metadata->company);?>
                 @if(count($companies)>0)
-                    <li><h3>Company</h3>
+                    <li><h3>@lang('contract.company')</h3>
                         @foreach($companies as $k => $v)
-                            <p><strong>Company Name:</strong>  {{$v->name}}</p>
-                            <p><strong>Jurisdiction Of Incorporation :</strong> {{$v->jurisdiction_of_incorporation}}
+                            <p><strong>@lang('contract.company_name'):</strong>  {{$v->name}}</p>
+                            <p><strong>@lang('contract.jurisdiction_of_incorporation') :</strong> {{$v->jurisdiction_of_incorporation}}
                             </p>
-                            <p><strong>Registration Agency :</strong> {{$v->registration_agency}}</p>
-                            <p><strong>Incorporation Date :</strong> {{$v->company_founding_date}}</p>
-                            <p><strong>Company Address :</strong> {{$v->company_address}}</p>
-                            <p><strong>Identifier at company register:</strong> {{$v->comp_id}}</p>
-                            <p><strong>Parent company:</strong> {{$v->parent_company}}</p>
-                            <p><strong>Open Corporate ID:</strong> @if(!empty($v->open_corporate_id)) <a target="_blank"
+                            <p><strong>@lang('contract.registry_agency'):</strong> {{$v->registration_agency}}</p>
+                            <p><strong>@lang('contract.incorporation_date') :</strong> {{$v->company_founding_date}}</p>
+                            <p><strong>@lang('contract.company_address') :</strong> {{$v->company_address}}</p>
+                            <p><strong>@lang('contract.identifier_at_company'):</strong> {{$v->comp_id}}</p>
+                            <p><strong>@lang('contract.parent_company'):</strong> {{$v->parent_company}}</p>
+                            <p><strong>@lang('contract.open_corporate_id'):</strong> @if(!empty($v->open_corporate_id)) <a target="_blank"
                                                                                                          href="https://opencorporates.com/companies/{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
                             </p>
                         @endforeach
@@ -201,54 +195,53 @@
                 @endif
             @endif
 
-
-            <li><h3>Concession / license / Project</h3></li>
+            <li><h3>@lang('contract.license_and_project')</h3></li>
             @if(isset($contract->metadata->license_name))
-                <li><strong>License name:</strong> {{$contract->metadata->license_name}}</li>
+                <li><strong>@lang('contract.license_name'):</strong> {{$contract->metadata->license_name}}</li>
             @endif
             @if(isset($contract->metadata->license_identifier))
-                <li><strong>License identifier:</strong> {{$contract->metadata->license_identifier}}</li>
+                <li><strong>@lang('contract.license_identifier'):</strong> {{$contract->metadata->license_identifier}}</li>
             @endif
             @if(isset($contract->metadata->license_source_url))
-                <li><strong>License source url:</strong> {{$contract->metadata->license_source_url}}</li>
+                <li><strong>@lang('contract.license_source_url'):</strong> {{$contract->metadata->license_source_url}}</li>
             @endif
             @if(isset($contract->metadata->license_type))
-                <li><strong>License type:</strong> {{$contract->metadata->license_type}}</li>
+                <li><strong>@lang('contract.license_type'):</strong> {{$contract->metadata->license_type}}</li>
             @endif
             @if(isset($contract->metadata->project_title))
-                <li><strong>Project title:</strong> {{$contract->metadata->project_title}}</li>
+                <li><strong>@lang('contract.project_title'):</strong> {{$contract->metadata->project_title}}</li>
             @endif
             @if(isset($contract->metadata->project_identifier))
-                <li><strong>Project identifier:</strong> {{$contract->metadata->project_identifier}}</li>
+                <li><strong>@lang('contract.project_identifier'):</strong> {{$contract->metadata->project_identifier}}</li>
             @endif
             @if(isset($contract->metadata->date_granted))
-                <li><strong>Date granted:</strong> {{$contract->metadata->date_granted}}</li>
+                <li><strong>@lang('contract.date_granted'):</strong> {{$contract->metadata->date_granted}}</li>
             @endif
             @if(isset($contract->metadata->year_granted))
-                <li><strong>Year granted:</strong> {{$contract->metadata->year_granted}}</li>
+                <li><strong>@lang('contract.year_granted'):</strong> {{$contract->metadata->year_granted}}</li>
             @endif
             @if(isset($contract->metadata->ratification_date))
-                <li><strong>Date of ratification:</strong> {{$contract->metadata->ratification_date}}</li>
+                <li><strong>@lang('contract.date_of_ratification'):</strong> {{$contract->metadata->ratification_date}}</li>
             @endif
             @if(isset($contract->metadata->ratification_year))
-                <li><strong>Year of ratifciation:</strong> {{$contract->metadata->ratification_year}}</li>
+                <li><strong>@lang('contract.year_of_ratification'):</strong> {{$contract->metadata->ratification_year}}</li>
             @endif
 
-            <li><h3>Source</h3></li>
+            <li><h3>@lang('contract.source')</h3></li>
             @if(isset($contract->metadata->Source_url))
                 <li><strong>Source URL:</strong> {{$contract->metadata->Source_url}}</li>
             @endif
             @if(isset($contract->metadata->date_retrieval))
-                <li><strong>Date of retrieval:</strong> {{$contract->metadata->date_retrieval}}</li>
+                <li><strong>@lang('contract.date_of_retrieval'):</strong> {{$contract->metadata->date_retrieval}}</li>
             @endif
             @if(isset($contract->metadata->location))
-                <li><strong>Location:</strong> {{$contract->metadata->location}}</li>
+                <li><strong>@lang('contract.location'):</strong> {{$contract->metadata->location}}</li>
             @endif
 
             <?php $catConfig = config('metadata.category');?>
 
             @if(isset($contract->metadata->category) && is_array($contract->metadata->category) && count($contract->metadata->category)>0)
-                <li><strong>Category:</strong>
+                <li><strong>@lang('contract.category'):</strong>
                     <?php $cat = [];
                     foreach ($contract->metadata->category as $key):
                         $cat[] = $catConfig[$key];
@@ -260,7 +253,7 @@
         </ul>
         @if($status === \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE)
             <div class="annotation-wrap">
-                <h3>Annotations</h3>
+                <h3>@lang('contract.annotations')</h3>
 
                 <div class="annotation-list">
                     <ul>

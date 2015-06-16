@@ -3,12 +3,12 @@
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading"> Editing <span>{{$contract->metadata->project_title}}</span></div>
+        <div class="panel-heading"> Editing <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span></div>
 
         <div class="panel-body">
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <strong>@lang('contract.whoops')</strong> @lang('contract.problem')<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>

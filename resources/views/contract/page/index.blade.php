@@ -10,7 +10,7 @@
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading"> Editing <span>{{$contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
+        <div class="panel-heading"> @lang('contract.editing') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
 
         <div class="view-wrapper" style="background: #F6F6F6">
             <div id="pagelist"></div>
@@ -69,8 +69,8 @@
         textLoadAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
         textSaveAPI: "{{route('contract.page.store', ['id'=>$contract->id])}}",
         annotationAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
-        canEdit: '{{$canEdit}}',
-        canAnnotate: '{{$canAnnotate}}',
+        canEdit: {{$canEdit}},
+        canAnnotate: {{$canAnnotate}},
         getAction: function() {
             if(this.canEdit) return "action=edit";
             else if(this.canAnnotate) return "action=annotate";
@@ -173,7 +173,7 @@
             var options = (contract.canAnnotate)?{readOnly: false}:{readOnly: true};
             this.content = $('.annotate').annotator(options);
             this.content.annotator('addPlugin', 'Tags');
-            this.availableTags = '{!! json_encode(config("nrgi.annotation_tags")) !!}';
+            this.availableTags = {!! json_encode(trans("codelist/annotationTag.annotation_tags")) !!};
         },
         setup: function(page) {
             this.content.annotator('addPlugin', 'Store', {

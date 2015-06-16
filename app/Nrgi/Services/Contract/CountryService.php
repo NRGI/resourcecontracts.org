@@ -13,7 +13,7 @@ class CountryService
 
     function __construct()
     {
-        $this->countries = config('country');
+        $this->countries = trans('codelist/country');
     }
 
     /**

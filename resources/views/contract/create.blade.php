@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading">Add Contract</div>
+        <div class="panel-heading">@lang('contract.add')</div>
         <div class="panel-body">
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <strong>@lang('contract.whoops')</strong> @lang('contract.problem')<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
