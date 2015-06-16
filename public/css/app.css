@@ -3599,10 +3599,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   display: block;
   padding: 10px 15px;
 }
-.nav > li > a:hover,
-.nav > li > a:focus {
+.nav > li > a:hover {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: #aaa;
 }
 .nav > li.disabled > a {
   color: #777777;
@@ -3617,7 +3616,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #eeeeee;
+  background-color: #aaa;
   border-color: #337ab7;
 }
 .nav .nav-divider {
@@ -3976,6 +3975,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-nav > li > a {
     padding-top: 15px;
     padding-bottom: 15px;
+    color: #fff;
   }
 }
 .navbar-form {
@@ -6246,6 +6246,11 @@ input.error {border-color:#d44950}
   color: #404040;
 }
 
+#pagelist a:focus {
+	outline: 0;
+	text-decoration: none;
+}
+
 .view-links {
   text-align: center;
   margin: 30px 0 24px;
@@ -6254,14 +6259,10 @@ input.error {border-color:#d44950}
   margin-right: 10px;
 }
 
-.annotation-wrap {
-  width: 960px;
-  margin: 0 auto;
-}
 .annotation-wrap h3 {
   border-bottom: 1px solid #8b8b8b;
-  margin-bottom: 20px;
-  padding-bottom: 3px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
 }
 
 .annotation-list li {
@@ -6277,8 +6278,10 @@ input.error {border-color:#d44950}
   color: #8b8b8b;
   float: left;
   margin-right: 6px;
+  margin-bottom: 4px;
 }
-.annotation-list li a {
+
+.annotation-list li > a {
   font-size: 12px;
 }
 

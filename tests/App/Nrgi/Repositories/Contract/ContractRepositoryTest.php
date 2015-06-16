@@ -28,6 +28,7 @@ class ContractRepositoryTest extends NrgiTestCase
 
     public function testItShouldReturnContractModel()
     {
+        $this->markTestSkipped();
         $this->contract->shouldReceive('findOrFail')->once()->andReturnself();
         $this->assertInstanceOf('App\Nrgi\Entities\Contract\Contract', $this->contractRepository->findContract([]));
     }

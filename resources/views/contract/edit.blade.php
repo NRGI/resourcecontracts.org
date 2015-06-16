@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading"> Editing {{$contract->metadata->project_title}}</div>
+        <div class="panel-heading"> Editing <span>{{$contract->metadata->project_title}}</span></div>
 
         <div class="panel-body">
             @if (count($errors) > 0)

@@ -174,12 +174,42 @@ class ContractService
      */
     protected function processMetadata($formData)
     {
-        $formData['signature_year'] = (!empty($formData['signature_date']))? date('Y', strtotime($formData['signature_date'])): '';
-        $formData['country']  = $this->countryService->getInfoByCode($formData['country']);
-        $formData['resource'] = (!empty($formData['resource']))? $formData['resource']:[];
-        $formData['category'] = (!empty($formData['category']))? $formData['category']:[];
+        $formData['signature_year'] = (!empty($formData['signature_date'])) ? date(
+            'Y',
+            strtotime(
+                $formData['signature_date']
+            )
+        ) : '';
+        $formData['country']        = $this->countryService->getInfoByCode($formData['country']);
+        $formData['resource']       = (!empty($formData['resource'])) ? $formData['resource'] : [];
+        $formData['category']       = (!empty($formData['category'])) ? $formData['category'] : [];
 
-        return array_only($formData, ["contract_name", "contract_identifier", "language","country","resource","government_entity","government_identifier","type_of_contract","signature_date","document_type" ,  "translation_from_original" ,  "translation_parent" ,  "company" ,  "license_name" ,  "license_identifier","project_title","project_identifier","Source_url","date_retrieval","category","signature_year"]);
+        return array_only(
+            $formData,
+            [
+                "contract_name",
+                "contract_identifier",
+                "language",
+                "country",
+                "resource",
+                "government_entity",
+                "government_identifier",
+                "type_of_contract",
+                "signature_date",
+                "document_type",
+                "translation_from_original",
+                "translation_parent",
+                "company",
+                "license_name",
+                "license_identifier",
+                "project_title",
+                "project_identifier",
+                "Source_url",
+                "date_retrieval",
+                "category",
+                "signature_year"
+            ]
+        );
     }
 
     /**
@@ -201,6 +231,7 @@ class ContractService
         $metadata              = $this->processMetadata($formData);
         $metadata['file_size'] = $file_size;
         $contract->metadata    = $metadata;
+        $contract->updated_by  = $this->auth->user()->id;
 
         try {
             $contract->save();

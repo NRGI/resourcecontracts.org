@@ -26,7 +26,7 @@ class ContractRepository implements ContractRepositoryInterface
     public function __construct(Contract $contract, DatabaseManager $db)
     {
         $this->contract = $contract;
-        $this->db = $db;
+        $this->db       = $db;
     }
 
     /**
@@ -68,7 +68,9 @@ class ContractRepository implements ContractRepositoryInterface
      */
     function getUniqueYears()
     {
-        return $this->contract->select($this->db->raw("metadata->>'signature_year' years, count(metadata->>'signature_year')"))
+        return $this->contract->select(
+            $this->db->raw("metadata->>'signature_year' years, count(metadata->>'signature_year')")
+        )
                               ->whereRaw("metadata->>'signature_year' !=''")
                               ->groupBy($this->db->raw("metadata->>'signature_year'"))
                               ->orderBy($this->db->raw("metadata->>'signature_year'"), "DESC")->get();
@@ -80,7 +82,9 @@ class ContractRepository implements ContractRepositoryInterface
      */
     function getUniqueCountries()
     {
-        return $this->contract->select($this->db->raw("metadata->'country'->>'code' countries, count(metadata->'country'->>'code')"))
+        return $this->contract->select(
+            $this->db->raw("metadata->'country'->>'code' countries, count(metadata->'country'->>'code')")
+        )
                               ->whereRaw("metadata->'country'->>'code' !=''")
                               ->groupBy($this->db->raw("metadata->'country'->>'code'"))
                               ->orderBy($this->db->raw("metadata->'country'->>'code'"), "DESC")->get();
@@ -94,7 +98,7 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function findContract($contractId)
     {
-        return $this->contract->findOrFail($contractId);
+        return $this->contract->with('created_user', 'updated_user', 'annotations')->findOrFail($contractId);
     }
 
     /**

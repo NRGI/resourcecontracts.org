@@ -6,8 +6,6 @@
                     Resource Contracts
                 </a>
             </li>
-            <li>{{Auth::user()->email}}</li>
-            <li><a href="{{url('/auth/logout')}}">Logout</a></li>
             <li>
                 <a href="{{route('contract.index')}}">All Contracts</a>
             </li>
