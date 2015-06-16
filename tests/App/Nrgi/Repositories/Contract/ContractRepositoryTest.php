@@ -12,14 +12,18 @@ class ContractRepositoryTest extends NrgiTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->contract           = m::mock('App\Nrgi\Entities\Contract\Contract');
-        $this->contractRepository = new ContractRepository($this->contract);
+        $this->contract = m::mock('App\Nrgi\Entities\Contract\Contract');
+        $this->db       = m::mock('Illuminate\Database\DatabaseManager');
+        $this->contractRepository = new ContractRepository($this->contract, $this->db);
     }
 
     public function testItShouldSaveContract()
     {
         $this->contract->shouldReceive('create')->once()->with(['contractDetails'])->andReturnSelf();
-        $this->assertInstanceOf('App\Nrgi\Entities\Contract\Contract', $this->contractRepository->save(['contractDetails']));
+        $this->assertInstanceOf(
+            'App\Nrgi\Entities\Contract\Contract',
+            $this->contractRepository->save(['contractDetails'])
+        );
     }
 
     public function testItShouldReturnContractModel()
@@ -36,8 +40,13 @@ class ContractRepositoryTest extends NrgiTestCase
 
     public function testItShouldReturnContractCollection()
     {
-        $this->contract->shouldReceive('select->orderBy->get')->once()->with()->andReturn(m::mock('Illuminate\Database\Eloquent\Collection'));
-        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->contractRepository->getAll(['year'=>'','country'=>'','resource'=>'']));
+        $this->contract->shouldReceive('select->orderBy->get')->once()->with()->andReturn(
+            m::mock('Illuminate\Database\Eloquent\Collection')
+        );
+        $this->assertInstanceOf(
+            'Illuminate\Database\Eloquent\Collection',
+            $this->contractRepository->getAll(['year' => '', 'country' => '', 'resource' => ''])
+        );
     }
 
     public function tearDown()

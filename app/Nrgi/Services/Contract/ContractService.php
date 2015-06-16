@@ -10,7 +10,6 @@ use Illuminate\Contracts\Logging\Log;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Queue\Queue;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -61,10 +60,9 @@ class ContractService
      */
     protected $queue;
     /**
-     * @var Logger
+     * @var Log
      */
     protected $logger;
-
 
     /**
      * @param ContractRepositoryInterface $contract
@@ -73,7 +71,7 @@ class ContractService
      * @param Filesystem                  $filesystem
      * @param CountryService              $countryService
      * @param Queue                       $queue
-     * @param Logger                      $logger
+     * @param Log                         $logger
      */
     public function __construct(
         ContractRepositoryInterface $contract,
@@ -129,7 +127,6 @@ class ContractService
         return false;
     }
 
-
     /**
      * Upload Contract and save in database
      *
@@ -170,12 +167,19 @@ class ContractService
         return false;
     }
 
-
+    /**
+     * Process meta data
+     * @param $formData
+     * @return array
+     */
     protected function processMetadata($formData)
     {
         $formData['signature_year'] = (!empty($formData['signature_date']))? date('Y', strtotime($formData['signature_date'])): '';
         $formData['country']  = $this->countryService->getInfoByCode($formData['country']);
-       return array_only($formData, ["language","country","resource","government_entity","government_identifier","type_of_contract","signature_date","document_type" ,  "translation_from_original" ,  "translation_parent" ,  "company" ,  "license_name" ,  "license_identifier","project_title","project_identifier","Source_url","date_retrieval","category","signature_year"]);
+        $formData['resource'] = (!empty($formData['resource']))? $formData['resource']:[];
+        $formData['category'] = (!empty($formData['category']))? $formData['category']:[];
+
+        return array_only($formData, ["contract_name", "contract_identifier", "language","country","resource","government_entity","government_identifier","type_of_contract","signature_date","document_type" ,  "translation_from_original" ,  "translation_parent" ,  "company" ,  "license_name" ,  "license_identifier","project_title","project_identifier","Source_url","date_retrieval","category","signature_year"]);
     }
 
     /**
@@ -185,7 +189,6 @@ class ContractService
      */
     public function updateContract($contractID, array $formData)
     {
-
         try {
             $contract = $this->contract->findContract($contractID);
         } catch (Exception $e) {
@@ -379,5 +382,4 @@ class ContractService
 
         return false;
     }
-
 }

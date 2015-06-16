@@ -4,28 +4,7 @@
     <link href="{{asset('css/bootstrap-datepicker3.min')}}"/>
     <script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
     <script src="{{asset('js/select2.min.js')}}"></script>
-    <script type="text/javascript">
-        $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
-        $('.contract-form').validate();
-        $('.date').datepicker({
-            format: "yyyy-mm-dd"
-        });
-        translation();
-        function translation() {
-            var div = $('.translation-parent');
-            if ($('.translation:checked').val() == 1) {
-                div.removeClass('hide');
-            }
-            else {
-                div.addClass('hide');
-            }
-        }
-        $('.translation').on('change', function () {
-            translation();
-        })
-
-
-    </script>
+    <script src="{{asset('js/contract.js')}}"></script>
 @stop
 
 @if($action == 'add')
@@ -37,6 +16,24 @@
         </div>
     </div>
 @endif
+
+<div class="form-group">
+    {!! Form::label('contract_name', null, ['class'=>'col-sm-2 control-label'])!!}
+    <div class="col-sm-7">
+        {!! Form::text('contract_name',
+        isset($contract->metadata->contract_name)?$contract->metadata->contract_name:null,
+        ["class"=>"form-control"])!!}
+    </div>
+</div>
+
+<div class="form-group">
+    {!! Form::label('contract_identifier', null, ['class'=>'col-sm-2 control-label'])!!}
+    <div class="col-sm-7">
+        {!! Form::text('contract_identifier',
+        isset($contract->metadata->contract_identifier)?$contract->metadata->contract_identifier:null,
+        ["class"=>"form-control"])!!}
+    </div>
+</div>
 
 <div class="form-group">
     {!! Form::label('language', null, ['class'=>'col-sm-2 control-label'])!!}
@@ -145,7 +142,6 @@
     </div>
 </div>
 
-
 <div class="form-group">
     {!! Form::label('jurisdiction_of_incorporation', null, ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
@@ -155,7 +151,6 @@
     </div>
 </div>
 
-
 <div class="form-group">
     {!! Form::label('registration_agency', null, ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
@@ -164,7 +159,6 @@
         ["class"=>"form-control"])!!}
     </div>
 </div>
-
 
 <div class="form-group">
     {!! Form::label('incorporation_date', null, ['class'=>'col-sm-2 control-label'])!!}
@@ -202,7 +196,6 @@
     </div>
 </div>
 
-
 <div class="form-group">
     <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> {!!
         Form::label('open_corporate_id', "Open Corporate ID", ['class'=>'col-sm-2 control-label'])!!}</a>
@@ -225,7 +218,6 @@
         ["class"=>"form-control"])!!}
     </div>
 </div>
-
 
 <div class="form-group">
     {!! Form::label('license_identifier', 'Concession / License Identifier', ['class'=>'col-sm-2 control-label'])!!}
@@ -294,4 +286,3 @@
         {!! Form::submit('Submit',['class'=>'btn btn-lg pull-right btn-primary']) !!}
     </div>
 </div>
-
