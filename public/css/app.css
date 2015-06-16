@@ -6266,14 +6266,17 @@ input.error {border-color:#d44950}
 
 .annotation-list li {
   margin-bottom: 20px;
+  overflow: hidden;
 }
 .annotation-list li span {
-  font-size: 15px;
+  font-size: 13px;
   margin-bottom: 6px;
   display: block;
 }
 .annotation-list li p {
   color: #8b8b8b;
+  float: left;
+  margin-right: 6px;
 }
 .annotation-list li a {
   font-size: 12px;

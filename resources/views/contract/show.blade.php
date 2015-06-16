@@ -302,11 +302,10 @@
                     <ul>
                         @foreach($annotations as $annotation)
                             <li>
-                                <span><a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate&page={{$annotation->document_page_no}}"> {{$annotation->annotation->text}}</a></span>
-
-                                <p>{{$annotation->annotation->quote}}</p>
+                                <span><a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate&page={{$annotation->document_page_no}}">{{$annotation->annotation->quote}} </a>[Page {{$annotation->document_page_no}}]</span>
+                                <p>{{$annotation->annotation->text}}</p>
                                 @foreach($annotation->annotation->tags as $tag)
-                                    <a href="#">{{$tag}}</a>
+                                    <div>{{$tag}}</div>
                                 @endforeach
                             </li>
                         @endforeach
