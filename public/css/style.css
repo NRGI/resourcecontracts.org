@@ -114,3 +114,18 @@ table td:not(:first-child) {
 .ui-widget-content {
     padding-top: 40px!important;
 }
+
+.ui-menu .ui-menu-item {
+    font-size: 13px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 6px!important;
+}
+
+.ui-state-focus, .ui-widget-content .ui-state-focus {
+    background-color: #bbb!important;
+    color: #fff!important;
+    border: 0!important;
+    border-bottom: 1px solid #ddd!important;
+    font-weight: normal!important;
+    margin: 0!important;
+}
