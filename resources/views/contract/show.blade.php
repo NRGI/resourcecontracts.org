@@ -1,44 +1,5 @@
 @extends('layout.app')
 
-
-@section('css')
-    <style>
-        ul {
-            list-style: none
-        }
-
-        ul li {
-            padding: 5px 0px
-        }
-
-        .types label {
-            display: block;
-            cursor: pointer;
-            text-align: left;
-            padding: 15px;
-            font-size: 16px;
-            width: 50%;
-        }
-
-        .label-red {
-            background: #d9534f;
-            font-size: 13px
-        }
-
-        .label-yellow {
-            background: #f0ad4e;
-            font-size: 13px
-        }
-
-        .label-green {
-            background: #5cb85c;
-            font-size: 13px
-        }
-
-    </style>
-@stop
-
-
 @section('script')
     <script>
         $(function () {
@@ -148,10 +109,10 @@
 
             </div>
         @else
-            <p style="padding: 20px 40px;">Status : {{$status==0 ? 'Pipeline' : 'Processing'}}</p>
+            <div class="status">Status : {{$status==0 ? 'Pipeline' : 'Processing'}}</div>
         @endif
 
-        <ul>
+        <ul class="contract-info">
             <li><strong>Created on:</strong> {{$contract->created_datetime->format('D M, d Y h:i A')}}</li>
             <li style="margin-bottom: 30px;"><strong>Updated
                     on:</strong> {{$contract->last_updated_datetime->format('D M, d Y h:i A')}}</li>

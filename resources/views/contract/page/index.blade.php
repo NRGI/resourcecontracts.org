@@ -9,7 +9,7 @@
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading"> Editing {{$contract->metadata->project_title}}   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
+        <div class="panel-heading"> Editing <span>{{$contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
 
         <div class="view-wrapper" style="background: #F6F6F6">
             <div id="pagelist"></div>
