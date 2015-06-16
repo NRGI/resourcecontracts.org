@@ -71,3 +71,7 @@ phpunit or ./bin/vendor/phpunit
 ## Deployment
 
 We use Elastic Beanstalk CLI. 
+
+## Support
+
+For any queries and support, you may either [create a github issue](https://github.com/NRGI/resourcecontracts.org/issues/new) or send us an email at resourcecontracts@yipl.com.np
