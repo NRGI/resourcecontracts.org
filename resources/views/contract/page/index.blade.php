@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{ asset('js/lib/quill/quill.snow.css') }}"/>
     <link rel="stylesheet" href="{{ asset('js/lib/annotator/annotator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+
 @stop
 
 @section('content')
@@ -189,10 +190,35 @@
                     'contract': this.contract.id,
                     'document_page_no': this.contract.currentPage
                 }
-            }); 
+            });
+            function split( val ) {
+                return val.split( / \s*/ );
+            }
+            function extractLast( term ) {
+                return split( term ).pop();
+            }
+            var availableTags = this.availableTags;
             this.content.data('annotator').plugins.Tags.input.autocomplete({
-                source: this.availableTags,
-                multiselect: true
+                source: function( request, response) {
+                    // delegate back to autocomplete, but extract the last term
+                    response( $.ui.autocomplete.filter(
+                            availableTags, extractLast( request.term ) ) );
+                },
+                focus: function() {
+                    // prevent value inserted on focus
+                    return false;
+                },
+                select: function( event, ui ) {
+                    var terms = split( this.value );
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push( ui.item.value );
+                    // add placeholder to get the comma-and-space at the end
+                    terms.push( "" );
+                    this.value = terms.join( " " );
+                    return false;
+                }
             });
         },
     };
