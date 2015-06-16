@@ -1,10 +1,10 @@
 <?php namespace App\Nrgi\Services\Contract\Page;
 
 use App\Nrgi\Services\Contract\ContractService;
-use Illuminate\Filesystem\Filesystem;
-use Symfony\Component\Process\Process;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
+use Illuminate\Filesystem\Filesystem;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Process\Process;
 
 /**
  * Use for processing pages
@@ -41,17 +41,18 @@ class ProcessService
      * @param Storage         $storage
      * @param LoggerInterface $logger
      */
-    public function __construct(Filesystem $fileSystem,
-                                ContractService $contract,
-                                PageService $page,
-                                Storage $storage,
-                                LoggerInterface $logger
+    public function __construct(
+        Filesystem $fileSystem,
+        ContractService $contract,
+        PageService $page,
+        Storage $storage,
+        LoggerInterface $logger
     ) {
         $this->fileSystem = $fileSystem;
-        $this->contract = $contract;
-        $this->page = $page;
-        $this->storage = $storage;
-        $this->logger = $logger;
+        $this->contract   = $contract;
+        $this->page       = $page;
+        $this->storage    = $storage;
+        $this->logger     = $logger;
     }
 
     /**
@@ -69,11 +70,13 @@ class ProcessService
                 $pages = $this->page->buildPages($writeFolderPath);
                 $this->page->savePages($contractId, $pages);
                 $this->updateContractPdfStructure($contract, $writeFolderPath);
-                $this->logger->info("processing contract completed.",['contractId' => $contractId]);
+                $this->logger->info("processing contract completed.", ['contractId' => $contractId]);
+
                 return true;
             }
         } catch (\Exception $e) {
-            $this->logger->error("error processing contract.{$e->getMessage()}",['contractId'=>$contractId]);
+            $this->logger->error("error processing contract.{$e->getMessage()}", ['contractId' => $contractId]);
+
             return false;
         }
 
@@ -88,8 +91,8 @@ class ProcessService
      */
     public function updateContractPdfStructure($contract, $writeFolderPath)
     {
-        $content = $this->fileSystem->get(sprintf('%s/stats.json', $writeFolderPath));
-        $data = json_decode($content);
+        $content                 = $this->fileSystem->get(sprintf('%s/stats.json', $writeFolderPath));
+        $data                    = json_decode($content);
         $contract->pdf_structure = ($data->structured ? "structured" : "scanned");
 
         return $contract->save();
@@ -110,11 +113,14 @@ class ProcessService
 
             return true;
         } catch (\Exception $e) {
-            $this->logger->error('error'.$e->getMessage(),
-                                 ['write_folder_path'=>$writeFolderPath,
-                                  'read_file_path'=>$readFilePath
-                                 ]);
-            
+            $this->logger->error(
+                sprintf('error.%s', $e->getMessage()),
+                [
+                    'write_folder_path' => $writeFolderPath,
+                    'read_file_path'    => $readFilePath
+                ]
+            );
+
             return false;
         }
     }
@@ -127,14 +133,14 @@ class ProcessService
     public function processContractDocument($writeFolderPath, $readFilePath)
     {
         $commandPath = config('nrgi.pdf_process_path');
-        $command = sprintf('python %s/run.py -i %s -o %s', $commandPath, $readFilePath, $writeFolderPath);
-        $this->logger->info("processing command",['command'=>$command]);
+        $command     = sprintf('python %s/run.py -i %s -o %s', $commandPath, $readFilePath, $writeFolderPath);
+        $this->logger->info("processing command", ['command' => $command]);
         $process = new Process($command);
         $process->run();
-        //executes after the command finishes
+
         if (!$process->isSuccessful()) {
             //todo remove folder
-            $this->logger->error("error while executing command.$process->getErrorOutput()",['command'=>$command]);
+            $this->logger->error("error while executing command.{$process->getErrorOutput()}", ['command' => $command]);
             throw new \RuntimeException($process->getErrorOutput());
         }
 
@@ -147,11 +153,7 @@ class ProcessService
      */
     public function checkIfProcessed($contractId)
     {
-        $publicPath = public_path();
-        $writeFolderPath = sprintf('%s/%s', $publicPath, 'data');
-        $path = $writeFolderPath.'/'.$contractId;
-
-        return file_exists($path);
+        return file_exists($this->getContractDirectory($contractId));
     }
 
     /**
@@ -161,9 +163,9 @@ class ProcessService
      */
     public function addDirectory($directory, $path)
     {
-        if(!$this->fileSystem->makeDirectory($path.'/'.$directory, 0777, true)) {
-            $this->loger->error("error while creating director.".$path.'/'.$directory);
-            throw new \Exception('could not make directory.'.$path.'/'.$directory);
+        if (!$this->fileSystem->makeDirectory($path . '/' . $directory, 0777, true)) {
+            $this->logger->error(sprintf("error while creating director.%s/%s", $path, $directory));
+            throw new \Exception(sprintf('could not make directory.%s/%s') , $path, $directory);
         }
     }
 
@@ -174,17 +176,15 @@ class ProcessService
      */
     public function setup($contract)
     {
-        $publicPath = public_path();
         $pdfFile = $this->storage->disk('s3')->get($contract->file);
         $this->storage->disk('local')->put($contract->file, $pdfFile);
-        $writeFolderPath = sprintf('%s/%s', $publicPath, 'data');
-        if ( ! $this->fileSystem->isDirectory($writeFolderPath.'/'.$contract->id))
-        {
-            $this->addDirectory($contract->id, $writeFolderPath);
+
+        if (!$this->fileSystem->isDirectory($this->getContractDirectory($contract->id))) {
+            $this->addDirectory($contract->id, $this->getWriteDirectory());
         }
 
-        $writeFolderPath = $writeFolderPath.'/'.$contract->id;
-        $readFilePath = storage_path().'/app/'.$contract->file;
+        $writeFolderPath = $this->getContractDirectory($contract->id);
+        $readFilePath    = sprintf('%s/app/%s', storage_path(), $contract->file);
 
         return array($writeFolderPath, $readFilePath);
     }
@@ -196,13 +196,35 @@ class ProcessService
      */
     public function processStatus($directory, $status)
     {
-        $fileContent = $status.PHP_EOL;
-        $filePath = $directory.'/status.txt';
-        $this->logger->info("writing to {$filePath}", ['status'=>$status]);
-        if(!$this->fileSystem->put($filePath, $fileContent)) {
+        $fileContent = $status . PHP_EOL;
+        $filePath    = sprintf('%s/status.txt', $directory);
+        $this->logger->info("writing to {$filePath}", ['status' => $status]);
+        if (!$this->fileSystem->put($filePath, $fileContent)) {
             $this->logger->error("could not create status file in directory {$directory}");
             throw new \Exception("could not create status file.");
         }
 
+    }
+
+    /**
+     * @param $contractId
+     * @return string
+     */
+    public function getContractDirectory($contractId)
+    {
+
+        return sprintf('%s/%s', $this->getWriteDirectory(), $contractId);
+    }
+
+    /**
+     * provides write folder path
+     *
+     * @return string
+     */
+    public function getWriteDirectory()
+    {
+        $publicPath = public_path();
+
+        return sprintf('%s/%s', $publicPath, 'data');
     }
 }
