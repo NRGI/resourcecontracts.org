@@ -1,14 +1,14 @@
 # NRGI
 
-
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/NRGI/resourcecontracts.org/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/NRGI/resourcecontracts.org/?branch=master)
 
 ## Install
 
 NRGI can be cloned from github repository and installed. Following the procedure given below:
 
-* git clone GitHub url
-* cd nrgi
-* add `127.0.0.1 nrgi.dev` to your /etc/hosts file
+* git clone https://github.com/NRGI/resourcecontracts.org
+* cd resourcecontracts.org
+* add `127.0.0.1 resourcecontracts.dev` to your `/etc/hosts` file
 * change your apache host file
 * restart apache server
 
@@ -16,13 +16,13 @@ NRGI can be cloned from github repository and installed. Following the procedure
 
 The app can be run with the command below:
 
-* install the application dependencies using command: ` composer install `
+* install the application dependencies using command: `composer install`
 * copy .env.example to .env and update your the database configurations
-* give read/write permission to the storage folder using `chmod -R 777 storage`
-* run migration using ` php artisan migrate `
-* seed dummy data using ` php artisan db:seed `
-* make a directory uploads inside public and give read/write permission to it
-* access `http://nrgi.dev`
+* give write permission to the storage folder using `chmod -R 777 storage`
+* run migration using `php artisan migrate`
+* seed dummy data using `php artisan db:seed`
+* make a directory `uploads` inside `public` and give write permission to it
+* access `http://resourcecontracts.dev`
 
 ## Framework
 
@@ -63,7 +63,6 @@ We follow PSR-2
 ## Tests
 
 For this project we use `php` unit tests using `PHPUnit` framework integrated with Shippable CI.
-
 
 ```
 phpunit or ./bin/vendor/phpunit
