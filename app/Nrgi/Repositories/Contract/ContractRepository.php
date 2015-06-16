@@ -3,7 +3,6 @@
 use App\Nrgi\Entities\Contract\Contract;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Class ContractRepository

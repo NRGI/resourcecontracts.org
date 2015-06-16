@@ -48,7 +48,7 @@ return [
     ],
     'document_type' => [
         'Contract'            => 'Contract',
-        'Modal Contract'      => 'Modal Contract',
+        'Model Contract'      => 'Model Contract',
         'Translated Contract' => 'Translated Contract'
     ],
     'category'      => [

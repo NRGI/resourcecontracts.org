@@ -84,7 +84,8 @@
 
         @if($status === \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE)
             <div style="padding: 40px;">
-                <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=edit" class="btn btn-default">View Pages</a>
+                <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=edit" class="btn btn-default">View
+                    Pages</a>
                 <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate"
                    class="btn btn-default">Annotate</a>
                 <br>
@@ -154,6 +155,19 @@
             <li><strong>Created on:</strong> {{$contract->created_datetime->format('D M, d Y h:i A')}}</li>
             <li style="margin-bottom: 30px;"><strong>Updated
                     on:</strong> {{$contract->last_updated_datetime->format('D M, d Y h:i A')}}</li>
+
+            @if(isset($contract->metadata->contract_name) && '' != $contract->metadata->contract_name)
+                <li>
+                    <strong>Contract Name:</strong> {{$contract->metadata->contract_name}}
+                </li>
+            @endif
+
+            @if(isset($contract->metadata->contract_identifier) && '' != $contract->metadata->contract_identifier)
+                <li>
+                    <strong>Contract Identifier:</strong> {{$contract->metadata->contract_identifier}}
+                </li>
+            @endif
+
 
             @if(isset($contract->metadata->language) && '' != $contract->metadata->language)
                 <?php $lang = config('metadata.language');?>
@@ -272,7 +286,7 @@
             @if(isset($contract->metadata->category) && is_array($contract->metadata->category) && count($contract->metadata->category)>0)
                 <li><strong>Category:</strong>
                     <?php $cat = [];
-                    foreach($contract->metadata->category as $key):
+                    foreach ($contract->metadata->category as $key):
                         $cat[] = $catConfig[$key];
                     endforeach;
                     ?>
