@@ -31,6 +31,10 @@ class RepositoriesServiceProvider extends ServiceProvider
             'App\Nrgi\Repositories\ActivityLog\ActivityLogRepositoryInterface',
             'App\Nrgi\Repositories\ActivityLog\ActivityLogRepository'
         );
+        $this->app->bind(
+            'App\Nrgi\Repositories\Contract\Comment\CommentRepositoryInterface',
+            'App\Nrgi\Repositories\Contract\Comment\CommentRepository'
+        );
     }
 
 }

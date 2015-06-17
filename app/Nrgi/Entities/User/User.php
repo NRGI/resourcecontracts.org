@@ -33,12 +33,27 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $hidden = ['password', 'remember_token'];
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function contracts()
     {
         return $this->hasMany('App\Nrgi\Entities\Contract\Contract');
+    }
+
+    /**
+     * Get User Role Name
+     * @return string
+     */
+    public function RoleName()
+    {
+        $roles = [];
+        foreach ($this->roles->toArray() as $role) {
+            $roles[] = $role['name'];
+        }
+
+        $roles = array_map('ucfirst', $roles);
+
+        return join(', ', $roles);
     }
 }

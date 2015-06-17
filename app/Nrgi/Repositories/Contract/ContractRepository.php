@@ -91,25 +91,36 @@ class ContractRepository implements ContractRepositoryInterface
     }
 
     /**
-     * Get Contract or throw exception
+     * Get Contract
      *
      * @param $contractId
      * @return Contract
      */
     public function findContract($contractId)
     {
-        return $this->contract->with('created_user', 'updated_user', 'annotations')->findOrFail($contractId);
+        return $this->contract->with('created_user', 'updated_user')->findOrFail($contractId);
     }
 
     /**
-     * Get Contract with pages or throw exception
+     * Get Contract with pages
      *
      * @param $contractId
      * @return Contract
      */
     public function findContractWithPages($contractId)
     {
-        return $this->contract->with('pages')->findOrFail($contractId);
+        return $this->contract->with('created_user', 'updated_user', 'pages')->findOrFail($contractId);
+    }
+
+    /**
+     * Get Contract with Annotations
+     *
+     * @param $contractId
+     * @return Contract
+     */
+    public function findContractWithAnnotations($contractId)
+    {
+        return $this->contract->with('created_user', 'updated_user', 'annotations')->findOrFail($contractId);
     }
 
     /**
