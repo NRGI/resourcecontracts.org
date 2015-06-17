@@ -77,4 +77,6 @@ return [
     'created_by'                    => "Created By",
     'last_modified_by'              => "Last modified by",
     'status'                        => "Status",
+    'license_name_only'             => "License Name",
+    'license_identifier_only'       => "License Identifier"
 ];

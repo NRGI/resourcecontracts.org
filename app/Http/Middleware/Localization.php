@@ -38,7 +38,7 @@ class Localization
     function getLanguage($lang = null)
     {
         if (is_null($lang)) {
-            $lang = $_COOKIE[$this->key];
+            $lang = isset($_COOKIE[$this->key])?$_COOKIE[$this->key]:'en';
         }
 
         return $lang;
