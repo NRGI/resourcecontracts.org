@@ -13,7 +13,7 @@
         <div class="panel-body">
             {!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
             {!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' => 'form-control']) !!}
-            {!! Form::select('country', ['all'=>trans('contract.country')] + config('country') , Input::get('country') , ['class' =>
+            {!! Form::select('country', ['all'=>trans('contract.country')] + trans('codelist/country') , Input::get('country') , ['class' =>
             'form-control']) !!}
             {!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}

@@ -1,4 +1,10 @@
 <?php
+/*
+|--------------------------------------------------------------------------
+| Contract Keyword
+|--------------------------------------------------------------------------
+|
+*/
 
 return [
     'add'                           => "Add Contract",
@@ -54,16 +60,9 @@ return [
     'close'                         => "Contract",
     'save_changes'                  => "Save change",
     'created_on'                    => "Created on",
-    'yes'                           => "Yes",
-    'no'                            => "No",
     'parent_company'                => "Parent company",
     'license_type'                  => "License type",
-    'date_granted'                  => "Date granted",
-    'year_granted'                  => "Year Granted",
-    'date_of_ratification'          => "Date of ratification",
-    'year_of_ratification'          => "Year of ratifciation",
     'license_source_url'            => "License Source url",
-    'location'                      => "Location",
     'annotations'                   => "Annotations",
     'edit'                          => "Edit",
     'resource_contracts'            => "Resource Contracts",
@@ -78,5 +77,8 @@ return [
     'last_modified_by'              => "Last modified by",
     'status'                        => "Status",
     'license_name_only'             => "License Name",
-    'license_identifier_only'       => "License Identifier"
+    'license_identifier_only'       => "License Identifier",
+    'source'                        => "Source",
+    'pipeline'                      => "Pipeline",
+    'processing'                    => "Processing"
 ];

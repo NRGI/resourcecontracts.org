@@ -167,9 +167,9 @@
             @if(isset($contract->metadata->translation_from_original))
                 <li><strong>@lang('contract.translation_from_original'):</strong>
                     @if($contract->metadata->translation_from_original ==1)
-                        @lang('contract.yes') [{{$contract->metadata->translation_parent}}]
+                        @lang('global.yes') [{{$contract->metadata->translation_parent}}]
                     @else
-                        @lang('contract.no')
+                        @lang('global.no')
                     @endif
                 </li>
             @endif
@@ -197,10 +197,10 @@
 
             <li><h3>@lang('contract.license_and_project')</h3></li>
             @if(isset($contract->metadata->license_name))
-                <li><strong>@lang('contract.license_name_only'):</strong> {{$contract->metadata->license_name}}</li>
+                <li><strong>@lang('contract.license_name'):</strong> {{$contract->metadata->license_name}}</li>
             @endif
             @if(isset($contract->metadata->license_identifier))
-                <li><strong>@lang('contract.license_identifier_only'):</strong> {{$contract->metadata->license_identifier}}</li>
+                <li><strong>@lang('contract.license_identifier'):</strong> {{$contract->metadata->license_identifier}}</li>
             @endif
             @if(isset($contract->metadata->license_source_url))
                 <li><strong>@lang('contract.license_source_url'):</strong> {{$contract->metadata->license_source_url}}</li>

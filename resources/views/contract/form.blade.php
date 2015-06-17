@@ -120,13 +120,13 @@
             {!! Form::radio('translation_from_original','1',
             (isset($contract->metadata->translation_from_original) && (1 ==
             $contract->metadata->translation_from_original))? true : null, ['class'=>'translation'])!!}
-            Yes
+            @lang('global.yes')
         </label>
         <label class="checkbox-inline">
             {!! Form::radio('translation_from_original', '0',
             (isset($contract->metadata->translation_from_original) && (0 ==
             $contract->metadata->translation_from_original))? true : null, ['class'=>'translation'])!!}
-            No
+            @lang('global.no')
         </label>
     </div>
 </div>
@@ -255,7 +255,7 @@
     </div>
 </div>
 
-<h3>Source</h3>
+<h3>@lang('contract.source')</h3>
 <hr/>
 
 <div class="form-group">
