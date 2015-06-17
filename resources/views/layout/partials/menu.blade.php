@@ -11,7 +11,6 @@
             <li>
                 <a href="{{route('contract.index')}}">@lang('contract.all_contract')</a>
             </li>
-
         </ul>
     </div>
 @endif
