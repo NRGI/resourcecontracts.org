@@ -7,14 +7,15 @@
 @stop
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading">All Contracts <a href="{{route('contract.create')}}"
-                                                    class="pull-right btn btn-primary">Add Contract</a></div>
+
+        <div class="panel-heading">@lang('contract.all_contract') <a href="{{route('contract.create')}}"
+                                                    class="pull-right btn btn-primary">@lang('contract.add')</a></div>
         <div class="panel-body">
             {!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
-            {!! Form::select('year', ['all'=>'Year'] + $years , Input::get('year') , ['class' => 'form-control']) !!}
-            {!! Form::select('country', ['all'=>'Country'] + $countries , Input::get('country') , ['class' =>
+            {!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' => 'form-control']) !!}
+            {!! Form::select('country', ['all'=>trans('contract.country')] + trans('codelist/country') , Input::get('country') , ['class' =>
             'form-control']) !!}
-            {!! Form::submit('Search', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
             <br/>
             <br/>
@@ -31,7 +32,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="2">Contract not found.</td>
+                        <td colspan="2">@lang('contract.contract_not_found')</td>
                     </tr>
                 @endforelse
 
