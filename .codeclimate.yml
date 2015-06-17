@@ -1,0 +1,8 @@
+languages:
+  JavaScript: true
+  PHP: true
+exclude_paths:
+- "public/js/lib/*"
+- "public/js/jquery*"
+- "public/js/bootstrap*"
+- "public/js/select2.min.js"
