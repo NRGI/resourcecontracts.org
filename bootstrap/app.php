@@ -40,6 +40,10 @@ $app->singleton(
 	'Illuminate\Contracts\Debug\ExceptionHandler',
 	'App\Exceptions\Handler'
 );
+$app->singleton(
+	'Illuminate\Foundation\Bootstrap\ConfigureLogging',
+	'App\Bootstrap\ConfigureLogging'
+);
 
 /*
 |--------------------------------------------------------------------------
