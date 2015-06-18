@@ -27,6 +27,11 @@ class RepositoriesServiceProvider extends ServiceProvider
             'App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface',
             'App\Nrgi\Repositories\Contract\AnnotationRepository'
         );
+
+        $this->app->bind(
+            'App\Nrgi\Repositories\Contract\Comment\CommentRepositoryInterface',
+            'App\Nrgi\Repositories\Contract\Comment\CommentRepository'
+        );
     }
 
 }

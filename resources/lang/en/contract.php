@@ -57,7 +57,7 @@ return [
     'acceptable'                    => "Acceptable",
     'needs_editing'                 => "Needs editing",
     'needs_full_transcription'      => "Needs full transcription",
-    'close'                         => "Contract",
+    'close'                         => "Close",
     'save_changes'                  => "Save change",
     'created_on'                    => "Created on",
     'parent_company'                => "Parent company",

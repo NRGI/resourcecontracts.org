@@ -3,10 +3,13 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contract\ContractRequest;
+use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\AnnotationService;
+use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\ContractFilterService;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\CountryService;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -28,21 +31,28 @@ class ContractController extends Controller
      * @var ContractFilterService
      */
     protected $contractFilter;
+    /**
+     * @var CommentService
+     */
+    protected $comment;
 
     /**
      * @param ContractService       $contract
      * @param ContractFilterService $contractFilter
      * @param CountryService        $countries
+     * @param CommentService        $comment
      */
     public function __construct(
         ContractService $contract,
         ContractFilterService $contractFilter,
-        CountryService $countries
+        CountryService $countries,
+        CommentService $comment
     ) {
         $this->middleware('auth');
         $this->contract       = $contract;
         $this->countries      = $countries;
         $this->contractFilter = $contractFilter;
+        $this->comment        = $comment;
     }
 
     /**
@@ -92,12 +102,16 @@ class ContractController extends Controller
      *
      * @return Response
      */
-    public function show($id, AnnotationService $annotation)
+    public function show($id)
     {
-        $contract    = $this->contract->find($id);
+        $contract    = $this->contract->findWithAnnotations($id);
         $status      = $this->contract->getStatus($id);
         $annotations = $contract->annotations;
         $file        = $this->contract->getS3FileURL($contract->file);
+
+        if ($contract->status == Contract::STATUS_REJECTED) {
+            $contract->comment = $this->comment->getLatest($contract->id);
+        }
 
         return view('contract.show', compact('contract', 'status', 'annotations', 'file'));
     }
@@ -146,6 +160,13 @@ class ContractController extends Controller
         return redirect()->route('contract.index')->withSuccess('Contract could not be deleted.');
     }
 
+    /**
+     * Save output
+     *
+     * @param         $id
+     * @param Request $request
+     * @return Response
+     */
     public function saveOutputType($id, Request $request)
     {
         $type     = $request->input('text_type');
@@ -159,4 +180,58 @@ class ContractController extends Controller
 
         return response()->json(['result' => 'error', 'message' => 'Could not be updated.']);
     }
+
+    /**
+     * Update contract status
+     * @param         $contract_id
+     * @param Request $request
+     * @param Guard   $auth
+     * @return Response
+     */
+    public function updateStatus($contract_id, Request $request, Guard $auth)
+    {
+        $status = trim(strtolower($request->input('state')));
+
+        if ($auth->user()->hasRole('superadmin') || $auth->user()->can(sprintf('%s-contract', $status))) {
+
+            if ($this->contract->updateStatus($contract_id, $status)) {
+                return back()->withSuccess('Contract status successfully updated.');
+            }
+
+            return back()->withError('Invalid status');
+
+        }
+
+        return back()->withError('Permission denied.');
+    }
+
+    /**
+     * Save Contract Comment
+     * @param         $contract_id
+     * @param Request $request
+     * @param Guard   $auth
+     * @return mixed
+     */
+    public function ContractComment($contract_id, Request $request, Guard $auth)
+    {
+        if ($auth->user()->hasRole('superadmin') || $auth->user()->can(
+                sprintf('%s-contract', Contract::STATUS_REJECTED)
+            )
+        ) {
+
+            if ($this->contract->updateStatusWithComment(
+                $contract_id,
+                Contract::STATUS_REJECTED,
+                $request->input('message')
+            )
+            ) {
+                return back()->withSuccess('Contract status successfully updated.');
+            }
+
+            return back()->withError('Invalid status');
+        }
+
+        return back()->withError('Permission denied.');
+    }
+
 }

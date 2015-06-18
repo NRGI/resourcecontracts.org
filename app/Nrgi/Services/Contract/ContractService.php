@@ -2,18 +2,22 @@
 
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
+use App\Nrgi\Services\Contract\Comment\CommentService;
 use Exception;
 use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Logging\Log;
+use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Queue\Queue;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+
 /**
- * Class Contract
+ * Class ContractService
+ * @package App\Nrgi\Services\Contract
  */
 class ContractService
 {
@@ -66,11 +70,14 @@ class ContractService
 
     /**
      * @param ContractRepositoryInterface $contract
+     *
      * @param Guard                       $auth
      * @param Storage                     $storage
      * @param Filesystem                  $filesystem
      * @param CountryService              $countryService
      * @param Queue                       $queue
+     * @param CommentService              $comment
+     * @param DatabaseManager             $database
      * @param Log                         $logger
      */
     public function __construct(
@@ -80,6 +87,8 @@ class ContractService
         Filesystem $filesystem,
         CountryService $countryService,
         Queue $queue,
+        CommentService $comment,
+        DatabaseManager $database,
         Log $logger
     ) {
         $this->contract       = $contract;
@@ -88,11 +97,14 @@ class ContractService
         $this->filesystem     = $filesystem;
         $this->countryService = $countryService;
         $this->queue          = $queue;
+        $this->database       = $database;
+        $this->comment        = $comment;
         $this->logger         = $logger;
     }
 
     /**
      * Get Contract By ID
+     *
      * @param $id
      * @return Contract
      */
@@ -111,6 +123,7 @@ class ContractService
 
     /**
      * Get Contract With Pages by ID
+     *
      * @param $id
      * @return mixed
      */
@@ -118,6 +131,25 @@ class ContractService
     {
         try {
             return $this->contract->findContractWithPages($id);
+        } catch (ModelNotFoundException $e) {
+            $this->logger->error('Contract not found.', ['Contract ID' => $id]);
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+
+        return false;
+    }
+
+    /**
+     * Get Contract With Annotations by ID
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function findWithAnnotations($id)
+    {
+        try {
+            return $this->contract->findContractWithAnnotations($id);
         } catch (ModelNotFoundException $e) {
             $this->logger->error('Contract not found.', ['Contract ID' => $id]);
         } catch (Exception $e) {
@@ -169,6 +201,7 @@ class ContractService
 
     /**
      * Process meta data
+     *
      * @param $formData
      * @return array
      */
@@ -214,6 +247,7 @@ class ContractService
 
     /**
      * Update Contract
+     *
      * @param array $formData
      * @return bool
      */
@@ -232,6 +266,7 @@ class ContractService
         $metadata['file_size'] = $file_size;
         $contract->metadata    = $metadata;
         $contract->updated_by  = $this->auth->user()->id;
+        $contract->status      = Contract::STATUS_DRAFT;
 
         try {
             $contract->save();
@@ -289,7 +324,7 @@ class ContractService
      * @param $id
      * @return bool
      */
-    function deleteContract($id)
+    public function deleteContract($id)
     {
         try {
             $contract = $this->contract->findContract($id);
@@ -399,6 +434,7 @@ class ContractService
 
     /**
      * Save Pdf Output Type
+     *
      * @param $contractID
      * @param $textType
      * @return Contract/bool
@@ -409,6 +445,73 @@ class ContractService
         $contract->textType = $textType;
         if ($contract->save()) {
             return $contract;
+        }
+
+        return false;
+    }
+
+    /**
+     * Update Contract status
+     *
+     * @param $id
+     * @param $status
+     * @return bool
+     */
+    public function updateStatus($id, $status)
+    {
+        try {
+            $contract = $this->contract->findContract($id);
+        } catch (ModelNotFoundException $e) {
+            $this->logger->error('Contract not found', ['contract id' => $id]);
+
+            return false;
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+
+            return false;
+        }
+
+        if ($contract->isEditableStatus($status)) {
+            $old_status       = $contract->status;
+            $contract->status = $status;
+            $contract->save();
+            $this->logger->info(
+                "Contract status updated",
+                [
+                    'contract id' => $contract->id,
+                    'Old status'  => $old_status,
+                    'New Status'  => $status
+                ]
+            );
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Update status with message
+     *
+     * @param $contract_id
+     * @param $status
+     * @param $message
+     * @return bool
+     */
+    public function updateStatusWithComment($contract_id, $status, $message)
+    {
+        $this->database->beginTransaction();
+        if ($this->updateStatus($contract_id, $status)) {
+            try {
+                $this->comment->save($contract_id, $message);
+                $this->database->commit();
+                $this->logger->info('Commented successfully added', ['Contract id' => $contract_id]);
+
+                return true;
+            } catch (Exception $e) {
+                $this->database->rollback();
+                $this->logger->error($e->getMessage());
+            }
         }
 
         return false;

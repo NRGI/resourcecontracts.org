@@ -1,5 +1,7 @@
 @extends('layout.app')
 
+<?php $contract_completed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE; ?>
+
 @section('script')
     <script>
         $(function () {
@@ -21,11 +23,28 @@
                 else {
                     alert('Please select text type');
                 }
-            })
+            });
+
+
+            var suggestion_form = $('.suggestion-form');
+
+            $(suggestion_form).on('submit', function (e) {
+
+                var text = suggestion_form.find('#message').val();
+                if (text != '') {
+                    suggestion_form.find('input[type=submit]').text('loading...');
+                    suggestion_form.find('input[type=submit]').attr('disabled', 'disabled');
+
+                    return true;
+                }
+                else {
+                    e.preventDefault();
+                    alert('Suggestion message is required.');
+                }
+            });
         })
     </script>
 @stop
-
 
 @section('content')
 
@@ -34,16 +53,21 @@
         <div class="action-btn pull-right" style="padding: 20px;">
             <a href="{{route('contract.edit', $contract->id)}}" class="btn btn-default">@lang('contract.edit')</a>
             <a target="_blank" href="{{$file}}"
-               class="btn btn-default">@lang('contract.download_file') [{{getFileSize($contract->metadata->file_size)}}]</a>
-            {!!Form::open(['route'=>['contract.destroy', $contract->id], 'style'=>"display:inline",
-            'method'=>'delete'])!!}
-            {!!Form::button(trans('contract.delete'), ['type'=>'submit','class'=>'btn btn-danger confirm', 'data-confirm'=>trans('contract.confirm_delete')])!!}
-            {!!Form::close()!!}
+               class="btn btn-default">@lang('contract.download_file') [{{getFileSize($contract->metadata->file_size)}}
+                ]</a>
+            @if($current_user->hasRole('superadmin') || $current_user->can('delete-contract'))
+                {!!Form::open(['route'=>['contract.destroy', $contract->id], 'style'=>"display:inline",
+                'method'=>'delete'])!!}
+                {!!Form::button(trans('contract.delete'), ['type'=>'submit','class'=>'btn btn-danger confirm',
+                'data-confirm'=>trans('contract.confirm_delete')])!!}
+                {!!Form::close()!!}
+            @endif
         </div>
 
-        @if($status === \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE)
+        @if($status === $contract_completed)
             <div style="padding: 40px;">
-                <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=edit" class="btn btn-default">@lang('contract.view_pages')</a>
+                <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=edit"
+                   class="btn btn-default">@lang('contract.view_pages')</a>
                 <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate"
                    class="btn btn-default">@lang('contract.annotate_contract')</a>
                 <br>
@@ -58,14 +82,14 @@
                        data-toggle="modal"
                        data-target="#text-type-modal">
                         @if($contract->textType =='')
-                           @lang('contract.choose')
+                            @lang('contract.choose')
 
                         @else
                             <?php $label = $contract->getTextType();?>
                             <span class="label label-{{$label->color}}"> {{$label->name}}</span>
                         @endif
-
-                    </a></p>
+                    </a>
+                </p>
 
                 <div class="modal fade" id="text-type-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
@@ -85,13 +109,15 @@
                                             @lang('contract.acceptable')</label>
                                     <li><label class="label label-warning">{!!Form::radio('text_type', 2,
                                             ($contract->textType == 2)) !!} @lang('contract.needs_editing')
-                                            </label>
+                                        </label>
                                     <li><label class="label label-danger">{!!Form::radio('text_type', 3,
-                                            ($contract->textType == 3)) !!} @lang('contract.needs_full_transcription')</label>
+                                            ($contract->textType == 3))
+                                            !!} @lang('contract.needs_full_transcription')</label>
                                 </ul>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">@lang('contract.close')</button>
+                                <button type="button" class="btn btn-default"
+                                        data-dismiss="modal">@lang('contract.close')</button>
                                 <button type="submit" class="btn btn-primary">@lang('contract.save_changes')s</button>
                             </div>
                             {!! Form::close() !!}
@@ -102,6 +128,9 @@
         @else
             <div class="status">@lang('contract.status') : {{$status==0 ? 'Pipeline' : 'Processing'}}</div>
         @endif
+
+
+        @include('contract.state')
 
         <ul class="contract-info">
             <li><strong>@lang('contract.created_by'):</strong>
@@ -146,11 +175,13 @@
             @endif
 
             @if(isset($contract->metadata->government_entity))
-                <li><strong>@lang('contract.government_entity'):</strong> {{$contract->metadata->government_entity}}</li>
+                <li><strong>@lang('contract.government_entity'):</strong> {{$contract->metadata->government_entity}}
+                </li>
             @endif
 
             @if(isset($contract->metadata->government_identifier))
-                <li><strong>@lang('contract.government_identifier'):</strong> {{$contract->metadata->government_identifier}}</li>
+                <li><strong>@lang('contract.government_identifier')
+                        :</strong> {{$contract->metadata->government_identifier}}</li>
             @endif
 
             @if(isset($contract->metadata->type_of_contract))
@@ -180,15 +211,17 @@
                     <li><h3>@lang('contract.company')</h3>
                         @foreach($companies as $k => $v)
                             <p><strong>@lang('contract.company_name'):</strong>  {{$v->name}}</p>
-                            <p><strong>@lang('contract.jurisdiction_of_incorporation') :</strong> {{$v->jurisdiction_of_incorporation}}
+                            <p><strong>@lang('contract.jurisdiction_of_incorporation')
+                                    :</strong> {{$v->jurisdiction_of_incorporation}}
                             </p>
                             <p><strong>@lang('contract.registry_agency'):</strong> {{$v->registration_agency}}</p>
                             <p><strong>@lang('contract.incorporation_date') :</strong> {{$v->company_founding_date}}</p>
                             <p><strong>@lang('contract.company_address') :</strong> {{$v->company_address}}</p>
                             <p><strong>@lang('contract.identifier_at_company'):</strong> {{$v->comp_id}}</p>
                             <p><strong>@lang('contract.parent_company'):</strong> {{$v->parent_company}}</p>
-                            <p><strong>@lang('contract.open_corporate_id'):</strong> @if(!empty($v->open_corporate_id)) <a target="_blank"
-                                                                                                         href="https://opencorporates.com/companies/{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
+                            <p><strong>@lang('contract.open_corporate_id'):</strong> @if(!empty($v->open_corporate_id))
+                                    <a target="_blank"
+                                       href="https://opencorporates.com/companies/{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
                             </p>
                         @endforeach
                     </li>
@@ -200,10 +233,12 @@
                 <li><strong>@lang('contract.license_name_only'):</strong> {{$contract->metadata->license_name}}</li>
             @endif
             @if(isset($contract->metadata->license_identifier))
-                <li><strong>@lang('contract.license_identifier_only'):</strong> {{$contract->metadata->license_identifier}}</li>
+                <li><strong>@lang('contract.license_identifier_only')
+                        :</strong> {{$contract->metadata->license_identifier}}</li>
             @endif
             @if(isset($contract->metadata->license_source_url))
-                <li><strong>@lang('contract.license_source_url'):</strong> {{$contract->metadata->license_source_url}}</li>
+                <li><strong>@lang('contract.license_source_url'):</strong> {{$contract->metadata->license_source_url}}
+                </li>
             @endif
             @if(isset($contract->metadata->license_type))
                 <li><strong>@lang('contract.license_type'):</strong> {{$contract->metadata->license_type}}</li>
@@ -212,7 +247,8 @@
                 <li><strong>@lang('contract.project_title'):</strong> {{$contract->metadata->project_title}}</li>
             @endif
             @if(isset($contract->metadata->project_identifier))
-                <li><strong>@lang('contract.project_identifier'):</strong> {{$contract->metadata->project_identifier}}</li>
+                <li><strong>@lang('contract.project_identifier'):</strong> {{$contract->metadata->project_identifier}}
+                </li>
             @endif
             @if(isset($contract->metadata->date_granted))
                 <li><strong>@lang('contract.date_granted'):</strong> {{$contract->metadata->date_granted}}</li>
@@ -221,10 +257,12 @@
                 <li><strong>@lang('contract.year_granted'):</strong> {{$contract->metadata->year_granted}}</li>
             @endif
             @if(isset($contract->metadata->ratification_date))
-                <li><strong>@lang('contract.date_of_ratification'):</strong> {{$contract->metadata->ratification_date}}</li>
+                <li><strong>@lang('contract.date_of_ratification'):</strong> {{$contract->metadata->ratification_date}}
+                </li>
             @endif
             @if(isset($contract->metadata->ratification_year))
-                <li><strong>@lang('contract.year_of_ratification'):</strong> {{$contract->metadata->ratification_year}}</li>
+                <li><strong>@lang('contract.year_of_ratification'):</strong> {{$contract->metadata->ratification_year}}
+                </li>
             @endif
 
             <li><h3>@lang('contract.source')</h3></li>
@@ -251,7 +289,7 @@
                 </li>
             @endif
         </ul>
-        @if($status === \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE)
+        @if($status === $contract_completed)
             <div class="annotation-wrap">
                 <h3>@lang('contract.annotations')</h3>
 
@@ -259,14 +297,18 @@
                     <ul>
                         @forelse($annotations as $annotation)
                             <li>
-                                <span><a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate&page={{$annotation->document_page_no}}">{{$annotation->annotation->quote}} </a>[Page {{$annotation->document_page_no}}]</span>
+                                <span><a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate&page={{$annotation->document_page_no}}">{{$annotation->annotation->quote}} </a>[Page {{$annotation->document_page_no}}
+                                    ]</span>
+
                                 <p>{{$annotation->annotation->text}}</p>
                                 @foreach($annotation->annotation->tags as $tag)
                                     <div>{{$tag}}</div>
                                 @endforeach
                             </li>
                         @empty
-                            <li>@lang('Annotation not created. Please create') <a style="font-size: 14px" href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate">here</a></li>
+                            <li>@lang('Annotation not created. Please create') <a style="font-size: 14px"
+                                                                                  href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate">here</a>
+                            </li>
                         @endforelse
 
                     </ul>

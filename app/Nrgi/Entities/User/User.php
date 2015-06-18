@@ -34,14 +34,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $hidden = ['password', 'remember_token'];
 
     /**
-     * Contract Status
-     */
-    const STATUS_DRAFT = 'draft';
-    const STATUS_COMPLETE = 'complete';
-    const STATUS_PUBLISH = 'publish';
-
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function contracts()
@@ -63,24 +55,5 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         $roles = array_map('ucfirst', $roles);
 
         return join(', ', $roles);
-    }
-
-    /**
-     * Boot the Contact model
-     * Attach event listener to add draft status when creating a contract
-     *
-     * @return void|bool
-     */
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating(
-            function ($contract) {
-                $contract->status = static::STATUS_DRAFT;
-
-                return true;
-            }
-        );
     }
 }

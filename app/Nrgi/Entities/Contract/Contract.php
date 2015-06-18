@@ -35,7 +35,15 @@ class Contract extends Model
      *
      * @var array
      */
-    protected $fillable = ['metadata', 'file', 'filehash', 'user_id', 'textType'];
+    protected $fillable = ['metadata', 'file', 'filehash', 'user_id', 'textType', 'status'];
+
+    /**
+     * Contract Status
+     */
+    const STATUS_DRAFT = 'draft';
+    const STATUS_COMPLETED = 'completed';
+    const STATUS_PUBLISHED = 'published';
+    const STATUS_REJECTED = 'rejected';
 
     /**
      * Convert json metadata to array
@@ -78,7 +86,7 @@ class Contract extends Model
      */
     public function created_user()
     {
-        return $this->belongsTo('App\Nrgi\Entities\User\User','user_id');
+        return $this->belongsTo('App\Nrgi\Entities\User\User', 'user_id');
     }
 
     /**
@@ -86,7 +94,7 @@ class Contract extends Model
      */
     public function updated_user()
     {
-        return $this->belongsTo('App\Nrgi\Entities\User\User','updated_by');
+        return $this->belongsTo('App\Nrgi\Entities\User\User', 'updated_by');
     }
 
     /**
@@ -108,4 +116,39 @@ class Contract extends Model
 
         throw new InvalidArgumentException;
     }
+
+    /**
+     * Check if status is editable
+     *
+     * @param $status
+     * @return bool
+     */
+    function isEditableStatus($status)
+    {
+        if (in_array($status, [static::STATUS_COMPLETED, static::STATUS_PUBLISHED, static::STATUS_REJECTED])) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Boot the Contact model
+     * Attach event listener to add draft status when creating a contract
+     *
+     * @return void|bool
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(
+            function ($contract) {
+                $contract->status = static::STATUS_DRAFT;
+
+                return true;
+            }
+        );
+    }
+
 }
