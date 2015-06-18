@@ -35,16 +35,22 @@ return [
             'description' => 'Delete a contract'
         ],
 
-        'complete-contract' => [
-            'name' => 'complete-contract',
-            'display_name' => 'Complete Contract',
-            'description' => 'Complete contract status'
+        'completed-metadata' => [
+            'name' => 'completed-metadata',
+            'display_name' => 'Complete metadata',
+            'description' => 'Complete contract metadata'
         ],
 
-        'publish-contract' => [
-            'name' => 'publish-contract',
-            'display_name' => 'Publish Contract',
-            'description' => 'Publish a contract'
+        'rejected-metadata' => [
+            'name' => 'rejected-metadata',
+            'display_name' => 'Reject metadata',
+            'description' => 'Reject contract metadata'
+        ],
+
+        'published-metadata' => [
+            'name' => 'published-metadata',
+            'display_name' => 'Publish metadata',
+            'description' => 'Publish a metadata'
         ],
 
         'add-annotation' => [
@@ -65,15 +71,21 @@ return [
             'description' => 'Delete a annotation'
         ],
 
-        'complete-annotation' => [
-            'name' => 'complete-annotation',
-            'display_name' => 'Complete Annotation',
-            'description' => 'Complete annotation status'
+        'completed-annotation' => [
+            'name' => 'completed-annotation',
+            'display_name' => 'Complete annotation',
+            'description' => 'Complete contract annotation'
         ],
 
-        'publish-annotation' => [
-            'name' => 'publish-annotation',
-            'display_name' => 'Publish Annotation',
+        'rejected-annotation' => [
+            'name' => 'rejected-annotation',
+            'display_name' => 'Reject annotation',
+            'description' => 'Reject contract annotation'
+        ],
+
+        'published-annotation' => [
+            'name' => 'published-annotation',
+            'display_name' => 'Publish annotation',
             'description' => 'Publish a annotation'
         ],
 
