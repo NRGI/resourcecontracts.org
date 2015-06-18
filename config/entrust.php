@@ -40,7 +40,7 @@ return [
     | Update the permission if it is in a different namespace.
     |
     */
-    'permission' => 'Zizaco\Entrust\EntrustPermission',
+    'permission' => 'App\Nrgi\Entities\User\Permission\Permission',
 
     /*
     |--------------------------------------------------------------------------

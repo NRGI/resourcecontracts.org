@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\Pages\PagesService;
 use Illuminate\Http\Request;
@@ -40,12 +41,12 @@ class PageController extends Controller
      */
     public function index(Request $request, $contractId)
     {
-        $page = $request->input('page', '1');
-        $action = $request->input('action', '');
-        $canEdit = $action=="edit"?'true':'false';
-        $canAnnotate = $action=="annotate"?'true':'false';
-        $contract = $this->contract->findWithPages($contractId);
-        $pages = $contract->pages;
+        $page        = $request->input('page', '1');
+        $action      = $request->input('action', '');
+        $canEdit     = $action == "edit" ? 'true' : 'false';
+        $canAnnotate = $action == "annotate" ? 'true' : 'false';
+        $contract    = $this->contract->findWithPages($contractId);
+        $pages       = $contract->pages;
 
         return view('contract.page.index', compact('contract', 'pages', 'page', 'canEdit', 'canAnnotate'));
     }
@@ -56,9 +57,13 @@ class PageController extends Controller
      * @param Request $request
      * @return int
      */
-    public function store($id, Request $request)
+    public function store($id, Request $request, ContractService $contract)
     {
         if ($this->pages->saveText($id, $request->input('page'), $request->input('text'))) {
+            $contract              = $contract->find($id);
+            $contract->text_status = Contract::STATUS_DRAFT;
+            $contract->save();
+
             return response()->json(['result' => 'success', 'message' => 'saved']);
         }
 

@@ -24,21 +24,28 @@ interface ContractRepositoryInterface
     public function getAll(array $filters);
 
     /**
-     * Get Contract or throw exception
+     * Get Contract
      *
      * @param $contractId
      * @return Contract
      */
     public function findContract($contractId);
 
-
     /**
-     * Get Contract or throw exception
+     * Get Contract with pages
      *
      * @param $contractId
      * @return Contract
      */
     public function findContractWithPages($contractId);
+
+    /**
+     * Get Contract with Annotations
+     *
+     * @param $contractId
+     * @return Contract
+     */
+    public function findContractWithAnnotations($contractId);
 
     /**
      * Delete contract
