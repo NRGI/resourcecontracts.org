@@ -17,18 +17,17 @@ before_script:
   - composer self-update && composer --no-interaction --prefer-dist install
 
 script:
-   - ./vendor/bin/phpunit  --log-junit shippable/testresults/junit.xml
+   - ./vendor/bin/phpunit --log-junit shippable/testresults/junit.xml
 
 after_failure:
   - python hipchat-notifier.py --project $PROJECT --room $HIPCHAT_ROOM --token $HIPCHAT_TOKEN
 
 after_success:
   - python hipchat-notifier.py --project $PROJECT --room $HIPCHAT_ROOM --token $HIPCHAT_TOKEN -s
-  #we could have automated deployment to staging here if we can fully rely on tests
 
 notifications:
    email:
        recipients:
-           - manish.singh@yipl.com.np
+           - resourcecontracts@yipl.com.np
        on_success: always
        on_failure: always
