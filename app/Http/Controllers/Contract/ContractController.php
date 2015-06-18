@@ -3,8 +3,10 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contract\ContractRequest;
+use App\Nrgi\Entities\Contract\Annotation;
 use App\Nrgi\Entities\Contract\Comment\Comment;
 use App\Nrgi\Entities\Contract\Contract;
+use App\Nrgi\Services\Contract\AnnotationService;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\ContractFilterService;
 use App\Nrgi\Services\Contract\ContractService;
@@ -35,24 +37,31 @@ class ContractController extends Controller
      * @var CommentService
      */
     protected $comment;
+    /**
+     * @var AnnotationService
+     */
+    protected $annotation;
 
     /**
      * @param ContractService       $contract
      * @param ContractFilterService $contractFilter
      * @param CountryService        $countries
      * @param CommentService        $comment
+     * @param AnnotationService     $annotation
      */
     public function __construct(
         ContractService $contract,
         ContractFilterService $contractFilter,
         CountryService $countries,
-        CommentService $comment
+        CommentService $comment,
+        AnnotationService $annotation
     ) {
         $this->middleware('auth');
         $this->contract       = $contract;
         $this->countries      = $countries;
         $this->contractFilter = $contractFilter;
         $this->comment        = $comment;
+        $this->annotation     = $annotation;
     }
 
     /**
@@ -107,9 +116,10 @@ class ContractController extends Controller
         if (!$contract) {
             abort('404');
         }
-        $status      = $this->contract->getStatus($id);
-        $annotations = $contract->annotations;
-        $file        = $this->contract->getS3FileURL($contract->file);
+        $status           = $this->contract->getStatus($id);
+        $annotationStatus = $this->annotation->getStatus($id);
+        $annotations      = $contract->annotations;
+        $file             = $this->contract->getS3FileURL($contract->file);
 
         if ($contract->metadata_status == Contract::STATUS_REJECTED) {
             $contract->metadata_comment = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
@@ -118,8 +128,11 @@ class ContractController extends Controller
         if ($contract->text_status == Contract::STATUS_REJECTED) {
             $contract->text_comment = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
         }
+        if ($annotationStatus == Annotation::REJECTED) {
+            $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
+        }
 
-        return view('contract.show', compact('contract', 'status', 'annotations', 'file'));
+        return view('contract.show', compact('contract', 'status', 'annotations', 'file', 'annotationStatus'));
     }
 
     /**

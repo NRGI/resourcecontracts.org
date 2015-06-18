@@ -21,4 +21,12 @@ class Pages extends Model
      * @var array
      */
     protected $fillable = ['contract_id', 'page_no', 'text'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function annotations()
+    {
+        return $this->hasMany('App\Nrgi\Entities\Contract\Annotation', 'page_id');
+    }
 }

@@ -22,11 +22,15 @@ class ActivityLog extends Model
 
     /**
      * @param $params
-     * @return mixed
+     * @return Array
      */
     public function getMessageParamsAttribute($params)
     {
-        return json_decode($params);
+        if (is_null($params)) {
+            return [];
+        }
+
+        return json_decode($params, true);
     }
 
     /**

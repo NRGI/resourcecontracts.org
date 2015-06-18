@@ -2,7 +2,6 @@
 
 use App\Nrgi\Repositories\ActivityLog\ActivityLogService;
 use Illuminate\Log\Writer;
-use Monolog\Logger as MonologLogger;
 
 /**
  * NRGI logger class

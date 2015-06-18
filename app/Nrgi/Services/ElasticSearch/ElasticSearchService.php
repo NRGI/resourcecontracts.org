@@ -72,16 +72,20 @@ class ElasticSearchService
      */
     public function postMetadata($id)
     {
-        $contract = $this->contract->findContract($id);
+        $contract   = $this->contract->findContract($id);
+        $updated_by = ['name' => '', 'email' => ''];
+
+        if (!empty($contract->updated_user)) {
+            $updated_by = ['name' => $contract->updated_user->name, 'email' => $contract->updated_user->email];
+        }
+
         $metadata = [
             'id'         => $contract->id,
             'metadata'   => collect($contract->metadata)->toJson(),
             'created_by' => json_encode(
                 ['name' => $contract->created_user->name, 'email' => $contract->created_user->email]
             ),
-            'updated_by' => json_encode(
-                ['name' => $contract->updated_user->name, 'email' => $contract->updated_user->email]
-            ),
+            'updated_by' => json_encode($updated_by),
             'created_at' => $contract->created_datetime->format('Y-m-d H:i:s'),
             'updated_at' => $contract->last_updated_datetime->format('Y-m-d H:i:s')
         ];

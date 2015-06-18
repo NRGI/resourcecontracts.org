@@ -2,6 +2,7 @@
 
 use App\Nrgi\Entities\Contract\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
+use Illuminate\Database\DatabaseManager;
 
 /**
  * Contract Annotation Repository
@@ -11,88 +12,71 @@ use App\Nrgi\Entities\Contract\Contract;
 class AnnotationRepository implements AnnotationRepositoryInterface
 {
     /**
-     * @var Annotation model
+     * @var Annotation annotation
      */
-    protected $model;
-
-    protected $contract;
+    protected $annotation;
 
     /**
-     * @param Annotation $annotation
+     * @var Contract
      */
-    public function __construct(Annotation $annotation, Contract $contract)
+    protected $contract;
+    /**
+     * @var DatabaseManager
+     */
+    protected $db;
+
+    /**
+     * @param Annotation      $annotation
+     * @param Contract        $contract
+     * @param DatabaseManager $db
+     */
+    public function __construct(Annotation $annotation, Contract $contract, DatabaseManager $db)
     {
-        $this->model = $annotation;
-        $this->contract = $contract;
+        $this->annotation = $annotation;
+        $this->contract   = $contract;
+        $this->db         = $db;
     }
 
     /**
+     * Save Annotation
+     *
      * @param array $contractAnnotation
-     * @return mixed
+     * @return annotation
      */
     public function save($contractAnnotation)
     {
-        $contractAnnotation->save();
-
-        return $contractAnnotation;
+        return $contractAnnotation->save();
     }
 
     /**
-     *  @param array $params
-     * @return string
+     * @param array $params
+     * @return Collection
      */
     public function search(array $params)
     {
-        $annotations = $this->model
-                        ->where('contract_id', $params['contract'])
-                        ->where('document_page_no', $params['document_page_no'])
-                        ->get();
+        $annotations = $this->annotation
+            ->where('contract_id', $params['contract'])
+            ->where('document_page_no', $params['document_page_no'])
+            ->get();
 
         return $annotations;
     }
 
     /**
-     * @param $range
-     * @param $contractId
-     * @return null/id of contract annotations id
-     */
-    public function getAnnotationByRange($range, $contractId)
-    {
-        $result = \DB::select(\DB::raw("select id from contract_annotations r, json_array_elements(r.annotation->'ranges') obj
-            where obj->>'startOffset' = :startOffset
-            and obj->>'endOffset' = :endOffset
-            and obj->>'start' = :start
-            and obj->>'end' = :end
-            and r.contract_id = :contractId"),
-            array(
-            'contractId'    => $contractId,
-            'start'         => $range['start'],
-            'startOffset'   => $range['startOffset'],
-            'end'           => $range['end'],
-            'endOffset'     => $range['endOffset']
-            ));
-
-        if (!$result) {
-            return null;
-        }
-
-        return $result[0]->id;
-    }
-
-    /**
+     * finds or create annotation
      * @param $id
-     * @return \Illuminate\Support\Collection|static
+     * @return Annotation
      */
     public function findOrCreate($id)
     {
-        return $this->model->findOrNew($id);
+        return $this->annotation->findOrNew($id);
     }
 
     /**
-     * Delete a model.
+     * Delete a annotation.
      *
      * @param  int $id
-     * @return void
+     * @return bool|null
      */
     public function delete($id)
     {
@@ -102,12 +86,12 @@ class AnnotationRepository implements AnnotationRepositoryInterface
     /**
      * Get Model by id.
      *
-     * @param  int  $id
-     * @return App\Models\Model
+     * @param  int $id
+     * @return Annotation
      */
     public function getById($id)
     {
-        return $this->model->findOrFail($id);
+        return $this->annotation->findOrFail($id);
     }
 
     /**
@@ -116,7 +100,74 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      */
     public function getAllByContractId($contractId)
     {
-        $contactAnnotion = $this->contract->with('annotations')->findOrFail($contractId);
-        return $contactAnnotion->annotations;
+        $contactAnnotation = $this->contract->with('annotations')->findOrFail($contractId);
+
+        return $contactAnnotation->annotations;
+    }
+
+    /**
+     * contract with pages and annotations
+     *
+     * @param $contractId
+     * @return Contract
+     */
+    public function getContractPagesWithAnnotations($contractId)
+    {
+        return $this->contract->with('pages.annotations')->findOrFail($contractId);
+    }
+
+    /**
+     * Updates all annotation of contract
+     *
+     * @param $status
+     * @param $contractId
+     * @return bool
+     */
+    public function updateStatus($status, $contractId)
+    {
+        $rowsUpdated = $this->annotation->where('contract_id', $contractId)->update(array('status' => $status));
+
+        return ($rowsUpdated > 0 ? true : false);
+    }
+
+    /**
+     * contract annotation status
+     *
+     * @param $contractId
+     * @return String
+     */
+    public function getStatus($contractId)
+    {
+        $statusObject = $this->annotation
+            ->distinct()
+            ->select('status')
+            ->where('contract_id', $contractId)->get()->toArray();
+
+        $status = $this->checkStatus(array_column($statusObject, 'status'));
+
+        return $status;
+    }
+
+    /**
+     * Check annotation status in array
+     *
+     * @param $status
+     * @return string
+     */
+    public function checkStatus($status)
+    {
+        $annotationStatus = '';
+        if (in_array(Annotation::DRAFT, $status)) {
+            $annotationStatus = Annotation::DRAFT;
+        } elseif (in_array(Annotation::COMPLETED, $status)) {
+            $annotationStatus = Annotation::COMPLETED;
+        } elseif (in_array(Annotation::REJECTED, $status)) {
+            $annotationStatus = Annotation::REJECTED;
+        } elseif (in_array(Annotation::PUBLISHED, $status)) {
+            $annotationStatus = Annotation::PUBLISHED;
+        }
+
+        return $annotationStatus;
     }
 }
+
