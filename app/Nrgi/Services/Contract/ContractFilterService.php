@@ -26,7 +26,6 @@ class ContractFilterService
         ContractRepositoryInterface $contract,
         CountryService $countryService
     ) {
-
         $this->contract       = $contract;
         $this->countryService = $countryService;
     }

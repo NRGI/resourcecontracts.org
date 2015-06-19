@@ -12,7 +12,7 @@ class AnnotationRepositoryTest extends NrgiTestCase
         parent::setUp();
         $this->annotation = m::mock('App\Nrgi\Entities\Contract\Annotation');
         $this->contract = m::mock('App\Nrgi\Entities\Contract\Contract');
-        $this->annotationRepo = new AnnotationRepository($this->annotation , $this->contract);
+        $this->annotationRepo = new AnnotationRepository($this->annotation, $this->contract);
     }
 
     public function testItShouldGetAnAnnotationById()
@@ -26,7 +26,7 @@ class AnnotationRepositoryTest extends NrgiTestCase
     {
         $this->annotation->shouldReceive('where->where->get')->once()->andReturn(m::mock('Illuminate\Database\Eloquent\Collection'));
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection',
-            $this->annotationRepo->search(['contract'=>1,'document_page_no'=>1]));
+            $this->annotationRepo->search(['contract'=>1, 'document_page_no'=>1]));
     }
 
     public function testItShouldReturnInstanceOfAnnotationModel()

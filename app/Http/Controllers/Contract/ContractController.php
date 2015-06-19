@@ -206,13 +206,11 @@ class ContractController extends Controller
         ];
 
         if ($auth->user()->hasRole('superadmin') || $auth->user()->can(sprintf('%s-metadata', $permission[$status]))) {
-
             if ($this->contract->updateStatus($contract_id, $status, $request->input('type'))) {
                 return back()->withSuccess('Contract status successfully updated.');
             }
 
             return back()->withError('Invalid status');
-
         }
 
         return back()->withError('Permission denied.');
@@ -228,7 +226,6 @@ class ContractController extends Controller
     public function ContractComment($contract_id, Request $request, Guard $auth)
     {
         if ($auth->user()->hasRole('superadmin') || $auth->user()->can('reject-metadata')) {
-
             if ($this->contract->updateStatusWithComment(
                 $contract_id,
                 Contract::STATUS_REJECTED,
@@ -244,5 +241,4 @@ class ContractController extends Controller
 
         return back()->withError('Permission denied.');
     }
-
 }

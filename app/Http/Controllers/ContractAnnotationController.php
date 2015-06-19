@@ -24,6 +24,6 @@ class ContractAnnotationController extends Controller
     public function index()
     {
         $contract = Contract::with('pages')->find(4);
-        return view('annotator.index',compact('contract'));
+        return view('annotator.index', compact('contract'));
     }
 }

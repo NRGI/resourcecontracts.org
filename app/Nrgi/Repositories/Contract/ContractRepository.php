@@ -66,7 +66,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Get unique contract years
      * @return contract
      */
-    function getUniqueYears()
+    public function getUniqueYears()
     {
         return $this->contract->select(
             $this->db->raw("metadata->>'signature_year' years, count(metadata->>'signature_year')")
@@ -80,7 +80,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Get unique countries
      * @return contract
      */
-    function getUniqueCountries()
+    public function getUniqueCountries()
     {
         return $this->contract->select(
             $this->db->raw("metadata->'country'->>'code' countries, count(metadata->'country'->>'code')")

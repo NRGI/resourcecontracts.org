@@ -20,7 +20,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
     /**
      * @param Annotation $annotation
      */
-    public function __construct(Annotation $annotation , Contract $contract)
+    public function __construct(Annotation $annotation, Contract $contract)
     {
         $this->model = $annotation;
         $this->contract = $contract;
@@ -114,7 +114,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      * @param $contractId
      * @return mixed
      */
-    public  function getAllByContractId($contractId)
+    public function getAllByContractId($contractId)
     {
         $contactAnnotion = $this->contract->with('annotations')->findOrFail($contractId);
         return $contactAnnotion->annotations;

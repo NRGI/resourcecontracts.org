@@ -24,7 +24,7 @@ class PageService
      * @param Contract   $contract
      * @param Filesystem $fileSystem
      */
-    function __construct(ContractService $contract , Filesystem $fileSystem)
+    public function __construct(ContractService $contract, Filesystem $fileSystem)
     {
         $this->contract = $contract;
         $this->fileSystem = $fileSystem;

@@ -53,5 +53,4 @@ class PagesService
 
         throw new ModelNotFoundException();
     }
-
 }

@@ -22,7 +22,7 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
     /**
      * @param ActivityLog $activityLog
      */
-    function __construct(ActivityLog $activityLog, Guard $auth)
+    public function __construct(ActivityLog $activityLog, Guard $auth)
     {
         $this->activityLog = $activityLog;
         $this->auth        = $auth;
@@ -39,4 +39,3 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
         return ($this->activityLog->create($activityLog) ? true : false);
     }
 }
-

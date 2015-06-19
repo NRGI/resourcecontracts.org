@@ -11,7 +11,7 @@ class CountryService
      */
     protected $countries = array();
 
-    function __construct()
+    public function __construct()
     {
         $this->countries = trans('codelist/country');
     }
