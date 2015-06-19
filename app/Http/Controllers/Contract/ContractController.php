@@ -5,7 +5,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Contract\ContractRequest;
 use App\Nrgi\Entities\Contract\Comment\Comment;
 use App\Nrgi\Entities\Contract\Contract;
-use App\Nrgi\Services\Contract\AnnotationService;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\ContractFilterService;
 use App\Nrgi\Services\Contract\ContractService;
@@ -67,7 +66,6 @@ class ContractController extends Controller
         $contracts = $this->contractFilter->getAll($filters);
         $years     = $this->contractFilter->getUniqueYears();
         $countries = $this->contractFilter->getUniqueCountries();
-
         return view('contract.index', compact('contracts', 'years', 'countries'));
     }
 
@@ -223,7 +221,7 @@ class ContractController extends Controller
      * @param Guard   $auth
      * @return mixed
      */
-    public function ContractComment($contract_id, Request $request, Guard $auth)
+    public function contractComment($contract_id, Request $request, Guard $auth)
     {
         if ($auth->user()->hasRole('superadmin') || $auth->user()->can('reject-metadata')) {
             if ($this->contract->updateStatusWithComment(

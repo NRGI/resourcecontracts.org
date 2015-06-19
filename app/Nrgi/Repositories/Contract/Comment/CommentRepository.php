@@ -56,4 +56,14 @@ class CommentRepository implements CommentRepositoryInterface
     {
         return $this->comment->with('user')->where('type', $type)->where('contract_id', $contract_id)->orderBy('created_at', 'DESC')->first();
     }
+
+    /**
+     * Get Contract comments with pagination
+     * @param $perPage
+     * @return mixed
+     */
+    public function paginate($contract_id, $perPage)
+    {
+        return $this->comment->with('user')->where('contract_id', $contract_id)->orderBy('created_at', 'DESC')->paginate($perPage);
+    }
 }

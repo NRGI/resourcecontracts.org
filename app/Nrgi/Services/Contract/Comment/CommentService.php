@@ -3,6 +3,10 @@
 use App\Nrgi\Repositories\Contract\Comment\CommentRepositoryInterface;
 use Psr\Log\LoggerInterface;
 
+/**
+ * Class CommentService
+ * @package App\Nrgi\Services\Contract\Comment
+ */
 class CommentService
 {
     /**
@@ -12,7 +16,7 @@ class CommentService
     /**
      * @var LoggerAwareInterface
      */
-    private $logger;
+    protected $logger;
 
     /**
      * @param CommentRepositoryInterface $comment
@@ -54,5 +58,15 @@ class CommentService
     public function getLatest($contract_id, $type)
     {
         return $this->comment->getLatest($contract_id, $type);
+    }
+
+    /**
+     * Get Contract with pagination
+     * @param $id
+     * @return mixed
+     */
+    public function getPaginate($id)
+    {
+       return $this->comment->paginate($id, 25);
     }
 }

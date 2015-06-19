@@ -24,4 +24,11 @@ interface CommentRepositoryInterface
      * @return Comment
      */
     public function getLatest($contract_id, $type);
+
+    /**
+     * Get Contract comments with pagination
+     * @param $perPage
+     * @return mixed
+     */
+    public function paginate($contract_id, $perPage);
 }
