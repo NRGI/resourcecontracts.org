@@ -6239,6 +6239,7 @@ input.error {border-color:#d44950}
   color: #8B8B8B;
   padding: 2px 10px;
   border: 1px solid transparent;
+  margin: 0;
 }
 #pagelist a:hover, #pagelist .active {
   background: #fff;
@@ -6260,9 +6261,9 @@ input.error {border-color:#d44950}
 }
 
 .annotation-wrap h3 {
-  border-bottom: 1px solid #8b8b8b;
+  border-bottom: 1px solid #bbb;
   margin-bottom: 12px;
-  padding-bottom: 8px;
+  padding-bottom: 20px;
 }
 
 .annotation-list li {

@@ -6,6 +6,10 @@ body {
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
+input:focus,button:focus,textarea:focus {
+	outline: 0!important;
+}
+
 .alert > ul {
     padding-left: 16px;
 }
@@ -129,7 +133,7 @@ table td:not(:first-child) {
 }
 
 .annotation-wrap {
-    padding: 20px 40px;
+    padding: 20px 15px;
     background: #eee;
 }
 
@@ -217,6 +221,7 @@ header {
 
 .modal-body > ul.types {
     padding-left: 0;
+    list-style: none;
 }
 
 .status {
@@ -232,7 +237,7 @@ header {
 .contract-info {
     padding: 0 40px;
     list-style: none;
-    padding: 0 0 20px 15px;
+    padding: 0 15px 20px;
 }
 
 .contract-info li {
@@ -250,6 +255,7 @@ header {
     padding: 15px;
     font-size: 16px;
     width: 50%;
+    font-weight: normal;
 }
 
 .label-red {
@@ -274,4 +280,66 @@ header {
 .role-name {
     font-size: 13px;
     color: #716D6D;
+}
+
+.state-wrap {
+	padding: 20px 15px;
+	width: 580px;
+}
+
+.state-wrap > p {
+	font-size: 18px;
+}
+
+.state-wrap ul {
+	padding: 0;
+}
+
+.state-wrap ul li {
+	list-style: none;
+	padding: 8px 20px;
+	background: #eee;
+}
+
+.state-wrap ul li:nth-child(even) {
+	background: #ddd;
+}
+
+.state-wrap ul li strong {
+	width: 120px;
+	display: inline-block;
+}
+
+.state-wrap ul li > span {
+	display: inline-block;
+	background-color: #EABA24;
+	border-radius: 30px;
+	padding: 4px 5px;
+	font-size: 12px;
+	width: 90px;
+	text-align: center;
+	color: #fff;
+ }	
+ 
+ .state-wrap ul li > span.completed {
+	background: #5896CB;
+ }
+ 
+.state-wrap ul li > span.published {
+	background: #6BA864;
+}
+
+.state-wrap ul li > span.rejected {
+	background: #EA2E0C;
+}
+
+.state-wrap ul li > span.rejected+a {
+	margin-left: -20px;
+}
+
+.state-wrap ul li > .btn,.state-wrap ul li >form > .btn,.state-wrap ul li >form >.pull-right > .btn,.state-wrap ul li > .pull-right > .btn,.state-wrap ul li >.pull-right> form > .btn  {
+	font-size: 12px;
+	min-width: 80px;
+	padding: 3px 5px;
+	margin-right: 4px;
 }

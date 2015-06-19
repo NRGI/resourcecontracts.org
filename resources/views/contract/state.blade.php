@@ -2,15 +2,16 @@
 use App\Nrgi\Entities\Contract\Contract;
 ?>
 
-<div class="annotation-wrap" style="margin: 20px 0px">
+<div class="state-wrap">
     <p> @lang('Contract State'):</p>
     <ul>
         <li>
             <strong>@lang('Metadata'):</strong>
             @if($contract->metadata_status == Contract::STATUS_PUBLISHED)
-                @lang('Published')
+                <span class="published">@lang('Published')</span>
             @elseif($contract->metadata_status == Contract::STATUS_COMPLETED)
-                @lang('Completed')
+                <span class="completed">@lang('Completed')</span>
+                <div class="pull-right">
                 @if($current_user->hasRole('superadmin') || $current_user->can('publish-metadata') )
                     {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
                     'method'=>'post'])!!}
@@ -21,7 +22,7 @@ use App\Nrgi\Entities\Contract\Contract;
                     {!!Form::close()!!}
                     <button data-toggle="modal" data-target=".metadata-reject-modal" class="btn btn-danger">Reject
                     </button>
-
+                </div>
                     <div class="modal fade metadata-reject-modal" tabindex="-1" role="dialog"
                          aria-labelledby="myModalLabel"
                          aria-hidden="true">
@@ -51,7 +52,7 @@ use App\Nrgi\Entities\Contract\Contract;
                     </div>
                 @endif
             @elseif($contract->metadata_status == Contract::STATUS_REJECTED)
-                @lang('Rejected')
+                <span class="rejected">@lang('Rejected')</span>
                 <a href="#" data-toggle="modal" data-target=".metadata-modal"><i
                             class="glyphicon glyphicon-pushpin"></i></a>
 
@@ -81,14 +82,14 @@ use App\Nrgi\Entities\Contract\Contract;
                     </div>
                 </div>
             @else
-                @lang('Draft')
+                <span class="draft">@lang('Draft')</span>
                 @if($current_user->hasRole('superadmin') || $current_user->can('complete-metadata') )
                     {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
                     'method'=>'post'])!!}
                     {!!Form::hidden('state', 'completed')!!}
                     {!!Form::hidden('type', 'metadata')!!}
-                    {!!Form::button(trans('Make Complete'), ['type'=>'submit','class'=>'btn btn-primary confirm',
-                    'data-confirm'=>trans('Are you sure you want to marked complete this contract ?')])!!}
+                    <div class="pull-right">{!!Form::button(trans('Make Complete'), ['type'=>'submit','class'=>'btn btn-primary confirm',
+                    'data-confirm'=>trans('Are you sure you want to marked complete this contract ?')])!!}</div>
                     {!!Form::close()!!}
                 @endif
             @endif
@@ -138,7 +139,7 @@ use App\Nrgi\Entities\Contract\Contract;
                         </div>
                     @endif
                 @elseif($contract->text_status == Contract::STATUS_REJECTED)
-                    @lang('Rejected')
+                    <span class="rejected">@lang('Rejected')</span>
                     <a href="#" data-toggle="modal" data-target=".text-reject-msg-modal"><i
                                 class="glyphicon glyphicon-pushpin"></i></a>
 
