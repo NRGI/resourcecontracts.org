@@ -3,7 +3,8 @@
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
-class Authenticate {
+class Authenticate
+{
 
 	/**
 	 * The Guard implementation.
@@ -15,8 +16,7 @@ class Authenticate {
 	/**
 	 * Create a new filter instance.
 	 *
-	 * @param  Guard  $auth
-	 * @return void
+	 * @param Guard $auth
 	 */
 	public function __construct(Guard $auth)
 	{
@@ -32,19 +32,14 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->guest())
-		{
-			if ($request->ajax())
-			{
-				return response('Unauthorized.', 401);
-			}
-			else
-			{
-				return redirect()->guest('auth/login');
-			}
-		}
+        if ($this->auth->guest()) {
+            if ($request->ajax()) {
+                return response('Unauthorized.', 401);
+            } else {
+                return redirect()->guest('auth/login');
+            }
+        }
 
-		return $next($request);
+        return $next($request);
 	}
-
 }

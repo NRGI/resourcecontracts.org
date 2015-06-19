@@ -12,6 +12,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use App\Nrgi\Services\Contract\Page\ProcessService;
 
 /**
+ * Command to process documents
+ *
  * Class ProcessDocument
  * @package app\Console\Commands
  */
@@ -32,6 +34,9 @@ class ProcessDocument extends Command
      */
     protected $storage;
 
+    /**
+     * @var ProcessService
+     */
     protected $process;
 
     /**
@@ -54,11 +59,12 @@ class ProcessDocument extends Command
      */
     public function __construct(ContractService $contract, Storage $storage, File $file ,ProcessService $process)
     {
-        $this->storage = $storage;
-        $this->contract = $contract;
-        $this->file = $file;
-        $this->process = $process;
         parent::__construct();
+
+        $this->storage  = $storage;
+        $this->contract = $contract;
+        $this->file     = $file;
+        $this->process  = $process;
     }
 
     /**
@@ -70,23 +76,23 @@ class ProcessDocument extends Command
     {
         $this->info('processing contract document');
         $contractId = $this->input->getArgument('contract_id');
-        try{
+        try {
             $contract = $this->contract->find($contractId);
-            if($this->input->getOption('force'))
-            {
+
+            if ($this->input->getOption('force')) {
                 $contract->pages()->delete();
             }
-            if($this->process->execute($contractId)){
+
+            if ($this->process->execute($contractId)) {
                 $this->info('processing completed.');
-            }else{
+            } else {
                 $this->error('Error processing contract document.check log for detail');
             }
 
-        }catch (ModelNotFoundException $exception){
-            $this->error('could cot find contract.'.$exception->getMessage());
-        }
-        catch (\Exception $exception){
-            $this->error('processing contract document.'.$exception->getMessage());
+        } catch (ModelNotFoundException $exception) {
+            $this->error(sprintf('Could not find contract, error: %s', $exception->getMessage()));
+        } catch (\Exception $exception) {
+            $this->error(sprintf('Error while processing contract document : %s', $exception->getMessage()));
         }
     }
 
