@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/NRGI/resourcecontracts.org.png?label=ready&title=Ready)](https://waffle.io/NRGI/resourcecontracts.org)
 # NRGI
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/NRGI/resourcecontracts.org/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/NRGI/resourcecontracts.org/?branch=master)
