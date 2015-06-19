@@ -116,13 +116,13 @@
 <div class="form-group">
     {!! Form::label('translation_from_original', trans('contract.translation_from_original'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
-        <label class="checkbox-inline">
+        <label class="radio-inline">
             {!! Form::radio('translation_from_original','1',
             (isset($contract->metadata->translation_from_original) && (1 ==
             $contract->metadata->translation_from_original))? true : null, ['class'=>'translation'])!!}
             @lang('global.yes')
         </label>
-        <label class="checkbox-inline">
+        <label class="radio-inline">
             {!! Form::radio('translation_from_original', '0',
             (isset($contract->metadata->translation_from_original) && (0 ==
             $contract->metadata->translation_from_original))? true : null, ['class'=>'translation'])!!}
