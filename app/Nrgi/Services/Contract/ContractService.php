@@ -3,6 +3,7 @@
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Services\Contract\Comment\CommentService;
+use App\Nrgi\Services\ElasticSearch\ElasticSearchService;
 use Exception;
 use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
@@ -67,6 +68,10 @@ class ContractService
      * @var Log
      */
     protected $logger;
+    /**
+     * @var ElasticSearchService
+     */
+    protected $elasticSearch;
 
     /**
      * @param ContractRepositoryInterface $contract
@@ -78,6 +83,7 @@ class ContractService
      * @param Queue                       $queue
      * @param CommentService              $comment
      * @param DatabaseManager             $database
+     * @param ElasticSearchService        $elasticSearch
      * @param Log                         $logger
      */
     public function __construct(
@@ -89,6 +95,7 @@ class ContractService
         Queue $queue,
         CommentService $comment,
         DatabaseManager $database,
+        ElasticSearchService $elasticSearch,
         Log $logger
     ) {
         $this->contract       = $contract;
@@ -100,6 +107,7 @@ class ContractService
         $this->database       = $database;
         $this->comment        = $comment;
         $this->logger         = $logger;
+        $this->elasticSearch  = $elasticSearch;
     }
 
     /**
@@ -261,12 +269,12 @@ class ContractService
             return false;
         }
 
-        $file_size             = $contract->metadata->file_size;
-        $metadata              = $this->processMetadata($formData);
-        $metadata['file_size'] = $file_size;
-        $contract->metadata    = $metadata;
-        $contract->updated_by  = $this->auth->user()->id;
-        $contract->metadata_status      = Contract::STATUS_DRAFT;
+        $file_size                 = $contract->metadata->file_size;
+        $metadata                  = $this->processMetadata($formData);
+        $metadata['file_size']     = $file_size;
+        $contract->metadata        = $metadata;
+        $contract->updated_by      = $this->auth->user()->id;
+        $contract->metadata_status = Contract::STATUS_DRAFT;
 
         try {
             $contract->save();
@@ -427,7 +435,6 @@ class ContractService
     public function savePageText($id, $page, $text)
     {
         $path = public_path(self::UPLOAD_FOLDER . '/' . $id . '/' . $page . '.txt');
-        echo $text;
 
         return $this->filesystem->put($path, $text);
     }
@@ -477,6 +484,11 @@ class ContractService
             $old_status            = $contract->$status_key;
             $contract->$status_key = $status;
             $contract->save();
+
+            if ($status == Contract::STATUS_PUBLISHED) {
+                $this->elasticSearch->post($id, $type);
+            }
+
             $this->logger->info(
                 "Contract status updated",
                 [

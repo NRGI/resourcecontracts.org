@@ -1,5 +1,6 @@
 <?php
 use App\Nrgi\Entities\Contract\Contract;
+
 ?>
 
 <div class="state-wrap">
@@ -11,18 +12,18 @@ use App\Nrgi\Entities\Contract\Contract;
                 <span class="published">@lang('Published')</span>
             @elseif($contract->metadata_status == Contract::STATUS_COMPLETED)
                 <span class="completed">@lang('Completed')</span>
-                <div class="pull-right">
                 @if($current_user->hasRole('superadmin') || $current_user->can('publish-metadata') )
-                    {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
-                    'method'=>'post'])!!}
-                    {!!Form::hidden('state', 'published')!!}
-                    {!!Form::hidden('type', 'metadata')!!}
-                    {!!Form::button(trans('Publish'), ['type'=>'submit','class'=>'btn btn-success confirm',
-                    'data-confirm'=>trans('Are you sure you want to publish this contract?')])!!}
-                    {!!Form::close()!!}
-                    <button data-toggle="modal" data-target=".metadata-reject-modal" class="btn btn-danger">Reject
-                    </button>
-                </div>
+                    <div class="pull-right">
+                        {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
+                        'method'=>'post'])!!}
+                        {!!Form::hidden('state', 'published')!!}
+                        {!!Form::hidden('type', 'metadata')!!}
+                        {!!Form::button(trans('Publish'), ['type'=>'submit','class'=>'btn btn-success confirm',
+                        'data-confirm'=>trans('Are you sure you want to publish this contract?')])!!}
+                        {!!Form::close()!!}
+                        <button data-toggle="modal" data-target=".metadata-reject-modal" class="btn btn-danger">Reject
+                        </button>
+                    </div>
                     <div class="modal fade metadata-reject-modal" tabindex="-1" role="dialog"
                          aria-labelledby="myModalLabel"
                          aria-hidden="true">
@@ -83,32 +84,41 @@ use App\Nrgi\Entities\Contract\Contract;
                 </div>
             @else
                 <span class="draft">@lang('Draft')</span>
+
                 @if($current_user->hasRole('superadmin') || $current_user->can('complete-metadata') )
-                    {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
-                    'method'=>'post'])!!}
-                    {!!Form::hidden('state', 'completed')!!}
-                    {!!Form::hidden('type', 'metadata')!!}
-                    <div class="pull-right">{!!Form::button(trans('Make Complete'), ['type'=>'submit','class'=>'btn btn-primary confirm',
-                    'data-confirm'=>trans('Are you sure you want to marked complete this contract ?')])!!}</div>
-                    {!!Form::close()!!}
+                    <div class="pull-right">
+                        {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
+                        'method'=>'post'])!!}
+                        {!!Form::hidden('state', 'completed')!!}
+                        {!!Form::hidden('type', 'metadata')!!}
+                        <div class="pull-right">{!!Form::button(trans('Make Complete'), ['type'=>'submit','class'=>'btn
+                            btn-primary confirm',
+                            'data-confirm'=>trans('Are you sure you want to marked complete this contract ?')])!!}
+                        </div>
+                        {!!Form::close()!!}
+                    </div>
                 @endif
             @endif
         </li>
         @if($status === $contract_completed)
             <li><strong>@lang('PDF Text'):</strong>
                 @if($contract->text_status == Contract::STATUS_PUBLISHED)
-                    @lang('Published')
+                    <span class="published">   @lang('Published')</span>
                 @elseif($contract->text_status == Contract::STATUS_COMPLETED)
-                    @lang('Completed')
+                    <span class="completed"> @lang('Completed')</span>
                     @if($current_user->hasRole('superadmin') || $current_user->can('publish-text') )
-                        {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
-                        'method'=>'post'])!!}
-                        {!!Form::hidden('state', 'published')!!}
-                        {!!Form::hidden('type', 'text')!!}
-                        {!!Form::button(trans('Publish'), ['type'=>'submit','class'=>'btn btn-success confirm',
-                        'data-confirm'=>trans('Are you sure you want to publish this contract?')])!!}
-                        {!!Form::close()!!}
-                        <button data-toggle="modal" data-target=".text-rejectddd-modal" class="btn btn-danger">Reject</button>
+                        <div class="pull-right">
+                            {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
+                            'method'=>'post'])!!}
+                            {!!Form::hidden('state', 'published')!!}
+                            {!!Form::hidden('type', 'text')!!}
+                            {!!Form::button(trans('Publish'), ['type'=>'submit','class'=>'btn btn-success confirm',
+                            'data-confirm'=>trans('Are you sure you want to publish this contract?')])!!}
+                            {!!Form::close()!!}
+                            <button data-toggle="modal" data-target=".text-rejectddd-modal" class="btn btn-danger">
+                                Reject
+                            </button>
+                        </div>
 
                         <div class="modal fade text-rejectddd-modal" tabindex="-1" role="dialog"
                              aria-labelledby="text-rejectddd-modal"
@@ -118,9 +128,11 @@ use App\Nrgi\Entities\Contract\Contract;
                                     {!! Form::open(['route' => ['contract.status.comment', $contract->id],
                                     'class'=>'suggestion-form']) !!}
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span
                                                     aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">@lang('Please enter your comment')</h4>
+                                        <h4 class="modal-title"
+                                            id="myModalLabel">@lang('Please enter your comment')</h4>
                                     </div>
                                     <div class="modal-body">
                                         {!! Form::textarea('message', null, ['id'=>"message", 'rows'=>12,
@@ -143,7 +155,8 @@ use App\Nrgi\Entities\Contract\Contract;
                     <a href="#" data-toggle="modal" data-target=".text-reject-msg-modal"><i
                                 class="glyphicon glyphicon-pushpin"></i></a>
 
-                    <div class="modal fade text-reject-msg-modal" id="text-reject-msg-modal" tabindex="-1" role="dialog" aria-labelledby="text-reject-msg-modal"
+                    <div class="modal fade text-reject-msg-modal" id="text-reject-msg-modal" tabindex="-1" role="dialog"
+                         aria-labelledby="text-reject-msg-modal"
                          aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -168,19 +181,22 @@ use App\Nrgi\Entities\Contract\Contract;
                         </div>
                     </div>
                 @else
-                    @lang('Draft')
+                    <span class="draft"> @lang('Draft')</span>
                     @if($current_user->hasRole('superadmin') || $current_user->can('complete-text') )
-                        {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
-                        'method'=>'post'])!!}
-                        {!!Form::hidden('state', 'completed')!!}
-                        {!!Form::hidden('type', 'text')!!}
-                        {!!Form::button(trans('Make Complete'), ['type'=>'submit','class'=>'btn btn-primary confirm',
-                        'data-confirm'=>trans('Are you sure you want to marked complete this contract ?')])!!}
-                        {!!Form::close()!!}
+                        <div class="pull-right">
+                            {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
+                            'method'=>'post'])!!}
+                            {!!Form::hidden('state', 'completed')!!}
+                            {!!Form::hidden('type', 'text')!!}
+                            {!!Form::button(trans('Make Complete'), ['type'=>'submit','class'=>'btn btn-primary
+                            confirm',
+                            'data-confirm'=>trans('Are you sure you want to marked complete this contract ?')])!!}
+                            {!!Form::close()!!}
+                        </div>
                     @endif
                 @endif
             </li>
-            <li><strong>@lang('Annotation'):</strong> @lang('Draft') </li>
+            <li><strong>@lang('Annotation'):</strong> <span class="draft"> @lang('Draft')</span></li>
         @else
             <li><strong>@lang('Text'):</strong></li>
             <li><strong>@lang('Annotation'):</strong></li>

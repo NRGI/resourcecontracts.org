@@ -282,6 +282,12 @@ header {
     color: #716D6D;
 }
 
+.label-comment {
+    width: auto;
+    padding: 3px 10px;
+    height: 25px;
+    border-radius: 0px;
+}
 .state-wrap {
 	padding: 20px 15px;
 	width: 580px;

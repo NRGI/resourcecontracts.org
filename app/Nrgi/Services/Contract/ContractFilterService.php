@@ -51,9 +51,10 @@ class ContractFilterService
     {
         $arr            = $this->contract->getUniqueCountries()->toArray();
         $countries      = [];
-        $country_config = config('country');
+        $country_config = trans('codelist.country');
         foreach ($arr as $key => $value) {
-            $countries[$value['countries']] = sprintf('%s (%s)', $country_config[$value['countries']], $value['count']);
+            $country                        = $this->countryService->getInfoByCode($value['countries']);
+            $countries[$value['countries']] = sprintf('%s (%s)', $country['name'], $value['count']);
         }
 
         return $countries;
