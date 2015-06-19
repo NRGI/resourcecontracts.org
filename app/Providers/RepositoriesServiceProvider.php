@@ -36,5 +36,4 @@ class RepositoriesServiceProvider extends ServiceProvider
             'App\Nrgi\Repositories\Contract\Comment\CommentRepository'
         );
     }
-
 }

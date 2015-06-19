@@ -25,7 +25,7 @@ class ProcessDocumentQueue
      * Constructor
      * @param ProcessService $process
      */
-    function __construct(ProcessService $process)
+    public function __construct(ProcessService $process)
     {
         $this->process = $process;
     }

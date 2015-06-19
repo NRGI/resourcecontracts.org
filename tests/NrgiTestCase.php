@@ -14,5 +14,4 @@ class NrgiTestCase extends \Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
-
 }

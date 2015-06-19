@@ -35,7 +35,7 @@ class Localization
      * @param null $lang
      * @return null
      */
-    function getLanguage($lang = null)
+    public function getLanguage($lang = null)
     {
         if (is_null($lang)) {
             $lang = isset($_COOKIE[$this->key])?$_COOKIE[$this->key]:'en';
@@ -50,7 +50,7 @@ class Localization
      * @param $lang
      * @return Void
      */
-    function setLanguage($lang)
+    public function setLanguage($lang)
     {
         $lang = trim(strtolower($lang));
         app()->setLocale($lang);

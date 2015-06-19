@@ -57,7 +57,7 @@ class ProcessDocument extends Command
      * Create a new command instance.
      *
      */
-    public function __construct(ContractService $contract, Storage $storage, File $file ,ProcessService $process)
+    public function __construct(ContractService $contract, Storage $storage, File $file, ProcessService $process)
     {
         parent::__construct();
 
@@ -78,7 +78,6 @@ class ProcessDocument extends Command
         $contractId = $this->input->getArgument('contract_id');
         try {
             $contract = $this->contract->find($contractId);
-
             if ($this->input->getOption('force')) {
                 $contract->pages()->delete();
             }
@@ -90,9 +89,9 @@ class ProcessDocument extends Command
             }
 
         } catch (ModelNotFoundException $exception) {
-            $this->error(sprintf('Could not find contract, error: %s', $exception->getMessage()));
+            $this->error('could cot find contract.' . $exception->getMessage());
         } catch (\Exception $exception) {
-            $this->error(sprintf('Error while processing contract document : %s', $exception->getMessage()));
+            $this->error('processing contract document.' . $exception->getMessage());
         }
     }
 
@@ -119,5 +118,4 @@ class ProcessDocument extends Command
             ['force', null, InputOption::VALUE_NONE, 'Force the operation to run.', null],
         ];
     }
-
 }

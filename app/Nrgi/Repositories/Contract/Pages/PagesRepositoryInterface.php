@@ -1,4 +1,5 @@
 <?php namespace App\Nrgi\Repositories\Contract\Pages;
+
 /**
  * Interface PagesRepositoryInterface
  * @package App\Nrgi\Repositories\Pages
@@ -12,5 +13,4 @@ interface PagesRepositoryInterface
      * @return Pages
      */
     public function getText($contractID, $pageID);
-
 }

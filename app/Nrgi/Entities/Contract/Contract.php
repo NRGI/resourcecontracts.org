@@ -123,7 +123,7 @@ class Contract extends Model
      * @param $status
      * @return bool
      */
-    function isEditableStatus($status)
+    public function isEditableStatus($status)
     {
         if (in_array($status, [static::STATUS_COMPLETED, static::STATUS_PUBLISHED, static::STATUS_REJECTED])) {
             return true;
@@ -151,5 +151,4 @@ class Contract extends Model
             }
         );
     }
-
 }

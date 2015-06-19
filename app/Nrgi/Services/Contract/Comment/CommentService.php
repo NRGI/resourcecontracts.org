@@ -53,6 +53,6 @@ class CommentService
      */
     public function getLatest($contract_id, $type)
     {
-       return $this->comment->getLatest($contract_id, $type);
+        return $this->comment->getLatest($contract_id, $type);
     }
 }

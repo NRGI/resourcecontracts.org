@@ -165,7 +165,7 @@ class ProcessService
     {
         if (!$this->fileSystem->makeDirectory($path . '/' . $directory, 0777, true)) {
             $this->logger->error(sprintf("error while creating director.%s/%s", $path, $directory));
-            throw new \Exception(sprintf('could not make directory.%s/%s') , $path, $directory);
+            throw new \Exception(sprintf('could not make directory.%s/%s'), $path, $directory);
         }
     }
 
@@ -203,7 +203,6 @@ class ProcessService
             $this->logger->error("could not create status file in directory {$directory}");
             throw new \Exception("could not create status file.");
         }
-
     }
 
     /**
@@ -212,7 +211,6 @@ class ProcessService
      */
     public function getContractDirectory($contractId)
     {
-
         return sprintf('%s/%s', $this->getWriteDirectory(), $contractId);
     }
 

@@ -35,5 +35,4 @@ class AuthController extends Controller
         $this->middleware('auth', ['only' => 'getRegister']);
         $this->middleware('guest', ['except' => 'getLogout']);
     }
-
 }

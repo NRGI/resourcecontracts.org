@@ -54,5 +54,4 @@ class ActivityLog extends Model
     {
         return $this->belongsTo('App\Nrgi\Entities\Contract\Contract');
     }
-
 }

@@ -23,7 +23,7 @@ class AnnotationService
      * @param AnnotationRepositoryInterface $annotationRepo
      * @param Guard $auth
      */
-    function __construct(AnnotationRepositoryInterface $annotationRepo, Guard $auth)
+    public function __construct(AnnotationRepositoryInterface $annotationRepo, Guard $auth)
     {
         $this->annotationRepo = $annotationRepo;
         $this->auth = $auth;
@@ -92,5 +92,4 @@ class AnnotationService
     {
         return $this->annotationRepo->getAllByContractId($contractId);
     }
-
 }
