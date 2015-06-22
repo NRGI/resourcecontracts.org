@@ -36,8 +36,8 @@ used for this project is 5.
 ## Tools and packages
 
 This application uses many tools and packages, the packages can 
-be seen in the [composer.json](http://gitlab.yipl.com.np/web-apps/agentcis/blob/master/composer.json) file and javascript
-packages are listed in the [package.json](http://gitlab.yipl.com.np/web-apps/agentcis/blob/master/package.json) file.
+be seen in the [composer.json](https://github.com/NRGI/resourcecontracts.org/blob/master/composer.json) file and javascript
+packages are listed in the [package.json](https://github.com/NRGI/resourcecontracts.org/blob/master/package.json) file.
 
 Some major PHP packages used are listed below:
 
