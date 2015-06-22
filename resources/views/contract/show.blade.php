@@ -48,7 +48,7 @@
 
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading">{{$contract->metadata->contract_name or $contract->metadata->project_title }}</div>
+        <div class="panel-heading">{{$contract->title}}</div>
         <div class="action-btn pull-right" style="padding: 20px;">
             <a href="{{route('contract.edit', $contract->id)}}" class="btn btn-default">@lang('contract.edit')</a>
             <a target="_blank" href="{{$file}}"

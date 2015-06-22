@@ -67,7 +67,6 @@ return [
     'edit'                          => "Edit",
     'resource_contracts'            => "Resource Contracts",
     'logout'                        => "Logout",
-    'all_contract'                  => "All Contracts",
     'contract_name'                 => "Contract Name",
     'contract_identifier'           => "Contract Identifier",
     'contract_file'                 => "Contract file",
@@ -78,8 +77,28 @@ return [
     'status'                        => "Status",
     'license_name_only'             => "License Name",
     'license_identifier_only'       => "License Identifier",
-    'source'                        => "Source",
     'pipeline'                      => "Pipeline",
     'processing'                    => "Processing",
-    'annotation_list'                    => "Annotation List"
+    'annotation_list'               => "Annotation List",
+    /*ContractController*/
+    'save_success'                  => 'Contract successfully uploaded.',
+    'save_fail'                     => 'Contract could not be saved.',
+    'update_success'                => 'Contract successfully updated.',
+    'update_fail'                   => 'Contract could not be updated.',
+    'delete_success'                => 'Contract successfully deleted.',
+    'delete_fail'                   => 'Contract could not be deleted.',
+    'saved'                         => 'Changes Saved.',
+    'not_updated'                   => 'Could not be updated.',
+    'status_update'                 => 'Contract status successfully updated.',
+    'invalid_status'                => 'Invalid Status',
+    'permission_denied'             => 'Permission denied.',
+    'status_updated'                => 'Contract status successfully updated.',
+    /*Logs*/
+    'log'                           => [
+        'save'      => 'Contract created',
+        'update'    => 'Contract updated',
+        'delete'    => 'Contract deleted',
+        'status'    => 'Contract :type status updated from :old_status to :new_status',
+        'save_page' => 'Page no :page updated',
+    ]
 ];

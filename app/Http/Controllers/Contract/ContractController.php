@@ -75,6 +75,7 @@ class ContractController extends Controller
         $contracts = $this->contractFilter->getAll($filters);
         $years     = $this->contractFilter->getUniqueYears();
         $countries = $this->contractFilter->getUniqueCountries();
+
         return view('contract.index', compact('contracts', 'years', 'countries'));
     }
 
@@ -99,10 +100,10 @@ class ContractController extends Controller
     public function store(ContractRequest $request)
     {
         if ($this->contract->saveContract($request->all())) {
-            return redirect()->route('contract.index')->withSuccess('Contract successfully uploaded.');
+            return redirect()->route('contract.index')->withSuccess(trans('contract.save_success'));
         }
 
-        return redirect()->route('contract.index')->withError('Contract could not be saved.');
+        return redirect()->route('contract.index')->withError(trans('contract.save_fail'));
     }
 
     /**
@@ -128,6 +129,7 @@ class ContractController extends Controller
         if ($contract->text_status == Contract::STATUS_REJECTED) {
             $contract->text_comment = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
         }
+
         if ($annotationStatus == Annotation::REJECTED) {
             $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
         }
@@ -158,10 +160,10 @@ class ContractController extends Controller
     public function update(ContractRequest $request, $contractID)
     {
         if ($this->contract->updateContract($contractID, $request->all())) {
-            return redirect()->route('contract.index')->withSuccess('Contract successfully updated.');
+            return redirect()->route('contract.index')->withSuccess(trans('contract.update_success'));
         }
 
-        return redirect()->route('contract.index')->withError('Contract could not be updated.');
+        return redirect()->route('contract.index')->withError(trans('contract.update_fail'));
     }
 
     /**
@@ -173,10 +175,10 @@ class ContractController extends Controller
     public function destroy($id)
     {
         if ($this->contract->deleteContract($id)) {
-            return redirect()->route('contract.index')->withSuccess('Contract successfully deleted.');
+            return redirect()->route('contract.index')->withSuccess(trans('contract.delete_success'));
         }
 
-        return redirect()->route('contract.index')->withSuccess('Contract could not be deleted.');
+        return redirect()->route('contract.index')->withSuccess(trans('contract.delete_fail'));
     }
 
     /**
@@ -193,11 +195,11 @@ class ContractController extends Controller
 
         if ($contract) {
             return response()->json(
-                ['result' => 'success', 'type' => $contract->getTextType(), 'message' => 'Changes Saved.']
+                ['result' => 'success', 'type' => $contract->getTextType(), 'message' => trans('contract.saved')]
             );
         }
 
-        return response()->json(['result' => 'error', 'message' => 'Could not be updated.']);
+        return response()->json(['result' => 'error', 'message' => trans('contract.not_updated')]);
     }
 
     /**
@@ -216,15 +218,16 @@ class ContractController extends Controller
             'published' => 'publish'
         ];
 
-        if ($auth->user()->hasRole('superadmin') || $auth->user()->can(sprintf('%s-metadata', $permission[$status]))) {
-            if ($this->contract->updateStatus($contract_id, $status, $request->input('type'))) {
-                return back()->withSuccess('Contract status successfully updated.');
-            }
-
-            return back()->withError('Invalid status');
+        if (!($auth->user()->can(sprintf('%s-metadata', $permission[$status])))) {
+            return back()->withError(trans('contract.permission_denied'));
         }
 
-        return back()->withError('Permission denied.');
+        if ($this->contract->updateStatus($contract_id, $status, $request->input('type'))) {
+            return back()->withSuccess(trans('contract.status_update'));
+        }
+
+        return back()->withError(trans('contract.invalid_status'));
+
     }
 
     /**
@@ -236,20 +239,19 @@ class ContractController extends Controller
      */
     public function contractComment($contract_id, Request $request, Guard $auth)
     {
-        if ($auth->user()->hasRole('superadmin') || $auth->user()->can('reject-metadata')) {
-            if ($this->contract->updateStatusWithComment(
-                $contract_id,
-                Contract::STATUS_REJECTED,
-                $request->input('message'),
-                $request->input('type')
-            )
-            ) {
-                return back()->withSuccess('Contract status successfully updated.');
-            }
-
-            return back()->withError('Invalid status');
+        if (!$auth->user()->can('reject-metadata')) {
+            return back()->withError(trans('contract.permission_denied'));
         }
 
-        return back()->withError('Permission denied.');
+        if ($this->contract->updateStatusWithComment(
+            $contract_id,
+            Contract::STATUS_REJECTED,
+            $request->input('message'),
+            $request->input('type')
+        )) {
+            return back()->withSuccess(trans('contract.status_update'));
+        }
+
+        return back()->withError(trans('contract.invalid_status'));
     }
 }

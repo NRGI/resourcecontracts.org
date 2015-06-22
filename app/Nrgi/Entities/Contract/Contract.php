@@ -118,6 +118,14 @@ class Contract extends Model
     }
 
     /**
+     * Get Contract Title
+     */
+    public function getTitleAttribute()
+    {
+        return $this->metadata->contract_name;
+    }
+
+    /**
      * Check if status is editable
      *
      * @param $status
