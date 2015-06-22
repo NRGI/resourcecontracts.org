@@ -105,5 +105,5 @@ return [
     'page' => [
         'save' => 'Your corrections / changes have been saved',
         'save_fail' => 'Changes couldn\'t be saved',
-    ]
+    ],
 ];

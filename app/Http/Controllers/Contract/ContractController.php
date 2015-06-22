@@ -228,7 +228,6 @@ class ContractController extends Controller
         }
 
         return back()->withError(trans('contract.invalid_status'));
-
     }
 
     /**
