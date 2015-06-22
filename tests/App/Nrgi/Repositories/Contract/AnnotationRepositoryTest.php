@@ -10,23 +10,30 @@ class AnnotationRepositoryTest extends NrgiTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->annotation = m::mock('App\Nrgi\Entities\Contract\Annotation');
-        $this->contract = m::mock('App\Nrgi\Entities\Contract\Contract');
-        $this->annotationRepo = new AnnotationRepository($this->annotation, $this->contract);
+        $this->annotation     = m::mock('App\Nrgi\Entities\Contract\Annotation');
+        $this->contract       = m::mock('App\Nrgi\Entities\Contract\Contract');
+        $this->db             = m::mock('Illuminate\Database\DatabaseManager');
+        $this->annotationRepo = new AnnotationRepository($this->annotation, $this->contract, $this->db);
     }
 
     public function testItShouldGetAnAnnotationById()
     {
         $this->annotation->shouldReceive('findOrFail')->once()->with(1)->andReturnSelf();
-        $this->assertInstanceOf('App\Nrgi\Entities\Contract\Annotation',
-            $this->annotationRepo->getById(1));
+        $this->assertInstanceOf(
+            'App\Nrgi\Entities\Contract\Annotation',
+            $this->annotationRepo->getById(1)
+        );
     }
 
     public function testItShouldGetAnnotationList()
     {
-        $this->annotation->shouldReceive('where->where->get')->once()->andReturn(m::mock('Illuminate\Database\Eloquent\Collection'));
-        $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection',
-            $this->annotationRepo->search(['contract'=>1, 'document_page_no'=>1]));
+        $this->annotation->shouldReceive('where->where->get')->once()->andReturn(
+            m::mock('Illuminate\Database\Eloquent\Collection')
+        );
+        $this->assertInstanceOf(
+            'Illuminate\Database\Eloquent\Collection',
+            $this->annotationRepo->search(['contract' => 1, 'document_page_no' => 1])
+        );
     }
 
     public function testItShouldReturnInstanceOfAnnotationModel()

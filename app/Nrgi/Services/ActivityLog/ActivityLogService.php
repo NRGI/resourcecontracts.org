@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Services\ActivityLog;
 
+use App\Nrgi\Entities\ActivityLog\ActivityLog;
 use App\Nrgi\Repositories\ActivityLog\ActivityLogRepositoryInterface;
 
 /**
@@ -29,7 +30,7 @@ class ActivityLogService
      */
     public function save($message, $params = array(), $contractId = null)
     {
-        $activity = [];
+        $activity            = [];
         $activity['message'] = $message;
         if (!empty($params)) {
             $activity['message_params'] = $params;
@@ -39,5 +40,14 @@ class ActivityLogService
         }
 
         return $this->activityLog->save($activity);
+    }
+
+    /**
+     * @param int $perPage
+     * @return paginated Activity Log
+     */
+    public function getAll($perPage = 25)
+    {
+        return $this->activityLog->paginate($perPage);
     }
 }

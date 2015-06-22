@@ -13,8 +13,10 @@
         <div class="panel-heading"> @lang('contract.editing') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
 
         <div class="view-wrapper" style="background: #F6F6F6">
+            <a class="btn btn-default pull-right" href="{{route('contract.annotations.list', $contract->id)}}">Annotations</a>
+
             <div id="pagelist"></div>
-            <div id="message" style="padding: 0px 16px"></div>
+             <div id="message" style="padding: 0px 16px"></div>
             <div class="document-wrap">
             <div class="left-document-wrap annotate">
                     <div class="quill-wrapper">
@@ -63,7 +65,8 @@
         id: '{{$contract->id}}',
         filesBaseDir: '{{$contract->id}}',
         totalPages: '{{$contract->pages->count()}}',
-        currentPage: '{{$page}}',
+        currentPage: '{{$page->page_no}}',
+        pageId: '{{$page->id}}',
         getPdfLocation: function() { return "/data/{0}/pages/{1}.pdf".format(this.filesBaseDir, this.currentPage);},
         viewUrl: "{{route('contract.pages', ['id'=>$contract->id])}}",
         textLoadAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
@@ -183,7 +186,8 @@
                 annotationData: {
                     'url': this.contract.annotationAPI,
                     'contract': this.contract.id,
-                    'document_page_no': this.contract.currentPage
+                    'document_page_no': this.contract.currentPage,
+                    'page_id': this.contract.pageId
                 },
                 loadFromSearch: {
                     'url': this.contract.annotationAPI,

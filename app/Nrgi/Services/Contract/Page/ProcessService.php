@@ -3,7 +3,7 @@
 use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Filesystem\Filesystem;
-use Psr\Log\LoggerInterface;
+use Illuminate\Contracts\Logging\Log;
 use Symfony\Component\Process\Process;
 
 /**
@@ -30,7 +30,7 @@ class ProcessService
     protected $page;
 
     /**
-     * @var LoggerInterface
+     * @var Log
      */
     protected $logger;
 
@@ -39,14 +39,14 @@ class ProcessService
      * @param ContractService $contract
      * @param PageService     $page
      * @param Storage         $storage
-     * @param LoggerInterface $logger
+     * @param Log $logger
      */
     public function __construct(
         Filesystem $fileSystem,
         ContractService $contract,
         PageService $page,
         Storage $storage,
-        LoggerInterface $logger
+        Log $logger
     ) {
         $this->fileSystem = $fileSystem;
         $this->contract   = $contract;

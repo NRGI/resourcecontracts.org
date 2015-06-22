@@ -80,5 +80,6 @@ return [
     'license_identifier_only'       => "License Identifier",
     'source'                        => "Source",
     'pipeline'                      => "Pipeline",
-    'processing'                    => "Processing"
+    'processing'                    => "Processing",
+    'annotation_list'                    => "Annotation List"
 ];

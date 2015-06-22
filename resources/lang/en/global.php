@@ -7,6 +7,12 @@
 */
 
 return [
-    'yes' => "Yes",
-    'no'  => "No",
+    'yes'  => "Yes",
+    'no'   => "No",
+    'form' => [
+        'close'  => 'Close',
+        'save'   => 'Save',
+        'cancel' => 'Cancel',
+        'ok'     => 'Ok'
+    ]
 ];

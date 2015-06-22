@@ -11,4 +11,10 @@ interface ActivityLogRepositoryInterface
      * @return bool
      */
     public function save($activityLog);
+
+    /**
+     * @param $limit
+     * @return activity log model
+     */
+    public function paginate($limit);
 }

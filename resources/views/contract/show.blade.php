@@ -130,6 +130,7 @@
 
 
         @include('contract.state')
+        <a style="margin-left: 15px;margin-bottom: 25px" class="btn btn-default" href="{{route('contract.comment.list',$contract->id)}}">View all comments</a>
 
         <ul class="contract-info">
             <li><strong>@lang('contract.created_by'):</strong>

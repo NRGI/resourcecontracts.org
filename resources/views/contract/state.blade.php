@@ -1,6 +1,7 @@
 <?php
 use App\Nrgi\Entities\Contract\Contract;
 
+use App\Nrgi\Entities\Contract\Annotation;
 ?>
 
 <div class="state-wrap">
@@ -34,7 +35,7 @@ use App\Nrgi\Entities\Contract\Contract;
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                                 aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">@lang('Please enter your comment')</h4>
+                                    <h4 class="modal-title" id="myModalLabel">@lang('Suggest changes for Metadata')</h4>
                                 </div>
                                 <div class="modal-body">
                                     {!! Form::textarea('message', null, ['id'=>"message", 'rows'=>12,
@@ -43,9 +44,9 @@ use App\Nrgi\Entities\Contract\Contract;
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default"
-                                            data-dismiss="modal">@lang('contract.close')</button>
+                                            data-dismiss="modal">@lang('global.form.cancel')</button>
                                     <button type="submit"
-                                            class="btn btn-primary">@lang('contract.save_changes')</button>
+                                            class="btn btn-primary">@lang('global.form.ok')</button>
                                 </div>
                                 {!! Form::close() !!}
                             </div>
@@ -91,10 +92,7 @@ use App\Nrgi\Entities\Contract\Contract;
                         'method'=>'post'])!!}
                         {!!Form::hidden('state', 'completed')!!}
                         {!!Form::hidden('type', 'metadata')!!}
-                        <div class="pull-right">{!!Form::button(trans('Make Complete'), ['type'=>'submit','class'=>'btn
-                            btn-primary confirm',
-                            'data-confirm'=>trans('Are you sure you want to marked complete this contract ?')])!!}
-                        </div>
+                        {!!Form::button(trans('Make Complete'), ['type'=>'submit','class'=>'btn btn-primary confirm','data-confirm'=>trans('Are you sure you want to marked complete this contract ?')])!!}
                         {!!Form::close()!!}
                     </div>
                 @endif
@@ -131,8 +129,9 @@ use App\Nrgi\Entities\Contract\Contract;
                                         <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close"><span
                                                     aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title"
-                                            id="myModalLabel">@lang('Please enter your comment')</h4>
+
+                                        <h4 class="modal-title" id="myModalLabel">@lang('Suggest changes for Text')</h4>
+
                                     </div>
                                     <div class="modal-body">
                                         {!! Form::textarea('message', null, ['id'=>"message", 'rows'=>12,
@@ -141,9 +140,9 @@ use App\Nrgi\Entities\Contract\Contract;
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default"
-                                                data-dismiss="modal">@lang('contract.close')</button>
+                                                data-dismiss="modal">@lang('global.form.cancel')</button>
                                         <button type="submit"
-                                                class="btn btn-primary">@lang('contract.save_changes')</button>
+                                                class="btn btn-primary">@lang('global.form.ok')</button>
                                     </div>
                                     {!! Form::close() !!}
                                 </div>
@@ -188,15 +187,18 @@ use App\Nrgi\Entities\Contract\Contract;
                             'method'=>'post'])!!}
                             {!!Form::hidden('state', 'completed')!!}
                             {!!Form::hidden('type', 'text')!!}
-                            {!!Form::button(trans('Make Complete'), ['type'=>'submit','class'=>'btn btn-primary
-                            confirm',
+                            {!!Form::button(trans('Make Complete'), ['type'=>'submit','class'=>'btn btn-primary confirm',
                             'data-confirm'=>trans('Are you sure you want to marked complete this contract ?')])!!}
                             {!!Form::close()!!}
                         </div>
                     @endif
                 @endif
             </li>
-            <li><strong>@lang('Annotation'):</strong> <span class="draft"> @lang('Draft')</span></li>
+
+            @if (count($annotations) > 0)
+                @include('contract.partials.annotation_status')
+            @endif
+
         @else
             <li><strong>@lang('Text'):</strong></li>
             <li><strong>@lang('Annotation'):</strong></li>

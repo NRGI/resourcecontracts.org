@@ -41,7 +41,7 @@ class PageController extends Controller
      */
     public function index(Request $request, $contractId)
     {
-        $page        = $request->input('page', '1');
+        $page        = $this->pages->getText($contractId, $request->input('page', '1'));
         $action      = $request->input('action', '');
         $canEdit     = $action == "edit" ? 'true' : 'false';
         $canAnnotate = $action == "annotate" ? 'true' : 'false';

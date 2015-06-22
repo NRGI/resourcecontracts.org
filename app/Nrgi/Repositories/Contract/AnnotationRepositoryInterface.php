@@ -10,7 +10,7 @@ interface AnnotationRepositoryInterface
     /**
      * Save or update contract annotation
      * @param  $contractAnnotationData
-     * @return mixed
+     * @return bool
      */
     public function save($contractAnnotationData);
 
@@ -23,14 +23,31 @@ interface AnnotationRepositoryInterface
     /**
      * Search
      * @param $params
-     * @return mixed
+     * @return Annotation
      */
     public function search(array $params);
 
     /**
-     * @param $range
+     * contract with pages and pages with annotations
+     *
      * @param $contractId
-     * @return mixed
+     * @return contract
      */
-    public function getAnnotationByRange($range, $contractId);
+    public function getContractPagesWithAnnotations($contractId);
+
+    /**
+     * updates contract annotation status
+     * @param $status
+     * @param $contractId
+     * @return bool
+     */
+    public function updateStatus($status, $contractId);
+
+    /**
+     * annotation status by contract id
+     *
+     * @param $contractId
+     * @return string
+     */
+    public function getStatus($contractId);
 }

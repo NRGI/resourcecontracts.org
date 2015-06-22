@@ -38,4 +38,13 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
 
         return ($this->activityLog->create($activityLog) ? true : false);
     }
+
+    /**
+     * @param $limit
+     * @return activity log model
+     */
+    public function paginate($limit)
+    {
+        return $this->activityLog->with('user','contract')->orderby('id','desc')->paginate($limit);
+    }
 }

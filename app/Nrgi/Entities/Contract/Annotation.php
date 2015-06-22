@@ -16,17 +16,50 @@ class Annotation extends Model
     protected $table = 'contract_annotations';
 
     /**
+     * annotation status published
+     */
+    const DRAFT = 'draft';
+
+    /**
+     *  annotation status draft
+     */
+    const COMPLETED = 'completed';
+
+    /**
+     * annotation status published
+     */
+    const PUBLISHED = 'published';
+
+    /**
+     *  annotation status draft
+     */
+    const REJECTED = 'rejected';
+
+    /**
      * Convert json annotation to array
-     * @param $metaData
-     * @return mixed
+     * @param $annotation
+     * @return Array
      */
     public function getAnnotationAttribute($annotation)
     {
         return json_decode($annotation);
     }
 
+    /**
+     * @param $annotation
+     */
     public function setAnnotationAttribute($annotation)
     {
         $this->attributes['annotation'] = json_encode($annotation);
     }
+
+    /**
+     * Establish one-to-many relationship with Page model
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function page()
+    {
+        $this->belongsTo('App\Nrgi\Entities\Contract\Pages\Page', 'page_no', 'document_page_no');
+    }
 }
+

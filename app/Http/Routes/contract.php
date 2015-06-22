@@ -9,7 +9,7 @@ $router->group(
         $router->post('contract/{id}/output', ['as' => 'contract.output.save', 'uses' => 'ContractController@saveOutputType']);
         $router->post('contract/{id}/status', ['as' => 'contract.status', 'uses' => 'ContractController@updateStatus']);
         $router->post('contract/{id}/status/comment', ['as' => 'contract.status.comment', 'uses' => 'ContractController@contractComment']);
-        $router->get('contract/{id}/comment', ['as' => 'contract.status.comment', 'uses' => 'Comment\CommentController@index']);
+        $router->get('contract/{id}/comment', ['as' => 'contract.comment.list', 'uses' => 'Comment\CommentController@index']);
 
     }
 );

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 class AnnotationApiController extends Controller
 {
     protected $annotationService;
+
     /**
      * @param AnnotationService $annotationService
      */
@@ -27,10 +28,13 @@ class AnnotationApiController extends Controller
      */
     public function save(Request $request)
     {
-        $content = $request->getContent();
-        $response = $this->annotationService->save($content, $request->all());
+        $content    = $request->getContent();
+        $annotation = $this->annotationService->save($content, $request->all());
+        if ($annotation) {
+            return response()->json(['status' => 'success']);
+        }
 
-        return json_encode(['status' => 'success']);
+        return response()->json(['status' => 'error']);
     }
 
 
@@ -44,7 +48,7 @@ class AnnotationApiController extends Controller
         $content = $request->getContent();
         $this->annotationService->delete($content, $request->all());
 
-        return json_encode(['status' => 'success']);
+        return response()->json(['status' => 'success']);
     }
 
     /**
@@ -55,6 +59,6 @@ class AnnotationApiController extends Controller
     {
         $response = $this->annotationService->search($request->all());
 
-        return json_encode($response);
+        return response()->json($response);
     }
 }
