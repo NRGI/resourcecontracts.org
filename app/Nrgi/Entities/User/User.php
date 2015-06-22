@@ -56,4 +56,43 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
         return join(', ', $roles);
     }
+
+    /**
+     * Check if user has a permission by its name.
+     *
+     * @param string|array $permission Permission string or array of permissions.
+     * @param bool         $requireAll All permissions in the array are required.
+     *
+     * @return bool
+     */
+    public function can($permission, $requireAll = false)
+    {
+        if ($this->hasRole('superadmin')) {
+            return true;
+        }
+
+        if (is_array($permission)) {
+            foreach ($permission as $permName) {
+                $hasPerm = $this->can($permName);
+
+                if ($hasPerm && !$requireAll) {
+                    return true;
+                } elseif (!$hasPerm && $requireAll) {
+                    return false;
+                }
+            }
+
+            return $requireAll;
+        } else {
+            foreach ($this->roles as $role) {
+                foreach ($role->perms as $perm) {
+                    if ($perm->name == $permission) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
 }
