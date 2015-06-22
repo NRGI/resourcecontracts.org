@@ -248,8 +248,7 @@ class ContractController extends Controller
             Contract::STATUS_REJECTED,
             $request->input('message'),
             $request->input('type')
-        )
-        ) {
+        )) {
             return back()->withSuccess(trans('contract.status_update'));
         }
 

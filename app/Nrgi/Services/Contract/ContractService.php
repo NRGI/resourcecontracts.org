@@ -486,13 +486,7 @@ class ContractService
                     'elastic_search'
                 );
             }
-
-            $this->logger->activity(
-                'contract.log.status',
-                ['type' => $type, 'old_status' => $old_status, 'new_status' => $status],
-                $contract->id
-            );
-
+            $this->logger->activity('contract.log.status', ['type'=> $type, 'old_status' => $old_status, 'new_status'=>$status], $contract->id);
             $this->logger->info(
                 "Contract status updated",
                 [

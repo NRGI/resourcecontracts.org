@@ -50,7 +50,6 @@ return [
             'name'         => 'complete-text',
             'display_name' => 'Complete text',
             'description'  => 'Complete contract text'
-
         ],
         'publish-text'        => [
             'name'         => 'publish-text',
