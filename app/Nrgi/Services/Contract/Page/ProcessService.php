@@ -93,7 +93,7 @@ class ProcessService
     {
         $content                 = $this->fileSystem->get(sprintf('%s/stats.json', $writeFolderPath));
         $data                    = json_decode($content);
-        $contract->pdf_structure = ($data->structured ? "structured" : "scanned");
+        $contract->pdf_structure = strtolower($data->status);
 
         return $contract->save();
     }
