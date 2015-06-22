@@ -144,7 +144,7 @@ return [
     |
     */
 
-    'log'             => 'single',
+    'log'             => 'custom',
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
