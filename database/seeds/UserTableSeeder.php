@@ -35,7 +35,7 @@ class UserTableSeeder extends Seeder
         $researcherRole = Role::select('id')->whereName(config('nrgi.roles.researcher.name'))->first();
         $researcher->roles()->sync([$researcherRole->id]);
 
-        $permission_name = ['add-contract', 'edit-contract',  'complete-metadata', 'add-annotation', 'edit-annotation', 'complete-annotation',];
+        $permission_name = ['add-contract', 'edit-contract', 'edit-text', 'complete-text', 'complete-metadata',  'add-annotation', 'edit-annotation', 'complete-annotation',];
         $permissions = Permission::whereIn('name', $permission_name)->get();
         $researcherRole->perms()->sync($permissions);
     }

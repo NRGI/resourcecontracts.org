@@ -145,7 +145,7 @@ class ContractService
             $this->logger->error($e->getMessage());
         }
 
-        return false;
+        return null;
     }
 
     /**
@@ -164,14 +164,14 @@ class ContractService
             $this->logger->error($e->getMessage());
         }
 
-        return false;
+        return null;
     }
 
     /**
      * Upload Contract and save in database
      *
      * @param array $formData
-     * @return \App\Nrgi\Entities\Contract\Contract|bool
+     * @return Contract|bool
      */
     public function saveContract(array $formData)
     {
@@ -186,6 +186,9 @@ class ContractService
             ];
             try {
                 $contract = $this->contract->save($data);
+
+                $this->logger->activity('contract.log.save', ['contract' => $contract->title], $contract->id);
+
                 $this->logger->info(
                     'Contract successfully created.',
                     ['Contract Title' => $data['metadata']['project_title']]
@@ -280,6 +283,8 @@ class ContractService
             $contract->save();
             $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
 
+            $this->logger->activity('contract.log.update', ['contract' => $contract->title], $contract->id);
+
             return true;
         } catch (Exception $e) {
             $this->logger->error(
@@ -344,10 +349,11 @@ class ContractService
 
         if ($this->contract->delete($contract->id)) {
             $this->logger->info('Contract successfully deleted.', ['Contract Id' => $id]);
+            $this->logger->activity('contract.log.delete', ['contract' => $contract->title], $contract->id);
             try {
                 return $this->deleteFileFromS3($contract->file);
             } catch (FileNotFoundException $e) {
-                $this->logger->info($e->getMessage(), ['Contract Id' => $id, 'file' => $contract->file]);
+                $this->logger->error($e->getMessage(), ['Contract Id' => $id, 'file' => $contract->file]);
 
                 return false;
             }
@@ -488,6 +494,8 @@ class ContractService
             if ($status == Contract::STATUS_PUBLISHED) {
                 $this->elasticSearch->post($id, $type);
             }
+
+            $this->logger->activity('contract.log.status', ['type'=> $type, 'old_status' => $old_status, 'new_status'=>$status], $contract->id);
 
             $this->logger->info(
                 "Contract status updated",

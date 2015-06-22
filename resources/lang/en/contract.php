@@ -91,7 +91,15 @@ return [
     'delete_fail'                   => 'Contract could not be deleted.',
     'saved'                         => 'Changes Saved.',
     'not_updated'                   => 'Could not be updated.',
-    'status_updated'                => 'Contract status successfully updated.',
+    'status_update'                => 'Contract status successfully updated.',
     'invalid_status'                => 'Invalid Status',
     'permission_denied'             => 'Permission denied.',
+    /*Logs*/
+    'log'                           => [
+        'save'   => 'Contract created',
+        'update' => 'Contract updated',
+        'delete' => 'Contract deleted',
+        'status' => 'Contract :type status updated from :old_status to :new_status',
+        'save_page' => 'Page no :page updated'
+    ]
 ];

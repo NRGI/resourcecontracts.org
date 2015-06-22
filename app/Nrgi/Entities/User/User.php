@@ -45,7 +45,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * Get User Role Name
      * @return string
      */
-    public function RoleName()
+    public function roleName()
     {
         $roles = [];
         foreach ($this->roles->toArray() as $role) {
