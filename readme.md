@@ -2,6 +2,9 @@
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/NRGI/resourcecontracts.org/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/NRGI/resourcecontracts.org/?branch=master)
 
+## Build Status
+Are tests passing on master? [![Build Status](https://api.shippable.com/projects/556740f9edd7f2c052ff419f/badge?branchName=master)](https://app.shippable.com/projects/556740f9edd7f2c052ff419f/builds/latest)
+
 ## Install
 
 NRGI can be cloned from github repository and installed. Following the procedure given below:
