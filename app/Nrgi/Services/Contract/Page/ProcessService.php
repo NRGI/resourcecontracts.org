@@ -132,12 +132,16 @@ class ProcessService
      */
     public function processContractDocument($writeFolderPath, $readFilePath)
     {
+        set_time_limit(0);
         $commandPath = config('nrgi.pdf_process_path');
         $command     = sprintf('python %s/run.py -i %s -o %s', $commandPath, $readFilePath, $writeFolderPath);
         $this->logger->info("processing command", ['command' => $command]);
         $process = new Process($command);
-        $process->run();
-
+        $process->setTimeout(1000*1000*1000);
+        $process->start();
+        while ($process->isRunning()) {
+            echo $process->getIncrementalOutput();
+        }
         if (!$process->isSuccessful()) {
             //todo remove folder
             $this->logger->error("error while executing command.{$process->getErrorOutput()}", ['command' => $command]);
