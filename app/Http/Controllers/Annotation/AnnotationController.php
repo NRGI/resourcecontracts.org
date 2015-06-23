@@ -76,7 +76,7 @@ class AnnotationController extends Controller
     public function updateStatus(Guard $auth, Request $request, $contractId)
     {
         $status = trim(strtolower($request->input('state')));
-        if (!$auth->user()->hasRole('superadmin')) {
+        if (!$auth->user()->can(sprintf('%s-annotation', config('nrgi.permission')[$status]))) {
             return back()->withError('Permission denied.');
         }
         if ($this->annotation->updateStatus($status, $contractId)) {
@@ -94,7 +94,7 @@ class AnnotationController extends Controller
      */
     public function comment(Guard $auth, Request $request, $contractId)
     {
-        if (!$auth->user()->hasRole('superadmin')) {
+        if (!$auth->user()->can('reject-annotation')) {
             return back()->withError('Permission denied.');
         }
 
