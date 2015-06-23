@@ -51,6 +51,25 @@ class PageController extends Controller
         return view('contract.page.index', compact('contract', 'pages', 'page', 'canEdit', 'canAnnotate'));
     }
 
+    public function compare(Request $request, $contractId1, $contractId2)
+    {
+        $page        = $this->pages->getText($contractId1, $request->input('page', '1'));
+        $action      = $request->input('action', '');
+        $canEdit     = $action == "edit" ? 'true' : 'false';
+        $canAnnotate = $action == "annotate" ? 'true' : 'false';
+        $contract    = $this->contract->findWithPages($contractId1);
+        $pages       = $contract->pages;
+
+        $contract1Meta    = $this->contract->findWithPages($contractId1);
+        $contract2Meta    = $this->contract->findWithPages($contractId2);
+        $contract1 = array('metadata'=>$contract1Meta, 
+                           'pages'=>$contract1Meta->pages);
+        $contract2 = array('metadata'=>$contract2Meta, 
+                           'pages'=>$contract2Meta->pages);        
+
+        return view('contract.page.compare', compact('contract', 'contract1', 'contract2', 'pages', 'page', 'canEdit', 'canAnnotate'));
+    }
+
     /**
      * Save Page text
      * @param         $id
