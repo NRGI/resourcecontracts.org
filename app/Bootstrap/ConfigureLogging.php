@@ -23,7 +23,9 @@ class ConfigureLogging extends BaseConfigureLogging
      */
     protected function registerLogger(Application $app)
     {
-        $app->instance('log', $log = new NrgiWriter(
+        $app->instance(
+            'log',
+            $log = new NrgiWriter(
                 new Monolog($app->environment()), $app['events']
             )
         );
@@ -39,8 +41,11 @@ class ConfigureLogging extends BaseConfigureLogging
      */
     public function configureCustomHandler(Application $app, NrgiWriter $log)
     {
-        $handler = new LogEntriesHandler(env('LOG_ENTRIES_TOKEN'));
-        $log->getMonolog()->pushHandler($handler);
+        if (env('APP_ENV') == 'production') {
+            $handler = new LogEntriesHandler(env('LOGENTRIES_TOKEN'));
+            $log->getMonolog()->pushHandler($handler);
+        }
+
         $log->useFiles($app->storagePath() . '/logs/laravel.log');
     }
 }

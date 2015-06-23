@@ -1,7 +1,6 @@
 <?php namespace App\Nrgi\Services\ElasticSearch;
 
 use App\Nrgi\Repositories\Contract\ContractRepository;
-use App\Nrgi\Services\Contract\ContractService;
 use Exception;
 use Guzzle\Http\Client;
 use Psr\Log\LoggerInterface;
@@ -12,7 +11,6 @@ use Psr\Log\LoggerInterface;
  */
 class ElasticSearchService
 {
-    const ESURL = 'http://192.168.1.39:8000/';
     /**
      * @var Client
      */
@@ -22,14 +20,14 @@ class ElasticSearchService
      */
     protected $logger;
     /**
-     * @var ContractService
+     * @var ContractRepository
      */
     private $contract;
 
     /**
-     * @param Client          $http
-     * @param ContractService $contract
-     * @param LoggerInterface $logger
+     * @param Client             $http
+     * @param ContractRepository $contract
+     * @param LoggerInterface    $logger
      */
     public function __construct(Client $http, ContractRepository $contract, LoggerInterface $logger)
     {
@@ -46,7 +44,7 @@ class ElasticSearchService
      */
     protected function apiURL($request)
     {
-        return static::ESURL . $request;
+        return env('ELASTIC_SEARCH_URL') . $request;
     }
 
 
@@ -109,8 +107,8 @@ class ElasticSearchService
         $contract = $this->contract->findContractWithPages($id);
 
         $pages = [
-            'id'    => $contract->id,
-            'pages' => $contract->pages->toArray()
+            'contract_id' => $contract->id,
+            'pages'       => $contract->pages->toJson(),
         ];
 
         try {
@@ -121,5 +119,4 @@ class ElasticSearchService
             $this->logger->error($e->getMessage());
         }
     }
-
 }

@@ -133,4 +133,14 @@ class ContractRepository implements ContractRepositoryInterface
     {
         return $this->contract->destroy($contractID);
     }
+
+    /**
+     * Get Contract by file hash
+     * @param $fileHash
+     * @return mixed
+     */
+    public function getContractByFileHash($fileHash)
+    {
+        return $this->contract->where('filehash', $fileHash)->first();
+    }
 }

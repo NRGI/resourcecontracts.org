@@ -7,7 +7,7 @@
 */
 
 return [
-    'Aluminium '            => 'Aluminium',
+    'Aluminium'            => 'Aluminium',
     'Base metals'           => 'Base metals',
     'Bauxite'               => 'Bauxit',
     'Coal'                  => 'Coal',
@@ -17,7 +17,7 @@ return [
     'Diamonds'              => 'Diamonds',
     'Gas'                   => 'Ga',
     'Gold'                  => 'Gold',
-    'Iron ore '             => 'Iron ore ',
+    'Iron ore'             => 'Iron ore',
     'Lapis lazuli'          => 'Lapis lazuli',
     'Lead'                  => 'Lead',
     'Lithium'               => 'Lithium',
