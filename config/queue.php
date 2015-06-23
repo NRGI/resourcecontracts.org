@@ -47,7 +47,7 @@ return [
 			'host'   => 'localhost',
 			'queue'  => 'nrgi_queue',
 			'port'   => '11300',
-			'ttr'    => 60,
+			'ttr'    => 60000000,
 		],
 
 		'sqs' => [
