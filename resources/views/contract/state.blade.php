@@ -13,7 +13,7 @@ use App\Nrgi\Entities\Contract\Annotation;
                 <span class="published">@lang('Published')</span>
             @elseif($contract->metadata_status == Contract::STATUS_COMPLETED)
                 <span class="completed">@lang('Completed')</span>
-                @if($current_user->hasRole('superadmin') || $current_user->can('publish-metadata') )
+                @if($current_user->can('publish-metadata') )
                     <div class="pull-right">
                         {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
                         'method'=>'post'])!!}
@@ -86,7 +86,7 @@ use App\Nrgi\Entities\Contract\Annotation;
             @else
                 <span class="draft">@lang('Draft')</span>
 
-                @if($current_user->hasRole('superadmin') || $current_user->can('complete-metadata') )
+                @if($current_user->can('complete-metadata') )
                     <div class="pull-right">
                         {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
                         'method'=>'post'])!!}
@@ -104,7 +104,7 @@ use App\Nrgi\Entities\Contract\Annotation;
                     <span class="published">   @lang('Published')</span>
                 @elseif($contract->text_status == Contract::STATUS_COMPLETED)
                     <span class="completed"> @lang('Completed')</span>
-                    @if($current_user->hasRole('superadmin') || $current_user->can('publish-text') )
+                    @if($current_user->can('publish-text') )
                         <div class="pull-right">
                             {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
                             'method'=>'post'])!!}
@@ -181,7 +181,7 @@ use App\Nrgi\Entities\Contract\Annotation;
                     </div>
                 @else
                     <span class="draft"> @lang('Draft')</span>
-                    @if($current_user->hasRole('superadmin') || $current_user->can('complete-text') )
+                    @if($current_user->can('complete-text') )
                         <div class="pull-right">
                             {!!Form::open(['route'=>['contract.status', $contract->id], 'style'=>"display:inline",
                             'method'=>'post'])!!}

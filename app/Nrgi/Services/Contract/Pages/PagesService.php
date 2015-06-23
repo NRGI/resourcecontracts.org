@@ -1,6 +1,8 @@
 <?php namespace App\Nrgi\Services\Contract\Pages;
 
 use App\Nrgi\Repositories\Contract\Pages\PagesRepositoryInterface;
+use Exception;
+use Illuminate\Contracts\Logging\Log;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**
@@ -12,14 +14,20 @@ class PagesService
      * @var PagesRepositoryInterface
      */
     protected $pages;
+    /**
+     * @var Log
+     */
+    protected $logger;
 
 
     /**
      * @param PagesRepositoryInterface $pages
+     * @param Log                      $logger
      */
-    public function __construct(PagesRepositoryInterface $pages)
+    public function __construct(PagesRepositoryInterface $pages, Log $logger)
     {
         $this->pages = $pages;
+        $this->logger = $logger;
     }
 
     /**
@@ -48,7 +56,27 @@ class PagesService
         if ($page = $this->pages->getText($contractID, $pageID)) {
             $page->text = $text;
 
-            return $page->save();
+            try {
+                $page->save();
+
+                $this->logger->activity(
+                    'contract.log.save_page',
+                    ['page' => $pageID],
+                    $contractID
+                );
+
+                $this->logger->info(
+                    "Page text updated",
+                    [
+                        'Contract id' => $contractID,
+                        'Page id '    => $pageID,
+                    ]
+                );
+                return true;
+
+            } catch (Exception $e) {
+                $this->logger->error($e->getMessage());
+            }
         }
 
         throw new ModelNotFoundException();
