@@ -24,6 +24,26 @@
                         <div id="editor_left" class="editor">
                         </div>
                     </div>
+                    <div class="annotation-list">
+                    <hr>
+                        <ul>
+                            @forelse($contract1['annotations'] as $annotation)
+                                <li>
+                                    <span>
+                                        <a onclick="annotationClicked(this, '{{$contract->id}}', '{{$annotation->document_page_no}}')" id="{{$annotation->document_page_no}}" class="annotation" href='#'>
+                                            {{$annotation->annotation->quote}}
+                                        </a>
+                                        [Page {{$annotation->document_page_no}}]
+                                    </span>
+                                    <p>{{$annotation->annotation->text}}</p>
+                                    @foreach($annotation->annotation->tags as $tag)
+                                        <div>{{$tag}}</div>
+                                    @endforeach
+                                </li>
+                            @empty
+                            @endforelse
+                        </ul>
+                    </div>                    
                 </div>
                 <div class="right-document-wrap annotate_right">
                     <div class="quill-wrapper">
@@ -31,6 +51,27 @@
                         <div id="editor_right" class="editor">
                         </div>
                     </div>
+                    <div class="annotation-list">
+                    <hr>
+                        <ul>
+                            @forelse($contract2['annotations'] as $annotation)
+                                <li>
+                                    <span>
+                                        <a onclick="annotationClicked(this, '{{$contract->id}}', '{{$annotation->document_page_no}}')" id="{{$annotation->document_page_no}}" class="annotation" href='#'>
+                                        <!-- <a href="{{route('contract.annotations.list',$contract->id)}}?page={{$annotation->document_page_no}}"> -->
+                                            {{$annotation->annotation->quote}}
+                                        </a>
+                                        [Page {{$annotation->document_page_no}}]
+                                    </span>
+                                    <p>{{$annotation->annotation->text}}</p>
+                                    @foreach($annotation->annotation->tags as $tag)
+                                        <div>{{$tag}}</div>
+                                    @endforeach
+                                </li>
+                            @empty
+                            @endforelse
+                        </ul>
+                    </div>                    
                 </div>
             </div>
         </div>
@@ -57,6 +98,7 @@
 
     function Contract(options) {
         return {
+            annotations: options.annotations,
             id: options.id,
             totalPages: options.totalPages,
             currentPage: options.currentPage,
@@ -159,25 +201,34 @@
         };
     };
 
+    var contract1 = new Contract({
+        position: "left",
+        id: '{{$contract1["metadata"]->id}}',
+        totalPages:'{{$contract1["metadata"]->pages->count()}}',
+        currentPage: 1,
+        textLoadAPI: "{{route('contract.page.get', ['id'=>$contract1['metadata']->id])}}",
+        annotationAPI: "{{route('contract.page.get', ['id'=>$contract1['metadata']->id])}}", 
+        annotations: '{{$contract1["annotations"]}}'
+    });
+
+    var contract2 = new Contract({
+        position: "right",
+        id: '{{$contract2["metadata"]->id}}',
+        totalPages:'{{$contract2["metadata"]->pages->count()}}',
+        currentPage: 1,
+        textLoadAPI: "{{route('contract.page.get', ['id'=>$contract2['metadata']->id])}}",
+        annotationAPI: "{{route('contract.page.get', ['id'=>$contract2['metadata']->id])}}",
+        annotations: '{{$contract2["annotations"]}}'
+
+    });        
+    function annotationClicked(elem, contractId, page) {
+        contract2.loadPageText(page);
+        contract2.loadPageAnnotations(page);
+
+        console.log(contractId);
+        console.log(page);
+    }
     jQuery(function ($) {
-        var contract1 = new Contract({
-            position: "left",
-            id: '{{$contract1["metadata"]->id}}',
-            totalPages:'{{$contract1["metadata"]->pages->count()}}',
-            currentPage: 1,
-            textLoadAPI: "{{route('contract.page.get', ['id'=>$contract1['metadata']->id])}}",
-            annotationAPI: "{{route('contract.page.get', ['id'=>$contract1['metadata']->id])}}", 
-        });
-
-        var contract2 = new Contract({
-            position: "right",
-            id: '{{$contract2["metadata"]->id}}',
-            totalPages:'{{$contract2["metadata"]->pages->count()}}',
-            currentPage: 1,
-            textLoadAPI: "{{route('contract.page.get', ['id'=>$contract2['metadata']->id])}}",
-            annotationAPI: "{{route('contract.page.get', ['id'=>$contract2['metadata']->id])}}"
-
-        });        
         contract1.init().loadPageText(1).loadPagination().loadPageAnnotations(1);
         contract2.init().loadPageText(1).loadPagination().loadPageAnnotations(1);
     });

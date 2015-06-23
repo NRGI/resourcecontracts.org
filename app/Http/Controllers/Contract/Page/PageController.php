@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Entities\Contract\Pages\Pages;
 use App\Nrgi\Services\Contract\ContractService;
+use App\Nrgi\Services\Contract\AnnotationService;
 use App\Nrgi\Services\Contract\Pages\PagesService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -28,11 +29,12 @@ class PageController extends Controller
      * @param ContractService $contract
      * @param PagesService    $pages
      */
-    public function __construct(ContractService $contract, PagesService $pages)
+    public function __construct(ContractService $contract, PagesService $pages, AnnotationService $annotation)
     {
         $this->middleware('auth');
         $this->contract = $contract;
         $this->pages    = $pages;
+        $this->annotation = $annotation;
     }
 
     /**
@@ -62,11 +64,16 @@ class PageController extends Controller
         $pages       = $contract->pages;
 
         $contract1Meta    = $this->contract->findWithPages($contractId1);
+        $contract1Annotations = $this->annotation->getContractPagesWithAnnotations($contractId1);
         $contract2Meta    = $this->contract->findWithPages($contractId2);
+        $contract2Annotations = $this->annotation->getContractPagesWithAnnotations($contractId2);
+
         $contract1 = array('metadata'=>$contract1Meta, 
-                           'pages'=>$contract1Meta->pages);
+                           'pages'=>$contract1Meta->pages,
+                           'annotations'=>$contract1Annotations->annotations);
         $contract2 = array('metadata'=>$contract2Meta, 
-                           'pages'=>$contract2Meta->pages);        
+                           'pages'=>$contract2Meta->pages,
+                           'annotations'=>$contract2Annotations->annotations);        
 
         return view('contract.page.compare', compact('contract', 'contract1', 'contract2', 'pages', 'page', 'canEdit', 'canAnnotate'));
     }
