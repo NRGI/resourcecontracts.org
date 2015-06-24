@@ -307,7 +307,7 @@ class ContractService
         if ($file->isValid()) {
             $fileName    = $file->getClientOriginalName();
             $file_type   = $file->getClientOriginalExtension();
-            $newFileName = sprintf("%s.%s", $this->hashFileName($fileName), $file_type);
+            $newFileName = sprintf("%s.%s", sha1($fileName . time()), $file_type);
             try {
                 $data = $this->storage->disk('s3')->put(
                     $newFileName,
@@ -323,7 +323,7 @@ class ContractService
                 return [
                     'name' => $newFileName,
                     'size' => $file->getSize(),
-                    'hash' => $this->hashFileName($newFileName),
+                    'hash' => getFileHash($file->getPathName())
                 ];
             }
         }
@@ -378,17 +378,6 @@ class ContractService
         }
 
         return $this->storage->disk('s3')->delete($file);
-    }
-
-    /**
-     * Hash the file name
-     *
-     * @param string $name
-     * @return string
-     */
-    protected function hashFileName($name)
-    {
-        return sha1(microtime() . $name); //$this->storage->disk('s3')->get($name);
     }
 
     /**
@@ -495,7 +484,11 @@ class ContractService
                 $this->elasticSearch->post($id, $type);
             }
 
-            $this->logger->activity('contract.log.status', ['type'=> $type, 'old_status' => $old_status, 'new_status'=>$status], $contract->id);
+            $this->logger->activity(
+                'contract.log.status',
+                ['type' => $type, 'old_status' => $old_status, 'new_status' => $status],
+                $contract->id
+            );
 
             $this->logger->info(
                 "Contract status updated",
@@ -525,17 +518,31 @@ class ContractService
     public function updateStatusWithComment($contract_id, $status, $message, $type)
     {
         $this->database->beginTransaction();
-        if ($this->updateStatus($contract_id, $status, $type)) {
-            try {
-                $this->comment->save($contract_id, $message, $type);
-                $this->database->commit();
-                $this->logger->info('Commented successfully added', ['Contract id' => $contract_id]);
 
-                return true;
-            } catch (Exception $e) {
-                $this->database->rollback();
-                $this->logger->error($e->getMessage());
+        if ($this->updateStatus($contract_id, $status, $type) && $this->comment->save($contract_id, $message, $type)) {
+            $this->database->commit();
+
+            return true;
+        }
+        $this->database->rollback();
+
+        return false;
+    }
+
+    /**
+     * Check for unique file hash
+     *
+     * @param $file
+     * @return bool
+     */
+    public function getContractIfFileHashExist($filehash)
+    {
+        try {
+            if ($file = $this->contract->getContractByFileHash($filehash)) {
+                return $file;
             }
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
         }
 
         return false;

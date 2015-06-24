@@ -66,4 +66,12 @@ interface ContractRepositoryInterface
      * @return Contract
      */
     public function getUniqueYears();
+
+    /**
+     * Get Contract by file hash
+     * @param $fileHash
+     * @return mixed
+     */
+    public function getContractByFileHash($fileHash);
+
 }

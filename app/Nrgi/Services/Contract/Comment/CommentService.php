@@ -39,7 +39,7 @@ class CommentService
     {
         try {
             $this->comment->saveComment($contract_id, $message, $type);
-            $this->logger->info('Comment successfully saved.');
+            $this->logger->info('Comment successfully saved.', ['Contract id' => $contract_id]);
 
             return true;
         } catch (Exception $e) {
