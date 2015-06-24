@@ -3,6 +3,7 @@
 use App\Nrgi\Entities\Contract\Contract;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class ContractRepository
@@ -31,6 +32,7 @@ class ContractRepository implements ContractRepositoryInterface
 
     /**
      * Save Contract
+     *
      * @param $contractDetail
      * @return Contract
      */
@@ -41,6 +43,7 @@ class ContractRepository implements ContractRepositoryInterface
 
     /**
      * Get All Contracts
+     *
      * @param array $filters
      * @return Collection|static[]
      */
@@ -61,9 +64,9 @@ class ContractRepository implements ContractRepositoryInterface
         return $query->orderBy('created_datetime', 'DESC')->get();
     }
 
-
     /**
      * Get unique contract years
+     *
      * @return contract
      */
     public function getUniqueYears()
@@ -78,6 +81,7 @@ class ContractRepository implements ContractRepositoryInterface
 
     /**
      * Get unique countries
+     *
      * @return contract
      */
     public function getUniqueCountries()
@@ -88,6 +92,18 @@ class ContractRepository implements ContractRepositoryInterface
                               ->whereRaw("metadata->'country'->>'code' !=''")
                               ->groupBy($this->db->raw("metadata->'country'->>'code'"))
                               ->orderBy($this->db->raw("metadata->'country'->>'code'"), "DESC")->get();
+    }
+
+    /**
+     * Get unique resources
+     *
+     * @return contract
+     */
+    public function getUniqueResources()
+    {
+        return $this->contract->select($this->db->raw("DISTINCT trim(both '\"' from r::text) as resource"))->from(
+            $this->db->raw("contracts, json_array_elements(metadata->'resource') r")
+        )->orderBy('resource', 'ASC')->get();
     }
 
     /**
@@ -136,6 +152,7 @@ class ContractRepository implements ContractRepositoryInterface
 
     /**
      * Get Contract by file hash
+     *
      * @param $fileHash
      * @return mixed
      */

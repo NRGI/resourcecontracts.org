@@ -15,7 +15,6 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Queue\Queue;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-
 /**
  * Class ContractService
  * @package App\Nrgi\Services\Contract

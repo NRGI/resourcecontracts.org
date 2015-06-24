@@ -71,12 +71,13 @@ class ContractController extends Controller
      */
     public function index(Request $request)
     {
-        $filters   = $request->only('resource', 'year', 'country');
+        $filters   = $request->only('resource', 'year', 'country', 'category', 'resource');
         $contracts = $this->contractFilter->getAll($filters);
         $years     = $this->contractFilter->getUniqueYears();
         $countries = $this->contractFilter->getUniqueCountries();
+        $resources = $this->contractFilter->getUniqueResources();
 
-        return view('contract.index', compact('contracts', 'years', 'countries'));
+        return view('contract.index', compact('contracts', 'years', 'countries', 'resources'));
     }
 
     /**
@@ -248,7 +249,8 @@ class ContractController extends Controller
             Contract::STATUS_REJECTED,
             $request->input('message'),
             $request->input('type')
-        )) {
+        )
+        ) {
             return back()->withSuccess(trans('contract.status_update'));
         }
 
