@@ -6,6 +6,16 @@
     <link rel="stylesheet" href="{{ asset('css/simplePagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
 
+<style>
+.annotation-list {
+  display: block;
+  position: absolute;
+  top: 34px;
+  right: 0px;
+  width: 60%;
+  background-color: #eee;
+}
+</style>
 @stop
 
 @section('content')
@@ -14,28 +24,25 @@
         <div class="panel-heading"> @lang('contract.editing') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
 
         <div class="view-wrapper" style="background: #F6F6F6">
-            <a class="btn btn-default pull-right" href="{{route('contract.annotations.list', $contract->id)}}">Annotations</a>
 
             <div id="pagelist"></div>
              <div id="message" style="padding: 0px 16px"></div>
             <div class="document-wrap">
-            <div class="left-document-wrap" id="annotate_left">
+                <div class="left-document-wrap" id="annotate_left">
+                    <a id="left" class="btn btn-default pull-right annotation_button" href="#">Annotations</a>
                     <div class="quill-wrapper">
                         <div id="pagelist_left"></div>
-                        <div id="editor_left" class="editor">
-                        </div>
+                        <div id="editor_left" class="editor"></div>
                     </div>
-                    <div id="annotations_left" class="annotation-list">
-                    </div>                    
+                    <div id="annotations_left" class="annotation-list" style="display:none"><ul></ul></div>
                 </div>
                 <div class="right-document-wrap" id="annotate_right">
+                <a id="right" class="btn btn-default pull-right annotation_button" href="#">Annotations</a>
                     <div class="quill-wrapper">
                         <div id="pagelist_right"></div>
-                        <div id="editor_right" class="editor">
-                        </div>
+                        <div id="editor_right" class="editor"></div>
                     </div>
-                    <div id="annotations_right" class="annotation-list">
-                    </div>                    
+                    <div id="annotations_right" class="annotation-list" style="display:none"><ul></ul></div>
                 </div>
             </div>
         </div>
@@ -124,13 +131,12 @@ var contract2Annotations = [];
                 return this;
             },
             listAllAnnotations: function() {
-                new AnnotationsList("#annotations_{0}".format(options.position), this, options.annotations).init();
+                new AnnotationsList("#annotations_{0} ul".format(options.position), this, options.annotations).init();
                 return this;
             },
             loadPage: function(page) {
                 this.pagination.setPage(page);
                 return this;
-
             }
         };
     };
@@ -176,24 +182,10 @@ var contract2Annotations = [];
                     }
                 });
                 return this;
-            // this.pagination = $(el).twbsPagination({
-            //         totalPages: contract.totalPages,
-            //         visiblePages: 5,
-            //         startPage: contract.currentPage,
-            //         onPageClick: function (event, page) {
-            //             contract.loadPageText(page);
-            //             contract.loadPageAnnotations(page);
-            //         }
-            //     });
-            //     return this;
             },
             setPage: function(page) {
-                // console.log(this.pagination);
-                // this.pagination.pagination('selectPage', page);
                 this.pagination.pagination('drawPage', page)
                 return this;
-                // this.pagination.show(page);
-                // return this;
             }
         };
     };    
@@ -201,11 +193,9 @@ var contract2Annotations = [];
     function AnnotationsList(el, contract, annotations) {
         return {
             init: function() {
-                $(el).append("<hr><ul>");
                 annotations.forEach(function(annotation) {
                     $(el).append("<li><span><a onclick='annotationClicked(this,"+contract.id+","+annotation.page+")' href='#'>{0}</a> [Page {1}]</span><br><p>{2}</p></li>".format(annotation.quote, annotation.page, annotation.text));
                 });
-                $(el).append("</ul>");
             },
         };
     };
@@ -270,10 +260,16 @@ var contract2Annotations = [];
     function annotationClicked(elem, contractId, page) {
         if(getContract(contractId)) {
             getContract(contractId).loadPage(page);
-            // getContract(contractId).loadPageText(page);
-            // getContract(contractId).loadPageAnnotations(page);
+            getContract(contractId).loadPageText(page);
+            getContract(contractId).loadPageAnnotations(page);
         }
     }
+
+    $('.annotation_button').click(function() {
+        var el = "#annotations_{0}".format(this.id)
+        $(el).toggle();
+        // console.log(this.id);
+    });
 
     jQuery(function ($) {
         contract1.init().loadPageText(1).loadPagination().loadPageAnnotations(1);
