@@ -481,7 +481,11 @@ class ContractService
             $contract->save();
 
             if ($status == Contract::STATUS_PUBLISHED) {
-                $this->elasticSearch->post($id, $type);
+                $this->queue->push(
+                    'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                    ['contract_id' => $id, 'type' => $type],
+                    'elastic_search'
+                );
             }
 
             $this->logger->activity(
