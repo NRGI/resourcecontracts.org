@@ -39,7 +39,7 @@ class ProcessService
      * @param ContractService $contract
      * @param PageService     $page
      * @param Storage         $storage
-     * @param Log $logger
+     * @param Log             $logger
      */
     public function __construct(
         Filesystem $fileSystem,
@@ -137,7 +137,7 @@ class ProcessService
         $command     = sprintf('python %s/run.py -i %s -o %s', $commandPath, $readFilePath, $writeFolderPath);
         $this->logger->info("processing command", ['command' => $command]);
         $process = new Process($command);
-        $process->setTimeout(1000*1000*1000);
+        $process->setTimeout(360 * 10);
         $process->start();
         while ($process->isRunning()) {
             echo $process->getIncrementalOutput();

@@ -47,7 +47,14 @@ return [
 			'host'   => 'localhost',
 			'queue'  => 'nrgi_queue',
 			'port'   => '11300',
-			'ttr'    => 60000000,
+			'ttr'    => 60,
+		],
+		'elastic_search' => [
+			'driver' => 'beanstalkd',
+			'host'   => 'localhost',
+			'queue'  => 'elastic_search_queue',
+			'port'   => '11300',
+			'ttr'    => 60,
 		],
 
 		'sqs' => [
