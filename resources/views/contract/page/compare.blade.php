@@ -3,6 +3,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('js/lib/quill/quill.snow.css') }}"/>
     <link rel="stylesheet" href="{{ asset('js/lib/annotator/annotator.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/simplePagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
 
 @stop
@@ -18,59 +19,22 @@
             <div id="pagelist"></div>
              <div id="message" style="padding: 0px 16px"></div>
             <div class="document-wrap">
-            <div class="left-document-wrap annotate_left">
+            <div class="left-document-wrap" id="annotate_left">
                     <div class="quill-wrapper">
                         <div id="pagelist_left"></div>
                         <div id="editor_left" class="editor">
                         </div>
                     </div>
-                    <div class="annotation-list">
-                    <hr>
-                        <ul>
-                            @forelse($contract1['annotations'] as $annotation)
-                                <li>
-                                    <span>
-                                        <a onclick="annotationClicked(this, '{{$contract->id}}', '{{$annotation->document_page_no}}')" id="{{$annotation->document_page_no}}" class="annotation" href='#'>
-                                            {{$annotation->annotation->quote}}
-                                        </a>
-                                        [Page {{$annotation->document_page_no}}]
-                                    </span>
-                                    <p>{{$annotation->annotation->text}}</p>
-                                    @foreach($annotation->annotation->tags as $tag)
-                                        <div>{{$tag}}</div>
-                                    @endforeach
-                                </li>
-                            @empty
-                            @endforelse
-                        </ul>
+                    <div id="annotations_left" class="annotation-list">
                     </div>                    
                 </div>
-                <div class="right-document-wrap annotate_right">
+                <div class="right-document-wrap" id="annotate_right">
                     <div class="quill-wrapper">
                         <div id="pagelist_right"></div>
                         <div id="editor_right" class="editor">
                         </div>
                     </div>
-                    <div class="annotation-list">
-                    <hr>
-                        <ul>
-                            @forelse($contract2['annotations'] as $annotation)
-                                <li>
-                                    <span>
-                                        <a onclick="annotationClicked(this, '{{$contract->id}}', '{{$annotation->document_page_no}}')" id="{{$annotation->document_page_no}}" class="annotation" href='#'>
-                                        <!-- <a href="{{route('contract.annotations.list',$contract->id)}}?page={{$annotation->document_page_no}}"> -->
-                                            {{$annotation->annotation->quote}}
-                                        </a>
-                                        [Page {{$annotation->document_page_no}}]
-                                    </span>
-                                    <p>{{$annotation->annotation->text}}</p>
-                                    @foreach($annotation->annotation->tags as $tag)
-                                        <div>{{$tag}}</div>
-                                    @endforeach
-                                </li>
-                            @empty
-                            @endforelse
-                        </ul>
+                    <div id="annotations_right" class="annotation-list">
                     </div>                    
                 </div>
             </div>
@@ -79,13 +43,52 @@
     </div>
 @stop
 
-
 @section('script')
+<script>
+var contract1Annotations = [];
+</script>
+@forelse($contract1['annotations'] as $annotation)
+    <script>var tags = [];</script>
+   @foreach($annotation['tags'] as $tag)
+    <script>tags.push('{{$tag}}');</script>            
+    @endforeach
+    <script>
+    contract1Annotations.push({
+        'page': '{{$annotation["page"]}}',
+        'text': '{{$annotation["text"]}}',
+        'quote': '{{$annotation["quote"]}}',
+        'tags': tags
+    });
+    </script>
+@empty 
+@endforelse
+
+<script>
+var contract2Annotations = [];
+</script>
+@forelse($contract2['annotations'] as $annotation)
+    <script>var tags = [];</script>
+   @foreach($annotation['tags'] as $tag)
+    <script>tags.push('{{$tag}}');</script>            
+    @endforeach
+    <script>
+    contract2Annotations.push({
+        'page': '{{$annotation["page"]}}',
+        'text': '{{$annotation["text"]}}',
+        'quote': '{{$annotation["quote"]}}',
+        'tags': tags
+    });
+    </script>
+@empty 
+@endforelse
+
     <script src="{{ asset('js/lib/quill/quill.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/lib/annotator/annotator-full.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
     <script src="{{ asset('js/jquery.twbsPagination.js') }}"></script>
+    <script src="{{ asset('js/jquery.simplePagination.js') }}"></script>
     <script>
+
     //defining format to use .format function
     String.prototype.format = function () {
         var formatted = this;
@@ -98,14 +101,13 @@
 
     function Contract(options) {
         return {
-            annotations: options.annotations,
             id: options.id,
             totalPages: options.totalPages,
             currentPage: options.currentPage,
             init: function() {
                 this.editorEl = "#editor_{0}".format(options.position);
                 this.editor = new TextEditor(this.editorEl).init();
-                this.annotator = new ContractAnnotator(".annotate_{0}".format(options.position), this.id, options.annotationAPI).init();
+                this.annotator = new ContractAnnotator("#annotate_{0}".format(options.position), this.id, options.annotationAPI).init();
                 return this;
             },
             loadPageText: function(page) {
@@ -114,12 +116,21 @@
                 return this;
             },
             loadPagination: function() {
-                new Pagination("#pagelist_{0}".format(options.position), this).show();
+                this.pagination = new Pagination("#pagelist_{0}".format(options.position), this).show();
                 return this;
             },
             loadPageAnnotations: function(page) {
                 this.annotator.load(page);
                 return this;
+            },
+            listAllAnnotations: function() {
+                new AnnotationsList("#annotations_{0}".format(options.position), this, options.annotations).init();
+                return this;
+            },
+            loadPage: function(page) {
+                this.pagination.setPage(page);
+                return this;
+
             }
         };
     };
@@ -155,19 +166,49 @@
     function Pagination(el, contract) {
         return {
             show: function() {
-                $(el).twbsPagination({
-                    totalPages: contract.totalPages,
-                    visiblePages: 5,
-                    startPage: contract.currentPage,
-                    onPageClick: function (event, page) {
+                this.pagination = $(el).pagination({
+                    pages: contract.totalPages,
+                    displayedPages: 5,
+                    cssStyle: 'light-theme',
+                    onPageClick: function (page, event) {
                         contract.loadPageText(page);
                         contract.loadPageAnnotations(page);
                     }
                 });
                 return this;
+            // this.pagination = $(el).twbsPagination({
+            //         totalPages: contract.totalPages,
+            //         visiblePages: 5,
+            //         startPage: contract.currentPage,
+            //         onPageClick: function (event, page) {
+            //             contract.loadPageText(page);
+            //             contract.loadPageAnnotations(page);
+            //         }
+            //     });
+            //     return this;
+            },
+            setPage: function(page) {
+                // console.log(this.pagination);
+                // this.pagination.pagination('selectPage', page);
+                this.pagination.pagination('drawPage', page)
+                return this;
+                // this.pagination.show(page);
+                // return this;
             }
         };
     };    
+
+    function AnnotationsList(el, contract, annotations) {
+        return {
+            init: function() {
+                $(el).append("<hr><ul>");
+                annotations.forEach(function(annotation) {
+                    $(el).append("<li><span><a onclick='annotationClicked(this,"+contract.id+","+annotation.page+")' href='#'>{0}</a> [Page {1}]</span><br><p>{2}</p></li>".format(annotation.quote, annotation.page, annotation.text));
+                });
+                $(el).append("</ul>");
+            },
+        };
+    };
 
     function ContractAnnotator(el, contractId, api) {
         return {
@@ -207,8 +248,8 @@
         totalPages:'{{$contract1["metadata"]->pages->count()}}',
         currentPage: 1,
         textLoadAPI: "{{route('contract.page.get', ['id'=>$contract1['metadata']->id])}}",
-        annotationAPI: "{{route('contract.page.get', ['id'=>$contract1['metadata']->id])}}", 
-        annotations: '{{$contract1["annotations"]}}'
+        annotationAPI: "{{route('contract.page.get', ['id'=>$contract1['metadata']->id])}}",
+        annotations: contract1Annotations
     });
 
     var contract2 = new Contract({
@@ -218,19 +259,27 @@
         currentPage: 1,
         textLoadAPI: "{{route('contract.page.get', ['id'=>$contract2['metadata']->id])}}",
         annotationAPI: "{{route('contract.page.get', ['id'=>$contract2['metadata']->id])}}",
-        annotations: '{{$contract2["annotations"]}}'
-
-    });        
-    function annotationClicked(elem, contractId, page) {
-        contract2.loadPageText(page);
-        contract2.loadPageAnnotations(page);
-
-        console.log(contractId);
-        console.log(page);
+        annotations: contract2Annotations
+    }); 
+    function getContract(id) {
+        if(id == contract1.id) return contract1;
+        else if(id == contract2.id) return contract2;
+        return null;
     }
+
+    function annotationClicked(elem, contractId, page) {
+        if(getContract(contractId)) {
+            getContract(contractId).loadPage(page);
+            // getContract(contractId).loadPageText(page);
+            // getContract(contractId).loadPageAnnotations(page);
+        }
+    }
+
     jQuery(function ($) {
         contract1.init().loadPageText(1).loadPagination().loadPageAnnotations(1);
+        contract1.listAllAnnotations();
         contract2.init().loadPageText(1).loadPagination().loadPageAnnotations(1);
+        contract2.listAllAnnotations();
     });
 
     </script>
