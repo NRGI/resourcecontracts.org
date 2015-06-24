@@ -64,16 +64,39 @@ class PageController extends Controller
         $pages       = $contract->pages;
 
         $contract1Meta    = $this->contract->findWithPages($contractId1);
-        $contract1Annotations = $this->annotation->getContractPagesWithAnnotations($contractId1);
+        $contract1AnnotationsObj = $this->annotation->getContractPagesWithAnnotations($contractId1);
+        $contract1Annotations = [];    
+        foreach($contract1AnnotationsObj->annotations as $annotation) {
+            $tags = [];
+            foreach($annotation->annotation->tags as $tag) {
+                $tags[] = $tag;
+            }
+            $contract1Annotations[] = ['page'=>$annotation->document_page_no,
+                'quote'=>$annotation->annotation->quote,
+                'text'=>$annotation->annotation->text,
+                'tags'=>$tags];
+        }
+
         $contract2Meta    = $this->contract->findWithPages($contractId2);
-        $contract2Annotations = $this->annotation->getContractPagesWithAnnotations($contractId2);
+        $contract2AnnotationsObj = $this->annotation->getContractPagesWithAnnotations($contractId2);
+        $contract2Annotations = [];    
+        foreach($contract2AnnotationsObj->annotations as $annotation) {
+            $tags = [];
+            foreach($annotation->annotation->tags as $tag) {
+                $tags[] = $tag;
+            }
+            $contract2Annotations[] = ['page'=>$annotation->document_page_no,
+                'quote'=>$annotation->annotation->quote,
+                'text'=>$annotation->annotation->text,
+                'tags'=>$tags];
+        }
 
         $contract1 = array('metadata'=>$contract1Meta, 
                            'pages'=>$contract1Meta->pages,
-                           'annotations'=>$contract1Annotations->annotations);
+                           'annotations'=>$contract1Annotations);
         $contract2 = array('metadata'=>$contract2Meta, 
                            'pages'=>$contract2Meta->pages,
-                           'annotations'=>$contract2Annotations->annotations);        
+                           'annotations'=>$contract2Annotations);        
 
         return view('contract.page.compare', compact('contract', 'contract1', 'contract2', 'pages', 'page', 'canEdit', 'canAnnotate'));
     }
