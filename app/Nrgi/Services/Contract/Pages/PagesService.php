@@ -26,7 +26,7 @@ class PagesService
      */
     public function __construct(PagesRepositoryInterface $pages, Log $logger)
     {
-        $this->pages = $pages;
+        $this->pages  = $pages;
         $this->logger = $logger;
     }
 
@@ -72,6 +72,7 @@ class PagesService
                         'Page id '    => $pageID,
                     ]
                 );
+
                 return true;
 
             } catch (Exception $e) {
@@ -81,4 +82,17 @@ class PagesService
 
         throw new ModelNotFoundException();
     }
+
+    /**
+     * Get Result of full text search
+     * @param $contract_id
+     * @param $query
+     * @return mixed
+     */
+    public function fullTextSearch($contract_id, $query)
+    {
+        return $this->pages->fullTextSearch($contract_id, $query);
+    }
+
+
 }

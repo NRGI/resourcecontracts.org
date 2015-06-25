@@ -16,6 +16,16 @@
             <a class="btn btn-default pull-right" href="{{route('contract.annotations.list', $contract->id)}}">Annotations</a>
 
             <div id="pagelist"></div>
+
+            {!! Form::open(['route' => ['contract.page.search', $contract->id], 'method' => 'POST', 'class'=>'form-inline page-search', 'style' => 'width: 421px; margin: 0 auto 23px;']) !!}
+            <div class="form-group">
+                <div class="input-group">
+                    {!! Form::text('q', null, ['class' => 'form-control', 'placeholder' => 'Search...' , 'style' => 'padding:15px; width:280px']) !!}
+                </div>
+            </div>
+            {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+            {!! Form::close() !!}
+
              <div id="message" style="padding: 0px 16px"></div>
             <div class="document-wrap">
             <div class="left-document-wrap annotate">
@@ -51,6 +61,51 @@
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
     <script src="{{ asset('js/jquery.twbsPagination.js') }}"></script>
     <script>
+        $(function(){
+            function template(obj)
+            {
+                return '<p style="margin-bottom: 20px; border-bottom:1px solid #E0E0E0; padding-bottom: 20px;">'+obj.text+'<a href="{{route('contract.pages', [$contract->id])}}?page='+obj.page_no+'"> p.'+obj.page_no+'</a></p>';
+            }
+
+            $(document).on('click', '.search-cancel', function(){
+                $('.right-document-wrap canvas').show();
+                $('.right-document-wrap .search').hide();
+                $('.page-search').find('input[type=text]').val('');
+            });
+
+            $('.page-search').on('submit', function(e){
+                e.preventDefault();
+                var form = $(this);
+                $.ajax({
+                    url : form.attr('action'),
+                    postType : 'JSON',
+                    type : form.attr('method'),
+                    data : form.serialize()
+                }).done(function(response){
+
+                    $('.right-document-wrap canvas').hide();
+                    $('.right-document-wrap .search').hide();
+                    var search = "<div style='margin-bottom: 30px;'> <a href='#' class='pull-right search-cancel'><i class='glyphicon glyphicon-remove'></i></a>"
+                    total = response.length;
+                    if(total > 0)
+                    {
+                        search += "<h4>Search result for '"+form.find('input[type=text]').val()+"'</h4>";
+                        search += "<p>Total "+total+" result(s) found.</p></div>";
+
+                        $.each(response, function( index, value ) {
+                            search +=template(value);
+                        });
+                    }
+                    else{
+                        search += "<h4>Result not found for '"+form.find('input[type=text]').val()+"</h4>'</div>";
+                    }
+
+                    $('.right-document-wrap').append('<div class="search">'+search+'</div>');
+                })
+            });
+        });
+
+
     //defining format to use .format function
     String.prototype.format = function () {
         var formatted = this;
