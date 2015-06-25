@@ -11,6 +11,11 @@ class RepositoriesServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
+ \View::composer('*', function ($view) {
+            $view->with('current_user', auth()->user());
+        });
+
         $this->app->bind(
             'App\Nrgi\Repositories\User\UserRepositoryInterface',
             'App\Nrgi\Repositories\User\UserRepository'
