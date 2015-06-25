@@ -6,7 +6,7 @@ php:
 env:
   global:
     - PROJECT=NRGI HIPCHAT_ROOM=Build-Bot
-    - secure: Aa1Rjp6IQVoPJLbikrTz+6Cq3tKrBztNBGTdn+U6gK+SScKG07dChOE0sveisZa8PulwuTUsFCIvr/hw46Z95atImZ1z3jWUnzMbXjhQ5btwaoyfZRczDKZ3Nrvdg1zNZs1MVRMHBz0TWxFYInCfloSZZoUx9J1V6jiVjnShfWVM2w9Y7P/SqNDTuWoL4AuzBRfwWk9+Ikl+0O5fewtmNFTfuom3MasiktIZI4A5I1UGBNq2iRAAY/CG1V19eeRB17kII6MXamGgi7sRyJwgrTOJvpQPGhEBeeNkc+m0x3mWoKMC/BtD/71ZeAV6HhRiMeKZdzcCz0DPjb4Q0pJQJA==
+    - secure: WGIK6HpD9omm74pPMpSImkuB9nLCroSoIC7somi8APIRt3p8qbTqSPx4C1bnI8uMZWiQIwQ6wL2asZJ+qF5cSpYdUI9mp3g0yV3tWK9w/3glOULCBKE4OWGnRfoTHRfMVHdHECbFCvVsW1LweQ7V+d5iqIYjT228GPtiU/GyW+mWr1YsTk1WpTSJjbJGMcRwbMewy6gnZZdSZLOD3kbUcmOmmr1LBJrfmupkIDokPlIYWmMTYNAV/VPXAmzg9mqeNRxomDhZND8x1NVN/1ulT/UHKWad6uhkoryf5mXtdZVz9Vb2d2YzoPWovZWmExvRi+6dRh4u9Gf8edrtbjBaIg==
 
 before_install:
   - wget https://gist.githubusercontent.com/geshan/fe3e5a634c34bdbc9ee0/raw/b37d4dce0fc457f52dc59dd32c5535162de89979/hipchat-notifier.py

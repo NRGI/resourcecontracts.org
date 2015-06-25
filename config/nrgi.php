@@ -4,7 +4,7 @@ return [
      * Roles for different type of users.
      */
     'roles'            => [
-        'superadmin'         => [
+        'superadmin' => [
             'name'         => 'superadmin',
             'display_name' => 'Super Administrator',
             'description'  => 'NRGI staff, CCSI - Columbia university'
@@ -15,38 +15,32 @@ return [
             'description'  => '(graduate student, interns) to upload contract, provide metadata, annotate. Should be able to edit the data entered by others.'
         ],
     ],
-
-    'permissions' =>[
-        'add-contract' => [
-            'name' => 'add-contract',
+    'permissions'      => [
+        'add-contract'        => [
+            'name'         => 'add-contract',
             'display_name' => 'Add Contract',
-            'description' => 'Add new contract'
+            'description'  => 'Add new contract'
         ],
-
-        'edit-contract' => [
-            'name' => 'edit-contract',
+        'edit-contract'       => [
+            'name'         => 'edit-contract',
             'display_name' => 'Edit Contract',
-            'description' => 'Edit a contract'
+            'description'  => 'Edit a contract'
         ],
-
-        'delete-contract' => [
-            'name' => 'delete-contract',
+        'delete-contract'     => [
+            'name'         => 'delete-contract',
             'display_name' => 'Delete Contract',
-            'description' => 'Delete a contract'
+            'description'  => 'Delete a contract'
         ],
-
-        'complete-metadata' => [
-            'name' => 'complete-metadata',
+        'complete-metadata'   => [
+            'name'         => 'complete-metadata',
             'display_name' => 'Complete metadata',
-            'description' => 'Complete contract metadata'
+            'description'  => 'Complete contract metadata'
         ],
-
-        'reject-metadata' => [
-            'name' => 'reject-metadata',
+        'reject-metadata'     => [
+            'name'         => 'reject-metadata',
             'display_name' => 'Reject metadata',
-            'description' => 'Reject contract metadata'
+            'description'  => 'Reject contract metadata'
         ],
-
         'edit-text' => [
             'name' => 'edit-text',
             'display_name' => 'Edit text',
@@ -73,47 +67,46 @@ return [
         'publish-metadata' => [
             'name' => 'publish-metadata',
             'display_name' => 'Publish metadata',
-            'description' => 'Publish a metadata'
+            'description'  => 'Publish a metadata'
         ],
-
-        'add-annotation' => [
-            'name' => 'add-annotation',
+        'add-annotation'      => [
+            'name'         => 'add-annotation',
             'display_name' => 'Add Contract',
-            'description' => 'Add new annotation'
+            'description'  => 'Add new annotation'
         ],
-
-        'edit-annotation' => [
-            'name' => 'edit-annotation',
+        'edit-annotation'     => [
+            'name'         => 'edit-annotation',
             'display_name' => 'Edit Annotation',
-            'description' => 'Edit a annotation'
+            'description'  => 'Edit a annotation'
         ],
-
-        'delete-annotation' => [
-            'name' => 'delete-annotation',
+        'delete-annotation'   => [
+            'name'         => 'delete-annotation',
             'display_name' => 'Delete Annotation',
-            'description' => 'Delete a annotation'
+            'description'  => 'Delete a annotation'
         ],
-
         'complete-annotation' => [
-            'name' => 'complete-annotation',
+            'name'         => 'complete-annotation',
             'display_name' => 'Complete annotation',
-            'description' => 'Complete contract annotation'
+            'description'  => 'Complete contract annotation'
         ],
-
-        'reject-annotation' => [
-            'name' => 'reject-annotation',
+        'reject-annotation'   => [
+            'name'         => 'reject-annotation',
             'display_name' => 'Reject annotation',
-            'description' => 'Reject contract annotation'
+            'description'  => 'Reject contract annotation'
         ],
-
-        'publish-annotation' => [
-            'name' => 'publish-annotation',
+        'publish-annotation'  => [
+            'name'         => 'publish-annotation',
             'display_name' => 'Publish annotation',
-            'description' => 'Publish a annotation'
+            'description'  => 'Publish a annotation'
         ],
 
     ],
-    'pdf_structure'    => ['structured', 'scanned'],
-    'annotation_stage'    => ['draft', 'completed', 'rejected' , 'published'],
+    'pdf_structure'    => ['structured', 'scanned', 'encrypted'],
+    'annotation_stage' => ['draft', 'completed', 'rejected', 'published'],
     'pdf_process_path' => env('PDF_PROCESSOR_PATH'),
+    'permission'       => [
+        'completed' => 'complete',
+        'rejected'  => 'reject',
+        'published' => 'publish'
+    ]
 ];

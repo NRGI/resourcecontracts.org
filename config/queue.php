@@ -49,6 +49,13 @@ return [
 			'port'   => '11300',
 			'ttr'    => 60,
 		],
+		'elastic_search' => [
+			'driver' => 'beanstalkd',
+			'host'   => 'localhost',
+			'queue'  => 'elastic_search_queue',
+			'port'   => '11300',
+			'ttr'    => 60,
+		],
 
 		'sqs' => [
 			'driver' => 'sqs',
@@ -87,7 +94,7 @@ return [
 	*/
 
 	'failed' => [
-		'database' => 'mysql', 'table' => 'failed_jobs',
+		'database' => 'pgsql', 'table' => 'failed_jobs',
 	],
 
 ];

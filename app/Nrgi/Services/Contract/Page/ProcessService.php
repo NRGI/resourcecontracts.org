@@ -39,7 +39,7 @@ class ProcessService
      * @param ContractService $contract
      * @param PageService     $page
      * @param Storage         $storage
-     * @param Log $logger
+     * @param Log             $logger
      */
     public function __construct(
         Filesystem $fileSystem,
@@ -93,7 +93,7 @@ class ProcessService
     {
         $content                 = $this->fileSystem->get(sprintf('%s/stats.json', $writeFolderPath));
         $data                    = json_decode($content);
-        $contract->pdf_structure = ($data->structured ? "structured" : "scanned");
+        $contract->pdf_structure = strtolower($data->status);
 
         return $contract->save();
     }
@@ -132,12 +132,16 @@ class ProcessService
      */
     public function processContractDocument($writeFolderPath, $readFilePath)
     {
+        set_time_limit(0);
         $commandPath = config('nrgi.pdf_process_path');
         $command     = sprintf('python %s/run.py -i %s -o %s', $commandPath, $readFilePath, $writeFolderPath);
         $this->logger->info("processing command", ['command' => $command]);
         $process = new Process($command);
-        $process->run();
-
+        $process->setTimeout(360 * 10);
+        $process->start();
+        while ($process->isRunning()) {
+            echo $process->getIncrementalOutput();
+        }
         if (!$process->isSuccessful()) {
             //todo remove folder
             $this->logger->error("error while executing command.{$process->getErrorOutput()}", ['command' => $command]);

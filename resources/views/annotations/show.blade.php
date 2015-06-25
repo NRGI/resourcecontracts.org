@@ -61,12 +61,12 @@ use App\Nrgi\Entities\Contract\Annotation;
                                     @endforelse
                                 </ul>
                             </div>
-                            @if ($status === Annotation::DRAFT)
+                            @if ($status === Annotation::DRAFT and $current_user->can('complete-annotation')))
                                 {!!Form::open(['route'=>['contract.annotations.status', $contract->id], 'style'=>"display:inline",'method'=>'post'])!!}
                                 {!!Form::hidden('state', 'completed')!!}
                                 {!!Form::button(trans('Complete'), ['type'=>'submit','class'=>'btn btn-primary confirm','data-confirm'=>trans('Are you sure you want to marked complete these annotations ?')])!!}
                                 {!!Form::close()!!}
-                            @elseif($status === Annotation::COMPLETED)
+                            @elseif($status === Annotation::COMPLETED and ($current_user->can('publish-annotation') or $current_user->can('reject-annotation') ))
                                 {!!Form::open(['route'=>['contract.annotations.status', $contract->id], 'style'=>"display:inline",'method'=>'post'])!!}
                                 {!!Form::hidden('state', 'published')!!}
                                 {!!Form::button(trans('Publish'), ['type'=>'submit','class'=>'btn btn-success confirm','data-confirm'=>trans('Are you sure you want to marked publish these annotations ?')])!!}
