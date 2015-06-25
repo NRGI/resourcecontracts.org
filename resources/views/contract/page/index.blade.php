@@ -80,6 +80,7 @@
                     type : form.attr('method'),
                     data : form.serialize()
                 }).done(function(response){
+
                     $('.right-document-wrap canvas').hide();
                     $('.right-document-wrap .search').hide();
                     var search = "<div style='margin-bottom: 30px;'> <a href='#' class='pull-right search-cancel'><i class='glyphicon glyphicon-remove'></i></a>"
