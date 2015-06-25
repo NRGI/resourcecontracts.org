@@ -135,7 +135,6 @@
 
 <h3>@lang('contract.company')</h3>
 <hr/>
-
 <div class="company">
     @if(isset($contract->metadata->company) || old('company'))
         <?php
