@@ -6,7 +6,7 @@ return [
     'roles'            => [
         'superadmin' => [
             'name'         => 'superadmin',
-            'display_name' => 'Super Administrator',
+            'display_name' => 'Admin',
             'description'  => 'NRGI staff, CCSI - Columbia university'
         ],
         'researcher' => [
