@@ -349,7 +349,7 @@ class ContractService
 
         if ($this->contract->delete($contract->id)) {
             $this->logger->info('Contract successfully deleted.', ['Contract Id' => $id]);
-            $this->logger->activity('contract.log.delete', ['contract' => $contract->title], $contract->id);
+            $this->logger->activity('contract.log.delete', ['contract' => $contract->title], null);
             try {
                 return $this->deleteFileFromS3($contract->file);
             } catch (FileNotFoundException $e) {

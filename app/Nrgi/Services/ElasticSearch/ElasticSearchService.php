@@ -77,6 +77,9 @@ class ElasticSearchService
             $updated_by = ['name' => $contract->updated_user->name, 'email' => $contract->updated_user->email];
         }
 
+        $contract->metadata->contract_id = $contract->id;
+        $contract->metadata->page_number = $contract->pages()->count();
+
         $metadata = [
             'id'         => $contract->id,
             'metadata'   => collect($contract->metadata)->toJson(),

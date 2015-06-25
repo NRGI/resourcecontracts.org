@@ -80,6 +80,7 @@ return [
     'pipeline'                      => "Pipeline",
     'processing'                    => "Processing",
     'annotation_list'               => "Annotation List",
+    'users'                          => 'Users',
     /*ContractController*/
     'save_success'                  => 'Contract successfully uploaded.',
     'save_fail'                     => 'Contract could not be saved.',
