@@ -10,9 +10,9 @@
 .annotation-list {
   display: block;
   position: absolute;
-  top: 34px;
+  top: 140px;
   right: 0px;
-  width: 60%;
+  width: 400px;
   background-color: #eee;
 }
 </style>
@@ -30,16 +30,16 @@
             <div class="document-wrap">
                 <div class="left-document-wrap" id="annotate_left">
                     <a id="left" class="btn btn-default pull-right annotation_button" href="#">Annotations</a>
+                    <div id="annotations_left" class="annotation-list" style="display:none"><ul></ul></div>
                     <div class="quill-wrapper">
-                        <div id="pagelist_left"></div>
+                        <div id="pagination_left"></div>
                         <div id="editor_left" class="editor"></div>
                     </div>
-                    <div id="annotations_left" class="annotation-list" style="display:none"><ul></ul></div>
                 </div>
                 <div class="right-document-wrap" id="annotate_right">
                 <a id="right" class="btn btn-default pull-right annotation_button" href="#">Annotations</a>
                     <div class="quill-wrapper">
-                        <div id="pagelist_right"></div>
+                        <div id="pagination_right"></div>
                         <div id="editor_right" class="editor"></div>
                     </div>
                     <div id="annotations_right" class="annotation-list" style="display:none"><ul></ul></div>
@@ -88,117 +88,153 @@ var contract2Annotations = [];
     </script>
 @empty 
 @endforelse
-
+    <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/lib/quill/quill.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/lib/annotator/annotator-full.min.js') }}"></script>
+    <script src="{{ asset('js/lib/annotator/annotator-full.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
-    <script src="{{ asset('js/jquery.twbsPagination.js') }}"></script>
     <script src="{{ asset('js/jquery.simplePagination.js') }}"></script>
+    <script src="{{ asset('js/lib/underscore.js') }}"></script>
+    <script src="{{ asset('js/lib/backbone.js') }}"></script>
+    <script src="{{ asset('js/contractmvc.js') }}"></script>
     <script>
+    var contract1 = new Contract({
+        position: "left",
+        id: '{{$contract1["metadata"]->id}}',
+        totalPages:'{{$contract1["metadata"]->pages->count()}}',
+        currentPage: 1,
+        textLoadAPI: "{{route('contract.page.get', ['id'=>$contract1['metadata']->id])}}",
+        annotationAPI: "{{route('contract.page.get', ['id'=>$contract1['metadata']->id])}}",
+    });
 
-    //defining format to use .format function
-    String.prototype.format = function () {
-        var formatted = this;
-        for (var i = 0; i < arguments.length; i++) {
-            var regexp = new RegExp('\\{' + i + '\\}', 'gi');
-            formatted = formatted.replace(regexp, arguments[i]);
-        }
-        return formatted;
-    };
+    var contract2 = new Contract({
+        position: "right",
+        id: '{{$contract2["metadata"]->id}}',
+        totalPages:'{{$contract2["metadata"]->pages->count()}}',
+        currentPage: 1,
+        textLoadAPI: "{{route('contract.page.get', ['id'=>$contract2['metadata']->id])}}",
+        annotationAPI: "{{route('contract.page.get', ['id'=>$contract2['metadata']->id])}}",
+    }); 
 
-    function Contract(options) {
-        return {
-            id: options.id,
-            totalPages: options.totalPages,
-            currentPage: options.currentPage,
-            init: function() {
-                this.editorEl = "#editor_{0}".format(options.position);
-                this.editor = new TextEditor(this.editorEl).init();
-                this.annotator = new ContractAnnotator("#annotate_{0}".format(options.position), this.id, options.annotationAPI).init();
-                return this;
-            },
-            loadPageText: function(page) {
-                this.currentPage = page;
-                this.editor.load(options.textLoadAPI, this.currentPage);
-                return this;
-            },
-            loadPagination: function() {
-                this.pagination = new Pagination("#pagelist_{0}".format(options.position), this).show();
-                return this;
-            },
-            loadPageAnnotations: function(page) {
-                this.annotator.load(page);
-                return this;
-            },
-            listAllAnnotations: function() {
-                new AnnotationsList("#annotations_{0} ul".format(options.position), this, options.annotations).init();
-                return this;
-            },
-            loadPage: function(page) {
-                this.pagination.setPage(page);
-                return this;
-            }
-        };
-    };
+    contract1Annotations.forEach(function(annotationData) {
+        contract1.addAnnotation(annotationData);
+    });
 
-    function TextEditor(el) {
-        return {
-            init: function() {
-                var options = {theme: 'snow'};
-                this.editor = new Quill(el, options);
-                return this;
-            },
-            load: function(api, currentPage, callback) {
-                var reText = '';
-                var that = this;
-                $.ajax({
-                    url: api,
-                    data: {'page': currentPage},
-                    type: 'GET',
-                    async: false,
-                    success: function (response) {
-                        that.editor.setHTML(response.message);
-                        if(callback) callback();
-                    },
-                    error: function(e) {
-                        console.log("Something went wrong!")
-                    }
-                });
-                return this;
-            }
-        }
-    };
+    contract2Annotations.forEach(function(annotationData) {
+        contract2.addAnnotation(annotationData);
+    });
 
-    function Pagination(el, contract) {
-        return {
-            show: function() {
-                this.pagination = $(el).pagination({
-                    pages: contract.totalPages,
-                    displayedPages: 5,
-                    cssStyle: 'light-theme',
-                    onPageClick: function (page, event) {
-                        contract.loadPageText(page);
-                        contract.loadPageAnnotations(page);
-                    }
-                });
-                return this;
-            },
-            setPage: function(page) {
-                this.pagination.pagination('drawPage', page)
-                return this;
-            }
-        };
-    };    
+    contract1.loadPageView();
+    contract2.loadPageView();
 
-    function AnnotationsList(el, contract, annotations) {
-        return {
-            init: function() {
-                annotations.forEach(function(annotation) {
-                    $(el).append("<li><span><a onclick='annotationClicked(this,"+contract.id+","+annotation.page+")' href='#'>{0}</a> [Page {1}]</span><br><p>{2}</p></li>".format(annotation.quote, annotation.page, annotation.text));
-                });
-            },
-        };
-    };
+    // var a = new ContractAnnotator("#annotate_left", 1, 'http://localhost:8000/contract/1/page').init();
+
+    var a = new ContractAnnotator("#annotate_right", contract2.get('id'), contract2.get('annotationAPI')).init()
+    a.load(1);
+
+    jQuery(function ($) {
+    // var annotatorjsView1 = new AnnotatorjsView({annotatorjsEl: "#annotate_left", api: contract1.annotationAPI, contractId: contract1.get('id'), tags:{!! json_encode(trans("codelist/annotationTag.annotation_tags")) !!}});
+    });
+
+    $('.annotation_button').click(function() {
+        if(this.id == "left") contract1.getPageView().toggleAnnotationList();
+        else if(this.id == "right") contract2.getPageView().toggleAnnotationList();
+        // pageView1.toggleAnnotationList();
+    });
+
+
+    // function Contract(options) {
+    //     return {
+    //         id: options.id,
+    //         totalPages: options.totalPages,
+    //         currentPage: options.currentPage,
+    //         init: function() {
+    //             this.editorEl = "#editor_{0}".format(options.position);
+    //             this.editor = new TextEditor(this.editorEl).init();
+    //             this.annotator = new ContractAnnotator("#annotate_{0}".format(options.position), this.id, options.annotationAPI).init();
+    //             return this;
+    //         },
+    //         loadPageText: function(page) {
+    //             this.currentPage = page;
+    //             this.editor.load(options.textLoadAPI, this.currentPage);
+    //             return this;
+    //         },
+    //         loadPagination: function() {
+    //             this.pagination = new Pagination("#pagelist_{0}".format(options.position), this).show();
+    //             return this;
+    //         },
+    //         loadPageAnnotations: function(page) {
+    //             this.annotator.load(page);
+    //             return this;
+    //         },
+    //         listAllAnnotations: function() {
+    //             new AnnotationsList("#annotations_{0} ul".format(options.position), this, options.annotations).init();
+    //             return this;
+    //         },
+    //         loadPage: function(page) {
+    //             this.pagination.setPage(page);
+    //             return this;
+    //         }
+    //     };
+    // };
+
+    // function TextEditor(el) {
+    //     return {
+    //         init: function() {
+    //             var options = {theme: 'snow'};
+    //             this.editor = new Quill(el, options);
+    //             return this;
+    //         },
+    //         load: function(api, currentPage, callback) {
+    //             var reText = '';
+    //             var that = this;
+    //             $.ajax({
+    //                 url: api,
+    //                 data: {'page': currentPage},
+    //                 type: 'GET',
+    //                 async: false,
+    //                 success: function (response) {
+    //                     that.editor.setHTML(response.message);
+    //                     if(callback) callback();
+    //                 },
+    //                 error: function(e) {
+    //                     console.log("Something went wrong!")
+    //                 }
+    //             });
+    //             return this;
+    //         }
+    //     }
+    // };
+
+    // function Pagination(el, contract) {
+    //     return {
+    //         show: function() {
+    //             this.pagination = $(el).pagination({
+    //                 pages: contract.totalPages,
+    //                 displayedPages: 5,
+    //                 cssStyle: 'light-theme',
+    //                 onPageClick: function (page, event) {
+    //                     contract.loadPageText(page);
+    //                     contract.loadPageAnnotations(page);
+    //                 }
+    //             });
+    //             return this;
+    //         },
+    //         setPage: function(page) {
+    //             this.pagination.pagination('drawPage', page)
+    //             return this;
+    //         }
+    //     };
+    // };    
+
+    // function AnnotationsList(el, contract, annotations) {
+    //     return {
+    //         init: function() {
+    //             annotations.forEach(function(annotation) {
+    //                 $(el).append("<li><span><a onclick='annotationClicked(this,"+contract.id+","+annotation.page+")' href='#'>{0}</a> [Page {1}]</span><br><p>{2}</p></li>".format(annotation.quote, annotation.page, annotation.text));
+    //             });
+    //         },
+    //     };
+    // };
 
     function ContractAnnotator(el, contractId, api) {
         return {
@@ -232,51 +268,51 @@ var contract2Annotations = [];
         };
     };
 
-    var contract1 = new Contract({
-        position: "left",
-        id: '{{$contract1["metadata"]->id}}',
-        totalPages:'{{$contract1["metadata"]->pages->count()}}',
-        currentPage: 1,
-        textLoadAPI: "{{route('contract.page.get', ['id'=>$contract1['metadata']->id])}}",
-        annotationAPI: "{{route('contract.page.get', ['id'=>$contract1['metadata']->id])}}",
-        annotations: contract1Annotations
-    });
+    // var contract1 = new Contract({
+    //     position: "left",
+    //     id: '{{$contract1["metadata"]->id}}',
+    //     totalPages:'{{$contract1["metadata"]->pages->count()}}',
+    //     currentPage: 1,
+    //     textLoadAPI: "{{route('contract.page.get', ['id'=>$contract1['metadata']->id])}}",
+    //     annotationAPI: "{{route('contract.page.get', ['id'=>$contract1['metadata']->id])}}",
+    //     annotations: contract1Annotations
+    // });
 
-    var contract2 = new Contract({
-        position: "right",
-        id: '{{$contract2["metadata"]->id}}',
-        totalPages:'{{$contract2["metadata"]->pages->count()}}',
-        currentPage: 1,
-        textLoadAPI: "{{route('contract.page.get', ['id'=>$contract2['metadata']->id])}}",
-        annotationAPI: "{{route('contract.page.get', ['id'=>$contract2['metadata']->id])}}",
-        annotations: contract2Annotations
-    }); 
-    function getContract(id) {
-        if(id == contract1.id) return contract1;
-        else if(id == contract2.id) return contract2;
-        return null;
-    }
+    // var contract2 = new Contract({
+    //     position: "right",
+    //     id: '{{$contract2["metadata"]->id}}',
+    //     totalPages:'{{$contract2["metadata"]->pages->count()}}',
+    //     currentPage: 1,
+    //     textLoadAPI: "{{route('contract.page.get', ['id'=>$contract2['metadata']->id])}}",
+    //     annotationAPI: "{{route('contract.page.get', ['id'=>$contract2['metadata']->id])}}",
+    //     annotations: contract2Annotations
+    // }); 
+    // function getContract(id) {
+    //     if(id == contract1.id) return contract1;
+    //     else if(id == contract2.id) return contract2;
+    //     return null;
+    // }
 
-    function annotationClicked(elem, contractId, page) {
-        if(getContract(contractId)) {
-            getContract(contractId).loadPage(page);
-            getContract(contractId).loadPageText(page);
-            getContract(contractId).loadPageAnnotations(page);
-        }
-    }
+    // function annotationClicked(elem, contractId, page) {
+    //     if(getContract(contractId)) {
+    //         getContract(contractId).loadPage(page);
+    //         getContract(contractId).loadPageText(page);
+    //         getContract(contractId).loadPageAnnotations(page);
+    //     }
+    // }
 
-    $('.annotation_button').click(function() {
-        var el = "#annotations_{0}".format(this.id)
-        $(el).toggle();
-        // console.log(this.id);
-    });
+    // $('.annotation_button').click(function() {
+    //     var el = "#annotations_{0}".format(this.id)
+    //     $(el).toggle();
+    //     // console.log(this.id);
+    // });
 
-    jQuery(function ($) {
-        contract1.init().loadPageText(1).loadPagination().loadPageAnnotations(1);
-        contract1.listAllAnnotations();
-        contract2.init().loadPageText(1).loadPagination().loadPageAnnotations(1);
-        contract2.listAllAnnotations();
-    });
+    // jQuery(function ($) {
+    //     contract1.init().loadPageText(1).loadPagination().loadPageAnnotations(1);
+    //     contract1.listAllAnnotations();
+    //     contract2.init().loadPageText(1).loadPagination().loadPageAnnotations(1);
+    //     contract2.listAllAnnotations();
+    // });
 
     </script>
 @stop
