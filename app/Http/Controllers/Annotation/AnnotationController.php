@@ -34,22 +34,6 @@ class AnnotationController extends Controller
     }
 
     /**
-     * annotations for Contract
-     *
-     * @param Request $request
-     * @param String  $contractId
-     * @return Response
-     */
-    public function index(Request $request, $contractId)
-    {
-        $page     = $request->input('page', '1');
-        $contract = $this->contract->findWithPages($contractId);
-        $pages    = $contract->pages;
-
-        return view('annotations.create', compact('contract', 'pages', 'page'));
-    }
-
-    /**
      * @param Request $request
      * @param         $contractId
      */

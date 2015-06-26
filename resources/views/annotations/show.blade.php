@@ -61,7 +61,7 @@ use App\Nrgi\Entities\Contract\Annotation;
                                     @endforelse
                                 </ul>
                             </div>
-                            @if ($status === Annotation::DRAFT and $current_user->can('complete-annotation')))
+                            @if ($status === Annotation::DRAFT and $current_user->can('complete-annotation'))
                                 {!!Form::open(['route'=>['contract.annotations.status', $contract->id], 'style'=>"display:inline",'method'=>'post'])!!}
                                 {!!Form::hidden('state', 'completed')!!}
                                 {!!Form::button(trans('Complete'), ['type'=>'submit','class'=>'btn btn-primary confirm','data-confirm'=>trans('Are you sure you want to marked complete these annotations ?')])!!}

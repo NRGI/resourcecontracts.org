@@ -3,9 +3,11 @@
 use App\Nrgi\Entities\Contract\Annotation;
 use App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface;
 use App\Nrgi\Services\Contract\Comment\CommentService;
+use App\Nrgi\Services\ElasticSearch\ElasticSearchService;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Contracts\Logging\Log;
+use Illuminate\Contracts\Queue\Queue;
 
 /**
  * Class AnnotationService
@@ -37,6 +39,14 @@ class AnnotationService
      * @var ContractService
      */
     protected $contract;
+    /**
+     * @var Queue
+     */
+    public $queue;
+    /**
+     * @var ElasticSearchService
+     */
+    private $elasticSearch;
 
     /**
      * Constructor
@@ -46,6 +56,7 @@ class AnnotationService
      * @param Comment|CommentService        $comment
      * @param LoggerInterface|Log           $logger
      * @param ContractService               $contract
+     * @param Queue                         $queue
      */
 
     public function __construct(
@@ -54,15 +65,19 @@ class AnnotationService
         DatabaseManager $database,
         CommentService $comment,
         Log $logger,
-        ContractService $contract
+        ContractService $contract,
+        Queue $queue,
+        ElasticSearchService $elasticSearch
     ) {
-        $this->annotation = $annotation;
-        $this->auth       = $auth;
-        $this->user       = $auth->user();
-        $this->database   = $database;
-        $this->comment    = $comment;
-        $this->logger     = $logger;
-        $this->contract   = $contract;
+        $this->annotation    = $annotation;
+        $this->auth          = $auth;
+        $this->user          = $auth->user();
+        $this->database      = $database;
+        $this->comment       = $comment;
+        $this->logger        = $logger;
+        $this->contract      = $contract;
+        $this->queue         = $queue;
+        $this->elasticSearch = $elasticSearch;
     }
 
     /**
@@ -160,7 +175,7 @@ class AnnotationService
     }
 
     /**
-     * @param $status
+     * @param $annotationStatus
      * @param $contractId
      * @return bool
      */
@@ -168,6 +183,13 @@ class AnnotationService
     {
         $status = $this->annotation->updateStatus($annotationStatus, $contractId);
         if ($status) {
+            if ($annotationStatus == Annotation::PUBLISHED) {
+                $this->queue->push(
+                    'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                    ['contract_id' => $contractId, 'type' => 'annotation'],
+                    'elastic_search'
+                );
+            }
             $this->logger->activity(
                 "annotation.status_update",
                 ['status' => $annotationStatus],

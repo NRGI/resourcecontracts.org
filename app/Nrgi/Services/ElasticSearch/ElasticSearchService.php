@@ -119,4 +119,30 @@ class ElasticSearchService
             $this->logger->error($e->getMessage());
         }
     }
+
+    /**
+     * Post contract annotations
+     *
+     * @param $id
+     */
+    public function postAnnotation($id)
+    {
+        $contract       = $this->contract->findContractWithAnnotations($id);
+        $annotationData = [];
+        $annotations    = $contract->annotations;
+        foreach ($annotations as $annotation) {
+            $json                = $annotation->annotation;
+            $json->id            = $annotation->id;
+            $json->contract_name = $contract->title;
+            $annotationData[]    = $json;
+        }
+        $data['annotations'] = json_encode($annotationData);
+        try {
+            $request  = $this->http->post($this->apiURL('contract/annotations'), null, $data);
+            $response = $request->send();
+            $this->logger->info('Annotation successfully submitted to Elastic Search.', $response->json());
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+    }
 }
