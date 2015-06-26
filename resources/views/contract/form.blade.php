@@ -1,21 +1,3 @@
-@section('css')
-    <style>
-        .select2-search__field {
-            width: 100% !important;
-        }
-
-        .red {
-            color: red
-        }
-
-        .item {
-            background: #F4F4F4;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-    </style>
-@stop
-
 @if($action == 'add')
     <div class="form-group">
         <label for="Select PDF" class="col-sm-2 control-label">@lang('contract.contract_file') <span
@@ -105,13 +87,12 @@
 </div>
 
 <div class="form-group">
-    <label for="signature_date" class="col-sm-2 control-label">@lang('contract.signature_date') <span
-                class="red">*</span></label>
+    <label for="signature_date" class="col-sm-2 control-label">@lang('contract.signature_date')</label>
 
     <div class="col-sm-7">
         {!! Form::text('signature_date',
         isset($contract->metadata->signature_date)?$contract->metadata->signature_date:null,
-        ["class"=>"date required form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
+        ["class"=>"date form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
     </div>
 </div>
 
@@ -156,8 +137,11 @@
 <hr/>
 
 <div class="company">
-    @if(isset($contract->metadata->company))
-        <?php $companies = $contract->metadata->company; $i = 0;?>
+    @if(isset($contract->metadata->company) || old('company'))
+        <?php
+        $companies = empty(old('company')) ? $contract->metadata->company : old('company');
+        $i = 0;
+        ?>
         @if(count($companies)>0)
             @foreach($companies as $k => $v)
                 <div class="item" {{$k ==0 ? 'id=template' : ''}}>
@@ -348,6 +332,9 @@
                 var deleteBtn = "<button type='button' class='delete btn btn-danger'>Delete</button>";
                 $('.company .item:last-child').after('<div id="item' + item + '" class="item">' + template + deleteBtn + '</div>');
                 $('#item' + item).find('input[type=text]').val('');
+                $('.date').datepicker({
+                    format: "yyyy-mm-dd"
+                });
             })
         });
     </script>

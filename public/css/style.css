@@ -6,8 +6,8 @@ body {
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
-input:focus,button:focus,textarea:focus {
-	outline: 0!important;
+input:focus, button:focus, textarea:focus {
+    outline: 0 !important;
 }
 
 .alert > ul {
@@ -127,7 +127,7 @@ label.error {
     display: inline-block;
 }
 
-table td:not(:first-child) {
+.table-contract td:not(:first-child) {
     font-size: 12px;
     color: #8b8b8b;
 }
@@ -288,65 +288,80 @@ header {
     height: 25px;
     border-radius: 0px;
 }
+
 .state-wrap {
-	padding: 20px 15px;
-	width: 580px;
+    padding: 20px 15px;
+    width: 580px;
 }
 
 .state-wrap > p {
-	font-size: 18px;
+    font-size: 18px;
 }
 
 .state-wrap ul {
-	padding: 0;
+    padding: 0;
 }
 
 .state-wrap ul li {
-	list-style: none;
-	padding: 8px 20px;
-	background: #eee;
+    list-style: none;
+    padding: 8px 20px;
+    background: #eee;
 }
 
 .state-wrap ul li:nth-child(even) {
-	background: #ddd;
+    background: #ddd;
 }
 
 .state-wrap ul li strong {
-	width: 120px;
-	display: inline-block;
+    width: 120px;
+    display: inline-block;
 }
 
 .state-wrap ul li > span, .annotation-status span {
-	display: inline-block;
-	background-color: #EABA24;
-	border-radius: 30px;
-	padding: 4px 5px;
-	font-size: 12px;
-	width: 90px;
-	text-align: center;
-	color: #fff;
- }	
- 
- .state-wrap ul li > span.completed , .annotation-status span.completed{
-	background: #5896CB;
- }
- 
+    display: inline-block;
+    background-color: #EABA24;
+    border-radius: 30px;
+    padding: 4px 5px;
+    font-size: 12px;
+    width: 90px;
+    text-align: center;
+    color: #fff;
+}
+
+.state-wrap ul li > span.completed, .annotation-status span.completed {
+    background: #5896CB;
+}
+
 .state-wrap ul li > span.published, .annotation-status span.published {
-	background: #6BA864;
+    background: #6BA864;
 }
 
 .state-wrap ul li > span.rejected, .annotation-status span.rejected {
-	background: #EA2E0C;
+    background: #EA2E0C;
     margin-right: 25px;
 }
 
-.state-wrap ul li > span.rejected+a {
-	margin-left: -20px;
+.state-wrap ul li > span.rejected + a {
+    margin-left: -20px;
 }
 
-.state-wrap ul li > .btn,.state-wrap ul li >form > .btn,.state-wrap ul li >form >.pull-right > .btn,.state-wrap ul li > .pull-right > .btn,.state-wrap ul li >.pull-right> form > .btn  {
-	font-size: 12px;
-	min-width: 80px;
-	padding: 3px 5px;
-	margin-right: 4px;
+.state-wrap ul li > .btn, .state-wrap ul li > form > .btn, .state-wrap ul li > form > .pull-right > .btn, .state-wrap ul li > .pull-right > .btn, .state-wrap ul li > .pull-right > form > .btn {
+    font-size: 12px;
+    min-width: 80px;
+    padding: 3px 5px;
+    margin-right: 4px;
+}
+
+.select2-search__field {
+    width: 100% !important;
+}
+
+.red {
+    color: red
+}
+
+.company .item {
+    background: #F4F4F4;
+    padding: 15px;
+    margin-bottom: 20px;
 }

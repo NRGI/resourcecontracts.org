@@ -65,10 +65,10 @@ class PageController extends Controller
             $contract->text_status = Contract::STATUS_DRAFT;
             $contract->save();
 
-            return response()->json(['result' => 'success', 'message' => 'saved']);
+            return response()->json(['result' => 'success', 'message' => trans('contract.page.save')]);
         }
 
-        return response()->json(['result' => 'fail', 'message' => 'Something went wrong.']);
+        return response()->json(['result' => 'fail', 'message' => trans('contract.page.save_fail')]);
     }
 
     /**
