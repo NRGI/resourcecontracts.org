@@ -6,7 +6,7 @@ use App\Nrgi\Entities\Contract\Annotation;
 @section('css')
     <link rel="stylesheet" href="{{ asset('js/lib/quill/quill.snow.css') }}"/>
     <link rel="stylesheet" href="{{ asset('js/lib/annotator/annotator.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/simplePagination.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">    
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
 
 @stop

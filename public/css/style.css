@@ -350,3 +350,42 @@ header {
 	padding: 3px 5px;
 	margin-right: 4px;
 }
+
+.btn-annotation {
+    margin-right: 10px;
+}
+
+.page-search {
+    width: auto!important;
+    margin: -50px 20px 30px 30px!important;
+}
+
+.page-search > .btn-primary {
+    padding: 5px 10px;
+}
+
+.page-search .form-control {
+    font-size: 13px;
+}
+
+.ql-container {
+    padding-top: 0!important;
+}
+
+#saveButton {
+    margin-top: 20px;
+}
+
+.ql-snow.ql-toolbar {
+    background: #eee;
+    border-radius: 4px;
+    padding: 4px 8px!important;
+}
+
+#message {
+    padding-top: 20px!important;
+}
+
+#message:empty {
+    display: none;
+}
