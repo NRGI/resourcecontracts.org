@@ -156,169 +156,174 @@
 <hr/>
 
 <div class="company">
-        @if(isset($contract->metadata->company))
-            <?php $companies = $contract->metadata->company; $i=0;?>
-            @if(count($companies)>0)
-                    @foreach($companies as $k => $v)
-                        <div class="item" {{$k ==0 ? 'id=template' : ''}}>
-                        <div class="form-group">
-                            {!! Form::label('company_name', trans('contract.company_name'), ['class'=>'col-sm-2 control-label'])!!}
-                            <div class="col-sm-7">
-                                {!! Form::text("company[$i][name]",
-                                isset($v->name)?$v->name:null,
-                                ["class"=>"form-control"])!!}
-                            </div>
+    @if(isset($contract->metadata->company))
+        <?php $companies = $contract->metadata->company; $i = 0;?>
+        @if(count($companies)>0)
+            @foreach($companies as $k => $v)
+                <div class="item" {{$k ==0 ? 'id=template' : ''}}>
+                    <div class="form-group">
+                        {!! Form::label('company_name', trans('contract.company_name'), ['class'=>'col-sm-2
+                        control-label'])!!}
+                        <div class="col-sm-7">
+                            {!! Form::text("company[$i][name]",
+                            isset($v->name)?$v->name:null,
+                            ["class"=>"form-control"])!!}
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            {!! Form::label('jurisdiction_of_incorporation', trans('contract.jurisdiction_of_incorporation'),
-                            ['class'=>'col-sm-2 control-label'])!!}
-                            <div class="col-sm-7">
-                                {!! Form::text("company[$i][jurisdiction_of_incorporation]",
-                                isset($v->jurisdiction_of_incorporation)?$v->jurisdiction_of_incorporation:null,
-                                ["class"=>"form-control"])!!}
-                            </div>
+                    <div class="form-group">
+                        {!! Form::label('jurisdiction_of_incorporation',
+                        trans('contract.jurisdiction_of_incorporation'),
+                        ['class'=>'col-sm-2 control-label'])!!}
+                        <div class="col-sm-7">
+                            {!! Form::text("company[$i][jurisdiction_of_incorporation]",
+                            isset($v->jurisdiction_of_incorporation)?$v->jurisdiction_of_incorporation:null,
+                            ["class"=>"form-control"])!!}
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            {!! Form::label('registration_agency', trans('contract.registry_agency'), ['class'=>'col-sm-2
-                            control-label'])!!}
-                            <div class="col-sm-7">
-                                {!! Form::text("company[$i][registration_agency]",
-                                isset($v->registration_agency)?$v->registration_agency:null,
-                                ["class"=>"form-control"])!!}
-                            </div>
+                    <div class="form-group">
+                        {!! Form::label('registration_agency', trans('contract.registry_agency'), ['class'=>'col-sm-2
+                        control-label'])!!}
+                        <div class="col-sm-7">
+                            {!! Form::text("company[$i][registration_agency]",
+                            isset($v->registration_agency)?$v->registration_agency:null,
+                            ["class"=>"form-control"])!!}
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            {!! Form::label('incorporation_date', trans('contract.incorporation_date'), ['class'=>'col-sm-2
-                            control-label'])!!}
-                            <div class="col-sm-7">
-                                {!! Form::text("company[$i][company_founding_date]",
-                                isset($v->company_founding_date)?$v->company_founding_date:null,
-                                ["class"=>"date form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
-                            </div>
+                    <div class="form-group">
+                        {!! Form::label('incorporation_date', trans('contract.incorporation_date'), ['class'=>'col-sm-2
+                        control-label'])!!}
+                        <div class="col-sm-7">
+                            {!! Form::text("company[$i][company_founding_date]",
+                            isset($v->company_founding_date)?$v->company_founding_date:null,
+                            ["class"=>"date form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            {!! Form::label('company_address', trans('contract.company_address'), ['class'=>'col-sm-2
-                            control-label'])!!}
-                            <div class="col-sm-7">
-                                {!! Form::text("company[$i][company_address]",
-                                isset($v->company_address)?$v->company_address:null,
-                                ["class"=>"form-control"])!!}
-                            </div>
+                    <div class="form-group">
+                        {!! Form::label('company_address', trans('contract.company_address'), ['class'=>'col-sm-2
+                        control-label'])!!}
+                        <div class="col-sm-7">
+                            {!! Form::text("company[$i][company_address]",
+                            isset($v->company_address)?$v->company_address:null,
+                            ["class"=>"form-control"])!!}
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            {!! Form::label('comp_id', trans('contract.identifier_at_company'), ['class'=>'col-sm-2 control-label'])!!}
-                            <div class="col-sm-7">
-                                {!! Form::text("company[$i][comp_id]",
-                                isset($v->comp_id)?$v->comp_id:null,
-                                ["class"=>"form-control"])!!}
-                            </div>
+                    <div class="form-group">
+                        {!! Form::label('comp_id', trans('contract.identifier_at_company'), ['class'=>'col-sm-2
+                        control-label'])!!}
+                        <div class="col-sm-7">
+                            {!! Form::text("company[$i][comp_id]",
+                            isset($v->comp_id)?$v->comp_id:null,
+                            ["class"=>"form-control"])!!}
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2
-                            control-label'])!!}
-                            <div class="col-sm-7">
-                                {!! Form::text("company[$i][parent_company]",
-                                isset($v->parent_company)?$v->parent_company:null,
-                                ["class"=>"form-control"])!!}
-                            </div>
+                    <div class="form-group">
+                        {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2
+                        control-label'])!!}
+                        <div class="col-sm-7">
+                            {!! Form::text("company[$i][parent_company]",
+                            isset($v->parent_company)?$v->parent_company:null,
+                            ["class"=>"form-control"])!!}
                         </div>
+                    </div>
 
 
-                        <div class="form-group">
-                            <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> {!!
-                                Form::label('open_corporate_id',trans('contract.open_corporate_id'), ['class'=>'col-sm-2
-                                control-label'])!!}</a>
+                    <div class="form-group">
+                        <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> {!!
+                            Form::label('open_corporate_id',trans('contract.open_corporate_id'), ['class'=>'col-sm-2
+                            control-label'])!!}</a>
 
-                            <div class="col-sm-7">
-                                {!! Form::text("company[$i][open_corporate_id]",
-                                isset($v->open_corporate_id)?$v->open_corporate_id:null,
-                                ["class"=>"digit form-control"])!!}
-                            </div>
+                        <div class="col-sm-7">
+                            {!! Form::text("company[$i][open_corporate_id]",
+                            isset($v->open_corporate_id)?$v->open_corporate_id:null,
+                            ["class"=>"digit form-control"])!!}
                         </div>
-                            @if($k > 0)
-                            <button type="button" class="delete btn btn-danger">Delete</button>
-                              @endif
+                    </div>
+                    @if($k > 0)
+                        <button type="button" class="delete btn btn-danger">Delete</button>
+                    @endif
 
-                        </div>
-                        <?php $i++;?>
+                </div>
+                <?php $i ++;?>
 
-                    @endforeach
+            @endforeach
         @endif
-        @else
-            <div class="item" id="template">
-                <div class="form-group">
-                    {!! Form::label('company_name', trans('contract.company_name'), ['class'=>'col-sm-2 control-label'])!!}
-                    <div class="col-sm-7">
-                        {!! Form::text("company[0][name]",null,["class"=>"form-control"])!!}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('jurisdiction_of_incorporation', trans('contract.jurisdiction_of_incorporation'),
-                    ['class'=>'col-sm-2 control-label'])!!}
-                    <div class="col-sm-7">
-                        {!! Form::text("company[0][jurisdiction_of_incorporation]",null,["class"=>"form-control"])!!}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('registration_agency', trans('contract.registry_agency'), ['class'=>'col-sm-2
-                    control-label'])!!}
-                    <div class="col-sm-7">
-                        {!! Form::text("company[0][registration_agency]",null,["class"=>"form-control"])!!}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('incorporation_date', trans('contract.incorporation_date'), ['class'=>'col-sm-2
-                    control-label'])!!}
-                    <div class="col-sm-7">
-                        {!! Form::text("company[0][company_founding_date]",null,["class"=>"date form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('company_address', trans('contract.company_address'), ['class'=>'col-sm-2
-                    control-label'])!!}
-                    <div class="col-sm-7">
-                        {!! Form::text("company[0][company_address]",null,["class"=>"form-control"])!!}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('comp_id', trans('contract.identifier_at_company'), ['class'=>'col-sm-2 control-label'])!!}
-                    <div class="col-sm-7">
-                        {!! Form::text("company[0][comp_id]",null,["class"=>"form-control"])!!}
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2
-                    control-label'])!!}
-                    <div class="col-sm-7">
-                        {!! Form::text("company[0][parent_company]",null,["class"=>"form-control"])!!}
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-                    <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> {!!
-                        Form::label('open_corporate_id',trans('contract.open_corporate_id'), ['class'=>'col-sm-2
-                        control-label'])!!}</a>
-
-                    <div class="col-sm-7">
-                        {!! Form::text("company[0][open_corporate_id]",null,["class"=>"digit form-control"])!!}
-                    </div>
+    @else
+        <div class="item" id="template">
+            <div class="form-group">
+                {!! Form::label('company_name', trans('contract.company_name'), ['class'=>'col-sm-2 control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::text("company[0][name]",null,["class"=>"form-control"])!!}
                 </div>
             </div>
 
-        @endif
+            <div class="form-group">
+                {!! Form::label('jurisdiction_of_incorporation', trans('contract.jurisdiction_of_incorporation'),
+                ['class'=>'col-sm-2 control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::text("company[0][jurisdiction_of_incorporation]",null,["class"=>"form-control"])!!}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('registration_agency', trans('contract.registry_agency'), ['class'=>'col-sm-2
+                control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::text("company[0][registration_agency]",null,["class"=>"form-control"])!!}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('incorporation_date', trans('contract.incorporation_date'), ['class'=>'col-sm-2
+                control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::text("company[0][company_founding_date]",null,["class"=>"date form-control", 'placeholder'
+                    => 'YYYY-MM-DD'])!!}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('company_address', trans('contract.company_address'), ['class'=>'col-sm-2
+                control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::text("company[0][company_address]",null,["class"=>"form-control"])!!}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('comp_id', trans('contract.identifier_at_company'), ['class'=>'col-sm-2
+                control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::text("company[0][comp_id]",null,["class"=>"form-control"])!!}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2
+                control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::text("company[0][parent_company]",null,["class"=>"form-control"])!!}
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> {!!
+                    Form::label('open_corporate_id',trans('contract.open_corporate_id'), ['class'=>'col-sm-2
+                    control-label'])!!}</a>
+
+                <div class="col-sm-7">
+                    {!! Form::text("company[0][open_corporate_id]",null,["class"=>"digit form-control"])!!}
+                </div>
+            </div>
+        </div>
+
+    @endif
 
 </div>
 
