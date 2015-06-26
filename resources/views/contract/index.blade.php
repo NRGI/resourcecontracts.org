@@ -2,19 +2,29 @@
 
 @section('css')
     <style>
-        .select2 {width: 20% !important; float: left; margin-right: 20px !important; margin-top: 4px !important;}
+        .select2 {
+            width: 20% !important;
+            float: left;
+            margin-right: 20px !important;
+            margin-top: 4px !important;
+        }
     </style>
 @stop
 @section('content')
     <div class="panel panel-default">
 
         <div class="panel-heading">@lang('contract.all_contract') <a href="{{route('contract.create')}}"
-                                                    class="pull-right btn btn-primary">@lang('contract.add')</a></div>
+                                                                     class="pull-right btn btn-primary">@lang('contract.add')</a>
+        </div>
         <div class="panel-body">
             {!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
-            {!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' => 'form-control']) !!}
-            {!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Input::get('country') , ['class' =>
+            {!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' =>
             'form-control']) !!}
+
+            {!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Input::get('country') ,
+            ['class' =>
+            'form-control']) !!}
+
             {!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
             <br/>

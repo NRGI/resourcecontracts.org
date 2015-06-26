@@ -206,10 +206,12 @@
             @endif
 
             @if(isset($contract->metadata->company))
-                <?php $companies = array_filter($contract->metadata->company);?>
+                <?php $companies = $contract->metadata->company;?>
                 @if(count($companies)>0)
                     <li><h3>@lang('contract.company')</h3>
                         @foreach($companies as $k => $v)
+                            <div style="margin-bottom: 20px; border-bottom:1px solid #ccc; padding-bottom:20px; ">
+
                             <p><strong>@lang('contract.company_name'):</strong>  {{$v->name}}</p>
                             <p><strong>@lang('contract.jurisdiction_of_incorporation')
                                     :</strong> {{$v->jurisdiction_of_incorporation}}
@@ -223,6 +225,7 @@
                                     <a target="_blank"
                                        href="https://opencorporates.com/companies/{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
                             </p>
+                            </div>
                         @endforeach
                     </li>
                 @endif

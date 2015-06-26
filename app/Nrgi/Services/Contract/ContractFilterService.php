@@ -36,7 +36,7 @@ class ContractFilterService
      * @param $filters
      * @return Contract
      */
-    public function getAll($filters)
+    public function getAll(array $filters)
     {
         $contracts = $this->contract->getAll($filters);
 
@@ -45,6 +45,7 @@ class ContractFilterService
 
     /**
      * Get Unique Countries
+     *
      * @return array
      */
     public function getUniqueCountries()
@@ -62,6 +63,7 @@ class ContractFilterService
 
     /**
      * Get Unique Years
+     *
      * @return array
      */
     public function getUniqueYears()
@@ -73,5 +75,15 @@ class ContractFilterService
         }
 
         return $years;
+    }
+
+    /**
+     * Get Unique Resources
+     *
+     * @return array
+     */
+    public function getUniqueResources()
+    {
+        return trans('codelist/resource');
     }
 }
