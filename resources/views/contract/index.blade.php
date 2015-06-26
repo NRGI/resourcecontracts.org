@@ -29,7 +29,7 @@
             {!! Form::close() !!}
             <br/>
             <br/>
-            <table class="table table-responsive">
+            <table class="table table-contract table-responsive">
                 @forelse($contracts as $contract)
                     <tr>
                         <td width="70%">

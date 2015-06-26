@@ -174,7 +174,7 @@
                 type: 'POST'
             }).done(function (response) {
                 this.textUpdated = false;
-                $('#message').html('<div class="alert alert-success">Saved</div>');
+                $('#message').html('<div class="alert alert-success">'+response.message+'</div>');
                 $('html,body').animate({ scrollTop: $('body').offset().top},'slow');
             });
         },

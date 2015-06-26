@@ -17,7 +17,6 @@ class ContractRequest extends Request
     {
         $rules = [
             'contract_name'  => 'required',
-            'signature_date' => 'required',
             'country'        => 'required',
             'file'           => 'required|mimes:pdf|max:51200'
         ];

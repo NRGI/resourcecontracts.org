@@ -22,7 +22,7 @@ class ElasticSearchService
     /**
      * @var ContractRepository
      */
-    private $contract;
+    protected $contract;
 
     /**
      * @param Client             $http
@@ -81,14 +81,15 @@ class ElasticSearchService
         $contract->metadata->page_number = $contract->pages()->count();
 
         $metadata = [
-            'id'         => $contract->id,
-            'metadata'   => collect($contract->metadata)->toJson(),
-            'created_by' => json_encode(
+            'id'          => $contract->id,
+            'metadata'    => collect($contract->metadata)->toJson(),
+            'total_pages' => $contract->pages->count(),
+            'created_by'  => json_encode(
                 ['name' => $contract->created_user->name, 'email' => $contract->created_user->email]
             ),
-            'updated_by' => json_encode($updated_by),
-            'created_at' => $contract->created_datetime->format('Y-m-d H:i:s'),
-            'updated_at' => $contract->last_updated_datetime->format('Y-m-d H:i:s')
+            'updated_by'  => json_encode($updated_by),
+            'created_at'  => $contract->created_datetime->format('Y-m-d H:i:s'),
+            'updated_at'  => $contract->last_updated_datetime->format('Y-m-d H:i:s')
         ];
 
         try {
@@ -108,10 +109,11 @@ class ElasticSearchService
     public function postText($id)
     {
         $contract = $this->contract->findContractWithPages($id);
-
-        $pages = [
+        $pages    = [
             'contract_id' => $contract->id,
+            'total_pages' => $contract->pages->count(),
             'pages'       => $contract->pages->toJson(),
+            'metadata'    => $this->getMetadataForES($contract->metadata)
         ];
 
         try {
@@ -134,10 +136,11 @@ class ElasticSearchService
         $annotationData = [];
         $annotations    = $contract->annotations;
         foreach ($annotations as $annotation) {
-            $json                = $annotation->annotation;
-            $json->id            = $annotation->id;
-            $json->contract_name = $contract->title;
-            $annotationData[]    = $json;
+            $json             = $annotation->annotation;
+            $json->id         = $annotation->id;
+            $json->contact_id = $contract->id;
+            $json->metadata   = $this->getMetadataForES($contract->metadata, true);
+            $annotationData[] = $json;
         }
         $data['annotations'] = json_encode($annotationData);
         try {
@@ -147,5 +150,25 @@ class ElasticSearchService
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
+    }
+
+    /**
+     * Get Metadata for Elastic Search
+     *
+     * @param $metadata
+     * @return string
+     */
+    protected function getMetadataForES($metadata, $array = false)
+    {
+        $metadata_array = (array) $metadata;
+
+        $meta = array_only(
+            $metadata_array,
+            ['category', 'contract_name', 'signature_date', 'resource', 'file_size', 'country']
+        );
+
+        $meta['file_size'] = getFileSize($meta['file_size']);
+
+        return $array ? $meta : json_encode($meta);
     }
 }
