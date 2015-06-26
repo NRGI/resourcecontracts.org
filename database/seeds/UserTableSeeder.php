@@ -20,6 +20,8 @@ class UserTableSeeder extends Seeder
                 'name'     => "admin",
                 'email'    => 'admin@nrgi.app',
                 'password' => Hash::make('admin123'),
+                'organization' => '',
+                'status' => 'true'
             ]
         );
         $adminRole = Role::select('id')->whereName(config('nrgi.roles.superadmin.name'))->first();
@@ -30,6 +32,8 @@ class UserTableSeeder extends Seeder
                 'name'     => "researcher",
                 'email'    => 'researcher@nrgi.app',
                 'password' => Hash::make('researcher123'),
+                'organization' => '',
+                'status' => 'true'
             ]
         );
         $researcherRole = Role::select('id')->whereName(config('nrgi.roles.researcher.name'))->first();

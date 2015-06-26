@@ -82,7 +82,7 @@ var Page = Backbone.Model.extend({
             type: 'POST'
         }).done(function (response) {
             this.textUpdated = false;
-            $('#message').html('<div class="alert alert-success">Saved</div>');
+            $('#message').html('<div class="alert alert-success">Your corrections / changes have been saved</div>');
             $('html,body').animate({ scrollTop: $('body').offset().top},'slow');
         });
     },
@@ -179,7 +179,7 @@ var PdfView = Backbone.View.extend({
                 var canvas = document.getElementById(that.options.pdfviewEl);
                 var context = canvas.getContext('2d');
                 canvas.height = viewport.height;
-                canvas.width = viewport.width;
+                canvas.width = viewport.width - 20;
                 // Render PDF page into canvas context
                 var renderContext = {
                     canvasContext: context,

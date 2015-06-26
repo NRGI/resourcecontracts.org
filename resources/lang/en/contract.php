@@ -98,7 +98,7 @@ return [
     'log'                           => [
         'save'      => 'Contract created',
         'update'    => 'Contract updated',
-        'delete'    => 'Contract deleted',
+        'delete'    => 'Contract ":contract" deleted',
         'status'    => 'Contract :type status updated from :old_status to :new_status',
         'save_page' => 'Page no :page updated',
     ],

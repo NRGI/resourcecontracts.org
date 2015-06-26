@@ -3,21 +3,20 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('js/lib/quill/quill.snow.css') }}"/>
     <link rel="stylesheet" href="{{ asset('js/lib/annotator/annotator.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/simplePagination.css') }}">    
+    <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
 @stop
 
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading"> @lang('contract.editing') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
+        <div class="panel-heading"> @lang('contract.editing') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> <a class="btn btn-default btn-annotation pull-right" href="{{route('contract.annotations.list', $contract->id)}}">Annotations</a></div>
+        
 
         <div class="view-wrapper" style="background: #F6F6F6">
-            <a class="btn btn-default pull-right" href="{{route('contract.annotations.list', $contract->id)}}">Annotations</a>
-
-            <div id="pagelist"></div>
-
-            {!! Form::open(['route' => ['contract.page.search', $contract->id], 'method' => 'POST', 'class'=>'form-inline page-search', 'style' => 'width: 421px; margin: 0 auto 23px;']) !!}
+             <div id="message" style="padding: 0px 16px"></div>
+            <div id="pagination"></div>
+            {!! Form::open(['route' => ['contract.page.search', $contract->id], 'method' => 'POST', 'class'=>'form-inline page-search pull-right', 'style' => 'width: 421px; margin: 0 auto 23px;']) !!}
             <div class="form-group">
                 <div class="input-group">
                     {!! Form::text('q', null, ['class' => 'form-control', 'placeholder' => 'Search...' , 'style' => 'padding:15px; width:280px']) !!}
@@ -25,9 +24,6 @@
             </div>
             {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
-
-             <div id="message" style="padding: 0px 16px"></div>
-            <div id="pagination"></div>
             <div class="document-wrap">
             <div class="left-document-wrap" id="annotatorjs">                    
                     <div class="quill-wrapper">
