@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Nrgi\Entities\Contract\Contract;
+use App\Nrgi\Entities\Contract\Pages\Pages;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\Pages\PagesService;
 use Illuminate\Http\Request;
@@ -82,4 +83,16 @@ class PageController extends Controller
 
         return response()->json(['result' => 'success', 'message' => $page->text]);
     }
+
+    /**
+     * Full text search
+     * @param         $contract_id
+     * @param Request $request
+     * @return array
+     */
+    public function search($contract_id, Request $request)
+    {
+        return response()->json($this->pages->fullTextSearch($contract_id, $request->input('q')));
+    }
+
 }

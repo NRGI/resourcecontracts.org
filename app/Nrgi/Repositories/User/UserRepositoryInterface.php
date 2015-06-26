@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Repositories\User;
 
 use App\Nrgi\Entities\User\User;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Interface UserRepositoryInterface
@@ -10,7 +11,30 @@ interface UserRepositoryInterface
 {
     /**
      * Get all users
-     * @return array/null
+     *
+     * @return Collection
      */
     public function all();
+
+    /**
+     * Create New user
+     *
+     * @param array $userDetail
+     * @return User
+     */
+    public function create(array $userDetail);
+
+    /**
+     * Find user by ID
+     * @param $user_id
+     * @return User|null
+     */
+    public function find($user_id);
+
+    /**
+     * Get All User Roles
+     *
+     * @return array
+     */
+    public function getAllRoles();
 }

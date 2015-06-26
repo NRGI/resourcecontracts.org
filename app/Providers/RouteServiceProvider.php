@@ -41,6 +41,7 @@ class RouteServiceProvider extends ServiceProvider
             require app_path('Http/Routes/contract.php');
             require app_path('Http/Routes/annotation.php');
             require app_path('Http/Routes/activitylog.php');
+            require app_path('Http/Routes/user.php');
         });
     }
 }
