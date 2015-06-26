@@ -34,17 +34,18 @@
                     <div class="quill-wrapper">
                         <!-- Create the toolbar container -->
                         <div id="toolbar" class="ql-toolbar ql-snow">
-                            <button class="ql-bold">Bold</button>
-                            <button class="ql-italic">Italic</button>
+                            <button class="ql-bold">B</button>
+                            <button class="ql-italic">I</button>
                         </div>
                         <div id="editor" style="height: 750px" class="editor ql-container ql-snow">
                         </div>
                         <button name="submit" value="submit" id="saveButton" class="btn">Save</button>
                     </div>
                 </div>
-                <div class="right-document-wrap">
+                <div class="right-document-wrap search">                    
                     <canvas id="pdfcanvas"></canvas>
                 </div>
+                <div class="searchresults"></div>
             </div>
         </div>
 
@@ -62,51 +63,6 @@
     <script src="{{ asset('js/contractmvc.js') }}"></script>
 
     <script>
-        $(function(){
-            function template(obj)
-            {
-                return '<p style="margin-bottom: 20px; border-bottom:1px solid #E0E0E0; padding-bottom: 20px;">'+obj.text+'<a href="{{route('contract.pages', [$contract->id])}}?page='+obj.page_no+'"> p.'+obj.page_no+'</a></p>';
-            }
-
-            $(document).on('click', '.search-cancel', function(){
-                $('.right-document-wrap canvas').show();
-                $('.right-document-wrap .search').hide();
-                $('.page-search').find('input[type=text]').val('');
-            });
-
-            $('.page-search').on('submit', function(e){
-                e.preventDefault();
-                var form = $(this);
-                $.ajax({
-                    url : form.attr('action'),
-                    postType : 'JSON',
-                    type : form.attr('method'),
-                    data : form.serialize()
-                }).done(function(response){
-
-                    $('.right-document-wrap canvas').hide();
-                    $('.right-document-wrap .search').hide();
-                    var search = "<div style='margin-bottom: 30px;'> <a href='#' class='pull-right search-cancel'><i class='glyphicon glyphicon-remove'></i></a>"
-                    total = response.length;
-                    if(total > 0)
-                    {
-                        search += "<h4>Search result for '"+form.find('input[type=text]').val()+"'</h4>";
-                        search += "<p>Total "+total+" result(s) found.</p></div>";
-
-                        $.each(response, function( index, value ) {
-                            search +=template(value);
-                        });
-                    }
-                    else{
-                        search += "<h4>Result not found for '"+form.find('input[type=text]').val()+"</h4>'</div>";
-                    }
-
-                    $('.right-document-wrap').append('<div class="search">'+search+'</div>');
-                })
-            });
-        });
-
-
     //defining format to use .format function
     String.prototype.format = function () {
         var formatted = this;
@@ -163,6 +119,36 @@
     $('#saveButton').click(function (el) {
         pageView.saveClicked();
     });
+
+    var searchResultsList;
+    $('.page-search').on('submit', function(e){
+        e.preventDefault();
+        var form = $(this);
+        var searchResults = new SearchResultCollection();
+        searchResults.fetch(form, function() {
+            $('.right-document-wrap canvas').hide();
+            // $('.right-document-wrap .search').hide();   
+            if(searchResultsList) {
+                searchResultsList.close();
+                delete searchResultsList;                
+            }
+            searchResultsList = new SearchResultListView({
+                // el: '#searchresults',
+                collection: searchResults,
+                pageModel: contract.getPageModel(),
+            });
+            $('.search').append(searchResultsList.render().$el);            
+        });
+    });
+   $(document).on('click', '.search-cancel', function(){ 
+        $('.right-document-wrap canvas').show();
+        // $('.right-document-wrap .search').hide();
+        $('.page-search').find('input[type=text]').val('');
+        searchResultsList.close();
+        delete searchResultsList;
+    });
+
+
 
     </script>
 @stop

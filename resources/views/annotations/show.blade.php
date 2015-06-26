@@ -6,6 +6,7 @@ use App\Nrgi\Entities\Contract\Annotation;
 @section('css')
     <link rel="stylesheet" href="{{ asset('js/lib/quill/quill.snow.css') }}"/>
     <link rel="stylesheet" href="{{ asset('js/lib/annotator/annotator.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/simplePagination.css') }}"> 
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
 
 @stop
@@ -16,10 +17,10 @@ use App\Nrgi\Entities\Contract\Annotation;
         <div class="panel-heading"> @lang('contract.annotation_list') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
 
         <div class="view-wrapper" style="background: #F6F6F6">
-            <div id="pagelist"></div>
+            <div id="pagination"></div>
             <div id="message" style="padding: 0px 16px"></div>
             <div class="document-wrap">
-                <div class="left-document-wrap annotate">
+                <div class="left-document-wrap" id="annotatorjs">
                     <div class="quill-wrapper">
                         <!-- Create the toolbar container -->
                         <div id="toolbar" class="ql-toolbar ql-snow">
@@ -113,7 +114,10 @@ use App\Nrgi\Entities\Contract\Annotation;
     <script src="{{ asset('js/lib/quill/quill.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/lib/annotator/annotator-full.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
-    <script src="{{ asset('js/jquery.twbsPagination.js') }}"></script>
+    <script src="{{ asset('js/jquery.simplePagination.js') }}"></script>
+    <script src="{{ asset('js/lib/underscore.js') }}"></script>
+    <script src="{{ asset('js/lib/backbone.js') }}"></script>
+    <script src="{{ asset('js/contractmvc.js') }}"></script>
     <script>
         //defining format to use .format function
         String.prototype.format = function () {
@@ -125,143 +129,41 @@ use App\Nrgi\Entities\Contract\Annotation;
             return formatted;
         };
 
-        var contract = {
+        var contract = new Contract({
             id: '{{$contract->id}}',
-            filesBaseDir: '{{$contract->id}}',
             totalPages: '{{$contract->pages->count()}}',
             currentPage: '{{$page}}',
-            getPdfLocation: function() { return "/data/{0}/pages/{1}.pdf".format(this.filesBaseDir, this.currentPage);},
-            viewUrl: "{{route('contract.annotations.list', ['id'=>$contract->id])}}",
-            textLoadAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
+            
+            editorEl: '#editor',
+            paginationEl: '#pagination',
+            // annotationEl: '#annotation',
+            // pdfviewEl: 'pdfcanvas',
+            annotatorjsEl: '#annotatorjs',
+
+            textLoadAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",  
             textSaveAPI: "{{route('contract.page.store', ['id'=>$contract->id])}}",
-            annotationAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
-            getAction: function() {
-                if(this.canEdit) return "action=edit";
-                else if(this.canAnnotate) return "action=annotate";
-                else return "";
-            }
-        };
 
-        var textEditor = {
-            init: function(contract) {
-                this.contract = contract;
-                this.textUpdated = false;
-                var options = {theme: 'snow'};
-                if(!this.contract.canEdit) {
-                    options.readOnly = true;
-                    $('#saveButton').hide();
-                }
-
-                this.editor = new Quill('#editor', options);
-                this.editor.addModule('toolbar', {container: '#toolbar'});
-
-                this.editor.on('text-change', function(delta, source) {
-                    if (source == 'api') {
-                        //none
-                    } else if (source == 'user') {
-                        this.textUpdated = true;
-                    }
-                });
-            },
-            load: function() {
-                var reText = '';
-                var that = this;
-                $.ajax({
-                    url: this.contract.textLoadAPI,
-                    data: {'page': this.contract.currentPage},
-                    type: 'GET',
-                    dataType: 'JSON',
-                    success: function (response) {
-                        that.editor.setHTML(response.message);
-                    }
-                });
-            },
-        };
-
-        var pagination = {
-            init: function(contract) {
-                this.contract = contract;
-            },
-            show: function() {
-                var that = this;
-                $('#pagelist').twbsPagination({
-                    totalPages: this.contract.totalPages,
-                    visiblePages: 10,
-                    startPage: this.contract.currentPage,
-                    onPageClick: function (event, page) {
-                        location.href = '{0}?{1}&page={2}'.format(that.contract.viewUrl, that.contract.getAction(), page);
-                    }
-                });
-            }
-        };
-
-        var contractAnnotator = {
-            init: function(contract) {
-                this.contract = contract;
-                var options = (contract.canAnnotate)?{readOnly: false}:{readOnly: true};
-                this.content = $('.annotate').annotator(options);
-                this.content.annotator('addPlugin', 'Tags');
-                this.availableTags = {!! json_encode(trans("codelist/annotationTag.annotation_tags")) !!};
-        },
-        setup: function(page) {
-            this.content.annotator('addPlugin', 'Store', {
-                // The endpoint of the store on your server.
-                prefix: '/api',
-                // Attach the uri of the current page to all annotations to allow search.
-                annotationData: {
-                    'url': this.contract.annotationAPI,
-                    'contract': this.contract.id,
-                    'document_page_no': this.contract.currentPage
-                },
-                loadFromSearch: {
-                    'url': this.contract.annotationAPI,
-                    'contract': this.contract.id,
-                    'document_page_no': this.contract.currentPage
-                }
-            });
-            function split( val ) {
-                return val.split( / \s*/ );
-            }
-            function extractLast( term ) {
-                return split( term ).pop();
-            }
-            var availableTags = this.availableTags;
-            this.content.data('annotator').plugins.Tags.input.autocomplete({
-                source: function( request, response) {
-                    // delegate back to autocomplete, but extract the last term
-                    response( $.ui.autocomplete.filter(
-                            availableTags, extractLast( request.term ) ) );
-                },
-                focus: function() {
-                    // prevent value inserted on focus
-                    return false;
-                },
-                select: function( event, ui ) {
-                    var terms = split( this.value );
-                    // remove the current input
-                    terms.pop();
-                    // add the selected item
-                    terms.push( ui.item.value );
-                    // add placeholder to get the comma-and-space at the end
-                    terms.push( "" );
-                    this.value = terms.join( " " );
-                    return false;
-                }
-            });
-        },
-        };
-
-        jQuery(function ($) {
-            textEditor.init(contract)
-            textEditor.load();
-            pagination.init(contract)
-            pagination.show();
-            contractAnnotator.init(contract);
-            contractAnnotator.setup();
-            $('#saveButton').click(function () {
-                textEditor.save();
-            });
+            annotatorjsAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}"
         });
+
+        var pageView = new PageView({
+            pageModel: contract.getPageModel(),
+            paginationView: new PaginationView({
+                paginationEl: contract.getPaginationEl(), 
+                totalPages: contract.getTotalPages(), 
+                pageModel: contract.getPageModel()
+            }),
+            textEditorView: new TextEditorView({
+                editorEl: contract.getEditorEl(), 
+                pageModel: contract.getPageModel()
+            }),
+            annotatorjsView: new AnnotatorjsView({
+                annotatorjsEl: contract.getAnnotatorjsEl(),
+                pageModel: contract.getPageModel(),
+                contractModel: contract,
+                tags:{!! json_encode(trans("codelist/annotationTag.annotation_tags")) !!}
+            }),            
+        }).render();        
 
     </script>
 @stop
