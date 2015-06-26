@@ -132,7 +132,10 @@ var PageView = Backbone.View.extend({
 var TextEditorView = Backbone.View.extend({
     initialize: function(options) {
         this.options = options;        
-        if(this.options.pageModel.get('isReadOnly')) $('#saveButton').hide();
+        if(this.options.pageModel.get('isReadOnly')) {
+            $('#saveButton').hide();
+            $('#toolbar').hide();
+        }
         else $('#saveButton').show();
         this.editor = new Quill(this.options.editorEl, {readOnly: this.options.pageModel.get('isReadOnly')});
         this.listenTo(this.options.pageModel, 'pageChange', this.render);
@@ -217,7 +220,6 @@ var PaginationView = Backbone.View.extend({
 
 var AnnotatorjsView = Backbone.View.extend({
     initialize: function(options) {
-        console.log(options);
         this.options = options;
         this.listenTo(this.options.pageModel, 'pageChange', this.pageUpdated);
         this.bind('pageChange', this.pageUpdated);
@@ -248,7 +250,6 @@ var AnnotatorjsView = Backbone.View.extend({
     },
     render: function() {
         var that = this;
-        console.log("ajs", that.options.pageModel.get('pageNumber'));
         var page = that.options.pageModel.get('pageNumber');
         if(this.content.data('annotator').plugins.Store) {
             var store = this.content.data('annotator').plugins.Store;
@@ -341,7 +342,6 @@ var AnnotationsListView = Backbone.View.extend({
     },
     render: function() {
         var that = this;
-        console.log(this.options);
         // that.$el.append('<ul>');
         this.collection.each(function(annotation) {
             var annotationSideView = new AnnotationSideView({ model: annotation, pageModel: that.options.pageModel});
@@ -353,4 +353,75 @@ var AnnotationsListView = Backbone.View.extend({
     toggle: function() {
         this.$el.toggle();
     }
+});
+
+var SearchResult = Backbone.Model.extend({});
+
+var SearchResultCollection = Backbone.Collection.extend({
+    model: SearchResult,
+    initialize: function() {
+        this.reset();
+    },
+    fetch: function(form, callback) {
+        var that = this;
+        $.ajax({
+            url : form.attr('action'),
+            postType : 'JSON',
+            type : form.attr('method'),
+            data : form.serialize()
+        }).done(function(response){ 
+            $.each(response, function(index, result) {
+                that.add({text: result.text, pageNumber: result.page_no});
+            });
+            if(callback) callback();
+        });
+    }
+});
+
+var SearchResultView = Backbone.View.extend({
+    tagName: 'p',
+    initialize: function(options) {
+        console.log(options)
+        this.options = options;
+        return this;
+    },
+    events: {
+        "click a":"changePage"
+    },
+    render: function() {
+        // <li><span><a onclick='annotationClicked(this,"+contract.id+","+annotation.page+")' href='#'>{0}</a> [Page {1}]</span><br><p>{2}</p></li>
+        this.$el.html('<a href="#">'+this.model.get('text')+'</a>[Page '+this.model.get('pageNumber')+']');
+        return this;
+    },
+    changePage: function() {
+        this.options.pageModel.setPageNumber(this.model.get('pageNumber'));
+    }
+
+});
+var SearchResultListView = Backbone.View.extend({
+    tagName: 'div',
+    initialize: function(options) {
+        this.options = options;
+        return this;
+    }, 
+    render: function() {
+        var that = this;
+        this.remove();
+        that.$el.append("<a href='#' class='pull-right search-cancel'><i class='glyphicon glyphicon-remove'></i></a>");
+        if(this.collection.length) {
+            that.$el.append("<p>Total "+this.collection.length+" result(s) found.</p>");
+            this.options.collection.each(function(searchResult) {            
+                var searchResultView = new SearchResultView({ model: searchResult, pageModel: that.options.pageModel});
+                that.$el.append(searchResultView.render().$el);
+            });
+        }
+        else {
+            that.$el.append('<h4>Result not found</h4>');
+        }
+        return this;
+    },
+    close: function() {
+        this.remove();
+    }
+
 });
