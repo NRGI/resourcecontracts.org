@@ -2,6 +2,7 @@ var Contract = Backbone.Model.extend({
     initialize: function(options) {
         this.options = options;
         this.annotationCollection = new MyAnnotationCollection();
+        this.searchResultCollection = new SearchResultCollection();
         this.pageModel = new Page({
             id: options.currentPageId,
             pageNumber: options.currentPage || 1,             
@@ -62,6 +63,9 @@ var Page = Backbone.Model.extend({
         this.set('pageNumber', pageNumber);
         this.load();
     },
+    setSearchTerm: function(searchTerm) {
+        this.searchTerm = searchTerm;
+    },
     load: function() {
         var that = this;
         $.ajax({
@@ -71,6 +75,9 @@ var Page = Backbone.Model.extend({
             async: false,
             success: function (response) {
                 that.set('text', response.message);
+                if(that.searchTerm) {
+                    that.highLightText(that.searchTerm);
+                }
                 that.trigger('pageChange');
             }
         });
@@ -88,6 +95,13 @@ var Page = Backbone.Model.extend({
     },
     getPdfLocation: function() {
         return "/data/{0}/pages/{1}.pdf".format(this.options.contractModel.get('id'), this.get('pageNumber'));
+    },
+    highLightText: function(searchTerm) {
+        var regex = new RegExp(searchTerm, "gi");        
+        this.set('text',this.get('text').replace(regex, function(matched) {
+                return "<span style='background-color: rgba(80,80,80,0.5);'>" + matched + "</span>";
+            })
+        );
     }
 });
 
@@ -100,6 +114,7 @@ var PageView = Backbone.View.extend({
         this.pdfView = options.pdfView || null;
         this.annotatorjsView = options.annotatorjsView || null;
         this.annotationsListView = options.annotationsListView || null;
+        this.searchFormView = options.searchFormView || null;
         // this.paginationView = new PaginationView({paginationEl: options.contractModel.getPaginationEl(), totalPages: options.contractModel.get('totalPages'), pageModel: options.model});
         // this.textEditorView = new TextEditorView({editorEl: options.contractModel.getEditorEl(), model: options.model});
         // this.annotationList = new AnnotationSideList({el: options.contractModel.getAnnotationListEl(), collection: options.contractModel.annotationCollection, pageModel: options.model}).render();
@@ -112,7 +127,8 @@ var PageView = Backbone.View.extend({
         if(this.textEditorView) this.textEditorView.render();
         if(this.pdfView) this.pdfView.render();
         if(this.annotatorjsView) this.annotatorjsView.render();
-        if(this.annotationsListView) this.annotationsListView.render();        
+        if(this.annotationsListView) this.annotationsListView.render();
+        if(this.searchFormView) this.searchFormView.render();        
         return this;
     },
     toggleAnnotationList: function() {
@@ -360,28 +376,38 @@ var SearchResult = Backbone.Model.extend({});
 var SearchResultCollection = Backbone.Collection.extend({
     model: SearchResult,
     initialize: function() {
-        this.reset();
+        // this.reset();
     },
-    fetch: function(form, callback) {
-        var that = this;
+    getSearchTerm: function() {
+        return this.searchTerm;
+    },
+    fetch: function(options, callback) {
+        this.searchTerm = options.searchTerm;
+        var that = this;            
         $.ajax({
-            url : form.attr('action'),
+            url : options.url,
             postType : 'JSON',
-            type : form.attr('method'),
-            data : form.serialize()
-        }).done(function(response){ 
+            type : "POST",
+            data : {'q': options.searchTerm}
+        }).done(function(response){    
+            that.destroy();         
             $.each(response, function(index, result) {
                 that.add({text: result.text, pageNumber: result.page_no});
             });
-            if(callback) callback();
+            that.trigger('dataCollected');
         });
+    },
+    destroy: function() {
+        var that = this;
+        this.forEach(function(model) {
+            that.remove(model);
+        });        
     }
 });
 
 var SearchResultView = Backbone.View.extend({
     tagName: 'p',
     initialize: function(options) {
-        console.log(options)
         this.options = options;
         return this;
     },
@@ -394,24 +420,37 @@ var SearchResultView = Backbone.View.extend({
         return this;
     },
     changePage: function() {
+        this.options.pageModel.setSearchTerm(this.options.searchTerm);
         this.options.pageModel.setPageNumber(this.model.get('pageNumber'));
     }
 
 });
 var SearchResultListView = Backbone.View.extend({
     tagName: 'div',
+    className: 'results',
+    events: {
+        'click .search-cancel': "close"
+    },
     initialize: function(options) {
         this.options = options;
+        this.listenTo(this.collection, 'dataCollected', this.dataCollected);
+        this.bind('dataCollected', this.dataCollected, this);        
         return this;
-    }, 
+    },
+    dataCollected: function() {
+        this.render();
+    },  
     render: function() {
         var that = this;
-        this.remove();
+        this.$el.show();
+        this.$el.html('');
+        $('.right-document-wrap canvas').hide();
+        // this.remove();
         that.$el.append("<a href='#' class='pull-right search-cancel'><i class='glyphicon glyphicon-remove'></i></a>");
         if(this.collection.length) {
             that.$el.append("<p>Total "+this.collection.length+" result(s) found.</p>");
             this.options.collection.each(function(searchResult) {            
-                var searchResultView = new SearchResultView({ model: searchResult, pageModel: that.options.pageModel});
+                var searchResultView = new SearchResultView({ model: searchResult, pageModel: that.options.pageModel, searchTerm: that.collection.getSearchTerm()});
                 that.$el.append(searchResultView.render().$el);
             });
         }
@@ -421,7 +460,27 @@ var SearchResultListView = Backbone.View.extend({
         return this;
     },
     close: function() {
-        this.remove();
+        this.$el.hide();
+        this.$el.html('');
+        $('.right-document-wrap canvas').show();
     }
+});
 
+var SearchFormView = Backbone.View.extend({
+    events: {
+        "click input[type=submit]": "doSearch"
+    },
+    initialize: function(options) {
+        this.template = _.template($("#searchFormTemplate").html(), {} );
+        this.bind('doSearch', this.doSearch, this);     
+    },
+    render: function() {
+        this.$el.html(this.template);
+        return this;
+    },
+    doSearch: function(e) {
+        e.preventDefault();
+        this.collection.destroy();
+        this.collection.fetch({"url": this.$('form').attr('action'), "searchTerm": this.$('#textfield').val()});
+    }
 });

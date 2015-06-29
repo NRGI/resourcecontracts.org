@@ -5,6 +5,11 @@
     <link rel="stylesheet" href="{{ asset('js/lib/annotator/annotator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+    <style>
+    .highlight {
+        background-color: red;
+    }
+    </style>
 @stop
 
 @section('content')
@@ -16,14 +21,18 @@
         <div class="view-wrapper" style="background: #F6F6F6">
              <div id="message" style="padding: 0px 16px"></div>
             <div id="pagination"></div>
+            <div id="searchForm"></div>
+            <script type="text/template" id="searchFormTemplate">
             {!! Form::open(['route' => ['contract.page.search', $contract->id], 'method' => 'POST', 'class'=>'form-inline page-search pull-right', 'style' => 'width: 421px; margin: 0 auto 23px;']) !!}
             <div class="form-group">
                 <div class="input-group">
-                    {!! Form::text('q', null, ['class' => 'form-control', 'placeholder' => 'Search...' , 'style' => 'padding:15px; width:280px']) !!}
+                    {!! Form::text('q', null, ['id'=> 'textfield', 'class' => 'form-control', 'placeholder' => 'Search...' , 'style' => 'padding:15px; width:280px']) !!}
                 </div>
             </div>
             {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
+            </script>
+
             <div class="document-wrap">
             <div class="left-document-wrap" id="annotatorjs">                    
                     <div class="quill-wrapper">
@@ -39,6 +48,7 @@
                 </div>
                 <div class="right-document-wrap search">                    
                     <canvas id="pdfcanvas"></canvas>
+                    <div id="SearchResultsList" style='display:none'></div>
                 </div>
                 <div class="searchresults"></div>
             </div>
@@ -109,41 +119,20 @@
             contractModel: contract,
             tags:{!! json_encode(trans("codelist/annotationTag.annotation_tags")) !!}
         }),
+        searchFormView: new SearchFormView({
+            collection: contract.searchResultCollection,
+            el: '#searchForm'
+        }),
+        searchResultsList: new SearchResultListView({
+            el: '#SearchResultsList',
+            collection: contract.searchResultCollection,
+            pageModel: contract.getPageModel(),
+        }),
     }).render();
 
     $('#saveButton').click(function (el) {
         pageView.saveClicked();
     });
-
-    var searchResultsList;
-    $('.page-search').on('submit', function(e){
-        e.preventDefault();
-        var form = $(this);
-        var searchResults = new SearchResultCollection();
-        searchResults.fetch(form, function() {
-            $('.right-document-wrap canvas').hide();
-            // $('.right-document-wrap .search').hide();   
-            if(searchResultsList) {
-                searchResultsList.close();
-                delete searchResultsList;                
-            }
-            searchResultsList = new SearchResultListView({
-                // el: '#searchresults',
-                collection: searchResults,
-                pageModel: contract.getPageModel(),
-            });
-            $('.search').append(searchResultsList.render().$el);            
-        });
-    });
-   $(document).on('click', '.search-cancel', function(){ 
-        $('.right-document-wrap canvas').show();
-        // $('.right-document-wrap .search').hide();
-        $('.page-search').find('input[type=text]').val('');
-        searchResultsList.close();
-        delete searchResultsList;
-    });
-
-
 
     </script>
 @stop
