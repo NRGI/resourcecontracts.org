@@ -180,8 +180,14 @@ class ProcessService
      */
     public function setup($contract)
     {
-        $pdfFile = $this->storage->disk('s3')->get($contract->file);
+        $this->logger->info('Download started...', ['file' => $contract->file]);
+        try {
+            $pdfFile = $this->storage->disk('s3')->get($contract->file);
+        } catch (\Exception $e) {
+            $this->logger->error($e->getMessage(), ['contract id' => $contract->id, 'file' => $contract->file]);
+        }
         $this->storage->disk('local')->put($contract->file, $pdfFile);
+        $this->logger->info('Download completed...', ['file' => $pdfFile]);
 
         if (!$this->fileSystem->isDirectory($this->getContractDirectory($contract->id))) {
             $this->addDirectory($contract->id, $this->getWriteDirectory());

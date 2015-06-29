@@ -49,7 +49,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         $roles = [];
         foreach ($this->roles->toArray() as $role) {
-            $roles[] = $role['name'];
+            $roles[] = $role['display_name'];
         }
 
         $roles = array_map('ucfirst', $roles);

@@ -41,29 +41,30 @@ return [
             'display_name' => 'Reject metadata',
             'description'  => 'Reject contract metadata'
         ],
-        'edit-text'           => [
-            'name'         => 'edit-text',
+        'edit-text' => [
+            'name' => 'edit-text',
             'display_name' => 'Edit text',
-            'description'  => 'Edit contract text'
+            'description' => 'Edit contract text'
         ],
-        'complete-text'       => [
-            'name'         => 'complete-text',
+        'complete-text' => [
+            'name' => 'complete-text',
             'display_name' => 'Complete text',
             'description'  => 'Complete contract text'
-
         ],
-        'publish-text'        => [
-            'name'         => 'publish-text',
+        'publish-text' => [
+            'name' => 'publish-text',
             'display_name' => 'Publish text',
-            'description'  => 'Publish contract text'
+            'description' => 'Publish contract text'
         ],
-        'reject-text'         => [
-            'name'         => 'reject-text',
+
+        'reject-text' => [
+            'name' => 'reject-text',
             'display_name' => 'Reject text',
-            'description'  => 'Reject contract text'
+            'description' => 'Reject contract text'
         ],
-        'publish-metadata'    => [
-            'name'         => 'publish-metadata',
+
+        'publish-metadata' => [
+            'name' => 'publish-metadata',
             'display_name' => 'Publish metadata',
             'description'  => 'Publish a metadata'
         ],

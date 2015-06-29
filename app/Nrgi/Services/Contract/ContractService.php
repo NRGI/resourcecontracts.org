@@ -351,9 +351,8 @@ class ContractService
             $this->logger->activity('contract.log.delete', ['contract' => $contract->title], null);
             try {
                 return $this->deleteFileFromS3($contract->file);
-            } catch (FileNotFoundException $e) {
+            } catch (Exception $e) {
                 $this->logger->error($e->getMessage(), ['Contract Id' => $id, 'file' => $contract->file]);
-
                 return false;
             }
         }
@@ -486,13 +485,11 @@ class ContractService
                     'elastic_search'
                 );
             }
-
             $this->logger->activity(
                 'contract.log.status',
                 ['type' => $type, 'old_status' => $old_status, 'new_status' => $status],
                 $contract->id
             );
-
             $this->logger->info(
                 "Contract status updated",
                 [

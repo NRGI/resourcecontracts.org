@@ -98,12 +98,12 @@ return [
     'log'                           => [
         'save'      => 'Contract created',
         'update'    => 'Contract updated',
-        'delete'    => 'Contract deleted',
+        'delete'    => 'Contract ":contract" deleted',
         'status'    => 'Contract :type status updated from :old_status to :new_status',
         'save_page' => 'Page no :page updated',
     ],
     'page' => [
         'save' => 'Your corrections / changes have been saved',
         'save_fail' => 'Changes couldn\'t be saved',
-    ]
+    ],
 ];

@@ -78,7 +78,6 @@ class UserController extends Controller
         }
 
         return redirect()->route('user.list')->withSuccess(trans('user.create_fail'));
-
     }
 
     /**
@@ -112,7 +111,6 @@ class UserController extends Controller
         }
 
         return redirect()->route('user.list')->withSuccess(trans('user.update_fail'));
-
     }
 
     /**
