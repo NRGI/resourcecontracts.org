@@ -37,3 +37,19 @@ function getFileHash($file)
 {
     return hash_file('md5', $file);
 }
+
+
+/**
+ * Get S3 file url
+ *
+ * @param string $fileName
+ * @return mixed
+ */
+function getS3FileURL($fileName = '')
+{
+    return \Storage::disk('s3')
+                   ->getDriver()
+                   ->getAdapter()
+                   ->getClient()
+                   ->getObjectUrl(env('AWS_BUCKET'), $fileName);
+}

@@ -171,4 +171,5 @@ class ElasticSearchService
 
         return $array ? $meta : json_encode($meta);
     }
+
 }

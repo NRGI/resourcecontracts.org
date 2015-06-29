@@ -52,7 +52,10 @@ class Contract extends Model
      */
     public function getMetadataAttribute($metaData)
     {
-        return json_decode($metaData);
+        $metaData           = json_decode($metaData);
+        $metaData->file_url = getS3FileURL($this->file);
+
+        return $metaData;
     }
 
     /**

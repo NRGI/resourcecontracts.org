@@ -49,18 +49,33 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getAll(array $filters)
     {
-        $query   = $this->contract->select('*');
+        $query = $this->contract->select('*');
+        $from  = "contracts as c";
+
         $filters = array_map('trim', $filters);
         extract($filters);
 
         if ($year != '' && $year != 'all') {
-            $query->whereRaw(sprintf("metadata->>'signature_year'='%s'", $year));
+            $query->whereRaw(sprintf("c.metadata->>'signature_year'='%s'", $year));
         }
 
         if ($country != '' && $country != 'all') {
-            $query->whereRaw(sprintf("metadata->'country'->>'code'='%s'", $country));
+            $query->whereRaw(sprintf("c.metadata->'country'->>'code'='%s'", $country));
         }
 
+        if ($resource != '' && $resource != 'all') {
+            $from .= ",json_array_elements(c.metadata->'resource') r";
+            $query->whereRaw("trim(both '\"' from r::text) = '" . $resource . "'");
+        }
+
+        if ($category != '' && $category != 'all') {
+            $from .= ",json_array_elements(c.metadata->'category') cat";
+            $query->whereRaw("trim(both '\"' from cat::text) = '" . $category . "'");
+        }
+
+        $query->from($this->db->raw($from));
+
+        // dd($query->orderByRaw('c.created_datetime', 'DESC')->toSql());
         return $query->orderBy('created_datetime', 'DESC')->get();
     }
 
@@ -101,9 +116,9 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getUniqueResources()
     {
-        return $this->contract->select($this->db->raw("DISTINCT trim(both '\"' from r::text) as resource"))->from(
-            $this->db->raw("contracts, json_array_elements(metadata->'resource') r")
-        )->orderBy('resource', 'ASC')->get();
+        return $this->contract->select($this->db->raw("DISTINCT trim(both '\"' from r::text) as resource"))
+                              ->from($this->db->raw("contracts, json_array_elements(metadata->'resource') r"))
+                              ->orderBy('resource', 'ASC')->get();
     }
 
     /**
