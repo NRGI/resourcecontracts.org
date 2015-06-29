@@ -379,21 +379,6 @@ class ContractService
     }
 
     /**
-     * Get aws s3 file url
-     *
-     * @param string $fileName
-     * @return string
-     */
-    public function getS3FileURL($fileName = '')
-    {
-        return $this->storage->disk('s3')
-                             ->getDriver()
-                             ->getAdapter()
-                             ->getClient()
-                             ->getObjectUrl(env('AWS_BUCKET'), $fileName);
-    }
-
-    /**
      * Get Contract Status by ContractID
      *
      * @param $contractId

@@ -22,8 +22,13 @@
             'form-control']) !!}
 
             {!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Input::get('country') ,
-            ['class' =>
-            'form-control']) !!}
+            ['class' =>'form-control']) !!}
+
+            {!! Form::select('category', ['all'=>trans('contract.category')] + config('metadata.category'), Input::get('category') ,
+            ['class' =>'form-control']) !!}
+
+            {!! Form::select('resource', ['all'=>trans('contract.resource')] + $resources , Input::get('resource') ,
+            ['class' =>'form-control']) !!}
 
             {!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}

@@ -1,3 +1,7 @@
+@section('css')
+    <link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
+@stop
+
 @if($action == 'add')
     <div class="form-group">
         <label for="Select PDF" class="col-sm-2 control-label">@lang('contract.contract_file') <span
@@ -92,7 +96,7 @@
     <div class="col-sm-7">
         {!! Form::text('signature_date',
         isset($contract->metadata->signature_date)?$contract->metadata->signature_date:null,
-        ["class"=>"date form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
+        ["class"=>"datepicker form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
     </div>
 </div>
 
@@ -181,7 +185,7 @@
                         <div class="col-sm-7">
                             {!! Form::text("company[$i][company_founding_date]",
                             isset($v->company_founding_date)?$v->company_founding_date:null,
-                            ["class"=>"date form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
+                            ["class"=>"datepicker form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
                         </div>
                     </div>
 
@@ -265,7 +269,7 @@
                 {!! Form::label('incorporation_date', trans('contract.incorporation_date'), ['class'=>'col-sm-2
                 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][company_founding_date]",null,["class"=>"date form-control", 'placeholder'
+                    {!! Form::text("company[0][company_founding_date]",null,["class"=>"datepicker form-control", 'placeholder'
                     => 'YYYY-MM-DD'])!!}
                 </div>
             </div>
@@ -312,10 +316,8 @@
 
 @section('script')
     <script src="{{asset('js/jquery.validate.min.js')}}"></script>
-    <link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
-    <link href="{{asset('css/bootstrap-datepicker3.min')}}"/>
-    <script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
     <script src="{{asset('js/select2.min.js')}}"></script>
+    <script src="{{asset('js/jquery.datetimepicker.js')}}"></script>
     <script src="{{asset('js/contract.js')}}"></script>
     <script>
         $(function () {
@@ -331,8 +333,9 @@
                 var deleteBtn = "<button type='button' class='delete btn btn-danger'>Delete</button>";
                 $('.company .item:last-child').after('<div id="item' + item + '" class="item">' + template + deleteBtn + '</div>');
                 $('#item' + item).find('input[type=text]').val('');
-                $('.date').datepicker({
-                    format: "yyyy-mm-dd"
+                $('.datepicker').datetimepicker({
+                    timepicker:false,
+                    format: 'Y-m-d'
                 });
             })
         });
@@ -396,7 +399,7 @@
     <div class="col-sm-7">
         {!! Form::text('date_retrieval',
         isset($contract->metadata->date_retrieval)?$contract->metadata->date_retrieval:null,
-        ["class"=>"date form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
+        ["class"=>"datepicker form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
     </div>
 </div>
 

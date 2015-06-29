@@ -121,7 +121,6 @@ class ContractController extends Controller
         $status           = $this->contract->getStatus($id);
         $annotationStatus = $this->annotation->getStatus($id);
         $annotations      = $contract->annotations;
-        $file             = $this->contract->getS3FileURL($contract->file);
 
         if ($contract->metadata_status == Contract::STATUS_REJECTED) {
             $contract->metadata_comment = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
@@ -248,7 +247,8 @@ class ContractController extends Controller
             Contract::STATUS_REJECTED,
             $request->input('message'),
             $request->input('type')
-        )) {
+        )
+        ) {
             return back()->withSuccess(trans('contract.status_update'));
         }
 

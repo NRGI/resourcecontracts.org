@@ -50,9 +50,8 @@ class ContractFilterService
      */
     public function getUniqueCountries()
     {
-        $arr            = $this->contract->getUniqueCountries()->toArray();
-        $countries      = [];
-        $country_config = trans('codelist.country');
+        $arr       = $this->contract->getUniqueCountries()->toArray();
+        $countries = [];
         foreach ($arr as $key => $value) {
             $country                        = $this->countryService->getInfoByCode($value['countries']);
             $countries[$value['countries']] = sprintf('%s (%s)', $country['name'], $value['count']);
@@ -84,6 +83,13 @@ class ContractFilterService
      */
     public function getUniqueResources()
     {
-        return trans('codelist/resource');
+        $resources = $this->contract->getUniqueResources();
+
+        $data = [];
+        foreach ($resources as $re) {
+            $data[$re['resource']] = $re['resource'];
+        }
+
+        return $data;
     }
 }
