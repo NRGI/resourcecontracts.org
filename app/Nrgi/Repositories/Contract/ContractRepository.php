@@ -21,7 +21,7 @@ class ContractRepository implements ContractRepositoryInterface
     protected $db;
 
     /**
-     * @param Contract $contract
+     * @param Contract        $contract
      * @param DatabaseManager $db
      */
     public function __construct(Contract $contract, DatabaseManager $db)
@@ -176,7 +176,6 @@ class ContractRepository implements ContractRepositoryInterface
         return $this->contract->where('filehash', $fileHash)->first();
     }
 
-
     /**
      * Count total contracts by date
      * @param string $date
@@ -216,6 +215,15 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function statusCount($statusType)
     {
-       return $this->contract->selectRaw("$statusType as status, COUNT(*)")->groupBy($statusType)->get()->toArray();
+        return $this->contract->selectRaw("$statusType as status, COUNT(*)")->groupBy($statusType)->get()->toArray();
+    }
+
+    /**
+     * Get Contract List
+     * @return mixed
+     */
+    public function getList()
+    {
+        return $this->contract->all();
     }
 }

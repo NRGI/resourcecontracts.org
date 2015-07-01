@@ -533,4 +533,20 @@ class ContractService
 
         return false;
     }
+
+    /**
+     * Get contract list
+     *
+     * @return array
+     */
+    public function getList()
+    {
+        $contracts = $this->contract->getList()->toArray();
+        $data =[];
+        foreach($contracts as $k => $v)
+        {
+            $data[$v['id']] = $v['metadata']->contract_name;
+        }
+        return $data;
+    }
 }

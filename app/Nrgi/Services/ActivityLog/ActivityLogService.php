@@ -2,6 +2,7 @@
 
 use App\Nrgi\Entities\ActivityLog\ActivityLog;
 use App\Nrgi\Repositories\ActivityLog\ActivityLogRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class ActivityLogService
@@ -44,10 +45,10 @@ class ActivityLogService
 
     /**
      * @param int $perPage
-     * @return paginated Activity Log
+     * @return Collection
      */
-    public function getAll($perPage = 25)
+    public function getAll($filter, $perPage = 25)
     {
-        return $this->activityLog->paginate($perPage);
+        return $this->activityLog->paginate($filter,$perPage);
     }
 }

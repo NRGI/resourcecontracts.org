@@ -86,7 +86,7 @@ interface ContractRepositoryInterface
      * @param string $date
      * @return int
      */
-    public function countTotal($date='');
+    public function countTotal($date = '');
 
     /**
      * Get Recent Contracts
@@ -104,4 +104,9 @@ interface ContractRepositoryInterface
      */
     public function statusCount($statusType);
 
+    /**
+     * Get Contract List
+     * @return mixed
+     */
+    public function getList();
 }

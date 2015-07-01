@@ -62,17 +62,17 @@ input:focus, button:focus, textarea:focus {
     font-style: italic;
 }
 
-.table > tbody > tr > td {
-    padding: 16px 0;
+.table-contract > tbody > tr > td {
+    padding: 16px 8px;
 }
 
-.table > tbody > tr:first-child > td {
+.table-contract > tbody > tr:first-child > td {
     border-top: 0;
-    padding: 7px 0 17px;
+    padding: 7px 8px 17px;
 }
 
-.table > tbody > tr:last-child > td {
-    padding: 17px 0 7px;
+.table-contract > tbody > tr:last-child > td {
+    padding: 17px 8px 7px;
 }
 
 .form-horizontal .control-label {
@@ -399,8 +399,4 @@ header {
 
 #message {
     padding-top: 20px !important;
-}
-
-#message:empty {
-    display: none;
 }

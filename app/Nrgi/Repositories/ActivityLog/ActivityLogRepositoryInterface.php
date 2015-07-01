@@ -1,5 +1,7 @@
 <?php namespace App\Nrgi\Repositories\ActivityLog;
 
+use App\Nrgi\Entities\ActivityLog\ActivityLog;
+
 /**
  * Class ActivityLogRepository
  * @package App\Nrgi\Repositories\ActivityLog
@@ -13,8 +15,9 @@ interface ActivityLogRepositoryInterface
     public function save($activityLog);
 
     /**
+     * @param $filter
      * @param $limit
-     * @return activity log model
+     * @return ActivityLog
      */
-    public function paginate($limit);
+    public function paginate($filter, $limit);
 }
