@@ -41,10 +41,21 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
 
     /**
      * @param $limit
-     * @return activity log model
+     * @return ActivityLog
      */
-    public function paginate($limit)
+    public function paginate($filter, $limit)
     {
-        return $this->activityLog->with('user','contract')->orderby('id','desc')->paginate($limit);
+        extract($filter);
+        $query = $this->activityLog->with('user', 'contract')->orderby('id', 'desc');
+
+        if ($contract != '' && $contract != 'all') {
+            $query->where('contract_id', $contract);
+        }
+
+        if ($user != '' && $user != 'all') {
+            $query->where('user_id', $user);
+        }
+
+        return $query->paginate($limit);
     }
 }

@@ -1,7 +1,11 @@
 <?php namespace app\Http\Controllers\ActivityLog;
 
 use App\Http\Controllers\Controller;
+use App\Nrgi\Entities\Contract\Contract;
+use App\Nrgi\Entities\User\User;
 use App\Nrgi\Services\ActivityLog\ActivityLogService;
+use App\Nrgi\Services\Contract\ContractService;
+use App\Nrgi\Services\User\UserService;
 use Illuminate\Auth\Guard;
 use Illuminate\Http\Request;
 
@@ -26,13 +30,18 @@ class ActivityLogController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param Request         $request
+     * @param UserService     $user
+     * @param ContractService $contract
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request, UserService $user, ContractService $contract)
     {
-        $activityLogs = $this->activity->getAll();
+        $filter       = $request->only('contract', 'user');
+        $activityLogs = $this->activity->getAll($filter);
+        $users        = $user->getList();
+        $contracts    = $contract->getList();
 
-        return view('activitylog.index', compact('activityLogs'));
+        return view('activitylog.index', compact('activityLogs', 'users', 'contracts'));
     }
 }
