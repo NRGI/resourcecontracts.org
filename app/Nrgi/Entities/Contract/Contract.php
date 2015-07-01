@@ -156,7 +156,7 @@ class Contract extends Model
         static::creating(
             function ($contract) {
                 $contract->metadata_status = static::STATUS_DRAFT;
-                $contract->text_status     = static::STATUS_DRAFT;
+                $contract->text_status     = null;
 
                 return true;
             }

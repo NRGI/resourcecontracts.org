@@ -80,4 +80,28 @@ interface ContractRepositoryInterface
      * @return Contract
      */
     public function getUniqueResources();
+
+    /**
+     * Count total contracts by date
+     * @param string $date
+     * @return int
+     */
+    public function countTotal($date='');
+
+    /**
+     * Get Recent Contracts
+     *
+     * @param $no
+     * @return collection
+     */
+    public function recent($no);
+
+    /**
+     * Get Contract count by status
+     *
+     * @param $statusType
+     * @return array
+     */
+    public function statusCount($statusType);
+
 }

@@ -353,6 +353,7 @@ class ContractService
                 return $this->deleteFileFromS3($contract->file);
             } catch (Exception $e) {
                 $this->logger->error($e->getMessage(), ['Contract Id' => $id, 'file' => $contract->file]);
+
                 return false;
             }
         }
