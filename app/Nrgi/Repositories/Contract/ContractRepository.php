@@ -21,7 +21,7 @@ class ContractRepository implements ContractRepositoryInterface
     protected $db;
 
     /**
-     * @param Contract        $contract
+     * @param Contract $contract
      * @param DatabaseManager $db
      */
     public function __construct(Contract $contract, DatabaseManager $db)
@@ -169,10 +169,53 @@ class ContractRepository implements ContractRepositoryInterface
      * Get Contract by file hash
      *
      * @param $fileHash
-     * @return mixed
+     * @return Contract
      */
     public function getContractByFileHash($fileHash)
     {
         return $this->contract->where('filehash', $fileHash)->first();
+    }
+
+
+    /**
+     * Count total contracts by date
+     * @param string $date
+     * @return Collection
+     */
+    public function countTotal($date = '')
+    {
+        if (is_array($date)) {
+            return $this->contract->whereRaw("to_char(created_datetime, 'YYYY-MM-DD') >= '$date[0]'")->whereRaw(
+                "to_char(created_datetime, 'YYYY-MM-DD') <= '$date[1]'"
+            )->count();
+        }
+
+        if ($date != '') {
+            return $this->contract->whereRaw("to_char(created_datetime, 'YYYY-MM-DD') = '$date'")->count();
+        }
+
+        return $this->contract->count();
+    }
+
+    /**
+     * Get Recent Contracts
+     *
+     * @param $no
+     * @return collection
+     */
+    public function recent($no)
+    {
+        return $this->contract->with('created_user')->orderBy('created_datetime', 'DESC')->take($no)->get();
+    }
+
+    /**
+     * Get Contract count by status
+     *
+     * @param $statusType
+     * @return array
+     */
+    public function statusCount($statusType)
+    {
+       return $this->contract->selectRaw("$statusType as status, COUNT(*)")->groupBy($statusType)->get()->toArray();
     }
 }

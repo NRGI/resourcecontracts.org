@@ -11,7 +11,7 @@
 */
 
 $router->get('/', 'Auth\AuthController@getLogin');
-$router->get('home', 'Contract\ContractController@index');
+$router->get('home', 'Dashboard\DashboardController@index');
 
 $router->controllers(
     [
