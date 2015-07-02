@@ -9,13 +9,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\Nrgi\Mail\MailQueue;
 
 $router->get('/', 'Auth\AuthController@getLogin');
 $router->get('home', 'Dashboard\DashboardController@index');
-
 $router->controllers(
     [
-        'auth'     => 'Auth\AuthController',
+        'auth' => 'Auth\AuthController',
         'password' => 'Auth\PasswordController',
     ]
 );
