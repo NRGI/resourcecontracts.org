@@ -56,7 +56,13 @@ return [
 			'port'   => '11300',
 			'ttr'    => 60,
 		],
-
+		'queue-mail' => [
+			'driver' => 'beanstalkd',
+			'host'   => 'localhost',
+			'queue'  => 'mail',
+			'port'   => '11300',
+			'ttr'    => 60,
+		],
 		'sqs' => [
 			'driver' => 'sqs',
 			'key'    => 'your-public-key',
