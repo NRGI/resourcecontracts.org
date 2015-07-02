@@ -9,14 +9,27 @@
     .highlight {
         background-color: red;
     }
+        .popup-metadata {
+            position: absolute;
+            background-color: #FFFFFF;
+            padding: 20px;
+            right: 0px;
+            z-index: 100;
+            border: 1px solid #ccc;
+            top: 44px;
+            font-size: 14px;
+            width: 330px;
+        }
     </style>
 @stop
 
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading"> @lang('contract.editing') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> <a class="btn btn-default btn-annotation pull-right" href="{{route('contract.annotations.list', $contract->id)}}">Annotations</a></div>
-        
+        <div class="panel-heading"> @lang('contract.editing') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a>
+            <a class="btn btn-default btn-annotation pull-right" href="{{route('contract.annotations.list', $contract->id)}}">Annotations</a>
+            <a class="btn btn-default btn-metadata btn-annotation pull-right" href="{{route('contract.metadata', $contract->id)}}">Metadata</a>
+        </div>
 
         <div class="view-wrapper" style="background: #F6F6F6">
              <div id="message" style="padding: 0px 16px"></div>
@@ -34,7 +47,7 @@
             </script>
 
             <div class="document-wrap">
-            <div class="left-document-wrap" id="annotatorjs">                    
+            <div class="left-document-wrap" id="annotatorjs">
                     <div class="quill-wrapper">
                         <!-- Create the toolbar container -->
                         <div id="toolbar" class="ql-toolbar ql-snow">
@@ -46,7 +59,7 @@
                         <button name="submit" value="submit" id="saveButton" class="btn">Save</button>
                     </div>
                 </div>
-                <div class="right-document-wrap search">                    
+                <div class="right-document-wrap search">
                     <canvas id="pdfcanvas"></canvas>
                     <div id="SearchResultsList" style='display:none'></div>
                 </div>
@@ -82,14 +95,14 @@
         totalPages: '{{$contract->pages->count()}}',
         currentPage: '{{$page->page_no}}',
         currentPageId: '{{$page->id}}',
-        
+
         editorEl: '#editor',
         paginationEl: '#pagination',
         // annotationEl: '#annotation',
         pdfviewEl: 'pdfcanvas',
         annotatorjsEl: '#annotatorjs',
 
-        canEdit: {{$canEdit}},  
+        canEdit: {{$canEdit}},
         canAnnotate: {{$canAnnotate}},
 
         textLoadAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
@@ -101,12 +114,12 @@
     var pageView = new PageView({
         pageModel: contract.getPageModel(),
         paginationView: new PaginationView({
-            paginationEl: contract.getPaginationEl(), 
-            totalPages: contract.getTotalPages(), 
+            paginationEl: contract.getPaginationEl(),
+            totalPages: contract.getTotalPages(),
             pageModel: contract.getPageModel()
         }),
         textEditorView: new TextEditorView({
-            editorEl: contract.getEditorEl(), 
+            editorEl: contract.getEditorEl(),
             pageModel: contract.getPageModel()
         }),
         pdfView: new PdfView({
@@ -132,6 +145,12 @@
 
     $('#saveButton').click(function (el) {
         pageView.saveClicked();
+    });
+
+    $('.btn-metadata').click(function (el) {
+        el.preventDefault();
+        var url = $(this).attr('href');
+        pageView.showMetadata(url);
     });
 
     </script>
