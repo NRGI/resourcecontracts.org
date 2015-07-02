@@ -1,6 +1,8 @@
 <?php namespace App\Nrgi\Services\Contract\Page;
 
+use App\Nrgi\Mail\MailQueue;
 use App\Nrgi\Services\Contract\ContractService;
+use Carbon\Carbon;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Logging\Log;
@@ -33,6 +35,10 @@ class ProcessService
      * @var Log
      */
     protected $logger;
+    /**
+     * @var MailQueue
+     */
+    protected $mailer;
 
     /**
      * @param Filesystem      $fileSystem
@@ -40,19 +46,22 @@ class ProcessService
      * @param PageService     $page
      * @param Storage         $storage
      * @param Log             $logger
+     * @param MailQueue       $mailer
      */
     public function __construct(
         Filesystem $fileSystem,
         ContractService $contract,
         PageService $page,
         Storage $storage,
-        Log $logger
+        Log $logger,
+        MailQueue $mailer
     ) {
         $this->fileSystem = $fileSystem;
         $this->contract   = $contract;
         $this->page       = $page;
         $this->storage    = $storage;
         $this->logger     = $logger;
+        $this->mailer     = $mailer;
     }
 
     /**
@@ -61,8 +70,9 @@ class ProcessService
      */
     public function execute($contractId)
     {
+        $startTime = Carbon::now();
         try {
-            $contract = $this->contract->find($contractId);
+            $contract  = $this->contract->find($contractId);
             $this->logger->info("processing Contract", ['contractId' => $contractId]);
             list($writeFolderPath, $readFilePath) = $this->setup($contract);
 
@@ -71,10 +81,36 @@ class ProcessService
                 $this->page->savePages($contractId, $pages);
                 $this->updateContractPdfStructure($contract, $writeFolderPath);
                 $this->logger->info("processing contract completed.", ['contractId' => $contractId]);
+                $this->mailer->send(
+                    [
+                        'email' => $contract->created_user->email,
+                        'name'  => $contract->created_user->name
+                    ],
+                    "{$contract->title} processing contract completed.",
+                    'emails.process_success',
+                    [
+                        'contract_title' => $contract->title,
+                        'start_time'     => $startTime->toDayDateTimeString(),
+                        'end_time'       => Carbon::now()->toDayDateTimeString()
+                    ]
+                );
 
                 return true;
             }
         } catch (\Exception $e) {
+            $this->mailer->send(
+                [
+                    'email' => $contract->created_user->email,
+                    'name'  => $contract->created_user->name
+                ],
+                "{$contract->title} processing error.",
+                'emails.process_error',
+                [
+                    'contract_title' => $contract->title,
+                    'start_time'     => $startTime->toDayDateTimeString(),
+                    'error'       => $e->getMessage()
+                ]
+            );
             $this->logger->error("error processing contract.{$e->getMessage()}", ['contractId' => $contractId]);
 
             return false;

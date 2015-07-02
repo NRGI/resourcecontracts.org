@@ -190,7 +190,7 @@ class ContractService
 
                 $this->logger->info(
                     'Contract successfully created.',
-                    ['Contract Title' => $data['metadata']['project_title']]
+                    ['Contract Title' => $contract->title]
                 );
             } catch (Exception $e) {
                 $this->logger->error($e->getMessage());
