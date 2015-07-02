@@ -254,4 +254,20 @@ class ContractController extends Controller
 
         return back()->withError(trans('contract.invalid_status'));
     }
+
+    /**
+     * Get Metadata by contract ID
+     *
+     * @param $contract_id
+     * @return Contract
+     */
+    public function getMetadata($contract_id)
+    {
+        if($contract = $this->contract->find($contract_id))
+        {
+            return response()->json($contract->metadata);
+        }
+        return abort(404);
+    }
+
 }

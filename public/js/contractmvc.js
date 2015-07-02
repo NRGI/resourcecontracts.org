@@ -48,6 +48,7 @@ var Contract = Backbone.Model.extend({
 var Page = Backbone.Model.extend({
     initialize: function(options) {
         this.options = options;
+        this.metadata = '';
         this.set('isReadOnly', !this.options.contractModel.canEdit());
         this.set('isAnnotable', this.options.contractModel.canAnnotate());
         this.set('pageNumber', this.options.pageNumber);
@@ -93,6 +94,35 @@ var Page = Backbone.Model.extend({
             $('html,body').animate({ scrollTop: $('body').offset().top},'slow');
         });
     },
+    showMetadata : function(request_url){
+        var self = this;
+        if (this.metadata == '') {
+            $.ajax({
+                url: request_url,
+                type: 'GET'
+            }).done(function (response) {
+                self.metadata = response;
+                self.show_metadata(response);
+            });
+        }
+        else {
+            this.show_metadata(this.metadata);
+        }
+    },
+    show_metadata: function (metadata) {
+        if ($('.popup-metadata').length > 0) {
+            $('.popup-metadata').remove();
+        }
+        else {
+            var html = '<div class="popup-metadata">' +
+                '<p><strong>Contract Title:</strong> ' + metadata.contract_name + '</p>' +
+                '<p><strong>Country:</strong> ' + metadata.country.name + '</p>' +
+                '<p><strong>Date of signature:</strong> ' + metadata.signature_date + '</p>' +
+                '<p><strong>Resource:</strong> ' + metadata.resource + '</p>' +
+                '</div>';
+            $('.panel-heading').append(html);
+        }
+    },
     getPdfLocation: function() {
         return "/data/{0}/pages/{1}.pdf".format(this.options.contractModel.get('id'), this.get('pageNumber'));
     },
@@ -136,6 +166,9 @@ var PageView = Backbone.View.extend({
     },
     saveClicked: function() {
         this.options.pageModel.save();
+    },
+    showMetadata:function(req){
+        this.options.pageModel.showMetadata(req);
     },
     pageChange: function() {
         // this.paginationView.setPage(this.options.pageModel.get('pageNumber'));
