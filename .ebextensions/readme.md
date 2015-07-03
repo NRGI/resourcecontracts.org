@@ -9,8 +9,8 @@ If the system is already setup and you are deploying to the existing AWS EB envi
 * Clone the project and checkout `deploy-example` branch
 * Create new branch for deployment, say `deploy-stage`
 * Update the credentials and Apis in the following files
-    * [.env](.env)
-    * [00.environmentVariables.config](.ebextensions/00.environmentVariables.config)
+    * [.env](../.env)
+    * [00.environmentVariables.config](../.ebextensions/00.environmentVariables.config)
 * Commit to the branch and next time you deploy it, just merge to-be-deployed branch to this branch and `eb deploy`.
 
 ## First time deployment
@@ -19,7 +19,7 @@ If you are deploying the system for the first time,
 
 * Follow the above steps
 * Update one more file
-    * Update Abbyy crendentials in [.ebextensions/scripts/setup-pdfprocessor.sh](.ebextensions/scripts/setup-pdfprocessor.sh)
+    * Update Abbyy crendentials in [.ebextensions/scripts/setup-pdfprocessor.sh](../.ebextensions/scripts/setup-pdfprocessor.sh)
 
 
 # Deployment 
