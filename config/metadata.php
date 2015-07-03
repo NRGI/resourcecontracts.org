@@ -8,7 +8,7 @@
 return [
     'category'      => [
         'olc' => 'OpenLandContracts',
-        'rc'  => 'ResourceContracts.org'
+        'rc'  => 'ResourceContracts'
     ],
     'text_type'     => [
         1 => ['name' => 'Acceptable', 'color' => 'green'],

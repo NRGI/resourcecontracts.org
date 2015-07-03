@@ -72,7 +72,7 @@ class ProcessService
     {
         $startTime = Carbon::now();
         try {
-            $contract  = $this->contract->find($contractId);
+            $contract = $this->contract->find($contractId);
             $this->logger->info("processing Contract", ['contractId' => $contractId]);
             list($writeFolderPath, $readFilePath) = $this->setup($contract);
 
@@ -90,6 +90,8 @@ class ProcessService
                     'emails.process_success',
                     [
                         'contract_title' => $contract->title,
+                        'contract_id'    => $contract->id,
+                        'contract_detail_url' => route('contract.show', $contract->id),
                         'start_time'     => $startTime->toDayDateTimeString(),
                         'end_time'       => Carbon::now()->toDayDateTimeString()
                     ]
@@ -106,9 +108,11 @@ class ProcessService
                 "{$contract->title} processing error.",
                 'emails.process_error',
                 [
-                    'contract_title' => $contract->title,
-                    'start_time'     => $startTime->toDayDateTimeString(),
-                    'error'       => $e->getMessage()
+                    'contract_title'      => $contract->title,
+                    'contract_id'         => $contract->id,
+                    'contract_detail_url' => route('contract.show', $contract->id),
+                    'start_time'          => $startTime->toDayDateTimeString(),
+                    'error'               => $e->getMessage()
                 ]
             );
             $this->logger->error("error processing contract.{$e->getMessage()}", ['contractId' => $contractId]);
