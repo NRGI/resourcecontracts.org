@@ -81,7 +81,7 @@ return [
     |
     */
 
-    'url'             => 'http://localhost',
+    'url'             => env('APP_DOMAIN', 'http://localhost'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

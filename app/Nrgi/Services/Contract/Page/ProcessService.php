@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Services\Contract\Page;
 
+use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Mail\MailQueue;
 use App\Nrgi\Services\Contract\ContractService;
 use Carbon\Carbon;
@@ -80,6 +81,8 @@ class ProcessService
                 $pages = $this->page->buildPages($writeFolderPath);
                 $this->page->savePages($contractId, $pages);
                 $this->updateContractPdfStructure($contract, $writeFolderPath);
+                $contract->text_status = Contract::STATUS_DRAFT;
+                $contract->save();
                 $this->logger->info("processing contract completed.", ['contractId' => $contractId]);
                 $this->mailer->send(
                     [
