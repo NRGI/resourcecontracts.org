@@ -31,10 +31,12 @@ If you are deploying the system for the first time,
 ## First time deployment
 
 * `eb deploy [environment-name]`
-* scp scripts folder to the server and run the followings - see TODO below
+* scp scripts folder to the server in the home folder `\home\ec2-user\` and run the followings - see TODO below
     * `bash scripts/setup-beanstalk.sh`
     * `bash scripts/setup-supervisord.sh`
     * `bash scripts/setup-pdfprocessor.sh`
+* Or you may run 
+    * `bash scripts/setup-all.sh` to run all the scripts at once
 
 # TODO
 

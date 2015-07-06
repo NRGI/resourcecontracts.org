@@ -13,6 +13,7 @@ make
 
 cp /home/ec2-user/beanstalkd/beanstalkd /usr/bin/
 ln -s /usr/bin/beanstalkd /usr/sbin/beanstalkd
+rm -rf /home/ec2-user/beanstalkd
 
 
 #daemonize needed for beanstalkd.sh
@@ -24,6 +25,7 @@ make
 
 cp /home/ec2-user/daemonize/daemonize /usr/bin/
 ln -s /usr/bin/daemonize /usr/sbin/daemonize
+rm -rf /home/ec2-user/daemonize
 
 #copy beanstalk config and sh to init and run
 cp /home/ec2-user/scripts/conf/beanstalkd.conf /etc/default/beanstalkd
