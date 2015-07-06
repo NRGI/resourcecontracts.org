@@ -1,6 +1,9 @@
 @extends('layout.app')
 
-<?php $contract_completed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE; ?>
+<?php
+$contract_completed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE;
+$contract_failed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_FAILED;
+?>
 
 @section('script')
     <script>
@@ -125,6 +128,8 @@
                     </div>
                 </div>
             </div>
+        @elseif($status ==$contract_failed)
+            <div class="status">@lang('contract.status') : @lang('Failed')</div>
         @else
             <div class="status">@lang('contract.status') : {{$status==0 ? 'Pipeline' : 'Processing'}}</div>
         @endif

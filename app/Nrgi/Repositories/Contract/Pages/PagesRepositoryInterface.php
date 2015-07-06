@@ -24,4 +24,11 @@ interface PagesRepositoryInterface
      * @return array
      */
     public function fullTextSearch($contract_id, $query);
+
+    /**
+     * Get Total Pages
+     * @param $contractID
+     * @return Int
+     */
+    public function getTotalPages($conractID);
 }

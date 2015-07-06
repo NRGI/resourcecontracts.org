@@ -3,6 +3,7 @@
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Services\Contract\Comment\CommentService;
+use App\Nrgi\Services\Contract\Pages\PagesService;
 use App\Nrgi\Services\ElasticSearch\ElasticSearchService;
 use Exception;
 use Illuminate\Auth\Guard;
@@ -56,6 +57,10 @@ class ContractService
      */
     const CONTRACT_COMPLETE = 2;
     /**
+     * Contract Failed
+     */
+    const CONTRACT_FAILED = 3;
+    /**
      * @var CountryService
      */
     protected $countryService;
@@ -71,6 +76,10 @@ class ContractService
      * @var ElasticSearchService
      */
     protected $elasticSearch;
+    /**
+     * @var PagesService
+     */
+    protected $pages;
 
     /**
      * @param ContractRepositoryInterface $contract
@@ -84,6 +93,7 @@ class ContractService
      * @param DatabaseManager             $database
      * @param ElasticSearchService        $elasticSearch
      * @param Log                         $logger
+     * @param PagesService                $pages
      */
     public function __construct(
         ContractRepositoryInterface $contract,
@@ -95,7 +105,8 @@ class ContractService
         CommentService $comment,
         DatabaseManager $database,
         ElasticSearchService $elasticSearch,
-        Log $logger
+        Log $logger,
+        PagesService $pages
     ) {
         $this->contract       = $contract;
         $this->auth           = $auth;
@@ -107,6 +118,7 @@ class ContractService
         $this->comment        = $comment;
         $this->logger         = $logger;
         $this->elasticSearch  = $elasticSearch;
+        $this->pages          = $pages;
     }
 
     /**
@@ -394,7 +406,15 @@ class ContractService
                 $status = $this->filesystem->get(sprintf('%s/status.txt', $path));
                 $status = (integer) trim($status);
 
-                return $status === 1 ? self::CONTRACT_COMPLETE : self::CONTRACT_PENDING;
+                if ($status === 0) {
+                    return self::CONTRACT_PENDING;
+                }
+
+                if ($status === 1 AND $this->pages->exists($contractID)) {
+                    return self::CONTRACT_COMPLETE;
+                }
+
+                return self::CONTRACT_FAILED;
             } catch (FileNotFoundException $e) {
                 return self::CONTRACT_PENDING;
             }
@@ -542,11 +562,11 @@ class ContractService
     public function getList()
     {
         $contracts = $this->contract->getList()->toArray();
-        $data =[];
-        foreach($contracts as $k => $v)
-        {
+        $data      = [];
+        foreach ($contracts as $k => $v) {
             $data[$v['id']] = $v['metadata']->contract_name;
         }
+
         return $data;
     }
 }

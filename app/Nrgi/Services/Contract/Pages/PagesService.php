@@ -93,4 +93,14 @@ class PagesService
     {
         return $this->pages->fullTextSearch($contract_id, $query);
     }
+
+    /**
+     * Check is pages exists for a contract
+     * @param $contract_id
+     * @return bool
+     */
+    public function exists($contract_id)
+    {
+       return $this->pages->getTotalPages($contract_id) > 0;
+    }
 }
