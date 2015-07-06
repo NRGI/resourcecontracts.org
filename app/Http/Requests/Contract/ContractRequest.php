@@ -16,9 +16,9 @@ class ContractRequest extends Request
     public function rules()
     {
         $rules = [
-            'contract_name'  => 'required',
-            'country'        => 'required',
-            'file'           => 'required|mimes:pdf|max:51200'
+            'contract_name' => 'required',
+            'country'       => 'required',
+            'file'          => 'required|mimes:pdf|max:51200'
         ];
 
         if ($this->isMethod('PATCH')) {
@@ -40,25 +40,28 @@ class ContractRequest extends Request
             function () use ($validator) {
 
                 if ($this->isMethod('POST')) {
-                    $file            = $this->file('file');
-                    $hash            = getFileHash($file->getPathName());
-                    $contractService = app('App\Nrgi\Services\Contract\ContractService');
 
-                    if ($contract = $contractService->getContractIfFileHashExist($hash)) {
-                        $message = trans(
-                            "The contract file is already present in our system. Please check the following Title of contract with which the uploaded file is linked and make necessary updates."
-                        );
-                        $message .= sprintf(
-                            "<div><a target='_blank' href='%s'>%s</a></div>",
-                            route('contract.show', $contract->id),
-                            $contract->title
-                        );
+                    if ($this->file('file')->isValid()) {
+                        $file            = $this->file('file');
+                        $hash            = getFileHash($file->getPathName());
+                        $contractService = app('App\Nrgi\Services\Contract\ContractService');
 
-                        $validator->errors()->add('file', $message);
+                        if ($contract = $contractService->getContractIfFileHashExist($hash)) {
+                            $message = trans(
+                                "The contract file is already present in our system. Please check the following Title of contract with which the uploaded file is linked and make necessary updates."
+                            );
+                            $message .= sprintf(
+                                "<div><a target='_blank' href='%s'>%s</a></div>",
+                                route('contract.show', $contract->id),
+                                $contract->title
+                            );
+
+                            $validator->errors()->add('file', $message);
+                        }
+                    } else {
+                        $validator->errors()->add('file', $this->file('file')->getError());
                     }
                 }
-
-
             }
         );
 

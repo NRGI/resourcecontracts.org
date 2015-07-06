@@ -55,7 +55,7 @@ class Contract extends Model
         $metaData           = json_decode($metaData);
         $metaData->file_url = getS3FileURL($this->file);
 
-        return $metaData;
+        return $this->makeNullField($metaData);
     }
 
     /**
@@ -122,6 +122,8 @@ class Contract extends Model
 
     /**
      * Get Contract Title
+     *
+     * @return string
      */
     public function getTitleAttribute()
     {
@@ -141,6 +143,32 @@ class Contract extends Model
         }
 
         return false;
+    }
+
+    /**
+     * Make metadata value null if value is empty
+     * @param $metadata
+     * @return mixed
+     */
+    public function makeNullField($metadata)
+    {
+        $nullable_fields = ['signature_date', 'date_retrieval', 'company_founding_date'];
+
+        foreach ($metadata as $key => &$value) {
+            if (is_object($value)) {
+                $value = (object) $this->makeNullField((array) $value);
+            }
+
+            if (is_array($value)) {
+                $value = $this->makeNullField($value);
+            }
+
+            if (in_array($key, $nullable_fields) && $value == '') {
+                $value = null;
+            }
+        }
+
+        return $metadata;
     }
 
     /**
