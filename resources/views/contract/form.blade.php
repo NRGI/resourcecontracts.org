@@ -377,7 +377,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('project_identifier', trans('contract.identifier'), ['class'=>'col-sm-2 control-label'])!!}
+    {!! Form::label('project_identifier', trans('contract.project_identifier'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
         {!! Form::text('project_identifier',
         isset($contract->metadata->project_identifier)?$contract->metadata->project_identifier:null,

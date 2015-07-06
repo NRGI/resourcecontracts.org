@@ -4,12 +4,14 @@
     <meta charset="utf-8">
 </head>
 <body>
-<h2> Could not process {{$contract_title}}.</h2>
+<p>Could not process {{$contract_title}} . Please see the contract <a href="{{ $contract_detail_url }}"> here</a>
+</p>
+
 <div>
-    Document processing started  At {{$start_time}}
+    Document processing started  At {{$start_time}}(GMT)
 </div>
 <div>
-    Error {{$error}}.
+    Error: {{$error}}
 </div>
 </body>
 </html>
