@@ -167,8 +167,6 @@ class ElasticSearchService
             ['category', 'contract_name', 'signature_date', 'resource', 'file_size', 'file_url', 'country']
         );
 
-        $meta['file_size'] = getFileSize($meta['file_size']);
-
         return $array ? $meta : json_encode($meta);
     }
 }

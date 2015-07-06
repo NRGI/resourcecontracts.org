@@ -63,5 +63,5 @@ function getS3FileURL($fileName = '')
 function getPdfUrl($contract_id, $page_no)
 {
     $path = trim(url(config('nrgi.pdf_storage_url')), '/');
-    return sprintf('%s/%s/%s.pdf', $path, $contract_id, $page_no);
+    return sprintf('%s/%s/pages/%s.pdf', $path, $contract_id, $page_no);
 }
