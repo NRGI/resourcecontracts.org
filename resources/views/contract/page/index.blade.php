@@ -9,17 +9,38 @@
     .highlight {
         background-color: red;
     }
-        .popup-metadata {
-            position: absolute;
-            background-color: #FFFFFF;
-            padding: 20px;
-            right: 0px;
-            z-index: 100;
-            border: 1px solid #ccc;
-            top: 44px;
-            font-size: 14px;
-            width: 330px;
-        }
+
+    .annotation-list,.popup-metadata {
+      display: block;
+      position: absolute;
+      top: 48px;
+      right: 0px;
+      width: 632px;
+      background-color: #fff;
+      padding: 10px 20px;
+      z-index: 101;
+      box-shadow: 1px 2px 6px rgba(0,0,0,0.5);
+      border-radius: 4px;
+      font-size: 14px;
+    }  
+
+    .annotation-list {
+        height: 450px;
+        overflow: scroll;
+    } 
+
+    .annotation-list h3 {
+        font-size: 17px;
+    }
+
+    .annotation-list h3 ~ div {
+        padding-left: 14px;
+    }
+
+    .popup-metadata {
+        width: 400px;  
+        right: 190px;
+    }     
     </style>
 @stop
 
@@ -28,7 +49,7 @@
     <div class="panel panel-default">
         <div class="panel-heading"> @lang('contract.editing') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a>
             <a class="btn btn-default btn-annotation pull-right" href="{{route('contract.annotations.list', $contract->id)}}">Annotations</a>
-            <a class="btn btn-default btn-metadata btn-annotation pull-right" href="{{route('contract.metadata', $contract->id)}}">Metadata</a>
+            <a class="btn btn-default btn-metadata pull-right" href="{{route('contract.metadata', $contract->id)}}">Metadata</a>
         </div>
 
         <div class="view-wrapper" style="background: #F6F6F6">
@@ -62,6 +83,7 @@
                 <div class="right-document-wrap search">
                     <canvas id="pdfcanvas"></canvas>
                     <div id="SearchResultsList" style='display:none'></div>
+                    <div id="annotations_list" class="annotation-list" style="display:none"></div>                    
                 </div>
                 <div class="searchresults"></div>
             </div>
@@ -78,10 +100,14 @@
     <script src="{{ asset('js/jquery.simplePagination.js') }}"></script>
     <script src="{{ asset('js/lib/underscore.js') }}"></script>
     <script src="{{ asset('js/lib/backbone.js') }}"></script>
+    <script src="{{ asset('js/custom/search.js') }}"></script>
+    <script src="{{ asset('js/custom/annotator.plugin.event.js') }}"></script>
+    <script src="{{ asset('js/custom/annotator.plugin.categories.js') }}"></script>
+    <script src="{{ asset('js/custom/annotation.js') }}"></script>
     <script src="{{ asset('js/contractmvc.js') }}"></script>
 
     <script>
-    //defining format to use .format function
+    var annotationsCollection = new MyAnnotationCollection()
     String.prototype.format = function () {
         var formatted = this;
         for (var i = 0; i < arguments.length; i++) {
@@ -90,6 +116,7 @@
         }
         return formatted;
     };
+
     var contract = new Contract({
         id: '{{$contract->id}}',
         totalPages: '{{$contract->pages->count()}}',
@@ -98,7 +125,7 @@
 
         editorEl: '#editor',
         paginationEl: '#pagination',
-        // annotationEl: '#annotation',
+        annotationslistEl: '#annotations_list',
         pdfviewEl: 'pdfcanvas',
         annotatorjsEl: '#annotatorjs',
 
@@ -108,7 +135,8 @@
         textLoadAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
         textSaveAPI: "{{route('contract.page.store', ['id'=>$contract->id])}}",
 
-        annotatorjsAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}"
+        annotatorjsAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
+        annotatationPullAPI: "{{route('contract.annotations', ['id'=>$contract->id])}}"
     });
 
     var pageView = new PageView({
@@ -130,8 +158,16 @@
             annotatorjsEl: contract.getAnnotatorjsEl(),
             pageModel: contract.getPageModel(),
             contractModel: contract,
-            tags:{!! json_encode(trans("codelist/annotationTag.annotation_tags")) !!}
+            collection: annotationsCollection,
+            tags:{!! json_encode(trans("codelist/annotation.tags")) !!},
+            categories:{!! json_encode(trans("codelist/annotation.categories")) !!}
         }),
+        annotationsListView: new AnnotationsListView({
+            annotationslistEl: contract.getAnnotationsListEl(),
+            collection: annotationsCollection,
+            pageModel: contract.getPageModel(),
+            contractModel: contract,
+        }),        
         searchFormView: new SearchFormView({
             collection: contract.searchResultCollection,
             el: '#searchForm'
@@ -142,6 +178,11 @@
             pageModel: contract.getPageModel(),
         }),
     }).render();
+
+    $('.btn-annotation').click(function(e) {
+        e.preventDefault();
+        pageView.toggleAnnotationList();
+    });
 
     $('#saveButton').click(function (el) {
         pageView.saveClicked();
