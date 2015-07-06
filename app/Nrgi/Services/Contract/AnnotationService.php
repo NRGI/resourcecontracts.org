@@ -108,7 +108,8 @@ class AnnotationService
             $inputData['contract']
         );
 
-        return $this->annotation->save($contactAnnotation);
+        $this->annotation->save($contactAnnotation);
+        return $contactAnnotation;
     }
 
     /**
@@ -232,5 +233,17 @@ class AnnotationService
         }
 
         return false;
+    }
+
+    public function getContractAnnotations($contractId) {
+        $annotationData = [];
+        $contract = $this->annotation->getContractPagesWithAnnotations($contractId);
+        foreach ($contract->annotations as $annotation) {
+            $json             = $annotation->annotation;
+            $json->page       = $annotation->document_page_no;
+            $json->id         = $annotation->id;
+            $annotationData[] = $json;
+        }
+        return $annotationData;
     }
 }

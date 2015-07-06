@@ -94,6 +94,8 @@ var contract2Annotations = [];
     <script src="{{ asset('js/jquery.simplePagination.js') }}"></script>
     <script src="{{ asset('js/lib/underscore.js') }}"></script>
     <script src="{{ asset('js/lib/backbone.js') }}"></script>
+    <script src="{{ asset('js/custom/search.js') }}"></script>
+    <script src="{{ asset('js/custom/annotation.js') }}"></script>
     <script src="{{ asset('js/contractmvc.js') }}"></script>
     <script>
 

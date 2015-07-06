@@ -2,6 +2,13 @@
 $router->group(
     ['namespace' => 'Api', 'prefix' => 'api'],
     function ($router) {
+        $router->get(
+            'annotations/{contractId}',
+            [
+                'as'   => 'contract.annotations',
+                'uses' => 'AnnotationApiController@getContractAnnotations'
+            ]
+        );
         $router->put('annotations/{id}', 'AnnotationApiController@save');
         $router->post('annotations/{id}', 'AnnotationApiController@delete');
         $router->post('annotations', 'AnnotationApiController@save');
