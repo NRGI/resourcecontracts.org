@@ -20,6 +20,4 @@ $router->controllers(
     ]
 );
 
-if (env('APP_ENV') == 'local') {
-    $router->get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-}
+$router->get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
