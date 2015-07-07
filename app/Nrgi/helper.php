@@ -53,3 +53,15 @@ function getS3FileURL($fileName = '')
                    ->getClient()
                    ->getObjectUrl(env('AWS_BUCKET'), $fileName);
 }
+
+/**
+ * Get Pdf Path
+ * @param $contract_id
+ * @param $page_no
+ * @return string
+ */
+function getPdfUrl($contract_id, $page_no)
+{
+    $path = trim(url(config('nrgi.pdf_storage_url')), '/');
+    return sprintf('%s/%s/pages/%s.pdf', $path, $contract_id, $page_no);
+}

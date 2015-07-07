@@ -44,7 +44,7 @@ class ElasticSearchService
      */
     protected function apiURL($request)
     {
-        return env('ELASTIC_SEARCH_URL') . $request;
+        return trim(env('ELASTIC_SEARCH_URL'), '/').'/'.$request;
     }
 
 
@@ -164,12 +164,9 @@ class ElasticSearchService
 
         $meta = array_only(
             $metadata_array,
-            ['category', 'contract_name', 'signature_date', 'resource', 'file_size', 'country']
+            ['category', 'contract_name', 'signature_date', 'resource', 'file_size', 'file_url', 'country']
         );
-
-        $meta['file_size'] = getFileSize($meta['file_size']);
 
         return $array ? $meta : json_encode($meta);
     }
-
 }

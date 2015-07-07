@@ -82,13 +82,15 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('type_of_contract', trans('contract.type_of_contract'), ['class'=>'col-sm-2 control-label'])!!}
+    {!! Form::label('type_of_contract', trans('contract.type_of_contract'), ['class'=>'col-sm-2
+    control-label'])!!}
     <div class="col-sm-7">
-        {!! Form::text('type_of_contract',
+        {!! Form::select('type_of_contract', ['' => 'select']+ trans('codelist/contract_type'),
         isset($contract->metadata->type_of_contract)?$contract->metadata->type_of_contract:null,
         ["class"=>"form-control"])!!}
     </div>
 </div>
+
 
 <div class="form-group">
     <label for="signature_date" class="col-sm-2 control-label">@lang('contract.signature_date')</label>
@@ -269,7 +271,8 @@
                 {!! Form::label('incorporation_date', trans('contract.incorporation_date'), ['class'=>'col-sm-2
                 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][company_founding_date]",null,["class"=>"datepicker form-control", 'placeholder'
+                    {!! Form::text("company[0][company_founding_date]",null,["class"=>"datepicker form-control",
+                    'placeholder'
                     => 'YYYY-MM-DD'])!!}
                 </div>
             </div>
@@ -334,7 +337,7 @@
                 $('.company .item:last-child').after('<div id="item' + item + '" class="item">' + template + deleteBtn + '</div>');
                 $('#item' + item).find('input[type=text]').val('');
                 $('.datepicker').datetimepicker({
-                    timepicker:false,
+                    timepicker: false,
                     format: 'Y-m-d'
                 });
             })
@@ -374,7 +377,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('project_identifier', trans('contract.identifier'), ['class'=>'col-sm-2 control-label'])!!}
+    {!! Form::label('project_identifier', trans('contract.project_identifier'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
         {!! Form::text('project_identifier',
         isset($contract->metadata->project_identifier)?$contract->metadata->project_identifier:null,

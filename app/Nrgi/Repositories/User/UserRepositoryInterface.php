@@ -37,4 +37,11 @@ interface UserRepositoryInterface
      * @return array
      */
     public function getAllRoles();
+
+    /**
+     * Get User list
+     *
+     * @return array
+     */
+    public function getList();
 }

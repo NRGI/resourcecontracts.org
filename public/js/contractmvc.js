@@ -42,12 +42,16 @@ var Contract = Backbone.Model.extend({
     },
     addAnnotation: function(annotation) {
         this.annotationCollection.add(annotation);
+    },
+    getAnnotationPullAPI: function() {
+        return this.options.annotatationPullAPI;
     }
 });
 
 var Page = Backbone.Model.extend({
     initialize: function(options) {
         this.options = options;
+        this.metadata = '';
         this.set('isReadOnly', !this.options.contractModel.canEdit());
         this.set('isAnnotable', this.options.contractModel.canAnnotate());
         this.set('pageNumber', this.options.pageNumber);
@@ -93,6 +97,35 @@ var Page = Backbone.Model.extend({
             $('html,body').animate({ scrollTop: $('body').offset().top},'slow');
         });
     },
+    showMetadata : function(request_url){
+        var self = this;
+        if (this.metadata == '') {
+            $.ajax({
+                url: request_url,
+                type: 'GET'
+            }).done(function (response) {
+                self.metadata = response;
+                self.show_metadata(response);
+            });
+        }
+        else {
+            this.show_metadata(this.metadata);
+        }
+    },
+    show_metadata: function (metadata) {
+        if ($('.popup-metadata').length > 0) {
+            $('.popup-metadata').remove();
+        }
+        else {
+            var html = '<div class="popup-metadata">' +
+                '<p><strong>Contract Title:</strong> ' + metadata.contract_name + '</p>' +
+                '<p><strong>Country:</strong> ' + metadata.country.name + '</p>' +
+                '<p><strong>Date of signature:</strong> ' + metadata.signature_date + '</p>' +
+                '<p><strong>Resource:</strong> ' + metadata.resource + '</p>' +
+                '</div>';
+            $('.panel-heading').append(html);
+        }
+    },
     getPdfLocation: function() {
         return "/data/{0}/pages/{1}.pdf".format(this.options.contractModel.get('id'), this.get('pageNumber'));
     },
@@ -127,7 +160,7 @@ var PageView = Backbone.View.extend({
         if(this.textEditorView) this.textEditorView.render();
         if(this.pdfView) this.pdfView.render();
         if(this.annotatorjsView) this.annotatorjsView.render();
-        if(this.annotationsListView) this.annotationsListView.render();
+        // if(this.annotationsListView) this.annotationsListView.render();
         if(this.searchFormView) this.searchFormView.render();        
         return this;
     },
@@ -136,6 +169,9 @@ var PageView = Backbone.View.extend({
     },
     saveClicked: function() {
         this.options.pageModel.save();
+    },
+    showMetadata:function(req){
+        this.options.pageModel.showMetadata(req);
     },
     pageChange: function() {
         // this.paginationView.setPage(this.options.pageModel.get('pageNumber'));
@@ -234,253 +270,6 @@ var PaginationView = Backbone.View.extend({
     }
 });
 
-var AnnotatorjsView = Backbone.View.extend({
-    initialize: function(options) {
-        this.options = options;
-        this.listenTo(this.options.pageModel, 'pageChange', this.pageUpdated);
-        this.bind('pageChange', this.pageUpdated);
-        this.content = $(this.options.annotatorjsEl).annotator({readOnly: !this.options.pageModel.get('isAnnotable')});
-        this.content.annotator('addPlugin', 'Tags');
-        this.availableTags = this.options.tags;
-        return this;
-    },
-    pageUpdated: function() {
-        // console.log('pageUpdated');
-        var that = this;
-        var store = this.content.data('annotator').plugins.Store;
-        if(store.annotations) store.annotations = [];
 
-        store.options.loadFromSearch = { 
-            'url': that.options.contractModel.get('annotatorjsAPI'),
-            'contract': that.options.contractModel.get('id'),
-            'document_page_no': that.options.pageModel.get('pageNumber')
-        };            
-        store.options.annotationData = { 
-            'url': that.options.contractModel.options.annotatorjsAPI,
-            'contract': that.options.contractModel.get('id'),
-            'document_page_no': that.options.pageModel.get('pageNumber'),
-            'page_id': that.options.pageModel.get('id')
-        }
-        store.loadAnnotationsFromSearch(store.options.loadFromSearch)                
 
-    },
-    render: function() {
-        var that = this;
-        var page = that.options.pageModel.get('pageNumber');
-        if(this.content.data('annotator').plugins.Store) {
-            var store = this.content.data('annotator').plugins.Store;
-            if(store.annotations) store.annotations = [];
-            store.options.loadFromSearch = { 
-                'url': that.options.contractModel.get('annotatorjsAPI'),
-                'contract': that.options.contractModel.get('id'),
-                'document_page_no': that.options.pageModel.get('pageNumber')
-            };            
-            store.loadAnnotationsFromSearch(store.options.loadFromSearch)                
-        } else {
-            this.content.annotator('addPlugin', 'Store', {
-                // The endpoint of the store on your server.
-                prefix: '/api',
-                // Attach the uri of the current page to all annotations to allow search.
-                loadFromSearch: {
-                    'url': that.options.contractModel.get('annotatorjsAPI'),
-                    'contract': that.options.contractModel.get('id'),
-                    'document_page_no': that.options.pageModel.get('pageNumber')
-                },
-                annotationData: {
-                    'url': that.options.contractModel.get('annotatorjsAPI'),
-                    'contract': that.options.contractModel.get('id'),
-                    'document_page_no': that.options.pageModel.get('pageNumber'),
-                    'page_id': that.options.pageModel.get('id')
-                }
-            }); 
-        }
-        function split( val ) {
-            return val.split( / \s*/ );
-        }
-        function extractLast( term ) {
-            return split( term ).pop();
-        }
-        var availableTags = this.availableTags;
-        this.content.data('annotator').plugins.Tags.input.autocomplete({
-            source: function( request, response) {
-                // delegate back to autocomplete, but extract the last term
-                response( $.ui.autocomplete.filter(
-                        availableTags, extractLast( request.term ) ) );
-            },
-            focus: function() {
-                // prevent value inserted on focus
-                return false;
-            },
-            select: function( event, ui ) {
-                var terms = split( this.value );
-                // remove the current input
-                terms.pop();
-                // add the selected item
-                terms.push( ui.item.value );
-                // add placeholder to get the comma-and-space at the end
-                terms.push( "" );
-                this.value = terms.join( " " );
-                return false;
-            }
-        });        
-        return this;
-    }                   
-});
 
-var MyAnnotation = Backbone.Model.extend();
-
-var MyAnnotationCollection = Backbone.Collection.extend({
-    model: MyAnnotation
-})
-
-var AnnotationSideView = Backbone.View.extend({
-    tagName: 'div',
-    initialize: function(options) {
-        this.options = options;
-    },
-    events: {
-        "click a":"changePage"
-    },
-    render: function() {
-        // <li><span><a onclick='annotationClicked(this,"+contract.id+","+annotation.page+")' href='#'>{0}</a> [Page {1}]</span><br><p>{2}</p></li>
-        this.$el.html('<a href="#">'+this.model.get('quote')+'</a>[Page '+this.model.get('page')+']<br><p>'+this.model.get('text')+'</p>');
-        return this;
-    },
-    changePage: function() {
-        this.options.pageModel.setPageNumber(this.model.get('page'));
-    }
-});
-
-var AnnotationsListView = Backbone.View.extend({
-    initialize: function(options) {
-        this.options = options;
-        this.$el = $(options.annotationslistEl);
-    },
-    render: function() {
-        var that = this;
-        // that.$el.append('<ul>');
-        this.collection.each(function(annotation) {
-            var annotationSideView = new AnnotationSideView({ model: annotation, pageModel: that.options.pageModel});
-            that.$el.append(annotationSideView.render().$el);
-        })
-        // that.$el.append('</ul>');
-        return this;
-    },
-    toggle: function() {
-        this.$el.toggle();
-    }
-});
-
-var SearchResult = Backbone.Model.extend({});
-
-var SearchResultCollection = Backbone.Collection.extend({
-    model: SearchResult,
-    initialize: function() {
-        // this.reset();
-    },
-    getSearchTerm: function() {
-        return this.searchTerm;
-    },
-    fetch: function(options, callback) {
-        this.searchTerm = options.searchTerm;
-        var that = this;            
-        $.ajax({
-            url : options.url,
-            postType : 'JSON',
-            type : "POST",
-            data : {'q': options.searchTerm}
-        }).done(function(response){    
-            that.destroy();         
-            $.each(response, function(index, result) {
-                that.add({text: result.text, pageNumber: result.page_no});
-            });
-            that.trigger('dataCollected');
-        });
-    },
-    destroy: function() {
-        var that = this;
-        this.forEach(function(model) {
-            that.remove(model);
-        });        
-    }
-});
-
-var SearchResultView = Backbone.View.extend({
-    tagName: 'p',
-    initialize: function(options) {
-        this.options = options;
-        return this;
-    },
-    events: {
-        "click a":"changePage"
-    },
-    render: function() {
-        // <li><span><a onclick='annotationClicked(this,"+contract.id+","+annotation.page+")' href='#'>{0}</a> [Page {1}]</span><br><p>{2}</p></li>
-        this.$el.html('<a href="#">'+this.model.get('text')+'</a>[Page '+this.model.get('pageNumber')+']');
-        return this;
-    },
-    changePage: function() {
-        this.options.pageModel.setSearchTerm(this.options.searchTerm);
-        this.options.pageModel.setPageNumber(this.model.get('pageNumber'));
-    }
-
-});
-var SearchResultListView = Backbone.View.extend({
-    tagName: 'div',
-    className: 'results',
-    events: {
-        'click .search-cancel': "close"
-    },
-    initialize: function(options) {
-        this.options = options;
-        this.listenTo(this.collection, 'dataCollected', this.dataCollected);
-        this.bind('dataCollected', this.dataCollected, this);        
-        return this;
-    },
-    dataCollected: function() {
-        this.render();
-    },  
-    render: function() {
-        var that = this;
-        this.$el.show();
-        this.$el.html('');
-        $('.right-document-wrap canvas').hide();
-        // this.remove();
-        that.$el.append("<a href='#' class='pull-right search-cancel'><i class='glyphicon glyphicon-remove'></i></a>");
-        if(this.collection.length) {
-            that.$el.append("<p>Total "+this.collection.length+" result(s) found.</p>");
-            this.options.collection.each(function(searchResult) {            
-                var searchResultView = new SearchResultView({ model: searchResult, pageModel: that.options.pageModel, searchTerm: that.collection.getSearchTerm()});
-                that.$el.append(searchResultView.render().$el);
-            });
-        }
-        else {
-            that.$el.append('<h4>Result not found</h4>');
-        }
-        return this;
-    },
-    close: function() {
-        this.$el.hide();
-        this.$el.html('');
-        $('.right-document-wrap canvas').show();
-    }
-});
-
-var SearchFormView = Backbone.View.extend({
-    events: {
-        "click input[type=submit]": "doSearch"
-    },
-    initialize: function(options) {
-        this.template = _.template($("#searchFormTemplate").html(), {} );
-        this.bind('doSearch', this.doSearch, this);     
-    },
-    render: function() {
-        this.$el.html(this.template);
-        return this;
-    },
-    doSearch: function(e) {
-        e.preventDefault();
-        this.collection.destroy();
-        this.collection.fetch({"url": this.$('form').attr('action'), "searchTerm": this.$('#textfield').val()});
-    }
-});

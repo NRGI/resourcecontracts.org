@@ -1,6 +1,9 @@
 @extends('layout.app')
 
-<?php $contract_completed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE; ?>
+<?php
+$contract_completed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE;
+$contract_failed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_FAILED;
+?>
 
 @section('script')
     <script>
@@ -50,6 +53,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">{{$contract->title}}</div>
         <div class="action-btn pull-right" style="padding: 20px;">
+            <a href="{{route('activitylog.index')}}?contract={{$contract->id}}" class="btn btn-default">@lang('activitylog.activitylog')</a>
             <a href="{{route('contract.edit', $contract->id)}}" class="btn btn-default">@lang('contract.edit')</a>
             <a target="_blank" href="{{getS3FileURL($contract->file)}}"
                class="btn btn-default">@lang('contract.download_file') [{{getFileSize($contract->metadata->file_size)}}
@@ -124,6 +128,8 @@
                     </div>
                 </div>
             </div>
+        @elseif($status ==$contract_failed)
+            <div class="status">@lang('contract.status') : @lang('Failed')</div>
         @else
             <div class="status">@lang('contract.status') : {{$status==0 ? 'Pipeline' : 'Processing'}}</div>
         @endif

@@ -31,7 +31,7 @@ class AnnotationApiController extends Controller
         $content    = $request->getContent();
         $annotation = $this->annotationService->save($content, $request->all());
         if ($annotation) {
-            return response()->json(['status' => 'success']);
+            return response()->json(['status' => 'success', "id"=>$annotation->id]);
         }
 
         return response()->json(['status' => 'error']);
@@ -60,5 +60,11 @@ class AnnotationApiController extends Controller
         $response = $this->annotationService->search($request->all());
 
         return response()->json($response);
+    }
+
+    public function getContractAnnotations($contractId, Request $request) {
+        $contractAnnotations = $this->annotationService->getContractAnnotations($contractId);
+        print json_encode($contractAnnotations);
+
     }
 }

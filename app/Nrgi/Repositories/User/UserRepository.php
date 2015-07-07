@@ -69,4 +69,14 @@ class UserRepository implements UserRepositoryInterface
     {
         return $this->role->lists('display_name', 'id');
     }
+
+    /**
+     * Get User list
+     *
+     * @return array
+     */
+    public function getList()
+    {
+        return $this->user->lists('name', 'id');
+    }
 }

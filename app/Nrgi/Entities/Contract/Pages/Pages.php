@@ -15,6 +15,8 @@ class Pages extends Model
      */
     protected $table = 'contract_pages';
 
+    protected $appends = ['pdf_url'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -29,4 +31,14 @@ class Pages extends Model
     {
         return $this->hasMany('App\Nrgi\Entities\Contract\Annotation', 'page_id');
     }
+
+    /**
+     * Get Pdf file url
+     * @return string
+     */
+    public function getPdfUrlAttribute()
+    {
+        return getPdfUrl($this->contract_id, $this->page_no);
+    }
+
 }

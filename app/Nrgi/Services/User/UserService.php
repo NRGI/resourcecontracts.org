@@ -133,4 +133,14 @@ class UserService
         return $this->user->getAllRoles();
     }
 
+    /**
+     * Get List of users
+     *
+     * @return array
+     */
+    public function getList()
+    {
+        return $this->user->getList();
+    }
+
 }

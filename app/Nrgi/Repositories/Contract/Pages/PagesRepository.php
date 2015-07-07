@@ -54,4 +54,15 @@ class PagesRepository implements PagesRepositoryInterface
                   ->where('contract_id', $contract_id)
                   ->get()->toArray();
     }
+
+    /**
+     * Get Total Pages
+     * @param $contractID
+     * @return Int
+     */
+    public function getTotalPages($contractID)
+    {
+        return $this->pages->where('contract_id', $contractID)->count();
+    }
+
 }

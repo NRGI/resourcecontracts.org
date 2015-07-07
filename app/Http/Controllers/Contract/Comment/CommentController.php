@@ -20,6 +20,7 @@ class CommentController extends Controller
      */
     function __construct(CommentService $comment)
     {
+        $this->middleware('auth');
         $this->comment = $comment;
     }
 
@@ -34,7 +35,8 @@ class CommentController extends Controller
     {
         $contract = $contract->find($contract_id);
         $comments = $this->comment->getPaginate($contract_id);
-        return view('contract.comment.index', compact('contract','comments'));
+
+        return view('contract.comment.index', compact('contract', 'comments'));
     }
 
 }
