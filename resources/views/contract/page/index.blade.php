@@ -63,7 +63,7 @@
                     {!! Form::text('q', null, ['id'=> 'textfield', 'class' => 'form-control', 'placeholder' => 'Search...' , 'style' => 'padding:15px; width:280px']) !!}
                 </div>
             </div>
-            {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Search', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
             </script>
 
