@@ -361,6 +361,7 @@ class ContractService
         if ($this->contract->delete($contract->id)) {
             $this->logger->info('Contract successfully deleted.', ['Contract Id' => $id]);
             $this->logger->activity('contract.log.delete', ['contract' => $contract->title], null);
+            $this->queue->push('App\Nrgi\Services\Queue\DeleteToElasticSearchQueue', ['contract_id' => $id], 'elastic_search');
             try {
                 return $this->deleteFileFromS3($contract->file);
             } catch (Exception $e) {

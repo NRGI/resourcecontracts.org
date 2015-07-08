@@ -44,7 +44,7 @@ class ElasticSearchService
      */
     protected function apiURL($request)
     {
-        return trim(env('ELASTIC_SEARCH_URL'), '/').'/'.$request;
+        return trim(env('ELASTIC_SEARCH_URL'), '/') . '/' . $request;
     }
 
 
@@ -169,4 +169,21 @@ class ElasticSearchService
 
         return $array ? $meta : json_encode($meta);
     }
+
+    /**
+     * Delete contract in elastic search
+     *
+     * @param $contract_id
+     */
+    public function delete($contract_id)
+    {
+        try {
+            $request  = $this->http->post($this->apiURL('contract/delete'), null, ['id' => $contract_id]);
+            $response = $request->send();
+            $this->logger->info('Contract delete submitted to Elastic Search.', $response->json());
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+    }
+
 }
