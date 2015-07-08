@@ -5,9 +5,7 @@ if ([ ! -f /root/.not-a-new-instance.txt ]) then
 fi
 
 if ([ $newEC2Instance ]) then
-    setup-beanstalk.sh
-    setup-supervisor.sh
-    setup-pdfprocessor.sh
+    bash /home/ec2-user/scripts/setup-all.sh
 else
     /etc/init.d/supervisord restart
     /etc/init.d/beanstalk restart
