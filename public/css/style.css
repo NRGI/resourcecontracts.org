@@ -446,3 +446,6 @@ header {
 .table-dashboard td span {
     color: #666;
 }
+#annotation-plugin-select-category{
+    width: 100%;
+}
