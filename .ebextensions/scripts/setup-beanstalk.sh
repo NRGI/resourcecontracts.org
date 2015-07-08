@@ -23,7 +23,7 @@ cd /home/ec2-user/daemonize
 sh configure
 make
 
-cp /home/ec2-user/daemonize/daemonize /usr/bin/
+cp -rf /home/ec2-user/daemonize/daemonize /usr/bin/
 ln -s /usr/bin/daemonize /usr/sbin/daemonize
 rm -rf /home/ec2-user/daemonize
 
@@ -32,5 +32,3 @@ cp /home/ec2-user/scripts/conf/beanstalkd.conf /etc/default/beanstalkd
 cp /home/ec2-user/scripts/conf/beanstalkd.sh /etc/init.d/beanstalkd
 chmod 777 /etc/init.d/beanstalkd
 /etc/init.d/beanstalkd start
-
-
