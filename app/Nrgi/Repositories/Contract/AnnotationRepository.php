@@ -169,5 +169,23 @@ class AnnotationRepository implements AnnotationRepositoryInterface
 
         return $annotationStatus;
     }
-}
 
+    /**
+     * Get Total Annotation status by type
+     * @param $statusType
+     * @return mixed
+     */
+    public function getStatusCountByType($statusType)
+    {
+        return $this->annotation->distinct()
+                                ->select('c.id', 'a.status')
+                                ->from('contracts as c')
+                                ->leftJoin(
+                                    'contract_annotations as a',
+                                    function ($join) use ($statusType) {
+                                        $join->on('c.id', '=', 'a.contract_id')->where('a.status', '=', $statusType);
+                                    }
+                                )
+                                ->get();
+    }
+}

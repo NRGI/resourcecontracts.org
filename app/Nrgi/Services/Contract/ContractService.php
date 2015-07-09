@@ -5,6 +5,7 @@ use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\Pages\PagesService;
 use App\Nrgi\Services\ElasticSearch\ElasticSearchService;
+use Aws\S3\S3Client;
 use Exception;
 use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
@@ -361,7 +362,11 @@ class ContractService
         if ($this->contract->delete($contract->id)) {
             $this->logger->info('Contract successfully deleted.', ['Contract Id' => $id]);
             $this->logger->activity('contract.log.delete', ['contract' => $contract->title], null);
-            $this->queue->push('App\Nrgi\Services\Queue\DeleteToElasticSearchQueue', ['contract_id' => $id], 'elastic_search');
+            $this->queue->push(
+                'App\Nrgi\Services\Queue\DeleteToElasticSearchQueue',
+                ['contract_id' => $id],
+                'elastic_search'
+            );
             try {
                 return $this->deleteFileFromS3($contract->file);
             } catch (Exception $e) {
@@ -570,4 +575,24 @@ class ContractService
 
         return $data;
     }
+
+    /**
+     * Upload Pdfs to S3
+     *
+     * @param $id
+     * @return void
+     */
+    public function uploadPdfsToS3($id)
+    {
+        $client = S3Client::factory(
+            array(
+                'key'    => env('AWS_KEY'),
+                'secret' => env('AWS_SECRET'),
+                'region' => env('AWS_REGION'),
+            )
+        );
+
+        $client->uploadDirectory(sprintf('./data/%s/pages', $id), env('AWS_BUCKET'), $id);
+    }
+
 }

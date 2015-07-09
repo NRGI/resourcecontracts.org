@@ -20,12 +20,12 @@ class DashboardController extends Controller
 
     /**
      * Create a new controller instance.
-     * @param DashboardService $contract
+     * @param DashboardService $dashboard
      */
-    public function __construct(DashboardService $contract)
+    public function __construct(DashboardService $dashboard)
     {
         $this->middleware('auth');
-        $this->dashboard = $contract;
+        $this->dashboard = $dashboard;
     }
 
     /**

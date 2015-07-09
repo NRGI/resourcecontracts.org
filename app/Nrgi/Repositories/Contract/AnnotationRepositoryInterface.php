@@ -50,4 +50,11 @@ interface AnnotationRepositoryInterface
      * @return string
      */
     public function getStatus($contractId);
+
+    /**
+     * Get Total Annotation status by type
+     * @param $statusType
+     * @return array
+     */
+    public function getStatusCountByType($statusType);
 }
