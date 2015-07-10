@@ -1,8 +1,10 @@
 @extends('layout.app')
 
 <?php
-$contract_completed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_COMPLETE;
-$contract_failed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_FAILED;
+$contract_processing_completed = \App\Nrgi\Entities\Contract\Contract::PROCESSING_COMPLETE;
+$contract_processing_failed = \App\Nrgi\Entities\Contract\Contract::PROCESSING_FAILED;
+$contract_processing_running = \App\Nrgi\Entities\Contract\Contract::PROCESSING_RUNNING;
+$contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_PIPELINE;
 ?>
 
 @section('script')
@@ -53,7 +55,8 @@ $contract_failed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_FAILED;
     <div class="panel panel-default">
         <div class="panel-heading">{{$contract->title}}</div>
         <div class="action-btn pull-right" style="padding: 20px;">
-            <a href="{{route('activitylog.index')}}?contract={{$contract->id}}" class="btn btn-default">@lang('activitylog.activitylog')</a>
+            <a href="{{route('activitylog.index')}}?contract={{$contract->id}}"
+               class="btn btn-default">@lang('activitylog.activitylog')</a>
             <a href="{{route('contract.edit', $contract->id)}}" class="btn btn-default">@lang('contract.edit')</a>
             <a target="_blank" href="{{getS3FileURL($contract->file)}}"
                class="btn btn-default">@lang('contract.download_file') [{{getFileSize($contract->metadata->file_size)}}
@@ -67,7 +70,7 @@ $contract_failed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_FAILED;
             @endif
         </div>
 
-        @if($status === $contract_completed)
+        @if($status == $contract_processing_completed)
             <div style="padding: 40px;">
                 <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=edit"
                    class="btn btn-default">@lang('contract.view_pages')</a>
@@ -94,7 +97,8 @@ $contract_failed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_FAILED;
                     </a>
                 </p>
 
-                <div class="modal fade text-type-modal" id="text-type-modal" tabindex="-1" role="dialog" aria-labelledby="text-type-modal"
+                <div class="modal fade text-type-modal" id="text-type-modal" tabindex="-1" role="dialog"
+                     aria-labelledby="text-type-modal"
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -128,15 +132,18 @@ $contract_failed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_FAILED;
                     </div>
                 </div>
             </div>
-        @elseif($status ==$contract_failed)
+        @elseif($status == $contract_processing_failed)
             <div class="status">@lang('contract.status') : @lang('Failed')</div>
-        @else
-            <div class="status">@lang('contract.status') : {{$status==0 ? 'Pipeline' : 'Processing'}}</div>
+        @elseif($status== $contract_processing_running)
+            <div class="status">@lang('contract.status') : @lang('Processing')</div>
+        @else($status== $contract_processing_pipline)
+            <div class="status">@lang('contract.status') : @lang('Pipeline')</div>
         @endif
 
 
         @include('contract.state')
-        <a style="margin-left: 15px;margin-bottom: 25px" class="btn btn-default" href="{{route('contract.comment.list',$contract->id)}}">View all comments</a>
+        <a style="margin-left: 15px;margin-bottom: 25px" class="btn btn-default"
+           href="{{route('contract.comment.list',$contract->id)}}">View all comments</a>
 
         <ul class="contract-info">
             <li><strong>@lang('contract.created_by'):</strong>
@@ -218,19 +225,28 @@ $contract_failed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_FAILED;
                         @foreach($companies as $k => $v)
                             <div style="margin-bottom: 20px; border-bottom:1px solid #ccc; padding-bottom:20px; ">
 
-                            <p><strong>@lang('contract.company_name'):</strong>  {{$v->name}}</p>
-                            <p><strong>@lang('contract.jurisdiction_of_incorporation')
-                                    :</strong> {{$v->jurisdiction_of_incorporation}}
-                            </p>
-                            <p><strong>@lang('contract.registry_agency'):</strong> {{$v->registration_agency}}</p>
-                            <p><strong>@lang('contract.incorporation_date') :</strong> {{$v->company_founding_date}}</p>
-                            <p><strong>@lang('contract.company_address') :</strong> {{$v->company_address}}</p>
-                            <p><strong>@lang('contract.identifier_at_company'):</strong> {{$v->comp_id}}</p>
-                            <p><strong>@lang('contract.parent_company'):</strong> {{$v->parent_company}}</p>
-                            <p><strong>@lang('contract.open_corporate_id'):</strong> @if(!empty($v->open_corporate_id))
-                                    <a target="_blank"
-                                       href="https://opencorporates.com/companies/{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
-                            </p>
+                                <p><strong>@lang('contract.company_name'):</strong>  {{$v->name}}</p>
+
+                                <p><strong>@lang('contract.jurisdiction_of_incorporation')
+                                        :</strong> {{$v->jurisdiction_of_incorporation}}
+                                </p>
+
+                                <p><strong>@lang('contract.registry_agency'):</strong> {{$v->registration_agency}}</p>
+
+                                <p><strong>@lang('contract.incorporation_date') :</strong> {{$v->company_founding_date}}
+                                </p>
+
+                                <p><strong>@lang('contract.company_address') :</strong> {{$v->company_address}}</p>
+
+                                <p><strong>@lang('contract.identifier_at_company'):</strong> {{$v->comp_id}}</p>
+
+                                <p><strong>@lang('contract.parent_company'):</strong> {{$v->parent_company}}</p>
+
+                                <p><strong>@lang('contract.open_corporate_id')
+                                        :</strong> @if(!empty($v->open_corporate_id))
+                                        <a target="_blank"
+                                           href="https://opencorporates.com/companies/{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
+                                </p>
                             </div>
                         @endforeach
                     </li>
@@ -298,7 +314,7 @@ $contract_failed = \App\Nrgi\Services\Contract\ContractService::CONTRACT_FAILED;
                 </li>
             @endif
         </ul>
-        @if($status === $contract_completed)
+        @if($status === $contract_processing_completed)
             <div class="annotation-wrap">
                 <h3>@lang('contract.annotations')</h3>
 

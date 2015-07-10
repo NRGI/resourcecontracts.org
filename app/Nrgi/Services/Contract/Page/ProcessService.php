@@ -3,6 +3,7 @@
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Mail\MailQueue;
 use App\Nrgi\Services\Contract\ContractService;
+use Aws\S3\S3Client;
 use Carbon\Carbon;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Filesystem\Filesystem;
@@ -41,6 +42,8 @@ class ProcessService
      */
     protected $mailer;
 
+    protected $contract_id;
+
     /**
      * @param Filesystem      $fileSystem
      * @param ContractService $contract
@@ -71,6 +74,8 @@ class ProcessService
      */
     public function execute($contractId)
     {
+        $this->contract_id = $contractId;
+
         $startTime = Carbon::now();
         try {
             $contract = $this->contract->find($contractId);
@@ -81,7 +86,7 @@ class ProcessService
                 $pages = $this->page->buildPages($writeFolderPath);
                 $this->page->savePages($contractId, $pages);
                 $this->updateContractPdfStructure($contract, $writeFolderPath);
-                $contract->text_status = Contract::STATUS_DRAFT;
+                $contract->text_status        = Contract::STATUS_DRAFT;
                 $contract->save();
                 $this->logger->info("processing contract completed.", ['contractId' => $contractId]);
                 $this->mailer->send(
@@ -92,17 +97,19 @@ class ProcessService
                     "{$contract->title} processing contract completed.",
                     'emails.process_success',
                     [
-                        'contract_title' => $contract->title,
-                        'contract_id'    => $contract->id,
+                        'contract_title'      => $contract->title,
+                        'contract_id'         => $contract->id,
                         'contract_detail_url' => route('contract.show', $contract->id),
-                        'start_time'     => $startTime->toDayDateTimeString(),
-                        'end_time'       => Carbon::now()->toDayDateTimeString()
+                        'start_time'          => $startTime->toDayDateTimeString(),
+                        'end_time'            => Carbon::now()->toDayDateTimeString()
                     ]
                 );
-
+                $this->uploadPdfsToS3($contract->id);
+                $this->deleteContractFolder($contract->id);
                 return true;
             }
         } catch (\Exception $e) {
+            $this->updateProcessStatus($contractId, Contract::PROCESSING_FAILED);
             $this->mailer->send(
                 [
                     'email' => $contract->created_user->email,
@@ -249,6 +256,9 @@ class ProcessService
      */
     public function processStatus($directory, $status)
     {
+        $status = $status == 1 ? Contract::PROCESSING_COMPLETE: Contract::PROCESSING_RUNNING;
+        $this->updateProcessStatus($this->contract_id, $status);
+
         $fileContent = $status . PHP_EOL;
         $filePath    = sprintf('%s/status.txt', $directory);
         $this->logger->info("writing to {$filePath}", ['status' => $status]);
@@ -277,5 +287,50 @@ class ProcessService
         $publicPath = public_path();
 
         return sprintf('%s/%s', $publicPath, 'data');
+    }
+
+    /**
+     * Upload Pdfs to S3
+     *
+     * @param $id
+     * @return void
+     */
+    public function uploadPdfsToS3($id)
+    {
+        $client = S3Client::factory(
+            array(
+                'key'    => env('AWS_KEY'),
+                'secret' => env('AWS_SECRET'),
+                'region' => env('AWS_REGION'),
+            )
+        );
+
+        $client->uploadDirectory(sprintf('%s/%s/pages/', $this->getWriteDirectory(), $id), env('AWS_BUCKET'), $id);
+        $this->logger->info(sprintf("Pdf uploaded to S3 {%s}", env('AWS_BUCKET')));
+    }
+
+    /**
+     * Delete contract Folder
+     *
+     * @param $id
+     */
+    protected function deleteContractFolder($id)
+    {
+        $this->fileSystem->deleteDirectory(sprintf('%s/%s', $this->getWriteDirectory(), $id));
+    }
+
+    /**
+     * Update Contract Status
+     *
+     * @param $contractId
+     * @param $status
+     * @return bool
+     */
+    function updateProcessStatus($contractId, $status)
+    {
+        $contract                     = $this->contract->find($contractId);
+        $contract->pdf_process_status = $status;
+
+        return $contract->save();
     }
 }

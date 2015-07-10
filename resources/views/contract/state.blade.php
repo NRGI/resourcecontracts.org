@@ -98,7 +98,7 @@ use App\Nrgi\Entities\Contract\Annotation;
                 @endif
             @endif
         </li>
-        @if($status === $contract_completed)
+        @if($status == $contract_processing_completed)
             <li><strong>@lang('PDF Text'):</strong>
                 @if($contract->text_status == Contract::STATUS_PUBLISHED)
                     <span class="published">   @lang('Published')</span>
