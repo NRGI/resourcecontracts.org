@@ -4,6 +4,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Bootstrap\ConfigureLogging as BaseConfigureLogging;
 use App\Nrgi\Log\NrgiWriter;
 use Monolog\Handler\LogEntriesHandler;
+use Monolog\Handler\LogglyHandler;
 use Monolog\Logger as Monolog;
 
 /**
@@ -42,13 +43,36 @@ class ConfigureLogging extends BaseConfigureLogging
     public function configureCustomHandler(Application $app, NrgiWriter $log)
     {
         if (env('APP_ENV') == 'production') {
-            $handler = new LogEntriesHandler(env('LOGENTRIES_TOKEN'));
+            $handler = $this->logglyHandler();
             $log->getMonolog()->pushHandler($handler);
         }
 
         $log->useDailyFiles(
-            $app->storagePath().'/logs/laravel.log',
+            $app->storagePath() . '/logs/laravel.log',
             $app->make('config')->get('app.log_max_files', 5)
         );
+    }
+
+    /**
+     * LogEntriesHandler
+     *
+     * @return LogEntriesHandler
+     */
+    protected function logEntriesHandler()
+    {
+        return new LogEntriesHandler(env('LOG_TOKEN'));
+    }
+
+    /**
+     * Loggly Handler
+     *
+     * @return LogglyHandler
+     */
+    protected function logglyHandler()
+    {
+        $handler = new LogglyHandler(env('LOG_TOKEN'));
+        $handler->setTag('ResourceContracts');
+
+        return $handler;
     }
 }
