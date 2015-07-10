@@ -46,6 +46,14 @@ class Contract extends Model
     const STATUS_REJECTED = 'rejected';
 
     /**
+     * Contract Processing
+     */
+    const PROCESSING_PIPELINE = 0;
+    const PROCESSING_RUNNING = 1;
+    const PROCESSING_COMPLETE = 2;
+    const PROCESSING_FAILED = 3;
+
+    /**
      * Convert json metadata to array
      * @param $metaData
      * @return mixed
@@ -183,8 +191,9 @@ class Contract extends Model
 
         static::creating(
             function ($contract) {
-                $contract->metadata_status = static::STATUS_DRAFT;
-                $contract->text_status     = null;
+                $contract->metadata_status    = static::STATUS_DRAFT;
+                $contract->text_status        = null;
+                $contract->pdf_process_status = static::PROCESSING_PIPELINE;
 
                 return true;
             }

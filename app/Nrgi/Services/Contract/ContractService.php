@@ -5,7 +5,6 @@ use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\Pages\PagesService;
 use App\Nrgi\Services\ElasticSearch\ElasticSearchService;
-use Aws\S3\S3Client;
 use Exception;
 use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
@@ -45,22 +44,6 @@ class ContractService
      */
     protected $filesystem;
 
-    /**
-     * Contract on pipeline
-     */
-    const CONTRACT_QUEUE = 0;
-    /**
-     * Contract on Pending
-     */
-    const CONTRACT_PENDING = 1;
-    /**
-     * Contract Completed
-     */
-    const CONTRACT_COMPLETE = 2;
-    /**
-     * Contract Failed
-     */
-    const CONTRACT_FAILED = 3;
     /**
      * @var CountryService
      */
@@ -368,7 +351,13 @@ class ContractService
                 'elastic_search'
             );
             try {
-                return $this->deleteFileFromS3($contract->file);
+                $this->deleteContractFileAndFolder($contract);
+                $this->logger->info(
+                    'contract file and folder deleted',
+                    ['Contract Id' => $id, 'file' => $contract->file]
+                );
+
+                return true;
             } catch (Exception $e) {
                 $this->logger->error($e->getMessage(), ['Contract Id' => $id, 'file' => $contract->file]);
 
@@ -405,28 +394,13 @@ class ContractService
      */
     public function getStatus($contractID)
     {
-        $path = public_path(self::UPLOAD_FOLDER . '/' . $contractID);
+        $contract = $this->contract->findContract($contractID);
 
-        if ($this->filesystem->exists($path)) {
-            try {
-                $status = $this->filesystem->get(sprintf('%s/status.txt', $path));
-                $status = (integer) trim($status);
-
-                if ($status === 0) {
-                    return self::CONTRACT_PENDING;
-                }
-
-                if ($status === 1 AND $this->pages->exists($contractID)) {
-                    return self::CONTRACT_COMPLETE;
-                }
-
-                return self::CONTRACT_FAILED;
-            } catch (FileNotFoundException $e) {
-                return self::CONTRACT_PENDING;
-            }
+        if ($contract->pdf_process_status == Contract::PROCESSING_COMPLETE AND !$this->pages->exists($contractID)) {
+            return Contract::PROCESSING_FAILED;
         }
 
-        return self::CONTRACT_QUEUE;
+        return $contract->pdf_process_status;
     }
 
     /**
@@ -577,22 +551,16 @@ class ContractService
     }
 
     /**
-     * Upload Pdfs to S3
+     * Delete contract file and Folder in S#
      *
-     * @param $id
-     * @return void
+     * @param $contract
+     * @throws FileNotFoundException
      */
-    public function uploadPdfsToS3($id)
+    protected function deleteContractFileAndFolder($contract)
     {
-        $client = S3Client::factory(
-            array(
-                'key'    => env('AWS_KEY'),
-                'secret' => env('AWS_SECRET'),
-                'region' => env('AWS_REGION'),
-            )
-        );
-
-        $client->uploadDirectory(sprintf('./data/%s/pages', $id), env('AWS_BUCKET'), $id);
+        $this->deleteFileFromS3($contract->file);
+        $this->storage->disk('s3')->deleteDirectory($contract->id);
+        $dir = sprintf('%s/%s/%s', public_path(), static::UPLOAD_FOLDER, $contract->id);
+        $this->filesystem->deleteDirectory($dir);
     }
-
 }

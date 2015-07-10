@@ -144,9 +144,16 @@ class PageController extends Controller
      */
     public function getText($contractID, Request $request)
     {
-        $page = $this->pages->getText($contractID, $request->input('page'));
+        $page_no = $request->input('page');
+        $page    = $this->pages->getText($contractID, $page_no);
 
-        return response()->json(['result' => 'success', 'message' => $page->text]);
+        return response()->json(
+            [
+                'result'  => 'success',
+                'pdf'     => $page->pdf_url,
+                'message' => $page->text
+            ]
+        );
     }
 
     /**

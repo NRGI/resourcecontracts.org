@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Nrgi\Services\Dashboard\DashboardService;
+use Aws\S3\S3Client;
 use Illuminate\Http\Response;
 
 /**

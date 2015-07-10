@@ -79,6 +79,7 @@ var Page = Backbone.Model.extend({
             async: false,
             success: function (response) {
                 that.set('text', response.message);
+                that.set('pdf_url', response.pdf);
                 if(that.searchTerm) {
                     that.highLightText(that.searchTerm);
                 }
@@ -93,7 +94,7 @@ var Page = Backbone.Model.extend({
             type: 'POST'
         }).done(function (response) {
             this.textUpdated = false;
-            $('#message').html('<div class="alert alert-success">Your corrections / changes have been saved</div>');
+            $('#message').html('<div class="alert alert-success">'+response.message+'</div>');
             $('html,body').animate({ scrollTop: $('body').offset().top},'slow');
         });
     },
@@ -127,7 +128,8 @@ var Page = Backbone.Model.extend({
         }
     },
     getPdfLocation: function() {
-        return "/data/{0}/pages/{1}.pdf".format(this.options.contractModel.get('id'), this.get('pageNumber'));
+        return this.get('pdf_url');
+       // return "/data/{0}/pages/{1}.pdf".format(this.options.contractModel.get('id'), this.get('pageNumber'));
     },
     highLightText: function(searchTerm) {
         var regex = new RegExp(searchTerm, "gi");        

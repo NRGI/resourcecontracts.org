@@ -38,7 +38,6 @@ class Pages extends Model
      */
     public function getPdfUrlAttribute()
     {
-        return getPdfUrl($this->contract_id, $this->page_no);
+        return getS3FileURL(sprintf('%s/%s.pdf', $this->contract_id , $this->page_no));
     }
-
 }
