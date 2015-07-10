@@ -75,7 +75,7 @@
                     Rejected: <span class="number number-rejected">{{$status['annotation']['rejected'] or 0}}</span>
                 </li>
                 <li>
-                    On processing: <span
+                    Not Available: <span
                             class="number number-published">{{$status['annotation']['processing'] or 0}}</span>
                 </li>
             </ul>

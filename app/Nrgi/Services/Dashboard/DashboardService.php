@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Services\Dashboard;
 
+use App\Nrgi\Entities\Contract\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
@@ -124,18 +125,11 @@ class DashboardService
      */
     public function annotationStatusCount()
     {
-        $draft     = \DB::select(
-            "SELECT DISTINCT c.id, a.status FROM contracts as c LEFT JOIN contract_annotations as a ON c.id = a.contract_id AND a.status = 'draft'"
-        );
-        $completed = \DB::select(
-            "SELECT DISTINCT c.id, a.status FROM contracts as c LEFT JOIN contract_annotations as a ON c.id = a.contract_id AND a.status = 'completed'"
-        );
-        $rejected  = \DB::select(
-            "SELECT DISTINCT c.id, a.status FROM contracts as c LEFT JOIN contract_annotations as a ON c.id = a.contract_id AND a.status = 'rejected'"
-        );
-        $published = \DB::select(
-            "SELECT DISTINCT c.id, a.status FROM contracts as c LEFT JOIN contract_annotations as a ON c.id = a.contract_id AND a.status = 'published'"
-        );
+        $draft     = $this->annotation->getStatusCountByType(Annotation::DRAFT);
+        $completed = $this->annotation->getStatusCountByType(Annotation::COMPLETED);
+        $rejected  = $this->annotation->getStatusCountByType(Annotation::REJECTED);
+        $published = $this->annotation->getStatusCountByType(Annotation::PUBLISHED);
+
         $statusRaw = compact('draft', 'completed', 'rejected', 'published');
 
         $contract = [];
