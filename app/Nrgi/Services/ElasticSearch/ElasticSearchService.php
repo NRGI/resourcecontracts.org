@@ -116,8 +116,6 @@ class ElasticSearchService
             'metadata'    => $this->getMetadataForES($contract->metadata)
         ];
 
-        $this->logger->info($contract->pages->toJson());
-
         try {
             $request  = $this->http->post($this->apiURL('contract/pdf-text'), null, $pages);
             $response = $request->send();
