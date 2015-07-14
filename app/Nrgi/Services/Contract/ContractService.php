@@ -505,7 +505,7 @@ class ContractService
     {
         $this->database->beginTransaction();
 
-        if ($this->updateStatus($contract_id, $status, $type) && $this->comment->save($contract_id, $message, $type)) {
+        if ($this->updateStatus($contract_id, $status, $type) && $this->comment->save($contract_id, $message, $type, $status)) {
             $this->database->commit();
 
             return true;

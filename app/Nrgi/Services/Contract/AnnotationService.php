@@ -109,6 +109,7 @@ class AnnotationService
         );
 
         $this->annotation->save($contactAnnotation);
+
         return $contactAnnotation;
     }
 
@@ -209,19 +210,20 @@ class AnnotationService
      * @param $contractId
      * @param $message
      * @param $type
+     * @param $annotationStatus
      * @return bool
      */
-    public function comment($contractId, $message)
+    public function comment($contractId, $message, $annotationStatus)
     {
         $this->database->beginTransaction();
-        $status = $this->updateStatus(Annotation::REJECTED, $contractId);
+        $status = $this->updateStatus($annotationStatus, $contractId);
 
         if ($status) {
             try {
-                $this->comment->save($contractId, $message, "annotation");
+                $this->comment->save($contractId, $message, "annotation", $annotationStatus);
                 $this->logger->info(
                     'Comment successfully added.',
-                    ['Contract id' => $contractId, 'type' => 'annotation']
+                    ['Contract id' => $contractId, 'type' => 'annotation' ,'status' => $status]
                 );
                 $this->database->commit();
 
@@ -235,15 +237,17 @@ class AnnotationService
         return false;
     }
 
-    public function getContractAnnotations($contractId) {
+    public function getContractAnnotations($contractId)
+    {
         $annotationData = [];
-        $contract = $this->annotation->getContractPagesWithAnnotations($contractId);
+        $contract       = $this->annotation->getContractPagesWithAnnotations($contractId);
         foreach ($contract->annotations as $annotation) {
             $json             = $annotation->annotation;
             $json->page       = $annotation->document_page_no;
             $json->id         = $annotation->id;
             $annotationData[] = $json;
         }
+
         return $annotationData;
     }
 }
