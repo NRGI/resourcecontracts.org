@@ -59,30 +59,12 @@ class AnnotationController extends Controller
      */
     public function updateStatus(Guard $auth, Request $request, $contractId)
     {
-        $status = trim(strtolower($request->input('state')));
+        $status = trim(strtolower($request->input('status')));
         if (!$auth->user()->can(sprintf('%s-annotation', config('nrgi.permission')[$status]))) {
             return back()->withError('Permission denied.');
         }
-        if ($this->annotation->updateStatus($status, $contractId)) {
-            return back()->withSuccess(trans('annotation.status_updated_success'));
-        }
 
-        return back()->withError(trans('annotation.invalid_status'));
-    }
-
-    /**
-     * @param Guard   $auth
-     * @param Request $request
-     * @param         $contractId
-     * @return Response
-     */
-    public function comment(Guard $auth, Request $request, $contractId)
-    {
-        if (!$auth->user()->can('reject-annotation')) {
-            return back()->withError('Permission denied.');
-        }
-
-        if ($this->annotation->comment($contractId, $request->input('message'))) {
+        if ($this->annotation->comment($contractId, $request->input('message'), $request->input('status'))) {
             return back()->withSuccess(trans('annotation.comment_created_successfully'));
         }
 

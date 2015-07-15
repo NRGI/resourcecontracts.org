@@ -317,7 +317,7 @@ header {
     display: inline-block;
 }
 
-.state-wrap ul li > span, .annotation-status span {
+.state-wrap ul li > span, .annotation-status span,.comment-section span:first-child {
     display: inline-block;
     background-color: #EABA24;
     border-radius: 30px;
@@ -328,11 +328,11 @@ header {
     color: #fff;
 }
 
-.state-wrap ul li > span.completed, .annotation-status span.completed {
+.state-wrap ul li > span.completed, .annotation-status span.completed,.comment-section span.completed {
     background: #5896CB;
 }
 
-.state-wrap ul li > span.published, .annotation-status span.published {
+.state-wrap ul li > span.published, .annotation-status span.published,.comment-section span.published {
     background: #6BA864;
 }
 
@@ -448,4 +448,42 @@ header {
 }
 #annotation-plugin-select-category{
     width: 100%;
+}
+
+.comment-section {
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgb(221, 221, 221)  ;
+    padding-bottom: 16px;
+    display: none;
+}
+
+.comment-section.active {
+    display: block;
+}
+
+.comment-section .label-comment {
+    font-size: 13px;
+    margin: 5px 0 0;
+    height: auto;
+    padding: 1px 8px;
+    border-radius: 4px;
+}
+
+.comment-info {
+    margin-top: 8px;
+    font-size: 13px;
+    font-style: italic;
+    color: #888;
+}
+
+.tab-content {
+    padding-top: 20px;
+}
+
+.nav-tabs > li > a:hover {
+    background: transparent;
+}
+
+.nav-tabs > li > a {
+    text-decoration: none;
 }

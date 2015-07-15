@@ -2,11 +2,12 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\Schema;
 
-class AddProcessStatusInContractsTable extends Migration
+/**
+ * Class AddActionToContractCommentsTable
+ */
+class AddActionToContractCommentsTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -15,9 +16,9 @@ class AddProcessStatusInContractsTable extends Migration
     public function up()
     {
         Schema::table(
-            'contracts',
+            'contract_comments',
             function (Blueprint $table) {
-                $table->enum('pdf_process_status', [0, 1, 2, 3])->default(0);
+                $table->enum('action', config('nrgi.annotation_stage'))->nullable();
             }
         );
     }
@@ -30,9 +31,9 @@ class AddProcessStatusInContractsTable extends Migration
     public function down()
     {
         Schema::table(
-            'contracts',
+            'contract_comments',
             function (Blueprint $table) {
-                $table->dropColumn('pdf_process_status');
+                $table->dropColumn('action');
             }
         );
     }

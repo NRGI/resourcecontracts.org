@@ -35,11 +35,16 @@ class CommentService
      * @param $message
      * @return bool
      */
-    public function save($contract_id, $message, $type)
+    public function save($contract_id, $message, $type, $status)
     {
         try {
-            $this->comment->saveComment($contract_id, $message, $type);
-            $this->logger->info('Comment successfully saved.', ['Contract id' => $contract_id]);
+            if (!empty($message)) {
+                $this->comment->saveComment($contract_id, $message, $type, $status);
+                $this->logger->info(
+                    'Comment successfully saved.',
+                    ['Contract id' => $contract_id, 'status' => $status]
+                );
+            }
 
             return true;
         } catch (Exception $e) {
@@ -67,6 +72,6 @@ class CommentService
      */
     public function getPaginate($id)
     {
-       return $this->comment->paginate($id, 25);
+        return $this->comment->paginate($id, 25);
     }
 }

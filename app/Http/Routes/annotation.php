@@ -31,10 +31,3 @@ $router->post(
         'uses' => 'Annotation\AnnotationController@updateStatus'
     ]
 );
-$router->post(
-    '/contract/{id}/annotations/comment',
-    [
-        'as'   => 'contract.annotations.comment',
-        'uses' => 'Annotation\AnnotationController@comment'
-    ]
-);

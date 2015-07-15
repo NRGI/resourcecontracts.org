@@ -32,19 +32,18 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
 
             var suggestion_form = $('.suggestion-form');
-
             $(suggestion_form).on('submit', function (e) {
-
-                var text = suggestion_form.find('#message').val();
-                if (text != '') {
-                    suggestion_form.find('input[type=submit]').text('loading...');
-                    suggestion_form.find('input[type=submit]').attr('disabled', 'disabled');
-
-                    return true;
-                }
-                else {
+                var text = $(this).find('#message').val();
+                var status = $(this).find('#status').val();
+                if (text == '' && status == 'rejected') {
                     e.preventDefault();
                     alert('Suggestion message is required.');
+                    return false;
+                }
+                else{
+                    $(this).find('input[type=submit]').text('loading...');
+                    $(this).find('input[type=submit]').attr('disabled', 'disabled');
+                    return true;
                 }
             });
         })

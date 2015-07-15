@@ -118,23 +118,14 @@ class ContractController extends Controller
         if (!$contract) {
             abort('404');
         }
-        $status           = $this->contract->getStatus($id);
-        $annotationStatus = $this->annotation->getStatus($id);
-        $annotations      = $contract->annotations;
+        $status                       = $this->contract->getStatus($id);
+        $annotationStatus             = $this->annotation->getStatus($id);
+        $annotations                  = $contract->annotations;
+        $contract->metadata_comment   = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
+        $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
+        $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
 
-        if ($contract->metadata_status == Contract::STATUS_REJECTED) {
-            $contract->metadata_comment = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
-        }
-
-        if ($contract->text_status == Contract::STATUS_REJECTED) {
-            $contract->text_comment = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
-        }
-
-        if ($annotationStatus == Annotation::REJECTED) {
-            $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
-        }
-
-        return view('contract.show', compact('contract', 'status', 'annotations', 'file', 'annotationStatus'));
+        return view('contract.show', compact('contract', 'status', 'annotations', 'annotationStatus'));
     }
 
     /**
@@ -238,13 +229,15 @@ class ContractController extends Controller
      */
     public function contractComment($contract_id, Request $request, Guard $auth)
     {
-        if (!$auth->user()->can('reject-metadata')) {
-            return back()->withError(trans('contract.permission_denied'));
+        $status = $request->get('status');
+
+        if (!$auth->user()->can(sprintf('%s-%s', config('nrgi.permission')[$status], $request->get('type')))) {
+            return back()->withError('Permission denied.');
         }
 
         if ($this->contract->updateStatusWithComment(
             $contract_id,
-            Contract::STATUS_REJECTED,
+            $status,
             $request->input('message'),
             $request->input('type')
         )
@@ -263,10 +256,10 @@ class ContractController extends Controller
      */
     public function getMetadata($contract_id)
     {
-        if($contract = $this->contract->find($contract_id))
-        {
+        if ($contract = $this->contract->find($contract_id)) {
             return response()->json($contract->metadata);
         }
+
         return abort(404);
     }
 
