@@ -32,14 +32,16 @@ class CommentRepository implements CommentRepositoryInterface
      * @param $contract_id
      * @param $message
      * @param $type
-     * @return static
+     * @param $status
+     * @return Comment
      */
-    public function saveComment($contract_id, $message, $type)
+    public function saveComment($contract_id, $message, $type, $status)
     {
         $data = [
             'contract_id' => $contract_id,
             'message'     => $message,
             'type'        => $type,
+            'action'      => $status,
             'user_id'     => $this->auth->user()->id
         ];
 
@@ -54,7 +56,10 @@ class CommentRepository implements CommentRepositoryInterface
      */
     public function getLatest($contract_id, $type)
     {
-        return $this->comment->with('user')->where('type', $type)->where('contract_id', $contract_id)->orderBy('created_at', 'DESC')->first();
+        return $this->comment->with('user')->where('type', $type)->where('contract_id', $contract_id)->limit(5)->orderBy(
+            'created_at',
+            'DESC'
+        )->get();
     }
 
     /**
@@ -64,6 +69,9 @@ class CommentRepository implements CommentRepositoryInterface
      */
     public function paginate($contract_id, $perPage)
     {
-        return $this->comment->with('user')->where('contract_id', $contract_id)->orderBy('created_at', 'DESC')->paginate($perPage);
+        return $this->comment->with('user')
+                             ->where('contract_id', $contract_id)
+                             ->orderBy('created_at', 'DESC')
+                             ->paginate($perPage);
     }
 }

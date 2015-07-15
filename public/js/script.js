@@ -17,4 +17,37 @@ $(document).ready(function () {
         $("#wrapper").toggleClass("toggled");
     });
 
+    $('#tabAll').click(function(){
+        $('#myTabs li').removeClass('active');
+        $(this).parent("li").addClass('active');
+        $('.comment-section').each(function(i,t){
+            $(this).addClass('active');
+        });
+    });
+    $('#tabMetadata').click(function(){
+        $('#myTabs li').removeClass('active');
+        $(this).parent("li").addClass('active');
+        $('.comment-section').removeClass('active');
+        $('.tab-pane-metadata').each(function(i,t){
+            $(this).addClass('active');
+        });
+    });
+    $('#tabText').click(function(){
+        $('#myTabs li').removeClass('active');
+        $(this).parent("li").addClass('active');
+        $('.comment-section').removeClass('active');
+        $('.tab-pane-text').each(function(i,t){
+            $(this).addClass('active');
+        });
+    });
+
+    $('#tabAnnotation').click(function(){
+        $('#myTabs li').removeClass('active');
+        $(this).parent("li").addClass('active');
+        $('.comment-section').removeClass('active');
+        $('.tab-pane-annotation').each(function(i,t){
+            $(this).addClass('active');
+        });
+    });
+
 });

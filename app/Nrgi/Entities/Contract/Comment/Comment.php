@@ -20,7 +20,7 @@ class Comment extends Model
      *
      * @var array
      */
-    protected $fillable = ['contract_id', 'user_id', 'message', 'type'];
+    protected $fillable = ['contract_id', 'user_id', 'message', 'type', 'action'];
 
     /**
      * Comment Types
