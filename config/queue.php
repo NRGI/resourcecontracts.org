@@ -63,6 +63,13 @@ return [
 			'port'   => '11300',
 			'ttr'    => 60,
 		],
+		'mturk' => [
+			'driver' => 'beanstalkd',
+			'host'   => 'localhost',
+			'queue'  => 'mturk',
+			'port'   => '11300',
+			'ttr'    => 60,
+		],
 		'sqs' => [
 			'driver' => 'sqs',
 			'key'    => 'your-public-key',

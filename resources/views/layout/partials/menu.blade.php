@@ -21,6 +21,10 @@
                 <a {{in_array('activities', Request::segments())? 'class=active' : ''}}
                         href="{{route('activitylog.index')}}">@lang('activitylog.activitylog')</a>
             </li>
+            <li>
+                <a {{in_array('mturk', Request::segments())? 'class=active' : ''}}
+                        href="{{route('mturk.index')}}">@lang('mturk.mturk')</a>
+            </li>
         </ul>
     </div>
 @endif

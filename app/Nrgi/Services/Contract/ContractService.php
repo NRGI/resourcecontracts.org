@@ -11,6 +11,7 @@ use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Logging\Log;
 use Illuminate\Database\DatabaseManager;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Queue\Queue;
@@ -136,6 +137,41 @@ class ContractService
             return $this->contract->findContractWithPages($id);
         } catch (ModelNotFoundException $e) {
             $this->logger->error('Contract not found.', ['Contract ID' => $id]);
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+
+        return null;
+    }
+
+    /**
+     * Get Contract With Tasks
+     *
+     * @param $id
+     * @return Contract
+     */
+    public function findWithTasks($id)
+    {
+        try {
+            return $this->contract->findContractWithTasks($id);
+        } catch (ModelNotFoundException $e) {
+            $this->logger->error('Contract not found.', ['Contract ID' => $id]);
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+
+        return null;
+    }
+
+    /**
+     * Get Contracts Having MTurk tasks
+     *
+     * @return Collection
+     */
+    public function getMTurkContracts()
+    {
+        try {
+            return $this->contract->getMTurkContracts();
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }

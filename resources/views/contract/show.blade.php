@@ -95,6 +95,20 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                             <span class="label label-{{$label->color}}"> {{$label->name}}</span>
                         @endif
                     </a>
+
+                    @if($contract->textType == 3 && is_null($contract->mturk_status))
+                        {!! Form::open(['route' => ['mturk.add', $contract->id], 'method' => 'post']) !!}
+                            {!! Form::button(trans('Send to Manual Transcription tasks'), ['type' =>'submit', 'class' => 'btn btn-default confirm', 'data-confirm'=>'Are you sure you want to send this contract to Mechanical Turk?']) !!}
+                        {!! Form::close() !!}
+                    @endif
+
+                    @if($contract->mturk_status  == \App\Nrgi\Entities\Contract\Contract::MTURK_SENT)
+                         @lang('Sent to MTurk') <a class="btn btn-default" href="{{route('mturk.tasks', $contract->id)}}">@lang('View')</a>
+                    @endif
+
+                    @if($contract->mturk_status  == \App\Nrgi\Entities\Contract\Contract::MTURK_COMPLETE)
+                        @lang('MTurk task Completed')
+                    @endif
                 </p>
 
                 <div class="modal fade text-type-modal" id="text-type-modal" tabindex="-1" role="dialog"

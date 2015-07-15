@@ -50,7 +50,7 @@ class PagesService
      * @param $pageID
      * @return bool
      */
-    public function saveText($contractID, $pageID, $text)
+    public function saveText($contractID, $pageID, $text, $log = true)
     {
         if ($page = $this->pages->getText($contractID, $pageID)) {
             $page->text = $text;
@@ -58,11 +58,13 @@ class PagesService
             try {
                 $page->save();
 
-                $this->logger->activity(
-                    'contract.log.save_page',
-                    ['page' => $pageID],
-                    $contractID
-                );
+                if ($log) {
+                    $this->logger->activity(
+                        'contract.log.save_page',
+                        ['page' => $pageID],
+                        $contractID
+                    );
+                }
 
                 $this->logger->info(
                     "Page text updated",
@@ -101,6 +103,6 @@ class PagesService
      */
     public function exists($contract_id)
     {
-       return $this->pages->getTotalPages($contract_id) > 0;
+        return $this->pages->getTotalPages($contract_id) > 0;
     }
 }
