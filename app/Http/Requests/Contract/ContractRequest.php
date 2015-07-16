@@ -16,9 +16,10 @@ class ContractRequest extends Request
     public function rules()
     {
         $rules = [
-            'contract_name' => 'required',
-            'country'       => 'required',
-            'file'          => 'required|mimes:pdf|max:51200'
+            'contract_name'       => 'required',
+            'country'             => 'required',
+            'file'                => 'required|mimes:pdf|max:51200',
+            'participation_share' => 'numeric|min:0|max:1'
         ];
 
         if ($this->isMethod('PATCH')) {

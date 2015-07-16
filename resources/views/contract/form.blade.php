@@ -37,7 +37,7 @@
 <div class="form-group">
     {!! Form::label('language', trans('contract.language'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
-        {!! Form::select('language', trans('codelist/language'),
+        {!! Form::select('language', [''=>trans('codelist/language')['major'],'Other'=>trans('codelist/language')['minor']],
         isset($contract->metadata->language)?$contract->metadata->language:null, ["class"=>"form-control"])!!}
     </div>
 </div>
@@ -84,8 +84,10 @@
 <div class="form-group">
     {!! Form::label('type_of_contract', trans('contract.type_of_contract'), ['class'=>'col-sm-2
     control-label'])!!}
+
+
     <div class="col-sm-7">
-        {!! Form::select('type_of_contract', ['' => 'select']+ trans('codelist/contract_type'),
+        {!! Form::select('type_of_contract', ['' => 'select']+trans('codelist/contract_type'),
         isset($contract->metadata->type_of_contract)?$contract->metadata->type_of_contract:null,
         ["class"=>"form-control"])!!}
     </div>
@@ -129,12 +131,24 @@
     </div>
 </div>
 
+
 <div class="form-group @if(isset($contract->metadata->translation_from_original) && $contract->metadata->translation_from_original !=1) hide @endif translation-parent">
     {!! Form::label('translation_parent', trans('contract.translation_parent'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
         {!! Form::text('translation_parent',
         isset($contract->metadata->translation_parent)?$contract->metadata->translation_parent:null,
         ["class"=>"form-control"])!!}
+    </div>
+</div>
+
+
+<div class="form-group">
+    {!! Form::label('participation_share', trans('contract.participation_share'), ['class'=>'col-sm-2
+    control-label'])!!}
+    <div class="col-sm-7">
+        {!! Form::input('text','participation_share',
+        isset($contract->metadata->participation_share)?$contract->metadata->participation_share:null,
+        ["class"=>"form-control","step"=>"any","min"=>0,"max"=>1])!!}
     </div>
 </div>
 
@@ -165,8 +179,8 @@
                         trans('contract.jurisdiction_of_incorporation'),
                         ['class'=>'col-sm-2 control-label'])!!}
                         <div class="col-sm-7">
-                            {!! Form::text("company[$i][jurisdiction_of_incorporation]",
-                            isset($v->jurisdiction_of_incorporation)?$v->jurisdiction_of_incorporation:null,
+                            {!! Form::select('company[0][jurisdiction_of_incorporation]', ['' => 'select'] + $country ,
+                            isset($contract->metadata->country->code)?$contract->metadata->country->code:null,
                             ["class"=>"form-control"])!!}
                         </div>
                     </div>
@@ -202,11 +216,11 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('comp_id', trans('contract.identifier_at_company'), ['class'=>'col-sm-2
+                        {!! Form::label('company_number', trans('contract.company_number'), ['class'=>'col-sm-2
                         control-label'])!!}
                         <div class="col-sm-7">
-                            {!! Form::text("company[$i][comp_id]",
-                            isset($v->comp_id)?$v->comp_id:null,
+                            {!! Form::text("company[$i][company_number]",
+                            isset($v->company_number)?$v->company_number:null,
                             ["class"=>"form-control"])!!}
                         </div>
                     </div>
@@ -238,7 +252,7 @@
                     @endif
 
                 </div>
-                <?php $i ++;?>
+                <?php $i++;?>
 
             @endforeach
         @endif
@@ -255,7 +269,9 @@
                 {!! Form::label('jurisdiction_of_incorporation', trans('contract.jurisdiction_of_incorporation'),
                 ['class'=>'col-sm-2 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][jurisdiction_of_incorporation]",null,["class"=>"form-control"])!!}
+                    {!! Form::select('company[0][jurisdiction_of_incorporation]', ['' => 'select'] + $country ,
+                    isset($contract->metadata->country->code)?$contract->metadata->country->code:null,
+                    ["class"=>"form-control"])!!}
                 </div>
             </div>
 
@@ -286,10 +302,10 @@
             </div>
 
             <div class="form-group">
-                {!! Form::label('comp_id', trans('contract.identifier_at_company'), ['class'=>'col-sm-2
+                {!! Form::label('company_number', trans('contract.company_number'), ['class'=>'col-sm-2
                 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][comp_id]",null,["class"=>"form-control"])!!}
+                    {!! Form::text("company[0][company_number]",null,["class"=>"form-control"])!!}
                 </div>
             </div>
 
@@ -389,11 +405,20 @@
 <hr/>
 
 <div class="form-group">
-    {!! Form::label('Source_url', trans('contract.source_url'), ['class'=>'col-sm-2 control-label'])!!}
+    {!! Form::label('source_url', trans('contract.source_url'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
-        {!! Form::text('Source_url',
-        isset($contract->metadata->Source_url)?$contract->metadata->Source_url:null,
+        {!! Form::text('source_url',
+        isset($contract->metadata->source_url)?$contract->metadata->source_url:null,
         ["class"=>"form-control"])!!}
+    </div>
+</div>
+
+<div class="form-group">
+    {!! Form::label('disclosure_mode', trans('contract.disclosure_mode'), ['class'=>'col-sm-2 control-label'])!!}
+    <div class="col-sm-7">
+        {!! Form::select('disclosure_mode', trans('codelist/disclosure_mode'),
+        isset($contract->metadata->disclosure_mode)?$contract->metadata->disclosure_mode:null, [
+        "class"=>"form-control"])!!}
     </div>
 </div>
 

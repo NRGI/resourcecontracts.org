@@ -487,3 +487,7 @@ header {
 .nav-tabs > li > a {
     text-decoration: none;
 }
+
+.select2-results__group {
+    background: #ccc;
+}

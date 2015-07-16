@@ -243,10 +243,12 @@ class ContractService
                 "license_identifier",
                 "project_title",
                 "project_identifier",
-                "Source_url",
+                "source_url",
                 "date_retrieval",
                 "category",
-                "signature_year"
+                "signature_year",
+                "participation_share",
+                "disclosure_mode"
             ]
         );
     }

@@ -40,18 +40,18 @@ class Contract extends Model
     /**
      * Contract Status
      */
-    const STATUS_DRAFT = 'draft';
+    const STATUS_DRAFT     = 'draft';
     const STATUS_COMPLETED = 'completed';
     const STATUS_PUBLISHED = 'published';
-    const STATUS_REJECTED = 'rejected';
+    const STATUS_REJECTED  = 'rejected';
 
     /**
      * Contract Processing
      */
     const PROCESSING_PIPELINE = 0;
-    const PROCESSING_RUNNING = 1;
+    const PROCESSING_RUNNING  = 1;
     const PROCESSING_COMPLETE = 2;
-    const PROCESSING_FAILED = 3;
+    const PROCESSING_FAILED   = 3;
 
     /**
      * Convert json metadata to array
@@ -60,7 +60,10 @@ class Contract extends Model
      */
     public function getMetadataAttribute($metaData)
     {
-        $metaData           = json_decode($metaData);
+        $metaData = json_decode($metaData);
+
+        $metaData->amla_url = $this->getAmlaUrl($metaData->country->code);
+
         $metaData->file_url = getS3FileURL($this->file);
 
         return $this->makeNullField($metaData);
@@ -198,5 +201,16 @@ class Contract extends Model
                 return true;
             }
         );
+    }
+
+    /**
+     * Put AMLA url if the country exist in amla config file.
+     *
+     * @param $code
+     * @return string
+     */
+    private function getAmlaUrl($code)
+    {
+        return isset(config('amla')[$code]) ? config('amla')[$code] : '';
     }
 }
