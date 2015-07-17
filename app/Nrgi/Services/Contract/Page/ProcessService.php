@@ -79,10 +79,9 @@ class ProcessService
     public function execute($contractId)
     {
         $this->contract_id = $contractId;
-
-        $startTime = Carbon::now();
+        $contract          = $this->contract->find($contractId);
+        $startTime         = Carbon::now();
         try {
-            $contract = $this->contract->find($contractId);
             $this->logger->info("processing Contract", ['contractId' => $contractId]);
             list($writeFolderPath, $readFilePath) = $this->setup($contract);
 
@@ -114,7 +113,7 @@ class ProcessService
                 return true;
             }
         } catch (\Exception $e) {
-            $this->updateProcessStatus($contractId, Contract::PROCESSING_FAILED);
+            $this->processStatus(Contract::PROCESSING_FAILED);
             $this->mailer->send(
                 [
                     'email' => $contract->created_user->email,
@@ -237,6 +236,8 @@ class ProcessService
     public function setup($contract)
     {
         $this->logger->info('Download started...', ['file' => $contract->file]);
+        $pdfFile = '';
+
         try {
             $pdfFile = $this->storage->disk('s3')->get($contract->file);
         } catch (\Exception $e) {
@@ -320,6 +321,5 @@ class ProcessService
     {
         $this->fileSystem->deleteDirectory(sprintf('%s/%s', $this->getWriteDirectory(), $id));
     }
-
 
 }

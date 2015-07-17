@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'organization','status'];
+    protected $fillable = ['name', 'email', 'password', 'organization', 'status', 'country'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -60,6 +60,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
         return join(', ', $roles);
     }
+
+    /**
+     * Get User Role Name
+     * @return string
+     */
+    public function getRoleAttribute()
+    {
+        $roles = [];
+        foreach ($this->roles->toArray() as $role) {
+            $roles[$role['name']] = $role['display_name'];
+        }
+
+        return $roles;
+    }
+
 
     /**
      * Check if user has a permission by its name.
@@ -98,5 +113,22 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
 
         return false;
+    }
+
+    /**
+     * @param $data
+     * @return array
+     */
+    public function getCountryAttribute($data)
+    {
+        return json_decode($data);
+    }
+
+    /**
+     * @param $data
+     */
+    public function setCountryAttribute($data)
+    {
+        $this->attributes['country'] = json_encode($data);
     }
 }

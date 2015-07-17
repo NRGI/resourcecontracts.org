@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Entities\ActivityLog;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Nrgi\Scope\CountryScope;
 
 /**
  * Class ActivityLog
@@ -57,5 +58,17 @@ class ActivityLog extends Model
     public function contract()
     {
         return $this->belongsTo('App\Nrgi\Entities\Contract\Contract');
+    }
+
+    /**
+     * Boot the ActivityLog model
+     * Attach event listener query
+     *
+     * @return void|bool
+     */
+    public static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope(new CountryScope);
     }
 }

@@ -30,9 +30,13 @@ class UserRequest extends Request
             'name'     => 'required|max:255',
             'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-            'role'     => 'required|exists:roles,id',
+            'role'     => 'required|exists:roles,name',
             'status'   => 'required'
         ];
+
+        if (!empty($this->input('role')) && in_array($this->input('role'),config('nrgi.country_role')) ) {
+            $rules['country.0'] = 'required';
+        }
 
         if ($this->isMethod('PATCH')) {
             if (empty($this->input('password'))) {
@@ -43,5 +47,16 @@ class UserRequest extends Request
 
         return $rules;
 
+    }
+
+    /**
+     * custom message
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'country.0.required' => 'The country field is required.'
+        ];
     }
 }

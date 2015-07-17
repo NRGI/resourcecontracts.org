@@ -6,7 +6,7 @@ use App\Nrgi\Entities\Contract\Annotation;
 @if($annotationStatus == Annotation::PUBLISHED)
     <span class="published">@lang('Published')</span>
 @elseif($annotationStatus == Annotation::COMPLETED)
-    <span class="complete">@lang('Completed')</span>
+    <span class="completed">@lang('Completed')</span>
     @if($current_user->can('publish-annotation') )
         <div class="pull-right">
             <button data-toggle="modal" data-target=".annotation-publish-modal" class="btn btn-success">

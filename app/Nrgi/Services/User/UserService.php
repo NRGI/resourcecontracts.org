@@ -2,8 +2,10 @@
 
 use App\Nrgi\Entities\User\User;
 use App\Nrgi\Repositories\User\UserRepositoryInterface;
+use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Hashing\Hasher;
 use Psr\Log\LoggerInterface;
+use App\Nrgi\Entities\User\Role\Role;
 
 class UserService
 {
@@ -19,17 +21,34 @@ class UserService
      * @var Hasher
      */
     protected $hash;
+    /**
+     * @var Role
+     */
+    protected $role;
+    /**
+     * @var Guard
+     */
+    public $auth;
 
     /**
      * @param UserRepositoryInterface $user
      * @param LoggerInterface         $logger
      * @param Hasher                  $hash
+     * @param Role                    $role
+     * @param Guard                   $auth
      */
-    public function __construct(UserRepositoryInterface $user, LoggerInterface $logger, Hasher $hash)
-    {
+    public function __construct(
+        UserRepositoryInterface $user,
+        LoggerInterface $logger,
+        Hasher $hash,
+        Role $role,
+        Guard $auth
+    ) {
         $this->user   = $user;
         $this->logger = $logger;
         $this->hash   = $hash;
+        $this->role   = $role;
+        $this->auth   = $auth;
     }
 
     /**
@@ -38,6 +57,10 @@ class UserService
      */
     public function all()
     {
+        if ($this->auth->user()->hasRole(config('nrgi.country_role'))) {
+            return $this->user->getCountryUsers();
+        }
+
         return $this->user->all();
     }
 
@@ -73,10 +96,10 @@ class UserService
     public function create(array $formData, $role)
     {
         $formData['password'] = $this->hash->make($formData['password']);
-
+        $role                 = $this->role->where('name', $role)->first();
         try {
             $user = $this->user->create($formData);
-            $user->roles()->sync([$role]);
+            $user->roles()->sync([$role->id]);
             $this->logger->info('User successfully created.', $formData);
 
             return true;
@@ -98,7 +121,7 @@ class UserService
     public function update($user_id, array $formData, $role)
     {
         $user = $this->find($user_id);
-
+        $role = $this->role->where('name', $role)->first();
         if (!empty($formData['password'])) {
             $user->password = $this->hash->make($formData['password']);
         }
@@ -106,10 +129,11 @@ class UserService
         $user->organization = $formData['organization'];
         $user->status       = $formData['status'];
         $user->name         = $formData['name'];
+        $user->country      = $formData['country'];
 
         try {
             if ($user->save()) {
-                $user->roles()->sync([$role]);
+                $user->roles()->sync([$role->id]);
                 $this->logger->info('User successfully updated.', $formData);
 
                 return true;
@@ -130,6 +154,9 @@ class UserService
      */
     public function getAllRoles()
     {
+        if ($this->auth->user()->hasRole(config('nrgi.country_role'))) {
+            return $this->user->getCountryRoles();
+        }
         return $this->user->getAllRoles();
     }
 
@@ -140,6 +167,10 @@ class UserService
      */
     public function getList()
     {
+        if ($this->auth->user()->hasRole(config('nrgi.country_role'))) {
+            return $this->user->getUsersWithCountryContract();
+        }
+
         return $this->user->getList();
     }
 

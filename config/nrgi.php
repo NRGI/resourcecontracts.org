@@ -14,6 +14,16 @@ return [
             'display_name' => 'Research Associate',
             'description'  => '(graduate student, interns) to upload contract, provide metadata, annotate. Should be able to edit the data entered by others.'
         ],
+        'country-admin' => [
+            'name'         => 'country-admin',
+            'display_name' => 'Country Admin',
+            'description'  => 'Country specific admin'
+        ],
+        'country-researcher' => [
+            'name'         => 'country-researcher',
+            'display_name' => 'Country Researcher',
+            'description'  => 'Country specific researcher'
+        ],
     ],
     'permissions'      => [
         'add-contract'        => [
@@ -99,6 +109,7 @@ return [
 
     ],
     'pdf_structure'    => ['structured', 'scanned', 'encrypted'],
+    'country_role'     => ['country-admin', 'country-researcher'],
     'annotation_stage' => ['draft', 'completed', 'rejected', 'published'],
     'pdf_process_path' => env('PDF_PROCESSOR_PATH'),
     'permission'       => [

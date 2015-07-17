@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Entities\Contract;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Nrgi\Scope\CountryScope;
 
 /**
  * Class Contract
@@ -60,6 +61,27 @@ class Annotation extends Model
     public function page()
     {
         $this->belongsTo('App\Nrgi\Entities\Contract\Pages\Page', 'page_no', 'document_page_no');
+    }
+
+    /**
+     * Establish one-to-many relationship with User model
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function contract()
+    {
+        return $this->belongsTo('App\Nrgi\Entities\Contract\Contract');
+    }
+
+    /**
+     * Boot the Annotation model
+     * Attach event listener
+     *
+     * @return void|bool
+     */
+    public static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope(new CountryScope);
     }
 }
 

@@ -1,5 +1,7 @@
 <?php namespace App\Nrgi\Services\Contract;
 
+use Illuminate\Auth\Guard;
+
 /**
  * Class CountryService
  * @package App\Nrgi\Services\Contract
@@ -11,8 +13,14 @@ class CountryService
      */
     protected $countries = array();
 
-    public function __construct()
+    protected $auth;
+
+    /**
+     * @param Guard $auth
+     */
+    public function __construct(Guard $auth)
     {
+        $this->auth      = $auth;
         $this->countries = trans('codelist/country');
     }
 
@@ -22,6 +30,10 @@ class CountryService
      */
     public function all()
     {
+        if (\Session::has('country_role')) {
+            $this->countries = $this->getUserCountries();
+        }
+
         return $this->countries;
     }
 
@@ -35,5 +47,20 @@ class CountryService
         $countries = $this->countries;
 
         return isset($countries[$code]) ? ['code' => $code, 'name' => $countries[$code]] : '';
+    }
+
+    /**
+     * gets user Countries
+     *
+     * @return array
+     */
+    public function getUserCountries()
+    {
+        $countries = [];
+        foreach ($this->auth->user()->country as $code) {
+            $countries[$code] = $this->countries[$code];;
+        }
+
+        return $countries;
     }
 }

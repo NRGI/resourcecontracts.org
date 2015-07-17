@@ -2,6 +2,8 @@
 
 use App\Nrgi\Entities\User\Role\Role;
 use App\Nrgi\Entities\User\User;
+use Illuminate\Auth\Guard;
+use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -18,15 +20,27 @@ class UserRepository implements UserRepositoryInterface
      * @var Role
      */
     protected $role;
+    /**
+     * @var Guard
+     */
+    protected $auth;
+    /**
+     * @var DatabaseManager
+     */
+    protected $db;
 
     /**
-     * @param User $user
-     * @param Role $role
+     * @param User            $user
+     * @param Role            $role
+     * @param Guard           $auth
+     * @param DatabaseManager $db
      */
-    public function __construct(User $user, Role $role)
+    public function __construct(User $user, Role $role, Guard $auth, DatabaseManager $db)
     {
         $this->user = $user;
         $this->role = $role;
+        $this->auth = $auth;
+        $this->db   = $db;
     }
 
     /**
@@ -68,7 +82,17 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getAllRoles()
     {
-        return $this->role->lists('display_name', 'id');
+        return $this->role->lists('display_name', 'name');
+    }
+
+    /**
+     * Get All User Roles
+     *
+     * @return array
+     */
+    public function getCountryRoles()
+    {
+        return $this->role->whereIn('name', config('nrgi.country_role'))->lists('display_name', 'name');
     }
 
     /**
@@ -79,5 +103,43 @@ class UserRepository implements UserRepositoryInterface
     public function getList()
     {
         return $this->user->lists('name', 'id');
+    }
+
+    /**
+     * Get country all users
+     *
+     * @return Collection/null
+     */
+    public function getCountryUsers()
+    {
+        $countries = $this->auth->user()->country;
+        $query     = $this->user->select('*');
+        $from      = "users";
+        $from .= ",json_array_elements(users.country) r";
+        $query->whereRaw("trim(both '\"' from r::text) in (?)", $countries);
+        $query->from($this->db->raw($from));
+
+        return $query->get();
+    }
+
+    /**
+     * Get country all users
+     *
+     * @return Collection/null
+     */
+    public function getUsersWithCountryContract()
+    {
+        $countries = $this->auth->user()->country;
+        $query     = $this->user->select('name', 'id');
+        $from      = "users";
+        $from .= ",json_array_elements(users.country) r";
+        $query->whereRaw("trim(both '\"' from r::text) in (?)", $countries);
+        $query->from($this->db->raw($from));
+        $list = [];
+        foreach ($query->get() as $v) {
+            $list[$v->id] = $v->name;
+        }
+
+        return $list;
     }
 }
