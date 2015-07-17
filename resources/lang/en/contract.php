@@ -24,11 +24,11 @@ return [
     'translation_parent'            => "Translation Parent",
     'company'                       => "Company",
     'company_name'                  => "Company Name",
-    'jurisdiction_of_incorporation' => "Jurisdiction Of Incorporation",
+    'jurisdiction_of_incorporation' => "Jurisdiction of Incorporation",
     'registry_agency'               => "Registration Agency",
     'incorporation_date'            => "Incorporation Date",
     'company_address'               => "Company Address",
-    'identifier_at_company'         => "Identifier at Company Register",
+    'company_number'                => "Company number",
     'corporate_grouping'            => "Corporate Grouping",
     'open_corporate_id'             => "Open Corporate Id",
     'license_and_project'           => "Concession / license and Project",
@@ -80,7 +80,7 @@ return [
     'pipeline'                      => "Pipeline",
     'processing'                    => "Processing",
     'annotation_list'               => "Annotation List",
-    'users'                          => 'Users',
+    'users'                         => 'Users',
     /*ContractController*/
     'save_success'                  => 'Contract successfully uploaded.',
     'save_fail'                     => 'Contract could not be saved.',
@@ -94,6 +94,9 @@ return [
     'invalid_status'                => 'Invalid Status',
     'permission_denied'             => 'Permission denied.',
     'status_updated'                => 'Contract status successfully updated.',
+    'disclosure_mode'               => "Disclosure Mode",
+    'participation_share'           => "Participation Share",
+    'amla'                          => "Current mining legislation at AMLA",
     /*Logs*/
     'log'                           => [
         'save'      => 'Contract created',
@@ -102,8 +105,8 @@ return [
         'status'    => 'Contract :type status updated from :old_status to :new_status',
         'save_page' => 'Page no :page updated',
     ],
-    'page' => [
-        'save' => 'Your corrections / changes have been saved',
+    'page'                          => [
+        'save'      => 'Your corrections / changes have been saved',
         'save_fail' => 'Changes couldn\'t be saved',
     ],
 ];

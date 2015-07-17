@@ -43,11 +43,11 @@ class ContractController extends Controller
     protected $annotation;
 
     /**
-     * @param ContractService       $contract
+     * @param ContractService $contract
      * @param ContractFilterService $contractFilter
-     * @param CountryService        $countries
-     * @param CommentService        $comment
-     * @param AnnotationService     $annotation
+     * @param CountryService $countries
+     * @param CommentService $comment
+     * @param AnnotationService $annotation
      */
     public function __construct(
         ContractService $contract,
@@ -197,7 +197,7 @@ class ContractController extends Controller
      * Update contract status
      * @param         $contract_id
      * @param Request $request
-     * @param Guard   $auth
+     * @param Guard $auth
      * @return Response
      */
     public function updateStatus($contract_id, Request $request, Guard $auth)
@@ -224,7 +224,7 @@ class ContractController extends Controller
      * Save Contract Comment
      * @param         $contract_id
      * @param Request $request
-     * @param Guard   $auth
+     * @param Guard $auth
      * @return mixed
      */
     public function contractComment($contract_id, Request $request, Guard $auth)

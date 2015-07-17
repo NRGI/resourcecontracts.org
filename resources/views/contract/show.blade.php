@@ -51,6 +51,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 @stop
 
 @section('content')
+
     <div class="panel panel-default">
         <div class="panel-heading">{{$contract->title}}</div>
         <div class="action-btn pull-right" style="padding: 20px;">
@@ -179,6 +180,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <li>
                     <strong>@lang('contract.country'):</strong> {{$contract->metadata->country->name or ''}}
                     [{{$contract->metadata->country->code or ''}}]
+                    @if(isset(config('amla')[$contract->metadata->country->code]))
+                        <a href="{{config('amla')[$contract->metadata->country->code]}}">@lang('contract.amla')</a>
+                    @endif
                 </li>
             @endif
 
@@ -216,7 +220,10 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     @endif
                 </li>
             @endif
-
+            @if(isset($contract->metadata->participation_share))
+                <li><strong>@lang('contract.participation_share'):</strong> {{$contract->metadata->participation_share}}
+                </li>
+            @endif
             @if(isset($contract->metadata->company))
                 <?php $companies = $contract->metadata->company;?>
                 @if(count($companies)>0)
@@ -227,7 +234,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                 <p><strong>@lang('contract.company_name'):</strong>  {{$v->name}}</p>
 
                                 <p><strong>@lang('contract.jurisdiction_of_incorporation')
-                                        :</strong> {{$v->jurisdiction_of_incorporation}}
+                                        :</strong> {{@trans('codelist/country')[$v->jurisdiction_of_incorporation]}}
                                 </p>
 
                                 <p><strong>@lang('contract.registry_agency'):</strong> {{$v->registration_agency}}</p>
@@ -237,7 +244,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
                                 <p><strong>@lang('contract.company_address') :</strong> {{$v->company_address}}</p>
 
-                                <p><strong>@lang('contract.identifier_at_company'):</strong> {{$v->comp_id}}</p>
+                                <p><strong>@lang('contract.company_number'):</strong> @if(isset($v->company_number)){{$v->company_number}}@endif</p>
 
                                 <p><strong>@lang('contract.parent_company'):</strong> {{$v->parent_company}}</p>
 
@@ -290,8 +297,11 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             @endif
 
             <li><h3>@lang('contract.source')</h3></li>
-            @if(isset($contract->metadata->Source_url))
-                <li><strong>Source URL:</strong> {{$contract->metadata->Source_url}}</li>
+            @if(isset($contract->metadata->source_url))
+                <li><strong>Source URL:</strong> {{$contract->metadata->source_url}}</li>
+            @endif
+            @if(isset($contract->metadata->disclosure_mode))
+                <li><strong>@lang('contract.disclosure_mode'):</strong> {{$contract->metadata->disclosure_mode}}</li>
             @endif
             @if(isset($contract->metadata->date_retrieval))
                 <li><strong>@lang('contract.date_of_retrieval'):</strong> {{$contract->metadata->date_retrieval}}</li>
