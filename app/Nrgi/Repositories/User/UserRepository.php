@@ -52,6 +52,7 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * Find user by ID
+     *
      * @param $user_id
      * @return User
      */

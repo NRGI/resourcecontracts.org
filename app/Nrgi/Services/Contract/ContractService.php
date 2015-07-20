@@ -398,7 +398,7 @@ class ContractService
     {
         $contract = $this->contract->findContract($contractID);
 
-        if ($contract->pdf_process_status == Contract::PROCESSING_COMPLETE AND !$this->pages->exists($contractID)) {
+        if ($contract->pdf_process_status == Contract::PROCESSING_COMPLETE and !$this->pages->exists($contractID)) {
             return Contract::PROCESSING_FAILED;
         }
 
@@ -507,7 +507,7 @@ class ContractService
     {
         $this->database->beginTransaction();
 
-        if ($this->updateStatus($contract_id, $status, $type) && $this->comment->save($contract_id, $message, $type, $status)) {
+        if ($this->updateStatus($contract_id, $status, $type) and $this->comment->save($contract_id, $message, $type, $status)) {
             $this->database->commit();
 
             return true;

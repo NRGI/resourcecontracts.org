@@ -64,7 +64,7 @@ return [
     "CI" => "Ivory Coast",
     "HR" => "Croatia",
     "CU" => "Cuba",
-    "CW" => "Curaã‡Ao",
+    "CW" => "Curaçao",
     "CY" => "Cyprus",
     "CZ" => "Czech Republic",
     "DK" => "Denmark",

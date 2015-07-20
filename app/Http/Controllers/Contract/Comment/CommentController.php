@@ -18,7 +18,7 @@ class CommentController extends Controller
     /**
      * @param CommentService $comment
      */
-    function __construct(CommentService $comment)
+    public function __construct(CommentService $comment)
     {
         $this->middleware('auth');
         $this->comment = $comment;

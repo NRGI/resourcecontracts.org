@@ -75,7 +75,6 @@ class ContractRepository implements ContractRepositoryInterface
 
         $query->from($this->db->raw($from));
 
-        // dd($query->orderByRaw('c.created_datetime', 'DESC')->toSql());
         return $query->orderBy('created_datetime', 'DESC')->get();
     }
 

@@ -15,8 +15,10 @@ interface AnnotationRepositoryInterface
     public function save($contractAnnotationData);
 
     /**
-     * delete contract annotation
-     * @param $id
+     * Delete a annotation.
+     *
+     * @param  int $id
+     * @return bool|null
      */
     public function delete($id);
 

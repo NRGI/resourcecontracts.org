@@ -15,7 +15,7 @@ interface CommentRepositoryInterface
      * @param $type
      * @return Comment
      */
-    public function saveComment($contract_id, $message, $type ,$status);
+    public function saveComment($contract_id, $message, $type, $status);
 
     /**
      * Get Latest Comment

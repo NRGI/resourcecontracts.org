@@ -118,7 +118,7 @@ class AnnotationService
      * @param array $inputs
      * @return boolean
      */
-    public function delete($annotation, $inputs)
+    public function delete($inputs)
     {
         $contactAnnotationId = $inputs['id'];
         if ($this->annotation->delete($contactAnnotationId)) {
@@ -146,7 +146,7 @@ class AnnotationService
             $annotationData[] = $json;
         }
 
-        return array('total' => count($annotationData), 'rows' => $annotationData);
+        return ['total' => count($annotationData), 'rows' => $annotationData];
     }
 
     /**
@@ -223,7 +223,7 @@ class AnnotationService
                 $this->comment->save($contractId, $message, "annotation", $annotationStatus);
                 $this->logger->info(
                     'Comment successfully added.',
-                    ['Contract id' => $contractId, 'type' => 'annotation' ,'status' => $status]
+                    ['Contract id' => $contractId, 'type' => 'annotation', 'status' => $status]
                 );
                 $this->database->commit();
 

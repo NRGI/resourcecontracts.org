@@ -26,7 +26,7 @@ class PagesRepository implements PagesRepositoryInterface
     public function __construct(Pages $pages, DatabaseManager $db)
     {
         $this->pages = $pages;
-        $this->db = $db;
+        $this->db    = $db;
     }
 
     /**
@@ -48,11 +48,16 @@ class PagesRepository implements PagesRepositoryInterface
      */
     public function fullTextSearch($contract_id, $query)
     {
-        return $this->pages->select($this->db->raw("contract_id, page_no, ts_headline(text, plainto_tsquery('".$query."')) as text"))
-                  ->whereRaw("to_tsvector(text) @@ plainto_tsquery('".$query."')")
-                  ->orderBy($this->db->raw("ts_rank(to_tsvector(text), plainto_tsquery('".$query."'))"), 'DESC')
-                  ->where('contract_id', $contract_id)
-                  ->get()->toArray();
+        return $this->pages->select(
+            $this->db->raw("contract_id, page_no, ts_headline(text, plainto_tsquery('" . $query . "')) as text")
+        )
+                           ->whereRaw("to_tsvector(text) @@ plainto_tsquery('" . $query . "')")
+                           ->orderBy(
+                               $this->db->raw("ts_rank(to_tsvector(text), plainto_tsquery('" . $query . "'))"),
+                               'DESC'
+                           )
+                           ->where('contract_id', $contract_id)
+                           ->get()->toArray();
     }
 
     /**

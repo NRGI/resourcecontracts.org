@@ -26,6 +26,7 @@ interface UserRepositoryInterface
 
     /**
      * Find user by ID
+     *
      * @param $user_id
      * @return User|null
      */

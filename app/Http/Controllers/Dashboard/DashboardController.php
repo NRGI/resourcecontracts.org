@@ -17,7 +17,7 @@ class DashboardController extends Controller
     /**
      * @var DashboardService
      */
-    protected $contract;
+    protected $dashboard;
 
     /**
      * Create a new controller instance.

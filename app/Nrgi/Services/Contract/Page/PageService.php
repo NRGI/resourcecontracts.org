@@ -21,12 +21,12 @@ class PageService
     protected $fileSystem;
 
     /**
-     * @param Contract   $contract
+     * @param Contract $contract
      * @param Filesystem $fileSystem
      */
     public function __construct(ContractService $contract, Filesystem $fileSystem)
     {
-        $this->contract = $contract;
+        $this->contract   = $contract;
         $this->fileSystem = $fileSystem;
     }
 
@@ -38,6 +38,7 @@ class PageService
     public function savePages($contractId, $pages)
     {
         $contract = $this->contract->find($contractId);
+
         return $contract->pages()->saveMany($pages);
     }
 
@@ -47,8 +48,8 @@ class PageService
      */
     public function buildPages($directory)
     {
-        $files = $this->fileSystem->files($directory.'/text');
-
+        $files = $this->fileSystem->files($directory . '/text');
+        $pages = [];
         foreach ($files as $file) {
             $content       = $this->fileSystem->get($file);
             $pageNo        = $this->getPageNo($file);
@@ -68,7 +69,7 @@ class PageService
     public function getPageNo($file)
     {
         $fileName = pathinfo($file, PATHINFO_FILENAME);
-        $output    = explode("_", $fileName);
+        $output   = explode("_", $fileName);
 
         return (int) $output[count($output) - 1];
     }

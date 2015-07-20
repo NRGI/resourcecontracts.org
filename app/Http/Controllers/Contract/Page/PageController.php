@@ -17,6 +17,10 @@ use Illuminate\Http\Response;
 class PageController extends Controller
 {
     /**
+     * @var AnnotationService
+     */
+    protected $annotation;
+    /**
      * @var ContractService
      */
     protected $contract;
@@ -26,8 +30,9 @@ class PageController extends Controller
     protected $pages;
 
     /**
-     * @param ContractService $contract
-     * @param PagesService    $pages
+     * @param ContractService   $contract
+     * @param PagesService      $pages
+     * @param AnnotationService $annotation
      */
     public function __construct(ContractService $contract, PagesService $pages, AnnotationService $annotation)
     {
@@ -100,16 +105,16 @@ class PageController extends Controller
             ];
         }
 
-        $contract1 = array(
+        $contract1 = [
             'metadata'    => $contract1Meta,
             'pages'       => $contract1Meta->pages,
             'annotations' => $contract1Annotations
-        );
-        $contract2 = array(
+        ];
+        $contract2 = [
             'metadata'    => $contract2Meta,
             'pages'       => $contract2Meta->pages,
             'annotations' => $contract2Annotations
-        );
+        ];
 
         return view(
             'contract.page.compare',

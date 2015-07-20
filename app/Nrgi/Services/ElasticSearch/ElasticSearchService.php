@@ -25,9 +25,9 @@ class ElasticSearchService
     protected $contract;
 
     /**
-     * @param Client             $http
+     * @param Client $http
      * @param ContractRepository $contract
-     * @param LoggerInterface    $logger
+     * @param LoggerInterface $logger
      */
     public function __construct(Client $http, ContractRepository $contract, LoggerInterface $logger)
     {
@@ -134,6 +134,7 @@ class ElasticSearchService
     {
         $contract       = $this->contract->findContractWithAnnotations($id);
         $annotationData = [];
+        $data           = [];
         $annotations    = $contract->annotations;
         foreach ($annotations as $annotation) {
             $json             = $annotation->annotation;

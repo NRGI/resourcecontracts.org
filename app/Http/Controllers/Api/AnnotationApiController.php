@@ -31,7 +31,7 @@ class AnnotationApiController extends Controller
         $content    = $request->getContent();
         $annotation = $this->annotationService->save($content, $request->all());
         if ($annotation) {
-            return response()->json(['status' => 'success', "id"=>$annotation->id]);
+            return response()->json(['status' => 'success', "id" => $annotation->id]);
         }
 
         return response()->json(['status' => 'error']);
@@ -45,8 +45,7 @@ class AnnotationApiController extends Controller
      */
     public function delete(Request $request)
     {
-        $content = $request->getContent();
-        $this->annotationService->delete($content, $request->all());
+        $this->annotationService->delete($request->all());
 
         return response()->json(['status' => 'success']);
     }
@@ -62,7 +61,8 @@ class AnnotationApiController extends Controller
         return response()->json($response);
     }
 
-    public function getContractAnnotations($contractId, Request $request) {
+    public function getContractAnnotations($contractId)
+    {
         $contractAnnotations = $this->annotationService->getContractAnnotations($contractId);
         print json_encode($contractAnnotations);
 

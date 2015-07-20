@@ -19,6 +19,10 @@ use Symfony\Component\Process\Process;
 class ProcessService
 {
     /**
+     * @var storage
+     */
+    protected $storage;
+    /**
      * @var Filesystem
      */
     protected $fileSystem;
@@ -326,7 +330,7 @@ class ProcessService
      * @param $status
      * @return bool
      */
-    function updateProcessStatus($contractId, $status)
+    public function updateProcessStatus($contractId, $status)
     {
         $contract                     = $this->contract->find($contractId);
         $contract->pdf_process_status = $status;

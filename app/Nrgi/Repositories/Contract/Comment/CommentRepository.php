@@ -56,10 +56,15 @@ class CommentRepository implements CommentRepositoryInterface
      */
     public function getLatest($contract_id, $type)
     {
-        return $this->comment->with('user')->where('type', $type)->where('contract_id', $contract_id)->limit(5)->orderBy(
-            'created_at',
-            'DESC'
-        )->get();
+        return $this->comment->with('user')
+                             ->where('type', $type)
+                             ->where('contract_id', $contract_id)
+                             ->limit(5)
+                             ->orderBy(
+                                 'created_at',
+                                 'DESC'
+                             )
+                             ->get();
     }
 
     /**

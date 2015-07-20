@@ -125,7 +125,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      */
     public function updateStatus($status, $contractId)
     {
-        $rowsUpdated = $this->annotation->where('contract_id', $contractId)->update(array('status' => $status));
+        $rowsUpdated = $this->annotation->where('contract_id', $contractId)->update(['status' => $status]);
 
         return ($rowsUpdated > 0 ? true : false);
     }
