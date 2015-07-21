@@ -1,6 +1,5 @@
 <?php namespace App\Nrgi\Log;
 
-use App\Nrgi\Repositories\ActivityLog\ActivityLogService;
 use Illuminate\Log\Writer;
 
 /**
@@ -12,11 +11,6 @@ use Illuminate\Log\Writer;
 class NrgiWriter extends Writer
 {
     /**
-     * @var ActivityLogService
-     */
-    protected $activityLog;
-
-    /**
      * @param       $message
      * @param array $params
      * @param null  $contractId
@@ -27,4 +21,17 @@ class NrgiWriter extends Writer
         $activityLogService = app('App\Nrgi\Services\ActivityLog\ActivityLogService');
         return $activityLogService->save($message, $params, $contractId);
     }
+
+    /**
+     * @param       $message
+     * @param array $params
+     * @param null  $contractId
+     * @return bool
+     */
+    public function mTurkActivity($message, $params = array(), $contractId = null, $page_no= null)
+    {
+        $activity = app('App\Nrgi\Mturk\Services\ActivityService');
+        return $activity->save($message, $params, $contractId, $page_no);
+    }
+
 }

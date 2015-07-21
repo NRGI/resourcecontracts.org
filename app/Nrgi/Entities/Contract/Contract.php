@@ -54,6 +54,12 @@ class Contract extends Model
     const PROCESSING_FAILED   = 3;
 
     /**
+     * MTurk Status
+     */
+    const MTURK_SENT = 1;
+    const MTURK_COMPLETE = 2;
+
+    /**
      * Convert json metadata to array
      * @param $metaData
      * @return mixed
@@ -109,6 +115,14 @@ class Contract extends Model
     public function updated_user()
     {
         return $this->belongsTo('App\Nrgi\Entities\User\User', 'updated_by');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tasks()
+    {
+        return $this->hasMany('App\Nrgi\Mturk\Entities\Task');
     }
 
     /**
@@ -197,6 +211,7 @@ class Contract extends Model
                 $contract->metadata_status    = static::STATUS_DRAFT;
                 $contract->text_status        = null;
                 $contract->pdf_process_status = static::PROCESSING_PIPELINE;
+                $contract->mturk_status       = null;
 
                 return true;
             }

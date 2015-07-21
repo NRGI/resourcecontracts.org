@@ -398,7 +398,7 @@ header {
 }
 
 #message {
-    padding-top: 20px !important;
+    padding: 10px;
 }
 
 .panel-dashboard .col-md-offset-1 {
@@ -490,4 +490,7 @@ header {
 
 .select2-results__group {
     background: #ccc;
+}
+.mturk-btn-group > form{
+    display: inline-block;
 }

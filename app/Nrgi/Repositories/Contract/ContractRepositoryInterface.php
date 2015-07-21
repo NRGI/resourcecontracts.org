@@ -40,6 +40,14 @@ interface ContractRepositoryInterface
     public function findContractWithPages($contractId);
 
     /**
+     * Get Contract with tasks
+     *
+     * @param $contractId
+     * @return Contract
+     */
+    public function findContractWithTasks($contractId);
+
+    /**
      * Get Contract with Annotations
      *
      * @param $contractId
@@ -109,4 +117,11 @@ interface ContractRepositoryInterface
      * @return mixed
      */
     public function getList();
+
+    /**
+     * Get Contracts having MTurk Tasks
+     *
+     * @return collection
+     */
+    public function getMTurkContracts();
 }

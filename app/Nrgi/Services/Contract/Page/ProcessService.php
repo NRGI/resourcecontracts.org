@@ -160,9 +160,9 @@ class ProcessService
     public function process($writeFolderPath, $readFilePath)
     {
         try {
-            $this->processStatus($writeFolderPath, 0);
+            $this->processStatus($writeFolderPath, Contract::PROCESSING_RUNNING);
             $this->processContractDocument($writeFolderPath, $readFilePath);
-            $this->processStatus($writeFolderPath, 1);
+            $this->processStatus($writeFolderPath, Contract::PROCESSING_COMPLETE);
             $this->logger->info("processing contract completed");
 
             return true;

@@ -40,5 +40,9 @@ class RepositoriesServiceProvider extends ServiceProvider
             'App\Nrgi\Repositories\Contract\Comment\CommentRepositoryInterface',
             'App\Nrgi\Repositories\Contract\Comment\CommentRepository'
         );
+        $this->app->bind(
+            'App\Nrgi\Mturk\Repositories\Activity\ActivityRepositoryInterface',
+            'App\Nrgi\Mturk\Repositories\Activity\ActivityRepository'
+        );
     }
 }

@@ -132,6 +132,23 @@ class ContractRepository implements ContractRepositoryInterface
     }
 
     /**
+     * Get Contract with tasks
+     *
+     * @param $contractId
+     * @return Contract
+     */
+    public function findContractWithTasks($contractId)
+    {
+        return $this->contract->with(
+            [
+                'tasks' => function ($query) {
+                    $query->orderBy('page_no', 'ASC');
+                }
+            ]
+        )->findOrFail($contractId);
+    }
+
+    /**
      * Get Contract with pages
      *
      * @param $contractId
@@ -141,6 +158,7 @@ class ContractRepository implements ContractRepositoryInterface
     {
         return $this->contract->with('created_user', 'updated_user', 'pages')->findOrFail($contractId);
     }
+
 
     /**
      * Get Contract with Annotations
@@ -225,4 +243,15 @@ class ContractRepository implements ContractRepositoryInterface
     {
         return $this->contract->all();
     }
+
+    /**
+     * Get Contracts having MTurk Tasks
+     *
+     * @return collection
+     */
+    public function getMTurkContracts()
+    {
+        return $this->contract->with('tasks')->where('mturk_status', '!=', '')->get();
+    }
+
 }

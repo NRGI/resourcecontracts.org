@@ -5,7 +5,6 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 
 class RouteServiceProvider extends ServiceProvider
 {
-
     /**
      * This namespace is applied to the controller routes in your routes file.
      *
@@ -16,6 +15,13 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'App\Http\Controllers';
 
     /**
+     * This namespace is applied to the controller routes for Mechanical turk.
+     *
+     * @var string
+     */
+    protected $mturk_namespace = 'App\Nrgi\Mturk\Controllers';
+
+    /**
      * Define your route model bindings, pattern filters, etc.
      *
      * @param  \Illuminate\Routing\Router  $router
@@ -24,8 +30,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         parent::boot($router);
-
-        //
     }
 
     /**
@@ -42,6 +46,10 @@ class RouteServiceProvider extends ServiceProvider
             require app_path('Http/Routes/annotation.php');
             require app_path('Http/Routes/activitylog.php');
             require app_path('Http/Routes/user.php');
+        });
+
+        $router->group(['namespace' => $this->mturk_namespace], function ($router) {
+            require app_path('Nrgi/Mturk/routes.php');
         });
     }
 }

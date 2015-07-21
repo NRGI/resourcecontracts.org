@@ -1,12 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: manoj
- * Date: 6/11/15
- * Time: 10:49 AM
- */
-
-namespace App\Nrgi\Services\Queue;
+<?php namespace App\Nrgi\Services\Queue;
 
 use App\Nrgi\Services\Contract\Page\ProcessService;
 
