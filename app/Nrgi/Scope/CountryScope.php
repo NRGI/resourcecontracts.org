@@ -31,8 +31,8 @@ class CountryScope implements ScopeInterface
      */
     public function apply(Builder $builder, Model $model)
     {
-        if (\Session::has('country_role')) {
-            $country = \Session::get('country_role');
+        if (\Auth::user()->hasCountryRole()) {
+            $country = \Auth::user()->country;
             if ($builder->getModel()->getTable() == "activity_logs") {
                 $builder->whereHas(
                     'contract',

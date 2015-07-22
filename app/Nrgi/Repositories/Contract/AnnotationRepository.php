@@ -177,9 +177,16 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      */
     public function getStatusCountByType($statusType)
     {
-        return $this->annotation->distinct()
-                                ->select('contract_id', 'status')
-                                ->where('status', '=', $statusType)
+        return $this->contract
+                                ->distinct()
+                                ->select('contracts.id', 'a.status')
+                                ->from('contracts')
+                                ->leftJoin(
+                                    'contract_annotations as a',
+                                    function ($join) use ($statusType) {
+                                        $join->on('contracts.id', '=', 'a.contract_id')->where('a.status', '=', $statusType);
+                                    }
+                                )
                                 ->get();
     }
 }

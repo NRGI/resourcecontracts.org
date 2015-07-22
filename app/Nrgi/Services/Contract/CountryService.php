@@ -30,7 +30,7 @@ class CountryService
      */
     public function all()
     {
-        if (\Session::has('country_role')) {
+        if ($this->auth->user()->hasCountryRole()) {
             $this->countries = $this->getUserCountries();
         }
 

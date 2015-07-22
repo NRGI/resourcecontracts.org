@@ -4,7 +4,8 @@ $(function () {
 
     $('.datepicker').datetimepicker({
         timepicker: false,
-        format: 'Y-m-d'
+        format: 'Y-m-d',
+        scrollInput: false
     });
 
     translation();

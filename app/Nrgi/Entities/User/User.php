@@ -131,4 +131,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         $this->attributes['country'] = json_encode($data);
     }
+
+    /**
+     * check if user has country role
+     *
+     * @return bool
+     */
+    public function hasCountryRole()
+    {
+        $roles = array_keys($this->role);
+
+        if (array_intersect($roles, config('nrgi.country_role'))) {
+            return true;
+        }
+
+        return false;
+
+    }
 }

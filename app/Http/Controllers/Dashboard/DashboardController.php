@@ -36,11 +36,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $roles = array_keys(\Auth::user()->role);
-        if (array_intersect($roles, config('nrgi.country_role'))) {
-            \Session::put('country_role', array_keys(\Auth::user()->country));
-        }
-
         $stats = [
             'total'      => $this->dashboard->countContractTotal(),
             'last_month' => $this->dashboard->countContractTotal('last_month'),

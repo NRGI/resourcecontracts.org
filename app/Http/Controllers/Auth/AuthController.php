@@ -80,17 +80,4 @@ class AuthController extends Controller
             );
     }
 
-    /**
-     * Log the user out of the application.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getLogout()
-    {
-        $this->auth->logout();
-        \Session::flush();
-
-        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
-    }
-
 }

@@ -126,6 +126,7 @@ class UserService
             $user->password = $this->hash->make($formData['password']);
         }
 
+        $user->email        = $formData['email'];
         $user->organization = $formData['organization'];
         $user->status       = $formData['status'];
         $user->name         = $formData['name'];
@@ -157,6 +158,7 @@ class UserService
         if ($this->auth->user()->hasRole(config('nrgi.country_role'))) {
             return $this->user->getCountryRoles();
         }
+
         return $this->user->getAllRoles();
     }
 
