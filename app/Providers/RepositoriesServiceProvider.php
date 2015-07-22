@@ -1,7 +1,12 @@
 <?php namespace App\Providers;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class RepositoriesServiceProvider
+ * @package App\Providers
+ */
 class RepositoriesServiceProvider extends ServiceProvider
 {
     /**
@@ -12,7 +17,7 @@ class RepositoriesServiceProvider extends ServiceProvider
     public function register()
     {
 
- \View::composer('*', function ($view) {
+        View::composer('*', function ($view) {
             $view->with('current_user', auth()->user());
         });
 
@@ -39,6 +44,10 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Nrgi\Repositories\Contract\Comment\CommentRepositoryInterface',
             'App\Nrgi\Repositories\Contract\Comment\CommentRepository'
+        );
+        $this->app->bind(
+            'App\Nrgi\Mturk\Repositories\TaskRepositoryInterface',
+            'App\Nrgi\Mturk\Repositories\TaskRepository'
         );
         $this->app->bind(
             'App\Nrgi\Mturk\Repositories\Activity\ActivityRepositoryInterface',

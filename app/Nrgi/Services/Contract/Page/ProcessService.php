@@ -90,7 +90,7 @@ class ProcessService
                 $pages = $this->page->buildPages($writeFolderPath);
                 $this->page->savePages($contractId, $pages);
                 $this->updateContractPdfStructure($contract, $writeFolderPath);
-                $contract->text_status        = Contract::STATUS_DRAFT;
+                $contract->text_status = Contract::STATUS_DRAFT;
                 $contract->save();
                 $this->logger->info("processing contract completed.", ['contractId' => $contractId]);
                 $this->mailer->send(
@@ -110,6 +110,7 @@ class ProcessService
                 );
                 $this->uploadPdfsToS3($contract->id);
                 $this->deleteContractFolder($contract->id);
+
                 return true;
             }
         } catch (\Exception $e) {
@@ -160,9 +161,10 @@ class ProcessService
     public function process($writeFolderPath, $readFilePath)
     {
         try {
-            $this->processStatus($writeFolderPath, Contract::PROCESSING_RUNNING);
+            $this->processStatus(Contract::PROCESSING_RUNNING);
+            $this->logger->info("processing contract running");
             $this->processContractDocument($writeFolderPath, $readFilePath);
-            $this->processStatus($writeFolderPath, Contract::PROCESSING_COMPLETE);
+            $this->processStatus(Contract::PROCESSING_COMPLETE);
             $this->logger->info("processing contract completed");
 
             return true;
@@ -250,26 +252,22 @@ class ProcessService
         $writeFolderPath = $this->getContractDirectory($contract->id);
         $readFilePath    = sprintf('%s/app/%s', storage_path(), $contract->file);
 
-        return array($writeFolderPath, $readFilePath);
+        return [$writeFolderPath, $readFilePath];
     }
 
     /**
-     * @param $directory
+     * Update process status
+     *
      * @param $status
+     * @return bool
      * @throws \Exception
      */
-    public function processStatus($directory, $status)
+    public function processStatus($status)
     {
-        $status = $status == 1 ? Contract::PROCESSING_COMPLETE: Contract::PROCESSING_RUNNING;
-        $this->updateProcessStatus($this->contract_id, $status);
+        $contract                     = $this->contract->find($this->contract_id);
+        $contract->pdf_process_status = $status;
 
-        $fileContent = $status . PHP_EOL;
-        $filePath    = sprintf('%s/status.txt', $directory);
-        $this->logger->info("writing to {$filePath}", ['status' => $status]);
-        if (!$this->fileSystem->put($filePath, $fileContent)) {
-            $this->logger->error("could not create status file in directory {$directory}");
-            throw new \Exception("could not create status file.");
-        }
+        return $contract->save();
     }
 
     /**
@@ -302,11 +300,11 @@ class ProcessService
     public function uploadPdfsToS3($id)
     {
         $client = S3Client::factory(
-            array(
+            [
                 'key'    => env('AWS_KEY'),
                 'secret' => env('AWS_SECRET'),
                 'region' => env('AWS_REGION'),
-            )
+            ]
         );
 
         $client->uploadDirectory(sprintf('%s/%s/pages/', $this->getWriteDirectory(), $id), env('AWS_BUCKET'), $id);
@@ -323,18 +321,5 @@ class ProcessService
         $this->fileSystem->deleteDirectory(sprintf('%s/%s', $this->getWriteDirectory(), $id));
     }
 
-    /**
-     * Update Contract Status
-     *
-     * @param $contractId
-     * @param $status
-     * @return bool
-     */
-    public function updateProcessStatus($contractId, $status)
-    {
-        $contract                     = $this->contract->find($contractId);
-        $contract->pdf_process_status = $status;
 
-        return $contract->save();
-    }
 }

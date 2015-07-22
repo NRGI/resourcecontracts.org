@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Repositories\Contract\Comment;
 
 use App\Nrgi\Entities\Contract\Comment\Comment;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class CommentRepositoryInterface
@@ -10,6 +11,7 @@ interface CommentRepositoryInterface
 {
     /**
      * Save Comment
+     *
      * @param $contract_id
      * @param $message
      * @param $type
@@ -19,16 +21,18 @@ interface CommentRepositoryInterface
 
     /**
      * Get Latest Comment
+     *
      * @param $contract_id
      * @param $type
-     * @return Comment
+     * @return Collection
      */
     public function getLatest($contract_id, $type);
 
     /**
      * Get Contract comments with pagination
+     *
      * @param $perPage
-     * @return mixed
+     * @return collection
      */
     public function paginate($contract_id, $perPage);
 }

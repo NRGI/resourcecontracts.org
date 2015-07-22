@@ -26,7 +26,7 @@ class ActivityRepository implements ActivityRepositoryInterface
     public function __construct(Activity $activity, Guard $auth)
     {
         $this->activity = $activity;
-        $this->auth        = $auth;
+        $this->auth     = $auth;
     }
 
     /**
@@ -37,7 +37,12 @@ class ActivityRepository implements ActivityRepositoryInterface
      */
     public function save($activity)
     {
-        $activity['user_id'] = $this->auth->user()->id;
+        $activity['user_id'] = null;
+        $user                = $this->auth->user();
+
+        if (isset($user->id)) {
+            $activity['user_id'] = $user->id;
+        }
 
         return ($this->activity->create($activity) ? true : false);
     }

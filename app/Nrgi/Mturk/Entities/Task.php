@@ -1,10 +1,15 @@
 <?php namespace App\Nrgi\Mturk\Entities;
 
-use App\Nrgi\Mturk\Services\MTurkService;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Task
+ * @property string   status
+ * @property string   approved
+ * @property object   assignments
+ * @property string   hit_id
+ * @property int      page_no
+ * @property int      contract_id
  * @package App\Nrgi\Mturk\Entities
  */
 class Task extends Model
@@ -30,7 +35,7 @@ class Task extends Model
         'approve'
     ];
 
-    const PENDING = 0;
+    const PENDING   = 0;
     const COMPLETED = 1;
 
     const APPROVED = 1;
@@ -39,9 +44,9 @@ class Task extends Model
     /**
      * Get task Status
      *
-     * @return string/null
+     * @return string|null
      */
-    function status()
+    public function status()
     {
         $text = ['Pending', 'Completed'];
 
@@ -103,6 +108,7 @@ class Task extends Model
         if (!empty($assignments)) {
             return json_decode($assignments);
         }
+
         return $assignments;
     }
 

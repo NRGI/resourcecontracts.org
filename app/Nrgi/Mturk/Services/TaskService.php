@@ -2,7 +2,7 @@
 
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Mturk\Entities\Task;
-use App\Nrgi\Mturk\Repositories\TaskRepository;
+use App\Nrgi\Mturk\Repositories\TaskRepositoryInterface;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\Pages\PagesService;
 use Exception;
@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Collection;
 class TaskService
 {
     /**
-     * @var TaskService
+     * @var TaskRepositoryInterface
      */
     protected $task;
     /**
@@ -42,15 +42,15 @@ class TaskService
     protected $queue;
 
     /**
-     * @param TaskRepository  $task
-     * @param ContractService $contract
-     * @param Log             $logger
-     * @param MTurkService    $turk
-     * @param PagesService    $page
-     * @param Queue           $queue
+     * @param TaskRepositoryInterface $task
+     * @param ContractService         $contract
+     * @param Log                     $logger
+     * @param MTurkService            $turk
+     * @param PagesService            $page
+     * @param Queue                   $queue
      */
     public function __construct(
-        TaskRepository $task,
+        TaskRepositoryInterface $task,
         ContractService $contract,
         Log $logger,
         MTurkService $turk,
@@ -62,19 +62,19 @@ class TaskService
         $this->logger   = $logger;
         $this->turk     = $turk;
         $this->page     = $page;
-        $this->queue = $queue;
+        $this->queue    = $queue;
     }
 
     /**
      * Get Contracts having MTurk Tasks
      *
-     * @return Collection/Null
+     * @return Collection|null
      */
     public function getContracts()
     {
         $contracts = $this->contract->getMTurkContracts();
 
-        if(!empty($contracts)){
+        if(!is_null($contracts)){
             foreach ($contracts as &$contract) {
                 $contract->total_hits   = $this->getTotalHits($contract->id);
                 $contract->count_status = $this->getTotalByStatus($contract->id);
@@ -120,6 +120,15 @@ class TaskService
             return false;
         }
 
+        try {
+            $contract->mturk_status = Contract::MTURK_SENT;
+            $contract->save();
+        }catch (Exception $e) {
+            $this->logger->error('save:'. $e->getMessage(), ['Contract_id' => $contract->id]);
+            return false;
+        }
+
+        $this->logger->activity('mturk.log.create', ['contract' => $contract->title], $contract->id);
         $this->queue->push('App\Nrgi\Mturk\Services\Queue\MTurkQueue', ['contract_id' => $contract->id], 'mturk');
 
         return true;
@@ -128,7 +137,7 @@ class TaskService
     /**
      * Mechanical turk process
      *
-     * @param $contract
+     * @param $contract_id
      * @return bool
      */
     public function mTurkProcess($contract_id)
@@ -136,17 +145,8 @@ class TaskService
         $contract = $this->contract->findWithPages($contract_id);
 
         if($this->sendToMTurk($contract)) {
-
-            try {
-                $contract->mturk_status = Contract::MTURK_SENT;
-                $contract->save();
-            }catch (Exception $e) {
-                $this->logger->error('save:'. $e->getMessage(), ['Contract_id' => $contract->id]);
-                return false;
-            }
-
-            $this->logger->activity('mturk.log.create', ['contract' => $contract->title], $contract->id);
             $this->logger->info('Contract sent to MTurk ', ['Contract_id' => $contract->id]);
+
             return true;
         }
 
@@ -158,6 +158,7 @@ class TaskService
      *
      * @param $contract
      * @return bool
+     * @throws Exception
      */
     public function sendToMTurk($contract)
     {
@@ -170,7 +171,7 @@ class TaskService
                 $ret    = $this->turk->createHIT($title, $description, $url);
             }catch (Exception $e){
                 $this->logger->error('createHIT: '. $e->getMessage(), ['Contract_id' => $contract->id, 'Page' => $page->page_no]);
-                return false;
+                throw new Exception($e->getMessage());
             }
 
             $update = ['hit_id' => $ret->hit_id, 'hit_type_id' => $ret->hit_type_id];
@@ -217,7 +218,7 @@ class TaskService
             if (empty($task->assignments)) {
                 $assignment = $this->turk->assignment($task->hit_id);
 
-                if ($assignment['TotalNumResults'] > 0) {
+                if (!is_null($assignment) && $assignment['TotalNumResults'] > 0) {
                     $task->status      = Task::COMPLETED;
                     $task->assignments = $this->getFormattedAssignment($assignment);
                     $this->logger->info(sprintf('Tasks completed for page no.%s', $task->page_no) , ['Page' => $task->page_no]);
@@ -236,7 +237,7 @@ class TaskService
      *
      * @param $contract_id
      * @param $task_id
-     * @return array
+     * @return bool
      */
     public function approveTask($contract_id, $task_id)
     {
@@ -262,7 +263,7 @@ class TaskService
                 $task->approved                  = Task::APPROVED;
 
                 $this->logger->info(sprintf('Assignment approved for page no.%s', $task->page_no) , ['Page' => $task->page_no]);
-                $this->logger->mTurkActivity('mturk.approve',null,$contract_id,$task->page_no);
+                $this->logger->mTurkActivity('mturk.log.approve',null,$contract_id,$task->page_no);
 
                 return  $task->save();
             }
@@ -276,7 +277,7 @@ class TaskService
      *
      * @param $contract_id
      * @param $task_id
-     * @return array
+     * @return bool
      */
     public function rejectTask($contract_id, $task_id, $message)
     {
@@ -302,7 +303,7 @@ class TaskService
                 $task->assignments               = $assignments;
                 $task->approved                  = Task::REJECTED;
                 $this->logger->info(sprintf('Assignment rejected for page no.%s', $task->page_no) , ['Page' => $task->page_no]);
-                $this->logger->mTurkActivity('mturk.reject',null,$contract_id,$task->page_no);
+                $this->logger->mTurkActivity('mturk.log.reject',null,$contract_id,$task->page_no);
 
                 return $task->save();
             }
@@ -315,7 +316,7 @@ class TaskService
      *
      * @param $contract_id
      * @param $task_id
-     * @return Task
+     * @return Task|null
      */
     public function get($contract_id, $task_id)
     {
@@ -326,7 +327,7 @@ class TaskService
         }catch (Exception $e)
         {
             $this->logger->info( $e->getMessage() , ['Task' => $task_id]);
-            return false;
+            return null;
         }
     }
 
@@ -375,7 +376,7 @@ class TaskService
             if ($ret) {
                 $this->task->update($task->contract_id, $task->page_no, $update);
                 $this->logger->info('HIT successfully reset', [ 'Contract id' => $contract_id,  'Task' => $task_id]);
-                $this->logger->mTurkActivity('mturk.reset',null,$task->contract_id,$task_id);
+                $this->logger->mTurkActivity('mturk.log.reset',null,$task->contract_id,$task_id);
 
                 return true;
             }

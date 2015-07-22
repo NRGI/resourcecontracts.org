@@ -22,7 +22,8 @@ class CreateMturkActivitiesTable extends Migration {
 				$table->integer('contract_id')->unsigned()->nullable();
 				$table->integer('page_no')->unsigned()->nullable();
 				$table->foreign('contract_id')
-					  ->references('id')->on('contracts');
+					  ->references('id')->on('contracts')
+					  ->onDelete('cascade');
 				$table->integer('user_id');
 				$table->foreign('user_id')
 					  ->references('id')->on('users')

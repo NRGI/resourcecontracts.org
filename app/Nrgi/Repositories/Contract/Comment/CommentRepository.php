@@ -2,6 +2,7 @@
 
 use App\Nrgi\Entities\Contract\Comment\Comment;
 use Illuminate\Auth\Guard;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class CommentRepository
@@ -29,6 +30,7 @@ class CommentRepository implements CommentRepositoryInterface
 
     /**
      * Save Comment
+     *
      * @param $contract_id
      * @param $message
      * @param $type
@@ -50,9 +52,10 @@ class CommentRepository implements CommentRepositoryInterface
 
     /**
      * Get Latest Comment
+     *
      * @param $contract_id
      * @param $type
-     * @return Comment
+     * @return Collection
      */
     public function getLatest($contract_id, $type)
     {
@@ -69,8 +72,9 @@ class CommentRepository implements CommentRepositoryInterface
 
     /**
      * Get Contract comments with pagination
+     *
      * @param $perPage
-     * @return mixed
+     * @return Collection
      */
     public function paginate($contract_id, $perPage)
     {

@@ -72,10 +72,14 @@ class MTurkService extends MechanicalTurk
      * Get Assignments
      *
      * @param $hit_id
-     * @return mixed
+     * @return array|null
      */
     public function assignment($hit_id)
     {
+        if (empty($hit_id)) {
+            return null;
+        }
+
         $result = $this->GetAssignmentsForHIT(['HITId' => $hit_id]);
 
         return $result['GetAssignmentsForHITResult'];
