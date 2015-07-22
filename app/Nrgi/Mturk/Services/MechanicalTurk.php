@@ -20,7 +20,7 @@ class MechanicalTurk
      */
     public function __construct()
     {
-        if (config('laraturk.credentials.AWS_ROOT_ACCESS_KEY_ID') === false OR
+        if (config('laraturk.credentials.AWS_ROOT_ACCESS_KEY_ID') === false ||
             config('laraturk.credentials.AWS_ROOT_SECRET_ACCESS_KEY') === false
         ) {
             throw new MTurkException('AWS Root account keys must be set as environment variables.');
@@ -70,10 +70,10 @@ class MechanicalTurk
      */
     public function createHITByTypeIdAndByLayoutId($params = [])
     {
-        $params = array_merge($this->defaults, $params);
+        $params   = array_merge($this->defaults, $params);
         $required = ['HITTypeId', 'HITLayoutId', 'LifetimeInSeconds', 'MaxAssignments'];
         $optional = ['RequesterAnnotation', 'UniqueRequestToken'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'CreateHIT',
             $params,
             $required,
@@ -84,6 +84,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'HIT');
     }
 
@@ -122,6 +123,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'HIT');
     }
 
@@ -135,10 +137,10 @@ class MechanicalTurk
      */
     public function registerHITType($params = [])
     {
-        $params = array_merge($this->defaults, $params);
+        $params   = array_merge($this->defaults, $params);
         $required = ['Title', 'Description', 'AssignmentDurationInSeconds', 'AutoApprovalDelayInSeconds'];
         $optional = [];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'RegisterHITType',
             $params,
             $required,
@@ -151,6 +153,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'RegisterHITTypeResult');
     }
 
@@ -165,7 +168,7 @@ class MechanicalTurk
      */
     public function setHITTypeNotification($params = [])
     {
-        $params = array_merge($this->defaults, $params);
+        $params   = array_merge($this->defaults, $params);
         $required = ['HITTypeId'];
         $optional = ['Active'];
         $url      = $this->buildURL(
@@ -179,6 +182,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'SetHITTypeNotificationResult');
     }
 
@@ -193,13 +197,14 @@ class MechanicalTurk
     public function changeHITTypeOfHIT($params = [])
     {
         $required = ['HITId', 'HITTypeId'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'ChangeHITTypeOfHIT',
             $params,
             $required
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'ChangeHITTypeOfHITResult');
     }
 
@@ -214,13 +219,14 @@ class MechanicalTurk
     public function getHIT($params = [])
     {
         $required = ['HITId'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'GetHIT',
             $params,
             $required
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'HIT');
     }
 
@@ -236,7 +242,7 @@ class MechanicalTurk
     {
         $required = [];
         $optional = ['SortProperty', 'SortDirection', 'PageSize', 'PageNumber'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'SearchHITs',
             $params,
             $required,
@@ -244,6 +250,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'SearchHITsResult');
     }
 
@@ -259,7 +266,7 @@ class MechanicalTurk
     {
         $required = [];
         $optional = ['HITTypeId', 'Status', 'SortProperty', 'SortDirection', 'PageSize', 'PageNumber'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'GetReviewableHITs',
             $params,
             $required,
@@ -267,6 +274,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'GetReviewableHITsResult');
     }
 
@@ -282,7 +290,7 @@ class MechanicalTurk
     {
         $required = ['HITId'];
         $optional = ['AssignmentStatus', 'SortProperty', 'SortDirection', 'PageSize', 'PageNumber'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'GetAssignmentsForHIT',
             $params,
             $required,
@@ -291,6 +299,7 @@ class MechanicalTurk
 
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'GetAssignmentsForHITResult');
     }
 
@@ -305,13 +314,14 @@ class MechanicalTurk
     public function getAssignment($params = [])
     {
         $required = ['AssignmentId'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'GetAssignment',
             $params,
             $required
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'GetAssignmentResult');
     }
 
@@ -327,7 +337,7 @@ class MechanicalTurk
     {
         $required = ['AssignmentId'];
         $optional = ['RequesterFeedback'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'ApproveAssignment',
             $params,
             $required,
@@ -335,6 +345,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'ApproveAssignmentResult');
     }
 
@@ -350,7 +361,7 @@ class MechanicalTurk
     {
         $required = ['AssignmentId'];
         $optional = ['RequesterFeedback'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'RejectAssignment',
             $params,
             $required,
@@ -358,6 +369,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'RejectAssignmentResult');
     }
 
@@ -374,7 +386,7 @@ class MechanicalTurk
     {
         $required = ['AssignmentId'];
         $optional = ['RequesterFeedback'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'ApproveRejectedAssignment',
             $params,
             $required,
@@ -382,6 +394,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'ApproveRejectedAssignmentResult');
     }
 
@@ -397,13 +410,14 @@ class MechanicalTurk
     public function getFileUploadURL($params = [])
     {
         $required = ['AssignmentId', 'QuestionIdentifier'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'GetFileUploadURL',
             $params,
             $required
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'GetFileUploadURLResult');
     }
 
@@ -419,7 +433,7 @@ class MechanicalTurk
     {
         $required = ['HITId'];
         $optional = ['Revert'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'SetHITAsReviewing',
             $params,
             $required,
@@ -427,6 +441,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'SetHITAsReviewingResult');
     }
 
@@ -442,7 +457,7 @@ class MechanicalTurk
     {
         $required = ['HITId'];
         $optional = ['MaxAssignmentsIncrement', 'ExpirationIncrementInSeconds', 'UniqueRequestToken'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'ExtendHIT',
             $params,
             $required,
@@ -450,6 +465,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'ExtendHITResult');
     }
 
@@ -464,13 +480,14 @@ class MechanicalTurk
     public function forceExpireHIT($params = [])
     {
         $required = ['HITId'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'ForceExpireHIT',
             $params,
             $required
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'ForceExpireHITResult');
     }
 
@@ -486,13 +503,14 @@ class MechanicalTurk
     public function disableHIT($params = [])
     {
         $required = ['HITId'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'DisableHIT',
             $params,
             $required
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'DisableHITResult');
     }
 
@@ -507,13 +525,14 @@ class MechanicalTurk
     public function disposeHIT($params = [])
     {
         $required = ['HITId'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'DisposeHIT',
             $params,
             $required
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'DisposeHITResult');
     }
 
@@ -531,7 +550,7 @@ class MechanicalTurk
         $required = ['TestEventType'];
         $optional = [];
 
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'SendTestEventNotification',
             $params,
             $required,
@@ -542,6 +561,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'SendTestEventNotificationResult');
     }
 
@@ -557,7 +577,7 @@ class MechanicalTurk
     {
         $required = ['Subject', 'MessageText', 'WorkerId'];
         $optional = [];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'NotifyWorkers',
             $params,
             $required,
@@ -568,6 +588,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'NotifyWorkersResult');
     }
 
@@ -583,7 +604,7 @@ class MechanicalTurk
     {
         $required = ['WorkerId', 'AssignmentId', 'BonusAmount', 'Reason'];
         $optional = ['UniqueRequestToken'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'GrantBonus',
             $params,
             $required,
@@ -591,6 +612,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'GrantBonusResult');
     }
 
@@ -606,7 +628,7 @@ class MechanicalTurk
     {
         $required = [];
         $optional = ['HITId', 'AssignmentId', 'PageSize', 'PageNumber'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'GetBonusPayments',
             $params,
             $required,
@@ -614,6 +636,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'GetBonusPaymentsResult');
     }
 
@@ -626,11 +649,12 @@ class MechanicalTurk
      */
     public function getAccountBalance()
     {
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'GetAccountBalance'
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'GetAccountBalanceResult');
     }
 
@@ -646,7 +670,7 @@ class MechanicalTurk
     {
         $required = ['Statistic', 'TimePeriod'];
         $optional = ['Count'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'GetRequesterStatistic',
             $params,
             $required,
@@ -654,6 +678,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'GetStatisticResult');
     }
 
@@ -670,7 +695,7 @@ class MechanicalTurk
     {
         $required = ['Statistic', 'WorkerId', 'TimePeriod'];
         $optional = ['Count'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'GetRequesterWorkerStatistic',
             $params,
             $required,
@@ -678,6 +703,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'GetStatisticResult');
     }
 
@@ -693,7 +719,7 @@ class MechanicalTurk
     {
         $required = ['WorkerId', 'Reason'];
         $optional = [];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'UnblockWorker',
             $params,
             $required,
@@ -701,6 +727,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'UnblockWorkerResult');
     }
 
@@ -716,7 +743,7 @@ class MechanicalTurk
     {
         $required = ['WorkerId'];
         $optional = ['Reason'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'UnblockWorker',
             $params,
             $required,
@@ -724,6 +751,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'UnblockWorkerResult');
     }
 
@@ -739,7 +767,7 @@ class MechanicalTurk
     {
         $required = [];
         $optional = ['PageNumber', 'PageSize'];
-        $url = $this->buildURL(
+        $url      = $this->buildURL(
             'GetBlockedWorkers',
             $params,
             $required,
@@ -747,6 +775,7 @@ class MechanicalTurk
         );
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'GetBlockedWorkersResult');
     }
 
@@ -759,7 +788,7 @@ class MechanicalTurk
     protected function startUrl($operation)
     {
         $time = $this->Unix2UTC(time());
-        $url = $this->endpoint;
+        $url  = $this->endpoint;
         $url .= '?Service=' . $this->MTURK_SERVICE;
         $url .= '&AWSAccessKeyId=' . urlencode($this->aws_access_key);
         $url .= '&Version=' . '2014-08-15';
@@ -1000,11 +1029,10 @@ class MechanicalTurk
      */
     protected function processAPIResponse(Response $response, $result)
     {
-        // decode the XML response body
         $decode = $this->decodeRequest($response);
 
-        if ($response->getStatusCode() == 200 AND
-            isset($decode[$result]['Request']['IsValid']) AND
+        if ($response->getStatusCode() == 200 &&
+            isset($decode[$result]['Request']['IsValid']) &&
             $decode[$result]['Request']['IsValid'] == 'True'
         ) {
             return $decode;
@@ -1022,15 +1050,13 @@ class MechanicalTurk
      */
     protected function determineError($decode, $result)
     {
-        if (isset($decode['OperationRequest']['Errors']['Error']['Code']) AND
+        if (isset($decode['OperationRequest']['Errors']['Error']['Code']) &&
             $decode['OperationRequest']['Errors']['Error']['Code'] = 'AWS.NotAuthorized'
         ) {
-            // AWS credentials were rejected
             throw new MTurkException('AWS credentials rejected.', $decode['OperationRequest']['Errors']);
         }
 
         if (isset($decode[$result]['Request']['Errors']['Error'])) {
-            // Request failed due to other factors (e.g., malformed request, insufficient funds)
             throw new MTurkException(
                 'Request returned error. See errors for context.',
                 $decode[$result]['Request']['Errors']
@@ -1099,6 +1125,7 @@ class MechanicalTurk
 
         $response = $this->guzzle->get($url);
 
+        /** @var Response $response */
         return $this->processAPIResponse($response, 'HIT');
     }
 

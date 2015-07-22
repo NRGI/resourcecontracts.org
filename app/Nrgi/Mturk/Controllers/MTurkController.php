@@ -7,6 +7,7 @@ use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\User\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
 
 /**
  * Class MturkController
@@ -25,14 +26,14 @@ class MTurkController extends Controller
     /**
      * @var ActivityService
      */
-    private $activity;
+    protected $activity;
 
     /**
      * @param TaskService     $task
      * @param ContractService $contract
      * @param ActivityService $activity
      */
-    function __construct(TaskService $task, ContractService $contract, ActivityService $activity)
+    public function __construct(TaskService $task, ContractService $contract, ActivityService $activity)
     {
         $this->middleware('auth');
         $this->task     = $task;
@@ -77,10 +78,10 @@ class MTurkController extends Controller
     public function createTasks($id)
     {
         if ($this->task->create($id)) {
-            return redirect()->back()->withSuccess(trans('mturk.sent_to_mturk'));
+            return redirect()->back()->withSuccess(trans('mturk.action.sent_to_mturk'));
         }
 
-        return redirect()->back()->withError(trans('mturk.sent_fail_to_mturk'));
+        return redirect()->back()->withError(trans('mturk.action.sent_fail_to_mturk'));
     }
 
     /**
@@ -171,7 +172,7 @@ class MTurkController extends Controller
     /**
      * @param Request     $request
      * @param UserService $user
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function activity(Request $request, UserService $user)
     {

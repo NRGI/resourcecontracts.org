@@ -1,6 +1,8 @@
 <?php namespace App\Nrgi\Services\Contract\Comment;
 
+use App\Nrgi\Entities\Contract\Comment\Comment;
 use App\Nrgi\Repositories\Contract\Comment\CommentRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -14,7 +16,7 @@ class CommentService
      */
     protected $comment;
     /**
-     * @var LoggerAwareInterface
+     * @var LoggerInterface
      */
     protected $logger;
 
@@ -56,9 +58,10 @@ class CommentService
 
     /**
      * Get Latest Comment by type
+     *
      * @param $contract_id
      * @param $type
-     * @return \App\Nrgi\Entities\Contract\Comment\Comment
+     * @return Collection
      */
     public function getLatest($contract_id, $type)
     {
@@ -68,7 +71,7 @@ class CommentService
     /**
      * Get Contract with pagination
      * @param $id
-     * @return mixed
+     * @return Collection
      */
     public function getPaginate($id)
     {

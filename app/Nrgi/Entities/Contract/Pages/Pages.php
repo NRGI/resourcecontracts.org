@@ -4,6 +4,10 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Pages
+ * @property string  pdf_url
+ * @property string  text
+ * @property int     contract_id
+ * @property int     page_no
  * @package App\Nrgi\Entities\Contract\Pages
  */
 class Pages extends Model
@@ -38,6 +42,6 @@ class Pages extends Model
      */
     public function getPdfUrlAttribute()
     {
-        return getS3FileURL(sprintf('%s/%s.pdf', $this->contract_id , $this->page_no));
+        return getS3FileURL(sprintf('%s/%s.pdf', $this->contract_id, $this->page_no));
     }
 }

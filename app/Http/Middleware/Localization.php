@@ -33,7 +33,7 @@ class Localization
      * Get Language code
      *
      * @param null $lang
-     * @return null
+     * @return string
      */
     public function getLanguage($lang = null)
     {

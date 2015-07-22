@@ -1,10 +1,21 @@
 <?php namespace App\Nrgi\Entities\Contract;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
 
 /**
  * Class Contract
+ * @property Collection               tasks
+ * @property Collection               pages
+ * @property int                      id
+ * @property int                      mturk_status
+ * @property array                    metadata
+ * @property int                      textType
+ * @property string                   title
+ * @property Collection               annotations
+ * @property string                   file
+ * @property int                      pdf_process_status
  * @package App\Nrgi\Entities\Contract
  */
 class Contract extends Model
@@ -56,13 +67,14 @@ class Contract extends Model
     /**
      * MTurk Status
      */
-    const MTURK_SENT = 1;
+    const MTURK_SENT     = 1;
     const MTURK_COMPLETE = 2;
 
     /**
      * Convert json metadata to array
+     *
      * @param $metaData
-     * @return mixed
+     * @return array
      */
     public function getMetadataAttribute($metaData)
     {
@@ -78,7 +90,7 @@ class Contract extends Model
     /**
      * Convert Array metadata to json
      * @param $metaData
-     * @return mixed
+     * @return void
      */
     public function setMetadataAttribute($metaData)
     {
@@ -127,8 +139,9 @@ class Contract extends Model
 
     /**
      * Get Text Type by Key
+     *
      * @param null $key
-     * @return mixed
+     * @return object
      */
     public function getTextType($key = null)
     {
@@ -172,8 +185,9 @@ class Contract extends Model
 
     /**
      * Make metadata value null if value is empty
+     *
      * @param $metadata
-     * @return mixed
+     * @return object
      */
     public function makeNullField($metadata)
     {
@@ -224,7 +238,7 @@ class Contract extends Model
      * @param $code
      * @return string
      */
-    private function getAmlaUrl($code)
+    public function getAmlaUrl($code)
     {
         return isset(config('amla')[$code]) ? config('amla')[$code] : '';
     }

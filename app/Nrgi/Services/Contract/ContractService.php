@@ -166,7 +166,7 @@ class ContractService
     /**
      * Get Contracts Having MTurk tasks
      *
-     * @return Collection
+     * @return Collection|null
      */
     public function getMTurkContracts()
     {
