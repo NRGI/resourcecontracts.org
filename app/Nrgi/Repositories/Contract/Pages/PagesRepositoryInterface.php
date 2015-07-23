@@ -12,10 +12,10 @@ interface PagesRepositoryInterface
     /**
      * Get page Text
      * @param $contractID
-     * @param $pageID
+     * @param $page_no
      * @return Pages
      */
-    public function getText($contractID, $pageID);
+    public function getText($contractID, $page_no);
 
     /**
      * Get result of Full text search
@@ -31,4 +31,13 @@ interface PagesRepositoryInterface
      * @return Int
      */
     public function getTotalPages($conractID);
+
+    /**
+     * Update or create page
+     *
+     * @param array $pageDetail
+     * @return mixed
+     */
+    public function updateOrCreate(array $pageDetail);
+
 }

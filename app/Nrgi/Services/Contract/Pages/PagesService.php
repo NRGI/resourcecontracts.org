@@ -46,42 +46,46 @@ class PagesService
 
     /**
      * Save Page Text
-     * @param $contractID
-     * @param $pageID
+     * @param      $contractID
+     * @param      $page_no
+     * @param      $text
+     * @param bool $log
      * @return bool
      */
-    public function saveText($contractID, $pageID, $text, $log = true)
+    public function saveText($contractID, $page_no, $text, $log = true)
     {
-        if ($page = $this->pages->getText($contractID, $pageID)) {
-            $page->text = $text;
+        $page_detail = [
+            'contract_id' => $contractID,
+            'page_no'     => $page_no,
+            'text'        => $text
+        ];
 
-            try {
-                $page->save();
+        try {
+            $this->pages->updateOrCreate($page_detail);
 
-                if ($log) {
-                    $this->logger->activity(
-                        'contract.log.save_page',
-                        ['page' => $pageID],
-                        $contractID
-                    );
-                }
-
-                $this->logger->info(
-                    "Page text updated",
-                    [
-                        'Contract id' => $contractID,
-                        'Page id '    => $pageID,
-                    ]
+            if ($log) {
+                $this->logger->activity(
+                    'contract.log.save_page',
+                    ['page' => $page_no],
+                    $contractID
                 );
-
-                return true;
-
-            } catch (Exception $e) {
-                $this->logger->error($e->getMessage());
             }
-        }
 
-        throw new ModelNotFoundException();
+            $this->logger->info(
+                "Page text updated",
+                [
+                    'Contract id' => $contractID,
+                    'Page id '    => $page_no,
+                ]
+            );
+
+            return true;
+
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+
+            return false;
+        }
     }
 
     /**

@@ -86,7 +86,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function can($permission, $requireAll = false)
     {
-        if ($this->hasRole('superadmin')) {
+        if ($this->hasRole(['superadmin', 'country-admin'])) {
             return true;
         }
 
@@ -139,13 +139,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function hasCountryRole()
     {
-        $roles = array_keys($this->role);
+        if (isset($this->role)) {
+            $roles = array_keys($this->role);
 
-        if (array_intersect($roles, config('nrgi.country_role'))) {
-            return true;
+            if (array_intersect($roles, config('nrgi.country_role'))) {
+                return true;
+            }
         }
 
         return false;
-
     }
 }
