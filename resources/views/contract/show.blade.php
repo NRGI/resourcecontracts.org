@@ -61,7 +61,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             <a target="_blank" href="{{getS3FileURL($contract->file)}}"
                class="btn btn-default">@lang('contract.download_file') [{{getFileSize($contract->metadata->file_size)}}
                 ]</a>
-            @if($current_user->hasRole('superadmin') || $current_user->can('delete-contract'))
+            @if($current_user->can('delete-contract'))
                 {!!Form::open(['route'=>['contract.destroy', $contract->id], 'style'=>"display:inline",
                 'method'=>'delete'])!!}
                 {!!Form::button(trans('contract.delete'), ['type'=>'submit','class'=>'btn btn-danger confirm',

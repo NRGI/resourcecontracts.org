@@ -1,10 +1,10 @@
 <?php
 namespace App\Nrgi\Scope;
 
-use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ScopeInterface;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class CountryScope
@@ -31,8 +31,8 @@ class CountryScope implements ScopeInterface
      */
     public function apply(Builder $builder, Model $model)
     {
-        if (\Auth::user()->hasCountryRole()) {
-            $country = \Auth::user()->country;
+        if (!Auth::guest() && Auth::user()->hasCountryRole()) {
+            $country = Auth::user()->country;
             if ($builder->getModel()->getTable() == "activity_logs") {
                 $builder->whereHas(
                     'contract',
@@ -52,6 +52,5 @@ class CountryScope implements ScopeInterface
             }
         }
     }
-
 
 }

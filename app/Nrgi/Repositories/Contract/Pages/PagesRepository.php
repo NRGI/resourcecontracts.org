@@ -32,12 +32,12 @@ class PagesRepository implements PagesRepositoryInterface
     /**
      * Get page Text
      * @param $contractID
-     * @param $pageID
+     * @param $page_no
      * @return Pages
      */
-    public function getText($contractID, $pageID)
+    public function getText($contractID, $page_no)
     {
-        return $this->pages->where('contract_id', $contractID)->where('page_no', $pageID)->first();
+        return $this->pages->where('contract_id', $contractID)->where('page_no', $page_no)->first();
     }
 
     /**
@@ -70,4 +70,17 @@ class PagesRepository implements PagesRepositoryInterface
         return $this->pages->where('contract_id', $contractID)->count();
     }
 
+    /**
+     * Update or create page
+     *
+     * @param array $pageDetail
+     * @return mixed
+     */
+    public function updateOrCreate(array $pageDetail)
+    {
+        $page       = $this->pages->firstOrNew(['contract_id' => $pageDetail['contract_id'], 'page_no' => $pageDetail['page_no']]);
+        $page->text = $pageDetail['text'];
+
+        return $page->save();
+    }
 }
