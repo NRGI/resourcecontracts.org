@@ -1,72 +1,43 @@
 @extends('layout.app-full')
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('css/pages.css') }}">
     <link rel="stylesheet" href="{{ asset('js/lib/quill/quill.snow.css') }}"/>
     <link rel="stylesheet" href="{{ asset('js/lib/annotator/annotator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
-    <style>
-    .highlight {
-        background-color: red;
-    }
-
-    .annotation-list,.popup-metadata {
-      display: block;
-      position: absolute;
-      top: 48px;
-      right: 0px;
-      width: 632px;
-      background-color: #fff;
-      padding: 10px 20px;
-      z-index: 101;
-      box-shadow: 1px 2px 6px rgba(0,0,0,0.5);
-      border-radius: 4px;
-      font-size: 14px;
-    }  
-
-    .annotation-list {
-        height: 450px;
-        overflow: scroll;
-    } 
-
-    .annotation-list h3 {
-        font-size: 17px;
-    }
-
-    .annotation-list h3 ~ div {
-        padding-left: 14px;
-    }
-
-    .popup-metadata {
-        width: 400px;  
-        right: 190px;
-    }     
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
 @stop
 
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading"> @lang('contract.editing') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a>
-            <a class="btn btn-default btn-annotation pull-right" href="{{route('contract.annotations.list', $contract->id)}}">Annotations</a>
-            <a class="btn btn-default btn-metadata pull-right" href="{{route('contract.metadata', $contract->id)}}">Metadata</a>
+        <div class="panel-heading">
+            <div class="pull-left"> @lang('contract.editing') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>
+            <a href="{{route('contract.show', $contract->id)}}" class="go-back">Go back to
+                        Contract detail</a>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-default btn-annotation pull-right" href='#'>Annotations</a>
+                <div id="annotations-list-view" class="annotation-list-view" style="display:none"></div>
+                <a class="btn btn-default btn-metadata pull-right" href="#">Metadata</a>
+                <div id="metadata" class="metadata" style="display:none"></div>
+            </div>
         </div>
-
         <div class="view-wrapper" style="background: #F6F6F6">
              <div id="message" style="padding: 0px 16px"></div>
             <div id="pagination"></div>
-            <div id="searchForm"></div>
-            <script type="text/template" id="searchFormTemplate">
-            {!! Form::open(['route' => ['contract.page.search', $contract->id], 'method' => 'POST', 'class'=>'form-inline page-search pull-right', 'style' => 'width: 421px; margin: 0 auto 23px;']) !!}
-            <div class="form-group">
-                <div class="input-group">
-                    {!! Form::text('q', null, ['id'=> 'textfield', 'class' => 'form-control', 'placeholder' => 'Search...' , 'style' => 'padding:15px; width:280px']) !!}
-                </div>
+            <div id="search-form">
+                <form method="POST" action="{{route('contract.page.search', ["id"=>$contract['contract_id']])}}" accept-charset="UTF-8" class="form-inline page-search pull-right">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input id="textfield" class="form-control" placeholder="Search..." name="q" type="text">
+                        </div>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Search">
+                    <a href='#' id="search-results-cache" style="display:none;" class="pull-right">Results</a>
+                </form>                
             </div>
-            {!! Form::submit('Search', ['class' => 'btn btn-primary']) !!}
-            {!! Form::close() !!}
-            </script>
-
             <div class="document-wrap">
             <div class="left-document-wrap" id="annotatorjs">
                     <div class="quill-wrapper">
@@ -82,10 +53,9 @@
                 </div>
                 <div class="right-document-wrap search">
                     <canvas id="pdfcanvas"></canvas>
-                    <div id="SearchResultsList" style='display:none'></div>
-                    <div id="annotations_list" class="annotation-list" style="display:none"></div>                    
+                    <div id="search-results-list" style='display:none'></div>
+                    <!-- <div id="annotations_list" class="annotation-list" style="display:none"></div>                     -->
                 </div>
-                <div class="searchresults"></div>
             </div>
         </div>
 
@@ -93,106 +63,187 @@
 @stop
 
 @section('script')
+    <script src="{{ asset('js/select2.min.js') }}"></script>
     <script src="{{ asset('js/lib/quill/quill.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/lib/annotator/annotator-full.min.js') }}"></script>
+    <script src="{{ asset('js/lib/annotator/annotator-full.min.js') }}"></script>
     <script src="{{ asset('js/lib/pdfjs/pdf.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
     <script src="{{ asset('js/jquery.simplePagination.js') }}"></script>
     <script src="{{ asset('js/lib/underscore.js') }}"></script>
     <script src="{{ asset('js/lib/backbone.js') }}"></script>
-    <script src="{{ asset('js/custom/search.js') }}"></script>
+
+    <script src="{{ asset('js/custom/rc.utils.js') }}"></script>
+    <script src="{{ asset('js/custom/rc.contract.js') }}"></script>
+    <script src="{{ asset('js/custom/rc.page.js') }}"></script>
+    <script src="{{ asset('js/custom/rc.pagination.js') }}"></script>
+    <script src="{{ asset('js/custom/rc.pdf.js') }}"></script>
+    <script src="{{ asset('js/custom/rc.texteditor.js') }}"></script>    
     <script src="{{ asset('js/custom/annotator.plugin.event.js') }}"></script>
     <script src="{{ asset('js/custom/annotator.plugin.categories.js') }}"></script>
-    <script src="{{ asset('js/custom/annotation.js') }}"></script>
-    <script src="{{ asset('js/contractmvc.js') }}"></script>
+    <script src="{{ asset('js/custom/annotator.plugin.tags.js') }}"></script>
+    <script src="{{ asset('js/custom/rc.annotations.js') }}"></script>    
+    <script src="{{ asset('js/custom/rc.search.js') }}"></script>    
+    <script src="{{ asset('js/custom/rc.annotator.js') }}"></script>    
+    <script src="{{ asset('js/custom/rc.metadata.js') }}"></script>
+    <script src="{{ asset('js/custom/rc.scroll.js') }}"></script>
 
     <script>
-    var annotationsCollection = new MyAnnotationCollection()
-    String.prototype.format = function () {
-        var formatted = this;
-        for (var i = 0; i < arguments.length; i++) {
-            var regexp = new RegExp('\\{' + i + '\\}', 'gi');
-            formatted = formatted.replace(regexp, arguments[i]);
-        }
-        return formatted;
-    };
-
+    var app_url = "http://localhost:8000";    
+    var contractEvents = {};
+    _.extend(contractEvents, Backbone.Events);
+    var contractMetadata = {!!json_encode($contract['metadata'])!!};
+    var currentPage = '{{$page->page_no}}';
     var contract = new Contract({
         id: '{{$contract->id}}',
+        metadata: contractMetadata,
         totalPages: '{{$contract->pages->count()}}',
         currentPage: '{{$page->page_no}}',
         currentPageId: '{{$page->id}}',
 
-        editorEl: '#editor',
-        paginationEl: '#pagination',
-        annotationslistEl: '#annotations_list',
-        pdfviewEl: 'pdfcanvas',
-        annotatorjsEl: '#annotatorjs',
-
         canEdit: {{$canEdit}},
         canAnnotate: {{$canAnnotate}},
-
-        textLoadAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
-        textSaveAPI: "{{route('contract.page.store', ['id'=>$contract->id])}}",
-
-        annotatorjsAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
-        annotatationPullAPI: "{{route('contract.annotations', ['id'=>$contract->id])}}"
+        // annotatorjsAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
+        // annotatationPullAPI: "{{route('contract.annotations', ['id'=>$contract->id])}}"        
     });
 
-    var pageView = new PageView({
-        pageModel: contract.getPageModel(),
-        paginationView: new PaginationView({
-            paginationEl: contract.getPaginationEl(),
-            totalPages: contract.getTotalPages(),
-            pageModel: contract.getPageModel()
-        }),
-        textEditorView: new TextEditorView({
-            editorEl: contract.getEditorEl(),
-            pageModel: contract.getPageModel()
-        }),
-        pdfView: new PdfView({
-            pdfviewEl: contract.getPdfviewEl(),
-            pageModel: contract.getPageModel()
-        }),
-        annotatorjsView: new AnnotatorjsView({
-            annotatorjsEl: contract.getAnnotatorjsEl(),
-            pageModel: contract.getPageModel(),
-            contractModel: contract,
-            collection: annotationsCollection,
-            tags:{!! json_encode(trans("codelist/annotation.tags")) !!},
-            categories:{!! json_encode(trans("codelist/annotation.categories")) !!}
-        }),
-        annotationsListView: new AnnotationsListView({
-            annotationslistEl: contract.getAnnotationsListEl(),
-            collection: annotationsCollection,
-            pageModel: contract.getPageModel(),
-            contractModel: contract,
-        }),        
-        searchFormView: new SearchFormView({
-            collection: contract.searchResultCollection,
-            el: '#searchForm'
-        }),
-        searchResultsList: new SearchResultListView({
-            el: '#SearchResultsList',
-            collection: contract.searchResultCollection,
-            pageModel: contract.getPageModel(),
-        }),
+    var pageModel = new Page({
+        pageNumber: currentPage || 1,
+        loadUrl: "{{route('contract.page.get', ['id'=>$contract->id])}}", 
+        saveUrl: "{{route('contract.page.store', ['id'=>$contract->id])}}",
+        contractModel: contract,
+        eventsPipe: contractEvents
+    }).load(currentPage);
+
+    var paginationView = new PaginationView({
+        el: "#pagination",
+        totalPages: contract.getTotalPages(),
+        model: pageModel,
+        eventsPipe: contractEvents
     }).render();
 
-    $('.btn-annotation').click(function(e) {
-        e.preventDefault();
-        pageView.toggleAnnotationList();
+    //text editor module
+    var textEditorView = new TextEditorView({
+        el: "#editor",
+        model: pageModel
+    }).render();
+
+    //pdf view module
+    var pdfView = new PdfView({
+        el: "pdfcanvas",
+        model: pageModel
     });
 
-    $('#saveButton').click(function (el) {
-        pageView.saveClicked();
+    var scroller = new Scroller({
+        editorEl: "#editor",
+        eventsPipe: contractEvents
     });
 
-    $('.btn-metadata').click(function (el) {
-        el.preventDefault();
-        var url = $(this).attr('href');
-        pageView.showMetadata(url);
+    //search module
+    var searchResultCollection = new SearchResultCollection({
+        eventsPipe: contractEvents
     });
+    var searchFormView = new SearchFormView({
+        el: '#search-form',
+        collection: searchResultCollection,
+        url: "{{route('contract.page.search', ["id"=>$contract->id])}}",
+        eventsPipe: contractEvents
+    }).render();
+    var searchResultsList = new SearchResultListView({
+        el: '#search-results-list',
+        collection: searchResultCollection,
+        searchOverlayLayer: '#pdfcanvas',
+        eventsPipe: contractEvents
+    });   
+
+    // $('#saveButton').click(function (el) {
+    //     pageView.saveClicked();
+    // });
 
     </script>
+
+<script type="text/template" id="metadata-view-template">
+    <div class="popup-metadata">
+    <p><strong>Contract Title:</strong><%= contract_name %></p>
+    <p><strong>Country:</strong> <%= country.name %></p>
+    <p><strong>Date of signature:</strong> <%= signature_date %></p>
+    <p><strong>Resource:</strong>
+        <%=resource%>
+    </p></div>
+</script>
+<script type="text/javascript">
+//metadata view module
+var metadataView = new MetadataView({
+    el: "#metadata",
+    metadata: contractMetadata
+}).render();
+var metadataButtonView = new MetadataButtonView({
+    el: '.btn-metadata',
+    metadataView: metadataView
+});
+</script>
+
+<script type="text/template" id="annotation-list-title-template">
+    <div>
+        <span id='total-count'></span>
+        <button id='all'>All - <%= total %></button>
+        <button id='done-annotated'>Done - <%= done %></button>
+        <button id='not-annotated'>Remainings - <%= remaining %></button>
+    </div>
+</script>
+<script type="text/template" id="annotation-category-no-items-template">
+    <div class="annotation-category-not-done">
+        <%= categoryName %> <small>Not annotated yet</small>
+    </div>
+</script>
+<script type="text/template" id="annotation-category-with-items-template">
+    <div class="annotation-category-done">
+        <%= categoryName %> [<%= categoryItemsCount %>]
+        <ul id="<%= elemId %>"></ul>
+    </div>
+</script>
+<script type="text/template" id="annotation-item-view-template">
+    <div>
+        <a href='#' class="quote"><%= quote %> [P <%= page %>]</a>
+        <span class="text"><%= text %></span>
+        <% _.each(tags, function(tag) { %>
+            <span class="tag"><%= tag %></span>
+        <% }); %>
+    </div>
+</script>  
+
+<script type="text/javascript">
+    var categories = {!! json_encode(trans("codelist/annotation.categories")) !!}
+    var annotationCategories = new AnnotationCategories();
+    _.each(categories, function(category) {
+        annotationCategories.add({name: category});
+    });
+    var annotationCollection = new AnnotationCollection();
+    annotationCollection.url = "{{route('contract.annotations', ['id'=>$contract->id])}}";
+    annotationCollection.fetch({reset: true});
+    var annotatorjsView = new AnnotatorjsView({
+        el: "#annotatorjs",
+        model: pageModel,
+        contractModel: contract,
+        api: "{{route('contract.annotations', ['id'=>$contract->id])}}",
+        availableTags: {!! json_encode(trans("codelist/annotation.tags")) !!},
+        collection: annotationCollection,
+        annotationCategories: annotationCategories
+    }).render();
+    var annotationsTitleView = new AnnotationsTitleView({
+        collection: annotationCollection,
+        annotationCategories: annotationCategories
+    });    
+    var annotationsListView = new AnnotationsListView({
+        el: "#annotations-list-view",
+        collection: annotationCollection,
+        annotationCategories: annotationCategories,
+        eventsPipe: contractEvents,
+        annotationsTitleView: annotationsTitleView.render()
+    }).render();
+
+    var annotationsButtonView = new AnnotationsButtonView({
+        el: '.btn-annotation',
+        annotationsListView: annotationsListView
+    });    
+</script>    
 @stop

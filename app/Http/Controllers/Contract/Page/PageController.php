@@ -155,6 +155,7 @@ class PageController extends Controller
         return response()->json(
             [
                 'result'  => 'success',
+                'id'     => $page->id,
                 'pdf'     => $page->pdf_url,
                 'message' => $page->text
             ]
