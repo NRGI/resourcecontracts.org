@@ -50,31 +50,31 @@ class ContractRepository implements ContractRepositoryInterface
     public function getAll(array $filters)
     {
         $query = $this->contract->select('*');
-        $from  = "contracts as c";
+        $from  = "contracts ";
 
         $filters = array_map('trim', $filters);
         extract($filters);
 
         if ($year != '' && $year != 'all') {
-            $query->whereRaw(sprintf("c.metadata->>'signature_year'='%s'", $year));
+            $query->whereRaw(sprintf("contracts.metadata->>'signature_year'='%s'", $year));
         }
 
         if ($country != '' && $country != 'all') {
-            $query->whereRaw(sprintf("c.metadata->'country'->>'code'='%s'", $country));
+            $query->whereRaw(sprintf("contracts.metadata->'country'->>'code'='%s'", $country));
         }
 
         if ($resource != '' && $resource != 'all') {
-            $from .= ",json_array_elements(c.metadata->'resource') r";
+            $from .= ",json_array_elements(contracts.metadata->'resource') r";
             $query->whereRaw("trim(both '\"' from r::text) = '" . $resource . "'");
         }
 
         if ($category != '' && $category != 'all') {
-            $from .= ",json_array_elements(c.metadata->'category') cat";
+            $from .= ",json_array_elements(contracts.metadata->'category') cat";
             $query->whereRaw("trim(both '\"' from cat::text) = '" . $category . "'");
         }
 
         $query->from($this->db->raw($from));
-
+        
         return $query->orderBy('created_datetime', 'DESC')->get();
     }
 
@@ -201,13 +201,13 @@ class ContractRepository implements ContractRepositoryInterface
     public function countTotal($date = '')
     {
         if (is_array($date)) {
-            return $this->contract->whereRaw("to_char(created_datetime, 'YYYY-MM-DD') >= '$date[0]'")->whereRaw(
-                "to_char(created_datetime, 'YYYY-MM-DD') <= '$date[1]'"
+            return $this->contract->whereRaw("date(created_datetime) >= '$date[0]'")->whereRaw(
+                "date(created_datetime) <= '$date[1]'"
             )->count();
         }
 
         if ($date != '') {
-            return $this->contract->whereRaw("to_char(created_datetime, 'YYYY-MM-DD') = '$date'")->count();
+            return $this->contract->whereRaw("date(created_datetime) = '$date'")->count();
         }
 
         return $this->contract->count();

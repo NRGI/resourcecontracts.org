@@ -45,4 +45,11 @@ interface UserRepositoryInterface
      * @return array
      */
     public function getList();
+
+    /**
+     * Get Country Specific Users
+     *
+     * @return Array
+     */
+    public function getCountryUsers();
 }

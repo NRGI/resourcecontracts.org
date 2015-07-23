@@ -11,7 +11,7 @@
                         href="{{route('contract.index')}}">@lang('contract.all_contract')</a>
             </li>
 
-            @if($current_user->hasRole('superadmin'))
+            @if($current_user->hasRole(['superadmin','admin','country-admin']))
                 <li>
                     <a {{in_array('user', Request::segments())? 'class=active' : ''}}
                             href="{{route('user.list')}}">@lang('contract.users')</a>

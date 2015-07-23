@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Entities\Contract;
 
 use Illuminate\Database\Eloquent\Collection;
+use App\Nrgi\Scope\CountryScope;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
 
@@ -219,7 +220,7 @@ class Contract extends Model
     public static function boot()
     {
         parent::boot();
-
+        static::addGlobalScope(new CountryScope);
         static::creating(
             function ($contract) {
                 $contract->metadata_status    = static::STATUS_DRAFT;

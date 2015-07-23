@@ -1,3 +1,6 @@
+@section('css')
+    <link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
+@stop
 <div class="form-group">
     <label class="col-md-4 control-label">Name <span class="red">*</span></label>
 
@@ -40,18 +43,24 @@
 </div>
 
 <div class="form-group">
-    <label class="col-md-4 control-label">Role</label>
-
+    <label class="col-md-4 control-label">Role <span class="red">*</span></label>
     <?php
     $old = null;
     if ($action == 'update') {
         $role = $user->roles->toArray();
-        $old  = isset($role[0]['id']) ? $role[0]['id'] : null;
+        $old  = isset($role[0]['name']) ? $role[0]['name'] : null;
     }
     ?>
-
     <div class="col-md-6">
-        {!! Form::select('role', ['' => 'Select'] + $roles, $old, ['class' => 'form-control'])!!}
+        {!! Form::select('role', ['' => 'Select'] + $roles, $old, ['class' => 'form-control role'])!!}
+    </div>
+</div>
+
+<div class="form-group country" style="display: @if(in_array(old('role'), config("nrgi.country_role")) or in_array($old, config("nrgi.country_role")) or $current_user->hasRole(config("nrgi.country_role"))) block @else none @endif" >
+    <label for="country" class="col-md-4 control-label">@lang('contract.country')<span class="red">*</span></label>
+    <div class="col-sm-6">
+        {!! Form::select('country[]', ['' => 'select'] + $country ,
+        isset($user->country)?$user->country:null, ["class"=>"required form-control"])!!}
     </div>
 </div>
 
@@ -78,3 +87,21 @@
         </button>
     </div>
 </div>
+@section('script')
+    <script src="{{asset('js/select2.min.js')}}"></script>
+    <script>
+        $(function(){
+            $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
+            $('.role').on("change",function() {
+                var countryRoles ={!! json_encode(config("nrgi.country_role")) !!};
+                var role = $(this).val();
+                if(countryRoles.indexOf(role)!=-1){
+                    $('.country').show();
+                }else{
+                    $('.country').hide();
+                }
+            });
+        })
+
+    </script>
+@endsection

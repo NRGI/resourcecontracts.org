@@ -13,7 +13,9 @@ class RoleTableSeeder extends Seeder
     public function run()
     {
         foreach (config('nrgi.roles') as $role) {
-            Role::firstOrCreate($role);
+            if (!Role::where('name', $role['name'])->first()) {
+                Role::firstOrCreate($role);
+            }
         }
     }
 }

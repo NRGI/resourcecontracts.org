@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserRequest;
 use App\Nrgi\Entities\User\Role\Role;
+use App\Nrgi\Services\Contract\CountryService;
 use App\Nrgi\Services\User\UserService;
 use Illuminate\Auth\Guard;
 
@@ -20,21 +21,27 @@ class UserController extends Controller
      * @var Guard
      */
     protected $auth;
+    /**
+     * @var CountryService
+     */
+    protected $countries;
 
     /**
-     * @param UserService $user
-     * @param Guard       $auth
+     * @param UserService    $user
+     * @param CountryService $country
+     * @param Guard          $auth
      */
-    public function __construct(UserService $user, Guard $auth)
+    public function __construct(UserService $user, CountryService $countries, Guard $auth)
     {
         $this->middleware('auth');
         $this->user = $user;
         $this->auth = $auth;
 
-        if (!$this->auth->user()->hasRole('superadmin')) {
+        if (!$this->auth->user()->hasRole(['superadmin', 'admin', 'country-admin'])) {
             return redirect('/home')->withError(trans('contract.permission_denied'))->send();
         }
 
+        $this->countries = $countries;
     }
 
     /**
@@ -57,9 +64,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = $this->user->getAllRoles();
+        $roles   = $this->user->getAllRoles();
+        $country = $this->countries->all();
 
-        return view('user.create', compact('roles'));
+        return view('user.create', compact('roles', 'country'));
     }
 
     /**
@@ -70,7 +78,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $user_detail = $request->only('name', 'email', 'password', 'organization', 'status');
+        $user_detail = $request->only('name', 'email', 'password', 'organization', 'status', 'country');
         $role        = $request->input('role');
 
         if ($this->user->create($user_detail, $role)) {
@@ -88,10 +96,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $roles = Role::lists('name', 'id');
-        $user  = $this->user->find($id);
+        $roles   = $this->user->getAllRoles();
+        $country = $this->countries->all();
+        $user    = $this->user->find($id);
 
-        return view('user.edit', compact('roles', 'user'));
+        return view('user.edit', compact('roles', 'user', 'country'));
     }
 
     /**
@@ -103,7 +112,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
-        $user_detail = $request->only('name', 'email', 'password', 'organization', 'status');
+        $user_detail = $request->only('name', 'email', 'password', 'organization', 'status', 'country');
         $role        = $request->input('role');
 
         if ($this->user->update($id, $user_detail, $role)) {
