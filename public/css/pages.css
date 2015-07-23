@@ -1,0 +1,137 @@
+.panel-default > .panel-heading {
+  font-size: 20px;
+}
+
+#search-form {
+  position: absolute;
+  right: 20px;
+  top: 76px;
+}
+
+input.form-control {
+  height: 29px;
+  width: 200px!important;
+}
+
+#search-results-cache {
+    font-size: 14px;
+    margin: 4px 0 0 4px;
+}
+
+#search-form input[type="submit"] {
+    font-size: 12px;
+}
+
+.highlight {
+    background-color: red;
+}
+
+.annotation-list-view div:first-of-type {
+  margin-bottom: 12px;
+}
+
+.annotation-list-view ,.popup-metadata {
+  display: block;
+  position: absolute;
+  top: 48px;
+  right: 0px;
+  width: 632px;
+  background-color: #fff;
+  padding: 10px 20px;
+  z-index: 101;
+  box-shadow: 1px 2px 6px rgba(0,0,0,0.5);
+  border-radius: 4px;
+  font-size: 14px;
+}  
+
+.annotation-list-view {
+    height: 450px;
+    overflow: scroll;
+} 
+
+.annotation-list-view  h3 {
+    font-size: 17px;
+}
+
+.annotation-list-view  h3 ~ div {
+    padding-left: 14px;
+}
+
+.popup-metadata {
+    width: 400px;  
+    right: 190px;
+}
+
+.select2-selection__choice {
+    display: inline-block;
+    padding: 0 8px;
+    margin-bottom: 2px;
+    line-height: 1.6;
+    font-weight: bold;
+    background-color: rgb(230, 230, 230);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -o-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.select2-search__field {
+    padding: 4px 8px!important;
+}
+
+.select2-results__option {
+    font-size: 12px!important;
+}
+
+.annotation-category-done ul {
+    margin-top: 6px;
+    padding-left: 24px;
+}
+
+.annotation-category-done ul li {
+    margin-bottom: 18px;
+}
+
+.annotation-category-done,.annotation-category-not-done {
+    border-left: 2px solid #4F9E06;
+    padding-left: 12px;
+    margin-bottom: 14px;
+}
+
+.annotation-category-not-done {
+    border-left: 2px solid #f00;
+}
+
+.annotation-item {
+    font-size: 13px;
+}
+
+.annotation-item span {
+    margin-bottom: 5px;
+}
+
+.annotation-item .quote {
+    display: block;
+}
+
+.annotation-item .text {
+    color: #777;
+    margin: 4px 0 10px!important;
+    display: block;
+    font-style: normal!important;
+}
+
+.tag {
+    background-color: #eee;
+    font-size: 11px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-style: normal!important;
+}
+
+.go-back {
+  font-size: 12px;
+  background: url(../images/ic_sprite.png) no-repeat -270px -269px;
+  padding-left: 16px;
+  display: inherit;
+}

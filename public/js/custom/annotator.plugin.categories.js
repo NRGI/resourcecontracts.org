@@ -1,10 +1,5 @@
-var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty,
-  indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
-
 Annotator.Plugin.Categories = (function(superClass) {
-  extend(Categories, superClass);
+  __extends(Categories, superClass);
 
   Categories.prototype.options = {
     categories: [],
@@ -48,7 +43,7 @@ Annotator.Plugin.Categories = (function(superClass) {
   };
 
   function Categories(element, options) {
-    this.changeSelectedCategory = bind(this.changeSelectedCategory, this);
+    this.changeSelectedCategory = __bind(this.changeSelectedCategory, this);
     Categories.__super__.constructor.call(this, element, options);
     this.element = element;
   }
@@ -86,7 +81,8 @@ Annotator.Plugin.Categories = (function(superClass) {
 
   Categories.prototype.setSelectedCategory = function(currentCategory) {
     $(this.field).find('.annotator-category').removeClass(this.options.classForSelectedCategory);
-    if(currentCategory) $(this.field).find('select').val(currentCategory);    
+    if(currentCategory) $(this.field).find('select').val(currentCategory);   
+    $('#annotation-plugin-select-category').select2({placeholder: 'Select Category'});
     return $(this.field).find('.annotator-category:contains(' + currentCategory + ')').addClass(this.options.classForSelectedCategory);
   };
 
@@ -119,7 +115,7 @@ Annotator.Plugin.Categories = (function(superClass) {
       window.alert('You did not choose a category, so the default has been chosen.');
       annotation.category = this.options.category[0];
     }
-    if ((annotation.category == null) || !annotation.text) {
+    if (annotation.category == null) {
       annotation.category = this.options.emptyCategory;
     }
     return this.changeHighlightColors([annotation]);
