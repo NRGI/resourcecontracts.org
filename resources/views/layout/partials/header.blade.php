@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}" />
     <link rel="stylesheet" href="{{asset('css/datepicker.css')}}" />
     <meta name="_token" content="{{ csrf_token() }}"/>
+    <script>
+		var app_url = '<?php echo url('/');?>';
+	</script>
     @yield('css')
 </head>
 <body>
