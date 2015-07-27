@@ -97,6 +97,9 @@ return [
     'disclosure_mode'               => "Disclosure Mode",
     'participation_share'           => "Participation Share",
     'amla'                          => "Current mining legislation at AMLA",
+    'review_text'                   => "Review text",
+    'edit_metadata'                 => "Edit metadata",
+    'annotate'                      => "Annotate",
     /*Logs*/
     'log'                           => [
         'save'      => 'Contract created',

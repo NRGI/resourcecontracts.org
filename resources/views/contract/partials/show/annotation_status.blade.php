@@ -2,7 +2,6 @@
 use App\Nrgi\Entities\Contract\Annotation;
 
 ?>
-<strong>@lang('Annotations'):</strong>
 @if($annotationStatus == Annotation::PUBLISHED)
     <span class="published">@lang('Published')</span>
 @elseif($annotationStatus == Annotation::COMPLETED)

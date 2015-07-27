@@ -161,3 +161,4 @@ use App\Nrgi\Entities\Contract\Contract; ?>
         </div>
     </div>
 @endif
+<a style="padding-left: 5px" href="{{route('contract.pages', ['id'=>$contract->id])}}?action=edit">@lang('contract.review_text')</a>

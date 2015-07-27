@@ -149,3 +149,5 @@ use App\Nrgi\Entities\Contract\Contract; ?>
         </div>
     </div>
 @endif
+
+<a style="padding-left: 10px" href="{{route('contract.edit', $contract->id)}}" >@lang('contract.edit_metadata')</a>
