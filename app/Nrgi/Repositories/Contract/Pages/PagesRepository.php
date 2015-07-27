@@ -52,10 +52,7 @@ class PagesRepository implements PagesRepositoryInterface
             $this->db->raw("contract_id, page_no, ts_headline(text, plainto_tsquery('" . $query . "')) as text")
         )
                            ->whereRaw("to_tsvector(text) @@ plainto_tsquery('" . $query . "')")
-                           ->orderBy(
-                               $this->db->raw("ts_rank(to_tsvector(text), plainto_tsquery('" . $query . "'))"),
-                               'DESC'
-                           )
+                           ->orderBy('page_no', 'ASC')
                            ->where('contract_id', $contract_id)
                            ->get()->toArray();
     }
