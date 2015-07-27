@@ -217,7 +217,6 @@ class ContractService
             ];
             try {
                 $contract = $this->contract->save($data);
-
                 $this->logger->activity('contract.log.save', ['contract' => $contract->title], $contract->id);
 
                 $this->logger->info(
@@ -291,7 +290,7 @@ class ContractService
     /**
      * Update Contract
      *
-     * @param adrray $formData
+     * @param array $formData
      * @return bool
      */
     public function updateContract($contractID, array $formData)
@@ -596,9 +595,51 @@ class ContractService
      */
     protected function deleteContractFileAndFolder($contract)
     {
-        $this->deleteFileFromS3($contract->file);
         $this->storage->disk('s3')->deleteDirectory($contract->id);
-        $dir = sprintf('%s/%s/%s', public_path(), static::UPLOAD_FOLDER, $contract->id);
-        $this->filesystem->deleteDirectory($dir);
     }
+
+    /**
+     * Move pdf file
+     *
+     * @param null $contract_id
+     * @return bool
+     */
+    public function movePdFToFolder($contract_id = null)
+    {
+        if (is_null($contract_id)) {
+            $contracts = $this->contract->getList();
+
+            foreach ($contracts as $contract) {
+                $file   = $contract->file;
+                $moveTo = sprintf('%s/%s', $contract->id, $contract->file);
+                $this->moveS3File($file, $moveTo);
+            }
+
+            return true;
+        }
+
+        $contract = $this->contract->findContract($contract_id);
+        $file     = $contract->file;
+        $moveTo   = sprintf('%s/%s', $contract->id, $contract->file);
+        $this->moveS3File($file, $moveTo);
+
+        return true;
+    }
+
+    /**
+     * Move File on S3
+     *
+     * @param $file
+     * @param $moveTo
+     */
+    function moveS3File($file, $moveTo)
+    {
+        try {
+            $this->storage->disk('s3')->move($file, $moveTo);
+            $this->logger->info(sprintf('%s move to %s', $file , $moveTo));
+        } catch (Exception $e) {
+            $this->logger->error('Could not move pdf file : ' . $e->getMessage());
+        }
+    }
+
 }

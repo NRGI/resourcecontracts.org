@@ -83,9 +83,23 @@ class Contract extends Model
 
         $metaData->amla_url = $this->getAmlaUrl($metaData->country->code);
 
-        $metaData->file_url = getS3FileURL($this->file);
+        $metaData->file_url = $this->file_url;
 
         return $this->makeNullField($metaData);
+    }
+
+    /**
+     * Get pdf url
+     *
+     * @return mixed
+     */
+    public function getFileUrlAttribute()
+    {
+        if ($this->pdf_process_status == static::PROCESSING_COMPLETE) {
+            return getS3FileURL($this->id . '/' . $this->file);
+        }
+
+        return getS3FileURL($this->file);
     }
 
     /**

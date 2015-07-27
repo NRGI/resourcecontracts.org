@@ -51,14 +51,13 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 @stop
 
 @section('content')
-
     <div class="panel panel-default">
         <div class="panel-heading">{{$contract->title}}</div>
         <div class="action-btn pull-right" style="padding: 20px;">
             <a href="{{route('activitylog.index')}}?contract={{$contract->id}}"
                class="btn btn-default">@lang('activitylog.activitylog')</a>
             <a href="{{route('contract.edit', $contract->id)}}" class="btn btn-default">@lang('contract.edit')</a>
-            <a target="_blank" href="{{getS3FileURL($contract->file)}}"
+            <a target="_blank" href="{{$contract->metadata->file_url}}"
                class="btn btn-default">@lang('contract.download_file') [{{getFileSize($contract->metadata->file_size)}}
                 ]</a>
             @if($current_user->can('delete-contract'))
