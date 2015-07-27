@@ -37,7 +37,8 @@
 <div class="form-group">
     {!! Form::label('language', trans('contract.language'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
-        {!! Form::select('language', [''=>trans('codelist/language')['major'],'Other'=>trans('codelist/language')['minor']],
+        {!! Form::select('language',
+        [''=>trans('codelist/language')['major'],'Other'=>trans('codelist/language')['minor']],
         isset($contract->metadata->language)?$contract->metadata->language:null, ["class"=>"form-control"])!!}
     </div>
 </div>
@@ -46,7 +47,8 @@
     <label for="country" class="col-sm-2 control-label">@lang('contract.country') <span class="red">*</span></label>
 
     <div class="col-sm-7">
-        {!! Form::select('country', ['' => 'select'] + $country ,
+        <?php $country_list = ['' => 'select'] + $country;?>
+        {!! Form::select('country', $country_list ,
         isset($contract->metadata->country->code)?$contract->metadata->country->code:null, ["class"=>"required
         form-control"])!!}
         <label id="country-error" class="error" for="country"></label>
@@ -179,8 +181,8 @@
                         trans('contract.jurisdiction_of_incorporation'),
                         ['class'=>'col-sm-2 control-label'])!!}
                         <div class="col-sm-7">
-                            {!! Form::select('company[$i][jurisdiction_of_incorporation]', ['' => 'select'] + $country ,
-                            isset($contract->metadata->country->code)?$contract->metadata->country->code:null,
+                            {!! Form::select("company[$i][jurisdiction_of_incorporation]", ['' => 'select'] + $country ,
+                            isset($v->jurisdiction_of_incorporation)?$v->jurisdiction_of_incorporation:null,
                             ["class"=>"form-control"])!!}
                         </div>
                     </div>
@@ -248,7 +250,8 @@
                         </div>
                     </div>
                     @if($k > 0)
-                        <button type="button" class="delete btn btn-danger">Delete</button>
+                        <div class="delete">delete</div>
+                        {{--<button type="button" class="delete btn btn-danger">Delete</button>--}}
                     @endif
 
                 </div>
@@ -257,7 +260,7 @@
             @endforeach
         @endif
     @else
-        <div class="item" >
+        <div class="item">
             <div class="form-group">
                 {!! Form::label('company_name', trans('contract.company_name'), ['class'=>'col-sm-2 control-label'])!!}
                 <div class="col-sm-7">
@@ -333,135 +336,11 @@
 
 </div>
 
-@section('script')
-    <script src="{{asset('js/jquery.validate.min.js')}}"></script>
-    <script src="{{asset('js/select2.min.js')}}"></script>
-    <script src="{{asset('js/jquery.datetimepicker.js')}}"></script>
-    <script src="{{asset('js/contract.js')}}"></script>
-    <script type="text/template" id="company-template">
-        <div class="item">
-        <div class="form-group">
-        {!! Form::label('company_name', trans('contract.company_name'), ['class'=>'col-sm-2 control-label'])!!}
-        <div class="col-sm-7">
-        {!! Form::text("company[0][name]",null,["class"=>"form-control"])!!}
-        </div>
-        </div>
-
-        <div class="form-group">
-        {!! Form::label('jurisdiction_of_incorporation', trans('contract.jurisdiction_of_incorporation'),
-                ['class'=>'col-sm-2 control-label'])!!}
-        <div class="col-sm-7">
-        {!! Form::select('company[0][jurisdiction_of_incorporation]', ['' => 'select'] + $country ,
-                isset($contract->metadata->country->code)?$contract->metadata->country->code:null,
-        ["class"=>"form-control template"])!!}
-        </div>
-        </div>
-
-        <div class="form-group">
-        {!! Form::label('registration_agency', trans('contract.registry_agency'), ['class'=>'col-sm-2
-        control-label'])!!}
-        <div class="col-sm-7">
-        {!! Form::text("company[0][registration_agency]",null,["class"=>"form-control"])!!}
-        </div>
-        </div>
-
-        <div class="form-group">
-        {!! Form::label('incorporation_date', trans('contract.incorporation_date'), ['class'=>'col-sm-2
-        control-label'])!!}
-        <div class="col-sm-7">
-        {!! Form::text("company[0][company_founding_date]",null,["class"=>"datepicker form-control",
-                'placeholder'
-                        => 'YYYY-MM-DD'])!!}
-        </div>
-        </div>
-
-        <div class="form-group">
-        {!! Form::label('company_address', trans('contract.company_address'), ['class'=>'col-sm-2
-        control-label'])!!}
-        <div class="col-sm-7">
-        {!! Form::text("company[0][company_address]",null,["class"=>"form-control"])!!}
-        </div>
-        </div>
-
-        <div class="form-group">
-        {!! Form::label('company_number', trans('contract.company_number'), ['class'=>'col-sm-2
-        control-label'])!!}
-        <div class="col-sm-7">
-        {!! Form::text("company[0][company_number]",null,["class"=>"form-control"])!!}
-        </div>
-        </div>
-
-        <div class="form-group">
-        {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2
-        control-label'])!!}
-        <div class="col-sm-7">
-        {!! Form::text("company[0][parent_company]",null,["class"=>"form-control"])!!}
-        </div>
-        </div>
-
-
-        <div class="form-group">
-        <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> {!!
-                Form::label('open_corporate_id',trans('contract.open_corporate_id'), ['class'=>'col-sm-2
-        control-label'])!!}</a>
-
-        <div class="col-sm-7">
-        {!! Form::text("company[0][open_corporate_id]",null,["class"=>"digit form-control"])!!}
-        </div>
-        </div>
-        </div>
-    </script>
-    <script>
-        $(function () {
-            var item = {{$i or 0}};
-            var template = $('#company-template').html();
-            $(document).on('click', '.company .item .delete', function (e) {
-                $(this).parent().remove();
-            });
-            $('.new-company').on('click', function (e) {
-                e.preventDefault();
-                item += 1;
-                var newblock = template.replace(new RegExp('[0]', 'g'), item);
-//                var s =$(newblock).find('select')[0];
-//                console.log(s);
-//                $(s).select2('destroy');
-                var deleteBtn = "<button type='button' class='delete btn btn-danger'>Delete</button>";
-                $('.company .item:last-child').after('<div id="item' + item + '" class="item">' + newblock + deleteBtn + '</div>');
-//                $('#item'+item).find('select')[0].select2('destroy');
-                $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
-                $('#item' + item).find('input[type=text]').val('');
-                $('.datepicker').datetimepicker({
-                    timepicker: false,
-                    format: 'Y-m-d',
-                    scrollInput: false
-                });
-            })
-        });
-    </script>
-@stop
 
 <button type="button" class="btn btn-default new-company">Add new company</button>
 
 <h3>@lang('contract.license_and_project')</h3>
 <hr/>
-<div class="form-group">
-    {!! Form::label('license_name', trans('contract.license_name'), ['class'=>'col-sm-2 control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::text('license_name',
-        isset($contract->metadata->license_name)?$contract->metadata->license_name:null,
-        ["class"=>"form-control"])!!}
-    </div>
-</div>
-
-<div class="form-group">
-    {!! Form::label('license_identifier', trans('contract.license_identifier'), ['class'=>'col-sm-2 control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::text('license_identifier',
-        isset($contract->metadata->license_identifier)?$contract->metadata->license_identifier:null,
-        ["class"=>"form-control"])!!}
-    </div>
-</div>
-
 <div class="form-group">
     {!! Form::label('project_title', trans('contract.project_title'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
@@ -480,6 +359,85 @@
     </div>
 </div>
 
+<div class="concession">
+    @if(isset($contract->metadata->concession) || old('concession'))
+        <?php
+        $concession = empty(old('concession')) ? $contract->metadata->concession : old('concession');
+        $j = 0;
+        ?>
+
+        @if(count($concession)>0)
+            @foreach($concession as $k => $v)
+                <div class="con-item" {{$k ==0 ? 'id=template' : ''}}>
+            <div class="form-group">
+                {!! Form::label('license_name', trans('contract.license_name'), ['class'=>'col-sm-2 control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::text("concession[$j][license_name]",
+                    isset($v->license_name)?$v->license_name:null,
+                    ["class"=>"form-control"])!!}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('license_identifier', trans('contract.license_identifier'), ['class'=>'col-sm-2
+                control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::text("concession[$j][license_identifier]",
+                    isset($v->license_identifier)?$v->license_identifier:null,
+                    ["class"=>"form-control"])!!}
+                </div>
+
+            </div>
+                    @if($k>0)
+                        <div class="delete">delete</div>
+                    @endif
+        </div>
+
+                <?php $j++?>
+     @endforeach
+    @endif
+     @else
+        <div class="con-item">
+            <div class="form-group">
+                {!! Form::label('license_name', trans('contract.license_name'), ['class'=>'col-sm-2 control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::text("concession[0][license_name]",null,
+                    ["class"=>"form-control"])!!}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('license_identifier', trans('contract.license_identifier'), ['class'=>'col-sm-2
+                control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::text("concession[0][license_identifier]",null,
+                    ["class"=>"form-control"])!!}
+
+                </div>
+
+            </div>
+        </div>
+    @endif
+
+</div>
+
+<div class="new-concession">Add More</div>
+
+@section('script')
+    <script src="{{asset('js/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('js/select2.min.js')}}"></script>
+    <script src="{{asset('js/jquery.datetimepicker.js')}}"></script>
+    <script src="{{asset('js/mustache.min.js')}}"></script>
+    @include('contract.company_template')
+    <script>
+        var i = {{$i or 0}};
+        var j = {{$j or 0}};
+        var country_list = {!!json_encode($country_list)!!};
+    </script>
+    <script src="{{asset('js/contract.js')}}"></script>
+@stop
+
+
 <h3>@lang('contract.source')</h3>
 <hr/>
 
@@ -495,7 +453,7 @@
 <div class="form-group">
     {!! Form::label('disclosure_mode', trans('contract.disclosure_mode'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
-        {!! Form::select('disclosure_mode', trans('codelist/disclosure_mode'),
+        {!! Form::select('disclosure_mode', ['' => 'select']+trans('codelist/disclosure_mode'),
         isset($contract->metadata->disclosure_mode)?$contract->metadata->disclosure_mode:null, [
         "class"=>"form-control"])!!}
     </div>

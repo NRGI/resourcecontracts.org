@@ -1,7 +1,6 @@
 @extends('layout.app')
 
 @section('content')
-
     <div class="panel panel-default">
         <div class="panel-heading"> Editing <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span></div>
 

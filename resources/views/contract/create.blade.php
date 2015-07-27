@@ -1,5 +1,4 @@
 @extends('layout.app')
-
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">@lang('contract.add')</div>

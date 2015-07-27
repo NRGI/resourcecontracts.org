@@ -275,8 +275,7 @@ class ContractService
                 "translation_from_original",
                 "translation_parent",
                 "company",
-                "license_name",
-                "license_identifier",
+                "concession",
                 "project_title",
                 "project_identifier",
                 "source_url",
@@ -292,11 +291,12 @@ class ContractService
     /**
      * Update Contract
      *
-     * @param array $formData
+     * @param adrray $formData
      * @return bool
      */
     public function updateContract($contractID, array $formData)
     {
+
         try {
             $contract = $this->contract->findContract($contractID);
         } catch (Exception $e) {

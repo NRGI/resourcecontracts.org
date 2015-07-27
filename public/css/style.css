@@ -360,10 +360,22 @@ header {
     color: red
 }
 
-.company .item {
+.company .item,.con-item {
     background: #F4F4F4;
     padding: 15px;
     margin-bottom: 20px;
+    position: relative;
+}
+
+.company .delete,.con-item .delete {
+    position: absolute;
+    top: 7px;
+    right: 15px;
+    background: url(../images/ic-delete.png) no-repeat right;
+    text-indent: -9999px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 }
 
 .btn-annotation,.btn-metadata {
@@ -492,4 +504,42 @@ header {
 }
 .mturk-btn-group > form{
     display: inline-block;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+.concession {
+    border-top: 1px dashed #ccc;
+    padding-top: 20px;
+}
+
+.con-item:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+    margin: 0;
+    background: transparent;
+}
+
+.new-company {
+    color: #286090;
+    border: 1px solid #286090;
+}
+
+.new-company:hover {
+    background: #286090;
+    color: #fff;
+}
+
+.new-concession {
+    background: url(../images/ic-add.png) no-repeat left;
+    padding-left: 18px;
+    color: #286090;
+    cursor: pointer;
+}
+
+.license-wrap li:nth-child(even) {
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
 }
