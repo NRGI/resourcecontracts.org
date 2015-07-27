@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
 @stop
 
-@section('content')
 
+@section('content')
     <div class="panel panel-default">
         <div class="panel-heading">
-            <div class="pull-left"> @lang('contract.editing') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>
+            <div class="wordwrap pull-left"> @lang('contract.editing')
+                <span>{{str_limit($contract->title, 100)}}</span>
+
             <a href="{{route('contract.show', $contract->id)}}" class="go-back">Go back to
                         Contract detail</a>
             </div>
