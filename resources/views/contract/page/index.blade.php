@@ -90,7 +90,6 @@
     <script src="{{ asset('js/custom/rc.scroll.js') }}"></script>
 
     <script>
-    var app_url = "http://localhost:8000";    
     var contractEvents = {};
     _.extend(contractEvents, Backbone.Events);
     var contractMetadata = {!!json_encode($contract['metadata'])!!};

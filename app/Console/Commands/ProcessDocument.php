@@ -1,7 +1,6 @@
 <?php namespace App\Console\Commands;
 
 use App\Nrgi\Entities\Contract\Contract;
-use App\Nrgi\Entities\Contract\Pages\Pages;
 use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
