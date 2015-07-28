@@ -114,6 +114,7 @@ interface ContractRepositoryInterface
 
     /**
      * Get Contract List
+     * @param $where
      * @return mixed
      */
     public function getList();
@@ -124,4 +125,12 @@ interface ContractRepositoryInterface
      * @return collection
      */
     public function getMTurkContracts();
+
+    /**
+     * Get Contract with pdf process status
+     *
+     * @param $status
+     * @return Collection
+     */
+    public function getContractWithPdfProcessingStatus($status);
 }

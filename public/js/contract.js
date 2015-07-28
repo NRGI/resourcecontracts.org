@@ -33,7 +33,7 @@ $(function () {
         i += 1;
         var template = $('#company-template').html();
         Mustache.parse(template);
-        var rendered = Mustache.render(template, {item: i, country: country_list});
+        var rendered = Mustache.render(template, {item: i});
         $('.company .item:last-child').after(rendered);
         $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
         $('.datepicker').datetimepicker({
@@ -49,11 +49,10 @@ $(function () {
 
     $('.new-concession').on('click', function (e) {
         e.preventDefault();
-        console.log(j);
+        j += 1;
         var template = $('#concession-template').html();
         Mustache.parse(template);
         var rendered = Mustache.render(template, {item: j});
         $('.concession .con-item:last-child').after(rendered);
-        j += 1;
     })
 });

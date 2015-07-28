@@ -254,4 +254,15 @@ class ContractRepository implements ContractRepositoryInterface
         return $this->contract->with('tasks')->where('mturk_status', '!=', '')->get();
     }
 
+
+    /**
+     * Get Contract with pdf process status
+     *
+     * @param $status
+     * @return Collection
+     */
+    public function getContractWithPdfProcessingStatus($status)
+    {
+        return $this->contract->where('pdf_process_status', $status)->get();
+    }
 }
