@@ -254,6 +254,7 @@ class ContractService
                 $formData['signature_date']
             )
         ) : '';
+
         $formData['country']        = $this->countryService->getInfoByCode($formData['country']);
         $formData['resource']       = (!empty($formData['resource'])) ? $formData['resource'] : [];
         $formData['category']       = (!empty($formData['category'])) ? $formData['category'] : [];

@@ -1,16 +1,14 @@
 <?php
 return [
-    'Concession'                                 => 'Concession',
-    'Convention'                                 => 'Convention',
-    'Exploitation Permit/License'                => 'Exploitation Permit/License',
-    'Exploration Permit/License'                 => 'Exploration Permit/License',
-    'Investment Agreement'                       => 'Investment Agreement',
-    'Joint Venture'                              => 'Joint Venture',
-    'Memorandum of Understanding'                => 'Memorandum of Understanding',
-    'Operation'                                  => 'Operation',
-    'Production sharing Agreements and Contract' => 'Production sharing Agreements and Contract',
-    'Profit Sharing Contract'                    => 'Profit Sharing Contract',
-    'Service Contract'                           => 'Service Contract',
-    'Other'                                      => 'Other',
-
+    "Production or Profit Sharing Agreement"                       => "Production or Profit Sharing Agreement",
+    "Investor - State Agreement"                                   => "Investor - State Agreement",
+    "Exploration Permit/License"                                   => "Exploration Permit/License",
+    "Service Contract"                                             => "Service Contract",
+    "Exploitation Permit/License"                                  => "Exploitation Permit/License",
+    "Joint Venture Agreement"                                      => "Joint Venture Agreement",
+    "Permis de recherche"                                          => "Permis de recherche",
+    "Investment Promotion Agreements and Stabilization Agreements" => "Investment Promotion Agreements and Stabilization Agreements",
+    "Other"                                                        => "Other",
 ];
+
+
