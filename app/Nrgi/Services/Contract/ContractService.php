@@ -607,7 +607,7 @@ class ContractService
     public function movePdFToFolder($contract_id = null)
     {
         if (is_null($contract_id)) {
-            $contracts = $this->contract->getList();
+            $contracts = $this->contract->getContractWithPdfProcessingStatus(Contract::PROCESSING_COMPLETE);
 
             foreach ($contracts as $contract) {
                 $file   = $contract->file;
@@ -636,7 +636,7 @@ class ContractService
     {
         try {
             $this->storage->disk('s3')->move($file, $moveTo);
-            $this->logger->info(sprintf('%s move to %s', $file , $moveTo));
+            $this->logger->info(sprintf('%s move to %s', $file, $moveTo));
         } catch (Exception $e) {
             $this->logger->error('Could not move pdf file : ' . $e->getMessage());
         }
