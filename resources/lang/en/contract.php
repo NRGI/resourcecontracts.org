@@ -100,6 +100,8 @@ return [
     'review_text'                   => "Review text",
     'edit_metadata'                 => "Edit metadata",
     'annotate'                      => "Annotate",
+    'is_operator'                   => "Is Operator?",
+    'operator'                      => 'Operator',
     /*Logs*/
     'log'                           => [
         'save'      => 'Contract created',

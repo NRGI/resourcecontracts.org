@@ -233,10 +233,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     @endif
                 </li>
             @endif
-            @if(isset($contract->metadata->participation_share))
-                <li><strong>@lang('contract.participation_share'):</strong> {{$contract->metadata->participation_share}}
-                </li>
-            @endif
+
             @if(isset($contract->metadata->company))
                 <?php $companies = $contract->metadata->company;?>
                 @if(count($companies)>0)
@@ -245,6 +242,10 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                             <div style="margin-bottom: 20px; border-bottom:1px solid #ccc; padding-bottom:20px; ">
 
                                 <p><strong>@lang('contract.company_name'):</strong>  {{$v->name}}</p>
+                                @if(isset($v->participation_share))
+                                    <p><strong>@lang('contract.participation_share'):</strong> {{$v->participation_share}}
+                                    </p>
+                                @endif
 
                                 <p><strong>@lang('contract.jurisdiction_of_incorporation')
                                         :</strong> {{@trans('codelist/country')[$v->jurisdiction_of_incorporation]}}
@@ -266,6 +267,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                         <a target="_blank"
                                            href="https://opencorporates.com/companies/{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
                                 </p>
+                                @if(isset($v->operator)) <p><strong>@lang('contract.operator'):</strong>@if($v->operator==1)Yes @else No @endif</p>@endif
                             </div>
                         @endforeach
                     </li>

@@ -6,6 +6,13 @@
             <input class="form-control" name="company[{{item}}][name]" type="text">
         </div>
     </div>
+    <div class="form-group">
+                <label for="participation_share" class="col-sm-2
+                control-label">Participation Share</label>
+                <div class="col-sm-7">
+                    <input class="form-control" step="any" min="0" max="1" name="company[{{item}}][participation_share]" type="text">
+                </div>
+    </div>
 
     <div class="form-group">
         <label for="jurisdiction_of_incorporation" class="col-sm-2 control-label">Jurisdiction of Incorporation</label>
@@ -62,8 +69,17 @@
             <input class="digit form-control" name="company[{{item}}][open_corporate_id]" type="text">
         </div>
     </div>
+    <div class="form-group">
+      <label for="parent_company" class="col-sm-2
+        control-label">Is Operator?</label>
+        <div class="col-sm-7">
+            <input  name="company[{{item}}][operator]" type="checkbox" value="" class="operator">
+            <input  name="company[{{item}}][operator]" type="hidden" value="" class="hidden-operator">
+        </div>
+    </div>
     <div class="delete">delete</div>
 </div>
+
 </script>
 
 <script id="concession-template" type="x-tmpl-mustache">
@@ -87,4 +103,5 @@
 
     <div class="delete">delete</div>
   </div>
+
 </script>

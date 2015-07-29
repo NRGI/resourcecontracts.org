@@ -144,15 +144,7 @@
 </div>
 
 
-<div class="form-group">
-    {!! Form::label('participation_share', trans('contract.participation_share'), ['class'=>'col-sm-2
-    control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::input('text','participation_share',
-        isset($contract->metadata->participation_share)?$contract->metadata->participation_share:null,
-        ["class"=>"form-control","step"=>"any","min"=>0,"max"=>1])!!}
-    </div>
-</div>
+
 
 
 <h3>@lang('contract.company')</h3>
@@ -173,6 +165,14 @@
                             {!! Form::text("company[$i][name]",
                             isset($v->name)?$v->name:null,
                             ["class"=>"form-control"])!!}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('participation_share', trans('contract.participation_share'), ['class'=>'col-sm-2
+                        control-label'])!!}
+                        <div class="col-sm-7">
+                            {!! Form::input('text',"company[$i][participation_share]",isset($v->participation_share)?$v->participation_share:null ,["class"=>"form-control","step"=>"any","min"=>0,"max"=>1])!!}
                         </div>
                     </div>
 
@@ -249,9 +249,15 @@
                             ["class"=>"digit form-control"])!!}
                         </div>
                     </div>
+                    <div class="form-group">
+                        {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
+                        <div class="col-sm-7">
+                            {!! Form::checkbox("company[$i][operator]",'1', isset($v->operator)?$v->operator:null,['class'=>'operator']) !!}
+                            <input  name=company[{{$i}}][operator] type="hidden" value="" class="hidden-operator">
+                        </div>
+                    </div>
                     @if($k > 0)
                         <div class="delete">delete</div>
-                        {{--<button type="button" class="delete btn btn-danger">Delete</button>--}}
                     @endif
 
                 </div>
@@ -265,6 +271,13 @@
                 {!! Form::label('company_name', trans('contract.company_name'), ['class'=>'col-sm-2 control-label'])!!}
                 <div class="col-sm-7">
                     {!! Form::text("company[0][name]",null,["class"=>"form-control"])!!}
+                </div>
+            </div>
+            <div class="form-group">
+                {!! Form::label('participation_share', trans('contract.participation_share'), ['class'=>'col-sm-2
+                control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::input('text',"company[0][participation_share]",null ,["class"=>"form-control","step"=>"any","min"=>0,"max"=>1])!!}
                 </div>
             </div>
 
@@ -330,6 +343,14 @@
                     {!! Form::text("company[0][open_corporate_id]",null,["class"=>"digit form-control"])!!}
                 </div>
             </div>
+
+            <div class="form-group">
+                {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
+                <div class="col-sm-7">
+                    {!! Form::checkbox("company[0][operator]",'1',null,['class'=>'operator']) !!}
+                    <input  name=company[0][operator] type="hidden" value="" class="hidden-operator">
+                </div>
+            </div>
         </div>
 
     @endif
@@ -387,11 +408,11 @@
                     ["class"=>"form-control"])!!}
                 </div>
 
-            </div>
+                </div>
                     @if($k>0)
                         <div class="delete">delete</div>
                     @endif
-        </div>
+                </div>
 
                 <?php $j++?>
      @endforeach
