@@ -6,6 +6,7 @@ var AnnotatorjsView = Backbone.View.extend({
         this.content = $(this.options.el).annotator({readOnly: !this.model.get('isAnnotable')});
         this.content.annotator('addPlugin', 'MyTags');
         this.content.annotator('addPlugin', 'AnnotatorEvents');
+        this.content.annotator('addPlugin', 'AnnotoriousImagePlugin');
         this.content.data('annotator').plugins.MyTags.availableTags = options.availableTags
         this.content.data('annotator').plugins.AnnotatorEvents.collection = options.collection;
         this.content.data('annotator').plugins.AnnotatorEvents.pageModel = this.model;

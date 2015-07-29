@@ -23,6 +23,7 @@ Annotator.Plugin.AnnotatorEvents = (function(_super) {
         AnnotatorEvents.__super__.constructor.apply(this, arguments);
     };
     AnnotatorEvents.prototype.onAnnotationCreated = function(annotation) {
+        console.log("Created", annotation);
         annotation.id = this.collection.length + 1;
         if(this.pageModel) {
             annotation.page = this.pageModel.get('pageNumber');

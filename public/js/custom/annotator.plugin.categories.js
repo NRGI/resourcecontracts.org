@@ -65,16 +65,16 @@ Annotator.Plugin.Categories = (function(superClass) {
       if ((annotation.category == null) || !annotation.category.length) {
         annotation.category = this.options.emptyCategory;
       }
-      results.push((function() {
-        var l, len2, ref1, results1;
-        ref1 = annotation.highlights;
-        results1 = [];
-        for (l = 0, len2 = ref1.length; l < len2; l++) {
-          highlight = ref1[l];
-          results1.push($(highlight).addClass(this.options.categoryColorClasses[annotation.category]));
-        }
-        return results1;
-      }).call(this));
+      //results.push((function() {
+      //  var l, len2, ref1, results1;
+      //  ref1 = annotation.highlights;
+      //  results1 = [];
+      //  for (l = 0, len2 = ref1.length; l < len2; l++) {
+      //    highlight = ref1[l];
+      //    results1.push($(highlight).addClass(this.options.categoryColorClasses[annotation.category]));
+      //  }
+      //  return results1;
+      //}).call(this));
     }
     return results;
   };
@@ -109,6 +109,7 @@ Annotator.Plugin.Categories = (function(superClass) {
 
   Categories.prototype.saveCategory = function(event, annotation) {
     // debugger;
+    console.log(annotation)
     annotation.category = $(this.field).find('select option:selected').val()
     // annotation.category = $(this.field).find('.' + this.options.classForSelectedCategory).html();
     if ((annotation.text != null) && annotation.text.length > 0 && (annotation.category == null)) {

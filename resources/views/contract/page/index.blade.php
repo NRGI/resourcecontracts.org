@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ asset('js/lib/quill/quill.snow.css') }}"/>
     <link rel="stylesheet" href="{{ asset('js/lib/annotator/annotator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/annotorious.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
 @stop
@@ -40,8 +41,8 @@
                     <a href='#' id="search-results-cache" style="display:none;" class="pull-right">Results</a>
                 </form>                
             </div>
-            <div class="document-wrap">
-            <div class="left-document-wrap" id="annotatorjs">
+            <div class="document-wrap" id="annotatorjs">
+            <div class="left-document-wrap" >
                     <div class="quill-wrapper">
                         <!-- Create the toolbar container -->
                         <div id="toolbar" class="ql-toolbar ql-snow">
@@ -53,8 +54,8 @@
                         <button name="submit" value="submit" id="saveButton" class="btn">Save</button>
                     </div>
                 </div>
-                <div class="right-document-wrap search">
-                    <canvas id="pdfcanvas"></canvas>
+                <div class="right-document-wrap search" id="annotate-pdf">
+                    <canvas class="annotate" id="pdfcanvas"></canvas>
                     <div id="search-results-list" style='display:none'></div>
                     <!-- <div id="annotations_list" class="annotation-list" style="display:none"></div>                     -->
                 </div>
@@ -65,9 +66,11 @@
 @stop
 
 @section('script')
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js'></script>
+    <script src='http://assets.annotateit.org/annotator/v1.2.5/annotator-full.min.js'></script>
     <script src="{{ asset('js/select2.min.js') }}"></script>
     <script src="{{ asset('js/lib/quill/quill.js') }}"></script>
-    <script src="{{ asset('js/lib/annotator/annotator-full.min.js') }}"></script>
+
     <script src="{{ asset('js/lib/pdfjs/pdf.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
     <script src="{{ asset('js/jquery.simplePagination.js') }}"></script>
@@ -83,6 +86,7 @@
     <script src="{{ asset('js/custom/annotator.plugin.event.js') }}"></script>
     <script src="{{ asset('js/custom/annotator.plugin.categories.js') }}"></script>
     <script src="{{ asset('js/custom/annotator.plugin.tags.js') }}"></script>
+    <script src="{{ asset('js/custom/annotorious.okfn.0.3.js') }}"></script>
     <script src="{{ asset('js/custom/rc.annotations.js') }}"></script>    
     <script src="{{ asset('js/custom/rc.search.js') }}"></script>    
     <script src="{{ asset('js/custom/rc.annotator.js') }}"></script>    
@@ -222,7 +226,7 @@ var metadataButtonView = new MetadataButtonView({
     annotationCollection.url = "{{route('contract.annotations', ['id'=>$contract->id])}}";
     annotationCollection.fetch({reset: true});
     var annotatorjsView = new AnnotatorjsView({
-        el: "#annotatorjs",
+        el: "#annotate-pdf",
         model: pageModel,
         contractModel: contract,
         api: "{{route('contract.annotations', ['id'=>$contract->id])}}",
