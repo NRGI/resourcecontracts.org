@@ -1,6 +1,6 @@
 <?php namespace App\Nrgi\Services\ElasticSearch;
 
-use App\Nrgi\Repositories\Contract\ContractRepository;
+use App\Nrgi\Services\Contract\ContractService;
 use Exception;
 use Guzzle\Http\Client;
 use Psr\Log\LoggerInterface;
@@ -20,16 +20,16 @@ class ElasticSearchService
      */
     protected $logger;
     /**
-     * @var ContractRepository
+     * @var ContractService
      */
     protected $contract;
 
     /**
-     * @param Client $http
-     * @param ContractRepository $contract
+     * @param Client          $http
+     * @param ContractService $contract
      * @param LoggerInterface $logger
      */
-    public function __construct(Client $http, ContractRepository $contract, LoggerInterface $logger)
+    public function __construct(Client $http, ContractService $contract, LoggerInterface $logger)
     {
         $this->http     = $http;
         $this->logger   = $logger;
@@ -70,7 +70,7 @@ class ElasticSearchService
      */
     public function postMetadata($id)
     {
-        $contract   = $this->contract->findContract($id);
+        $contract   = $this->contract->find($id);
         $updated_by = ['name' => '', 'email' => ''];
 
         if (!empty($contract->updated_user)) {
@@ -108,7 +108,7 @@ class ElasticSearchService
      */
     public function postText($id)
     {
-        $contract = $this->contract->findContractWithPages($id);
+        $contract = $this->contract->findWithPages($id);
         $pages    = [
             'contract_id' => $contract->id,
             'total_pages' => $contract->pages->count(),
@@ -117,6 +117,7 @@ class ElasticSearchService
         ];
 
         try {
+            $this->contract->updateWordFile($contract->id);
             $request  = $this->http->post($this->apiURL('contract/pdf-text'), null, $pages);
             $response = $request->send();
             $this->logger->info('Pdf Text successfully submitted to Elastic Search.', $response->json());
@@ -132,7 +133,7 @@ class ElasticSearchService
      */
     public function postAnnotation($id)
     {
-        $contract       = $this->contract->findContractWithAnnotations($id);
+        $contract       = $this->contract->findWithAnnotations($id);
         $annotationData = [];
         $data           = [];
         $annotations    = $contract->annotations;

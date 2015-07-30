@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         'App\Console\Commands\Inspire',
         'App\Console\Commands\ProcessDocument',
-        'App\Console\Commands\MovePdfToFolder'
+        'App\Console\Commands\MovePdfToFolder',
+        'App\Console\Commands\GenerateWordFile',
     ];
 
     /**

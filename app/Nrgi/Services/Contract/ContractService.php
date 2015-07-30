@@ -4,7 +4,6 @@ use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\Pages\PagesService;
-use App\Nrgi\Services\ElasticSearch\ElasticSearchService;
 use Exception;
 use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
@@ -15,6 +14,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Queue\Queue;
+use PhpOffice\PhpWord\PhpWord;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -57,10 +57,7 @@ class ContractService
      * @var Log
      */
     protected $logger;
-    /**
-     * @var ElasticSearchService
-     */
-    protected $elasticSearch;
+
     /**
      * @var PagesService
      */
@@ -76,7 +73,6 @@ class ContractService
      * @param Queue                       $queue
      * @param CommentService              $comment
      * @param DatabaseManager             $database
-     * @param ElasticSearchService        $elasticSearch
      * @param Log                         $logger
      * @param PagesService                $pages
      */
@@ -89,7 +85,6 @@ class ContractService
         Queue $queue,
         CommentService $comment,
         DatabaseManager $database,
-        ElasticSearchService $elasticSearch,
         Log $logger,
         PagesService $pages
     ) {
@@ -102,7 +97,6 @@ class ContractService
         $this->database       = $database;
         $this->comment        = $comment;
         $this->logger         = $logger;
-        $this->elasticSearch  = $elasticSearch;
         $this->pages          = $pages;
     }
 
@@ -296,7 +290,6 @@ class ContractService
      */
     public function updateContract($contractID, array $formData)
     {
-
         try {
             $contract = $this->contract->findContract($contractID);
         } catch (Exception $e) {
@@ -615,8 +608,6 @@ class ContractService
                 $moveTo = sprintf('%s/%s', $contract->id, $contract->file);
                 $this->moveS3File($file, $moveTo);
             }
-
-            return true;
         }
 
         $contract = $this->contract->findContract($contract_id);
@@ -641,6 +632,81 @@ class ContractService
         } catch (Exception $e) {
             $this->logger->error('Could not move pdf file : ' . $e->getMessage());
         }
+    }
+
+    /**
+     * Update Contract word file
+     *
+     * @param $contract_id
+     * @return string
+     */
+    public function updateWordFile($contract_id)
+    {
+        $text = [];
+
+        if ($contract = $this->contract->findContractWithPages($contract_id)) {
+            foreach ($contract->pages->sortBy('page_no') as $key => $page) {
+                $text []= $page->text;
+            }
+        }
+
+        list($filename, $ext) = explode('.', $contract->file);
+        $wordFileName = $filename . '.docx';
+        $file_path    = $this->createWordFile($text, $wordFileName);
+
+        try {
+            $this->storage->disk('s3')->put(sprintf('%s/%s', $contract_id, $wordFileName), $this->filesystem->get($file_path));
+            $this->filesystem->delete($file_path);
+            $this->logger->info('Word file updated', ['Contract id' => $contract_id]);
+        } catch (Exception $e) {
+            $this->logger->info('Word file could not  be update', ['Contract id' => $contract_id]);
+        }
+    }
+
+    /**
+     * Create word file using phpWord library
+     *
+     * @param array $text
+     * @param       $file
+     * @return string
+     * @throws \PhpOffice\PhpWord\Exception\Exception
+     */
+    protected function createWordFile(array $text, $file)
+    {
+        $file_path = public_path($file);
+        $phpWord   = new PhpWord();
+
+        foreach ($text as $page) {
+            $section   = $phpWord->addSection();
+            $page = str_replace([Chr(12),'<br>','<hr>'] , ['','<br/>', '<hr/>'], $page);
+            \PhpOffice\PhpWord\Shared\Html::addHtml($section, $page);
+        }
+
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+        $objWriter->save($file_path);
+
+        return $file_path;
+    }
+
+    /**
+     * Generate word file from console command
+     *
+     * @param $contract_id
+     * @return bool
+     */
+    public function generateWordFile($contract_id)
+    {
+        if (is_null($contract_id)) {
+            $contracts = $this->contract->getContractWithPdfProcessingStatus(Contract::PROCESSING_COMPLETE);
+            foreach ($contracts as $contract) {
+                $this->updateWordFile($contract->id);
+            }
+
+            return true;
+        }
+        $this->updateWordFile($contract_id);
+
+        return true;
     }
 
 }
