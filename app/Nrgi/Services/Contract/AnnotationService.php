@@ -95,7 +95,7 @@ class AnnotationService
         $contactAnnotation->annotation       = $data;
         $contactAnnotation->user_id          = $this->user->id;
         $contactAnnotation->contract_id      = $inputData['contract'];
-        $contactAnnotation->url              = $inputData['url'];
+        $contactAnnotation->url              = "";
         $contactAnnotation->document_page_no = $inputData['document_page_no'];
         $contactAnnotation->page_id          = $inputData['page_id'];
         $logMessage                          = 'annotation.annotation_created';

@@ -61,7 +61,7 @@ Annotator.Plugin.MyTags = (function(_super) {
               return field.addClass('annotator-tags').html(function() {
                   var string;
                   return string = $.map(annotation.tags, function(tag) {
-                      return '<span class="annotator-tag">' + Annotator.Util.escape(tag) + '</span>';
+                      return '<span class="annotator-tag">' + tag + '</span>';
                   }).join(' ');
               });
           } else {

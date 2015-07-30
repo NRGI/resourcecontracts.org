@@ -1,16 +1,16 @@
-var AnnotatorjsView = Backbone.View.extend({
+var AnnotatorPdfView = Backbone.View.extend({
     initialize: function(options) {
         this.options = options;
         this.api = options.api,
         this.listenTo(this.model, 'change:text', this.pageUpdated);
         this.content = $(this.options.el).annotator({readOnly: !this.model.get('isAnnotable')});
-        this.content.annotator('addPlugin', 'MyTags');
-        //this.content.data('annotator').plugins.MyTags.availableTags = options.availableTags
-        //this.content.annotator('addPlugin', 'AnnotatorEvents');
+        //this.content.annotator('addPlugin', 'MyTags');
+        this.content.annotator('addPlugin', 'AnnotatorEvents');
         this.content.annotator('addPlugin', 'AnnotoriousImagePlugin');
-        //this.content.data('annotator').plugins.AnnotatorEvents.collection = options.collection;
-        //this.content.data('annotator').plugins.AnnotatorEvents.pageModel = this.model;
-        //  this.content.data('annotator').plugins.AnnotatorEvents.page = options.collection;
+        //this.content.data('annotator').plugins.MyTags.availableTags = options.availableTags
+        this.content.data('annotator').plugins.AnnotatorEvents.collection = options.collection;
+        this.content.data('annotator').plugins.AnnotatorEvents.pageModel = this.model;
+        // this.content.data('annotator').plugins.AnnotatorEvents.page = options.collection;
         this.annotationCategories = options.annotationCategories;
         this.populateCategories();
         return this;
@@ -24,12 +24,14 @@ var AnnotatorjsView = Backbone.View.extend({
         var that = this;
         var store = this.content.data('annotator').plugins.Store;
         if(store.annotations) store.annotations = [];
-        store.options.loadFromSearch = {
+        store.options.loadFromSearch = { 
+            'url': that.api,
             'contract': that.options.contractModel.get('id'),
             'page': that.model.get('pageNumber'),
             'document_page_no': that.model.get('pageNumber')
         };            
-        store.options.annotationData = {
+        store.options.annotationData = { 
+            'url': that.api,
             'contract': that.options.contractModel.get('id'),
             'document_page_no': that.model.get('pageNumber'),
             'page': that.model.get('pageNumber'),
@@ -43,7 +45,8 @@ var AnnotatorjsView = Backbone.View.extend({
         if(this.content.data('annotator').plugins.Store) {
             var store = this.content.data('annotator').plugins.Store;
             if(store.annotations) store.annotations = [];
-            store.options.loadFromSearch = {
+            store.options.loadFromSearch = { 
+                'url': that.api,
                 'contract': that.options.contractModel.get('id'),
                 'page': that.model.get('pageNumber'),
                 'document_page_no': that.model.get('pageNumber')
@@ -55,11 +58,13 @@ var AnnotatorjsView = Backbone.View.extend({
                 prefix: '/api',
                 // Attach the uri of the current page to all annotations to allow search.
                 loadFromSearch: {
+                    'url': that.api,
                     'contract': that.options.contractModel.get('id'),
                     'page': that.model.get('pageNumber'),
                     'document_page_no': that.model.get('pageNumber')                    
                 },
                 annotationData: {
+                    'url': that.api,
                     'contract': that.options.contractModel.get('id'),
                     'page': that.model.get('pageNumber'),
                     'document_page_no': that.model.get('pageNumber'),

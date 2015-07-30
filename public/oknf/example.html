@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="annotorious.css" type="text/css" />
+    <link rel='stylesheet' href='http://assets.annotateit.org/annotator/v1.2.5/annotator.min.css'>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js'></script>
+    <script src='http://assets.annotateit.org/annotator/v1.2.5/annotator-full.min.js'></script> 
+    <style>
+      html, body {
+        background-color: #ededed;
+        padding:0px;
+        margin:0px;
+        font-family: sans-serif;
+        line-height: 160%;
+      }
+      
+      h2 {
+        margin-top:40px;
+      }
+      
+      #content {
+        max-width: 980px;
+        margin:0px auto;
+        padding:10px 30px;
+        background-color: #fff;
+      }
+      
+      .image-caption {
+        line-height: normal;
+        font-weight: bold;
+        font-size: 12px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+  <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+     <div id="page" >
+     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <canvas id="canvas"  class="annotate"></canvas>
+  </div>
+
+  <script src="js/pdf.js"></script>
+  <script src="js/pdf.worker.js"></script>
+  <script src="js/main.js"></script>
+    <script>
+    jQuery(function ($) {
+        var content = $("#page").annotator();
+            content.annotator('addPlugin', 'Tags');
+            content.annotator('addPlugin', 'AnnotoriousImagePlugin');
+            //content.annotator('setupPlugins');
+            content.annotator('addPlugin', 'Store', {
+                // The endpoint of the store on your server.
+                prefix: 'http://localhost:8000/api',
+                // Attach the uri of the current page to all annotations to allow search.
+                loadFromSearch: {
+                    'contract': 21,
+                    'page': 2615,
+                    'document_page_no': 55,
+                },
+                annotationData: {
+                    'contract': 21,
+                    'page': 55,
+                    'document_page_no': 55,
+                    'page_id': 2615
+                }
+            }); 
+            
+      });
+    </script>
+    <script src="annotorious.okfn.0.3.js"></script>
+  </body>  
+</html>

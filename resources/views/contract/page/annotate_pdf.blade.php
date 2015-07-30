@@ -2,10 +2,9 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/pages.css') }}">
-    <link rel="stylesheet" href="{{ asset('js/lib/quill/quill.snow.css') }}"/>
     <link rel="stylesheet" href="{{ asset('js/lib/annotator/annotator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/annotorious.css') }}">
+
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
 @stop
@@ -39,10 +38,10 @@
                     </div>
                     <input class="btn btn-primary" type="submit" value="Search">
                     <a href='#' id="search-results-cache" style="display:none;" class="pull-right">Results</a>
-                </form>                
+                </form>
             </div>
-            <div class="document-wrap" id="annotatorjs">
-            <div class="left-document-wrap" >
+            <div class="document-wrap">
+            <div class="left-document-wrap" id="annotatorjs">
                     <div class="quill-wrapper">
                         <!-- Create the toolbar container -->
                         <div id="toolbar" class="ql-toolbar ql-snow">
@@ -67,7 +66,7 @@
 
 @section('script')
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js'></script>
-    <script src="{{ asset('js/lib/annotator/annotator-full-v-1.2.5.min.js') }}"></script>
+    <script src='http://assets.annotateit.org/annotator/v1.2.5/annotator-full.min.js'></script>
     <script src="{{ asset('js/select2.min.js') }}"></script>
     <script src="{{ asset('js/lib/quill/quill.js') }}"></script>
 
@@ -82,14 +81,14 @@
     <script src="{{ asset('js/custom/rc.page.js') }}"></script>
     <script src="{{ asset('js/custom/rc.pagination.js') }}"></script>
     <script src="{{ asset('js/custom/rc.pdf.js') }}"></script>
-    <script src="{{ asset('js/custom/rc.texteditor.js') }}"></script>    
+    <script src="{{ asset('js/custom/rc.texteditor.js') }}"></script>
     <script src="{{ asset('js/custom/annotator.plugin.event.js') }}"></script>
     <script src="{{ asset('js/custom/annotator.plugin.categories.js') }}"></script>
     <script src="{{ asset('js/custom/annotator.plugin.tags.js') }}"></script>
     <script src="{{ asset('js/custom/annotorious.okfn.0.3.js') }}"></script>
-    <script src="{{ asset('js/custom/rc.annotations.js') }}"></script>    
-    <script src="{{ asset('js/custom/rc.search.js') }}"></script>    
-    <script src="{{ asset('js/custom/rc.annotator.js') }}"></script>    
+    <script src="{{ asset('js/custom/rc.annotations.js') }}"></script>
+    <script src="{{ asset('js/custom/rc.search.js') }}"></script>
+    <script src="{{ asset('js/custom/rc.annotator.js') }}"></script>
     <script src="{{ asset('js/custom/rc.metadata.js') }}"></script>
     <script src="{{ asset('js/custom/rc.scroll.js') }}"></script>
 
@@ -106,14 +105,14 @@
         currentPageId: '{{$page->id}}',
 
         canEdit: {{$canEdit}},
-        canAnnotate: {{$canAnnotate}},
+        canAnnotate: true,
         // annotatorjsAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
-        // annotatationPullAPI: "{{route('contract.annotations', ['id'=>$contract->id])}}"        
+        // annotatationPullAPI: "{{route('contract.annotations', ['id'=>$contract->id])}}"
     });
 
     var pageModel = new Page({
         pageNumber: currentPage || 1,
-        loadUrl: "{{route('contract.page.get', ['id'=>$contract->id])}}", 
+        loadUrl: "{{route('contract.page.get', ['id'=>$contract->id])}}",
         saveUrl: "{{route('contract.page.store', ['id'=>$contract->id])}}",
         contractModel: contract,
         eventsPipe: contractEvents
@@ -158,7 +157,7 @@
         collection: searchResultCollection,
         searchOverlayLayer: '#pdfcanvas',
         eventsPipe: contractEvents
-    });   
+    });
 
     // $('#saveButton').click(function (el) {
     //     pageView.saveClicked();
@@ -214,7 +213,7 @@ var metadataButtonView = new MetadataButtonView({
             <span class="tag"><%= tag %></span>
         <% }); %>
     </div>
-</script>  
+</script>
 
 <script type="text/javascript">
     var categories = {!! json_encode(trans("codelist/annotation.categories")) !!}
@@ -237,7 +236,7 @@ var metadataButtonView = new MetadataButtonView({
     var annotationsTitleView = new AnnotationsTitleView({
         collection: annotationCollection,
         annotationCategories: annotationCategories
-    });    
+    });
     var annotationsListView = new AnnotationsListView({
         el: "#annotations-list-view",
         collection: annotationCollection,
@@ -249,6 +248,6 @@ var metadataButtonView = new MetadataButtonView({
     var annotationsButtonView = new AnnotationsButtonView({
         el: '.btn-annotation',
         annotationsListView: annotationsListView
-    });    
-</script>    
+    });
+</script>
 @stop
