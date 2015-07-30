@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Queue\Queue;
-use PhpOffice\PhpWord\PhpWord;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -62,6 +61,10 @@ class ContractService
      * @var PagesService
      */
     protected $pages;
+    /**
+     * @var WordGenerator
+     */
+    protected $word;
 
     /**
      * @param ContractRepositoryInterface $contract
@@ -75,6 +78,7 @@ class ContractService
      * @param DatabaseManager             $database
      * @param Log                         $logger
      * @param PagesService                $pages
+     * @param WordGenerator               $word
      */
     public function __construct(
         ContractRepositoryInterface $contract,
@@ -86,7 +90,8 @@ class ContractService
         CommentService $comment,
         DatabaseManager $database,
         Log $logger,
-        PagesService $pages
+        PagesService $pages,
+        WordGenerator $word
     ) {
         $this->contract       = $contract;
         $this->auth           = $auth;
@@ -98,6 +103,7 @@ class ContractService
         $this->comment        = $comment;
         $this->logger         = $logger;
         $this->pages          = $pages;
+        $this->word           = $word;
     }
 
     /**
@@ -249,9 +255,9 @@ class ContractService
             )
         ) : '';
 
-        $formData['country']        = $this->countryService->getInfoByCode($formData['country']);
-        $formData['resource']       = (!empty($formData['resource'])) ? $formData['resource'] : [];
-        $formData['category']       = (!empty($formData['category'])) ? $formData['category'] : [];
+        $formData['country']  = $this->countryService->getInfoByCode($formData['country']);
+        $formData['resource'] = (!empty($formData['resource'])) ? $formData['resource'] : [];
+        $formData['category'] = (!empty($formData['category'])) ? $formData['category'] : [];
 
         return array_only(
             $formData,
@@ -593,44 +599,21 @@ class ContractService
     }
 
     /**
-     * Move pdf file
-     *
-     * @param null $contract_id
-     * @return bool
-     */
-    public function movePdFToFolder($contract_id = null)
-    {
-        if (is_null($contract_id)) {
-            $contracts = $this->contract->getContractWithPdfProcessingStatus(Contract::PROCESSING_COMPLETE);
-
-            foreach ($contracts as $contract) {
-                $file   = $contract->file;
-                $moveTo = sprintf('%s/%s', $contract->id, $contract->file);
-                $this->moveS3File($file, $moveTo);
-            }
-        }
-
-        $contract = $this->contract->findContract($contract_id);
-        $file     = $contract->file;
-        $moveTo   = sprintf('%s/%s', $contract->id, $contract->file);
-        $this->moveS3File($file, $moveTo);
-
-        return true;
-    }
-
-    /**
      * Move File on S3
      *
      * @param $file
      * @param $moveTo
+     * @return bool
      */
     function moveS3File($file, $moveTo)
     {
         try {
             $this->storage->disk('s3')->move($file, $moveTo);
             $this->logger->info(sprintf('%s move to %s', $file, $moveTo));
+            return true;
         } catch (Exception $e) {
             $this->logger->error('Could not move pdf file : ' . $e->getMessage());
+            return false;
         }
     }
 
@@ -646,67 +629,40 @@ class ContractService
 
         if ($contract = $this->contract->findContractWithPages($contract_id)) {
             foreach ($contract->pages->sortBy('page_no') as $key => $page) {
-                $text []= $page->text;
+                $text [] = $page->text;
             }
         }
 
         list($filename, $ext) = explode('.', $contract->file);
         $wordFileName = $filename . '.docx';
-        $file_path    = $this->createWordFile($text, $wordFileName);
 
         try {
+            $file_path = $this->word->create($text, $wordFileName);
             $this->storage->disk('s3')->put(sprintf('%s/%s', $contract_id, $wordFileName), $this->filesystem->get($file_path));
             $this->filesystem->delete($file_path);
             $this->logger->info('Word file updated', ['Contract id' => $contract_id]);
-        } catch (Exception $e) {
-            $this->logger->info('Word file could not  be update', ['Contract id' => $contract_id]);
-        }
-    }
-
-    /**
-     * Create word file using phpWord library
-     *
-     * @param array $text
-     * @param       $file
-     * @return string
-     * @throws \PhpOffice\PhpWord\Exception\Exception
-     */
-    protected function createWordFile(array $text, $file)
-    {
-        $file_path = public_path($file);
-        $phpWord   = new PhpWord();
-
-        foreach ($text as $page) {
-            $section   = $phpWord->addSection();
-            $page = str_replace([Chr(12),'<br>','<hr>'] , ['','<br/>', '<hr/>'], $page);
-            \PhpOffice\PhpWord\Shared\Html::addHtml($section, $page);
-        }
-
-        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-        $objWriter->save($file_path);
-
-        return $file_path;
-    }
-
-    /**
-     * Generate word file from console command
-     *
-     * @param $contract_id
-     * @return bool
-     */
-    public function generateWordFile($contract_id)
-    {
-        if (is_null($contract_id)) {
-            $contracts = $this->contract->getContractWithPdfProcessingStatus(Contract::PROCESSING_COMPLETE);
-            foreach ($contracts as $contract) {
-                $this->updateWordFile($contract->id);
-            }
 
             return true;
-        }
-        $this->updateWordFile($contract_id);
+        } catch (Exception $e) {
+            $this->logger->error('Word file could not  be update : ' . $e->getMessage(), ['Contract id' => $contract_id]);
 
-        return true;
+            return false;
+        }
     }
 
+    /**
+     * Get Contract with process completed
+     *
+     * @return Collection|null
+     */
+    public function getProcessCompleted()
+    {
+        try {
+            return $this->contract->getContractWithPdfProcessingStatus(Contract::PROCESSING_COMPLETE);
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+
+            return null;
+        }
+    }
 }

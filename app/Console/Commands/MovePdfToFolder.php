@@ -43,7 +43,47 @@ class MovePdfToFolder extends Command
     public function fire()
     {
         $contract_id = $this->input->getOption('id');
-        $this->contract->movePdFToFolder($contract_id);
+        $this->movePdFToFolder($contract_id);
+    }
+
+    /**
+     * Move pdf file
+     *
+     * @param null $contract_id
+     * @return bool
+     */
+    public function movePdFToFolder($contract_id = null)
+    {
+        if (is_null($contract_id)) {
+            $contracts = $this->contract->getProcessCompleted();
+
+            foreach ($contracts as $contract) {
+                $file   = $contract->file;
+                $moveTo = sprintf('%s/%s', $contract->id, $contract->file);
+                if ($this->contract->moveS3File($file, $moveTo)) {
+                    $this->info(sprintf('Contract %s : completed.', $contract_id));
+                    continue;
+                }
+
+                $this->info(sprintf('Contract %s : failed.', $contract_id));
+            }
+
+            return true;
+        }
+
+        $contract = $this->contract->find($contract_id);
+        $file     = $contract->file;
+        $moveTo   = sprintf('%s/%s', $contract->id, $contract->file);
+
+        if ($this->contract->moveS3File($file, $moveTo)) {
+            $this->info(sprintf('Contract %s : completed.', $contract_id));
+
+            return true;
+        }
+
+        $this->info(sprintf('Contract %s : failed.', $contract_id));
+
+        return true;
     }
 
     /**
