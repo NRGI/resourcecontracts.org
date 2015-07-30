@@ -107,9 +107,10 @@ class ProcessService
                         'end_time'            => Carbon::now()->toDayDateTimeString()
                     ]
                 );
-                $this->movePdfToUpload($contract->id, $contract->file);
+                $this->contract->moveS3File($contract->file, sprintf('%s/%s', $contract->id, $contract->file));
                 $this->uploadPdfsToS3($contract->id);
                 $this->deleteContractFolder($contract->id);
+                $this->contract->updateWordFile($contract->id);
 
                 return true;
             }
@@ -311,17 +312,6 @@ class ProcessService
 
         $client->uploadDirectory(sprintf('%s/%s/pages/', $this->getWriteDirectory(), $id), env('AWS_BUCKET'), $id);
         $this->logger->info(sprintf("Pdf uploaded to S3 {%s}", env('AWS_BUCKET')));
-    }
-
-    /**
-     * Move pdf to folder
-     *
-     * @param $id
-     * @param $file
-     */
-    protected function movePdfToUpload($id, $file)
-    {
-        $this->storage->disk('s3')->move($file, sprintf('%s/%s', $id, $file));
     }
 
     /**
