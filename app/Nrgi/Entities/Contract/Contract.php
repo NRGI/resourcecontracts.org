@@ -7,16 +7,17 @@ use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
 
 /**
  * Class Contract
- * @property Collection               tasks
- * @property Collection               pages
- * @property int                      id
- * @property int                      mturk_status
- * @property array                    metadata
- * @property int                      textType
- * @property string                   title
- * @property Collection               annotations
- * @property string                   file
- * @property int                      pdf_process_status
+ * @property Collection                tasks
+ * @property Collection                pages
+ * @property int                       id
+ * @property int                       mturk_status
+ * @property array                     metadata
+ * @property int                       textType
+ * @property string                    title
+ * @property Collection                annotations
+ * @property string                    file
+ * @property int                       pdf_process_status
+ * @property string                    word_file
  * @package App\Nrgi\Entities\Contract
  */
 class Contract extends Model
@@ -79,11 +80,10 @@ class Contract extends Model
      */
     public function getMetadataAttribute($metaData)
     {
-        $metaData = json_decode($metaData);
-
-        $metaData->amla_url = $this->getAmlaUrl($metaData->country->code);
-
-        $metaData->file_url = $this->file_url;
+        $metaData            = json_decode($metaData);
+        $metaData->amla_url  = $this->getAmlaUrl($metaData->country->code);
+        $metaData->file_url  = $this->file_url;
+        $metaData->word_file = $this->word_file;
 
         return $this->makeNullField($metaData);
     }
@@ -91,7 +91,7 @@ class Contract extends Model
     /**
      * Get pdf url
      *
-     * @return mixed
+     * @return string
      */
     public function getFileUrlAttribute()
     {
@@ -101,6 +101,24 @@ class Contract extends Model
 
         return getS3FileURL($this->file);
     }
+
+    /**
+     * Get word file url
+     *
+     * @return string
+     */
+    public function getWordFileAttribute()
+    {
+        if ($this->pdf_process_status == static::PROCESSING_COMPLETE) {
+            list($filename, $ext) = explode('.', $this->file);
+            $wordFileName = $filename . '.docx';
+
+            return getS3FileURL($this->id . '/' . $wordFileName);
+        }
+
+        return '';
+    }
+
 
     /**
      * Convert Array metadata to json

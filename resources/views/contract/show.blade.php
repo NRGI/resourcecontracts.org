@@ -57,9 +57,19 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             <a href="{{route('activitylog.index')}}?contract={{$contract->id}}"
                class="btn btn-default">@lang('activitylog.activitylog')</a>
             <a href="{{route('contract.edit', $contract->id)}}" class="btn btn-default">@lang('contract.edit')</a>
-            <a target="_blank" href="{{$contract->metadata->file_url}}"
-               class="btn btn-default">@lang('contract.download_file') [{{getFileSize($contract->metadata->file_size)}}
-                ]</a>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @lang('Download') <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="{{$contract->file_url}}">@lang('PDF')</a></li>
+                    @if($contract->word_file !='')
+                        <li><a href="{{$contract->word_file}}">@lang('Word')</a></li>
+                    @endif
+                </ul>
+            </div>
+
             @if($current_user->can('delete-contract'))
                 {!!Form::open(['route'=>['contract.destroy', $contract->id], 'style'=>"display:inline",
                 'method'=>'delete'])!!}
@@ -366,11 +376,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                                                                   href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate">here</a>
                             </li>
                         @endforelse
-
                     </ul>
                 </div>
             </div>
         @endif
-
     </div>
 @stop
