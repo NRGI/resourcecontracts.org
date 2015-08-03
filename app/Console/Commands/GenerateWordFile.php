@@ -15,7 +15,7 @@ class GenerateWordFile extends Command
      *
      * @var string
      */
-    protected $name = 'move:word';
+    protected $name = 'nrgi:moveword';
 
     /**
      * The console command description.

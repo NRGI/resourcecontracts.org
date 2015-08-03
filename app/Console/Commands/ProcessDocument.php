@@ -43,7 +43,7 @@ class ProcessDocument extends Command
      *
      * @var string
      */
-    protected $name = 'process:document';
+    protected $name = 'nrgi:processdocument';
 
     /**
      * The console command description.

@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\ProcessDocument',
         'App\Console\Commands\MovePdfToFolder',
         'App\Console\Commands\GenerateWordFile',
+        'App\Console\Commands\BulkIndex',
     ];
 
     /**

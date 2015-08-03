@@ -12,7 +12,7 @@ class MovePdfToFolder extends Command
      *
      * @var string
      */
-    protected $name = 'move:pdf';
+    protected $name = 'nrgi:movepdf';
 
     /**
      * The console command description.
