@@ -544,3 +544,24 @@ header {
     padding-bottom: 12px;
     margin-bottom: 8px;
 }
+.small-input {
+    width: 50px !important;
+    text-align: center;
+}
+
+#pagination {
+    width: 360px;
+    margin: 0 auto;
+}
+
+.view-wrapper .navigation {
+    position: relative;
+    width: 460px;
+    margin: 0 auto;
+}
+
+.goto-box {
+    position: absolute;
+    right: -40px;
+    top: 22px;
+}
