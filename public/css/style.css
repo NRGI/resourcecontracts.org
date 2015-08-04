@@ -526,16 +526,17 @@ header {
     border: 1px solid #286090;
 }
 
-.new-company:hover {
-    background: #286090;
-    color: #fff;
-}
-
 .new-concession {
-    background: url(../images/ic-add.png) no-repeat left;
     padding-left: 18px;
     color: #286090;
     cursor: pointer;
+    color: #286090;
+    border: 1px solid #286090;
+}
+
+.new-company:hover,.new-concession:hover {
+    background: #286090;
+    color: #fff;
 }
 
 .license-wrap li:nth-child(even) {

@@ -272,10 +272,10 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
                                 <p><strong>@lang('contract.parent_company'):</strong> {{$v->parent_company}}</p>
 
-                                <p><strong>@lang('contract.open_corporate_id')
+                                <p><strong>@lang('contract.open_corporate')
                                         :</strong> @if(!empty($v->open_corporate_id))
                                         <a target="_blank"
-                                           href="https://opencorporates.com/companies/{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
+                                           href="{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
                                 </p>
                                 @if(isset($v->operator)) <p><strong>@lang('contract.operator'):</strong>@if($v->operator==1)Yes @else No @endif</p>@endif
                             </div>

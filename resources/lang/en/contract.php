@@ -30,7 +30,7 @@ return [
     'company_address'               => "Company Address",
     'company_number'                => "Company number",
     'corporate_grouping'            => "Corporate Grouping",
-    'open_corporate_id'             => "Open Corporate Id",
+    'open_corporate'                => "OpenCorporates Link",
     'license_and_project'           => "Concession / license and Project",
     'license_name'                  => "Concession/License Name",
     'license_identifier'            => "Concession / License Identifier",

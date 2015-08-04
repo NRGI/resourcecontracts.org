@@ -63,7 +63,7 @@
 
     <div class="form-group">
         <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> <label for="open_corporate_id" class="col-sm-2
-            control-label">Open Corporate Id</label></a>
+            control-label">OpenCorporates Link</label></a>
 
         <div class="col-sm-7">
             <input class="digit form-control" name="company[{{item}}][open_corporate_id]" type="text">

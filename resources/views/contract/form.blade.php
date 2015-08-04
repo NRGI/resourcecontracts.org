@@ -240,7 +240,7 @@
 
                     <div class="form-group">
                         <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> {!!
-                            Form::label('open_corporate_id',trans('contract.open_corporate_id'), ['class'=>'col-sm-2
+                            Form::label('open_corporate_id',trans('contract.open_corporate'), ['class'=>'col-sm-2
                             control-label'])!!}</a>
 
                         <div class="col-sm-7">
@@ -336,7 +336,7 @@
 
             <div class="form-group">
                 <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> {!!
-                    Form::label('open_corporate_id',trans('contract.open_corporate_id'), ['class'=>'col-sm-2
+                    Form::label('open_corporate_id',trans('contract.open_corporate'), ['class'=>'col-sm-2
                     control-label'])!!}</a>
 
                 <div class="col-sm-7">
@@ -358,7 +358,7 @@
 </div>
 
 
-<button type="button" class="btn btn-default new-company">Add new company</button>
+<div type="button" class="btn btn-default new-company">Add new company</div>
 
 <h3>@lang('contract.license_and_project')</h3>
 <hr/>
@@ -442,7 +442,7 @@
 
 </div>
 
-<div class="new-concession">Add More</div>
+<div class="btn btn-default new-concession">Add new License</div>
 
 @section('script')
     <script src="{{asset('js/jquery.validate.min.js')}}"></script>
