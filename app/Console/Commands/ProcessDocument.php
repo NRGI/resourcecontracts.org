@@ -78,7 +78,10 @@ class ProcessDocument extends Command
         try {
             $contract = $this->contract->find($contractId);
             if ($this->input->getOption('force')) {
+                $this->contract->moveS3File(sprintf('%s/%s', $contract->id, $contract->file), $contract->file);
                 $contract->pages()->delete();
+                $contract->pdf_process_status = Contract::PROCESSING_PIPELINE;
+                $contract->save();
             }
 
             if ($this->process->execute($contractId)) {
