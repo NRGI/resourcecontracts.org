@@ -70,6 +70,20 @@ return [
 			'port'   => '11300',
 			'ttr'    => 60,
 		],
+		'contract_download' => [
+			'driver' => 'beanstalkd',
+			'host'   => 'localhost',
+			'queue'  => 'contract_download',
+			'port'   => '11300',
+			'ttr'    => 60,
+		],
+		'contract_bulk_create' => [
+			'driver' => 'beanstalkd',
+			'host'   => 'localhost',
+			'queue'  => 'contract_bulk_create',
+			'port'   => '11300',
+			'ttr'    => 60,
+		],
 		'sqs' => [
 			'driver' => 'sqs',
 			'key'    => 'your-public-key',

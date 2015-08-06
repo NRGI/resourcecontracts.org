@@ -8,13 +8,16 @@
             margin-right: 20px !important;
             margin-top: 4px !important;
         }
+        .btn-import {margin-left: 100px;}
     </style>
 @stop
 @section('content')
     <div class="panel panel-default">
-
-        <div class="panel-heading">@lang('contract.all_contract') <a href="{{route('contract.create')}}"
-                                                                     class="pull-right btn btn-primary">@lang('contract.add')</a>
+        <div class="panel-heading">@lang('contract.all_contract')
+            <div class="btn-group pull-right" role="group" aria-label="...">
+                <a href="{{route('contract.import')}}" class="btn btn-default">@lang('contract.import.name')</a>
+                <a href="{{route('contract.create')}}"  class="btn btn-primary btn-import">@lang('contract.add')</a>
+            </div>
         </div>
         <div class="panel-body">
             {!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}

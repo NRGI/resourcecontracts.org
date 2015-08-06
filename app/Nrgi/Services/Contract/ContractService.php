@@ -556,7 +556,7 @@ class ContractService
      * Check for unique file hash
      *
      * @param $file
-     * @return bool
+     * @return bool|Contract
      */
     public function getContractIfFileHashExist($filehash)
     {
@@ -610,9 +610,11 @@ class ContractService
         try {
             $this->storage->disk('s3')->move($file, $moveTo);
             $this->logger->info(sprintf('%s move to %s', $file, $moveTo));
+
             return true;
         } catch (Exception $e) {
             $this->logger->error('Could not move pdf file : ' . $e->getMessage());
+
             return false;
         }
     }

@@ -29,12 +29,13 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
     }
 
     /**
-     * @param $activityLog
+     * @param        $activityLog
+     * @param string $user_id
      * @return bool
      */
-    public function save($activityLog)
+    public function save($activityLog, $user_id = null)
     {
-        $activityLog['user_id'] = $this->auth->user()->id;
+        $activityLog['user_id'] = is_null($user_id) ? $this->auth->id() : $user_id;
 
         return ($this->activityLog->create($activityLog) ? true : false);
     }
