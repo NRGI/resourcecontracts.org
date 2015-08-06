@@ -28,7 +28,14 @@
         </div>
         <div class="view-wrapper" style="background: #F6F6F6">
              <div id="message" style="padding: 0px 16px"></div>
-            <div id="pagination"></div>
+            <div class="navigation">
+                <div id="pagination"></div>
+                <div class="goto-box">
+                  <input id="goto_page" required min="1" max="{{$contract->pages->count()}}" placeholder="Goto Page" type="number" class="small-input" title="Go to page">
+                    <button class=".btn-go-page"><i class="glyphicon glyphicon-arrow-right"></i></button>
+                </div>
+            </div>
+
             <div id="search-form">
                 <form method="POST" action="{{route('contract.page.search', ["id"=>$contract['contract_id']])}}" accept-charset="UTF-8" class="form-inline page-search pull-right">
                     <div class="form-group">
@@ -38,7 +45,7 @@
                     </div>
                     <input class="btn btn-primary" type="submit" value="Search">
                     <a href='#' id="search-results-cache" style="display:none;" class="pull-right">Results</a>
-                </form>                
+                </form>
             </div>
             <div class="document-wrap">
             <div class="left-document-wrap" id="annotatorjs">
@@ -79,13 +86,13 @@
     <script src="{{ asset('js/custom/rc.page.js') }}"></script>
     <script src="{{ asset('js/custom/rc.pagination.js') }}"></script>
     <script src="{{ asset('js/custom/rc.pdf.js') }}"></script>
-    <script src="{{ asset('js/custom/rc.texteditor.js') }}"></script>    
+    <script src="{{ asset('js/custom/rc.texteditor.js') }}"></script>
     <script src="{{ asset('js/custom/annotator.plugin.event.js') }}"></script>
     <script src="{{ asset('js/custom/annotator.plugin.categories.js') }}"></script>
     <script src="{{ asset('js/custom/annotator.plugin.tags.js') }}"></script>
-    <script src="{{ asset('js/custom/rc.annotations.js') }}"></script>    
-    <script src="{{ asset('js/custom/rc.search.js') }}"></script>    
-    <script src="{{ asset('js/custom/rc.annotator.js') }}"></script>    
+    <script src="{{ asset('js/custom/rc.annotations.js') }}"></script>
+    <script src="{{ asset('js/custom/rc.search.js') }}"></script>
+    <script src="{{ asset('js/custom/rc.annotator.js') }}"></script>
     <script src="{{ asset('js/custom/rc.metadata.js') }}"></script>
     <script src="{{ asset('js/custom/rc.scroll.js') }}"></script>
 
@@ -104,22 +111,29 @@
         canEdit: {{$canEdit}},
         canAnnotate: {{$canAnnotate}},
         // annotatorjsAPI: "{{route('contract.page.get', ['id'=>$contract->id])}}",
-        // annotatationPullAPI: "{{route('contract.annotations', ['id'=>$contract->id])}}"        
+        // annotatationPullAPI: "{{route('contract.annotations', ['id'=>$contract->id])}}"
     });
 
     var pageModel = new Page({
         pageNumber: currentPage || 1,
-        loadUrl: "{{route('contract.page.get', ['id'=>$contract->id])}}", 
+        loadUrl: "{{route('contract.page.get', ['id'=>$contract->id])}}",
         saveUrl: "{{route('contract.page.store', ['id'=>$contract->id])}}",
         contractModel: contract,
         eventsPipe: contractEvents
     }).load(currentPage);
 
+    var gotoPageView = new GotoPageView({
+        el: '.goto-box',
+        totalPages: contract.getTotalPages(),
+        eventsPipe: contractEvents
+    });
+
     var paginationView = new PaginationView({
         el: "#pagination",
         totalPages: contract.getTotalPages(),
         model: pageModel,
-        eventsPipe: contractEvents
+        eventsPipe: contractEvents,
+        gotoPageView: gotoPageView,
     }).render();
 
     //text editor module
@@ -154,7 +168,7 @@
         collection: searchResultCollection,
         searchOverlayLayer: '#pdfcanvas',
         eventsPipe: contractEvents
-    });   
+    });
 
     // $('#saveButton').click(function (el) {
     //     pageView.saveClicked();
@@ -210,7 +224,7 @@ var metadataButtonView = new MetadataButtonView({
             <span class="tag"><%= tag %></span>
         <% }); %>
     </div>
-</script>  
+</script>
 
 <script type="text/javascript">
     var categories = {!! json_encode(trans("codelist/annotation.categories")) !!}
@@ -233,7 +247,7 @@ var metadataButtonView = new MetadataButtonView({
     var annotationsTitleView = new AnnotationsTitleView({
         collection: annotationCollection,
         annotationCategories: annotationCategories
-    });    
+    });
     var annotationsListView = new AnnotationsListView({
         el: "#annotations-list-view",
         collection: annotationCollection,
@@ -245,6 +259,6 @@ var metadataButtonView = new MetadataButtonView({
     var annotationsButtonView = new AnnotationsButtonView({
         el: '.btn-annotation',
         annotationsListView: annotationsListView
-    });    
-</script>    
+    });
+</script>
 @stop
