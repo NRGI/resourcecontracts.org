@@ -29,7 +29,7 @@ class ActivityLogService
      * @param null  $contractId
      * @return bool
      */
-    public function save($message, $params = array(), $contractId = null)
+    public function save($message, $params = [], $contractId = null, $user_id = null)
     {
         $activity            = [];
         $activity['message'] = $message;
@@ -40,7 +40,7 @@ class ActivityLogService
             $activity['contract_id'] = $contractId;
         }
 
-        return $this->activityLog->save($activity);
+        return $this->activityLog->save($activity, $user_id);
     }
 
     /**
@@ -49,6 +49,6 @@ class ActivityLogService
      */
     public function getAll($filter, $perPage = 25)
     {
-        return $this->activityLog->paginate($filter,$perPage);
+        return $this->activityLog->paginate($filter, $perPage);
     }
 }

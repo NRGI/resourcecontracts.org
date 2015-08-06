@@ -16,10 +16,11 @@ class NrgiWriter extends Writer
      * @param null  $contractId
      * @return bool
      */
-    public function activity($message, $params = array(), $contractId = null)
+    public function activity($message, $params = array(), $contractId = null, $user_id = null)
     {
         $activityLogService = app('App\Nrgi\Services\ActivityLog\ActivityLogService');
-        return $activityLogService->save($message, $params, $contractId);
+
+        return $activityLogService->save($message, $params, $contractId, $user_id);
     }
 
     /**

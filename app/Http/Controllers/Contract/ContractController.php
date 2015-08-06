@@ -3,9 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contract\ContractRequest;
-use App\Nrgi\Entities\Contract\Annotation;
 use App\Nrgi\Entities\Contract\Comment\Comment;
-use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\AnnotationService;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\ContractFilterService;
@@ -67,6 +65,7 @@ class ContractController extends Controller
     /**
      * Display a listing of the Contracts.
      *
+     * @param Request $request
      * @return Response
      */
     public function index(Request $request)
@@ -225,7 +224,7 @@ class ContractController extends Controller
      * @param         $contract_id
      * @param Request $request
      * @param Guard   $auth
-     * @return mixed
+     * @return Response
      */
     public function contractComment($contract_id, Request $request, Guard $auth)
     {
@@ -252,7 +251,7 @@ class ContractController extends Controller
      * Get Metadata by contract ID
      *
      * @param $contract_id
-     * @return Contract
+     * @return Response
      */
     public function getMetadata($contract_id)
     {

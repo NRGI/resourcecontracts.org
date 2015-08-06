@@ -10,9 +10,10 @@ interface ActivityLogRepositoryInterface
 {
     /**
      * @param $activityLog
+     * @param $user_id
      * @return bool
      */
-    public function save($activityLog);
+    public function save($activityLog, $user_id = null);
 
     /**
      * @param $filter

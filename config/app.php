@@ -33,6 +33,7 @@ $providers = [
     'Zizaco\Entrust\EntrustServiceProvider',
     'Illuminate\View\ViewServiceProvider',
     'Illuminate\Html\HtmlServiceProvider',
+    'Maatwebsite\Excel\ExcelServiceProvider',
 
     /*
      * Application Service Providers...

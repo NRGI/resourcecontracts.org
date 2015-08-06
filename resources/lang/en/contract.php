@@ -99,7 +99,6 @@ return [
     'amla'                          => "Current mining legislation at AMLA",
     'review_text'                   => "Review text",
     'edit_metadata'                 => "Edit metadata",
-    'annotate'                      => "Annotate",
     'is_operator'                   => "Is Operator?",
     'operator'                      => 'Operator',
     /*Logs*/
@@ -114,4 +113,26 @@ return [
         'save'      => 'Your corrections / changes have been saved',
         'save_fail' => 'Changes couldn\'t be saved',
     ],
+    'import'                        => [
+        'name'           => "Import Contract",
+        'title'          => "Open Oil Contract Import",
+        'file'           => 'CSV or Excel file',
+        'help'           => 'Please make sure that the csv file follows the following :format',
+        'exist'          => 'The contract file is already present in our system :link',
+        'status'         => 'Open Oil Contract Import Status',
+        'sn'             => 'SN',
+        'file_name'      => 'File Name',
+        'contract_title' => 'Open Oil Contract Title',
+        'status_name'    => 'status',
+        'remarks'        => 'Remarks',
+        'pending'        => 'Pending',
+        'processing'     => 'Processing',
+        'completed'      => 'Completed',
+        'failed'         => 'Failed',
+        'created_date'   => 'Created date',
+        'upload_another' => 'Upload another file',
+        'btn_import'     => 'Import',
+        'btn_cancel'     => 'Cancel and upload another file',
+        'fail'           => 'Could not found any contract to import.'
+    ]
 ];
