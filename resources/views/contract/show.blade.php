@@ -363,7 +363,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     <ul>
                         @forelse($annotations as $annotation)
                             <li>
-                                <span><a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate&page={{$annotation->document_page_no}}">{{$annotation->annotation->quote}} </a>[Page {{$annotation->document_page_no}}
+                                <span><a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate&page={{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>[Page {{$annotation->document_page_no}}
                                     ]</span>
 
                                 <p>{{$annotation->annotation->text}}</p>

@@ -60,8 +60,8 @@
                         <button name="submit" value="submit" id="saveButton" class="btn">Save</button>
                     </div>
                 </div>
-                <div class="right-document-wrap search">
-                    <canvas id="pdfcanvas"></canvas>
+                <div class="right-document-wrap search" id="annotator-pdf">
+                    <canvas id="pdfcanvas" width="500px" height="700px"></canvas>
                     <div id="search-results-list" style='display:none'></div>
                     <!-- <div id="annotations_list" class="annotation-list" style="display:none"></div>                     -->
                 </div>
@@ -81,6 +81,7 @@
     <script src="{{ asset('js/lib/underscore.js') }}"></script>
     <script src="{{ asset('js/lib/backbone.js') }}"></script>
 
+    <script src="{{ asset('js/annotator.plugin.annotorious.js') }}"></script>
     <script src="{{ asset('js/custom/rc.utils.js') }}"></script>
     <script src="{{ asset('js/custom/rc.contract.js') }}"></script>
     <script src="{{ asset('js/custom/rc.page.js') }}"></script>
@@ -218,11 +219,17 @@ var metadataButtonView = new MetadataButtonView({
 </script>
 <script type="text/template" id="annotation-item-view-template">
     <div>
-        <a href='#' class="quote"><%= quote %> [P <%= page %>]</a>
+        <a href='#' class="quote">
+            <% if (typeof quote !== "undefined") { %>
+            <%= quote %> 
+            <% } %>
+        [P <%= page %>]</a>
         <span class="text"><%= text %></span>
+        <% if (typeof tags !== "undefined") { %>
         <% _.each(tags, function(tag) { %>
             <span class="tag"><%= tag %></span>
         <% }); %>
+        <% } %>
     </div>
 </script>
 
@@ -235,15 +242,26 @@ var metadataButtonView = new MetadataButtonView({
     var annotationCollection = new AnnotationCollection();
     annotationCollection.url = "{{route('contract.annotations', ['id'=>$contract->id])}}";
     annotationCollection.fetch({reset: true});
-    var annotatorjsView = new AnnotatorjsView({
+    new AnnotatorjsView({
         el: "#annotatorjs",
         model: pageModel,
         contractModel: contract,
         api: "{{route('contract.annotations', ['id'=>$contract->id])}}",
         availableTags: {!! json_encode(trans("codelist/annotation.tags")) !!},
         collection: annotationCollection,
-        annotationCategories: annotationCategories
-    }).render();
+        annotationCategories: annotationCategories,
+        enablePdfAnnotation: false
+    });
+    new AnnotatorjsView({
+        el: "#annotator-pdf",
+        model: pageModel,
+        contractModel: contract,
+        api: "{{route('contract.annotations', ['id'=>$contract->id])}}",
+        availableTags: {!! json_encode(trans("codelist/annotation.tags")) !!},
+        collection: annotationCollection,
+        annotationCategories: annotationCategories,
+        enablePdfAnnotation: true
+    });
     var annotationsTitleView = new AnnotationsTitleView({
         collection: annotationCollection,
         annotationCategories: annotationCategories
