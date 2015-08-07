@@ -11,7 +11,7 @@ class CountryService
     /**
      * @var array
      */
-    protected $countries = array();
+    protected $countries = [];
 
     protected $auth;
 
@@ -63,4 +63,27 @@ class CountryService
 
         return $countries;
     }
+
+    /**
+     * Get Country by name
+     *
+     * @param $country
+     * @return array
+     */
+    public function getCountryByName($countryName)
+    {
+        $countries = $this->countries;
+
+        $country = ['code' => '', 'name' => ''];
+
+        foreach ($countries as $code => $name) {
+            if (strtolower($countryName) == trim(strtolower($name))) {
+                $country['code'] = $code;
+                $country['name'] = $name;
+            }
+        }
+
+        return $country;
+    }
+
 }
