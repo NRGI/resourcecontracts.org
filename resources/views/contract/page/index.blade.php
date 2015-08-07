@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="right-document-wrap search" id="annotator-pdf">
-                    <canvas id="pdfcanvas" width="500px" height="700px"></canvas>
+                    <canvas id="pdfcanvas" width="575px" height="842px"></canvas>
                     <div id="search-results-list" style='display:none'></div>
                     <!-- <div id="annotations_list" class="annotation-list" style="display:none"></div>                     -->
                 </div>
