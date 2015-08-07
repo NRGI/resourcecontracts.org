@@ -51,6 +51,10 @@ class ImportService
      * @var Storage
      */
     protected $storage;
+    /**
+     * @var CountryService
+     */
+    protected $country;
 
     /**
      * @param ContractRepositoryInterface $contract
@@ -60,8 +64,9 @@ class ImportService
      * @param Guard                       $auth
      * @param Log                         $logger
      * @param Queue                       $queue
+     * @param CountryService              $country
      */
-    public function __construct(ContractRepositoryInterface $contract, Excel $excel, Storage $storage, Filesystem $filesystem, Guard $auth, Log $logger, Queue $queue)
+    public function __construct(ContractRepositoryInterface $contract, Excel $excel, Storage $storage, Filesystem $filesystem, Guard $auth, Log $logger, Queue $queue, CountryService $country)
     {
         $this->excel      = $excel;
         $this->filesystem = $filesystem;
@@ -70,6 +75,7 @@ class ImportService
         $this->queue      = $queue;
         $this->contract   = $contract;
         $this->storage    = $storage;
+        $this->country    = $country;
     }
 
     /**
@@ -173,7 +179,7 @@ class ImportService
         $contract['metadata']['disclosure_mode']               = $results['disclosure_mode'];
         $contract['metadata']['concession'][0]['license_name'] = $results['concessionlicense_name'];
         $contract['metadata']['country']                       = $this->getCountry($results['country']);
-        $contract['metadata']['signature_date']                = $results['signature_date'];
+        $contract['metadata']['signature_date']                = $this->dateFormat($results['signature_date']);
         $contract['metadata']['language']                      = $this->getLanguage($results['language']);
 
         return $contract;
@@ -259,6 +265,7 @@ class ImportService
             }
 
         }
+
         return $this->updateJson($key, $contracts, $step);
     }
 
@@ -516,9 +523,17 @@ class ImportService
      * @param $language
      * @return mixed
      */
-    protected function getLanguage($language)
+    protected function getLanguage($lang)
     {
-        return $language;
+        $languages = trans('codelist/language')['major'] + trans('codelist/language')['minor'];
+
+        foreach ($languages as $code => $name) {
+            if ($name == $code || $name == $lang) {
+                return $code;
+            }
+        }
+
+        return '';
     }
 
     /**
@@ -529,7 +544,7 @@ class ImportService
      */
     protected function getCountry($country)
     {
-        return ['code' => $country, 'name' => $country];
+        return $this->country->getCountryByName($country);
     }
 
     /**
@@ -560,6 +575,23 @@ class ImportService
         }
 
         return true;
+    }
+
+    /**
+     * Get Formatted date
+     *
+     * @param $date
+     * @return string
+     */
+    public function dateFormat($date)
+    {
+        $time = strtotime($date);
+
+        if ($time != '') {
+            return date('Y-m-d H:i:s', $time);
+        }
+
+        return '';
     }
 
 
