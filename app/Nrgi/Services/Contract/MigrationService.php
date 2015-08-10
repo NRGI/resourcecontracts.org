@@ -573,11 +573,13 @@ class MigrationService
         $data['text']             = $annotation->content;
         $position                 = explode(',', $annotation->location->image);
         $data['shapes']           = array(
-            "type" => "rect",
-            array("geometry" => $this->convertPoint($position))
+            array(
+                "type"     => "rect",
+                "geometry" => $this->convertPoint($position)
+            )
         );
         $data['category']         = "";
-        $data['tags']             = [];
+        $data['tags']             = [$annotation->title];
         $data['page']             = $annotation->page;
         $data['document_page_no'] = $annotation->page;
         $data['id']               = "";

@@ -52,19 +52,18 @@ class PageService
         $files = $this->fileSystem->files($directory . '/text');
         $pages = [];
 
-        if (count($files) > 0) {
+        if (empty($files)) {
             $type  = 'pdf';
-            $files = $this->fileSystem->files($directory . '/page');
+            $files = $this->fileSystem->files($directory . '/pages');
         }
-
         foreach ($files as $file) {
-            $content = '';
+            $pageNo  = $this->getPageNo($file);
+            $content = $pageNo;
 
             if ($type == 'text') {
                 $content = $this->fileSystem->get($file);
             }
 
-            $pageNo        = $this->getPageNo($file);
             $page          = new Pages();
             $page->page_no = $pageNo;
             $page->text    = $content;

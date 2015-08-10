@@ -550,13 +550,13 @@ header {
 }
 
 #pagination {
-    width: 360px;
+    width: 100%;
     margin: 0 auto;
 }
 
 .view-wrapper .navigation {
     position: relative;
-    width: 460px;
+    width: 570px;
     margin: 0 auto;
 }
 
