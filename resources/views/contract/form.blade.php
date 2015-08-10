@@ -261,7 +261,7 @@
                     @endif
 
                 </div>
-                <?php $i++;?>
+                <?php $i ++;?>
 
             @endforeach
         @endif
@@ -357,6 +357,20 @@
 
 </div>
 
+<<<<<<< Updated upstream
+=======
+@section('script')
+    <script src="{{asset('js/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('js/select2.min.js')}}"></script>
+    <script src="{{asset('js/jquery.datetimepicker.js')}}"></script>
+    <script src="{{asset('js/mustache.min.js')}}"></script>
+    @include('contract.company_template')
+    <script>
+        var i = {{$i or 0}};
+    </script>
+    <script src="{{asset('js/contract.js')}}"></script>
+@stop
+>>>>>>> Stashed changes
 
 <div type="button" class="btn btn-default new-company">Add new company</div>
 

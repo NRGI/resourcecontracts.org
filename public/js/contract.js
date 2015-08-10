@@ -42,6 +42,7 @@ $(function () {
             scrollInput: false
         });
     })
+<<<<<<< Updated upstream
 
     $(document).on('click', '.concession .con-item .delete', function (e) {
         $(this).parent().remove();
@@ -66,5 +67,7 @@ $(function () {
         $(this).parent().find('.hidden-operator').val(val);
     });
 
+=======
+>>>>>>> Stashed changes
 });
 
