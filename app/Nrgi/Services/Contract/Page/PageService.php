@@ -21,7 +21,7 @@ class PageService
     protected $fileSystem;
 
     /**
-     * @param Contract $contract
+     * @param Contract   $contract
      * @param Filesystem $fileSystem
      */
     public function __construct(ContractService $contract, Filesystem $fileSystem)
@@ -48,10 +48,22 @@ class PageService
      */
     public function buildPages($directory)
     {
+        $type  = 'text';
         $files = $this->fileSystem->files($directory . '/text');
         $pages = [];
+
+        if (count($files) > 0) {
+            $type  = 'pdf';
+            $files = $this->fileSystem->files($directory . '/page');
+        }
+
         foreach ($files as $file) {
-            $content       = $this->fileSystem->get($file);
+            $content = '';
+
+            if ($type == 'text') {
+                $content = $this->fileSystem->get($file);
+            }
+
             $pageNo        = $this->getPageNo($file);
             $page          = new Pages();
             $page->page_no = $pageNo;
