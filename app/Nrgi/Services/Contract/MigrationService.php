@@ -220,8 +220,6 @@ class MigrationService
             }
         }
 
-        //  $return = array_merge(array_keys($this->annotationTitleMaping(), $return));
-
         return $return;
     }
 
@@ -491,6 +489,4 @@ class MigrationService
             return null;
         }
     }
-
-
 }

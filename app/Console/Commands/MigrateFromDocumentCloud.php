@@ -60,6 +60,7 @@ class MigrateFromDocumentCloud extends Command
     {
         $filePath = public_path('api-data');
         $files    = $this->fileSystem->allFiles($filePath);
+
         foreach ($files as $file) {
             $this->migration->setData($file);
             $contract = $this->migration->run();
@@ -72,7 +73,6 @@ class MigrateFromDocumentCloud extends Command
             $this->error(sprintf('Failed - %s', $file));
         }
     }
-
 
     /**
      * Get the console command arguments.
