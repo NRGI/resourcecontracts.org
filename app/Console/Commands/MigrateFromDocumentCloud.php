@@ -27,7 +27,7 @@ class MigrateFromDocumentCloud extends Command
      *
      * @var string
      */
-    protected $description = 'reads json files insert to db.';
+    protected $description = 'Reads json files insert to db.';
     /**
      * @var MigrationService
      */
@@ -60,14 +60,19 @@ class MigrateFromDocumentCloud extends Command
     {
         $filePath = public_path('api-data');
         $files    = $this->fileSystem->allFiles($filePath);
-        $contract = [];
+
         foreach ($files as $file) {
             $this->migration->setData($file);
-            $contract[] = $this->migration->run();
-            dd($contract);
+            $contract = $this->migration->run();
+
+            if (!is_null($contract)) {
+                $con = $this->migration->uploadPdfToS3AndCreateContracts($contract);
+                $this->info(sprintf('Success - %s - %s', $file, $contract->metadata->contract_name));
+                $this->migration->saveAnnotations($con, $this->migration->data()->annotations);
+                continue;
+            }
+            $this->error(sprintf('Failed - %s', $file));
         }
-        dd($contract);
-        //
     }
 
     /**

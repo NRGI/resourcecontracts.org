@@ -65,6 +65,5 @@ $(function () {
         console.log(val);
         $(this).parent().find('.hidden-operator').val(val);
     });
-
 });
 

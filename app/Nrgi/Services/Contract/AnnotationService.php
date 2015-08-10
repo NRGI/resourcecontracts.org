@@ -254,39 +254,4 @@ class AnnotationService
 
         return $annotationData;
     }
-
-    /**
-     * Convert annotation rectangle point from document cloud to annotorious plugin
-     *
-     * @param $data
-     * @return json
-     */
-    public function convertPoint($data)
-    {
-        $rcheight = 845;
-        $rcwidth  = 575;
-        $dcheight = 1000;
-        $dcwidth  = 700;
-        $y        = $data[0] * $rcheight / $dcheight;
-        $x        = $data[3] * $rcwidth / $dcwidth;
-        $width    = $data[1] * $rcwidth / $dcwidth;
-        $height   = $data[2] * $rcheight / $dcheight;
-        list($x, $y) = $this->transform($x, $y);
-        list($width, $height) = $this->transform($width, $height);
-
-        return json_encode(["x" => $x, "width" => ($width - $x), "y" => $y, "height" => ($height - $y)]);
-    }
-
-    /**
-     * @param $x
-     * @param $y
-     * @return array
-     */
-    public function transform($x, $y)
-    {
-        $imageHeight = 842;
-        $imageWidth  = 575;
-
-        return [$x / $imageWidth, $y / $imageHeight];
-    }
 }

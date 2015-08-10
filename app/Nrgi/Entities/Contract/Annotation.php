@@ -37,6 +37,14 @@ class Annotation extends Model
     const REJECTED = 'rejected';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['contract_id', 'annotation', 'url', 'user_id', 'document_page_no', 'page_id'];
+
+
+    /**
      * Convert json annotation to array
      * @param $annotation
      * @return Array

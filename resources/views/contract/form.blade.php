@@ -261,7 +261,7 @@
                     @endif
 
                 </div>
-                <?php $i++;?>
+                <?php $i ++;?>
 
             @endforeach
         @endif
@@ -356,7 +356,6 @@
     @endif
 
 </div>
-
 
 <div type="button" class="btn btn-default new-company">Add new company</div>
 
