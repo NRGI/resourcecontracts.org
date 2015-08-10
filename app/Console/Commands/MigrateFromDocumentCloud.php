@@ -1,8 +1,10 @@
 <?php namespace App\Console\Commands;
 
+use App\Nrgi\Services\Contract\MigrationService;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use Illuminate\Filesystem\Filesystem;
 
 /**
  * reads json files insert to db
@@ -26,15 +28,27 @@ class MigrateFromDocumentCloud extends Command
      * @var string
      */
     protected $description = 'reads json files insert to db.';
+    /**
+     * @var MigrationService
+     */
+    public $migration;
+    /**
+     * @var Filesystem
+     */
+    protected $fileSystem;
 
     /**
      * Create a new command instance.
      *
-     * @return void
+     * @param MigrationService $migration
+     * @param Filesystem       $fileSystem
+     * @internal param MigrationService $migrate
      */
-    public function __construct()
+    public function __construct(MigrationService $migration, Filesystem $fileSystem)
     {
         parent::__construct();
+        $this->migration  = $migration;
+        $this->fileSystem = $fileSystem;
     }
 
     /**
@@ -44,6 +58,15 @@ class MigrateFromDocumentCloud extends Command
      */
     public function fire()
     {
+        $filePath = public_path('api-data');
+        $files    = $this->fileSystem->allFiles($filePath);
+        $contract = [];
+        foreach ($files as $file) {
+            $this->migration->setData($file);
+            $contract[] = $this->migration->run();
+            dd($contract);
+        }
+        dd($contract);
         //
     }
 

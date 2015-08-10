@@ -5,7 +5,7 @@ namespace App\Nrgi\Services\Contract;
  * Class migration
  * @package App\Nrgi\Services\Contract
  */
-class migrationService
+class MigrationService
 {
     /**
      * @var string
@@ -19,21 +19,13 @@ class migrationService
     /**
      * @param null $file
      */
-    public function __construct($file = null)
+    public function setData($file = null)
     {
-        if (is_null($file)) {
-            if (isset($_GET['url']) && $_GET['url'] != '') {
-                $file = $_GET['url'];
-            } else {
-                $file = './data.json';
-            }
-        }
-
         $this->raw_data = file_get_contents($file);
     }
 
     /**
-     * @return mixed
+     * @return json
      */
     public function data()
     {
@@ -100,7 +92,6 @@ class migrationService
             'resources_4'             => 'Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex: food crops, oil palm, etc.)',
             'resources_5'             => 'Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex: food crops, oil palm, etc.)',
             'License/concession name' => 'Name and/or number of field, block or deposit'
-
         ];
     }
 
