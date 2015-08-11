@@ -22,10 +22,13 @@ class WordGenerator
         $txt = '';
        foreach ($text as $page) {
             $section   = $phpWord->addSection();
-               $txt .= $page;
+
             $page = $this->escape($page);
+           $txt .= $page;
             Html::addHtml($section, $page);
         }
+
+        file_put_contents('./word.txt',$txt);
 
         $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
         $objWriter->save($file_path);
@@ -41,15 +44,8 @@ class WordGenerator
      */
     protected function escape($html)
     {
-        $html = preg_replace('/\s+/S', " ", $html);
-        $html = $this->stripInvalidXml($html);
-        $html = str_replace([Chr(12),'<br>'] , ['','<br/>'], $html);
-        $html = strip_tags($html,'<br>, <div>');
-        $html = preg_replace('#(<[a-z ]*)(style=("|\')(.*?)("|\'))([a-z ]*>)#', '\\1\\6', $html);
-        $html = htmlspecialchars($html);
-        $turned = [ '&lt;br/&gt;', '&lt;div &gt;', '&lt;/div&gt;'];
-        $turn_back = [ '<br/>', '<div>', '</div>'];
-        $html = str_replace( $turned, $turn_back, $html );
+        $html = str_replace([Chr(12),'&','<br>'] , ['','_amp_','<br/>'], $html);
+        $html = strip_tags($html,'<br>');
         $html  = nl2br($html);
 
         return $html;
