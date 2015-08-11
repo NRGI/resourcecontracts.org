@@ -14,14 +14,25 @@ return [
      | in the IAM management console.
      |
      */
-    'credentials' => [
-        'AWS_ROOT_ACCESS_KEY_ID' => env('MTURK_KEY'),
+    'credentials'  => [
+        'AWS_ROOT_ACCESS_KEY_ID'     => env('MTURK_KEY'),
         'AWS_ROOT_SECRET_ACCESS_KEY' => env('MTURK_SECRET'),
     ],
-
+    /*
+    |--------------------------------------------------------------------------
+    | Mturk API Mode
+    |--------------------------------------------------------------------------
+    |
+    | Default is sandbox mode, All API calls will go to the sandbox Amazon
+    | Mechanical Turk site.
+    |
+    | MTURK_SECRET=false for production
+    |
+    */
+    'sandbox_mode' => env('MTURK_SANDBOX', true),
     /*
      |--------------------------------------------------------------------------
-     | LaraTurk Defaults
+     | Mturk Defaults
      |--------------------------------------------------------------------------
      |
      | These optional defaults are the default parameters used when making an API
@@ -37,36 +48,21 @@ return [
      | For definitions of these parameters: http://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkAPI/ApiReference_CreateHITOperation.html
      |
      */
-     'defaults' => [
-
-        'sandbox' => [
-             // 'HITTypeId' => 'default HITTypeId',
-             // 'HITLayoutId' => 'default HITLayoutId',
-        ],
+    'defaults'     => [
+        'sandbox'    => [],
 
         'production' => [
-             // 'HITTypeId' => 'default HITTypeId',
-             // 'Title' => 'Default HIT title',
-              'Description' => 'Default HIT description',
-              'Keywords' => [ 'default', 'HIT', 'keywords' ],
-             // 'HITLayoutId' => 'default HITLayoutId',
-              'Reward' => [
-              	'Amount' => '0.07',
-              	'CurrencyCode' => 'USD'
-              ],
-              'AssignmentDurationInSeconds' => '300',
-              'LifetimeInSeconds' => '3600',
-             // 'AutoApprovalDelayInSeconds' => '60',
-              'MaxAssignments' => '3',
-              /*'QualificationRequirement' => [
-              	[
-              		'QualificationTypeId' => '2F1QJWKUDD8XADTFD2Q0G6UTO95ALH',
-              		'Comparator' => 'Exists'
-              	],
-              ],*/
-             // 'RequesterAnnotation' => 'default annotation for the requester',
+            'Description'                 => 'Transcription of the scanned contract pdf',
+            'MaxAssignments'              => 1,
+            'Keywords'                    => ['transcription', 'pdf', 'language'],
+            'Reward'                      => [
+                'Amount'       => '0.50',
+                'CurrencyCode' => 'USD'
+            ],
+            'LifetimeInSeconds'           => '1209600',
+            'AssignmentDurationInSeconds' => '1209600',
         ],
 
-     ],
+    ],
 
 ];
