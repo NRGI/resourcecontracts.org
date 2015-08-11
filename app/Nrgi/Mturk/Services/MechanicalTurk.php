@@ -20,17 +20,17 @@ class MechanicalTurk
      */
     public function __construct()
     {
-        if (config('laraturk.credentials.AWS_ROOT_ACCESS_KEY_ID') === false ||
-            config('laraturk.credentials.AWS_ROOT_SECRET_ACCESS_KEY') === false
+        if (config('mturk.credentials.AWS_ROOT_ACCESS_KEY_ID') === false ||
+            config('mturk.credentials.AWS_ROOT_SECRET_ACCESS_KEY') === false
         ) {
             throw new MTurkException('AWS Root account keys must be set as environment variables.');
         }
 
-        $this->aws_access_key = config('laraturk.credentials.AWS_ROOT_ACCESS_KEY_ID');
-        $this->aws_secret_key = config('laraturk.credentials.AWS_ROOT_SECRET_ACCESS_KEY');
+        $this->aws_access_key = config('mturk.credentials.AWS_ROOT_ACCESS_KEY_ID');
+        $this->aws_secret_key = config('mturk.credentials.AWS_ROOT_SECRET_ACCESS_KEY');
 
         $this->endpoint = 'https://mechanicalturk.amazonaws.com/';
-        $this->defaults = config('laraturk.defaults.production');
+        $this->defaults = config('mturk.defaults.production');
 
         $this->guzzle = new Client();
     }
@@ -44,7 +44,7 @@ class MechanicalTurk
     public function setSandboxMode()
     {
         $this->endpoint = 'https://mechanicalturk.sandbox.amazonaws.com/';
-        $this->defaults = array_merge(config('laraturk.defaults.production'), config('laraturk.defaults.sandbox'));
+        $this->defaults = array_merge(config('mturk.defaults.production'), config('mturk.defaults.sandbox'));
     }
 
     /**
@@ -57,7 +57,7 @@ class MechanicalTurk
     public function setProductionMode()
     {
         $this->endpoint = 'https://mechanicalturk.amazonaws.com/';
-        $this->defaults = config('laraturk.defaults.production');
+        $this->defaults = config('mturk.defaults.production');
     }
 
     /**
