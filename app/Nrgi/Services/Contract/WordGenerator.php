@@ -19,11 +19,14 @@ class WordGenerator
         $file_path = public_path($file);
         $phpWord   = new PhpWord();
 
-        foreach ($text as $page) {
+        $txt = '';
+       foreach ($text as $page) {
             $section   = $phpWord->addSection();
+               $txt .= $page;
             $page = $this->escape($page);
             Html::addHtml($section, $page);
         }
+
         $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
         $objWriter->save($file_path);
 
@@ -38,14 +41,54 @@ class WordGenerator
      */
     protected function escape($html)
     {
-        $html = str_replace([Chr(12),'<br>','<hr>'] , ['','<br/>', '<hr/>'], $html);
+        $html = preg_replace('/\s+/S', " ", $html);
+        $html = $this->stripInvalidXml($html);
+        $html = str_replace([Chr(12),'<br>'] , ['','<br/>'], $html);
+        $html = strip_tags($html,'<br>, <div>');
+        $html = preg_replace('#(<[a-z ]*)(style=("|\')(.*?)("|\'))([a-z ]*>)#', '\\1\\6', $html);
         $html = htmlspecialchars($html);
-        $html = str_replace(['<', '>'], ['&lt;','&gt;'], $html);
-        $turned = [ '&lt;pre&gt;', '&lt;/pre&gt;', '&lt;b&gt;', '&lt;/b&gt;', '&lt;em&gt;', '&lt;/em&gt;', '&lt;u&gt;', '&lt;/u&gt;', '&lt;ul&gt;', '&lt;/ul&gt;', '&lt;li&gt;', '&lt;/li&gt;', '&lt;ol&gt;', '&lt;/ol&gt;', '&lt;br&gt;', '&lt;br/&gt;' ];
-        $turn_back = [ '<pre>', '</pre>', '<b>', '</b>', '<em>', '</em>', '<u>', '</u>', '<ul>', '</ul>', '<li>', '</li>', '<ol>', '</ol>', '<br>', '<br/>' ];
+        $turned = [ '&lt;br/&gt;', '&lt;div &gt;', '&lt;/div&gt;'];
+        $turn_back = [ '<br/>', '<div>', '</div>'];
         $html = str_replace( $turned, $turn_back, $html );
+        $html  = nl2br($html);
 
         return $html;
+    }
+
+    /**
+     * Removes invalid XML
+     *
+     * @param string $value
+     * @return string
+     */
+    public function stripInvalidXml($value)
+    {
+        $ret = '';
+
+        if (empty($value))
+        {
+            return $ret;
+        }
+
+        $length = strlen($value);
+        for ($i=0; $i < $length; $i++)
+        {
+            $current = ord($value{$i});
+            if (($current == 0x9) ||
+                ($current == 0xA) ||
+                ($current == 0xD) ||
+                (($current >= 0x20) && ($current <= 0xD7FF)) ||
+                (($current >= 0xE000) && ($current <= 0xFFFD)) ||
+                (($current >= 0x10000) && ($current <= 0x10FFFF)))
+            {
+                $ret .= chr($current);
+            }
+            else
+            {
+                $ret .= " ";
+            }
+        }
+        return $ret;
     }
 
 }
