@@ -133,4 +133,27 @@ interface ContractRepositoryInterface
      * @return Collection
      */
     public function getContractWithPdfProcessingStatus($status);
+
+    /**
+     * Get the count of presence of contract's metadata
+     *
+     * @param $metadata
+     * @return collection
+     */
+    public function getMetadataQuality($metadata);
+
+    /**
+     * Get the count of presence of annotation's category
+     *
+     * @param $key
+     * @return collection
+     */
+    public function getAnnotationsQuality($key);
+
+    /**
+     * Return the count of total contract
+     *
+     * @return integer
+     */
+    public function getTotalContractCount();
 }
