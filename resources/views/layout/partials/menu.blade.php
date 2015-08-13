@@ -25,6 +25,10 @@
                 <a {{in_array('mturk', Request::segments())? 'class=active' : ''}}
                         href="{{route('mturk.index')}}">@lang('mturk.mturk')</a>
             </li>
+            <li>
+                <a {{in_array('quality', Request::segments())? 'class=active' : ''}}
+                        href="{{route('quality.index')}}">@lang('quality.quality_contract_issues')</a>
+            </li>
         </ul>
     </div>
 @endif

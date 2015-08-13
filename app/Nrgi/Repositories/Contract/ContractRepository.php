@@ -49,18 +49,19 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getAll(array $filters)
     {
-        $query = $this->contract->select('*');
-        $from  = "contracts ";
-
-        $filters = array_map('trim', $filters);
+        $query    = $this->contract->select('*');
+        $from     = "contracts ";
+        $operator = "";
+        $filters  = array_map('trim', $filters);
         extract($filters);
+        $operator = (!empty($issue) && $issue == "present") ? "!=" : "=";
 
         if ($year != '' && $year != 'all') {
-            $query->whereRaw(sprintf("contracts.metadata->>'signature_year'='%s'", $year));
+            $query->whereRaw("contracts.metadata->>'signature_year'=?", [$year]);
         }
 
         if ($country != '' && $country != 'all') {
-            $query->whereRaw(sprintf("contracts.metadata->'country'->>'code'='%s'", $country));
+            $query->whereRaw("contracts.metadata->'country'->>'code' = ?", [$country]);
         }
 
         if ($resource != '' && $resource != 'all') {
@@ -71,6 +72,19 @@ class ContractRepository implements ContractRepositoryInterface
         if ($category != '' && $category != 'all') {
             $from .= ",json_array_elements(contracts.metadata->'category') cat";
             $query->whereRaw("trim(both '\"' from cat::text) = '" . $category . "'");
+        }
+        if ($type == "metadata" && $word != '' && $issue != '') {
+            $query->whereRaw(sprintf("contracts.metadata->>'%s' %s''", $word, $operator));
+        }
+        if ($type == "annotations" && $word != '' && $issue != '') {
+            $contractsId = DB::table('contract_annotations')->select(DB::raw('contract_id'))->whereRaw("contract_annotations.annotation->>'category' = ?", [$word])->get();
+            $contractsId = !empty($contractsId) ? array_values((array) $contractsId[0]) : [0];
+
+            if ($issue == "present") {
+                $query->whereRaw("id IN (?)", $contractsId);
+            } else {
+                $query->whereRaw("id NOT IN (?)", $contractsId);
+            }
         }
 
         $query->from($this->db->raw($from));
@@ -264,5 +278,47 @@ class ContractRepository implements ContractRepositoryInterface
     public function getContractWithPdfProcessingStatus($status)
     {
         return $this->contract->where('pdf_process_status', $status)->get();
+    }
+
+    /**
+     * Get the count of presence of contract's metadatas
+     *
+     * @param $metadata
+     * @return collection
+     */
+    public function getMetadataQuality($metadata)
+    {
+        $from   = "contracts ";
+        $result = $this->contract->whereRaw(sprintf("contracts.metadata->>'%s'!=''", $metadata))
+                                 ->from($this->db->raw($from))
+                                 ->count();
+
+        return $result;
+    }
+
+    /**
+     * Check if category of annotations exist or not.
+     *
+     * @param $key
+     * @return array
+     */
+    public function getAnnotationsQuality($key)
+    {
+        $from   = "contract_annotations";
+        $result = $this->contract->whereRaw("contract_annotations.annotation->>'category'= ? ", [$key])
+                                 ->from($from)
+                                 ->get();
+
+        return $result->toArray();
+    }
+
+    /**
+     * Get the count of total contracts
+     *
+     * @return integer
+     */
+    public function getTotalContractCount()
+    {
+        return $this->contract->count();
     }
 }

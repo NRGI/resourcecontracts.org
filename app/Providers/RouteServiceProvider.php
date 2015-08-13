@@ -47,6 +47,7 @@ class RouteServiceProvider extends ServiceProvider
             require app_path('Http/Routes/annotation.php');
             require app_path('Http/Routes/activitylog.php');
             require app_path('Http/Routes/user.php');
+            require app_path('Http/Routes/quality.php');
         });
 
         $router->group(['namespace' => $this->mturk_namespace], function ($router) {
