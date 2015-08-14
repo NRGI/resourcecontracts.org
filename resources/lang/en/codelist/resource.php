@@ -7,17 +7,17 @@
 */
 
 return [
-    'Aluminium'            => 'Aluminium',
+    'Aluminium'             => 'Aluminium',
     'Base metals'           => 'Base metals',
-    'Bauxite'               => 'Bauxit',
+    'Bauxite'               => 'Bauxite',
     'Coal'                  => 'Coal',
-    'Cobalt'                => 'Cobal',
+    'Cobalt'                => 'Cobalt',
     'Copper'                => 'Copper',
-    'Crude oil'             => 'Crud',
+    'Crude oil'             => 'Crud oil',
     'Diamonds'              => 'Diamonds',
-    'Gas'                   => 'Ga',
+    'Gas'                   => 'Gas',
     'Gold'                  => 'Gold',
-    'Iron ore'             => 'Iron ore',
+    'Iron ore'              => 'Iron ore',
     'Lapis lazuli'          => 'Lapis lazuli',
     'Lead'                  => 'Lead',
     'Lithium'               => 'Lithium',

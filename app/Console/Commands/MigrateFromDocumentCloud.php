@@ -61,18 +61,30 @@ class MigrateFromDocumentCloud extends Command
         $filePath = public_path('api-data');
         $files    = $this->fileSystem->allFiles($filePath);
 
+        $data = [];
         foreach ($files as $file) {
             $this->migration->setData($file);
             $contract = $this->migration->run();
+            $data[]   = $contract;
 
             if (!is_null($contract)) {
+
                 $con = $this->migration->uploadPdfToS3AndCreateContracts($contract);
+
                 $this->info(sprintf('Success - %s - %s', $file, $contract->metadata->contract_name));
-                $this->migration->saveAnnotations($con, $this->migration->data()->annotations);
+
+                if (!empty($contract->annotations)) {
+                    $this->migration->saveAnnotations($con, $contract->annotations);
+                }
+
                 continue;
             }
+
             $this->error(sprintf('Failed - %s', $file));
         }
+
+//        file_put_contents('./public/migration.html', json_encode($data));
+        $this->info('done');
     }
 
     /**

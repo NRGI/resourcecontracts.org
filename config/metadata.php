@@ -62,7 +62,8 @@ return [
             'date_retrieval'            => '',
             'category'                  => '',
             'signature_year'            => '',
-            'file_size'                 => ''
+            'file_size'                 => '',
+            'documentcloud_url'         => ''
         ],
     ]
 ];

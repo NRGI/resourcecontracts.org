@@ -114,6 +114,7 @@ class ContractController extends Controller
     public function show($id)
     {
         $contract = $this->contract->findWithAnnotations($id);
+
         if (!$contract) {
             abort('404');
         }

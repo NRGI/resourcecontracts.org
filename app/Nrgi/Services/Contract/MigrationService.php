@@ -97,26 +97,30 @@ class MigrationService
      */
     public function run()
     {
-        $default_keys = array_keys(array_merge($this->contractMapping(), $this->annotationTitleMaping()));
+        $default_keys = array_keys(array_merge($this->contractMapping(), $this->annotationTitleMapping()));
         $default      = [];
+
         foreach ($default_keys as $key => $value) {
             $default[$value] = '';
         }
 
         $available = array_merge(
             $this->filterData($this->data(), $this->contractMapping()),
-            $this->extractMetadata($this->data()->annotations, $this->annotationTitleMaping())
+            $this->extractMetadata($this->data()->annotations, $this->annotationTitleMapping())
         );
 
         $contract = array_merge($default, $available);
+        $contract = $this->refinery($contract);
 
         if ($contract['pdf_url'] != '') {
             if ($pdf = $this->downloadPdf($contract['pdf_url'])) {
                 if (!$this->isPdfExists($pdf)) {
-                    $contract['file'] = $pdf;
-                    $contract         = $this->getContractArray($contract);
+                    $contract['file']      = $pdf;
+                    $contract              = $this->getContractArray($contract);
+                    $contract              = json_decode(json_encode($contract));
+                    $contract->annotations = $this->refineAnnotation($this->data()->annotations);
 
-                    return json_decode(json_encode($contract));
+                    return $contract;
                 }
             }
         }
@@ -130,37 +134,55 @@ class MigrationService
     protected function contractMapping()
     {
         return [
-            'language'         => 'language',
-            'contract_name'    => 'title',
-            'created_datetime' => 'created_at',
-            'updated_datetime' => 'updated_at',
-            'pdf_url'          => ['resources', 'pdf'],
-            'signature_date_1' => ['data', 'Signature Date'],
-            'signature_year_1' => ['data', 'Signature Year'],
-            'resources'        => ['data', 'Resource'],
-            'country'          => ['data', 'Countries']
+            'language'              => 'language',
+            'contract_name'         => 'title',
+            'created_datetime'      => 'created_at',
+            'last_updated_datetime' => 'updated_at',
+            'pdf_url'               => ['resources', 'pdf'],
+            'signature_date_main'   => ['data', 'Signature Date'],
+            'signature_year_main'   => ['data', 'Signature Year'],
+            'resources_main'        => ['data', 'Resource'],
+            'country'               => ['data', 'Countries'],
+            'documentcloud_url'     => 'canonical_url'
         ];
     }
 
     /**
      * @return array
      */
-    protected function annotationTitleMaping()
+    protected function annotationTitleMapping()
     {
         return [
-            'company'                 => 'Local company name',
+            'company'                 => [
+                'Local company name',
+                'Name and/or composition of executing company created or anticipated',
+                'Name and/or composition of the company created or anticipated',
+                'Name of company executing the document',
+                'Name of company executing the document and composition of the shareholders',
+                'Name of contracting company',
+                'Signatories, company',
+                'Other - [Parent company guarantee]',
+            ],
             'contract_identifier'     => 'Legal Enterprise Identifier',
-            'project_title'           => 'Project title',
-            'signature_date_2'        => 'Date of contract signature',
-            'signature_year_2'        => 'Year of contract signature',
-            'type_of_contract_1'      => 'Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)',
-            'type_of_contract_2'      => 'Type of document / right (Concession, Lease, Production Sharing contract, Service contract, etc.)',
-            'resources_1'             => 'Type of mining title associated with the contract',
-            'resources_2'             => 'Type of resources',
-            'resources_3'             => 'Type of resources (mineral type, crude oil, gas, etc.)',
-            'resources_4'             => 'Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex: food crops, oil palm, etc.)',
-            'resources_5'             => 'Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex: food crops, oil palm, etc.)',
-            'license_concession_name' => 'Name and/or number of field, block or deposit'
+            'project_title'           => ['Project title', 'Project Title'],
+            'signature_date'          => 'Date of contract signature',
+            'signature_year'          => 'Year of contract signature',
+            'type_of_contract'        => [
+                'Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)',
+                'Type of document / right (Concession, Lease, Production Sharing contract, Service contract, etc.)'
+            ],
+            'resources'               => [
+                'Type of mining title associated with the contract',
+                'Type of resources',
+                'Type of resources (mineral type, crude oil, gas, etc.)',
+                'Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex: food crops, oil palm, etc.)',
+                'Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex: food crops, oil palm, etc.)'
+            ],
+            'license_concession_name' => 'Name and/or number of field, block or deposit',
+            'government_entities'     => [
+                'State agency, National Company, Ministry',
+                'State agency, national company, ministry executing the document'
+            ]
         ];
     }
 
@@ -170,13 +192,46 @@ class MigrationService
      */
     protected function getKeyIfValid($title = '')
     {
-        foreach ($this->annotationTitleMaping() as $key => $value) {
-            if (trim(strtolower($title)) == trim(strtolower($value))) {
-                return $key;
+        foreach ($this->annotationTitleMapping() as $key => $value) {
+
+            if (is_array($value)) {
+
+                foreach ($value as $k => $v) {
+                    $v = trim($v);
+
+                    if ($this->isStringMatch($title, $v)) {
+                        return $key;
+                    }
+                }
+
+            } else {
+                $value = trim($value);
+
+                if ($this->isStringMatch($title, $value)) {
+                    return $key;
+                }
             }
+
         }
 
         return null;
+    }
+
+
+    /**
+     * check if two string match
+     *
+     * @param $string1
+     * @param $string2
+     * @return bool
+     */
+    protected function isStringMatch($string1, $string2)
+    {
+        if (strcasecmp($string1, $string2) == 0) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -214,13 +269,13 @@ class MigrationService
         $return = [];
 
         foreach ($annotations as $key => $value) {
-            $title = explode('//', $value->title);
+            $title = $this->getAnnotationTitle($value->title);
 
-            if (isset($title[1])) {
-                $this->annotation_title[] = $title[1];
+            if (!empty($title)) {
+                $this->annotation_title[] = $title;
 
-                if ($key = $this->getKeyIfValid($title[1])) {
-                    $return[$key] = $value->content;
+                if ($key = $this->getKeyIfValid($title)) {
+                    $return[$key][] = $value->content;
                 }
             }
         }
@@ -252,30 +307,25 @@ class MigrationService
         $contract['file']                  = $data['file'];
         $contract['filehash']              = getFileHash($this->getMigrationFile($data['file']));
         $contract['metadata']['file_size'] = filesize($this->getMigrationFile($data['file']));
+        $contract['created_datetime']      = $data['created_datetime'];
+        $contract['last_updated_datetime'] = $data['last_updated_datetime'];
 
-        $contract['created_datetime'] = $this->dateFormat($data['created_datetime']);
-        $contract['updated_datetime'] = $this->dateFormat($data['updated_datetime']);
-
-        $contract['metadata']['language']       = 'EN';
-        $contract['metadata']['signature_date'] = $this->getSignatureDate(
-            [$data['signature_date_1'], $data['signature_date_2']]
-        );
-        $contract['metadata']['signature_year'] = $this->getSignatureYear(
-            [$data['signature_year_1'], $data['signature_year_2']]
-        );
+        $contract['metadata']['language']       = $data['language'];
+        $contract['metadata']['signature_date'] = $data['signature_date'];
+        $contract['metadata']['signature_year'] = $data['signature_year'];
 
         $contract['metadata']['contract_name']                 = $data['contract_name'];
-        $contract['metadata']['resources']                     = $this->getResources($data);
-        $contract['metadata']['country']                       = $this->getCountry($data['country']);
+        $contract['metadata']['resources']                     = $data['resources'];
+        $contract['metadata']['country']                       = $data['country'];
         $contract['metadata']['contract_identifier']           = $data['contract_identifier'];
         $contract['metadata']['project_title']                 = $data['project_title'];
-        $contract['metadata']['type_of_contract']              = $this->getTypeOfContract(
-            [$data['type_of_contract_1'], $data['type_of_contract_1']]
-        );
+        $contract['metadata']['type_of_contract']              = $data['type_of_contract'];
         $contract['metadata']['concession'][0]['license_name'] = $data['license_concession_name'];
+        $contract['metadata']['documentcloud_url']             = $data['documentcloud_url'];
 
-        $company_arr = array_map('trim', [$data['company']]);
-        $companies   = [];
+        $company_arr = array_map('trim', $data['company_name']);
+
+        $companies = [];
 
         foreach ($company_arr as $company) {
             $company_template['name'] = $company;
@@ -284,121 +334,6 @@ class MigrationService
         $contract['metadata']['company'] = $companies;
 
         return $contract;
-    }
-
-    /**
-     * Get Formatted date
-     *
-     * @param $date
-     * @return string
-     */
-    public function dateFormat($date)
-    {
-        $time = strtotime($date);
-
-        if ($time != '') {
-            return date('Y-m-d H:i:s', $time);
-        }
-
-        return '';
-    }
-
-    /**
-     * Get Country code and name
-     *
-     * @param $country
-     * @return array
-     */
-    protected function getCountry($country)
-    {
-        return $this->country->getCountryByName($country);
-    }
-
-
-    /**
-     * Get Resources
-     *
-     * @param array $data
-     * @return array
-    \     */
-    protected function getResources(array $data)
-    {
-        $resource_string = $data["resources"];
-        $resource_array  = explode(',', $resource_string);
-        $resource_array  = array_filter(
-            $resource_array + [
-                $data["resources_1"],
-                $data["resources_2"],
-                $data["resources_3"],
-                $data["resources_4"],
-                $data["resources_5"]
-            ]
-        );
-        $valid_res       = [];
-        $resource_list   = trans('codelist/resource');
-
-
-        foreach ($resource_array as $resource) {
-            if (array_key_exists($resource, $resource_list)) {
-                $valid_res[] = $resource;
-            }
-        }
-
-        return $valid_res;
-    }
-
-    /**
-     * Get Type of Contracts
-     *
-     * @param array $type_of_contract
-     * @return bool
-     */
-    protected function getTypeOfContract(array $type_of_contract)
-    {
-        $toc = array_map('trim', $type_of_contract);
-        $toc = array_filter($toc);
-
-        if (!empty($toc)) {
-            return $toc[0];
-        }
-
-        return '';
-    }
-
-    /**
-     * Get Signature Year
-     *
-     * @param array $signature_year
-     * @return string
-     */
-    protected function getSignatureYear(array $signature_year)
-    {
-        $signature_year = array_map('trim', $signature_year);
-        $signature_year = array_filter($signature_year);
-
-        if (!empty($signature_year[0])) {
-            return date('Y', strtotime($signature_year[0]));
-        }
-
-        return "";
-    }
-
-    /**
-     * Get Signature Date
-     *
-     * @param array $signature_year
-     * @return string
-     */
-    protected function getSignatureDate(array $signature_date)
-    {
-        $signature_date = array_map('trim', $signature_date);
-        $signature_date = array_filter($signature_date);
-
-        if (!empty($signature_date[0])) {
-            return date('Y-m-d', strtotime($signature_date[0]));
-        }
-
-        return "";
     }
 
     /**
@@ -475,7 +410,6 @@ class MigrationService
 
     }
 
-
     /**
      * Get Migration File
      *
@@ -516,16 +450,20 @@ class MigrationService
     public function saveAnnotations($contract, $annotations)
     {
         $annotationData = [];
-        foreach ($annotations as $annotationObj) {
-            $annotation['contract_id'] = $contract->id;
-            $annotation['annotation']  = $this->buildAnnotation($annotationObj);;
+        foreach ($annotations as $annotationArr) {
+            $annotation                     = [];
+            $annotation['contract_id']      = $contract->id;
+            $annotation['annotation']       = json_encode($annotationArr['annotation']);
             $annotation['url']              = "";
             $annotation['user_id']          = 1;
-            $annotation['document_page_no'] = $annotationObj->page;
+            $annotation['document_page_no'] = $annotationArr['document_page_no'];
+            $annotation['created_at']       = date('Y-m-d H:i:s');
+            $annotation['updated_at']       = date('Y-m-d H:i:s');
             $annotationData[]               = $annotation;
-            Annotation::create($annotation);
         }
-        //dd($annotationData);
+
+
+        Annotation::insert($annotationData);
     }
 
     /**
@@ -572,18 +510,399 @@ class MigrationService
         $data['url']              = "";
         $data['text']             = $annotation->content;
         $position                 = explode(',', $annotation->location->image);
-        $data['shapes']           = array(
-            array(
+        $data['shapes']           = [
+            [
                 "type"     => "rect",
                 "geometry" => $this->convertPoint($position)
-            )
-        );
-        $data['category']         = "";
-        $data['tags']             = [$annotation->title];
+            ]
+        ];
+        $category                 = $this->refineAnnotationCategory($annotation->title);
+        $data['category']         = ($category == '') ? 'General Information' : $category;
+        $data['tags']             = ($category == '') ? [$this->getAnnotationTitle($annotation->title)] : [];
         $data['page']             = $annotation->page;
         $data['document_page_no'] = $annotation->page;
         $data['id']               = "";
 
         return $data;
     }
+
+
+    protected function refinery($contract)
+    {
+        $signature_date = $this->refineSignatureDate($contract['signature_date_main']);
+        $signature_year = $this->refineSignatureYear($contract['signature_year_main'], $signature_date);
+
+        $contract['converted'] = [
+            'language'                => $this->refineLanguage($contract['language']),
+            'contract_name'           => trim(trim($contract['contract_name']), '"'),
+            'created_datetime'        => date('Y-m-d H:i:s', strtotime($contract['created_datetime'])),
+            'last_updated_datetime'   => date('Y-m-d H:i:s', strtotime($contract['last_updated_datetime'])),
+            'pdf_url'                 => $contract['pdf_url'],
+            'documentcloud_url'       => $contract['documentcloud_url'],
+            'project_title'           => $this->removeAfterDash($contract['project_title']),
+            'government_entities'     => $this->removeAfterDash($contract['government_entities']),
+            'contract_identifier'     => $this->removeAfterDash($contract['contract_identifier']),
+            'signature_date'          => $signature_date,
+            'signature_year'          => $signature_year,
+            'company_name'            => $this->refineCompanyName($contract['company']),
+            'resources'               => $this->refineResources($contract['resources_main'], $contract['resources']),
+            'country'                 => $this->refineCountry($contract['country']),
+            'type_of_contract'        => $this->refineToc($contract['type_of_contract']),
+            'license_concession_name' => $this->removeAfterDash($contract['license_concession_name']),
+        ];
+
+        return $contract['converted'];
+    }
+
+
+    protected function refineSignatureDate($signature_date)
+    {
+        $signature_date = trim($signature_date, '"');
+        $signature_date = trim($signature_date);
+        $signature_date = str_replace('.', '/', $signature_date);
+
+        if ($signature_date != '') {
+
+            if (strlen($signature_date) == 4) {
+                return $signature_date;
+            }
+
+            if (strlen($signature_date) == 7) {
+                $signature_date = date_create_from_format('m/Y', $signature_date);
+
+                return date_format($signature_date, 'Y-m');
+            }
+
+            try {
+                $signature_date = date_create_from_format('d/m/Y', $signature_date);
+                $signature_date = date_format($signature_date, 'Y-m-d');
+
+            } catch (Exception $e) {
+                dd($signature_date);
+            }
+
+        }
+
+        return $signature_date;
+    }
+
+    protected function refineSignatureYear($signature_year_main, $signature_date)
+    {
+        $signature_year = trim($signature_year_main, '"');
+        $signature_year = trim($signature_year);
+
+        if (is_numeric($signature_year) && strlen($signature_year) == 4) {
+            return $signature_year;
+        }
+
+        if ($signature_date != '') {
+            return date('Y', strtotime($signature_date));
+        }
+    }
+
+    function refineCompanyName($company)
+    {
+        $return = [];
+
+        if (is_string($company)) {
+            $company = [$company];
+        }
+
+        foreach ($company as $name) {
+
+
+            if ($name != '') {
+                $name = $this->removeAfterDash($name);
+                $name = trim($name, '"');
+                $name = explode('"', $name);
+                $name = $name[0];
+                $name = explode('(', $name);
+                $name = $name[0];
+
+                $name = explode(',', $name);
+                $name = trim($name[0]);
+
+                if ($this->ignoreText($name)) {
+                    continue;
+                }
+
+                $return[] = trim($name);
+            }
+        }
+
+
+        return array_unique($return);
+    }
+
+    /**
+     * Remove string after dash
+     *
+     * @param $string
+     * @return string
+     */
+    protected function removeAfterDash($string)
+    {
+        if (is_array($string)) {
+            $string = array_unique($string);
+            if (count($string) > 1) {
+                dd($string);
+            }
+            $string = $string[0];
+        }
+
+        $arr    = explode('--', $string);
+        $string = $arr[0];
+        $string = trim($string, '"');
+        $string = trim($string);
+
+        return $string;
+    }
+
+    protected function refineLanguage($language)
+    {
+        return ('eng' == $language) ? 'EN' : $language;
+    }
+
+    protected function refineResources($resource_main, $resource)
+    {
+        $resource = is_array($resource) ? $resource : [$resource];
+        $res_arr  = explode(',', $resource_main);
+        $res_arr  = array_map('trim', $res_arr);
+        foreach ($resource as $val) {
+            if ($val != '') {
+                $res_arr[] = $val;
+            }
+        }
+        $res_arr   = $res_arr + $resource;
+        $valid_res = [];
+
+        foreach ($res_arr as $resource) {
+            if ($res = $this->extractResource($resource)) {
+                if (is_array($res)) {
+                    foreach ($res as $r) {
+                        $valid_res[] = $r;
+                    }
+                } else {
+                    $valid_res[] = $res;
+                }
+            }
+
+        }
+
+        return array_unique($valid_res);
+    }
+
+    protected function refineCountry($country)
+    {
+        return $this->country->getCountryByName($country);
+    }
+
+    protected function extractResource($resource)
+    {
+        $resource_list = trans('codelist/resource');
+        $resource      = $this->removeAfterDash($resource);
+        $match         = [];
+        $wildCard      = [
+            'Aluminium'             => 'Alumine',
+            'Base metals'           => 'Les metaux de base',
+            'Bauxite'               => 'Bauxite',
+            'Coal'                  => 'Charbon',
+            'Cobalt'                => 'Cobalt',
+            'Copper'                => 'Cuivre',
+            'Crude oil'             => 'Huile brute',
+            'Diamonds'              => 'Diamants',
+            'Gas'                   => 'Gaz',
+            'Gold'                  => 'Or',
+            'Iron ore'              => 'Fer',
+            'Lapis lazuli'          => 'Lapis-lazuli',
+            'Lead'                  => 'Plomb',
+            'Lithium'               => 'Lithium',
+            'Manganese'             => 'Manganèse',
+            'Molybdenum'            => 'Molybdène',
+            'Nickel'                => 'Nickel',
+            'Phosphate rock'        => 'Rroche phosphatée',
+            'Platinum Group Metals' => 'Métaux du groupe du platine',
+            'Precious stones'       => 'Pierres précieuses',
+            'Quartz'                => 'Quartz',
+            'Semi-precious stones'  => 'Pierres semi précieuses',
+            'Silver'                => 'Argent',
+            'Titanium'              => 'Titane',
+            'Uranium'               => 'Uranium',
+            'Zinc'                  => 'Zinc',
+            'Citrus'                => 'Citrus',
+            'Food crops'            => 'Les cultures vivrières',
+            'Hydrocarbons'          => 'Hydrocarbures',
+            'Palm oil'              => 'Huile de palme',
+            'Rubber'                => 'Caoutchouc',
+            'Soy'                   => 'Soja',
+            'Sugar'                 => 'Sucre',
+            'Timber'                => 'Bois d\'œuvre'
+        ];
+
+
+        if ($resource == '') {
+            return '';
+        }
+
+        foreach ($resource_list as $key => $val) {
+
+            if ($this->isStringMatch($resource, $val)) {
+                return $val;
+            }
+
+            if (stripos($resource, $val) !== false) {
+                $match[] = $resource . '--wild' . $val;
+            }
+
+            if (stripos($val, $resource) !== false) {
+                $match[] = $val;
+            }
+        }
+
+        foreach ($wildCard as $key => $val) {
+            if (stripos($val, $resource) !== false) {
+                $match[] = $key;
+            }
+        }
+
+        $match = array_unique($match);
+
+        if (count($match) > 0) {
+            return $match;
+        }
+
+        return '';
+    }
+
+    /**
+     * Extract Type of Contract
+     *
+     * @param $toc
+     * @return string
+     */
+    protected function refineToc($toc)
+    {
+        $toc_string = $this->removeAfterDash($toc);
+
+        if ($toc_string == '') {
+            return '';
+        }
+
+        $toc_list = trans('codelist/contract_type');
+
+        foreach ($toc_list as $key => $val) {
+
+            if ($this->isStringMatch($val, $toc_string)) {
+                return $toc_string;
+            }
+
+        }
+
+        $wildCard = ['Production or Profit Sharing Agreement' => ['sharing', 'production']];
+
+        foreach ($wildCard as $key => $val) {
+            if (is_array($val)) {
+                foreach ($val as $v) {
+                    if (stripos($toc_string, $v) !== false) {
+                        return $key;
+                    }
+                }
+            } else {
+                if (stripos($toc_string, $val) !== false) {
+                    return $key;
+                }
+            }
+        }
+
+        return '';
+    }
+
+
+    public function cscExport(array &$array)
+    {
+        $filename = "data_export_" . date("Y-m-d") . ".csv";
+
+        // disable caching
+        $now = gmdate("D, d M Y H:i:s");
+        header("Expires: Tue, 03 Jul 2001 06:00:00 GMT");
+        header("Cache-Control: max-age=0, no-cache, must-revalidate, proxy-revalidate");
+        header("Last-Modified: {$now} GMT");
+
+        // force download
+        header("Content-Type: application/force-download");
+        header("Content-Type: application/octet-stream");
+        header("Content-Type: application/download");
+
+        // disposition / encoding on response body
+        header("Content-Disposition: attachment;filename={$filename}");
+        header("Content-Transfer-Encoding: binary");
+
+
+        if (count($array) == 0) {
+            return null;
+        }
+        ob_start();
+        $df = fopen("php://output", 'w');
+        fputcsv($df, array_keys(reset($array)));
+        foreach ($array as $row) {
+            fputcsv($df, $row);
+        }
+        fclose($df);
+
+        return ob_get_clean();
+    }
+
+    public function ignoreText($name)
+    {
+        $words = [' the ', ' an ', ' will ', ' is '];
+
+        foreach ($words as $word) {
+            if (stripos($name, $word) !== false) {
+                return true;
+            }
+        }
+    }
+
+    public function refineAnnotation($annotations)
+    {
+        $annotationArr = [];
+
+        foreach ($annotations as $annotationObj) {
+            $annotation['annotation'] = $this->buildAnnotation($annotationObj);;
+            $annotation['document_page_no'] = $annotationObj->page;
+            $annotationArr[]                = $annotation;
+        }
+
+        return $annotationArr;
+    }
+
+
+    public function refineAnnotationCategory($title)
+    {
+        $title    = $this->getAnnotationTitle($title);
+        $mappings = config('annotation_mapping');
+        $title    = trim(trim($title), ',');
+        foreach ($mappings as $key => $map) {
+            $key = trim(trim($key), ',');
+
+            if ($this->isStringMatch($title, $key) !== false) {
+                return $map;
+            }
+        }
+
+        return '';
+    }
+
+
+    function getAnnotationTitle($title)
+    {
+        $title = explode('//', $title);
+
+        if (isset($title[1])) {
+            return $title[1];
+        }
+
+        return '';
+    }
+
 }
