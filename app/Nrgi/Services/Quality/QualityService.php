@@ -55,20 +55,10 @@ class QualityService
         asort($annotationsSchema);
 
         foreach ($annotationsSchema as $key) {
-            $check    = 0;
             $response = $this->contract->getAnnotationsQuality($key);
-
-            if (!empty($response)) {
-                $check = 1;
-            }
-            if (isset($annotations[$key])) {
-                $annotations[$key] = $annotations[$key] + $check;
-            } else {
-                $annotations[$key] = $check;
-            }
-
+            $count = !empty($response)?count($response):0;
+            $annotations[$key]=$count;
         }
-
         return $annotations;
     }
 

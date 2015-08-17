@@ -77,13 +77,15 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw(sprintf("contracts.metadata->>'%s' %s''", $word, $operator));
         }
         if ($type == "annotations" && $word != '' && $issue != '') {
-            $contractsId = DB::table('contract_annotations')->select(DB::raw('contract_id'))->whereRaw("contract_annotations.annotation->>'category' = ?", [$word])->get();
-            $contractsId = !empty($contractsId) ? array_values((array) $contractsId[0]) : [0];
-
+            $contractsId = DB::table('contract_annotations')->select(DB::raw('contract_id'))->whereRaw("contract_annotations.annotation->>'category' = ?", [$word])->distinct('contract_id')->get();
+            $contracts   = [];
+            foreach ($contractsId as $contractId) {
+                array_push($contracts,$contractId->contract_id);
+            }
             if ($issue == "present") {
-                $query->whereRaw("id IN (?)", $contractsId);
+                $query->whereIn("id", $contracts);
             } else {
-                $query->whereRaw("id NOT IN (?)", $contractsId);
+                $query->whereNotIn("id", $contracts);
             }
         }
 
@@ -305,8 +307,9 @@ class ContractRepository implements ContractRepositoryInterface
     public function getAnnotationsQuality($key)
     {
         $from   = "contract_annotations";
-        $result = $this->contract->whereRaw("contract_annotations.annotation->>'category'= ? ", [$key])
+        $result = $this->contract->select('contract_id')->whereRaw("contract_annotations.annotation->>'category'= ? ", [$key])
                                  ->from($from)
+                                 ->distinct('contract_id')
                                  ->get();
 
         return $result->toArray();
