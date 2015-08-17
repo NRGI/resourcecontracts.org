@@ -315,13 +315,14 @@ class MigrationService
         $contract['metadata']['signature_year'] = $data['signature_year'];
 
         $contract['metadata']['contract_name']                 = $data['contract_name'];
-        $contract['metadata']['resources']                     = $data['resources'];
+        $contract['metadata']['resource']                      = $data['resources'];
         $contract['metadata']['country']                       = $data['country'];
         $contract['metadata']['contract_identifier']           = $data['contract_identifier'];
         $contract['metadata']['project_title']                 = $data['project_title'];
         $contract['metadata']['type_of_contract']              = $data['type_of_contract'];
         $contract['metadata']['concession'][0]['license_name'] = $data['license_concession_name'];
         $contract['metadata']['documentcloud_url']             = $data['documentcloud_url'];
+        $contract['metadata']['category']                      = ['rc'];
 
         $company_arr = array_map('trim', $data['company_name']);
 

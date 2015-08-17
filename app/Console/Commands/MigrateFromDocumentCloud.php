@@ -3,7 +3,6 @@
 use App\Nrgi\Services\Contract\MigrationService;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Filesystem\Filesystem;
 
 /**
@@ -58,15 +57,20 @@ class MigrateFromDocumentCloud extends Command
      */
     public function fire()
     {
-        $filePath = public_path('api-data');
-        $files    = $this->fileSystem->allFiles($filePath);
+        $files = $this->fileSystem->files($this->getDir());
 
         $data = [];
+
+        if (count($files) < 1) {
+            $this->error('Json file not found');
+
+            return;
+        }
+
         foreach ($files as $file) {
             $this->migration->setData($file);
             $contract = $this->migration->run();
             $data[]   = $contract;
-
             if (!is_null($contract)) {
 
                 $con = $this->migration->uploadPdfToS3AndCreateContracts($contract);
@@ -77,13 +81,14 @@ class MigrateFromDocumentCloud extends Command
                     $this->migration->saveAnnotations($con, $contract->annotations);
                 }
 
+                $this->moveFile($file);
+
                 continue;
             }
 
             $this->error(sprintf('Failed - %s', $file));
         }
 
-//        file_put_contents('./public/migration.html', json_encode($data));
         $this->info('done');
     }
 
@@ -107,6 +112,23 @@ class MigrateFromDocumentCloud extends Command
         return [
             ['file', null, InputOption::VALUE_OPTIONAL, 'path of file.', null],
         ];
+    }
+
+    private function moveFile($file)
+    {
+        $done = $this->getDir('done');
+
+        if (!$this->fileSystem->isDirectory($done)) {
+            $this->fileSystem->makeDirectory($done);
+        }
+
+        $done = $this->getDir('done/' . basename($file));
+        $this->fileSystem->move($file, $done);
+    }
+
+    private function getDir($dir = '')
+    {
+        return public_path('api-data' . '/' . $dir);
     }
 
 }
