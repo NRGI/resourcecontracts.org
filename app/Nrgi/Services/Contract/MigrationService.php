@@ -327,14 +327,92 @@ class MigrationService
         $company_arr = array_map('trim', $data['company_name']);
 
         $companies = [];
+        if (empty($company_arr)) {
+            $companies[] = $company_template;
+        } else {
+            foreach ($company_arr as $company) {
+                $company_template['name'] = $company;
+                $companies[]              = $company_template;
+            }
 
-        foreach ($company_arr as $company) {
-            $company_template['name'] = $company;
-            $companies[]              = $company_template;
         }
         $contract['metadata']['company'] = $companies;
 
         return $contract;
+    }
+
+    /**
+     * Get Contract Array
+     *
+     * @param $data
+     * @param $contract
+     * @return array
+     */
+    public function buildContractMetadata($data, $contract)
+    {
+        $contractSchema             = config('metadata.schema');
+        $metadata                   = json_decode(json_encode($contract->metadata), true);
+        $metadata['language']       = $data['n_language'];
+        $metadata['signature_date'] = $data['n_signature_date'];
+        $metadata['signature_year'] = $data['n_signature_year'];
+
+        $metadata['contract_name']                 = $data['m_contract_name'];
+        $metadata['resource']                      = array_map('trim', explode(",", $data['n_resources']));
+        $countryData                               = explode(",", $data['n_country']);
+        $metadata['country']                       = [
+            'code' => trim(explode(":", $countryData[0])[1]),
+            "name" => trim(explode(":", $countryData[1])[1])
+        ];
+        $metadata['project_title']                 = $data['n_project_title'];
+        $metadata['type_of_contract']              = $data['n_type_of_contract'];
+        $metadata['concession'][0]['license_name'] = $data['n_license_concession_name'];
+        $metadata['government_entity']             = $data['n_government_entities'];
+
+        $company_arr               = array_map('trim', explode(",", $data['n_company']));
+        $company_jurisdictions_arr = array_map('trim', explode(",", $data['n_company_jurisdictions']));
+        $corporate_group_arr       = array_map('trim', explode(",", $data['n_corporate_group']));
+        $company_identifier_arr    = array_map('trim', explode(",", $data['n_company_identifier']));
+        $opencorporates_id_arr     = array_map('trim', explode(",", $data['n_opencorporates_id']));
+        $companies                 = [];
+        $company_template          = $contractSchema['metadata']['company'][0];
+        if (empty($company_arr)) {
+            $companies[] = $company_template;
+        } else {
+            foreach ($company_arr as $key => $company) {
+                $company_template['name']                  = $company;
+                $company_template['company_jurisdictions'] = (array_key_exists(
+                    $key,
+                    $company_jurisdictions_arr
+
+                )) ? $company_jurisdictions_arr[$key] : "";
+                $company_template['corporate_group']       = (array_key_exists(
+                    $key,
+                    $corporate_group_arr
+
+                )) ? $corporate_group_arr[$key] : "";
+                $company_template['company_identifier']    = (array_key_exists(
+                    $key,
+                    $company_identifier_arr
+
+                )) ? $company_identifier_arr[$key] : "";
+                $company_template['opencorporates_id']     = (array_key_exists(
+                    $key,
+                    $opencorporates_id_arr
+
+                )) ? $opencorporates_id_arr[$key] : "";
+                $companies[]                               = $company_template;
+
+            }
+
+        }
+        $metadata['company'] = $companies;
+
+        return $metadata;
+    }
+
+    public function cleanString($string)
+    {
+        return str_replace(array("\n", "\r"), '', $string);
     }
 
     /**
@@ -752,7 +830,7 @@ class MigrationService
             }
 
             if (stripos($resource, $val) !== false) {
-                $match[] = $resource . '--wild' . $val;
+                $match[] = $val;
             }
 
             if (stripos($val, $resource) !== false) {

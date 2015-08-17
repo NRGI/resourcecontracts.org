@@ -1,7 +1,9 @@
 <?php namespace App\Console\Commands;
 
+use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\MigrationService;
 use Illuminate\Console\Command;
+use Maatwebsite\Excel\Excel;
 use Symfony\Component\Console\Input\InputOption;
 use Illuminate\Filesystem\Filesystem;
 
@@ -35,19 +37,25 @@ class MigrateFromDocumentCloud extends Command
      * @var Filesystem
      */
     protected $fileSystem;
+    /**
+     * @var Excel
+     */
+    protected $excel;
 
     /**
      * Create a new command instance.
      *
      * @param MigrationService $migration
      * @param Filesystem       $fileSystem
+     * @param Excel            $excel
      * @internal param MigrationService $migrate
      */
-    public function __construct(MigrationService $migration, Filesystem $fileSystem)
+    public function __construct(MigrationService $migration, Filesystem $fileSystem, Excel $excel)
     {
         parent::__construct();
         $this->migration  = $migration;
         $this->fileSystem = $fileSystem;
+        $this->excel      = $excel;
     }
 
     /**
@@ -57,9 +65,69 @@ class MigrateFromDocumentCloud extends Command
      */
     public function fire()
     {
-        $files = $this->fileSystem->files($this->getDir());
+        if ($this->input->getOption('update')) {
+            $this->updateFromXl();
 
-        $data = [];
+            return "";
+        }
+        $this->readFromJson();
+    }
+
+    /**
+     * update from excel file
+     */
+    public function updateFromXl()
+    {
+        $contracts = $this->extractRecords($this->getFile());
+        foreach ($contracts as $contractXlData) {
+            $query    = Contract::select('*');
+            $contract = $query->whereRaw(
+                sprintf("contracts.metadata->>'documentcloud_url'='%s'", $contractXlData['m_documentcloud_url'])
+            )->first();
+            if ($contract) {
+                $contract->metadata = $this->migration->buildContractMetadata($contractXlData, $contract);
+                $contract->save();
+                $this->info(sprintf('Success - %s - %s', "done", $contractXlData['m_contract_name']));
+            } else {
+                $this->info(sprintf('Failed - %s - %s', "contract not found", $contractXlData['m_contract_name']));
+            }
+
+            $this->info(sprintf('Success - %s', $contractXlData['m_contract_name']));
+        }
+        $this->info("Done!");
+    }
+
+    /**
+     * Read and extract records from file
+     *
+     * @param $file
+     * @return array
+     */
+    protected function extractRecords($file)
+    {
+        return $this->excel->load($file)->all()->toArray();
+    }
+
+
+    /**
+     * Get File
+     *
+     * @param string $key
+     * @param string $fileName
+     * @return string
+     */
+    public function getFile()
+    {
+        return public_path() . "/dc_contracts.csv";
+    }
+
+    /**
+     * Document cloud contract from json file
+     */
+    public function readFromJson()
+    {
+        $files = $this->fileSystem->files($this->getDir());
+        $data  = [];
 
         if (count($files) < 1) {
             $this->error('Json file not found');
@@ -110,11 +178,14 @@ class MigrateFromDocumentCloud extends Command
     protected function getOptions()
     {
         return [
-            ['file', null, InputOption::VALUE_OPTIONAL, 'path of file.', null],
+            ['update', null, InputOption::VALUE_NONE, 'Force the operation to run.', null],
         ];
     }
 
-    private function moveFile($file)
+    /**
+     * @param $file
+     */
+    protected function moveFile($file)
     {
         $done = $this->getDir('done');
 
@@ -126,7 +197,11 @@ class MigrateFromDocumentCloud extends Command
         $this->fileSystem->move($file, $done);
     }
 
-    private function getDir($dir = '')
+    /**
+     * @param string $dir
+     * @return string
+     */
+    protected function getDir($dir = '')
     {
         return public_path('api-data' . '/' . $dir);
     }
