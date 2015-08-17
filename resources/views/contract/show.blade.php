@@ -244,6 +244,11 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 </li>
             @endif
 
+            @if(!empty($translatedFrom))
+                <li><strong>@lang('contract.translated_from'):</strong>
+                   <a href="{{route('contract.show',$translatedFrom[0]['id'])}}">{{json_decode($translatedFrom[0]['contract_name'])}}</a>
+                </li>
+            @endif
             @if(isset($contract->metadata->company))
                 <?php $companies = $contract->metadata->company;?>
                 @if(count($companies)>0)
@@ -341,7 +346,16 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             @if(isset($contract->metadata->location))
                 <li><strong>@lang('contract.location'):</strong> {{$contract->metadata->location}}</li>
             @endif
-
+            @if(!empty($supportingDocument))
+                <li><h3>@lang('contract.supporting_documents')</h3></li>
+                <div class="document-link-wrapper">
+                    @foreach($supportingDocument as $contract_sup)
+                        <div class="document-link">
+                            <a href="{{route('contract.show',$contract_sup['id'])}}">{{json_decode($contract_sup['contract_name'])}}</a>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
             <?php $catConfig = config('metadata.category');?>
 
             @if(isset($contract->metadata->category) && is_array($contract->metadata->category) && count($contract->metadata->category)>0)

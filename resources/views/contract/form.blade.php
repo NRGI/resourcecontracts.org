@@ -143,8 +143,13 @@
     </div>
 </div>
 
+<div class="form-group">
+    {!! Form::label('translated_from', trans('contract.translated_from'), ['class'=>'col-sm-2 control-label'])!!}
+    <div class="col-sm-7">
+        {!! Form::select('translated_from',['' => 'select']+$contracts, isset($contract->metadata->translated_from)?$contract->metadata->translated_from:null, ["class"=>"form-control"])!!}
 
-
+    </div>
+</div>
 
 
 <h3>@lang('contract.company')</h3>
@@ -172,7 +177,8 @@
                         {!! Form::label('participation_share', trans('contract.participation_share'), ['class'=>'col-sm-2
                         control-label'])!!}
                         <div class="col-sm-7">
-                            {!! Form::input('text',"company[$i][participation_share]",isset($v->participation_share)?$v->participation_share:null ,["class"=>"form-control","step"=>"any","min"=>0,"max"=>1])!!}
+                            {!! Form::input('text',"company[$i][participation_share]",isset($v->participation_share)?$v->participation_share:null
+                            ,["class"=>"form-control","step"=>"any","min"=>0,"max"=>1])!!}
                         </div>
                     </div>
 
@@ -253,7 +259,7 @@
                         {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
                         <div class="col-sm-7">
                             {!! Form::checkbox("company[$i][operator]",'1', isset($v->operator)?$v->operator:null,['class'=>'operator']) !!}
-                            <input  name=company[{{$i}}][operator] type="hidden" value="" class="hidden-operator">
+                            <input name=company[{{$i}}][operator] type="hidden" value="" class="hidden-operator">
                         </div>
                     </div>
                     @if($k > 0)
@@ -261,7 +267,7 @@
                     @endif
 
                 </div>
-                <?php $i++;?>
+                <?php $i ++;?>
 
             @endforeach
         @endif
@@ -340,7 +346,7 @@
                     control-label'])!!}</a>
 
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][open_corporate_id]",null,["class"=>"digit form-control"])!!}
+                    {!! Form::text("company[0][open_corporate_id]",null,["class"=>"url form-control"])!!}
                 </div>
             </div>
 
@@ -348,7 +354,7 @@
                 {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
                 <div class="col-sm-7">
                     {!! Form::checkbox("company[0][operator]",'1',null,['class'=>'operator']) !!}
-                    <input  name=company[0][operator] type="hidden" value="" class="hidden-operator">
+                    <input name=company[0][operator] type="hidden" value="" class="hidden-operator">
                 </div>
             </div>
         </div>
@@ -390,34 +396,34 @@
         @if(count($concession)>0)
             @foreach($concession as $k => $v)
                 <div class="con-item" {{$k ==0 ? 'id=template' : ''}}>
-            <div class="form-group">
-                {!! Form::label('license_name', trans('contract.license_name'), ['class'=>'col-sm-2 control-label'])!!}
-                <div class="col-sm-7">
-                    {!! Form::text("concession[$j][license_name]",
-                    isset($v->license_name)?$v->license_name:null,
-                    ["class"=>"form-control"])!!}
-                </div>
-            </div>
+                    <div class="form-group">
+                        {!! Form::label('license_name', trans('contract.license_name'), ['class'=>'col-sm-2 control-label'])!!}
+                        <div class="col-sm-7">
+                            {!! Form::text("concession[$j][license_name]",
+                            isset($v->license_name)?$v->license_name:null,
+                            ["class"=>"form-control"])!!}
+                        </div>
+                    </div>
 
-            <div class="form-group">
-                {!! Form::label('license_identifier', trans('contract.license_identifier'), ['class'=>'col-sm-2
-                control-label'])!!}
-                <div class="col-sm-7">
-                    {!! Form::text("concession[$j][license_identifier]",
-                    isset($v->license_identifier)?$v->license_identifier:null,
-                    ["class"=>"form-control"])!!}
-                </div>
+                    <div class="form-group">
+                        {!! Form::label('license_identifier', trans('contract.license_identifier'), ['class'=>'col-sm-2
+                        control-label'])!!}
+                        <div class="col-sm-7">
+                            {!! Form::text("concession[$j][license_identifier]",
+                            isset($v->license_identifier)?$v->license_identifier:null,
+                            ["class"=>"form-control"])!!}
+                        </div>
 
-                </div>
+                    </div>
                     @if($k>0)
                         <div class="delete">delete</div>
                     @endif
                 </div>
 
-                <?php $j++?>
-     @endforeach
-    @endif
-     @else
+                <?php $j ++?>
+            @endforeach
+        @endif
+    @else
         <div class="con-item">
             <div class="form-group">
                 {!! Form::label('license_name', trans('contract.license_name'), ['class'=>'col-sm-2 control-label'])!!}
@@ -444,19 +450,7 @@
 
 <div class="btn btn-default new-concession">Add new License</div>
 
-@section('script')
-    <script src="{{asset('js/jquery.validate.min.js')}}"></script>
-    <script src="{{asset('js/select2.min.js')}}"></script>
-    <script src="{{asset('js/jquery.datetimepicker.js')}}"></script>
-    <script src="{{asset('js/mustache.min.js')}}"></script>
-    @include('contract.company_template')
-    <script>
-        var i = {{$i or 0}};
-        var j = {{$j or 0}};
-        var country_list = {!!json_encode($country_list)!!};
-    </script>
-    <script src="{{asset('js/contract.js')}}"></script>
-@stop
+
 
 
 <h3>@lang('contract.source')</h3>
@@ -502,6 +496,51 @@
         @endforeach
     </div>
 </div>
+
+<h3>Supporting Documents</h3>
+<hr>
+
+<div class="form-group support-form-group">
+    {!! Form::label('translated_from', trans('contract.supporting_documents'), ['class'=>'col-sm-2 control-label'])!!}
+    <div class="col-sm-7">
+        {!! Form::select('',['' => 'select']+$contracts,null, ["class"=>"form-control select-document"])!!}
+    </div>
+</div>
+<?php $docId = []; ?>
+<div id="selected-document" class="selected-document">
+    @if(!empty($supportingDocument))
+        @foreach($supportingDocument as $doc)
+            <div class="document">
+                <a href="{{route('contract.show',$doc['id'])}}">{{json_decode($doc['contract_name'])}}</a><br>
+                <input type="hidden" name="supporting_document[]" value="{{$doc['id']}}">
+                <?php
+                array_push($docId, $doc['id']);
+                ?>
+                <div class="delete" id="{{$doc['id']}}">delete</div>
+            </div>
+        @endforeach
+    @endif
+</div>
+@section('script')
+    <script src="{{asset('js/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('js/select2.min.js')}}"></script>
+    <script src="{{asset('js/jquery.datetimepicker.js')}}"></script>
+    <script src="{{asset('js/mustache.min.js')}}"></script>
+    <script src="{{asset('js/lib/underscore.js')}}"></script>
+    <script src="{{asset('js/lib/backbone.js')}}"></script>
+
+    @include('contract.company_template')
+    <script>
+        var i = {{$i or 0}};
+        var j = {{$j or 0}};
+        var country_list = {!!json_encode($country_list)!!};
+        var contracts = {!!json_encode($contracts)!!};
+        var docId = {{json_encode($docId)}};
+
+    </script>
+    <script src="{{asset('js/contract.js')}}"></script>
+@stop
+
 
 <div class="form-action">
     <div class="col-sm-7 col-lg-offset-2">

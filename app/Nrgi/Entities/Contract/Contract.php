@@ -147,6 +147,14 @@ class Contract extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function SupportingContract()
+    {
+        return $this->belongsToMany('App\Nrgi\Entities\SupportingContract\SupportingContract', 'supporting_contract', 'contract_id');
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function created_user()
@@ -275,4 +283,46 @@ class Contract extends Model
     {
         return isset(config('amla')[$code]) ? config('amla')[$code] : '';
     }
+
+
+    /**
+     * Sync of supporting contracts
+     *
+     * @param $contract_id
+     * @return bool
+     */
+    public function syncSupportingContracts($contract_id)
+    {
+        \DB::table('supporting_contracts')->where('contract_id', $this->id)->delete();
+
+        if (empty($contract_id)) {
+            return true;
+        }
+
+        if (!is_array($contract_id)) {
+            $contract_id = [$contract_id];
+        }
+
+        $insert = [];
+
+        foreach ($contract_id as $id) {
+            $insert[] = [
+                'contract_id'             => $this->id,
+                'supporting_contract_id' => $id
+            ];
+        }
+
+        return \DB::table('supporting_contracts')->insert($insert);
+    }
+
+    /**
+     * Get the list of supporting Contract
+     *
+     * @return array
+     */
+    public function getSupportingContract()
+    {
+        return \DB::table('supporting_contracts')->where('contract_id', $this->id)->lists('supporting_contract_id');
+    }
+
 }

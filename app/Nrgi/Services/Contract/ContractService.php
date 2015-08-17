@@ -215,8 +215,11 @@ class ContractService
                 'user_id'  => $this->auth->user()->id,
                 'metadata' => $metadata,
             ];
+            $supportingDocuments   = $formData['supporting_document'];
             try {
                 $contract = $this->contract->save($data);
+
+                $contract->syncSupportingContracts($supportingDocuments);
                 $this->logger->activity('contract.log.save', ['contract' => $contract->title], $contract->id);
 
                 $this->logger->info(
@@ -274,6 +277,7 @@ class ContractService
                 "document_type",
                 "translation_from_original",
                 "translation_parent",
+                "translated_from",
                 "company",
                 "concession",
                 "project_title",
@@ -296,6 +300,7 @@ class ContractService
      */
     public function updateContract($contractID, array $formData)
     {
+
         try {
             $contract = $this->contract->findContract($contractID);
         } catch (Exception $e) {
@@ -303,7 +308,6 @@ class ContractService
 
             return false;
         }
-
         $file_size                 = $contract->metadata->file_size;
         $metadata                  = $this->processMetadata($formData);
         $metadata['file_size']     = $file_size;
@@ -312,7 +316,9 @@ class ContractService
         $contract->metadata_status = Contract::STATUS_DRAFT;
 
         try {
-            $contract->save();
+            if ($contract->save()) {
+                $contract->syncSupportingContracts($formData['supporting_document']);
+            }
             $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
 
             $this->logger->activity('contract.log.update', ['contract' => $contract->title], $contract->id);
@@ -326,6 +332,8 @@ class ContractService
 
             return false;
         }
+
+
     }
 
     /**
@@ -667,4 +675,41 @@ class ContractService
             return null;
         }
     }
+
+    /**
+     * Get the contract's id and name
+     *
+     * @param $id
+     * @return array
+     */
+    public function getcontracts($id)
+    {
+        $contracts = $this->contract->getSupportingContracts((array) $id);
+
+        return $contracts;
+    }
+
+    /**
+     * Get the supporting Contracts
+     *
+     * @param $id
+     * @return array
+     */
+    public function getSupportingDocuments($id)
+    {
+        $supportingContracts = $this->contract->getSupportingDocument($id);
+
+        if (empty($supportingContracts)) {
+            return [];
+        }
+        $contractsId = [];
+        foreach ($supportingContracts as $contractId) {
+            array_push($contractsId, $contractId['supporting_contract_id']);
+        }
+        $contracts = $this->getcontracts($contractsId);
+
+        return $contracts;
+    }
+
+
 }

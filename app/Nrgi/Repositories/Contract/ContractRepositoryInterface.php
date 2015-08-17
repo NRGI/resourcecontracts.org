@@ -87,6 +87,10 @@ interface ContractRepositoryInterface
      * Get unique Resources
      * @return Contract
      */
+    /**
+     * write brief description
+     * @return mixed
+     */
     public function getUniqueResources();
 
     /**
@@ -156,4 +160,36 @@ interface ContractRepositoryInterface
      * @return integer
      */
     public function getTotalContractCount();
+
+    /**
+     * To save the supporting documents of contracts
+     *
+     * @param $documents
+     * @return mixed
+     */
+    public function saveSupportingDocument($documents);
+
+    /**
+     * Get the contract name and id
+     *
+     * @param array $id
+     * @return array
+     */
+    public function getSupportingContracts($id);
+
+    /**
+     * Return the Parent contract id
+     *
+     * @param $id
+     * @return array
+     */
+    public function getSupportingDocument($id);
+
+    /**
+     * Return the supporting document
+     *
+     * @param $contractID
+     * @return SupportingDocument
+     */
+    public function findSupportingContract($contractID);
 }
