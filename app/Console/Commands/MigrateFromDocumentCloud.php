@@ -78,7 +78,9 @@ class MigrateFromDocumentCloud extends Command
      */
     public function updateFromXl()
     {
-        $contracts = $this->extractRecords($this->getFile());
+        $failedContracts = 0;
+        $savedContracts  = 0;
+        $contracts       = $this->extractRecords($this->getFile());
         foreach ($contracts as $contractXlData) {
             $query    = Contract::select('*');
             $contract = $query->whereRaw(
@@ -88,10 +90,15 @@ class MigrateFromDocumentCloud extends Command
                 $contract->metadata = $this->migration->buildContractMetadata($contractXlData, $contract);
                 $contract->save();
                 $this->info(sprintf('Success - %s - %s', "done", $contractXlData['m_contract_name']));
+                $savedContracts ++;
+
             } else {
+                $failedContracts ++;
                 $this->error(sprintf('Failed - %s - %s', "contract not found", $contractXlData['m_contract_name']));
             }
         }
+        $this->info("Number of failed contracts {$failedContracts}");
+        $this->info("Number of successful contracts {$savedContracts}");
         $this->info("Done!");
     }
 
