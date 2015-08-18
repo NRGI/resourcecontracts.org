@@ -358,11 +358,7 @@ class MigrationService
 
         $metadata['contract_name']                 = $data['m_contract_name'];
         $metadata['resource']                      = array_map('trim', explode(",", $data['n_resources']));
-        $countryData                               = explode(",", $data['n_country']);
-        $metadata['country']                       = [
-            'code' => trim(explode(":", $countryData[0])[1]),
-            "name" => trim(explode(":", $countryData[1])[1])
-        ];
+        $metadata['country']                       = $this->getCountryArray($data['n_country']);
         $metadata['project_title']                 = $data['n_project_title'];
         $metadata['type_of_contract']              = $data['n_type_of_contract'];
         $metadata['concession'][0]['license_name'] = $data['n_license_concession_name'];
@@ -982,6 +978,21 @@ class MigrationService
         }
 
         return '';
+    }
+
+    function getCountryArray($countryData)
+    {
+        $countryData = explode("name:", $countryData);
+        $countryCode = explode(":", $countryData[0])[1];
+        $countryCode = trim($countryCode);
+        $countryCode = trim($countryCode, ',');
+
+        $countryName = $countryData[1];
+
+        return [
+            'code' => trim($countryCode),
+            "name" => trim($countryName)
+        ];
     }
 
 }
