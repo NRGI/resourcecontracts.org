@@ -89,7 +89,7 @@ class MigrateFromDocumentCloud extends Command
                 $contract->save();
                 $this->info(sprintf('Success - %s - %s', "done", $contractXlData['m_contract_name']));
             } else {
-                $this->info(sprintf('Failed - %s - %s', "contract not found", $contractXlData['m_contract_name']));
+                $this->error(sprintf('Failed - %s - %s', "contract not found", $contractXlData['m_contract_name']));
             }
         }
         $this->info("Done!");
