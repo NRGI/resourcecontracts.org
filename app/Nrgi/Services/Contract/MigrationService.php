@@ -350,19 +350,19 @@ class MigrationService
      */
     public function buildContractMetadata($data, $contract)
     {
-        $contractSchema             = config('metadata.schema');
-        $metadata                   = json_decode(json_encode($contract->metadata), true);
-        $metadata['language']       = $data['n_language'];
-        $metadata['signature_date'] = $data['n_signature_date'];
-        $metadata['signature_year'] = $data['n_signature_year'];
+        $contractSchema = config('metadata.schema');
+        $metadata       = json_decode(json_encode($contract->metadata), true);
+        // $metadata['language']       = $data['n_language'];
+        // $metadata['signature_date'] = $data['n_signature_date'];
+        // $metadata['signature_year'] = $data['n_signature_year'];
 
-        $metadata['contract_name']                 = $data['m_contract_name'];
-        $metadata['resource']                      = array_map('trim', explode(",", $data['n_resources']));
-        $metadata['country']                       = $this->getCountryArray($data['n_country']);
-        $metadata['project_title']                 = $data['n_project_title'];
-        $metadata['type_of_contract']              = $data['n_type_of_contract'];
-        $metadata['concession'][0]['license_name'] = $data['n_license_concession_name'];
-        $metadata['government_entity']             = $data['n_government_entities'];
+        // $metadata['contract_name']                 = $data['m_contract_name'];
+        // $metadata['resource']                      = array_map('trim', explode(",", $data['n_resources']));
+        // $metadata['country']                       = $this->getCountryArray($data['n_country']);
+        // $metadata['project_title']                 = $data['n_project_title'];
+        $metadata['type_of_contract'] = $this->removeAfterDash($data['n_type_of_contract']);
+        // $metadata['concession'][0]['license_name'] = $data['n_license_concession_name'];
+        // $metadata['government_entity']             = $data['n_government_entities'];
 
         $company_arr               = array_map('trim', explode(",", $data['n_company']));
         $company_jurisdictions_arr = array_map('trim', explode(",", $data['n_company_jurisdictions']));
@@ -401,14 +401,15 @@ class MigrationService
             }
 
         }
-        $metadata['company'] = $companies;
+
+        //$metadata['company'] = $companies;
 
         return $metadata;
     }
 
     public function cleanString($string)
     {
-        return str_replace(array("\n", "\r"), '', $string);
+        return str_replace(["\n", "\r"], '', $string);
     }
 
     /**
