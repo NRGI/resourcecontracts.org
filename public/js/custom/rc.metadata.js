@@ -24,6 +24,8 @@ var MetadataButtonView = Backbone.View.extend({
         return this;
     },
     toggle: function(e) {
+        // console.log($('.annotation-title'));        
+        $('.annotation-title').parent().toggleClass('annotation-static-block');
         e.preventDefault();
         this.metadataView.toggle();
     },
