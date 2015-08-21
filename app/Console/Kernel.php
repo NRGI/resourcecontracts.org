@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\GenerateWordFile',
         'App\Console\Commands\BulkIndex',
         'App\Console\Commands\MigrateFromDocumentCloud',
+        'App\Console\Commands\MigrateEthiopianContracts',
     ];
 
     /**
