@@ -33,6 +33,7 @@ class CountryScope implements ScopeInterface
     {
         if (!Auth::guest() && Auth::user()->hasCountryRole()) {
             $country = Auth::user()->country;
+
             if ($builder->getModel()->getTable() == "activity_logs") {
                 $builder->whereHas(
                     'contract',
