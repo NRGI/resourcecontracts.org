@@ -367,7 +367,7 @@ header {
     position: relative;
 }
 
-.company .delete,.con-item .delete {
+.company .delete,.con-item .delete,.selected-document .delete {
     position: absolute;
     top: 7px;
     right: 15px;
@@ -376,6 +376,15 @@ header {
     width: 24px;
     height: 24px;
     cursor: pointer;
+}
+
+.selected-document .delete {
+    position: static;
+    background-size: 10px;
+    background-position: 6px 5px;
+    height: auto;
+    width: 18px;
+    display: inline-block;
 }
 
 .btn-annotation,.btn-metadata {
@@ -564,4 +573,42 @@ header {
     position: absolute;
     right: -40px;
     top: 22px;
+}
+
+.support-form-group {
+    margin-bottom: 0;
+}
+
+.selected-document {
+    margin-left: 174px;
+    float: left;
+    width: 57%;
+    margin-bottom: 10px;
+}
+
+.document {
+    float: left;
+    margin: 0 10px 10px 0;
+    background: #ddd;
+    border-radius: 4px;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+.document:hover {
+    background: #ccc;
+}
+
+.document:hover a {
+    text-decoration: none;
+}
+
+.document-link-wrapper a {
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+
+.document > * {
+   display: inline;
 }

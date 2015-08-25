@@ -81,15 +81,16 @@ class ElasticSearchService
         $contract->metadata->page_number = $contract->pages()->count();
 
         $metadata = [
-            'id'          => $contract->id,
-            'metadata'    => collect($contract->metadata)->toJson(),
-            'total_pages' => $contract->pages->count(),
-            'created_by'  => json_encode(
+            'id'                   => $contract->id,
+            'metadata'             => collect($contract->metadata)->toJson(),
+            'total_pages'          => $contract->pages->count(),
+            'created_by'           => json_encode(
                 ['name' => $contract->created_user->name, 'email' => $contract->created_user->email]
             ),
-            'updated_by'  => json_encode($updated_by),
-            'created_at'  => $contract->created_datetime->format('Y-m-d H:i:s'),
-            'updated_at'  => $contract->last_updated_datetime->format('Y-m-d H:i:s')
+            'supporting_contracts' => $this->contract->getSupportingDocuments($contract->id),
+            'updated_by'           => json_encode($updated_by),
+            'created_at'           => $contract->created_datetime->format('Y-m-d H:i:s'),
+            'updated_at'           => $contract->last_updated_datetime->format('Y-m-d H:i:s')
         ];
 
         try {

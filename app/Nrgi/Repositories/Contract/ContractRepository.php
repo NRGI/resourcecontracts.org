@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Repositories\Contract;
 
 use App\Nrgi\Entities\Contract\Contract;
+use App\Nrgi\Entities\SupportingContract\SupportingContract;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
@@ -19,15 +20,21 @@ class ContractRepository implements ContractRepositoryInterface
      * @var DatabaseManager
      */
     protected $db;
+    /**
+     * @var SupportingDocument
+     */
+    private $document;
 
     /**
-     * @param Contract        $contract
-     * @param DatabaseManager $db
+     * @param Contract           $contract
+     * @param DatabaseManager    $db
+     * @param SupportingContract $document
      */
-    public function __construct(Contract $contract, DatabaseManager $db)
+    public function __construct(Contract $contract, DatabaseManager $db, SupportingContract $document)
     {
         $this->contract = $contract;
         $this->db       = $db;
+        $this->document = $document;
     }
 
     /**
@@ -80,7 +87,7 @@ class ContractRepository implements ContractRepositoryInterface
             $contractsId = DB::table('contract_annotations')->select(DB::raw('contract_id'))->whereRaw("contract_annotations.annotation->>'category' = ?", [$word])->distinct('contract_id')->get();
             $contracts   = [];
             foreach ($contractsId as $contractId) {
-                array_push($contracts,$contractId->contract_id);
+                array_push($contracts, $contractId->contract_id);
             }
             if ($issue == "present") {
                 $query->whereIn("id", $contracts);
@@ -323,5 +330,50 @@ class ContractRepository implements ContractRepositoryInterface
     public function getTotalContractCount()
     {
         return $this->contract->count();
+    }
+
+    /**
+     * To save the supporting documents of contracts
+     *
+     * @param $documents
+     * @return mixed
+     */
+    public function saveSupportingDocument($documents)
+    {
+        return $this->contract->SupportingContract()->attach($documents);
+    }
+
+    /**
+     * Get the contract name and id
+     *
+     * @param array $id
+     * @return collection
+     */
+    public function getSupportingContracts($id)
+    {
+        return $this->contract->select(DB::raw("id,metadata->'contract_name' as contract_name"))->whereIn('id', $id)->get()->toArray();
+
+    }
+
+    /**
+     * Return the Parent contract id
+     *
+     * @param $id
+     * @return array
+     */
+    public function getSupportingDocument($id)
+    {
+        return $this->document->select('supporting_contract_id')->where('contract_id', $id)->get()->toArray();
+    }
+
+    /**
+     * Return the supporting document
+     *
+     * @param $contractID
+     * @return SupportingDocument
+     */
+    public function findSupportingContract($contractID)
+    {
+        return $this->document->where('parent_contract_id', $contractID)->first();
     }
 }

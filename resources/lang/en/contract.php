@@ -101,6 +101,8 @@ return [
     'edit_metadata'                 => "Edit metadata",
     'is_operator'                   => "Is Operator?",
     'operator'                      => 'Operator',
+    'translated_from'               => 'Translated From',
+    'supporting_documents'          => 'Supporting Documents',
     /*Logs*/
     'log'                           => [
         'save'      => 'Contract created',
