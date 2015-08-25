@@ -129,11 +129,16 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getUsersWithCountryContract()
     {
-        $countries = $this->auth->user()->country;
         $query     = $this->user->select('name', 'id');
-        $from      = "users";
+        $countries = $this->auth->user()->country;
+
+        $from = "users";
         $from .= ",json_array_elements(users.country) r";
-        $query->whereRaw("trim(both '\"' from r::text) in (?)", $countries);
+
+        if (!is_null($countries)) {
+            $query->whereRaw("trim(both '\"' from r::text) in (?)", $countries);
+        }
+
         $query->from($this->db->raw($from));
         $list = [];
         foreach ($query->get() as $v) {
