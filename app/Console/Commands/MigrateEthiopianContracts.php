@@ -71,8 +71,44 @@ class MigrateEthiopianContracts extends Command
     {
         //$data = $this->extractCsvRecords($this->getCsv());
         //$this->processExcel($data);
-        $this->readFromExcel();
+        //$this->readFromExcel();
+        $this->readFromJson();
     }
+
+    public function readFromJson()
+    {
+        $files = $this->fileSystem->files($this->getConvertedJsonDir());
+
+        if (count($files) < 1) {
+            $this->error('Json file not found');
+
+            return;
+        }
+
+        foreach ($files as $file) {
+            $contract = json_decode(file_get_contents($file), 1);
+
+            if (!is_null($contract)) {
+                $this->migration->setupContract($contract);
+                $con = $this->migration->uploadPdfToS3AndCreateContracts($contract);
+
+                $this->info(sprintf('Success - %s - %s', $file, $contract->metadata->contract_name));
+
+                if (!empty($contract->annotations)) {
+                    $this->migration->saveAnnotations($con, $contract->annotations);
+                }
+
+                $this->moveFile($file);
+
+                continue;
+            }
+
+            $this->error(sprintf('Failed - %s', $file));
+        }
+
+        $this->info('done');
+    }
+
 
     public function processExcel($data)
     {
@@ -203,6 +239,14 @@ class MigrateEthiopianContracts extends Command
     /**
      * @return string
      */
+    protected function getConvertedJsonDir()
+    {
+        return public_path('ethiopian-contracts/json');
+    }
+
+    /**
+     * @return string
+     */
     protected function getDir()
     {
         return public_path('ethiopian-contracts/data/converted');
@@ -236,8 +280,8 @@ class MigrateEthiopianContracts extends Command
         config()->set('excel.import.startRow', 1);
         if ($type == "Categories") {
             config()->set('excel.import.startRow', 2);
-            if (preg_match('/Heng%20Yue_Cambodia.xlsx/', $file) 
-                || preg_match('/Company_Sierra%20Leone/',$file) 
+            if (preg_match('/Heng%20Yue_Cambodia.xlsx/', $file)
+                || preg_match('/Company_Sierra%20Leone/', $file)
                 || preg_match('/Holdings_Sierra%20Leone.xlsx/', $file)
                 || preg_match('/Nile%20Trading%20%26%20Development_South%20Sudan/', $file)
             ) {

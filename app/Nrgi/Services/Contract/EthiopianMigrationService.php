@@ -12,6 +12,7 @@ use Symfony\Component\Process\Process;
  */
 class EthiopianMigrationService
 {
+    const UPLOAD_FOLDER = 'data/temp';
     protected $raw_data;
 
     protected $contract_name;
@@ -121,6 +122,123 @@ class EthiopianMigrationService
         $metadata['annotations']    = $this->getAnnotations();
 
         return $metadata;
+    }
+
+
+    /**
+     * Run Migration
+     *
+     * @return array
+     */
+    public function setupContract($contract)
+    {
+        if ($contract['pdf_url'] != '') {
+            if ($pdf = $this->downloadPdf($contract['pdf_url'] . "?dl=1")) {
+                if (!$this->isPdfExists($pdf)) {
+                    $contract['file']      = $pdf;
+                    $contract              = $this->getContractArray($contract);
+                    $contract              = json_decode(json_encode($contract));
+                    $contract->annotations = $this->refineAnnotation($this->data()->annotations);
+
+                    return $contract;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Get Contract Array
+     *
+     * @param $data
+     * @return array
+     */
+    protected function getContractArray($data)
+    {
+        dd($data['metadata']);
+        $contract = config('metadata.schema');
+
+        $company_template = $contract['metadata']['company'][0];
+
+        $contract['user_id']                   = 1;
+        $contract['file']                      = $data['file'];
+        $contract['filehash']                  = getFileHash($this->getMigrationPdfFile($data['file']));
+        $contract['metadata']['file_size']     = filesize($this->getMigrationPdfFile($data['file']));
+        $contract['metadata']['contract_name'] = urldecode(pathinfo($data['contract_name'], PATHINFO_FILENAME));
+//        $contract['created_datetime']      = $data['created_datetime'];
+//        $contract['last_updated_datetime'] = $data['last_updated_datetime'];
+
+        $contract['metadata']['language']                      = "EN";
+        $contract['metadata']['signature_date']                = $data['metadata']['signature_date'];
+        $contract['metadata']['signature_year']                = $data['metadata']['signature_year'];
+        $contract['metadata']['resource']                      = $data['resources'];
+        $contract['metadata']['country']                       = $data['country'];
+        $contract['metadata']['contract_identifier']           = $data['contract_identifier'];
+        $contract['metadata']['project_title']                 = $data['project_title'];
+        $contract['metadata']['type_of_contract']              = $data['type_of_contract'];
+        $contract['metadata']['concession'][0]['license_name'] = $data['license_concession_name'];
+        $contract['metadata']['documentcloud_url']             = $data['documentcloud_url'];
+        $contract['metadata']['category']                      = ['olc'];
+
+        $company_arr = array_map('trim', $data['company_name']);
+
+        $companies = [];
+        if (empty($company_arr)) {
+            $companies[] = $company_template;
+        } else {
+            foreach ($company_arr as $company) {
+                $company_template['name'] = $company;
+                $companies[]              = $company_template;
+            }
+
+        }
+        $contract['metadata']['company'] = $companies;
+
+        return $contract;
+    }
+
+
+    /**
+     * Check if pdf file exists
+     *
+     * @param $file
+     * @return bool
+     */
+    protected function isPdfExists($file)
+    {
+        $file     = $this->getMigrationPdfFile($file);
+        $fileHash = getFileHash($file);
+
+        if ($con = $this->contract->getContractByFileHash($fileHash)) {
+            $this->filesystem->delete($file);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Download a Pdf File
+     *
+     * @param $pdf
+     * @return null|string
+     */
+    protected function downloadPdf($pdf)
+    {
+        $pdf_name  = sha1(str_random()) . '.pdf';
+        $temp_path = $this->getMigrationPdfFile($pdf_name);
+
+        try {
+            copy($pdf, $temp_path);
+
+            return $pdf_name;
+        } catch (\Exception $e) {
+            $this->logger->error($e->getMessage());
+
+            return null;
+        }
     }
 
     public function addMPrifix($array)
@@ -421,6 +539,17 @@ class EthiopianMigrationService
         }
 
         return true;
+    }
+
+    /**
+     * Get Migration File
+     *
+     * @param string $fileName
+     * @return string
+     */
+    public function getMigrationPdfFile($fileName = '')
+    {
+        return sprintf('%s/%s', public_path(static::UPLOAD_FOLDER), $fileName);
     }
 
     /**
