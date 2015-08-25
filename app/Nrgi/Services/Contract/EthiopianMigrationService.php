@@ -72,7 +72,7 @@ class EthiopianMigrationService
         return $this;
     }
 
-     /**
+    /**
      * @param $fileName
      * @return mixed
      */
@@ -117,7 +117,8 @@ class EthiopianMigrationService
         $metadata['metadata']       = $this->filterData($this->getMetaDataFromMetadata(), $this->metadataMapping());
         $metadata ['contract_name'] = $this->contract_name;
         $metadata['file_name']      = $this->file_name;
-        $metadata['pdf_url']      = $this->pdf_url;
+        $metadata['pdf_url']        = $this->pdf_url;
+        $metadata['annotations']    = $this->getAnnotations();
 
         return $metadata;
     }
@@ -337,20 +338,33 @@ class EthiopianMigrationService
     public function getAnnotations()
     {
         $data = array();
-        foreach ($this->raw_data as $key => $annotation_raw_data) {
+        foreach ($this->raw_data['Categories'] as $key => $annotation_raw_data) {
+            if ($this->file_type == "xlsm") {
+                $page = $annotation_raw_data['page_permalink_page_page_top_middle_bottom'];
+                $text = $annotation_raw_data['details_value'];
+            } else {
+                $page = $annotation_raw_data['page_permalink'];
+                $text = $annotation_raw_data['details'];
+            }
+            $annotation['page'] = $page;
+            //$annotation['position'] = $position;
+            $annotation['text']     = $text;
             $annotation['category'] = $annotation_raw_data['english'];
-            $annotation['page']     = $annotation_raw_data['page_permalink'];
-            $annotation['text']     = $annotation_raw_data['details'];
             $data[]                 = $annotation;
         }
 
         return $data;
     }
 
-    public function getAnnotationPagePosition($string){
+    public function getAnnotationPagePosition($string)
+    {
+        list ($page, $position) = explode(" ", $string);
+        $position = trim($position);
+        $position = trim($position, "(");
+        $position = trim($position, ")");
 
-        return ['',''];
-    }    
+        return [$page, $position];
+    }
 
     /**
      * check if two string match

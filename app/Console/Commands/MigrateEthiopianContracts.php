@@ -71,7 +71,6 @@ class MigrateEthiopianContracts extends Command
     {
         //$data = $this->extractCsvRecords($this->getCsv());
         //$this->processExcel($data);
-
         $this->readFromExcel();
     }
 
