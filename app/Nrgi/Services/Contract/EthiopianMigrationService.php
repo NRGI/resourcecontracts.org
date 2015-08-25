@@ -4,6 +4,7 @@ namespace App\Nrgi\Services\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use Illuminate\Contracts\Logging\Log;
 use Illuminate\Filesystem\Filesystem;
+use Symfony\Component\Process\Process;
 
 /**
  * Class EthiopianMigrationService
@@ -18,6 +19,9 @@ class EthiopianMigrationService
     protected $file_type;
 
     protected $file_name;
+
+
+    protected $pdf_url;
 
     /**
      * @var Log
@@ -68,6 +72,18 @@ class EthiopianMigrationService
         return $this;
     }
 
+     /**
+     * @param $fileName
+     * @return mixed
+     */
+    public function setPdfUrl($pdf_url)
+    {
+        $this->pdf_url = $pdf_url;
+
+        return $this;
+    }
+
+
     /**
      * @param $contract_name
      * @return object
@@ -96,15 +112,14 @@ class EthiopianMigrationService
     public function run()
     {
         $metadataFromAnnotations = $this->getMetaDataFromAnnotation();
-        $refinedMetadata         = $this->extractMetadataFromAnnotation($metadataFromAnnotations);
+        $metadata['annotation']  = $this->extractMetadataFromAnnotation($metadataFromAnnotations);
 
-        $metadata     = $this->filterData($this->getMetaDataFromMetadata(), $this->metadataMapping());
-        $m_metadata   = $this->addMPrifix($metadata);
-        $a_metadata   = $this->addAPrifix($refinedMetadata);
-        $contractInfo = ['contract_name' => $this->contract_name, 'file_name' => $this->file_name];
-        $newMetadata  = array_merge($contractInfo, $m_metadata, $a_metadata);
+        $metadata['metadata']       = $this->filterData($this->getMetaDataFromMetadata(), $this->metadataMapping());
+        $metadata ['contract_name'] = $this->contract_name;
+        $metadata['file_name']      = $this->file_name;
+        $metadata['pdf_url']      = $this->pdf_url;
 
-        return $newMetadata;
+        return $metadata;
     }
 
     public function addMPrifix($array)
@@ -332,6 +347,11 @@ class EthiopianMigrationService
         return $data;
     }
 
+    public function getAnnotationPagePosition($string){
+
+        return ['',''];
+    }    
+
     /**
      * check if two string match
      *
@@ -346,6 +366,69 @@ class EthiopianMigrationService
         }
 
         return false;
+    }
+
+
+    /**
+     * Download a Pdf File
+     *
+     * @param $pdf
+     * @return null|string
+     */
+    public function downloadExcel($url)
+    {
+        $fileName  = basename($url);
+        $url       = $url . "?dl=1";
+        $temp_path = $this->getMigrationFile($fileName);
+        try {
+            copy($url, $temp_path);
+            $this->convertToCsv($fileName);
+
+            return $fileName;
+        } catch (\Exception $e) {
+            $this->logger->error($e->getMessage());
+
+            return null;
+        }
+    }
+
+    public function convertToCsv($file)
+    {
+        $command = sprintf('xlsx2csv %s  "%s" -a -i', $this->getMigrationFile($file), $this->getConvertedDir($file));
+        $process = new Process($command);
+        $process->setTimeout(360 * 10);
+        $process->start();
+        while ($process->isRunning()) {
+            echo $process->getIncrementalOutput();
+        }
+        if (!$process->isSuccessful()) {
+            echo("error while executing command.{$process->getErrorOutput()}");
+            throw new \RuntimeException($process->getErrorOutput());
+        }
+
+        return true;
+    }
+
+    /**
+     * Get Migration File
+     *
+     * @param string $fileName
+     * @return string
+     */
+    public function getMigrationFile($fileName = '')
+    {
+        return sprintf('%s/%s', public_path("ethiopian-contracts/data/excels"), $fileName);
+    }
+
+    /**
+     * Get Migration File
+     *
+     * @param string $fileName
+     * @return string
+     */
+    public function getConvertedDir($fileName = '')
+    {
+        return sprintf('%s/%s', public_path("ethiopian-contracts/data/converted"), $fileName);
     }
 
 }

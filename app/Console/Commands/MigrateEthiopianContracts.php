@@ -31,7 +31,7 @@ class MigrateEthiopianContracts extends Command
     /**
      * @var MigrationService
      */
-    public $migration;
+    protected $migration;
     /**
      * @var Filesystem
      */
@@ -69,7 +69,25 @@ class MigrateEthiopianContracts extends Command
      */
     public function fire()
     {
+        //$data = $this->extractCsvRecords($this->getCsv());
+        //$this->processExcel($data);
+
         $this->readFromExcel();
+    }
+
+    public function processExcel($data)
+    {
+        foreach ($data as $contract) {
+            if (!is_null($contract['metadata'])) {
+                $this->info("downloading {$contract['m_link_template']}");
+                $this->migration->setPdfUrl($contract['m_link_template']);
+                $contractDir = $this->migration->downloadExcel($contract['m_link_template']);
+
+                \File::put($this->migration->getConvertedDir($contractDir) . "/data.json", json_encode($contract));
+                //$this->readFiles($this->migration->getConvertedDir($contractDir));
+                $this->info("done!");
+            }
+        }
     }
 
     /**
@@ -92,6 +110,19 @@ class MigrateEthiopianContracts extends Command
     }
 
     /**
+     * Read and extract records from file
+     *
+     * @param $file
+     * @return array
+     */
+    protected function extractCsvRecords($file)
+    {
+        return $this->excel->load(
+            $file
+        )->all()->toArray();
+    }
+
+    /**
      * Ethopian contract from excel file
      */
     public function readFromExcel()
@@ -110,33 +141,42 @@ class MigrateEthiopianContracts extends Command
      */
     public function readFiles($dir)
     {
-        $files        = $this->fileSystem->files($dir);
-        $data         = [];
-        $contractName = basename($dir);
-        if (count($files) < 1) {
-            $this->error('file not found');
+        try {
 
-            return;
-        }
-        $this->info("reading {$contractName}");
-        $this->migration->setContractName($contractName);
-        $filetype = "xlsx";
-        if (count($files) == 3) {
-            $filetype = "xlsm";
-        }
-        $this->migration->setFileName($contractName . '.' . $filetype);
-        $this->migration->setFileType($filetype);
-        foreach ($files as $file) {
-            $type = basename($file, ".csv");
-            if ($type != "picklists") {
-                $data[$type] = $this->extractRecords($filetype, $file);
+            $files        = $this->fileSystem->files($dir);
+            $data         = [];
+            $contractName = basename($dir);
+            if (count($files) < 1) {
+                $this->error('file not found');
+
+                return;
             }
-        }
-        $this->fileSystem->deleteDirectory($dir);
-        $this->migration->setData($data);
-        $this->info("done reading {$contractName}");
+            $this->info("reading {$contractName}");
+            $this->migration->setContractName($contractName);
+            $filetype = "xlsx";
+            if (count($files) == 4) {
+                $filetype = "xlsm";
+            }
+            $excelData = json_decode(file_get_contents($dir . "/data.json"), 1);
 
-        \File::put($this->getJsonDir($contractName), json_encode($this->migration->run()));
+            $this->migration->setPdfUrl($excelData['m_pdf_url']);
+            $this->migration->setFileName($contractName);
+            $this->migration->setFileType($filetype);
+            foreach ($files as $file) {
+                $type = basename($file, ".csv");
+                if ($type != "picklists") {
+                    $data[$type] = $this->extractRecords($filetype, $file);
+                }
+            }
+            $this->fileSystem->deleteDirectory($dir);
+            $this->migration->setData($data);
+            $this->info("done {$contractName}");
+
+            \File::put($this->getJsonDir($contractName), json_encode($this->migration->run()));
+
+        } catch (\Exception  $e) {
+            $this->error($e->getMessage());
+        }
     }
 
     /**
@@ -178,16 +218,32 @@ class MigrateEthiopianContracts extends Command
     }
 
     /**
+     * @return string
+     */
+    protected function getCsv()
+    {
+        return public_path("OLC_data_migration.csv");
+    }
+
+    /**
      * @param $file
      * @return array
      */
     protected function setConfig($file)
     {
-        $type    = basename($file, ".csv");
+        $type = basename($file, ".csv");
+
         $columns = ['category', 'terms'];
         config()->set('excel.import.startRow', 1);
         if ($type == "Categories") {
             config()->set('excel.import.startRow', 2);
+            if (preg_match('/Heng%20Yue_Cambodia.xlsx/', $file) 
+                || preg_match('/Company_Sierra%20Leone/',$file) 
+                || preg_match('/Holdings_Sierra%20Leone.xlsx/', $file)
+                || preg_match('/Nile%20Trading%20%26%20Development_South%20Sudan/', $file)
+            ) {
+                config()->set('excel.import.startRow', 3);
+            }
             $columns = ['francais', 'english', 'details', 'articlereference', 'page_permalink'];
 
             return $columns;

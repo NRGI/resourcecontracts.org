@@ -4,25 +4,28 @@ $exel  = [];
 
 foreach ($files as $file) {
 
-    $data = json_decode(file_get_contents($file), 1);
+    $data                                  = json_decode(file_get_contents($file), 1);
+    $formatedData['contract_title']        = urldecode(pathinfo($data['contract_name'], PATHINFO_FILENAME));
+    $formatedData['file_name']             = urldecode($data['file_name']);
+    $formatedData['pdf_url']             = $data['pdf_url'];
+    $formatedData['m_country']             = $data['metadata']['country'];
+    $formatedData['m_resource']            = $data['metadata']['resource'];
+    $formatedData['m_type_of_contract']    = $data['metadata']['type_of_contract'];
+    $formatedData['m_signature_year']      = $data['metadata']['signature_year'];
+    $formatedData['a_signature_year']      = $data['annotation']['signature_year'][0];
+    $formatedData['m_signature_date']      = $data['metadata']['signature_date'];
+    $formatedData['a_signature_date']      = $data['annotation']['signature_date'][0];
+    $formatedData['a_government_entities'] = $data['annotation']['government_entities'][0];
+    $formatedData['a_company']             = implode('--', array_filter($data['annotation']['company']));
+    $formatedData['a_type_of_contract']    = $data['annotation']['type_of_contract'][0];
+    $formatedData['m_project_title']       = isset($data['metadata']['project_title']) ? $data['metadata']['project_title'] : "";
 
-    $formatedData['contract_title']        = str_replace('_', ' ', $data['contract_name']);
-    $formatedData['file_name']             = str_replace('_', ' ', $data['file_name']);
-    $formatedData['m_country']             = $data['m_country'];
-    $formatedData['m_resource']            = $data['m_resource'];
-    $formatedData['m_type_of_contract']    = $data['m_type_of_contract'];
-    $formatedData['m_signature_year']      = $data['m_signature_year'];
-    $formatedData['a_signature_year']      = $data['a_signature_year'][0];
-    $formatedData['m_signature_date']      = $data['m_signature_date'];
-    $formatedData['a_signature_date']      = $data['a_signature_date'][0];
-    $formatedData['a_government_entities'] = $data['a_government_entities'][0];
-    $formatedData['a_company']             = implode('--', array_filter($data['a_company']));
-    $formatedData['a_type_of_contract']    = $data['a_type_of_contract'][0];
-    $formatedData['m_project_title']       = isset($data['m_project_title']) ? $data['m_project_title'] : "";
-
-    $formatedData['a_government_entities']     = $data['a_government_entities'][0];
-    $formatedData['a_license_concession_name'] = implode('--', array_filter($data['a_license_concession_name']));
-    $formatedData['m_license_concession_name'] = isset($data['m_license_concession_name']) ? $data['m_license_concession_name'] : "";;
+    $formatedData['a_government_entities']     = $data['annotation']['government_entities'][0];
+    $formatedData['a_license_concession_name'] = implode(
+        '--',
+        array_filter($data['annotation']['license_concession_name'])
+    );
+    $formatedData['m_license_concession_name'] = isset($data['metadata']['license_concession_name']) ? $data['metadata']['license_concession_name'] : "";;
 
     $exel [] = $formatedData;
 }
