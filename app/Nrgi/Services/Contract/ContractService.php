@@ -215,11 +215,13 @@ class ContractService
                 'user_id'  => $this->auth->user()->id,
                 'metadata' => $metadata,
             ];
-            $supportingDocuments   = $formData['supporting_document'];
+            $supportingDocuments   = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
             try {
                 $contract = $this->contract->save($data);
 
-                $contract->syncSupportingContracts($supportingDocuments);
+                if (!empty($supportingDocuments)) {
+                    $contract->syncSupportingContracts($supportingDocuments);
+                }
                 $this->logger->activity('contract.log.save', ['contract' => $contract->title], $contract->id);
 
                 $this->logger->info(
@@ -314,10 +316,10 @@ class ContractService
         $contract->metadata        = $metadata;
         $contract->updated_by      = $this->auth->user()->id;
         $contract->metadata_status = Contract::STATUS_DRAFT;
-
+        $supportingDocuments   = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
         try {
             if ($contract->save()) {
-                $contract->syncSupportingContracts($formData['supporting_document']);
+                $contract->syncSupportingContracts($supportingDocuments);
             }
             $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
 
