@@ -1,6 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use App\Nrgi\Services\Contract\EthiopianMigrationService;
+use App\Nrgi\Services\Contract\MigrationService;
 use Illuminate\Console\Command;
 use Maatwebsite\Excel\Excel;
 use Symfony\Component\Console\Input\InputOption;
@@ -44,22 +45,34 @@ class MigrateEthiopianContracts extends Command
      * @var Log
      */
     protected $logger;
+    /**
+     * @var MigrationService
+     */
+    protected $mService;
 
     /**
      * Create a new command instance.
      *
-     * @param MigrationService $migration
-     * @param Filesystem       $fileSystem
-     * @param Excel            $excel
+     * @param EthiopianMigrationService|MigrationService $migration
+     * @param Filesystem                                 $fileSystem
+     * @param Excel                                      $excel
+     * @param Log                                        $logger
+     * @param MigrationService                           $mService
      * @internal param MigrationService $migrate
      */
-    public function __construct(EthiopianMigrationService $migration, Filesystem $fileSystem, Excel $excel, Log $logger)
-    {
+    public function __construct(
+        EthiopianMigrationService $migration,
+        Filesystem $fileSystem,
+        Excel $excel,
+        Log $logger,
+        MigrationService $mService
+    ) {
         parent::__construct();
         $this->migration  = $migration;
         $this->fileSystem = $fileSystem;
         $this->excel      = $excel;
         $this->logger     = $logger;
+        $this->mService   = $mService;
     }
 
     /**
@@ -89,17 +102,14 @@ class MigrateEthiopianContracts extends Command
             $contract = json_decode(file_get_contents($file), 1);
 
             if (!is_null($contract)) {
-                $this->migration->setupContract($contract);
-                $con = $this->migration->uploadPdfToS3AndCreateContracts($contract);
-
-                $this->info(sprintf('Success - %s - %s', $file, $contract->metadata->contract_name));
-
-                if (!empty($contract->annotations)) {
-                    $this->migration->saveAnnotations($con, $contract->annotations);
+                $this->info(sprintf('Reading - %s', $file));
+                $contractArray = $this->migration->setupContract($contract);
+                $contractObj   = json_decode(json_encode($contractArray), false);
+                $con           = $this->mService->uploadPdfToS3AndCreateContracts($contractObj->data);
+                if ($con) {
+                    $this->migration->saveAnnotations($con->id, $contractArray['annotations']);
+                    $this->info(sprintf('Success - %s - %s', $file, $contractObj->data->metadata->contract_name));
                 }
-
-                $this->moveFile($file);
-
                 continue;
             }
 
@@ -108,7 +118,6 @@ class MigrateEthiopianContracts extends Command
 
         $this->info('done');
     }
-
 
     public function processExcel($data)
     {
