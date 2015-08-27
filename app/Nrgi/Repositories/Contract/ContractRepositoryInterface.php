@@ -192,4 +192,12 @@ interface ContractRepositoryInterface
      * @return SupportingDocument
      */
     public function findSupportingContract($contractID);
+
+
+    /**
+     * Get all the contracts.
+     * @param array $ids
+     * @return collection
+     */
+    public function getContract($ids);
 }

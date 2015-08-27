@@ -47,11 +47,11 @@ class DashboardController extends Controller
         list($metadata, $pdfText) = $this->dashboard->contractStatusCount();
 
         $annotation = $this->dashboard->annotationStatusCount();
-
+        $ocrStatusCount = $this->dashboard->getOcrStatusCount();
         $status = compact('metadata', 'pdfText', 'annotation');
 
         $recent_contracts = $this->dashboard->recent(static::NO_OF_RECENT_CONTRACTS);
 
-        return view('dashboard.index', compact('stats', 'recent_contracts', 'status'));
+        return view('dashboard.index', compact('stats', 'recent_contracts', 'status','ocrStatusCount'));
     }
 }

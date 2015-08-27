@@ -1,6 +1,8 @@
 <?php namespace App\Nrgi\Services\Contract;
 
+use App\Nrgi\Entities\Contract\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
+use App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 
 /**
@@ -17,17 +19,24 @@ class ContractFilterService
      * @var CountryService
      */
     protected $countryService;
+    /**
+     * @var AnnotationRepositoryInterface
+     */
+    private $annotations;
 
     /**
-     * @param ContractRepositoryInterface $contract
-     * @param CountryService              $countryService
+     * @param ContractRepositoryInterface   $contract
+     * @param CountryService                $countryService
+     * @param AnnotationRepositoryInterface $annotations
      */
     public function __construct(
         ContractRepositoryInterface $contract,
-        CountryService $countryService
+        CountryService $countryService,
+        AnnotationRepositoryInterface $annotations
     ) {
         $this->contract       = $contract;
         $this->countryService = $countryService;
+        $this->annotation     = $annotations;
     }
 
     /**
@@ -38,7 +47,14 @@ class ContractFilterService
      */
     public function getAll(array $filters)
     {
+
         $contracts = $this->contract->getAll($filters);
+        if ($filters['type'] == "annotations" && $filters['status'] != '') {
+            $annotations = $this->getContractByAnnotationStatus();
+            $status      = isset($annotations[$filters['status']]) ? $annotations[$filters['status']] : [];
+            $contracts   = $this->contract->getContract($status);
+        }
+
 
         return $contracts;
     }
@@ -91,5 +107,37 @@ class ContractFilterService
         }
 
         return $data;
+    }
+
+    public function getContractByAnnotationStatus()
+    {
+        $draft     = $this->annotation->getStatusCountByType(Annotation::DRAFT);
+        $completed = $this->annotation->getStatusCountByType(Annotation::COMPLETED);
+        $rejected  = $this->annotation->getStatusCountByType(Annotation::REJECTED);
+        $published = $this->annotation->getStatusCountByType(Annotation::PUBLISHED);
+
+        $statusRaw = compact('draft', 'completed', 'rejected', 'published');
+        $contract  = [];
+        foreach ($statusRaw['draft'] as $key => $value) {
+            $status              = $this->annotation->checkStatus(
+                [
+                    $value->status,
+                    $statusRaw['completed'][$key]->status,
+                    $statusRaw['rejected'][$key]->status,
+                    $statusRaw['published'][$key]->status
+                ]
+            );
+            $status              = empty($status) ? 'processing' : $status;
+            $contract[$status][] = $value->id;
+        }
+        $default = [
+            'draft'      => 0,
+            'completed'  => 0,
+            'rejected'   => 0,
+            'published'  => 0,
+            'processing' => 0,
+        ];
+
+        return array_merge($default, $contract);
     }
 }

@@ -99,7 +99,6 @@ class DashboardService
         ];
         $metadataRaw = $this->contract->statusCount('metadata_status');
         $metadata    = [];
-
         foreach ($metadataRaw as $meta) {
             $metadata[$meta['status']] = $meta['count'];
         }
@@ -107,7 +106,6 @@ class DashboardService
 
         $pdfTextRaw = $this->contract->statusCount('text_status');
         $pdfText    = [];
-
 
         foreach ($pdfTextRaw as $text) {
             if (is_null($text['status'])) {
@@ -131,10 +129,9 @@ class DashboardService
         $published = $this->annotation->getStatusCountByType(Annotation::PUBLISHED);
 
         $statusRaw = compact('draft', 'completed', 'rejected', 'published');
-
-        $contract = [];
+        $contract  = [];
         foreach ($statusRaw['draft'] as $key => $value) {
-            $status = $this->annotation->checkStatus(
+            $status              = $this->annotation->checkStatus(
                 [
                     $value->status,
                     $statusRaw['completed'][$key]->status,
@@ -142,11 +139,9 @@ class DashboardService
                     $statusRaw['published'][$key]->status
                 ]
             );
-            $status = empty($status) ? 'processing' : $status;
-
+            $status              = empty($status) ? 'processing' : $status;
             $contract[$status][] = $value->id;
         }
-
         $count = [];
         foreach ($contract as $status => $ids) {
             $count[$status] = count($ids);
@@ -161,5 +156,41 @@ class DashboardService
         ];
 
         return array_merge($default, $count);
+    }
+
+    /**
+     * Return the status count of OCR status
+     *
+     * @return array
+     */
+    public function getOcrStatusCount()
+    {
+        $ocrDefault = [
+            'acceptable'    => 0,
+            'editing'       => 0,
+            'transcription' => 0,
+            'non'           => 0
+        ];
+
+        $ocrRaw = $this->contract->statusCount('textType');
+
+        $ocrStatusCount = [];
+        foreach ($ocrRaw as $ocr) {
+            if ($ocr['status'] == "") {
+                $ocr['status'] = "non";
+            }
+            if ($ocr['status'] == 1) {
+                $ocr['status'] = "acceptable";
+            }
+            if ($ocr['status'] == 2) {
+                $ocr['status'] = "editing";
+            }
+            if ($ocr['status'] == 3) {
+                $ocr['status'] = "transcription";
+            }
+            $ocrStatusCount[$ocr['status']] = $ocr['count'];
+        }
+
+        return array_merge($ocrDefault, $ocrStatusCount);
     }
 }
