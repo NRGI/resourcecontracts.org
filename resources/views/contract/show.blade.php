@@ -63,7 +63,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     @lang('Download') <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="{{$contract->file_url}}">@lang('PDF')</a></li>
+                    <li><a target="_blank" href="{{$contract->file_url}}">@lang('PDF')</a></li>
                     @if($contract->word_file !='')
                         <li><a href="{{$contract->word_file}}">@lang('Word')</a></li>
                     @endif

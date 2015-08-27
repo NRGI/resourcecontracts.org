@@ -107,7 +107,12 @@ class ProcessService
                         'end_time'            => Carbon::now()->toDayDateTimeString()
                     ]
                 );
-                $this->contract->moveS3File($contract->file, sprintf('%s/%s', $contract->id, $contract->file));
+
+                $this->contract->moveS3File(
+                    $contract->file,
+                    sprintf('%s/%s', $contract->id, $contract->getS3PdfName())
+                );
+                $this->contract->updateFileName($contract);
                 $this->uploadPdfsToS3($contract->id);
                 $this->deleteContractFolder($contract->id);
                 $this->contract->updateWordFile($contract->id);
