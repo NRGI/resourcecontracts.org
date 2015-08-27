@@ -70,7 +70,7 @@ class ContractController extends Controller
      */
     public function index(Request $request)
     {
-        $filters   = $request->only('resource', 'year', 'country', 'category', 'resource', 'type', 'word', 'issue');
+        $filters   = $request->only('resource', 'year', 'country', 'category', 'resource', 'type', 'word', 'issue','status');
         $contracts = $this->contractFilter->getAll($filters);
         $years     = $this->contractFilter->getUniqueYears();
         $countries = $this->contractFilter->getUniqueCountries();

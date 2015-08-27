@@ -437,7 +437,7 @@ header {
     margin: 0;
 }
 
-.row-dashboard .col-sm-4 {
+.row-dashboard .col-sm-3 {
     background: #f5f5f5;
     border-left: 10px solid #fff;
     border-radius: 4px;
@@ -445,21 +445,21 @@ header {
     min-height: 190px;
 }
 
-.row-dashboard .col-sm-4 ul {
+.row-dashboard .col-sm- ul {
     padding: 0;
     margin: 0;
 }
 
-.row-dashboard .col-sm-4 li {
+.row-dashboard .col-sm-3 li {
     list-style: none;
     padding-bottom: 4px;
 }
 
-.row-dashboard .col-sm-4:first-child {
+.row-dashboard .col-sm-3:first-child {
     border-left: 0;
 }
 
-.row-dashboard .col-sm-4 li span {
+.row-dashboard .col-sm-3 li span {
     color: #5a5a5a;
 }
 

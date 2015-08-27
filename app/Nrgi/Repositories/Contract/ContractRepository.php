@@ -66,10 +66,28 @@ class ContractRepository implements ContractRepositoryInterface
         if ($year != '' && $year != 'all') {
             $query->whereRaw("contracts.metadata->>'signature_year'=?", [$year]);
         }
+        if ($type == 'metadata' && $status != '') {
+            $query->whereRaw("contracts.metadata_status=?", [$status]);
+        }
+        if ($type == 'ocr' && $status != '') {
+            if ($status == "null") {
+                $query->whereRaw("contracts.\"textType\" is null");
+            } else {
+                $query->whereRaw("contracts.\"textType\"=?", [$status]);
+            }
+        }
 
+        if ($type == 'pdftext' && $status != '') {
+            if ($status == "null") {
+                $query->whereRaw("contracts.text_status is null");
+            } else {
+                $query->whereRaw("contracts.text_status=?", [$status]);
+            }
+        }
         if ($country != '' && $country != 'all') {
             $query->whereRaw("contracts.metadata->'country'->>'code' = ?", [$country]);
         }
+
 
         if ($resource != '' && $resource != 'all') {
             $from .= ",json_array_elements(contracts.metadata->'resource') r";
@@ -82,6 +100,9 @@ class ContractRepository implements ContractRepositoryInterface
         }
         if ($type == "metadata" && $word != '' && $issue != '') {
             $query->whereRaw(sprintf("contracts.metadata->>'%s' %s''", $word, $operator));
+        }
+        if ($type == 'annotations' && $status != '') {
+            $query->whereRaw("contracts.metadata_status=?", [$status]);
         }
         if ($type == "annotations" && $word != '' && $issue != '') {
             $contractsId = DB::table('contract_annotations')->select(DB::raw('contract_id'))->whereRaw("contract_annotations.annotation->>'category' = ?", [$word])->distinct('contract_id')->get();
@@ -255,7 +276,7 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function statusCount($statusType)
     {
-        return $this->contract->selectRaw("$statusType as status, COUNT(*)")->groupBy($statusType)->get()->toArray();
+        return $this->contract->selectRaw(sprintf("contracts.\"%s\" as status, COUNT(*)", $statusType))->groupBy($statusType)->get()->toArray();
     }
 
     /**
@@ -375,5 +396,17 @@ class ContractRepository implements ContractRepositoryInterface
     public function findSupportingContract($contractID)
     {
         return $this->document->where('parent_contract_id', $contractID)->first();
+    }
+
+
+    /**
+     * Get all the contracts.
+     *
+     * @param array $ids
+     * @return collection
+     */
+    public function getContract($ids)
+    {
+        return $this->contract->whereIn('id', $ids)->get();
     }
 }
