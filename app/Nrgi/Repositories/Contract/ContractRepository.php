@@ -149,7 +149,7 @@ class ContractRepository implements ContractRepositoryInterface
         )
                               ->whereRaw("metadata->'country'->>'code' !=''")
                               ->groupBy($this->db->raw("metadata->'country'->>'code'"))
-                              ->orderBy($this->db->raw("metadata->'country'->>'code'"), "DESC")->get();
+                              ->orderBy($this->db->raw("metadata->'country'->>'code'"), "ASC")->get();
     }
 
     /**

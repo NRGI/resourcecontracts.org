@@ -114,44 +114,6 @@
     </div>
 </div>
 
-<div class="form-group">
-    {!! Form::label('translation_from_original', trans('contract.translation_from_original'), ['class'=>'col-sm-2
-    control-label'])!!}
-    <div class="col-sm-7">
-        <label class="radio-inline">
-            {!! Form::radio('translation_from_original','1',
-            (isset($contract->metadata->translation_from_original) && (1 ==
-            $contract->metadata->translation_from_original))? true : null, ['class'=>'translation'])!!}
-            @lang('global.yes')
-        </label>
-        <label class="radio-inline">
-            {!! Form::radio('translation_from_original', '0',
-            (isset($contract->metadata->translation_from_original) && (0 ==
-            $contract->metadata->translation_from_original))? true : null, ['class'=>'translation'])!!}
-            @lang('global.no')
-        </label>
-    </div>
-</div>
-
-
-<div class="form-group @if(isset($contract->metadata->translation_from_original) && $contract->metadata->translation_from_original !=1) hide @endif translation-parent">
-    {!! Form::label('translation_parent', trans('contract.translation_parent'), ['class'=>'col-sm-2 control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::text('translation_parent',
-        isset($contract->metadata->translation_parent)?$contract->metadata->translation_parent:null,
-        ["class"=>"form-control"])!!}
-    </div>
-</div>
-
-<div class="form-group">
-    {!! Form::label('translated_from', trans('contract.translated_from'), ['class'=>'col-sm-2 control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::select('translated_from',['' => 'select']+$contracts, isset($contract->metadata->translated_from)?$contract->metadata->translated_from:null, ["class"=>"form-control"])!!}
-
-    </div>
-</div>
-
-
 <h3>@lang('contract.company')</h3>
 <hr/>
 <div class="company">
@@ -497,9 +459,15 @@
     </div>
 </div>
 
-<h3>Supporting Documents</h3>
+<h3>@lang('contract.associated_contracts')</h3>
 <hr>
+<div class="form-group">
+    {!! Form::label('translated_from', trans('contract.parent_document'), ['class'=>'col-sm-2 control-label'])!!}
+    <div class="col-sm-7">
+        {!! Form::select('translated_from',['' => 'select']+$contracts, isset($contract->metadata->translated_from)?$contract->metadata->translated_from:null, ["class"=>"form-control"])!!}
 
+    </div>
+</div>
 <div class="form-group support-form-group">
     {!! Form::label('translated_from', trans('contract.supporting_documents'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
