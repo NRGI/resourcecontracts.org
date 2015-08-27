@@ -316,7 +316,7 @@ class ContractService
         $contract->metadata        = $metadata;
         $contract->updated_by      = $this->auth->user()->id;
         $contract->metadata_status = Contract::STATUS_DRAFT;
-        $supportingDocuments   = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
+        $supportingDocuments       = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
         try {
             if ($contract->save()) {
                 $contract->syncSupportingContracts($supportingDocuments);
@@ -552,7 +552,13 @@ class ContractService
     {
         $this->database->beginTransaction();
 
-        if ($this->updateStatus($contract_id, $status, $type) and $this->comment->save($contract_id, $message, $type, $status)) {
+        if ($this->updateStatus($contract_id, $status, $type) and $this->comment->save(
+                $contract_id,
+                $message,
+                $type,
+                $status
+            )
+        ) {
             $this->database->commit();
 
             return true;
@@ -650,13 +656,19 @@ class ContractService
 
         try {
             $file_path = $this->word->create($text, $wordFileName);
-            $this->storage->disk('s3')->put(sprintf('%s/%s', $contract_id, $wordFileName), $this->filesystem->get($file_path));
+            $this->storage->disk('s3')->put(
+                sprintf('%s/%s', $contract_id, $wordFileName),
+                $this->filesystem->get($file_path)
+            );
             $this->filesystem->delete($file_path);
             $this->logger->info('Word file updated', ['Contract id' => $contract_id]);
 
             return true;
         } catch (Exception $e) {
-            $this->logger->error('Word file could not  be update : ' . $e->getMessage(), ['Contract id' => $contract_id]);
+            $this->logger->error(
+                'Word file could not  be update : ' . $e->getMessage(),
+                ['Contract id' => $contract_id]
+            );
 
             return false;
         }
@@ -711,6 +723,22 @@ class ContractService
         $contracts = $this->getcontracts($contractsId);
 
         return $contracts;
+    }
+
+    /**
+     * updates filename of contract
+     * @param $contract
+     * @return bool
+     */
+    public function updateFileName($contract)
+    {
+        $newFileName    = sprintf("%s-%s", $contract->id, $contract->Slug);
+        $contract->file = "$newFileName.pdf";
+        if ($contract->save()) {
+            return $contract;
+        }
+
+        return false;
     }
 
 
