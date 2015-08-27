@@ -79,8 +79,14 @@ class ElasticSearchService
 
         $contract->metadata->contract_id = $contract->id;
         $contract->metadata->page_number = $contract->pages()->count();
-
-        $metadata = [
+        $translatedFrom                  = [];
+        $metadataAttr                    = $contract->metadata;
+        if (isset($contract->metadata->translated_from) && !empty($contract->metadata->translated_from)) {
+            $translatedFrom = $this->contract->getcontracts((int) $contract->metadata->translated_from);
+        }
+        $metadataAttr->translated_from = $translatedFrom;
+        $contract->metadata            = $metadataAttr;
+        $metadata                      = [
             'id'                   => $contract->id,
             'metadata'             => collect($contract->metadata)->toJson(),
             'total_pages'          => $contract->pages->count(),

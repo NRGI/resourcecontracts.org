@@ -66,12 +66,13 @@ class ContractFilterService
      */
     public function getUniqueCountries()
     {
-        $arr       = $this->contract->getUniqueCountries()->toArray();
-        $countries = [];
+        $arr = $this->contract->getUniqueCountries()->toArray();
+
         foreach ($arr as $key => $value) {
             $country                        = $this->countryService->getInfoByCode($value['countries']);
             $countries[$value['countries']] = sprintf('%s (%s)', $country['name'], $value['count']);
         }
+        asort($countries);
 
         return $countries;
     }
@@ -105,6 +106,7 @@ class ContractFilterService
         foreach ($resources as $re) {
             $data[$re['resource']] = $re['resource'];
         }
+        asort($data);
 
         return $data;
     }

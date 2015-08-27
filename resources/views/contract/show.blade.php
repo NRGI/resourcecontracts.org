@@ -234,21 +234,8 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <li><strong>@lang('contract.document_type'):</strong> {{$contract->metadata->document_type}}</li>
             @endif
 
-            @if(isset($contract->metadata->translation_from_original))
-                <li><strong>@lang('contract.translation_from_original'):</strong>
-                    @if($contract->metadata->translation_from_original ==1)
-                        @lang('global.yes') [{{$contract->metadata->translation_parent}}]
-                    @else
-                        @lang('global.no')
-                    @endif
-                </li>
-            @endif
 
-            @if(!empty($translatedFrom))
-                <li><strong>@lang('contract.translated_from'):</strong>
-                   <a href="{{route('contract.show',$translatedFrom[0]['id'])}}">{{json_decode($translatedFrom[0]['contract_name'])}}</a>
-                </li>
-            @endif
+
             @if(isset($contract->metadata->company))
                 <?php $companies = $contract->metadata->company;?>
                 @if(count($companies)>0)
@@ -282,7 +269,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                         <a target="_blank"
                                            href="{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
                                 </p>
-                                @if(isset($v->operator)) <p><strong>@lang('contract.operator'):</strong>@if($v->operator==1)Yes @else No @endif</p>@endif
+                                @if(isset($v->operator)) <p><strong>@lang('contract.operator'):</strong>@if($v->operator==1)Yes  @endif</p>@endif
                             </div>
                         @endforeach
                     </li>
@@ -347,8 +334,14 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <li><strong>@lang('contract.location'):</strong> {{$contract->metadata->location}}</li>
             @endif
             @if(!empty($supportingDocument))
-                <li><h3>@lang('contract.supporting_documents')</h3></li>
+                <li><h3>@lang('contract.associated_contracts')</h3></li>
+                @if(!empty($translatedFrom))
+                    <li><strong>@lang('contract.parent_document'):</strong>
+                        <a href="{{route('contract.show',$translatedFrom[0]['id'])}}">{{json_decode($translatedFrom[0]['contract_name'])}}</a>
+                    </li>
+                @endif
                 <div class="document-link-wrapper">
+                    <li><strong>@lang('contract.supporting_documents'):</strong>
                     @foreach($supportingDocument as $contract_sup)
                         <div class="document-link">
                             <a href="{{route('contract.show',$contract_sup['id'])}}">{{json_decode($contract_sup['contract_name'])}}</a>
