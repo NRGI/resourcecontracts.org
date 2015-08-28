@@ -333,13 +333,14 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             @if(isset($contract->metadata->location))
                 <li><strong>@lang('contract.location'):</strong> {{$contract->metadata->location}}</li>
             @endif
-            @if(!empty($supportingDocument))
+
                 <li><h3>@lang('contract.associated_contracts')</h3></li>
                 @if(!empty($translatedFrom))
                     <li><strong>@lang('contract.parent_document'):</strong>
                         <a href="{{route('contract.show',$translatedFrom[0]['id'])}}">{{json_decode($translatedFrom[0]['contract_name'])}}</a>
                     </li>
                 @endif
+            @if(!empty($supportingDocument))
                 <div class="document-link-wrapper">
                     <li><strong>@lang('contract.supporting_documents'):</strong>
                     @foreach($supportingDocument as $contract_sup)
