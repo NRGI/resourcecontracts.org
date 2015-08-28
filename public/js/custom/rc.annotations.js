@@ -22,7 +22,20 @@ var AnnotationItemView = Backbone.View.extend({
     },
     changePage: function(e) {
         e.preventDefault();
-        this.eventsPipe.trigger("page-change", this.model.get('page'));
+        if(this.model.get('ranges')) {
+            var annotatorStartPos = $('.annotator-text').xpath("/" + this.model.get('ranges')[0]["start"]);
+            this.eventsPipe.trigger('scroll-to-annotation', annotatorStartPos[annotatorStartPos.length-1]);
+        } 
+        if(this.model.get('shapes')) {
+            this.eventsPipe.trigger("page-change", this.model.get('page'));
+        }
+        // $("#text-viewer-overflow-scroll").animate(            
+        //     {scrollTop: $(this.el).scrollTop() + ($(annotatorStartPos).offset().top - $(this.el).offset().top) - $(this.el).height()/2 + $(annotatorStartPos).height()/2
+        // }, 50);
+
+        // scrollIntoView(this.model.get('ranges')[0]);
+
+        
     },
 });
 var AnnotationsListView = Backbone.View.extend({
@@ -55,7 +68,7 @@ var AnnotationsListView = Backbone.View.extend({
                 $(this.el).html(this.annotationsTitleView.el);
                 this.renderAnnotationWithCategories(annotationsByCategories);
                 if(_.keys(annotationsByCategories).length === 0) {
-                    $(this.el).html('Oops! You haven\'t annotated anything');
+                    $(this.el).append('Oops! You haven\'t annotated anything');
                 }
                 break;
             case 'not-annotated':
@@ -92,7 +105,7 @@ var AnnotationsListView = Backbone.View.extend({
             var t = _.template($('#annotation-category-with-items-template').html());
             for (var annotationCategoryName in annotationsByCategories) {
                 var annotationsGroup = annotationsByCategories[annotationCategoryName];
-                annotationCategoryElemId = annotationCategoryName.replace(/\s+|;|,|#|\/|\(|\)/g, '-');
+                annotationCategoryElemId = annotationCategoryName.replace(/\s+|;|:|,|#|\/|\.|\(|\)/g, '-');
                 $(self.el).append(t({
                     'elemId': annotationCategoryElemId,
                     'categoryName': annotationCategoryName.trunc(40),
@@ -101,7 +114,7 @@ var AnnotationsListView = Backbone.View.extend({
                 _.each(annotationsGroup, function(annotation) {
                     $("#" + annotationCategoryElemId).append(new AnnotationItemView({
                         model: annotation,
-                        eventsPipe: self.eventsPipe,                        
+                        eventsPipe: self.eventsPipe,
                     }).render().el);
                 })
             }
@@ -134,6 +147,8 @@ var AnnotationsTitleView = Backbone.View.extend({
         return this;
     },
     resetListView: function(e) {
+        $("button").removeClass('active');
+        $("#"+e.target.id).addClass('active');
         e.preventDefault();
         this.annotationCategories.trigger('resetAnnotationsList', e.target.id);
     }

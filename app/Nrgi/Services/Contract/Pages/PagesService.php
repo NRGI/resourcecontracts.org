@@ -44,6 +44,15 @@ class PagesService
         throw new ModelNotFoundException();
     }
 
+    public function getAllText($contractID)
+    {
+        if ($pages = $this->pages->getAllText($contractID)) {
+            return $pages;
+        }
+
+        throw new ModelNotFoundException();
+    }
+
     /**
      * Save Page Text
      * @param      $contractID

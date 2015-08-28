@@ -1,0 +1,445 @@
+.panel-heading-fixed {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    padding: 0;
+    border: 0;
+    overflow: inherit!important;
+}
+
+.document-wrap {
+    padding: 0;
+}
+
+.document-wrap-head {
+    clear: both;
+    padding-top: 3px;
+    border: none;
+    margin-top: -6px;
+    background: #f9f9f9;
+    min-height: 40px;
+    border-bottom: 1px solid rgb(220,223,226);
+    border-bottom: 1px solid rgba(220,223,226,0.7);
+    padding-right: 16px;
+}
+
+.navigation > a {
+    color: rgb(64,64,64);
+    background: url(../../images/ic-sprite-new.png) no-repeat -388px 11px;
+    font-size: 11px;
+    text-transform: uppercase;
+    padding: 13px 15px 13px 44px;
+    opacity: 0.5;
+    text-decoration: none;
+    border-right: 1px solid rgb(220,223,226);
+    border-right: 1px solid rgba(220,223,226,0.7);
+    margin-left: -5px;
+}
+
+.navigation > a#pdf-view {
+    background-position: -474px 11px;
+} 
+
+.navigation > a#pdf-text-view {
+    background-position: -556px 11px;
+} 
+
+.navigation > a:hover,.navigation > a.active  {
+    color: #404040;
+    opacity: 1;
+}
+
+.navigation > a.active {
+    background-color: #f0f0f0;
+}
+
+.view-wrapper {
+    margin-top: 85px;
+    background: #f0f0f0;
+}
+
+#search-form {
+    top: 53px;
+    z-index: 10;
+    width: 34%;
+}
+
+#search-form > form {
+    width: 100%!important;
+}
+
+#search-form > form .form-group {
+    width: 80%;
+}
+
+#search-form input.form-control {
+    border: 0;
+    box-shadow: none;
+    width: 90%;
+    font-size: 13px;
+    line-height: 18px;
+    height: auto;
+    background: transparent;
+}
+
+#search-form input[type="submit"] {
+    background: url(../images/ic-sprite-new.png) no-repeat 0 -385px;
+    text-indent: -9999px;
+    width: 26px;
+    height: 24px;
+    box-shadow: none;
+    border: 0;
+    margin-right: 4px;
+    margin-top: 4px;
+}
+
+.text-viewer-wrapper {
+    padding-left: 20px;
+}
+
+/*.text-viewer {
+    padding-left: 20px;
+    background-color: #eee;
+}*/
+
+.column-annotations, .column-search-results {
+    position: relative;
+    width: 36.2%;
+    height: 87vh;
+    overflow: scroll;
+}
+
+.annotation-list-view  h3 {
+    font-size: 17px;
+}
+
+.annotation-list-view  h3 ~ div {
+    padding-left: 14px;
+}
+
+.column-text,.column-pdf {
+    width: 65%;
+    border-right: 1px solid rgb(220,223,226);
+    border-right: 1px solid rgba(220,223,226,0.7);
+}
+
+.column-common {
+    width: 50%;
+}
+
+.navigation .column-common {
+    width: 65%;
+}
+
+/*.text-view-block,.annotator-pdf {
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+}*/
+
+.annotator-pdf {
+    height: 75vh;
+    overflow: scroll;
+}
+
+.annotator-pdf canvas {
+    margin: 0 auto;
+    display: block;
+}
+
+.column-common .text-view-block,.column-common .annotator-pdf {
+    width: 95%;
+}
+
+.text-viewer > span {
+    border-top: 1px dashed #ccc;
+    display: block;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.text-viewer > span:first-of-type {
+    border-top: 0;
+    margin-top: 0;
+    padding-top: 0;
+} 
+
+.text-viewer > span > span:first-of-type {
+    margin-left: -26px;
+    float: left;
+}
+
+.view-text-pagination {
+    width: 112px!important;
+    padding: 0;
+    margin-top: -31px!important;
+    position: relative;
+    z-index: 1;
+    border-right: 1px solid rgb(220,223,226);
+    border-right: 1px solid rgba(220,223,226,0.7);
+}   
+
+.view-text-pagination input {
+    width: 56px;
+    background: #E7E7E7;
+    border-radius: 4px;
+    border: 1px solid #C0C0C0;
+    height: 30px;
+    margin: 4px 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+.previous,.next {
+    display: inline-block;
+    text-indent: -9999px;
+    background: url(../images/ic-sprite-new.png) no-repeat -194px -558px!important;
+    height: 24px;
+    width: 18px;
+    padding: 0!important;
+}
+
+.next {
+    background-position: -271px -558px!important;
+}
+
+.view-wrap {
+    background: #fff;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    margin: 16px 20px;
+    padding: 20px;
+    height: 87vh;
+    overflow: scroll;
+}
+
+.annotations-view-block button {
+    border: 0;
+    font-size: 12px;
+    color: rgba(64,64,64,0.7);
+    text-transform: none;
+    background: url(../images/ic-sprite-new.png) no-repeat -390px -174px;
+    opacity: 1;
+    padding: 13px 15px 13px 44px;
+    border-right: 1px solid rgb(220,223,226);
+    border-right: 1px solid rgba(220,223,226,0.7);
+    margin-left: -6px;
+    font-weight: bold;
+}
+
+.annotations-view-block button#done-annotated {
+    background-position: -518px -174px;
+}
+
+.annotations-view-block button#not-annotated {
+    background-position: -655px -174px;
+}
+
+.annotation-list-view > div:first-of-type:not(.annotation-title) {
+    margin-bottom: 0;
+    position: fixed;
+    top: 93px;
+    width: 100%;
+    z-index: 100;
+    background-color: #f0f0f0;
+}
+
+.annotation-title + div{
+    background-color: #f9f9f9;
+    border-bottom: 1px solid rgb(220,223,226);
+    border-bottom: 1px solid rgba(220,223,226,0.7);
+    background: #f0f0f0;
+    border-top: 1px solid rgb(220,223,226);
+    border-top: 1px solid rgba(220,223,226,0.7);
+}
+
+.annotation-list-view > div:first-of-type:not(.annotation-title)+div {
+    padding-top: 116px;
+}
+
+.annotations-view-block button.active,.annotations-view-block button:hover {
+    background-color: #e8e8e8;
+}
+
+.annotations-view-block button:first-of-type {
+    margin-left: 0;
+}
+
+.annotation-category-done,.annotation-category-not-done {
+    background: #e8e8e8;
+    padding: 10px;
+    border: 0;
+    border-bottom: 1px solid #dadada;
+    margin: 0;
+}
+
+.annotation-category-done:before,.annotation-category-not-done:before {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #93C1A7;
+    display: inline-block;
+    content: "";
+    margin-right: 5px;
+}
+
+.annotation-category-not-done:before {
+    background-color: #D38D96;
+}
+
+.annotation-title {
+    font-size: 15px;
+    background: url(../images/ic-annotation.png) no-repeat 0;
+    padding-left: 32px;
+    text-transform: uppercase;
+    margin-left: 10px;
+    padding: 20px 20px 14px 32px;
+    margin-bottom: 0!important;
+}
+
+.annotation-category-done ul {
+    margin: 0;
+    padding: 0;
+}
+
+.annotation-category-done ul li {
+    list-style: none;
+}
+
+.annotation-category-done ul li a {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    color: #404040;
+}
+
+.annotation-category-done ul li a .text {
+    color: rgba(64,64,64,0.7);
+    font-weight: normal;
+}
+
+.page-no {
+    font-weight: bold;
+    color: rgba(64,64,64,0.7);
+    font-size: 12px;
+    margin-top: 10px;
+    display: block;
+}
+
+.page-no a {
+    font-size: 12px!important;
+    color: rgb(64,64,64);
+    color: rgba(64,64,64,0.7)!important;
+}
+
+.annotation-category-done ul li > div {
+    margin-left: 20px;
+}
+
+.annotation-item .tag {
+    background: #E8E8E8;
+    border: 1px solid #d5d5d5;
+    -webkit-border-radius: 11px;
+    -moz-border-radius: 11px;
+    border-radius: 11px;
+    margin-right: 4px;
+    padding: 2px 12px;
+    color: #898989;
+    font-size: 12px;
+}
+
+.back {
+    background: #F37356 url(../images/ic-sprite-new.png) no-repeat 12px -543px;
+    width: 50px;
+    display: block;
+    height: 50px;
+    text-indent: -9999px;
+}
+
+.word-wrapper {
+    border-bottom: 1px solid rgb(220,223,226);
+    border-bottom: 1px solid rgba(220,223,226,0.7);
+    display: inline-block;
+    width: 100%;
+}
+
+.wordwrap span {
+    font-size: 21px;
+    line-height: 28px;
+    padding: 11px 13px;
+    color: #404040!important;
+    font-style: normal!important;
+}
+
+.view-metadata {
+    border-left: 1px solid rgb(220,223,226);
+    border-left: 1px solid rgba(220,223,226,0.7);
+    float: left;
+}
+
+.view-metadata a {
+    color: #404040;
+    text-transform: uppercase;
+    font-size: 11px;
+    background: url(../images/ic-sprite-new.png) no-repeat -390px -78px;
+    display: block;
+    padding: 17px 10px 17px 40px;
+}
+
+.view-metadata a:after {
+    content: " ";
+    background: url(../images/ic-sprite-new.png) no-repeat -176px -114px;
+    width: 8px;
+    height: 6px;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.view-metadata a:hover {
+    text-decoration: none;
+}
+
+.annotation-static-block {
+    position: static!important;
+}
+
+.annotation-static-block + div {
+    padding-top: 10px!important;
+}
+
+.popup-metadata {
+    right: 10px!important;
+    z-index: 1000;
+}
+
+.popup-metadata p {
+    margin-bottom: 6px;
+}
+
+.popup-metadata strong {
+    color: rgba(64,64,64,0.7);
+    margin-right: 4px;
+}
+
+.column-search-results {
+    padding: 20px;
+}
+
+#search-results-list p:not(:first-child) {
+    border-bottom: 1px solid rgba(220,223,226,0.7);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    color: rgba(64,64,64,0.7);
+    font-size: 12px;
+}
+
+#search-results-list a {
+    color: #404040;
+    font-size: 14px;
+}
+
+#search-results-cache {
+    margin-top: 8px;
+}

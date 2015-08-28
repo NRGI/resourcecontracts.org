@@ -81,9 +81,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
         @if($status == $contract_processing_completed)
             <div style="padding: 40px;">
-                <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=edit"
+                <a href="{{route('contract.review', ['id'=>$contract->id])}}"
                    class="btn btn-default">@lang('contract.view_pages')</a>
-                <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate"
+                <a href="{{route('contract.annotate', ['id'=>$contract->id])}}"
                    class="btn btn-default">@lang('contract.annotate_contract')</a>
                 <br>
                 <br>

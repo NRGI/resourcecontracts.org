@@ -72,28 +72,28 @@ var SearchResultListView = Backbone.View.extend({
         return this;
     },
     toggleSearchResults: function() {
-        this.$el.toggle();
-        if (this.$el.is(":hidden")) {
-            $(this.options.searchOverlayLayer).show();
-        } else {
-            $(this.options.searchOverlayLayer).hide();
-        }
+        // this.$el.toggle();
+        // if (this.$el.is(":hidden")) {
+        //     $(this.options.searchOverlayLayer).show();
+        // } else {
+        //     $(this.options.searchOverlayLayer).hide();
+        // }
     },
     showSearchLoad: function() {
         this.$el.show();
-        $(this.options.searchOverlayLayer).hide();
+        // $(this.options.searchOverlayLayer).hide();
         this.$el.html('Searching... please wait');
         return this;
     },
     dataCollected: function() {
-        this.render();
+        // this.render();
     },
     render: function() {
         var self = this;
         this.$el.show();
         this.$el.html('');
         $(this.options.searchOverlayLayer).hide();
-        self.$el.append("<a href='#' class='pull-right search-cancel'><i class='glyphicon glyphicon-remove'></i></a>");
+        // self.$el.append("<a href='#' class='pull-right search-cancel'><i class='glyphicon glyphicon-remove'></i></a>");
         if (this.collection.length) {
             self.$el.append("<p>Total " + this.collection.length + " result(s) found.</p>");
             this.options.collection.each(function(searchResult) {
