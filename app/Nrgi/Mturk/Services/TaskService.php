@@ -460,4 +460,15 @@ class TaskService
 
         return $data;
     }
+
+    /**
+     * Get Approval Pending tasks
+     *
+     * @param $contract_id
+     * @return mixed
+     */
+    public function getApprovalPendingTask($contract_id)
+    {
+        return $this->task->getApprovalPendingTask($contract_id);
+    }
 }
