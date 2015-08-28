@@ -35,9 +35,10 @@ class Task extends Model
         'approve'
     ];
 
-    const PENDING   = 0;
+    const PENDING = 0;
     const COMPLETED = 1;
 
+    const APPROVAL_PENDING = 0;
     const APPROVED = 1;
     const REJECTED = 2;
 
@@ -96,6 +97,17 @@ class Task extends Model
     public function scopeRejected($query)
     {
         return $query->where('approved', '=', static::REJECTED);
+    }
+
+    /**
+     * Select Approval Pending tasks
+     *
+     * @param $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeApprovalPending($query)
+    {
+        return $query->where('approved', '=', static::APPROVAL_PENDING);
     }
 
     /**
