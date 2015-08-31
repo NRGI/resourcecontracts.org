@@ -96,6 +96,11 @@ class MigrateEthiopianContracts extends Command
             $this->processExcel($data);
             $this->readFromExcel();
         }
+        if ($this->input->getOption('json')) {
+            $this->readFromExcel();
+            $this->info("all files converted to json!");
+            exit;
+        }
         if ($this->input->getOption('annotation')) {
             $this->updateOlcAnnotation();
         } else {
@@ -119,20 +124,17 @@ class MigrateEthiopianContracts extends Command
                 sprintf("contracts.metadata->>'contract_name'='%s'", $name)
             )->first();
             if (!is_null($contract)) {
+                $contract->annotations()->delete();
                 $annotations = $this->migration->refineAnnotation($contractJson['annotations']);
                 $this->migration->saveAnnotations($contract->id, $annotations);
                 $this->info(sprintf('Success - %s - %s', $file, $contract->title));
                 continue;
             }
 
-            $this->error(sprintf('Failed - %s', $file));
+            $this->error(sprintf('Failed - could not find contract - %s', $file));
         }
 
         $this->info('done');
-        //list of olc contract;
-        //delete contract
-        //insert updated annotations
-        //remove
     }
 
     public function readFromJson()
@@ -166,6 +168,9 @@ class MigrateEthiopianContracts extends Command
         $this->info('done');
     }
 
+    /**
+     * @param $data
+     */
     public function processExcel($data)
     {
         foreach ($data as $contract) {
@@ -175,7 +180,6 @@ class MigrateEthiopianContracts extends Command
                 $contractDir = $this->migration->downloadExcel($contract['m_link_template']);
 
                 \File::put($this->migration->getConvertedDir($contractDir) . "/data.json", json_encode($contract));
-                //$this->readFiles($this->migration->getConvertedDir($contractDir));
                 $this->info("done!");
             }
         }
@@ -290,6 +294,7 @@ class MigrateEthiopianContracts extends Command
         return [
             ['annotation', null, InputOption::VALUE_NONE, 'updates annotations.', null],
             ['rebuild', null, InputOption::VALUE_NONE, 'updates annotations.', null],
+            ['json', null, InputOption::VALUE_NONE, 'updates annotations.', null],
         ];
     }
 
