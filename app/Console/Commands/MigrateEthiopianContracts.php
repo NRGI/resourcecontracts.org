@@ -91,9 +91,11 @@ class MigrateEthiopianContracts extends Command
      */
     public function fire()
     {
-        //$data = $this->extractCsvRecords($this->getCsv());
-        //$this->processExcel($data);
-        //$this->readFromExcel();
+        if ($this->input->getOption('rebuild')) {
+            $data = $this->extractCsvRecords($this->getCsv());
+            $this->processExcel($data);
+            $this->readFromExcel();
+        }
         if ($this->input->getOption('annotation')) {
             $this->updateOlcAnnotation();
         } else {
@@ -109,15 +111,17 @@ class MigrateEthiopianContracts extends Command
         $files = $this->fileSystem->files($this->getConvertedJsonDir());
 
         foreach ($files as $file) {
-            $contractFromJson = json_decode(file_get_contents($file), 1);
-            list($name, $ext) = explode('.', $contractFromJson['contract_name']);\
-            dd(urldecode($name));
-            Contract::fin
-            //$contract from db
+            $contractJson = json_decode(file_get_contents($file), 1);
+
+            $name     = urldecode(pathinfo($contractJson['contract_name'], PATHINFO_FILENAME));
+            $query    = Contract::select('*');
+            $contract = $query->whereRaw(
+                sprintf("contracts.metadata->>'contract_name'='%s'", $name)
+            )->first();
             if (!is_null($contract)) {
-                $contractArray = $this->migration->setupContract($contract);
-                $this->migration->saveAnnotations($con->id, $contractArray['annotations']);
-                $this->info(sprintf('Success - %s - %s', $file, $contractObj->data->metadata->contract_name));
+                $annotations = $this->migration->refineAnnotation($contractJson['annotations']);
+                $this->migration->saveAnnotations($contract->id, $annotations);
+                $this->info(sprintf('Success - %s - %s', $file, $contract->title));
                 continue;
             }
 
@@ -285,6 +289,7 @@ class MigrateEthiopianContracts extends Command
     {
         return [
             ['annotation', null, InputOption::VALUE_NONE, 'updates annotations.', null],
+            ['rebuild', null, InputOption::VALUE_NONE, 'updates annotations.', null],
         ];
     }
 
