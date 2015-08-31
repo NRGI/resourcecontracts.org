@@ -1,0 +1,36 @@
+{
+    "document":{
+        "file_hash":"7dbfc9fe6872cb458860ba364b528d157215ed9e",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"AMC, Convention - Guin\u00e9e",
+        "data":{
+            "Signature Year":"2014",
+            "Countries":"Guinea"
+        },
+        "created_at":"Sun, 07 Dec 2014 00:48:49 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 29 Apr 2015 14:11:41 +0000",
+        "id":"1376047-amc-convention-2014",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1376047/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1376047/amc-convention-2014.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1376047/pages/amc-convention-2014-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1376047/pages/amc-convention-2014-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1376047/amc-convention-2014.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1376047/pages/amc-convention-2014-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1376047"
+        },
+        "contributor":"Jed Miller",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":44,
+        "canonical_url":"http://www.documentcloud.org/documents/1376047-amc-convention-2014.html"
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "document":{
+        "file_hash":"9887fe8029783764b7f22f94c664112ea039ac56",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Code Minier 2011",
+        "data":{
+            "Countries":"Guinea",
+            "Lois":"Codes Miniers"
+        },
+        "created_at":"Sat, 10 Nov 2012 20:57:15 +0000",
+        "display_language":"eng",
+        "updated_at":"Sat, 07 Mar 2015 17:09:55 +0000",
+        "id":"513931-code-minier-2011",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/513931/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513931/code-minier-2011.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/513931/pages/code-minier-2011-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513931/pages/code-minier-2011-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513931/code-minier-2011.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513931/pages/code-minier-2011-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=513931"
+        },
+        "contributor":"Jed Miller",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":97,
+        "canonical_url":"http://www.documentcloud.org/documents/513931-code-minier-2011.html"
+    }
+}

@@ -1,0 +1,292 @@
+{
+    "document":{
+        "file_hash":null,
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name ",
+                "page":2,
+                "content":"La g\u00e9n\u00e9rale des carri\u00e8res de mines (GECAMINES)--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"307,600,336,568"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79224.js",
+                "id":79224
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country ",
+                "page":2,
+                "content":"Democratic Republic of Congo --Pr\u00e9ambule\n",
+                "location":{
+                    "image":"581,671,607,634"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79223.js",
+                "id":79223
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":2,
+                "content":"Contrat de Joint Venture relatif \u00e0 l'exploitation des gisements Cupro cobaltiferes.--Preambule\n",
+                "location":{
+                    "image":"623,675,652,637"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79225.js",
+                "id":79225
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature ",
+                "page":2,
+                "content":"\"03/03/2009\"--Preambule\n",
+                "location":{
+                    "image":"756,458,785,409"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79231.js",
+                "id":79231
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature ",
+                "page":2,
+                "content":"2009--Preambule\n",
+                "location":{
+                    "image":"797,460,828,412"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79232.js",
+                "id":79232
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document ",
+                "page":5,
+                "content":"GECAMINES, entreprise publique de droit congolais--Preambule\n",
+                "location":{
+                    "image":"257,678,290,642"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79228.js",
+                "id":79228
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders ",
+                "page":5,
+                "content":"Central African mining and Exploration Company Plc, soci\u00e9t\u00e9 de droit britannique et ayant son si\u00e8ge \u00e0 Londres. (CAMEC)--Preambule\n",
+                "location":{
+                    "image":"467,676,493,644"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79227.js",
+                "id":79227
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude//Location, longitude and latitude ",
+                "page":8,
+                "content":"Province du Katanga--Definition 5, \"Bien\"\n",
+                "location":{
+                    "image":"503,120,528,85"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79226.js",
+                "id":79226
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":8,
+                "content":"Cuivre, cobalt et autres substances valorisables couvertes par les permis de recherche--Art. 1\n",
+                "location":{
+                    "image":"589,134,619,100"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79234.js",
+                "id":79234
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e ou envisag\u00e9e//Name and/or composition of the company created or anticipated ",
+                "page":14,
+                "content":"Boss Mining (BM) Sprl, qui sera restructur\u00e9e pour les besoins de la Joint Venture a 70% pour CAMEC et 30% pour Gecamines--Art. 2, Art. 5.2\n",
+                "location":{
+                    "image":"632,294,661,258"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79229.js",
+                "id":79229
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments ",
+                "page":18,
+                "content":"A la signature de la JV, CAMEC et ses affilies devront d\u00e9bloquer les fonds en vue de la r\u00e9alisation d'une \u00e9tude de faisabilit\u00e9. GECAMINES fournira \u00e0 CAMEC les donn\u00e9es dont elle dispose pour l'\u00e9tude.--Art.6\n",
+                "location":{
+                    "image":"425,395,458,355"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79245.js",
+                "id":79245
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term ",
+                "page":21,
+                "content":"La convention restera en vigueur jusqu'\u00e0 ce que le bien ne soit plus \u00e9conomiquement exploitable ou que les associes d\u00e9cident de mettre fin \u00e0 cette convention.--Art. 8\n",
+                "location":{
+                    "image":"523,103,555,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79233.js",
+                "id":79233
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions ",
+                "page":26,
+                "content":"Tous droits, imp\u00f4ts et taxes mis \u00e0 charge du gisement ont \u00e9t\u00e9 int\u00e9gralement payes et le bien est libre de toutes charges fiscales.--Art. 9.3\n",
+                "location":{
+                    "image":"228,107,266,70"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79242.js",
+                "id":79242
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":36,
+                "content":"Les op\u00e9rations de BM sont surveill\u00e9es par un coll\u00e8ge de commissaires aux comptes nomm\u00e9s et r\u00e9voqu\u00e9s par l'assembl\u00e9e g\u00e9n\u00e9rale des associes. Les commissaires ont le droit de se faire assister par un cabinet d'experts de leur choix.--Art. 29\n",
+                "location":{
+                    "image":"563,93,598,57"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79243.js",
+                "id":79243
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements ",
+                "page":37,
+                "content":"Les employ\u00e9s de BM seront recrutes en priorit\u00e9, \u00e0 comp\u00e9tence \u00e9gale, parmi le personnel de Gecamines. BM ne sera pas responsable du paiement des arri\u00e9r\u00e9s de salaires du personnel de GECAMINES. BM versera \u00e0 son personnel un salaire approprie et lui fournira un programme d'avantages sociaux, conform\u00e9ment au Code du Travail de la RDC. BM est libre de choisir et licencier ses employ\u00e9s conform\u00e9ment aux r\u00e8glementations applicables--Art. 30, 31, 32 et 33\n",
+                "location":{
+                    "image":"282,88,310,56"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79235.js",
+                "id":79235
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining tax/royalty tax ",
+                "page":38,
+                "content":"BM paiera \u00e0 GECAMINES \u00e0 partir de la fin de l'ann\u00e9e 2009 2.5% du chiffre d'affaires brut sous forme de royalties--Art. 35.1\n",
+                "location":{
+                    "image":"448,99,482,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79239.js",
+                "id":79239
+            },
+            {
+                "access":"public",
+                "title":"Primes//Bonuses ",
+                "page":38,
+                "content":"Paiement d'un pas-de-porte de CAMEC \u00e0 Gecamines de 2 millions de dollars pour un tonnage de 2.000.000 tCu de reserves, plus $35 par tCu en cas de mise en evidence de gisement de cuivre additionnel.--Art. 35.1\n",
+                "location":{
+                    "image":"495,107,533,67"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79241.js",
+                "id":79241
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute ",
+                "page":42,
+                "content":"Lois de la RDC--Art. 37.1\n",
+                "location":{
+                    "image":"634,88,666,48"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79246.js",
+                "id":79246
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution ",
+                "page":42,
+                "content":"Les parties s'engagent \u00e0 r\u00e9gler les diff\u00e9rends \u00e0 l'amiable. En cas d'\u00e9chec, ce diff\u00e9rend sera soumis \u00e0 l'arbitrage de la Chambre du Commerce Internationale de Paris, si\u00e9geant en Suisse. Le litige sera tranch\u00e9 conform\u00e9ment au droit congolais--Art. 37.3 et 37.4\n",
+                "location":{
+                    "image":"784,121,815,82"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79247.js",
+                "id":79247
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: \u00e9xoneration//Income tax: exemptions ",
+                "page":46,
+                "content":"Les taxes et impots sont \u00e0 la charge de BM Sprl. Les parties s'engagent cependant \u00e0 assister le gouvernement dans les demarches en vue de l'obtention de certains avantages fiscaux.--Art. 42\n",
+                "location":{
+                    "image":"503,94,537,62"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79240.js",
+                "id":79240
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality ",
+                "page":46,
+                "content":"Toutes les informations fournies par une partie \u00e0 l'autre dans le cadre de la JV seront trait\u00e9es comme confidentielles et ne seront pas divulgu\u00e9es sans l'accord pr\u00e9alable et \u00e9crit de la partie concern\u00e9e, sauf si cette divulgation peut permettre une vente a un tiers ou est requise par la loi.--Art. 41\n",
+                "location":{
+                    "image":"82,96,117,60"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79249.js",
+                "id":79249
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":48,
+                "content":"Les activit\u00e9s de BM s'exerceront dans le respect de normes environnementales internationalement reconnues comme \u00e9tant de bonne pratique mini\u00e8re. BM devra prendre les mesures ad\u00e9quates pour prot\u00e9ger l'environnement et les infrastructures publiques, minimiser les dommages causes \u00e0 l'environnement, se conformer \u00e0 la l\u00e9gislation en vigueur sur les d\u00e9chets dangereux et la protection de l'environnement--Art. 44.8 \n",
+                "location":{
+                    "image":"658,268,687,234"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79244.js",
+                "id":79244
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language ",
+                "page":49,
+                "content":"Fran\u00e7aise--Art. 44.10\n",
+                "location":{
+                    "image":"323,223,350,184"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration/annotations/79250.js",
+                "id":79250
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"GECAMINES - DRC, 2009",
+        "data":{
+            "Countries ":"Democratic Republic of Congo",
+            "Signature Year ":"2009",
+            "Resource ":"Copper,Cobalt,Other Minerals",
+            "Signature Date ":"03/03/2009"
+        },
+        "created_at":"Thu, 25 Oct 2012 18:50:51 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 04 Mar 2014 17:22:20 +0000",
+        "id":"486149-drc-central-african-mining-and-exploration",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/486149/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/486149/drc-central-african-mining-and-exploration.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/486149/pages/drc-central-african-mining-and-exploration-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/486149/pages/drc-central-african-mining-and-exploration-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/486149/drc-central-african-mining-and-exploration.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/486149/pages/drc-central-african-mining-and-exploration-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=486149"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":51,
+        "canonical_url":"http://www.documentcloud.org/documents/486149-drc-central-african-mining-and-exploration.html"
+    }
+}

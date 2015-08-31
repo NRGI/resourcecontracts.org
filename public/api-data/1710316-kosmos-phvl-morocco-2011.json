@@ -1,0 +1,325 @@
+{
+    "document":{
+        "file_hash":"bb265ef2eb3ef42b7e110a3598cc0087c266b805",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":330,
+                "content":"Kingdom of Morocco --Front Page, Signature Page",
+                "location":{
+                    "image":"195,235,228,206"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212002.js",
+                "id":212002
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":330,
+                "content":"Kosmos Energy Deepwater Morocco and Pathfinder Hydrocarbons Ventures Limited --Front page, Signature Page",
+                "location":{
+                    "image":"234,265,275,234"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212003.js",
+                "id":212003
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) ",
+                "page":330,
+                "content":"Foum Assaka  Offshore as mapped out in Appendix 2 (not provided). The Contract Area totals 6473.1 km2.  --Front page, Art. 3.2, Appendix 1",
+                "location":{
+                    "image":"361,272,394,241"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212006.js",
+                "id":212006
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas//Name and/or number of field, block or deposit",
+                "page":330,
+                "content":"Foum Assaka Offshore I, Foum Assaka Offshore II, Foum Assaka Offshore III, Foum Assaka Offshore IV (collectively \"Foum Assaka Offshore\")--Front page, Article 3.1 (a), Appendix 2",
+                "location":{
+                    "image":"361,301,397,270"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212005.js",
+                "id":212005
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":331,
+                "content":"The Office National des Hydrocarbures et des mines (\"ONHYM\") acting on behalf of the Kingdom of Morocco--Front page",
+                "location":{
+                    "image":"104,61,142,29"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212009.js",
+                "id":212009
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":331,
+                "content":"Kosmos Energy Deepwater Morocco (\"Kosmos\"), a company incorporated in the Cayman Islands; and Pathfinder Hydrocarbon Ventures Limited (\"PHVL\"), a company incorporated under the laws of Jersey (collectively \"the Contractor Group\")--Front page",
+                "location":{
+                    "image":"195,63,233,24"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212008.js",
+                "id":212008
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":334,
+                "content":"In conducting Exploration and for Development and Explotation, the parties must comply with rules regulating environmental safety and protection in accordance with: (1) Section 38 of the Law no 21-90 enacted by Dahir no 1-91-118 of 27 Ramadan 1412 (1st April 1992) as amended by the Law no. 27-99, enacted by Dahir no1-99-34 of 9 Kaada 1420 (15 February 2000); (2) Sections 32 and 33 of Decree no 2-93-786 of 18 Joumada I 1414 (3rd November 1993), which was amended by the Decree no 2-99-210 of 9 Hija 1420 (16th March 2000). --Preamble, Art. 10",
+                "location":{
+                    "image":"47,288,85,259"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212021.js",
+                "id":212021
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":334,
+                "content":"Naturally occuring liquid, gaseous or solid hydrocarbons including crude oil and natural gas (but not including bituminous shale)--Preamble, Appendix I - 27",
+                "location":{
+                    "image":"51,320,86,290"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212013.js",
+                "id":212013
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":336,
+                "content":"Exploration Permits and Exploitation Concession--Art. 1",
+                "location":{
+                    "image":"50,346,89,316"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212004.js",
+                "id":212004
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":339,
+                "content":"The overall duration of the Exploration period will be 8 years divided into 3 phases of: an Initial Period of 2.5 years; a First Extension Period of 2.5 years; and a Second Extension Period for 3 years.  Of note, where hydrocarbons are discovered in the last year of the Second Extension Period, the parties may jointly apply for an exceptional period as provided by local law. In the Initial Period, the Contractor Group must conduct minimum exploration with an estimated value of $4 Million including: a post-mortem study of previous wells drilled in the area and of acquisition and processing parameters of available 3D Seismic of the Area of Interest; update the geological model; acquire, process and interpret 500 km2 3D Seismic; reinterpret available 2D and 2D Seismic data; post-processing seismic special studies; risk and rank prospects; and economic evaluation. Either after completing its Minimum Work Obligation in the Initial Period or subject to making payment, the Contractor Group must notify ONHYM whether it plans to abandon exploration or if it plans to enter the First Extension Period. In the First Extension Period, at an estimated cost of $40 Million, the Contractor Group must engage in well planning and drill an exploration well either with a minimum depth of 2500 meters below seabed or to the cretaceous objective, whichever is penetrated first. Either after completing its Minimum Work Obligation in the First Extension Period or subject to making payment, the Contractor Group must notify ONHYM whether it plans to abandon exploration or if it plans to enter the Second Extension Period. In the Second Extension Period, at an estimated cost of $40 Million, the Contractor Group must conduct a post mortem study of the well drilled in the First Extension Period; specially recalibrate available 3D seismic based on well results; drill an exploration to the lower cretaceous or a minimum depth of 2500 meters below seabed, whichever is penetrated first. Either after completing its Minimum Work Obligation in the Second Extension Period or subject to making payment, the Contractor Group must notify ONHYM whether it plans to abandon exploration. To guarantee the Minimum Exploration Work Program, the Contractor Group must pay $2 Million bank guarantee no later than the signature of this agreement;  this bank guarantee will be reduced to $1,000,000 upon the Contractor Group providing field tapes and data in support; the bank guarantee will again be reduced by a further $500,000 upon provision of the 3D seismic data; and the final $500,000 will be returned upon the Contractor Group's provision of all reports relating to the work conducted in the Initial Period. Each time the Contractor Group enters an Extension Period, it must a $5 Million guarantee and provide a drilling contract for the committed well. Failure to provide a drilling contract increases the Contractor Group's bank guarantee to $12 Million.--Art. 3.3, art. 3.4., art. 4",
+                "location":{
+                    "image":"319,57,361,26"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212022.js",
+                "id":212022
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":345,
+                "content":"ONHYM has the right to control and audit expenditures relating to the Contractor Group's Exploration Works during the Initial Validity Period and any Extension Periods. --Art. 4.2.8",
+                "location":{
+                    "image":"51,57,92,26"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212020.js",
+                "id":212020
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":347,
+                "content":"25 year maximum term and, where the parties jointly apply for renewal,  the term may be renewed once - for a period not exceeding 10 years. --Art. 5.1",
+                "location":{
+                    "image":"103,60,141,29"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212012.js",
+                "id":212012
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":347,
+                "content":"The State retains a 25% indivisible percentage interest while Kosmos retains a 37.5% indivisible percentage interest and PHVL retains a 37.5% indivisible percentage interest. Development and Exploitation work expenses  will be funded in proportion with the parties' respective interests. However, ONHYM will not be required to make its contribution to expenses until the effective date of the relevant Exploitation Concession.--Art. 5.2, art. 5.3",
+                "location":{
+                    "image":"172,60,215,30"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212019.js",
+                "id":212019
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":353,
+                "content":"The Agreement shall be governed and interpreted in conformity with Moroccan law.--Art. 7",
+                "location":{
+                    "image":"42,340,85,314"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212023.js",
+                "id":212023
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Formation]//Other - [Training]",
+                "page":355,
+                "content":"The Contractor Group must make a $50,000 annual contribution for ONHYM staff training. The contribution amount shall increase by $25,000 each time an Exploitation Concession is granted. Contributions to training are recoverable as costs of exploration or exploitation.--Art. 9",
+                "location":{
+                    "image":"50,340,87,313"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212014.js",
+                "id":212014
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":358,
+                "content":"For exploitation concessions located onshore or offshore at a water depth less than or equal to 200 metres (i) production of the first 300,000 tons crude oil is exempt from royalty; and (ii) production in excess of 300,000 tons crude oil are subject to 10% royalty.  For exploitation concessions located onshore or offshore at a water depth less than or equal to 200 metres (i) production of the first 300 Million m3 natural gas is exempt from royalty; and (ii) production in excess of 300 Million m3 natural gas are subject to 5% royalty.  For exploitation concessions located onshore or offshore at a water depth greater than 200 metres (i) production of the first 500,000 tons crude oil is exempt from royalty; and (ii) production in excess of 500,000 tons crude oil are subject to 7% royalty.  For exploitation concessions located onshore or offshore at a water depth less than or equal to 200 metres (i) production of the first 500 Million m3 natural gas is exempt from royalty; and (ii) production in excess of 500 Million m3 natural gas are subject to 3.5% royalty.--Art. 11.1 ",
+                "location":{
+                    "image":"97,55,139,23"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212015.js",
+                "id":212015
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: exon\u00e9ration//Income tax: exemptions",
+                "page":360,
+                "content":"The parties are exempt from corporate income tax for 10 consecutive years for each Exploitation Concession starting from the respective commencement date of production. --Art. 12.2",
+                "location":{
+                    "image":"171,61,215,30"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212017.js",
+                "id":212017
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":360,
+                "content":"Corporate income tax shall be calculated according to Market Prices determined in article 6 of the Code General des Impots. --Art. 12.1",
+                "location":{
+                    "image":"92,57,142,25"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212016.js",
+                "id":212016
+            },
+            {
+                "access":"public",
+                "title":"Primes//Bonuses",
+                "page":363,
+                "content":"Subsequent to the declaration of a hydrocarbon deposit in the designated Area of Interest and within 30 days of the Exploitation Concession grant, the Contractor Group must pay the State $1 Million. Where the Contractor Group maintains the following daily production rates for 30 consecutive days, it must pay the State the following specified bonuses within 30 days of the end of the month in which aggregate production levels are reached: 50,000 BOPD/BOE per day requires a $1 Million bonus payment to the state; 75,000 BOPD/BOE per day requires a $2 Million bonus payment to the state; 100,000 BOPD/BOE per day requires a $3 Million bonus payment to the state; more than 100,000 BOPD/BOE per day requires a $4 Million bonus payment to the state. The listed bonuses constitute one time payments and are deductible as development costs.--Art. 15",
+                "location":{
+                    "image":"54,337,97,307"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212018.js",
+                "id":212018
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":364,
+                "content":"Where regulatory changes adversely affect agreed economic terms and conditions, the terms of the Agreement will be adjusted to compensate for the adverse effect.  If ONHYM is unable to re-establish favorable economic terms, the Contractor Group shall notify ONHYM in writing of the terms necessary to compensate it for the adverse effects. If the parties cannot agree to these terms within 60 days from the delivery of this written notice, the matter shall be referred to arbitration.  --Art. 16",
+                "location":{
+                    "image":"54,343,86,312"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212025.js",
+                "id":212025
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":369,
+                "content":"All information gathered as a result of Agreement operations is treated as confidential and neither party may divulge such information to a third party except in the following instances: (i) for arbitration or legal proceedings; (ii) to affiliates or affiliate employees provided they maintain confidentiality; (iii) to contractors, subcontractors, professional advisors or auditors (potentially) employed for Agreement operations if disclosure is necessary; (iv) financial or insurance institutions for funding purposes; (v) bona fide prospective transferees; (vi) for the purposes of complying with Moroccan law; (vii) if the information is already public knowledge or has been legally obtained from a source other than the Agreement. For categories (iii), (iv) and (v), written undertakings for confidentiality must be obtained prior to disclosure. The Contractor Group will comply with confidentiality restrictions for a period of 3 years following the expiry of the Exploration Permits. Further, the Contractor Group must inform ONHYM before press releases of previously unpublished information and ONHYM must respond to Contractor Group within 72 hours otherwise their approval will be deemed to have been given.  --Art. 20",
+                "location":{
+                    "image":"80,321,115,289"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212026.js",
+                "id":212026
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":372,
+                "content":"If the parties are unable to resolve a dispute amicably after 60 days, they may submit the dispute to arbitration at ICSID or, if the dispute does not fall within ICSID jurisdiction, it shall be submitted to the ICC. The arbitration will be heard by 3 arbitrators, in Paris and in the French language. The arbitral tribunal shall apply Moroccan law. Each party is responsible for its own costs and expenses relating to the arbitration but the costs of the arbitrators and arbitration tribunal will be shared equally between the parties.--Art. 22",
+                "location":{
+                    "image":"50,337,90,305"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212024.js",
+                "id":212024
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":376,
+                "content":"The Agreement is signed in both French and English with the French version prevailing in the case of difference of interpretation.--Art. 24.4",
+                "location":{
+                    "image":"227,59,257,30"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212027.js",
+                "id":212027
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":377,
+                "content":"5/4/2011--art. 25",
+                "location":{
+                    "image":"45,300,88,266"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212010.js",
+                "id":212010
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":377,
+                "content":"2011--art. 25",
+                "location":{
+                    "image":"48,260,90,229"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212011.js",
+                "id":212011
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":377,
+                "content":"The agreement is effective on the date it is approved by  joint order issued by the Ministers in charge of Energy and Finance respectively.--art. 25",
+                "location":{
+                    "image":"49,338,87,305"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011/annotations/212007.js",
+                "id":212007
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Kosmos, PHVL - Morocco, 2011 (Foum Assaka)",
+        "data":{
+            "Type of Mining Title":"Exploration Permit/License",
+            "Signature Year":"2013",
+            "Resource":"Hydrocarbons",
+            "Countries":"Morocco"
+        },
+        "created_at":"Sun, 05 Apr 2015 15:41:24 +0000",
+        "display_language":"eng",
+        "updated_at":"Sun, 05 Apr 2015 16:29:34 +0000",
+        "id":"1710316-kosmos-phvl-morocco-2011",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1710316/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1710316/kosmos-phvl-morocco-2011.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1710316/pages/kosmos-phvl-morocco-2011-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1710316/pages/kosmos-phvl-morocco-2011-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1710316/kosmos-phvl-morocco-2011.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1710316/pages/kosmos-phvl-morocco-2011-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1710316"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":1136,
+        "canonical_url":"http://www.documentcloud.org/documents/1710316-kosmos-phvl-morocco-2011.html"
+    }
+}

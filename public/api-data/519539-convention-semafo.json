@@ -1,0 +1,635 @@
+{
+    "document":{
+        "file_hash":"d5d87dfa3b330abe636e70070c3f9dac01b34745",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Agence(s) de l'Etat signataire(s)//State agency, National Company, Ministry ",
+                "page":4,
+                "content":"Minist\u00e8re des Mines, de la G\u00e9ologie et de l'Environnement, Minist\u00e8re de l'Economie et des Finances--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"156,105,187,73"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81710.js",
+                "id":81710
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), pour l'Etat//Signatories, State ",
+                "page":4,
+                "content":"M. Ibrahima SOUMAH, Ministre des Mines, de la G\u00e9ologie et de l\u2019Environnement et M. Cheikh Amadou Camara, Ministre de l'Economie et des Finances--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"196,111,229,73"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81711.js",
+                "id":81711
+            },
+            {
+                "access":"public",
+                "title":"Nom(s) de la soci\u00e9t\u00e9(s) contractante(s)//Name of contracting company ",
+                "page":4,
+                "content":"SEMAFO GUINEE S.A--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"308,94,337,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81708.js",
+                "id":81708
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), pour la soci\u00e9t\u00e9 //Signatories, company ",
+                "page":4,
+                "content":"M. Benoit La Salle, Administrateur g\u00e9n\u00e9ral--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"348,97,382,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81709.js",
+                "id":81709
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":5,
+                "content":"Permis d'exploitation--D\u00e9clarations pr\u00e9liminaires\n",
+                "location":{
+                    "image":"359,91,392,54"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81705.js",
+                "id":81705
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":8,
+                "content":"Gold,Other Minerals--Art. 2\n",
+                "location":{
+                    "image":"102,87,135,47"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81715.js",
+                "id":81715
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, Longitude et Latitude//Location, longitude and latitude ",
+                "page":9,
+                "content":"P\u00e9rim\u00e8tre couvert par deux permis annex\u00e9s au contrat.--Art.6\n",
+                "location":{
+                    "image":"395,85,429,46"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81706.js",
+                "id":81706
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux et d'investissements//Work and investment commitments ",
+                "page":9,
+                "content":"D\u00e9marrage des travaux dans les 24 mois suivant la notification par l'Etat du permis d'exploitation. Le budget pour la construction de la mine et des installations pour le traitement est de US$12,4 millions. Les r\u00e9serves indiqu\u00e9es conform\u00e9ment \u00e0 l\u2019\u00c9tude de faisabilit\u00e9 sont suffisantes pour permettre \u00e0 la Soci\u00e9t\u00e9 d'installer une capacit\u00e9 de production minimale de 37 tonnes de minerais par heure.--Arts. 8, 11\n",
+                "location":{
+                    "image":"678,88,714,46"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81752.js",
+                "id":81752
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":9,
+                "content":"La soci\u00e9t\u00e9 doit fournir mensuellement au CPDM les rapports d'activit\u00e9 et statistiques de production. L'Etat a un droit d'acc\u00e8s et d'inspection de la Concession pour tout contr\u00f4le ou investigation, sans perturber les op\u00e9rations.--Arts. 8, 10\n",
+                "location":{
+                    "image":"729,69,766,34"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81758.js",
+                "id":81758
+            },
+            {
+                "access":"public",
+                "title":"Commercialisation et acc\u00e8s \u00e0 la production //Marketing of output and state access to output ",
+                "page":11,
+                "content":"La soci\u00e9t\u00e9 peut exporter et commercialiser librement la production, en passant des contrats \u00e0 long terme avec des acheteurs dans et hors Guin\u00e9e aux meilleures conditions possibles.--Art. 13\n",
+                "location":{
+                    "image":"131,103,168,66"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81755.js",
+                "id":81755
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien de l'infrastructure//Construction and maintenance of infrastructure ",
+                "page":11,
+                "content":"La soci\u00e9t\u00e9 devra financer la construction de routes et d'une piste d'atterrissage qui devra s'int\u00e9grer dans l'infrastructure g\u00e9n\u00e9rale de la Guin\u00e9e. La Soci\u00e9t\u00e9 et l'Investisseur auront l\u2019obligation de r\u00e9aliser, exploiter et g\u00e9rer les infrastructures. La soci\u00e9t\u00e9 peut installer un r\u00e9seau de communication par satellite.--Art. 14\n",
+                "location":{
+                    "image":"307,97,345,62"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81754.js",
+                "id":81754
+            },
+            {
+                "access":"public",
+                "title":"Utilisation de l\u2019infrastructure par les tiers//Third party use of infrastructure ",
+                "page":11,
+                "content":"Les infrastructures pourront \u00eatre utilis\u00e9es par les communaut\u00e9s environnantes dans des conditions ne devant entrainer aucune g\u00eane pour les activit\u00e9s de la soci\u00e9t\u00e9. La piste d'atterrissage pourra servir \u00e0 titre priv\u00e9 ou commercial dans le cadre d'un accord entre la soci\u00e9t\u00e9 et les autorit\u00e9s comp\u00e9tentes.--Art. 14\n",
+                "location":{
+                    "image":"359,98,401,60"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81756.js",
+                "id":81756
+            },
+            {
+                "access":"public",
+                "title":"Financement de l\u2019infrastructure//Financing of infrastructure ",
+                "page":11,
+                "content":"La Soci\u00e9t\u00e9 et l'Investisseur auront l\u2019obligation d\u2019assurer les financements.--Art. 14\n",
+                "location":{
+                    "image":"417,99,453,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81757.js",
+                "id":81757
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State equity ",
+                "page":12,
+                "content":"L'Etat a droit \u00e0 une participation non-contributive fixe et invariable de 15% du capital social de la soci\u00e9t\u00e9 d\u00e8s le commencement de la phase d'exploitation, et \u00e0 une option contributive de 10%.--Art. 15\n",
+                "location":{
+                    "image":"103,71,143,29"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81748.js",
+                "id":81748
+            },
+            {
+                "access":"public",
+                "title":"Cession / transfert//Assignment / transfer ",
+                "page":12,
+                "content":"Une Partie peut c\u00e9der \u00e0 d'autres personnes morales, techniquement et financi\u00e8rement qualifi\u00e9es, avec l'accord de l'autre partie, qui ne peut refuser sans raison valable, tout ou partie des droits et obligations acquis en vertu de la convention. En ce qui concerne la participation d\u2019une Partie dans la Soci\u00e9t\u00e9, l\u2019autre Partie dispose d\u2019un droit de pr\u00e9emption, sauf s'il s'agit d'une cession \u00e0 une soci\u00e9t\u00e9 affili\u00e9e.--Art. 16",
+                "location":{
+                    "image":"781,80,813,42"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81763.js",
+                "id":81763
+            },
+            {
+                "access":"public",
+                "title":"Approvisionnement en biens et services locaux//Local procurement requirements ",
+                "page":13,
+                "content":"L'investisseur utilisera en priorit\u00e9 les mati\u00e8res premi\u00e8res et produits guin\u00e9ens s'ils sont disponibles \u00e0 des conditions comp\u00e9titives.--Art. 18",
+                "location":{
+                    "image":"577,90,610,42"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81721.js",
+                "id":81721
+            },
+            {
+                "access":"public",
+                "title":"Formation du personnel guin\u00e9en//Management training requirement for nationals ",
+                "page":13,
+                "content":"Programme de promotion et de formation du personnel guin\u00e9en, soumis \u00e0 l'Etat et revu tous les ans. --Art. 19\n",
+                "location":{
+                    "image":"722,89,755,46"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81718.js",
+                "id":81718
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel guin\u00e9en//Local employment requirements ",
+                "page":13,
+                "content":"Pr\u00e9f\u00e9rence accord\u00e9e aux Guin\u00e9ens pour les emplois de cadres, \u00e0 comp\u00e9tences \u00e9gales, et emplois r\u00e9serv\u00e9s aux Guin\u00e9ens en dessous du niveau cadre, sauf comp\u00e9tence particuli\u00e8re.--Art. 19\n",
+                "location":{
+                    "image":"769,94,803,52"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81719.js",
+                "id":81719
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des nationaux//Witholding tax on national salaries ",
+                "page":16,
+                "content":"Employ\u00e9s nationaux  assujettis \u00e0 l'imp\u00f4t sur le revenu conform\u00e9ment \u00e0 la l\u00e9gislation guin\u00e9enne en vigueur. Versement forfaitaire de 6% sur les salaires des employ\u00e9s nationaux. Contribution \u00e0 la formation  de 1,5% de la masse salariale.--Art. 23\n",
+                "location":{
+                    "image":"171,75,211,38"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81734.js",
+                "id":81734
+            },
+            {
+                "access":"public",
+                "title":"Contribution au d\u00e9veloppement communautaire ou local//Community and local obligations ",
+                "page":16,
+                "content":"Taxe de d\u00e9veloppement local de 0,4% du chiffre d'affaire.--Art. 23\n",
+                "location":{
+                    "image":"453,83,489,45"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81746.js",
+                "id":81746
+            },
+            {
+                "access":"public",
+                "title":"Part patronale des cotisations de s\u00e9curit\u00e9 sociale//Social security contributions by employer ",
+                "page":16,
+                "content":"Cotisation due conform\u00e9ment \u00e0 la l\u00e9gislation en vigueur sur l'ensemble des salaires des employ\u00e9s nationaux.--Art. 23\n",
+                "location":{
+                    "image":"505,84,538,45"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81744.js",
+                "id":81744
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des expatri\u00e9s//Witholding tax on expatriate salaries ",
+                "page":16,
+                "content":"Retenue de 10% des salaires pay\u00e9s en guin\u00e9e et hors guin\u00e9e.--Art. 23\n",
+                "location":{
+                    "image":"751,82,791,47"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81735.js",
+                "id":81735
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les prestations de services par des entreprises non r\u00e9sidentes//Witholding tax on services of non-resident companies ",
+                "page":16,
+                "content":"Retenue de 10%, non d\u00e9ductible de l'imp\u00f4t sur le b\u00e9n\u00e9fice--Art. 23\n",
+                "location":{
+                    "image":"810,99,848,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81736.js",
+                "id":81736
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate ",
+                "page":17,
+                "content":"Taux de 35% sur les b\u00e9n\u00e9fices industriels et commerciaux.--Art. 23\n",
+                "location":{
+                    "image":"112,114,146,76"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81728.js",
+                "id":81728
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: d\u00e9ductibilit\u00e9 des frais financiers//Income tax: deductibility of expenses ",
+                "page":17,
+                "content":"Exon\u00e9ration de la soci\u00e9t\u00e9 sur les int\u00e9r\u00eats et autres produits des capitaux emprunt\u00e9s pour ses op\u00e9rations, y compris sur les int\u00e9r\u00eats vers\u00e9s \u00e0 ses actionnaires.--Art. 23\n",
+                "location":{
+                    "image":"169,116,205,78"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81731.js",
+                "id":81731
+            },
+            {
+                "access":"public",
+                "title":"Autres exon\u00e9rations//Other exemptions ",
+                "page":17,
+                "content":"Exon\u00e9ration de l'imp\u00f4t minimum forfaitaire. --Art. 23\n",
+                "location":{
+                    "image":"228,115,262,75"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81747.js",
+                "id":81747
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: amortissement//Income tax: amortization ",
+                "page":17,
+                "content":"Amortissement lin\u00e9aire ou d\u00e9gressif conform\u00e9ment au Code des imp\u00f4ts directs d'Etat.--Art. 23\n",
+                "location":{
+                    "image":"500,120,537,75"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81730.js",
+                "id":81730
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: exoneration//Income tax: exemptions ",
+                "page":17,
+                "content":"Exon\u00e9ration de l'imp\u00f4t sur les b\u00e9n\u00e9fices industriels et commerciaux les 5 premi\u00e8res ann\u00e9es fiscales \u00e0 compter de la premi\u00e8re production commerciale.--Art. 23\n",
+                "location":{
+                    "image":"66,154,104,112"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81733.js",
+                "id":81733
+            },
+            {
+                "access":"public",
+                "title":"Provision pour la reconstitution des gisements//Provisions for renewing reserves ",
+                "page":17,
+                "content":"Une provision d'un montant maximum de 10% du b\u00e9n\u00e9fice imposable peut \u00eatre constitu\u00e9e par la soci\u00e9t\u00e9 \u00e0 la fin de l'exercice en franchise d'imp\u00f4t sur le revenu conform\u00e9ment au Code Minier. Cette provision devra servir \u00e0 financer la recherche ou l'exploitation dans les trois ans suivant sa constitution. La partie non-utilis\u00e9e sera rapport\u00e9e aux r\u00e9sultats du quatri\u00e8me exercice. --Art. 23\n",
+                "location":{
+                    "image":"829,126,867,92"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81737.js",
+                "id":81737
+            },
+            {
+                "access":"public",
+                "title":"Cr\u00e9dit d'investissement//Investment credit ",
+                "page":18,
+                "content":"Cr\u00e9dit de 5% sur tout investissement r\u00e9alis\u00e9 en cours d'exercice, d\u00e9ductible du b\u00e9n\u00e9fice imposable.--Art. 23\n",
+                "location":{
+                    "image":"217,108,253,69"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81739.js",
+                "id":81739
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining Tax/ Royalty Tax ",
+                "page":18,
+                "content":"Taux de 5% de la valeur du fixing de Londres sur la quantit\u00e9 d'or au moment de sa sortie de stock tel que pr\u00e9vu \u00e0 l\u2019article 139 du Code minier de 1995.--Art. 23\n",
+                "location":{
+                    "image":"287,90,322,55"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81726.js",
+                "id":81726
+            },
+            {
+                "access":"public",
+                "title":"TVA//VAT ",
+                "page":18,
+                "content":"TVA exigible sur les achats locaux de biens et services de la soci\u00e9t\u00e9 et ses sous-traitants directs. Possibilit\u00e9 de remboursement int\u00e9gral du cr\u00e9dit de TVA.--Art. 23\n",
+                "location":{
+                    "image":"485,112,518,71"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81743.js",
+                "id":81743
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de construction//Custom duties during construction phase ",
+                "page":18,
+                "content":"Exon\u00e9ration des droits de douanes sur les \u00e9quipements, mat\u00e9riels, gros outillages, engins et v\u00e9hicules figurant sur la liste des immobilisations de la Soci\u00e9t\u00e9, ainsi que les pi\u00e8ces d\u00e9tach\u00e9es et lubrifiants n\u00e9cessaires \u00e0 ces biens d\u2019\u00e9quipement. Paiement des droits de douanes sur les carburants selon le Code Minier de 1995. Paiement d'une taxe d'enregistrement de 0,5% de la valeur CAF, plafonn\u00e9e \u00e0 20 millions GNF.--Art.24\n",
+                "location":{
+                    "image":"634,102,669,64"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81740.js",
+                "id":81740
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase d'exploitation//Custom duties during  operation phase ",
+                "page":19,
+                "content":"Droits de douanes acquitt\u00e9s conform\u00e9ment au droit commun en vigueur \u00e0 la date de la convention. Exon\u00e9ration durant les deux premi\u00e8res ann\u00e9es d'exploitation, puis paiement de la taxe de 5,6% pr\u00e9vue au code minier.--Art. 25\n",
+                "location":{
+                    "image":"419,94,449,53"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81741.js",
+                "id":81741
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane pour le mat\u00e9riel de traitement//Custom duties on processing equipment ",
+                "page":19,
+                "content":" Les produits p\u00e9troliers n\u00e9cessaire au traitement de l'or sont acquis selon la structure des prix applicables au secteur minier.--Art. 25",
+                "location":{
+                    "image":"528,86,563,49"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81742.js",
+                "id":81742
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause ",
+                "page":19,
+                "content":"La soci\u00e9t\u00e9, l'investisseur et les sous-traitants directs ne seront assujettis \u00e0 aucun autre imp\u00f4t, taxe, droit ou redevance douani\u00e8re que ceux pr\u00e9vus dans la convention pendant toute la p\u00e9riode de validit\u00e9 de la convention.--Art. 26\n",
+                "location":{
+                    "image":"603,86,636,50"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81762.js",
+                "id":81762
+            },
+            {
+                "access":"public",
+                "title":"Redevances superficiaires//Surface fees ",
+                "page":22,
+                "content":"L'occupation des terrains n\u00e9cessaires aux travaux d'exploration ou d'exploitation n'entraine le paiement d'aucun imp\u00f4t, taxe, redevance ou droit.--Art. 28\n",
+                "location":{
+                    "image":"227,176,263,127"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81745.js",
+                "id":81745
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9installation des habitants//Resettlement ",
+                "page":22,
+                "content":"L\u2019Etat proc\u00e8dera \u00e0 la r\u00e9installation des habitants, dont la pr\u00e9sence entraverait les travaux, \u00e0 la demande de la Soci\u00e9t\u00e9. La Soci\u00e9t\u00e9 sera tenue de payer une juste indemnisation auxdits habitants.--Art. 28",
+                "location":{
+                    "image":"229,112,259,71"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81722.js",
+                "id":81722
+            },
+            {
+                "access":"public",
+                "title":"Autre - Obligations \u00e0 l'\u00e9gard des communaut\u00e9s, la protection sociale et l\u2019\u00e9conomie locale/r\u00e9gionale//Other - Community and social obligations",
+                "page":22,
+                "content":"La soci\u00e9t\u00e9 devra \u00e9tablir un R\u00e8glement Int\u00e9rieur regroupant des r\u00e8gles de s\u00e9curit\u00e9 sp\u00e9cifiques en conformit\u00e9 avec les r\u00e8gles admises dans le secteur minier et avec le Code minier guin\u00e9en.--Art. 28",
+                "location":{
+                    "image":"277,108,309,68"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81723.js",
+                "id":81723
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":23,
+                "content":"D\u00e9pos\u00e9e par la soci\u00e9t\u00e9 Les Min\u00e9raux SGV SA, soci\u00e9t\u00e9 s\u0153ur de SEMAFO GUINEE SA, le 18 novembre 2000 et finalis\u00e9e par une lettre du 02 mars 2000.--Art. 30\n",
+                "location":{
+                    "image":"238,93,270,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81749.js",
+                "id":81749
+            },
+            {
+                "access":"public",
+                "title":"Autre - Dispositions environnementales//Other - Environmental provisions",
+                "page":23,
+                "content":"La soci\u00e9t\u00e9 s'engage \u00e0 se conformer \u00e0 la l\u00e9gislation en vigueur, \u00e0 sensibiliser ses employ\u00e9s et \u00e0 r\u00e9habiliter les terrains qui ne sont plus n\u00e9cessaires au d\u00e9roulement des activit\u00e9s.--Art. 30",
+                "location":{
+                    "image":"245,147,284,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81751.js",
+                "id":81751
+            },
+            {
+                "access":"public",
+                "title":"Mode et fr\u00e9quence de suivi//Environmental monitoring ",
+                "page":23,
+                "content":"Evaluation de l'impact des activit\u00e9s sur la sant\u00e9, la s\u00e9curit\u00e9 et l'environnement et prise en compte dans la planification, la conception et l'ex\u00e9cution.--Art. 30\n",
+                "location":{
+                    "image":"285,87,319,47"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81750.js",
+                "id":81750
+            },
+            {
+                "access":"public",
+                "title":"Protection des lieux sacr\u00e9s, des ressources locales et du milieu de vie//Protection of sacred locations, resources and environment ",
+                "page":23,
+                "content":"En cas de d\u00e9couverte d'un site arch\u00e9ologique, \u00e9tudes appropri\u00e9es requises.  La Soci\u00e9t\u00e9 s'engage \u00e0 ne pas d\u00e9placer des \u00e9l\u00e9ments du patrimoine culturel national, et \u00e0 participer aux frais de sauvetage raisonnables.--Art. 31\n",
+                "location":{
+                    "image":"733,95,769,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81717.js",
+                "id":81717
+            },
+            {
+                "access":"public",
+                "title":"Indemnisation//Indemnification ",
+                "page":23,
+                "content":"L'Etat assure qu'il ne compte pas exproprier l'exploitation future, mais qu'il sera tenu de verser une indemnit\u00e9 aux personnes l\u00e9s\u00e9es s'il devait le faire.--Art. 29\n",
+                "location":{
+                    "image":"99,385,133,354"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81765.js",
+                "id":81765
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution ",
+                "page":24,
+                "content":"R\u00e8glement \u00e0 l'amiable en priorit\u00e9. Si le diff\u00e9rend porte sur un point technique, alors arbitrage technique. Pour tout autre diff\u00e9rent, arbitrage devant le CIRDI. En cas d'impossibilit\u00e9 d'un arbitrage au CIRDI, l'arbitrage aura lieu devant la CCI de Paris.--Art. 32\n",
+                "location":{
+                    "image":"230,476,259,437"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81761.js",
+                "id":81761
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable//Governing law ",
+                "page":25,
+                "content":"Droit de la R\u00e9publique de Guin\u00e9e--Art. 33\n",
+                "location":{
+                    "image":"402,373,433,337"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81760.js",
+                "id":81760
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term ",
+                "page":25,
+                "content":"25 ans --Art. 34\n",
+                "location":{
+                    "image":"572,271,605,236"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81713.js",
+                "id":81713
+            },
+            {
+                "access":"public",
+                "title":"Conditions de renouvellement//Conditions for renewal  ",
+                "page":25,
+                "content":"Les parties s'engagent \u00e0 ren\u00e9gocier un renouvellement ou une nouvelle Convention si la dur\u00e9e d'exploitation d'un gisement exc\u00e8de 25 ans--Art. 34\n",
+                "location":{
+                    "image":"575,317,608,280"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81714.js",
+                "id":81714
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9siliation / fin du contrat//Cancellation / Termination ",
+                "page":25,
+                "content":"La convention prend fin avant son terme soit par accord des parties, soit en cas de renonciation totale par la soci\u00e9t\u00e9 \u00e0 son titre minier, ou en cas d'annulation de ce titre, ou en cas de d\u00e9p\u00f4t de bilan impliquant la soci\u00e9t\u00e9.--Art. 35\n",
+                "location":{
+                    "image":"714,65,747,28"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81764.js",
+                "id":81764
+            },
+            {
+                "access":"public",
+                "title":"Autre- modification des conditions \u00e9conomiques//Other - Hardship clause ",
+                "page":26,
+                "content":"En cas de modification tr\u00e8s importante des conditions \u00e9conomiques entrainant une rupture de l'\u00e9quilibre \u00e9conomique, les parties s'engagent \u00e0 ren\u00e9gocier la convention.--Art. 38\n",
+                "location":{
+                    "image":"466,77,503,37"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81768.js",
+                "id":81768
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality ",
+                "page":28,
+                "content":"L'Etat s'engage \u00e0 consid\u00e9rer comme confidentielles toutes les informations communiqu\u00e9es par la soci\u00e9t\u00e9 et ne les r\u00e9v\u00e8lera \u00e0 des tiers qu'avec son consentement.--Art. 40\n",
+                "location":{
+                    "image":"249,115,280,79"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81766.js",
+                "id":81766
+            },
+            {
+                "access":"public",
+                "title":"Si\u00e8ge social //Corporate headquarters  ",
+                "page":29,
+                "content":"B.P. 2073. 221 rue 368, Kaporo Rail. Ratoma, Conakry.--Art 42\n",
+                "location":{
+                    "image":"393,163,418,122"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81703.js",
+                "id":81703
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language ",
+                "page":29,
+                "content":"Fran\u00e7aise--Art. 43\n",
+                "location":{
+                    "image":"774,88,808,50"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81767.js",
+                "id":81767
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature ",
+                "page":30,
+                "content":"02/04/2002--Signature\n",
+                "location":{
+                    "image":"231,509,263,465"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519539-convention-semafo/annotations/81712.js",
+                "id":81712
+            }
+        ],
+        "description":"<i>Nom de la soci\u00e9t\u00e9 guin\u00e9enne : </i>SEMAFO GUINEE S.A<br><i>Si\u00e8ge social : </i>B.P. 2073. 221 rue 368, Kaporo Rail. Ratoma, Conakry.<br><i> Structure du Capital : </i>SEMAFO INC. d\u00e9tient 85% des actions de SEMAFO GUINEE, l'Etat Guin\u00e9en poss\u00e8de une participation non contributive de 15%. SEMAFO GUINEE n'a pas de conseil d'administration, un administrateur G\u00e9n\u00e9ral Guin\u00e9en assure les fonctions de direction et d'administration apr\u00e8s avoir \u00e9t\u00e9 d\u00e9sign\u00e9 par l'Assembl\u00e9e des actionnaires.<br><i>Soci\u00e9t\u00e9 m\u00e8re ou affili\u00e9e hors de la Guin\u00e9e; et leurs si\u00e8ges sociaux : </i>SEMAFO GUINEE est une filiale de SEMAFO INC, dont le si\u00e8ge social est au Canada. SEMAFO INC est cot\u00e9e \u00e0 la bourse de Toronto, au Canada, et de fa\u00e7on secondaire au NASDAQ de Stockholm, Su\u00e8de.<br><i>Site web de l\u2019entreprise : </i>www.semafo.com<br><i>Date d'octroi du permis d'exploitation ou de la concession : </i>Permis d'exploitation: 20/11/08 et 27/04/10<br><i>Investissement estim\u00e9 : </i><br><i>Production attendue : </i>40,000 onces/an<br><i>R\u00e9serves estim\u00e9es : </i>786,000 onces de r\u00e9serves et ressources min\u00e9rales au 31 d\u00e9cembre 2011<br><br><br><i>Note : Ce r\u00e9sum\u00e9 est destin\u00e9 \u00e0 faciliter la compr\u00e9hension par un large public des points importants du document original. Il ne s\u2019agit en aucun cas d\u2019une liste exhaustive des obligations l\u00e9gales li\u00e9es au projet minier concern\u00e9. Ce r\u00e9sum\u00e9 ne comporte aucune opinion quant au statut juridique du document ou de tout \u00e9l\u00e9ment du document, et ne refl\u00e8te aucunement des d\u00e9cisions ou positions du CTRTCM ou du Gouvernement de la R\u00e9publique de Guin\u00e9e en lien avec le processus de revue des conventions et titres miniers. Ce r\u00e9sum\u00e9 doit \u00eatre lu en lien avec le texte int\u00e9gral du document original et avec les lois et textes r\u00e9glementaires applicables. Un certain nombre de lois et r\u00e9glementations applicables directement ou indirectement au secteur minier sont disponibles <a href=\"http://www.contratsminiersguinee.org/about/legislation.html\">ici</a>.</i>",
+        "language":"eng",
+        "title":"SEMAFO - Guin\u00e9e, 2002",
+        "data":{
+            "Type of Mining Title":"Exploitation",
+            "Resource":"Or,Other Minerals",
+            "Countries":"Guinea",
+            "Signature Date":"02/04/2002 ",
+            "Contratc Term (duration) in Years":"25",
+            "Signature Year":"2002"
+        },
+        "created_at":"Mon, 19 Nov 2012 21:32:31 +0000",
+        "display_language":"eng",
+        "updated_at":"Sun, 26 Apr 2015 10:11:17 +0000",
+        "id":"519539-convention-semafo",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/519539/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/519539/convention-semafo.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/519539/pages/convention-semafo-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/519539/pages/convention-semafo-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/519539/convention-semafo.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/519539/pages/convention-semafo-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=519539"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":32,
+        "canonical_url":"http://www.documentcloud.org/documents/519539-convention-semafo.html"
+    }
+}

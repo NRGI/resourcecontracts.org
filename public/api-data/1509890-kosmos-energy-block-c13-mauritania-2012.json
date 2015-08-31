@@ -1,0 +1,380 @@
+{
+    "document":{
+        "file_hash":"993959ba12efef700212cc473fe7cd89867f93be",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":612,
+                "content":"Production Sharing Agreement--Front page, art. 2",
+                "location":{
+                    "image":"186,256,226,230"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200883.js",
+                "id":200883
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":612,
+                "content":"Kosmos Energy Mauritania--Front page, Preamble, Signature Page",
+                "location":{
+                    "image":"284,290,324,267"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200881.js",
+                "id":200881
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas//Name and/or number of field, block or deposit",
+                "page":612,
+                "content":"Block C13--Front page, Appendix 1",
+                "location":{
+                    "image":"314,355,346,330"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200884.js",
+                "id":200884
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) ",
+                "page":612,
+                "content":"Block C13 as mapped out in Appendix 1. The Contract Area is 8000 km2 and bounded by coordinates in Appendix 1.--Front page, Appendix 1",
+                "location":{
+                    "image":"315,333,345,307"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200885.js",
+                "id":200885
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":612,
+                "content":"Islamic Republic of Mauritania--Front page, Preamble, Signature Page",
+                "location":{
+                    "image":"54,345,87,317"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200882.js",
+                "id":200882
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":615,
+                "content":"Kosmos Energy Mauritania (\"Kosmos\"), a company incorporated in the Cayman Islands--Preamble",
+                "location":{
+                    "image":"162,61,197,35"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200888.js",
+                "id":200888
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":615,
+                "content":"The Islamic Republic of Mauritania represented by the Minister in Charge of Crude Hydrocarbons--Preamble",
+                "location":{
+                    "image":"73,65,112,34"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200889.js",
+                "id":200889
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":617,
+                "content":"Liquid, gas or solid hydrocarbons (particularly oil sands and oil shale)--Art. 1.23, Art. 1.28, Art. 2",
+                "location":{
+                    "image":"379,60,414,37"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200894.js",
+                "id":200894
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":622,
+                "content":"The Exploration Period is divided into 3 phases separated into 4 years, 3 years, and 3 years respectively. In Phase 1, Kosmos' Minimum Work Obligations are to: acquire 2000km siesmic data; within 6 months of the start of phase 2, Kosmos must start works towards completing 1000km 3D siesmic data and drilling 1 Exploration well to a depth of 2000m below the mud line; within 3 months of the start of phase 3, Kosmos must start works towards drilling 1 Exploration well to a depth of 2000m below the mud line.  The estimated cost for Minimum Work Obligation will be: $9 Million in Phase 1, $27 Million in Phase 2 and $22 Million in Phase 3. --Art. 4",
+                "location":{
+                    "image":"139,255,176,226"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200914.js",
+                "id":200914
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":625,
+                "content":"Kosmos may construct and maintain facilitites relating to Petroleum Operations. All constructed facilities must show markers and sign posts to ensure safe passage within the perimeter of the Exploration Area. None of Kosmos constructions should fall within 500 meters of any religious area and Kosmos will be liable to pay for any damages that occur. During the term of the contract, Kosmos may process and transport (or cause to be produced and transported) exploitation products to points of storage, processing, lifting or gross consumption - all while retaining ownership rights. --art. 6, art. 16.1",
+                "location":{
+                    "image":"222,246,256,219"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200915.js",
+                "id":200915
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":625,
+                "content":"Kosmos must takes all necessary environmental protection measures and must submit environmental impact studies to the Minister in instances where the Petroleum Operation is subject to the Environmental Code. --Art. 6.4",
+                "location":{
+                    "image":"414,77,455,45"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200911.js",
+                "id":200911
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licences, et permis)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":627,
+                "content":"For construction, Kosmos may not occupy land within 500 m of wells, springs, reservoirs and water conduits.  --Art. 6.7",
+                "location":{
+                    "image":"181,72,228,41"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200913.js",
+                "id":200913
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es a l'approvisionnement en biens et services locaux//Local procurement requirements",
+                "page":627,
+                "content":"Kosmos and its subcontractors must give preference to Mauritanian goods and enterprises (where they are of similar quality and available on similar commercial terms as elsewhere). For supply, service and construction contracts valued at greater than $750,000 for exploration/appraisal work and valued at greater than $1.5 Million for development/exploitation work, Kosmos must make a call for bids from Mauritanian and foreign bidders. Within 30 days of the end of each quarter, Kosmos must provide the Minister with copies of contracts entered into in that quarter. --Art. 6.8",
+                "location":{
+                    "image":"256,66,299,40"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200897.js",
+                "id":200897
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":632,
+                "content":"All Petroleum Operations related information is confidentional except if the Minister provides prior consent. Upon surrender, termination or expiration of the Contract, Kosmos must keep confidential all Petroleum Operations related information except if prior consent is granted or if the information is already in the public domain. --Art. 8.7",
+                "location":{
+                    "image":"110,63,157,34"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200919.js",
+                "id":200919
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":636,
+                "content":"25 years for Crude Petroleum deposits and 30 years for Dry Gas deposits and where Kosmos applies for renewal within 1 year of expiration, the term may be renewed for a further 10 years. --Art. 9.11",
+                "location":{
+                    "image":"231,60,276,33"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200893.js",
+                "id":200893
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, cr\u00e9dit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":638,
+                "content":"Kosmos is entitled to a 55% (for Crude Petroleum) and a 62% (for Dry Gas) production share on a quarterly basis and during each Exploitation Period. Where the recovered Petroleum Costs do not exceed the designated limits in the course of a calendar year, the unrecovered excess is carried forward until full recovery or the Contract's termination. --Art. 10.1-10.2",
+                "location":{
+                    "image":"180,59,219,31"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200903.js",
+                "id":200903
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":639,
+                "content":"The parties shall share profits as follows: R Factor &gt; 1.00, Mauritania takes 31% and Kosmos takes 69%; R Factor 1.00 - 1.5, Mauritania takes 33% and Kosmos takes 67%; R Factor 1.5 - 2, Mauritania takes 35% and Kosmos takes 65%; R Factor 2 -2.5, Mauritania takes 37% and Kosmos takes 63%; R Factor 2.5-3, Mauritania takes 39% and Kosmos takes 61%; R Factor ",
+                "location":{
+                    "image":"47,59,94,29"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200904.js",
+                "id":200904
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":640,
+                "content":"27% Industrial and Commercial Income Tax levied on net profits earned from Petroleum Operations in accordance with the Crude Hydrocarbons Code.--Art. 11.1",
+                "location":{
+                    "image":"269,63,307,34"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200901.js",
+                "id":200901
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":642,
+                "content":"Shareholders of Kosmos and its affliated companies benefit from exemptions under art. 86 of Title VI of the Crude Hydrocarbons Code. Kosmos is not subject to tax or related payments arising from Petroleum Operations with the exception of taxes, dues an payments outlined in Title VI of the Crude Hydrocarbons Code including: (i) special taxes on the use of drinking and irrigation water as detailed in art. 6.4; (ii) surface rentals; (ii) bonuses; (iii) payments detailed in art. 12.2. Petroleum Operations related service costs are taxable at a rate of zero provided the service is rendered, right transfered or the item is rented/reused in Mauritanian territory (pursuant to art. 177B of the General Tax Code). These foregoing exemptions do not apply to tariffs for services rendered to Kosmos by Mauritanian administrators. However, such tariffs must not exceed generally applicable rates charged by the same Mauritanian administrators for the same services. Service tariffs are recoverable as Petroleum Costs. --Art. 11.5 - 11.6",
+                "location":{
+                    "image":"127,62,162,37"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200907.js",
+                "id":200907
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Formation]//Other - [Training]",
+                "page":643,
+                "content":"As part of its annual training plan for Ministry officials, Kosmos must pay to Mauritania $300,000 annually during the Exploration period and $600,000 during Exploitation period.--Art. 12.2",
+                "location":{
+                    "image":"148,62,196,32"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200900.js",
+                "id":200900
+            },
+            {
+                "access":"public",
+                "title":"Primes//Bonuses",
+                "page":643,
+                "content":"Within 30 days of the Effective Date, Kosmos must pay Mauritania a bonus of $1,000,000. In terms of production bonuses, Kosmos must make payments to Mauritania as follows: (i) $6,000,000 when 25,000 barrels of Crude Petroleum are produced for 30 consecutive days for the first time; (ii) $8,000,000 when 50,000 barrels of Crude Petroleum are produced for 30 consecutive days for the first time; (iii) $12,000,000 when 100,000 barrels of Crude Petroleum are produced for 30 consecutive days for the first time; (iv)$20,000,000 when 150,000 barrels of Crude Petroleum are produced for 30 consecutive days for the first time. Bonuses are not recoverable as Petroleum Costs nor are they deductible under the Industrial and Commercial Income Tax under the Crude Hydrocarbons Code. --Art. 13",
+                "location":{
+                    "image":"259,314,295,287"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200905.js",
+                "id":200905
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local//Local employment requirements",
+                "page":643,
+                "content":"Kosmos shall ensure priority employment and training for Mauritanian nationals of equal qualification.  Kosmos shall prepare an annual recruitment plan outlining plans for recruitment and training of Mauritanian personnel. --Art. 12.1",
+                "location":{
+                    "image":"52,60,94,32"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200896.js",
+                "id":200896
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":644,
+                "content":"Crude Petroleum Market Price is calculated to equal the weighted average of prevailing prices obtained by Kosmos and Mauritania in the course of their transactions with third parties in the quarter under consideration (adjusted for differentials as noted in art. 14.2).  Transactions not taken into account for calculating Market Price include sales where the buyer is an Affiliated Company of the seller or if the sales occur between Kosmos entities. --Art. 14",
+                "location":{
+                    "image":"238,261,273,231"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200909.js",
+                "id":200909
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":651,
+                "content":"Until the first Exploitation Authorization is granted, Kosmos must maintain its accounting records according to international petroleum standards at its headquarters and keep at least one copy in Mauritania. After the grant of the first Exploitation Authorization, Kosmos must keep original accounting records in Mauritania. The Minister has 3 years after the end of the relevant calendar year to audit records and present objections. In special circumstances, the 3 year period may be extended by 1 year.--Art. 20",
+                "location":{
+                    "image":"298,254,335,226"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200908.js",
+                "id":200908
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":653,
+                "content":"From the Effective Date, Mauritania acquires a 10% interest in contractual rights and obligations in the Exploration Perimeter.  The parties shall finance their share of Petroleum Costs including evaluation/appraisal of discoveries in the Exploration Perimeter made during the Exploration Authorization. Mauritania, through its National Enterprise (Societe Mauritanienne des Hydrocarbures) may acquire further participation in Petroleum Operations provided state participation is not less than 10% and not in excess in of 14%. Such acquisitions give the National Enterprise the same rights and obligations as Kosmos, pro rata to its participation. Mauritania must reimburse Kosmos for unrecovered Petroleum Costs, on a pro rata basis. Kosmos is not subject to taxation for such reimbursements. --Art. 21.1 - 21.3, Art. 21.5",
+                "location":{
+                    "image":"109,58,152,27"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200906.js",
+                "id":200906
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":661,
+                "content":"Contract governed according to Mauritania law and general principles of international commerce.--Art. 26.1",
+                "location":{
+                    "image":"231,60,270,32"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200916.js",
+                "id":200916
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":661,
+                "content":"Any legislative changes coming into force after the Effective Date and which diminish Kosmos' contractual rights will have no effect on the Contract without prior consent of the parties. This exemption will not apply where legislative changes relate to safety, environmental or employment law issues. --art. 26.3",
+                "location":{
+                    "image":"298,65,334,35"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200918.js",
+                "id":200918
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":662,
+                "content":"If the parties are unable to resolve a dispute amicably before an expert after 90 days, they may seek full and final resolution through arbitration at the ICC in Paris (France). The arbitration shall be held in English and French according to Mauritanian and international law. The arbitration will be heard by 3 arbitrators, each of whom cannot be nationals of the Parties' countries. The expenses of the arbitration will be shared equally between the parties but Kosmos is solely responsible for for expert fees accruing during the first Exploitation period.--Art. 28",
+                "location":{
+                    "image":"355,263,393,234"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200917.js",
+                "id":200917
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":666,
+                "content":"The contract is effective after the approval and publication of the decree in the Official Journal.--art. 30",
+                "location":{
+                    "image":"112,287,147,261"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200886.js",
+                "id":200886
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":666,
+                "content":"05/04/2012--Art. 30",
+                "location":{
+                    "image":"200,419,243,389"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200891.js",
+                "id":200891
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":666,
+                "content":"2012--Art. 30",
+                "location":{
+                    "image":"200,447,243,416"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012/annotations/200892.js",
+                "id":200892
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Kosmos Energy, Block C13 - Mauritania, 2012",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2012",
+            "Resource":"Hydrocarbons",
+            "Countries":"Mauritania"
+        },
+        "created_at":"Tue, 27 Jan 2015 16:33:24 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 24 Mar 2015 19:12:57 +0000",
+        "id":"1509890-kosmos-energy-block-c13-mauritania-2012",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1509890/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1509890/kosmos-energy-block-c13-mauritania-2012.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1509890/pages/kosmos-energy-block-c13-mauritania-2012-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1509890/pages/kosmos-energy-block-c13-mauritania-2012-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1509890/kosmos-energy-block-c13-mauritania-2012.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1509890/pages/kosmos-energy-block-c13-mauritania-2012-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1509890"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":1136,
+        "canonical_url":"http://www.documentcloud.org/documents/1509890-kosmos-energy-block-c13-mauritania-2012.html"
+    }
+}

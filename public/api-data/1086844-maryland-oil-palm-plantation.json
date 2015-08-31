@@ -1,0 +1,734 @@
+{
+    "document":{
+        "file_hash":"873b4e9fcc358b518152f8b83d17b78cf6a5afd9",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":1,
+                "content":"English\n",
+                "location":{
+                    "image":"35,620,77,569"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148961.js",
+                "id":148961
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":7,
+                "content":"Maryland Oil Palm Plantation Inc. (MOPP)--Preamble\n",
+                "location":{
+                    "image":"137,245,172,201"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148901.js",
+                "id":148901
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":7,
+                "content":"Liberia--Preamble\n",
+                "location":{
+                    "image":"139,194,174,149"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148900.js",
+                "id":148900
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":7,
+                "content":"Maryland Oil Palm Plantation Inc. ('MOPP')--Preamble\n",
+                "location":{
+                    "image":"141,295,177,252"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148905.js",
+                "id":148905
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":7,
+                "content":"3/3/2011--Preamble\n",
+                "location":{
+                    "image":"174,634,208,590"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148909.js",
+                "id":148909
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":7,
+                "content":"2011--Preamble\n",
+                "location":{
+                    "image":"179,186,215,133"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148910.js",
+                "id":148910
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), Etat//Signatories, State",
+                "page":7,
+                "content":"Minister of Agriculture, Chairman of the National Investment Commission, and Minister of Finance of Liberia--Preamble\n",
+                "location":{
+                    "image":"195,157,235,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148908.js",
+                "id":148908
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":7,
+                "content":"Minister of Agriculture, Chairman of the National Investment Commission, and Minister of Finance of Liberia\n",
+                "location":{
+                    "image":"197,101,229,57"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148907.js",
+                "id":148907
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), soci\u00e9t\u00e9 //Signatories, company",
+                "page":7,
+                "content":"Managing Director Alassane Doumbia--Preamble\n",
+                "location":{
+                    "image":"271,86,305,45"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148906.js",
+                "id":148906
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat//Type of document / right (Concession, Lease, Production Sharing contract, Service contract, etc.)",
+                "page":7,
+                "content":"Concession Agreement--Preamble\n",
+                "location":{
+                    "image":"69,274,103,233"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148902.js",
+                "id":148902
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) miniere(s) concern\u00e9es (type de mineral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":12,
+                "content":"Oil palm and oil palm related products--Definitions\n",
+                "location":{
+                    "image":"417,136,459,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148913.js",
+                "id":148913
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":15,
+                "content":"The term of the contract is 25 years from the date the contract comes into force, unless otherwise extended or terminated earlier in accordance with the contract.--Art. 3.1\n",
+                "location":{
+                    "image":"326,136,367,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148911.js",
+                "id":148911
+            },
+            {
+                "access":"public",
+                "title":"Conditions de renouvellement//Conditions for renewal ",
+                "page":15,
+                "content":"There is an automatic 10 year extension if MOPP fulfills its obligations with respect to the outgrowers' program. Parties may also agree to extend the contract on whatever terms and conditions they deem appropriate. Parties will discuss the possible extension of the contract no later than 5 years prior to the expiration of its initial 25 year term. Whether or not the parties agree on the extension of the contract, MOPP will at all times provide for adequate maintenance and care of non-moveable assets including the oil palms.--3.2(a), 3.2(b)\n",
+                "location":{
+                    "image":"414,131,445,90"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148912.js",
+                "id":148912
+            },
+            {
+                "access":"public",
+                "title":"Protection des lieux sacr\u00e9s, des sources et du milieu de vie//Protection of sacred locations, resources and environment",
+                "page":16,
+                "content":"If ancestral land, traditional reserves, or traditional sacred grounds are identified in the concession area, the Liberian government will use reasonable efforts to provide equivalent replacement land to MOPP instead. MOPP will implement a program to plant or replant oil palms in the concession area.--Arts. 4.1, 5.2, 9.9\n",
+                "location":{
+                    "image":"115,157,152,114"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148916.js",
+                "id":148916
+            },
+            {
+                "access":"public",
+                "title":"Superficie de la concession//Size of concession area",
+                "page":16,
+                "content":"8,800 hectares--Art. 4.1(b)\n",
+                "location":{
+                    "image":"509,199,544,158"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148914.js",
+                "id":148914
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9installation des habitants//Resettlement",
+                "page":17,
+                "content":"MOPP may request settlements to be relocated if it can demonstrate to the Liberian government that existing settlements would unreasonably impede MOPP's activities.  If the Liberian government agrees that resettlement is necessary, MOPP and the Liberian government will work together to accomplish such resettlement.  MOPP will bear the costs up to US$200 per hectare of land resettled, the Liberian government will pay any excess cost. MOPP may elect to pay in excess of US$200 per hectare of land resettled.  All resettlement payments made by MOPP in excess of US$200 per hectare must be approved by Ministry of Finance of Liberia. MOPP is entitled to credit against income and other taxes worth 50% of any resettlement costs of MOPP and 100% of any resettlement advances of MOPP, to be applied against taxes owed in the year the expenses are incurred, or in the following year if they cannot be fully applied in the current year. The Liberian government and MOPP will establish a resettlement committee for supervising the resettlement efforts.  Each party will choose 3 members. The chairperson of the committee will be a member chosen by the Liberian government.--Art. 4.3\n",
+                "location":{
+                    "image":"402,137,436,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148922.js",
+                "id":148922
+            },
+            {
+                "access":"public",
+                "title":"Financement d\u2019infrastructure//Financing of infrastructure",
+                "page":18,
+                "content":"MOPP has the right to construct and maintain infrastructure within the concession area at its own expense.--Art. 4.4(a)\n",
+                "location":{
+                    "image":"203,239,238,192"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148949.js",
+                "id":148949
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":18,
+                "content":"MOPP has the right to construct and maintain infrastructure within the concession area at its own expense, provided it obtains approval from the Liberian government for all communication and transportation infrastructure. The Liberian government approval will not be unreasonably withheld.  The same is true for the area outside of the concession area, except that all infrastructure will become public property upon completion (although MOPP will be able to use it free of charge).  MOPP has no obligation to maintain infrastructure outside of the concession area.  MOPP may deduct expenditure on infrastructure outside of the concession area when determining taxable income, as long as it: (i) submits a technical plan to Ministry of Public Works of Liberia and a cost and approvals plan to Ministry of Finance of Liberia; (ii) has its proposed construction or maintenance approved by the Ministry of Public Works of Liberia, such that they do not conflict with future ministry plans nor budgeting; and (iii) receives written approval from each relevant ministry of Liberia.--Art. 4.4(a)\n",
+                "location":{
+                    "image":"206,183,235,134"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148947.js",
+                "id":148947
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licenses, et permis)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":19,
+                "content":"MOPP has the right to use, but not to sell, water having no significant commercial mineral value other than as construction material, provided it does not interfere with third party or the Liberian government use, and does not deprive people or animals of a reasonable supply of water insofar as such water has previously been used in that way. MOPP's use of water may not result in environmental damage or create hazards to other persons. These activities will not be considered mining. MOPP may not dam any streams or use amounts of water that could significantly interfere with the activities of farmers or residents. --Art. 4.4(e), 4.4(g)\n",
+                "location":{
+                    "image":"218,181,253,134"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148952.js",
+                "id":148952
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":19,
+                "content":"All roads and trails within the concession area shall remain open to the public, subject to reasonable restrictions imposed by MOPP in the interest of protecting its security or activities. MOPP must notify the Liberian government of any restrictions prior to their imposition.--Art. 4.4(f)\n",
+                "location":{
+                    "image":"438,181,474,137"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148948.js",
+                "id":148948
+            },
+            {
+                "access":"public",
+                "title":"Droits d'acc\u00e8s / utilisation \u00e0 la zone de concession pour les parties non contractantes (y compris l'agriculture ind\u00e9pendante autoris\u00e9e dans la zone de concession)//Rights of access/use to concession area for non-contracting parties (including permitted independent farming in concession area)",
+                "page":20,
+                "content":"MOPP may permit independent farmers to farm within the concession area in those areas that are not suitable for production by MOPP. The terms and conditions of such farming will be agreed to by the independent farmers and MOPP.--Art. 4.7\n",
+                "location":{
+                    "image":"594,154,627,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148924.js",
+                "id":148924
+            },
+            {
+                "access":"public",
+                "title":"//Other - [Communication and Utilities]",
+                "page":24,
+                "content":"MOPP has right to generate and distribute electricity, water and other utilities in order to supply facilities within the concession area and the additional rented areas, or otherwise in conducting investor activities. MOPP will either provide free electricity to employees and dependents, or introduce a paid-for system (either charging only for usage in excess of reasonable allowances or charging entirely at cost with the rate based on total cost of production, and not the marginal cost of producing the amounts provided to employees and dependents). MOPP will consult with the Liberian government about such activities as much as reasonably appropriate. The Liberian government will not charge license fees or other taxes and duties unless such activity generates net income to MOPP (such income will be subject to taxes and duties in accordance with the laws of Liberia).  MOPP is not obliged to (though may choose to) provide excess water and electricity to the Liberian government at a market rate. Should MOPP decide to sell public utilities, the Liberian government will have first priority to purchase them at the lowest price that MOPP sells or at the generally applicable tariff rate charged by the Liberian government for public utilities. MOPP may use public utilities on the same terms and conditions as any other similarly situated persons in Liberia.--Arts. 7.1(a), (b), (c)\n",
+                "location":{
+                    "image":"500,196,535,151"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148953.js",
+                "id":148953
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":26,
+                "content":"MOPP will invest US$64,000,000,000. US$48,000,000,000  will be for the development of the concession area, and US$16,000,000,000 will be for the outgrower's program.  The investment for the concession area will be divided as follows: initial investment of US$15,000,000,000 during the first 5 years (which includes investments prior to date the contract comes into force), second investment of US$ 18,000,000,000 over a second 5 year term, and a final US$ 15,000,000,000 during the rest of the term of the contract.--Art. 9.3\n",
+                "location":{
+                    "image":"374,152,408,108"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148946.js",
+                "id":148946
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":27,
+                "content":"Any transaction between MOPP and its affiliates shall be on terms and conditions that would be fair and reasonable had the transaction taken place between unrelated parties dealing at arm's length. Any transaction involving the sale of crude palm oil or crude palm kernel oil by MOPP or its affiliates shall be on the basis of competitive international prices determined on the basis of the applicable reference price and shall be FOB Liberia. The reference price shall be the average of the daily closing prices quoted by the Malaysian palm oil board, converted to US dollars on the date such transaction takes place. If no price is quoted on that date, it shall be the daily closing prices quoted by the Bursa Malaysia Derivatives Borhador. --Art.9.5\n",
+                "location":{
+                    "image":"74,157,111,114"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148942.js",
+                "id":148942
+            },
+            {
+                "access":"public",
+                "title":"Incapacit\u00e9 \u00e0 d\u00e9velopper//Failure to develop",
+                "page":28,
+                "content":"If MOPP fails to develop the concession area according to the development plan, the Liberian government may send notice to MOPP of alleged default and its intention to reclaim any undeveloped portion of the concession area, offering MOPP fair opportunity to consult with the Liberian government to resolve the matter.  Within 6 months of receiving notice, MOPP must have provided a schedule of completion of such metrics, and evidenced to the reasonable satisfaction of the Liberian government that the matter will be resolved. If the Liberian government reasonably believes the matter cannot be resolved after 6 months, then the undeveloped land is forfeited to the Liberian government. If MOPP's failure to develop is due to encumbrances on the land, or any act, omission, or default of the Liberian government, or an event of force majeure, MOPP will not be held responsible to the extent attributable to any such matter. A forfeiture under this section shall not constitute an event of default, and the Liberian government's sole remedy shall be to repossess the undeveloped portion of the land.--Art. 9.7\n",
+                "location":{
+                    "image":"65,145,97,99"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148950.js",
+                "id":148950
+            },
+            {
+                "access":"public",
+                "title":"Obligations concernant les travailleurs ou les habitants dans ou pr\u00e8s des concessions en ce qui concerne la sant\u00e9 et la s\u00e9curit\u00e9 au travail, l'acc\u00e8s \u00e0 l'eau potable, le logement, les soins m\u00e9dicaux ou l'\u00e9ducation//Requirements regarding workers or farm/concession dwellers within concession areas or in nearby communities in respect of occupational health and safety, access to clean water, housing, medical care, or education",
+                "page":29,
+                "content":"MOPP must provide public health conditions in the developed area in accordance with generally accepted health and sanitation procedures and the laws of Liberia. MOPP will conduct its operations in accordance with applicable safety procedures and precautions required by the laws of Liberia and international standards (including safety training for employees). MOPP will notify the Liberian government within 7 days of any death or serious injury of any of the parties' employees that occurs within the concession area or in connection with MOPP's activities. MOPP will ensure that employee residential communities in the developed area are supplied with clean drinking water in accordance with the laws of Liberia. MOPP shall provide one unit per family of housing for its employees and their dependents living within the developed area, which shall comply with the minimum housing standards, have piped water and have a shower and toilet.  MOPP will provide a housing allowance for those living outside of the concession area. MOPP will provide employees and dependents with medical care in accordance with the laws of Liberia and according to other standards as may be agreed between the parties.  MOPP will ensure that the health facilities are constructed and operated during the term of the contract.  MOPP will ensure that there is a day care facility in each estate, one elementary school per 3 kilometer radius and one secondary school at the main location within the developed area within 3 years from the date the contract comes into force. Education will be free for dependents and MOPP will provide access to the surrounding communities as well at a reasonable cost, to the extent that the schools can accommodate additional students. --Art. 10.1, 10.2, 10.4, 10.5, 11.1, 11.3, 12.1\n",
+                "location":{
+                    "image":"350,139,380,93"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148925.js",
+                "id":148925
+            },
+            {
+                "access":"public",
+                "title":"La s\u00e9curit\u00e9 physique, la protection de la propri\u00e9t\u00e9, et / ou l'utilisation des gardes//Physical security, protection of property, and/or use of guards",
+                "page":29,
+                "content":"The Liberian government (through Ministry of Justice of Liberia) authorizes MOPP directly and under the contract with other persons of its choosing, to establish its own asset and employee security protection services in accordance with a written plan approved by the Minister of Justice in order to maintain law and security in areas where MOPP maintains property and assets (always being subject to the laws of Liberia, including those related to apprehension, detention, and human rights).  Parties also agree to adhere to the principles of the Voluntary Principles on Security and Human Rights, provided that the Liberian government has ratified them. Each member of Plant Protection Department will be vetted by Ministry of Justice for suitability and background prior to undergoing a training program that will be approved by the Ministry of Justice but conducted by MOPP.  Members of Plant Protection Department submitted by the Liberian government's Law Enforcement Authorities as certified as specially trained and qualified and attested by the Ministry of Justice as being qualified shall have enforcement powers within the Concession Area subject to Law.  Plant Protection Department shall have (i) the power of apprehension and detention in accordance with Law of any person to be immediately notified to the appropriate government authority and any detained person to be turned over to such authority as soon as practical and never later than 24 hours from time of detention, provided that upon request of the Law Enforcement Authorities any person arrested or detained by the Plant Protection Department shall be immediately turned over to the Law Enforcement Authorities before the expiration of the 24 hour period and also provided that no such detained person having been presented to the Law Enforcement Authorities need be released from detention except as required by law, and (ii) the power to search and exclude or evict unauthorized persons from the Concession Area, and from other restricted areas.  MOPP will coordinate the activities of the Plant Protection Department with the Liberian government's Law Enforcement Authorities and security authorities and periodically report to the Ministry of Justice on the activities of the Plant Protection Department. --Art. 10.3\n",
+                "location":{
+                    "image":"661,136,695,89"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148926.js",
+                "id":148926
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":32,
+                "content":"MOPP must hire Liberians for unskilled labor, and give preference to Liberians for skilled positions when available, with goal being that operations will be conducted primarily by Liberians as soon as practicable.  If possible, MOPP will cause Liberians to hold at least 50% of the ten most senior management positions within 5 years of the effective date, and at least 75% of such positions within 10 years. Appointment of a Liberian to one of these positions will not preclude subsequent appointment of a non-Liberian as long as the overall percentage of Liberian nationals employed in top positions is met. If MOPP is unable to meet Liberian employment targets, it must demonstrate upon request by the Liberian government that it used all reasonable efforts to meet the quota. -- Art. 13.1\n",
+                "location":{
+                    "image":"245,158,280,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148919.js",
+                "id":148919
+            },
+            {
+                "access":"public",
+                "title":"Les plans de gestion sociaux (y compris les droits humains), et la mode et fr\u00e9quence de suivi//Social/human rights management plans and monitoring requirements",
+                "page":32,
+                "content":"MOPP will provide vocational training and adult literacy programs to members of the surrounding communities. MOPP will consult with the Liberian government so that the Liberian government may establish additional plans and programs to make sure that production is carried out in a manner consistent with economic and social viability of communities that have formed, and may form, as a result of the activities of MOPP. MOPP and the Liberian government will cooperate in good faith to realize these plans and programs. MOPP will provide vocational training and adult literacy programs to members of the surrounding communities. --Art. 13.2, 16.1\n",
+                "location":{
+                    "image":"608,166,641,120"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148917.js",
+                "id":148917
+            },
+            {
+                "access":"public",
+                "title":"Formation des cadres locals//Management training requirement for nationals",
+                "page":32,
+                "content":"MOPP will provide training for Liberian nationals in order to qualify them for the skilled positions for MOPP's operations. MOPP will also provide on-the-job training, vocational training, and whatever other measures are necessary and reasonable to achieve this objective (including scholarships for qualified Liberian employees to pursue advanced studies abroad). MOPP will prepare and revise plans for its on-the-job training as part of its reporting requirements. MOPP will provide vocational training and adult literacy programs to all its employees and to members of the surrounding communities. MOPP will invest at least $ 20,000 in internal vocational training programs. MOPP will also provide annual scholarships or other educational support for Liberian nationals originating from certain parts of the concession area.  Specifically, MOPP will provide $ 40,000 per year as scholarships and financial support for students at WVS Tubman University or other similar institutions designated by the parties. MOPP agrees to a policy of technology transfer, which will include a transfer of operational and management techniques. MOPP will provide job training necessary for employees to undertake their work competently, with opportunities to learn new techniques that will allow for advancement. -- Art. 13.2\n",
+                "location":{
+                    "image":"615,127,655,73"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148918.js",
+                "id":148918
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":33,
+                "content":"MOPP will give preference to the maximum extent possible to purchasing Liberian goods and services (including entities incorporated or formed in Liberia where Liberians resident in Liberia are entitled to receive at least 60% of profits), provided that they are equal to or better than comparable goods and services obtainable elsewhere taking into account price, quality and other terms.  MOPP agrees to include in each contract or work order with a counterparty a provision requiring it to adhere to the requirements of local good/services preference and to require its sub-contractors to do the same, with respect to activities in Liberia and by persons on behalf of MOPP.  Subject to the above, MOPP may contract with any person.--Art. 14\n",
+                "location":{
+                    "image":"424,322,464,275"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148920.js",
+                "id":148920
+            },
+            {
+                "access":"public",
+                "title":"Activit\u00e9 de beneficiation/ valeur ajout\u00e9e//Value addition/downstream activities",
+                "page":34,
+                "content":"MOPP shall build an oil palm processing facility capable of processing at least 20 tons per hour by the ninth year after the date the contract enters into force. Such facility shall be upgraded to be capable of processing 40 tons per hour when commercial viability is assured by sufficient supply of raw materials from the concession area and the land used for the outgrower's program to support the operation of such facility. --Art. 15.2\n",
+                "location":{
+                    "image":"105,160,139,113"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148951.js",
+                "id":148951
+            },
+            {
+                "access":"public",
+                "title":"Ventes locales / usage domestique//Local sales requirements/domestic use",
+                "page":34,
+                "content":"If any manufacturing facility using oil palm products as a raw material is established in Liberia, MOPP (subject to prior commitments and upon request of the Liberian government) will sell such manufacturers: a maximum of 7.5 % of MOPP's estimated total production for the year (upon 120 days' prior notice) and up to an additional 7.5 % of MOPP's output produced in Liberia of each kind of oil palm products in a year (upon 6 months' prior notice).  These contracts will be made on an arm's length basis.  If demand for oil palm products increases within Liberia, MOPP will attempt to make additional supplies available. --Art. 15.3(a), 15.3(b), 15.3 (c), 15.3(d)\n",
+                "location":{
+                    "image":"277,192,312,148"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148921.js",
+                "id":148921
+            },
+            {
+                "access":"public",
+                "title":"Convention de d\u00e9veloppement local//Local development agreement",
+                "page":35,
+                "content":"MOPP will provide farm advisory support when possible to qualified Liberian farmers at cost (which will be added to any taxes and duties imposed on such support).  MOPP will work with Ministry of Agriculture of Liberia so that these services include farm management and the transfer of research institutions and centers in Liberia, and establishing or assisting in the development of additional palm oil research or training centers.--Art. 16.2\n",
+                "location":{
+                    "image":"106,145,142,101"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148915.js",
+                "id":148915
+            },
+            {
+                "access":"public",
+                "title":"Programme de Outgrowers (d\u00e9tails, des terres suppl\u00e9mentaires fournis, etc)//Outgrowers' Program (details, additional land provided, etc)",
+                "page":35,
+                "content":"Within 3 years of the handover of the first part of the outgrowers' area, MOPP will establish an outgrowers' program.  The details will be included in the outgrowers' development plan. MOPP will develop exclusive management of the land designated for the outgrowers' program on a cost recovery basis for the benefits of the outgrowers. MOPP will have the exclusive right to, and commits to, purchase produced harvest from the outgrowers' program during the term of the contract either directly or through a profit sharing plan approved by the Minister of Agriculture of Liberia. The Liberian government will provide 6,400 hectares of land contiguous to the concession area (when possible) for the outgrowers' program.  If the Liberian government cannot deliver all 6,400 hectares, this will not constitute a material breach of the contract by the Liberian government.  Parties will jointly select the outgrowers.  Parties will jointly establish procedures for managing and solving environmental and social issues that arise out of the outgrowers' program. MOPP will develop and manage the outgrowers' program's land. The $16,000,000,000 allotted for the outgrowers' program will be invested on a pro-rated basis according to the amount of land handed over as a part of the program's area and the percentage of 6,400 hectares that it represents. MOPP will identify suitable land for the program and work with the Liberian government to utilize it.  MOPP will purchase all of the fresh fruit bunches from the outgrowers provided that they meet quality standards considered to be reasonable within the palm oil industry worldwide. MOPP will help outgrowers purchase equipment and materials of the most scientifically advanced proven type used by MOPP. MOPP will (at its expense) provide outgrowers with high yield varieties of oil palm seedlings, technical assistance, and management skills. MOPP will ensure project timeliness in accordance with the outgrowers' development plan. The Liberian government will make sure that each outgrower agrees to the terms and conditions of the program, which may include the following: (i) contract to join a cooperative of farmers in the program, (ii) payment of reasonable management and crop fees to MOPP (to be agreed upon by the parties), (iii) contract to adhere to standards set by MOPP, (iv) contract to participate in MOPP's outgrowers' training program, (v) commitment to sell produced harvest from the program exclusively to MOPP.  MOPP may begin the outgrowers' program even before fully developing and planting the concession area.--Art. 16.3\n",
+                "location":{
+                    "image":"261,154,297,101"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148923.js",
+                "id":148923
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact environnemental//Environmental impact assessments ",
+                "page":37,
+                "content":"MOPP will deliver to the Liberian government for approval by the Environmental Protection Agency of Liberia an environmental impact assessment study report.  This will be prepared by a qualified independent environmental consultant.  It must be approved prior to any clearing, construction, or any other disturbance of the environment.  MOPP will from time to time and at request of the Environmental Protection Agency of Liberia deliver additional assessments.--Art. 17\n",
+                "location":{
+                    "image":"274,331,315,284"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148943.js",
+                "id":148943
+            },
+            {
+                "access":"public",
+                "title":"Les plans de gestion environnementaux //Environmental management plans",
+                "page":37,
+                "content":"MOPP will deliver to the Liberian government for approval by the Environmental Protection Agency of Liberia an environmental management plan. This will be prepared by a qualified independent environmental consultant. It must be approved prior to any clearing, construction, or other disturbance of the environment.  MOPP will from time to time or at the request of the Environmental Protection Agency of Liberia deliver updated/amended environmental management plans.--Art. 17\n",
+                "location":{
+                    "image":"289,395,326,339"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148944.js",
+                "id":148944
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":38,
+                "content":"MOPP will be taxed on net taxable income according to the tax laws of Liberia, provided that in the first 15 years after the date MOPP makes its first shipment of oil palm products the applicable tax rate does not exceed 25 %. If the rate under Liberian law is less than 25% during the term of the contract, MOPP will be entitled to that lower rate.--Art. 19.2, 19.3\n",
+                "location":{
+                    "image":"697,160,729,119"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148927.js",
+                "id":148927
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licenses, et permis)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":38,
+                "content":"MOPP has the right to use, free of charge, but not to sell or otherwise distribute to any person without prior government approval (not to be unreasonably withheld), any water from within the concession area. Such a right is subject to the condition that such water use does not interfere with the rights of third parties or the government and does not deprive lands, tribes, villages, towns, houses or watering places for animals with a reasonable supply of water insofar as such water has, through custom, been used for such purposes. MOPP shall ensure that its water use in no way results in environmental damage or creates other hazards. Except for utilities payments, MOPP will be exempt from any future water use levies.--Art. 4.4(e) and 19.2\n",
+                "location":{
+                    "image":"712,125,753,83"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148945.js",
+                "id":148945
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des nationaux//Witholding tax on national salaries",
+                "page":39,
+                "content":"MOPP shall withhold from payments to any person for the items set out in Section 905(e) of the 2000 Revenue code of Liberia, which includes payment of salaries, provided that the rate does not exceed 6% of such payments during the first 15 years of the term of the contract.--Art. 19.7\n",
+                "location":{
+                    "image":"471,140,502,96"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148929.js",
+                "id":148929
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les prestations de service par des entreprises non r\u00e9sidentes//Witholding tax on services of non-resident companies",
+                "page":39,
+                "content":"MOPP shall withhold from payments to any person for the items set out in Section 905(e) of the 2000 Revenue code of Liberia, which includes payment of salaries, provided that the rate does not exceed 6% of such payments during the first 15 years of the term of the contract.--Art. 19.7\n",
+                "location":{
+                    "image":"498,170,541,120"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148931.js",
+                "id":148931
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des expatri\u00e9s//Witholding tax on expatriate salaries",
+                "page":39,
+                "content":"MOPP shall withhold from payments to any person for the items set out in Sections 806(d) and 905(e) of the tax law of Liberia, provided that the rate does not exceed 6% of such payments during the first 15 years of the term of the contract.--Art. 19.7\n",
+                "location":{
+                    "image":"503,110,536,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148930.js",
+                "id":148930
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les loyers des immeubles//Witholding tax on rent",
+                "page":39,
+                "content":"10%--Art. 19.7\n",
+                "location":{
+                    "image":"535,337,570,296"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148932.js",
+                "id":148932
+            },
+            {
+                "access":"public",
+                "title":"//Other - Goods Tax",
+                "page":39,
+                "content":"MOPP is subject to the goods tax as required by the tax laws of Liberia provided that during the first 15 years of the term of the contract, capital equipment and raw materials for use directly in agriculture will be treated as exempt supplies, and that during the term of the contract all medical and educational equipment purchased for use in connection with the activities covered by the relevant provisions of the tax laws of Liberia are those intended to be placed in service within 1 year of purchase and will also be exempt supplies.--Art. 19.8\n",
+                "location":{
+                    "image":"576,148,609,99"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148940.js",
+                "id":148940
+            },
+            {
+                "access":"public",
+                "title":"//Other - Real Property Tax",
+                "page":39,
+                "content":"MOPP will pay real property tax in accordance with the tax laws of Liberia, provided that for the first 15 years of the term of the contract, MOPP will be exempt from paying real property taxes on property within the concession area that is being used for agricultural purposes during that calendar year, provided that areas including residential buildings or other improvements are not subject to this exemption, except those related to MOPP's social obligations (including schools, hospitals, and employee housing).  MOPP will pay by January 15th of each year all other real property taxes required by the tax laws of Liberia.--Art. 19.9\n",
+                "location":{
+                    "image":"686,143,720,96"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148941.js",
+                "id":148941
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'impot sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloissonement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":39,
+                "content":"For the purposes of determining MOPP's taxable income, the period for carryforward of any net operating loss incurred prior to the date MOPP makes its first shipment of oil palm products will be the tax period during which such first date of shipment occurs and will be a period of 10 years. Thereafter, any net operating losses incurred will be carried forward for 7 years in accordance with the tax laws of Liberia. Any net operating losses incurred prior to the  date MOPP makes its first shipment of oil palm products will be deemed to have occurred on such first date of shipment. For losses related to the capital equipment and inputs that are to be used solely for the construction of oil palm processing facilities, parties will agree 6 months after the commissioning of the plant on the period for which the losses will be carried forward. Losses from the 6th year and before the commissioning occurs will not be cumulated but will be carried forward for 7 years in accordance with the laws of Liberia.  Where no agreement is reached, the losses will continue to be carried forward for 7 years in accordance with the laws of Liberia. MOPP shall be entitled to the maximum capital allowances and incentives for which it is eligible under the tax law of Liberia. Management fees incurred by MOPP are only deductible from taxable income to the extent permitted under applicable law (management fees means amounts paid or incurred to an affiliate for the provision of corporate management services, including allocations of executive time). --Art. 9.4, Art. 19.4, 19.10\n",
+                "location":{
+                    "image":"86,142,124,93"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148928.js",
+                "id":148928
+            },
+            {
+                "access":"public",
+                "title":"Redevances superficiaires//Surface fees",
+                "page":40,
+                "content":"MOPP will pay the Liberian government a surface rental fee each year in accordance with the laws of Liberia at a rate of US$2 per acre within the developed area and US$1 per acre of undeveloped land within the concession area, provided that this will be subject to inflationary adjustments in accordance with provisions of applicable law and that surface rental fees will not be applicable to the additional areas leased to MOPP for production. All surface rental fees are payable annually in advance, on or before January 15th of the year for which the payment is made, to the Ministry of Finance of Liberia.--Art. 19.11, 19.12\n",
+                "location":{
+                    "image":"162,161,195,113"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148936.js",
+                "id":148936
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane pour le mat\u00e9riel de traitement//Custom duties on processing equipment",
+                "page":40,
+                "content":"MOPP shall be exempt from import duties on capital equipment and capital goods specified in Appendix III of the contract. --Art. 19.13(b) \n",
+                "location":{
+                    "image":"439,193,477,151"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148935.js",
+                "id":148935
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de construction//Custom duties during construction phase",
+                "page":40,
+                "content":"MOPP shall be exempt for a period of nine years from the entry into force of the contract from import duties on capital equipment and capital inputs that are used for the construction of the oil palm facility. --19.13(c), Appendix III\n",
+                "location":{
+                    "image":"521,199,555,157"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148933.js",
+                "id":148933
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase d'exploitation//Custom duties during  operation phase",
+                "page":40,
+                "content":"MOPP shall pay taxes and duties on the import of fuel and other goods at the rates established by the law of Liberia. --Art. 19.13(d)\n",
+                "location":{
+                    "image":"650,192,680,151"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148934.js",
+                "id":148934
+            },
+            {
+                "access":"public",
+                "title":"Credits de carbone//Carbon credits",
+                "page":41,
+                "content":"To the extent MOPP or its affiliates realize certified emission reduction credits or other carbon or carbon-equivalent emission reduction credits, or any corresponding monetary value or cost savings that result from greenhouse gas emission reductions whether created by MOPP or a third party acting under MOPP's direction, associated with MOPP's activities, MOPP will pay a royalty to the Liberian government in accordance with the laws of Liberia, provided that for the first 15 years of the term of the contract, the rate is no more than 10 % of the equivalent monetary value of the emission reduction credits or corresponding cost savings. The emission reduction credits will be included in MOPP's gross income for purposes of determining its taxable income under the laws of Liberia.--Art. 19.19\n",
+                "location":{
+                    "image":"544,133,579,89"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148938.js",
+                "id":148938
+            },
+            {
+                "access":"public",
+                "title":"Obligations communautaires ou sous-nationales//Community and regional obligations",
+                "page":41,
+                "content":"MOPP will pay $5 per hectare of the developed area to the community development fund. The payments will be tax deductible and they may be carried forward indefinitely during the term of the contract. The community development fund will be administered by a committee consisting of at most 10 members selected by the surrounding community, the Liberian government, and MOPP (half chosen by MOPP). The community development fund will be placed in an interest bearing depository account acceptable to the Liberian government. The committee will develop an annual budget in consultation with parties or otherwise as required by the laws of Liberia. The budget and actual disbursements will be public and subject to the same audit procedures provided for expenditures by the Liberian government and any additional ones provided by the laws of Liberia. The community development fund will be subject to audit by an internationally recognized auditing firm, or by a Liberian firm of professionals if they are qualified. Information regarding the community development fund's advances, receipts and expenditures will be publically available. MOPP will maintain a website that posts the members of the committee, audit reports, and a description of each program funded and the amount of funding provided. Expenses incurred by MOPP to fulfill its obligations under this contract, including those related to housing, education, medical care and other social services, will not be deducted from the community development fund or reduce MOPP's obligations to contribute to it.--Art. 19.21\n",
+                "location":{
+                    "image":"752,130,786,84"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148937.js",
+                "id":148937
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit//Audit mechanisms",
+                "page":43,
+                "content":"MOPP will have its books audited within 3 months, or such longer period as the Minister of Finance of Liberia may approve, after the end of each fiscal year by an independent auditor (which will be an international accounting firm of repute or an internationally affiliated Liberian auditing firm with written approval by the Ministry of Finance of Liberia) selected by MOPP, and a copy of the annual financial statement certified by the auditor and any management letters or similar communications will be furnished to the Liberian government within such period as provided by the laws of Liberia after its receipt by MOPP. The Liberian government will have the right to discuss with the auditor the results of the audit and certification. MOPP will make the auditors available at its expense to the Liberian government and will take reasonable measures to ensure that the auditor cooperates fully in such discussions. Notwithstanding the foregoing, the Liberian government has the right to audit MOPP's books as provided under law so long as it provides MOPP with a copy of any such audit within 45 days of receipt. MOPP will keep copies of its books and records in Liberia at all times. If a review of MOPP's records outside of Liberia is required in connection with a dispute regarding the price charged for the sale of goods or services or the costs incurred in connection with the purchase of goods or services, in each case to or from affiliates, MOPP will cooperate with the Liberian government to provide the records needed to complete the audit.  If the Liberian government nonetheless deems it necessary for any part of the audit to be performed outside of Liberia, the Liberian government will pay for associated costs, except to the extent that MOPP is unable to provide such records needed to complete the audit in Liberia, in which case MOPP will bear both the reasonable travel cost of a reasonable number of auditors selected by the Liberian government, and their accommodation costs for a reasonable amount of time. MOPP will maintain at its principal office in Liberia, or upon prior notice to the Liberian government at any other office in Liberia an original of all material scientific, agricultural, operational, technical, industrial and commercial records, studies and reports connected with MOPP's operations under this contract.  It will also maintain complete financial records of all transactions relating to its operations under this contract, including sales of agricultural products to MOPP customers or purchases from or sales by affiliates where such purchases and sales are used to compute any item of income deduction or other amount affecting the liability of MOPP and of such financial records of operations as may be required by the laws of Liberia.--Art, 20.6(a), 20.6(b), 20.6 (c), 21.1(b)\n",
+                "location":{
+                    "image":"494,164,533,113"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148939.js",
+                "id":148939
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":45,
+                "content":"Confidential information exchanged between the parties under the contract will only be used by the parties and their representatives, for the purpose for which it was maintained, except as may otherwise be required by the laws of Liberia, the terms of the contract, or a court order not subject to appeal.  Subject to exceptions, all information not normally available to the public but disclosed to the other party is considered 'confidential information', including written information so designated, oral information so designated at the time of disclosure, and proprietary, non-public records, studies, and reports furnished by MOPP. For purposes of the contract, information exchanged between parties will not be considered confidential if it is already (or subsequently becomes) in the public domain as long as this is not due to a party violating a confidentiality contract, if the disclosing party or its representatives have provided the information to others not entitled to legal privilege with respect to the information, if it is known by the receiving party without any obligation to keep such information confidential when it receives the information as evidenced by its contemporaneous written records, if it is given to a party by a third party without any restriction on disclosure, if it is the subject of a prior written permission to disclose provided by the disclosing party, or if it is necessary to establish or enforce rights or obligations under the contract. Neither this contract nor payments made pursuant to it will be made confidential. Should anyone demand that the receiving party, in the course of litigation in Liberia, produce confidential information, the receiving party will provide notice to the disclosing party prior to revealing the information so that the disclosing party may intervene. MOPP will have the right to disclose to any person details of its activities in Liberia, including the amount of taxes and duties it pays.--Art. 21.5(a), 21.5(b), 21.5(c)\n",
+                "location":{
+                    "image":"438,167,468,120"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148960.js",
+                "id":148960
+            },
+            {
+                "access":"public",
+                "title":"Cession / transfert//Assignment / transfer",
+                "page":46,
+                "content":"MOPP will not assign its obligations or rights, or otherwise encumber its rights under this contract to any other person without the prior written consent of the Liberian government, which shall not be unreasonably withheld.  Any change of control of MOPP such that it is no longer an affiliate of SIFCA or any other entity which controls SIFCA will require written consent of the Liberian government, which will not be unreasonably withheld.    This contract may not be assigned/transferred to any prohibited person, or any person owned or controlled by a prohibited person.--Art. 22.1, 22.2\n",
+                "location":{
+                    "image":"450,158,485,108"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148957.js",
+                "id":148957
+            },
+            {
+                "access":"public",
+                "title":"//Force majeure",
+                "page":47,
+                "content":"If either party is unable by force majeure to carry out any obligation under the contract (other than payments of money), the party will give notice of the force majeure in writing to the other party as soon as practicable, whereupon the obligation of the party giving notice will be suspended during the continuance of the inability. Such inability will be remedied as soon as possible. All time periods specified in the contract for the performance of obligations or the enjoyment of rights that are affected by force majeure, except in connection with payments of money, including the term of the contract, will be extended by the period of time such force majeure adversely affected the ability to perform/enjoy such obligations/rights. If an event of force majeure existed continuously for 1 year or more in respect to MOPP's right to terminate, or 4 years in respect to the Liberian government's right to terminate, and which in each case prevents production or other activities of MOPP, the party shall have the right to terminate the contract without further obligations or cost (aside from those accrued prior to the force majeure) by notice not less than 60 days prior to termination. Force majeure will mean: (i) wars or other public hostilities (also including terrorist acts, serious threats against any MOPP employee, asset, or infrastructure, (ii) trade or commercial or other restrictions imposed by any sovereign or other outside force (eg. revolutions, riots, blockades) that are continuous for 120 days or more, or other industrial, labor or employee-employer disputes that are continuous for 120 days or more, (iii) acts of God, or other destructive accidents (fires, explosions, etc.) or natural disasters, provided any such cause was not within the reasonable control of the party invoking its rights under this section and could not have been avoided or overcome by such party through the exercise of reasonable investigation or care.--Art. 23.1, 23.2, 23.3\n",
+                "location":{
+                    "image":"264,142,297,93"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148962.js",
+                "id":148962
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9siliation / termination//Cancellation / termination",
+                "page":48,
+                "content":"The contract will terminate at the end of its term or terminate earlier by the mutual agreement of the parties. MOPP has the right to terminate the contract without cause one year after giving notice to the Liberian government, or if the Liberian government fails to comply with any material obligations under the contract. Any such termination shall be subject to MOPP's obligations under this contract that accrued prior to the date of termination. In case of a proposed termination based on a failure by the Liberian government to comply with any material obligation, MOPP shall provide notice to the Liberian government of its intention to terminate and if the failure is not cured within 60 days after such notice, or any longer period specified in the notice by MOPP in its reasonable discretion, then this contract will be terminated. Subject to MOPP's right to cure and the provisions of the contract, the Liberian government has the right to terminate the contract if one of the following 'events of default' occurs: (a) MOPP fails to comply with any material obligation under the contract, including constructing an oil palm processing mill by the ninth year after the date the contract comes into force; (b) MOPP voluntarily makes an assignment of most or all of its assets for the benefit of creditors, files an application to any tribunal for the appointment of a trustee or receiver for most or all of its assets, begins any bankruptcy, reorganization, arrangement or insolvency proceedings in any jurisdiction, or any proceedings are begun against MOPP that are not dismissed within 90 days, or if any order is entered appointing any trustee or receiver or adjudicating MOPP bankrupt or insolvent, or approving the petition in any such proceeding to permit such order to remain in effect for more than 90 days; (c) MOPP ceases minimum production for more than 1 year, unless the Liberian government consents to such cessation, or it results from force majeure, or it results from any act of prevention or material breach by the Liberian government of its obligations, (d) a condition of force majeure exists for more than 4 years. MOPP's failure to develop the concession area according to the development plan will not constitute an event of default, and the Liberian government's sole remedy will be to repossess the undeveloped land.  In the case of an event of default, the Liberian government will provide notice to MOPP of the alleged occurrence of the event and will offer MOPP a fair opportunity to consult with the Liberian government to resolve the matter. If, after a reasonable period of consultation, the Liberian government is of the opinion that the matter cannot be resolved, it may send a notice of intent to terminate the contract. If the event of default is not cured within 60 days after said notice of intent to terminate is sent (or some longer period at the Liberian government's discretion), then the contract is terminated. If the event of default is a delay in the implementation of the oil palm processing mill, the period to cure will be extended an additional 120 days provided that such a delay was not in the reasonable control of MOPP. If MOPP disputes whether or not there has been an event of default, and if MOPP refers the dispute to arbitration within 90 days of receiving the notice to terminate, then the termination will not take effect until the finality of an arbitration award upholding the Liberian government's right to terminate. Upon termination, parties will set up a winding-up commission that will consist of the Liberian Minister of Agriculture of Liberia as chairperson and 2 additional members, one appointed by each party. The chairman will issue a notice and agenda for the first meeting of the commission, which will be no later than 3 weeks after its establishment.  Thereafter, the commission will meet at least once/month.  MOPP will present to the commission a report on the status of its operations under the contract so that the commission can recommend to the Liberian government steps it might take to preserve the viability of the enterprise, employment in the area and centers of population.  At request of the Liberian government, the commission will establish plans for the cessation of operations including the disposition of assets and their demolition and/or removal.  At the request of either party, any meeting of the commission shall be held outside Liberia, and the requesting party will be responsible for travel costs.  MOPP may elect not to participate in the commission, in which event its obligations will be limited to providing the information required.  The termination rights are in addition to, not in derogation of, any remedial rights to damages either party may have.   --Art. 24.1, 24.2, 24.3, 24.4, 24.5, 24.6\n",
+                "location":{
+                    "image":"241,155,277,110"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148958.js",
+                "id":148958
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":51,
+                "content":"Any dispute or claim arising under or relating to this contract will be settled by binding arbitration under the then-prevailing UNCITRAL Rules.  Arbitration will be administered by the London Court of International Arbitration ('LCIA'). Arbitration will be the parties' exclusive remedy for any breach of or dispute arising under the contract. Either party may institute arbitration proceedings by giving notice to the other party and to the LCIA registrar, including a statement of the issues in dispute. Parties will not initiate arbitration unless it has (a) issued a letter to the other party noting that it is considering taking a dispute to arbitration, and (b) the parties are unable to resolve the dispute within 120 days after the date of such letter. There will be 3 arbitrators. The seat of arbitration will be London, and proceedings will be conducted in English. MOPP will be considered a foreign investor and an Ivoirian national for the purposes of any court proceedings or arbitration. Parties agree to submit irrevocably to the jurisdiction of the English courts for the purpose of enforcing this contract to arbitrate. Each party is to appoint 1 arbitrator and the 2 arbitrators so appointed are then to appointed a third within 20 business days after the appointment of the second, then either party may apply to LCIA to appoint the remaining arbitrator. Decisions of arbitrators will be made public. Monetary awards will be in US Dollars. Arbitrators may not award specific performance against the Liberian government. Neither party will have liability for consequential damages (except for loss of profits from operation of the concession area or for the purposes of set-off) or exemplary or punitive damages unless provided for herein. Costs and fees incurred or imposed by LCIA will be assessed between the parties as decided by the tribunal. The Liberian government waives sovereign immunity in relation to any dispute related to the contract. The right to refer a claim to arbitration will not be affected by the fact that a party has received partial compensation from another for a loss that is the object of the claim, and such other person may participate in such proceedings by right of subrogation. Consent to arbitration before the LCIA will bind any successors-in-interest or successors to each party of the contract. Should LCIA be replaced by another similar international body, the parties will have the right to submit disputes to that party. Should the LCIA cease to exist without replacement, either party may submit disputes arising out of the contract to such other international center for arbitration as the parties agree upon.  MOPP may continue its operations during the pendency of any decision of a referee or arbitral tribunal under this section. A shareholder of MOPP (the single person which has direct control of MOPP) is entitled to be a party and to make claims in its own name in any arbitration under this contract. Any award to such shareholder will be limited by the amount that MOPP could claim for breach of the contract.  MOPP appoints such shareholder to act on its behalf with respect to all matters pursuant to the resolution of the dispute. The shareholder may transfer control of MOPP, in which case the new shareholder will enter into a deed of adherence to this contract, and MOPP and the Liberian government acknowledge that the new shareholder's entry into such deed will constitute a written arbitration contract between the new shareholder, MOPP and the Liberian government.--Art. 26\n",
+                "location":{
+                    "image":"303,323,338,283"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148955.js",
+                "id":148955
+            },
+            {
+                "access":"public",
+                "title":"Indemnisation//Indemnification",
+                "page":53,
+                "content":"The Liberian government agrees to indemnify MOPP for any economic or other losses due to the Liberian government's (or third party working with the Liberian government's permission) exploration or mining activities within the concession area. MOPP will indemnify the Liberian government for all claims to third parties and all losses suffered by the Liberian government as a result of MOPP's contractual breaches. MOPP will also indemnify the Liberian government from claims for death or injury to any person or damage to property in Liberia as a result of the willful misconduct or gross negligence of MOPP. The Liberian government will indemnify MOPP from all claims to third parties and all damages and losses suffered by MOPP as a result of contractual breaches by the Liberian government.  the Liberian government will also indemnify MOPP from claims for death or injury to any person or damage to MOPP's property in Liberia as a result of the Liberian government's willful misconduct or gross negligence. For the purposes of this section, 'willful misconduct or gross negligence' means willful or reckless misconduct in connection with this contract as constitutes a complete disregard for harmful, foreseeable, and avoidable consequences, but will not include any simple negligence or mistake or any error of judgment made by either party in the good faith exercise of any authority conferred by this contract or otherwise.--Art. 4.5(b), 27.1, 27.2, 27.3\n",
+                "location":{
+                    "image":"694,128,729,83"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148959.js",
+                "id":148959
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":56,
+                "content":"In case of a dispute among the parties the governing law will be the laws of Liberia, including any labor, environmental, health, safety, customs and tax statutes and any international treaties to which Liberia is a party. When resolving a dispute the arbitral tribunal will construe and interpret the rights and obligations of the parties under the contract in accordance with the laws of Liberia. --Art. 29\n",
+                "location":{
+                    "image":"88,333,126,286"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148954.js",
+                "id":148954
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":56,
+                "content":"In case of a conflict between the provisions of the contract and any provisions of the laws of Liberia enacted after the contract came into force, the provisions of the contract will prevail. The Constitution of Liberia will always prevail. MOPP is subject to any amendments made to the laws of Liberia after the date the contract comes into force that have the effect of modifying the obligations of MOPP under the contract only if such amendments are consistent with the provisions of the contract. --Art. 29\n",
+                "location":{
+                    "image":"92,402,130,354"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148956.js",
+                "id":148956
+            },
+            {
+                "access":"public",
+                "title":"Expropriation//Expropriation / nationalization",
+                "page":57,
+                "content":"Except as provided by the Constitution of Liberia, the Liberian government affirms that it will not nationalize or expropriate (or take any measure tantamount to nationalization or expropriation with respect to): (1) movable or immovable infrastructure or property of MOPP, its associates or affiliates connected with its activities, (2) agricultural products resulting from MOPP's Activities, (3) any equity, shares or ownership interests of whatever nature held in or owned or issued by MOPP, (4) any structure or entity put in place by MOPP in connection with production or its other activities, or (5) any capital invested by MOPP or its affiliates or associates in Liberia in connection with production or its other activities.  Nothing in this section will prevent the Liberian government from taking title to non-movable tangible assets of MOPP upon termination of this contract.  Any nationalization or expropriation shall entitle MOPP, in addition to any other remedy provided by law, international law or otherwise by this contract, to prompt payment equivalent to the fair market value of the investment, asset or property nationalized or expropriated immediately before the nationalization or expropriation took place.  --Art. 31.5\n",
+                "location":{
+                    "image":"400,143,432,90"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148963.js",
+                "id":148963
+            },
+            {
+                "access":"public",
+                "title":"Date de ratification//Date of ratification",
+                "page":92,
+                "content":"30/6/2011--Ratification document\n",
+                "location":{
+                    "image":"436,464,468,410"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation/annotations/148904.js",
+                "id":148904
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Maryland Oil Palm Plantation - Liberia, 2011",
+        "data":{
+            "Resource":"Palm Oil",
+            "Countries":"Liberia",
+            "Signature Date":"03/03/2011",
+            "Contract Term (duration) in Years":"25",
+            "Title Type":"Concession",
+            "Signature Year":"2011"
+        },
+        "created_at":"Fri, 14 Mar 2014 15:57:43 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 17 Mar 2015 15:09:09 +0000",
+        "id":"1086844-maryland-oil-palm-plantation",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1086844/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086844/maryland-oil-palm-plantation.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1086844/pages/maryland-oil-palm-plantation-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086844/pages/maryland-oil-palm-plantation-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086844/maryland-oil-palm-plantation.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086844/pages/maryland-oil-palm-plantation-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1086844"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":96,
+        "canonical_url":"http://www.documentcloud.org/documents/1086844-maryland-oil-palm-plantation.html"
+    }
+}

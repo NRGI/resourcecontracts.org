@@ -1,0 +1,403 @@
+{
+    "document":{
+        "file_hash":null,
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom du projet//Project title",
+                "page":1,
+                "content":"Offshore Cape Three Points Basin--Preamble\n",
+                "location":{
+                    "image":"911,170,947,132"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136869.js",
+                "id":136869
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de petrole/ gas//Name and/or number of field, block or deposit",
+                "page":1,
+                "content":"Offshore Cape Three Points Basin--Preamble\n",
+                "location":{
+                    "image":"914,218,952,181"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136871.js",
+                "id":136871
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":7,
+                "content":"Government of the Republic of Ghana, represented by the Minister for Energy, and GNPC - Ghana National Petroleum Corporation--Preamble and Signatures page\n",
+                "location":{
+                    "image":"121,135,151,97"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136876.js",
+                "id":136876
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":7,
+                "content":"Ghana--Preamble\n",
+                "location":{
+                    "image":"121,90,147,57"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136866.js",
+                "id":136866
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":7,
+                "content":"Heliconia Energy Ghana Limited --Preamble\n",
+                "location":{
+                    "image":"173,368,203,332"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136867.js",
+                "id":136867
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":7,
+                "content":"Heliconia Energy Ghana Limited, a wholly owned subsidiary of Atlantic Energy Bermuda Ltd., with registered address at No. 5, 2nd West Street, West Airport Residential Area, Accra, Ghana--Preamble and Signatures page\n",
+                "location":{
+                    "image":"210,87,240,53"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136874.js",
+                "id":136874
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":7,
+                "content":"Crude oil  and natural gas--Preamble, Arts. 1.19 and 1.45\n",
+                "location":{
+                    "image":"373,80,405,44"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136917.js",
+                "id":136917
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":7,
+                "content":"Concession (Petroleum Agreement)--Preamble\n",
+                "location":{
+                    "image":"536,79,565,47"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136868.js",
+                "id":136868
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":7,
+                "content":"Ghanaian nationals will be engaged, as soon as reasonably possible, in employment at all levels in the petroleum industry, including technical, administrative and managerial positions. Where qualified nationals are available, Contractor will provide them with employment positions as far as is reasonably possible. Contractor will submit to GNPC an employment plan setting out what kind of professionals it needs to hire. GNPC will provide the qualified personnel according to such plan. If requested by GNPC, Contractor will provide opportunities for a mutually agreed number of GNPC personnel for secondment to on the job training. Contractor also will set up a training program to be conducted by GNPC in accordance with the terms of the agreement. For the implementation and maintenance of such programs, Contractor shall pay to GNPC the amount of US$200,000 per year. Contractor will also pay a single further sum of US$200,000 in respect of technical support to GNPC.--Preamble and Art. 21\n",
+                "location":{
+                    "image":"662,65,696,29"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136883.js",
+                "id":136883
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":7,
+                "content":"2005--Preamble\n",
+                "location":{
+                    "image":"97,277,127,239"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136878.js",
+                "id":136878
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":14,
+                "content":"GNPC has a 10% participating interest in all petroleum operations, which will be carried with respect to exploration and development expenses and a paid interest with respect to production. GNPC has an option to acquire a 5% additional interest participation in any new development and production area within the contract area. In such case, GNPC will bear 5% of the costs incurred with development and production of petroleum in that particular area. --Arts. 2.4 - 2.5\n",
+                "location":{
+                    "image":"580,90,611,57"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136894.js",
+                "id":136894
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":20,
+                "content":"Exploration operations will start no later than 60 days after the date the agreement is considered to be in force and effect. During the first 36 months, Contractor will acquire, process and interpret at least 800 sq. km. of 3-D seismic data, and drill one exploration well. The minimum investment to be made by Contractor during such phase will be of US$17 million. During the first extension period (24 months following the end of the initial exploration period), Contractor will drill one exploration well, and make a minimum investment of US$10 million. During the second extension period (24 months following the end of the first extension period), Contractor will drill one exploration well, and make a minimum investment of US$10 million. --Sections 4.1, 4.3\n",
+                "location":{
+                    "image":"175,85,201,44"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136910.js",
+                "id":136910
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":29,
+                "content":"Contractor will have the right to use public lands for installation of shore bases, harbours, terminals and related facilities, among others. Contractor  will also be entitled to obtain licenses to install and operate communications and transportation facilities, as needed for its operations--Art. 7.2(b) - (c) \n",
+                "location":{
+                    "image":"808,127,839,95"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136912.js",
+                "id":136912
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":34,
+                "content":"Once a field with commercialy relevant resources is discovered and identified, Contractor will submit to the Ministry of Energy a development plan for that field which will also contain details on the measures that will be taken for protection of the environment.--Art. 8.11(h)\n",
+                "location":{
+                    "image":"598,123,622,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136908.js",
+                "id":136908
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":40,
+                "content":"10% of the gross production of crude oil will be delivered to the State as royalty at water depths up to 400 meters. Beyond 400 meters,  the royalty due for crude oil is 7.5%. For natural gas, the royalty rate will be 5% or gross production. Payments will be made in cash or in-kind, as chosen by the State. --Arts. 10.1(a), 14.17(a)\n",
+                "location":{
+                    "image":"255,137,279,100"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136891.js",
+                "id":136891
+            },
+            {
+                "access":"public",
+                "title":"//Other - additional oil entitlement",
+                "page":41,
+                "content":"Contractor is to pay to the State an additional oil entitlement (AOE) in accordance with the Petroleum Law and the Petroleum Income Tax Law 1987 out of its share of petroleum. State may elect to take the AOE in cash or in oil. If the AOE is taken in cash, the cash payment is based on a weighted average market price. The AOE is a multi-tier, rate-of-return-based mechanism, which captures a share of net cash flows that exceed stipulated thresholds. Net cash flow for the AOE for any month is calculated as total revenues received after payment of royalties (the contractor\u2019s cost oil plus share of profit oil), less income taxes and allowable costs (excluding interest payments), and subtracting cumulative negative net cash flows in the preceding month (which are adjusted based on a stipulated real rate of return). \n\nFor each tier of the AOE formula, the state collects a share of the cumulative positive net cash flow, with any resulting payments then subtracted for purposes of the net cash flow calculation in the next tier of the AOE. This share is collected only once the threshold Rate of Return (RoR) of each tier is reached.\n\nThe tiers start at a threshold of a real RoR of 12.5% and from one tier to the other there is an increment of 5% in the RoR, reaching a threshold RoR of 27.5% for the fourth account. The State\u2019s AOE for the First Account is 10% of the positive net cash flow, for the second account 12% , for the their account 16%, and finally 20% for the fourth account.\n\nNo AOE is collected below a threshold RoR of 12.5%.--Art. 10.2\n",
+                "location":{
+                    "image":"620,109,652,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136905.js",
+                "id":136905
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":50,
+                "content":"\"Arms length commercial transactions\" mean sales to parties independent of the seller, which do not involve exchange or barter of oil, government to government transactions, direct or indirect sales to affiliates, or sales other than for US dollars or convertible currency.  Any crude oil sold on a non-arm's length commercial transaction will be calculated based on market prices of comparable crude oil sold in arms length transactions.   --Arts. 11.7(a) - (c) \n",
+                "location":{
+                    "image":"213,116,244,83"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136904.js",
+                "id":136904
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":52,
+                "content":"No other taxes, fees or duties will be imposed to Contractor aside from those expressly listed in Article 12 of the agreement.--Art. 12.1\n",
+                "location":{
+                    "image":"164,102,195,52"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136915.js",
+                "id":136915
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":52,
+                "content":"35%, calculated in accordance with the Petroleum Income Tax Law of 1987--Art. 12.2(ii)\n",
+                "location":{
+                    "image":"332,133,359,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136892.js",
+                "id":136892
+            },
+            {
+                "access":"public",
+                "title":"Autre//Other- surface rent",
+                "page":52,
+                "content":"Contractor will also be responsible for the payment of surface rental fees to the State, per square kilometre of the total contract area remaining at the beginning of each calendar year: During the initial exploration period, the amount due is of US$30 per sq. km.; during the 1st extension period, the amount of US$50 per sq.km; during the 2nd extension period, the amount of US$75 per sq. km.; and in reference to the development and production area, the amount of US$100 per sq. km.--Art. 12.2 (v)\n",
+                "location":{
+                    "image":"538,134,569,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136906.js",
+                "id":136906
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":53,
+                "content":"Save for withholding 5% as tax from the amount due by Contractor to any subcontractor, in accordance with the Petroleum Income Tax Law, no further amounts will have to be withheld by Contractor in relation to its subcontractors. Contractor will not withhold any amounts as taxes in respect of services provided to Contractor by an affiliate, provided such services are charged at cost.  Contractor will not pay any taxes for petroleum exports. No duties or taxes will be due for imports of plant, equipments and materials utilized in the petroleum operations. Foreign national employees of Contractor, its affiliates and subcontractors are exempt from income tax and withholding tax liabilities if they are resident in Ghana for less than 30 days in any calendar year.--Arts. 12.3 -  12.5, 12.8\n",
+                "location":{
+                    "image":"53,111,92,72"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136895.js",
+                "id":136895
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":60,
+                "content":"10% of the gross production of crude oil will be delivered to the State as royalty at water depths up to 400 meters. Beyond 400 meters,  the royalty due for crude oil is 7.5%. For natural gas, the royalty rate will be 5% or gross production. Payments will be made in cash or in-kind, as chosen by the State. --Arts. 10.1(a), 14.17(a)\n",
+                "location":{
+                    "image":"663,152,688,117"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136890.js",
+                "id":136890
+            },
+            {
+                "access":"public",
+                "title":"Autre//Other- domestic obligation",
+                "page":64,
+                "content":"In case the shares of crude oil which the State and GNPC are entitled to receive are not sufficient to fulfil the domestic supply requirement, Contractor will be obliged (along with other parties producing crude oil in Ghana) to supply a volume of crude oil to be used to meet the internal consumption demand, provided, however, that Contractor's obligation to supply crude oil will not exceed the totality of Contractor's oil entitlement under the agreement. The State will pay the weighted average Market Price for the month of delivery.--Arts. 15.1 and 15.2\n",
+                "location":{
+                    "image":"176,111,215,72"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136907.js",
+                "id":136907
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":65,
+                "content":"The Minister of Energy and GNPC may access all sites and offices of Contractor to inspect all buildings and installations relating to pretoleum operations. GNPC is entitled to inspect Contractor's books and accounts. Contractor will provide GNPC with quarterly summaries of the costs incurred. Contractor must maintain accurate books and records of account in Ghana.  Contractor must submit quarterly accounts of Petroleum Costs.  All financial statements submitted by Contractor in accordance with the agreement are subject to review by GNPC. GNPC may audit financial statements by an independent international auditing firm, at its cost, within 2 years of their submission.  Any unresolved audit claim is submitted to the Joint Management Committee for decision (which must be unanimous).  A detailed report of all petroleum operations will also have to be presented by Contractor. --Arts. 16.1, 17.1, 18\n",
+                "location":{
+                    "image":"170,109,200,72"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136901.js",
+                "id":136901
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":66,
+                "content":"Information disclosed by Contractor to the Ministry of Energy and GNPC, including reports, studies and analysis, will be treated as confidential, provided that the Ministry and GNPC will be authorized to furnish such information to other State agencies and consultants, as well as to third-parties for the purpose of obtaining a Petroleum Agreement in respect of any acreage adjacent to the contract area.--Arts. 16.4 - 16.5\n",
+                "location":{
+                    "image":"600,94,635,54"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136916.js",
+                "id":136916
+            },
+            {
+                "access":"public",
+                "title":"Autre - Dispositions environnementales//Other - Environmental provisions",
+                "page":68,
+                "content":"Contractor will provide a system for disposal of water and waste oil, oil base mud and cuttings in accordance with international disposal standards. Contractor will endeavour its best efforts with the purpose of protecting the environment and generating minimum ecological damage or destruction during the operations, preventng the waste of oil and damage to the offshore and onshore areas adjacent to the contract areas. Contractor will be liable for any breach of its environmental protection obligations, and will bear the costs connected to cleanup and repair of any eventually affected areas (such costs to be included as Petroleum Costs). --Arts. 17.3 -  17.7\n",
+                "location":{
+                    "image":"420,96,451,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136909.js",
+                "id":136909
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":74,
+                "content":"Contractor shall give preference to materials, goods and services produced in Ghana, including shipping services, if such materials, services and products can be shown to meet standards generally acceptable to international oil and gas companies and supplied at prices, grades, quantities, delivery dates and other commercial terms equivalent to or more favorable than those provided from abroad. --Article 20\n",
+                "location":{
+                    "image":"58,328,95,285"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136888.js",
+                "id":136888
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":75,
+                "content":"Ghanaian nationals will be engaged, as soon as reasonably possible, in employment at all levels in the petroleum industry, including technical, administrative and managerial positions. Where qualified nationals are available, Contractor will provide them with employment positions as far as is reasonably possible. Contractor will submit to GNPC an employment plan setting out what kind of professionals it needs to hire. GNPC will provide the qualified personnel according to such plan. If requested by GNPC, Contractor will provide opportunities for a mutually agreed number of GNPC personnel for secondment to on the job training. Contractor also will set up a training program to be conducted by GNPC in accordance with the terms of the agreement. For the implementation and maintenance of such programs, Contractor shall pay to GNPC the amount of US$200,000 per year. Contractor will also pay a single further sum of US$200,000 in respect of technical support to GNPC.--Preamble and Art. 21\n",
+                "location":{
+                    "image":"114,93,149,49"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136884.js",
+                "id":136884
+            },
+            {
+                "access":"public",
+                "title":"Autre//Other - knowledge transfer",
+                "page":75,
+                "content":"Contractor must regularly provide to GNPC information and data relating to worldwide petroleum science and technology, petroleum economics and engineering, and assist GNPC personnel to acquire knowledge and skills relating to the petroleum industry.--Art. 21.5\n",
+                "location":{
+                    "image":"747,92,772,51"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136889.js",
+                "id":136889
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":78,
+                "content":"30 years from effective date. At the end of such term (provided the agreement has not been terminated), the parties may negotiate the terms and conditions for execution of a new agreement in connection with the contract area. --Arts. 23.1 and 23.2\n",
+                "location":{
+                    "image":"161,95,192,55"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136879.js",
+                "id":136879
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":81,
+                "content":"Disputes not settled amicably by the senior personnel of each party in 30 days will be subject to arbitration at the Arbitration Institute of the Stockholm Chamber of Commerce, Sweden, adopting the rules of  the United Nations Comission on International Trade Law (UNCITRAL). --Art. 24\n",
+                "location":{
+                    "image":"85,313,122,274"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136914.js",
+                "id":136914
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":84,
+                "content":"The laws of Ghana--Art. 26.1\n",
+                "location":{
+                    "image":"173,105,202,60"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136913.js",
+                "id":136913
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep)",
+                "page":89,
+                "content":"Offshore blocks comprising an area of 2,080 square kilometers, approximately. The contract area is designated by the coordinates set out in  Annex 1 to the agreement.--Annex 1\n",
+                "location":{
+                    "image":"169,95,207,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana/annotations/136872.js",
+                "id":136872
+            }
+        ],
+        "description":"<b>For more information on the terms in this document, please see our <a href=\"http://www.resourcecontracts.org/blog/guides-to-contract-terminology.html\"> glossary of contract terminology</a></b>",
+        "language":"eng",
+        "title":"Heliconia Energy Ghana - Ghana, 2005",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Signature Year":"2005",
+            "Resource":"Hydrocarbons",
+            "Contract Term (duration) in Years":"30",
+            "Countries":"Ghana"
+        },
+        "created_at":"Mon, 24 Sep 2012 14:41:56 +0000",
+        "display_language":"eng",
+        "updated_at":"Fri, 10 Apr 2015 20:12:31 +0000",
+        "id":"439270-offshore-cape-three-points-basin-ghana",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/439270/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/439270/offshore-cape-three-points-basin-ghana.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/439270/pages/offshore-cape-three-points-basin-ghana-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/439270/pages/offshore-cape-three-points-basin-ghana-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/439270/offshore-cape-three-points-basin-ghana.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/439270/pages/offshore-cape-three-points-basin-ghana-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=439270"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":116,
+        "canonical_url":"http://www.documentcloud.org/documents/439270-offshore-cape-three-points-basin-ghana.html"
+    }
+}

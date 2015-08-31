@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"0d2a2518e651d908aee8eaeaf7f1e3af566fb0ab",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"ONGC, GSPC, HOEC - India, 2000",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2000",
+            "Resource":"Hydrocarbons",
+            "Countries":"India"
+        },
+        "created_at":"Tue, 20 Jan 2015 15:50:10 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 20 Jan 2015 16:36:08 +0000",
+        "id":"1505885-ongc-gspc-hoec-india-2000",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505885/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505885/ongc-gspc-hoec-india-2000.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505885/pages/ongc-gspc-hoec-india-2000-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505885/pages/ongc-gspc-hoec-india-2000-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505885/ongc-gspc-hoec-india-2000.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505885/pages/ongc-gspc-hoec-india-2000-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505885"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":116,
+        "canonical_url":"http://www.documentcloud.org/documents/1505885-ongc-gspc-hoec-india-2000.html"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"4e571990b4665c1f3ec449851e444b64d815c8b4",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"ECOPETROL, ARGOSY, Rio Magdalena Sector - Colombia, 2002",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2002",
+            "Resource":"Hydrocarbons",
+            "Countries":"Colombia"
+        },
+        "created_at":"Tue, 20 Jan 2015 02:31:30 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 24 Mar 2015 03:12:54 +0000",
+        "id":"1505339-ecopetrol-argosy-rio-magdalena-sector-colombia",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505339/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505339/ecopetrol-argosy-rio-magdalena-sector-colombia.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505339/pages/ecopetrol-argosy-rio-magdalena-sector-colombia-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505339/pages/ecopetrol-argosy-rio-magdalena-sector-colombia-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505339/ecopetrol-argosy-rio-magdalena-sector-colombia.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505339/pages/ecopetrol-argosy-rio-magdalena-sector-colombia-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505339"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":36,
+        "canonical_url":"http://www.documentcloud.org/documents/1505339-ecopetrol-argosy-rio-magdalena-sector-colombia.html"
+    }
+}

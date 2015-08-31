@@ -1,0 +1,457 @@
+{
+    "document":{
+        "file_hash":"f50053c15a87b3991e3a3f27f93dce96880061db",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Concession--Preamble",
+                "location":{
+                    "image":"306,125,345,92"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198433.js",
+                "id":198433
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":1,
+                "content":"Western Cluster Limited--Preamble G",
+                "location":{
+                    "image":"355,612,390,580"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198431.js",
+                "id":198431
+            },
+            {
+                "access":"public",
+                "title":"Nom du projet//Project title",
+                "page":1,
+                "content":"Western Cluster Project--Preamble D",
+                "location":{
+                    "image":"357,650,396,614"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198434.js",
+                "id":198434
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Liberia--Preamble",
+                "location":{
+                    "image":"362,117,394,89"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198430.js",
+                "id":198430
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales //Parent companies or affilates outside of the country, if different from the above mentioned; and their corporate headquarters",
+                "page":1,
+                "content":"\"Elenilto Minerals &amp; Mining LLC. (Delaware),\nElenilto Anguilla (Anguilla),\nSesa Goa (India) and Bloom Fountain Limited (Mauritius, subsidiary of Sesa Goa)\nMore information in Schedule 3.--Preamble, Schedule 3\"",
+                "location":{
+                    "image":"420,187,461,157"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198432.js",
+                "id":198432
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":12,
+                "content":"Western Cluster Limited (51% for Bloom)\nSesa Goa Limited\nBloom Fountain Limited\nElenilto Minerals &amp; Mining LLC--Preamble",
+                "location":{
+                    "image":"52,209,94,176"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198439.js",
+                "id":198439
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e ou envisag\u00e9e//Name and/or composition of the company created or anticipated",
+                "page":13,
+                "content":"Western Cluster Limited--Preamble G",
+                "location":{
+                    "image":"396,92,433,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198440.js",
+                "id":198440
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":26,
+                "content":"Date on which the last of the following conditions is satisfied:\n- attestation of this agreement by the Minister of Justice;\n- approval of this agreement by the President of the Republic of Liberia (22 August 2011);\n- ratification of this agreement by the national legislature of the Republic (19 August 2011);\n- publication of this agreement in handbills (at which point the agreement shall take effect as law).--2.1, ratification pages",
+                "location":{
+                    "image":"154,101,192,78"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198438.js",
+                "id":198438
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":26,
+                "content":"25 years, if there is no early termination or extension.--3",
+                "location":{
+                    "image":"656,149,696,121"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198443.js",
+                "id":198443
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":26,
+                "content":"The company must pay all taxes and duties and conform to all procedures according to applicable law, except as otherwise provided in the contract.--4.1",
+                "location":{
+                    "image":"812,98,854,74"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198455.js",
+                "id":198455
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":27,
+                "content":"Iron Ore--4.2  (a)",
+                "location":{
+                    "image":"367,145,402,112"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198444.js",
+                "id":198444
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":31,
+                "content":"The company must file within 18 months of the designation of a proposed production area with the Minister a feasibility plan for the design, production and operation of efficient and economic mining, processing, rail transport, port loading, shipping and marketing of products from the area prepared by an internationally recognized mine engineering consulting firm not affiliated with the company or its principal direct or indirect shareholders.\n\nThe feasibility plan must include a development plan setting forth the basic design and operating specifications for each proposed mine and related mining plant, infrastructure and equipment (the development plan), which includes:\n- a capital development plan in reasonable detail,\n- the capacity demonstration measures,\n- a construction, completion, and commencement of operations schedule for each mine and related plant, infrastructure and equipment of the development plan,\n- a timetable for development (Bomi: construction and acquisition end by 30 September 2016 and production begins by 30 October 2016; Mano: construction and acquisition end by 30 September 2018 and production begins by 30 October 2018; Bea: construction and acquisition end by 30 September 2021 and production begins by 30 October 2021),\n- final engineering studies and financial analysis for the route selection, design, investment requirements and other factors to expand the railroad and port, and\n- a construction, completion and commencement of operations schedule for the power generation alternative selected by the parties.\n\nWith respect to each proposed mine, within 180 days of the scheduled completion in the development plan, the company must demonstrate, through performance of the proposed capacity demonstration program of the feasibility study, that the mine and all related plant, infrastructure and equipment have substantially the operating capacities set forth in the development plan.--5.2 (a), 5.6 (a), 6.3 (a)",
+                "location":{
+                    "image":"652,142,692,106"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198461.js",
+                "id":198461
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas//Name and/or number of field, block or deposit",
+                "page":36,
+                "content":"Bomi, Mano, Bea--5.6 (iv) (6)",
+                "location":{
+                    "image":"695,194,743,160"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198435.js",
+                "id":198435
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":41,
+                "content":"The Exploration Regulations set forth the company's environmental responsibilities. The company must conduct its operations in accordance with applicable law, World Bank/IFC Environmental Health and Safety Guidelines for Mining, IFC Performance Standards on Environmental and Social Sustainability, the approved EMP and the contract. In any event, it must take appropriate preventive measures to protect all streams and water bodies within or bordering Liberia, all dry land surfaces, and the atmosphere from pollution, contamination or damage resulting from operations. If operations violate the requirements or have material adverse impact on the environment, the company must restore the environment as much as possible to its original and natural state (or remediate the negative impact where restauration is impractical) and take preventive measures to avoid further deterioration of the environment. Restauration and remediation do not require the company to cease operating so long as the company is diligent in undertaking those tasks. The company will not be liable for any negative environmental impact within the exploration, production, or otherwise operating areas existing before the beginning of exploration or operations, or resulting from the acts or omissions by third parties before operations or exploration.\n\nThe company must deliver an environmental report to the Minister within 60 days of the anniversary of the grant of the mining license including an assessment of the production areas under the license and any other area where the company conducts operations. The company must deliver every two years and on the last day of the mining term an environmental audit and assessment of the production areas under the license and any other areas where the company operates, performed or supervised by an  environmental consultant who is a registered engineer or scientist with 10 years' experience in environmental compliance assessments and audits, not regularly employed by the company, and agreed upon by the Minister. The audit and assessment must determine whether operations in the period are conducted in conformity with the requirements. They must also assess the status of the company's provision for restauration or remediation, as well as any changes in the balance of their dedicated accounts.\n\nThe Social Impact Assessment must set forth the potential adverse impact of the construction and operation of each mine, and the related mining plant and infrastructure on the individuals and communities resident in and around:\n- each proposed production area, mining plant or infrastructure;\n- areas affected by the processing or transport of product using infrastructure or facilities provided by the company, or equipment provided by the company, the government, or third parties.\nThe Social Action Plan must foresee reasonable measures, in light of the costs involved, for the mitigation of the adverse impact as well as make provision for the continuing economic and social visibility of centers of population that have formed and may form as a result of operations.\n\nThe Environmental Impact Assessment Study Report and the Environmental Management Plan (EIA and EMP) must comply with EPA requirements. The EIA must at at least identify pre-existing environmental conditions and foresee the potential adverse impact of the construction and operation of the mining plant. The infrastructure of the feasibility report must take into account all activities or improvements to be undertaken by the company. The EMP must at least set forth detailed plans consistent with the EIA for the mitigation of environmental harm attributed to the implementation of the development plan and operations, and the restoration or remediation of the environment to the extent affected. It must in any event comply with applicable EPA requirements.\nThe EMP must include a closure management plan and a closure management budget designed to ensure that upon closure:\n- no proposed mining plant and infrastructure presents any health or safety issues (including provision for the control of acid drainage and long-term environmental hazards) and\n- each proposed production area and the surroundings of any mining plant or infrastructure is restored to productive use or reforested, or where restoration is impractical, suitably remediated.\nThe closure management plan must include a list and assessment of risk and any uncertainties associated with the preferred closure option, address the social aspects of closure and rehabilitation, and provide a process for participation by the community and other stakeholders in closure management and monitoring. The closure management budget must provide a realistic initial estimate of the closure cost, broken down by principal activities. Notwithstanding any other applicable provision, the Government acknowledges that the Bomi and Mano river deposits have been mined in the past by third parties; this contract will not impose on the company, its shareholders, affiliates or subcontractors any closure or responsibilities regarding work performed by third parties.\nThe EMP must explain how the company will finance the environmental restoration and remediation obligations. The company will, at its election:\n- agree in writing with the Government to a \u201cpay-as-you-go\u201d funding scheme or\n- provide financial obligations in a letter of credit reasonably acceptable to the minister of finance and the minister, issued on behalf of the company from a third party financial institution with a long-term credit rating of at least A from at least two internationally recognized credit-rating agencies and providing for redetermination of closure costs at least once every 3 years and corresponding adjustments in the amount of the letter of credit, in amount reasonably acceptable by the minister of finance and the minister.\nThe company must hold public hearings on the SIA and the SAP at least in Monrovia, in the country seat of each proposed production area or railroad, port, power plant or road is located or to be located. The feasibility report will include a statement of the means taken to publicize the hearings, an indication of the number of persons who attended, and if known of the names of the organizations they represent, a summary of the issues raised and a discussion of the actions taken by the company in response to the hearings. The ministry may impose by regulation additional standards consistent with accepted practice in OECD counties for the location, notification, and conduct of the hearings, and may establish generally applicable requirements for third party review of the SIA and the SAP comparable to the technical review of the development plan and operations plan undertaken by the feasibility consultant.--5.7, 5.8, 13.1, 13.2,  13.5, 13.6",
+                "location":{
+                    "image":"199,93,249,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198459.js",
+                "id":198459
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9installation des habitants//Resettlement",
+                "page":43,
+                "content":"The Social Action Plan must include a Resettlement Action Plan (RAP) component if communes located in or next to each proposed production area, mining plants or infrastructures should under international mining standards be resettled for health or safety reasons. The RAP must at least provide for suitable areas of resettlement to be undertaken at company expense with key emphasis on shelter and livelihood continuity.--5.8 (b)",
+                "location":{
+                    "image":"129,123,177,94"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198448.js",
+                "id":198448
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":48,
+                "content":"After obtaining the mining license, the company will incur capital expenditures and see through the construction, acquisition, and installation of each proposed mine and all related mining plant, infrastructure and equipment, all in accordance with the schedule of the Development plan of the feasibility report related to the license. The capacity demonstration tests must occur. The company must have the approval of the Minister to make material changes to and amend the plans, and if applicable, the report and related plans, reports and studies.\nThe company must cause all mines, mining plant, infrastructure and equipment constructed, renovated or acquired to be maintained throughout the term in a safe and sound condition in accordance with International mining standards and the requirements of insurers.\n\nThe company must provide in its feasibility report for the installation of one or more power plants to meet its reasonable needs for conducting operations in Liberia and to construct necessary infrastructure, with the prior approval of the Minister. It may not be approved unless sized to utilize optimally the hydropower resources involved, as determined by the Minister after consultation with internationally recognized hydropower consultants. Such a power plant will be designed to generate electric energy in excess to supply third party users within a 10 km radius, 24/7 in accordance with demand, within a margin of 10% of the energy required for operations. The company may charge third parties at market price but will provide electric power free of charge to Government agencies within the radius. The Government will take charge of the interconnection and distribution. The power plant must be designed and constructed to be expandable on a commercially feasible basis to have twice the generating capacity needed for operations.\n\nThe company will build a 2-lane asphalt-paved all-weather road from Tubmanburg to Mano River (Kongo) for general public use with capacity for heavy traffic. The company must begin preliminary work on the road within 2 years of the effective date; the Ministry will have developed by then the standards for the design, construction and paving. Construction must begin within a year of the Government's approval of the feasibility study. An internationally recognized engineering consulting firm must certify the road is complete and conforms with agreed standards.\nThe development plan must provide for the construction by the company (or another entity agreed upon by the parties) of a railroad from the mines to the portion of the port designated and marked on Exhibit 10A, with the capacity to move from the mines to the port on a continuing basis the maximum sustained output of products contemplated by the feasibility report. The railroad must be expandable on a commercially feasible basis to carry on a continuing basis twice as much traffic, but the company will not be obligated to build the additional capacity. The Government or any third party may elect to have the capacity expanded to meet its requirements at its own cost. The company may elect to itself carry out or contract for the additional work, to be completed within a reasonable period of time (assuming funding is timely). If it does not, the company must approve the expansion designs and work plans if they do not unreasonably interfere with operations. The Government will retain title to the fixed assets of the railroad.\nThe company will be entitled, working in conjunction with the Ministry of Public Works (MOPW) to develop new roads and/or rehabilitate existing roads from its mining sites to the port (see Exhibit 10B) as reasonably required, after conducting a short-form feasibility study, and in conformity with the applicable laws. The company will be responsible, at the direction of MOPW, for performing and paying for repair of any damages and abnormal wear to roads and other infrastructure caused by its use of public roads to transport ore. The government will retain title to any such roads constructed by the company.\n\nThe Development plan must provide for the rehabilitation of the port by the company, and, if the parties agree and the feasibility report concludes that the Freeport of Monrovia, even after expansion, cannot support the exporting volume anticipated for the operations, for the construction by the company (or another entity agreed upon by the parties) of a new port or jetty and related logistic areas at a reasonable distance from the mining sites.--6.1(a), 6.3(c), 6.6, 6.7 (a) to (c) and (I), 19.3",
+                "location":{
+                    "image":"862,125,904,90"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198462.js",
+                "id":198462
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":51,
+                "content":"The company must pay minimum royalties based on the greater of actual iron ore shipments and assumed shipments equal to 80% of design capacity as set forth in the accepted feasibility report from the outside day for the capacity demonstrations until the capacity demonstrations have been certified.\nThe royalty will be of 4.5% multiplied by the fair market value, and must be paid to the general revenue account of the Government in dollars on the day of the related shipment. The company will provide at the time of payment the Ministry of finance with a statement showing the manner of computation of the royalties in such detail as required by the ministry.\nThe fair market value will be:\n- in the case of a sale to a non-affiliate f.o.b. Liberia, the actual sales price paid or payable f.o.b. Liberia;\n- in the case of a sale to an affiliate f.o.b. Liberia in connection with a back-to-back sale to a non-affiliate f.o.b. Liberia, the actual sales price paid or payable f.o.b. Liberia to the affiliate by the non-affiliate;\n- in other cases, according to the pricing agreement (15.3).--6.2(c), 15.1 (a) and (b), 15.2",
+                "location":{
+                    "image":"139,129,184,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198454.js",
+                "id":198454
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licences, et permis)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":51,
+                "content":"The company will have the right to access (including by extraction) such water supplies as reasonably required for the operations, and will pay any charges required by law for the use of water.\nThe company may not deprive any person of a constant and reasonable supply of usable water from or pollute a previously utilized national source without providing an alternative source of substantially the same quality and quantity. The company may not, without the Minister's consent and at least 30 days prior notice to the affected community, interfere with any water rights enjoyed by any user under any agreement with the Government made prior to the date of execution of the contract. The Government is responsible for the removal at its expense of the water bottling plant operated by the Liberia Bottling and Beverage Company in Bomi County. The company's use of water under this contract will be subject to charges.--6.3(b), 19.5",
+                "location":{
+                    "image":"464,133,513,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198460.js",
+                "id":198460
+            },
+            {
+                "access":"public",
+                "title":"Autre - [le nom de cat\u00e9gorie]//Other - [Name of Category]",
+                "page":54,
+                "content":"The company will work towards and assist the Government in establishing and expanding downstream metals processing facilities in Liberia in relation to pelletization or any further beneficiation, refining and/or metals manufacturing and fabricating (if not already carried out by the company according to an approved feasibility report) if, in the light of recognized economic, technical and scientific standards, the iron ore mined by the company is amenable to such additional activities and it is economically and practically feasible. The company may establish its own beneficiation, pelletization, refining or manufacturing facilities in Liberia under applicable law, provided that those facilities will be considered an additional mining plant to be incorporated in an amended feasibility report. The company must submit to the minister copies of any studies relating to the feasibility of establishing in Liberia facilities prepared by or at the direction of the company.\nIf an entity not affiliated to the company proposes to establish pelletization facilities for the further processing of products of the type produced by the company, the company must agree to make its products available on conditions no less favorable than the conditions obtained for sale outside of Liberia. This obligation is subordinate to any beneficiation, pelletization, refining, manufacturing or marketing contracts between the company and third parties entered prior to the receipt of the request, but only for as long as the company has no right to terminate the contract (or decline to renew or extend).\n\nWithin 5 years of first production, the company must finance a pre-feasibility study for the establishment in Liberia of a facility for the next value added step in the transformation of iron ore into steel (that is, at least an increase both in value and purity of the product). If at the time of the study, the parties cannot agree on the appropriate steps, the parties will select an international expert in iron and steel production to define the appropriate focus, at shared costs. The pre-feasibility study must be conducted for the government by an internationally recognized independent consulting firm with significant experience in the design of iron ore processing facilities and the production of iron and steel selected by the company from a Government list. Unless the company undertakes to establish such a facility within 360 days of receiving the study, the Government may use the study for any purpose, including the establishment of such a facility (directly, with partners, or by permitting third parties to do so) and will retain all right, title and interest therein. If the company fails to notify the Government of its interest within 90 days, it will be considered to have declined to establish the facility.--6.5",
+                "location":{
+                    "image":"69,136,108,106"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198452.js",
+                "id":198452
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":56,
+                "content":"The Government will authorize third party use of excess capacity of the port provided it does not unreasonably interfere with the efficient and economic conduct of the operations, the technical and commercial terms for such use must be agreed to in good faith among the parties and the third parties in accordance with acceptable international industrial standards, and the parties will agree in good faith on a formula to share the revenue fees. The third party use will be at no cost to the company, and all related costs will be borne by the third party. The company is not authorized to provide port operational services to any such third party users of leased areas of the port or any new port.\nThe company has priority use of the NIOC and LMC iron ore piers in the port during the exploration and production operating periods and their extensions, subject to rights of third parties, including those of APMT Terminals Liberia Ltd. As set in the freeport concession agreement of 2010 and its rights to use the LMC pier during the construction phase. The company must use its best efforts to reach a separate written agreement with APMT to minimize any material adverse effects on APMT's ability to perform its operations or complete construction.\nIn accordance with applicable law, and subject to a feasibility study paid by the company to determine commercial viability to be approved by the company and the Government, the company must make provision for additional passenger service and the transportation of non-bulk cargo on the railroad. The company must permit the Government or third parties to use the railroad to move bulk cargo, subject to negotiation of commercially reasonable rates. The costs of all required additions to rolling stock and motive power for such use will be borne by the Government or the third party. If the accommodation of the additional usage materially adversely affects the ability of the company to move iron ore to the port or handle iron ore trains at the port, the Government or third party will bear the cost of the additional investment needed to enhance the railroad to avoid such effect. If the Government or third parties wish to use the railroad to carry bulk cargo, the company may continue to operate the railroad itself or transfer operational responsibility for the railroad and all trains, or only the maintenance and operation of the fixed rail facilities to an operating company owned by the company. The railroad must be operated in any case in a way that does not discriminate against the shipments of any person.--6.7 (c) to (g), nothing about accessing the mine.",
+                "location":{
+                    "image":"481,130,533,97"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198463.js",
+                "id":198463
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":59,
+                "content":"If there is a dispute with the company as to Government or third party use of the railroad that is not resolved within 60 days after identified by notice as a \u201csenior management dispute\u201d, each party will designate a senior member of the management of its ultimate controlling entity to participate in discussions. If the Government is a party to the dispute, the President shall designate a minister of cabinet rank. If a resolution cannot be reached within 105 days after the notice, any party to the dispute may demand that the dispute be submitted to a technical dispute resolution committee. The parties to the dispute will each designate two persons, of which one will have experience in railroad or port operations, and none of which a citizen of Liberia or of any country whose citizens have an interest in the dispute. The four designated persons will choose a fifth with experience in railroad operations who will chair the commission. None of the 5 persons may be regularly employed or retained by any party to or having an interest in the dispute. The recommendations of the committee are binding except if they depend upon a determination of the legal meaning of any contractual provision, in which case the parties to the contract may seek arbitration as to the correctness of the determination.\n\nIn any dispute, controversy or claim between parties or shareholders of the investor parties related to the contract (including on its existence, interpretation, construction, validity, termination, enforceablility, performance, expiry, breach based in tort or contract or otherwise, on the rights or liabilities of the parties, etc.), the Government and investor parties must attempt to reach an amicable settlement through mutual discussion.\nIf it is not possible within 20 business days or one party giving the others notice of the dispute, the dispute must first be referred to a mediator agreed upon by the Government and investor parties by a written notice form the complaining parties with a statement of the grievance. Within 15 days, the opposing parties will appoint the mediator and send a written response. The complaining party may file a replay within 15 days after receipt of the response, but only limited to new facts raised in the response. If the parties cannot agree upon a mediator within 30 days of the first notice, the mediator will be appointed by the LCIA. The mediator sill submit written nonbiding recommendations to the parties including the terms on which the question may be resolved or settled. Within 10 days, both the Government and investor parties must submit to the other a written response to the recommendations, detailing which items are accepted or rejected and which terms it wishes to negotiate further within the context of the recommendations. When either party rejects the recommendations and it is evident further direct negotiations will not solve the dispute, the matter must be submitted to arbitration. Mediation must be exhausted before submitting to arbitration. The costs of mediation will be shared equally by the Government and the investor parties.\nArbitration, in accordance with the UNCITRAL rules and administered by the LCIA, will be final, and no party will be required to exhaust any local administrative or judicial remedy. Unless the Government and the company agree that any matter subject to arbitration will be referred for resolution by a single arbitrator, any such arbitral tribunal will consist of three arbitrators (one appointed by each party, and the third by the other two to act as president). If either appointment fails within 45 business days (or the third, within 20 business days) of being called for, either party may apply to the LCIA court to appoint the missing arbitrator. The arbitration will be seated in London, England and conducted in English. The parties agree to submit irrevocably to the jurisdiction of the English courts for enforcing this agreement to arbitrate.\nIf the parties agree to the resolution by a single arbitrator, they will promptly appoint such an arbitrator by agreement. In the absence of agreement, the LCIA court will appoint the arbitrator. The arbitration decision will be final and binding unless appealed by any party to a full panel of arbitrators, who must examine it as to manifest error of law, findings of fact unsupported by any credible evidence, and abuse of authority, misconduct, or other unauthorized act by the arbitrator.\nNo concurrent arbitration proceedings will be permitted and all matters related to a dispute will be decided in a single proceeding.\nAny arbitration decision will be public, and any monetary award to be assessed and payable in dollars. No specific performance or similar equitable remedies may be awarded against the Government, nor will any party be liable for consequential damages or exemplary or punitive damages. Enforcement of any UNCITRAL award will be in accordance with the provisions of the New York Convention.\nThese provisions will remain in full force and effect notwithstanding any cancellation or termination of the contract.\n\nAny shareholder will benefit form the rights hereby conferred to the company and may transfer its interest in the company in accordance with the contract, by which the new shareholder will agree to these arbitration clauses. The company appoints any shareholder, jointly (but not severally) to act on its behalf for these matters.--6.7 (k) and (l), 27",
+                "location":{
+                    "image":"232,112,287,79"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198465.js",
+                "id":198465
+            },
+            {
+                "access":"public",
+                "title":"Consultations communautaires requises//Requirements for community consultation ",
+                "page":65,
+                "content":"Upon the reasonable request of the Government at any time, the company must work with the Government and the local communities affected by operations to establish plans for the development and maintenance of the economic and social viability of the centers of population that have formed and may form as a result of operations during the term of the contract. Thereafter, the company must cooperate in good faith with the Government for their realization, provided the company will not have to provide financial assistance or commit resources for that purpose other than specified in the contract.--8.1",
+                "location":{
+                    "image":"100,61,147,33"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198445.js",
+                "id":198445
+            },
+            {
+                "access":"public",
+                "title":"Autre - [le nom de cat\u00e9gorie]//Other - [Name of Category]",
+                "page":65,
+                "content":"The company must pay US$2,000,000 for the first year of the term commencing on the effective date. Until the year in which commercial production starts for the first production area, the company must pay US$2,500,000 on each anniversary of the effective date. Thereafter, the company must pay US$3,100,000 (adjusted annually for inflation as determined by the Government) annually (see Exhibit 6). The annual social contribution replaces any obligation of the company under Section 9.3(b) of the exploration regulations.\nThe annual social contribution and utilization of the funds for specific projects shall be managed by a dedicated committee in accordance with the structures established by the Government in consultation with the committee from time to time. In all cases:\n- the company will have at least one representative on the committee;\n- structures and processes will be established to provide for the participation of officials, businesses and residents from the affected countries in the identification and selection of projects;\n- no funds may be disbursed if in the company's view, it would cause the company to be in violation of applicable law;\n- funds may be disbursed only for direct delivery of services and community infrastructure improvements (not to fund the general work programs of administrative offices or officials) and only for the benefit of Liberian communities in the affected countries provided that residents of Bomi County, Grand Cape Mount County and Gbarpolu County and any other county identified in the (pre)feasibility reports as being directly impacted will be the primary beneficiaries.\nThe projects supported with such funds will be publicly disclosed and subject to the same audit procedures provided for expenditures by the Government. Periodic reports and audit reports will be made available to the company and the public and the company will have the right to independently audit at its expense any expenditure or project and will have access to all documentation and information for this purpose.--8.2",
+                "location":{
+                    "image":"344,59,383,31"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198451.js",
+                "id":198451
+            },
+            {
+                "access":"public",
+                "title":"Lieu-dit habit\u00e9 le plus proche//Closest community",
+                "page":66,
+                "content":"Bomi County, Grand Cape Mount County, Gbarpolu County--8.2 c (iv) (B)",
+                "location":{
+                    "image":"239,325,273,301"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198437.js",
+                "id":198437
+            },
+            {
+                "access":"public",
+                "title":"La s\u00e9curit\u00e9 physique, la protection de la propri\u00e9t\u00e9, et / ou l'utilisation des gardes//Physical security, protection of property, and/or use of guards",
+                "page":66,
+                "content":"The company may, directly or by contract with a responsible provider, establish, manage, and maintain its own asset and employee security and protection service for maintaining law, order and security in the exploration area, the (proposed) production areas, and in the immediate vicinity of other locations where the company has property and assets. It is subject to applicable law, including laws related to apprehension, detention and human rights and to the \u201cVoluntary Principles on Security and Human Rights (http://www.voluntaryprinciples.org), provided that if the principles are no published, the last available published form will apply unless and until the parties agree on an alternative set of principles. The members of the security services certified by the Ministry of Justice as being literate, as having received training in police and law enforcement procedures by an outside contractor (certified by the Ministry of Justice), and as having been provided with operating manuals (approved by the Ministry) will have enforcement powers within those areas:\n- power of apprehension and detention;\n- power to search and exclude or evict unauthorized persons.\nIf a person is detained, the appropriate Government authority must be notified immediately and have the person handed over as soon as practical and before 24 hours from the time of detention and when requested by Liberian National Police. The security services may not use unreasonable force in detaining, excluding, or evicting persons, whatever the nature of the intrusion. Any detention facility must be adequately ventilated, reasonably clean and with access to sanitary toilet facilities. The security services in the ports must also comply with the International Code for the Security of Ships and Port Facilities and any facility security plan adopted for those ports. The company must inform the port police of any security incident within the meaning of the code and turn over to them any detained person suspected of engaging or threatening to engage in a security incident.\nThe activities of the security services must be coordinated with the police and law enforcement authorities and the company (or contractor if applicable must) report quarterly to the Minister of Justice with a copy to the Minister on their activities, including numbers of persons detained and excluded or evicted, reason for, place of and period of any detention, disposition of each detained person, as well as within a month and as soon as practicable on any detention. Each report must be certified by the chief executive officer of the company (or the equivalent person within the contractor) as being true and correct.\nThe company is fully responsible for the compliance of the members of its security force, whether its employees or the contractor's with these terms and the consequences of any breach.--9.2",
+                "location":{
+                    "image":"713,73,749,51"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198449.js",
+                "id":198449
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local//Local employment requirements",
+                "page":69,
+                "content":"The company or its contractors or sub-contractors may not hire individuals who are not Liberian citizens  for unskilled labor positions. They must employ and give preference to qualified citizens of Liberia for financial, accounting, technical, administrative, supervisory, managerial and executive positions and other skilled positions unless and to the extent that such competent and suitably qualified citizens are not available. It is the objective of the parties that the operations be conducted and managed primarily by citizens of Liberia as soon as practicable.\nThe parties will agree before approval of the Feasibility report on the progressive implementation of an employment schedule with the objective of 30% of Liberian citizens in all management positions, including its ten most senior positions within 5 years of the grant of the mining license, and of 70% within 10 years. Appointment of a Liberian citizen to a particular position does not preclude the subsequent employment of a citizen of another country in such a position, and it remains in the company's reasonable judgment as to whether a person Is suitably qualified for a particular position, taking all relevant criteria into consideration, including skills, training, health and safety.\nUnder these terms, the company may at all times choose its employees and be free to employ non-Liberian citizens. Where applicable law stipulates minimum technical or competence qualifications for a technical post, the government undertakes to recognize equivalent technical and competence qualifications by non-citizens, provided that they were issued by a recognized institution or statutory authority in any country with a substantial mining industry or internationally recognized mining education institution.\nAfter the grant of a mining license, the company must provide on a continuing basis for the training of Liberian citizens to qualify them for financial, accounting, supervisory, managerial, executive positions and other skilled positions and provide on-the-job training, vocational training facilities, and transfer to other citizen employees the ability to work in skilled trades and supervise other tradesmen and laborers, as required by operations.\nThe company must facilitate the qualification of a Liberian geologist under international resource reporting codes but will not be required to guarantee employment. The Government will provide the company a list of potential candidates for iron ore cmpetent person status accreditation under CRIRSCO guidelines, and the company must continue to hire and train Liberian geologists (including funding their accreditation if and when they qualify), and will facilitate applications and registration of its own Liberian geologist employees.\nThe company must also provide for:\n- training of a high-calibre Liberian technical professional to be Company Site Manager within 5 years of the effective date;\n- training of a high-calibre Liberian caterer or chef to be Company Catering Manger at the site within 5 years of the effective date;\n- the engagement of international security services to train the company's Liberian security contractor in security risk evaluation and mitigation, and the preparation of emergency plans;\n- the engagement of an international medical services provider to train a Liberian nurse employed by the company at its first aid post health;\n- training Liberians from surrounding villages in various exploration support infrastructure functions; and\n- the regular training in defensive driving techniques for company drivers, as well as first aid training from the company's international medical services provider.--11.1 and 11.2",
+                "location":{
+                    "image":"422,77,464,50"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198446.js",
+                "id":198446
+            },
+            {
+                "access":"public",
+                "title":"Autre - [le nom de cat\u00e9gorie]//Other - [Training]",
+                "page":71,
+                "content":"The company must, starting on the effective date and until the grant of a mining license, contribute US$200,000 annually on the effective date anniversary (adjusted annually for inflation by the Government) to education funding. It will be distributed as follows:\n- US$80,000 to geology or mining engineering scholarships at the University of Liberia and technical apprenticeships at the University educational establishments, with a preference towards students from Bomi, Grand Cape Mount, and Gbarpolu Counties;\n- US$40,000 to the creation and operation of a Mining and Geology Institute at the University;\n- US$20,000 to the promotion of graduate training programs in Geology and Mining Engineering or related disciplines at a state operated higher education institution; \n- US$60,000 to the facilitation of graduate training of and sponsor exchange programs for students majoring in mining engineering and geology (with the same geographical preference) in universities in other parts of the world (with a reasonable incentive to return to Liberia after the training). It must provide for the expenses of at least one Liberian citizen for a master's degree in geology, mining engineering, or equivalent, and may condition the funding to work for the company or an affiliate upon graduation.\nAfter the grant of a mining license, the total annual amount will be increased to US$500,000 (adjusted for inflation) for the remainder of the term, and distributed in the same proportions.\nThe company must directly or indirectly in conjunction with the Ministry of Education, ensure that there is available free K-12 education to the resident dependent children (up to age 21) of the company's employees and of Government officials and/or employees regularly employed in a production area in an official capacity and residing in or close to the area.--11.3",
+                "location":{
+                    "image":"329,75,370,47"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198450.js",
+                "id":198450
+            },
+            {
+                "access":"public",
+                "title":"Other - [Name of Category]",
+                "page":72,
+                "content":"The company must make an annual contribution to the Scientific Research Fund of US$100,000 commencing on the effective date and on its anniversary until the end of the term (adjusted for inflation). The amount will be paid into the general revenue account of the Government for the Scientific Research Fund.--11.4",
+                "location":{
+                    "image":"537,86,578,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198453.js",
+                "id":198453
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es a l'approvisionnement en biens et services locaux//Local procurement requirements",
+                "page":73,
+                "content":"When purchasing goods and services related to operations, the company must itself (and cause its major contractors to, and encourage reasonably its other contractors to):\n- give meaningful opportunities to bid for contracts to citizens of Liberia residing in Liberia or entities incorporated or formed in Liberia where citizens of Liberia residing in Liberia are entitled to 60% or more of all profits;\n- give preference to the maximum extent possible to materials and goods produced in Liberia and services provided by the same persons and entities as above, unless the materials and goods are not provided in Liberia or the services not provided by Liberian citizens.\nThe company and its contractor may otherwise contract freely with any person. It must report to the Minister within 60 days after each financial year on the extent to which such materials, goods and services were acquired during the year. For this purpose, major contractor is a contractor or subcontractor having received more than US$200,000 directly or indirectly from the company and had significant operations (not merely representation or supervision) in Liberia in the relevant financial year.--12",
+                "location":{
+                    "image":"66,136,103,110"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198447.js",
+                "id":198447
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":76,
+                "content":"With respect to the items in Section 17 of the agreed revenue code, the applicable taxes and duties will be stabilized as of the effective date for the period equal to the lesser of the term or 15 years, provided they be subject to adjustment after review every five years, if the parties agree to them. After the effective date, if the Government reduces the applicable taxes and duties below those applicable to the company, the company will become entitled to such reductions after notifying the Minister of Finance.--14.2 (b)",
+                "location":{
+                    "image":"831,141,872,108"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198466.js",
+                "id":198466
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":77,
+                "content":"From the effective date until 2 years after the start of commercial production in the production area of each mining license, the company will by exempt from all import duties, and excise charges, but will be subject to the payment of a customs user fee on all modules, plants, equipments, construction material, machinery, and heavy vehicles, capital spare parts, raw materials (other than gasoline and gas oil), and intermediate inputs, for use in the production area.\nThis also applies to the company's contractors and subcontractors to the extent that they are exclusively rendering goods or services to the company in relation to its operations or importing goods in connection with them, provided such goods or services are identified as exclusively relating to the operations.\nIf the company sells imported items no longer needed for operations that were exempted in all or part from taxes and duties on import, the company must pay to the general revenue account of the Government those taxes and duties in effect on the date of the sale calculated on the basis of the fair market value of the items on that date. The company will be entitled to export from Liberia, exempt from all taxes and duties, any modules, plant, equipment, construction material, machinery, and light and heavy vehicles, spare parts as well as raw materials, intermediate inputs and consumables that were previously imported in connection with the operations which were exempt from any import tax.--14.2 (c) and (e), 18.2",
+                "location":{
+                    "image":"212,136,259,98"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198456.js",
+                "id":198456
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":81,
+                "content":"All of the company's accounting must be in dollars. All amounts paid or received and obligations incurred or transactions carried out in any other currency must be converted to dollars according to the financial reporting standard adopted by the company based upon the prevailing market rate of exchange of dollars and the currency at the date of the applicable transaction.\nThe company must maintain at least one account with a bank or financial institution in Liberia.\nThe company must deliver to the Government within 90 days after each financial year:\n- a balance sheet as at the end of the year;\n- statements of income, changes in shareholders' equity and cash flows for the year,\nSetting forth in each case in comparative form the figures for the previous fiscal year in reasonable detail, and certified by the chief financial officer of the company as prepared according to generally accepted accounting principles in the United States or in International reporting Standards as in effect from time to time in the European Union, consistently applied.\nThe statements must be accompanied by an opinion of independent public accountants of recognized international standing, confirming that the statements present fairly the financial position of the companies and their results of operations and cash flows, and in conformity with GAAP or IFRS, consistently applied, and that the examination complied with generally accepted auditing standards, the audit providing a reasonable basis for the opinion.\nThe chief financial officer must certify with each financial statement:\n- that the company has made all the deposits and contributions required by the closure management component of the company's approved EMP\n- that the company's transfer prices of goods or services covered by a pricing agreement complied with the pricing agreement;\n- that the prices for goods and services sold or provided between the company and an affiliate or related person and not covered by such an agreement imposed during the year were computed in accordance with Section 20.7.\nIf the Ministry of Finance determines that an independent review or audit is necessary, the company will cooperate with the Government to provide copies of the information, books and records needed, and bear the reasonable travel cost of a reasonable number of auditors selected by the Minister to travel outside of Liberia to the extent that the Government deems it necessary to perform the audit outside of Liberia and the company is unable to provide the information, books or records needed to complete the audit in Liberia.\nThe company must comply with the requirements of the Liberian Extractive Industries Transparency Initiative with respect to all payments to the Government.--17",
+                "location":{
+                    "image":"784,118,817,90"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198457.js",
+                "id":198457
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":93,
+                "content":"The company will not enter into directly or indirectly any transaction or group of related transactions (including purchase, lease, sale or exchange of properties or rendering of service) with any affiliate or related person of the company or of any of its shareholders, except in the ordinary course and pursuant to the reasonable requirements of the company's business and upon fair and reasonable terms no less favorable to the company than in a comparable arm's length transaction with a non-affiliated or non-related person.\nEach transaction between the company and an affiliate or related person of the company or its shareholders must be on the basis of the transfer prices determined in Exhibit 4 and, if it involves items and services other than products and a price or value in excess of US $500,000, must be supported by an external transfer pricing study prepared by one of the \u201cBig Four\u201d international accountancy and professional services firms or another internationally recognized, independent transfer pricing expert approved in advance by the Ministry of Finance. All tax returns will be prepared by or reviewed prior to filing by such a firm of another firm of national reputation in the United States or Europe, and will be prepared and timely filed in accordance to such studies. The Ministry of finance may review any such studies in connection with the audit of any of the company's tax returns.--20.7",
+                "location":{
+                    "image":"310,98,349,70"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198458.js",
+                "id":198458
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":98,
+                "content":"This agreement is not confidential, and the company is not generally entitled to confidential treatment of information. The Government or the company may, and the Government expects to make public information relating to the timing and amount of royalties and other payments specifically due or paid under the contract, or of taxes and duties payable or paid, or the rates at which royalties, taxes and duties or other payments become due or are assessed.\nFor a period of 3 years from disclosure, each party agrees not to divulge information designated in writing by the other party at the time of delivery as confidential information or which relates to the company's products, operations, processes, plans or intentions, product information, know-how, design rights, trade secrets, market opportunities and business and financial affairs to any other person without prior written consent from the other party. Designating information will be understood as representing that release of the information to third parties will materially adversely affect the party or its economic well-being.\nConfidential information does not include information that:\n- was publicly available or known to a party before disclosure to it and not subject to a confidentiality obligation;\n- becomes publicly known through no act or omission by a party;\n- constitutes financial statements delivered to the Government that are otherwise publicly available;\n- is of scientific rather than commercial value;\n- has been disclosed under law or a final order of any court having jurisdiction that is not subject to appeal.\nEach party will maintain the confidentiality of confidential information consistently with the protection of its own confidential information, provided the party may deliver or disclose it to:\n- its affiliates and its affiliates' financial, legal and other professional advisors (if the disclosure is reasonably related to the administration of the contract);\n- any other person to which such delivery or disclosure may be necessary or appropriate under law, in response to any legal process, or in connection with any litigation (if necessary to protect the party's position in such litigation), or if an event of default has occurred and is continuing (if disclosure is necessary and appropriate in the enforcement or for the protection of the rights and remedies under the contract).--22",
+                "location":{
+                    "image":"322,140,357,110"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198467.js",
+                "id":198467
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":125,
+                "content":"All the internal laws of Liberia as in effect from time to time (including with respect to labor, environmental, health and safety, customs and tax matters).--30.1",
+                "location":{
+                    "image":"667,93,709,69"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198464.js",
+                "id":198464
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":130,
+                "content":"3 August 2011--Signature",
+                "location":{
+                    "image":"122,438,165,405"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198441.js",
+                "id":198441
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":130,
+                "content":"2011--Signature",
+                "location":{
+                    "image":"122,472,166,437"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198442.js",
+                "id":198442
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) ",
+                "page":133,
+                "content":"Bomi, Mano, Bea--5.6 (iv) (6)",
+                "location":{
+                    "image":"400,143,441,104"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011/annotations/198436.js",
+                "id":198436
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Western Cluster - Liberia, 2011",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Signature Year":"2011",
+            "Resource":"Iron Ore",
+            "Countries":"Liberia"
+        },
+        "created_at":"Tue, 20 Jan 2015 19:18:32 +0000",
+        "display_language":"eng",
+        "updated_at":"Sat, 25 Apr 2015 20:13:18 +0000",
+        "id":"1506145-western-cluster-liberia-2011",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1506145/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506145/western-cluster-liberia-2011.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1506145/pages/western-cluster-liberia-2011-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506145/pages/western-cluster-liberia-2011-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506145/western-cluster-liberia-2011.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506145/pages/western-cluster-liberia-2011-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1506145"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":211,
+        "canonical_url":"http://www.documentcloud.org/documents/1506145-western-cluster-liberia-2011.html"
+    }
+}

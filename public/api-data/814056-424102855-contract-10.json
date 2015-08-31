@@ -1,0 +1,94 @@
+{
+    "document":{
+        "file_hash":"c04738dd4cd5a8aeb38eb5bb38341a62a39b0c74",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Service",
+                "location":{
+                    "image":"124,426,156,381"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814056-424102855-contract-10/annotations/129906.js",
+                "id":129906
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":1,
+                "content":"Hydrocarbons",
+                "location":{
+                    "image":"148,283,184,239"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814056-424102855-contract-10/annotations/129919.js",
+                "id":129919
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat//Name of company executing the document ",
+                "page":1,
+                "content":"Pemex-Exploracion y Produccion, Oleorey  S.A. de C.V., Monclova Pirineos Gas S.A. de C.V., Alfasid del Norte S.A. de C.V.",
+                "location":{
+                    "image":"278,244,314,196"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814056-424102855-contract-10/annotations/129926.js",
+                "id":129926
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":9,
+                "content":"Mexico",
+                "location":{
+                    "image":"488,282,517,245"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814056-424102855-contract-10/annotations/130487.js",
+                "id":130487
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":196,
+                "content":"2012",
+                "location":{
+                    "image":"132,516,158,477"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814056-424102855-contract-10/annotations/129914.js",
+                "id":129914
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Pemex Oleorey Monclova Alfasid - Mexico, 2012",
+        "data":{
+            "Year of Signature":"2012",
+            "Type of Mining Title":"Service Contract",
+            "Resource":"Hydrocarbons",
+            "Countries":"Mexico"
+        },
+        "created_at":"Fri, 01 Nov 2013 19:25:09 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 24 Mar 2015 19:10:41 +0000",
+        "id":"814056-424102855-contract-10",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/814056/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814056/424102855-contract-10.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/814056/pages/424102855-contract-10-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814056/pages/424102855-contract-10-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814056/424102855-contract-10.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814056/pages/424102855-contract-10-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=814056"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":196,
+        "canonical_url":"http://www.documentcloud.org/documents/814056-424102855-contract-10.html"
+    }
+}

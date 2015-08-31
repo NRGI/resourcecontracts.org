@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"b3995fb6e71f8d84c7b04bfbdbcda27e777ded12",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Lion Petroleum, Block 1 - Kenya, 2007",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2007",
+            "Resource":"Hydrocarbons",
+            "Countries":"Kenya"
+        },
+        "created_at":"Tue, 20 Jan 2015 16:21:34 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 20 Jan 2015 16:48:59 +0000",
+        "id":"1505944-lion-petroleum-block-1-kenya-2007",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505944/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505944/lion-petroleum-block-1-kenya-2007.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505944/pages/lion-petroleum-block-1-kenya-2007-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505944/pages/lion-petroleum-block-1-kenya-2007-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505944/lion-petroleum-block-1-kenya-2007.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505944/pages/lion-petroleum-block-1-kenya-2007-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505944"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":102,
+        "canonical_url":"http://www.documentcloud.org/documents/1505944-lion-petroleum-block-1-kenya-2007.html"
+    }
+}

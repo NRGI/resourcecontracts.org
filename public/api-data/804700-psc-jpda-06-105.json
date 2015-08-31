@@ -1,0 +1,348 @@
+{
+    "document":{
+        "file_hash":"b78c426ee9e62131ff72ad9b4915e1a65f960f29",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Production Sharing",
+                "location":{
+                    "image":"264,637,297,596"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126014.js",
+                "id":126014
+            },
+            {
+                "access":"public",
+                "title":"Nom du projet//Project title",
+                "page":1,
+                "content":"JPDA 06-105\n",
+                "location":{
+                    "image":"509,602,545,558"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126015.js",
+                "id":126015
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de petrole/ gas//Name and/or number of field, block or deposit",
+                "page":1,
+                "content":" JPDA 06-105 Contract Area\n",
+                "location":{
+                    "image":"515,662,552,620"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126016.js",
+                "id":126016
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":1,
+                "content":"24/07/2006--Cover page\n",
+                "location":{
+                    "image":"767,484,801,437"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126021.js",
+                "id":126021
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":1,
+                "content":"2006--Cover page\n",
+                "location":{
+                    "image":"772,539,810,501"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126022.js",
+                "id":126022
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":7,
+                "content":"Woodside Petroleum (Timor Sea 1) Pty Ltd, INPEX TIMOR SEA LTD, Talisman Resources (JPDA 03-01) Pty Ltd (collectively, the Contractor)--Preamble\n",
+                "location":{
+                    "image":"254,90,286,53"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126013.js",
+                "id":126013
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":7,
+                "content":"Timor-Leste and Australia, through Timor Sea Designated Authority--Preamble\n",
+                "location":{
+                    "image":"397,95,426,56"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126012.js",
+                "id":126012
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":14,
+                "content":"Petroleum--Art 2.1\n",
+                "location":{
+                    "image":"95,100,129,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126026.js",
+                "id":126026
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":15,
+                "content":"The effective date of the agreement is the date on which all necessary conditions have been satisfied by the contractor; The agreement terminates on the first date of either: the contract area being relinquished, the parties agreeing, if the Designated Authority terminates the agreement on the basis of the contractor being in material default; or the Timor Sea Treaty ceases to be in force. Maximum 5 year exploration period, after which all of contract area except for any development area must be relinquished. --Arts. 2.3 - 2.4, 3.2 \n",
+                "location":{
+                    "image":"61,97,96,55"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126023.js",
+                "id":126023
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":19,
+                "content":"Minimum activities detailed for each of two sub-periods of exploration. Non-performance of these minimum exploration activities can be grounds for termination or a requirement to pay damages for the cost of the Exploration not carried out. Work programs and budgets must be approved by the Designated Authority. Contractors shall carry on Petroleum Operations in a proper, efficient and workmanlike manner.--Art. 4\n",
+                "location":{
+                    "image":"351,232,383,193"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126044.js",
+                "id":126044
+            },
+            {
+                "access":"public",
+                "title":"Autre - Dispositions environnementales//Other - Environmental provisions",
+                "page":24,
+                "content":"A Development Plan must include an environmental impact statement, and proposals for environmental management over the life of the development; the contractor is to carry on operations in a way that protects the environment and ensures that the petroleum operations result in minimum ecological damage or destruction, and clean up pollution; upon termination or when property is no longer required, to remove and dispose of the property and works, clean up the contract area and protect and restore the environment; the contractor must remedy any damage caused to the environment in a timely manner;  the contractor must submit to the Designated Authority, within 3 months of the effective date of the agreement, plans in regard to the protection of the environment, including the marine environment and the atmosphere and the prevention of pollution, and the contractor must clean up pollution to the satisfaction of the the Designated Authoirty and meet the costs of doing so if done by anyone else--Art. 4.10(d)(vi), 5.1(b)(i), 5.1(b)(v), 5.1(b)(xii), Art 5.3\n",
+                "location":{
+                    "image":"434,171,465,135"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126040.js",
+                "id":126040
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":24,
+                "content":"A Development Plan must include an environmental impact statement, and proposals for environmental management over the life of the development--Art. 4.10(d)(vi)\nWithin 3 months of the effective date, the Contractor shall submit tot the Ministry plans regarding the health, safety and welfare of all persons affected by Petroleum Operations, and the protection of the environment.--Art. 5.3 (a)\n",
+                "location":{
+                    "image":"435,206,462,171"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126039.js",
+                "id":126039
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":24,
+                "content":"Development Plan must include proposals for the use of Timor-Leste goods and services; the contractor must comply with proposals for the acquisition of goods and services that are submitted with its application under sub-Section 5.4 of th Code for this Agreement, give persons based in Timor-Leste a real opportunity to compete for delivery of goods and services, provided they are offered on competitive terms and conditions.--Arts. 4.10(d)(viii)(aa), 5.4(a)\n",
+                "location":{
+                    "image":"541,204,567,169"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126030.js",
+                "id":126030
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":24,
+                "content":"A Development Plan must include proposals for the training and employment of Timor-Leste nationals; the contractor must comply with proposals for employment that are submitted with its application under sub-Section 5.4 of the Code for this Agreement, and otherwise must give preference in employment to nationals of Timor-Leste, with due regard to occupational health and safety requirements--Art 4.10(d)(viii)(bb), Art 5.4 (b)\n",
+                "location":{
+                    "image":"576,208,606,170"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126027.js",
+                "id":126027
+            },
+            {
+                "access":"public",
+                "title":"Mode et fr\u00e9quence de suivi des risques sociaux (y compris enfreinte aux droits de l'homme) ou environnementaux//Social, environmental and/or human rights monitoring requirements",
+                "page":28,
+                "content":"The plans need to be reviewed annually and amended from time to time to ensure continous compliance with Good Oil Field Practice--Art. 5.3 (a)\n",
+                "location":{
+                    "image":"547,160,572,130"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/151115.js",
+                "id":151115
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - Elements de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":29,
+                "content":"Contractor may recover all allowable costs, including the sum of exploration costs, appraisal costs, capital costs and operating costs. Cost oil limited to 95% of value of petroleum.--Arts. 6.2, 7.1\n",
+                "location":{
+                    "image":"763,71,801,27"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126036.js",
+                "id":126036
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - Elements de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, credit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":29,
+                "content":"Designated Authority entitled to 5% of all petroleum exported. Petroleum remaining after the Designated Authority\u2019s initial 5% and the recovery of allowable costs is to be split 40% to the Designated Authority and 60% to the Contractor. Unless Designated Authority elects to receive its share of petroleum in kind, the Contractor is to receive and dispose of both the Designated Authority's and the contractor's shares of petroleum, and obligated to pay the Designated Authoirty the value of the Designated Authority's share within 36 hours of receipt.--Arts. 6.2,  7.1,  7.2,7.5\n",
+                "location":{
+                    "image":"764,113,798,72"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126031.js",
+                "id":126031
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":33,
+                "content":"the value of oil is determined by  the price in an arm's length transaction or the fair and reasonable market price --Art.8\n",
+                "location":{
+                    "image":"53,242,88,203"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126038.js",
+                "id":126038
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":37,
+                "content":"Agreement drafted in English; Language of arbitration is to be English--Art 12.3\n",
+                "location":{
+                    "image":"561,103,595,62"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126055.js",
+                "id":126055
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":37,
+                "content":"If a dispute arises between the Designated Authority and the contractor, the parties are to attempt to resolve the dispute by negotiation; if the dispute cannot be resolved by negotiation, it is to be submitted to arbitration. Arbitration shall be conducted in accordance with the Rules of Arbitration of the International Chamber of Commerce (ICC)--Art 12\n",
+                "location":{
+                    "image":"60,213,94,163"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126050.js",
+                "id":126050
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":39,
+                "content":"The Designated Authority shall not publicly disclose data or information that the contractor collects and compiles about the JPDA sea bed or subsoil, petroleum and superjacent waters, until the earlier of 5 years after it was acquired, and the agreement ceaseing to apply;  The contractor is not to disclose the data or information except to its employees, as required by law, to resolve disputes, or as required by a stock exchange; The Designated Authority shall not publicly disclose any data or information submitted by the contractor which is a trade secret of, or data and information the disclosure of which would adversely affect the contractor in respect of its lawful business, commercial or financial affairs, and is marked as such when submitted to the Designated Authority--Art. 13.6 - 13.7\n",
+                "location":{
+                    "image":"542,96,573,54"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126053.js",
+                "id":126053
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":41,
+                "content":"The contractor shall provide for third party access to the structures, facilities, installations, equipment, and other property within the Contract Area on reasonable terms and conditions. When mutual agreements cannot be reached, the Designated Authority shall set up terms in accordance with internationally accepted principles.--Art. 15\n",
+                "location":{
+                    "image":"363,289,394,256"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/151116.js",
+                "id":151116
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":41,
+                "content":"Designated Authority may require an independent audit of Contractor\u2019s books and accounts at Contractor\u2019s cost. Designated Authority may inspect and audit Contractor\u2019s books and accounts at Designated Authority\u2019s own costs. Contractor shall fully assist and cooperate with audits.--Art. 16\n",
+                "location":{
+                    "image":"604,285,636,244"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126037.js",
+                "id":126037
+            },
+            {
+                "access":"public",
+                "title":"M\u00e9canismes de r\u00e9clamation pour les parties non contractantes//Indemnification",
+                "page":42,
+                "content":"The Contractor shall keep effectually indemnified and hold harmless the Designated Authority and the members of the Joint Commission against all actions, suits, proceedings, costs charges, claims and demands whatsoever (including for economic loss) which may be made or brought against them by\u00a0 \u00a0any third party in relation to or in connection with this Agreement or resulting, directly or indirectly, from Petroleum Operations under the Agreement. The Designated Authority and/or the members of the Joint Commission shall give the Contractor prompt notice of any such claim and shall not settle it without the prior consent of the Contractor.--Art. 17.1\n",
+                "location":{
+                    "image":"580,126,610,95"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/151114.js",
+                "id":151114
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":46,
+                "content":"Laws of England--Art 20.2\n",
+                "location":{
+                    "image":"377,105,408,69"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126048.js",
+                "id":126048
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":47,
+                "content":"Timor Sea Designated Authority\n",
+                "location":{
+                    "image":"128,83,159,46"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126020.js",
+                "id":126020
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":47,
+                "content":"Woodside Petroleum (Timor Sea 1) Pty Ltd, INPEX TIMOR SEA LTD, Talisman Resources (JPDA 03-01) Pty Ltd (collectively, the Contractor)\n",
+                "location":{
+                    "image":"309,74,336,36"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126019.js",
+                "id":126019
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep)",
+                "page":48,
+                "content":"Offshore--Annex A, B\n",
+                "location":{
+                    "image":"84,95,116,55"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105/annotations/126017.js",
+                "id":126017
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Woodside INPEX Talisman - Timor-Leste, Australia, 2006",
+        "data":{
+            "Signature Date":"24/07/2006",
+            "Type of Mining Title":"Production Sharing Contract",
+            "Signature Year":"2006",
+            "Resource":"Hydrocarbons",
+            "Countries":"Timor-Leste,Australia"
+        },
+        "created_at":"Mon, 14 Oct 2013 15:05:48 +0000",
+        "display_language":"eng",
+        "updated_at":"Thu, 23 Apr 2015 17:10:51 +0000",
+        "id":"804700-psc-jpda-06-105",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/804700/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/804700/psc-jpda-06-105.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/804700/pages/psc-jpda-06-105-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/804700/pages/psc-jpda-06-105-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/804700/psc-jpda-06-105.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/804700/pages/psc-jpda-06-105-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=804700"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":69,
+        "canonical_url":"http://www.documentcloud.org/documents/804700-psc-jpda-06-105.html"
+    }
+}

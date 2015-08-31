@@ -1,0 +1,701 @@
+{
+    "document":{
+        "file_hash":"db4561a309d41d8f08e5325a58d2774dd3ff93ef",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Concession - Titre du document\n",
+                "location":{
+                    "image":"770,137,804,103"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82881.js",
+                "id":82881
+            },
+            {
+                "access":"public",
+                "title":"Agence(s) de l'Etat signataire(s)//State agency, National Company, Ministry ",
+                "page":2,
+                "content":"Ministre des mines, de la G\u00e9ologie et de l'Environnement - Pr\u00e9ambule\n",
+                "location":{
+                    "image":"373,97,401,62"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82887.js",
+                "id":82887
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), pour l'Etat//Signatories, State ",
+                "page":2,
+                "content":"Dr. Alpha Mady Soumah, Ministre des Mines, de la G\u00e9ologie et de l'Environnement - Pr\u00e9ambule\n",
+                "location":{
+                    "image":"414,115,442,73"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82888.js",
+                "id":82888
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors de la Guin\u00e9e, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociaux //Parent companies or affilates outside of the country, if different from the above mentionned; and their corporate headquarters ",
+                "page":2,
+                "content":"Euronimba: Saint Helier, 22 Grenville Street, Jersey, Iles Anglo-Normandes - Pr\u00e9ambule\n",
+                "location":{
+                    "image":"565,105,592,65"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82879.js",
+                "id":82879
+            },
+            {
+                "access":"public",
+                "title":"Nom(s) de la soci\u00e9t\u00e9(s) contractante(s)//Name of contracting company ",
+                "page":2,
+                "content":"Euronimba, une soci\u00e9t\u00e9 r\u00e9gie par le Droit de Jersey. Les Soci\u00e9t\u00e9s BHP Billiton et Newmont La Source sont actionnaires de Euronimba dans les proportions indiqu\u00e9es \u00e0 l\u2019Annexe A: BHP Billiton: 32.37% Newmont Lasource: 32.37%. Les autre actionnaires sont A.M.C.L Limited (14.35%), Sumitomo Corporation (11.18%) et Cominor (9.7%) - Pr\u00e9ambule\n",
+                "location":{
+                    "image":"597,103,626,67"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82885.js",
+                "id":82885
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), pour la soci\u00e9t\u00e9 //Signatories, company ",
+                "page":2,
+                "content":"Andr\u00e9 Papon, pr\u00e9sident du conseil d'administration, Euronimba - Pr\u00e9ambule et Annexe A\n",
+                "location":{
+                    "image":"636,124,667,84"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82886.js",
+                "id":82886
+            },
+            {
+                "access":"public",
+                "title":"Lieu-dit habit\u00e9 le plus proche//Closest community ",
+                "page":4,
+                "content":"Lola - D\u00e9claration Pr\u00e9liminaire\n",
+                "location":{
+                    "image":"101,148,134,105"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82884.js",
+                "id":82884
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":4,
+                "content":"Minerai de fer - Art. 2.1\n",
+                "location":{
+                    "image":"633,95,668,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82895.js",
+                "id":82895
+            },
+            {
+                "access":"public",
+                "title":"Nom du Gisement//Deposit/site name ",
+                "page":4,
+                "content":"Gisement de fer des Monts Nimba - D\u00e9claration Pr\u00e9liminaire\n",
+                "location":{
+                    "image":"93,85,127,48"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82882.js",
+                "id":82882
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux et d'investissements//Work and investment commitments ",
+                "page":6,
+                "content":"La convention d\u00e9taille les obligations de travaux et d'investissement en 4 \u00e9tapes et la soci\u00e9t\u00e9 devra suivre ce plan. L'Investisseur entreprendra les \u00e9tudes sur les infrastructures ferroviaires et portuaires, et compl\u00e8tera les \u00e9tudes et travaux n\u00e9cessaires pour une mise en production de 20 millions de tonnes par an. - Art. 3.2\n",
+                "location":{
+                    "image":"278,82,312,46"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83172.js",
+                "id":83172
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien de l'infrastructure//Construction and maintenance of infrastructure ",
+                "page":6,
+                "content":"Le trac\u00e9 du chemin de fer Transguin\u00e9en reliant les gisements de minerai de fer des Monts Nimba et Simandou \u00e0 un site portuaire situ\u00e9 au Sud de Conakry constitue la base du Projet. Ce trac\u00e9 sera donc \u00e9tudi\u00e9 selon des dispositions \u00e9tablies. Ces \u00e9tudes financ\u00e9es par l\u2019Investisseur seront pr\u00e9sent\u00e9es \u00e0 un Comit\u00e9 Tripartite de Coordination. S\u2019il apparait \u00e0 l\u2019Investisseur et au Comit\u00e9, une fois connus les r\u00e9sultats des \u00e9tudes, que le T.G.R. et/ou le site portuaire auquel il aboutit, ne permettent pas de satisfaire les objectifs, l\u2019Investisseur et le Gouvernement se concerteront pour \u00e9tudier d\u2019autres solutions qui permettent de poursuivre le d\u00e9veloppement du projet. La Soci\u00e9t\u00e9 construira les autres infrastructures n\u00e9cessaires pour le d\u00e9roulement du projet.  - Arts. 3.2 (Etape 1), 15.2 - 15.5\n",
+                "location":{
+                    "image":"279,124,315,86"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83173.js",
+                "id":83173
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, Longitude et Latitude//Location, longitude and latitude ",
+                "page":8,
+                "content":"Les blocs d\u00e9finis a l'Annexe 5.1 - Art.5\n",
+                "location":{
+                    "image":"749,73,783,32"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82883.js",
+                "id":82883
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term ",
+                "page":9,
+                "content":"25 ans - Art. 5.2\n",
+                "location":{
+                    "image":"116,74,148,42"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82893.js",
+                "id":82893
+            },
+            {
+                "access":"public",
+                "title":"Conditions de renouvellement//Conditions for renewal  ",
+                "page":9,
+                "content":"Renouvel\u00e9e conform\u00e9ment au Code Minier - Art. 5.2\n",
+                "location":{
+                    "image":"160,107,196,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82894.js",
+                "id":82894
+            },
+            {
+                "access":"public",
+                "title":"Assurance//Insurance ",
+                "page":11,
+                "content":"La soci\u00e9t\u00e9 doit conclure tous les contrats d'assurance d'un investisseur diligent. - Art. 6.6\n",
+                "location":{
+                    "image":"144,83,176,51"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83143.js",
+                "id":83143
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":11,
+                "content":"Conform\u00e9ment au Code Minier, l'Investisseur soumettra au Ministre en charge des Mines des rapports p\u00e9riodiques sur la progression des travaux, des d\u00e9penses engag\u00e9es, des r\u00e9sultats obtenus et des difficult\u00e9s rencontr\u00e9es. - Art. 6.8\n",
+                "location":{
+                    "image":"340,92,374,57"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83180.js",
+                "id":83180
+            },
+            {
+                "access":"public",
+                "title":"Commercialisation et acc\u00e8s \u00e0 la production //Marketing of output and state access to output ",
+                "page":16,
+                "content":"La soci\u00e9t\u00e9 est responsable de la commercialisation des produits, qui seront vendus selon les usages du march\u00e9 international en recherchant des contrats \u00e0 long terme. L'Etat aura un acc\u00e8s \u00e0 la production commerciale \u00e0 des conditions \u00e9quivalentes aux autres acheteurs. - Art.13 et 14\n",
+                "location":{
+                    "image":"123,85,154,53"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83176.js",
+                "id":83176
+            },
+            {
+                "access":"public",
+                "title":"Commercialisation et acc\u00e8s \u00e0 la production //Marketing of output and state access to output ",
+                "page":16,
+                "content":"La soci\u00e9t\u00e9 est responsable de la commercialisation des produits, qui seront vendus selon les usages du march\u00e9 international en recherchant des contrats \u00e0 long terme. L'Etat aura un acc\u00e8s \u00e0 la production commerciale \u00e0 des conditions \u00e9quivalentes aux autres acheteurs. - Art.13 et 14\n",
+                "location":{
+                    "image":"262,90,300,55"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83177.js",
+                "id":83177
+            },
+            {
+                "access":"public",
+                "title":"Financement de l\u2019infrastructure//Financing of infrastructure ",
+                "page":18,
+                "content":"L'Etat et la soci\u00e9t\u00e9 chercheront \u00e0 promouvoir le chemin de fer aupr\u00e8s d'investisseurs et \u00e0 mettre en place la structure financi\u00e8re et juridique de transport en charge de la construction et du fonctionnement des infrastructures. - Art.15.2.2\n",
+                "location":{
+                    "image":"259,122,292,84"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83179.js",
+                "id":83179
+            },
+            {
+                "access":"public",
+                "title":"Utilisation de l\u2019infrastructure par les tiers//Third party use of infrastructure ",
+                "page":18,
+                "content":"L'utilisation fera l'objet d'une convention entre la soci\u00e9t\u00e9 et l'entit\u00e9 charg\u00e9e d'exploiter les infrastructures ferroviaires et portuaires dont les termes et conditions garantiront \u00e0 la Soci\u00e9t\u00e9 l'\u00e9vacuation des ses produits de mani\u00e8re comp\u00e9titive. - Art.15.3\n",
+                "location":{
+                    "image":"434,101,469,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83178.js",
+                "id":83178
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 cr\u00e9\u00e9e ou envisag\u00e9e pour ex\u00e9cuter le projet//Name and/or composition of executing company created or anticipated ",
+                "page":19,
+                "content":"SMFG, d\u00e9tenue \u00e0 95% par EuroNimba et \u00e0 5% par Mifergui Nimba; l\u2019Etat dispose d\u2019une option pour acqu\u00e9rir 10% de la SMFG, qu\u2019il peut exercer jusqu\u2019\u00e0 la signature des contrats de financements de la construction du projet - Arts. 17.2 - 17.3\n",
+                "location":{
+                    "image":"596,84,639,43"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82889.js",
+                "id":82889
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State equity ",
+                "page":20,
+                "content":"Option de souscription de l'Etat guin\u00e9en au capital de la SMFG de 10%, valable jusqu'\u00e0 la signature des contrats de financement de la construction du projet. La somme n\u00e9cessaire \u00e0 la participation initiale de l'Etat sera avanc\u00e9e par l'investisseur. - Art. 17.3\n",
+                "location":{
+                    "image":"301,122,335,83"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83167.js",
+                "id":83167
+            },
+            {
+                "access":"public",
+                "title":"Approvisionnement en biens et services locaux//Local procurement requirements ",
+                "page":21,
+                "content":"A qualit\u00e9, disponibilit\u00e9 et prix comparables, la soci\u00e9t\u00e9 s'engage \u00e0 accorder une pr\u00e9f\u00e9rence \u00e0 l'achat des biens, mat\u00e9riels et services disponibles en Guin\u00e9e. - Art. 18\n",
+                "location":{
+                    "image":"299,84,329,42"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83142.js",
+                "id":83142
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel guin\u00e9en//Local employment requirements ",
+                "page":21,
+                "content":"La soci\u00e9t\u00e9 s'engage \u00e0 employer des Guin\u00e9ens pour r\u00e9pondre \u00e0 ses besoins en main d'\u0153uvre non-qualifi\u00e9e et \u00e0 donner la pr\u00e9f\u00e9rence aux nationaux guin\u00e9ens justifiant de la qualification et de l'exp\u00e9rience requise par la soci\u00e9t\u00e9 pour les emplois de cat\u00e9gorie cadre/cadre sup\u00e9rieur. - Arts.19.1.1 - 19.1.2\n",
+                "location":{
+                    "image":"649,89,680,50"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83140.js",
+                "id":83140
+            },
+            {
+                "access":"public",
+                "title":"Formation du personnel guin\u00e9en//Management training requirement for nationals ",
+                "page":21,
+                "content":"Programme de formation et de promotion du personnel guin\u00e9en. - Art. 19.1.3\n",
+                "location":{
+                    "image":"809,91,844,54"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83139.js",
+                "id":83139
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause ",
+                "page":24,
+                "content":"L'Etat s'engage \u00e0 ce que les modifications l\u00e9gislatives ult\u00e9rieures ne s'appliquent pas \u00e0 la convention sans accord \u00e9crit pr\u00e9alable de la soci\u00e9t\u00e9. - Art.21.1\n",
+                "location":{
+                    "image":"293,105,332,60"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83183.js",
+                "id":83183
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9installation des habitants//Resettlement ",
+                "page":28,
+                "content":"La soci\u00e9t\u00e9 devra indemniser de mani\u00e8re \u00e9quitable les habitants que l'Etat est amen\u00e9 \u00e0 reloger pour les besoins du projet, conform\u00e9ment \u00e0 la loi. - Art. 23.2.5\n",
+                "location":{
+                    "image":"129,134,159,94"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83144.js",
+                "id":83144
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining Tax/ Royalty Tax ",
+                "page":29,
+                "content":"3,5% du prix de la tonne de minerai concentr\u00e9 export\u00e9. Pour le minerai de qualit\u00e9 inf\u00e9rieure, le taux du code minier est appliqu\u00e9. - Art. 25.1\n",
+                "location":{
+                    "image":"242,70,275,37"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83146.js",
+                "id":83146
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate ",
+                "page":29,
+                "content":"35% sur les b\u00e9n\u00e9fices industriels et commerciaux, pouvant \u00eatre r\u00e9duit par le gouvernement si n\u00e9cessaire pour garantir un taux de rentabilit\u00e9 interne de 12,5% pour les actionnaires d'EURONIMBA. - Art. 25.2\n",
+                "location":{
+                    "image":"529,92,565,53"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83147.js",
+                "id":83147
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: d\u00e9ductibilit\u00e9 des frais financiers//Income tax: deductibility of expenses ",
+                "page":29,
+                "content":"Les frais financiers sont d\u00e9ductibles pour le calcul du b\u00e9n\u00e9fice net taxable. - Art. 25.2\n",
+                "location":{
+                    "image":"576,89,609,52"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83148.js",
+                "id":83148
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des nationaux//Witholding tax on national salaries ",
+                "page":30,
+                "content":"Versement de 6% des salaires vers\u00e9s en et hors Guin\u00e9e; contribution \u00e0 la formation de 1,5% de la masse salariale sauf si les d\u00e9penses de formation de la soci\u00e9t\u00e9 d\u00e9passent le montant de cette taxe. - Art. 25.3.1",
+                "location":{
+                    "image":"359,142,394,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83152.js",
+                "id":83152
+            },
+            {
+                "access":"public",
+                "title":"Part patronale des cotisations de s\u00e9curit\u00e9 sociale//Social security contributions by employer ",
+                "page":30,
+                "content":"Taux applicable selon la l\u00e9gislation en vigueur. - Art. 25.3.2\n",
+                "location":{
+                    "image":"737,133,772,91"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83165.js",
+                "id":83165
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les prestations de services par des entreprises non r\u00e9sidentes//Witholding tax on services of non-resident companies ",
+                "page":31,
+                "content":"10% des honoraires, prestations et services factur\u00e9s, non-d\u00e9ductible du b\u00e9n\u00e9fice net taxable. - Art. 25.3.3\n",
+                "location":{
+                    "image":"130,233,160,192"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83154.js",
+                "id":83154
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des expatri\u00e9s//Witholding tax on expatriate salaries ",
+                "page":31,
+                "content":"10% des salaires nets, non-d\u00e9ductible pour le calcul du b\u00e9n\u00e9fice net taxable. - Art. 25.3.3\n",
+                "location":{
+                    "image":"131,185,163,146"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83153.js",
+                "id":83153
+            },
+            {
+                "access":"public",
+                "title":"TVA//VAT ",
+                "page":31,
+                "content":"Applicable \u00e0 la soci\u00e9t\u00e9 sur les achats et services effectu\u00e9s en Guin\u00e9e et rembours\u00e9e par l'administration selon la l\u00e9gislation en vigueur. La TVA sur les biens et services import\u00e9s est appliqu\u00e9e \u00e0 la soci\u00e9t\u00e9 selon un d\u00e9cret du 15 juillet 1997. - Art. 25.4 et Art. 26.2\n",
+                "location":{
+                    "image":"533,89,567,47"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83164.js",
+                "id":83164
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de recherche//Custom duties during exploration phase ",
+                "page":32,
+                "content":"Admission temporaire au prorata temporis gratuit des biens n\u00e9cessaires aux recherches pendant les travaux. Les biens devront \u00eatre r\u00e9export\u00e9s \u00e0 la fin des travaux de recherches et d'\u00e9tudes. - Art. 26.3\n",
+                "location":{
+                    "image":"348,108,386,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83158.js",
+                "id":83158
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: exoneration//Income tax: exemptions ",
+                "page":32,
+                "content":"P\u00e9riode de 8 ans d'exon\u00e9ration \u00e0 compter de la premi\u00e8re ann\u00e9e d'exploitation, conform\u00e9ment au Code Minier, plus quatre ann\u00e9es suppl\u00e9mentaires, soit 12 ans. - Art. 27\n",
+                "location":{
+                    "image":"848,87,876,51"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83150.js",
+                "id":83150
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les Revenus des Valeurs Mobili\u00e8res (IRVM)//Capital gains tax ",
+                "page":32,
+                "content":"Exon\u00e9ration compl\u00e8te - Art. 27\n",
+                "location":{
+                    "image":"855,154,885,115"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83151.js",
+                "id":83151
+            },
+            {
+                "access":"public",
+                "title":"Redevances superficiaires//Surface fees ",
+                "page":32,
+                "content":"Exon\u00e9ration de la soci\u00e9t\u00e9. - Art. 27\n",
+                "location":{
+                    "image":"889,82,920,45"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83166.js",
+                "id":83166
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de construction//Custom duties during construction phase ",
+                "page":33,
+                "content":"Exon\u00e9ration totale de la soci\u00e9t\u00e9 et de ses sous-traitants directs, mais paiement d'une taxe d'enregistrement de 0,5% de la valeur CAF. - Art.27.1\n",
+                "location":{
+                    "image":"508,108,545,67"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83159.js",
+                "id":83159
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase d'exploitation//Custum duties during  operation phase ",
+                "page":34,
+                "content":"Taux de 5,6% pour les fournitures destin\u00e9es \u00e0 l'extraction et \u00e0 la valorisation du minerais, et selon la structure des prix applicable au secteur minier pour les carburants, lubrifiants et autres produits p\u00e9troliers import\u00e9s. - Art. 27.2.1\n",
+                "location":{
+                    "image":"174,128,208,86"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83160.js",
+                "id":83160
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: amortissement//Income tax: amortization ",
+                "page":34,
+                "content":"D\u00e9duction des amortissements selon l'article 144 du Code Minier. - Art. 27.2.2\n",
+                "location":{
+                    "image":"474,134,505,93"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83149.js",
+                "id":83149
+            },
+            {
+                "access":"public",
+                "title":"Provision pour la reconstitution des gisements//Provisions for renewing reserves ",
+                "page":34,
+                "content":"Montant maximum de 10% du b\u00e9n\u00e9fice imposable \u00e0 la fin de chaque exercice. La provision doit \u00eatre employ\u00e9e dans les deux ans au financement de recherches en Guin\u00e9e, sinon la partie non-utilis\u00e9e se rapporte au r\u00e9sultat du troisi\u00e8me exercice. Elle est d\u00e9ductible pour le calcul du b\u00e9n\u00e9fice imposable. - Art. 27.2.3\n",
+                "location":{
+                    "image":"584,140,621,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83155.js",
+                "id":83155
+            },
+            {
+                "access":"public",
+                "title":"Cr\u00e9dit d'investissement//Investment credit ",
+                "page":35,
+                "content":"Allocation de 5% de tout investissement r\u00e9alis\u00e9 en cours d'exercice, d\u00e9ductible pour le calcul du b\u00e9n\u00e9fice imposable. - Art. 27.2.4\n",
+                "location":{
+                    "image":"112,153,148,115"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83156.js",
+                "id":83156
+            },
+            {
+                "access":"public",
+                "title":"Autres exon\u00e9rations//Other exemptions ",
+                "page":35,
+                "content":"Exon\u00e9ration compl\u00e8te de tout imp\u00f4t direct ou indirect autre que ceux pr\u00e9vus dans la convention. - Art. 27.2.5\n",
+                "location":{
+                    "image":"223,147,262,106"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83168.js",
+                "id":83168
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":35,
+                "content":"La soci\u00e9t\u00e9 devra \u00e9laborer des \u00e9tudes d'impact conform\u00e9ment aux r\u00e9glementations en vigueur, \u00e0 ses propres standards et aux normes internationales admises par les compagnies mini\u00e8res. Les travaux miniers ne commenceront pas avant que l'Etat ait approuv\u00e9 les \u00e9tudes d'impact. - Art.29.1\n",
+                "location":{
+                    "image":"702,131,740,92"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83170.js",
+                "id":83170
+            },
+            {
+                "access":"public",
+                "title":"Convention de d\u00e9veloppement local//Local development agreement ",
+                "page":35,
+                "content":"Signature d'une Convention Environnementale et de D\u00e9veloppement Local, attach\u00e9e en annexe 29.1 - Art. 29.1\n",
+                "location":{
+                    "image":"702,82,741,39"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83135.js",
+                "id":83135
+            },
+            {
+                "access":"public",
+                "title":"Consultations communautaires requises//Requirements for community consultation  ",
+                "page":35,
+                "content":"Les organisations non gouvernementales concern\u00e9es par les probl\u00e8mes environnementaux des Monts Nimba seront consult\u00e9es pendant l'\u00e9tude d'impact. - Art. 29.1\n",
+                "location":{
+                    "image":"757,91,790,46"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83137.js",
+                "id":83137
+            },
+            {
+                "access":"public",
+                "title":"Autres - Dispositions environnementales//Other - Environmental provisions",
+                "page":36,
+                "content":"La soci\u00e9t\u00e9 s'engage \u00e0 respecter une Convention sur l'environnement pass\u00e9e avec l'Etat, en accord avec l'annexe 29.1 du contrat, et \u00e0 respecter divers engagements. L'annexe 29.1 est le compte-rendu d'une mission du comit\u00e9 du patrimoine mondial de l'UNESCO qui pr\u00e9conise entre autre que la soci\u00e9t\u00e9 mini\u00e8re apporte son soutien financier au d\u00e9veloppement rural et \u00e0 la protection de l'environnement. - Art.29.1 et Annexe 29.1\n",
+                "location":{
+                    "image":"904,102,942,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83171.js",
+                "id":83171
+            },
+            {
+                "access":"public",
+                "title":"Protection des lieux sacr\u00e9s, des ressources locales et du milieu de vie//Protection of sacred locations, resources and environment ",
+                "page":37,
+                "content":"En cas de d\u00e9couverte arch\u00e9ologique, la soci\u00e9t\u00e9 devra faire les \u00e9tudes appropri\u00e9es \u00e0 ses frais et s'engage \u00e0 ne pas d\u00e9placer les \u00e9l\u00e9ments concern\u00e9s. - Art. 29.2\n",
+                "location":{
+                    "image":"820,88,855,43"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83136.js",
+                "id":83136
+            },
+            {
+                "access":"public",
+                "title":"Cession / transfert//Assignment / transfer ",
+                "page":38,
+                "content":"Aucune cession sans accord pr\u00e9alable de l'Etat. Le cessionnaire doit reprendre toutes les obligations du c\u00e9dant. - Art.30\n",
+                "location":{
+                    "image":"261,90,297,56"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83184.js",
+                "id":83184
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution ",
+                "page":39,
+                "content":"En cas d'absence de r\u00e9solution du litige \u00e0 l'amiable, le litige sera tranch\u00e9 selon la Convention pour le r\u00e8glement des diff\u00e9rends relatifs aux investissements entre Etats et ressortissants d'autres Etats entr\u00e9e en vigueur le 4 d\u00e9cembre 1968. L'arbitrage se tiendra \u00e0 Paris et le droit Guin\u00e9en sera appliqu\u00e9. - Art.31.2\n",
+                "location":{
+                    "image":"116,90,151,52"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83182.js",
+                "id":83182
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable//Governing law ",
+                "page":39,
+                "content":"Droit de la R\u00e9publique de Guin\u00e9e - Art. 32\n",
+                "location":{
+                    "image":"793,91,832,52"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83181.js",
+                "id":83181
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9siliation / fin du contrat//Cancellation / Termination ",
+                "page":40,
+                "content":"R\u00e9siliation pour cause de faillite ou dissolution de la soci\u00e9t\u00e9 ou par consentement mutuel. Convention r\u00e9siliable de plein droit avec pr\u00e9avis de 15 jours. - Art.34\n",
+                "location":{
+                    "image":"452,97,487,56"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83185.js",
+                "id":83185
+            },
+            {
+                "access":"public",
+                "title":"Autre - Modification de l'\u00e9quilibre \u00e9conomique//Other - Hardship clause ",
+                "page":41,
+                "content":"En cas de modification de l'\u00e9quilibre \u00e9conomique du contrat, les parties r\u00e9examineront objectivement et loyalement la convention. - Art. 37.2\n",
+                "location":{
+                    "image":"519,93,559,51"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83188.js",
+                "id":83188
+            },
+            {
+                "access":"public",
+                "title":"Autre - Force majeure ",
+                "page":42,
+                "content":"Interpr\u00e9t\u00e9e conform\u00e9ment aux principes et usages du droit international. - Art. 39\n",
+                "location":{
+                    "image":"386,81,423,39"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83189.js",
+                "id":83189
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":43,
+                "content":"La Soci\u00e9t\u00e9, ses affili\u00e9s et sous-traitants s'engagent \u00e0 tenir une comptabilit\u00e9 conforme au Plan Comptable National et \u00e0 ouvrir les livres aux repr\u00e9sentants de l'Etat m\u00eame pour les comptes se trouvant \u00e0 l'\u00e9tranger. - Art. 40\n",
+                "location":{
+                    "image":"288,91,322,55"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83169.js",
+                "id":83169
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality ",
+                "page":43,
+                "content":"L'Etat s'engage \u00e0 consid\u00e9rer comme confidentielles toutes les informations communiqu\u00e9es par la soci\u00e9t\u00e9 et ne les r\u00e9v\u00e8lera \u00e0 des tiers qu'avec son consentement. - Art.40\n",
+                "location":{
+                    "image":"289,137,325,97"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83186.js",
+                "id":83186
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language ",
+                "page":44,
+                "content":"Fran\u00e7aise - La convention est traduite en anglais dans l'Annexe 42.2. - Art.42.1\n",
+                "location":{
+                    "image":"290,76,326,42"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/83187.js",
+                "id":83187
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature ",
+                "page":44,
+                "content":"25/04/2003 - Signatures\n",
+                "location":{
+                    "image":"632,327,661,292"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/526342-smfg-convention/annotations/82891.js",
+                "id":82891
+            }
+        ],
+        "description":"<i>Nom de la soci\u00e9t\u00e9 guin\u00e9enne : </i>Soci\u00e9t\u00e9 des Mines de Fer de Guin\u00e9e<br><i>Si\u00e8ge social : </i><br><i> Structure du Capital : </i>Soci\u00e9t\u00e9 d\u00e9tenue \u00e0 95% par EuroNimba et \u00e0 5% par Mifergui Nimba;  actionnaires actuels (2011) de la soci\u00e9t\u00e9 Euronimba:  Billiton Guin\u00e9e B.V,  filiale du groupe BHP, 43,5%,  Newmont LaSource S.A.S, 43,5%, Compagnie Fran\u00e7aise des Mines et M\u00e9taux, soci\u00e9t\u00e9 du groupe public fran\u00e7ais Areva,  13%. 50% de Mifergui nimba appartiennent a l'Etat.<br><i>Soci\u00e9t\u00e9 m\u00e8re ou affili\u00e9e hors de la Guin\u00e9e; et leurs si\u00e8ges sociaux : </i>Euronimba: Saint Helier, 22 Grenville Street, Jersey, Iles Anglo-Normandes<br><i>Site web de l\u2019entreprise : </i><br><i>Date d'octroi du permis d'exploitation ou de la concession : </i>29/07/2003<br><i>Investissement estim\u00e9 : </i>US$3,6 milliards \u00e0 US$6,3 milliards suivant l'option d'\u00e9vacuation<br><i>Production attendue : </i>30 Mtpa (m\u00e9trique ton per anum) de minerai de fer et 10 mtpa de minerai et morceau<br><i>R\u00e9serves estim\u00e9es : </i>600-800 millions de tonnes de minerai de fer<br><br><br><i>Note : Ce r\u00e9sum\u00e9 est destin\u00e9 \u00e0 faciliter la compr\u00e9hension par un large public des points importants du document original. Il ne s\u2019agit en aucun cas d\u2019une liste exhaustive des obligations l\u00e9gales li\u00e9es au projet minier concern\u00e9. Ce r\u00e9sum\u00e9 ne comporte aucune opinion quant au statut juridique du document ou de tout \u00e9l\u00e9ment du document, et ne refl\u00e8te aucunement des d\u00e9cisions ou positions du CTRTCM ou du Gouvernement de la R\u00e9publique de Guin\u00e9e en lien avec le processus de revue des conventions et titres miniers. Ce r\u00e9sum\u00e9 doit \u00eatre lu en lien avec le texte int\u00e9gral du document original et avec les lois et textes r\u00e9glementaires applicables. Un certain nombre de lois et r\u00e9glementations applicables directement ou indirectement au secteur minier sont disponibles <a href=\"http://www.contratsminiersguinee.org/about/legislation.html\">ici</a>.</i>",
+        "language":"eng",
+        "title":"Euronimba - Guin\u00e9e, 2003",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Resource":"Fer",
+            "Countries":"Guinea",
+            "Signature Date":"25/04/2003",
+            "Contract Term (duration) in Years":"25",
+            "Signature Year":"2003"
+        },
+        "created_at":"Thu, 29 Nov 2012 19:29:15 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 22 Apr 2015 17:15:02 +0000",
+        "id":"526342-smfg-convention",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/526342/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/526342/smfg-convention.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/526342/pages/smfg-convention-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/526342/pages/smfg-convention-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/526342/smfg-convention.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/526342/pages/smfg-convention-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=526342"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":47,
+        "canonical_url":"http://www.documentcloud.org/documents/526342-smfg-convention.html"
+    }
+}

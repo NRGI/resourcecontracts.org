@@ -1,0 +1,33 @@
+{
+    "document":{
+        "file_hash":"072638e4271aa005ae1fd4dd1e804560388d4550",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"D\u00e9cret de Nomination des Membres du CTRTCM",
+        "data":{},
+        "created_at":"Wed, 14 Nov 2012 05:55:54 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 14 Nov 2012 09:15:46 +0000",
+        "id":"515240-decret-de-nomination-des-membres-du-ctrtcm",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/515240/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/515240/decret-de-nomination-des-membres-du-ctrtcm.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/515240/pages/decret-de-nomination-des-membres-du-ctrtcm-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/515240/pages/decret-de-nomination-des-membres-du-ctrtcm-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/515240/decret-de-nomination-des-membres-du-ctrtcm.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/515240/pages/decret-de-nomination-des-membres-du-ctrtcm-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=515240"
+        },
+        "contributor":"Jed Miller",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":3,
+        "canonical_url":"http://www.documentcloud.org/documents/515240-decret-de-nomination-des-membres-du-ctrtcm.html"
+    }
+}

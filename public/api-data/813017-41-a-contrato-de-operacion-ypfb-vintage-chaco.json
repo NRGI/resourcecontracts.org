@@ -1,0 +1,94 @@
+{
+    "document":{
+        "file_hash":"e85ccb2fba1636bf06b98a9ed018f2f55b06ce75",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Bolivia",
+                "location":{
+                    "image":"329,508,356,477"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/813017-41-a-contrato-de-operacion-ypfb-vintage-chaco/annotations/129370.js",
+                "id":129370
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Operation Contract",
+                "location":{
+                    "image":"375,518,410,485"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/813017-41-a-contrato-de-operacion-ypfb-vintage-chaco/annotations/129387.js",
+                "id":129387
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":2,
+                "content":"2006",
+                "location":{
+                    "image":"201,542,233,511"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/813017-41-a-contrato-de-operacion-ypfb-vintage-chaco/annotations/129380.js",
+                "id":129380
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat//Name of company executing the document ",
+                "page":2,
+                "content":"Vintage Petroleum Boliviana S.A., Empresa Petrolera Chaco S.A.",
+                "location":{
+                    "image":"666,150,693,115"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/813017-41-a-contrato-de-operacion-ypfb-vintage-chaco/annotations/129413.js",
+                "id":129413
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":6,
+                "content":"Hydrocarbons",
+                "location":{
+                    "image":"304,219,332,184"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/813017-41-a-contrato-de-operacion-ypfb-vintage-chaco/annotations/129400.js",
+                "id":129400
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"YPFB Vintage Chaco - Bolivia, 2006",
+        "data":{
+            "Year of Signature":"2006",
+            "Type of Mining Title":"Operation",
+            "Resource":"Hydrocarbons",
+            "Countries":"Bolivia"
+        },
+        "created_at":"Wed, 30 Oct 2013 14:25:44 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 10 Nov 2014 06:45:37 +0000",
+        "id":"813017-41-a-contrato-de-operacion-ypfb-vintage-chaco",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/813017/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/813017/41-a-contrato-de-operacion-ypfb-vintage-chaco.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/813017/pages/41-a-contrato-de-operacion-ypfb-vintage-chaco-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/813017/pages/41-a-contrato-de-operacion-ypfb-vintage-chaco-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/813017/41-a-contrato-de-operacion-ypfb-vintage-chaco.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/813017/pages/41-a-contrato-de-operacion-ypfb-vintage-chaco-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=813017"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":85,
+        "canonical_url":"http://www.documentcloud.org/documents/813017-41-a-contrato-de-operacion-ypfb-vintage-chaco.html"
+    }
+}

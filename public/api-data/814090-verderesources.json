@@ -1,0 +1,94 @@
+{
+    "document":{
+        "file_hash":"3405cc9cd780f545755fe60b86da9e35c46f64ff",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Peru",
+                "location":{
+                    "image":"160,454,189,411"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814090-verderesources/annotations/129952.js",
+                "id":129952
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":1,
+                "content":"Minerals",
+                "location":{
+                    "image":"174,385,205,347"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814090-verderesources/annotations/130670.js",
+                "id":130670
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":1,
+                "content":"2013",
+                "location":{
+                    "image":"579,307,610,265"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814090-verderesources/annotations/129953.js",
+                "id":129953
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":2,
+                "content":"Exploration Permit/License",
+                "location":{
+                    "image":"161,565,187,523"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814090-verderesources/annotations/129964.js",
+                "id":129964
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat//Name of company executing the document ",
+                "page":2,
+                "content":"Verde Resources SAC",
+                "location":{
+                    "image":"291,185,320,146"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814090-verderesources/annotations/129957.js",
+                "id":129957
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Verde - Peru, 2013",
+        "data":{
+            "Year of Signature":"2013",
+            "Type of Mining Title":"Exploration Permit/License",
+            "Resource":"Minerals",
+            "Countries":"Peru"
+        },
+        "created_at":"Fri, 01 Nov 2013 20:02:39 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 24 Mar 2015 19:13:21 +0000",
+        "id":"814090-verderesources",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/814090/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814090/verderesources.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/814090/pages/verderesources-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814090/pages/verderesources-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814090/verderesources.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814090/pages/verderesources-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=814090"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":8,
+        "canonical_url":"http://www.documentcloud.org/documents/814090-verderesources.html"
+    }
+}

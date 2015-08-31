@@ -1,0 +1,40 @@
+{
+    "document":{
+        "file_hash":"f22c1ea54d668cfd2c6f7e0b70ff5a26cedb0f4d",
+        "annotations":[],
+        "description":"<i>Nom de la soci\u00e9t\u00e9 guin\u00e9enne : </i>BSG Resources (Guinea) SARL, Soci\u00e9t\u00e9 \u00e0 Responsabilit\u00e9 Limit\u00e9e Unipersonnelle\u00a0de droit guin\u00e9en<br><i>Si\u00e8ge social : </i>Villa Andr\u00e9e, au quartier Col\u00e9ah corniche Sud, Conakry BP\u00a0: 6389<br><i> Structure du Capital : </i><br><i>Soci\u00e9t\u00e9 m\u00e8re ou affili\u00e9e hors de la Guin\u00e9e; et leurs si\u00e8ges sociaux : </i>BSG Resource (Guinea) Limited, soci\u00e9t\u00e9 de droit de Guernsey<br><i>Site web de l\u2019entreprise : </i>http://www.bsgresources.com/<br><i>Date d'octroi du permis d'exploitation ou de la concession : </i>9 Mars 2010<br><i>Investissement estim\u00e9 : </i>Phase I: capacit\u00e9 de 30 mtpa de minerai de fer pendant 15 ans; Phase II: non sp\u00e9cificit\u00e9<br><i>Production attendue : </i>400 millions de tonnes de minerai de fer<br><br><br><i>Note : Ce r\u00e9sum\u00e9 est destin\u00e9 \u00e0 faciliter la compr\u00e9hension par un large public des points importants du document original. Il ne s\u2019agit en aucun cas d\u2019une liste exhaustive des obligations l\u00e9gales li\u00e9es au projet minier concern\u00e9. Ce r\u00e9sum\u00e9 ne comporte aucune opinion quant au statut juridique du document ou de tout \u00e9l\u00e9ment du document, et ne refl\u00e8te aucunement des d\u00e9cisions ou positions du CTRTCM ou du Gouvernement de la R\u00e9publique de Guin\u00e9e en lien avec le processus de revue des conventions et titres miniers. Ce r\u00e9sum\u00e9 doit \u00eatre lu en lien avec le texte int\u00e9gral du document original et avec les lois et textes r\u00e9glementaires applicables. Un certain nombre de lois et r\u00e9glementations applicables directement ou indirectement au secteur minier sont disponibles <a href=\"http://www.contratsminiersguinee.org/about/legislation.html\">ici</a>.</i>",
+        "language":"eng",
+        "title":"ZOGOTA Convention English",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Resource":"Iron Ore",
+            "Countries":"Guinea",
+            "Signature Date":"16/12/2009",
+            "Contract Term (duration) in Years":"25",
+            "Signature Year":"2009"
+        },
+        "created_at":"Wed, 30 Jan 2013 19:01:34 +0000",
+        "display_language":"eng",
+        "updated_at":"Fri, 24 Apr 2015 01:11:36 +0000",
+        "id":"563380-zogota-convention-english",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/563380/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/563380/zogota-convention-english.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/563380/pages/zogota-convention-english-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/563380/pages/zogota-convention-english-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/563380/zogota-convention-english.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/563380/pages/zogota-convention-english-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=563380"
+        },
+        "contributor":"Jed Miller",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":72,
+        "canonical_url":"http://www.documentcloud.org/documents/563380-zogota-convention-english.html"
+    }
+}

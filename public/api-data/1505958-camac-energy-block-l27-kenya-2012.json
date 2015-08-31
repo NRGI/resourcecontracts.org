@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"845a3cde1b0d64ef700b58a7afa30b95e0269d38",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"CAMAC Energy, Block L27 - Kenya, 2012",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2012",
+            "Resource":"Hydrocarbons",
+            "Countries":"Kenya"
+        },
+        "created_at":"Tue, 20 Jan 2015 16:25:04 +0000",
+        "display_language":"eng",
+        "updated_at":"Sun, 01 Feb 2015 21:12:21 +0000",
+        "id":"1505958-camac-energy-block-l27-kenya-2012",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505958/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505958/camac-energy-block-l27-kenya-2012.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505958/pages/camac-energy-block-l27-kenya-2012-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505958/pages/camac-energy-block-l27-kenya-2012-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505958/camac-energy-block-l27-kenya-2012.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505958/pages/camac-energy-block-l27-kenya-2012-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505958"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":97,
+        "canonical_url":"http://www.documentcloud.org/documents/1505958-camac-energy-block-l27-kenya-2012.html"
+    }
+}

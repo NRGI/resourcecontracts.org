@@ -1,0 +1,94 @@
+{
+    "document":{
+        "file_hash":"2c4e7b7748941b28b1585308bae5452d03c0d096",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Annex of Production Sharing Agreement",
+                "location":{
+                    "image":"156,246,190,201"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805441-procedure-comptable-marine-x/annotations/126967.js",
+                "id":126967
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":23,
+                "content":"1995",
+                "location":{
+                    "image":"713,695,747,652"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805441-procedure-comptable-marine-x/annotations/126941.js",
+                "id":126941
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":23,
+                "content":"Republic of the Congo (Congo-Brazzaville)",
+                "location":{
+                    "image":"761,242,793,202"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805441-procedure-comptable-marine-x/annotations/126928.js",
+                "id":126928
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":23,
+                "content":"Hydrocarbons",
+                "location":{
+                    "image":"851,148,886,108"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805441-procedure-comptable-marine-x/annotations/126983.js",
+                "id":126983
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat//Name of company executing the document ",
+                "page":23,
+                "content":"AGIP Recherches Congo, Hydro-Congo",
+                "location":{
+                    "image":"919,67,956,21"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805441-procedure-comptable-marine-x/annotations/126998.js",
+                "id":126998
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"AGIP Hydro-Congo, Procedure Comptable - Congo-Brazzaville, 1995",
+        "data":{
+            "Type of Mining Title":"Production Sharing Contract",
+            "Signature Year":"1995",
+            "Resource":"Hydrocarbons",
+            "Countries":"Republic of Congo"
+        },
+        "created_at":"Wed, 16 Oct 2013 16:15:26 +0000",
+        "display_language":"eng",
+        "updated_at":"Fri, 10 Apr 2015 22:13:25 +0000",
+        "id":"805441-procedure-comptable-marine-x",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/805441/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/805441/procedure-comptable-marine-x.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/805441/pages/procedure-comptable-marine-x-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/805441/pages/procedure-comptable-marine-x-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/805441/procedure-comptable-marine-x.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/805441/pages/procedure-comptable-marine-x-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=805441"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":23,
+        "canonical_url":"http://www.documentcloud.org/documents/805441-procedure-comptable-marine-x.html"
+    }
+}

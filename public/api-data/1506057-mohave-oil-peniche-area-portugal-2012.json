@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"19f2c742025f779c22ab98362d81672636723209",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Mohave Oil, Peniche Area - Portugal, 2012",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Signature Year":"2012",
+            "Resource":"Hydrocarbons",
+            "Countries":"Portugal"
+        },
+        "created_at":"Tue, 20 Jan 2015 16:56:59 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 24 Mar 2015 21:09:40 +0000",
+        "id":"1506057-mohave-oil-peniche-area-portugal-2012",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1506057/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506057/mohave-oil-peniche-area-portugal-2012.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1506057/pages/mohave-oil-peniche-area-portugal-2012-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506057/pages/mohave-oil-peniche-area-portugal-2012-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506057/mohave-oil-peniche-area-portugal-2012.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506057/pages/mohave-oil-peniche-area-portugal-2012-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1506057"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":18,
+        "canonical_url":"http://www.documentcloud.org/documents/1506057-mohave-oil-peniche-area-portugal-2012.html"
+    }
+}

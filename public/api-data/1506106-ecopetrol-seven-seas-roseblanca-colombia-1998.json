@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"6bc326c9bd7b51ed347d2f93ab583f84e7e5389f",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"ECOPETROL, Seven Seas (Roseblanca) - Colombia, 1998",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"1998",
+            "Resource":"Hydrocarbons",
+            "Countries":"Colombia"
+        },
+        "created_at":"Tue, 20 Jan 2015 18:12:29 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 20 Jan 2015 18:19:04 +0000",
+        "id":"1506106-ecopetrol-seven-seas-roseblanca-colombia-1998",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1506106/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506106/ecopetrol-seven-seas-roseblanca-colombia-1998.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1506106/pages/ecopetrol-seven-seas-roseblanca-colombia-1998-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506106/pages/ecopetrol-seven-seas-roseblanca-colombia-1998-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506106/ecopetrol-seven-seas-roseblanca-colombia-1998.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506106/pages/ecopetrol-seven-seas-roseblanca-colombia-1998-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1506106"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":122,
+        "canonical_url":"http://www.documentcloud.org/documents/1506106-ecopetrol-seven-seas-roseblanca-colombia-1998.html"
+    }
+}

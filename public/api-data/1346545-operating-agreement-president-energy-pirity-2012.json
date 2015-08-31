@@ -1,0 +1,292 @@
+{
+    "document":{
+        "file_hash":"f564e86c73d842c54a06c83fe1c388f142c8da03",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":1,
+                "content":"2012--front page; signature page",
+                "location":{
+                    "image":"205,296,228,268"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184081.js",
+                "id":184081
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":1,
+                "content":"29/10/2012--Front page, preamble, signature page ",
+                "location":{
+                    "image":"207,320,228,291"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184080.js",
+                "id":184080
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":1,
+                "content":"President Energy Paraguay S.A. (President)--Front page, preamble, signature page ",
+                "location":{
+                    "image":"319,265,339,228"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184079.js",
+                "id":184079
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":1,
+                "content":"Pirity Hidrocarburos S.R.L. (Pirity)--Front page, preamble, signature page ",
+                "location":{
+                    "image":"385,279,406,235"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184078.js",
+                "id":184078
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Operating Agreement covering Bloque Pirity - Paraguay--Front page",
+                "location":{
+                    "image":"446,260,466,215"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184072.js",
+                "id":184072
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e d'octroi du permis d'exploitation ou concession//Year of issue of title/permit",
+                "page":4,
+                "content":"2012--Preamble, art.1.15",
+                "location":{
+                    "image":"60,132,90,101"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184077.js",
+                "id":184077
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":4,
+                "content":"Designated Contract Area effective as of the date of the Agreement: 29/10/2012--Preamble, art.1.15",
+                "location":{
+                    "image":"61,102,88,72"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184076.js",
+                "id":184076
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":5,
+                "content":"The agreement will remain in force until one of the following occurs: (1) the Concession Contract (executed in May 2008 between Pirity and the Government of Paraguay) terminates; (2) all materials, equipment and personal property used in connection with Joint Operations or Exclusive Operations have been disposed of or removed; (3)final settlement (including settlement relating to a financial audit) has been made. However, Art. 10 (on abandonment procedure) shall remain in effect until all abandonment obligations under the Concession Contract have been satisfied. Further, Articles 4.5, 8, 15.2, 18 and 20.1(A) shall remain in force until all obligations have terminated and all Disputes are resolved. --Preamble, art. 2, art 1.14, art. 1.26, art. 1.39, art. 10, art. 4.5, art. 8, art. 15.2, art. 18, and art. 20.1(A)",
+                "location":{
+                    "image":"130,63,153,30"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184082.js",
+                "id":184082
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":5,
+                "content":"Pirity Hidrocarburos S.R.L and President Energy Paraguay S.A. President will have an 11.8% interest and Pirity will have an 88.2% interest in the rights and obligations arising from the contract--Preamble, Art. 1.48; Art. 3.2. (A)",
+                "location":{
+                    "image":"132,88,152,56"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184071.js",
+                "id":184071
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":5,
+                "content":"Paraguay--Preamble",
+                "location":{
+                    "image":"133,118,153,84"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184070.js",
+                "id":184070
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas//Name and/or number of field, block or deposit",
+                "page":6,
+                "content":"Bloque Pirity--Art .1.15; Exhibit B",
+                "location":{
+                    "image":"464,122,487,98"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184073.js",
+                "id":184073
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":6,
+                "content":"Hydrocarbons (i.e. crude oil, natural gas)--art. 1.17, art. 1.35, art. 1.43, art 3.3 (A)",
+                "location":{
+                    "image":"540,125,567,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184083.js",
+                "id":184083
+            },
+            {
+                "access":"public",
+                "title":"Autre - [le nom de cat\u00e9gorie]//Other - [Discovery procedure]",
+                "page":6,
+                "content":"If a Discovery (of hydrocarbons) is made, the Operator (President) must deliver notice of Discovery and, as soon as possible, must deliver a report of all available details concerning the Discovery and the Operator's recommendation to the Parties.  If the Operating Committee decides the Discovery merits appraisal, the Operator (President) must, within 30 days, deliver a Work Program and Budget to the Parties. Within 15 days of such delivery, the Operating Committee must meet to consider, modify and either approve or reject the appraisal Work Program Budget. If approved, the Operator must take necessary steps to secure approval of the appraisal Work Program and Budget from the Paraguay government.--Art. 1.22, Art. 6.1., Art. 6.4.",
+                "location":{
+                    "image":"702,117,728,96"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184089.js",
+                "id":184089
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Responsabilit\u00e9 environnementale]//Other - [Environmental liability]",
+                "page":15,
+                "content":"The Operator-President (and its Affiliates, and their respective directors, officers and employees) will not be held liable for Environmental Loss except as a Party to the extent of its Participating Interest. The Operator (President) may charge the Joint Account for all costs and expenditures incurred (within the limits approved in the Work Program and Budget or otherwise specified in the Agreement) in pollution containment and removal equipment plus costs of actual control, clean up and remediation resulting from responsibilities relating to Hydrocarbon contamination - as required by applicable laws and regulations of Paraguay.--Art. 1.25, Art. 4.6 (C), Art. 4.12., Exhibit A (Art. 2 and Art. 2.12)",
+                "location":{
+                    "image":"615,154,640,128"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184087.js",
+                "id":184087
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Plan de la sant\u00e9, la s\u00e9curit\u00e9 et l'environment]//Other - [Health, Safety and Environment plan]",
+                "page":19,
+                "content":"The Operator (President) will establish and implement a Health, Safety and Environment (HSE) plan to address the goal of achieving safe and reliable operations. The HSE plan must conform with locally applicable laws and with the international petroleum industry. The Operator (President) may charge the Joint Account for all costs and expenditures incurred (within the limits approved in the Work Program and Budget or otherwise specified in the Agreement) in archaeological and geophysical surveys relative to the identification and protection of cultural resources and/or other environmental and ecological surveys - as required by any regulatory authority. --Art. 4.12, Exhibit A (Art. 2 and Art. 2.12)",
+                "location":{
+                    "image":"217,128,240,107"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184086.js",
+                "id":184086
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":24,
+                "content":"Within 30 days of the parties signing the agreement, the Operator (President) must deliver a proposed Work Program and Budget to the Operating Committee to be carried out during the remainder of the financial year. Within 10 days of the delivery, the Operating Committee must meet to agree on the proposed Work Program and Budget. In subsequent financial years, the Work Program and Budget must be submitted no later than the 1st of October of each calendar year. Details of the expenditures to be itemized in the Work Program and Budget are provided in Art. 6.4. In particular, the Work Program and Budget must contain Minimum Work Obligations. Where the Operating Committee is unable to agree on the Work Program and Budget, the proposal capable of satisfying the Minimum Work Obligations and receiving the largest Participating Interest vote is deemed adopted. If, however, competing proposals receive equal votes then the Operator will choose between the competing proposals.  Any revision to the Work Program and Budget must be approved by the Operating Committee. If the Operating Committee determines that a discovery of hydrocarbons is a Commercial Discovery, the Operator must, as soon practicable, deliver a Development Plan to President and Pirity. Details to be included in The Development Plan are provided in Art. 6.2. (A). After receipt of the Development Plan, the Operating Committee will meet to consider, modify and approve or reject the Development Plan (and the first annual Work Program and Budget).  If the Operating Committee approves the Development Plan, the Operator (President) must take necessary steps to secure approval from the Paraguay government. Where approved, the work to be completed under the Development Plan will be incorporated into the annual Work Program and Budget (with the exception of a multi-year Work Program and Budget).  Any work that cannot be efficiently completed in a single calendar year may be proposed as a multi-year Work Program and Budget, in which case, it will remain in effect through the completion of the work and be reflected in each annual Work Program and Budget.--Art. 6.1., Art. 1.10, Art. 1.22, Art. 6.2., Art. 6.5. ",
+                "location":{
+                    "image":"536,125,562,98"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184088.js",
+                "id":184088
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":49,
+                "content":"The rights, obligations and liabilities of President and Pirity are individual and are not joint or collective. President and Pirity will be responsible for reporting and discharging its own tax measured by their own profit or income. Both Pirity and President will protect, defend and indemnify eachother from any loss, cost or liability arising from the indemnifying Party's failure to report or discharge their fiscal obligations. If separate allocation of tax is not possible,  Pirity and President will adopt a mutually agreeable arrangement in order to achieve the financial results intended. --Art. 14",
+                "location":{
+                    "image":"177,332,192,296"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184084.js",
+                "id":184084
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":50,
+                "content":"Both Pirity and President agree that all information relating to Joint Operations and Exclusive Operations are confidential and will be kept confidential and will not be disclosed during the term the Contract is in force and for two (2) additional following the end of the Contract term. These obligations will have continuing application to any Party that ceases to own a Participating Interest. Exceptions to this general rule are listed in Art. 15.2(A). Of note for exceptions to the general rule on confidentiality, information disclosure to (i) prospective or actual contractors and consultants, (ii) prospective buyer of a Party's interest, (iii) banks or other financial institutions, the disclosure will not be made unless the recipient agrees in writing to keep the disclosed information strictly confidential for at least two (2) years and to use the disclosed information only for purposes outlined in Art. 15.2(A).  Either Pirity or President is entitled to use and share information supplied by the Operator (President) with its Affliates; Affiliates must comply with confidentiality obligations set out in Art. 15.  --Art. 4.4(A), Art. 15.1 (A), Art. 15.1(B), Art 15.2, Art. 15.4.",
+                "location":{
+                    "image":"259,123,279,92"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184092.js",
+                "id":184092
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":52,
+                "content":"English--Art. 17",
+                "location":{
+                    "image":"382,343,401,305"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184093.js",
+                "id":184093
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":53,
+                "content":"Any disputes arising under this Agreement will be dealt with under the laws of Paraguay (with the exception of conflicts of laws principles that may require the application of other laws). --Art. 18.1",
+                "location":{
+                    "image":"131,125,156,83"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184090.js",
+                "id":184090
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":53,
+                "content":"Where a dispute arises Pirity and President, the disputing party must notify the other party of the dispute and proceed to negotions between the Senior Executive of both parties. Where Pirity and President are unable to resolve a dispute by negotiation as set out in Art. 18.2(B), then the dispute will be resolved through final and binding arbitration. The arbitration will be conducted by 3 arbitrators unless the parties to the dispute agree to a sole arbitrator within 30 days of filing for arbitration. Where there are 2 parties to the dispute, they will each appoint one arbitrator within 30 days. Within a further 30 days, the two appointed arbitrators will appoint a third arbitrator. If the parties or arbitrators fail to make these appointments, then an arbitrator will be appointed by the ICC Arbitral Institution. If there are more than two parties to the dispute, then, within 30 days of filing for arbitration, all claimants must jointly appoint one arbitrator and all respondents must do the same. As with a two party dispute, these two appointed arbitrators must then select a third arbitrator within a further 30 days. The arbitration proceedings will be conducted in English and the the costs of arbitration will be paid as provided in the award. The arbitration will take place anywhere in Bogota, Colombia, unless otherwise agreed by the parties. If the parties initiate multiple arbitration proceedings that are related to common questions of law and that could result in conflicting awards or obligations, all these common proceedings may be consolidated into a single arbitral proceeding. --Art. 18.2",
+                "location":{
+                    "image":"207,126,230,93"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184091.js",
+                "id":184091
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":67,
+                "content":"A Non-Operator has a right to audit the Joint Accounts and records of the Operator (President) upon providing at least 60 days advance notice in writing. The Non-Operator may audit Joint Account and records of the Operator relating to acounting for any calendar year within the 24 month period (following the end of said calendar year).  The cost of the audit must be paid by the party requesting the audit. Where the Operator is required by law or the Contract to employ a public accounting firm to audit, the cost of the audit shall be charged to the Joint Account and a copy of the final audit shall be provided to each Party. Where there are two or more Non-Operators conducting an audit, they must make reasonable effort to conduct joint or simultaneous audits. The Non-Operator may request information from the Operator within 30 days prior to the commencement of the audit. At the end of the audit, the Party conducting the audit must prepare and distribute a written report to the Operator and all the Parties who participated in the audit as soon as possible (and within 90 days of the conclusion of the audit). The Opertor must then make reasonable effort to respond to the report within a further 90 days of the receipt of the report. Non-Operators have the right to conduct further investigation if they consider the report or the reply to require further investigation (even if the 24 month period has expired). The further investigation must commence within 30 days and be concluded within 60 days after the receipt of the report or reply.    --Exhibit A (Art. 1.8)",
+                "location":{
+                    "image":"685,126,709,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184085.js",
+                "id":184085
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) ",
+                "page":81,
+                "content":"E-1 to E12 Latitude:[22o 30' 53.04\" S to 23o 19' 22.68\" S] and Longitude: [62o 14' 30.58\" W to 61o 33' 55.08\" W]--Exhibit B",
+                "location":{
+                    "image":"150,332,169,305"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012/annotations/184074.js",
+                "id":184074
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"President Energy, Pirity - Paraguay, 2012",
+        "data":{
+            "Type of Mining Title":"Operating Agreement between Private Companies",
+            "Signature Year":"2012",
+            "Resource":"Hydrocarbons",
+            "Countries":"Paraguay"
+        },
+        "created_at":"Sun, 26 Oct 2014 18:08:03 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 08 Dec 2014 20:17:35 +0000",
+        "id":"1346545-operating-agreement-president-energy-pirity-2012",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1346545/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1346545/operating-agreement-president-energy-pirity-2012.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1346545/pages/operating-agreement-president-energy-pirity-2012-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1346545/pages/operating-agreement-president-energy-pirity-2012-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1346545/operating-agreement-president-energy-pirity-2012.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1346545/pages/operating-agreement-president-energy-pirity-2012-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1346545"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":98,
+        "canonical_url":"http://www.documentcloud.org/documents/1346545-operating-agreement-president-energy-pirity-2012.html"
+    }
+}

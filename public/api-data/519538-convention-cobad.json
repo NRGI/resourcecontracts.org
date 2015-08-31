@@ -1,0 +1,602 @@
+{
+    "document":{
+        "file_hash":"cd5b43c5a61e9970f1db40672fba5b147e965059",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Agence(s) de l'Etat signataire(s)//State agency, National Company, Ministry ",
+                "page":2,
+                "content":"Minist\u00e8re des Mines, de la G\u00e9ologie et de l'Environnement, Minist\u00e8re de l'Economie et des Finances--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"205,106,240,65"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81645.js",
+                "id":81645
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), pour l'Etat//Signatories, State ",
+                "page":2,
+                "content":"Ibrahima Soumah, Ministre des Mines, de la G\u00e9ologie et de l'Environnement et Cheikh Amadou Camara, Ministre de l'Economie et des Finances--Pr\u00e9ambule",
+                "location":{
+                    "image":"236,296,268,260"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81646.js",
+                "id":81646
+            },
+            {
+                "access":"public",
+                "title":"Nom(s) de la soci\u00e9t\u00e9(s) contractante(s)//Name of contracting company ",
+                "page":2,
+                "content":"Rousski Alumini Management--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"296,108,329,68"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81644.js",
+                "id":81644
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":7,
+                "content":"Bauxite, alumine--Art. 2\n",
+                "location":{
+                    "image":"204,102,239,62"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81653.js",
+                "id":81653
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux et d'investissements//Work and investment commitments ",
+                "page":7,
+                "content":"Premi\u00e8re phase\u00a0(10 ans de l\u2019entr\u00e9e en vigueur de la convention): \u00e9tude de faisabilit\u00e9, construction d\u2019une mine de bauxite pour une production de 6.620.000 tonnes de bauxite par an dont 3.000.000 tonnes pour\u00a0l\u2019exportation\u00a0; construction d\u2019une usine d\u2019alumine d\u2019une capacit\u00e9 initiale de 1.200.000 tonnes par an\u00a0; Deuxi\u00e8me phase\u00a0(11,5 ans de l\u2019entr\u00e9e en vigueur de la convention): extension de la capacit\u00e9 d\u2019extraction de la mine de bauxite \u00e0 12 millions de tonnes par an et de la capacit\u00e9 de production de l\u2019usine d\u2019alumine \u00e0 2,4 millions de tonnes par an\u00a0; Troisi\u00e8me phase (6 ans \u00e0 compter de la fin de la deuxi\u00e8me phase)\u00a0: r\u00e9alisation d\u2019une \u00e9tude de faisabilit\u00e9 pour une usine d\u2019aluminium d\u2019une capacit\u00e9 de 240.000 tonnes par an.--Art. 2\n",
+                "location":{
+                    "image":"255,104,287,68"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81691.js",
+                "id":81691
+            },
+            {
+                "access":"public",
+                "title":"Commercialisation et acc\u00e8s \u00e0 la production //Marketing of output and state access to output ",
+                "page":11,
+                "content":"Les parties pourraient conclure un contrat \u00e0 long terme selon lequel l'Etat ach\u00e8te la bauxite ou l'alumine aux conditions au moins aussi avantageuses que celles que l'investisseur pourrait obtenir d'un tiers ou d'un autre actionnaire de la soci\u00e9t\u00e9. Si de telles conditions ne peuvent \u00eatre obtenues, l'investisseur ne sera pas tenu de vendre une partie de sa production \u00e0 l'Etat.--Art. 8\n",
+                "location":{
+                    "image":"143,98,178,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81693.js",
+                "id":81693
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien de l'infrastructure//Construction and maintenance of infrastructure ",
+                "page":11,
+                "content":"L'investisseur est tenu de contruire le chemin de fer, le port, les installations d'adduction d'eau, les cit\u00e9s r\u00e9sidentielles, les voies de communication et les autres ouvrages et infrastructures n\u00e9cessaires.--Art. 10",
+                "location":{
+                    "image":"629,102,666,60"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81692.js",
+                "id":81692
+            },
+            {
+                "access":"public",
+                "title":"Autres - logement ",
+                "page":12,
+                "content":"L'investisseur est tenu \u00e0 construire des cit\u00e9s servant de logement aux travailleurs.-- Art. 10.6\n",
+                "location":{
+                    "image":"416,96,447,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81661.js",
+                "id":81661
+            },
+            {
+                "access":"public",
+                "title":"Propri\u00e9t\u00e9 de l'infrastructure//Ownership of infrastructure ",
+                "page":12,
+                "content":"Toutes les infrastructures r\u00e9alis\u00e9es dans le cadre du projet seront la propri\u00e9t\u00e9 de la soci\u00e9t\u00e9.--Art. 10.7\n",
+                "location":{
+                    "image":"523,159,559,117"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81694.js",
+                "id":81694
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State equity ",
+                "page":12,
+                "content":"L'Etat aura une participation, \u00e0 d\u00e9terminer selon un commun accord entre les Parties--Art. 11\n",
+                "location":{
+                    "image":"580,100,616,64"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81685.js",
+                "id":81685
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 cr\u00e9\u00e9e ou envisag\u00e9e pour ex\u00e9cuter le projet//Name and/or composition of executing company created or anticipated ",
+                "page":13,
+                "content":"L\u2019Investisseur cr\u00e9era une Soci\u00e9t\u00e9 d\u2019op\u00e9ration de droit guin\u00e9en dont la r\u00e9partition du capital sera pr\u00e9cis\u00e9e dans ses statuts. La Soci\u00e9t\u00e9 d\u2019exploitation aura son si\u00e8ge \u00e0 Conakry.--Art. 13\n",
+                "location":{
+                    "image":"635,430,669,386"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81648.js",
+                "id":81648
+            },
+            {
+                "access":"public",
+                "title":"Approvisionnement en biens et services locaux//Local procurement requirements ",
+                "page":14,
+                "content":"Achat et approvisionnement pr\u00e9f\u00e9rentiels de biens, mat\u00e9riel et services locaux, \u00e0 conditions \u00e9gales.--Art. 14\n",
+                "location":{
+                    "image":"166,101,201,60"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81658.js",
+                "id":81658
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel guin\u00e9en//Local employment requirements ",
+                "page":14,
+                "content":"La Soci\u00e9t\u00e9 s\u2019engage \u00e0 employer en priorit\u00e9 le personnel guin\u00e9en, \u00e0 qualification \u00e9gale, y compris le personnel actuel du projet Dian-Dian.--Art. 16\n",
+                "location":{
+                    "image":"750,141,788,105"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81656.js",
+                "id":81656
+            },
+            {
+                "access":"public",
+                "title":"Formation du personnel guin\u00e9en//Management training requirement for nationals ",
+                "page":14,
+                "content":"Oui--Art. 16\n",
+                "location":{
+                    "image":"752,96,785,60"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81655.js",
+                "id":81655
+            },
+            {
+                "access":"public",
+                "title":"Assurance//Insurance ",
+                "page":15,
+                "content":"La Soci\u00e9t\u00e9 assumera les cons\u00e9quences directes de la responsabilit\u00e9 civile qu\u2019elle peut encourir en raison de toutes pertes ou dommages, caus\u00e9s au tiers ou \u00e0 son personnel \u00e0 l\u2019occasion de la conduite des activit\u00e9s du projet, et souscrira les polices d\u2019assurances contre ces risques. Les soci\u00e9t\u00e9s guin\u00e9ennes sont prioritaires, \u00e0 condition que les polices soient accept\u00e9es par l'investisseur et r\u00e9assur\u00e9es aupr\u00e8s des soci\u00e9t\u00e9s internationales.--Art. 17\n",
+                "location":{
+                    "image":"542,93,576,55"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81659.js",
+                "id":81659
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":16,
+                "content":"Respect de la l\u00e9gislation en vigueur, normes nationales et pratiques internationales; les \u00e9tudes d'Impact comprendront des recommandations quant aux mesures n\u00e9cessaires pour att\u00e9nuer les impacts n\u00e9gatifs.--Art. 19\n",
+                "location":{
+                    "image":"586,102,617,65"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81689.js",
+                "id":81689
+            },
+            {
+                "access":"public",
+                "title":"Autres - r\u00e9paration de dommages ",
+                "page":17,
+                "content":"L'investisseur s'engage \u00e0 r\u00e9parer tout dommage caus\u00e9 \u00e0 l'environnement--Art. 19.3\n",
+                "location":{
+                    "image":"461,102,499,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81690.js",
+                "id":81690
+            },
+            {
+                "access":"public",
+                "title":"Protection des lieux sacr\u00e9s, des ressources locales et du milieu de vie//Protection of sacred locations, resources and environment ",
+                "page":17,
+                "content":"En cas de d\u00e9couverte d'un site arch\u00e9ologique, les \u00e9tudes appropri\u00e9es seront requises. La Soci\u00e9t\u00e9 s'engage \u00e0 ne pas d\u00e9placer des \u00e9l\u00e9ments du patrimoine culturel national, et \u00e0 participer aux frais de sauvetage raisonnables.--Art. 19.4\n",
+                "location":{
+                    "image":"812,103,844,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81654.js",
+                "id":81654
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause ",
+                "page":18,
+                "content":"Maintien des avantages \u00e9conomiques et financiers et des conditions fiscales et douani\u00e8res pendant toute la dur\u00e9e de la convention. Possibilit\u00e9 pour l'investisseur de migrer vers un r\u00e9gime plus favorable que la convention, qui serait adopt\u00e9 par l'Etat.--Art. 20\n",
+                "location":{
+                    "image":"324,98,357,62"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81697.js",
+                "id":81697
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9installation des habitants//Resettlement ",
+                "page":21,
+                "content":"L'Etat proc\u00e9dera \u00e0 la r\u00e9installation des habitants dont la pr\u00e9sence sur les terrains entraverait les travaux. L'Investisseur sera tenu de payer une juste et \u00e9quitable indemnisation.--Art. 24.2\n",
+                "location":{
+                    "image":"417,100,452,59"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81660.js",
+                "id":81660
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining Tax/ Royalty Tax ",
+                "page":23,
+                "content":"5% FOB pour la bauxite, 2,5% FOB pour la bauxite transform\u00e9e en alumine--Art. 26.1\n",
+                "location":{
+                    "image":"200,98,233,62"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81663.js",
+                "id":81663
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate ",
+                "page":23,
+                "content":"35%, conform\u00e9ment \u00e0 l'Article 143.1 du Code Minier de 1995--Arts. 26.2.1, 27.1, 26.5\n",
+                "location":{
+                    "image":"465,95,495,59"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81664.js",
+                "id":81664
+            },
+            {
+                "access":"public",
+                "title":"Contribution au d\u00e9veloppement communautaire ou local//Community and local obligations ",
+                "page":23,
+                "content":"Contribution au d\u00e9veloppement local : 0,2% du chiffre d'affaires--Art. 26.3.1.1\n",
+                "location":{
+                    "image":"753,97,784,60"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81682.js",
+                "id":81682
+            },
+            {
+                "access":"public",
+                "title":"Autres - imp\u00f4t sur avantages ",
+                "page":23,
+                "content":"Imp\u00f4t proportionnel unique de 5% applicable sur la contrepartie p\u00e9cuniaire des avantages en nature accord\u00e9es aux dirigeants et aux employ\u00e9es.--Art. 26.3.1.1\n",
+                "location":{
+                    "image":"757,150,794,114"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81688.js",
+                "id":81688
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des nationaux//Witholding tax on national salaries ",
+                "page":23,
+                "content":"Conform\u00e9ment \u00e0 la r\u00e9glementation en vigueur.--Art. 26.3.1.1\n",
+                "location":{
+                    "image":"819,121,850,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81669.js",
+                "id":81669
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des expatri\u00e9s//Witholding tax on expatriate salaries ",
+                "page":24,
+                "content":"Retenue lib\u00e9ratoire sur les revenus salariaux vers\u00e9s par la soci\u00e9t\u00e9 \u00e0 son personnel expatri\u00e9 qui r\u00e9side plus de 183 jours en Guin\u00e9e, au taux de 10% des salaires payes en Guin\u00e9e.--Art. 26.3.1.1\n",
+                "location":{
+                    "image":"115,95,151,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81670.js",
+                "id":81670
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les prestations de services par des entreprises non r\u00e9sidentes//Witholding tax on services of non-resident companies ",
+                "page":24,
+                "content":"Retenue lib\u00e9ratoire au taux de 10% sur les sommes vers\u00e9es \u00e0 titre de r\u00e8glements d\u2019honoraires et d\u2019autre prestations de services \u00e0 des personnes non-r\u00e9sidents en Guin\u00e9e au prorata de toutes prestations effectu\u00e9es ou rendues en Guin\u00e9e.--Art. 26.3.1.1\n",
+                "location":{
+                    "image":"276,105,313,67"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81671.js",
+                "id":81671
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les loyers des immeubles//Witholding tax on rent ",
+                "page":24,
+                "content":"15% vers\u00e9s aux propri\u00e9taires d\u2019immeubles pris en location.--Art. 26.3.1.1\n",
+                "location":{
+                    "image":"364,105,400,70"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81672.js",
+                "id":81672
+            },
+            {
+                "access":"public",
+                "title":"Part patronale des cotisations de s\u00e9curit\u00e9 sociale//Social security contributions by employer ",
+                "page":24,
+                "content":"Conform\u00e9ment \u00e0 la l\u00e9gislation en vigueur. Travailleurs expatri\u00e9s exclus.--Art. 26.3.2\n",
+                "location":{
+                    "image":"803,98,837,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81681.js",
+                "id":81681
+            },
+            {
+                "access":"public",
+                "title":"TVA//VAT ",
+                "page":25,
+                "content":"La Soci\u00e9t\u00e9 s'acquittera la TVA lors des importations et achats locaux, et se fera rembourser par la Direction National des Imp\u00f4ts, \u00e0 l'exception d'une exon\u00e9ration de la TVA pour l'importation des mat\u00e9riaux n\u00e9cessaires au fonctionnement des mat\u00e9riels et \u00e9quipements professionnels--Arts. 26.3.4; 27.2\n",
+                "location":{
+                    "image":"258,91,288,53"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81678.js",
+                "id":81678
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: reports des pertes//Income tax: loss carry forward ",
+                "page":26,
+                "content":"Les pertes peuvent \u00eatre report\u00e9es sur les 5 exercices suivant l'exercice d\u00e9ficitaire--Art. 26.5\n",
+                "location":{
+                    "image":"127,111,160,73"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81668.js",
+                "id":81668
+            },
+            {
+                "access":"public",
+                "title":"Provision pour la reconstitution des gisements//Provisions for renewing reserves ",
+                "page":26,
+                "content":"10% du b\u00e9n\u00e9fice imposable, pour d\u00e9penses de recherche ou investissement en Guin\u00e9e, maximum 5 ans.--Art. 26.6\n",
+                "location":{
+                    "image":"249,103,284,68"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81673.js",
+                "id":81673
+            },
+            {
+                "access":"public",
+                "title":"Cr\u00e9dit d'investissement//Investment credit ",
+                "page":26,
+                "content":"5% de tout investissement. Allocation d\u00e9ductible.--Art. 26.7\n",
+                "location":{
+                    "image":"491,99,527,60"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81674.js",
+                "id":81674
+            },
+            {
+                "access":"public",
+                "title":"Droits fixes d'octroi et de renouvellement des permis//Fixed fee for grant and renewal of license   ",
+                "page":27,
+                "content":"Exon\u00e9r\u00e9--Art. 27.3.4",
+                "location":{
+                    "image":"106,97,140,59"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81680.js",
+                "id":81680
+            },
+            {
+                "access":"public",
+                "title":"Redevances superficiaires//Surface fees ",
+                "page":27,
+                "content":"Exon\u00e9r\u00e9--Art. 27.3.4",
+                "location":{
+                    "image":"160,97,195,56"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81684.js",
+                "id":81684
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: exoneration//Income tax: exemptions ",
+                "page":27,
+                "content":"Exon\u00e9ration jusqu'au remboursement total des investissements initiaux de l'Investisseur.--Art. 27.1\n",
+                "location":{
+                    "image":"433,96,465,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81667.js",
+                "id":81667
+            },
+            {
+                "access":"public",
+                "title":"Autres exon\u00e9rations//Other exemptions ",
+                "page":27,
+                "content":"Exon\u00e9ration de: l'Imp\u00f4t Minimum Forfaitaire (IMF); contribution de patentes; droits d'enregistrement et de timbre frappant les actes relatifs \u00e0 la constitution de la Soci\u00e9t\u00e9, les augmentations de capital, et les contrats n\u00e9cessaires \u00e0 la r\u00e9alisation du projet; contribution fonci\u00e8re unique; 6 ans d'exon\u00e9ration du versement forfaitaire sur le salaire; contribution \u00e0 la formation professionnelle (si les d\u00e9penses de formation par la Soci\u00e9t\u00e9 d\u00e9passent le montant de 1,50% de la masse salariale). Exon\u00e9ration de toutes charges fiscales et parafiscaux autres que ceux d\u00e9finis dans la convention.",
+                "location":{
+                    "image":"56,128,93,90"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81686.js",
+                "id":81686
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de recherche//Custom duties during exploration phase ",
+                "page":28,
+                "content":"Admission temporaire/exon\u00e9ration. R\u00e9exportation ou mis \u00e0 la consommation apr\u00e8s autorisation. En case de revente en Guin\u00e9e, le bien devient redevable de droits et taxes.--Art. 28.1\n",
+                "location":{
+                    "image":"173,97,207,60"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81675.js",
+                "id":81675
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de construction//Custom duties during construction phase ",
+                "page":29,
+                "content":"Admission temporaire/exon\u00e9ration--Art. 28.2\n",
+                "location":{
+                    "image":"233,91,270,52"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81676.js",
+                "id":81676
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase d'exploitation//Custum duties during  operation phase ",
+                "page":29,
+                "content":"L\u00e9gislation en vigueur, sauf exon\u00e9ration pour ce qui est directement utilis\u00e9 pour les besoins miniers et les op\u00e9rations d'exploitation et transformation du minerai--Art. 28.3\n",
+                "location":{
+                    "image":"649,88,685,51"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81677.js",
+                "id":81677
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term ",
+                "page":33,
+                "content":"25 ans, renouvelable, \u00e0 compter du jour de la promulgation du D\u00e9cret du Pr\u00e9sident de la R\u00e9publique publiant la loi adopt\u00e9ee par l'Assembl\u00e9ee Nationale guin\u00e9eene adoptant la Convention (Art. 31.1).--Arts. 31.1 - 31.2\n",
+                "location":{
+                    "image":"405,98,446,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81650.js",
+                "id":81650
+            },
+            {
+                "access":"public",
+                "title":"Conditions de renouvellement//Conditions for renewal  ",
+                "page":33,
+                "content":"Les Parties se rapprocheront une ann\u00e9e avant la fin de la p\u00e9riode en vue d'une ren\u00e9gociation.--Art. 31.2\n",
+                "location":{
+                    "image":"670,103,704,67"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81652.js",
+                "id":81652
+            },
+            {
+                "access":"public",
+                "title":"Cession / transfert//Assignment / transfer ",
+                "page":34,
+                "content":"Avec l'accord pr\u00e9alable de l'Etat--Art. 32\n",
+                "location":{
+                    "image":"427,101,460,66"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81698.js",
+                "id":81698
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution ",
+                "page":34,
+                "content":"Effort pour un r\u00e8glement \u00e0 l\u2019amiable; en cas de d\u00e9saccord persistant, proc\u00e9dure de conciliation; si la conciliation ne r\u00e9sout pas le conflit, arbitrage \u00e0 la Chambre de Commerce Internationale (CCI) de Paris, en langue Fran\u00e7aise.--Art. 33\n",
+                "location":{
+                    "image":"627,108,662,72"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81696.js",
+                "id":81696
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable//Governing law ",
+                "page":38,
+                "content":"Droit guin\u00e9en. Dans le cas o\u00f9 la loi guin\u00e9enne n'est pas explicite en la mati\u00e8re, recours \u00e0 la l\u00e9gislation fran\u00e7aise.--Art. 33.3\n",
+                "location":{
+                    "image":"246,97,280,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81695.js",
+                "id":81695
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9siliation / fin du contrat//Cancellation / Termination ",
+                "page":39,
+                "content":"Causes: faillite, dissolution de la Soci\u00e9t\u00e9; consentement mutuel des parties; non-respect des engagements.--Art. 35\n",
+                "location":{
+                    "image":"131,96,169,52"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81699.js",
+                "id":81699
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language ",
+                "page":40,
+                "content":"Fran\u00e7ais--Art. 37\n",
+                "location":{
+                    "image":"255,92,285,57"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81701.js",
+                "id":81701
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality ",
+                "page":40,
+                "content":"Confidentialit\u00e9 de la convention et de la documentation relatives aux r\u00e9sultats des \u00e9tudes.--Art. 38 \n",
+                "location":{
+                    "image":"532,94,565,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81700.js",
+                "id":81700
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, Longitude et Latitude//Location, longitude and latitude ",
+                "page":42,
+                "content":"856 km\u00b2--Signatures\n",
+                "location":{
+                    "image":"360,98,396,60"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81642.js",
+                "id":81642
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature ",
+                "page":42,
+                "content":"27/07/2001--Signatures\n",
+                "location":{
+                    "image":"365,651,395,611"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81649.js",
+                "id":81649
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), pour la soci\u00e9t\u00e9 //Signatories, company ",
+                "page":42,
+                "content":"Andrey Raykov, Pr\u00e9sident - Directeur G\u00e9n\u00e9ral--Signatures\n",
+                "location":{
+                    "image":"542,647,578,601"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/519538-convention-cobad/annotations/81647.js",
+                "id":81647
+            }
+        ],
+        "description":"<i>Nom de la soci\u00e9t\u00e9 guin\u00e9enne//Local company name:</i> Compagnie de Bauxite et d\u2019Alumine de Dian-dian (CO.BA.D)--R\u00e9f. Statuts COBAD\u00a0: 021-0478 du 25-03-2002\u00a0; soci\u00e9t\u00e9 anonyme unipersonnelle<br><i>Si\u00e8ge social //Corporate headquarters:</i> Conakry BP\u00a0: 6506\u00a0; Tel\u00a0: 00224/64544454\u00a0; Email\u00a0: superviseurdiandian@hotmail.fr<br><i>Structure du Capital//Company structure:</i> Rousski Alumini Management, 100%<br><i>Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors de la Guin\u00e9e, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociaux //Parent companies or affiliates outside of the country, if different from the above mentionned; and their corporate headquarters:</i> United Company Rusal, 13/1, Nikoloyamskaya Str., Moscou, 109240, Russie; Tel : +7-495-720-51-70--http://rusal.ru/en/about/contacts.aspx<br><i>Site web de l\u2019entreprise//Company website:</i> http://www.rusal.ru/en/<br><i>Titre Minier Associ\u00e9 au contrat//Mining title associated with the contract:</i> Concession<br><i>Nom du Projet//Project title: </i> Projet Int\u00e9gr\u00e9 Dian-Dian<br><i>Nom du Gisement//Deposit/site name:</i> Dian-Dian, Sinthiourou, Ouroub\u00e8<br><i>Emplacement, Longitude et Latitude//Location, longitude and latitudeL</i> 856 km\u00b2--Signatures<br><i>Lieu-dit habit\u00e9 le plus proche//Closest community: </i>Bok\u00e9 Sangar\u00e9di<br><i>Date d'octroi du permis d'exploitation ou de la concession//Date of issue of exploitation or concession permit:</i> 25/10/2002--D\u00e9cret PRG (D/2002/082/PRG/SGG)<br><i>Date de fin de validit\u00e9 du permis d'exploitation ou de la concession//Date of expiration of exploitation or concession permit:</i> 24/10/2027--D\u00e9cret PRG (D/2002/082/PRG/SGG)<br><i>Investissement estim\u00e9//Estimated investment:</i> US$ 5 milliards<br><i>Production attendue//Expected production:</i> 3 millions de tonnes par an de bauxite \u00e0 partir de 2016, puis 6 millions de tonnes de bauxite et 1,2 millions de tonnes d'alumine par an \u00e0 partir de 2020.<br><i>Nom et/ou composition de la soci\u00e9t\u00e9 cr\u00e9\u00e9e ou envisag\u00e9e pour ex\u00e9cuter le projet//Name and/or composition of executing company created or anticipated:</i> COBAD<br><i>Dur\u00e9e//Term:</i> Annexe int\u00e9gr\u00e9e \u00e0 la Convention de base<br><br><i>Note : Ce r\u00e9sum\u00e9 est destin\u00e9 \u00e0 faciliter la compr\u00e9hension par un large public des points importants du document original. Il ne s\u2019agit en aucun cas d\u2019une liste exhaustive des obligations l\u00e9gales li\u00e9es au projet minier concern\u00e9. Ce r\u00e9sum\u00e9 ne comporte aucune opinion quant au statut juridique du document ou de tout \u00e9l\u00e9ment du document, et ne refl\u00e8te aucunement des d\u00e9cisions ou positions du CTRTCM ou du Gouvernement de la R\u00e9publique de Guin\u00e9e en lien avec le processus de revue des conventions et titres miniers. Ce r\u00e9sum\u00e9 doit \u00eatre lu en lien avec le texte int\u00e9gral du document original et avec les lois et textes r\u00e9glementaires applicables. Un certain nombre de lois et r\u00e9glementations applicables directement ou indirectement au secteur minier sont disponibles <a href=\"http://developmentseed.org/guineerevuecontrats/about/legislation.html\">ici</a>.</i>",
+        "language":"eng",
+        "title":"COBAD - Guin\u00e9e, 2001",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Resource":"Bauxite,Alumine",
+            "Countries":"Guinea",
+            "Signature Date":"27/07/2001",
+            "Contract Term (duration) in Years":"25",
+            "Signature Year":"2001"
+        },
+        "created_at":"Mon, 19 Nov 2012 21:32:21 +0000",
+        "display_language":"eng",
+        "updated_at":"Sun, 29 Mar 2015 13:11:01 +0000",
+        "id":"519538-convention-cobad",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/519538/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/519538/convention-cobad.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/519538/pages/convention-cobad-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/519538/pages/convention-cobad-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/519538/convention-cobad.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/519538/pages/convention-cobad-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=519538"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":43,
+        "canonical_url":"http://www.documentcloud.org/documents/519538-convention-cobad.html"
+    }
+}

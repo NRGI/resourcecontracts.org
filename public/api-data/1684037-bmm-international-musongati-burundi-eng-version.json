@@ -1,0 +1,391 @@
+{
+    "document":{
+        "file_hash":"0b549cd1d1d1650aa9d1398968f0f60bb3982b78",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas//Name and/or number of field, block or deposit",
+                "page":1,
+                "content":"Musongati--Front page, art. 10",
+                "location":{
+                    "image":"152,154,191,119"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207095.js",
+                "id":207095
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":1,
+                "content":"Burundi, represented by the Minister for Energy and Mines and the Minister for Finance and Planning--Preamble",
+                "location":{
+                    "image":"226,95,261,64"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207101.js",
+                "id":207101
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) ",
+                "page":1,
+                "content":"Musongati region as bounded by the coordinates set out in Art. 10.--Front page, art. 10",
+                "location":{
+                    "image":"227,124,262,93"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207096.js",
+                "id":207096
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Burundi--Front page, Signature Page",
+                "location":{
+                    "image":"227,153,261,121"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207092.js",
+                "id":207092
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":1,
+                "content":"Burundi Mining Metallurgy International (\"BMM International\"), a company headquartered in the Hong Kong--Preamble",
+                "location":{
+                    "image":"338,126,379,95"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207099.js",
+                "id":207099
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":1,
+                "content":"Burundi Mining Metallurgy International (BMM International)--Front page, Signature Page",
+                "location":{
+                    "image":"342,155,380,124"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207093.js",
+                "id":207093
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Production Sharing Agreement--Front page, art. 3",
+                "location":{
+                    "image":"95,150,135,116"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207094.js",
+                "id":207094
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":4,
+                "content":"Iron, nickel, cobalt, copper and any other valuable metals or substances extracted within the exploratory perimeter -- Art. 1",
+                "location":{
+                    "image":"534,139,570,106"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207106.js",
+                "id":207106
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":5,
+                "content":"Contract disputes governed by the law of Burundi, in particular, the Code Minier du Burundi--Art. 4, art. 53.3",
+                "location":{
+                    "image":"507,164,541,135"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207123.js",
+                "id":207123
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":6,
+                "content":"The term is 25 years. Renewals for a 10 year period will be granted provided the renewal procedure outlined in the Code Minier (see arts. 72 and following) is followed. --Art. 9",
+                "location":{
+                    "image":"524,161,559,127"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207105.js",
+                "id":207105
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e ou envisag\u00e9e//Name and/or composition of the company created or anticipated",
+                "page":7,
+                "content":"No later than 30 days after the grant of the exploration permit, the parties must create a Soci\u00e9t\u00e9 Mixte D'exploitation Mini\u00e8re (SMEM). The SMEM must be located in Burundi at a location agreed by the parties. --Art. 9",
+                "location":{
+                    "image":"473,148,508,119"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207102.js",
+                "id":207102
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":7,
+                "content":"Burundi has a non-dilutable 15% participation share in SMEM. Burundi will hold 30% seats on the SMEM Board of Directors. In addition to this 15% share, Burundi (or members of the Burundi economic community) can acquire up to 34% additional share in SMEM. Burundi will be represented by the person assuming the role of Vice President and 40% of the management team must be composed of nationals. Where SMEM shares are transferred, Burundi and Burundian economic operators have a pre-emption right to onerous purchase of their shares for up to a 49 % stake in the SMEM. Pre-emption rights must be exercised within 30 days and Burundi can only cede its shares to entities within its direct control. Any change in composition of share capital or powers that have the effect of changing control in SMEM will need the prior approval of the Minister responsible for mines, after an opinion from the Council of Ministers.--Art. 13, art. 14",
+                "location":{
+                    "image":"611,158,649,128"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207114.js",
+                "id":207114
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":8,
+                "content":"Within 30 days of the grant of the Exploration license, the parties must create a Soci\u00e9t\u00e9 Mixte d'Exploitation Miniere (SMEM).  The SMEM must execute a Work Program conforming to feasibility studies, environmental and social impacts approved by the parties. Within 1 year of the Exploration license grant, the SMEM must start mine operations. Mine development and construction must not take more than 3 years. --Art. 12, art. 17",
+                "location":{
+                    "image":"394,98,437,68"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207128.js",
+                "id":207128
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":12,
+                "content":"SMEM must maintain, improve and preserve public infrastructure within the contractual perimeter and any costs related to this activity will be a deductible expense. SMEM may build and maintain new construction inside or outside the contractual perimeter provided it relates to SMEM related exploration work. Costs related to new construction are deductible expenses. Upon expiration of the contract, all infrastructure ownership reverts to the State. --11 (bottom) - 12 (top)",
+                "location":{
+                    "image":"496,153,530,123"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207122.js",
+                "id":207122
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":13,
+                "content":"SMEM must make all account related documents (in Burundi and abroad) available for State inspection.  At its expense, SMEM must have its financial statements certified annually by an accounting firm authorized to conduct professional activities in Burundi and that is a member of the Order of Accounting Professionals. A copy of  the certified financial statements must be sent to the Ministers of Finance and of Mines respectively. The Minister of Finance may conduct an audit at any time according to terms set out in the legislation in force. --Art. 33, art. 35",
+                "location":{
+                    "image":"515,163,548,135"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207115.js",
+                "id":207115
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local//Local employment requirements",
+                "page":14,
+                "content":"SMEM must employ suitably qualified Burundi nationals and implement a training program in Burundi's university institutions to promote national expertise. This university training will include the integration of students and interns according to the terms agreed to with universities. SMEM must progressively replace expat employees with Burundi nationals (who have been trained and gained sufficient experience); this process must take place within an 8 year period and result in at least an 80% transition to Burundian citizen employees.  SMEM must welcome students and interns based on terms and schedules agreed to with universities and training institutes. --Art. 39",
+                "location":{
+                    "image":"530,167,565,138"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207107.js",
+                "id":207107
+            },
+            {
+                "access":"public",
+                "title":"Autre - [D\u00e9veloppement communautaire]//Other - [Community Development]",
+                "page":15,
+                "content":"Where mining activities make eviction necessary, BMM International must pay just compensation to land owners and occupants. In relations with owners of land situated within the operating perimeter, Burundi will implement its prerogatives, especially for declarations of public utility and expropriation, to ensure SMEM realizes enjoyment of its rights under article 128 of the Mining Code. --Art. 11",
+                "location":{
+                    "image":"222,162,262,132"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207108.js",
+                "id":207108
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Contribution communale]//Other - [Communal Contribution]",
+                "page":15,
+                "content":"3 years after the mining operations commence, SMEM must make an annual communal contribution of USD $50 Million. --art. 43",
+                "location":{
+                    "image":"479,162,516,130"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207109.js",
+                "id":207109
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":16,
+                "content":"SMEM must keep a control register of the quantity of ore and a control register of the quantity and contents metals or other related substances at the mine.  Authorized Burundi administration representatives may check the control registers. All control register information is confidential and may not be divulged to third parties without prior consent.--Art. 37 - 38",
+                "location":{
+                    "image":"111,102,150,69"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207126.js",
+                "id":207126
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":16,
+                "content":"Royalty tax is determined by the mining regulations in force. SMEM is also subject to mining duties and taxes for: fixed duties, annual surface fees, administrative fees and the ad valorem tax.  The amount due and the terms of such duties, taxes and charges are determined by the mining regulations in force. --art. 45",
+                "location":{
+                    "image":"113,155,150,126"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207111.js",
+                "id":207111
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":16,
+                "content":"The terms and commercial conditions of this agreement are based on existing tax conditions. For the duration of the agreement, the licensee will be subject to the tax and customs legislation in force at the time the operating license was granted. However, any more favorable provision of a new tax law or the most favorable customs system will be extended to the mining title holder who requests it. Where the operating license holder opts for a more favorable treatment, it be must be adopted entirely. --art. 45",
+                "location":{
+                    "image":"114,128,152,100"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207112.js",
+                "id":207112
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":16,
+                "content":"\"The purchase/selling price of goods and services delivered to/by the SMEM must not exceed the minimum fair market value determined at the arm 's length price and the price that could be obtained for a non-affiliated party transaction. SMEM must keep records of all operations carried out with affiliated parties. These records may be audited by the Burundi administration upon request.\n --Art. 47\"",
+                "location":{
+                    "image":"500,154,535,124"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207116.js",
+                "id":207116
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'imp\u00f4t sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloisonnement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":17,
+                "content":"Amortization, provisions, reserves and depreciation are set according to the legislation in force.--Art. 48",
+                "location":{
+                    "image":"102,149,139,116"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207113.js",
+                "id":207113
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":17,
+                "content":"SMEM must protect the environment before, during and after the exploration period according to laws in force and to environmental and social impact studies. At the start of any new activity not covered under the environmental impact plan or the environmental management plan, SMEM must conduct a new impact assessment and prepare a new management plan reflecting this new activity and conforming to laws in force. SMEM is responsible for environmental, health and security harms resulting from SMEM failings. SMEM must conduct a periodic assessments on the implementation of the impact study in the contractual perimeter and in other related exploration areas.  SMEM commits to rehabilitate all exploration sites within the contractual perimeter. Where SMEM does not carry out its environmental obligations (or does so in a manner that does not conform to what is required), the Minister may impose sanctions.--Art. 49",
+                "location":{
+                    "image":"206,154,242,124"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207118.js",
+                "id":207118
+            },
+            {
+                "access":"public",
+                "title":"Autre - [La r\u00e9habilitation des sites]//Other - [Site rehabilitation]",
+                "page":17,
+                "content":"\"Pursuant to section 140 of the Mining Code, SMEM must pay 1 % of its net income annually for site rehabilitation into a commercial bank account controlled by the operating license holder, and representatives of the Ministry of mines and the Ministry of the environment.\n--Art. 50\"",
+                "location":{
+                    "image":"527,156,564,127"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207120.js",
+                "id":207120
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Sites historiques ou arch\u00e9ologiques]//Other - [Archaeological and historical sites]",
+                "page":17,
+                "content":"SMEM activities must not harm any current or future archaeological excavations within the contractual perimeter. SMEM must be indemnified for any State conducted archaeological excavations that prejudicially impact SMEM operations. --Art. 51",
+                "location":{
+                    "image":"709,162,746,131"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207119.js",
+                "id":207119
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":19,
+                "content":"Where the parties are not able to resolve a dispute amicably, they may pursue arbitration according to ICSID procedures.--Art. 53",
+                "location":{
+                    "image":"106,154,147,122"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207125.js",
+                "id":207125
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":20,
+                "content":"French--Art. 59",
+                "location":{
+                    "image":"459,158,496,130"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207127.js",
+                "id":207127
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":21,
+                "content":"22/05/2014--Signature Page",
+                "location":{
+                    "image":"124,144,158,114"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207097.js",
+                "id":207097
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e d'octroi du permis d'exploitation ou concession//Year of issue of title/permit",
+                "page":21,
+                "content":"2014--Signature Page",
+                "location":{
+                    "image":"127,112,161,84"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207098.js",
+                "id":207098
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":21,
+                "content":"22/05/2014--Signature Page",
+                "location":{
+                    "image":"174,147,209,118"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207103.js",
+                "id":207103
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":21,
+                "content":"2014--Signature Page",
+                "location":{
+                    "image":"178,115,211,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version/annotations/207104.js",
+                "id":207104
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"BMM International, Musongati - Burundi (Eng. version), 2014",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2014",
+            "Resource":"Base Metals",
+            "Countries":"Burundi"
+        },
+        "created_at":"Tue, 10 Mar 2015 14:29:45 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 24 Mar 2015 01:12:01 +0000",
+        "id":"1684037-bmm-international-musongati-burundi-eng-version",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1684037/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1684037/bmm-international-musongati-burundi-eng-version.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1684037/pages/bmm-international-musongati-burundi-eng-version-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1684037/pages/bmm-international-musongati-burundi-eng-version-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1684037/bmm-international-musongati-burundi-eng-version.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1684037/pages/bmm-international-musongati-burundi-eng-version-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1684037"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":21,
+        "canonical_url":"http://www.documentcloud.org/documents/1684037-bmm-international-musongati-burundi-eng-version.html"
+    }
+}

@@ -1,0 +1,756 @@
+{
+    "document":{
+        "file_hash":"88f3e69dac31e26b973ea7a4b9f101fae261b870",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Date de ratification//Date of ratification",
+                "page":1,
+                "content":"22/05/2008\n",
+                "location":{
+                    "image":"422,426,454,383"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149709.js",
+                "id":149709
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":4,
+                "content":"Concession Agreement--Preamble\n",
+                "location":{
+                    "image":"104,167,133,137"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149702.js",
+                "id":149702
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":4,
+                "content":"Liberia --Preamble\n",
+                "location":{
+                    "image":"106,519,130,482"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149697.js",
+                "id":149697
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":4,
+                "content":"21/12/2007--Preamble\n",
+                "location":{
+                    "image":"154,383,178,352"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149718.js",
+                "id":149718
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":4,
+                "content":"2007--Preamble\n",
+                "location":{
+                    "image":"162,540,186,506"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149722.js",
+                "id":149722
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":4,
+                "content":"LIBINC Oil Palm Inc. (LIBINCO)--Preamble\n",
+                "location":{
+                    "image":"237,136,267,98"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149698.js",
+                "id":149698
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (willow vs. deep)",
+                "page":4,
+                "content":"New Cess area, Grand Bassa County--Preamble\n",
+                "location":{
+                    "image":"318,398,343,361"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149706.js",
+                "id":149706
+            },
+            {
+                "access":"public",
+                "title":"Annexes Manquantes de la copie//Annexes missing from copy",
+                "page":5,
+                "content":"The concession area is defined as the production area and the additional area as per Appendix 1 to the contract. Appendix 1 was not attached to the contract.--Art. 1.8, 1.32\n",
+                "location":{
+                    "image":"644,106,672,77"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149816.js",
+                "id":149816
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":8,
+                "content":"The rehabilitation period is 7 years after the date the contract comes into force. The regular term of the contract is 43 years commencing after the expiration of the rehabilitation period. The overall term of the contract is 50 years from the date the contract comes into force, unless otherwise extended or terminated earlier in accordance with the contract.--Art. 2\n",
+                "location":{
+                    "image":"408,243,437,212"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149724.js",
+                "id":149724
+            },
+            {
+                "access":"public",
+                "title":"Conditions de renouvellement//Conditions for renewal ",
+                "page":8,
+                "content":"The 43 year regular term of the contract may be extended for such period and on such terms and conditions as the parties to the contract may agree within 5 years prior to the expiration of its term. --Art. 2.3\n",
+                "location":{
+                    "image":"565,94,593,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149726.js",
+                "id":149726
+            },
+            {
+                "access":"public",
+                "title":"Superficie de la concession//Size of concession area",
+                "page":8,
+                "content":"34,500 acres.--Art. 3.1\n",
+                "location":{
+                    "image":"684,134,718,99"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149730.js",
+                "id":149730
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) miniere(s) concern\u00e9es (type de mineral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":8,
+                "content":"Palm oil and other palm oil related products.--Arts. 1.4 and 3.1\n",
+                "location":{
+                    "image":"686,92,717,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149728.js",
+                "id":149728
+            },
+            {
+                "access":"public",
+                "title":"Financement d\u2019infrastructure//Financing of infrastructure",
+                "page":9,
+                "content":"All financing of infrastructure is done at LIBINC Oil Palm Inc's own expense.--Art. 3.3\n",
+                "location":{
+                    "image":"359,105,385,67"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149795.js",
+                "id":149795
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":9,
+                "content":"LIBINC Oil Palm Inc. has the exclusive right to construct, install, maintain and/or repair infrastructure within the concession area after obtaining approval on design, location, size and environmental impact from the Liberian government. LIBINC Oil Palm Inc. also has the non-exclusive right to conduct and establish infrastructure outside the concession area subject to the laws of Liberia and prior approval of the Liberian government.--Art. 3.3(a)(i)-(ii)\n",
+                "location":{
+                    "image":"441,185,469,153"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149793.js",
+                "id":149793
+            },
+            {
+                "access":"public",
+                "title":"Propri\u00e9t\u00e9 d\u2019infrastructure//Ownership of infrastructure",
+                "page":9,
+                "content":"Upon termination of the contract, all non-movable assets in the concession area will become the property of the Liberian government without charge. Infrastructure constructed outside the concession area will, at all times, be public property.--Arts. 3.3(a)(ii), 23.1\n",
+                "location":{
+                    "image":"601,186,628,154"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149796.js",
+                "id":149796
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":10,
+                "content":"All trails across the production area used immemorially by the population will remain open to free use by the public, subject to reasonable restrictions as LIBINC Oil Palm Inc. will, in conformity with the laws of Liberia, impose in the interest of security of its assets or safety of its employees. Any infrastructure outside the concession area will be public property.--Art. 3.3(b)\n",
+                "location":{
+                    "image":"179,155,206,121"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149794.js",
+                "id":149794
+            },
+            {
+                "access":"public",
+                "title":"Protection des lieux sacr\u00e9s, des sources et du milieu de vie//Protection of sacred locations, resources and environment",
+                "page":10,
+                "content":"Tribal reserves of land, especially areas deemed as sacred tribal land, that have been set aside for the communal use of any tribe within Liberia are excluded from the operation of the contract. Should any question arise as to the limit and extent of such reserves, such questions will be determined by the Liberian government. Within 12 months of the execution of the contract LIBINC Oil Palm Inc. agrees to conduct a socio-economic study to identify and demarcate tribal reserves and sacred grounds with no cost to the Liberian government. This condition extends to any future lands that may be granted to LIBINC Oil Palm Inc.. --Arts. 3.3(c), 3.5\n",
+                "location":{
+                    "image":"256,153,284,117"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149732.js",
+                "id":149732
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licenses, et permis)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":11,
+                "content":"LIBINC Oil Palm Inc. will have the right to provide water for the purpose of supplying buildings and other facilities within the concession area or for conducting LIBINC Oil Palm Inc. activities. LIBINC Oil Palm Inc. will reasonably coordinate with the relevant Liberian authority regarding such activities. The Liberian government agrees not to charge license fee, tax or duties in connection with the exercise of this right. LIBINC Oil Palm Inc. may elect to supply surplus water to the government or other persons at market rates.--Art. 4\n",
+                "location":{
+                    "image":"395,310,422,275"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149790.js",
+                "id":149790
+            },
+            {
+                "access":"public",
+                "title":"Droits d'acc\u00e8s / utilisation \u00e0 la zone de concession pour les parties non contractantes (y compris l'agriculture ind\u00e9pendante autoris\u00e9e dans la zone de concession)//Rights of access/use to concession area for non-contracting parties (including permitted independent farming in concession area)",
+                "page":11,
+                "content":"To the extent that LIBINC Oil Palm Inc. activities are not unduly impeded, LIBINC Oil Palm Inc. will permit its roads to be used by third parties free of charge under conditions it deems appropriate. LIBINC Oil Palm Inc. has the right to place security gates or other checkpoints on roads within the production area when or for so long as it deems necessary, provided that the Liberian government will have the right to assign security personnel to join with LIBINC Oil Palm Inc. security personnel to monitor the objects.--Art. 5.1\n",
+                "location":{
+                    "image":"627,113,651,81"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149745.js",
+                "id":149745
+            },
+            {
+                "access":"public",
+                "title":"Investissement estim\u00e9//Estimated investment",
+                "page":12,
+                "content":"LIBINC Oil Palm Inc. will make an initial investment of at least $5,245,000 to be extended over a 4 year period in furtherance of LIBINC Oil Palm Inc. activities under the development plan.--Art. 6.1\n",
+                "location":{
+                    "image":"320,108,347,77"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149710.js",
+                "id":149710
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":12,
+                "content":"LIBINC Oil Palm Inc. will make an initial investment of at least $5,245,000 to be expended over 4 years period in furtherance with its activities, details of which will be stipulated in the development plan.--Art. 6.1\n",
+                "location":{
+                    "image":"320,143,352,113"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149791.js",
+                "id":149791
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":12,
+                "content":"Management costs paid to affiliated parties will be on an actual cost reimbursement basis unless otherwise inconsistent with the laws of Liberia. Transactions with affiliated parties will be on the basis of competitive international prices and such other terms and conditions as would be fair and reasonable had the transactions taken place with unrelated parties dealing at arm's length. The export sale price to affiliates for crude palm oil and oil palm products will be the prior month's daily average price quoted by Bursa of Malaysia converted to US dollars for crude palm oil and other oil palm products. The determination of prices will be made public. If LIBINC Oil Palm Inc. enters into sale or service agreements with affiliated parties, LIBINC Oil Palm Inc. will provide copies of such sales/service contracts to the Liberian government for review. The Liberian government should determine within 90 days that the terms of such sales/services contracts are not in conformity with this contract, otherwise such contracts are deemed to comply.--Arts. 6.3, 6.4\n",
+                "location":{
+                    "image":"490,111,516,76"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149775.js",
+                "id":149775
+            },
+            {
+                "access":"public",
+                "title":"M\u00e9thode d\u2019\u00e9valuation de prix //Method for evaluating price",
+                "page":13,
+                "content":"LIBINC Oil Palm Inc. shall have the right to sell oil palm products to non-related persons of its choosing at internationally competitive prices and at fair and reasonable terms and conditions. Such prices shall be determined to the extent possible by publicly available international reference prices or indices and shall at all times be publicly available.--Art. 6.5\n",
+                "location":{
+                    "image":"293,122,321,83"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149759.js",
+                "id":149759
+            },
+            {
+                "access":"public",
+                "title":"Obligations concernant les travailleurs ou les habitants dans ou pr\u00e8s des concessions en ce qui concerne la sant\u00e9 et la s\u00e9curit\u00e9 au travail, l'acc\u00e8s \u00e0 l'eau potable, le logement, les soins m\u00e9dicaux ou l'\u00e9ducation//Requirements regarding workers or farm/concession dwellers within concession areas or in nearby communities in respect of occupational health and safety, access to clean water, housing, medical care, or education",
+                "page":13,
+                "content":"LIBINC Oil Palm Inc. will practice modern public health in accordance with generally accepted health and sanitation procedures and laws of Liberia, will practice occupational safety procedures and precautions in accordance with generally accepted health and sanitation procedure and the laws of Liberia, and will ensure availability of medical treatment, care and attention in accordance with the laws of Liberia and national policies. It will also ensure clean water to all within the concession area. It will submit a detailed housing program for its employees to be approved by the Ministry of Public Works of Liberia before the commencement of the regular term or within 1 year from the expiry of the 7 year rehabilitation period, whichever is earlier. It will ensure the availability of elementary education at no cost for the dependents of its employees and will establish an adult literacy program for its employees and registered dependents.--Arts. 7.1, 7.2, 7.3, 7.4, 8.1, 8.2\n",
+                "location":{
+                    "image":"630,118,657,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149748.js",
+                "id":149748
+            },
+            {
+                "access":"public",
+                "title":"La s\u00e9curit\u00e9 physique, la protection de la propri\u00e9t\u00e9, et / ou l'utilisation des gardes//Physical security, protection of property, and/or use of guards",
+                "page":14,
+                "content":"LIBINC Oil Palm Inc. will be permitted to establish, manage and maintain a plant protection department for the purpose of maintaining law, order and security in the concession area and in other areas where LIBINC Oil Palm Inc. has or maintains property and assets through its own fully effective security source. When doing so LIBINC Oil Palm Inc. will be guided by the laws of Liberia and the 'Voluntary Principles on Security and Human Rights'. The members of the plant protection department must be specially trained and qualified. Members of the plant protection department will have: the power of detention and apprehension in accordance with the laws of Liberia and the contract; the power to search and exclude or evict unauthorized persons from the concession area and other areas of restricted access in accordance with the laws of Liberia. LIBINC Oil Palm Inc. must coordinate the activity of the plant protection department with law enforcement, and periodically report to the Ministry of Justice of Liberia on its activities.--Art. 7.5\n",
+                "location":{
+                    "image":"394,100,420,62"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149750.js",
+                "id":149750
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":15,
+                "content":"LIBINC Oil Palm Inc. employment practices, including compensation and working conditions, will be in compliance with the laws of Liberia. Preference will be given at all levels of skilled positions to qualified Liberian citizens and when they become available the operation of LIBINC Oil Palm Inc. will be conducted primarily by Liberian citizens. LIBINC Oil Palm Inc. will hire Liberian citizens for at least 50% of the ten most senior management positions within 5 years after the contract comes into force, and at least 75% of such positions within 10 years after the contract comes into force. Appointment of a Liberian citizen to a particular position does not preclude subsequent employment of a non-Liberian national to the same position if the percentage requirements for employing Liberian citizens are met.  Any compensation to the employees of LIBINC Oil Palm Inc. will be made in compliance with the laws of Liberia. The compensation will be the salary less the value of any goods or supplies advanced by LIBINC Oil Palm Inc. Such advanced goods and supplies will not include the value of any additional benefits, including, but not limited to, housing, medical care and education for the dependents of the employees or any other benefits provided by LIBINC Oil Palm Inc. as an incident of employment at the company.--Art. 9.1, 9.3\n",
+                "location":{
+                    "image":"172,100,197,68"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149736.js",
+                "id":149736
+            },
+            {
+                "access":"public",
+                "title":"Formation des cadres locals//Management training requirement for nationals",
+                "page":15,
+                "content":"LIBINC Oil Palm Inc. will provide for the training of Liberian citizens in order to qualify them for management and other skilled positions required by its operations. LIBINC Oil Palm Inc. will provide necessary on-the-job training and utilize any measures, including scholarships for employees to pursue advanced studies, necessary for the progression of Liberian citizens into skilled positions in the company. LIBINC Oil Palm Inc. will prepare detailed plans and schedules for such training as parts of its reporting requirements under the contract.--Art. 9.2\n",
+                "location":{
+                    "image":"401,107,430,76"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149735.js",
+                "id":149735
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":15,
+                "content":"LIBINC Oil Palm Inc. will give preference to goods produced in Liberia and services provided by Liberian residents provided that such goods and services are equal to or better than other comparable goods and services obtainable outside Liberia by the margin specified by the regulations under Public Procurement and Concessions Commission Act of 2005. LIBINC Oil Palm Inc. agrees to call attention of its major contractors to the policy of the Liberian government to encourage the purchase of Liberian goods and services. Subject to the foregoing, LIBINC Oil Palm Inc. may freely contract with any person.--Art. 10.1\n",
+                "location":{
+                    "image":"640,103,667,70"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149737.js",
+                "id":149737
+            },
+            {
+                "access":"public",
+                "title":"Activit\u00e9 de beneficiation/ valeur ajout\u00e9e//Value addition/downstream activities",
+                "page":16,
+                "content":"Within 10 years of the contract coming into force, LIBINC Oil Palm Inc. shall cooperate with the government to explore the possibility of establishing manufacturing and/or processing facilities within Liberia which utilize crude palm oil or oil palm related products taking into consideration the prospects of such production and the impact of such production on the development of Liberia.--Art. 11.1\n",
+                "location":{
+                    "image":"395,150,422,117"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149797.js",
+                "id":149797
+            },
+            {
+                "access":"public",
+                "title":"Ventes locales / usage domestique//Local sales requirements/domestic use",
+                "page":16,
+                "content":"If any manufacturing facility in Liberia uses processed palm oil as a basic material, LIBINC Oil Palm Inc. will upon request by the Liberian government (and subject to its prior commitments) sell to such manufacturers for use in their facilities 5 % of its output upon 90 days' notice and additional 5 % upon 6 months' notice during each calendar year. The sale price will be based upon the average of the prices received by LIBINC Oil Palm Inc. from the same grade and type of oil palm product shipped during the calendar month preceding the date of delivery to the purchaser, recalculated to an F.O.B. (free on board) price at the place of delivery.--Art. 11.2\n",
+                "location":{
+                    "image":"487,152,510,113"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149739.js",
+                "id":149739
+            },
+            {
+                "access":"public",
+                "title":"Les plans de gestion sociaux (y compris les droits humains), et la mode et fr\u00e9quence de suivi//Social/human rights management plans and monitoring requirements",
+                "page":16,
+                "content":"The operations shall be carried out in a manner that is consistent with the continuing economic and social viability of the centers of population which have formed and which may result from the operations. Upon the request of the government LIBINC Oil Palm Co. will consult with the government to mutually establish plans and programs for the implementation of this objective. LIBINCO Oil Palm Inc will in good faith (but at no additional cost to LIBINCO) cooperate with government efforts concerning the realization of such plans and programs. --Art. 12.1\n",
+                "location":{
+                    "image":"729,147,757,113"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149734.js",
+                "id":149734
+            },
+            {
+                "access":"public",
+                "title":"Programme de Outgrowers (d\u00e9tails, des terres suppl\u00e9mentaires fournis, etc)//Outgrowers' Program (details, additional land provided, etc)",
+                "page":17,
+                "content":"The Liberian government and LIBINC Oil Palm Inc. will assist Liberian small land holders in the Outgrower's program, details of which will be included in the development plan. The Liberian government will provide additional public land up to 50,000 acres of which 25,000 acres or fifty per cent. will be used for the expansion purposes of LIBINC Oil Palm Inc. The remaining 25,000 acres will be used for the Outgrower's program provided that the quantity of the additional land cultivated by LIBINC Oil Palm Inc. will not exceed the amount of land cultivated for the Outgrower's program as reviewed every three years as of the date this contract came into force until all 50,000 of additional public land have been cultivated. LIBINC Oil Palm Inc. will plant 750 acres annually of the land dedicated to the Outgrower's program based upon the availability of additional external funds. LIBINC Oil Palm Inc. will provide reasonable support to Liberian small land holders participating in the Outgrower's program (i.e. the outgrowers) on a cost recovery basis, including, technical assistance, provision of equipment, fertilizers, processing capacity, sharing of expertise. LIBINC Oil Palm Inc. will establish close working relations with the outgrowers, including provision of palm oil seedlings of the most scientifically advanced type provided the cost of seedlings or the cost of managing them during gestation is borne by a third party donor. Such cost of seedlings or managing them may also be borne by the outgrower at a cost agreed with  LIBINC Oil Palm Inc. on a prorated basis. LIBINC Oil Palm Inc. commits to purchase harvest from outgrowers in accordance with the terms of the contract.--Art. 12.3\n",
+                "location":{
+                    "image":"215,113,239,72"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149742.js",
+                "id":149742
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact environnemental//Environmental impact assessments ",
+                "page":17,
+                "content":"LIBINC Oil Palm Inc's obligations with respect to the environment are those prescribed by the laws of Liberia including the forestry law and the environmental protection and management laws of Liberia.--Art. 13.1\n",
+                "location":{
+                    "image":"508,112,537,79"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149785.js",
+                "id":149785
+            },
+            {
+                "access":"public",
+                "title":"Protection de l'environement, des pratiques de recoltes et prevention de la pollution//Protection of environment, harvesting practices (for forestry contracts), prevention of pollution, etc",
+                "page":17,
+                "content":"LIBINC Oil Palm Inc.'s obligations with respect to the environment will be as prescribed by the laws of Liberia, including the forestry law and the environmental protection and management law of Liberia. LIBINC Oil Palm Inc. will also take reasonable measures to ensure that its activities do not cause unreasonable risks to the public health or unreasonable damage to the environment. Unless LIBINC Oil Palm Inc. can demonstrate that a particular measure is unreasonable, it will employ protective measures similar to those employed by persons in Liberia engaged in the oil palm business.--Arts. 13.1, 13.2\n",
+                "location":{
+                    "image":"510,151,542,119"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149789.js",
+                "id":149789
+            },
+            {
+                "access":"public",
+                "title":"Mode et fr\u00e9quence de suivi//Environmental monitoring",
+                "page":17,
+                "content":"LIBINC Oil Palm Inc. will conduct an annual environmental audit that will be incorporated into its development plan report.--Art. 13.3\n",
+                "location":{
+                    "image":"632,111,659,78"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149787.js",
+                "id":149787
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":18,
+                "content":"LIBINC Oil Palm Inc. will be taxed on its net taxable income in accordance with the tax law of general application, provided that the aggregate rate of tax applicable to its net taxable income will not exceed 30%.--Arts 15.1, 15.2\n",
+                "location":{
+                    "image":"111,149,140,108"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149754.js",
+                "id":149754
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'impot sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloissonement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":18,
+                "content":"The loss carried forward period will be extended for the period of 5 years starting from the first year in which LIBINC Oil Palm Inc. has taxable income under the laws of Liberia. Thereafter the laws of Liberia will apply.--Art. 15.3\n",
+                "location":{
+                    "image":"204,142,231,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149755.js",
+                "id":149755
+            },
+            {
+                "access":"public",
+                "title":"Redevances superficiaires//Surface fees",
+                "page":18,
+                "content":"During the 7 year rehabilitation term, LIBINC Oil Palm Inc. will pay an annual surface rental equal to US$1 per developed acre and US$0.50 per undeveloped acre. During the regular 43 year period, LIBINC Oil Palm Inc. will pay an annual surface rental equal to US$2 per developed acre and US$1 per undeveloped acre. All surface rentals will be adjusted once every five years to reflect the rate of the inflation in Liberia as indicated by the Liberian GDP Implicit Price Deflator, but such adjustment will not exceed 20 % of any 5 year period. All such rentals are payable annually in advance, on or before January 15th of the year for which payment is being made to the Ministry of Finance of Liberia.--Art. 16\n",
+                "location":{
+                    "image":"258,298,287,266"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149769.js",
+                "id":149769
+            },
+            {
+                "access":"public",
+                "title":"D\u00e9ductibilit\u00e9 des frais financiers//Deductibility of expenses",
+                "page":18,
+                "content":"During the 7 year rehabilitation period, LIBINC Oil Palm Inc. is entitled to (a) an incentive deduction of 30% of the purchase price of equipment and machinery used in the activities in the year that the qualifying asset is placed in service in addition to the incentive deductions in section 204(d) of the Liberian Revenue Code of 2000; (b) an additional 5% zonal incentive deduction on all capital expenses incurred in Grand Bass County over and above the incentive deduction allowed in Section 204(d) and (e)(2)(A) of the Liberian Revenue Code of 2000; and (c) an additional 5% incentive deduction on for investment activities provided it employees more than one thousand people in Liberia.--17.1\n",
+                "location":{
+                    "image":"519,138,551,105"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149758.js",
+                "id":149758
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":18,
+                "content":"LIBINC Oil Palm Inc. will be exempt from import duties payment on items of agricultural, industrial machinery, products, capital spare parts, supplies and equipment, and raw materials used in its activities under the contract. LIBINC Oil Palm Inc. is also not required to pay any duty on medical and educational products or supplies. LIBINC Oil Palm Inc. will be exempt from goods and service tax during the rehabilitation period on capital goods or materials and supplies used directly for production, or to social obligations according to the term listed in the schedule to the contract.--Arts. 17.1, 17.9\n",
+                "location":{
+                    "image":"522,261,556,228"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149773.js",
+                "id":149773
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane pour le mat\u00e9riel de transport//Custom duties on transportation equipment",
+                "page":18,
+                "content":"LIBINC Oil Palm Inc. is exempt from the payment of import duties generally applicable under the laws of Liberia for any equipment used in production and activities by LIBINC Oil Palm Inc. for the 7 year rehabilitation period based on a list of approved items found in a schedule to the contract. After that the laws of Liberia will apply.--Art. 17.1\n",
+                "location":{
+                    "image":"524,219,555,186"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149767.js",
+                "id":149767
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase d'exploitation//Custom duties during  operation phase",
+                "page":18,
+                "content":"LIBINC Oil Palm Inc. will be exempt from import duties payment on items of agricultural, industrial machinery, products, capital spare parts, supplies and equipment, and raw materials used in its activities under the contract. LIBINC Oil Palm Inc. shall pay taxes on petroleum according to the law of general application.--Art. 17.1 and 17.2\n",
+                "location":{
+                    "image":"526,177,554,147"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149764.js",
+                "id":149764
+            },
+            {
+                "access":"public",
+                "title":"//Other - Withholding tax on interest and dividend",
+                "page":18,
+                "content":"LIBINC Oil Palm Inc. will withhold 10 % tax on any interest paid to non-resident persons and institutions during the 7 year rehabilitation period. Multi-lateral financial or development institutions, but not commercial banks, will be exempt from this withholding tax. LIBINC Oil Palm Inc. will also withhold 10 % tax on any dividend distributed during the 7 year rehabilitation period.--Art. 17.3\n",
+                "location":{
+                    "image":"676,142,701,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149784.js",
+                "id":149784
+            },
+            {
+                "access":"public",
+                "title":"Obligations communautaires ou sous-nationales//Community and regional obligations",
+                "page":19,
+                "content":"LIBINC Oil Palm Inc. will contribute 1 % of its annual gross sale to a community development fund during the regular 43 year term. LIBINC Oil Palm Inc. will also contribute 0.5 % of its annual gross sale to an oil palm development fund during the 7 year rehabilitation period and 1 % of its annual gross sale during the regular 43 year term.--Arts. 17.4 and 17.5\n",
+                "location":{
+                    "image":"141,120,167,84"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149770.js",
+                "id":149770
+            },
+            {
+                "access":"public",
+                "title":"//Other - ECOWAS Levy",
+                "page":19,
+                "content":"LIBINCO Oil Palm Inc. will be subject to the ECOWAS Trade Levy--Art. 17.6\n",
+                "location":{
+                    "image":"236,121,263,86"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149780.js",
+                "id":149780
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":19,
+                "content":"LIBINC Oil Palm Inc. will pay a 2 % turnover tax during the 7 year rehabilitation period to be applied against future tax obligations.--Art. 17.8\n",
+                "location":{
+                    "image":"301,118,327,80"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149752.js",
+                "id":149752
+            },
+            {
+                "access":"public",
+                "title":"Cr\u00e9dit d'investissement//Investment credit",
+                "page":19,
+                "content":"LIBINC Oil Palm Inc. will be entitled to an additional 5% incentive deduction for investment activities provided it employs more than one thousand (1,000) people in Liberia.--Art. 17.10(c)",
+                "location":{
+                    "image":"581,130,606,95"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149762.js",
+                "id":149762
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des nationaux//Withholding tax on national salaries",
+                "page":19,
+                "content":"LIBINC Oil Palm Inc. will withhold 8 % of the payment for its resident contractors during the 7 year rehabilitation period. After that the laws of Liberia will apply.--Art. 17.3.2\n",
+                "location":{
+                    "image":"86,122,113,84"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149756.js",
+                "id":149756
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des expatri\u00e9s//Withholding tax on expatriate salaries",
+                "page":19,
+                "content":"LIBINC Oil Palm Inc. will withhold 10 % of payment for non-resident contractors during the 7 year rehabilitation period. After that the laws of Liberia will apply.--Art. 17.3.2\n",
+                "location":{
+                    "image":"86,163,117,128"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149757.js",
+                "id":149757
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":20,
+                "content":"LIBINC Oil Palm Inc. will have its books of account audited within 3 months, or any longer period approved by the Minister of Finance of Liberia, after the close of each fiscal year by an independent reputable international accounting firm selected by LIBINC Oil Palm Inc. as an auditor. A copy of LIBINC Oil Palm Inc.'s annual financial statement with any management letters will be provided to the Liberian government by LIBINC Oil Palm Inc. as required by the laws of Liberia. The Liberian government may carry out its own audit of the books of account of LIBINC Oil Palm Inc., provided that LIBINC Oil Palm Inc. will be provided with a copy of the audit within 45 days of receipt. Once either LIBINC Oil Palm Inc. or the Liberian government have audited the books of account, the financial statement of LIBINC Oil Palm Inc. should be considered acceptable and the audit results binding and conclusive as its findings, unless any party will indicate the contrary within 3 years after its receipt of a copy of the audited financial statement.--Art. 18.5\n",
+                "location":{
+                    "image":"546,95,574,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149774.js",
+                "id":149774
+            },
+            {
+                "access":"public",
+                "title":"L'\u00e9tude de faisabilit\u00e9 et le plan d'affaires//Feasibility studies and requirement of business plan",
+                "page":21,
+                "content":"LIBINC Oil Palm Inc. will submit an annual rolling 5-year development plan detailed as agreed to the Liberian government for comments and review, but not approval.--Art. 19.2\n",
+                "location":{
+                    "image":"400,93,426,59"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149792.js",
+                "id":149792
+            },
+            {
+                "access":"public",
+                "title":"Obligations de reports et les m\u00e9thodes de c\u00f4ntrole de la conformit\u00e9//Reporting Requirements and other methods of monitoring compliance",
+                "page":21,
+                "content":"LIBINC Oil Palm Inc. will submit activity reports containing details as prescribed by the Liberian government, e.g. production volume, employment information, quarterly return, financial statements, etc. Depending on the information, such report must be filed either quarterly, semi-annually or annually.--Art. 19.3 and Schedule C\n",
+                "location":{
+                    "image":"494,103,517,66"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149812.js",
+                "id":149812
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":21,
+                "content":"Trade secrets as generally accepted in oil palm industry will be designated as confidential and will be used only for the purpose for which they were obtained and will be maintained in confidence as to third parties by the Liberian government and its representatives, unless required by court. In such a case, the Liberian government will send notice to LIBINC Oil Palm Inc. in a timely manner so that LIBINC Oil Palm Inc. has an opportunity to intervene in the matter.--Art. 19.5\n",
+                "location":{
+                    "image":"692,107,720,67"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149809.js",
+                "id":149809
+            },
+            {
+                "access":"public",
+                "title":"Cession / transfert//Assignment / transfer",
+                "page":22,
+                "content":"The contract, rights or interests under it, will not be transferred or assigned without prior written consent of the Liberian government, which should not be unreasonably withheld.--Art. 20.1\n",
+                "location":{
+                    "image":"157,166,184,128"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149802.js",
+                "id":149802
+            },
+            {
+                "access":"public",
+                "title":"//Force majeure",
+                "page":22,
+                "content":"In case of force majeure, the party that cannot perform its obligations will send notice to the other party as soon as practicable and such obligations will be suspended during the continuance of any inability so caused. Time periods specified in the contract including the term of the contract will be extended by the period of the time of inability caused by force majeure. LIBINC Oil Palm Inc. may terminate the contract without cause by sending notice to the Liberian government 60 days in advance in case the force majeure continues for 1 year or more. After the force majeure, inability to resume operation within 6 months will be ground for cancellation.--Art. 21\n",
+                "location":{
+                    "image":"233,331,259,295"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149814.js",
+                "id":149814
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9siliation / termination//Cancellation / termination",
+                "page":23,
+                "content":"LIBINC Oil Palm Inc. has the right to terminate the contract without cause at any time upon giving 365 days' notice of its intent to do so to the government. The Liberian government has the right to terminate the contract in case (i) LIBINC Oil Palm Inc. fails to comply with material obligations, e.g. failure to make acreage rental fee payment; failure to clear and plant the acreage; failure to invest; or violation of other clauses and failing to cure within 60 days or reasonable period after being notified; (ii) LIBINC Oil Palm Inc. makes an assignment of all or substantial assets to creditors, is under receivership or proceeds with bankruptcy or reorganization process; or (iii) LIBINC Oil Palm Inc. ceases the commercial production for 365 or more consecutive days unless such cessation is consented to by the Liberian government or in case of force majeure.--Arts. 22.1 - 22.3\n",
+                "location":{
+                    "image":"96,106,121,69"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149804.js",
+                "id":149804
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":25,
+                "content":"Any dispute between the Liberian government and LIBINC Oil Palm Inc. arising out of or in relation to the contract will be settled by binding arbitration, unless specifically provided elsewhere in the contract for resolution by submission to an expert. The arbitration will be under the rules of the International Centre for Settlement of Investment Disputes (ICSID) effective on the date the contract comes into force. There will be three arbitrators. Arbitration proceedings will be held in English, in Washington, D.C. or such other place the parties mutually agree, subject to the approval of the Center and arbitral tribunal. The arbitral tribunal will determine how the costs of the proceedings (costs and fees incurred and imposed by the Centre and the arbitrators) are assessed between the two parties. Each party will pay for its own costs and attorney fees. Any procedural issue that can't be determined under the rules of ICSID will be determined under the governing law. The arbitrators, by majority vote, render a written decision and publicly state it within 3 months after the hearing has concluded. Any monetary award will be payable in dollars through a bank designated by the recipient and any award to LIBINC Oil Palm Inc. will not be subject to taxes and duties. Neither party will have liability for consequential damages or exemplary or punitive damages. Interest will be applied at a rate of LIBOR (London Interbank Offered Rate) plus one percentage point from the date of the award until satisfaction. If LIBOR is no longer reported, then another agreed substitute rate should be applied. If the decision of the arbitral tribunal is adverse to either party, the tribunal, in its discretion, may allow a grace period to cure defect or default, up to 180 days from the time that payment would have been required. The Liberian government waives any defense related to sovereign immunity. The right to refer a claim or dispute to arbitration will not be affected by the fact that either party has received partial compensation from another person for a loss or injury related to the claim or dispute. That person may participate in the proceedings. The award may contain orders such as specific performance, setoff, other equitable relief or monetary damage. The parties will take all actions necessary to completely fulfill the award, which is binding and enforceable against them. The consent to jurisdiction of ICSID will equally bind any successors or successors-in-interest to each party. Should ICSID be replaced by or functions transferred to another international organization, the parties will have the right to submit any dispute to that body for settlement. If ICSID ceases to exist without replacement, the parties may submit disputes to other centers mutually agreed upon. At all times, the right to arbitration is fully binding on both parties. LIBINC Oil Palm Inc. is authorized to continue operations consistent with the terms of the contract during the pendency of a decision of a referee or arbitral tribunal. At the request of either party and subject to approval by the other party, any matter can instead be referred to a single referee appointed by the Secretary General of ICSID. Referring the matter to a single referee does not apply to disputes arising out of provisions of the contract related to the grant of rights, conduct of operations, income taxation, surface rental, payments to Liberian government, financial reporting and currency; records, reports and inspection; termination; disposition of assets; governing law; periodic review and survival and severability provisions; unless the parties agree the dispute is not material. The decision of the referee will be final and binding unless appealed by either party to arbitrators who will examine the decision only as to manifest error of law, findings of fact not supported by credible evidence, and abuse of authority, misconduct or other unauthorized act by the referee.--Art. 24.1, 24.4 and 1.6\n",
+                "location":{
+                    "image":"307,108,334,77"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149800.js",
+                "id":149800
+            },
+            {
+                "access":"public",
+                "title":"Indemnisation//Indemnification",
+                "page":26,
+                "content":"Indemnification will be defined in the arbitral award. LIBINC Oil Palm Inc. will at all times indemnify and hold Liberian government harmless from all claims and liabilities as a result of contractual breaches by LIBINC Oil Palm Inc. to third parties or by Liberian government authorized representation of LIBINC Oil Palm Inc.. The Liberian government in return will at all times indemnify and hold LIBINC Oil Palm Inc. harmless from all claims and liabilities as a result of contractual breaches by the Liberian government to third parties or by LIBINC Oil Palm Inc. authorized representation of the Liberian government.--Arts.24.7, 25.1\n",
+                "location":{
+                    "image":"168,99,196,62"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149807.js",
+                "id":149807
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":28,
+                "content":"In case of a dispute among the parties the governing law will be the laws of Liberia, including any labor, environmental, health, safety, customs and tax statutes and any international treaties Liberia is a party to. When resolving a dispute the arbitral tribunal will construe and interpret the rights and obligations of the parties under the contract in accordance with the laws of Liberia. --Art. 27.1\n",
+                "location":{
+                    "image":"741,117,767,81"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149798.js",
+                "id":149798
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":28,
+                "content":"In the event of a conflict between this contract and any law of Liberia enacted after the contract came into force (except the Constitution of Liberia), the rights, duties and obligations of LIBINC Oil Palm Inc. and the Liberian government are the ones listed in the contract. To the extent that there is inconsistency between the tax corpus and this contract, this contract shall govern. All matters governed by the tax corpus and not referred to in the contract shall be governed by the tax corpus. --Arts. 27.2 and 29.2\n",
+                "location":{
+                    "image":"810,116,836,77"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149801.js",
+                "id":149801
+            },
+            {
+                "access":"public",
+                "title":"Expropriation//Expropriation / nationalization",
+                "page":29,
+                "content":"Liberian government undertakes and affirms that it will not nationalize or expropriate (i) any infrastructure or other property of LIBINC Oil Palm Inc. and related persons; (ii) palm oil products resulting from LIBINC Oil Palm Inc. activities; (iii) equity, shares or ownership interests owned or issued by LIBINC Oil Palm Inc.; (iv) structure or entity put in place by LIBINC Oil Palm Inc.; or (v) capital invested by LIBINC Oil Palm Inc. in Liberia.--Art. 29.4\n",
+                "location":{
+                    "image":"766,140,793,101"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149815.js",
+                "id":149815
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), Etat//Signatories, State",
+                "page":31,
+                "content":"Dr. J. Chris Toe (Minister of Agriculture), Dr. Antoinette M. Sayeh (Minister of Finance) and Richard V. Tolbert, Liberia (Chairman of the National Investment Company).--Signature Section\n",
+                "location":{
+                    "image":"269,193,298,147"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149716.js",
+                "id":149716
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":31,
+                "content":"Minister of Agriculture, Minister of Finance and Chairman of the National Investment Commission of Liberia.--Signature Section\n",
+                "location":{
+                    "image":"283,117,312,80"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149715.js",
+                "id":149715
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":31,
+                "content":"LIBINC Oil Palm Inc.--Signature Section\n",
+                "location":{
+                    "image":"499,113,537,84"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149711.js",
+                "id":149711
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), soci\u00e9t\u00e9 //Signatories, company",
+                "page":31,
+                "content":"Joseph H. Jaoudi (Chairman of the Board)--Signature Section\n",
+                "location":{
+                    "image":"556,119,587,83"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc/annotations/149714.js",
+                "id":149714
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"LIBINC Oil Palm Inc. - Liberia, 2007",
+        "data":{
+            "Resource":"Palm Oil",
+            "Countries":"Liberia",
+            "Signature Date":"21/12/2007",
+            "Contract Term (duration) in Years":"50",
+            "Title Type":"Concession",
+            "Signature Year":"2007"
+        },
+        "created_at":"Fri, 14 Mar 2014 15:58:47 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 31 Mar 2015 16:12:01 +0000",
+        "id":"1086847-libinic-oil-palm-inc",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1086847/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086847/libinic-oil-palm-inc.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1086847/pages/libinic-oil-palm-inc-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086847/pages/libinic-oil-palm-inc-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086847/libinic-oil-palm-inc.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086847/pages/libinic-oil-palm-inc-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1086847"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":42,
+        "canonical_url":"http://www.documentcloud.org/documents/1086847-libinic-oil-palm-inc.html"
+    }
+}

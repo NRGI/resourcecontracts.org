@@ -1,0 +1,699 @@
+{
+    "document":{
+        "file_hash":null,
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, Soci\u00e9t\u00e9 Nationale, Minist\u00e8re//State agency, National Company, Ministry ",
+                "page":4,
+                "content":"Minist\u00e8re des Mines et de la G\u00e9ologie--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"278,595,312,551"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71960.js",
+                "id":71960
+            },
+            {
+                "access":"public",
+                "title":"Nom(s) de la soci\u00e9t\u00e9(s) contractante(s)//Name of contracting company ",
+                "page":4,
+                "content":"Soci\u00e9t\u00e9 Internationale de D\u00e9veloppement des Mines Internationales du Henan S.A. et sa filiale de droit guin\u00e9en, la Compagnie de D\u00e9veloppement des Mines Internationales Henan - Chine / Guin\u00e9e, SA, conjointement et solidairement engag\u00e9es, repr\u00e9sent\u00e9es par leurs PDG Monsieur Chen Xuefeng et Monsieur Shangguan Shumin--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"464,588,499,542"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71957.js",
+                "id":71957
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":5,
+                "content":"Bauxite, alumine--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"30,596,68,552"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71970.js",
+                "id":71970
+            },
+            {
+                "access":"public",
+                "title":"Nom du Gisement//Deposit/site name ",
+                "page":5,
+                "content":"T\u00e9l\u00e9m\u00e9l\u00e9 - Boffa - Bok\u00e9--Declarations Pr\u00e9liminaires\n",
+                "location":{
+                    "image":"79,594,112,554"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71954.js",
+                "id":71954
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, Longitude et Latitude//Location, longitude and latitude ",
+                "page":5,
+                "content":"Le Permis de Recherche couvrant un p\u00e9rim\u00e8tre de 558km2 dans les Pr\u00e9fectures de T\u00e9limele, Boffa et Bok\u00e9 --D\u00e9clarations Pr\u00e9liminaires\n",
+                "location":{
+                    "image":"82,646,116,605"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71956.js",
+                "id":71956
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable//Governing law ",
+                "page":6,
+                "content":"Le Code Minier et autres lois et r\u00e8glements de droit guin\u00e9en en vigueur.--Art.1\n",
+                "location":{
+                    "image":"147,339,180,298"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72023.js",
+                "id":72023
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure ",
+                "page":8,
+                "content":"Usine d'Alumine, Port, Centrales \u00e9nerg\u00e9tiques et un Chemin de fer; la Soci\u00e9t\u00e9 s'engage \u00e0 maintenir les installations et \u00e9quipements industriels en bon \u00e9tat de fonctionnement pour assurer son programme de production. La Soci\u00e9t\u00e9 peut construire, utiliser, am\u00e9liorer et entretenir toute infrastructure, routi\u00e8re, ferroviaire, portuaire, \u00e9nerg\u00e9tique et autres r\u00e9seaux et voies de communication, de transport et de distribution.  Si l'infrastructure sera en dehors du p\u00e9rim\u00e8tre de la concession, elle se fera dans le cadre d'un accord \u00e0 \u00e9laborer avec l'\u00c9tat. Pour l'infrastructure dans la zone d'un Permis de Recherche ou dans la p\u00e9rim\u00e8tre de la concession, autorisation pr\u00e9alable requise d'un d\u00e9lai d'un mois.  La Soci\u00e9t\u00e9 recherchera les synergies avec des infrastructures existantes et en projet, prendra en compte les besoins \u00e9nerg\u00e9tiques des communaut\u00e9s environnantes \u00e0 travers un accord sign\u00e9 avec l'\u00c9tat. Dans le cadre du PPP la Soci\u00e9t\u00e9 consid\u00e9rera avec int\u00e9r\u00eat tout projet d'infrastructure favorisant le d\u00e9veloppement r\u00e9gional int\u00e8gr\u00e9 et durable.--Arts. 3.1, 10.2, 15.1 - 15.2, 17.3\n",
+                "location":{
+                    "image":"775,340,810,301"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72014.js",
+                "id":72014
+            },
+            {
+                "access":"public",
+                "title":"Type du Titre Minier Associ\u00e9 au Contrat//Type of mining title associated with the contract ",
+                "page":11,
+                "content":"Concession--Art. 6.1\n",
+                "location":{
+                    "image":"643,443,674,405"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71953.js",
+                "id":71953
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 ex\u00e9cutoire du projet cr\u00e9e ou envisag\u00e9e//Name and/or composition of executing company created or anticipated ",
+                "page":11,
+                "content":"Soci\u00e9t\u00e9 de droit guin\u00e9en \u00e0 cr\u00e9er par l\u2019Investisseur. Participation de\u00a0l\u2019Etat \u00e0 10% maximum, \u00e0 lib\u00e9rer pendant la phase de Construction. --Arts. 6.2 - 6.3\n",
+                "location":{
+                    "image":"800,484,831,442"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71961.js",
+                "id":71961
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation ",
+                "page":12,
+                "content":"La participation de l'Etat au capital de la Soci\u00e9t\u00e9 est fix\u00e9e \u00e0 10% maximum \u00e0 lib\u00e9rer, aux m\u00eames conditions que les autres actionnaires, pendant la phase de Construction.--Art. 6.3\n",
+                "location":{
+                    "image":"162,424,197,387"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72000.js",
+                "id":72000
+            },
+            {
+                "access":"public",
+                "title":"Protection des lieux sacr\u00e9s, des sources et du milieu de vie//Protection of sacred locations, resources and environment ",
+                "page":12,
+                "content":"Avant l'expiration du Permis de Recherche et de la Concession Mini\u00e8re, la Soci\u00e9t\u00e9 est tenue de remettre en \u00e9tat ou d'am\u00e9nager les sites et les lieux affect\u00e9s par les travaux de recherche et d'exploitation, conform\u00e9ment \u00e0 ses engagements. La dur\u00e9e programmera annuellement les travaux de remise en \u00e9tat et d'am\u00e9nagement pendant toute la dur\u00e9e de l'exploitation du projet. La Soci\u00e9t\u00e9 doit tenir compte et minimiser l'impact de ses activit\u00e9s sur les droits des tiers, usufruitiers ou propri\u00e9taires fonciers, existant au moment de l'entr\u00e9e en vigueur de la Convention. La Soci\u00e9t\u00e9 doit respecter toute directive raisonnable des autorit\u00e9s nationales ou r\u00e9gionales responsables de l'Administration et de l'am\u00e9nagement du milieu.--Arts. 18.1, 6.4\n",
+                "location":{
+                    "image":"490,294,522,254"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71973.js",
+                "id":71973
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9installation des habitants//Resettlement ",
+                "page":13,
+                "content":"Si la pr\u00e9sence d'usufruitiers ou de propri\u00e9taires fonciers est incompatible avec ses activit\u00e9s, let soci\u00e9t\u00e9 est tenue d'aider l'Etat \u00e0 les relocaliser et d'indemniser, au montant n\u00e9cessaire \u00e0 la relocalisation et a la r\u00e9installation y compris la valeur marchande des pertes de toute nature occasionn\u00e9es par le d\u00e9placement et la relocalisation, ceux d'entre eux qui \u00e9taient pr\u00e9sents a la date d'entr\u00e9e en vigueur de la convention.  La soci\u00e9t\u00e9 et les ayants droit peuvent s'entendre pour une relocalisation am\u00e9nag\u00e9e dans un nouvel emplacement en lieu et place de tout ou partie du montant de l'indemnit\u00e9.--Art. 6.5.2\n",
+                "location":{
+                    "image":"521,112,556,66"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71977.js",
+                "id":71977
+            },
+            {
+                "access":"public",
+                "title":"Financement d\u2019infrastructure//Financing of infrastructure ",
+                "page":14,
+                "content":"Une partie d'au moins 30% du montant des investissements industriels (Mine et Usine) sera couverte par des Fonds Propres et le reste par des emprunts a Long Terme.--Art. 7\n",
+                "location":{
+                    "image":"225,419,262,377"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72022.js",
+                "id":72022
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments ",
+                "page":15,
+                "content":"Les travaux de construction d\u00e9buteront 30 mois suivant l'entr\u00e9e en vigueur de la Convention et dureront 36 mois; La construction de l'usine d'alumine d\u00e9butera 30 mois suivant l'entr\u00e9e en vigueur de la Convention et durera 54 mois (pour la r\u00e9alisation du Projet, l'investisseur s'engage \u00e0 : 1. r\u00e9aliser des travaux n\u00e9cessaires en vue de mettre en \u00e9vidence des gisements exploitables dans les p\u00e9rim\u00e8tres de permis de recherche qui lui sont octroy\u00e9s; 2. construire et exploiter une Mine de bauxite de 10 millions de tonnes par an; 3. construire une Usine d'Alumine d'une capacit\u00e9 d'1 200 000 tonnes par an; 4. construire un Port, des Centrales \u00e9nerg\u00e9tiques et un Chemin de Fer; 5. commercialiser la bauxite de forte teneur et d'Alumine produite)--Arts. 9.2 - 9.3\n",
+                "location":{
+                    "image":"472,111,508,71"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72012.js",
+                "id":72012
+            },
+            {
+                "access":"public",
+                "title":"Commercialisation et acc\u00e8s \u00e0 la production //Marketing of output and state access to output ",
+                "page":16,
+                "content":"La Soci\u00e9t\u00e9 aura le droit d'exporter, sans aucune restriction, ses productions de bauxite et d'alumine, et ce pendant toute la dur\u00e9e du projet. L'\u00c9tat guin\u00e9en peut commercialiser une part de la production correspondant \u00e0 sa participation au Capital de la Soci\u00e9t\u00e9 et acquise aux m\u00eames conditions que les autres actionnaires clients. L'option pour cette vente, pour une ann\u00e9e donn\u00e9e, devra \u00eatre lev\u00e9e, par une demande \u00e9crite du Ministre des mines, avant le 1er Septembre de l'ann\u00e9e pr\u00e9c\u00e9dente. La production commerciale de bauxite sera constat\u00e9e lorsque les travaux ferroviaires et portuaires seront termin\u00e9s et la quantit\u00e9 export\u00e9e aura atteint 200 000 tonnes de bauxite. La production commerciale de l'alumine sera constat\u00e9e lorsque la production mensuelle export\u00e9e aura atteint 30 000 tonnes pendant 3 mois cons\u00e9cutifs.--Art. 11, 12\n",
+                "location":{
+                    "image":"361,408,396,363"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72019.js",
+                "id":72019
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements ",
+                "page":17,
+                "content":"Les emplois non qualifi\u00e9s sont r\u00e9serv\u00e9s exclusivement aux guin\u00e9ens et en priorit\u00e9 aux membres des communaut\u00e9s locales ou avoisinantes. Pour les emplois semi qualifi\u00e9s, \u00e0 condition de poss\u00e9der les capacit\u00e9s n\u00e9cessaires, le personnel guin\u00e9en sera prioritaire. La Soci\u00e9t\u00e9 s'engage a employer en priorit\u00e9 des guin\u00e9ens, a comp\u00e9tence \u00e9gale, par rapport aux expatri\u00e9s, pour tous les emplois qualifi\u00e9s, de cadres et de cadres sup\u00e9rieurs.  La Soci\u00e9t\u00e9 s'engage a remplacer progressivement les expatri\u00e9s par des guin\u00e9ens de sorte que 5 ans apr\u00e8s le d\u00e9but de la production commerciale les expatri\u00e9s ne repr\u00e9sentent plus que 20% au plus des effectifs.--Arts. 13.3 - 13.7\n",
+                "location":{
+                    "image":"682,103,720,59"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71975.js",
+                "id":71975
+            },
+            {
+                "access":"public",
+                "title":"Formation des cadres locals//Management training requirement for nationals ",
+                "page":18,
+                "content":"La Soci\u00e9t\u00e9 s'engage \u00e0 \u00e9laborer au cours des \u00c9tudes de Faisabilit\u00e9 et \u00e0 mettre en \u0153uvre un programme de formation et de perfectionnement des ouvriers, employ\u00e9s et cadres, en vue du transfert de comp\u00e9tences et de capacit\u00e9 aux guin\u00e9ens.--Art. 13.6\n",
+                "location":{
+                    "image":"93,109,131,65"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71974.js",
+                "id":71974
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers//Third party use of infrastructure ",
+                "page":19,
+                "content":"La soci\u00e9t\u00e9 a la priorit\u00e9 d'utilisation de toute infrastructure de transport qu'elle construit. Si un tiers souhaite faire usage des installations de transport de la Soci\u00e9t\u00e9, sans porter pr\u00e9judice aux activit\u00e9s de la Soci\u00e9t\u00e9, les installations vis\u00e9es sont mises \u00e0 l'usage du tiers \u00e0 des taux \u00e9quitables applicables \u00e0 la nature des installations.--Art. 15.2\n",
+                "location":{
+                    "image":"474,378,511,332"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72021.js",
+                "id":72021
+            },
+            {
+                "access":"public",
+                "title":"Autre - Dispositions environnementales//Other - Environmental provisions",
+                "page":20,
+                "content":"La Soci\u00e9t\u00e9 s'engage \u00e0 \u00e9tudier et minimiser tout impact n\u00e9gatif sur l'environnement, notamment la pollution, la d\u00e9gradation des \u00e9cosyst\u00e8mes naturels, la perte de la diversit\u00e9 biologique et l'atteinte \u00e0 la qualit\u00e9 et au cadre de vie des populations, \u00e0 r\u00e9habiliter les sites affect\u00e9s \u00e0 leur \u00e9tat naturel ou \u00e0 un \u00e9tat d'utilit\u00e9, et \u00e0 observer les directives de la Banque Mondiale applicables \u00e0 l'industrie mini\u00e8re.--Art. 16.1\n",
+                "location":{
+                    "image":"719,638,753,598"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72010.js",
+                "id":72010
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":21,
+                "content":"L'\u00c9tude d'Impact Environnemental tient compte des conditions environnementales initiales et comprend l'analyse des incidences directes ou indirectes du projet sur l'environnement. L'analyse doit refl\u00e9ter les meilleurs pratiques internationales dans l'industrie mini\u00e8re. --Art. 16.2\n",
+                "location":{
+                    "image":"232,619,263,582"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72007.js",
+                "id":72007
+            },
+            {
+                "access":"public",
+                "title":"Mode et fr\u00e9quence de suivi//Environmental monitoring ",
+                "page":21,
+                "content":"Un plan de gestion sera d\u00e9velopp\u00e9 et mis a jour tous les 5 ans et \u00e0 chaque fois que la Soci\u00e9t\u00e9 pr\u00e9voit de modifier ses activit\u00e9s provocant un changement important \u00e0 ce plan - soumis \u00e0 l'approbation des autorit\u00e9s comp\u00e9tentes.--Art. 16.2\n",
+                "location":{
+                    "image":"232,659,267,623"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72008.js",
+                "id":72008
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":21,
+                "content":"Afin d'\u00e9valuer les incidences de l'implantation des activit\u00e9s sur la vie des populations affect\u00e9es, et d'autre part, de constituer des donn\u00e9es de base pour l'\u00e9laboration de plans et de projets de d\u00e9veloppement durable des communaut\u00e9s locales concern\u00e9es, mise en place d'un plan d'action comprenant le programme prioritaire de recasement des populations d\u00e9plac\u00e9es et des programmes de renforcement des services de base et des moyens d'existence durable dans la r\u00e9gion.--Art. 17.1\n",
+                "location":{
+                    "image":"643,497,676,454"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72011.js",
+                "id":72011
+            },
+            {
+                "access":"public",
+                "title":"Convention de d\u00e9veloppement locale//Local development agreement ",
+                "page":22,
+                "content":"A compter du d\u00e9marrage de la production commerciale contribution conforme aux dispositions harmonis\u00e9es relative au secteur bauxite-alumine.   --Art. 17.2\n",
+                "location":{
+                    "image":"250,491,282,454"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71971.js",
+                "id":71971
+            },
+            {
+                "access":"public",
+                "title":"Assurance//Insurance ",
+                "page":24,
+                "content":"La Soci\u00e9t\u00e9 souscrira les polices d'assurance requises contre ces risques aupr\u00e8s des Compagnies d'Assurance de son choix offrant les garanties de couverture et d'indemnisation que la Soci\u00e9t\u00e9 juge les plus ad\u00e9quates, mais en privil\u00e9giant les Soci\u00e9t\u00e9s d'Assurances guin\u00e9ennes, \u00e0 condition que les souscriptions puissent \u00eatre r\u00e9assur\u00e9es aupr\u00e8s des Soci\u00e9t\u00e9s Internationales de R\u00e9assurance de premier rang.--Art. 19.2\n",
+                "location":{
+                    "image":"302,398,338,356"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71976.js",
+                "id":71976
+            },
+            {
+                "access":"public",
+                "title":"Indemnisation//Indemnification ",
+                "page":24,
+                "content":" Toute partie qui causerait un pr\u00e9judice \u00e0 l'autre dans le cadre de la pr\u00e9sente Convention, sera tenue d'indemniser celle-ci pour le pr\u00e9judice subi, et devra couvrir l'int\u00e9gralit\u00e9 des dommages directs subis. A d\u00e9faut d'accord entre les parties, l'indemnisation sera d\u00e9termin\u00e9e par un expert international d\u00e9sign\u00e9 d'un commun accord entre les Parties, ou \u00e0 d\u00e9faut, par la Cour Arbitrale de la CCI. L'indemnisation sera r\u00e9gl\u00e9e uniquement en US dollars.--Art. 19.3\n",
+                "location":{
+                    "image":"666,428,700,381"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72028.js",
+                "id":72028
+            },
+            {
+                "access":"public",
+                "title":"Autre- Expropriation//Other - Expropriation / Nationalization ",
+                "page":25,
+                "content":"L'\u00c9tat n'expropriera pas ou ne nationalisera pas tout ou partie des actifs du projet. Au cas o\u00f9 l'\u00c9tat exproprierait ou nationaliserait tout ou partie des actifs du projet pour cause d'utilit\u00e9 publique, l'Investisseur, la Soci\u00e9t\u00e9 et ses filiales auront droit a une juste indemnisation couvrant l'ensemble du pr\u00e9judice direct conform\u00e9ment au droit international.--Art. 20.2\n",
+                "location":{
+                    "image":"470,448,502,411"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72032.js",
+                "id":72032
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":26,
+                "content":"La Soci\u00e9t\u00e9 est tenue de comptabiliser ses op\u00e9rations et de pr\u00e9senter ses \u00e9tats financiers suivant le syst\u00e8me comptable OHADA. A la fin de chaque exercice comptable, la Soci\u00e9t\u00e9 est oblig\u00e9e de communiquer aux Minist\u00e8res charg\u00e9s des Finances et des Mines, au plus tard le 30 avril, ses \u00e9tats financiers certifi\u00e9s par un Commissaire aux Comptes agr\u00e9\u00e9 en Guin\u00e9e. La Soci\u00e9t\u00e9 doit donner acc\u00e8s aux documents comptables ainsi qu'aux pi\u00e8ces justificatives.--Art. 21.1\n",
+                "location":{
+                    "image":"761,441,794,399"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72005.js",
+                "id":72005
+            },
+            {
+                "access":"public",
+                "title":"Redevances superficiaires//Surface fees ",
+                "page":27,
+                "content":"La Soci\u00e9t\u00e9 sera assujettie au paiement de la redevance superficiaire conform\u00e9ment aux dispositions des articles 137 et 138 du code Minier.--Art. 23.1.3 \n",
+                "location":{
+                    "image":"222,313,252,271"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71997.js",
+                "id":71997
+            },
+            {
+                "access":"public",
+                "title":"TVA//VAT ",
+                "page":27,
+                "content":"L'Investisseur, la Soci\u00e9t\u00e9 et les sous-traitants directs seront exon\u00e9r\u00e9s de la TVA sur toutes les importations directement li\u00e9es aux activit\u00e9s du projet \u00e0 l'exception du mat\u00e9riel et des effets exclusivement r\u00e9serv\u00e9s \u00e0 l'usage du personnel de la Soci\u00e9t\u00e9. La Soci\u00e9t\u00e9 et ses sous-traitants directs et exclusifs acquitteront la TVA sur les prestations et achats locaux et b\u00e9n\u00e9ficieront du remboursement int\u00e9gral de leurs cr\u00e9dits de TVA pour les transactions op\u00e9r\u00e9es avec les soci\u00e9t\u00e9s dument immatricul\u00e9es \u00e0 la TVA.--Art. 21.3\n",
+                "location":{
+                    "image":"738,420,773,373"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71996.js",
+                "id":71996
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions ",
+                "page":28,
+                "content":"L'investisseur, la Soci\u00e9t\u00e9, ses Affili\u00e9es ainsi que ses sous-traitants directs et indirects exclusifs seront exon\u00e9r\u00e9s de tout imp\u00f4t et taxe, pour tous les travaux et activit\u00e9s li\u00e9s au projet engag\u00e9s pendant les phases de recherche et de construction, \u00e0 l'exception des cotisations de s\u00e9curit\u00e9 sociale, taxe unique sur les v\u00e9hicules, retenue a la source sur les salaires, taux d'enregistrement sur les importations au taux de 0.5%.--Arts. 22.1 -22.2 \n",
+                "location":{
+                    "image":"248,366,279,330"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72001.js",
+                "id":72001
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining Tax/ Royalty Tax ",
+                "page":29,
+                "content":"Taxe sur la bauxite de 10% de la valeur FOB bauxite CBG; taxe sur la bauxite transform\u00e9e en alumine au taux de 5% de la valeur FOB Bauxite CBG--Art. 23.1\n",
+                "location":{
+                    "image":"191,497,224,455"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71978.js",
+                "id":71978
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate ",
+                "page":29,
+                "content":"35%--Art. 23.2\n",
+                "location":{
+                    "image":"553,577,578,545"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71979.js",
+                "id":71979
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: l'amortissement//Income tax: amortization ",
+                "page":29,
+                "content":"Amortissement lin\u00e9aire (conform\u00e9ment aux dispositions du Code des Imp\u00f4ts Directs d'\u00c9tat): Liste des diff\u00e9rents biens.--Art. 23.2\n",
+                "location":{
+                    "image":"553,624,583,589"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71980.js",
+                "id":71980
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: reports des pertes//Income tax: loss carry forward ",
+                "page":29,
+                "content":"Les pertes d'exploitation peuvent \u00eatre report\u00e9es sur les 3 exercices suivant la constatation du d\u00e9ficit.--Art. 23.2\n",
+                "location":{
+                    "image":"556,665,587,635"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71983.js",
+                "id":71983
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: d\u00e9ductibilit\u00e9 des frais financiers//Income tax: deductibility of expenses ",
+                "page":29,
+                "content":"D\u00e9ductibilit\u00e9 des frais financiers en tant que charges g\u00e9n\u00e9ralement admises.--Art. 23.2\n",
+                "location":{
+                    "image":"592,583,624,549"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71981.js",
+                "id":71981
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: \u00e9xoneration//Income tax: exemptions ",
+                "page":29,
+                "content":"Pendant les 6 premiers exercices \u00e0 compter de la date de d\u00e9marrage de la production commerciale.--Art. 23.2\n",
+                "location":{
+                    "image":"600,629,631,594"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71982.js",
+                "id":71982
+            },
+            {
+                "access":"public",
+                "title":"Provision pour la reconstitution des gisements//Provisions for renewing reserves ",
+                "page":29,
+                "content":"10 % du b\u00e9n\u00e9fice imposable, \u00e0 la fin de chaque exercice, en franchise d'imp\u00f4t sur le revenu imposable. Cette provision devra \u00eatre employ\u00e9e dans les 2 ans de sa constitution au financement de travaux de recherches ou d'exploitation de mines sur le territoire de la R\u00e9publique de Guin\u00e9e.--Art. 23.2\n",
+                "location":{
+                    "image":"600,676,632,641"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71989.js",
+                "id":71989
+            },
+            {
+                "access":"public",
+                "title":"Cr\u00e9dit d'investissement//Investment credit ",
+                "page":29,
+                "content":"5% de tout investissement d\u00e9ductible--Art.23.2.2\n",
+                "location":{
+                    "image":"765,563,794,522"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71990.js",
+                "id":71990
+            },
+            {
+                "access":"public",
+                "title":"IRVM//Capital gains tax ",
+                "page":30,
+                "content":"15%--Art.23.3\n",
+                "location":{
+                    "image":"852,560,885,518"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71984.js",
+                "id":71984
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des expatri\u00e9s//Witholding tax on expatriate salaries ",
+                "page":31,
+                "content":"10% lib\u00e9ratoire de tout autre imp\u00f4t est faite sur les revenus salariaux verses au personnel expatrie au taux de 10% des salaires payes en Guin\u00e9e et hors Guin\u00e9e.--Art. 23.6\n",
+                "location":{
+                    "image":"384,441,417,406"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71986.js",
+                "id":71986
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des nationaux//Witholding tax on national salaries ",
+                "page":31,
+                "content":"Imp\u00f4t sur le revenu conform\u00e9ment a la l\u00e9gislation en vigueur et retenu \u00e0 la source par l'employeur sur les salaires.--Art. 23.6\n",
+                "location":{
+                    "image":"385,401,414,364"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71985.js",
+                "id":71985
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les loyers des immeubles//Witholding tax on rent ",
+                "page":31,
+                "content":"La TFU au taxe de 15% sur les loyers vers\u00e9s aux personnes physiques propri\u00e9taires d'immeubles pris en location. Cette retenue sur le loyer est revers\u00e9e par la soci\u00e9t\u00e9 \u00e0 l'Etat \u00e0 la d\u00e9charge du bailleur--Art. 23.6\n",
+                "location":{
+                    "image":"386,525,417,490"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71988.js",
+                "id":71988
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les prestations de service par des entreprises non r\u00e9sidentes//Witholding tax on services of non-resident companies ",
+                "page":31,
+                "content":"10% lib\u00e9ratoire de tout autre imp\u00f4t sur les revenus est faite sur les r\u00e8glements d'honoraires et de prestations des entreprises et personnes \u00e9trang\u00e8res non \u00e9tablies en Guin\u00e9e pour des travaux r\u00e9alises en Guin\u00e9e conform\u00e9ment a la loi applicable.--Art. 23.6\n",
+                "location":{
+                    "image":"387,484,419,451"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71987.js",
+                "id":71987
+            },
+            {
+                "access":"public",
+                "title":"Autre - Obligations financi\u00e8res du d\u00e9tenteur du titre//Other - Developer's financial obligations",
+                "page":32,
+                "content":"Les biens ne figurant pas sur une liste mini\u00e8re \u00e9tablie avec l'accord du Ministre des Mines et du Ministre des Finances seront assujettis au taux de droit commun.--Art.24.1.2\n",
+                "location":{
+                    "image":"565,121,604,79"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72006.js",
+                "id":72006
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de recherche//Custom duties during exploration phase ",
+                "page":33,
+                "content":"Admission temporaire pour le mat\u00e9riel utilis\u00e9 pour la recherche ainsi que pour l'\u00e9quipement professionnel. Les mat\u00e9riaux et pi\u00e8ces de rechange n\u00e9cessaires au fonctionnement des mat\u00e9riels et \u00e9quipements professionnels b\u00e9n\u00e9ficient de l'exon\u00e9ration totale des droits, taxes et redevances de douane. Les bien mentionn\u00e9s seront assujettis au paiement \u00e0 la douane d'une taxe d'enregistrement de 0.5% de la valeur CIF des biens import\u00e9s.--Art. 24.3\n",
+                "location":{
+                    "image":"381,670,414,635"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71992.js",
+                "id":71992
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de construction//Custom duties during construction phase ",
+                "page":33,
+                "content":"Les titulaires d'une convention mini\u00e8re attach\u00e9e \u00e0 un permis d'exploitation ou \u00e0 une concession mini\u00e8re et leurs sous-traitants directs travaillant pour leur compte, b\u00e9n\u00e9ficient, pendant la phase d'installation, d'extension, et de renouvellement, de l'exon\u00e9ration des droits, taxes et redevances de douane sur les fournitures import\u00e9es appartenant a la premi\u00e8re cat\u00e9gorie (les \u00e9quipements, mat\u00e9riels, gros outillages, engins et v\u00e9hicules a l'exception des v\u00e9hicules de tourisme figurant sur la liste des immobilisations des soci\u00e9t\u00e9s) ainsi que sur les pi\u00e8ces d\u00e9tach\u00e9es et les lubrifiants accompagnant les mat\u00e9riels et \u00e9quipements. Ces importations sont assujetties au paiement \u00e0 la douane d'une taxe d'enregistrement au taux de 0.5% de la valeur CAF des biens import\u00e9s sans toutefois que le montant total per\u00e7u n'exc\u00e8de un maximum fix\u00e9 par la Loi des Finances.--Art. 24.4\n",
+                "location":{
+                    "image":"769,588,800,553"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71993.js",
+                "id":71993
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase d'exploitation//Custum duties during  operation phase ",
+                "page":34,
+                "content":"Les fournitures import\u00e9es de la 1e cat\u00e9gorie ( les \u00e9quipements, mat\u00e9riels, gros outillages, engins et v\u00e9hicules a l'exception des v\u00e9hicules de tourisme figurant sur la liste des immobilisations des soci\u00e9t\u00e9s) et de la 3e cat\u00e9gorie ( les mati\u00e8res premi\u00e8res et consommables) et destin\u00e9s \u00e0 l'extraction et a la valorisation du minerai sont tax\u00e9s \u00e0 l'importation au taux unique de 5.6% de la valeur FOB de ces fournitures. Les carburants, lubrifiants et autres produits p\u00e9troliers import\u00e9s, appartenant \u00e0 la 4e cat\u00e9gorie sont acquis selon la structure des prix applicables au secteur minier.--Art. 24.5\n",
+                "location":{
+                    "image":"248,576,282,539"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71994.js",
+                "id":71994
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane pour le mat\u00e9riel de transformation//Custom duties on transformation equipment ",
+                "page":34,
+                "content":"Les fournitures import\u00e9es de la 2e cat\u00e9gorie (les mati\u00e8res premi\u00e8res et consommables n\u00e9cessaires a la transformation sur place du minerai en produits finis et semi-finis, ainsi que les produits p\u00e9troliers servant \u00e0 produire de l'\u00e9nergie \u00e0 cet effet) et destin\u00e9s a la transformation sur place du minerai en produits finis et semi-finis sont exon\u00e9r\u00e9s de droits et taxes de douanes.--Art. 24.5\n",
+                "location":{
+                    "image":"249,619,286,582"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71995.js",
+                "id":71995
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause ",
+                "page":34,
+                "content":"La Soci\u00e9t\u00e9 b\u00e9n\u00e9ficie de la stabilisation du r\u00e9gime fiscal et douanier en vigueur \u00e0 la date de signature de la Convention et ce, pendant la p\u00e9riode correspondant \u00e0 la dur\u00e9e de remboursement des emprunts que les Parties d\u00e9termineront apr\u00e8s le montage financier du Projet. En cas de nouvelles dispositions plus favorables de la Loi Applicable ou d'une Convention accord\u00e9es \u00e0 une autre soci\u00e9t\u00e9 mini\u00e8re, la Soci\u00e9t\u00e9 pourra, \u00e0 sa demande, b\u00e9n\u00e9ficier de ces nouvelles dispositions.--Art. 25\n",
+                "location":{
+                    "image":"551,621,584,582"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72025.js",
+                "id":72025
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term ",
+                "page":35,
+                "content":"La convention - 25 ans, La Concession Mini\u00e8re - 25 ans.--Arts. 26.2, 27\n",
+                "location":{
+                    "image":"285,406,315,362"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71965.js",
+                "id":71965
+            },
+            {
+                "access":"public",
+                "title":"Conditions de renouvellement//Conditions for renewal  ",
+                "page":35,
+                "content":"La convention: une seule fois pour 25 ans, puis uniquement pour une dur\u00e9e de 10 ans. 5 ans au plus tard avant la date d'expiration de la pr\u00e9sente convention, les parties se r\u00e9uniront en vue d'\u00e9valuer la Convention et \u00e9ventuellement de ren\u00e9gocier son renouvellement. La concession: A l'issue d'une premi\u00e8re p\u00e9riode de 25 ans, la concession sera renouvel\u00e9e pour des p\u00e9riodes successives de 10 ans jusqu'a la fin des op\u00e9rations mini\u00e8res et industrielles.--Arts. 26.3, 27\n ",
+                "location":{
+                    "image":"458,579,491,539"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71969.js",
+                "id":71969
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9siliation/Termination//Cancellation / Termination ",
+                "page":35,
+                "content":"Chacune des parties aura le droit de r\u00e9silier la pr\u00e9sente convention en cas de manquement grave \u00e0 l'une des obligations ou garanties essentielles des pr\u00e9sentes par une autre partie, et ce sans pr\u00e9judice de tous dommages et int\u00e9r\u00eats. L'inex\u00e9cution de l'une quelconque des obligations li\u00e9es \u00e0 l'\u00e9tude d'ing\u00e9nierie et aux travaux de construction, donne droit \u00e0 l'\u00c9tat de r\u00e9silier d'office la Convention, apr\u00e8s une mise en demeure et une occasion d'y rem\u00e9dier dans un d\u00e9lai de 60 jours. --Art. 26.4\n",
+                "location":{
+                    "image":"623,506,659,466"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72027.js",
+                "id":72027
+            },
+            {
+                "access":"public",
+                "title":"Cession / transfert//Assignment / transfer ",
+                "page":37,
+                "content":"Toutes les stipulations de la Convention obligeront les Parties, leurs successeurs et cessionnaires respectifs. Ces derniers b\u00e9n\u00e9ficieront, au m\u00eame titre, des avantages de la pr\u00e9sente Convention.--Art. 30\n",
+                "location":{
+                    "image":"547,569,582,528"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72026.js",
+                "id":72026
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution ",
+                "page":37,
+                "content":"Si un diff\u00e9rends entre les parties ne peut pas \u00eatre r\u00e9gl\u00e9 \u00e0 l'amiable, le diff\u00e9rend sera port\u00e9 soit devant les tribunaux guin\u00e9ens comp\u00e9tents, soit \u00e0 l'arbitrage international conform\u00e9ment au r\u00e8glement d'arbitrage de la Cour Arbitrale de la CCI.--Art. 31\n",
+                "location":{
+                    "image":"659,477,692,430"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72024.js",
+                "id":72024
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language ",
+                "page":38,
+                "content":"Tous les rapports au autres documents \u00e9tablis ou \u00e0 \u00e9tablir en application de la Convention, doivent \u00eatre r\u00e9dig\u00e9s en Fran\u00e7ais.--Art. 32\n",
+                "location":{
+                    "image":"149,323,183,285"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72044.js",
+                "id":72044
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality ",
+                "page":38,
+                "content":"La pr\u00e9sente Convention, ses Annexes, ainsi que toute la documentation relative aux r\u00e9sultats des diff\u00e9rentes \u00e9tudes, qui circulent entre les parties, seront sous une stricte confidentialit\u00e9.--Art. 33.1\n",
+                "location":{
+                    "image":"370,124,406,85"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/72029.js",
+                "id":72029
+            },
+            {
+                "access":"public",
+                "title":"Si\u00e8ge social //Corporate headquarters  ",
+                "page":39,
+                "content":"Quartier Kaporo, BP: 888 Conakry, R\u00e9publique de Guin\u00e9e--Art. 36.1\n",
+                "location":{
+                    "image":"462,397,492,358"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71950.js",
+                "id":71950
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors de la Guin\u00e9e, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales //Parent companies or affilates outside of the country, if different from the above mentionned; and their corporate headquarters ",
+                "page":39,
+                "content":"Soci\u00e9t\u00e9 Internationale de D\u00e9veloppement des Mines du Henan S.A., n\u00b01301, Bloc B, Immeuble Shimao, Nouvel arrondissement de Zhengdong, Zhengzhou, Chine --Art.36.1\n",
+                "location":{
+                    "image":"464,439,496,400"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71951.js",
+                "id":71951
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), soci\u00e9t\u00e9 //Signatories, company ",
+                "page":40,
+                "content":"Shangguan Shumin--Signatures\n",
+                "location":{
+                    "image":"344,606,380,562"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71958.js",
+                "id":71958
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), Etat//Signatories, State ",
+                "page":40,
+                "content":"Dr. Lounceny NABE, Le Ministre des Mines et de la G\u00e9ologie, Mr Karamokoba, pour le Ministre de l'\u00c9conomie et des Finances--Signatures\n",
+                "location":{
+                    "image":"362,553,399,509"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine/annotations/71959.js",
+                "id":71959
+            }
+        ],
+        "description":"<i>Nom de la soci\u00e9t\u00e9 guin\u00e9enne : </i>C.D.M. - CHINE, S.A.<br><i>Si\u00e8ge social : </i>Quartier Kaporo, BP: 888 Conakry, R\u00e9publique de Guin\u00e9e<br><i> Structure du Capital : </i>L\u2019investissement est r\u00e9alis\u00e9 par la Soci\u00e9t\u00e9 Internationale de D\u00e9veloppement des Mines du Henan S.A. sur l\u2019approbation de la commission de surveillance des capitaux d\u2019\u00c9tat du Henan, par la Yougcheng Coal Electricit\u00e9 (Group) Co. Ltd (51%), la Chico (41%), la soci\u00e9t\u00e9 d\u2019exploitation des capitaux d\u2019\u00c9tat du Henan (4%) et la Henan Centres Alliances Mines Co. Ltd (4%).<br><i>Soci\u00e9t\u00e9 m\u00e8re ou affili\u00e9e hors de la Guin\u00e9e; et leurs si\u00e8ges sociaux : </i>Soci\u00e9t\u00e9 Internationale de D\u00e9veloppement des Mines du Henan S.A., n\u00b01301, Bloc B, Immeuble Shimao, Nouvel arrondissement de Zhengdong, Zhengzhou, Chine <br><i>Site web de l\u2019entreprise : </i><br><i>Date d'octroi du permis d'exploitation ou de la concession : </i>25/10/2010<br><i>Investissement estim\u00e9 : </i>1\u00e8re phase: US$2,76 milliards, 2e phase: US$3,56 milliards<br><i>Production attendue : </i>1\u00e8re phase: 15 mtpa de bauxite dont 10 mtpa a l'export et 5 mtpa \u00e0 transformer en 1,5 mtpa d'alumine; 2\u00e8me phase : 20 mtpa de bauxite dont 10 mtpa \u00e0 l\u2019export et 10 mtpa \u00e0 transformer en 3 mtpa d\u2019alumine<br><i>R\u00e9serves estim\u00e9es : </i>520 millions de tonnes de bauxite, de teneur AL2O3 40-46%, SiO2 1,65-5,10%<br><br><br><i>Note : Ce r\u00e9sum\u00e9 est destin\u00e9 \u00e0 faciliter la compr\u00e9hension par un large public des points importants du document original. Il ne s\u2019agit en aucun cas d\u2019une liste exhaustive des obligations l\u00e9gales li\u00e9es au projet minier concern\u00e9. Ce r\u00e9sum\u00e9 ne comporte aucune opinion quant au statut juridique du document ou de tout \u00e9l\u00e9ment du document, et ne refl\u00e8te aucunement des d\u00e9cisions ou positions du CTRTCM ou du Gouvernement de la R\u00e9publique de Guin\u00e9e en lien avec le processus de revue des conventions et titres miniers. Ce r\u00e9sum\u00e9 doit \u00eatre lu en lien avec le texte int\u00e9gral du document original et avec les lois et textes r\u00e9glementaires applicables. Un certain nombre de lois et r\u00e9glementations applicables directement ou indirectement au secteur minier sont disponibles <a href=\"http://www.contratsminiersguinee.org/about/legislation.html\">ici</a>.</i>",
+        "language":"eng",
+        "title":"CDM-Chine - Guin\u00e9e",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Resource":"Bauxite,Alumine",
+            "Contract Term (duration) in Years":"25",
+            "Countries":"Guinea"
+        },
+        "created_at":"Tue, 11 Sep 2012 16:39:44 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 21 Apr 2015 21:13:36 +0000",
+        "id":"426251-convention-henan-chine",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/426251/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/426251/convention-henan-chine.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/426251/pages/convention-henan-chine-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/426251/pages/convention-henan-chine-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/426251/convention-henan-chine.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/426251/pages/convention-henan-chine-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=426251"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":42,
+        "canonical_url":"http://www.documentcloud.org/documents/426251-convention-henan-chine.html"
+    }
+}

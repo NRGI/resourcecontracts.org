@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"a2819df9fe30ac700b67d2ee3b497374d8fff347",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"ANH, Harken - Colombia, 2005",
+        "data":{
+            "Signature Date":"2005",
+            "Type of Mining Title":"Service Contract",
+            "Resource":"Hydrocarbons",
+            "Countries":"Colombia"
+        },
+        "created_at":"Tue, 20 Jan 2015 02:18:06 +0000",
+        "display_language":"eng",
+        "updated_at":"Sat, 11 Apr 2015 17:10:06 +0000",
+        "id":"1505330-anh-harken-colombia-2005",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505330/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505330/anh-harken-colombia-2005.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505330/pages/anh-harken-colombia-2005-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505330/pages/anh-harken-colombia-2005-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505330/anh-harken-colombia-2005.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505330/pages/anh-harken-colombia-2005-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505330"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":39,
+        "canonical_url":"http://www.documentcloud.org/documents/1505330-anh-harken-colombia-2005.html"
+    }
+}

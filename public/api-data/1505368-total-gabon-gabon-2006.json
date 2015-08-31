@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"76a8e17332e8f21b4c5f333027ec8ec37c5aba4b",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Total Gabon - Gabon, 2006",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2006",
+            "Resource":"Hydrocarbons",
+            "Countries":"Gabon"
+        },
+        "created_at":"Tue, 20 Jan 2015 03:47:07 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 20 Jan 2015 03:51:21 +0000",
+        "id":"1505368-total-gabon-gabon-2006",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505368/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505368/total-gabon-gabon-2006.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505368/pages/total-gabon-gabon-2006-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505368/pages/total-gabon-gabon-2006-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505368/total-gabon-gabon-2006.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505368/pages/total-gabon-gabon-2006-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505368"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":79,
+        "canonical_url":"http://www.documentcloud.org/documents/1505368-total-gabon-gabon-2006.html"
+    }
+}

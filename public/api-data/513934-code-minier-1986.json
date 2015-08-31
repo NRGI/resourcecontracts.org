@@ -1,0 +1,36 @@
+{
+    "document":{
+        "file_hash":"d18ae6d5015af92034f19c97381e73ecdce243a7",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Code Minier 1986",
+        "data":{
+            "Countries":"Guinea",
+            "Lois":"Codes Miniers"
+        },
+        "created_at":"Sat, 10 Nov 2012 20:58:01 +0000",
+        "display_language":"eng",
+        "updated_at":"Sun, 14 Sep 2014 13:56:28 +0000",
+        "id":"513934-code-minier-1986",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/513934/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513934/code-minier-1986.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/513934/pages/code-minier-1986-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513934/pages/code-minier-1986-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513934/code-minier-1986.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513934/pages/code-minier-1986-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=513934"
+        },
+        "contributor":"Jed Miller",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":56,
+        "canonical_url":"http://www.documentcloud.org/documents/513934-code-minier-1986.html"
+    }
+}
