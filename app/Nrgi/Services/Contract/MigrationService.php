@@ -964,13 +964,14 @@ class MigrationService
         $title    = trim(trim($title), ',');
         foreach ($mappings as $key => $map) {
             $key = trim(trim($key), ',');
-
             $from  = [' / ', '  ', '/ ', ' /', ' - ', '- ', ' -'];
             $to    = ['/', ' ', '/', '/', '-', '-', '-'];
             $title = str_replace($from, $to, $title);
             $key   = str_replace($from, $to, $key);
 
             if ($this->isStringMatch($title, $key) !== false) {
+                //echo $map;
+                //echo PHP_EOL . '-----------------------------------' . PHP_EOL;
                 return $map;
             }
         }
