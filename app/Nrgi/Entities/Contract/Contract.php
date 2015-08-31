@@ -53,23 +53,23 @@ class Contract extends Model
     /**
      * Contract Status
      */
-    const STATUS_DRAFT     = 'draft';
+    const STATUS_DRAFT = 'draft';
     const STATUS_COMPLETED = 'completed';
     const STATUS_PUBLISHED = 'published';
-    const STATUS_REJECTED  = 'rejected';
+    const STATUS_REJECTED = 'rejected';
 
     /**
      * Contract Processing
      */
     const PROCESSING_PIPELINE = 0;
-    const PROCESSING_RUNNING  = 1;
+    const PROCESSING_RUNNING = 1;
     const PROCESSING_COMPLETE = 2;
-    const PROCESSING_FAILED   = 3;
+    const PROCESSING_FAILED = 3;
 
     /**
      * MTurk Status
      */
-    const MTURK_SENT     = 1;
+    const MTURK_SENT = 1;
     const MTURK_COMPLETE = 2;
 
     /**
@@ -103,6 +103,16 @@ class Contract extends Model
     }
 
     /**
+     * Get Contract Slug
+     *
+     * @return string
+     */
+    public function getSlugAttribute()
+    {
+        return str_limit(str_slug($this->metadata->contract_name, '-'), 150);
+    }
+
+    /**
      * Get word file url
      *
      * @return string
@@ -118,7 +128,6 @@ class Contract extends Model
 
         return '';
     }
-
 
     /**
      * Convert Array metadata to json
@@ -144,6 +153,18 @@ class Contract extends Model
     public function annotations()
     {
         return $this->hasMany('App\Nrgi\Entities\Contract\Annotation');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function SupportingContract()
+    {
+        return $this->belongsToMany(
+            'App\Nrgi\Entities\SupportingContract\SupportingContract',
+            'supporting_contract',
+            'contract_id'
+        );
     }
 
     /**
@@ -275,4 +296,56 @@ class Contract extends Model
     {
         return isset(config('amla')[$code]) ? config('amla')[$code] : '';
     }
+
+    /**
+     * S3 filename.
+     *
+     * @return string
+     */
+    public function getS3PdfName()
+    {
+        return sprintf("%s-%s.pdf", $this->id, $this->Slug);
+    }
+
+
+    /**
+     * Sync of supporting contracts
+     *
+     * @param $contract_id
+     * @return bool
+     */
+    public function syncSupportingContracts($contract_id)
+    {
+        \DB::table('supporting_contracts')->where('contract_id', $this->id)->delete();
+
+        if (empty($contract_id)) {
+            return true;
+        }
+
+        if (!is_array($contract_id)) {
+            $contract_id = [$contract_id];
+        }
+
+        $insert = [];
+
+        foreach ($contract_id as $id) {
+            $insert[] = [
+                'contract_id'            => $this->id,
+                'supporting_contract_id' => $id
+            ];
+        }
+
+        return \DB::table('supporting_contracts')->insert($insert);
+    }
+
+    /**
+     * Get the list of supporting Contract
+     *
+     * @return array
+     */
+    public function getSupportingContract()
+    {
+        return \DB::table('supporting_contracts')->where('contract_id', $this->id)->lists('supporting_contract_id');
+    }
+
 }

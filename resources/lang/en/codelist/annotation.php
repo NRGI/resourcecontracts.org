@@ -31,11 +31,9 @@ return [
             'General information',
             'Country',
             'Local company name',
-            'Legal Enterprise Identifier',
             'Corporate headquarters',
             'Company structure',
             'Parent companies or affilates outside of the country, if different from the above mentioned; and their corporate headquarters',
-            'Legal Enterprise Identifier',
             'Company website',
             'Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)',
             'Project title',
@@ -143,6 +141,6 @@ return [
             'III. Document notes',
             'Pages missing from  copy',
             'Annexes missing from copy',
-            'date_granted'
+            'Date Granted'
         ]
 ];

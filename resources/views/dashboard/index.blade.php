@@ -40,66 +40,84 @@
     </div>
 
     <div class="row row-dashboard">
-        <div class="col-xs-6 col-sm-4">
+        <div class="col-xs-6 col-sm-3">
             <h4>Metadata status</h4>
             <ul>
                 <li>
-                    Published: <span class="number number-published">{{$status['metadata']['published'] or 0}}</span>
+                    <a href="{{route('contract.index',["type"=>"metadata","status"=>"published"])}}">Published:</a>  <span class="number number-published">{{$status['metadata']['published'] or 0}}</span>
                 </li>
                 <li>
-                    Completed: <span class="number number-completed">{{$status['metadata']['completed'] or 0}}</span>
+                    <a href="{{route('contract.index',["type"=>"metadata","status"=>"completed"])}}">Completed:</a> <span class="number number-completed">{{$status['metadata']['completed'] or 0}}</span>
                 </li>
                 <li>
-                    Draft: <span class="number number-draft">{{$status['metadata']['draft'] or 0}}</span>
+                    <a href="{{route('contract.index',["type"=>"metadata","status"=>"draft"])}}">Draft:</a> <span class="number number-draft">{{$status['metadata']['draft'] or 0}}</span>
                 </li>
                 <li>
-                    Rejected: <span class="number number-rejected">{{$status['metadata']['rejected'] or 0}}</span>
+                    <a href="{{route('contract.index',["type"=>"metadata","status"=>"rejected"])}}">Rejected:</a> <span class="number number-rejected">{{$status['metadata']['rejected'] or 0}}</span>
                 </li>
             </ul>
         </div>
 
-        <div class="col-xs-6 col-sm-4">
+        <div class="col-xs-6 col-sm-3">
             <h4>Annotations status</h4>
 
             <ul>
                 <li>
-                    Published: <span class="number number-published">{{$status['annotation']['published'] or 0}}</span>
+                    <a href="{{route('contract.index',["type"=>"annotations","status"=>"published"])}}">Published:</a> <span class="number number-published">{{$status['annotation']['published'] or 0}}</span>
                 </li>
                 <li>
-                    Completed: <span class="number number-completed">{{$status['annotation']['completed'] or 0}}</span>
+                    <a href="{{route('contract.index',["type"=>"annotations","status"=>"completed"])}}">Completed:</a><span class="number number-completed">{{$status['annotation']['completed'] or 0}}</span>
                 </li>
                 <li>
-                    Draft: <span class="number number-draft">{{$status['annotation']['draft'] or 0}}</span>
+                    <a href="{{route('contract.index',["type"=>"annotations","status"=>"draft"])}}">Draft: </a><span class="number number-draft">{{$status['annotation']['draft'] or 0}}</span>
                 </li>
                 <li>
-                    Rejected: <span class="number number-rejected">{{$status['annotation']['rejected'] or 0}}</span>
+                    <a href="{{route('contract.index',["type"=>"annotations","status"=>"rejected"])}}">Rejected:</a> <span class="number number-rejected">{{$status['annotation']['rejected'] or 0}}</span>
                 </li>
                 <li>
-                    Not Available: <span
+                    <a href="{{route('contract.index',["type"=>"annotations","status"=>"processing"])}}"> Not Available:</a> <span
                             class="number number-published">{{$status['annotation']['processing'] or 0}}</span>
                 </li>
             </ul>
         </div>
 
-        <div class="col-xs-6 col-sm-4">
+        <div class="col-xs-6 col-sm-3">
             <h4>Pdf Text status</h4>
             <ul>
                 <li>
-                    Published: <span class="number number-completed">{{$status['pdfText']['published'] or 0}}</span>
+                    <a href="{{route('contract.index',["type"=>"pdftext","status"=>"published"])}}">Published: </a><span class="number number-completed">{{$status['pdfText']['published'] or 0}}</span>
                 </li>
                 <li>
-                    Completed: <span class="number number-completed">{{$status['pdfText']['completed'] or 0}}</span>
+                    <a href="{{route('contract.index',["type"=>"pdftext","status"=>"completed"])}}"> Completed: </a><span class="number number-completed">{{$status['pdfText']['completed'] or 0}}</span>
                 </li>
                 <li>
-                    Draft: <span class="number number-draft">{{$status['pdfText']['draft'] or 0}}</span>
+                    <a href="{{route('contract.index',["type"=>"pdftext","status"=>"draft"])}}"> Draft:</a> <span class="number number-draft">{{$status['pdfText']['draft'] or 0}}</span>
                 </li>
                 <li>
-                    Rejected: <span class="number number-rejected">{{$status['pdfText']['rejected'] or 0}}</span>
+                    <a href="{{route('contract.index',["type"=>"pdftext","status"=>"rejected"])}}"> Rejected:</a> <span class="number number-rejected">{{$status['pdfText']['rejected'] or 0}}</span>
                 </li>
                 <li>
-                    On processing: <span
+                    <a href="{{route('contract.index',["type"=>"pdftext","status"=>"null"])}}"> On processing: </a><span
                             class="number number-published">{{$status['pdfText']['processing'] or 0}}</span>
                 </li>
+            </ul>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+            <h4>OCR</h4>
+            <ul>
+                <li>
+                    <a href="{{route('contract.index',["type"=>"ocr","status"=>"1"])}}">Acceptable:</a>  <span class="number number-published">{{$ocrStatusCount['acceptable'] or 0}}</span>
+                </li>
+                <li>
+                    <a href="{{route('contract.index',["type"=>"ocr","status"=>"2"])}}">Needs Editing:</a> <span class="number number-completed">{{$ocrStatusCount['editing'] or 0}}</span>
+                </li>
+                <li>
+                    <a href="{{route('contract.index',["type"=>"ocr","status"=>"3"])}}">Needs Full Transcription:</a> <span class="number number-draft">{{$ocrStatusCount['transcription'] or 0}}</span>
+                </li>
+                <li>
+                    <a href="{{route('contract.index',["type"=>"ocr","status"=>"null"])}}">Not Available:</a> <span class="number number-draft">{{$ocrStatusCount['non'] or 0}}</span>
+                </li>
+
             </ul>
         </div>
     </div>

@@ -104,10 +104,25 @@ class TaskRepository implements TaskRepositoryInterface
     public function getTotalByStatus($contract_id)
     {
         return [
-            'total_completed' => $this->task->completed()->where('contract_id', $contract_id)->count(),
-            'total_approved' => $this->task->approve()->where('contract_id', $contract_id)->count(),
-            'total_rejected' => $this->task->rejected()->where('contract_id', $contract_id)->count()
+            'total_completed'        => $this->task->completed()->where('contract_id', $contract_id)->count(),
+            'total_approved'         => $this->task->approve()->where('contract_id', $contract_id)->count(),
+            'total_rejected'         => $this->task->rejected()->where('contract_id', $contract_id)->count(),
+            'total_pending_approval' => $this->task->completed()
+                                                   ->approvalPending()
+                                                   ->where('contract_id', $contract_id)
+                                                   ->count(),
         ];
+    }
+
+    /**
+     * Get All Approval pending Task by Contract ID
+     * @param $contract_id
+     *
+     * @return Collection
+     */
+    public function getApprovalPendingTask($contract_id)
+    {
+        return $this->task->completed()->approvalPending()->where('contract_id', $contract_id)->get();
     }
 
 }

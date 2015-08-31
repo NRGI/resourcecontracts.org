@@ -17,22 +17,31 @@ Annotator.Plugin.AnnotatorEvents = (function(_super) {
     };
 
     function AnnotatorEvents(element, options) {
+        // this.beforeAnnotationCreated = __bind(this.beforeAnnotationCreated, this);
         this.onAnnotationCreated = __bind(this.onAnnotationCreated, this);
         this.onAnnotationUpdated = __bind(this.onAnnotationUpdated, this);
         this.onAnnotationDeleted = __bind(this.onAnnotationDeleted, this);
         AnnotatorEvents.__super__.constructor.apply(this, arguments);
     };
+    // AnnotatorEvents.prototype.beforeAnnotationCreated = function(annotation) {
+    //     if(this.currentPage) {
+    //         annotation.page = this.currentPage.getPage();
+    //         // annotation.page_id = ;
+    //     }
+    //     return annotation;    
+    //     // this.collection.add(annotation);
+    // };
     AnnotatorEvents.prototype.onAnnotationCreated = function(annotation) {
         annotation.id = this.collection.length + 1;
-        if(this.pageModel) {
-            annotation.page = this.pageModel.get('pageNumber');
-            annotation.page_id = this.pageModel.get('id');
+        if(this.currentPage) {
+            this.currentPage.trigger("")
+            annotation.page = this.currentPage.getPage();
+            // annotation.page_id = ;
         }
         var self = this;
         setTimeout(function (event) {
-            self.collection.trigger('annotationCreated');    
-        }, 500);
-        
+            self.collection.trigger('annotationCreated', annotation);    
+        }, 500);        
         // this.collection.add(annotation);
     };
     AnnotatorEvents.prototype.onAnnotationUpdated = function(annotation) {

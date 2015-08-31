@@ -19,6 +19,8 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\BulkIndex',
         'App\Console\Commands\MigrateFromDocumentCloud',
         'App\Console\Commands\MigrateEthiopianContracts',
+        'App\Console\Commands\ChangeFileNameCommand',
+        'App\Console\Commands\MturkNotificationCommand',
     ];
 
     /**
@@ -29,7 +31,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
+        $schedule->command('nrgi:mturk')->dailyAt('13:00');
     }
 }

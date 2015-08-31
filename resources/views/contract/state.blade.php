@@ -19,7 +19,7 @@ use App\Nrgi\Entities\Contract\Annotation;
                     @include('contract.partials.show.annotation_status')
                 @endif
                 <a style="padding-left: 10px"
-                   href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate">@lang('contract.annotate')</a>
+                   href="{{route('contract.annotate', ['id'=>$contract->id])}}">@lang('contract.annotate')</a>
             </li>
 
         @else

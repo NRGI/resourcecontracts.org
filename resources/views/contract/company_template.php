@@ -105,3 +105,11 @@
   </div>
 
 </script>
+
+<script type="text/template" id="document">
+    <div class="document">
+        <a href="/contract/{{id}}">{{name}}</a>
+        <input type="hidden" name="supporting_document[]" value="{{id}}">
+        <div class="delete" id="{{id}}">delete</div>
+    </div>
+</script>

@@ -70,7 +70,7 @@ class ContractController extends Controller
      */
     public function index(Request $request)
     {
-        $filters   = $request->only('resource', 'year', 'country', 'category', 'resource');
+        $filters   = $request->only('resource', 'year', 'country', 'category', 'resource', 'type', 'word', 'issue','status');
         $contracts = $this->contractFilter->getAll($filters);
         $years     = $this->contractFilter->getUniqueYears();
         $countries = $this->contractFilter->getUniqueCountries();
@@ -86,9 +86,10 @@ class ContractController extends Controller
      */
     public function create()
     {
-        $country = $this->countries->all();
+        $country   = $this->countries->all();
+        $contracts = $this->contract->getList();
 
-        return view('contract.create', compact('country'));
+        return view('contract.create', compact('country', 'contracts'));
     }
 
     /**
@@ -118,6 +119,11 @@ class ContractController extends Controller
         if (!$contract) {
             abort('404');
         }
+        $translatedFrom = [];
+        if (isset($contract->metadata->translated_from) && !empty($contract->metadata->translated_from)) {
+            $translatedFrom = $this->contract->getcontracts($contract->metadata->translated_from);
+        }
+        $supportingDocument           = $this->contract->getSupportingDocuments($contract->id);
         $status                       = $this->contract->getStatus($id);
         $annotationStatus             = $this->annotation->getStatus($id);
         $annotations                  = $contract->annotations;
@@ -125,7 +131,7 @@ class ContractController extends Controller
         $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
         $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
 
-        return view('contract.show', compact('contract', 'status', 'annotations', 'annotationStatus'));
+        return view('contract.show', compact('contract', 'status', 'annotations', 'annotationStatus', 'translatedFrom', 'supportingDocument'));
     }
 
     /**
@@ -135,10 +141,12 @@ class ContractController extends Controller
      */
     public function edit($id)
     {
-        $contract = $this->contract->find($id);
-        $country  = $this->countries->all();
+        $contract           = $this->contract->find($id);
+        $country            = $this->countries->all();
+        $supportingDocument = $this->contract->getSupportingDocuments($id);
+        $contracts          = $this->contract->getList();
 
-        return view('contract.edit', compact('contract', 'country'));
+        return view('contract.edit', compact('contract', 'country', 'supportingDocument', 'contracts'));
     }
 
     /**

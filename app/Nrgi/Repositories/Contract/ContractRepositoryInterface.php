@@ -87,6 +87,10 @@ interface ContractRepositoryInterface
      * Get unique Resources
      * @return Contract
      */
+    /**
+     * write brief description
+     * @return mixed
+     */
     public function getUniqueResources();
 
     /**
@@ -133,4 +137,67 @@ interface ContractRepositoryInterface
      * @return Collection
      */
     public function getContractWithPdfProcessingStatus($status);
+
+    /**
+     * Get the count of presence of contract's metadata
+     *
+     * @param $metadata
+     * @return collection
+     */
+    public function getMetadataQuality($metadata);
+
+    /**
+     * Get the count of presence of annotation's category
+     *
+     * @param $key
+     * @return collection
+     */
+    public function getAnnotationsQuality($key);
+
+    /**
+     * Return the count of total contract
+     *
+     * @return integer
+     */
+    public function getTotalContractCount();
+
+    /**
+     * To save the supporting documents of contracts
+     *
+     * @param $documents
+     * @return mixed
+     */
+    public function saveSupportingDocument($documents);
+
+    /**
+     * Get the contract name and id
+     *
+     * @param array $id
+     * @return array
+     */
+    public function getSupportingContracts($id);
+
+    /**
+     * Return the Parent contract id
+     *
+     * @param $id
+     * @return array
+     */
+    public function getSupportingDocument($id);
+
+    /**
+     * Return the supporting document
+     *
+     * @param $contractID
+     * @return SupportingDocument
+     */
+    public function findSupportingContract($contractID);
+
+
+    /**
+     * Get all the contracts.
+     * @param array $ids
+     * @return collection
+     */
+    public function getContract($ids);
 }

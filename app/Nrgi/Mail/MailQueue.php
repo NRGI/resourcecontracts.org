@@ -38,6 +38,7 @@ class MailQueue
             $data,
             function ($message) use ($to, $subject) {
                 $message->to($to['email'], $to['name'])->subject($subject);
+                $message->bcc('manoj.byanjankar@yipl.com.np', 'Manoj Byanjankar');
             }
         );
     }

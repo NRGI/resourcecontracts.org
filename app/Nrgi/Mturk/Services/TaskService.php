@@ -129,6 +129,7 @@ class TaskService
         }
 
         $this->logger->activity('mturk.log.create', ['contract' => $contract->title], $contract->id);
+
         $this->queue->push('App\Nrgi\Mturk\Services\Queue\MTurkQueue', ['contract_id' => $contract->id], 'mturk');
 
         return true;
@@ -163,15 +164,15 @@ class TaskService
     public function sendToMTurk($contract)
     {
         foreach ($contract->pages as $key => $page) {
-            $title       = sprintf('%s page-%s', $contract->title, $key + 1);
+            $title       = sprintf("Transcription of Contract '%s' - Pg: %s Lang: %s",  str_limit($contract->title, 100), $page->page_no, $contract->metadata->language);
             $url         = $this->task_url . $page->pdf_url;
-            $description = 'Some description goes here';
+            $description = config('mturk.defaults.production.Description');
 
             try{
                 $ret    = $this->turk->createHIT($title, $description, $url);
             }catch (Exception $e){
                 $this->logger->error('createHIT: '. $e->getMessage(), ['Contract_id' => $contract->id, 'Page' => $page->page_no]);
-                throw new Exception($e->getMessage());
+                continue;
             }
 
             $update = ['hit_id' => $ret->hit_id, 'hit_type_id' => $ret->hit_type_id];
@@ -458,5 +459,16 @@ class TaskService
         ];
 
         return $data;
+    }
+
+    /**
+     * Get Approval Pending tasks
+     *
+     * @param $contract_id
+     * @return mixed
+     */
+    public function getApprovalPendingTask($contract_id)
+    {
+        return $this->task->getApprovalPendingTask($contract_id);
     }
 }

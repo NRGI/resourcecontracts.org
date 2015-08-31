@@ -215,8 +215,13 @@ class ContractService
                 'user_id'  => $this->auth->user()->id,
                 'metadata' => $metadata,
             ];
+            $supportingDocuments   = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
             try {
                 $contract = $this->contract->save($data);
+
+                if (!empty($supportingDocuments)) {
+                    $contract->syncSupportingContracts($supportingDocuments);
+                }
                 $this->logger->activity('contract.log.save', ['contract' => $contract->title], $contract->id);
 
                 $this->logger->info(
@@ -274,6 +279,7 @@ class ContractService
                 "document_type",
                 "translation_from_original",
                 "translation_parent",
+                "translated_from",
                 "company",
                 "concession",
                 "project_title",
@@ -296,6 +302,7 @@ class ContractService
      */
     public function updateContract($contractID, array $formData)
     {
+
         try {
             $contract = $this->contract->findContract($contractID);
         } catch (Exception $e) {
@@ -303,16 +310,17 @@ class ContractService
 
             return false;
         }
-
         $file_size                 = $contract->metadata->file_size;
         $metadata                  = $this->processMetadata($formData);
         $metadata['file_size']     = $file_size;
         $contract->metadata        = $metadata;
         $contract->updated_by      = $this->auth->user()->id;
         $contract->metadata_status = Contract::STATUS_DRAFT;
-
+        $supportingDocuments       = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
         try {
-            $contract->save();
+            if ($contract->save()) {
+                $contract->syncSupportingContracts($supportingDocuments);
+            }
             $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
 
             $this->logger->activity('contract.log.update', ['contract' => $contract->title], $contract->id);
@@ -326,6 +334,8 @@ class ContractService
 
             return false;
         }
+
+
     }
 
     /**
@@ -542,7 +552,13 @@ class ContractService
     {
         $this->database->beginTransaction();
 
-        if ($this->updateStatus($contract_id, $status, $type) and $this->comment->save($contract_id, $message, $type, $status)) {
+        if ($this->updateStatus($contract_id, $status, $type) and $this->comment->save(
+                $contract_id,
+                $message,
+                $type,
+                $status
+            )
+        ) {
             $this->database->commit();
 
             return true;
@@ -640,13 +656,19 @@ class ContractService
 
         try {
             $file_path = $this->word->create($text, $wordFileName);
-            $this->storage->disk('s3')->put(sprintf('%s/%s', $contract_id, $wordFileName), $this->filesystem->get($file_path));
+            $this->storage->disk('s3')->put(
+                sprintf('%s/%s', $contract_id, $wordFileName),
+                $this->filesystem->get($file_path)
+            );
             $this->filesystem->delete($file_path);
             $this->logger->info('Word file updated', ['Contract id' => $contract_id]);
 
             return true;
         } catch (Exception $e) {
-            $this->logger->error('Word file could not  be update : ' . $e->getMessage(), ['Contract id' => $contract_id]);
+            $this->logger->error(
+                'Word file could not  be update : ' . $e->getMessage(),
+                ['Contract id' => $contract_id]
+            );
 
             return false;
         }
@@ -667,4 +689,57 @@ class ContractService
             return null;
         }
     }
+
+    /**
+     * Get the contract's id and name
+     *
+     * @param $id
+     * @return array
+     */
+    public function getcontracts($id)
+    {
+        $contracts = $this->contract->getSupportingContracts((array) $id);
+
+        return $contracts;
+    }
+
+    /**
+     * Get the supporting Contracts
+     *
+     * @param $id
+     * @return array
+     */
+    public function getSupportingDocuments($id)
+    {
+        $supportingContracts = $this->contract->getSupportingDocument($id);
+
+        if (empty($supportingContracts)) {
+            return [];
+        }
+        $contractsId = [];
+        foreach ($supportingContracts as $contractId) {
+            array_push($contractsId, $contractId['supporting_contract_id']);
+        }
+        $contracts = $this->getcontracts($contractsId);
+
+        return $contracts;
+    }
+
+    /**
+     * updates filename of contract
+     * @param $contract
+     * @return bool
+     */
+    public function updateFileName($contract)
+    {
+        $newFileName    = sprintf("%s-%s", $contract->id, $contract->Slug);
+        $contract->file = "$newFileName.pdf";
+        if ($contract->save()) {
+            return $contract;
+        }
+
+        return false;
+    }
+
+
 }

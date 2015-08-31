@@ -151,7 +151,6 @@ class PageController extends Controller
     {
         $page_no = $request->input('page');
         $page    = $this->pages->getText($contractID, $page_no);
-
         return response()->json(
             [
                 'result'  => 'success',
@@ -160,6 +159,54 @@ class PageController extends Controller
                 'message' => $page->text
             ]
         );
+    }
+
+    public function getAllText($contractID)
+    {
+        $pages    = $this->pages->getAllText($contractID);
+        return response()->json(
+            [
+                'result'  => $pages
+            ]
+        );
+    }
+
+    /**
+     * Display Contact Pages
+     *
+     * @return Response
+     */
+    public function annotate(Request $request, $contractId)
+    {
+        try {
+            $page        = $this->pages->getText($contractId, $request->input('page', '1'));
+            $action      = $request->input('action', '');
+            $canEdit     = $action == "edit" ? 'true' : 'false';
+            $canAnnotate = $action == "annotate" ? 'true' : 'false';
+            $contract    = $this->contract->findWithPages($contractId);
+            $pages       = $contract->pages;
+        } catch (\Exception $e) {
+
+            return abort(404);
+        }
+
+        return view('contract.page.annotate', compact('contract', 'pages', 'page', 'canEdit', 'canAnnotate'));
+    }
+
+    public function review(Request $request, $contractId)
+    {
+        try {
+            $page        = $this->pages->getText($contractId, $request->input('page', '1'));
+            $action      = $request->input('action', '');
+            $canEdit     = $action == "edit" ? 'true' : 'false';
+            $contract    = $this->contract->findWithPages($contractId);
+            $pages       = $contract->pages;
+        } catch (\Exception $e) {
+
+            return abort(404);
+        }
+
+        return view('contract.page.review', compact('contract', 'pages', 'page', 'canEdit', 'canAnnotate'));
     }
 
     /**

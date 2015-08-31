@@ -60,4 +60,12 @@ interface TaskRepositoryInterface
      */
     public function getTotalByStatus($contract_id);
 
+    /**
+     * Get All Task by Contract ID
+     * @param $contract_id
+     *
+     * @return Collection
+     */
+    public function getApprovalPendingTask($contract_id);
+
 }

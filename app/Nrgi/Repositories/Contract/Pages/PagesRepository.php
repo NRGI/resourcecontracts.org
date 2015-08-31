@@ -40,6 +40,11 @@ class PagesRepository implements PagesRepositoryInterface
         return $this->pages->where('contract_id', $contractID)->where('page_no', $page_no)->first();
     }
 
+    public function getAllText($contractID)
+    {
+        return $this->pages->where('contract_id', $contractID)->get();
+    }
+
     /**
      * Get result of Full text search
      * @param $contract_id

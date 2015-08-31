@@ -63,7 +63,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     @lang('Download') <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="{{$contract->file_url}}">@lang('PDF')</a></li>
+                    <li><a target="_blank" href="{{$contract->file_url}}">@lang('PDF')</a></li>
                     @if($contract->word_file !='')
                         <li><a href="{{$contract->word_file}}">@lang('Word')</a></li>
                     @endif
@@ -81,9 +81,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
         @if($status == $contract_processing_completed)
             <div style="padding: 40px;">
-                <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=edit"
+                <a href="{{route('contract.review', ['id'=>$contract->id])}}"
                    class="btn btn-default">@lang('contract.view_pages')</a>
-                <a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate"
+                <a href="{{route('contract.annotate', ['id'=>$contract->id])}}"
                    class="btn btn-default">@lang('contract.annotate_contract')</a>
                 <br>
                 <br>
@@ -234,15 +234,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <li><strong>@lang('contract.document_type'):</strong> {{$contract->metadata->document_type}}</li>
             @endif
 
-            @if(isset($contract->metadata->translation_from_original))
-                <li><strong>@lang('contract.translation_from_original'):</strong>
-                    @if($contract->metadata->translation_from_original ==1)
-                        @lang('global.yes') [{{$contract->metadata->translation_parent}}]
-                    @else
-                        @lang('global.no')
-                    @endif
-                </li>
-            @endif
+
 
             @if(isset($contract->metadata->company))
                 <?php $companies = $contract->metadata->company;?>
@@ -277,7 +269,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                         <a target="_blank"
                                            href="{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
                                 </p>
-                                @if(isset($v->operator)) <p><strong>@lang('contract.operator'):</strong>@if($v->operator==1)Yes @else No @endif</p>@endif
+                                @if(isset($v->operator)) <p><strong>@lang('contract.operator'):</strong>@if($v->operator==1)Yes  @endif</p>@endif
                             </div>
                         @endforeach
                     </li>
@@ -342,6 +334,22 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <li><strong>@lang('contract.location'):</strong> {{$contract->metadata->location}}</li>
             @endif
 
+                <li><h3>@lang('contract.associated_contracts')</h3></li>
+                @if(!empty($translatedFrom))
+                    <li><strong>@lang('contract.parent_document'):</strong>
+                        <a href="{{route('contract.show',$translatedFrom[0]['id'])}}">{{json_decode($translatedFrom[0]['contract_name'])}}</a>
+                    </li>
+                @endif
+            @if(!empty($supportingDocument))
+                <div class="document-link-wrapper">
+                    <li><strong>@lang('contract.supporting_documents'):</strong>
+                    @foreach($supportingDocument as $contract_sup)
+                        <div class="document-link">
+                            <a href="{{route('contract.show',$contract_sup['id'])}}">{{json_decode($contract_sup['contract_name'])}}</a>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
             <?php $catConfig = config('metadata.category');?>
 
             @if(isset($contract->metadata->category) && is_array($contract->metadata->category) && count($contract->metadata->category)>0)

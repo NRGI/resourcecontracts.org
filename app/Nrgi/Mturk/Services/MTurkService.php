@@ -9,7 +9,10 @@ class MTurkService extends MechanicalTurk
     public function __construct()
     {
         parent::__construct();
-        $this->setSandboxMode();
+
+        if ($this->isSandbox()) {
+            $this->setSandboxMode();
+        }
     }
 
     /**
@@ -35,17 +38,14 @@ class MTurkService extends MechanicalTurk
     public function createHIT($title, $description, $question_url)
     {
         $params = [
-            'Description'                 => $description,
-            'Keywords'                    => 'easy',
-            'LifetimeInSeconds'           => '604800',
-            'MaxAssignments'              => '1',
-            'Question'                    => $this->getQuestionXML($question_url),
-            'Reward.1.Amount'             => '0.15',
-            'Reward.1.CurrencyCode'       => 'USD',
-            'SignatureVersion'            => '1',
-            'Title'                       => $title,
-            'AssignmentDurationInSeconds' => '604800'
+            'Description'           => $description,
+            'Question'              => $this->getQuestionXML($question_url),
+            'SignatureVersion'      => '1',
+            'Title'                 => $title,
+            "Reward.1.Amount"       => config('mturk.defaults.production.Reward.Amount'),
+            "Reward.1.CurrencyCode" => config('mturk.defaults.production.Reward.CurrencyCode'),
         ];
+
         $result = $this->createHITByExternalQuestion($params);
 
         if ($result['HIT']['Request']['IsValid'] == 'True') {
@@ -128,5 +128,15 @@ class MTurkService extends MechanicalTurk
     protected function getQuestionXML($url)
     {
         return '<ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd"><ExternalURL>' . $url . '</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>';
+    }
+
+    /**
+     * Sandbox or Production
+     *
+     * @return bool
+     */
+    protected function isSandbox()
+    {
+        return config('mturk.sandbox_mode');
     }
 }

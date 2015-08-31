@@ -30,7 +30,7 @@ input.form-control {
   margin-bottom: 12px;
 }
 
-.annotation-list-view ,.popup-metadata {
+.popup-metadata {
   display: block;
   position: absolute;
   top: 48px;
@@ -44,18 +44,6 @@ input.form-control {
   font-size: 14px;
 }  
 
-.annotation-list-view {
-    height: 450px;
-    overflow: scroll;
-} 
-
-.annotation-list-view  h3 {
-    font-size: 17px;
-}
-
-.annotation-list-view  h3 ~ div {
-    padding-left: 14px;
-}
 
 .popup-metadata {
     width: 400px;  

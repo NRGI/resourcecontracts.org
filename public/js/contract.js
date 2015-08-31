@@ -65,5 +65,31 @@ $(function () {
         console.log(val);
         $(this).parent().find('.hidden-operator').val(val);
     });
+
+    $(document).on('click', '.selected-document .document .delete', function (e) {
+        $(this).parent().remove();
+        var id = $(this).context.id;
+        docId.pop(Number(id));
+    });
+    var eventSelect = $(".select-document");
+    eventSelect.on("select2:select", function (e) {
+        var args = JSON.stringify(e.params, function (key, value) {
+            var data = value.data;
+
+
+            var check = docId.indexOf(Number(data.id));
+            docId.push(Number(data.id));
+            var template = $('#document').html();
+            Mustache.parse(template);
+            var rendered = Mustache.render(template, {id: data.id, name: data.text});
+            if (check < 0) {
+                $("#selected-document").append(rendered);
+            }
+        });
+
+    });
+
 });
+
+
 

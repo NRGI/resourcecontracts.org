@@ -139,6 +139,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function hasCountryRole()
     {
+        if ($this->hasRole(['superadmin'])) {
+            return false;
+        }
+
         if (isset($this->role)) {
             $roles = array_keys($this->role);
 

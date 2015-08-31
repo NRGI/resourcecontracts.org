@@ -79,17 +79,24 @@ class ElasticSearchService
 
         $contract->metadata->contract_id = $contract->id;
         $contract->metadata->page_number = $contract->pages()->count();
-
-        $metadata = [
-            'id'          => $contract->id,
-            'metadata'    => collect($contract->metadata)->toJson(),
-            'total_pages' => $contract->pages->count(),
-            'created_by'  => json_encode(
+        $translatedFrom                  = [];
+        $metadataAttr                    = $contract->metadata;
+        if (isset($contract->metadata->translated_from) && !empty($contract->metadata->translated_from)) {
+            $translatedFrom = $this->contract->getcontracts((int) $contract->metadata->translated_from);
+        }
+        $metadataAttr->translated_from = $translatedFrom;
+        $contract->metadata            = $metadataAttr;
+        $metadata                      = [
+            'id'                   => $contract->id,
+            'metadata'             => collect($contract->metadata)->toJson(),
+            'total_pages'          => $contract->pages->count(),
+            'created_by'           => json_encode(
                 ['name' => $contract->created_user->name, 'email' => $contract->created_user->email]
             ),
-            'updated_by'  => json_encode($updated_by),
-            'created_at'  => $contract->created_datetime->format('Y-m-d H:i:s'),
-            'updated_at'  => $contract->last_updated_datetime->format('Y-m-d H:i:s')
+            'supporting_contracts' => $this->contract->getSupportingDocuments($contract->id),
+            'updated_by'           => json_encode($updated_by),
+            'created_at'           => $contract->created_datetime->format('Y-m-d H:i:s'),
+            'updated_at'           => $contract->last_updated_datetime->format('Y-m-d H:i:s')
         ];
 
         try {

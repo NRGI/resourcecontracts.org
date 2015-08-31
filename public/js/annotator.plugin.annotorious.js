@@ -2616,7 +2616,7 @@ annotorious.shape.getSize = function(shape) {
  * @returns {annotorious.shape.Shape} the bounding rectangle
  */
 annotorious.shape.getBoundingRect = function(shape) {
-  console.log("getBoundingRect",shape)
+
   if (shape.type == annotorious.shape.ShapeType.RECTANGLE) {
     return shape;
   } else if (shape.type == annotorious.shape.ShapeType.POLYGON) {
@@ -2689,12 +2689,8 @@ annotorious.shape.expand = function(shape, delta) {
 annotorious.shape.transform = function(shape, transformationFn) {
   if (shape.type == annotorious.shape.ShapeType.RECTANGLE) {
     var geom = shape.geometry;
-    console.log("Transaform",shape.geometry)
     var anchor = transformationFn({ x: geom.x, y: geom.y });
     var opposite = transformationFn({ x: geom.x + geom.width, y: geom.y + geom.height });
-    console.log("anchor",anchor)
-    console.log("opposite calculated", "{width:"+(opposite.x - anchor.x), "height:"+(opposite.y - anchor.y))
-
     return new annotorious.shape.Shape(annotorious.shape.ShapeType.RECTANGLE,
       new annotorious.shape.geom.Rectangle(anchor.x, anchor.y, (opposite.x - anchor.x), (opposite.y - anchor.y)));
   } else if (shape.type == annotorious.shape.ShapeType.POLYGON) {
@@ -17474,10 +17470,6 @@ annotorious.modules.image.ImageAnnotator.prototype.fireEvent = function(type, ev
  */
 annotorious.modules.image.ImageAnnotator.prototype.fromItemCoordinates = function(xy) {
   var imgSize = goog.style.getSize(this._image);
-  console.log(imgSize);
-  //console.log("x:",xy.x * imgSize.width);
-  //console.log("y:" ,xy.y * imgSize.height);
-  //important
   return { x: xy.x * imgSize.width, y: xy.y * imgSize.height };
 }
 
@@ -19691,10 +19683,10 @@ annotorious.modules.image.Viewer.prototype._redraw = function() {
     
   if (this._currentAnnotation) {
     var shape = this._shapes[annotorious.shape.hashCode(this._currentAnnotation.shapes[0])];
-    console.log("this_current:",shape)
+
     this._draw(shape, true);
     var bbox = annotorious.shape.getBoundingRect(shape).geometry;
-    //console.log(bbox)
+
     this._popup.show(this._currentAnnotation, { x: bbox.x, y: bbox.y + bbox.height + 5 });
 
     // TODO Orientation check - what if the popup would be outside the viewport?
