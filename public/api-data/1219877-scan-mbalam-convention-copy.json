@@ -1,0 +1,437 @@
+{
+    "document":{
+        "file_hash":"11c8f199725a0bdb7a2bbbbffcd1f157609a9e27",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Date de signature du contrat // Date of contract signature",
+                "page":14,
+                "content":"November 29, 2012--Preamble\n",
+                "location":{
+                    "image":"111,678,134,595"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166868.js",
+                "id":166868
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat // Year of contract signature",
+                "page":14,
+                "content":"2012 - Preamble",
+                "location":{
+                    "image":"115,596,140,545"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166869.js",
+                "id":166869
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026) // Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":14,
+                "content":"Concession agreement--Preamble\n",
+                "location":{
+                    "image":"206,708,248,641"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/168053.js",
+                "id":168053
+            },
+            {
+                "access":"public",
+                "title":"Pays // Country",
+                "page":14,
+                "content":"Cameroon--Preamble\n",
+                "location":{
+                    "image":"601,704,636,624"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166853.js",
+                "id":166853
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale // Local company name",
+                "page":14,
+                "content":"Cam Iron S.A.--Preamble\n",
+                "location":{
+                    "image":"675,704,708,624"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166854.js",
+                "id":166854
+            },
+            {
+                "access":"public",
+                "title":"Nom du projet // Project Title",
+                "page":14,
+                "content":"Mbalam--Preamble\n",
+                "location":{
+                    "image":"67,671,102,594"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166855.js",
+                "id":166855
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements // Work and investment commitments",
+                "page":32,
+                "content":"Until the exhaustion of the high grade ore from the exploitation area and except as consented to by the state, during any period in which high grade ore is being mined, the mine project company must maintain the minimum annual ore production (measured on a rolling average over a 36-month period as adjusted on a pro rata basis for periods in which no high grade ore is being mined from exploitation area or the area covered by the Nabeba permit). The mine project company must comply with the operating standards, the legislation and any specific standards contained in the applicable project agreements.\nThe beneficiation facility must initially achieve at least the initial beneficiation production capacity or the interim beneficial production capacity (in certain circumstances), ramp up at least to the minimum annual beneficiated ore production after the BF commissioning. The production capacity of the facility will increase from 35 million tonnes a year once built to the targeted annual production capacity after ramp-up.\nThe project comprises the transportation of the Mbalam ore from the exploitation area, and other iron ore from either within or outside the territory o the state up to the mineral terminal area. Cam Iron or the Railway project company, as applicable, must operate the railway in a manner that allows the railway to handle initial capacity and expansion capacity up to the design capacity and incorporate technical requirements that reflect the beneficiation operation, railway haulage services and mineral terminal services up to the design capacity.\n\nOn the basis of the feasibility study, as reviewed and approved by the state, the parties agree that in order to generate a higher return from the project due to higher levels of silica (among other characteristics) of the Mbalam Ore contained within the exploitation area, the optimal upgrading of the ore could be reached by blending with Nabeba ore. Cam Iron has the right to undertake the blending operations for the project, and will permit the mine project company to contract the mineral terminal project company to carry out the operations.\n\nThe minimum annual ore projection corresponds to the mining and selling of 12 million tonnes of high grade ore from the exploitation area in a calendar year, commencing in the year after project commissioning.\nThe minimum annual beneficiated ore production corresponds to a minimum of 11 million tonnes of beneficiated ore from the beneficiation facility on any canlendar year (or a pro rata portion of the tonnage based on the number of applicable days), commencing 12 months following the BF commissioning.--Art.  1, 9.2.1, 10.13, 12 (a) and (e), 16.1",
+                "location":{
+                    "image":"408,696,447,635"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166923.js",
+                "id":166923
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e ou envisag\u00e9e // Name and/or composition of the company created or anticipated",
+                "page":46,
+                "content":"Mine project company, railway project company, mineral terminal project company, marketing company, treasury company.--Art. 3.2\n",
+                "location":{
+                    "image":"542,701,572,600"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166865.js",
+                "id":166865
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es // Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":46,
+                "content":"Iron ore--Art. 3.2\n",
+                "location":{
+                    "image":"545,600,575,528"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166874.js",
+                "id":166874
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession // Date of issue of title/permit",
+                "page":49,
+                "content":"Date on which all of the \u201cconditions precedent\u201d as specified by article 4.1 are satisfied or waived.--Art. 4.4, 4.1\n",
+                "location":{
+                    "image":"7,701,39,611"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166856.js",
+                "id":166856
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e // Term",
+                "page":59,
+                "content":"The exploitation permit may be withdrawn and this convention may be terminated before its term.\nIf the mine project company complies with the construction obligations of the beneficiation facility and power station (if required), and upon BF commissioning, the term of the railway concession and mineral terminal concession will be extended from 25 years to 30 years. In that case, the base tariff chargeable to third parties must be completely allocated to the state at the start of year 29. If there is a positive beneficiation determination and the mine project company does not comply with its obligations in constructing the beneficiation facility, the funds in the beneficiation escrow agreement will be available for financing the construction of the facility using any structure chosen by the state. However, if in that case, the state does not cause to use the funds in the beneficiation escrow account, the terms of the railway concession and mineral terminal concession will be shortened at the state's discretion to terminate on the 10th anniversary of the date of the release of the funds from the beneficiation escrow account.-- Art. 7.2, 10.9.2",
+                "location":{
+                    "image":"637,699,665,620"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166870.js",
+                "id":166870
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements // Work and investment commitments",
+                "page":62,
+                "content":"Until the exhaustion of the high grade ore from the exploitation area and except as consented to by the state, during any period in which high grade ore is being mined, the mine project company must maintain the minimum annual ore production (measured on a rolling average over a 36-month period as adjusted on a pro rata basis for periods in which no high grade ore is being mined from exploitation area or the area covered by the Nabeba permit). The mine project company must comply with the operating standards, the legislation and any specific standards contained in the applicable project agreements.\nThe beneficiation facility must initially achieve at least the initial beneficiation production capacity or the interim beneficial production capacity (in certain circumstances), ramp up at least to the minimum annual beneficiated ore production after the BF commissioning. The production capacity of the facility will increase from 35 million tonnes a year once built to the targeted annual production capacity after ramp-up.\nThe project comprises the transportation of the Mbalam ore from the exploitation area, and other iron ore from either within or outside the territory o the state up to the mineral terminal area. Cam Iron or the Railway project company, as applicable, must operate the railway in a manner that allows the railway to handle initial capacity and expansion capacity up to the design capacity and incorporate technical requirements that reflect the beneficiation operation, railway haulage services and mineral terminal services up to the design capacity.\n\nOn the basis of the feasibility study, as reviewed and approved by the state, the parties agree that in order to generate a higher return from the project due to higher levels of silica (among other characteristics) of the Mbalam Ore contained within the exploitation area, the optimal upgrading of the ore could be reached by blending with Nabeba ore. Cam Iron has the right to undertake the blending operations for the project, and will permit the mine project company to contract the mineral terminal project company to carry out the operations.\n\nThe minimum annual ore projection corresponds to the mining and selling of 12 million tonnes of high grade ore from the exploitation area in a calendar year, commencing in the year after project commissioning.\nThe minimum annual beneficiated ore production corresponds to a minimum of 11 million tonnes of beneficiated ore from the beneficiation facility on any canlendar year (or a pro rata portion of the tonnage based on the number of applicable days), commencing 12 months following the BF commissioning.--Art.  1, 9.2.1, 10.13, 12 (a) and (e), 16.1",
+                "location":{
+                    "image":"265,699,298,624"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166924.js",
+                "id":166924
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure // Construction and maintenance of infrastructure",
+                "page":67,
+                "content":"The mine project company undertakes to construct and commission the beneficiation facility to allow the beneficiation of the low grade ore. It will start the construction no later than 84 months after the first commercial shipping. If the state does not elect to do so, the mine project company must designate one or more third parties approved by the state to build, own and/or operate a beneficiation power station capable in quantity and quality to supply enough power for the beneficiation operations.\n\nThe railway and mineral terminal must allow transportation of the sales products, other ores and other iron ore from within the territory of the state (as long as the transportation, by nature, has no adverse effects on the collection, unloading, storage, loading and shipment of the sale products and other ores and transportation of the goods, Nabeba goods and any other goods agreed upon). The railway will not transport passengers or equipment, materials, and other goods not intended for the project or Nabeba except in the cases provided. The railway must be initially built to handle 35 million tonnes of ore in a calendar year.\nHowever, the railway and mineral terminal must be suited to eventually handle the design capacity of the agreements without materially adversely impacting initial capacity and extension capacity (which add up to the design capacity), or technical aspects of the railway haulage services and mineral terminal services up to the design capacity. The state may at its discretion choose by the date of entry into force to fund the costs required to build out the foundation for a dual track design. In such event, the state, Cam Iron, the Railway project company and the mineral terminal project company will agree to modify the convention and agreements to the extent necessary. The parties may enter into discussion for Cam Iron or its subsidiaries to fund a portion of the costs in exchange for additional expansion capacity.\nThe railway project company must maintain and keep the railway facilities in sound working order and in accordance with the convention and operating standards and conduct all the works necessary and all the repairs of any damages that occur, in compliance with the railway agreement.\n\nThe mineral terminal must allow the collection, unloading, storage and loading and shipment of the sales products, other ores and other iron ore within the territory of the state (as long as these activities, by nature, have no adverse effects on the collection, unloading, storage, loading and shipment of the sale products and other ores, and of the goods, Nabeba goods and any other goods agreed upon). The mineral terminal must also allow the conduct of blending operations; the initial lease for the mineral terminal area may upon agreement include the land necessary to reach design capacity. Specifications will be given to the project company by the state and after review, both will agree on specifications to be recorded in the mineral terminal agreement. Cam Iron, or the Mineral Terminal project company, as applicable, will operate the mineral terminal to handle initial capacity and expansion capacity up to design capacity, and incorporate technical aspects of  the mineral terminal services being provided to any party up to design capacity. The mineral terminal project company must also operate the mineral terminal to provide any expansion capacity that may be built and provide adequate working capital to finance its operations related to expansion capacity. The mineral terminal project company will maintain and keep the facilities in sound working order and in accordance with this convention and operating standards, and conduct all the works necessary and all the repairs of any damages that could occur in compliance with the agreement.\nA hydrocarbon facility must be established by the mineral terminal project company directly or by its contractor in the mineral terminal, suitable for the import, storage and distribution of hydrocarbon products. \n\nThe Project Roads shall be built specifically to allow for the construction and maintenance vehicles of a Project Company and its Contractors and Subcontractors to use the Project Roads during the construction of the Mainline Railway and Initial Spur Lines. Within the 3 year period after project commissioning, the project companies will:\n- provide a metallic surfacing on the project road adjacent to the railway from Lolabe to the intersection of an existing unpaved state road near Endenge,\n- provide a metallic surfacing for the existing road form where it connects to the project road adjacent to the railway to Mbelem to where it intersects with the existing state road from Sangmelima to Ouesso,\n- connect with the existing road from Sangmelima to Ouesso until the road intersects with the project road adjacent to the railway and\n- provide a metallic surface to the final portion o fthe project road adjacent to the railway from the intersection with the existing road from Sangmelima to Ouesso to Mbarga. Cf. Road agreement.\n\nThe project also requires a reliable supply of power to the project facilities. Any project company may negotiate to receive power supplies from a supplier, or request from the state an authorization to produce, supply, and consume power produced from a new power plant (for the mining operations, on the exploitation area). In the case of the beneficiation power station, it must file an adcditional facility request\n\nThe construction of other facilities may prove necessary, requiring an additional facility request and authorization by the state.--Art.  10.2 (a), 10.3 10.10 (b), 11, 12.1.1 (g), 12.1.3, 13.1 (e) to (g), 13.3, 14.1, 14.3 (a), 19.3 (a), 24.1 (a) and (b)",
+                "location":{
+                    "image":"833,708,862,630"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166930.js",
+                "id":166930
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es a l'approvisionnement en biens et services locaux // Local procurement requirements",
+                "page":76,
+                "content":"The Mine Project Company may procure, for its benefit, the conduct of all the design, construction and maintenance operations of the beneficiation facility by any subsidiary, contractor or subcontractor.\n\nThe project companies may choose their suppliers, contractors and subcontractors regardless of their nationality or place of registration, subject to the reasonable approval of the state. Disapproval is reasonable where the selection is not in compliance with all legislation and applicable professional licensing requirement, deemed materially deficient in any tax payment or not in good standing.\nFor purposes of reinforcing the national industrial base, each project company undertakes to grant priority to Cameroonian contractors and subcontractors on the basis of the best conditions in terms of availability, experience, competitiveness and solvency: at least 50% of the total value of all contracts for the procurement of goods or services during the construction phase and the exploitation phase of the project facility, with reasonable efforts to increase the percentage. For these purposes, an entity is considered Cameroonian where at least 5% equity interests are owned by citizens of the state or more than 50% employees are nationals. The project companies will give reasonable preferences to entities with more significant ties to Cameroon.--Art.  10.16, 33.1 to 33.3",
+                "location":{
+                    "image":"384,700,422,623"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166881.js",
+                "id":166881
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques // Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":80,
+                "content":"The environmental and social assessment and management plan will be revised upon mutual agreement of the project companies and the state to take into account the evolution of the project and the environmental constraints attached to the project at the time of the renewal of the exploitation permit, if any (for the mine project company) and on the specified dates for the other project companies.\nFor the term of the railway and mineral terminal concessions, the railway project company, within the surface area of which it is in charge in the railway agreement, must undertake to take any measures and steps required by legislation, international standards and best practice in the railway industry, to identify:\n- the geological, environmental, and archaeological nature of the railway area;\n- the impact on the local populations and communities of the conduct of the railway operation within the railway area.\nIf a project company expresses the wish to build a new facility for the purposes of the project, the request must comprise an environmental and social assessment and management plan specific to the requested facility and to the site of the facility.\n\nThe project companies, the contractors and subcontractors will develop and implement a detailed health and safety management plan approved by the state.\n\nBefore working on the project area, project companies, contractors and subcontractors will ensure that all waste is disposed of in an environmentally sensitive manner and in accordance with legislation, take all reasonable steps to minimize the release of dangerous waste, ensure that the contractors' and subcontractors' waste, litter, scrap parts and machinery are disposed of daily at a location that is approved by the project company and in accordance with the legislation, keep the project area clean and tidy, and remove all rubbish accumulated during the performance of the works no less than 21 days after the end of a contract and leave that part of the project in a clean and tidy condition.\nEach project company, contractor and subcontractor must minimize the dust generated, only use designated wash down areas for cleaning machinery, take all reasonable steps to minimize the release of hydrocarbons, confine their activities and movement to the part of the project area on which they are designated to work, maintain a hazardous chemicals register.--Art.  12.1.2 (b), 19.1 (b) (iv), 29.2.1 (c), 29.4, 32.11 (I)",
+                "location":{
+                    "image":"128,706,161,628"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166907.js",
+                "id":166907
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es // Restrictions on transactions with affiliated parties",
+                "page":99,
+                "content":"Cam Iron assures that the marketing company will enter into offtake agreements on arms' length terms and that if the marketing company agrees to sell any product to a party that has a direct or indirect interest in the project, then the specifications for the product incorporated in the offtake agreement will not reduce the value of the product. The marketing company must act with transparency with respect to the commercial terms in all offtake agreements.--Art. 17.2\n",
+                "location":{
+                    "image":"413,696,444,623"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166906.js",
+                "id":166906
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licences, et permis) // Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":126,
+                "content":"The project will require access to the water resources of the state for the industrial and human purposes of the project. The water n the project area is in pristine condition. According to the needs by the relevant project companies and to the water facilities and resources available, the company can either\n- negotiate to draw, in a reasonable and conservative manner, from the operators of water facilities available in the relevant project area,\n- negotiate to receive running water supplies by contract with Camerounaise des Eaux or any other entity entitled to distribute water in the territory of the state (and to build or procure the required additional facilities)\n- request from the state an authorization to exploit or procure the exploitation of certain water resources in the territory of the state pursuant to a water usage agreement that will address the volume and manner of free use and standards of use.\nAll the water resources supplied will be exclusively intended to satisfy the company's needs, strictly required for the proper conduct of the project operations of which it is in charge. The use of said water binds the relevant project company to meet the provisions of the legislation and use water in a manner that protects the water resources and does not adversely impact existing use by third parties.--Art.  21.3",
+                "location":{
+                    "image":"351,696,381,624"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/167159.js",
+                "id":167159
+            },
+            {
+                "access":"public",
+                "title":"Autre- [ Expropriate and compensation] // Other \u2013 [Expropriation and Compensation]",
+                "page":134,
+                "content":"The warranties granted to the project companies award where necessary a right to occupy and authorize use of the land fully owned or occupied by individuals and considered by the state and the relevant company as essential for the proper conduct of the project. The expropriation will be governed by the mining code. The parties anticipate that no new land will be needed for the mineral terminal operations, and expropriation of the land needed for the railway operations will result in the state owning such land and leasing it to the railway project company. The mine project company  must pay all indemnities due to third parties as a result of expropriation, disturbance of peaceful possession of the land as a result of the rights to occupy the project area or the conduct of activities, and any loss or damage caused.--Art. 28.1 and 28.2\n",
+                "location":{
+                    "image":"99,691,129,606"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166886.js",
+                "id":166886
+            },
+            {
+                "access":"public",
+                "title":"Autre- [Guarantie bancaire environnementale] // Other \u2013 [Environmental bank guarantee]",
+                "page":136,
+                "content":"In order to secure the obligations it bears under the environmental and social assessment and management plan and the convention including in terms of remedying the damages it caused to the environment, rehabilitation of the project area it occupies, and proper performance of its environmental obligations, the mineral terminal project company and the mine project company will each issue a bank guarantee of 20 million US dollars and will maintain it in place until 1 year after the expiration of the mineral terminal concession and the mining permit (respectively).\nThe state may draw down on the bank guarantees every time the relevant company has failed to fulfill its obligations under legislation and the environmental and social assessment and management plan after formal notice and in the absence of the project company remedying the breach event. In that case, either Cam Iron or the applicable project company will restore the environmental guarantee for its initial amount.--Art. 29.2.1 (d), (e), (g)",
+                "location":{
+                    "image":"684,705,715,624"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166917.js",
+                "id":166917
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Compte de r\u00e9habilitation] // Other \u2013 [Rehab Escrow Account]",
+                "page":137,
+                "content":"Cam Iron and the mine project company will establish an escrow account and escrow agreement at a bank with a physical presence in the state under supervision of the state's national monetary authority and make contributions of an aggregate amount of 58 million US dollars in 10 equal annual payments. The state may draw down on the funds in the rehab escrow account any time the mine project company has failed to fulfill its obligations under the environmental and social assessment and management plan and under legislation regarding protection of the environment and health and human safety, after prior notice and if the company does not remedy the breach event. The mine project company must promptly restore it to the amount that was in the account immediately prior to the draw.--Art. 29.2.1 (I)\n",
+                "location":{
+                    "image":"828,699,856,614"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166921.js",
+                "id":166921
+            },
+            {
+                "access":"public",
+                "title":"Convention de d\u00e9veloppement local // Local development agreement",
+                "page":141,
+                "content":"The implementation of the state's development program for the South and East regions of Cameroon requires Cam Iron's involvement as a corporate citizen to prevent the risk of the adverse social and environmental impact of the project. Cam Iron will make a cash contribution of 20 million US dollars per year for 5 years starting on the date of entry into force, to a special development fund, managed by a fund committee. Cam Iron will also fund a sustainable development and community support fund to contribute from the date of entry into force until the first commercial shipping, the aggregate sum of $700,000 per year and from and after the first commercial shipping, for the term of the project, 0.75% of the project companies' net profits after tax to enable them to carry out environmental and community support programs.--Art. 29.5.1\n",
+                "location":{
+                    "image":"497,706,536,635"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166875.js",
+                "id":166875
+            },
+            {
+                "access":"public",
+                "title":"Autre - [ Unite de management de forestrie] // Other \u2013 [Forest Management Unit]",
+                "page":143,
+                "content":"The parties will include the Forest Management Unit (FMU) contiguous to the exploitation area as an important part of the biodiversity conservation and sustainable development component of the project and enter into a convention detailing the basis for the management and operation of activities within the FMU. The convention will deal with the conservation of the FMU as a biodiversity area and preservation of all carbon credits associated with the FMU for the benefit of the project companies, the establishment of an ecotourism facility within the FMU and the protocols for securing the FMU and dealing with trespasses. Cam Iron will submit to the state a plan for conservation and sustainable management of the FMU 10-034 and pay an annual fee of 2,000 CFA Franc per hectare from date of entry into force until date of project commissioning and 3,000 CFA Franc per hectare from and after project commissioning into a fund establish pursuant to the conservation convention, and will fund the expenses related to such conservation. All funds generated by ecotourism activities in the FMU will be transferred, after offsetting the reasonable costs, to the special development fund.--Art. 29.5.2\n",
+                "location":{
+                    "image":"151,708,181,609"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166920.js",
+                "id":166920
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre // Audit mechanisms - financial obligations",
+                "page":152,
+                "content":"In order to ensure the state can properly discharge its rights to monitor the activities associated with the project, it is agreed that the parties will enter into monitoring agreements for blending, marketing and treasury.\nA least once in every calendar year the royalty is paid, the mine project company must engage a reputable international firm of accountants with demonstrated experience in similar projects to conduct an audit of the royalty payments made during the year at the sole cost of the company. It must provide the report of the audit to the state in a timely manner.--Art. 30.6, 34.4",
+                "location":{
+                    "image":"153,684,182,616"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166905.js",
+                "id":166905
+            },
+            {
+                "access":"public",
+                "title":"Autre - [ Accord industriel the negotation] // Other \u2013 [Collective Bargaining Agreement]",
+                "page":153,
+                "content":"The project companies and their affiliates incorporated as Cameroonian companies will apply the collective bargaining agreement to their Cameroonian employees, and will have the choice to enter into and apply it to their other employees specifically used to carry out services in connection with the project. The project companies' affiliates operating in Cameroon, contractors and subcontractors which are incorporated as foreign will have the same choice. Their Cameroonian employees will be granted employment terms and conditions not less favorable than per the collective bargaining agreement.--Art. 32.1\n",
+                "location":{
+                    "image":"775,708,806,604"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166888.js",
+                "id":166888
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local // Local employment requirements",
+                "page":155,
+                "content":"The project companies, contractors and subcontractors undertake to give priority to the employment of Cameroonian nationals, subject to their availability at the time of recruitment and required level of qualification and professional \nexperience. They will not discriminate against nationals based on the work conditions applicable under the collective bargaining agreement. They will recruit their operational staff from the local nationals residing in the region of the exploitation area, mineral terminal area and railway area throughout the duration of the project, from the ranks of the construction contractor's Cameroon national construction workforce, and throughout Cameroon and its international diaspora. The project companies will provide the Labor Committee with timely details on the workforce needed to carry out all the major construction and operation-related work of the project. Where nationals with the required level of qualification and professional experience cannot be identified or are not available, foreign nationals may be recruited.\n\nEach project company and main contractor and subcontractor should achieve during the exploitation phase minimum quotas of nationals among their employees in Cameroon working on the project:\n- 50% of managerial positions 5 years after the beginning of the exploitation phase, then 70% after 7 years;\n- 60% of supervisory positions after 3 years, then 75% after 7 years;\n- 85% of unskilled positions after 3 years;\n- 90% of all categories after 10 years.\nThese quotas are non-binding targets.\n\nThe project companies will provide a budget and deliver or require the main contractors and/or subcontractors to deliver professional ongoing training programs on health, safety and risk management and trades required for the exploitation phase to maximize the Cameroonization of the workforce and provide development and career opportunities for their Cameroonian workforce. Each project company will implement or require its main contractors and/or subcontractors to implement professional training structures and programs for its Cameroonian workforce in the business segment in which it operates for the exploitation phase of the project. If required, the state and project companies will agree upon the technical requirements referenced for an individual to be officially recognized as a qualified professional in any trade relevant to the exploitation phase.\nThe project companies commit to a minimum training budget of $7 million in aggregate during the construction phase ($2 million for the first two years and $3 for the third year, renewing the training budget if the construction phase lasts longer than 3 years) and $3 million aggregate per year during the 10 first years of the exploitation phase. The budget will be divided equally between internal training (in professional training centers, scholarships for university courses linked to the companies' business needs, internships...) and external training (e.g. contributions to trade academies).\nAt the end of the 10 years, if the quotas are not fulfilled, the parties will agree on methods to achieve them.--Art. 32.3 to 32.6",
+                "location":{
+                    "image":"356,704,396,625"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166877.js",
+                "id":166877
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance // Mining tax / royalty tax",
+                "page":163,
+                "content":"2.5% of the mine gate value of all high grade ore and beneficiated ore from the exploitation area for every month for the term of the project. 90% of the royalty will be estimated each month of the term and paid to the state at the time such product is loaded by the mineral terminal project company onto a ship for delivery or as agreed, and the remaining 10% at the end of the month.\nOnly the mine project will be obligated to pay the royalty on the iron ore from the exploitation area.--Art. 34.1, 34.6",
+                "location":{
+                    "image":"129,698,157,614"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166890.js",
+                "id":166890
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux // Income tax: rate",
+                "page":164,
+                "content":"The legal, Tax, customs and exchanges control regime currently applicable to the activities carried out pursuant to this Convention, is contained within:\n- the OHADA Acts; \n- the Regulation No 2100/CEMAC/UMAC/CM harmonizing exchanges control regulations in the CEMAC members States;\n- the Customs Code in force at the Signature Date; \n- the General Tax Code in force at the Signature Date;\n- all the Finance Laws in force at the Signature Date;\n- Law 63/4 of 19 June 1963 relating to the implementation of the regulations of the Franc Area throughout the territory of the Republic of Cameroon; \n- the Mining Code in force at the Signature Date; \n- the lnvestment Charter Law N\u00b0 2004-4 of 19 April 2002 in force at the Signature Date; \n- Law 67/LF/22 of 12 June 1967 relating to the financial relations between the Republic of Cameroon and foreign countries;\n- Decree 76/64 of 19 February (1976) modifying Decree 75/763 of 12 December 1975 which suspend the application of \nwithholding taxes on foreign loans;\n- Law No 95/14 of 8 August 1995 establishing the conditions of US Dollars accounts.\n\nDuring the construction phase, there will be:\n- an exemption of duties and VAT on imported goods and services;\n- no obligation or requirement to pay any import-related tax or duty including exemption from SGS Inspection tax subject to state's inspection rights;\n- no registration duties except for residential leases outside the exploitation area;\n- an exemption of VAT on services and local purchases;\n- an exemption of the business license.\n\nDuring the exploitation phase, there will be:\n- no custom duties on fuel and capital and capital replacement equipment, 5% on imported food and 2% on everything else:\n- no obligation or requirement to pay any import-related tax or duty including the SGS Inspection tax;\n- no VAT on imported goods and services:\n- 25% corporate income tax after the corporate tax holiday (5 years from the project commissioning)\n- 1.1% minimum company income tax after the corporate tax holiday.\n- no tax on payments to non-resident services providers\n- no tax on dividends paid or deemed distributions (5%)\n- no VAT on sales or purchases of goods and services\n- no registration duties except for residential leases and\n- no business license.--Art. 36.1, Annex VII",
+                "location":{
+                    "image":"686,701,724,612"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166892.js",
+                "id":166892
+            },
+            {
+                "access":"public",
+                "title":"Primes // Bonuses",
+                "page":165,
+                "content":"In order to enjoy Bonus Payment Holiday for all assignments and transfers, or any restructure or other dealings in the shares in Cam Iron or a project company (including in the shares of any entity that may control those companies), Cam Iron must pay to the State $11 million no more than 10 days after the consummation of the transactions contemplated by the scheme (arrangement announced involving Sundance and Hanlong (Africa) Mining Investment Ltd in 2011 and subsequently varied, under which 100% of the shares of Sundance will be acquired by a third party). These payments will be the only payments required to be made during the Bonus Payment Holiday. The project companies will be exempt from any bonus payment otherwise payable on transfers of the equity interests of the parent companies of Cam Iron, and any security or pledge that the mine project company may create over the exploitation permit.\nIf the conditions precedent are not satisfied and there is no date of entry into force, Cam Iron will not be entitled to a refund of any of the amounts paid under these terms. However, Cam Iron may offset this sum against all amounts it may from time to time owe the state in connection with bonus payments for the project or other mining projects.--Art. 36.3, 36.4",
+                "location":{
+                    "image":"518,691,546,602"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166901.js",
+                "id":166901
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation // Stabilization clause",
+                "page":169,
+                "content":"Any change in law may be deemed a compensation event. The legislation and obligations assumed by the companies under the project agreements and their amendment will apply at all times to the subsidiaries, contractors and subcontractors directly or indirectly in charge of project operations.\nThroughout the term, if there is any new legislation or amendment or provision to legislation or legitimate cause that may and is deemed a compensation event under this contract by Cam Iron or a project company, then the affected party may file a petition with the state and the state project committee. The state may either:\n- reject the petition providing reasons;\n- accept the petition and propose to meet the party and discuss (with no obligation to reach an agreement) the possibility of postponing the application of the measure or amending the convention or project agreement to preserve its economics, whereupon the parties must reasonably try to reach a mutually acceptable solution.\n\nIn addition (except where otherwise provided), the applicable project company must give 'first notice\u201d of the occurrence of a compensation event (\u201cCE-Notice\u201d) to the state and the State Project Committee within 30 days of becoming aware of the event or the reasonable possibility of the event, and again a CE-Notice within 30 days setting forth:\n- details of the event, including reasons for qualifying it as a compensation event;\n- the detailed amount claimed as convention compensation.\nIf no dispute arises, the state must pay the Convention compensation within 120 days of receipt of the CE-Notice. The compensation must be an amount sufficient to compensate Cam Iron or the company for all documented losses in excess of the applicable thresholds after taking into account any insurance proceeds actually received in connection to the event if applicable. If the company is required to expend its own funds, the compensation will include interest at a rate equal to the reference rate plus 400 basis points.\nIn addition upon the receipt of the first notice, the State Project Committee must use its reasonable efforts to respond within 21 days to indicate whether it grants temporary relief from the adverse circumstances related to the compensation event. If the committee grants relief, or is silent on whether it grants relief, the companies will be automatically granted any permit described in the notice for which material requirements are met, as needed to avoid the adverse circumstances, and to the extent the potential compensation event is the result of a delayed, denied or withdrawn permit.\nMore generally, the companies must and should be allowed to use their reasonable efforts to mitigate any losses and adverse effects of a compensation event.--Art. 39, 40",
+                "location":{
+                    "image":"718,700,748,606"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166970.js",
+                "id":166970
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9 // Confidentiality",
+                "page":178,
+                "content":"The convention and project agreements may be published, reviewed by Parliament and made available to the public. The state must treat as confidential everything else in the project agreements, as well as all reports, analysis results, logging, geophysical data or maps provided by Cam Iron or a project company related to the performance of this convention or a relevant project agreement, as well as any other document provided by Cam Iron or a project company on which the reference \u201cConfidential\u201d appears. Confidential information furnished to the recipient excludes information that:\n- is or becomes generally available to the public or in the industry without breach of the confidentiality obligation by the recipient;\n- was already within the possession of or becomes available to the recipient provided the source was not bound by a confidentiality obligation to the provider;\n- was independently developed.\nUnless agreed in writing by the project company which disclosed the information, the state undertakes that neither it nor any of its agents or representative will transmit confidential information to a third party as long as it is confidential. Information will remain confidential for the state until the rights and obligations under this convention or the relevant project agreement are extinguished.\nCam Iron and the project companies agree not to disclose to any third party the confidential information without the prior written consent of the state. Subject to any applicable stock exchange or legal disclosure requirements, they will not issue public statements or press releases regarding the project and will cause their direct and indirect equity holders and lenders not to issue such statements without the prior written consent the state may not withhold unreasonably.\nThe information will remain confidential for these companies until it falls in the public domain.\n\nThese confidentiality obligations do not apply to information relating to the timing, amount and rates where applicable of payments, taxes, or other benefits due to the state, or if the information must be disclosed:\n- under law, the state's transparency initiatives or enforcement of the legislation or the state's rights under the project agreements;\n- pursuant to a judicial decision by a competent court;\n- to subsequent operators and users of the railway or mineral terminal, or mining operators in the exploitation area, and the Government of Republic of Congo (within the limit of the agreements to which such users or the government of the Republic of Congo a re a party and the information is addressed by the agreements);\n- for the purposes of assignments of interests in the projects.\nOther exceptions apply (see 44.1.3).--Art. 44",
+                "location":{
+                    "image":"322,697,364,591"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166974.js",
+                "id":166974
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat // State participation",
+                "page":181,
+                "content":"As of the date of entry into force, the state will have an automatic, unconditional, and irrevocable right to hold, directly or indirectly, a non-dilutable equity interest of 10% of the share capital and voting rights of each project company other than Cam Iron (and other project companies agreed upon from time to time).\nThe state will acquire for 1 CFA Franc an additional 5% of the share capital and voting rights of each project company so that, together, the state will own 15% of the share capital and voting rights of those project companies. Each of the shareholders' agreements will set forth the rights and obligations of the additional state interest regarding dilution. If a project company issues any additional equity as part of its financing for the construction necessary to reach the project commissioning after the state acquires the additional state interest and before project commissioning, the state must be issued or receive additional equity to maintain its 5% interest.--Art. 45.2.a.i and 45.2.a.ii",
+                "location":{
+                    "image":"213,671,263,621"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166903.js",
+                "id":166903
+            },
+            {
+                "access":"public",
+                "title":"La s\u00e9curit\u00e9 physique, la protection de la propri\u00e9t\u00e9, et / ou l'utilisation des gardes // Physical security, protection of property, and/or use of guards",
+                "page":188,
+                "content":"The project companies must provide reasonable security for the assets of the project companies and project facilities.--Art. 48.1\n",
+                "location":{
+                    "image":"105,705,141,635"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166885.js",
+                "id":166885
+            },
+            {
+                "access":"public",
+                "title":"Autre-  [Obligation de cl\u00f4ture]] // Other - [Obligations at Closure]",
+                "page":198,
+                "content":"The relevant project company must have implemented and fulfilled all its obligations to rehabilitate the project area under the Environmental and Social Assessment and Management Plan, project agreements and legislation. All rehabilitation and remediation will be performed regardless of whether the state elects to receive assets of the project companies unless the state gives notice that the company is excused. Rehabilitation and remediation in other areas will only be performed if expressly required by another project agreement.--Art. 54.1 (a) (I), 54.2.8\n",
+                "location":{
+                    "image":"373,706,412,623"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166962.js",
+                "id":166962
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends // Arbitration and dispute resolution",
+                "page":202,
+                "content":"All disputes will be subject to amicable settlement or arbitration under the following conditions, unless the dispute or any related claim could be, has been, or could have been submitted for consultation or arbitration under the Convention on the Settlement of Investment Disputes between States and Nationals of other States (ICSID), or any applicable bilateral investment treaty. If the dispute was not resolved by amicable settlement, a party may only raise the claim under the dispute resolution provisions of the ICSID convention. Arbitration and ICSID claims are exclusive from one another (no parallel, successive, or duplicate actions are admitted from the same alleged acts)\nThe parties will seek an amicable settlement of any dispute and try to negotiate an amicable resolution, but are under no obligation to agree on a settlement. If the dispute has not been resolved within 60 days of the dispute notification (or any other period agreed upon by the parties), any party may initiate an amicable resolution procedure. The companies and the government must continue the performance of the contractual operations and obligations during any dispute, except when a specific operation or obligation cannot be undertaken or completed without the resolution.\nIn a technical dispute, the parties must submit the matter to a confidential, administered expertise proceedings in English and French, under the Rules for Expertise of the International Chamber of Commerce (or the contract, where different). The dispute will be heard by an impartial and independent expert with recognized, professional, and relevant experience (unless agreed otherwise in writing) and the parties will bear the costs equally. The party submitting a resolution request to the ICC must propose an expert; the responding parties must agree to the appointment under 90 days or nominate another expert. If the parties have not reached an agreement within 90 days (or another term agreed upon in writing), the ICC International Centre for Expertise will appoint the expert. The expert will deliver the draft report of the findings within 90 days (unless agreed otherwise). The parties have 10 days to comment, after which the expert has 10 days to deliver the decision. The decision will be binding on the parties unless and until it is revised in an amicable settlement or arbitral award. It will be final unless party notifies its dissatisfaction within 30 days. Otherwise, of if the expert does not hand in the decision on time, the dispute will be referred to arbitration. If a party fails to comply, the failure may be referred to arbitration.\nAny unresolved dispute not excluded will be settled confidentially under the rules of arbitration of the ICC (and the contract, where different) in Paris, and in both French and English. The dispute will be heard by 3 impartial and independent arbitrators. Each side will nominate one arbitrator (if necessary, several parties jointly). To the maximum extent permitted by law, the state on the one hand and the project parties on the other shall retain their respective abilities to nominate one arbitrator each. If an arbitrator fails to be appointed within 90 days of commencement of arbitration, or if the two arbitrators, once appointed, fail to appoint the third within 30 days, the ICC will make the appointment. No remedy proceedings before Cameroonian jurisdictions (unless specifically agreed in writing or required under international norms) will be required for arbitration. The arbitration award will be final and binding. The parties will bear their own costs and share equally the costs of the panel.--Art. 56",
+                "location":{
+                    "image":"189,702,226,606"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166964.js",
+                "id":166964
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat // State agency, national company, ministry executing the document",
+                "page":209,
+                "content":"Ministry of Industry, Mines, and Technological Development--Signature\n",
+                "location":{
+                    "image":"523,702,551,602"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166864.js",
+                "id":166864
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document // Name of company executing the document and composition of the shareholders",
+                "page":209,
+                "content":"Cam Iron S.A.--Signature\n",
+                "location":{
+                    "image":"559,696,596,599"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy/annotations/166863.js",
+                "id":166863
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Cam Iron SA, Cameroon, 2012",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Resource":"Iron Ore",
+            "Countries":"Cameroon",
+            "Signature Date":"29/11/2012",
+            "Contract Term (duration) in Years":"25",
+            "Signature Year":"2012"
+        },
+        "created_at":"Wed, 16 Jul 2014 19:38:57 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 07 Apr 2015 14:12:39 +0000",
+        "id":"1219877-scan-mbalam-convention-copy",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1219877/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1219877/scan-mbalam-convention-copy.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1219877/pages/scan-mbalam-convention-copy-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1219877/pages/scan-mbalam-convention-copy-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1219877/scan-mbalam-convention-copy.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1219877/pages/scan-mbalam-convention-copy-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1219877"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":209,
+        "canonical_url":"http://www.documentcloud.org/documents/1219877-scan-mbalam-convention-copy.html"
+    }
+}

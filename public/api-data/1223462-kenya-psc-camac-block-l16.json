@@ -1,0 +1,425 @@
+{
+    "document":{
+        "file_hash":"03321534779214ccb11c0bd19e134d7ac88afdb4",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Pays // Country",
+                "page":8,
+                "content":"Kenya--Preambule\n",
+                "location":{
+                    "image":"121,704,150,641"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/167162.js",
+                "id":167162
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale // Local company name",
+                "page":8,
+                "content":"CAMAC Energy Kenya Limited--Preambule\n",
+                "location":{
+                    "image":"198,701,226,636"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/167163.js",
+                "id":167163
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat // Date of contract signature",
+                "page":8,
+                "content":"10 May 2012--Preambule\n",
+                "location":{
+                    "image":"212,517,236,463"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168440.js",
+                "id":168440
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat // Year of contract signature",
+                "page":8,
+                "content":"2012--Preambule\n",
+                "location":{
+                    "image":"215,599,240,529"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168441.js",
+                "id":168441
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document // Name of company executing the document and composition of the shareholders",
+                "page":8,
+                "content":"Camac Energy Kenya Ltd--Preambule\n",
+                "location":{
+                    "image":"281,707,308,643"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168438.js",
+                "id":168438
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026) // Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":8,
+                "content":"Production-sharing agreement--Preambule\n",
+                "location":{
+                    "image":"61,708,89,644"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/167164.js",
+                "id":167164
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e d'octroi du permis d'exploitation ou concession // Year of issue of title/permit",
+                "page":10,
+                "content":"2012--Preambule\n",
+                "location":{
+                    "image":"570,697,597,651"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/167168.js",
+                "id":167168
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e // Term",
+                "page":15,
+                "content":"Initial exploration period\u00a0: 2 years.\nThe contractor may apply to the Minister no later than 1 month before the expiry of this period for an additional exploration period of 2 years, if it has fulfilled his work and expenditure obligations.\nThe contractor may apply again for a second additional exploration period of 2 years, under the same conditions.\nIn order to enable the contractor to complete the drilling and testing of an exploratory well actually being drilled or tested at the end of any of the additional exploration periods, the minister may grant an extension of no more than 4 months.\n\nThe contract will not expire in respect to the relevant development area if the contractor reports that a commercial discovery has been made before the end of the exploration period. It will continue from the date the development plan is adopted for the area for a development period:\n- 25 years for a crude oil development area and\n- 35 years for a natural gas development area.--Art.  2\n",
+                "location":{
+                    "image":"309,693,343,633"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168443.js",
+                "id":168443
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession // Date of issue of title/permit",
+                "page":15,
+                "content":"Within 2 months of the effective date.--Art.  2.2\n",
+                "location":{
+                    "image":"390,703,419,647"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/167167.js",
+                "id":167167
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es // Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":16,
+                "content":"crude oil (and possibly natural gas)--Art.  2.6\n",
+                "location":{
+                    "image":"143,705,168,643"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168446.js",
+                "id":168446
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements // Work and investment commitments",
+                "page":17,
+                "content":"During the initial exploration period, the contractor must fulfill the minimum work and expenditure obligations:\n- acquire Gravity and Magneticdata and interpret 1000km\u00b2 at a minimum expenditure of $250,000;\n- acquire, process and interpret 500line kilometers of 2D seismic data at a minimum expenditure of $5,000,000.\nDuring the first additional exploration period of 2 years:\n- acquire, process and interpret high density 300 km\u00b2 3D seismic data at a minimum expenditure of $12,000,000;\n- drill one exploratory well to a minimum of depth of 3,000m at a minimum expenditure of $20,000,000.\nDuring the second additional exploration period of 2 years:\n- acquire, process and interpret high density 150 km\u00b2 3D seismic data at a minimum expenditure of $6,000,000;\n- drill one exploratory well to a minimum of depth of 3,000m at a minimum expenditure of $20,000,000.\nThe fulfillment of all the minimum work obligations relieve the contractor of the corresponding expenditure obligation. If during the initial exploration period or the first additional exploration period, the contractor exceeds the minimum work obligation, the excess may be credited toward the obligations of the next period.\nIf at the end of any exploration period or at the termination of the contract, whichever occurs first, the contractor has not fulfilled all its minimum work obligations, it will pay the government the minimum monetary obligation in respect of all the work for the expiring period times the discount rate and/or the shortfall between the amount expended and the minimum monetary obligation for the expiring exploration period times the discount rate.--Art.  4, 8.2a, 10.7, 18, 23, 24",
+                "location":{
+                    "image":"95,659,138,581"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168476.js",
+                "id":168476
+            },
+            {
+                "access":"public",
+                "title":"Primes // Bonuses",
+                "page":20,
+                "content":"The contractor will pay a signature bonus of $310,000 on or before the execution date of the contract by direct bank transfer to an accepted ministry bank account.--Art.  5.1\n",
+                "location":{
+                    "image":"294,693,323,573"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168461.js",
+                "id":168461
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers // Third party use of infrastructure",
+                "page":22,
+                "content":"Easements and rights of way may be granted to other persons for the benefit of land adjacent to the contract area.\nOther producers may only use the facilities of the contractor where there exists excess capacity and on payment of a reasonable compensation (including a reasonable return on investment) to the contractor, and provided it doesn't interfere with the operations--Art.  7.2, 12.2\n",
+                "location":{
+                    "image":"217,667,239,556"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168478.js",
+                "id":168478
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licences, et permis) // Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":22,
+                "content":"The minister will facilitate on behalf of the contractor any permit necessary to enable the contractor to use the water in the contract area for the petroleum operations, but the contractor may not unreasonably deprive the users of land, domestic settlement or cattle watering place of the water supply to which they are accustomed.--Art.  7.3\n",
+                "location":{
+                    "image":"243,706,295,655"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168472.js",
+                "id":168472
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure // Construction and maintenance of infrastructure",
+                "page":23,
+                "content":"The constructor will ensure that all machinery, plant, equipment and installations used by the contractor in connection with the petroleum operations are of proper and accepted construction and are kept in good repair.\n\nWith the written consent of the minister (not to be unreasonably withheld), the contractor will have the right to construct, operate, and maintain roads, drill water wells and to place and/or construct fixtures and installations necessary to conduct the petroleum operations, including but not limited to, storage tanks, trunk pipelines, shipment installations, pipelines, cables or similar lines, liquefaction, processing and compression, located inside or outside the contract area. The contractor may also construct, operate and maintain or lease facilities for the transportation of crude oil and natural gas from the contract area. The consent of the minister may be conditional on the use by other producers of the excess capacity, if any, of the facilities.--Art.  8.2b to e, 12.1",
+                "location":{
+                    "image":"365,125,411,57"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168477.js",
+                "id":168477
+            },
+            {
+                "access":"public",
+                "title":"Autre - [le nom de cat\u00e9gorie] // Other \u2013 [Remedial measures]",
+                "page":24,
+                "content":"If the minister believes that the petroleum operations may endanger persons or property, cause pollution, harm marine life or interfere with navigation and fishing, the minister may order the contractor to take reasonable remedial measures or to discontinue the relevant operations until the measures (or agreed-upon alternatives) are implemented.--Art.  9.3\n",
+                "location":{
+                    "image":"250,704,276,579"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168474.js",
+                "id":168474
+            },
+            {
+                "access":"public",
+                "title":"Autre - [D\u00e9prise] // Other \u2013 [Abandonment]",
+                "page":25,
+                "content":"The contractor will, within 2 months of termination or expiry of this contract or the surrender of part of the contract area, deliver up all relevant productive wells in good repair and working order together with all casings and installations which cannot be moved without damaging the well, but the minister may require the contractor to plug the well at the contractor's expense by notifying the contractor. --Art. 10.6",
+                "location":{
+                    "image":"380,698,406,554"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168475.js",
+                "id":168475
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local // Local employment requirements",
+                "page":27,
+                "content":"The contractor, its contractors and subcontractors will, where possible, employ Kenya citizens in the petroleum operations and train these citizens in a  training program  established in consultation with the minister. The contractor must also contribute or hold to the order of the Ministry set amounts of money towards a Ministry Training Fund.--Art.  13.1-13.2\n",
+                "location":{
+                    "image":"390,708,413,653"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168448.js",
+                "id":168448
+            },
+            {
+                "access":"public",
+                "title":"Convention de d\u00e9veloppement local // Local development agreement",
+                "page":28,
+                "content":"the contractor will contribute a minimum of $50,000 by way of direct payments to the local community development projects.--Art.  13.3\n",
+                "location":{
+                    "image":"201,705,227,636"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168447.js",
+                "id":168447
+            },
+            {
+                "access":"public",
+                "title":"Autre - [le nom de cat\u00e9gorie] // Other \u2013 [Unitization]",
+                "page":34,
+                "content":"Where the recoverable reserves of a commercial discovery extend into an area adjacent to the contract area, the minister may require the contractor to produce petroleum there in cooperation with the contractor of the adjacent area. Where non-commercial deposits of petroleum from the contract area would be commercial if exploited with deposits in an adjacent area, the minister may make the same requirement to the contractor of the adjacent area.--Art.  21.1",
+                "location":{
+                    "image":"381,679,406,532"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168479.js",
+                "id":168479
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es // Restrictions on transactions with affiliated parties",
+                "page":37,
+                "content":"If there have been no sales of crude oil produced from the contract area to third parties at arm's length during the calendar qurter, the value of crude oil will be the \u201cfair market value\u201d determined as the average per unit prevailing market price, actually paid during that quarter in arm's length sales for export under term contracts of at least 90 days between unrelated purchasers and sellers, for crude oil produced in Kenya and crude oil of comparable quality produced in the nearest major crude oil producing and exporting country, adjusted for grade, gravity, and quality of such crude oil and transportation costs, and any other appropriate adjustments.--Art.  26b\n",
+                "location":{
+                    "image":"441,704,469,617"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168468.js",
+                "id":168468
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, cr\u00e9dit d'investissement, etc.) // Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":38,
+                "content":"Cost recovery is limited maximum of 60% of all crude oil produced from the contract area during that fiscal year and not used in petroleum operations.\nPetroleum costs may be recovered\u00a0:\n- with the exception of capital expenditures, either in the fiscal year in which the costs are incurred and paid or the fiscal year in which commercial production occurs, whichever is the later\u00a0;\n- for capital expenditures, at a rate of 20%, based on authorization at that rate starting either in the fiscal year in which they are incurred and paid or in which the commercial production from the development area commences, whichever is the later.\nCapital expenditures mean the qualifying expenditure, other than \u00ab\u00a0intangible drilling costs\u00a0,\u00a0\u00bb that is expenditure that has no salvage value, which is for or incidental to drilling, cleaning, deepening, completing or abandoning wells.\nTo the extent that in a fiscal year the recoverable costs exceed the value of all cost oil or cost gas, the excess will be carried forward for recovery by the contractor in the next succeeding fiscal year or years until fully recovered, but not after the termination of the contract.\nTo the extent that in a fiscal year the recoverable costs are less than the maximum value of the cost oil or gas, the excess will become part of the profit oil or gas.--Art.  27.1 and 27.2",
+                "location":{
+                    "image":"399,700,421,605"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168458.js",
+                "id":168458
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.) // Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":39,
+                "content":"The total crude oil produced and saved from the contract area, and not used in petroleum operations, less the cost oil, will be referred to as the profit oil. The production shares will be as follows - first 30,000 barrels a day: 50% to the government and 50% to the contractor;\n- next 25,000 barrels a day: 60% to the government and 40% to the contractor;\n- next 25,000 barrels a day: 65% to the government and 35% to the contractor;\n- next 25,000 barrels a day: 70% to the government and 30% to the contractor;\n- next 25,000 barrels a day: 78% to the government and 22% to the contractor.\nWhere two or more reservoirs are sufficiently close that they utilize the same surface installation, they will be considered as being one development area. When making a proposal for the delineation of a development area and its associated development plan, the contractor will consider in priority the most favorable option for the government in terms of profit oil split.\n\nIf directed by the minister, the contractor must lift and market part or the entire government share of profit oil, gas, and any government or appointee participating interest share of petroleum in a development area. When the minister elects not to take and receive in kind any part of the government share of profit oil, the minister will notify the contractor 3 months before the commencement of each semester of a calendar year, specifying the quantity of production. Any sale of the government share of profit oil will not be for a term of more than 1 year without the minister's consent. The contractor will have the right to market the share at the then prevailing \u201cfair market price.\u201d\n\nThe portion of the profit oil or gas the government is entitled to take and receive will be inclusive of all taxes, present or future, based on income or profits of the contractor, including the income tax and dividend tax but will exclude the tax paid by the contractor on behalf of petroleum service subcontractors. The government agrees to pay and discharge as and when due such taxes for account of each contractor, and the minister will provide them with proper receipts. Each contractor will prepare and file a Kenya income tax return for each fiscal year within 4months after the close of the fiscal year. All taxes paid by the government in the name and on behalf of the contractor will be considered income to the contractor for the relevant fiscal year.--Art.  27.3, 27.5 and 27.6\n",
+                "location":{
+                    "image":"520,696,554,595"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168459.js",
+                "id":168459
+            },
+            {
+                "access":"public",
+                "title":"Autre - [le nom de cat\u00e9gorie] // Other \u2013 [Windfall profits]",
+                "page":40,
+                "content":"When the value of crude oil for any calendar quarter exceeds $50 per barrel FOB Mombasa (threshold price) adjusted for the USA Consumer Price Index (effective date from the date of the contract execution), a second tier amount is payable by the contractor to the government, calculated within 30 days of the end of the relevant calendar quarter (cf. Formula at 27.3c)--Art.  27.3c",
+                "location":{
+                    "image":"424,703,455,619"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168470.js",
+                "id":168470
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux // Income tax: rate",
+                "page":41,
+                "content":"Each contractor will be subject to and will comply with the requirements of the income tax laws in force in Kenya.--Art.  27.5\n",
+                "location":{
+                    "image":"588,699,614,617"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168454.js",
+                "id":168454
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat // State participation",
+                "page":43,
+                "content":"The government may elect to participate in the petroleum operations in any development area and acquire an interest of up to 20% (\u201cparticipating interest\u201d) of the total interest in that area, either directly or through an appointee.\nThe government will exercise its right to participate in the area:\n- have a right to vote in proportion to its participating interest with respect to all decisions under the contract and either the participation or joint operating agreement;\n- own and separately take and dispose of its participating interest share in the petroleum produced and saved to which the contractor is entitled, in proportion to its participating interest;\n- assume its share of petroleum costs incurred in respect of that area, from the effective date of participation, in proportion to its participating interest;\n- own a participating interest share in all assets acquired for petroleum operation sin or related to the development area.\nThe government will reimburse the contractor, without interest, in proportion to its participating interest, its share of all costs, expenses and expenditure incurred in respect of the development area from the date the plan has been adopted to the date the government exercises its right to participate.--Art. 28",
+                "location":{
+                    "image":"155,703,189,632"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168462.js",
+                "id":168462
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Consommation domestique] // Other - [Domestic consumption]",
+                "page":44,
+                "content":"The contractor must supply a share of its production of crude oil for domestic consumption in Kenya as priority, as necessary to satisfy the domestic supply requirements.\nThe minister will notify the contractor not less than 3 months prior to each calendar year of the domestic supply requirement. The maximum amount of crude oil the minister may require will be calculated each calendar quarter (see 29.2). when the contractor is obligated to supply crude oil or natural gas for domestic consumption, the price paid by the government will be calculated in accordance with clause 26. with the written consent of the minister, the contractor may comply by importing crude oil and exporting the same amount, but appropriate adjustments will be made in price and volume to reflect transportation costs, differences in quality, gravity and terms of sale. The contractor may also comply with the equivalent clause with respect to natural gas amounts under the same conditions (see 29.6) --Art. 29\n",
+                "location":{
+                    "image":"151,706,186,639"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168453.js",
+                "id":168453
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre // Audit mechanisms - financial obligations",
+                "page":45,
+                "content":"The contractor will keep books and accounts in accordance with the accounting procedure (Appebdundix B) and will submit to the minister a statement of the accounts no more than 3 months after each calendar year.\nAt the request of the minister, the contractor will appoint an independent auditor of international standing, approved by the government to audit its books and accounts annually. The Contractor will pay for the audit (recoverable cost).\nThe government may audit the books and accounts in accordance with the provisions of the accounting procedure within 2 calendar years of the relevant period, and must complete the audit within 1 calendar year. Beyond that period, the contractor's books and accounts will be deemed correct.--Art.  30",
+                "location":{
+                    "image":"290,699,321,608"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168465.js",
+                "id":168465
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es a l'approvisionnement en biens et services locaux // Local procurement requirements",
+                "page":46,
+                "content":"The contractor, its contractors and subcontractors must give preference to Kenyan materials and supplies for use in petroleum operations as long as their prices, quality, quantities and timeliness of delivery are comparable with the prices, quality, quantities and timeliness of delivery of non-Kenyan materials and supplies.\nThey must give preference to Kenyan contractors for services connected with the petroleum operations as long as their prices, quality of performance and timeliness are comparable with the prices, quality of performance and timeliness of non-Kenyan service contractors.\nThey must provide supplies and services from bases in Kenya where practicable.\nThe contractor must:\n- on or before each relevant calendar year, submit to the minister a tentative schedule of the contemplated service and supply contracts with an estimated value over $500,000 per contract to be entered during the calendar year, showing the anticipated tender date and approximate value and the goods and services to be provided;\n- for contracts with an estimated value over $500,000, undertake to select its contractors and sub-contractors from adequately qualified companies by means of competitive bidding or appropriate sole sourcing in accordance with good international petroleum industry practice. As soon as practicable, the contractor must provide the minister a copy of each contract requiring a payment in a currency other than Kenya Shillings and a brief description of the efforts made to find a Kenyan supplier or service contractor;\n- the minimum amount may be changed by mutual agreement.--Art.  31",
+                "location":{
+                    "image":"63,708,98,637"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168449.js",
+                "id":168449
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9 // Confidentiality",
+                "page":50,
+                "content":"All information supplied by the Contractor to the Government will be supplied at the expense of the  Contractor  and  the  Government  will  keep  that  information  confidential, and  will not  disclose  it  other  than to a  Person employed by or on behalf of the Government, except with the consent of the Contractor (not to be unreasonably withheld).\nThe minister may use any information supplied for preparing and publishing reports and returns required by law, and for reports and surveys of a general nature for internal use.\nThe minister may publish any information related to a surrendered area after the surrender, and in any case 3 years after the information was received unless the minister determines, after representations by the contractor, that a longer period applies.\nThe government will not disclose without the written consent of the contractor to any person, other than employed by or on behalf of the government, know-how and proprietary technology which the contractor may supply to the minister.\nExcept as necessary to obtain the appropriate government approvals, no party will disclose the content of this contract without prior written consent of the other parties.--Art.  37",
+                "location":{
+                    "image":"434,699,461,628"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168487.js",
+                "id":168487
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends // Governing law in case of dispute",
+                "page":52,
+                "content":"The contract will be governed by, interpreted and construed in accordance with the laws of Kenya.--Art.  40.1\n",
+                "location":{
+                    "image":"283,703,315,625"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168481.js",
+                "id":168481
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation // Stabilization clause",
+                "page":52,
+                "content":"If after the execution date of this contract the economic benefits of a party are substantially affected by the promulgation of new laws and regulations,or of any amendments to the applicable laws and regulations of Kenya, the parties agree to make the necessary adjustments to the relevant provisions of this Contract,observing the principle of the mutual economic benefits of the parties.\nThe  Parties  will renegotiate  and  amend  this  Contract  in  good  faith, so  as  to  achieve  the  same  economic  benefits  for  the Contractor as would have been anticipated had there not been any adverse economic affects. The Parties will meet within 30 days after the Government\u2019s receipt of the notice from the Contractor regarding the adverse economic affects. If the Parties are unable to agree upon the modifications that are required to this Contract in order to resolve the adverse economic impact on the Contractor within 90 days,or as  agreed  upon by  the  Parties,  the  matter  may  be referred to arbitration by either the Contractor or the Government.--Art.  40.3",
+                "location":{
+                    "image":"396,682,425,602"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168484.js",
+                "id":168484
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends // Arbitration and dispute resolution",
+                "page":53,
+                "content":"Any question or dispute arising in relation to the contract will be settled amicably as far as possible. Where no settlement is reached within 30 days of the dispute (or as otherwise agreed upon by the parties), the dispute will be referred to arbitration in accordance with the UNCITRAL arbitration rules.\nEach party will appoint 1 arbitrator, and those 2 will appoint the third. If the parties fail to appoint one arbitrator, the Secretary-General of the International Centre for Settlement of Investment Disputes can be asked to appoint the missing arbitrator. Arbitrators will be chosen from countries other than those of which the parties are nationals.\nThe arbitration will take place in Cape Town, South Africa, and will be in English. The decision of the majority of the arbitrators will be final and binding on the parties. Any judgment upon the award of the arbitrators will be enforceable in any court of competent jurisdiction.--Art.  41",
+                "location":{
+                    "image":"62,705,102,642"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/168483.js",
+                "id":168483
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas // Name and/or number of field, block or deposit",
+                "page":61,
+                "content":"Block L16--Appendix A\n",
+                "location":{
+                    "image":"140,701,191,622"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/167165.js",
+                "id":167165
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) // Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep)",
+                "page":61,
+                "content":"Set out in a map in Appendix A: - L90: 40\u00b0 21 5.11591 E, 3\u00b0 4 22.008 S\n- L91: 40\u00b0 21 5.11591 E, 3\u00b0 11 22.992 S\n- L92: 40\u00b0 12 1.02318 E, 3\u00b0 11 22.992 S\n- L93: 40\u00b0 12 1.02318 E, 3\u00b0 24 47.016 S\n- L94: 40\u00b0 10 26.4 E, 3\u00b0 24 47.016 S\n- L95: 40\u00b0 10 26.4 E, 3\u00b0 36 36 S\n- L43: 39\u00b0 40 32.016 E, 3\u00b0 36 22.008 S\n- L44: 39\u00b0 40 32.016 E, 3\u00b0 36 36 S\n- L38: 40\u00b0 10 45.012 E, 3\u00b0 4 22.008 S\n- L69: 40\u00b0 1 19.992 E, 3\u00b0 36 36 S.--Appendix A",
+                "location":{
+                    "image":"35,699,64,622"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16/annotations/167166.js",
+                "id":167166
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"CAMAC Energy, Block L16 - Kenya, 2012",
+        "data":{
+            "Signature Date":"10/06/2012",
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2012",
+            "Resource":"Hydrocarbons",
+            "Countries":"Kenya"
+        },
+        "created_at":"Fri, 18 Jul 2014 17:54:06 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 22 Apr 2015 06:11:08 +0000",
+        "id":"1223462-kenya-psc-camac-block-l16",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1223462/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1223462/kenya-psc-camac-block-l16.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1223462/pages/kenya-psc-camac-block-l16-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1223462/pages/kenya-psc-camac-block-l16-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1223462/kenya-psc-camac-block-l16.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1223462/pages/kenya-psc-camac-block-l16-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1223462"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":101,
+        "canonical_url":"http://www.documentcloud.org/documents/1223462-kenya-psc-camac-block-l16.html"
+    }
+}

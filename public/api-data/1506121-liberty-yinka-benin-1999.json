@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"2716862ccc983f4e16f14100c6a2ea9ac61246e7",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Liberty, Yinka - Benin, 1999",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"1999",
+            "Resource":"Hydrocarbons",
+            "Countries":"Benin"
+        },
+        "created_at":"Tue, 20 Jan 2015 18:36:20 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 20 Jan 2015 18:52:45 +0000",
+        "id":"1506121-liberty-yinka-benin-1999",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1506121/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506121/liberty-yinka-benin-1999.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1506121/pages/liberty-yinka-benin-1999-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506121/pages/liberty-yinka-benin-1999-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506121/liberty-yinka-benin-1999.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506121/pages/liberty-yinka-benin-1999-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1506121"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":559,
+        "canonical_url":"http://www.documentcloud.org/documents/1506121-liberty-yinka-benin-1999.html"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"ffc39c76ec322f70e8a564f25fa49e093a271bf2",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Kosmos, Ndian River - Cameroon, 2006",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2006",
+            "Resource":"Hydrocarbons",
+            "Countries":"Cameroon"
+        },
+        "created_at":"Mon, 19 Jan 2015 23:41:13 +0000",
+        "display_language":"eng",
+        "updated_at":"Sun, 25 Jan 2015 09:08:06 +0000",
+        "id":"1505266-kosmos-ndian-river-cameroon-2006",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505266/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505266/kosmos-ndian-river-cameroon-2006.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505266/pages/kosmos-ndian-river-cameroon-2006-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505266/pages/kosmos-ndian-river-cameroon-2006-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505266/kosmos-ndian-river-cameroon-2006.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505266/pages/kosmos-ndian-river-cameroon-2006-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505266"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":38,
+        "canonical_url":"http://www.documentcloud.org/documents/1505266-kosmos-ndian-river-cameroon-2006.html"
+    }
+}

@@ -1,0 +1,856 @@
+{
+    "document":{
+        "file_hash":null,
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom du Projet//Project title ",
+                "page":1,
+                "content":"PROJET BAUXITE DE KOUMBIA AMC\n",
+                "location":{
+                    "image":"144,644,163,83"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/70924.js",
+                "id":70924
+            },
+            {
+                "access":"public",
+                "title":"Nom du Gisement//Deposit/site name ",
+                "page":1,
+                "content":"Koumbia--Page de couverture",
+                "location":{
+                    "image":"157,603,193,506"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71290.js",
+                "id":71290
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":2,
+                "content":"Alliance Mining Commodities Guin\u00e9e SARL--Parties",
+                "location":{
+                    "image":"107,387,141,341"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71292.js",
+                "id":71292
+            },
+            {
+                "access":"public",
+                "title":"Agence(s) de l'Etat signataire(s)//State agency, National Company, Ministry",
+                "page":2,
+                "content":"Monsieur Mahmoud THIAM - Ministre des Mines et de la G\u00e9ologie; Monsieur Kerfala Yansan\u00e9 - Ministre de l'Economie et des Finances--Signatures",
+                "location":{
+                    "image":"108,336,138,280"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71291.js",
+                "id":71291
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 cr\u00e9\u00e9e ou envisag\u00e9e pour ex\u00e9cuter le projet//Name and/or composition of executing company created or anticipated",
+                "page":2,
+                "content":"Alliance Mining Commoditites Guin\u00e9e SARL--Pr\u00e9ambule",
+                "location":{
+                    "image":"108,488,143,438"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71294.js",
+                "id":71294
+            },
+            {
+                "access":"public",
+                "title":"Si\u00e8ge social //Corporate headquarters",
+                "page":2,
+                "content":"Alliance Mining Commodities Guinee SA, Cit\u00e9 Chemins de Fer, Immeuble Lab\u00e9, 4\u00e8me \u00e9tage, Conakry, R\u00e9publique de Guin\u00e9e, BP: 2162 tel 00 224 64 23 05 42, mohamed.sako@amcbauxite.com.--Parties",
+                "location":{
+                    "image":"111,547,146,498"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71295.js",
+                "id":71295
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":12,
+                "content":"En cas de diff\u00e9rend les parties d'engagent en premier recours \u00e0 tenter de r\u00e9soudre \u00e0 l'amiable le diff\u00e9rend ou le conflit les opposant; \u00e0 d\u00e9faut de r\u00e8glement \u00e0 l'amiable, les parties conviennent de se soumettre \u00e0 l'arbitrage du CIRDI et de son r\u00e8glement d'arbitrage, et  au CCI si le CIRDI ne s'applique pas.--Arts. 5, Art. 37.1 - 37.2 ",
+                "location":{
+                    "image":"692,479,739,422"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71384.js",
+                "id":71384
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable//Governing law",
+                "page":12,
+                "content":"Lois applicables de Guin\u00e9e; en cas de contradiction et/ou divergence entre les lois applicables et les dispositions de la pr\u00e9sente Convention, ces derni\u00e8res pr\u00e9vaudront--Art. 5 ",
+                "location":{
+                    "image":"693,417,734,352"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71381.js",
+                "id":71381
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es//Type of resources ",
+                "page":13,
+                "content":"Bauxite",
+                "location":{
+                    "image":"372,429,401,380"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71296.js",
+                "id":71296
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux et d'investissements//Work and investment commitments",
+                "page":14,
+                "content":"La Soci\u00e9t\u00e9 s'engage \u00e0 r\u00e9aliser les investissements n\u00e9cessaires \u00e0 la r\u00e9alisation du projet tels que ceux-ci r\u00e9sulteront notamment des \u00e9tudes et d\u00e9cisions sur les infrastructures en application des dispositions de la pr\u00e9sente Convention. La Soci\u00e9t\u00e9 s'engage aussi \u00e0 d\u00e9buter l'exploitation au plus tard dans les 60 mois (prorogation de 12 mois sur demande d\u00fbment justifi\u00e9e) suivant la date de l'entr\u00e9e en vigueur de la Convention.--Arts. 11, 14.1",
+                "location":{
+                    "image":"606,405,653,348"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71367.js",
+                "id":71367
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":15,
+                "content":"La Soci\u00e9t\u00e9 s'engage \u00e0 r\u00e9aliser les investissements n\u00e9cessaires \u00e0 la r\u00e9alisation du projet tels que ceux-ci r\u00e9sulteront notamment des \u00e9tudes et d\u00e9cisions sur les infrastructures en application des dispositions de la pr\u00e9sente Convention. La Soci\u00e9t\u00e9 s'engage aussi \u00e0 d\u00e9buter l'exploitation au plus tard dans les 60 mois (prorogation de 12 mois sur demande d\u00fbment justifi\u00e9e) suivant la date de l'entr\u00e9e en vigueur de la Convention.--Arts. 11, 14.1",
+                "location":{
+                    "image":"781,337,815,280"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71368.js",
+                "id":71368
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien de l'infrastructure//Construction and maintenance of infrastructure",
+                "page":17,
+                "content":"La Soci\u00e9t\u00e9 peut, sous r\u00e9serve du respect de la loi applicable, construire, utiliser, am\u00e9liorer et entretenir toute infrastructure n\u00e9cessaire \u00e0 ses Operations Mini\u00e8res (ex. routes, ponts, installations portuaires et ferroviaires, installation \u00e9lectriques et de communication etc.); 17.1 la Soci\u00e9t\u00e9 doit maintenir en bon \u00e9tat de fonctionnement tous les \u00e9quipements et autres biens utilis\u00e9s dans le cadre des op\u00e9rations mini\u00e8res, y compris les syst\u00e8mes de pes\u00e9e.--Arts. 15.2, Art. 17.1 ",
+                "location":{
+                    "image":"476,462,517,413"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71370.js",
+                "id":71370
+            },
+            {
+                "access":"public",
+                "title":"Propri\u00e9t\u00e9 de l'infrastructure//Ownership of infrastructure",
+                "page":18,
+                "content":"L'Etat sera propri\u00e9taire du chemin de fer et du port, quel que soit le mode de financement. --Art. 15.2.4",
+                "location":{
+                    "image":"585,444,650,373"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71380.js",
+                "id":71380
+            },
+            {
+                "access":"public",
+                "title":"Financement de l\u2019infrastructure//Financing of infrastructure",
+                "page":18,
+                "content":"Les modalit\u00e9s de conception, financement, construction, exploitation et maintenance des infrastructures de transport (chemin de fer) et d'\u00e9vacuation (port)  seront sp\u00e9cifi\u00e9es dans un accord entre l'Etat et la Soci\u00e9t\u00e9; \u00e9tant entendu que cet accord devra intervenir au plus tard 18 mois apr\u00e8s la date d'entr\u00e9e en vigueur de la convention. La Soci\u00e9t\u00e9 paiera des redevances convenues pour l'utilisation de l'infrastructure.--Art. 15.2.4",
+                "location":{
+                    "image":"586,525,648,447"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71377.js",
+                "id":71377
+            },
+            {
+                "access":"public",
+                "title":"Utilisation de l\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":18,
+                "content":"La Soci\u00e9t\u00e9 aura un droit prioritaire pour l'utilisation des infrastructures de transport (chemin de fer) et d'\u00e9vacuation (port) qui seront construites. L'utilisation par un tiers se fera avec l'accord de la Soci\u00e9t\u00e9 et ne devra en aucun cas nuire aux activit\u00e9s de la Soci\u00e9t\u00e9. La Soci\u00e9t\u00e9 peut limiter l'acc\u00e8s aux routes \u00e0 l'int\u00e9rieur du p\u00e9rim\u00e8tre de la concession.--Arts. 15.2.4, 15.6",
+                "location":{
+                    "image":"588,631,642,524"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71374.js",
+                "id":71374
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":19,
+                "content":"La Soci\u00e9t\u00e9 aura un droit prioritaire pour l'utilisation des infrastructures de transport (chemin de fer) et d'\u00e9vacuation (port) qui seront construites. L'utilisation par un tiers se fera avec l'accord de la Soci\u00e9t\u00e9 et ne devra en aucun cas nuire aux activit\u00e9s de la Soci\u00e9t\u00e9. La Soci\u00e9t\u00e9 peut limiter l'acc\u00e8s aux routes \u00e0 l'int\u00e9rieur du p\u00e9rim\u00e8tre de la concession.--Arts. 15.2.4, 15.6",
+                "location":{
+                    "image":"170,394,210,342"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71376.js",
+                "id":71376
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9installation des habitants//Resettlement",
+                "page":19,
+                "content":"La Soci\u00e9t\u00e9 doit verser une indemnit\u00e9 \u00e0 ces utilisateurs et/ou occupants fonciers (pr\u00e9sents avant la date de la convention) pour toute relocalisation ou pour toute perte d'usage, titre foncier, habitation, r\u00e9coltes.--Art. 15.8 ",
+                "location":{
+                    "image":"523,514,557,470"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71297.js",
+                "id":71297
+            },
+            {
+                "access":"public",
+                "title":"Commercialisation et acc\u00e8s \u00e0 la production //Marketing of output and state access to output",
+                "page":20,
+                "content":"Chaque ann\u00e9e, l'Etat peut demander d'acheter un pourcentage (50% maximum) de  la production totale issue de la Concession. La Soci\u00e9t\u00e9 doit offrir un contrat d'achat aux conditions financi\u00e8res du march\u00e9 dans le cadre de contrats similaires qu'elle aurait conclu avec ses clients. Aucune obligation de vendre, de la part de la Soci\u00e9t\u00e9, si elle est li\u00e9e par des contrats de longue dur\u00e9e.--Art. 16.2 ",
+                "location":{
+                    "image":"351,389,390,334"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71373.js",
+                "id":71373
+            },
+            {
+                "access":"public",
+                "title":"Autres - Vente \u00e0 une Soci\u00e9t\u00e9 Affili\u00e9e",
+                "page":20,
+                "content":"La Soci\u00e9t\u00e9 doit aviser le Ministre de la vente du produit minier \u00e0 une Soci\u00e9t\u00e9 Affili\u00e9e dans les 15 jours suivant la vente, en fournissant le contrat et toutes les informations utilis\u00e9es pour traiter le prix, escomptes et commissions. Cette information d'\u00eatre trait\u00e9e comme confidentielle.--Art. 16.4",
+                "location":{
+                    "image":"768,441,812,388"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71359.js",
+                "id":71359
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien de l'infrastructure//Construction and maintenance of infrastructure",
+                "page":21,
+                "content":"La Soci\u00e9t\u00e9 peut, sous r\u00e9serve du respect de la loi applicable, construire, utiliser, am\u00e9liorer et entretenir toute infrastructure n\u00e9cessaire \u00e0 ses Operations Mini\u00e8res (ex. routes, ponts, installations portuaires et ferroviaires, installation \u00e9lectriques et de communication etc.); 17.1 la Soci\u00e9t\u00e9 doit maintenir en bon \u00e9tat de fonctionnement tous les \u00e9quipements et autres biens utilis\u00e9s dans le cadre des op\u00e9rations mini\u00e8res, y compris les syst\u00e8mes de pes\u00e9e.--Arts. 15.2, Art. 17.1 ",
+                "location":{
+                    "image":"440,487,480,435"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71371.js",
+                "id":71371
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State equity",
+                "page":23,
+                "content":"L'Etat a droit \u00e0 10% des actions de la Soci\u00e9t\u00e9. Les actions de l'Etat conf\u00e8reront les m\u00eames droits et obligations que celles des autres actionnaires, mais la participation de l'Etat ne sera pas diluable et ne devra pas affecter la gestion et l'administration de la Soci\u00e9t\u00e9.--Arts. 19.1 - 19.2",
+                "location":{
+                    "image":"630,403,664,365"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71349.js",
+                "id":71349
+            },
+            {
+                "access":"public",
+                "title":"Structure du Capital//Company structure",
+                "page":23,
+                "content":"L'Etat a une participation non-pay\u00e9e de 10%. AMC, la soci\u00e9t\u00e9 m\u00e8re, a les actionnaires suivants: Alliance Life Common Fund (47.8%), Taurus Funds Management Pty Ltd (17.5%), Acorn Capital Limited (14.3%), actionnaires minoritaires (3) (20.4%)--Art. 19.1 and 19.2, Fiche",
+                "location":{
+                    "image":"632,360,659,318"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71298.js",
+                "id":71298
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State equity",
+                "page":23,
+                "content":"L'Etat a droit \u00e0 10% des actions de la Soci\u00e9t\u00e9. Les actions de l'Etat conf\u00e8reront les m\u00eames droits et obligations que celles des autres actionnaires, mais la participation de l'Etat ne sera pas diluable et ne devra pas affecter la gestion et l'administration de la Soci\u00e9t\u00e9.--Arts. 19.1 - 19.2",
+                "location":{
+                    "image":"812,576,850,533"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71351.js",
+                "id":71351
+            },
+            {
+                "access":"public",
+                "title":"Structure du Capital//Company structure",
+                "page":23,
+                "content":"L'Etat a une participation non-pay\u00e9e de 10%. AMC, la soci\u00e9t\u00e9 m\u00e8re, a les actionnaires suivants: Alliance Life Common Fund (47.8%), Taurus Funds Management Pty Ltd (17.5%), Acorn Capital Limited (14.3%), actionnaires minoritaires (3) (20.4%)--Art. 19.1 and 19.2, Fiche ",
+                "location":{
+                    "image":"813,528,847,478"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71299.js",
+                "id":71299
+            },
+            {
+                "access":"public",
+                "title":"Conditions de renouvellement//Conditions for renewal ",
+                "page":26,
+                "content":"Sous r\u00e9serve pour la Soci\u00e9t\u00e9 d'avoir satisfait \u00e0 l'ensemble des obligations lui incombant--Art. 8",
+                "location":{
+                    "image":"144,307,176,266"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71300.js",
+                "id":71300
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":26,
+                "content":"Equivalent \u00e0 la dur\u00e9e de la Concession (25 ans), engagement de l'Etat  \u00e0 renouveler la Concession  \u00e0 la fin des 25 ans pour 10 ans suppl\u00e9mentaires--Art. 21.1 ",
+                "location":{
+                    "image":"147,359,184,314"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71303.js",
+                "id":71303
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel guin\u00e9en//Local employment requirements",
+                "page":27,
+                "content":"Employer exclusivement du personnel guin\u00e9en pour les travaux ne n\u00e9cessitant pas de qualification; assurer en priorit\u00e9, l'emploi de personnel guin\u00e9en qualifi\u00e9 pour les besoins des Operations Mini\u00e8res; 5 ann\u00e9es apr\u00e8s la Date de Premi\u00e8re Production Commerciale les employ\u00e9s guin\u00e9ens devront constituer 95% du personnel utilis\u00e9 par la Soci\u00e9t\u00e9 pour les travaux d'exploitation (mais pas pour les travaux de recherches et de d\u00e9veloppement).--Art. 22.2 ",
+                "location":{
+                    "image":"344,364,367,317"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71045.js",
+                "id":71045
+            },
+            {
+                "access":"public",
+                "title":"Formation du personnel guin\u00e9en//Management training requirement for nationals",
+                "page":27,
+                "content":"Contribuer \u00e0 la formation de ce personnel en vue de permettre son accession \u00e0 tout emploi d'ouvrier qualifi\u00e9, d'agent de ma\u00eetrise, de cadre et de directeur.--Art. 22.2 ",
+                "location":{
+                    "image":"347,436,371,387"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71046.js",
+                "id":71046
+            },
+            {
+                "access":"public",
+                "title":"Assurance//Insurance",
+                "page":28,
+                "content":"Pr\u00e9f\u00e9rence aux entreprises locales, \u00e0 conditions de prix, quantit\u00e9s, qualit\u00e9s et d\u00e9lais de livraison au moins \u00e9quivalents.--Art. 23.3 ",
+                "location":{
+                    "image":"619,425,653,381"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71306.js",
+                "id":71306
+            },
+            {
+                "access":"public",
+                "title":"Approvisionnement en biens et services locaux//Local procurement requirements",
+                "page":28,
+                "content":"Pr\u00e9f\u00e9rence aux entreprises locales, \u00e0 conditions de prix, quantit\u00e9s, qualit\u00e9s et d\u00e9lais de livraison au moins \u00e9quivalents.--Art. 23.3 ",
+                "location":{
+                    "image":"624,472,657,426"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71308.js",
+                "id":71308
+            },
+            {
+                "access":"public",
+                "title":"Convention de d\u00e9veloppement local//Local development agreement",
+                "page":29,
+                "content":"La Convention de d\u00e9veloppement de la communaut\u00e9 locale est n\u00e9goci\u00e9e entre la Soci\u00e9t\u00e9 et le repr\u00e9sentant officiel de la communaut\u00e9 locale; aucun d\u00e9veloppement de la concession possible avant l'approbation de la convention par le Ministre; obligation de r\u00e9viser la convention toutes les 5 ann\u00e9es; d\u00e9cisions finale du Ministre dans le cas de diff\u00e9rend entre la Soci\u00e9t\u00e9 et la communaut\u00e9 locale.--Arts. 25.1, 25.4 ",
+                "location":{
+                    "image":"375,610,410,568"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71309.js",
+                "id":71309
+            },
+            {
+                "access":"public",
+                "title":"Consultations communautaires requises//Requirements for community consultation ",
+                "page":29,
+                "content":"La convention de d\u00e9veloppement de la communaut\u00e9 locale doit comprendre des dispositions concernant: l'organisation de consultations p\u00e9riodiques pour pr\u00e9parer la communaut\u00e9 \u00e0 la fermeture de la mine; des rencontres et des proc\u00e9dures de suivi par la communaut\u00e9 locale ainsi que les moyens de la participation de la communaut\u00e9 locale aux activit\u00e9s de planification, de mise en oeuvre, de gestion et de surveillance effectu\u00e9s; une d\u00e9claration que la Soci\u00e9t\u00e9 et la communaut\u00e9 locale s'engagent \u00e0 r\u00e9soudre tout diff\u00e9rend ayant trait \u00e0 la convention de d\u00e9veloppement de la communaut\u00e9 locale, par le biais de leurs repr\u00e9sentants respectifs.--Art. 25.1 ",
+                "location":{
+                    "image":"378,661,416,617"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71310.js",
+                "id":71310
+            },
+            {
+                "access":"public",
+                "title":"Convention de d\u00e9veloppement local//Local development agreement",
+                "page":30,
+                "content":"La Convention de d\u00e9veloppement de la communaut\u00e9 locale est n\u00e9goci\u00e9e entre la Soci\u00e9t\u00e9 et le repr\u00e9sentant officiel de la communaut\u00e9 locale; aucun d\u00e9veloppement de la concession possible avant l'approbation de la convention par le Ministre; obligation de r\u00e9viser la convention toutes les 5 ann\u00e9es; d\u00e9cisions finale du Ministre dans le cas de diff\u00e9rend entre la Soci\u00e9t\u00e9 et la communaut\u00e9 locale.--Arts. 25.1, 25.4 ",
+                "location":{
+                    "image":"574,614,614,572"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71312.js",
+                "id":71312
+            },
+            {
+                "access":"public",
+                "title":"Autres - impact environnemental",
+                "page":31,
+                "content":"La Soci\u00e9t\u00e9 s'engage \u00e0 conduire les op\u00e9rations mini\u00e8res en ayant soin de minimiser, g\u00e9rer et limiter l'impact environnemental, y compris la pollution--Art. 26.",
+                "location":{
+                    "image":"117,675,163,622"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71365.js",
+                "id":71365
+            },
+            {
+                "access":"public",
+                "title":"Mode et fr\u00e9quence de suivi//Environmental monitoring",
+                "page":31,
+                "content":"En cas de besoin, le plan sera actualis\u00e9 par la Soci\u00e9t\u00e9 et adress\u00e9 \u00e0 l'Etat.--Art. 26.1",
+                "location":{
+                    "image":"233,453,280,395"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71364.js",
+                "id":71364
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact//Impact assessment ",
+                "page":31,
+                "content":"Le d\u00e9marrage des travaux de d\u00e9veloppement est subordonn\u00e9 \u00e0 l'approbation de Ministre responsable de l'environnement de l'\u00e9tude d'impact environnemental et d'un plan de gestion environnementale pr\u00e9par\u00e9s par la Soci\u00e9t\u00e9.  L'\u00e9tude et le plan doivent refl\u00e9ter les meilleures pratiques internationales et comprendre des informations sp\u00e9cifi\u00e9es.--Art. 26.1",
+                "location":{
+                    "image":"237,386,276,332"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71363.js",
+                "id":71363
+            },
+            {
+                "access":"public",
+                "title":"Protection des lieux sacr\u00e9s, des ressources locales et du milieu de vie//Protection of sacred locations, resources and environment",
+                "page":31,
+                "content":"En cas de d\u00e9couverte d'un site arch\u00e9ologique au cours des Op\u00e9rations Mini\u00e8res, la Soci\u00e9t\u00e9 mettra \u00e0 jour les \u00e9l\u00e9ments du patrimoine culturel national, meubles et immeubles, s'engage \u00e0 ne pas d\u00e9placer ou d\u00e9truire ce site ou ces \u00e9l\u00e9ments et \u00e0 en informer l'Etat sans d\u00e9lai.--Art. 26.2 ",
+                "location":{
+                    "image":"835,305,869,260"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71313.js",
+                "id":71313
+            },
+            {
+                "access":"public",
+                "title":"Indemnisation//Indemnification",
+                "page":32,
+                "content":"La Soci\u00e9t\u00e9 s'engage \u00e0 d\u00e9dommager l'Etat pour toute d\u00e9pense li\u00e9e \u00e0 la d\u00e9fense de toute r\u00e9clamation, cr\u00e9ance, poursuite ou litige li\u00e9e aux Op\u00e9rations Mini\u00e8res.--Art. 26.4",
+                "location":{
+                    "image":"293,488,333,435"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71393.js",
+                "id":71393
+            },
+            {
+                "access":"public",
+                "title":"Autres - R\u00e9habilitation",
+                "page":32,
+                "content":"La Soci\u00e9t\u00e9 s'engage \u00e0 remettre en \u00e9tat les sites et lieux affect\u00e9es conform\u00e9ment aux lois applicables et au plan de gestion environnementale et sociale. Afin de garanti son obligation, la Soci\u00e9t\u00e9 devra fourni une garantie bancaire.--Art. 27",
+                "location":{
+                    "image":"445,512,486,461"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71366.js",
+                "id":71366
+            },
+            {
+                "access":"public",
+                "title":"Autures - D\u00e9clarations et garanties de l'Etat",
+                "page":35,
+                "content":"Diverses d\u00e9clarations et garanties de l'Etat, incluant: l'autorisation du Ministre signataire, l'absence d'autre titre minier pouvant affecter la Convention, l'Etat n'ayant pas connaissance d'avis, objections ou autres proc\u00e9dures ou litiges pendants visant la Concession, la satisfaction de l'Etat avec les qualifications de la Soci\u00e9t\u00e9, etc.--Art. 28",
+                "location":{
+                    "image":"178,577,213,525"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71396.js",
+                "id":71396
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":36,
+                "content":"Stabilisation de la L\u00e9gislation en Vigueur et de toutes les dispositions, notamment fiscales et douani\u00e8res, pr\u00e9vues par la Convention.  Les augmentations des charges fiscales et/ou douani\u00e8res ne sont pas applicables \u00e0 la Soci\u00e9t\u00e9. Par contre la Soci\u00e9t\u00e9 peut profiter de toutes r\u00e9ductions. La Soci\u00e9t\u00e9 b\u00e9n\u00e9ficiera de toute clause plus favorable (par rapport \u00e0 la Convention) inclue dans une autre convention mini\u00e8re conclu apr\u00e8s cette convention avec une autre soci\u00e9t\u00e9 exer\u00e7ant des activit\u00e9s similaires. Aucune exception \u00e0 la port\u00e9e de cette clauses est mentionn\u00e9e.--Art. 31 ",
+                "location":{
+                    "image":"669,480,715,424"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71387.js",
+                "id":71387
+            },
+            {
+                "access":"public",
+                "title":"Autres - Application des dispositions fiscales aux Sous-Traitants Directs",
+                "page":37,
+                "content":"Les dispositions fiscales sont applicables aux Sous-Traitants Directs--Art. 32.1",
+                "location":{
+                    "image":"208,549,253,496"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71361.js",
+                "id":71361
+            },
+            {
+                "access":"public",
+                "title":"Droits fixes d'octroi et de renouvellement des permis//Fixed fee for grant and renewal of license ",
+                "page":37,
+                "content":"Conform\u00e9ment \u00e0 la l\u00e9gislation en vigueur--Art. 32.2",
+                "location":{
+                    "image":"841,498,876,456"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71342.js",
+                "id":71342
+            },
+            {
+                "access":"public",
+                "title":"Redevances superficiaires//Surface fees",
+                "page":37,
+                "content":"Conform\u00e9ment \u00e0 la l\u00e9gislation en vigueur--Art. 32.2",
+                "location":{
+                    "image":"841,540,881,497"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71345.js",
+                "id":71345
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining Tax/ Royalty Tax",
+                "page":38,
+                "content":"Pendant les 10 premi\u00e8res ann\u00e9es: 5% sur la premi\u00e8re tranche 5mtpa, 7.5% sur la seconde tranche 5mtpa puis 10% au-del\u00e0 de 10mtpa; apr\u00e8s 10 ans, 10% sur tout, sauf 5% pour la bauxite destin\u00e9e a \u00eatre transform\u00e9e en alumine.--Art. 32.3.2 ",
+                "location":{
+                    "image":"365,267,397,223"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71315.js",
+                "id":71315
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":38,
+                "content":"35% du b\u00e9n\u00e9fice net. Assujettie \u00e0 l'Imp\u00f4t sur les B\u00e9n\u00e9fices Industriels et Commerciaux (BIC) \u00e0 l'exclusion de tous autres imp\u00f4ts sur les b\u00e9n\u00e9fices. --Art. 32.4.2 ",
+                "location":{
+                    "image":"792,502,831,450"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71316.js",
+                "id":71316
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: exoneration//Income tax: exemptions",
+                "page":39,
+                "content":"5 ans d'exon\u00e9ration \u00e0 compter de l'exercice suivant la premi\u00e8re vente, 17.5% la 6e ann\u00e9e, 26.25% la 7e ann\u00e9e. --Art. 32.4.1",
+                "location":{
+                    "image":"102,340,150,289"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71321.js",
+                "id":71321
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: cloisonnement//Income tax: ring-fencing",
+                "page":39,
+                "content":"Consolidation possible avec des soci\u00e9t\u00e9s ayant investi dans des infrastructures nouvelles qui seraient n\u00e9cessaires au projet, au prorata de sa participation dans ces soci\u00e9t\u00e9s.--Art. 32.4.1 ",
+                "location":{
+                    "image":"96,461,149,401"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71325.js",
+                "id":71325
+            },
+            {
+                "access":"public",
+                "title":"Cr\u00e9dit d'investissement//Investment credit",
+                "page":39,
+                "content":"10% de tout investissement imm\u00e9diatement d\u00e9ductible--Art. 32.4.1 ",
+                "location":{
+                    "image":"96,558,150,511"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71334.js",
+                "id":71334
+            },
+            {
+                "access":"public",
+                "title":"Provision pour la reconstitution des gisements//Provisions for renewing reserves",
+                "page":39,
+                "content":"10% du b\u00e9n\u00e9fice imposable--Art. 32.4.1",
+                "location":{
+                    "image":"97,512,151,460"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71333.js",
+                "id":71333
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: reports des pertes//Income tax: loss carry forward",
+                "page":39,
+                "content":"Reportables sans limitation de dur\u00e9e--Art. 32.4.1 ",
+                "location":{
+                    "image":"98,401,150,344"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71323.js",
+                "id":71323
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: d\u00e9ductibilit\u00e9 des frais financiers//Income tax: deductibility of expenses",
+                "page":39,
+                "content":"Les frais financiers aff\u00e9rents aux emprunts contract\u00e9s seront d\u00e9ductibles sans limitation d'aucune sorte sous r\u00e9serve de justification.--Art. 32.4.1 ",
+                "location":{
+                    "image":"99,288,146,236"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71320.js",
+                "id":71320
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les Revenus des Valeurs Mobili\u00e8res (IRVM)//Capital gains tax",
+                "page":40,
+                "content":"10%--Art. 32.5",
+                "location":{
+                    "image":"196,464,242,410"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71327.js",
+                "id":71327
+            },
+            {
+                "access":"public",
+                "title":"Part patronale des cotisations de s\u00e9curit\u00e9 sociale//Social security contributions by employer",
+                "page":40,
+                "content":"Cotisation sociales applicables - \u00e9tant entendu que les salari\u00e9s \u00e9trangers sont exon\u00e9r\u00e9s.--Art. 32.6",
+                "location":{
+                    "image":"316,591,369,544"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71344.js",
+                "id":71344
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des nationaux//Witholding tax on national salaries",
+                "page":40,
+                "content":"Versement forfaitaire au taux de 6%. Contribution \u00e0 la formation au taux de 1,5% (employ\u00e9s en Guin\u00e9e et hors Guin\u00e9e) sauf si la Soci\u00e9t\u00e9 dispose de son propre centre de formation permanent en Guin\u00e9e.--Art. 32.6",
+                "location":{
+                    "image":"318,484,361,427"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71329.js",
+                "id":71329
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des expatri\u00e9s//Witholding tax on expatriate salaries",
+                "page":40,
+                "content":"Versement forfaitaire au taux de 6%, plus 10% (exon\u00e9r\u00e9 si salari\u00e9 s\u00e9journe moins de 183 jours par l'Ann\u00e9e Civile). --Art. 32.6",
+                "location":{
+                    "image":"322,541,365,489"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71330.js",
+                "id":71330
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les prestations de service par des entreprises non r\u00e9sidentes//Witholding tax on services of non-resident companies",
+                "page":40,
+                "content":"10%--Art, 32.8 ",
+                "location":{
+                    "image":"813,648,853,591"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71331.js",
+                "id":71331
+            },
+            {
+                "access":"public",
+                "title":"TVA//VAT",
+                "page":41,
+                "content":"Exon\u00e9r\u00e9s sur les biens et services n\u00e9cessaires aux Op\u00e9rations Mini\u00e8res; au cas ou une telle taxe est pay\u00e9, remboursement conform\u00e9ment \u00e0 la proc\u00e9dure en vigueur--Art. 32.9 ",
+                "location":{
+                    "image":"195,344,236,293"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71341.js",
+                "id":71341
+            },
+            {
+                "access":"public",
+                "title":"Contribution au d\u00e9veloppement communautaire ou local//Community and local obligations",
+                "page":41,
+                "content":"A compter de la date de premi\u00e8re production commerciale, une contribution annuelle au d\u00e9veloppement local \u00e0 un taux de 1% du chiffre d'affaires; cette contribution est d\u00e9ductible pour le calcul du r\u00e9sultat imposable--Art. 32.10 ",
+                "location":{
+                    "image":"342,411,387,360"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71346.js",
+                "id":71346
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de construction//Custom duties during construction phase",
+                "page":42,
+                "content":"Admission temporaire / exon\u00e9ration pour les biens de Cat\u00e9gorie 1 (\u00e9quipements, mat\u00e9riels, gros outillages, engins, etc., les pi\u00e8ces d\u00e9tach\u00e9es et les lubrifiants) \u00e0 l'exception de la taxe d'enregistrement au taux de 0,5% de la valeur avec un plafond maximum fix\u00e9 par la loi des finances et de la redevance sur la prestation administrative (RPA). A la fin des travaux de construction, les biens admis temporairement peuvent \u00eatre r\u00e9export\u00e9s ou mis \u00e0 la consommation. En cas de revente en Guin\u00e9e, la Soci\u00e9t\u00e9 et/ou ses Sous-Traitants Directs deviennent redevables. --Arts. 33.3; - 33.4",
+                "location":{
+                    "image":"670,356,718,296"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71335.js",
+                "id":71335
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane pour le mat\u00e9riel de transformation//Custom duties on transformation equipment",
+                "page":43,
+                "content":"Exon\u00e9r\u00e9--Art. 33.5",
+                "location":{
+                    "image":"330,462,382,405"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71340.js",
+                "id":71340
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane pour le mat\u00e9riel de traitement//Custom duties on processing equipment",
+                "page":43,
+                "content":"Tax\u00e9s \u00e0 l'importation au taux de 5,6% de la valeur FOB ainsi qu'a la redevance sur la prestation administrative--Art. 33.5",
+                "location":{
+                    "image":"330,566,378,516"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71339.js",
+                "id":71339
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase d'exploitation//Custum duties during  operation phase",
+                "page":43,
+                "content":"Les biens de Cat\u00e9gorie 2 (mati\u00e8res premi\u00e8res et consommables n\u00e9cessaire \u00e0 la transformation en produits finis) exon\u00e9r\u00e9s; Les biens de Cat\u00e9gorie 1 et Cat\u00e9gorie 3 (mati\u00e8res premi\u00e8res et consommables n\u00e9cessaire \u00e0 l'extraction et \u00e0 la valorisation du produit minier)  tax\u00e9s \u00e0 l'importation au taux de 5,6% de la valeur FOB ainsi qu'a la redevance sur la prestation administrative. Les carburants, \u00e0 l'exception de l'essence, lubrifiants et autres produits p\u00e9troliers import\u00e9s, appartenant \u00e0 la Cat\u00e9gorie 4 b\u00e9n\u00e9ficient de la structure des prix applicables au secteur minier.--Art. 33.5",
+                "location":{
+                    "image":"333,517,377,462"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71337.js",
+                "id":71337
+            },
+            {
+                "access":"public",
+                "title":"Autres exon\u00e9rations//Other exemptions",
+                "page":43,
+                "content":"Les effets personnels des employ\u00e9s, \u00e0 l'exception des denr\u00e9es alimentaires et des v\u00e9hicules priv\u00e9s, sont exon\u00e9r\u00e9s de tous droits et taxes; Aucun droit, taxe et/ou redevance de douane sur les exportations de Produits Miniers et/ou de biens admis en exon\u00e9ration.--Arts. 33.6 - 33.7",
+                "location":{
+                    "image":"544,287,580,239"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71355.js",
+                "id":71355
+            },
+            {
+                "access":"public",
+                "title":"Autres exon\u00e9rations//Other exemptions",
+                "page":43,
+                "content":"Les effets personnels des employ\u00e9s, \u00e0 l'exception des denr\u00e9es alimentaires et des v\u00e9hicules priv\u00e9s, sont exon\u00e9r\u00e9s de tous droits et taxes; Aucun droit, taxe et/ou redevance de douane sur les exportations de Produits Miniers et/ou de biens admis en exon\u00e9ration.--Arts. 33.6 - 33.7",
+                "location":{
+                    "image":"662,258,697,210"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71356.js",
+                "id":71356
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de construction//Custom duties during construction phase",
+                "page":43,
+                "content":"Admission temporaire / exon\u00e9ration pour les biens de Cat\u00e9gorie 1 (\u00e9quipements, mat\u00e9riels, gros outillages, engins, etc., les pi\u00e8ces d\u00e9tach\u00e9es et les lubrifiants) \u00e0 l'exception de la taxe d'enregistrement au taux de 0,5% de la valeur avec un plafond maximum fix\u00e9 par la loi des finances et de la redevance sur la prestation administrative (RPA). A la fin des travaux de construction, les biens admis temporairement peuvent \u00eatre r\u00e9export\u00e9s ou mis \u00e0 la consommation. En cas de revente en Guin\u00e9e, la Soci\u00e9t\u00e9 et/ou ses Sous-Traitants Directs deviennent redevables. --Arts. 33.3; - 33.4",
+                "location":{
+                    "image":"98,512,147,449"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71336.js",
+                "id":71336
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit//Audit mechanisms",
+                "page":44,
+                "content":"Pour chaque exercice fiscal, la Soci\u00e9t\u00e9 est tenue de faire certifier par un commissaire aux comptes agr\u00e9\u00e9 en Guin\u00e9e son bilan et ses comptes d'exploitation, et communiquer ses \u00e9tats financiers au Ministre au plus tard le 30 avril de l'exercice suivant. Aux fins de v\u00e9rification et d'audit par le personnel autoris\u00e9 de l'Etat, la Soci\u00e9t\u00e9 doit donner acc\u00e8s aux documents comptables ainsi qu'aux pi\u00e8ces justificatives.--Art. 34",
+                "location":{
+                    "image":"179,439,224,382"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71358.js",
+                "id":71358
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9siliation / fin du contrat//Cancellation / Termination",
+                "page":46,
+                "content":"Sous r\u00e9serve du pr\u00e9sent alin\u00e9a, et des conditions \u00e9nonc\u00e9es au Code Minier, le Ministre peut r\u00e9silier la Convention pour l'un des motifs suivants: la r\u00e9vocation de la concession mini\u00e8re et le manquement \u00e0 l'une des dispositions pr\u00e9vues par la Convention; avis pr\u00e9alable de 60 jours. Si la Soci\u00e9t\u00e9 ne maintient pas la Production Commerciale de Produit Minier (i.e. 25,000 tonnes par jour pendant 3 mois cons\u00e9cutifs) pendant une p\u00e9riode de 18 mois cons\u00e9cutifs, l'Etat peut r\u00e9voquer la Concession dans les conditions pr\u00e9vues au Code Minier. --Art. 35.3; Art. 35.4 ",
+                "location":{
+                    "image":"235,403,279,347"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71390.js",
+                "id":71390
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9siliation/Termination//Cancellation / Termination",
+                "page":46,
+                "content":"Sous r\u00e9serve du pr\u00e9sent alin\u00e9a, et des conditions \u00e9nonc\u00e9es au Code Minier, le Ministre peut r\u00e9silier la Convention pour l'un des motifs suivants: la r\u00e9vocation de la concession mini\u00e8re et le manquement \u00e0 l'une des dispositions pr\u00e9vues par la Convention; avis pr\u00e9alable de 60 jours. Si la Soci\u00e9t\u00e9 ne maintient pas la Production Commerciale de Produit Minier (i.e. 25,000 tonnes par jour pendant 3 mois cons\u00e9cutifs) pendant une p\u00e9riode de 18 mois cons\u00e9cutifs, l'Etat peut r\u00e9voquer la Concession dans les conditions pr\u00e9vues au Code Minier. --Art. 35.3; Art. 35.4 ",
+                "location":{
+                    "image":"358,297,396,246"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71392.js",
+                "id":71392
+            },
+            {
+                "access":"public",
+                "title":"Cession / transfert//Assignment / transfer",
+                "page":46,
+                "content":"La cession directe de plus de 50% des actions de la Soci\u00e9t\u00e9 (et tout autre transfert du contr\u00f4le effectif de la Soci\u00e9t\u00e9) est subordonn\u00e9e \u00e0 l'approbation pr\u00e9alable de l'Etat qui dispose d'un droit de pr\u00e9emption. Aucune approbation requise pour les transferts portant sur les actions d'une soci\u00e9t\u00e9 d\u00e9tenant des actions dans la Soci\u00e9t\u00e9. Transferts faits au profit de Soci\u00e9t\u00e9s Affili\u00e9es est libre si certaines conditions sont remplies.--Art. 36 ",
+                "location":{
+                    "image":"788,561,841,499"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71389.js",
+                "id":71389
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":47,
+                "content":"En cas de diff\u00e9rend les parties d'engagent en premier recours \u00e0 tenter de r\u00e9soudre \u00e0 l'amiable le diff\u00e9rend ou le conflit les opposant; \u00e0 d\u00e9faut de r\u00e8glement \u00e0 l'amiable, les parties conviennent de se soumettre \u00e0 l'arbitrage du CIRDI et de son r\u00e8glement d'arbitrage, et  au CCI si le CIRDI ne s'applique pas.--Arts. 5, Art. 37.1 - 37.2 ",
+                "location":{
+                    "image":"673,503,719,447"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71385.js",
+                "id":71385
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":49,
+                "content":"Le document sp\u00e9cifie que la Convention n'est pas confidentielle et tous les rapports, plans et informations fournis par la Soci\u00e9t\u00e9 en vertu de la Convention \u00e0 l'Etat sont (sauf si sp\u00e9cifi\u00e9 autrement) des documents de nature publique. Certaines affaires sont sp\u00e9cifiquement identifi\u00e9es comme non-confidentielle, incluant (quantit\u00e9s de production, emplois offerts, redevances et paiement des taxes, etc.).--Art. 39 ",
+                "location":{
+                    "image":"251,413,294,359"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/71394.js",
+                "id":71394
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), pour l'Etat//Signatories, State",
+                "page":52,
+                "content":"Monsieur Mahmoud THIAM - Ministre des Mines et de la G\u00e9ologie; Monsieur Kerfala Yansan\u00e9 - Ministre de l'Economie et des Finances--Signatures",
+                "location":{
+                    "image":"616,668,655,64"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/70928.js",
+                "id":70928
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), pour la soci\u00e9t\u00e9 //Signatories, company",
+                "page":52,
+                "content":"Monsieur Robert ADAM - Directeur G\u00e9n\u00e9ral--Signatures",
+                "location":{
+                    "image":"900,647,943,62"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010/annotations/70927.js",
+                "id":70927
+            }
+        ],
+        "description":"<i>Nom de la soci\u00e9t\u00e9 guin\u00e9enne : </i>Alliance Mining Commodities Guin\u00e9e SARL<br><i>Si\u00e8ge social : </i>Alliance Mining Commodities Guinee SA, Cit\u00e9 Chemins de Fer, Immeuble Lab\u00e9, 4\u00e8me \u00e9tage, Conakry, R\u00e9publique de Guin\u00e9e, BP: 2162 tel 00 224 64 23 05 42, mohamed.sako@amcbauxite.com.<br><i> Structure du Capital : </i>L'Etat a une participation non-pay\u00e9e de 10%. AMC, la soci\u00e9t\u00e9 m\u00e8re, a les actionnaires suivants: Alliance Life Common Fund (47.8%), Taurus Funds Management Pty Ltd (17.5%), Acorn Capital Limited (14.3%), actionnaires minoritaires (3) (20.4%)<br><i>Soci\u00e9t\u00e9 m\u00e8re ou affili\u00e9e hors de la Guin\u00e9e; et leurs si\u00e8ges sociaux : </i>Soci\u00e9t\u00e9 m\u00e8re : Alliance Mining Commodities Limited, Ground Floor, 16 Ord Street, West Perth WA 6005, Australia, tel 0061 8 9420 6700. La soci\u00e9t\u00e9 est enregistr\u00e9e aux Bermudes, le bureau de d\u00e9veloppement du si\u00e8ge est \u00e0 Perth, le bureau du projet est \u00e0 Conakry.<br><i>Site web de l\u2019entreprise : </i>www.amcbauxite.com<br><i>Date d'octroi du permis d'exploitation ou de la concession : </i>Concession mini\u00e8re n\u00b0 A2010/232/DIGM/CPM accord\u00e9e le 12/11/2010<br><i>Investissement estim\u00e9 : </i>300 \u00e0 500 millions USD<br><i>Production attendue : </i>10 millions de tonnes par une exploitation en plusieurs \u00e9tapes, et  une dur\u00e9 de vie de 40 ans<br><i>R\u00e9serves estim\u00e9es : </i>Ressources de haute teneur : 500 Mt \u00e0 48% AL2O3, silice r\u00e9active 1.7%, fort contenu de gibbsite, puissance moyenne &gt; 10m<br><br><br><i>Note : Ce r\u00e9sum\u00e9 est destin\u00e9 \u00e0 faciliter la compr\u00e9hension par un large public des points importants du document original. Il ne s\u2019agit en aucun cas d\u2019une liste exhaustive des obligations l\u00e9gales li\u00e9es au projet minier concern\u00e9. Ce r\u00e9sum\u00e9 ne comporte aucune opinion quant au statut juridique du document ou de tout \u00e9l\u00e9ment du document, et ne refl\u00e8te aucunement des d\u00e9cisions ou positions du CTRTCM ou du Gouvernement de la R\u00e9publique de Guin\u00e9e en lien avec le processus de revue des conventions et titres miniers. Ce r\u00e9sum\u00e9 doit \u00eatre lu en lien avec le texte int\u00e9gral du document original et avec les lois et textes r\u00e9glementaires applicables. Un certain nombre de lois et r\u00e9glementations applicables directement ou indirectement au secteur minier sont disponibles <a href=\"http://www.contratsminiersguinee.org/about/legislation.html\">ici</a>.</i>",
+        "language":"eng",
+        "title":"AMC, Convention 2010 (non-ratifi\u00e9) - Guin\u00e9e",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Resource":"Bauxite",
+            "Language":"French",
+            "Countries":"Guinea",
+            "Signature Date":"06/08/2010",
+            "Contract Term (duration) in Years":"25",
+            "Signature Year":"2010"
+        },
+        "created_at":"Wed, 05 Sep 2012 19:00:28 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 22 Apr 2015 03:11:53 +0000",
+        "id":"422720-amc_amc-convention-2010",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/422720/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/422720/amc_amc-convention-2010.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/422720/pages/amc_amc-convention-2010-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/422720/pages/amc_amc-convention-2010-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/422720/amc_amc-convention-2010.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/422720/pages/amc_amc-convention-2010-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=422720"
+        },
+        "contributor":"Jim Duncan",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":52,
+        "canonical_url":"http://www.documentcloud.org/documents/422720-amc_amc-convention-2010.html"
+    }
+}

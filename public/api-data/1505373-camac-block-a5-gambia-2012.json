@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"2a09a6b521c4d53ec100b8720205d46025043175",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"CAMAC, Block A2 - Gambia, 2012",
+        "data":{
+            "Type of Mining Title":"Exploration Permit/License",
+            "Signature Year":"2012",
+            "Resource":"Hydrocarbons",
+            "Countries":"Gambia"
+        },
+        "created_at":"Tue, 20 Jan 2015 04:00:32 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 23 Mar 2015 19:13:28 +0000",
+        "id":"1505373-camac-block-a5-gambia-2012",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505373/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505373/camac-block-a5-gambia-2012.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505373/pages/camac-block-a5-gambia-2012-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505373/pages/camac-block-a5-gambia-2012-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505373/camac-block-a5-gambia-2012.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505373/pages/camac-block-a5-gambia-2012-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505373"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":111,
+        "canonical_url":"http://www.documentcloud.org/documents/1505373-camac-block-a5-gambia-2012.html"
+    }
+}

@@ -1,0 +1,326 @@
+{
+    "document":{
+        "file_hash":"48fca2a0ea6c9e05120fc7fd8c2a61c6c4fe7aa0",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":2,
+                "content":"Burkina Faso--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"138,77,164,42"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100396.js",
+                "id":100396
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":2,
+                "content":"Ministre charg\u00e9 des mines--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"174,72,201,42"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100404.js",
+                "id":100404
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":2,
+                "content":"Epsilon Gold Mines Ltd--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"337,78,364,46"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100397.js",
+                "id":100397
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":2,
+                "content":"Epsilon Gold Mines Ltd, soci\u00e9t\u00e9 immatricul\u00e9e a Ouagadougou--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"374,82,402,50"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100403.js",
+                "id":100403
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement//Deposit/site name",
+                "page":2,
+                "content":"Banouassi--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"644,69,671,32"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100399.js",
+                "id":100399
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":2,
+                "content":"21 octobre 2005--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"700,73,732,39"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100400.js",
+                "id":100400
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e d'octroi du permis d'exploitation ou concession//Year of issue of title/permit",
+                "page":2,
+                "content":"2005--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"713,124,747,90"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100401.js",
+                "id":100401
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex: food crops, oil palm, etc.)",
+                "page":4,
+                "content":"Tout minerai ou substance min\u00e9rale extrait du p\u00e9rim\u00e8tre \u00e0 des fins commerciales--Art. 1.2",
+                "location":{
+                    "image":"541,74,569,39"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/207582.js",
+                "id":207582
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":4,
+                "content":"Titres de recherche et d'exploitation declares par decret--Definitions\n",
+                "location":{
+                    "image":"93,81,123,46"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100398.js",
+                "id":100398
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":5,
+                "content":"La dur\u00e9e de la convention correspond \u00e0 la dur\u00e9e du permis d'exploitation--Art. 5\n",
+                "location":{
+                    "image":"679,70,706,41"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100407.js",
+                "id":100407
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":6,
+                "content":"Priorit\u00e9 \u00e0 l'achat aupr\u00e8s d'entreprises locales si services, mati\u00e8res premi\u00e8res et produits sont disponibles a des conditions comp\u00e9titives de prix, qualit\u00e9, quantit\u00e9, d\u00e9lais de livraison.--Art. 6\n",
+                "location":{
+                    "image":"146,71,180,34"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100410.js",
+                "id":100410
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":6,
+                "content":"Epsilon s'engage \u00e0 employer en priorit\u00e9 du personnel local et de permettre son accession \u00e0 des emplois en rapport avec ses qualifications. Epsilon mettra en place un plan de formation et de promotion de ce personnel. Epsilon remplacera au fur et \u00e0 mesure le personnel expatrie par le personnel local ayant re\u00e7u cette formation--Art. 7\n",
+                "location":{
+                    "image":"271,79,306,42"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100409.js",
+                "id":100409
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":7,
+                "content":"Epsilon s'engage \u00e0 respecter les mesures de la notice d'impact environnementale pr\u00e9sent\u00e9e lors de la demande du permis d'exploitation--Art. 10.2\n",
+                "location":{
+                    "image":"461,86,495,50"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100421.js",
+                "id":100421
+            },
+            {
+                "access":"public",
+                "title":"Autre - Dispositions environnementales//Other - Environmental provisions",
+                "page":7,
+                "content":"Epsilon devra faire un rapport concernant son activit\u00e9 en mati\u00e8re de protection de l'environnement lors des rapports d'activit\u00e9s dus par le titulaire de tout tire minier. Epsilon devra alimenter un compte la Banque Centrale des \u00c9tats d'Afrique de l'Ouest en vue d'\u00e9tablir un fond de pr\u00e9servation et r\u00e9habilitation de l'environnement--Art 10.2 et 10.3\n",
+                "location":{
+                    "image":"517,75,547,41"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100422.js",
+                "id":100422
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":9,
+                "content":"L'Etat garantie \u00e0 Epsilon et ses affili\u00e9es la stabilit\u00e9  du r\u00e9gime fiscal et douaniers , et des r\u00e8glementation de change. Les taux d'assiette des imp\u00f4ts et des taxes vises a la convention demeureront les m\u00eames que ceux qu'ils \u00e9taient \u00e0 la date d'attribution du permis.--Art. 16.1\n",
+                "location":{
+                    "image":"529,79,565,45"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100425.js",
+                "id":100425
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":9,
+                "content":"Epsilon sera soumis \u00e0 l'imp\u00f4t selon la r\u00e8glementation en vigueur, d\u00e9crite \u00e0 l'annexe 4.--B-Regime fiscal\n",
+                "location":{
+                    "image":"743,158,771,122"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100416.js",
+                "id":100416
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining tax/royalty tax",
+                "page":10,
+                "content":"Redevance calcul\u00e9e en pourcentage de la valeur FOB de la production trimestrielle de l'exploitation. Ces redevances sont d\u00e9crites \u00e0 l'article 12 de l'annexe 4: 7% pour les diamants et pierres pr\u00e9cieuses, 4% pour les m\u00e9taux de bases et autres substances min\u00e9rales, 3% pour l'or industriel et les m\u00e9taux pr\u00e9cieux. Pour l'or produit artisanalement, d\u00e9cote de 100 FCFA/gramme avant d'appliquer le taux de 3%.--Art.17.3 et Art. 12 (Annexe 4)\n",
+                "location":{
+                    "image":"334,87,371,51"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100413.js",
+                "id":100413
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: \u00e9xoneration//Income tax: exemptions ",
+                "page":10,
+                "content":"Imp\u00f4t sur le revenu r\u00e9duit de 10 points  --Art. 18.1.1\n",
+                "location":{
+                    "image":"599,82,630,48"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100417.js",
+                "id":100417
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'impot sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloissonement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":10,
+                "content":"Bases de calcul des depenses pour le BIC sont decrites dans le Code Minier, Articles 89 et 92--Art. 18.1.1\n",
+                "location":{
+                    "image":"643,83,674,49"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100418.js",
+                "id":100418
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":10,
+                "content":" Avantages fiscaux pendant la phase de production, incluant exon\u00e9ration pendant 7 ans de l'Imp\u00f4t Minimum Forfaitaire sur les professions industrielles et commerciales, contribution de patente, la TPA et la TBM. Exoneration des droits de douanes pendant la periode des travaux preparatoires.--Art. 18.1.2\n",
+                "location":{
+                    "image":"793,88,827,49"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100419.js",
+                "id":100419
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":14,
+                "content":"Epsilon devra tenir une comptabilit\u00e9 d\u00e9taill\u00e9e et fournir tous les rapports pr\u00e9vus au Code minier. Les repr\u00e9sentants de l'Etat peuvent inspecter \u00e0 tout moment les installations et documents relatifs aux installations mini\u00e8re. L'Etat peut se faire assister \u00e0 ses frais par une soci\u00e9t\u00e9 d'audit reconnue.--Art. 24.1, 24.2  24.3\n",
+                "location":{
+                    "image":"295,73,333,36"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100420.js",
+                "id":100420
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":15,
+                "content":"Priorit\u00e9 au r\u00e8glement \u00e0 l'amiable. En cas d'\u00e9chec, reglement du litige devant les tribunaux burkinabe ou devant un tribunal arbitral suivant le reglement annexe en annexe 5 de la Convention.--Art. 26\n",
+                "location":{
+                    "image":"198,79,229,45"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100424.js",
+                "id":100424
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":16,
+                "content":"Fran\u00e7aise--Art. 27.1\n",
+                "location":{
+                    "image":"178,84,212,49"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100426.js",
+                "id":100426
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":16,
+                "content":"Droit du Burkina Faso--Art. 28\n",
+                "location":{
+                    "image":"366,87,399,50"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100423.js",
+                "id":100423
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":17,
+                "content":"21 f\u00e9vrier 2005--Signatures\n",
+                "location":{
+                    "image":"169,570,203,536"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100405.js",
+                "id":100405
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":17,
+                "content":"1999--Signatures\n",
+                "location":{
+                    "image":"172,608,206,577"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines/annotations/100406.js",
+                "id":100406
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Epsilon Gold Mines - Burkina Faso, 2005",
+        "data":{
+            "Signature Date":"21/2/2005",
+            "Type of Mining Title":"Exploitation Permit/License",
+            "Signature Year":"2005",
+            "Resource":"Minerals",
+            "Countries":"Burkina Faso"
+        },
+        "created_at":"Thu, 25 Apr 2013 18:34:32 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 16 Mar 2015 15:12:50 +0000",
+        "id":"693469-epsilon-gold-mines",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/693469/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/693469/epsilon-gold-mines.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/693469/pages/epsilon-gold-mines-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/693469/pages/epsilon-gold-mines-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/693469/epsilon-gold-mines.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/693469/pages/epsilon-gold-mines-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=693469"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":50,
+        "canonical_url":"http://www.documentcloud.org/documents/693469-epsilon-gold-mines.html"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"11b39773e719a66d4c6a8e8158716240c0184abc",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"EGPL, Dover - Egypt, 2002",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Signature Year":"2002",
+            "Resource":"Hydrocarbons",
+            "Countries":"Egypt"
+        },
+        "created_at":"Tue, 20 Jan 2015 03:34:53 +0000",
+        "display_language":"eng",
+        "updated_at":"Sat, 28 Feb 2015 21:10:45 +0000",
+        "id":"1505358-egpl-dover-egypt-2002",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505358/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505358/egpl-dover-egypt-2002.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505358/pages/egpl-dover-egypt-2002-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505358/pages/egpl-dover-egypt-2002-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505358/egpl-dover-egypt-2002.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505358/pages/egpl-dover-egypt-2002-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505358"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":100,
+        "canonical_url":"http://www.documentcloud.org/documents/1505358-egpl-dover-egypt-2002.html"
+    }
+}

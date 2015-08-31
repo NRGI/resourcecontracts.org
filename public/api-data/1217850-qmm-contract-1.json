@@ -1,0 +1,260 @@
+{
+    "document":{
+        "file_hash":"8b050dc912287dae72fd0165ca0ce1b58e5ecbe9",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document // Name of company executing the document and composition of the shareholders",
+                "page":3,
+                "content":"QIT-Fer et Titane Inc.--Preambule\n",
+                "location":{
+                    "image":"441,691,483,604"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166373.js",
+                "id":166373
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales // Parent companies or affilates outside of the country, if different from the above mentioned; and their corporate headquarters",
+                "page":3,
+                "content":"QIT-Fer et Titane Inc.--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"48,702,81,622"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166366.js",
+                "id":166366
+            },
+            {
+                "access":"public",
+                "title":"Pays // Country",
+                "page":3,
+                "content":"Madagascar--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"8,704,38,619"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166364.js",
+                "id":166364
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat // State agency, national company, ministry executing the document",
+                "page":3,
+                "content":"Office des mines nationales et des industries strat\u00e9giques--Preambule\n",
+                "location":{
+                    "image":"94,703,127,620"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166374.js",
+                "id":166374
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas // Name and/or number of field, block or deposit",
+                "page":5,
+                "content":"Fort-Dauphin--Preambule (j)\n",
+                "location":{
+                    "image":"720,706,757,603"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166370.js",
+                "id":166370
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements // Work and investment commitments",
+                "page":10,
+                "content":"QMM SA doit mettre en place en une ou plusieurs \u00e9tapes, un complexe minier dans le P\u00e9rim\u00e8tre minier de Fort-Dauphin en vue de l'exploitation, de la s\u00e9paration, de l\u2019enrichissement, du traitement et de la commercialisation initiale actuellement estim\u00e9e \u00e0 700 000 tonnes d'ilm\u00e9nite par an, ainsi que des co-produits.\n\nLes infrastructures du programme d'investissement initial comprennent notamment\u00a0:\n- installations portuaires int\u00e9gr\u00e9es capables de recevoir des navires de haute mer, jaugeant jusqu'\u00e0 35 000 tonnes,\n- terminal et syst\u00e8me de distribution de mazout,\n- centrale thermique d'une capacit\u00e9 suffisante pour les besoins de l'exploitation,\n- poste de transformation \u00e9lectrique \u00e0 haute tension,\n- lignes de distribution \u00e9lectriques,\n- stations de pompage d'eau et r\u00e9seau de distribution,\n- aires de stockage,\n- routes de service,\n- routes d'int\u00e9r\u00eat public,\n- ponts,\n- am\u00e9nagements de nature sociale.\nLes mat\u00e9riels et \u00e9quipements d'exploitation du projet comprennent notamment\u00a0:\n- drague,\n- concentrateur,\n- s\u00e9parateur,\n- installations auxiliaires \u00e0 la mine,\n- mat\u00e9riels de manutention et de transport\nTels que plus amplement d\u00e9finis dans le rapport de faisabilit\u00e9.-- Art.  3.3, 15",
+                "location":{
+                    "image":"409,707,444,609"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166425.js",
+                "id":166425
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es // Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex: food crops, oil palm, etc.)",
+                "page":10,
+                "content":"Ilm\u00e9nite et co-produits-- Art. 3.3\n",
+                "location":{
+                    "image":"453,705,493,613"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166380.js",
+                "id":166380
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026) // Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":10,
+                "content":"Convention d'Etablissement-- Art. 3\n",
+                "location":{
+                    "image":"52,703,89,629"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166367.js",
+                "id":166367
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local // Local employment requirements",
+                "page":10,
+                "content":"A capacit\u00e9 et qualifications similaires, QMM SA doit employer en priorit\u00e9 des travailleurs malagasy. Le personnel national sera g\u00e9r\u00e9 en conformit\u00e9 au code du travail et au Code de pr\u00e9voyance sociale en vigueur sur le territoire.\nQMM SA est tenue de mettre en place et de r\u00e9aliser un programme de formation th\u00e9orique et pratique des ressortissants malagasy travaillant pour le projet, compte tenu des exigences d'une saine exploitation. QMM SA s'engage aussi \u00e0 favoriser l'accession de malagasy \u00e0 tous les emplois quel que soit leur niveau, en rapport avec leurs capacit\u00e9s\nSous r\u00e9serve de la r\u00e9alisation du programme de formation, toute libert\u00e9 est accord\u00e9e \u00e0 QMM SA pour d\u00e9terminer l'effectif d'encadrement expatri\u00e9 dont elle a besoin. Le personnel \u00e9tranger sera r\u00e9gi par les clauses de leur contrat de prestation de service sous r\u00e9serve des prescriptions d'ordre public.\nLes conditions de travail et les opportunit\u00e9s seront semblables pour tous les employ\u00e9s dans la m\u00eame cat\u00e9gorie de travail quelle que soit leur nationalit\u00e9. \nL'\u00e9tude de faisabilit\u00e9 du programme d'investissement initial doit inclure un programme d'emploi et de formation des ressortissants malagasy devant travailler pour le projet.-- Art. 3.4.1 \u00e0 3.4.4, 14.1.2.1 (iii) ",
+                "location":{
+                    "image":"645,703,679,614"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/167547.js",
+                "id":167547
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale // Local company name",
+                "page":10,
+                "content":"QIT-Madagascar Minerals SA-- Art. 3\n",
+                "location":{
+                    "image":"7,703,43,627"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166365.js",
+                "id":166365
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e ou envisag\u00e9e // Name and/or composition of the company created or anticipated",
+                "page":10,
+                "content":"QIT-Madagascar Minerals SA (participation \u00e9tatique initiale de 20%)-- Art. 3 et 4.2\n",
+                "location":{
+                    "image":"98,701,135,627"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166375.js",
+                "id":166375
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat // State participation",
+                "page":12,
+                "content":"Une convention entre actionnaires conclue initialement entre QIT et l\u2019\u00c9tat repr\u00e9sent\u00e9 par l'OMNIS d\u00e9finit les modalit\u00e9s de constitution de QMM SA et ses conditions de fonctionnement. L\u2019\u00c9tat b\u00e9n\u00e9ficiera d\u2019une participation originelle de 20% du capital de QMM SA et d'une s\u00e9rie de m\u00e9canismes permettant \u00e0 l\u2019\u00c9tat de poss\u00e9der 20% du capital m\u00eame sans participer au financement incombant normalement aux actionnaires jusqu'au d\u00e9but de l'exploitation effective. Apr\u00e8s le d\u00e9but de l'exploitation, et au cas o\u00f9 l\u2019\u00c9tat n'aurait pas suivi l'augmentation de capital, il b\u00e9n\u00e9ficiera d'une option irr\u00e9vocable d'achat d'actions appartenant \u00e0 QIT \u00e0 des conditions de prix et de d\u00e9lai figurant dans la Convention entre actionnaires lui permettant de maintenir sa participation \u00e0 un minimum de 20%.\nLes avances financi\u00e8res de QIT pour le d\u00e9veloppement du projet jusqu'\u00e0 la d\u00e9cision d'investissement ne pourra pas \u00eatre constitutive directement ou indirectement d'une cr\u00e9ance de QIT envers l\u2019\u00c9tat s'il est d\u00e9cid\u00e9 de ne pas donner suite au projet, en d\u00e9pit de la participation \u00e9tatique de 20% au capital de QMM SA.\nSi les parties d\u00e9cident de proc\u00e9der au programme d'investissement initial, QIT c\u00e9dera \u00e0 l\u2019\u00c9tat \u00e0 titre gratuit une partie de ses cr\u00e9ances sur QMM SA pour que l\u2019\u00c9tat puisse maintenir en tout \u00e9t\u00e9 de cause un niveau de participation de 20% dans QMM SA apr\u00e8s augmentation du capital. Seules ces actions c\u00e9d\u00e9es \u00e0 titre gratuit auront le statut d'actions privil\u00e9gi\u00e9es.\nS'il est n\u00e9cessaire dans l'int\u00e9r\u00eat du projet de faire participer un ou des tiers au capital de QMM SA, le ratio de participation de QIT et de l\u2019\u00c9tat sera ajust\u00e9 sauf accord contraire proportionnellement \u00e0 la participation au jour de l'entr\u00e9e du ou des tiers dans le capital. L\u2019\u00c9tat ne sera jamais tenu de c\u00e9der tout ou partie des actions privil\u00e9gi\u00e9es.\nLa convention doit prot\u00e9ger l\u2019\u00c9tat contre tout abus de majorit\u00e9 ou contre toute d\u00e9cision prise par l'actionnaire majoritaire dans lequel ce dernier ferait passer son int\u00e9r\u00eat propre avant celui de la soci\u00e9t\u00e9. Elle pr\u00e9voira un ensemble de droits sp\u00e9cifiques au profit de l\u2019\u00c9tat pour lui permettre d'assurer un suivi permanent sur l'activit\u00e9 de la soci\u00e9t\u00e9 et de participer aux d\u00e9cisions essentielles pour le projet. L\u2019\u00c9tat aura les droits suivants pour conserver toutes les actions privil\u00e9gi\u00e9es:\n- au moins un repr\u00e9sentant au Conseil d'Administration appartiendra \u00e0 l'OMNIS et participera \u00e0 toutes les r\u00e9unions avec voix d\u00e9lib\u00e9rative. Tant que la participation \u00e9tatique sera de 20\u00a0%, l\u2019\u00c9tat aura 2 repr\u00e9sentants.\n- droit de convoquer deux fois par exercice une r\u00e9union sp\u00e9ciale au conseil d'administration tant que la participation \u00e9tatique est de 10%.\n- droit de v\u00e9rifier la teneur des principaux contrats entre QMM SA et administrateurs ou affili\u00e9s et certains tiers.\n- droit de b\u00e9n\u00e9ficier d'un ensemble d'informations privil\u00e9gi\u00e9es \u00e9conomiques et comptables sur la soci\u00e9t\u00e9 au moins une fois par trimestre.\n- droit d'obtenir \u00e0 tout moment du pr\u00e9sident du conseil d'administration toute information pertinente pour v\u00e9rifier toute op\u00e9ration r\u00e9alis\u00e9e par QMM SA en cas de doute l\u00e9gitime pour proc\u00e9der sans d\u00e9lai \u00e0 une expertise de minorit\u00e9 dans le cadre d'une proc\u00e9dure rapide et impartiale.\n- droit \u00e0 l'administrateur repr\u00e9sentant l\u2019\u00c9tat au conseil d'administration et appartenant \u00e0 l'OMNIS d'assister aux n\u00e9gociations portant sur l'\u00e9laboration et les modifications substantielles des contrats de vente d'ilm\u00e9nite et d'agences de vente \u00e0 conclure entre QMM SA d'une part et QIT ou affili\u00e9s d'autre part.-- Art. 4, 34.6",
+                "location":{
+                    "image":"50,706,86,598"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166407.js",
+                "id":166407
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession // Date of issue of title/permit",
+                "page":16,
+                "content":"L\u2019\u00c9tat d\u00e9livrera \u00e0 QMM SA un permis d'exploitation de Fort-Dauphin qui d\u00e9rive du permis de recherche de Fort-Dauphin dans les 60 jours suivant l'approbation du programme d'investissement initial.-- Art. 7.2\n",
+                "location":{
+                    "image":"434,671,473,567"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166372.js",
+                "id":166372
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance // Mining tax / royalty tax",
+                "page":16,
+                "content":"QMM SA versera \u00e0 l\u2019\u00c9tat une redevance mini\u00e8re de 2\u00a0% de la valeur de la production pendant toute la dur\u00e9e de la convention.-- Art. 7.2.4\n",
+                "location":{
+                    "image":"709,704,742,642"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/167712.js",
+                "id":167712
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers //  Third party use of infrastructure",
+                "page":18,
+                "content":"Les tiers pourront utiliser les installations et am\u00e9nagements portuaires en-dehors des p\u00e9riodes prioritaires \u00e0 condition de ne pas g\u00e2cher les activit\u00e9s du projet et moyennant le r\u00e8glement d'une redevance payable \u00e0 QMM SA ou affili\u00e9 bas\u00e9e sur un tarif d'utilisation pour le public.-- Art. 8.2",
+                "location":{
+                    "image":"258,623,295,543"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/167540.js",
+                "id":167540
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure // Construction and maintenance of infrastructure",
+                "page":18,
+                "content":"QMM SA ou affili\u00e9 doivent construire un port adapt\u00e9 aux besoins du projet sur le domaine public \u00e0 leur disposition dans le cadre d'une convention d'occupation approuv\u00e9e par arr\u00eat\u00e9 du minist\u00e8re charg\u00e9 des ports apr\u00e8s avis du ministre des domaines. La r\u00e9alisation du port et son financement et exploitation se feront aux frais, risques et p\u00e9rils de QMM SA ou affili\u00e9 qui auront la jouissance prioritaire des installations et am\u00e9nagements n\u00e9cessaires au projet pendant toute la dur\u00e9e du permis d'exploitation de Fort-Dauphin.\nL'ensemble des installations et am\u00e9nagements reviendront sans frais \u00e0 l\u2019\u00c9tat \u00e0 l'issue des p\u00e9riodes d'exploitations pr\u00e9vues par les titres miniers.\nL\u2019\u00c9tat pourra demander \u00e0 QMM SA ou affili\u00e9 des installations et am\u00e9nagements suppl\u00e9mentaires pour des besoins ext\u00e9rieurs au projet. Dans la mesure o\u00f9 ces installations et am\u00e9nagements ne portent pas atteinte au bon fonctionnement du projet et dans la mesure o\u00f9 l\u2019\u00c9tat se sera engag\u00e9 au pr\u00e9alable \u00e0 les financer, QMM SA ou affili\u00e9 prendra toutes mesures pour permettre la r\u00e9alisation des installations et am\u00e9nagements demand\u00e9s et exploitera cette extension apr\u00e8s avoir conclu avec l\u2019\u00c9tat un avenant \u00e0 la convention d'occupation.\nDans le cadre de l'\u00e9tude de faisabilit\u00e9 du programme d'investissement initial, et si l\u2019\u00c9tat le demandait, QMM SA ou affili\u00e9 s'engage \u00e0 int\u00e9grer dans les devis d\u00e9finitifs d'ing\u00e9nierie des infrastructures portuaires les sch\u00e9mas directeurs g\u00e9n\u00e9raux assortis d'une premi\u00e8re \u00e9valuation concernant les installations additionnelles souhait\u00e9es par l\u2019\u00c9tat.-- Art. 8.2",
+                "location":{
+                    "image":"259,705,294,623"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/167539.js",
+                "id":167539
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques // Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":21,
+                "content":"Pour tout programme d'investissement, QMM SA m\u00e8nera des \u00e9tudes d'impact sur les milieux naturel, humain et l'environnement de mani\u00e8re g\u00e9n\u00e9rale, conform\u00e9ment \u00e0 la l\u00e9gislation nationale. Le rapport de ces \u00e9tudes comprend des propositions de mesures d'att\u00e9nuation des impacts n\u00e9gatifs du projet sur les milieux affect\u00e9s, y compris un programme de remise en \u00e9tat des terrains des zones d'exploitation mini\u00e8re ou des mesures compensatoires et un plan de surveillance environnemental. Dans le cadre de sa responsabilit\u00e9 internationale, l\u2019\u00c9tat pourrait \u00eatre amen\u00e9 \u00e0 prendre des mesures de sauvegarde si les activit\u00e9s de QMM SA auront des r\u00e9percussions environnementales au-del\u00e0 des fronti\u00e8res nationales.\nL\u2019\u00c9tat prendra les mesures pour que les directives et exigences relatives \u00e0 l'\u00e9tude d'\u00e9valuation de l'impact sur l'environnement soient publi\u00e9es et rendues accessibles \u00e0 QMM SA. L\u2019\u00c9tat assure dans le cadre de ses propres proc\u00e9dures, la mise en \u0153uvre de m\u00e9canismes d'\u00e9valuation environnementale telle que stipul\u00e9e dans le d\u00e9cret du MECIE qui satisfera aux pratiques g\u00e9n\u00e9ralement reconnues au niveau mondial.\nApr\u00e8s l'approbation par l\u2019\u00c9tat de la version finale de l'\u00e9tude d'\u00e9valuation et du programme de r\u00e9habilitation et de restauration des sites \u00e0 exploiter, comprenant le plan de gestion environnemental du projet, l\u2019\u00c9tat d\u00e9livrera \u00e0 QMM SA les autorisations relatives \u00e0 ces programmes sans lesquelles aucune exploitation commerciale ne peut d\u00e9marrer. Ces autorisations traiteront des diff\u00e9rents aspects de tous les programmes environnementaux et de remise en \u00e9tat pr\u00e9vus et d\u00e9finiront les conditions impos\u00e9es \u00e0 QMM SA et garanties appropri\u00e9es avant de r\u00e9troc\u00e9der \u00e0 l\u2019\u00c9tat ou aux propri\u00e9taires du sol les terrains remis en \u00e9tat.\nQMM SA doit d\u00e9poser le rapport final des \u00e9tudes d'impact sur l'environnement au plus tard 24 mois apr\u00e8s la date d'approbation par les autorit\u00e9s comp\u00e9tentes des termes de r\u00e9f\u00e9rence.-- Art. 9, 25.1.2ii\n",
+                "location":{
+                    "image":"115,698,154,588"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166421.js",
+                "id":166421
+            },
+            {
+                "access":"public",
+                "title":"Autre \u2013 [Participation au processus de r\u00e9vision] // Other - [Participation in the review process]",
+                "page":21,
+                "content":"QMM SA peut \u00eatre invit\u00e9 en cas de besoin \u00e0 participer au processus de r\u00e9vision et d'\u00e9valuation environnementale \u00e9tabli par l\u2019\u00c9tat.-- Art. 9\n",
+                "location":{
+                    "image":"7,700,48,608"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166424.js",
+                "id":166424
+            },
+            {
+                "access":"public",
+                "title":"Autre \u2013 [Protection des biens, droits, titres et int\u00e9r\u00eats] // Other - [Protection of goods, rights and interests]",
+                "page":23,
+                "content":"QMM SA, ses affili\u00e9s et actionnaires ont le droit et la pleine libert\u00e9 de poss\u00e9der, g\u00e9rer, entretenir, utiliser, jouir et disposer de tous leurs biens, droits, titres et int\u00e9r\u00eats. L\u2019\u00c9tat s'engage \u00e0 ne pas exproprier ou nationaliser tout ou partie des biens, droits, titres et int\u00e9r\u00eats de QMM SA, affili\u00e9s ou actionnaires \u00e0 moins que la mesure:\n- ne soit prise pour des motifs d'int\u00e9r\u00eat national, et dans le respect de la l\u00e9gislation et des proc\u00e9dures en vigueur,\n- ne soit pas discriminatoire, et\n- donne lieu au paiement d'une indemnit\u00e9, selon le cas, \u00e0 QMM SA ou affili\u00e9s ou actionnaires \u00e9gale \u00e0 la juste valeur marchande des int\u00e9r\u00eats concern\u00e9s (la juste valeur marchande est d\u00e9termin\u00e9e en pr\u00e9sumant que la transaction s'applique \u00e0 un vendeur et un acheteur consentants auxquels la mesure ne serait pas applicable, et calcul\u00e9e par la m\u00e9thode d'\u00e9valuation d'une entreprise en pleine exploitation au moment des faits). L'indemnit\u00e9 sera pay\u00e9e sur demande de QMM SA, ses affili\u00e9s ou ses actionnaires, en dollars ou autres devises librement convertibles acceptables au b\u00e9n\u00e9ficiaire, sans compensation ni d\u00e9duction autre qu'une somme susceptible d'\u00eatre due \u00e0 l\u2019\u00c9tat par le b\u00e9n\u00e9ficiaire apr\u00e8s d\u00e9cision du tribunal arbitral. L'indemnit\u00e9 porte int\u00e9r\u00eat \u00e0 compter de la date d'expropriation ou de nationalisation au taux d'int\u00e9r\u00eat conventionnel.\nL\u2019\u00c9tat s\u2019engage \u00e0 ne pas porter atteinte \u00e0 la jouissance par QMM SA, affili\u00e9s et actionnaires de leurs droits l\u00e9gitimes. Si l\u2019\u00c9tat vient \u00e0 limiter cette jouissance notamment \u00e0 travers une mesure de r\u00e9quisition, ou notamment les prive du contr\u00f4le ou du b\u00e9n\u00e9fice \u00e9conomique de leurs biens, droits, titres ou int\u00e9r\u00eats, les parties s\u2019entendront sur une indemnisation \u00e9valu\u00e9e en fonction de la juste valeur de l'impact de la limitation sur les activit\u00e9s du projet. En cas de d\u00e9saccord sur le montant, il sera propos\u00e9 par un cabinet d'audit international.-- Art. 11\n",
+                "location":{
+                    "image":"24,695,74,589"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/166429.js",
+                "id":166429
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation // Stabilization clause",
+                "page":24,
+                "content":"Pendant la dur\u00e9e de la convention, aucune d\u00e9cision l\u00e9gislative ou r\u00e9glementaire prenant effet apr\u00e8s le 1er ao\u00fbt 1996 ne peut avoir pour cons\u00e9quence de supprimer ou restreindre \u00e0 l'\u00e9gard de QMM SA, ses affili\u00e9s ou actionnaires et employ\u00e9s les dispositions du r\u00e9gime privil\u00e9gi\u00e9 dont ils b\u00e9n\u00e9ficient dans le cadre de la convention, ainsi que les principes fondamentaux du droit malagasy qui sont applicables \u00e0 cette m\u00eame date. Ce principe garantit notamment la stabilit\u00e9 des clauses de la convention.\nEn cas de modification impr\u00e9vue des circonstances \u00e9conomiques bouleversant l'\u00e9conomie du projet au d\u00e9triment de QMM SA, affili\u00e9 ou actionnaire, non imputable \u00e0 l'une de ces soci\u00e9t\u00e9s et non li\u00e9 \u00e0 la valeur de l'Ilm\u00e9nite sur le march\u00e9 international, l\u2019\u00c9tat prendra les mesures appropri\u00e9es pour r\u00e9tablir l'\u00e9quilibre \u00e9conomique boulevers\u00e9, sauf cas de force majeure.\n\nLa stabilit\u00e9 du r\u00e9gime fiscal est garantie aux entreprises vis\u00e9es \u00e0 l'article 18 selon les dispositions applicables au 1er ao\u00fbt 1996 etdans les conditions pr\u00e9vues par la convention et en particulier l'annexe fiscale et comptable, tant pour l'assiette que pour les modalit\u00e9s de perception et contr\u00f4le. Le personnel expatri\u00e9 b\u00e9n\u00e9ficiera de plus du r\u00e9gime de stabilit\u00e9 des charges sociales dont ils seront passibles \u00e0 Madagascar. Il ne peut \u00eatre rclam\u00e9 \u00e0 ces entreprises de taxes cr\u00e9\u00e9es ou modifi\u00e9es apr\u00e8s cette date. Le r\u00e9gime fiscal ne peut \u00eatre modifi\u00e9 que sur accord mutuel \u00e9crit entre l\u2019\u00c9tat et QMM SA et apr\u00e8s approbation l\u00e9gislative.-- Art. 12, 21\n",
+                "location":{
+                    "image":"15,700,55,590"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1/annotations/167737.js",
+                "id":167737
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"QIT-Madagascar Minerals SA, Madagascar, 1998, Part 1",
+        "data":{
+            "Signature Date":"19/02/1998",
+            "Type of Mining Title":"Convention",
+            "Signature Year":"1998",
+            "Resource":"Ilmenite",
+            "Countries":"Madagascar"
+        },
+        "created_at":"Tue, 15 Jul 2014 16:29:02 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 07 Apr 2015 08:11:31 +0000",
+        "id":"1217850-qmm-contract-1",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1217850/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1217850/qmm-contract-1.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1217850/pages/qmm-contract-1-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1217850/pages/qmm-contract-1-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1217850/qmm-contract-1.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1217850/pages/qmm-contract-1-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1217850"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":25,
+        "canonical_url":"http://www.documentcloud.org/documents/1217850-qmm-contract-1.html"
+    }
+}

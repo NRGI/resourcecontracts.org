@@ -1,0 +1,469 @@
+{
+    "document":{
+        "file_hash":"51692ca508354cb778d1069007dfc74d486f77e5",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas//Name and/or number of field, block or deposit",
+                "page":1,
+                "content":"Deepwater Tano contract area --Cover page \n",
+                "location":{
+                    "image":"724,640,758,589"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169159.js",
+                "id":169159
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":1,
+                "content":"English",
+                "location":{
+                    "image":"952,690,980,624"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169204.js",
+                "id":169204
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":5,
+                "content":"Concession agreement for the exploration, development and production of petroleum (the \"Agreement\")--Preamble, Art. 2.1 \n",
+                "location":{
+                    "image":"159,653,177,604"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169158.js",
+                "id":169158
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":5,
+                "content":"2006--Preamble\n",
+                "location":{
+                    "image":"181,109,204,67"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169167.js",
+                "id":169167
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":5,
+                "content":"Ghana --Preamble\n",
+                "location":{
+                    "image":"182,672,198,606"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169155.js",
+                "id":169155
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":5,
+                "content":"2006--Preamble\n",
+                "location":{
+                    "image":"182,71,207,29"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169169.js",
+                "id":169169
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), Etat//Signatories, State",
+                "page":5,
+                "content":"Minister for Energy, Government of the Republic of Ghana; Managing Director, GNPC--Preamble, Signature page \n",
+                "location":{
+                    "image":"197,673,220,610"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169166.js",
+                "id":169166
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":5,
+                "content":"Government of the Republic of Ghana, represented by the Minister for Energy and the Ghana National Petroleum Corporation (\"GNPC\"), a public corporation--Preamble, Signature page \n",
+                "location":{
+                    "image":"246,708,275,662"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169165.js",
+                "id":169165
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":5,
+                "content":"Tullow Ghana Limited (\"Tullow\"), Sabre Oil and Gas Limited (\"Sabre\"), Kosmos Energy Ghana HC (\"Kosmos\")--Preamble\n",
+                "location":{
+                    "image":"247,658,264,605"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169156.js",
+                "id":169156
+            },
+            {
+                "access":"public",
+                "title":"Si\u00e8ge social //Corporate headquarters ",
+                "page":5,
+                "content":"Tullow is a Jersey company, Sabre is a United Kingdom company and Kosmos is a Cayman Islands company--Preamble\n",
+                "location":{
+                    "image":"278,656,297,602"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169157.js",
+                "id":169157
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), soci\u00e9t\u00e9 //Signatories, company",
+                "page":5,
+                "content":"Director, Sabre; Country Manager, Kosmos --Preamble, Signature page \n",
+                "location":{
+                    "image":"299,658,321,609"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169164.js",
+                "id":169164
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":5,
+                "content":"Tullow Ghana Limited (\"Tullow\"), Sabre Oil and Gas Limited (\"Sabre\"), Kosmos Energy Ghana HC (\"Kosmos\"), collectively referred to as the \"Contractor\" --Preamble, Signature page \n",
+                "location":{
+                    "image":"313,390,338,333"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169163.js",
+                "id":169163
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local//Local employment requirements",
+                "page":5,
+                "content":"The parties to the Agreement recognize that Ghanian nationals should as soon as reasonably possible be employed at all levels in the petroleum industry, and that an adequate training program is needed to achieve this goal; Tullow, Sabre and Kosmos will ensure that opportunities for employment will be provided to qualified Ghanian personnel, as far as this is reasonably possible. Tullow, Sabre and Kosmos will submit an employment plan to GNPC describing the number of persons, required professions and required technical capabilities prior to beginning their operations. GNPC will then provide qualified personnel according to the submitted plan; Contractor must include its plan for training and employment of Ghanaian nationals in the development plant submitted to the Minister for Energy within 180 days of any commercial discovery. --Preamble, Arts. 21.3, 8.10, 8.11(j)\n",
+                "location":{
+                    "image":"737,672,771,612"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169175.js",
+                "id":169175
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":7,
+                "content":"GNPC will have a 10% initial interest in all petroleum operations. This interest will be a carried interest for exploration and development operations (meaning that Tullow, Sabre and Kosmos pay for the costs of those phases without any entitlement of reimbursement from GNPC), and a paying interest for production operations (meaning that GNPC will pay for the cost of operations during the production phase, proportionate to its interest). In addition, GNPC may choose to acquire an additional interest of 5% in each commercial discovery. GNPC will bear 5% of development and production costs associated to that particular discovery; GNPC will at all times participate in the management of petroleum operations and the parties will establish a Joint Management Committee to allow for this. --Arts. 1.11, 1.53, 2.4 - 2.5, 2.2\n\n",
+                "location":{
+                    "image":"397,669,422,606"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169184.js",
+                "id":169184
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":11,
+                "content":"Petroleum, meaning crude oil or natural gas, or a combination of both  --Arts. 1.54, 2.1 \n",
+                "location":{
+                    "image":"475,592,498,539"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169172.js",
+                "id":169172
+            },
+            {
+                "access":"public",
+                "title":"Superficie de la concession//Size of the concession area",
+                "page":16,
+                "content":"1,108 square kilometers --Art. 2.10\n",
+                "location":{
+                    "image":"264,676,291,610"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169173.js",
+                "id":169173
+            },
+            {
+                "access":"public",
+                "title":"Redevances superficiaires//Surface fees",
+                "page":16,
+                "content":"Contractor will pay rental fees to the Government for the contract area of 1,108 sq. km. at the beginning of each contract year; US$ 30 per sq. km. is due for each contract year during the initial exploration period (the first 2.5 years starting from the effective date). US$50 per sq. km. is due for each contract year during the 1st extension period (2 years starting from the end of the initial exploration period). US$ 75 per sq. km. is due for each contract year during the 2nd extension period (2 years starting from the end of the first extension period). US$ 100 per sq. km. is due for each contract year for the development and production area. --Arts.2.10, 3.1, 12.2(v)\n",
+                "location":{
+                    "image":"298,678,330,612"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169182.js",
+                "id":169182
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":20,
+                "content":"Within 12 months of the effective date, the Contractor must complete reprocessing of 3D seismic data and seabed logging, and must spend a minimum of US$2,000,000. Within the 18 months following this first work period, the Contractor must drill at least 1 exploration well in the contract area, and must spend a minimum of US$20,000,000. Within the 24 months following this second work period, the Contractor must drill at least 1 exploration well in the contract area, and must spend a minimum of US$20,000,000. Within the 24 months following this third work period, the Contractor must drill 1 exploration well in the contract area, and must spend a minimum of US$20,000,000. Any work and expenditures accomplished in excess of the obligations for a particular work period can be applied as credit in satisfaction of the obligations for any other work period. Fulfilment of any work obligation will relieve the Contractor of the corresponding minimum expenditure obligation, but fulfilment of a minimum expenditure obligation does not relieve the Contractor of the corresponding work obligation. Where the entire minimum work obligation for a full work period is not met by the Contractor, the corresponding part of the minimum expenditure obligation will be paid to GNPC. --Art. 4.3\n",
+                "location":{
+                    "image":"372,676,404,602"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169194.js",
+                "id":169194
+            },
+            {
+                "access":"public",
+                "title":"Autorisation pour utiliser les terres publique ou priv\u00e9es \u00e0 l'ext\u00e9rieur de la zone de concession//Contracting party's permitted use of public or private land outside concession area",
+                "page":30,
+                "content":"Tullow, Sabre and Kosmos can use public lands for installation and operation of facilities connected to performance of their petroleum operations; Where a field extends beyond the contract area, the Minister for Energy can require the Contractor to exploit the field in association with the third party holding rights over the adjacent area. \n--Arts. 7.2(b), 8.20\n",
+                "location":{
+                    "image":"770,653,801,607"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169196.js",
+                "id":169196
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":35,
+                "content":"Tullow, Sabre and Kosmos must include the necessary measures for protection of environment in the development plan submitted to the Minister for Energy within 180 days of any commercial discovery.  --Art. 8.11 (h)\n",
+                "location":{
+                    "image":"706,626,732,565"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169192.js",
+                "id":169192
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":41,
+                "content":"5% of the gross production of crude oil and 3% of the gross production of natural gas will be delivered to the Government as royalties. The Government may choose to receive payment in cash instead of its royalty share of crude oil and/ or natural gas, provided the Government gives notice to Tullow, Sabre and Kosmos. --Art. 10.1(a)\n",
+                "location":{
+                    "image":"293,674,324,608"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169177.js",
+                "id":169177
+            },
+            {
+                "access":"public",
+                "title":"Autre -  [Partage additionnel de p\u00e9trole]//Other - [Additional Oil Entitlement] ",
+                "page":41,
+                "content":"The Government is entitled to a portion of Tullow, Sabre and Kosmos' share of crude oil (\"additional oil entitlement\" or \"AOE\") on the basis of the after-tax inflation-adjusted rate of return (\u201cRoR\u201d) that the Contractor has achieved with respect to the relevant development and production area. The Government can  choose to receive the AOE in cash or in crude oil. If the AOE is taken in cash, the Contractor will pay the value equivalent to the Government's share of crude oil at the adjusted market price for the relevant period (determined in accordance with Art. 11.7). The AOE is a multi-tier, rate-of-return-based mechanism, which captures a share of net cash flows that exceed stipulated thresholds. Net cash flow for the AOE for any quarter is calculated as total revenues received after payment of royalties, less income taxes and allowable costs for the relevant quarter (excluding interest payments). For each tier of the AOE formula, the Government collects a share of the cumulative positive net cash flow, with any resulting payments then subtracted for the purposes of net cash flow calculation in the next tier of AOE. This share is collected only once the threshold rate of return of each tier is reached. The threshold for the first tier is 19%, for the second tier is 20%, for the third tier is 25%, for the fourth tier is 30% and for the fifth is 40%. The Government's AOE for the First Account (i.e. first tier) is 5% of the positive net cash flow, for the Second Account (i.e. second tier) is 10%, for the Third Account (i.e. third tier) is 15%, for the Fourth Account (i.e. fourth tier) is 20%, and for the Fifth Account (i.e. fifth tier) is 25%. No AOE is collected below a threshold rate of return of 19%.--Arts. 10.1(b), 10.2, Annex 3 \n",
+                "location":{
+                    "image":"510,671,539,605"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169188.js",
+                "id":169188
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Obligation d'approvisionnement  domestique]//Other - [Domestic Supply Obligation]",
+                "page":42,
+                "content":"Crude oil for consumption in Ghana (\"domestic supply requirement\") will be supplied by the Government and GNPC from their entitlements under this and other similar Agreements. Where crude oil available to the Government is less than that required to fulfil the domestic supply requirement, the Contractor will (upon 3 months' notice from the Government) be obliged to supply crude oil to be used for the domestic supply requirement, provided that the volume required does not exceed the volume of crude oil that the Contractor is entitled to after deduction of the Government's royalty; Where GNPC fails to pay amounts due to the Contractor for crude oil supplied to meet the domestic requirement, an amount of crude oil will be delivered to GNPC to reimburse it for any production costs paid by it, after which an amount of crude oil will be delivered to the Contractor equivalent in value to the outstanding amounts owed by GNPC until these are fully recovered by the Contractor. --Arts. 10.1(e), 15.1, 15.2\n",
+                "location":{
+                    "image":"135,677,169,606"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169191.js",
+                "id":169191
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":50,
+                "content":"Arm\u2019s length commercial transactions\u201d mean sales to parties independent of the seller, which do not involve exchange or barter of oil, government-to-government transactions, director or indirect sales to affiliates, or sales involving payment in currencies other than US dollars (or currencies convertible to US dollars). For any non-arm\u2019s length transactions, the market price will be calculated based on market prices of comparable crude oils sold in arm\u2019s length transactions. Pricing will be adjusted according to Art. 11.7(b). --Art. 11.7 (b, c)\n",
+                "location":{
+                    "image":"825,674,863,621"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169187.js",
+                "id":169187
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":52,
+                "content":"Tullow, Sabre and Kosmos will not be required to pay any taxes, duties, fees, or other imports relating to its petroleum operations and the sale and export of petroleum, other than those listed in Art. 12 of the Agreement; The Contractor will also not be required to pay any tax or fee on the means of transport used to export petroleum, or on the plant, equipment and materials used for its operations (except for minor administrative charges and subject to local purchase obligations in Art. 12.5). --Arts. 12.1, 12.4-12.5 \n",
+                "location":{
+                    "image":"217,667,243,612"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169185.js",
+                "id":169185
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":52,
+                "content":"Tullow, Sabre and Kosmos will be subject to an income tax rate of 35%, as provided for in the Petroleum Income Tax Law 1987 (PNDC Law 188). If a new income tax rate comes into effect, the Contractor will be given the option of either applying the new rate to the Agreement or remaining under the current law. --Art. 12.2 (ii) \n",
+                "location":{
+                    "image":"367,660,402,605"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169179.js",
+                "id":169179
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: exon\u00e9ration//Income tax: exemptions",
+                "page":53,
+                "content":"Tullow, Sabre and Kosmos will not be required to withhold any amount as tax from sums owed by the Contractor to any subcontractor, except for instances where Section 27(1) of the Petroleum Income Tax Law applies (which requires the Contractor to withhold 5% of the total sum owed). The Contractor is not required to withhold any amounts as taxes in respect of services provided to the Contractor by an affiliate, provided the services are charged at cost. --Arts. 12.3\n",
+                "location":{
+                    "image":"229,677,255,603"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169180.js",
+                "id":169180
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'imp\u00f4t sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloisonnement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":54,
+                "content":"Pursuant to part 1, section 3(2) of the Petroleum Income Tax Law 1987, capital allowance deductions for the purposes of calculating Tullow, Sabre and Kosmos' chargeable income will fully depreciate in 5 years. Calculations will be made in accordance with the Capital Allowances schedule attached to the Petroleum Income Tax Law; ; Yearly or recurring costs incurred under Art. 21 for the establishment of programs to train Ghanaian nationals will be qualify for deduction against income tax. --Arts. 12.9,  21 \n",
+                "location":{
+                    "image":"355,668,380,604"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169181.js",
+                "id":169181
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":65,
+                "content":"Tullow, Sabre and Kosmos will keep GNPC regularly and fully informed of its operations and will provide all information relating to petroleum operations, including the information listed in Art. 16.1; GNPC has the right to access and inspect all offices, buildings and installations used by the Contractor for petroleum operations; Tullow, Sabre and Kosmos will keep books of account and supporting records at the their office in Ghana, in the manner required by applicable law and accounting principles generally used by the international petroleum industry, and will file applicable financial reports and returns. Tullow, Sabre and Kosmos will also keep at their office in Ghana a set of accounts and records relating specifically to petroleum operations under the Agreement. Contractor will provide GNPC with quarterly summaries of the costs incurred in conducting petroleum operations under the Agreement. GNPC will review all financial statements submitted by the Contractor and will give its provisional approval or disapproval in writing within 90 days of receiving such statements. GNPC will have the right, at its own expense and after giving written notice to the Contractor, to audit the books and accounts of the Contractor relating to petroleum operations within 2 years of submission by the Contractor of any report or financial statement. Any such audit will be carried out by an independent international auditing firm and will be completed within 9 months of its start date. Copies of audit reports will be provided to both the Contractor and GNPC. Any unresolved claim resulting from such an audit will be submitted to the Joint Management Committee for decision (which must be unanimous). Where a unanimous decision cannot be reached, the audit claim will be dealt with through dispute resolution procedures outlined in Art. 24 of the Agreement. The Contractor's accounts and financial statements will be considered correct after a period of 2 years from the date of their submission, unless GNPC notifies the Contractor of any objection to the accounts and statements prior to the expiry of the 2 year period. --Arts. 16.1, 17.1, 18\n",
+                "location":{
+                    "image":"220,668,247,602"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169186.js",
+                "id":169186
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":66,
+                "content":"All data, information and reports supplied by Tullow, Sabre and Kosmos under the Agreement will be treated as confidential and will not be disclosed by any party to any other person without the express written consent of the other parties to the Agreement. Exceptions to this general rule are contained in Art. 16.5; There will be no disclosure or transfer of documents, data, know-how, technology, or other information owned or supplied by the Contractor, its affiliates or non-affiliates to third parties without the Contractor's prior written consent and subject to agreement by the recipient to keep the information confidential. --Arts. 16.4, 16.5, 21.6\n",
+                "location":{
+                    "image":"607,666,637,603"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169203.js",
+                "id":169203
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Obligations environnementales]//Other - {Environmental Obligations]",
+                "page":68,
+                "content":"Tullow, Sabre and Kosmos must comply with all requirements of the Law of Ghana, including environmental laws and regulations issued by the Environmental Protection Agency. The Contractor must provide a safe system for disposal of water and waste in accordance with accepted industry practice, and must also provide for the safe completion or abandonment of all boreholes and wells. The Contractor will carry out its obligations under the Agreement so as to result in minimum damage to the environment, and must take steps to fulfil the requirements in this regard under Art. 17.4. If the Contractor fails to comply with the requirements in Art. 17.4 and this failure results in the release of petroleum or other materials into the natural environment, or if the Contractor's operations result in any other form of pollution or environmental harm, the Contractor must promptly take all necessary measures to control, clean up and rectify the damage. If such release or pollution results directly from the gross negligence of the Contractor, the cost of subcontracting clean-up and repair activities will be paid for by the Contractor and will not be included as a petroleum cost under the Agreement. The Contractor will immediately notify the GNPC of any emergency or major accident. If the Contractor does not act promptly to control, clean up or repair any pollution or damage, GNPC may take any actions necessary and the reasonable costs of such actions will be paid for by the Contractor. --Arts. 17.2-17.7 \n",
+                "location":{
+                    "image":"308,676,338,601"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169193.js",
+                "id":169193
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es a l'approvisionnement en biens et services locaux//Local procurement requirements",
+                "page":74,
+                "content":"Tullow, Sabre and Kosmos must give preference to materials, services and products produced in Ghana (including shipping services) if such materials, services and products meet standards generally applicable to international oil and gas companies and can be supplied with commercial terms (including price, grade, quantity, and delivery dates) equivalent to or more favourable than those terms at which they can be supplied from outside Ghana. Price comparisons must be made on a CIF (cost, insurance and freight) Accra delivered basis; Contractor's proposals regarding procurement of Ghanaian goods and services for its operations must be included in the development plan submitted to the Minister for Energy within 180 days of making any commercial discovery. --Arts. 20, 8.11(i) \n",
+                "location":{
+                    "image":"128,492,160,428"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169176.js",
+                "id":169176
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es a la formation des cadres locaux//Management training requirement for nationals",
+                "page":75,
+                "content":"Tullow, Sabre and Kosmos must pay US$250,000 per year to GNPC from the effective date to maintain and implement management and technical training programs for future Ghanian personnel. In addition, Tullow, Sabre and Kosmos will pay US$400,000 on a once-off, single-sum basis to GNPC. If requested by GNPC, Tullow, Sabre and Kosmos must provide training in all phases of their activities relating to petroleum production in Ghana (\"petroleum operations\") to GNPC personnel, including continuing education and short industry courses. --Art. 21.1, 21.2, 21.4\n",
+                "location":{
+                    "image":"231,679,258,605"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169174.js",
+                "id":169174
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":78,
+                "content":"The term of the Agreement is 30 years, starting from the effective date (i.e. the date that the Agreement is both signed by the parties and approved by Parliament, whichever comes first)  --Art. 23.1 \n",
+                "location":{
+                    "image":"236,657,264,610"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169170.js",
+                "id":169170
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":81,
+                "content":"Any dispute arising between parties to the Agreement will be resolved through consultation and negotiation among senior personnel authorised by each party. Where a dispute cannot be resolved in this way within 30 days of a party notifying the other that a dispute exists, any party will have the right to have such a dispute settled through international arbitration by the International Chamber of Commerce (\"ICC\") according to the Rules of Arbitration of the ICC (\"ICC Rules\"). The arbitration tribunal will consist of 3 arbitrators, with each party appointing 1 arbitrator. The arbitrators will then designate a chairman arbitrator. No arbitrator or sole expert can be a citizen of the home country of any party, or have an economic interest or relationship with any party. The arbitration will be conducted in London or another location as unanimously agreed by the arbitrators. The award of the tribunal will be final and binding upon the parties. The Republic of Ghana and GNPC waive any immunity that may apply to legal proceedings relating to the Agreement. The parties may choose to have a dispute resolved by a sole expert instead of referring the matter for arbitration. If the parties choose to do so, the decision of the sole expert will be final and binding. Each party to a dispute will pay its own counsel and other costs, but the costs of the arbitration tribunal will be allocated in accordance with the decision of the tribunal. None of the parties will be held liable for indirect or punitive damages arising from the Agreement, regardless of cause or fault. --Art. 24\n",
+                "location":{
+                    "image":"129,497,158,411"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169199.js",
+                "id":169199
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":85,
+                "content":"The Agreement is governed by the laws of the Republic of Ghana, consistent with such rules of international law as may be applicable (including those applied by international tribunals)--Art. 26.1\n",
+                "location":{
+                    "image":"223,677,252,607"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169198.js",
+                "id":169198
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":85,
+                "content":"The Government guarantees the stability of the terms and conditions of the Agreement, specifically including those based on the laws and regulations of Ghana; The rights and obligations contained in the Agreement must not be modified, amended, altered, or supplemented except upon the signing of a written agreement between the parties. Any law that claims to vary this Agreement will be considered a breach of the Agreement by the Government, except for the Contractor's right to choose whether to apply the new Petroleum Income Tax Law when it comes into force. --Arts. 26.2-26.3 \n",
+                "location":{
+                    "image":"322,673,354,608"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169201.js",
+                "id":169201
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":87,
+                "content":"Will become effective when approved by Parliament (the \"effective date\") --Art. 26.10 \n",
+                "location":{
+                    "image":"447,659,488,607"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169162.js",
+                "id":169162
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) ",
+                "page":93,
+                "content":"The contract area is located along the Ghana-Ivory Coast border. Exact coordinates are provided in Table 1, Annex 1.  --Annex 1\n",
+                "location":{
+                    "image":"126,582,156,513"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas/annotations/169161.js",
+                "id":169161
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Tullow, Sabre, Kosmos, Ghana, 2006",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Signature Year":"2006",
+            "Resource":"Hydrocarbons",
+            "Contract Term (duration) in Years":"30",
+            "Countries":"Ghana"
+        },
+        "created_at":"Wed, 30 Jul 2014 16:50:04 +0000",
+        "display_language":"eng",
+        "updated_at":"Fri, 13 Mar 2015 18:11:34 +0000",
+        "id":"1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1237674/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1237674/tullow-ghana-limited-tullow-sabre-oil-and-gas.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1237674/pages/tullow-ghana-limited-tullow-sabre-oil-and-gas-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1237674/pages/tullow-ghana-limited-tullow-sabre-oil-and-gas-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1237674/tullow-ghana-limited-tullow-sabre-oil-and-gas.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1237674/pages/tullow-ghana-limited-tullow-sabre-oil-and-gas-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1237674"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":123,
+        "canonical_url":"http://www.documentcloud.org/documents/1237674-tullow-ghana-limited-tullow-sabre-oil-and-gas.html"
+    }
+}

@@ -1,0 +1,94 @@
+{
+    "document":{
+        "file_hash":"4df845d1052ceaba1033ce1c991b09a64573e374",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Exploration Permit/License, Exploitation Permit/License",
+                "location":{
+                    "image":"127,490,154,455"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814816-peru-l-179-1/annotations/130468.js",
+                "id":130468
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":1,
+                "content":"Hydrocarbons",
+                "location":{
+                    "image":"153,388,178,357"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814816-peru-l-179-1/annotations/130477.js",
+                "id":130477
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat//Name of company executing the document ",
+                "page":1,
+                "content":"Perupetro S.A., Ecopetrol Del Peru S.A.",
+                "location":{
+                    "image":"199,390,225,350"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814816-peru-l-179-1/annotations/130474.js",
+                "id":130474
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Peru",
+                "location":{
+                    "image":"324,537,350,498"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814816-peru-l-179-1/annotations/130456.js",
+                "id":130456
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":90,
+                "content":"2011",
+                "location":{
+                    "image":"478,606,514,572"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814816-peru-l-179-1/annotations/130462.js",
+                "id":130462
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Perupetro Ecopetrol - Peru, 2011",
+        "data":{
+            "Year of Signature":"2011",
+            "Type of Mining Title":"Exploration Permit/License,Exploitation Permit/License",
+            "Resource":"Hydrocarbons",
+            "Countries":"Peru"
+        },
+        "created_at":"Mon, 04 Nov 2013 16:07:36 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 16 Mar 2015 00:12:34 +0000",
+        "id":"814816-peru-l-179-1",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/814816/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814816/peru-l-179-1.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/814816/pages/peru-l-179-1-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814816/pages/peru-l-179-1-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814816/peru-l-179-1.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814816/pages/peru-l-179-1-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=814816"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":92,
+        "canonical_url":"http://www.documentcloud.org/documents/814816-peru-l-179-1.html"
+    }
+}

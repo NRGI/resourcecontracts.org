@@ -1,0 +1,94 @@
+{
+    "document":{
+        "file_hash":"fcb172bdb7756780df216198476f981a4c18cf22",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Production Sharing Agreement",
+                "location":{
+                    "image":"252,573,291,534"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/835911-psc-dana-hardman-elixir-bloc-1/annotations/132419.js",
+                "id":132419
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat//Name of company executing the document ",
+                "page":1,
+                "content":"Dana Petroleum, Hardman Petroleum, Elixir Corporation",
+                "location":{
+                    "image":"416,564,452,524"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/835911-psc-dana-hardman-elixir-bloc-1/annotations/132420.js",
+                "id":132420
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":1,
+                "content":"1999",
+                "location":{
+                    "image":"681,423,716,384"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/835911-psc-dana-hardman-elixir-bloc-1/annotations/132421.js",
+                "id":132421
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Mauritania",
+                "location":{
+                    "image":"88,569,120,525"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/835911-psc-dana-hardman-elixir-bloc-1/annotations/132418.js",
+                "id":132418
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":4,
+                "content":"Hydrocarbons",
+                "location":{
+                    "image":"734,132,764,93"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/835911-psc-dana-hardman-elixir-bloc-1/annotations/132422.js",
+                "id":132422
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Dana, Hardman, Elixir - Mauritania, 1999",
+        "data":{
+            "Type of Mining Title":"Production Sharing Contract",
+            "Signature Year":"1999",
+            "Resource":"Hydrocarbons",
+            "Countries":"Mauritania"
+        },
+        "created_at":"Mon, 18 Nov 2013 17:20:16 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 08 Oct 2014 21:42:44 +0000",
+        "id":"835911-psc-dana-hardman-elixir-bloc-1",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/835911/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/835911/psc-dana-hardman-elixir-bloc-1.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/835911/pages/psc-dana-hardman-elixir-bloc-1-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/835911/pages/psc-dana-hardman-elixir-bloc-1-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/835911/psc-dana-hardman-elixir-bloc-1.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/835911/pages/psc-dana-hardman-elixir-bloc-1-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=835911"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":62,
+        "canonical_url":"http://www.documentcloud.org/documents/835911-psc-dana-hardman-elixir-bloc-1.html"
+    }
+}

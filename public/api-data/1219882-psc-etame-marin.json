@@ -1,0 +1,503 @@
+{
+    "document":{
+        "file_hash":"b86148e595d4027419558b17d891b56a712abb23",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Pays // Country",
+                "page":24,
+                "content":"Gabon--Preamble\n",
+                "location":{
+                    "image":"158,697,190,596"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168427.js",
+                "id":168427
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat // State agency, national company, ministry executing the document",
+                "page":24,
+                "content":"Republic of Gabon represented by Paul Toungui, Minister of Mines, Energy and Petroleum--Preamble\n",
+                "location":{
+                    "image":"182,592,213,532"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168432.js",
+                "id":168432
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale // Local company name",
+                "page":24,
+                "content":"Vaalco Gabon (Etame), Inc. and Vaalco Energy (Gabon), Inc.--Preamble\n",
+                "location":{
+                    "image":"242,705,272,593"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168428.js",
+                "id":168428
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document // Name of company executing the document and composition of the shareholders",
+                "page":24,
+                "content":"Vaalco Gabon (Etame), Inc. and Vaalco Energy (Gabon), Inc.--Preamble\n",
+                "location":{
+                    "image":"305,700,343,603"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168430.js",
+                "id":168430
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales\t// Parent companies or affilates outside of the country, if different from the above mentioned; and their corporate headquarters",
+                "page":24,
+                "content":"Vaalco Energy, Inc. (incorporated under the laws of Delaware, with main office in Houston, Texas, USA)--Preamble\n",
+                "location":{
+                    "image":"452,707,483,598"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168429.js",
+                "id":168429
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026) // Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":30,
+                "content":"Exploration and production sharing agreement.--Art.  1.1\n",
+                "location":{
+                    "image":"116,709,147,627"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168395.js",
+                "id":168395
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es // Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":30,
+                "content":"Hydrocarbon--Art.  1.1\n",
+                "location":{
+                    "image":"158,709,190,629"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168398.js",
+                "id":168398
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements // Work and investment commitments",
+                "page":30,
+                "content":"The contractor is required to comply with generally accepted hydrocarbon industry practices.\n\nDuring the 1st exploration period, the contractor must:\n- acquire and process 1,500 km of 2-D seismic data and shoot one 3-D seismic survey;\n- re-process and make a reinterpretation of existing, available seismic data;\n- prepare a feasibility study of the development of the Tchibala North and South discoveries within the first 6 months;\n- drill one exploration well.\nThe contractor will invest $7.8 million.\nDuring the 2nd exploration period, the contractor must:\n- acquire and process 2,000 km of 2-D seismic data and shoot a 3-D seismic survey if the exploration well was a discovery;\n- drill 2 exploration wells.\nThe contractor will invest $14.5 million. The wells will be drilled to a minimum depth of 2,500m or until the Gamba geological formation is penetrated for at least 50m if it extends beyond its contractual depth. If the formation has not been encountered at 2,500m, the parties will meet to examine continuing the well.\nDrilling will be stopped at a lesser depth if the stoppage is justified because:\n- the Gamba formation is encountered before (the parties should meet to examine continuing the well)\n- basement is encountered before;\n- continuation of drilling presents an obvious hazard because of abnormal formation pressure;\n- rock formations encountered are too hard for it to be practical to continue drilling with standard equipment;\n- hydrocarbon-bearing formations are encountered that must be protected before penetration by setting casing.\nIf the drilling is stopped for any of these reasons, the well will be considered drilled to the contractual depth if the contractor timely presents its reasons to the administration and they are accepted as justified.\n\nThe contractor is required to meet its work commitments for an exploration period even if it entails exceeding the estimated amount. If the contractor meets the work commitments for a lesser amount, it is considered to have met the commitments. If all the delimited area is relinquished (cf. Article 6) or an exploration period is over and the contractor's work commitments have not been met, the contractor is required to pay to the state within 30 days of the effective date of relinquishment, a compensation equal to the cost of the exploration commitments not met or work not done at that date.\n\nThe contractor must furnish all funds necessary for the performanceof the petroleum operations defined in the annual work program, and will perform the operartions by using either its own materials, equipment and supplies or those acquired or rented to this effect, subject to the provisions of article 10.3.\nThe contractor must take all measures to ensure protection of the aquifers encountered while drilling (through proper cementing of the casing of the wells) and when abandoning uproductive wells by applying cement plugs to isolate the formations under pressure from other reservoir horizons and from the surface. It must also carry out the tests necessary to determine the value of the hydrocarbon shows encountered while drilling and the exploitability of any fields discovered.\n\nUpon obtaining an exclusive exploitation authorization, the contractor agrees to proceed with diligence to drill the necessary development wells with such intervals between wells as to guarantee maximum economy recovery for the parties, of the hydrocarbons contained in the field. Except for duly evidenced unusual circumstances, the contractor must start these development operations no later than 6 months after acceptance good practices in the hydrocarbon industry. The contractor must proceed as soon as technically feasible with enhanced recovery program studies for the field and to implement at the appropriate time this process if under acceptable economic conditions, it can lead to an improvement in the rate of recovery of the hydrocarbons of the field. The contractor is required to implement every recommendation by the administration on the subject of conservation of the fields and to comply with regulations regarding pollution and safety of persons and property.\nThe contractor must annually produce from each field quantities of hydrocarbons in accordance with generally accepted international hydrocarbon industry practices, in particular in applying the standards for conservation of the fields making optimal recovery possible in normal economic conditions.--Art.  1.3, 4, 7, 8.1 to 8.3, 21",
+                "location":{
+                    "image":"334,704,369,622"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168410.js",
+                "id":168410
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es // Restrictions on transactions with affiliated parties",
+                "page":30,
+                "content":"The contractor may use third parties or affiliated companies funds for the financing of investments. The contractor must send to the hydrocarbon services a certified copy of the loans agreements and contracts which have been obtained for the necessary approval.--Art.  1.4\n",
+                "location":{
+                    "image":"412,698,456,614"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168391.js",
+                "id":168391
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e // Term",
+                "page":34,
+                "content":"Exclusive exploration authorization: 3 years. The period may be extended at the contractor's request (with 45 days anticipation) to complete any drilling in progress. If, during the 1st extension period, the contractor fulfilled the contractual obligations, the authorization will be extended at the contractor's request for a 2nd period of 3 years (with 30 days anticipation). This 2nd period may also be extended 3 months under the same conditions.\nIf during the exploration periods, contractor has made no discovery of hydrocarbon deposits presumed to be commercially exploitable or declared as such and giving entitlement to an exclusive exploitation authorization, the contract is terminated at expiration of the period. This case will not relieve the contractor of its contractual obligations arisen prior to the date of expiration and not yet honored.\nIf the contractor provides evidence, on the basis of the technical information acquired on the field and of accounting and financial justifications, of the non-profitability of the exploitation, the exclusive exploitation authorization expires on the date on which the operations or the production are stopped and the area becomes free.\nIf, except where justified, production from a field has not begun within 3 years of the date of the award of the exclusive exploitation authorization, the authorization is canceled.\n\nThe exclusive exploitation authorization has a maximum duration of 10 years. After the 10-year term, if commercial exploitation is still possible, the authorization is renewed at the request of the contractor for 5 years at most, if the contractor has met its contractual obligations. The authorization is renewed a second time for 5 years at most under the same conditions. At any time, the contractor may relinquish an authorization by letter to the administration (effective 60 days after receipt). The contract expires on the date of expiration of the last exclusive exploitation authorization or, when applicable, on the effective date of the relinquishment. The parties are not released from their contractual obligations arisen prior to expiration to the contract but not yet honored.--Art. 3.1 and 3.2, 15, 16.7, 16.8, 18",
+                "location":{
+                    "image":"101,707,133,605"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168138.js",
+                "id":168138
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure // Construction and maintenance of infrastructure",
+                "page":41,
+                "content":"The facilities erected offshore must, according to their nature and circumstances, be built, positioned, marked, buoyed, equipped and maintained as to permanently allow free safe passage to navigation at all times in the waters of the delimited area. Independently, the contractor will install sound or visual devices approved or required by the competent authorities and maintain them to their satisfaction.\n\nIf no available or sufficient evaluation means exist, the contractor can construct a pipeline that will allow it to evacuate the production. The contractor will submit to that end for the administration's approval, and before commencing the work, plans corresponding to the layout it has established and to the projected location of all the pipelines it intends to build. No pipeline may obstruct traffic.--Art.  8.4, 22.3",
+                "location":{
+                    "image":"667,696,704,616"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168412.js",
+                "id":168412
+            },
+            {
+                "access":"public",
+                "title":"Indemnisation // Indemnification",
+                "page":42,
+                "content":"The contractor will not disturb any previously installed cemetery or existing building for religious purposes, nor cause any problem to affect the normal use of a building without the occupants' consent. The contractor is required to pay due compensation for damage or disturbance caused to third parties.\nThe contractor will take all the necessary action to achieve the objectives of the contract and give reasonable compensation to third parties for any damage which it, its employees, contractors or subcontractors and their employees, while carrying out their activities under the contract, may cause to the person, property or rights of third parties. The contractor will be civilly liable for all losses or damages suffered by third parties due to errors or negligence and must bear the cost of all compensation and damages payable.--Art.  8.5, 37.1",
+                "location":{
+                    "image":"133,703,166,617"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168422.js",
+                "id":168422
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es a l'approvisionnement en biens et services locaux // Local procurement requirements",
+                "page":42,
+                "content":"Under similar conditions of price, quality and delivery, the contractor agrees to use Gabonese companies for its procurement, work and services contracts. For all contracts over $1 million, the choice of companies shall be by call for bids. A copy of all contracts will be addressed to the administration as soon as they are signed.--Art.  8.7\n",
+                "location":{
+                    "image":"442,708,479,622"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168367.js",
+                "id":168367
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9 // Confidentiality",
+                "page":49,
+                "content":"The state is the owner of any original documents, reports prepared or obtained by the contractor or samples relative to the petroleum operations, geological, geophysical, and petrophysical work, synthesis reports, well logs, even if in the contractor's possession, to be used within the framework of the petroleum operations. Each party assumes the obligation, as applicable, in its own behalf and that of the service companies or consultants working for it, to consider these documents, reports, operations, studies and samples confidential and not to reveal them to third parties without prior consent from the person responsible for the departments in charge of hydrocarbons.\nEach entity forming the contractor may, without the consent of the other entities or of the administration, disclose the following information and data:\n- to each company interested in good faith in the realization of an eventual transfer or of assistance in the framework of petroleum operations, after the undertaking by said company to keep the information confidential and only use it for the realization of the transfer or assistance.\n- to any independent professional consultants operating within the framework of the petroleum operations, after obtaining from them a similar confidentiality agreement, provided that the contractor reports immediately to the administration their names;\n- to any bank or financial institution to obtain financing, after obtaining a similar confidentiality agreement from these concerns;\n- when and insofar as the regulations of a recognized stock exchange require it, unless in conflict with Gabonese laws;\n- within the framework of any contentious, judicial, administrative or arbitrage procedure.\nWith prior written consent from the administration, the contractor may exchange with any interested party any confidential information or data of this type agianst other similar information or data.--Art.  11.5",
+                "location":{
+                    "image":"150,698,186,595"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168423.js",
+                "id":168423
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licences, et permis) // Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":51,
+                "content":"The contractor may take or use the water necessary for the petroleum operations provided that existing irrigation or navigation does not thereby suffer and that land, houses or watering points are not thereby deprived of their use.--Art.  12\n",
+                "location":{
+                    "image":"67,697,101,615"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168408.js",
+                "id":168408
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat // State participation ",
+                "page":61,
+                "content":"As soon as a field is placed on production, the state automatically participates at 7.5% in the rights and obligations deriving from the contract, unless it expressly waives the right to participate within 90 days after the production starting date. The state enjoys the same participation in the petroleum costs regarding development and exploitation of the exploitation area, except for any exploration expense. If the state wishes to take an additional interest, it will inform the contractor in writing, specifying the percentage interest which it decides to hold. The conditions for acquisition of the additional interest are mutually agreed upon between the parties.\nThe state may transfer to an entity of its choice all or parts of its interest. However, it can only transfer to a company controlled by the state or to a company with a well established technical and financial reputation. The rights and obligations arising from the partnership agreements must not limit the state's rights or aggravate its obligations under participation, nor decrease the extent or effects of said participation.\nFrom the beginning of production, the state reimburses in cash or kind its share of the petroleum costs incurred for development since the award date of the exclusive exploitation authorization to the companies forming the contractor, in addition to the sums corresponding to the calls for funds for the petroleum costs advanced by the other partners for the exploration costs. If the state chooses to pay in cash, payment will be made from the safe proceeds from the sale of the production share. If it chooses to pay in kind, payment will be made at the end of each month by turning over a portion of the production to which it is entitled. Whatever the method, the amount to be paid is limited to 70% of the net production or of the portion of the production to which it is entitled. The unpaid balance is added to the payments owed at the end of the following month. This will not cause the 70% to be exceeded. Payments on behalf of the state which have not been recovered by the contractor constitute a credit due to the contractor that can be recovered without limitations from the last lifting preceding the expiration of the contract.--Art.  19.1 to 19.3",
+                "location":{
+                    "image":"88,697,136,617"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168383.js",
+                "id":168383
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre // Audit mechanisms - financial obligations",
+                "page":62,
+                "content":"The contractor must keep a \u201cstate participation\u201d account up-to-date. The account will be debited with the petroleum costs that are attributable to the state of its monthly share of the petroleum costs. The account is credited, at the end of each month, by the fixed price of the hydrocarbons delivered as payment by the state for said month. The payment owed by the state as reimbursement of its share of petroleum costs for development and exploitation, are increased by simple interest at the annual discount rate of the Bank of Central African States.\nEach of the companies forming the contractor must keep by calendar year separate accounting records for the petroleum operations, in compliance with the applicable regulations in effect in Gabon. It must be possible to determine the profit and loss balance statement and a detailed balance sheet showing results of said operations and related assets and liabilities. Each company must deliver to the person responsible for the departments in charge of hydrocarbons, no later than April 30 every year, a copy of the tax return. The tax administration, after examining the documents, will issue to each one of the companies forming the contractor the originals of the tax statements and all other documents certifying that it has met its fiscal obligations, subject to the administration's rights to audit and recovery set forth by the regulations in force.\nThe contractor will also keep a Petroleum cost account in which to enter all the recovreable expenses as they are actually incurred and the recovered amounts of the petroleum costs as this recovery takes place, as well as the receipts and proceeds of any nature to reduce or deduct form the costs, as they are collected. The account must be subdivided into subaccounts showing:\n- exploration expenses;\n- appraisal expenses;\n- development expenses;\n- exploitation expenses.\nIn order to be considered petroleum costs, the expenses must be strictly necessary for the requirement of the operations and must meet the criteria state in the accounting agreement. Expenses in connection with non-deductible costs, of a sumptuary or exaggerated nature, gratuities not authorized by the regulations, and in general all the expenses not required for proper management of the petroleum operations are not recoverable and must not be debited. At any time, the balance of the petroleum costs account must show the amount not yet recovered by the contractor. The practical methods for application of these provisions are defined in the accounting agreement 'Attachment II of the contract).\n\nThe state, in its capacity as a contracting party, and the entities forming the contractor may undertake, at their cost, through experts of their choice or their own employees, all the accounting, financial or technical examinations, verifications and audits they deem necessary or useful for their information on the management and development of the contractor's activities, on the technical methods employed an don the petroleum costs, as well as in the exercise of their right to examine, check and audit the activities and the corresponding petroleum costs within a period of 2 years after the end of the exploration periods.\nA certified copy of the reports and conclusions following these examinations, verifications and audits must obligatorily be delivered to the administration when these are conducted by the companies forming the contractor. The operator or the companies forming the contractor must inform the administration of the follow-ups. Without any examinations, verifications and audits within the required periods, no adjustment may be made later. The administration may also conduct at any time examinations, verifications and audits through experts of its choice or its own employees.\nThe contractor must deliver to the administration, not later than April 30 of each year, a detailed report on its activities of the preceding calendar year. This report will include specifically, in addition to technical data, a detailed account of the petroleum costs pertaining to that calendar year, in accordance with the accounting agreement. The files, as well as the pertinent and necessary records, accounting and technical documents and vouchers will be available to interested parties and presented at their request or requisition. The contractor will bear the related expenses incurred by the administration.\nUnder the prescription periods, the administration may request in writing all information, jusitfications and clarifications as well as any documents, reports, studies and accounting, financial, legal and technical records it deems necessary or useful for its information on the management and development of the contractor's activities and on the petroleum costs.\nIf the administration considers that the reports, files, documents and accounting records contain errors, inaccuracies, gaps or missing elements or that the contractor has made a mistake or committed an irregularity, and if it considers that corrections, adjustments, amendments or modifications should be made, the administration will notify the contractor in writing. The contractor will have 30 days from receipt to make the necessary adjustments or present its comments, to which the administration will answer in writing. For differences of a technical nature, and prior to the arbitration procedure, the parties may resort to the opinion of an expert selected through joint agreement.--Art.  19.4, 26.4 to 26.6, 29.9 +Attachment II, 48",
+                "location":{
+                    "image":"571,707,608,611"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168388.js",
+                "id":168388
+            },
+            {
+                "access":"public",
+                "title":"Autre - [le nom de cat\u00e9gorie] // Other \u2013 [Hydrocarbon Support Fund]",
+                "page":66,
+                "content":"The contractor contributes annually to a hydrocarbon support fund created for the purpose of developing petroleum research in Gabon. The contribution is calculated on the basis of the total available production equal to the CFA Franc equivalent of $.05 per barrel produced. This contribution will not be included in petroleum costs. The support fund will be managed by the minister of hydrocarbons.--Art.  21.7\n",
+                "location":{
+                    "image":"452,708,486,611"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168407.js",
+                "id":168407
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers // Third party use of infrastructure",
+                "page":67,
+                "content":"Within the limits of available capacity not used by the contractor and at normal and nondiscriminatory prices, the contractor is required to allow free use by third parties of the hydrocarbon transportation, processing and storage infrastructures set up for the petroleum operations. The pricing conditions applied must be evidenced and submitted for approval to the departments in charge of hydrocarbons. The rate must be established to permit recovery of the cost of operation of the installation, including a portion of the cost price of the facilities at least equal to the fiscal depreciation in effect or usually applied in Gabon and computed on the original acquisition value, plus a reasonable profit margin representing remuneration for the capital invested for the construction of the infrastructure.--Art.  22.4\n",
+                "location":{
+                    "image":"559,701,594,603"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168414.js",
+                "id":168414
+            },
+            {
+                "access":"public",
+                "title":"Autre - [le nom de cat\u00e9gorie] // Other \u2013 [Production Marketing Obligation]",
+                "page":68,
+                "content":"As soon as the production of a field becomes regular, the contractor must make every effort to ensure the best valorization of the extracted product such that the marketing of the share of these products does not unfavorably affect the prices of Gabonese hydrocarbons on the international market. The contractor must make every effort so that the prices for exported Gabonese hydrocarbons are in agreement with those existing on the international market at the time of the sale, for equivalent quality, quantity, freight and payment terms.--Art.  23\n",
+                "location":{
+                    "image":"55,702,101,598"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168415.js",
+                "id":168415
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, cr\u00e9dit d'investissement, etc.) // Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":69,
+                "content":"The contractor may recover the petroleum costs by lifting a portion of the hydrocarbon production from that area (but not from fields outside the area) after the production begins and as it progresses. These liftings are limited to the balance of the cost account, and for any year, must not exceed 70% of the net production obtained during said year. The hydrocarbons lifted are valued at the \u201cfixed price.\u201d\nIf the net production of the delimited area does not allow the contractor to recover petroleum costs, they will be carried forward to succeeding calendar years until full recovery of the petroleum costs or expiration of the contract.\nIn the event of the discovery in the delimited area of deposits producing hydrocarbons of differing quality, the recovery of the petroleum costs will be by payment in kind or in cash by taking into account each of the qualities, proportionally to the total available production.--Art.  24.1, 24.2, 24.6 to 24.7",
+                "location":{
+                    "image":"132,702,170,614"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168378.js",
+                "id":168378
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Droit de pr\u00e9f\u00e9rence de l'Etat] // Other \u2013 [State preference Right]",
+                "page":69,
+                "content":"The state will enjoy a preference right on the quantities of hydrocarbons to which the contractor is entitled within the scope of the recovery of petroleum costs, when these quantities are offered to third parties. For these purposes, the quantities of hydrocarbons given over within the scope of exchanges required by technical constraints inherent in the contractor's facilities, or intended to save time and transportation efforts, will not count as sales to third parties if the quantities exchanged are actually intended for meeting the contractor's needs or those of its affiliated companies. In exchange for the hydrocarbons, the state will pay to the contractor the price agreed to by the parties, determined by reference to prices found on the international market at the time of the sale for equivalent quality, quantity, freight and payment terms. --Art. 24.3",
+                "location":{
+                    "image":"517,689,551,619"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168402.js",
+                "id":168402
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.) // Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":72,
+                "content":"After deduction by the contractor on a part of the net production for the recovery of the petroleum, the remaining production is shared between the state and the contractor. When the average daily total available production from the delimited area for a given calendar month is:\n- equal to or less than 10,000 barrels: the remaining production is shared equally between the state and the contractor (50/50);\n- between 10,000 and 25,000 barrels: the state obtains 55% of the remaining production, and the contractor, 45%;\n- greater than 25,000 barrels: the state obtains 60% of the remaining production, and the contractor, 40%.\nIf different qualities of hydrocarbons are discovered in the delimited area, the sharing is made separately for each quality, proportionally to the total available production. The contractor is entitled to its share of hydrocarbons from the beginning of production and as it develops. The state draws its share of the production in kind. However, the contractor is required, when requested by the state, to sell all or part of the state's share of hydrocarbons and reimburse the state. The contractor will in this case make its best effort to obtain a sales price on the market at least equivalent to the fixed price. The contractor will receive a sales commission established by mutual agreement with reference to applicable customary business practice. If the contractor is unable to sell the state's share at a price at least equal to the fixed price, it will inform the state of the best price proposed, and the state will decide to accept the sale or receive the quantities in kind.\nThe state may request the payment of the proceeds of the sales of its share in the foreign currency of its choice.\nThe state has a preference right on the contractor's share of production (under the same conditions as in articles 24.3 and 24.4).--Art.  25",
+                "location":{
+                    "image":"80,668,115,588"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168380.js",
+                "id":168380
+            },
+            {
+                "access":"public",
+                "title":"Primes // Bonuses",
+                "page":74,
+                "content":"The contractor is subject to bonuses payable in cash. It will pay $500,000 on the effective date. It will also pay to the state the equivalent in CFA francs of:\n- $500,000 at the start of production from the delimited area;\n- $200,000 wen the rate of hydrocarbon production in the delimited area reached, for the first time, the level of 20,000 barrels per day for 30 consecutive days;\n- $200,000 when the rate of hydrocarbon production in the delimited area reached, for the first time, the level of 30,000 barrels a day for 30 consecutive days.\nEach of these amounts must be paid within 30 days after the starting date of production or the end of the corresponding reference period, as applicable. They will not be considered as petroleum costs.--Art.  26a, 28",
+                "location":{
+                    "image":"188,693,222,613"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168381.js",
+                "id":168381
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance // Mining tax / royalty tax",
+                "page":74,
+                "content":"The contractor is subject to a proportional mining royalty during the production phase of:\n- 3% when the total available production during a calendar month is inferior or equal to 5,000 barrels a day;\n- 6% if it is between 5,000 and 7,500 barrels a day;\n- 9% if it is between 7,500 (not included) and 10,000 barrels a day;\n- 12% when it is between 10,000 (not included) and 15,000 barrels a day;\n- 15% when it is between 15,000 (not included) and 20,000 barrels a day.\n\nThe total available production subject to the proportional mining royalty is reduced by:\n- quantities lost or burned at the time of the production tests or at the production, gathering or storage facilities on the exploitation area, if the contractor abided by applicable regulations and guidelines;\n- quantities reinjected into the field of the exploitation area;\n- quantities used for preparation of drilling fluids for the requirements of the delimited area;\n- quantities used for operations performed, after drilling, on welds of the field of the exploitation area;\n- quantities consumed in the turbine engines providing the energy used to drive the necessary pumping units on the wells of the field, gather the hydrocarbons, or operate the drilling facilities established on the delimited area for the requirements of the area.\nThe quantities lifted or used downstream from the point where the total available production is discounted are acceptable deductions after exceptional authorization by the administration upon justified request from the contractor.\n\nThe proportional royalty is paid in kind or in cash at the state's option (by default in cash, if the state has not let its choice be known). When the royalty is paid in cash, it is computed on the FOB value of the hydrocarbons based on the fixed price or article 27.\nIt is paid to the office of the tax collector no later than the 28th of each month on the average monthly production of the preceding calendar quarter. Adjustment is made no later than January 28 of each year on the basis of the taxable total available production of the year in question and the corresponding fixed price.\nIf the state wishes to receive the royalty in kind partially or totally, it must inform the contractor with 180 days advance of the quantity wished.\n\nThe proportional mining royalty is not included in the petroleum costs.--Art.  26b",
+                "location":{
+                    "image":"235,696,275,617"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168371.js",
+                "id":168371
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux // Income tax: rate",
+                "page":76,
+                "content":"The contractor is subject to a tax on profits and revenues (corporate tax) applying the general tax rate in force. The corporate tax due for a given calendar year is due in kind to the state and determined on the basis, notably, of the gross revenue consisting of the turnover from the quantity of hydrocarbons available or their equivalent in cash, as well as from the quantities delivered to the state as payment for the tax on the one hand, and on the other hand, from deductible expenses, including bonuses, costs of materials, interests, and payments into the Hydrocarbon support fund, as indicated and defined in the tax laws in effect.--Art.  26e\n",
+                "location":{
+                    "image":"407,705,436,610"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168374.js",
+                "id":168374
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs // Other exemptions",
+                "page":78,
+                "content":"The contractor will be exempted of all other taxes, rights, royalties, duties, imposts and contributions not defined in the contract, in connection with the petroleum operations. The contractor's suppliers, subcontractors, service contractors and affiliated companies are exempted from the domestic turnover tax and the tax on transactions due on sales made, work performed and services rendered within the framework of the contract. The profit earned by the contracting companies within the framework of the petroleum operations is exempt from any tax and withholding at the source due in connection to distribution to stockholders or partners or allocation thereof.\nWhen, by mistake, one of the companies has been assessed with taxes, duties, imposts, withholding or royalties from which it is exempted, it may charge the amount to the petroleum costs if it is not released from the payment obligation one year after filing a claim. The charge is subject to written prior approval form the Minister of hydrocarbons.\nThe exemptions are not applicable to duties and taxes due for services rendered by Gabonese administrations, communities and public institutions used by the contractor. The rates applied must correspond to the magnitude of the services rendered and be non-discriminatory. The contractor will still be subject to local, municipal and port charges in effect under non-discriminatory rates.\nAssignments between the contracting companies and their affiliates are exempted from all duties and taxes due in this connection.--Art.  26.7 and 26.8",
+                "location":{
+                    "image":"323,700,359,617"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168384.js",
+                "id":168384
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'imp\u00f4t sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloisonnement) // Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":80,
+                "content":"The petroleum costs account is debited notably for expenses linked to:\n- construction, manufacturing, creation, realization, purchase, renting, maintenance and repair of the assets, including consumable materials;\n- exploration and research;\n- taxes, rights and duties assessed and paid in Gabon;\n- personnel and personnel environment;\n- services rendered by third parties, affiliated companies and companies constituting the contractor, including technical assistance;\n- insurance policies and settlements of damages;\n- legal costs;\n- interests, agios and financial charges paid to creditors, for their real amount and insofar as the loans and debts to which they are linked are necessary for the operations and correspond to a real financing need. This does not include expenses that are not necessary for the petroleum operations, are linked to the loans and debts of the contractor for financing prospection and exploration operations, or when they are linked and up to the portion of the loans and debts which exceeds to the amount of development and production expenses;\n- interests paid to shareholders, affiliated companies and contracting companies for their amounts within the same limits and under the same conditions (with the maximum limit of the interest computed at the annual discount rate of the Banque des Etats de l'Afrique Centrale +2 points);\n- exchange losses incurred in connection with the contractor's loans and debts, under the same conditions (but no coverage against exchange losses or loss of profits arising from risks pertaining to the origin of the contractor's funds and self-financing\u2014same for insurance premiums and costs of such policies); \n- costs incurred for controls and verifications made by the administration;\n- overhead expenses.\nPayments made for costs, charges or expenses not directly attributable to the petroleum operations are excluded. E.g: costs of capital increase, marketing costs, costs from before the effective date, costs of independent audits paid by the contractor within the framework of the relations between contracting companies, bonuses and hydrocarbons support fund, costs for meetings, studies and works within the joint operating agreement between the contracting companies.\nThe following will be deducted from the petroleum costs:\n- proceeds from the quantities of hydrocarbons that belong to the contractor by the corresponding fixed price;\n- amounts received for the recovery of petroleum costs;\n- all other related, closely related or accessory receipts, revenues, proceeds and profits, directly or indirectly linked to the petroleum operations and enumerated in the accounting attachment.--Art.  26.10 and 26.11",
+                "location":{
+                    "image":"503,709,543,609"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168375.js",
+                "id":168375
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Valorisation du P\u00e9trole] // Other \u2013 [Petroleum valorization]",
+                "page":84,
+                "content":"The fixed price is determined by the administration by reference to the official hydrocarbon prices defined by the OPEC taking into account the international market prices for hydrocarbons of similar quality. It is calculated FOB value every six months for the previous semester on the basis of pertinent data and information. It is notified to contractor for application and necessary adjustments. If no fixed price is provided to the contractor for a period, it must use the fixed price from the most recent notification provisionally. If for a period, the fixed price is higher than the market price for sales to third parties of hydrocarbons from the exploitation area, the difference will be recovered by the contractor by recording a debit in the Petroleum cost account. If the fixed price is lower, the difference is credited to the Petroleum cost account. The market price is determined by the parties, who will meet periodically, on the basis of the evolution of the international hydrocarbon market. --Art.  27.2 - 27.4",
+                "location":{
+                    "image":"533,707,564,618"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168405.js",
+                "id":168405
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Cas de d\u00e9couverte de gas naturelle] // Other \u2013 [Event of a natural gas discovery]",
+                "page":88,
+                "content":"In the event of a natural gas discovery, the contractor, after carrying out the appropriate studies and after consultation with the administration, must determine whether exploitation can be carried commercially. All the provisions of the contract will be applicable (after all necessary adjustments), including the recovery of petroleum costs, the remaining production sharing regulation, the bonuses, and the royalties and taxes. Other specific benefits may be granted. When it is necessary to determine the equivalence between natural gas and crude oil, it is agreed that 165 cubic meters of natural gas equal 1 barrel of crude oil.\nIf the contractor does not consider the natural gas discovered to be commercial, it forfeits every right to the discovery. The state is entitled to exploit the discovery on its own without paying any indemnity to the contractor.\nAny quantity of unmarketed associated gas, apart from the quantities used for the petroleum operations, will be utilized to improve the crude petroleum recovery rate through reinjection. Flaring will be limited to the bare minimum. If the government wishes to use the associated natural gas produced and not marketed or used, the parties will decide by mutual agreement on any additional technical actions necessary for shipment and use. --Art. 30",
+                "location":{
+                    "image":"63,699,98,621"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168418.js",
+                "id":168418
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Vente domestique] // Other \u2013 [Domestic Sale]",
+                "page":96,
+                "content":"The contractor is required to contribute to meeting the consumption needs of the Gabonese domestic market by delivering to the state or to an organization designated by the state a quantity of hydrocarbons in proportion to its production share as compared to the total production of Gabon. The quantity to be delivered will be determined prior to the end of each calendar year for the subsequent year on the basis of the projected production and domestic consumption of the current year. Any necessary adjustments will be made as soon as the actual final data is available. The price for the sale by contractor of the portion of hydrocarbons intended to meet the needs of the domestic market is equivalent to the set price less a 25% discount. The discount is entered in the petroleum costs account. The hydrocarbons sold are to be delivered to the place of use or consumption designated by the administration, using available and customary means of transportation.  -- Art. 35",
+                "location":{
+                    "image":"56,705,93,604"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168373.js",
+                "id":168373
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local // Local employment requirements",
+                "page":100,
+                "content":"For the performance of the petroleum operations, the contractor must employ, insofar as possible, Gabonese national labor in the minimum proportion of 75% of the total workforce. Specialized and qualified personnel may be recruited outside Gabon if not available in Gabon. The contractor must inform the General Hydrocarbons Department of any available positions and of the action taken towards recruitment of Gabonese personnel.\nThe administration will issue the necessary documents for entry of foreign personnel into Gabon. At the contractor's request, the administration may assist to facilitate all immigration formalities for employees, contractors, subcontractors and agents and their families.\nThe contractor must train and take the necessary steps to ensure the promoton of its Gabonese employees in close cooperation with the administration.--Art.  38\n",
+                "location":{
+                    "image":"58,704,101,620"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168365.js",
+                "id":168365
+            },
+            {
+                "access":"public",
+                "title":"Autre - [le nom de cat\u00e9gorie] // Other [Training of Gabonese Nationals Other than Employed by the Contractor]",
+                "page":101,
+                "content":"The contractor must contribute to the training of other Gabonese nationals designated by the administration by allocating to training:\n- $60,000 per calendar year during the period preceding production;\n- $100,000 per calendar year from start of production.\nThe contributions are allocated:\n- in part to the training of Gabonese nationals in higher level schools or universities of international reputation, the corresponding training determined by the administration in charge of hydrocarbons;\n- in part for on-the-job training of Gabonese nationals at the contractor's jobsites and major centers of activity (conditions agreed upon by the parties);\n- in part for training outside the contractor's structures, in the form of seminars and assignments to other companies of Gabonese nationals designated by the administration.--Art.  39",
+                "location":{
+                    "image":"71,701,116,613"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168368.js",
+                "id":168368
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation // Stabilization clause",
+                "page":107,
+                "content":"Subject to modification of the terms and conditions of the contract in written form and through mutual agreement, the state guarantees to the contractor for the duration of the contract the stability of the financial and economic conditions, such as these result from the contract and the regulations in force on the effective date. The obligations resulting from the contract will not be aggravated and the overall and general equilibrium of this contract may not be affected in an important and lasting manner for the entire period of validity.\nThe parties agree to cooperate in all possible ways to achieve the contractual objectives.\nTotal or partial nationalization or expropriation of the contractor's rights entail just and equitable compensation in accordance with internationally accepted rules and principles.--Art.  43\n",
+                "location":{
+                    "image":"65,691,105,625"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168421.js",
+                "id":168421
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Operations au nome de l'Etat] // Other \u2013 [Operations on Behalf of the State]",
+                "page":110,
+                "content":"if, during the exploration periods, the state wishes to survey and test deeper geological horizons for a given well, it has the right to ask the contractor to continue drilling the well until the objectives set by the state have been reached, at its exclusive expense and risk in writing (but in no case after the contractor has started completion or abandonment operations on the well). The state can also contract, at its own risk, a third company to deepen a well under conditions that it is free to establish and for the account of the state. The contractor may decide, before the start of the well-deepening operations, to take charge financially of said deepening operations, in which case the corresponding expenses are included in the petroleum costs and any hydrocarbon discovery resulting from these operations will be considered made within the framework of the contract.\nIf the deepening of a well at the exclusive expense and risk of the state leads to a discovery of hydrocarbons, the state alone will have the right to develop and exploit the discovery and dispose of all the hydrocarbons produced. --Art. 45",
+                "location":{
+                    "image":"66,705,98,609"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168416.js",
+                "id":168416
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e ou envisag\u00e9e // Name and/or composition of the company created or anticipated",
+                "page":111,
+                "content":"Each of the entities comprising the contractor will have the option to perform the petroleum operations through a subsidiary or a branch registered in Gabon and created to this effect. If the signatory of the contract is a subsidiary thus created, the parent company of the signatory will give to the administration a commitment, prior to signature, guaranteeing proper performance by said subsidiary of the contractual obligations.--Art. 46.2\n",
+                "location":{
+                    "image":"282,699,311,621"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168135.js",
+                "id":168135
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends\t// Arbitration and dispute resolution",
+                "page":117,
+                "content":"If any disputes still exist between the parties with the application of the clauses of the contract or regarding contractual obligations will be resolved through arbitration and pursuant to the conciliation and arbitration regulations of the International chamber of commerce. The arbitration procedure must be requested to the Secretary of the Arbitration Court within 60 days following expiration of the 30 day period. Each party designates its arbitrator and notifies the other party and the court of the designation within 30 days after the start of the proceedings. The arbitrators must be of a nationality different from that of any of the parties. Within 45 days of the designation of the last arbitrator, the arbitrators elect a 3rd arbitrator, who becomes the president of the arbitration court. The arbitrators are free to choose the procedure they intend to apply. Their decision is final; it is binding on the parties and immediately enforceable. The arbitration will take place in Paris, France, in French, apply the law of Gabon, and the clauses of the contract are interpreted by reference to Gabonese law.\nEach party bears the expenses and fees of its own arbitrator. The expenses and fees of the third arbitrator and other related expenses will be borne equally by the parties.\nThe arbitration procedure does not cause the execution of the contractual obligations to be suspended.--Art.  49",
+                "location":{
+                    "image":"66,701,103,626"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168420.js",
+                "id":168420
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e d'octroi du permis d'exploitation ou concession // Year of issue of title/permit",
+                "page":119,
+                "content":"1995--Art. 50\n",
+                "location":{
+                    "image":"108,700,150,629"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168132.js",
+                "id":168132
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat // Date of contract signature",
+                "page":119,
+                "content":"7 July 1995--Signature\n",
+                "location":{
+                    "image":"173,700,210,627"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168136.js",
+                "id":168136
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat // Year of contract signature",
+                "page":119,
+                "content":"1995--Signature\n",
+                "location":{
+                    "image":"221,699,256,631"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168137.js",
+                "id":168137
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession // Date of issue of title/permit",
+                "page":119,
+                "content":"7 July 1995--Art. 50\n",
+                "location":{
+                    "image":"54,703,91,622"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168131.js",
+                "id":168131
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas // Name and/or number of field, block or deposit",
+                "page":120,
+                "content":"Etame--Annexe 1\n",
+                "location":{
+                    "image":"69,701,110,608"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin/annotations/168130.js",
+                "id":168130
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Vaalco Gabon (Etame) Inc Marin, Gabon, 1995",
+        "data":{
+            "Type of Mining Title":"Production Sharing Contract",
+            "Resource":"Hydrocarbons",
+            "Countries":"Gabon",
+            "Signature Date":"07/07/1995",
+            "Contract term (duration) in Years":"3",
+            "Signature Year":"1995"
+        },
+        "created_at":"Wed, 16 Jul 2014 19:43:00 +0000",
+        "display_language":"eng",
+        "updated_at":"Sun, 29 Mar 2015 13:10:30 +0000",
+        "id":"1219882-psc-etame-marin",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1219882/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1219882/psc-etame-marin.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1219882/pages/psc-etame-marin-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1219882/pages/psc-etame-marin-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1219882/psc-etame-marin.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1219882/pages/psc-etame-marin-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1219882"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":266,
+        "canonical_url":"http://www.documentcloud.org/documents/1219882-psc-etame-marin.html"
+    }
+}

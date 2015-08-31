@@ -1,0 +1,304 @@
+{
+    "document":{
+        "file_hash":"c8609cbf70518c21e591b0a7e100a23a256111cf",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre minier associ\u00e9 au contrat//Type of mining title associated with the contract",
+                "page":1,
+                "content":"Constitution d'une soci\u00e9t\u00e9 commune pour l'exploitation des gisements d'or et des substances associ\u00e9es de \"Moku I-Beverendi\", territoire de Watsa, dans la province orientale--Page de titre\n",
+                "location":{
+                    "image":"564,696,610,626"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172113.js",
+                "id":172113
+            },
+            {
+                "access":"public",
+                "title":"Untitled Ressource(s) miniere(s) concern\u00e9es//Type of resources ",
+                "page":1,
+                "content":"Or, et des substances associees. Produits Marchands issus des Mines du Projet, tels que d\u00e9finis \u00e0 l'article 1.42 de la loi du 11 juillet 2002 portant Code Minier de la RDC.--Page de titres, Art. 1.1\n",
+                "location":{
+                    "image":"593,622,629,561"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172123.js",
+                "id":172123
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement//Deposit/site name",
+                "page":1,
+                "content":"Moku I-Beverendi--Page de titre\n",
+                "location":{
+                    "image":"619,696,660,624"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172114.js",
+                "id":172114
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude//Location, longitude and latitude",
+                "page":1,
+                "content":"Territoire de Watsa, dans la province orientale--Page de titre\n",
+                "location":{
+                    "image":"665,690,703,610"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172116.js",
+                "id":172116
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":6,
+                "content":"La soci\u00e9t\u00e9 mini\u00e8re de Kilo-Moto (SOKIMO)--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"111,92,149,29"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172111.js",
+                "id":172111
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":6,
+                "content":"Soci\u00e9t\u00e9 Mini\u00e8re de Kilo-Moto, soci\u00e9t\u00e9 par actions \u00e0 responsabilit\u00e9 limit\u00e9e de droit congolais, n\u00e9e de la transformation de l'entreprise publique Offices des Mines d'Or de Kilo-Moto et ayant son si\u00e8ge social \u00e0 Bunia et son si\u00e8ge administratif \u00e0 Kinshasa, RDC.--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"166,88,208,27"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172118.js",
+                "id":172118
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":6,
+                "content":"Soci\u00e9t\u00e9 Ferro (Swiss) AG, soci\u00e9t\u00e9 de droit Suisse dont le si\u00e8ge social se trouve \u00e0 Basel.--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"490,101,529,42"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172117.js",
+                "id":172117
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":6,
+                "content":"R\u00e9publique D\u00e9mocratique du Congo--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"64,701,100,630"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172110.js",
+                "id":172110
+            },
+            {
+                "access":"public",
+                "title":"Primes//Bonuses",
+                "page":15,
+                "content":"FERRO (Swiss) s'engage \u00e0 verser 5 millions de dollars am\u00e9ricains au titre de Pas de Porte portant sur la zone du Projet. Cette somme est \u00e0 la charge de FERRO (Swiss) et ne pourra devenir une dette de la Soci\u00e9t\u00e9 Commune. 50% de la somme sera vers\u00e9e \u00e0 la RDC et 50% \u00e0 SOKIMO--Art. 3.5.1\n",
+                "location":{
+                    "image":"443,697,487,629"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172127.js",
+                "id":172127
+            },
+            {
+                "access":"public",
+                "title":"Autre - Rente pour Sokimo//Other - Rent for Sokimo",
+                "page":15,
+                "content":"La Soci\u00e9t\u00e9 Commune versera une rente mensuelle de $60000 ou une rente annuelle de $720000 en faveur de SOKIMO jusqu'au d\u00e9but de la production commerciale du Projet. Puis ce montant sera porte \u00e0 $720000 par mois ou $1500000 apr\u00e8s le d\u00e9but des travaux de forage, ou au plus tard 18 mois apr\u00e8s la date de transfert des permis d'exploitation. Les parties conviennent \u00e9galement que FERRO (Swiss) versera \u00e0 SOKIMO pour le compte de la RDC $1.148.943,82 pour le paiement des droits superficiaires dus sur les Permis d'Exploitation.--Art.3.5.2 et 3.5.7\n",
+                "location":{
+                    "image":"803,704,849,645"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172129.js",
+                "id":172129
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining tax/royalty tax",
+                "page":16,
+                "content":"A compter du commencement de l'Exploitation Effective et jusqu'\u00e0 ce qu'elle cesse, le Soci\u00e9t\u00e9 Commune versera \u00e0 SOKIMO des royalties de 1%, calcul\u00e9es sur la m\u00eame base que la redevance pr\u00e9vue \u00e0 l'article 240 du Code.--Art. 3.5.3\n",
+                "location":{
+                    "image":"55,709,102,646"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172126.js",
+                "id":172126
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":17,
+                "content":"A compter de la date d'entr\u00e9e en vigueur du contrat, FERRO (Swiss) avancera les fonds afin de couvrir les d\u00e9penses de prospection et de recherche et les d\u00e9penses n\u00e9cessaires \u00e0 la r\u00e9alisation de toute \u00e9tude de faisabilit\u00e9 requise dans le cadre du projet.--Art. 4\n",
+                "location":{
+                    "image":"206,636,258,575"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172131.js",
+                "id":172131
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e ou envisag\u00e9e//Name and/or composition of the company created or anticipated",
+                "page":17,
+                "content":"Soci\u00e9t\u00e9 Commune constitu\u00e9e sous la forme de soci\u00e9t\u00e9 priv\u00e9e \u00e0 responsabilit\u00e9 limit\u00e9e. 35% du capital sera poss\u00e9d\u00e9 par SOKIMO (non-diluables) et 65% par FERRO (Swiss)--Art. 5.1\n",
+                "location":{
+                    "image":"438,704,475,641"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172119.js",
+                "id":172119
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit//Audit mechanisms",
+                "page":26,
+                "content":"Des auditeurs ind\u00e9pendants de r\u00e9putation internationale proposes par les commissaires aux comptes et agr\u00e9\u00e9s par le Conseil d g\u00e9rance r\u00e9aliseront un audit annuel des comptes de la Soci\u00e9t\u00e9 Commune conform\u00e9ment aux dispositions internationales applicables au soci\u00e9t\u00e9s mini\u00e8res.--Art. 7.3\n",
+                "location":{
+                    "image":"651,694,691,631"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172128.js",
+                "id":172128
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":28,
+                "content":"Le comite de direction devra donner priorite d'une mani\u00e8re \u00e9quitable aux parties, organisations et soci\u00e9t\u00e9s affili\u00e9es et aux candidats locaux, \u00e0 conditions que ces candidats pr\u00e9sentent des termes commerciaux concurrentiels et une qualit\u00e9, une garantie et des d\u00e9lais d'approvisionnement identiques \u00e0 ceux qu'offrent d'autres soci\u00e9t\u00e9s.--Art. 9.1\n",
+                "location":{
+                    "image":"823,699,870,628"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172125.js",
+                "id":172125
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":29,
+                "content":"La Soci\u00e9t\u00e9 Commune est libre de choisir, recruter, employer et licencier les travailleurs conform\u00e9ment aux r\u00e8glementations applicables. La soci\u00e9t\u00e9 commune fournira aux employ\u00e9s la formation n\u00e9cessaire pour ex\u00e9cuter leur travail de mani\u00e8re comp\u00e9tente et leur permettre de progresser dans le futur vers des postes plus complexes.--Art. 9.2\n",
+                "location":{
+                    "image":"206,702,254,637"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172124.js",
+                "id":172124
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":29,
+                "content":"Contrat r\u00e9gi par le droit de la RDC. En cas de lacune, le tribunal arbitral appliquera les principes g\u00e9n\u00e9raux du droit du commerce international.--Art. 10.1\n",
+                "location":{
+                    "image":"838,702,885,637"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172132.js",
+                "id":172132
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":30,
+                "content":"En cas d'\u00e9chec d'un r\u00e8glement amiable des litiges, tout diff\u00e9rend sera soumis \u00e0 l'arbitrage selon le R\u00e8glement d'Arbitrage de la Chambre de Commerce International, qui si\u00e9gera \u00e0 Paris.--Art. 10.3\n",
+                "location":{
+                    "image":"414,701,454,642"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172133.js",
+                "id":172133
+            },
+            {
+                "access":"public",
+                "title":"Autre - Normes environnementale//Other - Environmental Norms",
+                "page":30,
+                "content":"Afin de prot\u00e9ger l'environnement, la Soci\u00e9t\u00e9 Commune s'engage \u00e0 exploiter, maintenir et d\u00e9velopper ses activit\u00e9s en respectant le Code et les normes internationalement admises come \u00e9tant de bonnes pratiques mini\u00e8res. Avant le transfert des titres miniers, SOKIMO restera responsable de tous dommages. Apres le transfert, la Soci\u00e9t\u00e9 Commune sera responsable de tous dommages causes \u00e0 l'environnement ou par les Operations Mini\u00e8res.--Art. 11\n",
+                "location":{
+                    "image":"703,703,755,634"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172130.js",
+                "id":172130
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":31,
+                "content":"Le contrat est conclu pour une dur\u00e9e d\u00e9termin\u00e9e correspondant \u00e0 la validit\u00e9 des Permis d'Exploitation, y compris tout renouvellement et prolongation.--Art. 12.1\n",
+                "location":{
+                    "image":"414,703,455,635"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172122.js",
+                "id":172122
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":34,
+                "content":"Les parties ont conclu un accord de confidentialit\u00e9 le 11 janvier 2011, compl\u00e9t\u00e9 par un avenant le 25 f\u00e9vrier 2011, relatif aux \u00e9chang\u00e9s d'informations et \u00e0 l'acc\u00e8s au p\u00e9rim\u00e8tre minier de Moku I. Conform\u00e9ment \u00e0 cet accord, tous les rapports ou renseignement obtenus dans el cadre du projet sont traites de mani\u00e8re confidentielle et aucune partie ne peut les divulguer sans l'accord de l'autre, \u00e0 l'exception de la divulgation de renseignement aux \u00e9tablissements de financement, aux Autorit\u00e9s gouvernementales ou de renseignements confidentiels qui entrent dans le domaine public sans faute d'une partie.--Pr\u00e9ambule et Art. 16\n",
+                "location":{
+                    "image":"333,697,374,631"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172134.js",
+                "id":172134
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":37,
+                "content":"Fran\u00e7ais. Le fran\u00e7ais et l'anglais pourront \u00eatre utilis\u00e9s par les parties, mais en cas de contradiction, le fran\u00e7ais pr\u00e9vaudra.--Art. 18.7\n",
+                "location":{
+                    "image":"286,696,323,627"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172135.js",
+                "id":172135
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":39,
+                "content":"16/04/2011--Page de signatures\n",
+                "location":{
+                    "image":"215,705,247,642"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172120.js",
+                "id":172120
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":39,
+                "content":"2011--Page de signatures",
+                "location":{
+                    "image":"253,707,285,643"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274147-drc-ferro/annotations/172121.js",
+                "id":172121
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Sokimo - Ferro - DRC, 2011",
+        "data":{
+            "Signature Date":"16/04/2011",
+            "Type of Mining Title":"Cr\u00e9ation d'une soci\u00e9t\u00e9",
+            "Signature Year":"2011",
+            "Resource":"Gold",
+            "Countries":"Democratic Republic of Congo"
+        },
+        "created_at":"Wed, 13 Aug 2014 20:59:41 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 24 Mar 2015 19:12:41 +0000",
+        "id":"1274147-drc-ferro",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1274147/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1274147/drc-ferro.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1274147/pages/drc-ferro-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1274147/pages/drc-ferro-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1274147/drc-ferro.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1274147/pages/drc-ferro-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1274147"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":40,
+        "canonical_url":"http://www.documentcloud.org/documents/1274147-drc-ferro.html"
+    }
+}

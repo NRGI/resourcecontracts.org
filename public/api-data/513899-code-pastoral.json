@@ -1,0 +1,35 @@
+{
+    "document":{
+        "file_hash":"3e2d725fd36470840287a5c049a6f9dea116b698",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Code Pastoral",
+        "data":{
+            "Countries":"Guinea"
+        },
+        "created_at":"Sat, 10 Nov 2012 20:54:55 +0000",
+        "display_language":"eng",
+        "updated_at":"Fri, 21 Mar 2014 15:47:44 +0000",
+        "id":"513899-code-pastoral",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/513899/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513899/code-pastoral.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/513899/pages/code-pastoral-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513899/pages/code-pastoral-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513899/code-pastoral.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513899/pages/code-pastoral-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=513899"
+        },
+        "contributor":"Jed Miller",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":9,
+        "canonical_url":"http://www.documentcloud.org/documents/513899-code-pastoral.html"
+    }
+}

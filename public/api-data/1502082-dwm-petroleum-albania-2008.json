@@ -1,0 +1,424 @@
+{
+    "document":{
+        "file_hash":"9389f76f905c48e30c64e5a629a4f0163689cbf7",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":4,
+                "content":"Production Sharing Contract--Preamble",
+                "location":{
+                    "image":"128,226,160,197"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197149.js",
+                "id":197149
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas//Name and/or number of field, block or deposit",
+                "page":4,
+                "content":"Block 2-3--Preamble",
+                "location":{
+                    "image":"178,143,215,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197151.js",
+                "id":197151
+            },
+            {
+                "access":"public",
+                "title":"Nom du projet//Project title",
+                "page":4,
+                "content":"Production Sharing Contract for Exploration, Development and Production of Petroleum in Albania Onshire Block 2-3--Preamble",
+                "location":{
+                    "image":"180,174,216,141"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197150.js",
+                "id":197150
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":4,
+                "content":"National Agency of Natural Resources (referred to as AKBN), Ministry of Economy, Trade and Energy of Albania--Preamble",
+                "location":{
+                    "image":"324,124,358,96"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197155.js",
+                "id":197155
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":4,
+                "content":"Republic of Albania--Preamble",
+                "location":{
+                    "image":"324,150,355,119"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197147.js",
+                "id":197147
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":4,
+                "content":"DWM Petroleum AG--Preamble",
+                "location":{
+                    "image":"411,255,447,226"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197154.js",
+                "id":197154
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales //Parent companies or affilates outside of the country, if different from the above mentioned; and their corporate headquarters",
+                "page":4,
+                "content":"DWM Petroleum AG, incorporated in Switzerland-K72328003K (opencorporates.com)--Preamble",
+                "location":{
+                    "image":"412,279,445,250"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197148.js",
+                "id":197148
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":4,
+                "content":"2008--Preamble",
+                "location":{
+                    "image":"472,103,509,72"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197157.js",
+                "id":197157
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":4,
+                "content":"39640--Preamble",
+                "location":{
+                    "image":"477,128,512,99"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197156.js",
+                "id":197156
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":11,
+                "content":"Effective Date for this Contract is the date on which the Decree of the Council of Ministers of the Government of Albania approving this Contract enters in force--Art. 1.35",
+                "location":{
+                    "image":"191,143,222,112"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197153.js",
+                "id":197153
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":15,
+                "content":"If a Commercial discovery is made Production period will be 20 years for each field from the date of Initial Commercial Production and based on the Petroleum Law may be extended at DWM's option for 5 additional years, subject to AKBN approval. --Arts. 3-4, 6",
+                "location":{
+                    "image":"361,186,391,160"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197158.js",
+                "id":197158
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":15,
+                "content":"Petroleum --Art. 3.2",
+                "location":{
+                    "image":"429,132,467,104"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197159.js",
+                "id":197159
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":16,
+                "content":"At least 3 months prior to the beginning of each Calendar Year DWM will prepare an Exploration Work Program and Budget setting forth the Exploration operations which DWM plans to carry out during the Calendar Year. Each Work Program and Budget will be at least sufficient to satisfy DWM's minimum work obligations for the period it covers. During the First Exploration Period DWM will meet the obligations of the Minimum Work Programme and expend a minimum of US $8.5 million. Provided the exploration period is extended, in the Second and Third Exploration Periods DWM will meet the obligations of the Minimum Work Program and expend a minimum of US $8.3 million per period; Following Discovery, DWM will prepare and submit an annual Development Work Program and Budget as well as an annual Production schedule. --Arts. 4, 6.11",
+                "location":{
+                    "image":"120,307,149,283"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197181.js",
+                "id":197181
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":26,
+                "content":"DWM will record the data relating to the quantities of Available Petroleum and water produced each Calendar Month under this Contract, showing the share of Profit Petroleum corresponding to each Party according to this Contract. These data will be submitted to AKBN and the relevant Albanian tax authorities on a Monthly basis. Daily or weekly statistics regarding Production shall be available at all reasonable times for examination by AKBN. Within 60 days of each Calendar Quarter DWM willl submit a Statement of Development Activity reflecting all charges and credits related to Development and Production for that quarter; DWM will prepare and, at all times while this Contract is in force, maintain accurate and current records of its Petroleum Operations hereunder. DWM will furnish AKBN information and data concerning its Petroleum Operations; DWM will permit AKBN to have full and complete access to the Contract Area at all reasonable times with the right to observe the operations being conducted and to inspect all records and data kept by DWM. AKBN will have a period of 12 months from receipt of each  Statement of Cost Recovery in which to audit and raise objection to such statement. --Arts. 6.12 - 6.13, 15, Annex C",
+                "location":{
+                    "image":"106,136,141,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197175.js",
+                "id":197175
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, cr\u00e9dit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":28,
+                "content":"DWM is entitled to recover all costs and expense under this Contract up to 100% of Available Petroleum after the Royalty Tax and Government Allocation is deducted. Allowable costs include exploration expenditures, development expenditures and all operating expenses incurred after the date of commercial discovery; Expenses recoverable from Cost Recovery Petroleum  are detailed in Art. 2 of Annex C. The following expenses are not recoverable: costs incurred before the Effective Date, costs incurred beyond the Delivery Point, donations or contributions unless approved by AKBN, any production bonuses paid to AKBN under Art. 27, fines or penalties levied by an Albanian government agency, and interest on bank loans used to finance Petroleum Operations--Arts. 7.1 - 7.5, Annex C, Art 7.10",
+                "location":{
+                    "image":"207,151,240,125"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197167.js",
+                "id":197167
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":29,
+                "content":"All Available Petroleum remaining after deducting Royalty Tax, Government Allocation and Cost Petroleum shall be Profit Petroleum and the \"R\" Factor will be used for purposes of determining the Parties' respective allocations. The \"R\" Factor will be calculated as the ratio of DWM's cumulative receipts (DWM's Cost Recovery Petroleum and share of Profit Petroleum less taxes paid)  from the Effective Date to the end of the preceding Calendar Year to DWM's cumulative expenditures from the Effective Date to the end of the preceding Calendar Year. Each Calendar Month the \"R\" Factor is used to calculate DWM and AKBN's shares. If the \"R\" Factor is equal to or less than 1.5, DWM receives 100% of the Profit Oil and AKBN receives 0%. If the \"R\" Factor is larger than 1.5 and less than or equal to 2, DWM receives 95% and AKBN receives 5%. An \"R\" Factor between greater than 2 and less than or equal to 2.5, DWM receives 90% and AKBN receives 10%. Any R Factor larger than 2.5 and DWM receives 85% and AKBN receives 15%  --Art 7",
+                "location":{
+                    "image":"499,131,533,106"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197169.js",
+                "id":197169
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'imp\u00f4t sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloisonnement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":30,
+                "content":"If development of a discovery is determined to be economically marginal or becomes marginal due to its exploitation and additional tax incentives are required in order for DWM to proceed with development, DWM and AKBN will use their best efforts to obtain tax relief as needed.--Art. 7.6.2",
+                "location":{
+                    "image":"397,169,430,142"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197166.js",
+                "id":197166
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":31,
+                "content":"AKBN is also entitled to a Government Allocation on production calculated using the \"R\" Factor. If the \"R\" Factor is less than or equal to 1.5 the allocation is 0%. If the \"R\" Factor is greater than 1.5 but less than or equal to 2.0, the allocation is 2.5%. If the \"R\" Factor is greater than 2.0, the allocation is 5%; Profit Petroleum will be taken in kind at the Metering Point and freely and separately disposed at the respective risk, cost and expense by DWM and AKBN as applicable.--Art. 7.7",
+                "location":{
+                    "image":"183,133,218,108"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197172.js",
+                "id":197172
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":32,
+                "content":" Crude Oil sales to Affiliated Companies are allowed but are not taken into account in the process for determining  Crude Oil pricing; The value of Crude Oil will be the weighted average price actually received in freely convertible currency on F.O.B. point of export sales of Crude Oil from Albania under this Contract undertaken by DWM. For this purpose, all Crude Oil sales contract then currently in effect with non-Affiliated companies will be taken into account, excluding barter agreements and spot sales not reasonably consistent with prevailing market prices; Natural Gas prices will be the average of prices paid for Gas delivered to Italy for the 6 month period prior to the Month of delivery, as quoted in the internationally known publication World Gas Intelligence Weekly Inc.--Art. 7.11, Annex \"D\"",
+                "location":{
+                    "image":"106,137,142,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197176.js",
+                "id":197176
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":36,
+                "content":"DWM will pay the Royalty Tax in the amount of 10% of the Available Production pursuant to Albanian national tax law--Art. 9.1",
+                "location":{
+                    "image":"244,150,277,124"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197164.js",
+                "id":197164
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":36,
+                "content":"DWM is subject to a profit tax of 50% applicable on its share of Profit Petroleum. This rate is fixed for the life of the contract. In the unlikely event that the profit tax is increased in spite of existing Albanian law the profit sharing percentage will be automatically modified so that DWM will receive the same share of Profit Petroleum as if the profit tax rate had not changed--Arts. 9.2 - 9.3",
+                "location":{
+                    "image":"305,151,341,124"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197165.js",
+                "id":197165
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":37,
+                "content":"Other than Royalty Tax and Albanian profit tax, DWM, its Affiliated Companies and expatriated personnel shall be exempt from Albanian taxes, duties, fee, charges and levies of any nature whatsoever, including excise taxes, with respect to all activities relating to Petroleum Operations--Art. 9.6",
+                "location":{
+                    "image":"417,145,451,119"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197174.js",
+                "id":197174
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":42,
+                "content":"Technical data records related to Petroleum Operations under this Contract will be deemed to be strictly confidential and will not be divulged by AKBN, except to other government authorities, without the consent of DWM nor by DWM except to the extent required by any stock exchange on which share of DWM are quoted and certain other narrow exceptions. If the Contract is terminated in any Exploration Period DWM does not have to relinquish the data and information obtained for 5 years. These confidentiality provisions do not apply to data on areas relinquished by DWM.--Art. 15.5",
+                "location":{
+                    "image":"553,137,592,109"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197187.js",
+                "id":197187
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local//Local employment requirements",
+                "page":43,
+                "content":"Taking into account DWM operational requirements under this Contract, DWM are required to employ Albanian personnel if their professional skills, knowledge and experience are adequate to DWM's requirements. Contractor will reasonably cause its subcontractors to follow this procedure.\n\nDuring Production, DWM will gradually replace its non-executive expatriates personnel by qualified Albanian personnel, as available.--Art. 16.2",
+                "location":{
+                    "image":"566,142,601,115"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197160.js",
+                "id":197160
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Formation]//Other - [Additional Training Commitments]",
+                "page":44,
+                "content":"DWM is required to pay AKBN US $100,000 each year of the exploration period to be used for 1) the purchase of advanced technical literature, data, software, hardware and technical instruments, 2) sending AKBN employees to selected courses in the fields of petroleum science, engineering and management, and 3) coverage by AKBN of certain administrative expenditures related to implementing the contract.--Art. 16.4",
+                "location":{
+                    "image":"319,136,352,109"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197163.js",
+                "id":197163
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es a l'approvisionnement en biens et services locaux//Local procurement requirements",
+                "page":44,
+                "content":"Priority will be given to local contractors as long as prices, qualities and availability of their performance is comparable with international prices and performance. Preference will be given to locally manufactured materials, equipment, machinery and consumables, as long as their price, quality and time of delivery are comprable to internationally available materials. Any contract with an estimated value in excess of US $2 million will go through competitive bidding. --Art. 17",
+                "location":{
+                    "image":"656,293,679,271"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197162.js",
+                "id":197162
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":45,
+                "content":"This Contract will be governed and interpreted in accordance with the laws of Albania to the extent they are applicable with due recognition of internationally accepted laws. --Art. 18.1",
+                "location":{
+                    "image":"324,130,364,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197183.js",
+                "id":197183
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":45,
+                "content":"If any new provisions or changes or amendments to Albanian laws or regulations, or any changes in their interpretation impose on BWM new or higher taxes, duties, rights, payments or any other obligations, with respect to those expressly considered applicable to DWM under the terms of the Contract, the profit sharing percentages established in this Contract will be adjusted to maintain the economic equilibrium by allowing DWM to receive the same net share of profit sharing Petroleum as if no changes had occurred.--Arts. 18.4 - 18.6",
+                "location":{
+                    "image":"509,134,547,107"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197186.js",
+                "id":197186
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":47,
+                "content":"Any dispute, controversy, claim or difference of opinion, arising out of or relating to this Contract or the breach, termination or validity thereof, or to the Petroleum Operations carried out hereunder, will be finally and conclusively settled by arbitration in accordance with the UNCITRAL Arbitration Rules. There will be 3 arbitrators, one appointed by each party and the third chosen by the other two arbitrators. Arbitration will take place in Victoria, British Columbia (Canada) in English. The Albanian Government expressly waives any right to claim sovereign immunity in connection with any arbitration proceeding or any proceeding to enforce any arbitration award.  --Art. 21",
+                "location":{
+                    "image":"396,299,425,274"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197184.js",
+                "id":197184
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":49,
+                "content":"DWM will be entitled for the purpose of transporting Petroleum from the Contract Area to the point of export to construct and operate any Pipelines and related facilities, as well as other transportation and/or terminal facilities within or outside the Contract Area, in accordance with an approved Development Work Program and Budget. Facilities outside the Contract Area will not unreasonably interfere with AKBN's or third parties' operations.--Art. 22",
+                "location":{
+                    "image":"140,299,168,275"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197182.js",
+                "id":197182
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Responsabilit\u00e9 environnementale]//Other - [Environmental liability]",
+                "page":53,
+                "content":"Whenever DWM has been unable to avoid contamination of the environment it will be responsible for taking reasonable steps to remedy any significant negative environmental impact directly caused by operations and return it to the condition it was in on the Effective Date; DWM shall, in consultation with AKBN, develop an abandonment plan detailing the removal and abandonment measures it will carry out upon completion of testing, appraisal or production. This plan will be periodically updated. Ten years prior to the estimated day of termination of production operations an amount equal to the abandonment budget shall be accrued on the books of an account to be utilized to meet the costs of abandonment. --Arts. 25, 23.5",
+                "location":{
+                    "image":"181,305,209,277"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197180.js",
+                "id":197180
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":53,
+                "content":"DWM must comply with Albanian environmental law including: \"On Environmental Protection\",  \"On Environmental Impact Assessment\", \"On Protection of Marine Envrionmental from Pollution and Damage\", \"On environmental Treatment of Waste Waters\", \"On Environmental Administration of Solid Waste\" and \"On Chemical Substances and Preparations.\" DWM will adopt internationally accepted measures to avoid or minimize environmental contamination and degradation to the quality of life or health of human beings, animals and vegetative resources; Prior to relinquishing any portion of the Contract Area , DWM will take all reasonable steps to remedy any significant negative environmental impact directly caused by Petroleum Operations, all to the legal extent required by legal requirements in effect on the Effective Date--Art. 25.1",
+                "location":{
+                    "image":"225,143,256,118"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197178.js",
+                "id":197178
+            },
+            {
+                "access":"public",
+                "title":"Primes//Bonuses",
+                "page":54,
+                "content":"DWM will pay a one-time signature bonus of US $400,000 in the form of US $160,000 cash and US $240,000 for the copying of Albanian seismic data; DWM will pay a production bonus of US $100,000 on the start up of production; DWM will pay bonuses of US $500,000 when average daily crude oil production over any 90 day period reaches 15,000 bpd and US $1 million when production reaches 30,000 bpd over any 90 day period. --Art. 27",
+                "location":{
+                    "image":"227,282,255,254"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197170.js",
+                "id":197170
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":54,
+                "content":"English and Albanian versions will have equal value, however, the English version will prevail in any conflicts of construction or interpretation--Art. 26",
+                "location":{
+                    "image":"80,312,118,282"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197188.js",
+                "id":197188
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) ",
+                "page":57,
+                "content":"Location coordinates detailed in Annex A including exclusion zones for existing oil fields, onshore--Annex A",
+                "location":{
+                    "image":"106,301,134,271"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008/annotations/197152.js",
+                "id":197152
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"DWM Petroleum, Block 2-3 - Albania, 2008",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2008",
+            "Resource":"Hydrocarbons",
+            "Countries":"Albania"
+        },
+        "created_at":"Wed, 14 Jan 2015 03:46:52 +0000",
+        "display_language":"eng",
+        "updated_at":"Sat, 11 Apr 2015 17:09:24 +0000",
+        "id":"1502082-dwm-petroleum-albania-2008",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1502082/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1502082/dwm-petroleum-albania-2008.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1502082/pages/dwm-petroleum-albania-2008-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1502082/pages/dwm-petroleum-albania-2008-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1502082/dwm-petroleum-albania-2008.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1502082/pages/dwm-petroleum-albania-2008-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1502082"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":75,
+        "canonical_url":"http://www.documentcloud.org/documents/1502082-dwm-petroleum-albania-2008.html"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"b2aa2b576d6d048a2a9ada61be6b6522c8765d6d",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Ganoub, Centurion - Egypt, 2004",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Signature Year":"2004",
+            "Resource":"Hydrocarbons",
+            "Countries":"Egypt"
+        },
+        "created_at":"Tue, 20 Jan 2015 03:31:38 +0000",
+        "display_language":"eng",
+        "updated_at":"Fri, 10 Apr 2015 16:12:39 +0000",
+        "id":"1505355-ganoub-centurion-egypt-2004",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505355/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505355/ganoub-centurion-egypt-2004.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505355/pages/ganoub-centurion-egypt-2004-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505355/pages/ganoub-centurion-egypt-2004-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505355/ganoub-centurion-egypt-2004.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505355/pages/ganoub-centurion-egypt-2004-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505355"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":107,
+        "canonical_url":"http://www.documentcloud.org/documents/1505355-ganoub-centurion-egypt-2004.html"
+    }
+}

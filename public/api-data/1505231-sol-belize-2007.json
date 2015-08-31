@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"9292efafebbf70c10cd748065fae5dd652f6fed4",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Sol - Belize, 2007",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2007",
+            "Resource":"Hydrocarbons",
+            "Countries":"Belize"
+        },
+        "created_at":"Mon, 19 Jan 2015 23:09:08 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 16 Mar 2015 03:11:37 +0000",
+        "id":"1505231-sol-belize-2007",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505231/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505231/sol-belize-2007.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505231/pages/sol-belize-2007-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505231/pages/sol-belize-2007-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505231/sol-belize-2007.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505231/pages/sol-belize-2007-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505231"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":64,
+        "canonical_url":"http://www.documentcloud.org/documents/1505231-sol-belize-2007.html"
+    }
+}

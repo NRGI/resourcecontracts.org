@@ -1,0 +1,192 @@
+{
+    "document":{
+        "file_hash":"10564a3dcbcedb07886bfead9e2071c97db44a48",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":4,
+                "content":"L'amodiataire doit \u00eatre enregistr\u00e9 en RDC--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"337,673,370,613"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171953.js",
+                "id":171953
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":4,
+                "content":"R\u00e9publique D\u00e9mocratique du Congo--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"89,678,122,612"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171950.js",
+                "id":171950
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":4,
+                "content":"La G\u00e9n\u00e9rale des Carri\u00e8res des Mines (GECAMINES), entreprise publique de la RDC--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"93,609,132,549"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171951.js",
+                "id":171951
+            },
+            {
+                "access":"public",
+                "title":"Type du titre minier associ\u00e9 au contrat//Type of mining title associated with the contract",
+                "page":5,
+                "content":"Contrat type d'amodiation utilis\u00e9 par la soci\u00e9t\u00e9 GECAMINE. Il suffit de modifier la contrepartie et quelques informations, tels que la nature des gisements, pour obtenir un contrat d'amodiation (ou allocation d'un terrain de l'espace public \u00e0 l'usage d'une entreprise priv\u00e9e)--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"100,697,130,631"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171952.js",
+                "id":171952
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":9,
+                "content":"La dur\u00e9e de la convention correspond \u00e0 la dur\u00e9e du permis d'exploitation et est de toute fa\u00e7on inferieure \u00e0 20 ans--Art. 4\n",
+                "location":{
+                    "image":"202,581,229,515"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171955.js",
+                "id":171955
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":11,
+                "content":"L'amodiataire maintiendra les installations et \u00e9quipements en bon \u00e9tat--Art. 7.2\n",
+                "location":{
+                    "image":"216,649,252,583"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171960.js",
+                "id":171960
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact//Impact assessment ",
+                "page":12,
+                "content":"L'amodiataire devra financer et r\u00e9aliser l'Etude d'Impact Environnementale du projet et devra fournir un rapport trimestriel sur le respect de cette \u00e9tude.--Art. 8.2 et 8.5 et 8.7\n",
+                "location":{
+                    "image":"404,680,432,611"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171958.js",
+                "id":171958
+            },
+            {
+                "access":"public",
+                "title":"Primes//Bonuses",
+                "page":12,
+                "content":"L'amodiataire versera un loyer \u00e0 l'amodiant pour l'usage du terrain chaque trimestre. En phase d'exploitation, l'amodiataire paiera les droits superficiaires annuels par carres aff\u00e9rents au prix d'exploitation--Art. 8.6 et Art. 11.3\n",
+                "location":{
+                    "image":"732,695,763,615"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171957.js",
+                "id":171957
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining tax/royalty tax",
+                "page":17,
+                "content":"Paiement d'un certain pourcentage de royalties \u00e0 l'amodiant par l'amodiataire, distincte de la redevance mini\u00e8re pr\u00e9vue par le Code Minier. Ces royalties seront pay\u00e9es mensuellement.--Art. 11.4\n",
+                "location":{
+                    "image":"215,685,250,612"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171956.js",
+                "id":171956
+            },
+            {
+                "access":"public",
+                "title":"Autre - Cl\u00f4ture//Other - Closure",
+                "page":18,
+                "content":"Pendant la phase de cl\u00f4ture du projet, l'amodiataire devra r\u00e9aliser le plan de r\u00e9habilitation environnementale et obligation d'obtenir une attestation de lib\u00e9ration environnementale.--Art. 12.2 et Art. 12.6\n",
+                "location":{
+                    "image":"193,670,223,612"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171959.js",
+                "id":171959
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":25,
+                "content":"Toutes Donn\u00e9es et informations fournies \u00e0 une Partie ou re\u00e7ues par elle en relation avec la pr\u00e9sente Convention, le Permis d'Exploitation et le P\u00e9rim\u00e8tre du Projet seront trait\u00e9es comme confidentielles et ne seront pas divulgu\u00e9es sans I' accord pr\u00e9alable et \u00e9crit de l'autre Partie (qui ne pourra refuser son accord sans motif raisonnable), \u00e0 aucun tiers, \u00e0 moins qu'une telle divulgation ne soit requise pour obtenir un financement ou ne soit requise par la loi ou par toute autorit\u00e9 r\u00e8glementaire comp\u00e9tente.  Les parties ajouteront a\nl'Annexe E les descriptions des informations confidentielles au fur et a mesure qu'elles les\nfournissent ou les re\u00e7oivent.--Art. 14",
+                "location":{
+                    "image":"84,691,124,619"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171963.js",
+                "id":171963
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":29,
+                "content":"Droit de la DRC--Art. 18.1\n",
+                "location":{
+                    "image":"224,670,255,607"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171961.js",
+                "id":171961
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":29,
+                "content":"A d\u00e9faut d'une solution apr\u00e8s tentative de r\u00e8glement  \u00e0 l'amiable chaque Partie aura le droit de soumettre le litige ,pour le cas des Amodiataires nationaux : \u00e0 l'arbitrage conform\u00e9ment aux dispositions des articles 159 a 201 du Code de Proc\u00e9dure Civile Congolais et pour le cas des Amodiataires contr\u00f4les par les \u00e9trangers :  \u00e0 la cour d'arbitrage de la Chambre de Commerce International de Paris pour un r\u00e8glement d\u00e9finitif conform\u00e9ment aux r\u00e8gles d'arbitrage de ladite Institution en utilisant le droit congolais--Art. 18.3\n",
+                "location":{
+                    "image":"427,688,462,604"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171962.js",
+                "id":171962
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":33,
+                "content":"GECAMINES--Page de signatures\n",
+                "location":{
+                    "image":"704,685,738,577"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract/annotations/171954.js",
+                "id":171954
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Model contract - amodiation - DRC",
+        "data":{
+            "Type of Mining Title":"Contrat type d'amodiation",
+            "Contract Term (duration) in Years":"20",
+            "Countries":"Democratic Republic of Congo"
+        },
+        "created_at":"Wed, 13 Aug 2014 19:32:44 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 10 Dec 2014 18:09:14 +0000",
+        "id":"1274082-drc-model-contract",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1274082/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1274082/drc-model-contract.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1274082/pages/drc-model-contract-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1274082/pages/drc-model-contract-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1274082/drc-model-contract.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1274082/pages/drc-model-contract-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1274082"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":33,
+        "canonical_url":"http://www.documentcloud.org/documents/1274082-drc-model-contract.html"
+    }
+}

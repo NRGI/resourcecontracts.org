@@ -1,0 +1,437 @@
+{
+    "document":{
+        "file_hash":"4dc77166f65b938c4c186ae8501444788cc5be25",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":4,
+                "content":"Afghanistan--Preamble\n",
+                "location":{
+                    "image":"113,106,143,72"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100457.js",
+                "id":100457
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":4,
+                "content":"Majd Industrial Pishgaman Company (\"MIP\")--Preamble, Definitions\n",
+                "location":{
+                    "image":"115,69,150,32"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100458.js",
+                "id":100458
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":4,
+                "content":"The Ministry of Mines of the Government of the Islamic Republic of Afghanistan--Preamble\n",
+                "location":{
+                    "image":"123,648,153,614"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100470.js",
+                "id":100470
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":4,
+                "content":"Exploration and Mining Licenses for coal and all associated minerals required for the production of cement in the Zenda Jan plant, leased from the Government to MIP as per the terms of the agreement--Preamble, Section 2.2\n",
+                "location":{
+                    "image":"168,84,203,46"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100460.js",
+                "id":100460
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":4,
+                "content":"Coal and other associated minerals for the production of cement--Preamble \n",
+                "location":{
+                    "image":"196,653,228,622"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100474.js",
+                "id":100474
+            },
+            {
+                "access":"public",
+                "title":"Lieu-dit habit\u00e9 le plus proche//Closest community",
+                "page":4,
+                "content":"Zenda Jan District, Herat, Afghanistan--Preamble\n",
+                "location":{
+                    "image":"218,99,253,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100466.js",
+                "id":100466
+            },
+            {
+                "access":"public",
+                "title":"Nom du projet//Project title",
+                "page":4,
+                "content":"Herat Cement--Preamble\n",
+                "location":{
+                    "image":"44,300,80,261"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100462.js",
+                "id":100462
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e d'octroi du permis d'exploitation ou concession//Year of issue of title/permit",
+                "page":4,
+                "content":"2012--Preamble and Definitions\n",
+                "location":{
+                    "image":"48,391,87,359"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100468.js",
+                "id":100468
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":4,
+                "content":"18/03/2012--Preamble and Definitions\n",
+                "location":{
+                    "image":"52,349,87,317"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100467.js",
+                "id":100467
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":4,
+                "content":"20 12--Preamble\n",
+                "location":{
+                    "image":"55,479,91,445"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100472.js",
+                "id":100472
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":4,
+                "content":"18.03.2012--Preamble\n",
+                "location":{
+                    "image":"57,437,89,406"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100471.js",
+                "id":100471
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":4,
+                "content":"Majd Industrial Pishgaman Company --Preamble\n",
+                "location":{
+                    "image":"79,646,110,610"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100469.js",
+                "id":100469
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":5,
+                "content":"Majd Industrial Pishgaman Company (\"MIP\")--Preamble, Definitions\n",
+                "location":{
+                    "image":"379,122,410,89"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100459.js",
+                "id":100459
+            },
+            {
+                "access":"public",
+                "title":"Type du titre minier associ\u00e9 au contrat//Type of mining title associated with the contract",
+                "page":6,
+                "content":"Exploration and Mining Licenses for coal and all associated minerals required for the production of cement in the Zenda Jan plant, leased from the Government to MIP as per the terms of the agreement--Preamble, Section 2.2\n",
+                "location":{
+                    "image":"274,121,307,83"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100461.js",
+                "id":100461
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":6,
+                "content":"MIP shall be entitled to the protection provided by all applicable provisions of the Laws of Afghanistan, including with respect to expropriation, nationalization, deprivation and confiscation of any assets--Section 2.4\n",
+                "location":{
+                    "image":"394,118,428,78"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100499.js",
+                "id":100499
+            },
+            {
+                "access":"public",
+                "title":"Autre - Dispositions diverses//Other - Miscellaneous provisions",
+                "page":6,
+                "content":"MIP shall be entitled to the protection provided by all applicable provisions of the Laws of Afghanistan, including with respect to expropriation, nationalization, deprivation and confiscation of any assets--Section 2.4\n",
+                "location":{
+                    "image":"395,77,434,36"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100500.js",
+                "id":100500
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":6,
+                "content":"MIP is obligated to construct cement production facilities with a design capacity of 1 million tons per year, with an estimated investment of $150,000,000 USD. Construction shall be completed for production of cement to start within a term of 3 years, and in the first year MIP is obliged to produce 60% of the agreed annual production. For accounting purposes, MIP's investment in connection with the cement facilities shall be initially estimated in the Feasibility Study, with the final amount of the initial investment determined within 6 months following the date upon which MIP commences commercial operation.--Sections 3.1, 3.5 and Article 9\n",
+                "location":{
+                    "image":"541,123,576,78"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100492.js",
+                "id":100492
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":6,
+                "content":"MIP shall build the cement production facilities and pay for all associated costs. Additionaly, MIP shall build a number of facilities destined to the performance of social services, as well as of a road connecting the cement facilities to the main road (11 km), and will be responsible for maintaining and repairing the necessary roads and facilities. Other construction commitment are related to the installation of weighing devices and a laboratory for cement quality control. All fixed assets will be automatically transferred to the Government at the end of the contract's term, without the payment of any amounts as compensation.--Section 3.1; Article 13, Section 1, and Section 14.14\n",
+                "location":{
+                    "image":"581,118,617,80"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100494.js",
+                "id":100494
+            },
+            {
+                "access":"public",
+                "title":"Autre - Obligations financi\u00e8res du d\u00e9tenteur du titre//Other - Developer's financial obligations",
+                "page":7,
+                "content":"A performance bond in the amount of $1,200,000 USD shall be provided by MIT to the Government to ensure construction of a minimum 1-million tpy cement production facility, and its related infrastructure (the amounts associated with this bond will be returned to MIP in accordance with the developments of the construction works and the production's results). A guarantee bond in the amount of $200,000 USD shall be presented as compensation for any unmitigated environmental, social, or any other damages associated with the cement production facilities. A guarantee bond in the amount of $100,000 USD will be presented as compensation for any damanfes associated with the production of coal.   . Additionally, a surface use fee will be paid annually during the exploration and explotation phases for the operations area and any areas affected by the operations in the amount of US$ 25 per hectare.  Finally, in case MIP decides to utilize any or all of the Zenda Jan assets (lands, buildings, machines and equipment), MIP shall pay to the government an annual amount of $1,800,000.00 (in case it decides to use all assets), or another amount to be determined by the parties if it decides to use only certain assets.--Article 12,  Article 11, Section 3.18\n",
+                "location":{
+                    "image":"470,120,501,81"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100486.js",
+                "id":100486
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licences, et permis)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":8,
+                "content":"The Ministry of Mines will grant rights to subsurface water, and facilitate the use of surface water, as may be necessary for this Contract.--Art. 4.4\n",
+                "location":{
+                    "image":"369,150,391,117"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/151617.js",
+                "id":151617
+            },
+            {
+                "access":"public",
+                "title":"La s\u00e9curit\u00e9 physique, la protection de la propri\u00e9t\u00e9, et / ou l'utilisation de gardes//Physical security, protection of property, and/or use of guards",
+                "page":8,
+                "content":"The government shall be responsible for the security of the Cement Production Facilities, as provided for in the Security Agreement to be executed between the parties.--Art. 4.6\n",
+                "location":{
+                    "image":"422,152,450,118"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/151616.js",
+                "id":151616
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":8,
+                "content":"Before exploration activities may commence, MIP will submit an environmental and social proposal detailing the anticipated effects of the exploration work on the environment and affected communities. It will also detail an Environmental and Social Impact Assessment (ESIA), dealing with measures for safeguarding of and reparation of damage to the environment and affected communities. For the mining of all minerals, MIP must submit  a problem that includes an Environmental and Social Management Plan (EMSP) dealing with measures for safeguarding and reparation of damage and giving special attention to waste material. Additionaly, MIP shall prepare an ESIA of the cement production activities and operations, and submit it to the Government prior to commencing construction of the cement production facilities. It shall also prepare a cement production ESMP that presents a detailed approach to the management, mitigation or elimination of cement production impacts and risks to the environment and local residents. MIP shall also prepare a plan for the usage of water and the protection of local communities.   --Section 5.1, 6.1 and 14.9 \n",
+                "location":{
+                    "image":"609,131,647,91"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100487.js",
+                "id":100487
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement//Deposit/site name",
+                "page":11,
+                "content":"Herat Pahlawanan Coal Deposit, Karukh district, Herat Province--Section 7.1\n",
+                "location":{
+                    "image":"550,118,583,78"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100463.js",
+                "id":100463
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude//Location, longitude and latitude",
+                "page":11,
+                "content":"As informed in Sections 7.1 and 8.1 coordinates are missing in the contract--Section 7.1, Section 8.1\n",
+                "location":{
+                    "image":"598,116,634,76"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100464.js",
+                "id":100464
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining tax/royalty tax",
+                "page":16,
+                "content":"As for mined raw materials utilized in the production of cement, MIP shall pay $2.00 USD per ton of cement manufactured. For the extraction of coal, MIP shall pay the amount of $20.11 USD per ton of coal extracted. --Article 10\n",
+                "location":{
+                    "image":"487,124,524,85"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100479.js",
+                "id":100479
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":16,
+                "content":"The Government and the Ministry of Mines shall each have the power to audit and inspect books and records of MIP for purposes of calculating the royalties' amounts due. An adequate reporting procedure will be set up for the purpose of enabling each party to be informed of the performance of its activities. MIP shall submit to the Ministry of Mines quaterly and annual reports of its activities. MIP is to provide audited financial statements annually in accordance with International Finance Reporting Standards, together with production statistics in reasonable detail.  The accounts should be audited by an internally recognized acounting firm acceptable to the Government of Aghanistan.--Sections 10.1, 14.3, 14.11\n",
+                "location":{
+                    "image":"542,130,575,94"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100483.js",
+                "id":100483
+            },
+            {
+                "access":"public",
+                "title":"Convention de d\u00e9veloppement local//Local development agreement",
+                "page":17,
+                "content":"MIP agrees to build a health clinic for workers and local residents, residences for workers, a center of highr education for training and capacitation of Afghan nationals for all classifications of employment in the cement production facilities, a mosque, recreational facilities, a school for the families of employees and other local children, as well as to reconstruct 11km of a road linking the facilities to the general road.--Article 13\n",
+                "location":{
+                    "image":"590,115,628,67"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100475.js",
+                "id":100475
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9installation des habitants//Resettlement",
+                "page":17,
+                "content":"MIP Co. agrees to build  residences for workers, and if the property of local people is damaged it's activities, MIP Co. will  pay compensation in an amount fixed by negotiation --Art. 13\n",
+                "location":{
+                    "image":"596,150,627,115"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/151615.js",
+                "id":151615
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":18,
+                "content":"MIP is required to engage necessary employees, mine workers, and expertise within the country. When there is no internal expertise available, and with the agreement of the Government, MIP may employ foreign expertise. Afghan nationals shall be employed to the extent practible in all classifications of employment. MIP shall also develop a training program and facility of suitable capacity for the training of Afghan citizens.   There must be equal treatment, facilities and opportunities for all employees (Afghan and non-Afghan) in the same job classification, regardless of nationality.--Section 14.4\n",
+                "location":{
+                    "image":"497,120,531,83"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100477.js",
+                "id":100477
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":19,
+                "content":"MIP (and its subcontractors) shall use its best efforts to purchase goods and services in Afghanistan if available within the country with reasonably comparable quality and delivery time, and at comparable price than goods available from abroad, including freight.--Section 14.6\n",
+                "location":{
+                    "image":"434,126,471,89"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100478.js",
+                "id":100478
+            },
+            {
+                "access":"public",
+                "title":"Autre - Obligations \u00e0 l'\u00e9gard des communaut\u00e9s, la protection sociale et l\u2019\u00e9conomie locale/r\u00e9gionale//Other - Community and social obligations",
+                "page":20,
+                "content":"MIP shall be required to compensate local residents adversely affected by development activities authorized by the contract. --Section 14.9, item 5\n",
+                "location":{
+                    "image":"457,152,488,112"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100490.js",
+                "id":100490
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":20,
+                "content":"In accordance with Tax Laws of Afghanistan--Section 14.11, item 1\n",
+                "location":{
+                    "image":"665,147,696,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100480.js",
+                "id":100480
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":22,
+                "content":"Any dispute or controversy not solved by mutual agreement shall first be referred to the Common Chamber of Commerce between Iran and Afghanistan. In case such organ does not accept the dispute, then the parties will refer the dispute to the Arbitration Institute of the Stockholm Chamber of Commerce pursuant to the Rules of Arbitration of the United Nations Comission on International Trade Law (UNCITRAL). The place of arbitration shall be Stockholm and the tribunal shall be composed of 3 arbitrators appointed in accordance with the UNCITRAL rules --Section 14.17.\n",
+                "location":{
+                    "image":"546,82,582,43"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100498.js",
+                "id":100498
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":25,
+                "content":"The contract shall be valid from the date of its execution and for a period of 30 years thereafter. After the initial 30-year period, the contract may be renewed by mutual agreement for periods of 5 years at a time. --Article 15\n",
+                "location":{
+                    "image":"523,127,558,84"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100473.js",
+                "id":100473
+            },
+            {
+                "access":"public",
+                "title":"Exigences des consultations communautaires//Requirements for community consultation ",
+                "page":25,
+                "content":"MIT shall engage in consultation with appropriate religious and government oficials concerning the implementation of special places were religious activities shall be conducted.--Article 17\n",
+                "location":{
+                    "image":"722,125,754,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100476.js",
+                "id":100476
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":27,
+                "content":"The laws of Afghanistan--Article 20\n",
+                "location":{
+                    "image":"162,112,196,74"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf/annotations/100497.js",
+                "id":100497
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Majd Industrial Pishgaman - Afghanistan, 2012",
+        "data":{
+            "Type of Mining Title":"Exploration Permit/License",
+            "Resource":"Coal,Other Minerals",
+            "Countries":"Afghanistan",
+            "Signature Date":"18/03/2012",
+            "Contract Term (duration) in Years":"30",
+            "Signature Year":"2012"
+        },
+        "created_at":"Thu, 25 Apr 2013 19:03:29 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 16 Mar 2015 22:12:47 +0000",
+        "id":"693483-herat-cement-contract-en-pdf",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/693483/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/693483/herat-cement-contract-en-pdf.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/693483/pages/herat-cement-contract-en-pdf-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/693483/pages/herat-cement-contract-en-pdf-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/693483/herat-cement-contract-en-pdf.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/693483/pages/herat-cement-contract-en-pdf-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=693483"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":27,
+        "canonical_url":"http://www.documentcloud.org/documents/693483-herat-cement-contract-en-pdf.html"
+    }
+}

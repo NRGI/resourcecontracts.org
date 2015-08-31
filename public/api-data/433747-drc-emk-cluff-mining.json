@@ -1,0 +1,316 @@
+{
+    "document":{
+        "file_hash":null,
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Democratic Republic of Congo --Parties\n",
+                "location":{
+                    "image":"54,505,84,464"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74129.js",
+                "id":74129
+            },
+            {
+                "access":"public",
+                "title":"Nom de la Soci\u00e9t\u00e9 locale//Local company name",
+                "page":3,
+                "content":"Entreprise Mini\u00e8re de Kisenge Manganese--Parties\n",
+                "location":{
+                    "image":"48,493,76,459"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74130.js",
+                "id":74130
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales //Parent companies or affilates outside of the country, if different from the above mentionned; and their corporate headquarters",
+                "page":3,
+                "content":"Cluff Mining Limited, soci\u00e9t\u00e9 anglaise enregistr\u00e9e \u00e0 Londres, et Cluff Mining Congo SPRL (Clumingo), une filiale de Cluff Mining Limited au Congo--Parties\n",
+                "location":{
+                    "image":"48,538,79,507"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74131.js",
+                "id":74131
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":7,
+                "content":"Octroi de Droit minier--Art.2\n",
+                "location":{
+                    "image":"201,113,226,80"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74133.js",
+                "id":74133
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e ou envisag\u00e9e//Name and/or composition of the company created or anticipated",
+                "page":7,
+                "content":"EMK-MN et Cluff vont cr\u00e9er dans les 6 mois suivant la ratification de la convention, une soci\u00e9t\u00e9 enregistr\u00e9e au Congo et nomm\u00e9e SCARL. Cette soci\u00e9t\u00e9 d\u00e9tiendra les droits miniers sur les Zones d'Exclusives de Recherches. EMK-MN d\u00e9tiendra 20% du capital avec option d'achat de 10% suppl\u00e9mentaire de SCARL et Cluff 80%.--Art. 4 and Art. 5\n",
+                "location":{
+                    "image":"681,121,706,81"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74138.js",
+                "id":74138
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e ou envisag\u00e9e//Name and/or composition of the company created or anticipated",
+                "page":8,
+                "content":"EMK-MN et Cluff vont cr\u00e9er dans les 6 mois suivant la ratification de la convention, une soci\u00e9t\u00e9 enregistr\u00e9e au Congo et nomm\u00e9e SCARL. Cette soci\u00e9t\u00e9 d\u00e9tiendra les droits miniers sur les Zones d'Exclusives de Recherches. EMK-MN d\u00e9tiendra 20% du capital avec option d'achat de 10% suppl\u00e9mentaire de SCARL et Cluff 80%.--Art. 4 and Art. 5\n",
+                "location":{
+                    "image":"183,113,212,73"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74139.js",
+                "id":74139
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":8,
+                "content":"L'Etat n'a aucun droit de participation dans la SCARL. La participation d'EMK-MN dans la SCARL comprendra toute participation \u00e0 laquelle l'Etat aura droit dans le projet selon la loi en vigueur.--Art. 5.2, Art 6.1.1\n",
+                "location":{
+                    "image":"338,106,364,74"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74149.js",
+                "id":74149
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":10,
+                "content":"M\u00e9taux de base, m\u00e9taux precieux, m\u00e9taux du groupe du platine, les diamants, et notemment le mangan\u00e8se.--Art. 7.1\n",
+                "location":{
+                    "image":"459,110,488,74"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74143.js",
+                "id":74143
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":10,
+                "content":"Clumingo s'engage pour la premi\u00e8re p\u00e9riode de validit\u00e9 de 5 ans, \u00e0 r\u00e9aliser le programme de travaux dont l'ex\u00e9cution lui est confi\u00e9e par la SCARL tel que d\u00e9crit dans l'annexe 2 afin de d\u00e9couvrir les m\u00e9taux dans les Zones Exclusives de recherches et leurs valeurs. Ces zones sont valables 5 ans et renouvelables deux fois. Apres leur expiration, la SCARL devra livrer \u00e0 l'Etat un rapport et toutes les cartes et donn\u00e9es concernant les recherches. Pour chaque gisement \u00e9conomiquement viable, la SCARL aura le droit d'exploiter ce gisement apr\u00e8s avoir pr\u00e9sente une \u00e9tude de faisabilit\u00e9 bancable.--Art. 7.3 and Art. 8 and Art.9\n",
+                "location":{
+                    "image":"590,116,621,79"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74155.js",
+                "id":74155
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":11,
+                "content":"Les rapports et donn\u00e9es fournis dans le cadre des travaux de prospection et de recherche de la SCARL ne seront pas transmis \u00e0 des tiers par l'Etat, sans accord pr\u00e9alable \u00e9crit de la SCARL.--Art. 8.6\n",
+                "location":{
+                    "image":"837,147,864,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74165.js",
+                "id":74165
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":12,
+                "content":"Exemption totale de toute imp\u00f4t \u00e0 l'exception des taxes r\u00e9mun\u00e9ratoires d'inscription ou de renouvellement des droits miniers pr\u00e9vues par l'article 76 de la loi mini\u00e8re , contribution professionnelle, contribution sur le chiffre d'affaire \u00e0 l'int\u00e9rieur, taxes r\u00e9mun\u00e9ratoires de services, contribution exceptionnelle sure la r\u00e9mun\u00e9ration des expatries, contribution sur les revenues de capitaux mobiliers, contribution sur les revenus locatifs, contribution fonci\u00e8re, contribution sur les v\u00e9hicules, taxe sp\u00e9ciale de circulation routi\u00e8re   (contributions pr\u00e9vues par l'Ordonnance-Loi du 5 d\u00e9cembre, 10 f\u00e9vrier 1969 et du 15 juillet 1988).--Art. 11\n",
+                "location":{
+                    "image":"601,354,627,323"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74152.js",
+                "id":74152
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":17,
+                "content":"L'Etat garantit \u00e0 Cluminco et \u00e0 la Scarl la statbilite du regime fiscal et douanier. L'Etat garantie que pendant toute la dur\u00e9e de la convention la stabilit\u00e9 de la l\u00e9gislation et de la r\u00e8glementation. Aucune disposition l\u00e9gislative ou r\u00e8glementaire entr\u00e9e en vigueur apr\u00e8s la convention ne pourra porter atteinte aux avantages de la convention.--Art.24, Art. 40\n",
+                "location":{
+                    "image":"785,495,816,455"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74163.js",
+                "id":74163
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'imp\u00f4t sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloisonnement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":18,
+                "content":"Les frais financiers sont d\u00e9ductibles ainsi 50% du b\u00e9n\u00e9fice r\u00e9investi, les d\u00e9penses de recherche, taxes et imp\u00f4ts, dotation aux amortissement, redevance de location et honoraires de gestion  et toutes provisions constitu\u00e9es (L'ensemble des provisions constitu\u00e9es  ne pourront 25% du chiffre d'affaire ou  55% du b\u00e9n\u00e9fice imposable ) ; report des pertes jusqu'au dixi\u00e8me exercice--Art.26.2, Art.27\n",
+                "location":{
+                    "image":"585,115,613,82"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74147.js",
+                "id":74147
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":20,
+                "content":"La SCARL fera effectuer un audit annuel de ses comptes dans les formes et suivant les usages internationaux g\u00e9n\u00e9ralement admis pour les soci\u00e9t\u00e9s mini\u00e8res. Elle adressera chaque ann\u00e9e le rapport d'audit et ses commentaires aux autorit\u00e9s.--Art. 29\n",
+                "location":{
+                    "image":"281,322,304,290"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74153.js",
+                "id":74153
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":22,
+                "content":"SCARL est libre de choisir ses employ\u00e9s mais donnera pr\u00e9f\u00e9rence aux citoyens de la R\u00e9publique D\u00e9mocratique du Congo et aux agents de EMK-MN \u00e0 qualification, exp\u00e9rience et comp\u00e9tence \u00e9gale - l'effectif expatri\u00e9 pour les postes qualifi\u00e9s ne pourra pas d\u00e9passer de 10% l'effet totale de fa\u00e7on permanente--Art. 35\n",
+                "location":{
+                    "image":"380,93,410,60"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74144.js",
+                "id":74144
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":23,
+                "content":"Tous diff\u00e9rents entre la RDC et EMK-MN, Cluff et la SCARL devront \u00eatre r\u00e9gl\u00e9s \u00e0 l'amiable. Au cas ou le diff\u00e8rent ne pourrait \u00eatre r\u00e9solu a l'amiable, il sera soumis aux r\u00e8gles d'arbitrage CIRDI. Le lieu de l'arbitrage sera Pretoria, en Afrique du Sud, et la proc\u00e9dure sera en fran\u00e7ais.--Art. 39\n",
+                "location":{
+                    "image":"694,423,723,388"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74161.js",
+                "id":74161
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":24,
+                "content":"Loi de la R\u00e9publique D\u00e9mocratique du Congo--Art. 39.2\n",
+                "location":{
+                    "image":"178,121,206,86"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74160.js",
+                "id":74160
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":24,
+                "content":"L'Etat garantit \u00e0 Cluminco et \u00e0 la Scarl la statbilite du regime fiscal et douanier. L'Etat garantie que pendant toute la dur\u00e9e de la convention la stabilit\u00e9 de la l\u00e9gislation et de la r\u00e8glementation. Aucune disposition l\u00e9gislative ou r\u00e8glementaire entr\u00e9e en vigueur apr\u00e8s la convention ne pourra porter atteinte aux avantages de la convention.--Art.24, Art. 40\n",
+                "location":{
+                    "image":"613,357,640,313"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74162.js",
+                "id":74162
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":25,
+                "content":"SCARL et Clumingo auront le libre choix des fournisseurs mais ach\u00e8teront en priorit\u00e9 des biens et services d'entreprises congolaises dans la mesure ou celles-ci offriront des garanties de qualit\u00e9, s\u00e9curit\u00e9 et d\u00e9lais de livraison \u00e9quivalentes \u00e0 des entreprises \u00e9trang\u00e8res --Art. 41.1, Art. 41.2\n",
+                "location":{
+                    "image":"217,112,244,76"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74145.js",
+                "id":74145
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":25,
+                "content":"Clumingo et la SCARL devront prendre toutes les mesures n\u00e9cessaires pour prot\u00e9ger l'environnement et devront minimiser les dommages qui pourraient lui \u00eatre causes. Elles devront respecter la l\u00e9gislation concernant les d\u00e9chets dangereux.--Art. 41.4\n",
+                "location":{
+                    "image":"461,123,489,89"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74154.js",
+                "id":74154
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":29,
+                "content":"25 ans, avec renouvellement conforme \u00e0 la loi mini\u00e8re.--Art. 53.2\n",
+                "location":{
+                    "image":"851,124,879,85"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74142.js",
+                "id":74142
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":30,
+                "content":"20/10/1998--Signature Page\n",
+                "location":{
+                    "image":"400,463,429,427"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74140.js",
+                "id":74140
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":30,
+                "content":"1998--Signature Page\n",
+                "location":{
+                    "image":"403,522,433,482"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74141.js",
+                "id":74141
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":30,
+                "content":"Ministre des Mines, Ministre des Finances et du Budget, Ministre d'Etat charg\u00e9 du Plan et de la Reconstruction, Ministre du Portefeuille--Signature Page\n",
+                "location":{
+                    "image":"519,525,548,489"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74136.js",
+                "id":74136
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":31,
+                "content":"Entreprise Mini\u00e8re de Kisenge Manganese et Cluff Mining Limited--Signature Page\n",
+                "location":{
+                    "image":"80,590,106,557"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining/annotations/74135.js",
+                "id":74135
+            }
+        ],
+        "description":"<b>For more information on the terms in this document, please see our <a href=\"http://www.resourcecontracts.org/blog/guides-to-contract-terminology.html\"> glossary of contract terminology</a></b>",
+        "language":"eng",
+        "title":"EMK-MN - DRC, 1998",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Resource":"Diamond,Manganese,Other Minerals",
+            "Countries":"Democratic Republic of Congo",
+            "Signature Date":"20/10/1998",
+            "Contract Term (duration) in Years":"25",
+            "Signature Year":"1998"
+        },
+        "created_at":"Mon, 17 Sep 2012 21:48:09 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 16 Mar 2015 15:13:48 +0000",
+        "id":"433747-drc-emk-cluff-mining",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/433747/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/433747/drc-emk-cluff-mining.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/433747/pages/drc-emk-cluff-mining-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/433747/pages/drc-emk-cluff-mining-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/433747/drc-emk-cluff-mining.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/433747/pages/drc-emk-cluff-mining-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=433747"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":31,
+        "canonical_url":"http://www.documentcloud.org/documents/433747-drc-emk-cluff-mining.html"
+    }
+}

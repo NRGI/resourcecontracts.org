@@ -1,0 +1,457 @@
+{
+    "document":{
+        "file_hash":"db9de669ab5c82c1f092fe1663a73df0dbbcf15c",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Tipo de t\u00edtulo asociado al contrato (concesi\u00f3n, fianza, contrato de producci\u00f3n compartida, contrato de servicio) //Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Contrato de Licencia para Exploraci\u00f3n y Explotaci\u00f3n de Hidrocarburos--Title of the contract\n",
+                "location":{
+                    "image":"232,382,264,342"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143876.js",
+                "id":143876
+            },
+            {
+                "access":"public",
+                "title":"Tipo de recurso(s)  (tipo de mineral, petr\u00f3leo, gas, madera) o   cultivos espec\u00edficos previstos (por ejemplo, los cultivos de alimentos, palma de aceite, etc.)//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":1,
+                "content":"Hidrocarburos (gas y petr\u00f3leo)--Title of the contract\n",
+                "location":{
+                    "image":"260,606,293,567"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143896.js",
+                "id":143896
+            },
+            {
+                "access":"public",
+                "title":"Nombre y/o numero del campo petrol\u00edfero, bloque o yacimiento //Name and/or number of field, block or deposit",
+                "page":1,
+                "content":"Lote 188--Title of the Contract\n",
+                "location":{
+                    "image":"285,421,316,383"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143878.js",
+                "id":143878
+            },
+            {
+                "access":"public",
+                "title":"Nombre del proyecto //Project title",
+                "page":1,
+                "content":"Proyecto de contrato the Licencia para la Exploraci\u00f3n y Explotaci\u00f3n de Hidrocarburos en el lote 188--Title of the contract\n",
+                "location":{
+                    "image":"295,315,319,280"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143877.js",
+                "id":143877
+            },
+            {
+                "access":"public",
+                "title":"Nombre y/o composici\u00f3n de la sociedad creada para el proyecto o o revista//Name and/or composition of the company created or anticipated",
+                "page":1,
+                "content":"Hydrocarbon Exploration Plc Sucursal del Per\u00fa--Title of the contract\n",
+                "location":{
+                    "image":"388,345,423,302"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143890.js",
+                "id":143890
+            },
+            {
+                "access":"public",
+                "title":"Empresa(s) matriz(es) o afiliadas afuera del pa\u00eds, si diferente de la mencionada; y suya oficina principal//Parent companies or affilates outside of the country, if different from the above mentioned; and their corporate headquarters",
+                "page":1,
+                "content":"Hydrocarbon Exploration Plc--Title of the contract\n",
+                "location":{
+                    "image":"390,295,420,252"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143875.js",
+                "id":143875
+            },
+            {
+                "access":"public",
+                "title":"Nombre de la sociedad local//Local company name",
+                "page":1,
+                "content":"Hydrocarbon Exploration Plc Sucursal del Per\u00fa--Title of the contract\n",
+                "location":{
+                    "image":"393,249,422,206"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143874.js",
+                "id":143874
+            },
+            {
+                "access":"public",
+                "title":"Pa\u00eds//Country",
+                "page":1,
+                "content":"Per\u00fa--Title \n",
+                "location":{
+                    "image":"466,550,492,510"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143873.js",
+                "id":143873
+            },
+            {
+                "access":"public",
+                "title":"Nombre de las terceras partes (si aplicable) //Name of third party to contract (where applicable)",
+                "page":1,
+                "content":"Banco Central de Reserva del Per\u00fa--Title of the contract\n",
+                "location":{
+                    "image":"473,283,499,237"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143921.js",
+                "id":143921
+            },
+            {
+                "access":"public",
+                "title":"Agencia del Estado, sociedad nacional, ministerio signatario del contrato//State agency, national company, ministry executing the document",
+                "page":1,
+                "content":"Perupetro SA; empresa estatal de derecho privado del sector de energ\u00eda y minas creada por la Ley No. 26221--Title of the contract; Art. 1.40\n",
+                "location":{
+                    "image":"758,156,788,120"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143889.js",
+                "id":143889
+            },
+            {
+                "access":"public",
+                "title":"Empresa(s) matriz(es) o afiliadas afuera del pa\u00eds, si diferente de la mencionada; y suya oficina principal//Parent companies or affilates outside of the country, if different from the above mentioned; and their corporate headquarters",
+                "page":2,
+                "content":"Hydrocarbon Exploration Plc--Title of the contract\n",
+                "location":{
+                    "image":"481,355,508,322"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143920.js",
+                "id":143920
+            },
+            {
+                "access":"public",
+                "title":"Nombre y/o numero del campo petrol\u00edfero, bloque o yacimiento //Name and/or number of field, block or deposit",
+                "page":3,
+                "content":"Lote 188--Title of the Contract\n",
+                "location":{
+                    "image":"438,363,469,321"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143919.js",
+                "id":143919
+            },
+            {
+                "access":"public",
+                "title":"Comunidad mas cerca//Closest community",
+                "page":7,
+                "content":"Centro poblado de Atalaya del Distrito de Raimondi, Provincia de Atalaya de la Regi\u00f3n Ucayali--Art. 1.3; Annex A\n",
+                "location":{
+                    "image":"798,158,827,122"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143882.js",
+                "id":143882
+            },
+            {
+                "access":"public",
+                "title":"Fecha de signatura del contrato //Date of contract signature",
+                "page":12,
+                "content":"28 de Septiembre,2011--Art. 1.22\n",
+                "location":{
+                    "image":"136,78,164,39"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143891.js",
+                "id":143891
+            },
+            {
+                "access":"public",
+                "title":"A\u00f1o de signatura del contrato//Year of contract signature",
+                "page":12,
+                "content":"2011--Art. 1.22\n",
+                "location":{
+                    "image":"165,285,192,249"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143892.js",
+                "id":143892
+            },
+            {
+                "access":"public",
+                "title":"Duraci\u00f3n//Term",
+                "page":17,
+                "content":"El plazo para la duraci\u00f3n de la fase de exploraci\u00f3n es de 7 a\u00f1os, el que se puede extender de acuerdo a la Ley y el plazo para la fase de explotaci\u00f3n del petr\u00f3leo es de 30 a\u00f1os; el plazo para la explotaci\u00f3n de gas natural no asociado y gas natural no asociado y condensados es  de 40 a\u00f1os a partir de la terminaci\u00f3n de la fase de exploraci\u00f3n  --3.1\n",
+                "location":{
+                    "image":"829,169,857,134"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143895.js",
+                "id":143895
+            },
+            {
+                "access":"public",
+                "title":"Obligaciones de trabajo y inversi\u00f3n//Work and investment commitments",
+                "page":22,
+                "content":"El contratista deber\u00e1 garantizar el cumplimiento del programa m\u00ednimo de trabajo de cada uno de los per\u00edodos de exploraci\u00f3n mediante una sola fianza solidaria, sin el beneficio de exclusi\u00f3n; el programa m\u00ednimo de trabajo de la fase de exploraci\u00f3n comprende 5 periodos en los cuales el contratista debe cumplir actividades detalladas; antes del inicio de cada periodo de la fase de exploraci\u00f3n, el contratista comunicara a PeruPetro el programa de las actividades de exploraci\u00f3n y el contratista deber\u00e1 comunicar a PeruPeetro cualquiera modificaci\u00f3n a dicho programa--Art. 3.10; 4.6-4.6(D)\n",
+                "location":{
+                    "image":"167,74,199,38"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143909.js",
+                "id":143909
+            },
+            {
+                "access":"public",
+                "title":"Mecanismos de auditor\u00eda - obligaciones operacionales//Audit mechanisms - operational obligations",
+                "page":34,
+                "content":"El contratista mantendr\u00e1 PeruPetro oportuna y permanentemente informado sobre: las operaciones, proporcion\u00e1ndole toda la informaci\u00f3n en relaci\u00f3n a los hidrocarburos, a los eventuales otros recursos naturales o restos arqueol\u00f3gicos que encuentre; las informaciones del programa m\u00ednimo de trabajo;  un programa mensual de producci\u00f3n --Art. 6.1-6.4\n",
+                "location":{
+                    "image":"121,618,153,578"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143911.js",
+                "id":143911
+            },
+            {
+                "access":"public",
+                "title":"Tasas de minas/ regal\u00eda//Mining tax / royalty tax",
+                "page":37,
+                "content":"El contratista pagara la regal\u00eda en efectivo, sobre la base de los hidrocarburos fiscalizados, valorizados en unos o mas puntos de fiscalizaci\u00f3n de la producci\u00f3n; para determinar la regal\u00eda por el petr\u00f3leo fiscalizado, por los l\u00edquidos del gas natural fiscalizado y por el gas natural fiscalizado se proceder\u00e1 de la siguiente manera: para la determinaci\u00f3n del petr\u00f3leo fiscalizado se multiplica el valor del petr\u00f3leo fiscalizado o de los l\u00edquidos del gas natural o del gas natural fiscalizado o de los condensados fiscalizados por el porcentaje de la regal\u00eda: de 0.0 a menos de 1.0, porcentaje de regal\u00eda 45%; de 1.0 a menos de 1.5, porcentaje de regal\u00eda 50%; de 1.5 a menos de 2, porcentaje de regal\u00eda  55%; de 2o m\u00e1s, porcentaje de regal\u00eda 65% --Art. 8.1; 8.3-8.3.4\n",
+                "location":{
+                    "image":"794,106,825,71"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/145601.js",
+                "id":145601
+            },
+            {
+                "access":"public",
+                "title":"Impuestos sobre la renta: tasa//Income tax: rate",
+                "page":43,
+                "content":"El contratista esta sujeto al r\u00e9gimen tributario com\u00fan de la Rep\u00fablica Per\u00fa, que incluye el r\u00e9gimen tributario de los impuestos a la renta as\u00ed como las normas especificas como establece la Ley No. 26221--Art. 9.1 \n",
+                "location":{
+                    "image":"774,183,808,138"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143900.js",
+                "id":143900
+            },
+            {
+                "access":"public",
+                "title":"Clausula de estabilizaci\u00f3n//Stabilization clause",
+                "page":43,
+                "content":"El estado garantiza al contratista el beneficio de estabilidad tributaria durante la vigencia del contrato, por lo cual queda sujeto \u00fanicamente al r\u00e9gimen tributario vigente a la fecha de suscripci\u00f3n de acuerdo a lo establecido en la Ley No. 26221--Art. 9.1\n",
+                "location":{
+                    "image":"819,172,856,132"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143915.js",
+                "id":143915
+            },
+            {
+                "access":"public",
+                "title":"Otras exenciones//Other exemptions",
+                "page":44,
+                "content":"La exportaci\u00f3n de hidrocarburos provenientes de la \u00e1rea del contrato est\u00e1 exenta de todo tributo--Art. 9.2\n",
+                "location":{
+                    "image":"495,90,524,47"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143904.js",
+                "id":143904
+            },
+            {
+                "access":"public",
+                "title":"Otros aspectos de los impuestos sobre la renta (amortizaci\u00f3n deducibilidad de los gastos, [\u2026]//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":44,
+                "content":"El contratista utilizar\u00e1 un m\u00e9todo de amortizaci\u00f3n lineal en un periodo de 5 ejercicios anuales; una extensi\u00f3n del plazo de la amortizaci\u00f3n es posible en casos de resultados negativos temporales--Art. 9.6\n",
+                "location":{
+                    "image":"781,72,809,32"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143901.js",
+                "id":143901
+            },
+            {
+                "access":"public",
+                "title":"Empleo de personal local //Local employment requirements",
+                "page":49,
+                "content":"[Al t\u00e9rmino del 5 a\u00f1o de la fecha del inicio de la extracci\u00f3n comercial], el contratista habr\u00e1 sustituido a todo su personal extranjero por personal peruano de equivalentes cualificaciones profesionales, a excepci\u00f3n del personal extranjero con cargos gerenciales; al inicio de las operaciones y al vencimiento de cada a\u00f1o el contratista entregar\u00e1 a PeruPetro un cuadro estad\u00edstico del personal a su servicio para las operaciones de acuerdo al formato que PeruPetro entregue al contratista; el contratista se compromete a capacitar y entrenar el personal peruano en la realizaci\u00f3n de trabajos especializados para que luego el personal peruano vaya a substituir el personal extranjero en esas actividades; el contratista se compromete a tener un programa de practica durante la fase exploraci\u00f3n y la fase de explotaci\u00f3n para los estudiantes universitarios para que complementen su formaci\u00f3n acad\u00e9mica --Art. 12.1; 12.2; 15.4\n",
+                "location":{
+                    "image":"132,129,170,88"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143898.js",
+                "id":143898
+            },
+            {
+                "access":"public",
+                "title":"Tipos de informes- obligaciones financieras //Audit mechanisms - financial obligations",
+                "page":49,
+                "content":"Al inicio de cada operaciones y al vencimiento de cada a\u00f1o calendario, el contratista entregar\u00e1 a Perupetro un cuadro estad\u00edstico del personal a su servicio para las operaciones--Art. 12.2\n",
+                "location":{
+                    "image":"374,179,405,138"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143906.js",
+                "id":143906
+            },
+            {
+                "access":"public",
+                "title":"Evaluaci\u00f3n del impacte sobre el medio ambiente, planes de gesti\u00f3n de los riesgos del medio ambiente y otras obligaciones por la protecci\u00f3n del medio ambiente (incluida la prevenci\u00f3n de la contaminaci\u00f3n y la protecci\u00f3n de los cursos de agua) //Environmental impact assessments, environmental management plans, and other requirements regarding protection of the environment (including prevention of pollution and watercourse protection)",
+                "page":49,
+                "content":"El contratista se obliga a cumplir las disposiciones del \"reglamento para la protecci\u00f3n ambiental de las actividades de hidrocarburos\" (Ley No. 28611) as\u00ed como las dem\u00e1s disposiciones ambientales vigentes aplicables; el contratista utilizar\u00e1 las mejores t\u00e9cnicas disponibles en la practica de la industria internacional y respectar\u00e1 las leyes ambientales sobre el control de la contaminaci\u00f3n ambiental, la preservaci\u00f3n de la diversidad biol\u00f3gica y los recursos naturales y la preservaci\u00f3n de la seguridad y salud de la poblaci\u00f3n y de su personal--Art. 13.1; 13.3\n",
+                "location":{
+                    "image":"554,157,586,117"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143907.js",
+                "id":143907
+            },
+            {
+                "access":"public",
+                "title":"Convenio de desarrollo local//Local development agreement",
+                "page":49,
+                "content":"El contratista deber\u00e1 respetar la cultura, costumbres, usos y valores de las comunidades manteniendo una armon\u00eda con la sociedad civil y el estado peruano--Art. 13.2\n",
+                "location":{
+                    "image":"707,162,736,122"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143897.js",
+                "id":143897
+            },
+            {
+                "access":"public",
+                "title":"Primas//Bonuses",
+                "page":51,
+                "content":"El contratista se obliga a meter a disposici\u00f3n de Perupetro hasta el a\u00f1o en que tenga inicio de la extracci\u00f3n comercial: 50mil $; a partir del a\u00f1o siguiente: de 0 a 30mil barriles de petr\u00f3leo: aporte anual de 100mil $; de 30,001 a 50mil barriles de petr\u00f3leo: aporte anual de 120 mil $; de 50,001 barriles de petr\u00f3leo a mas: aporte anuale de 180 mil $; este aporte es destinado a capacitaci\u00f3n--Art. 15.1\n",
+                "location":{
+                    "image":"439,164,478,125"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143905.js",
+                "id":143905
+            },
+            {
+                "access":"public",
+                "title":"Cesi\u00f3n / Asignaci\u00f3n//Assignment / transfer",
+                "page":53,
+                "content":"EL contratista, previa notificaci\u00f3n a Perupetro, podr\u00e1 ceder su posici\u00f3n contractual o asociarse a una afiliada, conforme a la ley--Art. 16; in particular see  Art. 16.2\n",
+                "location":{
+                    "image":"375,112,410,78"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143916.js",
+                "id":143916
+            },
+            {
+                "access":"public",
+                "title":"Derecho de coger o utilizar el agua en las zonas de concesi\u00f3n o cerca (incluidas tasas, licencias y permisos) //Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":58,
+                "content":"En concordancia con el derecho vigente, el contratista tendr\u00e1 derecho de utilizar, con el prop\u00f3sito de llevar a cabo de las operaciones, el agua, madera, grava y otros materiales de construcci\u00f3n ubicados dentro de la \u00e1rea del contrato, con respecto a los derechos de terceros a ser el caso.--Art. 19.4\n",
+                "location":{
+                    "image":"759,78,795,37"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143908.js",
+                "id":143908
+            },
+            {
+                "access":"public",
+                "title":"Ley aplicable al fondo//Governing law in case of dispute",
+                "page":61,
+                "content":"Derecho interno de la Republica del Per\u00fa--Art. 21.1\n",
+                "location":{
+                    "image":"657,178,685,138"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143912.js",
+                "id":143912
+            },
+            {
+                "access":"public",
+                "title":"Arbitraje y resoluci\u00f3n de conflictos//Arbitration and dispute resolution",
+                "page":62,
+                "content":"Cualquier litigio, controversia, diferencia o reclamo resultante del contrato o relativo al contrato, tales como su interpretaci\u00f3n, cumplimiento, resoluci\u00f3n, terminaci\u00f3n, eficacia o o validez, que surja entre el contratista y perupetro y que no pueda ser resuelto entre el contratista y perupetro, y que no pueda ser resuelto de mutuo acuerdo entre las partes deber\u00e1 ser resuelto por medio de arbitraje internacional de derecho, de acuerdo con el dispuesto en el Art. 66 de la Ley No. 26221; el arbitraje ser\u00e1 administrato por el CIADI y en todo lo que no est\u00e1 previsto por la clausula, el arbitraje se organizar\u00e1 y desarrollar\u00e1 de acuerdo con las reglas del CIADI vigentes a la fecha de suscripci\u00f3n.--Art. 21.3\n",
+                "location":{
+                    "image":"655,90,690,45"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143914.js",
+                "id":143914
+            },
+            {
+                "access":"public",
+                "title":"Idioma//Language",
+                "page":64,
+                "content":"El idioma se redacta e interpreta en idioma castellano--Art. 21.4\n",
+                "location":{
+                    "image":"224,67,254,25"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143918.js",
+                "id":143918
+            },
+            {
+                "access":"public",
+                "title":"Cancelaci\u00f3n / Vencimiento//Cancellation / termination",
+                "page":64,
+                "content":"La terminaci\u00f3n del contrato se rige por lo estipulado en el y supletoriamente con las normas de la Ley no. 26221--Art. 22.1\n",
+                "location":{
+                    "image":"333,71,362,37"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143917.js",
+                "id":143917
+            },
+            {
+                "access":"public",
+                "title":"Localizaci\u00f3n, longitud y latitud / terrestre vs marina (poco profundo vs. profundo) / Superficie de la concesi\u00f3n//Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) / Size of the concession area",
+                "page":68,
+                "content":"V\u00e9ase la descripci\u00f3n detallada del lote en el Anexo A--Annex A\n",
+                "location":{
+                    "image":"680,639,711,593"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143879.js",
+                "id":143879
+            },
+            {
+                "access":"public",
+                "title":"Nombre de la sociedad signataria del contrato y composici\u00f3n de los accionarias mencionados en el documento//Name of company executing the document and composition of the shareholders",
+                "page":96,
+                "content":"Hydrocarbon Exploration Plc Sucursal del Per\u00fa, Hydrocarbon Exploration Plc--Signature\n",
+                "location":{
+                    "image":"728,595,759,549"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143887.js",
+                "id":143887
+            },
+            {
+                "access":"public",
+                "title":"Fecha de emanaci\u00f3n del permiso de explotaci\u00f3n o de la concesi\u00f3n//Date of issue of title/permit",
+                "page":111,
+                "content":"28 de Septiembre, 2011--Licence attached to the contract\n",
+                "location":{
+                    "image":"236,348,268,311"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143886.js",
+                "id":143886
+            },
+            {
+                "access":"public",
+                "title":"A\u00f1o de la emanaci\u00f3n del permiso de explotaci\u00f3n o de la concesi\u00f3n//Year of issue of title/permit",
+                "page":111,
+                "content":"2011--Licence attached to the contract\n",
+                "location":{
+                    "image":"241,398,274,357"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814814-peru-188/annotations/143885.js",
+                "id":143885
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Perupetro Hydrocarbon-Exploration Sucursal - Peru, 2011",
+        "data":{
+            "Year of Signature":"2011",
+            "Type of Mining Title":"Exploration Permit/License,Exploitation Permit/License",
+            "Resource":"Hydrocarbons",
+            "Countries":"Peru"
+        },
+        "created_at":"Mon, 04 Nov 2013 16:07:16 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 16 Mar 2015 00:12:36 +0000",
+        "id":"814814-peru-188",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/814814/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814814/peru-188.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/814814/pages/peru-188-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814814/pages/peru-188-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814814/peru-188.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814814/pages/peru-188-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=814814"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":112,
+        "canonical_url":"http://www.documentcloud.org/documents/814814-peru-188.html"
+    }
+}

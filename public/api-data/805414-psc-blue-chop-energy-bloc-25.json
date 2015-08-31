@@ -1,0 +1,501 @@
+{
+    "document":{
+        "file_hash":"26000e49378b55687d5ae7cd4dabdf20a2dcbf75",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Contrat de partage de production d'hydrocarbures\n",
+                "location":{
+                    "image":"214,120,254,78"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143689.js",
+                "id":143689
+            },
+            {
+                "access":"public",
+                "title":"Nom du projet//Project title",
+                "page":1,
+                "content":"Bloc 25 du bassin co\u0302tier (CPP 25 Bassin co\u0302tier)\n",
+                "location":{
+                    "image":"549,238,586,198"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143690.js",
+                "id":143690
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":3,
+                "content":"R\u00e9publique Islamique de Mauritanie --Preambule\n",
+                "location":{
+                    "image":"143,75,169,44"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143687.js",
+                "id":143687
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":3,
+                "content":"Ministre charg\u00e9 de l'\u00e9nergie et du P\u00e9trole\n",
+                "location":{
+                    "image":"170,93,197,55"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143697.js",
+                "id":143697
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":3,
+                "content":"Blue Chip energy S.A.--Preambule\n",
+                "location":{
+                    "image":"316,91,350,49"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143688.js",
+                "id":143688
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":3,
+                "content":"Blue Chip energy S.A.\n",
+                "location":{
+                    "image":"327,71,361,29"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143696.js",
+                "id":143696
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) / Superficie de la concession//Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) / Size of the concession area",
+                "page":3,
+                "content":"Eau profonde; le Pe\u0301rime\u0300tre d'exploration initial englobe une superficie re\u0301pute\u0301e e\u0301gale a\u0300 environ 1693 km2, comme indiqu\u00e9 en d\u00e9tail dans l'annexe 1 et et repr\u00e9sent\u00e9 dans la carte en annexe 2--Pr\u00e9ambule, Annexe 1, Annexe 2\n",
+                "location":{
+                    "image":"509,86,538,49"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143695.js",
+                "id":143695
+            },
+            {
+                "access":"public",
+                "title":"I. Information g\u00e9n\u00e9rale sur le projet //General information",
+                "page":3,
+                "content":"Contrat pour explorer et exploiter a titre exclusif les hydrocarbures en eau profonde--Preambule, Art. 2.1\n",
+                "location":{
+                    "image":"526,96,559,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143744.js",
+                "id":143744
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":3,
+                "content":"Hydrocarbures liquides et/ou gazeux--Preambule\n",
+                "location":{
+                    "image":"589,112,622,75"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143704.js",
+                "id":143704
+            },
+            {
+                "access":"public",
+                "title":"I. Information g\u00e9n\u00e9rale sur le projet //General information",
+                "page":6,
+                "content":"Contrat pour explorer et exploiter a titre exclusif les hydrocarbures en eau profonde--Preambule, Art. 2.1\n",
+                "location":{
+                    "image":"187,105,217,64"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143743.js",
+                "id":143743
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":7,
+                "content":"\"Dur\u00e9e d'exploration: Trois ann\u00e9s contractuelles, renouvellable 1 fois pour 3 ans pour 75% de la superficie et 1 fois pour 3 ans pour 50% de la superficie. Possibilit\u00e9 de prorogation de l'autorisation exclusive d'exploration pendant 6 mois maximum pour la dure\u0301e ne\u0301cessaire a\u0300 l'ache\u0300vement des travaux d'e\u0301valuation; Dur\u00e9e exploitation: vingt-cinq ans a\u0300 compter de la date d'octroi de l'autorisation exclusive d'exploitation correspondante. Renouvelable deux fois pour dix ans,  \u00e0 condition que le Contractant ait rempli toutes ses obligations contractuelles  et justifie qu'une production commerciale \u00e0 partir du P\u00e9rim\u00e8tre\nd'exploitation concern\u00e9 reste possible.--Arts 3, 9.11\"\n",
+                "location":{
+                    "image":"53,171,81,138"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143702.js",
+                "id":143702
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":8,
+                "content":"Blue Chip energy S.A. devra fournir tous les fonds ne\u0301cessaires et acheter ou louer tous les mate\u0301riels, e\u0301quipements et mate\u0301riaux indispensables a\u0300 la re\u0301alisation des Ope\u0301rations Pe\u0301trolie\u0300res; les obligations de travaux sont divis\u00e9es en trois p\u00e9riodes. Premiere p\u00e9riode: (i) Deux millions de Dollars Ame\u0301ricain pour le retraitement de donne\u0301es sismiques existantes et l'acquisition de 750 km line\u0301aires de nouvelles donne\u0301es sismiques en 2D. (ii) Trois millions de dollars Ame\u0301ricain en programme SBL ou travaux e\u0301quivalents. (iii) Acquisition optionnelle de 400 km de donne\u0301es sismiques 3D pour Six millions (6.000.000) de dollars Ame\u0301ricains. Deuxieme et troisieme periodes: pour chaque p\u00e9riode, au moins un forage d'exploration pour un cou\u0302t de quarante millions  de dollars Ame\u0301ricains.--Arts 6.1, 4\n",
+                "location":{
+                    "image":"473,242,501,201"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143733.js",
+                "id":143733
+            },
+            {
+                "access":"public",
+                "title":"Autre - obligation d'avoir un bureau local//Other - Community and social obligations",
+                "page":11,
+                "content":"Obligation d'ouvrir un bureau et un centre operationnel sur le territoire Mauritanien --Art 6.3\n",
+                "location":{
+                    "image":"394,118,428,83"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143713.js",
+                "id":143713
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact environnemental, les plans de gestion de risques environnementaux, et autres obligations pour la protection de l'environnement (y compris la pr\u00e9vention de la pollution et la protection des cours d'eau)//Environmental impact assessments, environmental management plans, and other requirements regarding protection of the environment (including prevention of pollution and watercourse protection)",
+                "page":11,
+                "content":"Les parties acceptent de prendre en charge la ma\u00eetrise des risques environnementaux, selon les principes de pr\u00e9caution. Cr\u00e9ation d'une Commission Environnementale qui sera finance\u0301 par Blue Chip pour un montant d'un million de dollars ame\u0301ricains par Anne\u0301e Civile pour toute la pe\u0301riode pendant laquelle Blue Chip sera en production en Mauritanie. Les modalit\u00e9s de fonctionnement seront convenues entre les parties; Avant le d\u00e9but de toutes Op\u00e9rations P\u00e9troli\u00e8res, Blue Chip soumettra au Minist\u00e8re de l'Energie et du P\u00e9trole, pour approbation, les plans de gestion de l'environnement correspondant \u00e0 ces Op\u00e9rations. Blue Chip devra prendre toutes les mesures n\u00e9cessaires \u00e0 la protection de l'environnement. Il devra notamment prendre toutes les dispositions raisonnables pour s'assurer que l'ensemble des installations et \u00e9quipements utilis\u00e9s pour les besoins des Op\u00e9rations P\u00e9troli\u00e8res sont en bon \u00e9tat, correctement maintenus et entretenus.  Blue Chip devra \u00e9viter les pertes et rejets d'Hydrocarbures produits, de boue ou de tout autre produit utilis\u00e9s.  Il devra placer les Hydrocarbures produits dans les stockages construits \u00e0 cet effet. Blue Chip devra aussi assurer la protection des nappes aquif\u00e8res et fournir au Directeur de l'Exploration et du D\u00e9veloppement des Hydrocarbures bruts tous les renseignements obtenus sur ces nappes. Blue Chip s'engage \u00e0 prendre toutes les pr\u00e9cautions n\u00e9cessaires pour pr\u00e9venir une pollution de la zone marine dans le P\u00e9rim\u00e8tre d'Exploration et \u00e0 respecter notamment les dispositions de la Convention Internationale pour la pr\u00e9vention de la pollution des eaux de la mer par les hydrocarbures (sign\u00e9e \u00e0 Londres le 12 mai 1954). Pour pr\u00e9venir la pollution, l'Etat peut \u00e9galement d\u00e9cider en accord avec Blue Chip de toute mesure suppl\u00e9mentaire qui lui para\u00eetrait n\u00e9cessaire pour assurer la pr\u00e9servation de la zone marine. S'il y a lieu, il devra restaurer les sites \u00e0 l'ach\u00e8vement de chaque Op\u00e9ration P\u00e9troli\u00e8re. --Art 6.4.2,6.4, 6.4.1, 6.6\n",
+                "location":{
+                    "image":"627,93,654,62"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143728.js",
+                "id":143728
+            },
+            {
+                "access":"public",
+                "title":"Autre - Dispositions environnementales //Other - Environmental provisions",
+                "page":12,
+                "content":"Blue Chip soumettra un plan de remise en \u00e9tat comprenant une description des travaux et une estimation des cou\u0302ts. Un compte s\u00e9questre sera cre\u0301e\u0301 dont les montants seront recouvrables et de\u0301ductibles fiscalement trois anne\u0301es civiles avant la date pre\u0301vue pour l'abandon et la remise en e\u0301tat. L'Op\u00e9rateur versera les fonds relatifs au Compte S\u00e9questre mentionn\u00e9 ci-dessus sur un compte en Dollars ouvert dans une banque d\u00e9sign\u00e9e par les Parties. Le Compte S\u00e9questre est destin\u00e9 exclusivement au financement des op\u00e9rations d'abandon et de remise en \u00e9tat, et sera utilis\u00e9 conform\u00e9ment aux budgets approuv\u00e9s et aux programmes de travaux. L'Op\u00e9rateur fournira \u00e0 l'Etat copie conforme des relev\u00e9s bancaires trimestriels concernant ce Compte S\u00e9questre. Si le montant cumul\u00e9 des fonds sur le Compte S\u00e9questre est insuffisant, le Contractant financera le d\u00e9ficit et en cas de fonds exc\u00e9dentaires, l'exc\u00e9dent sera utilis\u00e9 aux fins de la Commission Environnementale constitu\u00e9e, en plus de montant qui est  est pay\u00e9 pour l'\u00e9tablir.--Arts 6.4.3 - 6.4.4\n",
+                "location":{
+                    "image":"438,85,471,46"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143731.js",
+                "id":143731
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9installation des habitants, et droits d'acc\u00e8s / utilisation \u00e0 la zone de concession pour les parties non contractantes qui utilisaient la terre au pr\u00e9alable (y compris l'agriculture ind\u00e9pendante autoris\u00e9e dans la zone de concession)//Resettlement, and right of access to concession areas for non-contracting parties who previously used land (including permitted independent farming in concession area)",
+                "page":13,
+                "content":"\"Blue chip ne devra pas occuper des terrains situe\u0301s a\u0300 moins de 50 me\u0300tres de tous e\u0301difices religieux ou non, lieux de se\u0301pulture, enclos mure\u0301s, cours et jardins, habitations, groupes d'habitations, villages, agglome\u0301rations, puits, points d'eau, re\u0301servoirs, rues, routes, chemins de fer, conduites d'eau, canalisations, travaux d'utilite\u0301 publique, ouvrages d'art, sans le consentement pre\u0301alable du Ministre; En l'absence d'accord amiable avec les propri\u00e9taires ou les ayant-droit, ils auront un droit de pr\u00e9senter leurs objections. Si l'occupation est temporaire et le terrain peut etre mis en culture au bout d'un an, l'indemnite\u0301 sera fixe\u0301e au double du produit net du terrain. Dans les autres cas, l'indemnite\u0301 sera e\u0301value\u0301e au double de la valeur du terrain avant l'occupation. Toute portion de terrain qui aurait e\u0301te\u0301 endommage\u0301e sur la plus grande partie de sa surface devra e\u0302tre achete\u0301e en sa totalite\u0301 si le proprie\u0301taire ou le de\u0301tenteur de droits de proprie\u0301te\u0301 l'exige. La valeur des terrains a\u0300 acheter sera toujours estime\u0301e au moins a\u0300 la valeur qu'ils avaient avant l'occupation. L'occupation des terrains n\u00e9cessaires aux canalisations et installations s'effectue aussi dans\nles conditions fix\u00e9es \u00e0 l'article 7. L'autorisation de transport de hydrocarbures comporte \u00e9galement pour le Contractant le droit d'\u00e9tablir des canalisations et installations sur des terrains dont il n'aura pas la propri\u00e9t\u00e9. L'assujettissement \u00e0 la servitude, donne droit \u00e0 une indemnit\u00e9 fix\u00e9e, \u00e0 d\u00e9faut d'accord amiable, par l'autorit\u00e9 comp\u00e9tente pour la d\u00e9termination de l'indemnit\u00e9 d'expropriation. Quand la servitude fait obstacle \u00e0 l'utilisation normale des terrains et que le propri\u00e9taire en fait la demande, le Contractant doit proc\u00e9der \u00e0 l'acquisition desdits terrains.\n--Arts 6.7, 7.2 -7.10, 16.7\"\n",
+                "location":{
+                    "image":"372,88,407,50"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143710.js",
+                "id":143710
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":13,
+                "content":"\"Blue chip et ses sous-traitants s'engagent a\u0300 accorder leur pre\u0301fe\u0301rence aux entreprises et produits mauritaniens, a\u0300 conditions e\u0301quivalentes en termes de prix, quantite\u0301, qualite\u0301, conditions de paiement et de\u0301lai de livraison.\nBlue chip s'engage pour les contrats d'approvisionnement, de construction ou de service d'une valeur supe\u0301rieure a\u0300 deux cent cinquante mille dollars, a\u0300 proce\u0301der a\u0300 des appels d'offres parmi des candidats mauritaniens et e\u0301trangers, e\u0301tant entendu que le Contractant ne fractionnera pas abusivement lesdits contrats; Lecontractant et ses sous-traitants s'engagent a\u0300 accorder leur pre\u0301fe\u0301rence, a\u0300 conditions e\u0301conomiques e\u0301quivalentes, a\u0300 l'achat des biens ne\u0301cessaires aux Ope\u0301rations Pe\u0301trolie\u0300res, par rapport a\u0300 leur location ou a\u0300 toute autre forme de bail, le Contractant devra indiquer dans les Programmes Annuels de Travaux\nsoumis tous les contrats de location d'une valeur sup\u00e9rieure \u00e0 deux cent cinquante\nmille dollars.--Art 6.8 - 6.9\"\n",
+                "location":{
+                    "image":"543,69,572,34"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143707.js",
+                "id":143707
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":14,
+                "content":"\"Travaux d'infrastructure: Le Contractant a le droit de proc\u00e9der (ou faire proc\u00e9der) aux travaux d'infrastructure n\u00e9cessaires \u00e0 la r\u00e9alisation, dans des conditions \u00e9conomiques normales, des Op\u00e9rations P\u00e9troli\u00e8res et \u00e0 leurs activit\u00e9s connexes, telles que le transport et le stockage des mat\u00e9riels, des \u00e9quipements et des produits extraits (\u00e0 l'exclusion du transport des Hydrocarbures par canalisations vis\u00e9 \u00e0 l'article 16), l'\u00e9tablissement de moyens de t\u00e9l\u00e9communications et voies de communication, ainsi que la production ou la fourniture de l'\u00e9nergie n\u00e9cessaire. Aux fins d'assurer la meilleure utilisation possible du point de vue \u00e9conomique et technique, le Ministre peut imposer au Contractant des conditions de r\u00e9alisation et d'exploitation des travaux et des installations si lesdites conditions ne portent pas atteinte aux conditions \u00e9conomiques normales de l'activit\u00e9. Le Ministre pourra, notamment, et \u00e0 d\u00e9faut d'accord amiable entre les titulaires de droits exclusifs d'exploration et d'exploitation des Hydrocarbure, exiger de plusieurs d'entre eux l'utilisation en commun desdites installations. En cas de diff\u00e9rend, les diff\u00e9rends seront soumis \u00e0 arbitrage suivant les modalit\u00e9s sp\u00e9cifi\u00e9es \u00e0 l'article 29 du pr\u00e9sent Contrat. Transport d'Hydrocarbures par canalisations: L'autorisation de transport d'Hydrocarbures par canalisations est accord\u00e9e par d\u00e9cret. Cette autorisation emporte d\u00e9claration d'utilit\u00e9 publique. Elle deviant caduque lorsque le Contractant ou les b\u00e9n\u00e9ficiaires n'auraient pas commenc\u00e9 les travaux pr\u00e9vus un an apr\u00e8s l'approbation du projet. \nLe trac\u00e9 et les caract\u00e9ristiques des canalisations et installations doivent \u00eatre \u00e9tablis de mani\u00e8re \u00e0 assurer la collecte, le transport et l'\u00e9vacuation des produits des gisements dans les meilleures conditions techniques et \u00e9conomiques et en particulier de mani\u00e8re \u00e0 assurer la meilleure valorisation pour la vente de ces produits au d\u00e9part des gisements et \u00e0 permettre la sauvegarde de l'environnement et le d\u00e9veloppement rationnel des gisements. Tous protocoles, accords, contrats pass\u00e9s ou transfert entre le cocontractant/beneficiares et des tiers sur la construction de canalisations doivent \u00eatre soumis \u00e0 l'autorisation pr\u00e9alable du Ministre. Les b\u00e9n\u00e9ficiaires des transferts doivent satisfaire aux conditions exig\u00e9es du Contractant dans le cadre du pr\u00e9sent Contrat.\nEn cas de plusieurs d\u00e9couvertes d'Hydrocarbures dans la m\u00eame r\u00e9gion g\u00e9ographique, le Contractant devra s'entendre \u00e0 l'amiable avec les autres exploitants pour la construction et/ou l'utilisation commune de canalisations et/ou installations permettant d'\u00e9vacuer tout ou partie de leurs productions respectives. \nA d\u00e9faut d'accord amiable, le Ministre pourra exiger que le Contractant et les autres exploitants s'associent \u00e0 condition que cette demande ne puisse avoir pour effet d'imposer au Contractant des investissements sup\u00e9rieurs \u00e0 ceux qu'il aurait support\u00e9s s'il avait du assurer seul la r\u00e9alisation du projet de transport. Le cocontractant pourra aussi \u00eatre tenue par d\u00e9cision du Ministre, d'accepter, dans la limite et pour la dur\u00e9e de sa capacit\u00e9 de transport exc\u00e9dentaire, le passage des produits provenant d'exploitations autres que celles ayant motiv\u00e9 l'approbation du projet. Ces produits ne peuvent faire l'objet d'aucune discrimination dans les tarifs de transport pour des conditions comparables de qualit\u00e9, de r\u00e9gularit\u00e9 et de d\u00e9bit. Les tarifs de transport sont \u00e9tablis par l'entreprise charg\u00e9e du transport, conform\u00e9ment aux r\u00e9gies en usage dans l'industrie p\u00e9troli\u00e8re internationale, et soumis \u00e0 l'approbation du Ministre.\n--Art. 7.2 (b), 7.8, 16\"\n",
+                "location":{
+                    "image":"252,103,288,65"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143734.js",
+                "id":143734
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licenses, et permis)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":14,
+                "content":"Blue Chip a le droit d'effectuer ou faire effectuer les forages et travaux ne\u0301cessaires a\u0300 l'approvisionnement en eau du personnel des travaux et des installations conforme\u0301ment aux prescriptions re\u0301glementant les prises d'eau; Obligation de faire une demande aupres du ministre; En l'absence d'accord amiable avec les propri\u00e9taires ou les ayant-droit, ils auront un droit de pr\u00e9senter leurs objections. Si l'occupation est temporaire et le terrain peut etre mis en culture au bout d'un an, l'indemnite\u0301 sera fixe\u0301e au double du produit net du terrain. Dans les autres cas, l'indemnite\u0301 sera e\u0301value\u0301e au double de la valeur du terrain avant l'occupation. Toute portion de terrain qui aurait e\u0301te\u0301 endommage\u0301e sur la plus grande partie de sa surface devra e\u0302tre achete\u0301e en sa totalite\u0301 si le proprie\u0301taire ou le de\u0301tenteur de droits de proprie\u0301te\u0301 l'exige. La valeur des terrains a\u0300 acheter sera toujours estime\u0301e au moins a\u0300 la valeur qu'ils avaient avant l'occupation.--Art 7.2 - 7.10\n",
+                "location":{
+                    "image":"280,80,311,43"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143730.js",
+                "id":143730
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":15,
+                "content":"\"Travaux d'infrastructure: Le Contractant a le droit de proc\u00e9der (ou faire proc\u00e9der) aux travaux d'infrastructure n\u00e9cessaires \u00e0 la r\u00e9alisation, dans des conditions \u00e9conomiques normales, des Op\u00e9rations P\u00e9troli\u00e8res et \u00e0 leurs activit\u00e9s connexes, telles que le transport et le stockage des mat\u00e9riels, des \u00e9quipements et des produits extraits (\u00e0 l'exclusion du transport des Hydrocarbures par canalisations vis\u00e9 \u00e0 l'article 16), l'\u00e9tablissement de moyens de t\u00e9l\u00e9communications et voies de communication, ainsi que la production ou la fourniture de l'\u00e9nergie n\u00e9cessaire. Aux fins d'assurer la meilleure utilisation possible du point de vue \u00e9conomique et technique, le Ministre peut imposer au Contractant des conditions de r\u00e9alisation et d'exploitation des travaux et des installations si lesdites conditions ne portent pas atteinte aux conditions \u00e9conomiques normales de l'activit\u00e9. Le Ministre pourra, notamment, et \u00e0 d\u00e9faut d'accord amiable entre les titulaires de droits exclusifs d'exploration et d'exploitation des Hydrocarbure, exiger de plusieurs d'entre eux l'utilisation en commun desdites installations. En cas de diff\u00e9rend, les diff\u00e9rends seront soumis \u00e0 arbitrage suivant les modalit\u00e9s sp\u00e9cifi\u00e9es \u00e0 l'article 29 du pr\u00e9sent Contrat. Transport d'Hydrocarbures par canalisations: L'autorisation de transport d'Hydrocarbures par canalisations est accord\u00e9e par d\u00e9cret. Cette autorisation emporte d\u00e9claration d'utilit\u00e9 publique. Elle deviant caduque lorsque le Contractant ou les b\u00e9n\u00e9ficiaires n'auraient pas commenc\u00e9 les travaux pr\u00e9vus un an apr\u00e8s l'approbation du projet. \nLe trac\u00e9 et les caract\u00e9ristiques des canalisations et installations doivent \u00eatre \u00e9tablis de mani\u00e8re \u00e0 assurer la collecte, le transport et l'\u00e9vacuation des produits des gisements dans les meilleures conditions techniques et \u00e9conomiques et en particulier de mani\u00e8re \u00e0 assurer la meilleure valorisation pour la vente de ces produits au d\u00e9part des gisements et \u00e0 permettre la sauvegarde de l'environnement et le d\u00e9veloppement rationnel des gisements. Tous protocoles, accords, contrats pass\u00e9s ou transfert entre le cocontractant/beneficiares et des tiers sur la construction de canalisations doivent \u00eatre soumis \u00e0 l'autorisation pr\u00e9alable du Ministre. Les b\u00e9n\u00e9ficiaires des transferts doivent satisfaire aux conditions exig\u00e9es du Contractant dans le cadre du pr\u00e9sent Contrat.\nEn cas de plusieurs d\u00e9couvertes d'Hydrocarbures dans la m\u00eame r\u00e9gion g\u00e9ographique, le Contractant devra s'entendre \u00e0 l'amiable avec les autres exploitants pour la construction et/ou l'utilisation commune de canalisations et/ou installations permettant d'\u00e9vacuer tout ou partie de leurs productions respectives. \nA d\u00e9faut d'accord amiable, le Ministre pourra exiger que le Contractant et les autres exploitants s'associent \u00e0 condition que cette demande ne puisse avoir pour effet d'imposer au Contractant des investissements sup\u00e9rieurs \u00e0 ceux qu'il aurait support\u00e9s s'il avait du assurer seul la r\u00e9alisation du projet de transport. Le cocontractant pourra aussi \u00eatre tenue par d\u00e9cision du Ministre, d'accepter, dans la limite et pour la dur\u00e9e de sa capacit\u00e9 de transport exc\u00e9dentaire, le passage des produits provenant d'exploitations autres que celles ayant motiv\u00e9 l'approbation du projet. Ces produits ne peuvent faire l'objet d'aucune discrimination dans les tarifs de transport pour des conditions comparables de qualit\u00e9, de r\u00e9gularit\u00e9 et de d\u00e9bit. Les tarifs de transport sont \u00e9tablis par l'entreprise charg\u00e9e du transport, conform\u00e9ment aux r\u00e9gies en usage dans l'industrie p\u00e9troli\u00e8re internationale, et soumis \u00e0 l'approbation du Ministre.\n--Art. 7.2 (b), 7.8, 16\"\n",
+                "location":{
+                    "image":"790,80,826,43"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143735.js",
+                "id":143735
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":18,
+                "content":"Les Parties s'engagent a\u0300 conside\u0301rer comme confidentiel et a\u0300 ne pas communiquer a\u0300 des Tiers, tout ou partie des documents et e\u0301chantillons se rapportant aux Ope\u0301rations Pe\u0301trolie\u0300res, pendant une pe\u0301riode de cinq (5) ans a\u0300 partir de laquelle lesdits documents et e\u0301chantillons auront e\u0301te\u0301 fournis, et en cas de renonciation a\u0300 une zone jusqu'a\u0300 la date de ladite renonciation en ce qui concerne les documents et e\u0301chantillons se rapportant a\u0300 la zone abandonne\u0301e. S'il le juge souhaitable, le Ministre pourra \u00e9galement d\u00e9cider d'augmenter la p\u00e9riode de confidentialit\u00e9.--Art. 8.7\n",
+                "location":{
+                    "image":"758,93,784,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143741.js",
+                "id":143741
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":21,
+                "content":"\"Dur\u00e9e d'exploration: Trois ann\u00e9s contractuelles, renouvellable 1 fois pour 3 ans pour 75% de la superficie et 1 fois pour 3 ans pour 50% de la superficie. Possibilit\u00e9 de prorogation de l'autorisation exclusive d'exploration pendant 6 mois maximum pour la dure\u0301e ne\u0301cessaire a\u0300 l'ache\u0300vement des travaux d'e\u0301valuation; Dur\u00e9e exploitation: vingt-cinq ans a\u0300 compter de la date d'octroi de l'autorisation exclusive d'exploitation correspondante. Renouvelable deux fois pour dix ans,  \u00e0 condition que le Contractant ait rempli toutes ses obligations contractuelles  et justifie qu'une production commerciale \u00e0 partir du P\u00e9rim\u00e8tre\nd'exploitation concern\u00e9 reste possible.--Arts 3, 9.11\"\n",
+                "location":{
+                    "image":"639,87,669,45"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143701.js",
+                "id":143701
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, cr\u00e9dit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":23,
+                "content":"Blue chip peut recouvrir  au maximum 53% de la quantite\u0301 globale de Pe\u0301trole Brut ou de gaz qui n'est ni utilise\u0301e dans les Ope\u0301rations Pe\u0301trolie\u0300res, ni perdue. Le surplus ne pouvant e\u0302tre ainsi recouvre\u0301 dans l'Anne\u0301e Civile conside\u0301re\u0301e sera reporte\u0301 sur la ou les Anne\u0301es Civiles suivantes jusqu'au recouvrement total des Cou\u0302ts Pe\u0301troliers ou la fin du pre\u0301sent Contrat.--Art 10.2\n",
+                "location":{
+                    "image":"373,103,407,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143719.js",
+                "id":143719
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":23,
+                "content":"La quantit\u00e9 restante (apres impots et recouvrement de des Co\u00fbts P\u00e9troliers) sera partag\u00e9e entre le gouvernement et Blue chip: Si la production totale journaliere de p\u00e9trole brut ou de gaz est inf\u00e9rieure ou \u00e9gale a\u0300 25.000 barrils par jour: 45% pour le governement et 55% pour Blue Chip. Si la production est entre 25.001 et 75.000 barrils par jour: 50% pour le governement et 50% pour Blue Chip. Si la production est sup\u00e9rieure a 75.000 barrils par jour: 55% pour le governement et 45% pour Blue Chip. Le gouvernement peut recevoir sa part en nature ou en espece.--Arts 10.3 - 10.6\n",
+                "location":{
+                    "image":"649,96,680,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143720.js",
+                "id":143720
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":25,
+                "content":"impo\u0302t direct de 40% calcule\u0301 sur less be\u0301ne\u0301fices nets--Art. 11.1\n",
+                "location":{
+                    "image":"145,102,175,66"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143714.js",
+                "id":143714
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":25,
+                "content":"\"Toutefois, les co\u00fbts des approvisionnements, du personnel et des prestations fournis par des Soci\u00e9t\u00e9s Affili\u00e9es seront d\u00e9ductibles dans la mesure o\u00f9 ils\nn'exc\u00e8dent pas ceux qui seraient normalement pratiqu\u00e9s dans des conditions de pleine concurrence entre un vendeur et un acheteur ind\u00e9pendants pour des approvisionnements ou des prestations identiques ou analogues.--Art. 11.4(a)\"\n",
+                "location":{
+                    "image":"808,127,839,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143727.js",
+                "id":143727
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'impot sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloissonement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":26,
+                "content":"\"Les charges d\u00e9ductibles du revenu comprennent les frais g\u00e9n\u00e9raux aff\u00e9rents aux Op\u00e9rations P\u00e9troli\u00e8res (location des biens meubles et immeubles, les cotisations d'assurance et une quote-part raisonnable des frais g\u00e9n\u00e9raux pay\u00e9s \u00e0 l'\u00e9tranger), les amortissements des immobilisations conforme\u0301ment aux dispositions de l'article 4 de la Proce\u0301dure Comptable et les inte\u0301re\u0302ts et agios verse\u0301s aux cre\u0301anciers du Contractant pour leur montant re\u0301el, dans les limites fixe\u0301es dans la Proce\u0301dure Comptable, les pertes de mat\u00e9riels ou biens, les cr\u00e9ances irr\u00e9couvrables, les indemnit\u00e9s vers\u00e9es aux Tiers pour dommages, les provisions raisonnables et justifi\u00e9es constitu\u00e9es en vue de faire face ult\u00e9rieurement \u00e0 des pertes ou charges nettement pr\u00e9cis\u00e9es et que les \u00e9v\u00e9nements en cours rendent probable, toutes autres pertes ou charges directement li\u00e9es aux Op\u00e9rations P\u00e9troli\u00e8res, y\ncompris les pertes de changes r\u00e9alis\u00e9es \u00e0 l'occasion des Op\u00e9rations P\u00e9troli\u00e8res, ainsi que les bonus pr\u00e9vus \u00e0 l'article 13.2, les redevances superficiaires pr\u00e9vues \u00e0\nl'article 11.7 et les sommes pay\u00e9es durant l'Ann\u00e9e Civile pr\u00e9vues \u00e0 l'article 12.2, \u00e0 l'exception du montant de l'imp\u00f4t direct sur les b\u00e9n\u00e9fices d\u00e9termin\u00e9s\nconform\u00e9ment aux dispositions du article 11. Le montant non apur\u00e9 des d\u00e9ficits relatifs aux Ann\u00e9es Civiles ant\u00e9rieures, tous les autres Co\u00fbts P\u00e9troliers (co\u00fbt des approvisionnements, les d\u00e9penses de personnel et de main d'\u0153uvre, le co\u00fbt des prestations fournies au Contractant \u00e0 l'occasion des Op\u00e9rations P\u00e9troli\u00e8res, quand fournies par des Soci\u00e9t\u00e9s affili\u00e9s, les couts ne doivent pas exceeder ceux qui seraient normalement pratiqu\u00e9s dans des conditions de pleine concurrence entre un vendeur et un acheteur ind\u00e9pendants).--Arts 11.4 c), d); Annexe 2 (art. 4)\"\n",
+                "location":{
+                    "image":"405,113,434,77"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143716.js",
+                "id":143716
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":26,
+                "content":"\"Dans les soixante jours suivant la fin de chaque Anne\u0301e Civile, Blue Chip remettra aux autorite\u0301s fiscales compe\u0301tentes sa de\u0301claration annuelle des revenus, accompagne\u0301e des e\u0301tats financiers, telle qu'elle est exige\u0301e par la re\u0301glementation en vigueur. Les livres de comptes seront tenus en dollars et \ufffca titre d'information, les comptes de re\u0301sultats et les bilans seront e\u0301galement tenus en Ouguiyas. Le Ministre, apre\u0300s en avoir informe\u0301 Blue Chip par e\u0301crit, pourra faire examiner et ve\u0301rifier par des auditeurs de son choix ou par ses propres agents les registres et livres de comptes relatifs aux Ope\u0301rations Pe\u0301trolie\u0300res. Il dispose d'un d\u00e9lai de cinq ans suivant la fin d'une Ann\u00e9e Civile donn\u00e9e pour effectuer les examens ou v\u00e9rifications\nconcernant ladite Ann\u00e9e et pr\u00e9senter au Blue Chip ses objections pour toutes contradictions ou erreurs relev\u00e9es lors de ces examens ou v\u00e9rifications.\nLes d\u00e9penses raisonnables d'examen et de la v\u00e9rification seront rembours\u00e9es \u00e0 l'Etat par Blue Chip et seront consid\u00e9r\u00e9es comme des Co\u00fbts P\u00e9troliers et recouvrables.--Arts 11.6; Art 20\"\n",
+                "location":{
+                    "image":"841,81,870,40"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143725.js",
+                "id":143725
+            },
+            {
+                "access":"public",
+                "title":"Redevances superficiaires//Surface fees",
+                "page":27,
+                "content":"\"Blue Chip versera a\u0300 la Direction de l'Exploration et du De\u0301veloppement des Hydrocarbures Bruts les redevances superficiaires suivantes :\na) Dix Dollars par kilome\u0300tre carre\u0301 et par an durant la pe\u0301riode initiale de l'autorisation exclusive d'exploration;\nb) Vingt Dollars par kilome\u0300tre carre\u0301 et par an durant la premie\u0300re pe\u0301riode de renouvellement de l'autorisation exclusive d'exploration;\n\ufffcc) Cinquante Dollars par kilome\u0300tre carre\u0301 et par an durant la deuxie\u0300me pe\u0301riode de renouvellement de l'autorisation exclusive d'exploration et durant toutes prorogation pre\u0301vue aux articles 3.6 et 3.7;\n\ufffcd) Deux cent Dollars par kilome\u0300tre carre\u0301 et par an durant la pe\u0301riode de validite\u0301 d'une autorisation exclusive d'exploitation. Les redevances superficiares ne sont ni recouvrables, ni d\u00e9ductibles fiscalement\net ne peuvent donc, en aucun cas \u00eatre consid\u00e9r\u00e9s comme des co\u00fbts p\u00e9troliers.--Art. 11.7\"\n",
+                "location":{
+                    "image":"487,95,518,55"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143721.js",
+                "id":143721
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":28,
+                "content":"En dehors de l'impo\u0302t sur les be\u0301ne\u0301fices, des redevances superficiaires, des impots fonciers et des bonus, le Contractant sera exempt de tous impo\u0302ts, droits, taxes ou contributions de quelque nature que ce soit, nationaux, re\u0301gionaux ou communaux, pre\u0301sents ou futurs, frappant les Ope\u0301rations Pe\u0301trolie\u0300res et tout revenu y affe\u0301rent ou, plus ge\u0301ne\u0301ralement; les proprie\u0301te\u0301s, activite\u0301s ou actes du Contractant, y compris son e\u0301tablissement, ses transferts de fonds et son fonctionnement en exe\u0301cution du Contrat, e\u0301tant entendu que ces exemptions ne s'appliquent qu'aux Ope\u0301rations Pe\u0301trolie\u0300res; Les actionnaires des entite\u0301s constituant le Contractant et leurs Socie\u0301te\u0301s Affilie\u0301es seront aussi exempts de tous impo\u0302ts, droits, taxes et contributions, a\u0300 raison des dividendes rec\u0327us, des cre\u0301ances, pre\u0302ts et des inte\u0301re\u0302ts y affe\u0301rents, des achats, transports d'Hydrocarbures a\u0300 l'exportation, services rendus pour les activite\u0301s en Re\u0301publique Islamique de Mauritanie affe\u0301rentes aux Ope\u0301rations Pe\u0301trolie\u0300res. Toute cession de quelque sorte que ce soit entre les soci\u00e9t\u00e9s signant le pr\u00e9sent Contrat ou n'importe quelle Soci\u00e9t\u00e9 Affili\u00e9e ainsi que toute cession faite en accord avec les dispositions de l'article 3.5 seront exemptes de tout droit ou taxes \u00e0 payer s'y relatant. Les achats de mate\u0301riels, biens d'e\u0301quipements et produits, re\u0301alise\u0301s par le Contractant ou les entreprises travaillant pour son compte ainsi que les prestations de services au Contractant affecte\u0301es aux Ope\u0301rations Pe\u0301trolie\u0300res sont exone\u0301re\u0301es de toutes taxes sur le chiffre d'affaires. --Art. 11.8, Art. 11.9\n",
+                "location":{
+                    "image":"144,75,179,39"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143724.js",
+                "id":143724
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":28,
+                "content":"Blue Chip s'engage de\u0300s le de\u0301but des Ope\u0301rations Pe\u0301trolie\u0300res a\u0300 assurer l'emploi en priorite\u0301, a\u0300 qualification e\u0301gale, du personnel mauritanien et a\u0300 contribuer a\u0300 la formation de ce personnel afin de permettre son accession a\u0300 tous emplois d'ouvriers qualifie\u0301s, d'agents de mai\u0302trise, de cadres et de directeurs. Blue Chip etablira, en accord avec la Direction de l'Exploration et du D\u00e9veloppement des Hydrocarbures Bruts, un plan  de recrutement du personnel mauritanien et un plan de formation et de perfectionnement pour parvenir a\u0300 une participation de plus en plus large du personnel mauritanien aux Ope\u0301rations Pe\u0301trolie\u0300res. Pendant la validite\u0301 de l'autorisation exclusive d'exploration, Blue Chip mettra a disposition $600.000 par an ($650.000 a compter de l'octroi d'une autorisation exclusive d'exploitation) pour la formation du personnel local et la surveillance des ope\u0301rations pe\u0301trolie\u0300res. Blue Chip mettra aussi a disposition $500.000 pour l'assistance de formation dans les spe\u0301cialite\u0301s pe\u0301trolie\u0300res. Ces sommes sont non deductibles d'impots ni recouvrables et ne peuvent \u00eatre consid\u00e9r\u00e9es comme des co\u00fbts p\u00e9troliers. --Art. 12.1 - 12.5\n",
+                "location":{
+                    "image":"742,314,771,280"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143705.js",
+                "id":143705
+            },
+            {
+                "access":"public",
+                "title":"Primes//Bonuses",
+                "page":29,
+                "content":"\"Paiement d'un bonus a l'Etat d'un million de dolllars a la signature du contrat. Paiement de bonus additionel de  (i) cinq millions de Dollars lorsque la production re\u0301gulie\u0300re commercialise\u0301e de Pe\u0301trole Brut extrait du ou des Pe\u0301rime\u0300tres d'Exploitation atteindra pour la premie\u0300re fois le rythme moyen de 25.000 Barils par jour pendant une pe\u0301riode de trente  jours conse\u0301cutifs. (ii) Bonus sept millions de Dollars lorsque la production atteindra pour la premie\u0300re fois le rythme moyen de 75.000 Barils par jour \n(iii) Bonus de dix millions de Dollars lorsque la production atteindra pour la premie\u0300re fois le rythme moyen supe\u0301rieure a\u0300 100.000 Barils par jour. Ces sommes ne sont ni recouvrables, ni d\u00e9ductibles\nfiscalement et ne peuvent donc, en aucun cas, \u00eatre consid\u00e9r\u00e9es comme des co\u00fbts p\u00e9troliers.--Art 13.1 - 13.2\"\n",
+                "location":{
+                    "image":"581,98,618,56"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143722.js",
+                "id":143722
+            },
+            {
+                "access":"public",
+                "title":"Ventes locales / usage domestique//Local sales requirements/domestic use",
+                "page":30,
+                "content":"\"Obligation de satisfaire en priorite\u0301 les besoins de la consommation inte\u0301rieure en Pe\u0301trole Brut de la Re\u0301publique Islamique de Mauritanie, dans le cas ou\u0300 l'Etat ne peut les satisfaire sur la ou les parts de production qui lui reviennent. Vente a\u0300 l'Etat ou a\u0300 l'attributaire de\u0301signe\u0301 par l'Etat, de la portion ne\u0301cessaire a\u0300 la satisfaction des besoins de la consommation inte\u0301rieure du pays, e\u0301gale au maximum au pourcentage que la quantite\u0301 de Pe\u0301trole Brut produite par le Contractant pendant une Anne\u0301e Civile repre\u0301sente par rapport a\u0300 la quantite\u0301 totale de Pe\u0301trole Brut produite en Re\u0301publique Islamique de Mauritanie pendant ladite Anne\u0301e. Le prix du P\u00e9trole Brut ainsi vendu par le Contractant au Gouvernement sera le Prix\ndu March\u00e9, F.O.B. au Point de Livraison, exprim\u00e9 en\nDollars par Baril.  L'article 14 explique en d\u00e9tail comment calculer le Prix du March\u00e9.\n--Arts 17, 14\"\n",
+                "location":{
+                    "image":"195,288,227,246"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143708.js",
+                "id":143708
+            },
+            {
+                "access":"public",
+                "title":"Autre -Dispositions relatives aux op\u00e9rations et \u00e0 l\u2019infrastructure//Other -Environmental provisions",
+                "page":31,
+                "content":"En cas de de\u0301couverte de Gaz Naturel Non Associe\u0301, le Contractant engagera des discussions avec le Ministre en vue de de\u0301terminer si l'e\u0301valuation et l'exploitation de ladite de\u0301couverte pre\u0301sentent un caracte\u0300re potentiellement commercial--Art 15.1\n",
+                "location":{
+                    "image":"705,95,740,54"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143737.js",
+                "id":143737
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":41,
+                "content":"\"L'e\u0301tat aura l'option de participer aux risques et aux re\u0301sultats des Ope\u0301rations Pe\u0301trolie\u0300res re\u0301sultant du pre\u0301sent Contrat, a\u0300 compter de la date d'octroi de la premie\u0300re autorisation exclusive d'exploitation. L'e\u0301tat sera be\u0301ne\u0301ficiaire, au titre et au prorata de sa participation, des me\u0302mes droits et soumis aux me\u0302mes obligations que ceux du Contractant de\u0301finis au pre\u0301sent Contrat. L'etat pourra participer a hauteur de 25 % puis a hauteur de 30 % lorsque la production re\u0301gulie\u0300re de Pe\u0301trole Brut dudit Pe\u0301rime\u0300tre d'Exploitation aura atteint 75.000 Barils par jour. L'e\u0301tat versera\nau Contractant pour les seuls Cou\u0302ts Pe\u0301troliers d'exploration(a\u0300 l'exclusion des Cou\u0302ts Pe\u0301troliers d'e\u0301valuation, de de\u0301veloppement et d'exploitation) un montant e\u0301gal a\u0300 100% du montant desdits\nCou\u0302ts Pe\u0301troliers d'exploration, non encore recouvre\u0301s, dus par L'e\u0301tat;  L'entreprise nationale et les entite\u0301s constituant le Contractant ne seront pas conjointement et solidairement responsables des obligations re\u0301sultant du pre\u0301sent Contrat. L'entreprise nationale sera individuellement responsable vis-a\u0300-vis de\nl'Etat de ses obligations telles que pre\u0301vues dans le pre\u0301sent Contrat.--Art 21\"\n",
+                "location":{
+                    "image":"158,236,195,197"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143723.js",
+                "id":143723
+            },
+            {
+                "access":"public",
+                "title":"Autre - Dispositions diverses//Other -  Miscellaneous provisions",
+                "page":44,
+                "content":"Les biens appartenant au Contractant et ne\u0301cessaires aux Ope\u0301rations Pe\u0301trolie\u0300res dans la surface abandonne\u0301e comprenant les plateformes de forage, les vaisseaux se\u0301ismiques et autres et tout e\u0301quipement qui y sont fixe\u0301s ou attache\u0301s ou maintenus dessus, deviendront la proprie\u0301te\u0301 de l'Etat a\u0300 titre gratuit, sauf s'ils doivent e\u0302tre utilise\u0301s par le Contractant pour l'exploitation d'autres gisements situe\u0301s en Re\u0301publique Islamique de Mauritanie.  Ces biens ne comprennent pas l'e\u0301quipement d'exploration utilise\u0301 au cours des ope\u0301rations d'exploration offshore et les biens qui n'ont pas e\u0301te\u0301 acquis spe\u0301cialement pour les ope\u0301rations pe\u0301trolie\u0300res en Mauritanie (ces biens doivent e\u0302tre de\u0301clare\u0301s comme tels imme\u0301diatement a\u0300 leur arrive\u0301e au nom du Contractant en Mauritanie). Si le Ministre de\u0301cide de ne pas utiliser lesdits bien, le Contractant devra les enlever a ses frais.--Art. 24\n",
+                "location":{
+                    "image":"596,289,626,249"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143742.js",
+                "id":143742
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":47,
+                "content":"Lois et re\u0300glements de la Re\u0301publique Islamique de Mauritanie--Art 27.1\n",
+                "location":{
+                    "image":"107,100,139,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143738.js",
+                "id":143738
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":47,
+                "content":"II ne pourra e\u0302tre fait application au Contractant d'aucune disposition le\u0301gislative ayant pour effet d'aggraver, directement ou par voie de conse\u0301quence, les charges et obligations re\u0301sultant du pre\u0301sent Contrat et de la le\u0301gislation et la re\u0301glementation en vigueur au 31 Aou\u0302t 2006, sans accord pre\u0301alable des Parties--Art. 27.3\n",
+                "location":{
+                    "image":"206,106,241,70"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143740.js",
+                "id":143740
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":48,
+                "content":"Diff\u00e9rends soumis a la Cour Internationale d'Arbitrage de la Chambre de Commerce Internationale. Le sie\u0300ge de l'arbitrage sera Paris (France). La langue utilise\u0301e durant la proce\u0301dure sera la langue franc\u0327aise et la loi applicable sera la loi mauritanienne, ainsi que les re\u0300gles et usages du droit international applicables en la matie\u0300re.--Art. 29.1, 29.2\n",
+                "location":{
+                    "image":"122,97,155,53"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143739.js",
+                "id":143739
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":50,
+                "content":"12 F\u00e9vrier 2007--Page de signature\n",
+                "location":{
+                    "image":"563,623,594,588"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143699.js",
+                "id":143699
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":50,
+                "content":"2007--Page de signature\n",
+                "location":{
+                    "image":"584,584,614,543"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143700.js",
+                "id":143700
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas//Name and/or number of field, block or deposit",
+                "page":52,
+                "content":"Bloc 25 --Annexe 1\n",
+                "location":{
+                    "image":"382,648,422,607"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25/annotations/143692.js",
+                "id":143692
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Blue Chip, Bloc25- Mauritania, 2007",
+        "data":{
+            "Type of Mining Title":"Production Sharing Contract",
+            "Signature Year":"2007",
+            "Resource":"Hydrocarbons",
+            "Countries":"Mauritania"
+        },
+        "created_at":"Wed, 16 Oct 2013 15:21:44 +0000",
+        "display_language":"eng",
+        "updated_at":"Sun, 15 Mar 2015 02:08:41 +0000",
+        "id":"805414-psc-blue-chop-energy-bloc-25",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/805414/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/805414/psc-blue-chop-energy-bloc-25.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/805414/pages/psc-blue-chop-energy-bloc-25-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/805414/pages/psc-blue-chop-energy-bloc-25-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/805414/psc-blue-chop-energy-bloc-25.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/805414/pages/psc-blue-chop-energy-bloc-25-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=805414"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":59,
+        "canonical_url":"http://www.documentcloud.org/documents/805414-psc-blue-chop-energy-bloc-25.html"
+    }
+}

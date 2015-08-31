@@ -61,15 +61,21 @@ class MigrateFromDocumentCloud extends Command
     /**
      * Execute the console command.
      *
-     * @return void
      */
     public function fire()
     {
         if ($this->input->getOption('update')) {
             $this->updateFromXl();
 
-            return "";
+            return;
         }
+
+        if ($this->input->getOption('annotation')) {
+            $this->annotationUpdate();
+
+            return;
+        }
+
         $this->readFromJson();
     }
 
@@ -183,7 +189,8 @@ class MigrateFromDocumentCloud extends Command
     protected function getOptions()
     {
         return [
-            ['update', null, InputOption::VALUE_NONE, 'Force the operation to run.', null],
+            ['update', null, InputOption::VALUE_NONE, 'Update metadata.', null],
+            ['annotation', null, InputOption::VALUE_NONE, 'Update Annotations.', null],
         ];
     }
 
@@ -210,5 +217,51 @@ class MigrateFromDocumentCloud extends Command
     {
         return public_path('api-data' . '/' . $dir);
     }
+
+    protected function annotationUpdate()
+    {
+        $files = $this->fileSystem->files($this->getDir());
+        $data  = [];
+
+        if (count($files) < 1) {
+            $this->error('Json file not found');
+
+            return;
+        }
+
+        foreach ($files as $file) {
+
+            $this->migration->setData($file);
+
+            $contract = $this->migration->run();
+            $data[]   = $contract;
+
+            if (!is_null($contract)) {
+
+                $query = Contract::select('*');
+                $con   = $query->whereRaw(
+                    sprintf("contracts.metadata->>'documentcloud_url'='%s'", $contract->documentcloud_url)
+                )->first();
+
+                if (!empty($con)) {
+                    $con->annotations()->delete();
+
+                    if (!empty($contract->annotations)) {
+                        $this->migration->saveAnnotations($con->id, $contract->annotations);
+                    }
+
+                    $this->moveFile($file);
+                    $this->info('Success - %s', $file);
+                    continue;
+                }
+                $this->info('Failed - %s', $file);
+                continue;
+            }
+
+            $this->error(sprintf('Failed - %s', $file));
+        }
+        $this->info('done');
+    }
+
 
 }

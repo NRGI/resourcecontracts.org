@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"24b6b13e730275ba2ea04cd5c0b92677a85717df",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Triton, Energy Africa, Block G (1st Amendment to) - Equatorial Guinea, 2000",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2000",
+            "Resource":"Hydrocarbons",
+            "Countries":"Equatorial Guinea"
+        },
+        "created_at":"Tue, 20 Jan 2015 04:36:35 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 24 Mar 2015 01:10:39 +0000",
+        "id":"1505387-triton-energy-africa-block-g-1st-amendment-to",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505387/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505387/triton-energy-africa-block-g-1st-amendment-to.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505387/pages/triton-energy-africa-block-g-1st-amendment-to-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505387/pages/triton-energy-africa-block-g-1st-amendment-to-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505387/triton-energy-africa-block-g-1st-amendment-to.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505387/pages/triton-energy-africa-block-g-1st-amendment-to-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505387"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":11,
+        "canonical_url":"http://www.documentcloud.org/documents/1505387-triton-energy-africa-block-g-1st-amendment-to.html"
+    }
+}

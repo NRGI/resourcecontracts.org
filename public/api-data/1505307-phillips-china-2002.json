@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"0a7c31be704ffd3ef607eec31f3c59eddc4ffaeb",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Phillips - China, 2002",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2002",
+            "Resource":"Hydrocarbons",
+            "Countries":"China"
+        },
+        "created_at":"Tue, 20 Jan 2015 01:22:07 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 16 Mar 2015 02:10:20 +0000",
+        "id":"1505307-phillips-china-2002",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505307/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505307/phillips-china-2002.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505307/pages/phillips-china-2002-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505307/pages/phillips-china-2002-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505307/phillips-china-2002.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505307/pages/phillips-china-2002-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505307"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":64,
+        "canonical_url":"http://www.documentcloud.org/documents/1505307-phillips-china-2002.html"
+    }
+}

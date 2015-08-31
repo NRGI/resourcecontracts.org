@@ -1,0 +1,602 @@
+{
+    "document":{
+        "file_hash":null,
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom(s) de la soci\u00e9t\u00e9(s) contractante(s)//Name of contracting company",
+                "page":3,
+                "content":"Golden Shamrock Mines Limited (GSM), une soci\u00e9t\u00e9 de droit australien ; Chevaning Mining Company Limited (CMC), une soci\u00e9t\u00e9 de droit anglais--Pr\u00e9ambule",
+                "location":{
+                    "image":"135,613,162,572"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73079.js",
+                "id":73079
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 cr\u00e9\u00e9e ou envisag\u00e9e pour ex\u00e9cuter le projet//Name and/or composition of executing company created or anticipated",
+                "page":3,
+                "content":"Restructuration d\u2019Aurif\u00e8re de Guin\u00e9e S.A., une soci\u00e9t\u00e9 mixte guin\u00e9enne dans laquelle l'Etat \u00e9tait actionnaire \u00e0 49%, cr\u00e9\u00e9e conform\u00e9ment \u00e0 une convention mini\u00e8re de 1985. Cr\u00e9ation de la SAG, dont l'actionnariat est r\u00e9parti \u00e0 15% pour la R\u00e9publique de Guin\u00e9e, 85% pour CMC.--D\u00e9clarations Pr\u00e9liminaires, Art. 2.1",
+                "location":{
+                    "image":"530,593,558,547"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73084.js",
+                "id":73084
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":3,
+                "content":"11/11/1993",
+                "location":{
+                    "image":"90,616,118,574"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73090.js",
+                "id":73090
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term ",
+                "page":12,
+                "content":"25 ans--Art. 6.1\n",
+                "location":{
+                    "image":"806,117,841,69"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73091.js",
+                "id":73091
+            },
+            {
+                "access":"public",
+                "title":"Conditions de renouvellement//Conditions for renewal ",
+                "page":13,
+                "content":"Si les op\u00e9rations mini\u00e8res commerciales se poursuivent dans une quelconque Zone Mini\u00e8re et que la Soci\u00e9t\u00e9 peut d\u00e9montrer \u00e0 la R\u00e9publique de Guin\u00e9e de mani\u00e8re convaincante que les r\u00e9serves et la conjoncture \u00e9conomique dictent la continuation des activit\u00e9s, la convention demeurera en vigueur pour une p\u00e9riode suffisante pour l'ach\u00e8vement des activit\u00e9s mini\u00e8res et la r\u00e9habilitation de la zone, et les parties ren\u00e9gocieront des dispositions concernant les imp\u00f4ts et autres stipulations fiscales relatives \u00e0 la prolongation de ces op\u00e9rations mini\u00e8res.--Art 6.2",
+                "location":{
+                    "image":"117,152,150,109"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73092.js",
+                "id":73092
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9siliation / fin du contrat//Cancellation / Termination",
+                "page":13,
+                "content":"R\u00e9siliation par anticipation dans les cas suivants: les Parties consentent officiellement et express\u00e9ment \u00e0 r\u00e9silier; le dernier Titre d\u00e9tenu par AuG ou toute autre Soci\u00e9t\u00e9 expire ou est abandonn\u00e9 ou n'est pas renouvel\u00e9 conform\u00e9ment aux Lois Applicables; AuG et toute autre soci\u00e9t\u00e9 op\u00e9rant dans une Zone Mini\u00e8re suspendent volontairement toutes les Activit\u00e9s du Projet pendant une p\u00e9riode continue de 8 mois ou abandonnent d\u00e9finitivement ces Activit\u00e9s; la liquidation volontaire de AuG intervient ou dans l'hypoth\u00e8se o\u00f9 le tribunal comp\u00e9tent prononce la liquidation de AuG.--Art. 6.3",
+                "location":{
+                    "image":"414,154,445,114"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73143.js",
+                "id":73143
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State equity",
+                "page":14,
+                "content":"15% non-contributive, avec le droit \u00e0 tout moment d'acqu\u00e9rir une participation suppl\u00e9mentaire (contributive) de 15% dans la Soci\u00e9t\u00e9 (sous r\u00e9serve de payer le montant pr\u00e9vu \u00e0 l'article 7.8)--Arts. 7.3, 7.8",
+                "location":{
+                    "image":"125,118,161,76"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73130.js",
+                "id":73130
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":18,
+                "content":"Gold,Silver,Diamond--Art. 8.6\n",
+                "location":{
+                    "image":"252,129,287,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73093.js",
+                "id":73093
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":29,
+                "content":"Chaque \u00e9tude d'impact sur l'environnement sera pr\u00e9par\u00e9e par des experts ind\u00e9pendants en tenant compte des directives de la Banque Mondiale et du Code de l'Environnement de la Guin\u00e9e en vigueur au moment de cette pr\u00e9paration. Outre l'impact possible de l'entreprise mini\u00e8re propos\u00e9e sur le sol, l'air, les ressources biologiques et les \u00e9tablissements humains, cette \u00e9tude d\u00e9crira les mesures \u00e0 adopter afin d'en r\u00e9duire les effets d\u00e9favorables.--Art. 12.7",
+                "location":{
+                    "image":"681,111,718,73"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73132.js",
+                "id":73132
+            },
+            {
+                "access":"public",
+                "title":"Commercialisation et acc\u00e8s \u00e0 la production //Marketing of output and state access to output",
+                "page":30,
+                "content":"Droit d'exporter tout l'or et autres produits de chaque entreprise mini\u00e8re. Toute vente \u00e0 une soci\u00e9t\u00e9 apparent\u00e9e se fera selon les conditions d'une vente \u00e0 une entreprise non-apparent\u00e9e, sur la base de prix fixes selon des conditions normales de concurrence.--Arts. 12.12 - 12.13",
+                "location":{
+                    "image":"769,116,802,71"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73136.js",
+                "id":73136
+            },
+            {
+                "access":"public",
+                "title":"Autres - plan de r\u00e9habilitation",
+                "page":30,
+                "content":"La Soci\u00e9t\u00e9 adoptera et r\u00e9alisera progressivement un plan de r\u00e9habilitation effective des parties de la Zone Mini\u00e8re perturb\u00e9es ou affect\u00e9es par les op\u00e9rations.--Art. 12.8",
+                "location":{
+                    "image":"89,108,122,67"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73134.js",
+                "id":73134
+            },
+            {
+                "access":"public",
+                "title":"Commercialisation et acc\u00e8s \u00e0 la production //Marketing of output and state access to output ",
+                "page":31,
+                "content":"Droit d'exporter tout l'or et autres produits de chaque entreprise mini\u00e8re. Toute vente \u00e0 une soci\u00e9t\u00e9 apparent\u00e9e se fera selon les conditions d'une vente \u00e0 une entreprise non-apparent\u00e9e, sur la base de prix fixes selon des conditions normales de concurrence.--Arts. 12.12 - 12.13\n",
+                "location":{
+                    "image":"137,113,172,72"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73137.js",
+                "id":73137
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining Tax/ Royalty Tax",
+                "page":32,
+                "content":"\u00ab Droits d\u2019exportation \u00bb : Pour l\u2019or, la soci\u00e9t\u00e9 payera le droit sur la base de la valeur du March\u00e9 des Lingots d\u2019or de Londres (London Gold Bullion Market).  Si la valeur sur ce march\u00e9 est moins de $475/once, le droit d\u2019exportation sera 3% de la valeur calcul\u00e9e sur cette base ; si la valeur sur ce march\u00e9 est plus de $475/once, le droit d\u2019exportation sera 5% de la valeur calcul\u00e9e sur cette base.  Pour les diamants et autres minerais, la Guin\u00e9e fixera les taux en fonction des taux pratiqu\u00e9s dans d'autres pays producteurs en Afrique de l'Ouest, 9% \u00e9tant le taux maximum appliqu\u00e9 \u00e0 la valeur de march\u00e9 au moment de l'exp\u00e9dition.--Art13.3",
+                "location":{
+                    "image":"473,115,507,66"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73101.js",
+                "id":73101
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de recherche//Custom duties during exploration phase",
+                "page":33,
+                "content":"Exon\u00e9ration--Art 13.5\n",
+                "location":{
+                    "image":"749,126,783,84"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73125.js",
+                "id":73125
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de construction//Custom duties during construction phase",
+                "page":33,
+                "content":"Exon\u00e9ration--Art 13.5\n",
+                "location":{
+                    "image":"796,123,833,80"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73126.js",
+                "id":73126
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase d'exploitation//Custum duties during  operation phase",
+                "page":33,
+                "content":"Exon\u00e9ration pendant les 2 premi\u00e8res ann\u00e9es. 5,6% de la valeur d'importation jusqu'\u00e0 la 10e d'ann\u00e9e d'exploitation; 10% au del\u00e0 de la 10e ann\u00e9e.--Art 13.5",
+                "location":{
+                    "image":"843,125,879,78"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73127.js",
+                "id":73127
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":35,
+                "content":"30% sur toute la dur\u00e9e de la convention--Art.13.12",
+                "location":{
+                    "image":"643,120,674,83"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73102.js",
+                "id":73102
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: cloisonnement//Income tax: ring-fencing",
+                "page":35,
+                "content":"Absence de cloisonnement implicite: si la soci\u00e9t\u00e9 poss\u00e8de plusieurs entreprises, une seule date de premi\u00e8re production commerciale est d\u00e9finie.--Art.13.12",
+                "location":{
+                    "image":"680,118,709,75"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73116.js",
+                "id":73116
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: amortissement//Income tax: amortization",
+                "page":35,
+                "content":"Les r\u00e8gles sur l'amortissement sont \u00e9nonc\u00e9es dans la Seconde Annexe - Amortissement d\u00e9gressif sur une p\u00e9riode de 5 ans: 40%-24%-14%-11%-11%--Art.13,13, Seconde Annexe: Arts. 4-6",
+                "location":{
+                    "image":"746,125,777,85"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73108.js",
+                "id":73108
+            },
+            {
+                "access":"public",
+                "title":"Cr\u00e9dit d'investissement//Investment credit",
+                "page":35,
+                "content":"5% du total des investissements en actifs amortissables pendant l'ann\u00e9e.--Art 13.13",
+                "location":{
+                    "image":"762,83,798,40"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73124.js",
+                "id":73124
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: reports des pertes//Income tax: loss carry forward",
+                "page":35,
+                "content":"Reportables pendant une p\u00e9riode de 5 ans--Art.13.13",
+                "location":{
+                    "image":"803,129,838,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73115.js",
+                "id":73115
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les prestations de services par des entreprises non r\u00e9sidentes//Witholding tax on services of non-resident companies",
+                "page":36,
+                "content":"10% sur les services fournis \u00e0 la Soci\u00e9t\u00e9  par des personnes non \u00e9tablies de fa\u00e7on permanente en Guin\u00e9e au sens de la r\u00e9glementation fiscale - aucune retenue \u00e0 la source ne sera appliqu\u00e9e aux Services rendus directement par GSM ou CMC  \u00e9tant donn\u00e9 que ces services sont fournis \u00e0 prix co\u00fbtant.--Art. 13.15",
+                "location":{
+                    "image":"505,112,539,68"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73121.js",
+                "id":73121
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des nationaux//Witholding tax on national salaries",
+                "page":36,
+                "content":"La Soci\u00e9t\u00e9 devra retenir \u00e0 la source et acquitter l'imp\u00f4t sur le revenu au titre des salaires et traitements de ses employ\u00e9s guin\u00e9ens conform\u00e9ment aux Lois Applicables. De plus, chaque ann\u00e9e, la Soci\u00e9t\u00e9 mettra de c\u00f4t\u00e9 pour la formation au moins 1,5% du total des salaires des employ\u00e9s guin\u00e9ens.--Art. 13.16",
+                "location":{
+                    "image":"736,114,766,73"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73119.js",
+                "id":73119
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des expatri\u00e9s//Witholding tax on expatriate salaries",
+                "page":37,
+                "content":"0,1--Art13.17",
+                "location":{
+                    "image":"215,115,250,70"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73120.js",
+                "id":73120
+            },
+            {
+                "access":"public",
+                "title":"Provision pour la reconstitution des gisements//Provisions for renewing reserves",
+                "page":37,
+                "content":"Constitution d'une r\u00e9serve pour exploration future, qui doit \u00eatre r\u00e9int\u00e9gr\u00e9e au r\u00e9sultat imposable si elle n'est pas utilis\u00e9e dans les trois ann\u00e9es suivantes.--Art. 13.18 et Seconde Annexe",
+                "location":{
+                    "image":"386,108,415,71"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73122.js",
+                "id":73122
+            },
+            {
+                "access":"public",
+                "title":"Contribution au d\u00e9veloppement communautaire ou local//Community and local obligations",
+                "page":37,
+                "content":"Imp\u00f4t pr\u00e9fectoral ou local pour le d\u00e9veloppement communautaire de 0,4% des recettes brutes annuelles sur ses ventes.--Art. 13.19",
+                "location":{
+                    "image":"461,108,493,65"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73128.js",
+                "id":73128
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les Revenus des Valeurs Mobili\u00e8res (IRVM)//Capital gains tax",
+                "page":38,
+                "content":"Pas de retenue \u00e0 la source sur les dividendes ou int\u00e9r\u00eats vers\u00e9s du compte ext\u00e9rieur (en devises).--Art.13.22",
+                "location":{
+                    "image":"769,118,802,80"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73118.js",
+                "id":73118
+            },
+            {
+                "access":"public",
+                "title":"Autres exon\u00e9rations//Other exemptions",
+                "page":38,
+                "content":"Pas de retenue \u00e0 la source sur les paiements provenant du ou des comptes ext\u00e9rieurs \u00e0 propos de tout int\u00e9r\u00eat financier relatif \u00e0 un emprunt fait en devises \u00e9trang\u00e8res par ou au nom de la Soci\u00e9t\u00e9 ou de tous paiements se rapportant \u00e0 des services ou des conseillers et des fournisseurs de biens ou de services, quand ils sont faits en devises \u00e9trang\u00e8res.--Art. 13.22",
+                "location":{
+                    "image":"816,118,851,79"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73131.js",
+                "id":73131
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":39,
+                "content":"Aucun Imp\u00f4t nouveau ou suppl\u00e9mentaire ne sera impos\u00e9 \u00e0 la Soci\u00e9t\u00e9 pour la dur\u00e9e de la Convention.--Art. 13.23",
+                "location":{
+                    "image":"300,114,334,75"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73142.js",
+                "id":73142
+            },
+            {
+                "access":"public",
+                "title":"Indemnisation//Indemnification",
+                "page":39,
+                "content":"La Guin\u00e9e s'engage envers les autres Parties et la Soci\u00e9t\u00e9, \u00e0 ce que les droits ou int\u00e9r\u00eats de la Soci\u00e9t\u00e9 dans ou \u00e0 l'\u00e9gard de la Zone du Projet ou d'une Zone Mini\u00e8re, ne puissent pas, en tout ou partie, faire l'objet d'une mesure d'expropriation sans le prompt paiement d'une compensation juste et raisonnable, par le versement d'une somme ou de d\u00e9dommagements qui devront \u00eatre d\u00e9termin\u00e9s par un accord ou par sentence arbitrale.--Art. 14",
+                "location":{
+                    "image":"418,523,448,483"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73149.js",
+                "id":73149
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien de l'infrastructure//Construction and maintenance of infrastructure",
+                "page":41,
+                "content":"La Soci\u00e9t\u00e9 pourra am\u00e9liorer, r\u00e9parer et entretenir les installations publiques existantes. Les installations dans la zone de projet seront construites pour la capacit\u00e9 de la soci\u00e9t\u00e9  et entretenues par la soci\u00e9t\u00e9 dans le cadre des activit\u00e9s du projet.--Art. 14.3",
+                "location":{
+                    "image":"273,112,304,71"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73135.js",
+                "id":73135
+            },
+            {
+                "access":"public",
+                "title":"Utilisation de l\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":41,
+                "content":"Art. 14.3\n",
+                "location":{
+                    "image":"321,116,356,72"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73138.js",
+                "id":73138
+            },
+            {
+                "access":"public",
+                "title":"Autres - personnel expatri\u00e9",
+                "page":41,
+                "content":"Les investisseurs feront leurs meilleurs efforts pour assurer que la Soci\u00e9t\u00e9 n'emploie aucun expatri\u00e9 provenant d'un pays hostile \u00e0 la Guin\u00e9e et que les expatri\u00e9s employ\u00e9s ne prennent part \u00e0 aucune activit\u00e9 susceptible de mettre en danger la s\u00e9curit\u00e9 nationale ou l'ordre public en Guin\u00e9e.--Art. 14.5",
+                "location":{
+                    "image":"708,107,745,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73099.js",
+                "id":73099
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel guin\u00e9en//Local employment requirements",
+                "page":42,
+                "content":"La Soci\u00e9t\u00e9 emploiera des ressortissants guin\u00e9ens dans la limite maximum de ce qui est possible et de ce qui est compatible avec l'efficacit\u00e9 des op\u00e9rations; la Soci\u00e9t\u00e9 s'efforcera de faire participer directement des Guin\u00e9ens \u00e0 la direction de la Soci\u00e9t\u00e9 apr\u00e8s la phase d'exploration. La Soci\u00e9t\u00e9 devra assurer le m\u00eame traitement, fournir les m\u00eames installations et les m\u00eames possibilit\u00e9s aux employ\u00e9s ayant les m\u00eames qualifications professionnelles sans tenir compte de leur nationalit\u00e9.--Arts. 14.6(a) - 14.6(e)",
+                "location":{
+                    "image":"114,108,151,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73094.js",
+                "id":73094
+            },
+            {
+                "access":"public",
+                "title":"Approvisionnement en biens et services locaux//Local procurement requirements",
+                "page":43,
+                "content":"La Soci\u00e9t\u00e9 devra utiliser au maximum mais ne sera pas oblig\u00e9e d'engager les services de sous-traitants locaux, \u00e0 moins que ces sous-traitants ne soient techniquement ou convenablement qualifi\u00e9s ou en mesure de faire le travail de fa\u00e7on satisfaisante. Apr\u00e8s la premi\u00e8re D\u00e9cision d'Exploitation, la compagnie d\u00e9signera des personnes pour cr\u00e9er une liste de services qui peuvent \u00eatre fournis localement et informer les guin\u00e9ens et les entreprises locales de ces possibilit\u00e9s.--Arts. 14.6(g), 14.6(h)",
+                "location":{
+                    "image":"142,123,175,81"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73095.js",
+                "id":73095
+            },
+            {
+                "access":"public",
+                "title":"Approvisionnement en biens et services locaux//Local procurement requirements",
+                "page":43,
+                "content":"La Soci\u00e9t\u00e9 devra utiliser au maximum mais ne sera pas oblig\u00e9e d'engager les services de sous-traitants locaux, \u00e0 moins que ces sous-traitants ne soient techniquement ou convenablement qualifi\u00e9s ou en mesure de faire le travail de fa\u00e7on satisfaisante. Apr\u00e8s la premi\u00e8re D\u00e9cision d'Exploitation, la compagnie d\u00e9signera des personnes pour cr\u00e9er une liste de services qui peuvent \u00eatre fournis localement et informer les guin\u00e9ens et les entreprises locales de ces possibilit\u00e9s.--Arts. 14.6(g), 14.6(h)",
+                "location":{
+                    "image":"251,125,289,76"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73096.js",
+                "id":73096
+            },
+            {
+                "access":"public",
+                "title":"Autre - mineurs locaux",
+                "page":43,
+                "content":"La soci\u00e9t\u00e9 fournira des conseils aux mineurs locaux sur les techniques mini\u00e8res de base, sur les techniques mini\u00e8res en terrain alluvial peu profond, autres que celles relevant de la m\u00e9canique.--Art. 14.6(j)",
+                "location":{
+                    "image":"515,119,552,74"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73100.js",
+                "id":73100
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9installation des habitants//Resettlement",
+                "page":43,
+                "content":"L'Etat devra aider la Soci\u00e9t\u00e9 dans les dispositions \u00e0 prendre pour tout d\u00e9placement de population locale dont le transfert d'une partie quelconque de la Zone du Projet ou d'une Zone Mini\u00e8re est n\u00e9cessaire; la Soci\u00e9t\u00e9 devra payer les frais de transfert et verser une indemnit\u00e9 raisonnable pour tout habitation ou terrain ou tout autre bien existant dans les zones r\u00e9quisitionn\u00e9es ou endommag\u00e9es par la Soci\u00e9t\u00e9.--Art. 14.7",
+                "location":{
+                    "image":"698,103,733,63"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73097.js",
+                "id":73097
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":45,
+                "content":"Toutes les donn\u00e9es et les rapports fournis \u00e0 la R\u00e9publique de Guin\u00e9e \u00e0 l'article 15 seront trait\u00e9s de fa\u00e7on strictement confidentielle dans la mesure ou la Soci\u00e9t\u00e9 l'exige, autres que les informations appartenant au domaine public. Le savoir-faire propri\u00e9t\u00e9 exclusive de la Soci\u00e9t\u00e9, ses sous-traitants, consultants ou soci\u00e9t\u00e9s affili\u00e9es, contenu dans les donn\u00e9es ou les rapports, sera utilis\u00e9 uniquement pour les fins de la pr\u00e9sente convention et ne sera divulgu\u00e9 \u00e0 aucune tierce partie sans le consentement de la Soci\u00e9t\u00e9.--Art. 15.2-3",
+                "location":{
+                    "image":"340,126,372,81"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73144.js",
+                "id":73144
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable//Governing law",
+                "page":47,
+                "content":"La  Convention et son interpr\u00e9tation sont r\u00e9gies par les lois de la R\u00e9publique de Guin\u00e9e. En cas de contradiction entre les termes de la Convention et les lois applicables, les termes de la Convention pr\u00e9vaudront.--Art. 17.1",
+                "location":{
+                    "image":"833,103,869,66"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73139.js",
+                "id":73139
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":48,
+                "content":"Tout diff\u00e9rend entre les Parties au sujet de la Convention sera soumis pour r\u00e8glement par conciliation ou par arbitrage (sans appel) au Centre de R\u00e8glement des Diff\u00e9rends en mati\u00e8re d'Investissements.--Art. 17.2-3",
+                "location":{
+                    "image":"265,117,299,75"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73140.js",
+                "id":73140
+            },
+            {
+                "access":"public",
+                "title":"Autre- Clause de hardship//Other - Hardship clause",
+                "page":50,
+                "content":"S'il apparaissait ou s'il \u00e9tait raisonnablement pr\u00e9visible que l'une des parties ait \u00e0 supporter un pr\u00e9judice en raison d'un changement de circonstances ind\u00e9pendant de sa volont\u00e9, les parties se rencontreront imm\u00e9diatement pour discuter comment rem\u00e9dier \u00e0 ou att\u00e9nuer ces difficult\u00e9s.--Art. 17.10",
+                "location":{
+                    "image":"696,118,728,75"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73148.js",
+                "id":73148
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":51,
+                "content":"La convention est r\u00e9dig\u00e9e et sign\u00e9e en fran\u00e7ais et en anglais, mais en cas de contradiction entre les deux, la version fran\u00e7aise pr\u00e9vaudra.--Art. 17.13",
+                "location":{
+                    "image":"341,142,370,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73146.js",
+                "id":73146
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), pour la soci\u00e9t\u00e9 //Signatories, company",
+                "page":51,
+                "content":"Golden Shamrock Mines Limited: Mr. James Edward Askew; Chevaning Mining Company Limited: Mr. James Edward Askew",
+                "location":{
+                    "image":"533,658,563,617"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73080.js",
+                "id":73080
+            },
+            {
+                "access":"public",
+                "title":"Agence(s) de l'Etat signataire(s)//State agency, National Company, Ministry",
+                "page":51,
+                "content":"Minist\u00e8re des Ressources Naturelles, des \u00c9nergies et de l'Environnement et Minist\u00e8re du Plan et des Finances",
+                "location":{
+                    "image":"575,662,608,621"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73081.js",
+                "id":73081
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), pour l'Etat//Signatories, State",
+                "page":51,
+                "content":"Ministre des Ressources Naturelles: Dr. Toumany Dakoun; Ministre du Plan et des Finances: M. Soriba Kaba ",
+                "location":{
+                    "image":"619,663,654,619"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73082.js",
+                "id":73082
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, Longitude et Latitude//Location, longitude and latitude",
+                "page":62,
+                "content":"Territoire de la Pr\u00e9fecture de Siguiri d\u00e9fini sur une carte d'\u00e9chelle de 1/200,000 selon l'Annexe 6.--Premiere Annexe, Partie B, Art.12",
+                "location":{
+                    "image":"140,162,170,122"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73078.js",
+                "id":73078
+            },
+            {
+                "access":"public",
+                "title":"Titre Minier Associ\u00e9 au contrat//Mining title associated with the contract",
+                "page":62,
+                "content":"Concession--Premiere Annexe",
+                "location":{
+                    "image":"53,412,83,363"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73077.js",
+                "id":73077
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: d\u00e9ductibilit\u00e9 des frais financiers//Income tax: deductibility of expenses",
+                "page":91,
+                "content":"Les redevances, int\u00e9r\u00eats et autres paiements sont consid\u00e9r\u00e9s comme frais d'exploitation d\u00e9ductibles de l'imp\u00f4t sur les b\u00e9n\u00e9fices.--Seconde Annexe: Art. 1.e.",
+                "location":{
+                    "image":"147,74,179,32"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73114.js",
+                "id":73114
+            },
+            {
+                "access":"public",
+                "title":"Provision pour la reconstitution des gisements//Provisions for renewing reserves",
+                "page":91,
+                "content":"Constitution d'une r\u00e9serve pour exploration future, qui doit \u00eatre r\u00e9int\u00e9gr\u00e9e au r\u00e9sultat imposable si elle n'est pas utilis\u00e9e dans les trois ann\u00e9es suivantes.--Art. 13.18 et Seconde Annexe",
+                "location":{
+                    "image":"16,474,47,433"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73123.js",
+                "id":73123
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: amortissement//Income tax: amortization",
+                "page":91,
+                "content":"Les r\u00e8gles sur l'amortissement sont \u00e9nonc\u00e9es dans la Seconde Annexe - Amortissement d\u00e9gressif sur une p\u00e9riode de 5 ans: 40%-24%-14%-11%-11%--Art.13,13, Seconde Annexe: Arts. 4-6",
+                "location":{
+                    "image":"537,72,569,31"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr/annotations/73110.js",
+                "id":73110
+            }
+        ],
+        "description":"<i>Nom de la soci\u00e9t\u00e9 guin\u00e9enne : </i>Soci\u00e9t\u00e9 Aurif\u00e8re de Guin\u00e9e (SAG)<br><i>Si\u00e8ge social : </i>Immeuble Bok\u00e9, cit\u00e9 Lansana Cont\u00e9, Quartier Coronthie commune de Kaloum, Conakry Republique de guin\u00e9e<br><i> Structure du Capital : </i>D\u00e9tenue \u00e0 15% par la R\u00e9publique de Guin\u00e9e et 85% par Anglo Gold Ashanti LTD<br><i>Soci\u00e9t\u00e9 m\u00e8re ou affili\u00e9e hors de la Guin\u00e9e; et leurs si\u00e8ges sociaux : </i>Anglo gold Ashanti Limited, 76 jeppe Street, Newtown 2001 PO.Box 62117 Marshal 2107.South Africa<br><i>Site web de l\u2019entreprise : </i>http://www.anglogold.co.za/<br><i>Date d'octroi du permis d'exploitation ou de la concession : </i>04/08/1997<br><i>Investissement estim\u00e9 : </i>US$ 200 millions<br><i>Production attendue : </i>300,000 onces/an<br><i>R\u00e9serves estim\u00e9es : </i>5,2 millions d'onces<br><br><br><i>Note : Ce r\u00e9sum\u00e9 est destin\u00e9 \u00e0 faciliter la compr\u00e9hension par un large public des points importants du document original. Il ne s\u2019agit en aucun cas d\u2019une liste exhaustive des obligations l\u00e9gales li\u00e9es au projet minier concern\u00e9. Ce r\u00e9sum\u00e9 ne comporte aucune opinion quant au statut juridique du document ou de tout \u00e9l\u00e9ment du document, et ne refl\u00e8te aucunement des d\u00e9cisions ou positions du CTRTCM ou du Gouvernement de la R\u00e9publique de Guin\u00e9e en lien avec le processus de revue des conventions et titres miniers. Ce r\u00e9sum\u00e9 doit \u00eatre lu en lien avec le texte int\u00e9gral du document original et avec les lois et textes r\u00e9glementaires applicables. Un certain nombre de lois et r\u00e9glementations applicables directement ou indirectement au secteur minier sont disponibles <a href=\"http://www.contratsminiersguinee.org/about/legislation.html\">ici</a>.</i>",
+        "language":"eng",
+        "title":"SAG - Guin\u00e9e, 1992",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Resource":"Or",
+            "Countries":"Guinea",
+            "Signature Date":"11/11/1992 ",
+            "Contract Term (duration) in Years":"25",
+            "Signature Year":"1992"
+        },
+        "created_at":"Fri, 14 Sep 2012 14:37:05 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 21 Apr 2015 16:12:10 +0000",
+        "id":"432694-sag-convention-complete-fr",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/432694/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/432694/sag-convention-complete-fr.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/432694/pages/sag-convention-complete-fr-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/432694/pages/sag-convention-complete-fr-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/432694/sag-convention-complete-fr.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/432694/pages/sag-convention-complete-fr-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=432694"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":116,
+        "canonical_url":"http://www.documentcloud.org/documents/432694-sag-convention-complete-fr.html"
+    }
+}

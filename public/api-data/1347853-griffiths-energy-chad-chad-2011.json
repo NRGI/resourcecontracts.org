@@ -1,0 +1,402 @@
+{
+    "document":{
+        "file_hash":"37f8aac347bbd4eec4782d20bfa5d71e5294666a",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":1,
+                "content":"2011--Front page",
+                "location":{
+                    "image":"214,96,241,51"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184393.js",
+                "id":184393
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":1,
+                "content":"19/01/2011--Front page",
+                "location":{
+                    "image":"215,133,242,90"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184392.js",
+                "id":184392
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":1,
+                "content":"Republic of Chad, Minister of Petroleum and Energy (\"Chad\")--Front page, preamble, signature page ",
+                "location":{
+                    "image":"263,80,287,39"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184391.js",
+                "id":184391
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Chad--Front page, Preamble",
+                "location":{
+                    "image":"264,119,289,76"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184385.js",
+                "id":184385
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":1,
+                "content":"Griffiths Energy (Chad) Ltd (Griffiths), incorporated in the Bermuda--Front page, preamble, signature page ",
+                "location":{
+                    "image":"305,124,333,81"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184390.js",
+                "id":184390
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales //Parent companies or affilates outside of the country, if different from the above mentioned; and their corporate headquarters",
+                "page":10,
+                "content":"Griffiths Energy (Chad) Ltd, incorporated in the Bermuda--Preamble",
+                "location":{
+                    "image":"336,128,357,91"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184386.js",
+                "id":184386
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":18,
+                "content":"Hydrocarbons (namely, crude oil and natural gas)--Art. 1.1., Art 4.1.",
+                "location":{
+                    "image":"443,165,470,118"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184396.js",
+                "id":184396
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":18,
+                "content":"The law of Chad is the applicable law. Where Chad's law conflict with the law of the contract, Chad law prevails on the condition that it is aligned with the international law rules detailed in art. 56.1.--Art. 1.1, Art. 56.1.",
+                "location":{
+                    "image":"736,165,764,116"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184416.js",
+                "id":184416
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":25,
+                "content":"Production Sharing Agreement--Art. 2",
+                "location":{
+                    "image":"228,192,251,149"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184387.js",
+                "id":184387
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e d'octroi du permis d'exploitation ou concession//Year of issue of title/permit",
+                "page":25,
+                "content":"The Agreement became effective when all the following conditions are met: (i) the parties signing the contract; (ii) the adoption of the law approving the contract; (iii) the award of the Exclusive Exploratory License to the Griffiths; and (iv)  publication in the Journal Officiel de la Loi d\u2019Approbation. However, Article 8, Article 38 and provisions dealing the with Griffiths' right to access Petroleum data all become effective upon signing of the coontract.  --Art. 3.1",
+                "location":{
+                    "image":"573,138,596,101"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184389.js",
+                "id":184389
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":44,
+                "content":"The term of the Exclusive Expoitation license will not exceed 25 years. --Art. 12.2(d)",
+                "location":{
+                    "image":"333,187,353,144"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184394.js",
+                "id":184394
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":48,
+                "content":"From the allocation of the Exclusive Operating License, Chad will have the right to require sale of a stake of up to 25% of the rights and obligations attached to the said license, either directly or through a public body intermediary. --Art. 14 ",
+                "location":{
+                    "image":"474,142,496,99"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184408.js",
+                "id":184408
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":57,
+                "content":"The Exclusive Operating License confers on Griffiths the right to transport all or its share of production to points of storage, processing, distribution, loading or gross consumption or to Points of Delivery. Where such transportation requires the construction and operation of one or more pipelines, the State must, according to terms set out in Annex F, (i) sign a Transportation Agreement with Griffiths and  (ii) assign an Internal Transportation license to Griffiths. Griffiths is entitled to signature of a Transportation Agreement and assigment of a license where the oil pipeline transportation system allows for the transport of extracted hydrocarbons in a satisfactory technical and financial manner. All refusals by Chad must be justified. All disputes relating to satisfactory technical or financial conditions of the project will be refered to the Expert Procedure detailed in art. 57.  The pipeline transportation fee will be determined between the parties based on factors including those outlined in art. 19.3. Chad consents to extend the provisions relating to order on Petroleum Operations to the land occupation necessary for Transport Operations. Chad will make best efforts to assist Griffiths to transport extracted hydrocarbons on pipelines operated by third parties; this commitment is an obligation of means and not one of results.  --Art. 19",
+                "location":{
+                    "image":"790,103,813,53"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184414.js",
+                "id":184414
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":64,
+                "content":"Within 30 days of the parties signing the agreement, a Management Committee must be formed to review operations under the Exclusive Exploration License. Likewise, within 30 days of the granting of an Exclusive Operating License, a Management Committee must be formed to review operation under this license. Griffiths must submit a proposed Work and Budget Program to the Management Committee within 90 days of the later of (i) the contract entering into force; or (ii) the delivery of the Data Letter (Lettre de Donn\u00e9e) to Griffiths according to the conditions set out in art. 58.1. In subsequent years, no later than the 30 September of each year, Griffiths must submit a proposed Work and Budget Program for the following year to the Management Committee. Specific contents of the Program are detailed in art. 24.2 but generally the Program must detail projected Petroleum Operations and a work program and budget for the next two years. The Management Committee must examine the Program within 30 days of receipt. Upon examining and editing the Program, the Management Committee must adopt the Program (and its corresponding budget for the next year) no later than 30 November. Griffiths\u2019s operations and expenses are limited to the scope of the Program with the exception of instances detailed in art. 24.4. --Art. 24",
+                "location":{
+                    "image":"448,132,469,91"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184413.js",
+                "id":184413
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es a l'approvisionnement en biens et services locaux//Local procurement requirements",
+                "page":67,
+                "content":"Unless an exemption is granted by the Management Committee, Griffiths must make a request for tenders where the materials purchased or supplies serviced exceed $ 1 Million for Exploratory Operations and $ 2 Million for Development and Exploitation Operations. Griffiths and its subcontractors give preference for goods and service contracts to Chadian businesses. --Art. 24.5, art. 24.6",
+                "location":{
+                    "image":"104,135,126,93"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184398.js",
+                "id":184398
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local//Local employment requirements",
+                "page":71,
+                "content":"Griffiths must report its recruitment plan for Chad nationals to the Ministry before October 31 every year.  When hiring, Griffiths must give priority to Chad nationals bearing equal qualification. Griffiths must establish and finance a training program to give Chad nationals access to all skilled laborer, foremen, manager and director positions. --Art. 25.9.1 (a), art. 26",
+                "location":{
+                    "image":"644,182,666,144"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184397.js",
+                "id":184397
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Formation]//Other - [Training]",
+                "page":71,
+                "content":"Before the 31 October each year, Griffiths must submit  a detailed training program for Chad employees to the government. Unless otherwise agreed, the annual budget for training will be $100,000 for the Exclusive Exploration License. This amount will be increased during the Exploitation phase to 1% of the Operator's payroll. Griffiths must also annually contribute $250,000 annually to the training and development of government officials from the entry into force of the contract until the Exclusive Operating License terminates.--Art. 25.9.1 (b), art. 44",
+                "location":{
+                    "image":"686,184,710,145"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184399.js",
+                "id":184399
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":77,
+                "content":"Chad reserves confidentiality over the Contract including all documents, reports, statements, maps, data, samples and other information provided by Griffiths as part of its performance of the Contract. Unless provided otherwise by written agreement with Griffiths, this information cannot be communicated to third parties while it remains confidential in nature. The confidentiality requirement will remain in force for the life of the contract. Exceptions to the confidentiality requirement are detailed in art. 31.3.--Art. 31",
+                "location":{
+                    "image":"336,135,357,96"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184422.js",
+                "id":184422
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":82,
+                "content":"Environmental Impact Assessment: Griffiths must provide an environmental impact assessment: within 6 months of the Exclusive Search License grant, the grant of an Exclusive Exploitation License or where there is substantial modification to an area already assessed. Details on the contents of the assessment report are itemized in art. 36.3. Chad must approve the assessment report within 28 days of Griffiths' submission.  Griffiths must take note of Chad's recommendations and observations.The assessment report is open to public consultation during the 45 days after the Minister's decision. Waste Management Plan: Griffiths must submit a Waste Management plan to Chad no later than 31 October every year. The plan must conform with local laws and detail the establishment of an integrated system for collection, transportation, storage, sorting, processing and distribution of waste. The types of waste covered are detailed in art. 35.1.2. Upon submission by Griffiths, Chad has 30 days to decide whether to accept or reject the proposed plan. Where Chad rejects the proposed plan, Griffiths must propose a modified plan reflecting Chad's comments. Where Chad does not provide comments within 30 days of Griffiths' initial submission, the plan is considered accepted. The Waste Management plan must be widely distributed among the populations covered by the Exclusive Search License and, if any, the Exclusive Exploitation License. --Art. 35, Art. 36",
+                "location":{
+                    "image":"557,139,579,103"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184411.js",
+                "id":184411
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Responsabilit\u00e9 environnementale]//Other - [Environmental liability]",
+                "page":87,
+                "content":"Chad guarantees that Griffiths will not be held liable for environmental damages resulting from activities within the Contractual Zone that predated the granting of an Exclusive Search License to Griffiths. The Contractual Zone contains no protected areas; Chad will refrain from creating a protected area within the Contractual Zone during the life of the contract. --art 36.8, art. 36.9",
+                "location":{
+                    "image":"104,133,131,92"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184412.js",
+                "id":184412
+            },
+            {
+                "access":"public",
+                "title":"Primes//Bonuses",
+                "page":90,
+                "content":"Griffiths must pay a $40 Million Signature Bonus to the State. The payment structure requires Griffiths to make a first payment of $20 Million to the Public Treasury within 30 days of the approval of the Law governing the contract; and a second payment of $20 Million is to be made when the events detailed in art. 38.1.2 are met. When Chad assigns each Exploitation license, Griffiths must pay Chad a $2 Million bonus within 5 days of publication.  The bonuses are exempt from taxes under Chad law. --Art. 38",
+                "location":{
+                    "image":"167,134,191,91"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184407.js",
+                "id":184407
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":91,
+                "content":"Griffiths may sell crude oil at a determined market price based on calculations detailed in art. 39. The parties calculate market price on a quarterly basis. Within 30 days of the end of a quarter, Griffiths and Chad must meet to develop a market price for the quarter. Where the parties cannot agree on a price, the parties must meet again and consider any further information concerning price evolution in order to reach consensus by the end of the second month of the quarter. If no agreement can be reached within 90 days of the last quarter, the matter is referred to an independent expert who must determine the price within 30 days of appointment.--Art. 39",
+                "location":{
+                    "image":"466,137,488,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184410.js",
+                "id":184410
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, cr\u00e9dit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":91,
+                "content":"Griffiths will finance the Petroleum Costs and will bear all the costs of the executing the Petroleum Operations (including development, operation and abandonment costs). From the start of crude oil production on any of the Operational Contract Zones, Griffiths will have the right to recover Petroleum Costs annually as Cost Oil. Cost Oil will be 70 % of: Net Hydrocarbon Production less the Royalty Tax on Production in all Operational Contractual Zones (resulting from the Exploratory Contractual Zones). If the unrecovered Petroleum Costs surpasses the value of the Hydrocarbon quantity that can be used in a calendar year, the surplus that cannot be recovered will be postponed to the following years until there is full recovery or the Contract expires. The value of Cost Oil will be determined by the Market Field Price (as calculated in art. 39.1) for every hydrocarbon grade. The order of priority for annual recovery of Petroleum Costs is detailed in art. 41.2.4. In each category, costs will be recovered on a first in, first out basis.--Art 39.1, Art. 41",
+                "location":{
+                    "image":"492,131,514,84"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184404.js",
+                "id":184404
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":94,
+                "content":"Griffiths must pay a royalty tax on net production of hydrocarbon at the rate of 14.25% for crude oil and 5% for natural gas. --Art. 40",
+                "location":{
+                    "image":"300,135,324,97"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184400.js",
+                "id":184400
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":95,
+                "content":"On a quarterly basis, the parties will determine the Profit Oil. Within 30 days of the end of the last quarter, Griffiths must determine for each Operating Contractual Zone, the value of Factor R based on a calculation of: (i) a numerator consisting of the cumulative value (applicable for each quarter from the start of production) of the Field Market Price of crude oil and natural gas (if necessary) returning to the Griffiths as Cost Oil and Profit Oil from the date of the Exclusive Operating License grant to the last day of the preceding quarter reduced by the cumulative cost of Griffiths's operations in the same time frame;  and (ii) a denominator consisting of  the cumulative cost of Development Operations in the Operating Contractual Zone (from the date of the Exclusive Operating License grant to the last day of the preceding quarter) plus the cumulative cost of Exploratory Operations under Art. 41 in the Operating Contractual Zone. For the first quarter from production of the first tonne of hydrocarbon, Factor R will be considered to be less than or equal to 1. Chad's share of profit will be 40% (for Factor R 2.25 or less), 50% (for Factor R  2.25 -3 ) and 60% (for Factor R  greater than 3)  - subject to variations in calculating Facteur-R as detailed in art. 42.2.1. Tax on Profit Oil: Griffiths must pay tax on Profit Oil in cash or in kind. Chad must notify Griffiths ofa method of payment no less than 90 days before the production of the first tonne of hydrocarbon; the method of payment will remain in effect unless Chad changes it, with 180 days notice to Griffiths.  No later than the 15th of the month, Griffiths must provide Chad with a statement on production in the preceding month containing details outlined in art. 43.2. --Art 42, Art 43",
+                "location":{
+                    "image":"431,136,452,99"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184405.js",
+                "id":184405
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les Revenus des Valeurs Mobili\u00e8res (IRVM)//Capital gains tax",
+                "page":101,
+                "content":"Griffiths and its entities are subject to a 25% capital gains tax on the sale of assets relating to the Exclusive Exploratory License payable according to conditions listed in art. 46. Capital gains tax will not apply to disposal of assets relating to the Exclusive Operating License arising from the Exclusive Exploratory License. Taxable sales of assets are limited to the disposal of rights or obligations, made by Griffiths or its entities, and made either under or relating to the Exclusive Exploratory license. Griffiths and its entities must pay this levy within 30 days following the grant of permission to transfer assets. Disposal of assets takes effect only after the transferor files a declaration on the capital gains on the asset accompanied by, if applicable, payment of the levy on the corresponding capital gains. The levy is determined based on the difference between the sale price of assets and the cost price of the assets. The sale price is the perceived price less any advance reimbursments (relating to the disposed asset).--Art. 46.1",
+                "location":{
+                    "image":"268,133,294,99"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184406.js",
+                "id":184406
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: exon\u00e9ration//Income tax: exemptions",
+                "page":103,
+                "content":"Griffiths is exmpted from taxes relating to, for example: minimum fixed tax (or its equivalent); apprenticeship tax;  direct profit tax; profit distribution tax; tax and charges of any kind on the interest of amounts borrowed by Griffiths to support the Petroleum Operations; estate tax and all other property taxes with the exception of those payable on property for residential use. This is a non-exhaustive list and therefore other exemptions may apply. These exceptions do not apply to fees on services rendered (specifically, all services rendered to the titleholder by the government or administrative bodies upon payment of a fee). --Art. 47.1",
+                "location":{
+                    "image":"398,132,424,86"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184403.js",
+                "id":184403
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":103,
+                "content":"Exempted from income tax--Art. 47.1.2",
+                "location":{
+                    "image":"585,133,608,97"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184401.js",
+                "id":184401
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":111,
+                "content":"Chad has a right to audit Griffiths on matters detailed in art. 52.2.1 including transport of hydrocarbons, conservation of deposits, preservation of public safety and preservation of worker safety and hygiene. Upon giving 30 days notification to Griffiths, Chad may audit any of Griffiths' construction sites, offices and other places of work that are either directly or indirectly involved in Petroleum Operations. At the start of an initial Exclusive Search License and at the renewal of an Exclusive Search License, Chad will conduct an audit on the elasped period. For Exclusive Exploitation Licenses, unless otherwise agreed, Chad has up to 5 years following any given year to conduct an audit on Griffiths. Each such audit must start within 5 years of the end of the relevant period. Where Chad does not exercise its right to audit within the 5 year period, Griffiths' books and operations are deemed definitive. Griffiths will make payments for an audit budget consisting of an annual payment of $200,000 (for Exclusive Search Licenses) and $400,000 (for Exclusive Exploitation Licenses).--Art. 52, Annex B (art. 28)",
+                "location":{
+                    "image":"159,134,182,89"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184409.js",
+                "id":184409
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":118,
+                "content":"No modification to laws in effect at the start of the Contract will have effect on the Contract without Griffiths' prior consent. Where the Chad and Griffiths cannot reach agreement within 90 days of starting negotiations for adoption of amendments, the changes will not apply to Griffiths. --Art. 56.2",
+                "location":{
+                    "image":"350,132,374,93"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184419.js",
+                "id":184419
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":118,
+                "content":"Where Chad and Griffiths are unable to reach a resolution amicably as detailed in art. 57.1., through an Expert as detailed in art. 57.2., or through the Conciliation procedure outlined in art. 57.3., the dispute will be resolved in arbitration according to ICC rules. Either party may initiate arbitration and the arbitration shall be heard by 3 arbitrators in Paris (France) in French.  --Art. 57",
+                "location":{
+                    "image":"693,134,713,91"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184417.js",
+                "id":184417
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":124,
+                "content":"French--Art 59",
+                "location":{
+                    "image":"477,132,501,94"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184421.js",
+                "id":184421
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) ",
+                "page":130,
+                "content":"The Contractual Zone is mapped in Annex A; the zone is located in Chari-Ouest and Chari-Deseo--Annex A",
+                "location":{
+                    "image":"101,148,125,101"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011/annotations/184388.js",
+                "id":184388
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Griffiths Energy (Chad) - Chad, 2011",
+        "data":{
+            "Type of Mining Title":"Production Sharing Contract",
+            "Signature Year":"2011",
+            "Resource":"Hydrocarbons",
+            "Countries":"Chad"
+        },
+        "created_at":"Tue, 28 Oct 2014 15:53:01 +0000",
+        "display_language":"eng",
+        "updated_at":"Fri, 10 Apr 2015 23:11:56 +0000",
+        "id":"1347853-griffiths-energy-chad-chad-2011",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1347853/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1347853/griffiths-energy-chad-chad-2011.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1347853/pages/griffiths-energy-chad-chad-2011-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1347853/pages/griffiths-energy-chad-chad-2011-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1347853/griffiths-energy-chad-chad-2011.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1347853/pages/griffiths-energy-chad-chad-2011-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1347853"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":178,
+        "canonical_url":"http://www.documentcloud.org/documents/1347853-griffiths-energy-chad-chad-2011.html"
+    }
+}

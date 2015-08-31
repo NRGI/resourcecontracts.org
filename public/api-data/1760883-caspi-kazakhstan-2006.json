@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"6507fc15b56d3bf10ec7132341bcfa6d0a9651e0",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Caspi - Kazakhstan, 2006",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2006",
+            "Resource":"Hydrocarbons",
+            "Countries":"Kazakhstan"
+        },
+        "created_at":"Wed, 08 Apr 2015 04:31:56 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 08 Apr 2015 04:32:48 +0000",
+        "id":"1760883-caspi-kazakhstan-2006",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1760883/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1760883/caspi-kazakhstan-2006.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1760883/pages/caspi-kazakhstan-2006-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1760883/pages/caspi-kazakhstan-2006-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1760883/caspi-kazakhstan-2006.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1760883/pages/caspi-kazakhstan-2006-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1760883"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":75,
+        "canonical_url":"http://www.documentcloud.org/documents/1760883-caspi-kazakhstan-2006.html"
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "document":{
+        "file_hash":"2b52dc22da52594c38ab7e90d47f25720942c663",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"HELALIN, Annulation Permis - Guin\u00e9e, 2010",
+        "data":{
+            "Signature Date":"23/6/2010",
+            "Signature Year":"2010",
+            "Countries":"Guinea"
+        },
+        "created_at":"Mon, 19 Nov 2012 21:29:13 +0000",
+        "display_language":"eng",
+        "updated_at":"Fri, 21 Mar 2014 15:50:20 +0000",
+        "id":"519534-annulation-permis-helalin-sa",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/519534/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/519534/annulation-permis-helalin-sa.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/519534/pages/annulation-permis-helalin-sa-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/519534/pages/annulation-permis-helalin-sa-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/519534/annulation-permis-helalin-sa.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/519534/pages/annulation-permis-helalin-sa-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=519534"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":2,
+        "canonical_url":"http://www.documentcloud.org/documents/519534-annulation-permis-helalin-sa.html"
+    }
+}

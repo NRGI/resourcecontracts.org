@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"2740656c2a5a1e38fdbfa690acfd1f6f31046783",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Northern Spirit, Block 138, 139, 157 - Belize, 2010",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2010",
+            "Resource":"Hydrocarbons",
+            "Countries":"Belize"
+        },
+        "created_at":"Mon, 19 Jan 2015 22:26:10 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 16 Mar 2015 03:11:33 +0000",
+        "id":"1505203-northern-spirit-block-138-139-157-belize-2010",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505203/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505203/northern-spirit-block-138-139-157-belize-2010.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505203/pages/northern-spirit-block-138-139-157-belize-2010-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505203/pages/northern-spirit-block-138-139-157-belize-2010-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505203/northern-spirit-block-138-139-157-belize-2010.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505203/pages/northern-spirit-block-138-139-157-belize-2010-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505203"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":62,
+        "canonical_url":"http://www.documentcloud.org/documents/1505203-northern-spirit-block-138-139-157-belize-2010.html"
+    }
+}

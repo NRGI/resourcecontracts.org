@@ -1,0 +1,303 @@
+{
+    "document":{
+        "file_hash":"bb123618563d921c4a5aefa44e4b0b13a96ee049",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Uganda --Front page ",
+                "location":{
+                    "image":"252,159,276,114"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174635.js",
+                "id":174635
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Draft Production Sharing Agreement --Front page ",
+                "location":{
+                    "image":"252,206,280,158"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174638.js",
+                "id":174638
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":1,
+                "content":"2007--Front page ",
+                "location":{
+                    "image":"484,203,517,158"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174645.js",
+                "id":174645
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":1,
+                "content":"23/01/2007",
+                "location":{
+                    "image":"486,162,514,116"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174644.js",
+                "id":174644
+            },
+            {
+                "access":"public",
+                "title":"Primes//Bonuses",
+                "page":2,
+                "content":"Based on the Table of Contents, the Agreement should contain a provision regarding 'Signature Bonus' on p. 32. This page is missing from the Agreement. --Table of Contents ",
+                "location":{
+                    "image":"370,50,399,13"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174655.js",
+                "id":174655
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas//Name and/or number of field, block or deposit",
+                "page":3,
+                "content":"Exploration Area 3A (\"EA3A\")--Introductory page ",
+                "location":{
+                    "image":"210,153,244,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174640.js",
+                "id":174640
+            },
+            {
+                "access":"public",
+                "title":"Pages Manquantes de la copie//Pages missing from  copy",
+                "page":4,
+                "content":"Contract Pages missing: 2-9, 14, 18-23, 28-32, 38, 42, 45-46, 50, 52-55, 63-64, 69-70, 74-75; Pages cut off/ partially missing: 1, 33",
+                "location":{
+                    "image":"54,44,83,8"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174900.js",
+                "id":174900
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) ",
+                "page":7,
+                "content":"Annex A providing the coordinates of the contract area is cut off/ missing. An accompanying map of the contract area is provided.  Annex A is however missing.--Annex A, Map",
+                "location":{
+                    "image":"94,118,129,72"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174641.js",
+                "id":174641
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":8,
+                "content":"Heritage Oil and Gas Limited and Energy Africa Uganda Limited (jointly referred to as the \"Licensee\")--Preamble ",
+                "location":{
+                    "image":"149,237,174,199"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174636.js",
+                "id":174636
+            },
+            {
+                "access":"public",
+                "title":"Si\u00e8ge social //Corporate headquarters ",
+                "page":8,
+                "content":"Heritage Oil is organized and existing under the laws of the Isle of Man (UK) and has an address in London. Energy Africa is organized and existing under the laws of the Isle of Man (UK) and has one address on the Isle of Man and a second in Cape Town. --Preamble ",
+                "location":{
+                    "image":"150,275,177,237"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174637.js",
+                "id":174637
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":8,
+                "content":"Ministry of Energy and Mineral Development --Preamble ",
+                "location":{
+                    "image":"183,275,212,236"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174643.js",
+                "id":174643
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":8,
+                "content":"Heritage Oil and Gas Limited and Energy Africa Uganda Limited (jointly referred to as the \"Licensee\")--Preamble ",
+                "location":{
+                    "image":"184,235,210,196"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174642.js",
+                "id":174642
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":8,
+                "content":"Hydrocarbons--Preamble, Art. 3.3",
+                "location":{
+                    "image":"836,208,864,161"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174648.js",
+                "id":174648
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":9,
+                "content":"The licence granted under the contract has a term of 2 years (\u201cfirst exploration period\u201d), starting from the effective date. --Art. 3.1 ",
+                "location":{
+                    "image":"127,45,150,9"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174646.js",
+                "id":174646
+            },
+            {
+                "access":"public",
+                "title":"Conditions de renouvellement//Conditions for renewal ",
+                "page":9,
+                "content":"The Licensee can apply for a renewal up to 90 days prior to the expiration of the first exploration period. A maximum renewal of 2 years can be granted (the \u201csecond\u201d and \u201cthird\u201d exploration periods). --Art. 3.1",
+                "location":{
+                    "image":"128,81,153,42"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174647.js",
+                "id":174647
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":13,
+                "content":"The Licensee must spend a minimum of US$6.0 million on drilling wells and and on seismic data during the second exploration period. During the third exploration period, which starts on the date on which the exploration licence is renewed under Art. 3, the Licensee must acquire, process and interpret additional 2D or 3D seismic data and drill two exploration wells (with a location and depth agreed upon with the Government). The minimum expenditure for this work is US$7.5 million. More details may be included in document pages 14, 15 and 23, however these pages are either missing or partially illegible.--Arts. 4.2.2 - 4.2.3",
+                "location":{
+                    "image":"236,131,262,90"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174894.js",
+                "id":174894
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":13,
+                "content":"The Licensee must spend a minimum of US$6.0 million on drilling wells and and on seismic data during the second exploration period. During the third exploration period, which starts on the date on which the exploration licence is renewed under Art. 3, the Licensee must acquire, process and interpret additional 2D or 3D seismic data and drill two exploration wells (with a location and depth agreed upon with the Government). The minimum expenditure for this work is US$7.5 million. More details may be included in document pages 14, 15 and 23, however these pages are either missing or partially illegible.--Arts. 4.2.2 - 4.2.3",
+                "location":{
+                    "image":"237,87,259,48"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174658.js",
+                "id":174658
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":20,
+                "content":"Licensee must pay the Government a royalty on the gross total daily production (i.e. the total output of crude oil, including liquid petroleum gas, less all water and sediments and all hydrocarbons re-injected into the petroleum reservoir) in barrels of oil per day (\u201cBOPD\u201d) for each contract area. Where gross total daily production does not exceed 2,500 BOPD, the rate is 5%. Where gross total daily production is more than 2,500 but does not exceed 5,000 BOPD, the rate is 7.5%. Where production is more than 5,000 but does not exceed 7,500 BOPD, the rate is 10%. Where production exceeds 7,500 BOPD, the rate is 12.5%. The Government can choose to receive the royalty in cash (USD) on a monthly basis, provided it notifies the Licensee of this choice 30 days in advance. Otherwise, the Government can collect the royalty in kind. --Art. 10",
+                "location":{
+                    "image":"174,142,199,105"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174651.js",
+                "id":174651
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":21,
+                "content":"The Government or its nominee may choose to enter into a Joint Venture Agreement with the Licensee, which would allow for state participation of no more than 15%. The Government must inform the Licensee of its decision in writing within 120 days of receiving the application for a production licence. The Licensee agrees to carry the costs associated to the Government\u2019s share. These costs (including interest) will be repaid out of the Licensee\u2019s cost oil. The Government will be responsible for any taxes arising out of its share. --Art. 11",
+                "location":{
+                    "image":"132,52,159,14"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174656.js",
+                "id":174656
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, cr\u00e9dit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":23,
+                "content":"All exploration, development, production, and operating costs (defined in Annex C) incurred by the Licensee can be recovered from 60% for gross oil production and 70% for gas after deduction of the royalty. The Licensee can carry forward to subsequent years all unrecovered costs until they have been fully recovered. Lists of costs recoverable without further approval from the Government, costs not recoverable under the Agreement, and other costs and expenses are described in Arts. 4.1, 4.2 and 4.3 of Annex C respectively.  --Arts.12.1-12.2, Arts. 4.1-4.3 of Annex C",
+                "location":{
+                    "image":"121,40,144,8"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174652.js",
+                "id":174652
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":24,
+                "content":"After costs have been recovered, the remaining total daily production (profit oil) will be split between the Government and Licensee as follows: (i) Government 46%, Licensee 54% where production does not exceed 5,000 BOPD, (ii) Government 48.5%, Licensee 51.5% where production is higher than 5,000 but does not exceed 10,000 BOPD, (iii) Government 53.5%, Licensee 46.5% where production is higher than 10,000 but does not exceed 20,000 BOPD, (iv) Government 58.5%, Licensee 41.5% where production is higher than 20,000 but does not exceed 30,000 BOPD, (v) Government 63.5%, Licensee 36.5% where production is higher than 30,000 but does not exceed 40,000 BOPD, (vi) Government 68.5%, Licensee 31.5% where production is higher than 40,000 BOPD. The Government can choose to receive its share of profit oil in USD on a quarterly basis, provided it notifies the Licensee of its choice 30 days in advance. Note that part of Art. 13 on profit oil is missing from the Agreement.  --Art. 13",
+                "location":{
+                    "image":"140,174,165,132"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174653.js",
+                "id":174653
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":31,
+                "content":"The Licensee will not be required to pay any tax, fee or levy on its use of associated gas for petroleum operations. --Art. 19.1",
+                "location":{
+                    "image":"178,46,201,7"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174657.js",
+                "id":174657
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local//Local employment requirements",
+                "page":33,
+                "content":"The Licensee (and any sublicensees) must employ suitably qualified Ugandan citizens in petroleum operations. The Licensee also agrees to replace expatriate staff with suitably qualified and experienced Ugandan citizens as they become available. The Licensee must satisfy the Advisory Committee that no such Ugandan citizens are available for key senior management and technical jobs before filling these positions with expatriate staff. An annual programme for training and phasing in Ugandan citizens must be established by the Licensee and submitted for approval to the Advisory Committee (at the same time of submission of the Work Programmes and Budgets under Art. 6). --Arts. 21.1, 21.4",
+                "location":{
+                    "image":"163,174,192,132"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174650.js",
+                "id":174650
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es a la formation des cadres locaux//Management training requirement for nationals",
+                "page":33,
+                "content":"The Licensee must invest the following amounts for training Government personnel: US$75,000 for the first exploration period, US$75,000 for the second exploration period, and US$75,000 for the third exploration period. Following the grant of a petroleum production licence, the Licensee must pay US$200,000 per 12 months for such training. --Art. 21.3 ",
+                "location":{
+                    "image":"485,152,511,113"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1/annotations/174649.js",
+                "id":174649
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Heritage Oil and Gas (Part 1) - Uganda, 2007",
+        "data":{
+            "Type of Mining Title":"Production Sharing Contract",
+            "Signature Year":"2007",
+            "Resource":"Hydrocarbons",
+            "Countries":"Uganda"
+        },
+        "created_at":"Fri, 22 Aug 2014 12:37:43 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 27 Apr 2015 16:13:27 +0000",
+        "id":"1278998-leaked-uganda-psa-block3a-heritage-part1",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1278998/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1278998/leaked-uganda-psa-block3a-heritage-part1.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1278998/pages/leaked-uganda-psa-block3a-heritage-part1-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1278998/pages/leaked-uganda-psa-block3a-heritage-part1-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1278998/leaked-uganda-psa-block3a-heritage-part1.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1278998/pages/leaked-uganda-psa-block3a-heritage-part1-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1278998"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":33,
+        "canonical_url":"http://www.documentcloud.org/documents/1278998-leaked-uganda-psa-block3a-heritage-part1.html"
+    }
+}

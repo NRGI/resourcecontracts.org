@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"f17f3f07d885296fc6be61f9988aaac6dcbadc8c",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Parenco, Block 11, 12, 18 - Belize, 2008",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2008",
+            "Resource":"Hydrocarbons",
+            "Countries":"Belize"
+        },
+        "created_at":"Mon, 19 Jan 2015 22:21:49 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 16 Mar 2015 03:11:35 +0000",
+        "id":"1505199-parenco-belize-2008",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505199/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505199/parenco-belize-2008.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505199/pages/parenco-belize-2008-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505199/pages/parenco-belize-2008-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505199/parenco-belize-2008.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505199/pages/parenco-belize-2008-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505199"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":66,
+        "canonical_url":"http://www.documentcloud.org/documents/1505199-parenco-belize-2008.html"
+    }
+}

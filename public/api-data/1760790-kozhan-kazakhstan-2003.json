@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"1b4152e37520aad0e229a8875574821065343842",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Kozhan - Kazakhstan, 2003",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2003",
+            "Resource":"Hydrocarbons",
+            "Countries":"Kazakhstan"
+        },
+        "created_at":"Wed, 08 Apr 2015 04:30:21 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 28 Apr 2015 09:09:51 +0000",
+        "id":"1760790-kozhan-kazakhstan-2003",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1760790/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1760790/kozhan-kazakhstan-2003.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1760790/pages/kozhan-kazakhstan-2003-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1760790/pages/kozhan-kazakhstan-2003-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1760790/kozhan-kazakhstan-2003.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1760790/pages/kozhan-kazakhstan-2003-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1760790"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":14,
+        "canonical_url":"http://www.documentcloud.org/documents/1760790-kozhan-kazakhstan-2003.html"
+    }
+}

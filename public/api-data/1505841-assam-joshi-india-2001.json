@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"e476f3d6d46e362f64136a7eeca81d35e17f06fb",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"ASSAM, JOSHI - India, 2001",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2001",
+            "Resource":"Hydrocarbons",
+            "Countries":"India"
+        },
+        "created_at":"Tue, 20 Jan 2015 15:12:02 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 20 Jan 2015 15:31:03 +0000",
+        "id":"1505841-assam-joshi-india-2001",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505841/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505841/assam-joshi-india-2001.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505841/pages/assam-joshi-india-2001-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505841/pages/assam-joshi-india-2001-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505841/assam-joshi-india-2001.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505841/pages/assam-joshi-india-2001-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505841"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":150,
+        "canonical_url":"http://www.documentcloud.org/documents/1505841-assam-joshi-india-2001.html"
+    }
+}

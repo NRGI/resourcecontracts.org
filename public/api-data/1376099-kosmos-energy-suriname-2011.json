@@ -1,0 +1,402 @@
+{
+    "document":{
+        "file_hash":"993959ba12efef700212cc473fe7cd89867f93be",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas//Name and/or number of field, block or deposit",
+                "page":696,
+                "content":"Block 42 Offshore --Front page, Preamble, Art. 4, Annex 1, Annex 2",
+                "location":{
+                    "image":"176,294,207,259"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192039.js",
+                "id":192039
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) ",
+                "page":696,
+                "content":"Block 42 Offshore as mapped out in Annex 1. The Contract Area is 6176 km2 and bounded by coordinates in Annex 2.--Front page, Preamble, art. 4, Annex 1, Annex 2",
+                "location":{
+                    "image":"177,260,212,224"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192040.js",
+                "id":192040
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":696,
+                "content":"Suriname--Front page, Preamble, Signature Page",
+                "location":{
+                    "image":"224,254,254,218"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192036.js",
+                "id":192036
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":696,
+                "content":"Kosmos Energy Suriname--Front page, Preamble, Signature Page",
+                "location":{
+                    "image":"270,296,301,263"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192037.js",
+                "id":192037
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":696,
+                "content":"Production Sharing Agreement--Front page, art. 2.1",
+                "location":{
+                    "image":"53,279,88,239"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192038.js",
+                "id":192038
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":700,
+                "content":"Kosmos Energy Suriname (\"Kosmos\"), a company incorporated in the Cayman Islands--Preamble",
+                "location":{
+                    "image":"142,63,171,27"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192042.js",
+                "id":192042
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":700,
+                "content":"2011--Preamble",
+                "location":{
+                    "image":"41,40,77,5"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192045.js",
+                "id":192045
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":700,
+                "content":"13/12/2011--Preamble",
+                "location":{
+                    "image":"43,68,74,30"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192044.js",
+                "id":192044
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":700,
+                "content":"Staatsolie Maatschappij Suriname N.V. (\"Staatsolie\"), a corporation incorporated under Suriname law andacting as an agent of the Republic of Suriname --Preamble",
+                "location":{
+                    "image":"81,66,108,30"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192043.js",
+                "id":192043
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":709,
+                "content":"Petroleum (crude oil and natural gas)--Art. 1.62, Art. 2.1",
+                "location":{
+                    "image":"316,58,347,31"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192047.js",
+                "id":192047
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":714,
+                "content":"Kosmos must start Exploration Operations within 90 days of the contract Effective Date. The Exploration Period of 9 years is divided into 3 consecutive phases of 4, 3 and 2 years respectively. In Phase 1, Kosmos' Minimum Work Obligations are to: reprocess all 2D seismic data across Block 42; conduct 2D seismic survey of at least 1400 km and 3D seismic survey of at least 500 km; conduct geological analysis and evaluation of Contract Area data supplied to Kosmos as detailed in art. 21.2. In each of Phases 2 and 3, Kosmos has a Minimum Work Obligation to drill at least 1 well and conduct geological analysis and evaluation of Contract Area data. At the end of phases 1 and 2, Kosmos has the option of withdrawing from the Contract and must report its election to Staatsolie at least 60 days prior to the end of the phase. The estimated cost for Minimum Work Obligation will be: $5 Million in Phase 1, $85 Million in Phase 2 and $100 Million in Phase 3. Kosmos must notify Staatsolie within 60 days of completion of its Minimum Work Obligations and Staatsolie must confirm receipt of notice within 30 days. If Staatsolie does not provide written dispute regarding completion within 30 days of Kosmos' notification, the Minimum Work Obligation is deemed complete. If Staatsolie does dispute Kosmos' completion notification, it must provided detailed written objection which if the parties are unable to reach amicable resolution may be referred to dispute resolution as detailed in art. 41.  Work in excess of the Minimum Work Obligation is carried forward and credited against Minimum Work Obligations in subsequent phases. If Minimum Work Obligations are not complete at the end of a phase, Kosmos (or its parent) shall pay Staatsolie the difference between: (i) the estimated cost of the Minimum Work Obligation for the Phase and (ii) Kosmos' exploration expenditures up to the date Staatsolie received notice of Kosmos' withdrawal. --Art. 3.2, art. 5",
+                "location":{
+                    "image":"183,59,219,19"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192061.js",
+                "id":192061
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":714,
+                "content":"The term is the greater of 30 years from the Effective Date or 25 years from the date Kosmos receives approval on the Development Plan of the first commercial field. The term may be extended upon the parties' mutual agreement.--Art. 3.1",
+                "location":{
+                    "image":"67,61,107,15"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192046.js",
+                "id":192046
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":738,
+                "content":"No more than 10%--Art. 11.2.1",
+                "location":{
+                    "image":"183,58,217,27"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192056.js",
+                "id":192056
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":740,
+                "content":"6.25% of Gross Production at Delivery Point. If taken in cash, this amount is determined based on Market Price (as detailed in art. 14)--Art. 12",
+                "location":{
+                    "image":"48,306,87,273"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192052.js",
+                "id":192052
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":742,
+                "content":"Profit Oil is distributed according to the R Factor as calculated on a quarterly and prospective basis.  R Factor is equal to: a numerator amount (cumulative gross revenue minus cumulative royalty minus cumulative income tax) divided by a denominator amount (cumulative petroleum expenditures). The parties shall share profits as follows: R Factor 0 - 1.00, Staatsolie takes 15% and Kosmos takes 85%; R Factor &gt;1.00 -1.25, Staatsolie takes 20% and Kosmos takes 80%; R Factor &gt;1.25-1.50, Staatsolie takes 25% and Kosmos takes 75%; R Factor &gt;1.50 -1.75, Staatsolie takes 30% and Kosmos takes 70%; R Factor &gt;1.75 -2.00, Staatsolie takes 45% and Kosmos takes 55%; R Factor &gt;2.00 - 3.00, Staatsolie takes 60% and Kosmos takes 40%; R Factor &gt; 3, Staatsolie takes 75% and Kosmos takes 25%.--Art. 13.7 ",
+                "location":{
+                    "image":"199,64,229,32"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192055.js",
+                "id":192055
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, cr\u00e9dit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":742,
+                "content":"Cost Oil will be composed of Operating, Development and Explortion Expenditures on a quarterly basis. Operating Expenditures is the amount of Crude Oil from the Commercial Field (after royalty tax) to which Kosmos is entitled for operating expenses. Development Expenditures is the amount of Crude Oil from the Commercial Field (after royalty tax and Operating Expenditures) to which Kosmos is entitled for development expenses. Exploration Expenditures is  the amount of Crude Oil from the Commercial Field (after royalty tax, Operating Expenditures and Development Expenditures) to which Kosmos is entitled for exploration expenses.The Cost Oil ceiling (on oil distributed according to Operating, Development and Exploration Expenditures) is 80% of Gross Production after royalties are paid. Unrecovered Operating, Development and Exploration Expenditures that cannot be reimbursed as from Cost Oil will be carried forward for recovery in subsequent quarters until full recovery. --Art. 13.2 - 13.6",
+                "location":{
+                    "image":"55,58,85,27"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192054.js",
+                "id":192054
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":747,
+                "content":"At least 15 days before the end of the month of an arm's length transactions, each party must notify the Operator of the details of the transaction including price and volume. The Operator must, in turn, promptly give Staatsolie and the other contractor parties notice of the transaction's price and volume. If a party objects to the transaction's Market Price within 30 days of the Operator's notice to Staatsolie, the Market Price will be subjected to expert determination as detailed in art. 41.5.--Art. 14.4.5",
+                "location":{
+                    "image":"146,58,177,27"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192058.js",
+                "id":192058
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":752,
+                "content":"Income tax is calculated taking into account revenues (a combination of the value of Kosmos's share of Profit Oil and Cost Oil as well as all other income derived from Petroleum Operations) and expenses (a combination of Kosmos' share of Cost Oil and Contract related expenditures not included in Cost Recovery). Each party will be subject to the Income Tax Act of 1922 (Government Bulletin of 1921 no. 112, as last amended by State Decree of 1955 no. 52) and the Petroleum Law of 1990.--Art. 18.2 ",
+                "location":{
+                    "image":"173,58,209,27"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192053.js",
+                "id":192053
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":753,
+                "content":"The relevant terms and rates of the Income Tax Act applicable to Kosmos are fixed at the Contract's effective date and subsequent legislative adjustments will have no effect on the terms established in this contract. Further, where any changes in other legislation adversely impact Kosmos' rights, exemptions or economic benefits, the Contract's terms will be adjusted to maintain the original economic equilibrium. --Art. 18.4",
+                "location":{
+                    "image":"108,58,147,28"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192066.js",
+                "id":192066
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Obligation d'approvisionnement domestique]//Other - [Domestic Supply Requirement]",
+                "page":754,
+                "content":"The Domestic Supply Requirement is supplied from Government or Staatsolie entitlements and where the Domestic Supply Requirement cannot be met through these entitlements, Staatsolie may make written request to Kosmos for crude oil entitlements up to 1 year after the Date of Initial Commercial Production. Kosmos must respond to this request within 90 days. The excess entitlements are supplied on a pro rata basis (not exceeding 25%) to non-Staatosolie Suriname crude oil producers.--Art. 19",
+                "location":{
+                    "image":"53,243,87,211"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192050.js",
+                "id":192050
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":761,
+                "content":"All Petroleum Operations related information is confidentional unless it is either: already in the public domain; already known to the parties or its affiliates at the effective date of the contract; acquired independently from a 3rd party with a right to disseminate such information; or developed by a party independently of the disclosing party's information; or (v) otherwise legally in the party's possession. Such confidential information cannot be disclosed to third parties except for the individuals listed as exceptions in art. 22.2.1 (a) -(j). Third party disclosures require the disclosing party to obtain a written non-disclosure commitment from the recipient third party. Confidentiality obligations are extinguished either: when the contract terminates; when data is relinquished; or for unrelinquished data, the sooner of 5 years from the data of collection of such data and the termination of the Exploration Period. --Art. 22",
+                "location":{
+                    "image":"50,282,88,252"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192067.js",
+                "id":192067
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":764,
+                "content":"Kosmos must maintain its accounting records at its Paramaribo office in Suriname in accordance with Accounting Procedure.  Kosmos must prepare annual financial statements certified by an internationally recognized chartered accountant firm and submit it to Staatsolie within 90 days of the end of the pertinent year. At Kosmos' cost, Staatsolie may inspect and audit books and accounts upon reasonable notice to Kosmos. At Staatsolie's cost and upon giving Kosmos 60 days notice, Staatsolie may audit approved/disapproved costs associated with Cost Recovery for up to 2 years after receipt of Cost Recovery documentation; such documents shall be considered correct as of 2 years from their date of submission. All audit related adjustments must be recorded in the Petroleum Expenditures Account and unresolved disputes will be referred to the Operations Committee (and if no agreement is reached by the Operations Committee the dispute will be resolved as outlined in art. 41). --Art. 23, Art. 26",
+                "location":{
+                    "image":"51,296,84,261"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192057.js",
+                "id":192057
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licences, et permis)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":767,
+                "content":"Kosmos has the right to use available water sources in the Contract Area provided it does not interfere with the water rights of other water users in the Contract Area and provided it is compliant with applicable international water practice standards.--Art. 24.9",
+                "location":{
+                    "image":"294,58,327,26"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192060.js",
+                "id":192060
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":776,
+                "content":"Third parties may use facilities where there is excess capacity and upon payment of reasonable compensation to Kosmos. --Art. 28.4",
+                "location":{
+                    "image":"258,57,294,22"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192063.js",
+                "id":192063
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":776,
+                "content":"Kosmos may construct and maintain facilitites relating to Petroleum Operations, provided the location of facilities is in accordance with Surinamese legislation. Staatsolie will make available land and sea bed for Kosmos but where such use require third party expenditure by Staatsolie, Kosmos is required to pre-pay Staatsolie to cover such costs. Kosmos is released from payment for surface rentals.--art. 28.1 - art. 28.3",
+                "location":{
+                    "image":"72,59,112,20"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192062.js",
+                "id":192062
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es a l'approvisionnement en biens et services locaux//Local procurement requirements",
+                "page":782,
+                "content":"Kosmos must give preference to Suriname goods and services (where they are of similar quality and available on similar commercial terms as elsewhere). Kosmos must provide a local procurement list to Staatsolie quarterly.--Art. 31",
+                "location":{
+                    "image":"51,259,87,224"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192049.js",
+                "id":192049
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local//Local employment requirements",
+                "page":782,
+                "content":"Kosmos shall ensure opportunities for employment for qualified Surinamese nationals and, aligned with this obligation, Kosmos must provide an annual report to Staatsolie outlining its hiring projections relating to number of persons and required professions and technical capabilities to be recruited in the following year. Kosmos will submit a list of current local employees to Staatsolie on a quarterly basis.  --Art. 31",
+                "location":{
+                    "image":"53,287,85,254"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192048.js",
+                "id":192048
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Responsabilit\u00e9 sociale et Formation]//Other - [Social Responsibility and Training]",
+                "page":783,
+                "content":"During the Exploration period, Kosmos will contribute $100,000 each year for training Staatsolie representatives and CSR programs (in support of community based development). After the Exploration period, Kosmos' annual allocaation for training Staatsolie representatives and CSR will be $400,000. As well, Kosmos will ensure secondment opportunities for Staatsolie personnel for training purposes. Kosmos shall provide non-confidential scientific information to Staatsolie to assist in their personnel capacity building. --Art. 32",
+                "location":{
+                    "image":"55,228,85,199"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192051.js",
+                "id":192051
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":790,
+                "content":"The contract is effective after the following: (i) approval of the contract by the Minister of Natural Resources and delivery of the approval to Kosmos; (ii) signing of the contract by the parties; (iii) receipt of Parent Company Performance Guarantee by Staatsolie (as detailed in art. 5.7.1)--art. 37",
+                "location":{
+                    "image":"52,461,87,430"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192041.js",
+                "id":192041
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":797,
+                "content":"The English and Dutch contracts have equivalent effect (but in case of dispute and arbitration, the Dutch version prevails).--Art. 40.2",
+                "location":{
+                    "image":"147,58,187,22"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192068.js",
+                "id":192068
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":797,
+                "content":"Contract governed according to Suriname law and where Suriname law is silent, the Contract will be governed by Dutch law (or as otherwise agreed by the parties).--Art. 40.1",
+                "location":{
+                    "image":"74,58,114,17"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192064.js",
+                "id":192064
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":798,
+                "content":"If the parties are unable to resolve a dispute amicably, they may enter into a Consultation Process and if unsuccessful, they may proceed to arbitration. The Consultation Process may be initiated by either party upon delivering a Notice of Consultation to the non-initiating party detailing dispute and designating an authorized representative for negotiations. The non-initiating party must respond to the Notice of Consultation within 15 days of receipt designating its authorized representative. The designated representatives shall immediately attempt to resolve the dispute and in the 30 day period following the Notice of Consultation, no other methods of dispute resolution may be sought by either party. Where a dispute cannot be resolved by mediation or consultation, it may be refered to arbitration for full and final resolution. The arbitration shall be held in English, in The Hague (Netherlands) according to UNCITRAL rules. The arbitration will be heard by 3 arbitrators, each with at least 10 years experience in oil and gas transactions. Each party shall appoint one arbitrator within 30 days of receipt of the Arbitration Notice and, within 30 days of their appointment, the 2 arbitrators shall appoint the third arbitrator. --Art. 41",
+                "location":{
+                    "image":"46,274,85,232"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192065.js",
+                "id":192065
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":830,
+                "content":"Kosmos must maintain Petroleum Operations in compliance with applicable national and  international environmental law and policies. Kosmos is responsible for pollution clean up costs and where it does not act promptly to clean up, Staatsolie may, upon notice, conduct clean up (at Kosmos' expense). Clean up costs are subject to Cost Recovery unless due to Kosmos' gross negligence or willful misconduct. Kosmos must maintain HSE standards that contain (as detailed in Annex 5): environmental baseline studies; environmental impact and social assessments; ongoing environmental monitoring, environmental management plans and contingency plans. --Art. 24, Annex 5",
+                "location":{
+                    "image":"53,219,84,186"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011/annotations/192059.js",
+                "id":192059
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Kosmos Energy - Suriname, Block 42, 2011",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2011",
+            "Resource":"Hydrocarbons",
+            "Countries":"Suriname"
+        },
+        "created_at":"Sun, 07 Dec 2014 19:06:07 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 24 Dec 2014 17:06:44 +0000",
+        "id":"1376099-kosmos-energy-suriname-2011",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1376099/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1376099/kosmos-energy-suriname-2011.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1376099/pages/kosmos-energy-suriname-2011-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1376099/pages/kosmos-energy-suriname-2011-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1376099/kosmos-energy-suriname-2011.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1376099/pages/kosmos-energy-suriname-2011-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1376099"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":1136,
+        "canonical_url":"http://www.documentcloud.org/documents/1376099-kosmos-energy-suriname-2011.html"
+    }
+}

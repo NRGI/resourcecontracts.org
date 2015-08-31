@@ -109,8 +109,12 @@ class MigrationService
             $this->extractMetadata($this->data()->annotations, $this->annotationTitleMapping())
         );
 
-        $contract = array_merge($default, $available);
-        $contract = $this->refinery($contract);
+        $contract              = array_merge($default, $available);
+        $contract              = $this->refinery($contract);
+        $contract              = json_decode(json_encode($contract));
+        $contract->annotations = $this->refineAnnotation($this->data()->annotations);
+
+        return $contract;
 
         if ($contract['pdf_url'] != '') {
             if ($pdf = $this->downloadPdf($contract['pdf_url'])) {
@@ -961,9 +965,19 @@ class MigrationService
         foreach ($mappings as $key => $map) {
             $key = trim(trim($key), ',');
 
+            $from  = [' / ', '  ', '/ ', ' /', ' - ', '- ', ' -'];
+            $to    = ['/', ' ', '/', '/', '-', '-', '-'];
+            $title = str_replace($from, $to, $title);
+            $key   = str_replace($from, $to, $key);
+
             if ($this->isStringMatch($title, $key) !== false) {
                 return $map;
             }
+        }
+
+        if ($title != '') {
+            echo $title;
+            echo PHP_EOL . '-----------------------------------' . PHP_EOL;
         }
 
         return '';

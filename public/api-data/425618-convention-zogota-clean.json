@@ -1,0 +1,745 @@
+{
+    "document":{
+        "file_hash":null,
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, Soci\u00e9t\u00e9 Nationale, Minist\u00e8re//State agency, National Company, Ministry",
+                "page":1,
+                "content":"Minist\u00e8re des Mines et de l'Energie et  Minist\u00e8re \u00e0  la Pr\u00e9sidence charg\u00e9 de l'\u00e9conomie et des finances--Pr\u00e9ambule",
+                "location":{
+                    "image":"261,504,300,457"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71847.js",
+                "id":71847
+            },
+            {
+                "access":"public",
+                "title":"Nom du Projet//Project title",
+                "page":1,
+                "content":"Zogota--Page de titre de la Convention",
+                "location":{
+                    "image":"697,610,739,574"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71701.js",
+                "id":71701
+            },
+            {
+                "access":"public",
+                "title":"Nom(s) de la soci\u00e9t\u00e9(s) contractante(s)//Name of contracting company",
+                "page":2,
+                "content":"BSG Resource (Guinea) Limited, soci\u00e9t\u00e9 de droit de Guernsey\u00a0en tant que \u00abl'Investisseur\u00bb; BSG Resources (Guinea) SARL, Soci\u00e9t\u00e9 \u00e0 Responsabilit\u00e9 Limit\u00e9e Unipersonnelle de droit guin\u00e9en--Pr\u00e9ambule",
+                "location":{
+                    "image":"334,622,379,581"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71705.js",
+                "id":71705
+            },
+            {
+                "access":"public",
+                "title":"Nom du Gisement//Deposit/site name",
+                "page":12,
+                "content":"Zogota --Art. 4 de la Convention",
+                "location":{
+                    "image":"480,498,518,456"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71702.js",
+                "id":71702
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) miniere(s) concern\u00e9es//Type of resources ",
+                "page":12,
+                "content":"Minerai de fer--Art. 4(i)",
+                "location":{
+                    "image":"485,557,518,511"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71851.js",
+                "id":71851
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable//Governing law",
+                "page":13,
+                "content":"Les Lois Applicables en R\u00e9publique de Guin\u00e9e. En cas de contradiction / divergence entre la L\u00e9gislation en Vigueur et la Convention, les dispositions de la Convention l'emportent.--Art. 5",
+                "location":{
+                    "image":"139,373,180,330"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71897.js",
+                "id":71897
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":13,
+                "content":"Entr\u00e9e en vigueur \u00e0 la date de l'approbation de la convention par ordonnance, avec une dur\u00e9e de validit\u00e9 \u00e9gale \u00e0 celle de la Concession (i.e. 25 ans, renouvelable)--Art. 9",
+                "location":{
+                    "image":"678,480,712,430"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71850.js",
+                "id":71850
+            },
+            {
+                "access":"public",
+                "title":"Production attendue//Expected production",
+                "page":13,
+                "content":"Phase I: capacit\u00e9 de 30 mtpa de minerai de fer pendant 15 ans; Phase II: non sp\u00e9cificit\u00e9--Art. 10",
+                "location":{
+                    "image":"814,428,861,391"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71704.js",
+                "id":71704
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":13,
+                "content":"Phase I\u00a0(Zogota: La Soci\u00e9t\u00e9 s\u2019engage \u00e0 r\u00e9aliser les installations n\u00e9cessaires pour une capacit\u00e9 de 30 mtpa de minerai de fer pendant 15 ans - engagement \u00e0 investir US$ 2,5 milliards pour r\u00e9aliser un projet compos\u00e9 de: mine \u00e0 ciel ouvert \u00e0 Zogota, zone industrielle \u00e0 Zogota (comportant une ligne de chemin de fer en Guin\u00e9e de 102km,  une centrale \u00e9lectrique de 35MW, une cit\u00e9 d'habitation, un centre hospitalier pour le personnel, etc.), zone portuaire \u00e0 Buchanan au Lib\u00e9ria, chemin de fer Conakry-Kankan; Phase II  (Blocs 1 et 2 Simandou K\u00e9rouan\u00e9) - La Soci\u00e9t\u00e9 s\u2019engage \u00e0 r\u00e9aliser deux mines de minerai de fer,les  infrastructures ferroviaires appropri\u00e9es, une cit\u00e9 d'habitation \u00e0 K\u00e9rouan\u00e9. Pour la phase II la Soci\u00e9t\u00e9 doit d'abord pr\u00e9senter une \u00e9tude de faisabilit\u00e9 dans un d\u00e9lai de 24 mois \u00e0 compter de la date de la Convention. Les conclusions de cette \u00e9tude permettront de d\u00e9finir les modalit\u00e9s d'octroi de la concession mini\u00e8re et de d\u00e9finir entre les parties, les conditions d'exploitation et d'exp\u00e9dition. La Soci\u00e9t\u00e9 s\u2019engage \u00e0 d\u00e9buter la production mini\u00e8re au plus tard le 31 Mai 2012.--Arts. 10, 15.2",
+                "location":{
+                    "image":"819,485,865,440"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71887.js",
+                "id":71887
+            },
+            {
+                "access":"public",
+                "title":"Investissement estim\u00e9//Estimated investment",
+                "page":15,
+                "content":"US$ 2,5 milliards pour la mine et les infrastructures d'\u00e9vacuation, US$ 1 milliard, plus 20% d'impr\u00e9vus, pour reconstruire le chemin de fer Conakry - Kankan - K\u00e9rouan\u00e9.--Art. 11 et Art. 12",
+                "location":{
+                    "image":"284,478,326,437"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71703.js",
+                "id":71703
+            },
+            {
+                "access":"public",
+                "title":"Autres - Chemin de fer Conakry - Kankan - K\u00e9rouan\u00e9",
+                "page":15,
+                "content":"La Soci\u00e9t\u00e9 s'engage \u00e0 reconstruire (50% pendant la premi\u00e8re phase du projet) ce chemin de fer dont l'\u00e9tude de faisabilit\u00e9 sera soumise au Gouvernement pour approbation. Montant d'investissement: USD 1 milliard, augment\u00e9 de 20% d'impr\u00e9vus. L'Etat s'engage \u00e0 accorder une exon\u00e9ration totale des droits, taxes et redevances sur l'ensemble des biens et services n\u00e9cessaires \u00e0 la r\u00e9alisation de cette infrastructure.--Art. 12",
+                "location":{
+                    "image":"503,566,541,522"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71893.js",
+                "id":71893
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":17,
+                "content":"Phase I\u00a0(Zogota: La Soci\u00e9t\u00e9 s\u2019engage \u00e0 r\u00e9aliser les installations n\u00e9cessaires pour une capacit\u00e9 de 30 mtpa de minerai de fer pendant 15 ans - engagement \u00e0 investir US$ 2,5 milliards pour r\u00e9aliser un projet compos\u00e9 de: mine \u00e0 ciel ouvert \u00e0 Zogota, zone industrielle \u00e0 Zogota (comportant une ligne de chemin de fer en Guin\u00e9e de 102km,  une centrale \u00e9lectrique de 35MW, une cit\u00e9 d'habitation, un centre hospitalier pour le personnel, etc.), zone portuaire \u00e0 Buchanan au Lib\u00e9ria, chemin de fer Conakry-Kankan; Phase II  (Blocs 1 et 2 Simandou K\u00e9rouan\u00e9) - La Soci\u00e9t\u00e9 s\u2019engage \u00e0 r\u00e9aliser deux mines de minerai de fer,les  infrastructures ferroviaires appropri\u00e9es, une cit\u00e9 d'habitation \u00e0 K\u00e9rouan\u00e9. Pour la phase II la Soci\u00e9t\u00e9 doit d'abord pr\u00e9senter une \u00e9tude de faisabilit\u00e9 dans un d\u00e9lai de 24 mois \u00e0 compter de la date de la Convention. Les conclusions de cette \u00e9tude permettront de d\u00e9finir les modalit\u00e9s d'octroi de la concession mini\u00e8re et de d\u00e9finir entre les parties, les conditions d'exploitation et d'exp\u00e9dition. La Soci\u00e9t\u00e9 s\u2019engage \u00e0 d\u00e9buter la production mini\u00e8re au plus tard le 31 Mai 2012.--Arts. 10, 15.2",
+                "location":{
+                    "image":"136,469,186,425"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71888.js",
+                "id":71888
+            },
+            {
+                "access":"public",
+                "title":"Autres - Chemin de fer Minier - Zogota - Sanniquellie",
+                "page":18,
+                "content":"La Soci\u00e9t\u00e9 r\u00e9alisera les \u00e9tudes, financera et fera construire le chemin de fer de 102km sur le territoire guin\u00e9en et assurera son exploitation et entretien. L'Etat sera propri\u00e9taire du chemin de fer quel que soit le mode de financement. La Soci\u00e9t\u00e9 affectera les redevances convenues pour l'utilisation du chemin de fer au remboursement de l'investissement de la Soci\u00e9t\u00e9. Apr\u00e8s le remboursement des emprunts, la maintenance continuera d'\u00eatre la responsabilit\u00e9 de la Soci\u00e9t\u00e9, mais elle paiera \u00e0 l'Etat des redevances d'utilisation fix\u00e9es suivant les principes appliqu\u00e9s en Guin\u00e9e aux infrastructures similaires. L'Etat garantit l'utilisation prioritaire de la ligne par la Soci\u00e9t\u00e9. L'utilisation par un tiers se fera avec l'accord de la Soci\u00e9t\u00e9 et ne devra en aucun case nuire aux activit\u00e9s de la Soci\u00e9t\u00e9. Les modalit\u00e9s de conception, financement, construction, exploitation et maintenance seront sp\u00e9cifi\u00e9s dans un accord entre l'Etat et la Soci\u00e9t\u00e9.--Art. 16.1.1\n",
+                "location":{
+                    "image":"641,289,680,244"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71894.js",
+                "id":71894
+            },
+            {
+                "access":"public",
+                "title":"Autres - Chemin de fer au Lib\u00e9ria",
+                "page":19,
+                "content":"BSG Resources fournira \u00e0 l\u2019Etat les informations, conditions, garanties r\u00e9sultant des accords avec le Gouvernement lib\u00e9rien en ce qui concerne le chemin de fer sur le territoire du Liberia. L\u2019Etat s\u2019engage \u00e0 obtenir aupr\u00e8s de l\u2019Etat lib\u00e9rien un accord sur les conditions d\u2019utilisation du chemin du fer sur le territoire lib\u00e9rien, de l\u2019espace de la zone portuaire et de la cit\u00e9 d\u2019habitation \u00e0 Buchanan.--Arts. 16.1.2 - 16.1.3",
+                "location":{
+                    "image":"463,348,503,308"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71896.js",
+                "id":71896
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":20,
+                "content":"La Soci\u00e9t\u00e9 peut, en respectant la loi applicable et sous r\u00e9serve de droits de tout tiers, utilisateur et/ou occupant foncier, construire toute infrastructure n\u00e9cessaire \u00e0 ses Op\u00e9rations Mini\u00e8res (ex. routes, ponts, installations portuaires et ferroviaires, etc.). Le Ministre peut exiger des modifications visant \u00e0 limiter ou \u00e9liminer tout danger \u00e0 la sant\u00e9, s\u00e9curit\u00e9 ou bien-\u00eatre des employ\u00e9s ou du public, ou tout impact n\u00e9gatif sur l\u2019environnement.--Art. 16.2",
+                "location":{
+                    "image":"204,514,247,473"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71889.js",
+                "id":71889
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":21,
+                "content":"La Soci\u00e9t\u00e9 a la priorit\u00e9 d\u2019utilisation de toute infrastructure qu\u2019elle aura construite, et peut limiter l\u2019acc\u00e8s aux routes situ\u00e9es dans le p\u00e9rim\u00e8tre de la Concession si un tel acc\u00e8s pose un danger, des nuisances, ou une obstruction aux op\u00e9rations. L'Etat garantit l'utilisation prioritaire de la ligne de chemin de fer minier par la Soci\u00e9t\u00e9. L'utilisation par un tiers se fera avec l'accord de la Soci\u00e9t\u00e9 et ne devra en aucun case nuire aux activit\u00e9s de la Soci\u00e9t\u00e9. Les modalit\u00e9s de conception, financement, construction, exploitation et maintenance seront sp\u00e9cifi\u00e9s dans un accord entre l'Etat et la Soci\u00e9t\u00e9.--Art. 16.4",
+                "location":{
+                    "image":"577,414,623,370"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71891.js",
+                "id":71891
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9installation des habitants//Resettlement",
+                "page":22,
+                "content":"La Soci\u00e9t\u00e9 est tenue d'indemniser et/ou de r\u00e9installer les Utilisateurs ou Occupants Fonciers dont la Soci\u00e9t\u00e9 juge la pr\u00e9sence incompatible avec ses Operations Mini\u00e8res dans la Concession. La Soci\u00e9t\u00e9 doit collaborer avec l'Etat pour le choix de nouvelles localit\u00e9s et la d\u00e9termination des indemnit\u00e9s. La Soci\u00e9t\u00e9 doit pr\u00e9senter \u00e0 l'Etat le plan des zones qui seront affect\u00e9es avant d'engager les \u00e9tudes de d\u00e9placement et de relocalisation. Les conclusions de cette \u00e9tude approuv\u00e9e par l'Etat seront publi\u00e9es aupr\u00e8s des autorit\u00e9s et des populations concern\u00e9es.--Art. 16.6",
+                "location":{
+                    "image":"154,568,190,519"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71859.js",
+                "id":71859
+            },
+            {
+                "access":"public",
+                "title":"Autres - Prix de pleine concurrence",
+                "page":23,
+                "content":"La Soci\u00e9t\u00e9 s'engage \u00e0 vendre le produit minier \u00e0 des conditions de pleine concurrence. Le Ministre est autoris\u00e9 \u00e0 v\u00e9rifier toutes les op\u00e9rations de vente.--Arts. 17.1, 17.4",
+                "location":{
+                    "image":"347,378,386,333"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71883.js",
+                "id":71883
+            },
+            {
+                "access":"public",
+                "title":"Commercialisation et acc\u00e8s \u00e0 la production //Marketing of output and state access to output",
+                "page":23,
+                "content":"Chaque ann\u00e9e, l'Etat peut demander d'acheter un pourcentage de la production totale issue de la Concession. La Soci\u00e9t\u00e9 doit offrir un contrat d'achat aux conditions financi\u00e8res du march\u00e9 dans le cadre de contrats similaires qu'elle aurait conclus avec ses clients. Aucune obligation de vendre de la part de la Soci\u00e9t\u00e9 si elle est li\u00e9e par des contrats de longue dur\u00e9e.--Art. 17.2",
+                "location":{
+                    "image":"437,425,471,375"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71890.js",
+                "id":71890
+            },
+            {
+                "access":"public",
+                "title":"Autres - Vente \u00e0 une Soci\u00e9t\u00e9 Affili\u00e9e",
+                "page":23,
+                "content":"La Soci\u00e9t\u00e9 doit aviser le Ministre de la vente du produit minier \u00e0 une Soci\u00e9t\u00e9 Affili\u00e9e dans les 15 jours suivant la vente, en fournissant le contrat et toutes les informations utilis\u00e9es pour traiter le prix, escomptes et commissions. Cette information doit \u00eatre trait\u00e9e comme confidentielle.--Art. 17.3",
+                "location":{
+                    "image":"705,418,743,379"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71880.js",
+                "id":71880
+            },
+            {
+                "access":"public",
+                "title":"Autres - Prix de pleine concurrence",
+                "page":24,
+                "content":"La Soci\u00e9t\u00e9 s'engage \u00e0 vendre le produit minier \u00e0 des conditions de pleine concurrence. Le Ministre est autoris\u00e9 \u00e0 v\u00e9rifier toutes les op\u00e9rations de vente.--Arts. 17.1, 17.4",
+                "location":{
+                    "image":"141,475,178,428"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71884.js",
+                "id":71884
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit//Audit mechanisms",
+                "page":25,
+                "content":"Les repr\u00e9sentants de l\u2019Etat peuvent acc\u00e9der aux sites afin d\u2019inspecter, examiner, v\u00e9rifier ou proc\u00e9der \u00e0 l\u2019audit.--Arts. 18.4 - 18.5",
+                "location":{
+                    "image":"674,393,714,350"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71892.js",
+                "id":71892
+            },
+            {
+                "access":"public",
+                "title":"Formation des cadres guin\u00e9ens//Management training requirement for nationals",
+                "page":31,
+                "content":"Contribuer \u00e0 la formation du personnel guin\u00e9en en vue de permettre l'accession aux postes de cadres.--Art. 23.2( c )",
+                "location":{
+                    "image":"687,374,728,331"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71855.js",
+                "id":71855
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":31,
+                "content":"Exclusif pour les travaux ne n\u00e9cessitant pas de qualification. Prioritaire, \u00e0 qualifications \u00e9gales, pour les autres fonctions. Accords \u00e0 signer avec le Lib\u00e9ria pour les conditions de travail des Guin\u00e9ens au Lib\u00e9ria. Plan annuel de recrutement du personnel guin\u00e9en en accord avec le Ministre, pour que la main d'oeuvre guin\u00e9enne atteigne 90% du personnel utilis\u00e9 par la Soci\u00e9t\u00e9 au plus tard 5 ans apr\u00e8s la date de premi\u00e8re production commerciale.--Art. 23.2 23.4 et 23.4",
+                "location":{
+                    "image":"691,432,726,389"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71856.js",
+                "id":71856
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel guin\u00e9en//Local employment requirements",
+                "page":32,
+                "content":"Exclusif pour les travaux ne n\u00e9cessitant pas de qualification. Prioritaire, \u00e0 qualifications \u00e9gales, pour les autres fonctions. Accords \u00e0 signer avec le lib\u00e9ria pour les conditions de travail des guin\u00e9ens au lib\u00e9ria. Plan annuel de recrutement du personnel guin\u00e9en en accord avec le Ministre, pour que la main d'oeuvre guin\u00e9enne atteigne 90% du personnel utilis\u00e9 par la Soci\u00e9t\u00e9 au plus tard 5 ans apr\u00e8s la date de premi\u00e8re production commerciale.--Art. 23.2 23.4 et 23.4\n",
+                "location":{
+                    "image":"310,371,352,326"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71857.js",
+                "id":71857
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":33,
+                "content":"Pr\u00e9f\u00e9rences aux entreprises guin\u00e9ennes, \u00e0 des conditions de prix, quantit\u00e9, qualit\u00e9 et d\u00e9lais de livraison au moins \u00e9quivalentes.--Art. 24.3",
+                "location":{
+                    "image":"649,458,697,419"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71858.js",
+                "id":71858
+            },
+            {
+                "access":"public",
+                "title":"Convention de d\u00e9veloppement local//Local development agreement",
+                "page":34,
+                "content":"La Soci\u00e9t\u00e9 s'engage \u00e0 contracter des conventions de d\u00e9veloppement (incluant des engagements de nature \u00e9conomique ou sociale) avec les repr\u00e9sentants officiels des collectivit\u00e9s locales. Ces conventions doivent \u00eatre soumises aux Ministres en charge des Mines et des Collectivit\u00e9s Locales pour approbation, requise avant d'entreprendre le d\u00e9veloppement de la Concession. La soci\u00e9t\u00e9 doit soumettre un rapport annuel sur l'ex\u00e9cution de la convention de d\u00e9veloppement communautaire.--Arts. 26, 19.5",
+                "location":{
+                    "image":"317,573,368,531"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71852.js",
+                "id":71852
+            },
+            {
+                "access":"public",
+                "title":"Exigences des consultations communautaires//Requirements for community consultation",
+                "page":34,
+                "content":"La Convention de D\u00e9veloppement Local doit inclure des programmes pour l\u2019organisation de s\u00e9ances de consultations p\u00e9riodiques pour l\u2019\u00e9laboration d\u2019un plan de fermeture.--Art. 26.1",
+                "location":{
+                    "image":"452,596,493,551"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71854.js",
+                "id":71854
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact//Impact assessment ",
+                "page":36,
+                "content":"Le d\u00e9marrage des travaux de d\u00e9veloppement est subordonn\u00e9 \u00e0 l'approbation du Ministre responsable de l'environnement de l'\u00e9tude d'impact environnemental et d'un plan de gestion environnementale pr\u00e9par\u00e9s par la Soci\u00e9t\u00e9. L'\u00e9tude et le plan doivent refl\u00e9ter les meilleures pratiques internationales et comprendre les informations sp\u00e9cifi\u00e9es \u00e0 l'article 27.1--Art. 27.1",
+                "location":{
+                    "image":"359,390,396,342"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71885.js",
+                "id":71885
+            },
+            {
+                "access":"public",
+                "title":"Protection des lieux sacr\u00e9s, des sources et du milieu de vie//Protection of sacred locations, resources and environment",
+                "page":37,
+                "content":"En case de d\u00e9couverte d'un site arch\u00e9ologique, la Soci\u00e9t\u00e9 mettra \u00e0 jour les \u00e9l\u00e9ments du patrimoine culturel. La Soci\u00e9t\u00e9 s'engage \u00e0 ne pas d\u00e9placer des \u00e9l\u00e9ments du patrimoine culturel national, et \u00e0 en informer l'Etat sans d\u00e9lai.--Art. 27.2",
+                "location":{
+                    "image":"271,319,315,279"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71853.js",
+                "id":71853
+            },
+            {
+                "access":"public",
+                "title":"Indemnisation//Indemnification",
+                "page":37,
+                "content":"La Soci\u00e9t\u00e9 s'engage \u00e0 d\u00e9dommager l'Etat pour toute d\u00e9pense li\u00e9e \u00e0 la d\u00e9fense de toute r\u00e9clamation, cr\u00e9ance, poursuite ou litige li\u00e9e aux Op\u00e9rations Mini\u00e8res.--Art. 27.4",
+                "location":{
+                    "image":"655,501,694,463"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71905.js",
+                "id":71905
+            },
+            {
+                "access":"public",
+                "title":"Autres - R\u00e9habilitation",
+                "page":38,
+                "content":"La Soci\u00e9t\u00e9 s'engage \u00e0 remettre en \u00e9tat les sites et lieux affect\u00e9s conform\u00e9ment aux lois applicables et au plan de gestion environnementale et sociale. Afin de garantir son obligation, la Soci\u00e9t\u00e9 devra fournir une garantie bancaire.--Arts. 28",
+                "location":{
+                    "image":"133,491,176,440"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71886.js",
+                "id":71886
+            },
+            {
+                "access":"public",
+                "title":"Autres - D\u00e9clarations et garanties de l'Etat",
+                "page":40,
+                "content":"Divers d\u00e9clarations et garanties de l'Etat, incluant: l'autorisation du Ministre signataire, l'absence d'autre titre minier pouvant affecter la Convention, l'Etat n'ayant pas connaissance d'avis, objections ou autres proc\u00e9dures ou litiges pendants visant la Concession, la satisfaction de l'Etat avec les qualifications de la Soci\u00e9t\u00e9, etc.--Art. 29\n",
+                "location":{
+                    "image":"373,569,416,531"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71911.js",
+                "id":71911
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":41,
+                "content":"Stabilisation de la L\u00e9gislation en Vigueur et de toutes les dispositions, notamment fiscales et douani\u00e8res, pr\u00e9vues par la Convention. Les augmentations des charges fiscales et/ou douani\u00e8res ne sont pas applicables \u00e0 la Soci\u00e9t\u00e9. La Soci\u00e9t\u00e9 peut toutefois profiter de toute modification ayant pour effet de r\u00e9duire les charges fiscales et/ou douani\u00e8res. La Soci\u00e9t\u00e9 b\u00e9n\u00e9ficiera aussi de toute clause plus favorable (par rapport \u00e0 la Convention) inclue dans une autre convention mini\u00e8re conclue apr\u00e8s cette convention avec une autre soci\u00e9t\u00e9 exer\u00e7ant des activit\u00e9s similaires.--Art. 32",
+                "location":{
+                    "image":"686,470,730,429"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71899.js",
+                "id":71899
+            },
+            {
+                "access":"public",
+                "title":"Autres - Application des dispositions fiscales aux Investisseurs et Sous-Traitants Directs",
+                "page":42,
+                "content":"Les dispositions fiscales sont g\u00e9n\u00e9ralement aussi applicables aux Investisseurs et Sous-Traitants Directs.--Art. 33",
+                "location":{
+                    "image":"321,370,358,330"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71881.js",
+                "id":71881
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les loyers des immeubles//Witholding tax on rent",
+                "page":42,
+                "content":"",
+                "location":{
+                    "image":"363,589,401,544"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71868.js",
+                "id":71868
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":42,
+                "content":"Exon\u00e9rations g\u00e9n\u00e9rales des droits, imp\u00f4ts, taxes et redevances, \u00e0 l'exception de ceux mentionn\u00e9s \u00e0 l'article 33.1--Art. 33.1",
+                "location":{
+                    "image":"368,636,407,595"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71879.js",
+                "id":71879
+            },
+            {
+                "access":"public",
+                "title":"Conditions de renouvellement//Conditions for renewal ",
+                "page":43,
+                "content":"",
+                "location":{
+                    "image":"267,517,311,479"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71875.js",
+                "id":71875
+            },
+            {
+                "access":"public",
+                "title":"Redevances superficiaires//Surface fees",
+                "page":43,
+                "content":"Conform\u00e9ment \u00e0 la l\u00e9gislation en vigueur.--Art. 33.2",
+                "location":{
+                    "image":"270,568,313,527"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71877.js",
+                "id":71877
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining Tax/ Royalty Tax",
+                "page":43,
+                "content":"3,5% du prix FOB pour le minerai de fer concentr\u00e9.--Art. 33.3",
+                "location":{
+                    "image":"605,258,651,183"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71860.js",
+                "id":71860
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":43,
+                "content":"Assujetti \u00e0 l'Imp\u00f4t sur les B\u00e9n\u00e9fices Industriels et Commerciaux (BIC), \u00e0 l'exclusion de tous autres imp\u00f4ts sur les b\u00e9n\u00e9fices. En raison de la r\u00e9alisation du chemin de Fer Conakry - Kankan, le taux de BIC applicable au b\u00e9n\u00e9fice net taxable est de 30%. B\u00e9n\u00e9fice imposable d\u00e9termin\u00e9 par application du Code G\u00e9n\u00e9ral des Imp\u00f4ts et du Code Minier, sous r\u00e9serve des sp\u00e9cificit\u00e9s de la Convention.--Art. 33.4",
+                "location":{
+                    "image":"851,519,887,472"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71861.js",
+                "id":71861
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: l'amortissement//Income tax: amortization",
+                "page":44,
+                "content":"",
+                "location":{
+                    "image":"206,249,244,206"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71862.js",
+                "id":71862
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: \u00e9xoneration//Income tax: exemptions",
+                "page":44,
+                "content":"Exon\u00e9ration de l'imp\u00f4t BIC pour 10 ans \u00e0 compter de la premi\u00e8re production commerciale, (8 ans conform\u00e9ment \u00e0 l'Article 143.3 du Code Minier plus 2 ann\u00e9es suppl\u00e9mentaires).--Art. 33.4.3",
+                "location":{
+                    "image":"448,405,489,361"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71863.js",
+                "id":71863
+            },
+            {
+                "access":"public",
+                "title":"IRVM//Capital gains tax",
+                "page":44,
+                "content":"Applicable--Art. 33.5",
+                "location":{
+                    "image":"734,461,774,417"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71864.js",
+                "id":71864
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des nationaux//Witholding tax on national salaries",
+                "page":44,
+                "content":"Versement forfaitaire au taux de 6%. Contribution \u00e0 la formation au taux de 1,5% (employ\u00e9s en Guin\u00e9e et hors Guin\u00e9e) sauf si la Soci\u00e9t\u00e9 dispose de son propre centre de formation permanent en Guin\u00e9e. Retenue (RTS) par application du bar\u00e8me en vigueur.--Art. 33.6",
+                "location":{
+                    "image":"836,480,878,437"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71865.js",
+                "id":71865
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des expatri\u00e9s//Witholding tax on expatriate salaries",
+                "page":44,
+                "content":"10% (exon\u00e9r\u00e9 si le salari\u00e9 s\u00e9journe moins de 183 jours par Ann\u00e9e Civile).--Art. 33.6",
+                "location":{
+                    "image":"841,537,877,495"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71866.js",
+                "id":71866
+            },
+            {
+                "access":"public",
+                "title":"Part patronale des cotisations de s\u00e9curit\u00e9 sociale//Social security contributions by employer",
+                "page":44,
+                "content":"Conform\u00e9ment \u00e0 la l\u00e9gislation en vigueur; les salari\u00e9s \u00e9trangers sont exon\u00e9r\u00e9s.--Art. 33.6",
+                "location":{
+                    "image":"846,587,880,550"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71876.js",
+                "id":71876
+            },
+            {
+                "access":"public",
+                "title":"Autres - Contribution \u00e0 la formation",
+                "page":44,
+                "content":"Contribution \u00e0 la formation au taux de 1,5% (employ\u00e9s en Guin\u00e9e et hors Guin\u00e9e) sauf si la Soci\u00e9t\u00e9 dispose de son propre centre de formation permanent en Guin\u00e9e. --Art. 33.6",
+                "location":{
+                    "image":"853,638,891,596"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71882.js",
+                "id":71882
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les prestations de service par des entreprises non r\u00e9sidentes//Witholding tax on services of non-resident companies",
+                "page":45,
+                "content":"10%. Les int\u00e9r\u00eats aux pr\u00eats bancaires ou autres, contract\u00e9s par la Soci\u00e9t\u00e9 pour le financement du projet sont toutefois exon\u00e9r\u00e9s de toute retenue \u00e0 la source.--Art. 33.8",
+                "location":{
+                    "image":"711,500,751,458"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71867.js",
+                "id":71867
+            },
+            {
+                "access":"public",
+                "title":"TVA//VAT",
+                "page":46,
+                "content":"Exon\u00e9ration pour l'acquisition de biens et services n\u00e9cessaires aux op\u00e9rations mini\u00e8res. Si support\u00e9e, la Soci\u00e9t\u00e9 (aussi bien l'Investisseur que les Sous Traitants Directs) peut l'imputer par voie de d\u00e9duction ou se faire rembourser.--Arts. 33.9, 34.1",
+                "location":{
+                    "image":"137,358,176,318"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71874.js",
+                "id":71874
+            },
+            {
+                "access":"public",
+                "title":"Obligations communautaires ou sous-nationales//Community and regional obligations",
+                "page":46,
+                "content":"Contribution au d\u00e9veloppement local : 1% du b\u00e9n\u00e9fice brut, cette contribution est d\u00e9ductible pour le calcul du r\u00e9sultat imposable.--Art. 33.10",
+                "location":{
+                    "image":"355,425,398,388"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71878.js",
+                "id":71878
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de construction//Custom duties during construction phase",
+                "page":47,
+                "content":"Admission temporaire/exon\u00e9ration pour \u00e9quipements, mat\u00e9riels, gros outillages, engins, pi\u00e8ces d\u00e9tach\u00e9es et lubrifiants \u00e0 l'exception de la taxe d'enregistrement au taux de 0,5% de la valeur CAF avec un plafond maximum fix\u00e9 par la Loi des Finances.--Art. 34.4",
+                "location":{
+                    "image":"595,517,632,476"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71869.js",
+                "id":71869
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase d'exploitation//Custum duties during  operation phase",
+                "page":48,
+                "content":"Les mati\u00e8res premi\u00e8res et consommables n\u00e9cessaires \u00e0 l'extraction et \u00e0 la valorisation du produit minier sont tax\u00e9s \u00e0 l'importation au taux de 5,6% de la valeur FOB.--Art. 34.5",
+                "location":{
+                    "image":"143,601,184,566"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71870.js",
+                "id":71870
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane pour le mat\u00e9riel de traitement//Custom duties on processing equipment",
+                "page":48,
+                "content":"Taxe \u00e0 l'importation au taux de 5,6% de la valeur FOB.--Art. 34.5",
+                "location":{
+                    "image":"149,642,196,610"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71871.js",
+                "id":71871
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane pour le mat\u00e9riel de transport//Custom duties on transportation equipment",
+                "page":48,
+                "content":"Taxe \u00e0 l'importation au taux de 5,6% de la valeur FOB.--Art. 34.5",
+                "location":{
+                    "image":"154,683,202,648"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71872.js",
+                "id":71872
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane pour le mat\u00e9riel de transport//Custom duties on transportation equipment",
+                "page":48,
+                "content":"Taxe \u00e0 l'importation au taux de 5,6% de la valeur FOB.--Art. 34.5\n",
+                "location":{
+                    "image":"216,651,258,616"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71873.js",
+                "id":71873
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9siliation/Termination//Cancellation / Termination",
+                "page":49,
+                "content":"Renonciation (par la Soci\u00e9t\u00e9) et retrait (par l'Etat) conform\u00e9ment au Code Minier. La concession peut \u00eatre r\u00e9sili\u00e9e si la Soci\u00e9t\u00e9 refuse d'ex\u00e9cuter une d\u00e9cision finale d'arbitrage. Si la Soci\u00e9t\u00e9 ne maintient pas la Production Commerciale de Produit Minier (i.e. 25,000 tonnes par jour pendant 30 jours cons\u00e9cutifs ou 20,000 pendant 20 jours) pendant une p\u00e9riode de 18 mois cons\u00e9cutifs, l'Etat peut r\u00e9voquer la Concession dans les conditions pr\u00e9vues au Code Minier. --Arts. 36, 15.4.3",
+                "location":{
+                    "image":"186,498,238,453"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71903.js",
+                "id":71903
+            },
+            {
+                "access":"public",
+                "title":"Cession / transfert//Assignment / transfer",
+                "page":49,
+                "content":"Toute cession ou transfert par la Soci\u00e9t\u00e9 de tout ou partie de ses droits et obligations r\u00e9sultant de la Concession, ou toute cession directe de plus de 50% des actions de la Soci\u00e9t\u00e9 (et tout autre transfert du contr\u00f4le effectif de la Soci\u00e9t\u00e9) est subordonn\u00e9e \u00e0 l'approbation pr\u00e9alable de l'Etat qui dispose d'un droit de pr\u00e9emption. Aucune approbation requise pour les transferts portants sur les actions d'une soci\u00e9t\u00e9 d\u00e9tenant des actions dans la Soci\u00e9t\u00e9. Les transferts faits au profit de Soci\u00e9t\u00e9s Affili\u00e9es sont libre si certaines conditions sont remplies.--Art. 37",
+                "location":{
+                    "image":"477,539,523,497"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71901.js",
+                "id":71901
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":50,
+                "content":"Efforts en vue d'un r\u00e8glement \u00e0 l\u2019amiable; en cas de d\u00e9saccord persistant, arbitrage \u00e0 la Chambre de Commerce Internationale (CCI) de Paris, en langue Fran\u00e7aise. R\u00e9f\u00e9rence aux demandes et soumissions au CIRDI (ICSID - World Bank Group) et \u00e0 la Cour Internationale d'Arbitrage.--Art. 38 ",
+                "location":{
+                    "image":"572,472,616,429"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71898.js",
+                "id":71898
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":52,
+                "content":"La Convention n'est pas confidentielle et tous les rapports, plans et informations fournis par la Soci\u00e9t\u00e9 en vertu de la Convention \u00e0 l'Etat sont (sauf si sp\u00e9cifi\u00e9 autrement) des documents de nature publique. Certaines affaires sont sp\u00e9cifiquement identifi\u00e9es comme non-confidentielles, incluant les quantit\u00e9s de production, les emplois offerts, les redevances et paiement des taxes, etc.--Art. 40",
+                "location":{
+                    "image":"445,397,483,354"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71908.js",
+                "id":71908
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":56,
+                "content":"Fran\u00e7ais--Art. 47\n",
+                "location":{
+                    "image":"153,337,204,294"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71910.js",
+                "id":71910
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":59,
+                "content":"16/12/2009--Signatures",
+                "location":{
+                    "image":"160,161,199,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71849.js",
+                "id":71849
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), soci\u00e9t\u00e9 //Signatories, company",
+                "page":59,
+                "content":"Mark Struik, Directeur, BSG Resources (Guinea) Limited\u00a0: Asher Avidan, Directeur General, BSG Resources (Guinea) SARL--Signatures",
+                "location":{
+                    "image":"682,247,725,204"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71706.js",
+                "id":71706
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), Etat//Signatories, State",
+                "page":59,
+                "content":"Mahmoud Thiam, Ministre \u00e0 la Pr\u00e9sidence charg\u00e9 des mines et de l'\u00e9nergie; Capitaine Mamadou Sand\u00e9, Visa du Ministre \u00e0  la Pr\u00e9sidence charg\u00e9 de l'\u00e9conomie et des finances--Pr\u00e9ambule",
+                "location":{
+                    "image":"685,316,724,273"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean/annotations/71848.js",
+                "id":71848
+            }
+        ],
+        "description":"<i>Nom de la soci\u00e9t\u00e9 guin\u00e9enne : </i>BSG Resources (Guinea) SARL, Soci\u00e9t\u00e9 \u00e0 Responsabilit\u00e9 Limit\u00e9e Unipersonnelle\u00a0de droit guin\u00e9en<br><i>Si\u00e8ge social : </i>Villa Andr\u00e9e, au quartier Col\u00e9ah corniche Sud, Conakry BP\u00a0: 6389<br><i> Structure du Capital : </i><br><i>Soci\u00e9t\u00e9 m\u00e8re ou affili\u00e9e hors de la Guin\u00e9e; et leurs si\u00e8ges sociaux : </i>BSG Resource (Guinea) Limited, soci\u00e9t\u00e9 de droit de Guernsey<br><i>Site web de l\u2019entreprise : </i>http://www.bsgresources.com/<br><i>Date d'octroi du permis d'exploitation ou de la concession : </i>9 Mars 2010<br><i>Investissement estim\u00e9 : </i>Phase I: capacit\u00e9 de 30 mtpa de minerai de fer pendant 15 ans; Phase II: non sp\u00e9cificit\u00e9<br><i>Production attendue : </i>400 millions de tonnes de minerai de fer<br><br><br><i>Note : Ce r\u00e9sum\u00e9 est destin\u00e9 \u00e0 faciliter la compr\u00e9hension par un large public des points importants du document original. Il ne s\u2019agit en aucun cas d\u2019une liste exhaustive des obligations l\u00e9gales li\u00e9es au projet minier concern\u00e9. Ce r\u00e9sum\u00e9 ne comporte aucune opinion quant au statut juridique du document ou de tout \u00e9l\u00e9ment du document, et ne refl\u00e8te aucunement des d\u00e9cisions ou positions du CTRTCM ou du Gouvernement de la R\u00e9publique de Guin\u00e9e en lien avec le processus de revue des conventions et titres miniers. Ce r\u00e9sum\u00e9 doit \u00eatre lu en lien avec le texte int\u00e9gral du document original et avec les lois et textes r\u00e9glementaires applicables. Un certain nombre de lois et r\u00e9glementations applicables directement ou indirectement au secteur minier sont disponibles <a href=\"http://www.contratsminiersguinee.org/about/legislation.html\">ici</a>.</i>",
+        "language":"eng",
+        "title":"ZOGOTA Convention",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Resource":"Fer",
+            "Countries":"Guinea",
+            "Signature Date":"16/12/2009",
+            "Contract Term (duration) in Years":"25",
+            "Signature Year":"2009"
+        },
+        "created_at":"Mon, 10 Sep 2012 17:14:42 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 22 Apr 2015 17:14:40 +0000",
+        "id":"425618-convention-zogota-clean",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/425618/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/425618/convention-zogota-clean.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/425618/pages/convention-zogota-clean-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/425618/pages/convention-zogota-clean-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/425618/convention-zogota-clean.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/425618/pages/convention-zogota-clean-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=425618"
+        },
+        "contributor":"Bayissa Gemechu",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":60,
+        "canonical_url":"http://www.documentcloud.org/documents/425618-convention-zogota-clean.html"
+    }
+}

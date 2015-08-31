@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"814b210c6041ba36ab95a47a56b43ec3d02d70aa",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"PERTAMINA, APEX (Bengara-II) - Indonesia, 1997",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"1997",
+            "Resource":"Hydrocarbons",
+            "Countries":"Indonesia"
+        },
+        "created_at":"Tue, 20 Jan 2015 04:50:12 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 22 Apr 2015 06:10:52 +0000",
+        "id":"1505391-pertamina-apex-bengara-ii-indonesia-1999",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505391/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505391/pertamina-apex-bengara-ii-indonesia-1999.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505391/pages/pertamina-apex-bengara-ii-indonesia-1999-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505391/pages/pertamina-apex-bengara-ii-indonesia-1999-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505391/pertamina-apex-bengara-ii-indonesia-1999.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505391/pages/pertamina-apex-bengara-ii-indonesia-1999-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505391"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":25,
+        "canonical_url":"http://www.documentcloud.org/documents/1505391-pertamina-apex-bengara-ii-indonesia-1999.html"
+    }
+}

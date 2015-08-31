@@ -1,0 +1,380 @@
+{
+    "document":{
+        "file_hash":"0a1e2171da913d08a0cabf615175a23e7ab34381",
+        "annotations":[
+            {
+                "access":"public",
+                "title":" Tipo de t\u00edtulo asociado al contrato (Concesi\u00f3n, Arrendamiento, Acuerdo de Producci\u00f3n Compartida, Contrato de Servicio, etc.)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.) ",
+                "page":1,
+                "content":"Contrato de garant\u00edas y medidas de promoci\u00f3n a la inversi\u00f3n--Preamble\n",
+                "location":{
+                    "image":"163,617,194,570"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146490.js",
+                "id":146490
+            },
+            {
+                "access":"public",
+                "title":" Organismo del Estado, sociedad nacional, ministerio signatarios del contrato//State agency, national company, ministry executing the document ",
+                "page":1,
+                "content":"Estado--Preamble\n",
+                "location":{
+                    "image":"185,340,219,303"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146499.js",
+                "id":146499
+            },
+            {
+                "access":"public",
+                "title":" Signatario(s), Estado//Signatories, State ",
+                "page":1,
+                "content":"Pedro Emilio S\u00e1nchez Gamarra, Ministro de la Energ\u00eda y Minas--Preamble\n",
+                "location":{
+                    "image":"194,485,229,447"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146501.js",
+                "id":146501
+            },
+            {
+                "access":"public",
+                "title":" Raz\u00f3n social local//Local company name ",
+                "page":1,
+                "content":"Xtrata Las Bambas S.A.--Preamble\n",
+                "location":{
+                    "image":"234,612,259,574"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146488.js",
+                "id":146488
+            },
+            {
+                "access":"public",
+                "title":" Nombre de la sociedad signataria del contrato y composici\u00f3n de los accionarios mencionados en el documento//Name of company executing the document and composition of the shareholders ",
+                "page":1,
+                "content":"Xtrata Las Bambas S.A.--Preamble\n",
+                "location":{
+                    "image":"249,172,277,134"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146497.js",
+                "id":146497
+            },
+            {
+                "access":"public",
+                "title":" Pa\u00eds//Country ",
+                "page":1,
+                "content":"Per\u00fa--Preamble\n",
+                "location":{
+                    "image":"28,513,57,481"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146487.js",
+                "id":146487
+            },
+            {
+                "access":"public",
+                "title":" Sede social//Corporate headquarters ",
+                "page":1,
+                "content":"Av. El Derby N\u201c 055, Torre \u20181, Edificio Cronos, Ofv 902, Santiago De Surco, Provincia Y Departamento De Lima--Preamble\n",
+                "location":{
+                    "image":"311,611,336,576"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146489.js",
+                "id":146489
+            },
+            {
+                "access":"public",
+                "title":" Nombre de terceros (cuando proceda)//Name of third party to contract (where applicable) ",
+                "page":1,
+                "content":"Banco de Reserva del Per\u00fa (Gerente General Renzo Rossini Mi\u00f1\u00e1n y Gerente Jur\u00eddico Manuel Monteagudo Valdez)--Preamble\n",
+                "location":{
+                    "image":"336,116,375,75"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146502.js",
+                "id":146502
+            },
+            {
+                "access":"public",
+                "title":" Signatario(s), sociedad//Signatories, company",
+                "page":1,
+                "content":"Domingo Felipe Drago Salcedo, Representante Legal Xstrata Las Bambas S.A.--Preamble\n",
+                "location":{
+                    "image":"347,394,381,356"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146500.js",
+                "id":146500
+            },
+            {
+                "access":"public",
+                "title":" Nombre del proyecto//Project title ",
+                "page":1,
+                "content":"Proyecto Las Bambas-- Art. 1.1\n",
+                "location":{
+                    "image":"562,173,592,141"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146491.js",
+                "id":146491
+            },
+            {
+                "access":"public",
+                "title":"Tipo de recurso(s) (tipo de mineral, petr\u00f3leo, gas, madera, etc.) O cultivos espec\u00edficos previstos (por ejemplo, cultivos alimentarios, palma de aceite, etc.)//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":1,
+                "content":"Concentrados de cobre-- Art. 1.2.1\n",
+                "location":{
+                    "image":"716,166,745,126"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146506.js",
+                "id":146506
+            },
+            {
+                "access":"public",
+                "title":" Localizaci\u00f3n, longitud y latitud / terrestre vs marina (poco profundo vs. profundo)//Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) ",
+                "page":1,
+                "content":"Provincias de Cotabambas y Grau, Departamento de Apur\u00edmac-- Art. 1.2.1\n",
+                "location":{
+                    "image":"747,175,774,145"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146493.js",
+                "id":146493
+            },
+            {
+                "access":"public",
+                "title":" Estudios de viabilidad y plan de negocios//Feasibility studies and requirement of business plan ",
+                "page":2,
+                "content":"El contratista present\u00f3 un estudio de factibilidad t\u00e9cnico econ\u00f3mico aprobado por la Direcci\u00f3n general de miner\u00eda el 10 de junio de 2011.-- Art. 2\n",
+                "location":{
+                    "image":"254,159,283,127"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146514.js",
+                "id":146514
+            },
+            {
+                "access":"public",
+                "title":" Compromisos de trabajo e inversi\u00f3n//Work and investment commitments ",
+                "page":2,
+                "content":"\"El contratista deber\u00e1 efectuar obras, labores y adquisiciones precisados en el estudio de factibilidad. El contratista puede proceder a cambios respecto de las obras y labores pendientes de ejecutar siempre que no se afecte el objeto final del plan de inversiones, que presente previamente la solicitud de aprobaci\u00f3n de toda modificaci\u00f3n y/o ampliaci\u00f3n a la Direcci\u00f3n general de miner\u00eda, para convalidarlas e incluirlas en el plan de inversiones.\nEl plan de inversiones incluye: una mina a tajo abierto, una planta de chancado y las instalaciones de molienda (incluye una tolva de alimentaci\u00f3n de 720 toneladas, dos chancadoras giratorias primarias, dos alimentadores de placas, una transportadora terrestre), una pila de acopio de mineral grueso, un circuito de molienda, una zaranda giratoria y una sola criba vibratoria separando los guijarros mayores de la descarga del molino SAG, cuatro hileras de celdas de flotaci\u00f3n autoaspiradas, cuatro molinos ISA modelo M3000 de circuito abierto (en el circuito de remolienda), un espesador de concentrado, un ducto subterr\u00e1neo de acero hasta la planta de molibdeno y filtros. El contratista deber\u00e1 mejorar las v\u00edas de acceso existentes hasta las bambas, y construir infraestructura e instalaciones auxiliares (accesos al emplazamiento, campamento, alojamiento y alimentaci\u00f3n, oficinas administrativas, talleres principales, instalaciones de primeros auxilios, taller de camiones, y sistemas de comunicaci\u00f3n externos).-- Arts. 4.1, 4.2, 4.3 (4.3.1 \u2013 4.3.23)\"\n",
+                "location":{
+                    "image":"528,166,554,130"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146515.js",
+                "id":146515
+            },
+            {
+                "access":"public",
+                "title":" Duraci\u00f3n//Term ",
+                "page":2,
+                "content":"El plazo total de ejecuci\u00f3n del plan de inversiones es de 35 meses. El plazo de las garant\u00edas pactadas se extender\u00e1 por quince a\u00f1os, contados a partir del ejercicio en que se acredite la inversi\u00f3n realizada y \u00e9sta sea aprobada por la direcci\u00f3n general de miner\u00eda-- Arts. 4.2, 8.1\n",
+                "location":{
+                    "image":"679,166,713,130"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146505.js",
+                "id":146505
+            },
+            {
+                "access":"public",
+                "title":" Cancelaci\u00f3n/Vencimiento//Cancellation / termination ",
+                "page":2,
+                "content":"El plazo total de ejecuci\u00f3n del plan de inversiones vence el mes de abril de 2014.-- Art. 4.2\n",
+                "location":{
+                    "image":"725,175,760,138"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146517.js",
+                "id":146517
+            },
+            {
+                "access":"public",
+                "title":" Derecho de sacar o utilizar el agua de  las zonas de concesi\u00f3n o sus alrededores  (incluidas tasas, licencias y permisos)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required) ",
+                "page":5,
+                "content":"El contratista proporcionar\u00e1 agua dulce desde un reservorio ubicado en el r\u00edo Challhuahuacho por medio de la represa que ser\u00e1 construida aguas abajo del pueblo de Challhuahuacho.-- Art. 4.3.21\n",
+                "location":{
+                    "image":"618,215,647,180"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146513.js",
+                "id":146513
+            },
+            {
+                "access":"public",
+                "title":"Obligaciones relacionadas con los trabajadores o los habitantes de las granjas o concesiones, en las zonas de concesi\u00f3n o en comunidades cercanas, en relaci\u00f3n con la salud y la seguridad laboral, el acceso al agua potable, la vivienda, la atenci\u00f3n m\u00e9dica o la educaci\u00f3n//Requirements regarding workers or farm/concession dwellers within concession areas or in nearby communities in respect of occupational health and safety, access to clean water, housing, medical care, or education",
+                "page":5,
+                "content":"La infraestructura e instalaciones auxiliares incluir\u00e1n accesos al emplazamiento, campamentos, alojamiento y alimentaci\u00f3n, instalaciones de primeros auxilios, requerimientos de salud, seguridad, medio ambiente y relaciones comunitarias.-- Art. 4.3.23\n",
+                "location":{
+                    "image":"740,217,774,178"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146508.js",
+                "id":146508
+            },
+            {
+                "access":"public",
+                "title":" Producci\u00f3n prevista//Expected production ",
+                "page":6,
+                "content":"Producci\u00f3n aproximada durante el per\u00edodo del contrato: 880 000 toneladas por a\u00f1o de concentrados de cobre con ley promedio de 36,2%. Adicionalmente, producci\u00f3n anual para el caso Molibdeno: 12 millones de libras.-- Art. 4.4\n",
+                "location":{
+                    "image":"170,169,200,137"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146496.js",
+                "id":146496
+            },
+            {
+                "access":"public",
+                "title":" Inversi\u00f3n estimada//Estimated investment ",
+                "page":6,
+                "content":"US$ 4 116 860 000.00-- Art. 5.1\n",
+                "location":{
+                    "image":"285,163,313,129"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146495.js",
+                "id":146495
+            },
+            {
+                "access":"public",
+                "title":" Mecanismos de auditor\u00eda. Obligaciones financieras//Audit mechanisms - financial obligations ",
+                "page":9,
+                "content":"El contratista proporcionar\u00e1 al banco central de reserva del Per\u00fa la informaci\u00f3n estad\u00edstica que \u00e9ste le solicite. El contratista podr\u00e1 llevar su contabilidad en d\u00f3lares de los Estados Unidos de Norteam\u00e9rica, de acuerdo con el C\u00f3digo tributario y dem\u00e1s normas vigentes. Al cierre del ejercicio en que se celebre el contrato se practicar\u00e1 dos balances, el uno en moneda nacional y el otro en d\u00f3lares; determin\u00e1ndose todas las obligaciones de tal ejercicio sobre el balance en nuevos soles. El balance en moneda nacional deber\u00e1 reflejar el ajuste integral por inflaci\u00f3n a que se refiere el decreto legislativo n\u00b0 797 y normas modificatorias. La contabilidad se convertir\u00e1 a d\u00f3lares a partir del ejercicio siguiente a aquel en que se celebre el contrato; lo que se har\u00e1 de conformidad con las normas internacionales contables correspondientes, establecidas por el Comit\u00e9 internacional de normas de contabilidad, fij\u00e1ndose la conversi\u00f3n en d\u00f3lares hist\u00f3ricos, con dictamen de una firma de auditores independientes, cuya designaci\u00f3n ser\u00e1 aprobada previamente por la direcci\u00f3n general de miner\u00eda a propuesta del contratista.-- Arts. 9.2.1, 9.4, 9.4.1-9.4.2\n",
+                "location":{
+                    "image":"531,212,560,176"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146512.js",
+                "id":146512
+            },
+            {
+                "access":"public",
+                "title":" Cl\u00e1usula de estabilizaci\u00f3n//Stabilization clause ",
+                "page":11,
+                "content":"El estado garantiza al contratista el beneficio de estabilidad tributaria en los t\u00e9rminos establecidos en los incisos A) y E) del articulo 80\u00b0 de la ley general de miner\u00eda y en el reglamento, as\u00ed como en las leyes No. 27341, 27343 y 27909. Adem\u00e1s, el impuesto a la renta, el procedimiento de determinaci\u00f3n y las tasas del mismo, la compensaci\u00f3n y/o devoluci\u00f3n tributaria, los derechos arancelarios, los tributos municipales, las exoneraciones, los incentivos, y los dem\u00e1s beneficios tributarios referentes a los impuestos y reg\u00edmenes estabilizados se aplicar\u00e1n de acuerdo con las normas vigentes a la fecha de suscripci\u00f3n del contrato. La estabilidad del impuesto general a las ventas, impuesto selectivo al consumo, impuesto de promoci\u00f3n municipal y cualquier otro impuesto al consumo comprende a \u00fanicamente su naturaleza trasladable. Se incluye los reg\u00edmenes especiales referentes a la devoluci\u00f3n de impuesto, admisi\u00f3n temporal y similares, as\u00ed como el r\u00e9gimen aplicable a las exportaciones. La opci\u00f3n de renuncia total del r\u00e9gimen de estabilidad tributaria es por una sola y definitiva vez.-- Art. 9.5\n",
+                "location":{
+                    "image":"702,166,732,137"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146516.js",
+                "id":146516
+            },
+            {
+                "access":"public",
+                "title":" Impuesto sobre la renta: tasa//Income tax: rate ",
+                "page":12,
+                "content":"\"El contratista esta sujeto al impuesto a la renta establecido por las disposiciones vigentes a la fecha de suscripci\u00f3n del contrato con las deducciones y condiciones establecidas en el inciso D) del articulo 72\u00b0 de la ley general de miner\u00eda y en la forma dispuesta por el articulo 11\u00b0 del reglamento del t\u00edtulo noveno de la ley.\nLa tasa aplicable del impuesto a la renta es de 32% (30% seg\u00fan el decreto legislativo 945 mas 2% del art\u00edculo 1.1 de la ley 27343).\nSe aplicar\u00e1 una tasa adicional del 4.1% a toda suma o entrega en especie que resulte renta gravable de la tercera categor\u00eda al practicarse la fiscalizaci\u00f3n respectiva, en tanto signifique una disposici\u00f3n indirecta de dicha renta no susceptible de control tributario, incluyendo las sumas cargadas a gastos e ingresos no declarados.-- Art. 9.5.1\"\n",
+                "location":{
+                    "image":"182,206,211,166"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146510.js",
+                "id":146510
+            },
+            {
+                "access":"public",
+                "title":" Impuestos mineros/ regal\u00edas//Mining tax / royalty tax ",
+                "page":13,
+                "content":"La regal\u00eda minera, conforme a la Ley No. 28258, est\u00e1 incluida en el marco de estabilidad administrativa.-- Art. 9.6.2\n",
+                "location":{
+                    "image":"131,213,163,179"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146509.js",
+                "id":146509
+            },
+            {
+                "access":"public",
+                "title":" Otras exenciones//Other exemptions ",
+                "page":15,
+                "content":"El contratista quedar\u00e1 exento de cualquier gravamen u obligaci\u00f3n que pudiera significarle disminuci\u00f3n de su disponibilidad de efectivo, tales como inversiones forzosas, pr\u00e9stamos forzosos o adelantos de tributos, salvo las tasas por servicios p\u00fablicos-- Art. 10.2\n",
+                "location":{
+                    "image":"502,174,530,136"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146511.js",
+                "id":146511
+            },
+            {
+                "access":"public",
+                "title":" Cl\u00e1usula de hardship o de fuerza mayor//Hardship clause or force majeure ",
+                "page":15,
+                "content":"Si por causas de huelgas, actos del gobierno, tumultos, motines, inundaciones, terremotos, erupciones volc\u00e1nicas, huaicos, epidemias, u otras causas derivadas del caso fortuito o de la fuerza mayor, debida y oportunamente acreditada ante la direcci\u00f3n general de miner\u00eda, dicho impedimento o demora no constituir\u00e1 incumplimiento del contrato y el plazo para cumplir cualquier obligaci\u00f3n indicada en el presente instrumento ser\u00e1 extendido por el tiempo correspondiente al periodo  periodos durante los cuales el contratista haya estado impedido de cumplir o haya demorado sus obligaciones contractuales como consecuencia de las razones especificadas en esta clausula.-- Art. 12\n",
+                "location":{
+                    "image":"779,160,810,122"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146519.js",
+                "id":146519
+            },
+            {
+                "access":"public",
+                "title":" A\u00f1o de la firma del contrato//Year of contract signature ",
+                "page":17,
+                "content":"2011--Signature\n",
+                "location":{
+                    "image":"725,234,757,200"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146504.js",
+                "id":146504
+            },
+            {
+                "access":"public",
+                "title":" Fecha de ratificaci\u00f3n//Date of ratification ",
+                "page":17,
+                "content":"20 Julio 2011--Signature\n",
+                "location":{
+                    "image":"734,164,771,124"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146494.js",
+                "id":146494
+            },
+            {
+                "access":"public",
+                "title":" Fecha de la firma del contrato//Date of contract signature ",
+                "page":17,
+                "content":"20 Julio 2011--Signature\n",
+                "location":{
+                    "image":"745,208,778,171"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146503.js",
+                "id":146503
+            },
+            {
+                "access":"public",
+                "title":" Superficie de la concesi\u00f3n//Size of the concession area ",
+                "page":18,
+                "content":"34,200 hect\u00e1reas--Anexo 1\n",
+                "location":{
+                    "image":"182,139,213,99"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146507.js",
+                "id":146507
+            },
+            {
+                "access":"public",
+                "title":" Nombre y/o n\u00famero del campo petrol\u00edfero, bloque o yacimiento//Name and/or number of field, block or deposit ",
+                "page":18,
+                "content":"\u201cLas Bambas\u201d (Ferrobamba, Chalcobamba, Sulfobamba, Charcas y Bambas 1 a 35)--Anexo 1\n",
+                "location":{
+                    "image":"236,155,269,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas/annotations/146492.js",
+                "id":146492
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Xstrata-Las-Bambas - Peru, 2011",
+        "data":{
+            "Year of Signature":"2011",
+            "Type of Mining Title":"Investment Promotion",
+            "Resource":"Copper,Molybdenum",
+            "Countries":"Peru"
+        },
+        "created_at":"Mon, 04 Nov 2013 16:31:58 +0000",
+        "display_language":"eng",
+        "updated_at":"Fri, 27 Mar 2015 16:13:00 +0000",
+        "id":"814826-xstrata-las-bambas",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/814826/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814826/xstrata-las-bambas.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/814826/pages/xstrata-las-bambas-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814826/pages/xstrata-las-bambas-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814826/xstrata-las-bambas.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/814826/pages/xstrata-las-bambas-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=814826"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":19,
+        "canonical_url":"http://www.documentcloud.org/documents/814826-xstrata-las-bambas.html"
+    }
+}

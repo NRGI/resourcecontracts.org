@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"c5b34047932c4e6f23a4df56f491a9a744db33b8",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Dover, TransPacific, Mogul, Awad, MEII, Sea Dragon (Amendment) - Egypt, 2006",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Signature Year":"2006",
+            "Resource":"Hydrocarbons",
+            "Countries":"Egypt"
+        },
+        "created_at":"Tue, 20 Jan 2015 03:36:20 +0000",
+        "display_language":"eng",
+        "updated_at":"Sat, 11 Apr 2015 16:11:19 +0000",
+        "id":"1505360-dover-transpacific-mogul-awad-meii-sea-dragon",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505360/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505360/dover-transpacific-mogul-awad-meii-sea-dragon.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505360/pages/dover-transpacific-mogul-awad-meii-sea-dragon-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505360/pages/dover-transpacific-mogul-awad-meii-sea-dragon-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505360/dover-transpacific-mogul-awad-meii-sea-dragon.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505360/pages/dover-transpacific-mogul-awad-meii-sea-dragon-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505360"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":12,
+        "canonical_url":"http://www.documentcloud.org/documents/1505360-dover-transpacific-mogul-awad-meii-sea-dragon.html"
+    }
+}

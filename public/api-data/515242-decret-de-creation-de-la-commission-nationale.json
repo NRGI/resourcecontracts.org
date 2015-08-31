@@ -1,0 +1,33 @@
+{
+    "document":{
+        "file_hash":"cd1174407bc42c6f88983aa09f4bd15cc84cf622",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"D\u00e9cret de Cr\u00e9ation de la Commission Nationale des Mines",
+        "data":{},
+        "created_at":"Wed, 14 Nov 2012 05:56:06 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 14 Nov 2012 06:02:04 +0000",
+        "id":"515242-decret-de-creation-de-la-commission-nationale",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/515242/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/515242/decret-de-creation-de-la-commission-nationale.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/515242/pages/decret-de-creation-de-la-commission-nationale-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/515242/pages/decret-de-creation-de-la-commission-nationale-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/515242/decret-de-creation-de-la-commission-nationale.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/515242/pages/decret-de-creation-de-la-commission-nationale-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=515242"
+        },
+        "contributor":"Jed Miller",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":5,
+        "canonical_url":"http://www.documentcloud.org/documents/515242-decret-de-creation-de-la-commission-nationale.html"
+    }
+}
