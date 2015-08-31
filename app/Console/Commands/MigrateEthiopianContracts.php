@@ -1,5 +1,7 @@
 <?php namespace App\Console\Commands;
 
+use App\Nrgi\Entities\Contract\Contract;
+use App\Nrgi\Services\Contract\ContractFilterService;
 use App\Nrgi\Services\Contract\EthiopianMigrationService;
 use App\Nrgi\Services\Contract\MigrationService;
 use Illuminate\Console\Command;
@@ -49,6 +51,10 @@ class MigrateEthiopianContracts extends Command
      * @var MigrationService
      */
     protected $mService;
+    /**
+     * @var ContractFilterService
+     */
+    protected $contract;
 
     /**
      * Create a new command instance.
@@ -58,6 +64,7 @@ class MigrateEthiopianContracts extends Command
      * @param Excel                                      $excel
      * @param Log                                        $logger
      * @param MigrationService                           $mService
+     * @param ContractService                            $contract
      * @internal param MigrationService $migrate
      */
     public function __construct(
@@ -65,7 +72,8 @@ class MigrateEthiopianContracts extends Command
         Filesystem $fileSystem,
         Excel $excel,
         Log $logger,
-        MigrationService $mService
+        MigrationService $mService,
+        ContractFilterService $contract
     ) {
         parent::__construct();
         $this->migration  = $migration;
@@ -73,6 +81,7 @@ class MigrateEthiopianContracts extends Command
         $this->excel      = $excel;
         $this->logger     = $logger;
         $this->mService   = $mService;
+        $this->contract   = $contract;
     }
 
     /**
@@ -85,7 +94,41 @@ class MigrateEthiopianContracts extends Command
         //$data = $this->extractCsvRecords($this->getCsv());
         //$this->processExcel($data);
         //$this->readFromExcel();
-        $this->readFromJson();
+        if ($this->input->getOption('annotation')) {
+            $this->updateOlcAnnotation();
+        } else {
+            $this->readFromJson();
+        };
+    }
+
+    /**
+     *
+     */
+    public function updateOlcAnnotation()
+    {
+        $files = $this->fileSystem->files($this->getConvertedJsonDir());
+
+        foreach ($files as $file) {
+            $contractFromJson = json_decode(file_get_contents($file), 1);
+            list($name, $ext) = explode('.', $contractFromJson['contract_name']);\
+            dd(urldecode($name));
+            Contract::fin
+            //$contract from db
+            if (!is_null($contract)) {
+                $contractArray = $this->migration->setupContract($contract);
+                $this->migration->saveAnnotations($con->id, $contractArray['annotations']);
+                $this->info(sprintf('Success - %s - %s', $file, $contractObj->data->metadata->contract_name));
+                continue;
+            }
+
+            $this->error(sprintf('Failed - %s', $file));
+        }
+
+        $this->info('done');
+        //list of olc contract;
+        //delete contract
+        //insert updated annotations
+        //remove
     }
 
     public function readFromJson()
@@ -241,7 +284,7 @@ class MigrateEthiopianContracts extends Command
     protected function getOptions()
     {
         return [
-            ['update', null, InputOption::VALUE_NONE, 'Force the operation to run.', null],
+            ['annotation', null, InputOption::VALUE_NONE, 'updates annotations.', null],
         ];
     }
 
