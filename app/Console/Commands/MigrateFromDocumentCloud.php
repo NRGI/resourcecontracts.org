@@ -1,5 +1,6 @@
 <?php namespace App\Console\Commands;
 
+use App\Nrgi\Entities\Contract\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\MigrationService;
 use Illuminate\Console\Command;
@@ -244,21 +245,22 @@ class MigrateFromDocumentCloud extends Command
                 )->first();
 
                 if (!empty($con)) {
-                    $con->annotations()->delete();
+
+                    Annotation::where('contract_id', $con->id)->delete();
 
                     if (!empty($contract->annotations)) {
-                        $this->migration->saveAnnotations($con->id, $contract->annotations);
+                        $this->migration->saveAnnotations($con, $contract->annotations);
                     }
 
                     $this->moveFile($file);
-                    $this->info('Success - %s', $file);
+                    $this->info('Success -' . $file);
                     continue;
                 }
-                $this->info('Failed - %s', $file);
+                $this->info('Failed - ' . $file);
                 continue;
             }
 
-            $this->error(sprintf('Failed - %s', $file));
+            $this->error(sprintf('Failed - ' . $file));
         }
         $this->info('done');
     }
