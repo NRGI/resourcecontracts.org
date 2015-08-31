@@ -4,7 +4,11 @@ use App\Nrgi\Entities\Contract\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\MigrationService;
 use Illuminate\Console\Command;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Excel;
+use Mockery\CountValidator\Exception;
+use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputOption;
 use Illuminate\Filesystem\Filesystem;
 
@@ -73,6 +77,12 @@ class MigrateFromDocumentCloud extends Command
 
         if ($this->input->getOption('annotation')) {
             $this->annotationUpdate();
+
+            return;
+        }
+
+        if ($this->input->getOption('migrate')) {
+            $this->migrateDataToStage();
 
             return;
         }
@@ -192,6 +202,7 @@ class MigrateFromDocumentCloud extends Command
         return [
             ['update', null, InputOption::VALUE_NONE, 'Update metadata.', null],
             ['annotation', null, InputOption::VALUE_NONE, 'Update Annotations.', null],
+            ['migrate', null, InputOption::VALUE_NONE, 'Migrate database to stage.', null],
         ];
     }
 
@@ -265,5 +276,47 @@ class MigrateFromDocumentCloud extends Command
         $this->info('done');
     }
 
+    protected function migrateDataToStage()
+    {
+
+        $contracts = Contract::with('pages', 'annotations')->orderBy('id', 'ASC')->get();
+        foreach ($contracts as $key => $contract) {
+            $this->info('processing : ' . $key . ':');
+            try {
+                $data = $contract->toArray();
+                unset($data['annotations'], $data['pages']);
+                $data['metadata'] = json_encode($data['metadata']);
+                $contract_id      = DB::connection('pgsql-stage')->table('contracts')->insertGetId($data);
+
+                $page_datas = $contract->pages->toArray();
+                foreach ($page_datas as $page_data) {
+                    unset($page_data['id'], $page_data['pdf_url']);
+                    $page_data['contract_id'] = $contract_id;
+                    DB::connection('pgsql-stage')->table('contract_pages')->insertGetId($page_data);
+                }
+
+                $annotation_datas = $contract->annotations->toArray();
+                foreach ($annotation_datas as $annotation_data) {
+                    unset($annotation_data['id']);
+                    $annotation_data['contract_id'] = $contract_id;
+                    $annotation_data['annotation']  = json_encode($annotation_data['annotation']);
+                    DB::connection('pgsql-stage')->table('contract_annotations')->insertGetId($annotation_data);
+                }
+
+                $this->info($contract->id . '=>' . $contract_id);
+
+            } catch (QueryException $e) {
+                $this->error($contract->id . '= failed');
+            }
+        }
+
+        if (isset($contract->id) && $contract->id > 0) {
+            $seq = $contract->id + 1;
+            DB::connection('pgsql-stage')->statement("ALTER SEQUENCE contracts_id_seq RESTART WITH $seq");
+            $this->info('Next sequence: ' . $seq);
+        }
+
+        $this->info('......... Process completed ..............');
+    }
 
 }

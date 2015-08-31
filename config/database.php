@@ -71,6 +71,18 @@ return [
             'prefix'   => '',
             'schema'   => 'public',
         ],
+
+        'pgsql-stage'  => [
+            'driver'   => 'pgsql',
+            'host'     => env('DB_HOST', 'DB_HOST'),
+            'database' => env('DB_STAGE_DATABASE', 'DB_DATABASE'),
+            'port'     => env('DB_PORT', '5432'),
+            'username' => env('DB_USERNAME', 'DB_USERNAME'),
+            'password' => env('DB_PASSWORD', 'DB_PASSWORD'),
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
+        ],
         'sqlsrv' => [
             'driver'   => 'sqlsrv',
             'host'     => env('DB_HOST', 'localhost'),
