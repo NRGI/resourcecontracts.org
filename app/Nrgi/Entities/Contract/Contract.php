@@ -121,7 +121,7 @@ class Contract extends Model
     {
         if ($this->pdf_process_status == static::PROCESSING_COMPLETE) {
             list($filename, $ext) = explode('.', $this->file);
-            $wordFileName = $filename . '.docx';
+            $wordFileName = $filename . '.txt';
 
             return getS3FileURL($this->id . '/' . $wordFileName);
         }
