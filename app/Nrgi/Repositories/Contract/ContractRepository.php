@@ -54,7 +54,7 @@ class ContractRepository implements ContractRepositoryInterface
      * @param array $filters
      * @return Collection|static[]
      */
-    public function getAll(array $filters)
+    public function getAll(array $filters, $limit)
     {
         $query    = $this->contract->select('*');
         $from     = "contracts ";
@@ -105,7 +105,10 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw("contracts.metadata_status=?", [$status]);
         }
         if ($type == "annotations" && $word != '' && $issue != '') {
-            $contractsId = DB::table('contract_annotations')->select(DB::raw('contract_id'))->whereRaw("contract_annotations.annotation->>'category' = ?", [$word])->distinct('contract_id')->get();
+            $contractsId = DB::table('contract_annotations')->select(DB::raw('contract_id'))->whereRaw(
+                "contract_annotations.annotation->>'category' = ?",
+                [$word]
+            )->distinct('contract_id')->get();
             $contracts   = [];
             foreach ($contractsId as $contractId) {
                 array_push($contracts, $contractId->contract_id);
@@ -119,7 +122,7 @@ class ContractRepository implements ContractRepositoryInterface
 
         $query->from($this->db->raw($from));
 
-        return $query->orderBy('created_datetime', 'DESC')->get();
+        return $query->orderBy('created_datetime', 'DESC')->paginate($limit);
     }
 
     /**
@@ -276,7 +279,9 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function statusCount($statusType)
     {
-        return $this->contract->selectRaw(sprintf("contracts.\"%s\" as status, COUNT(*)", $statusType))->groupBy($statusType)->get()->toArray();
+        return $this->contract->selectRaw(sprintf("contracts.\"%s\" as status, COUNT(*)", $statusType))->groupBy(
+            $statusType
+        )->get()->toArray();
     }
 
     /**
@@ -335,7 +340,10 @@ class ContractRepository implements ContractRepositoryInterface
     public function getAnnotationsQuality($key)
     {
         $from   = "contract_annotations";
-        $result = $this->contract->select('contract_id')->whereRaw("contract_annotations.annotation->>'category'= ? ", [$key])
+        $result = $this->contract->select('contract_id')->whereRaw(
+            "contract_annotations.annotation->>'category'= ? ",
+            [$key]
+        )
                                  ->from($from)
                                  ->distinct('contract_id')
                                  ->get();
@@ -372,7 +380,10 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getSupportingContracts($id)
     {
-        return $this->contract->select(DB::raw("id,metadata->'contract_name' as contract_name"))->whereIn('id', $id)->get()->toArray();
+        return $this->contract->select(DB::raw("id,metadata->'contract_name' as contract_name"))
+                              ->whereIn('id', $id)
+                              ->get()
+                              ->toArray();
 
     }
 
@@ -403,10 +414,15 @@ class ContractRepository implements ContractRepositoryInterface
      * Get all the contracts.
      *
      * @param array $ids
-     * @return collection
+     * @param bool  $limit
+     * @return Collection
      */
-    public function getContract($ids)
+    public function getContract($ids, $limit)
     {
+        if ($limit) {
+            return $this->contract->whereIn('id', $ids)->paginate($limit);
+        }
+
         return $this->contract->whereIn('id', $ids)->get();
     }
 }

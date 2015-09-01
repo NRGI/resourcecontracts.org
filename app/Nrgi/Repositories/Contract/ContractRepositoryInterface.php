@@ -19,9 +19,10 @@ interface ContractRepositoryInterface
      * Get all Contracts
      *
      * @param array $filters
+     * @param       $limit
      * @return Collection|null
      */
-    public function getAll(array $filters);
+    public function getAll(array $filters, $limit);
 
     /**
      * Get Contract
@@ -197,7 +198,8 @@ interface ContractRepositoryInterface
     /**
      * Get all the contracts.
      * @param array $ids
-     * @return collection
+     * @param       $limit
+     * @return Collection
      */
-    public function getContract($ids);
+    public function getContract($ids, $limit);
 }
