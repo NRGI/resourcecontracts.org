@@ -164,7 +164,7 @@ class TaskService
     public function sendToMTurk($contract)
     {
         foreach ($contract->pages as $key => $page) {
-            $title       = sprintf("Transcription of Contract '%s' - Pg: %s Lang: %s",  str_limit($contract->title, 100), $page->page_no, $contract->metadata->language);
+            $title       = sprintf("Transcription of Contract '%s' - Pg: %s Lang: %s",  str_limit($contract->title, 70), $page->page_no, $contract->metadata->language);
             $url         = $this->task_url . $page->pdf_url;
             $description = config('mturk.defaults.production.Description');
 

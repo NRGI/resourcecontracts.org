@@ -41,7 +41,7 @@ class MTurkService extends MechanicalTurk
             'Description'           => $description,
             'Question'              => $this->getQuestionXML($question_url),
             'SignatureVersion'      => '1',
-            'Title'                 => $title,
+            'Title'                 => str_limit($title, 128),
             "Reward.1.Amount"       => config('mturk.defaults.production.Reward.Amount'),
             "Reward.1.CurrencyCode" => config('mturk.defaults.production.Reward.CurrencyCode'),
         ];
