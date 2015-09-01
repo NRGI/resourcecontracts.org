@@ -8,7 +8,10 @@
             margin-right: 20px !important;
             margin-top: 4px !important;
         }
-        .btn-import {margin-left: 100px;}
+
+        .btn-import {
+            margin-left: 100px;
+        }
     </style>
 @stop
 @section('content')
@@ -16,7 +19,7 @@
         <div class="panel-heading">@lang('contract.all_contract')
             <div class="btn-group pull-right" role="group" aria-label="...">
                 <a href="{{route('contract.import')}}" class="btn btn-default">@lang('contract.import.name')</a>
-                <a href="{{route('contract.create')}}"  class="btn btn-primary btn-import">@lang('contract.add')</a>
+                <a href="{{route('contract.create')}}" class="btn btn-primary btn-import">@lang('contract.add')</a>
             </div>
         </div>
         <div class="panel-body">
@@ -27,7 +30,8 @@
             {!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Input::get('country') ,
             ['class' =>'form-control']) !!}
 
-            {!! Form::select('category', ['all'=>trans('contract.category')] + config('metadata.category'), Input::get('category') ,
+            {!! Form::select('category', ['all'=>trans('contract.category')] + config('metadata.category'),
+            Input::get('category') ,
             ['class' =>'form-control']) !!}
 
             {!! Form::select('resource', ['all'=>trans('contract.resource')] + $resources , Input::get('resource') ,
@@ -55,6 +59,9 @@
                 @endforelse
 
             </table>
+            @if ($contracts->lastPage()>1)
+                <div class="text-center">{!! $contracts->appends($app->request->all())->render() !!} Showing {{($contracts->currentPage()==1)?"1":($contracts->currentPage()-1)*$contracts->perPage()}} to {{($contracts->currentPage()== $contracts->lastPage())?$contracts->total():($contracts->currentPage())*$contracts->perPage()}} of {{$contracts->total()}} contracts</div>
+            @endif
         </div>
     </div>
 @endsection

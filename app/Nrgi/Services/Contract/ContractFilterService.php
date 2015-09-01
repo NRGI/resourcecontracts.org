@@ -42,19 +42,22 @@ class ContractFilterService
     /**
      * Get all contract
      *
-     * @param $filters
+     * @param array $filters
+     * @param int   $limit
      * @return Contract
      */
-    public function getAll(array $filters)
+    public function getAll(array $filters, $limit = 25)
     {
 
-        $contracts = $this->contract->getAll($filters);
         if ($filters['type'] == "annotations" && $filters['status'] != '') {
             $annotations = $this->getContractByAnnotationStatus();
             $status      = isset($annotations[$filters['status']]) ? $annotations[$filters['status']] : [];
-            $contracts   = $this->contract->getContract($status);
+            $contracts   = $this->contract->getContract($status, $limit);
+
+            return $contracts;
         }
 
+        $contracts = $this->contract->getAll($filters, $limit);
 
         return $contracts;
     }
