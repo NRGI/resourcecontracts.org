@@ -60,7 +60,9 @@
 
             </table>
             @if ($contracts->lastPage()>1)
-                <div class="text-center">{!! $contracts->appends($app->request->all())->render() !!} Showing {{($contracts->currentPage()==1)?"1":($contracts->currentPage()-1)*$contracts->perPage()}} to {{($contracts->currentPage()== $contracts->lastPage())?$contracts->total():($contracts->currentPage())*$contracts->perPage()}} of {{$contracts->total()}} contracts</div>
+                <div class="text-center">{!! $contracts->appends($app->request->all())->render() !!}
+                    <div class="pagination-text">Showing {{($contracts->currentPage()==1)?"1":($contracts->currentPage()-1)*$contracts->perPage()}} to {{($contracts->currentPage()== $contracts->lastPage())?$contracts->total():($contracts->currentPage())*$contracts->perPage()}} of {{$contracts->total()}} contracts</div>
+                </div>
             @endif
         </div>
     </div>
