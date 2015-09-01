@@ -652,7 +652,7 @@ class ContractService
         }
 
         list($filename, $ext) = explode('.', $contract->file);
-        $wordFileName = $filename . '.docx';
+        $wordFileName = $filename . '.txt';
 
         try {
             $file_path = $this->word->create($text, $wordFileName);
@@ -741,5 +741,24 @@ class ContractService
         return false;
     }
 
+    /**
+     * Get Contract Text from AWS S3
+     *
+     * @param $contract_id
+     * @param $file
+     * @return null|string
+     */
+    public function getTextFromS3($contract_id, $file)
+    {
+        list($filename, $ext)= explode('.', $file);
+
+        try {
+            return $this->storage->disk('s3')->get($contract_id . '/' . $filename . '.txt');
+        } catch (Exception $e) {
+            $this->logger->error('File not found:'.$e->getMessage());
+
+            return null;
+        }
+    }
 
 }
