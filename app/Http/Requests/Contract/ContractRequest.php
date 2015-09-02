@@ -18,7 +18,7 @@ class ContractRequest extends Request
         $rules = [
             'contract_name'       => 'required',
             'country'             => 'required',
-            'file'                => 'required|mimes:pdf|max:51200',
+            'file'                => 'required|mimes:pdf|max:1048576',
             'participation_share' => 'numeric|min:0|max:1'
         ];
 
@@ -94,7 +94,7 @@ class ContractRequest extends Request
         return [
             'file.required' => trans('Contract file is required.'),
             'file.mimes'    => trans('The file must be a pdf.'),
-            'file.max'      => trans('You can upload file upto 50MB only.')
+            'file.max'      => trans('You can upload file upto 1GB only.')
         ];
     }
 }
