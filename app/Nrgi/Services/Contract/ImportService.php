@@ -56,6 +56,21 @@ class ImportService
      */
     protected $country;
 
+    /*
+     * Valid Keys
+     */
+    protected $keys = [
+        "contract",
+        "title",
+        "company",
+        "pdf_url",
+        "country",
+        "concessionlicense_name",
+        "signature_date",
+        "language",
+        "disclosure_mode"
+    ];
+
     /**
      * @param ContractRepositoryInterface $contract
      * @param Excel                       $excel
@@ -83,6 +98,7 @@ class ImportService
      *
      * @param Request $request
      * @return bool|string
+     * @throws Exception
      */
     public function import(Request $request)
     {
@@ -94,13 +110,24 @@ class ImportService
             $request->file('file')->move($this->getFilePath($import_key), $fileName);
         } catch (\Exception $d) {
             $this->logger->error('File could not be uploaded');
-
-            return false;
+            throw new Exception('File could not be uploaded.');
         }
-        $contracts = $this->extractRecords($this->getFilePath($import_key, $fileName));
+        try {
+            $contracts = $this->extractRecords($this->getFilePath($import_key, $fileName));
+        } catch (Exception $e) {
+            $this->logger->error('Import Error :' . $e->getMessage());
+            $this->deleteImportFolder($import_key);
+            throw new Exception('Could not extract data from file.');
+        }
 
         if (empty($contracts)) {
-            return false;
+            $this->deleteImportFolder($import_key);
+            throw new Exception('Could not found any contract to import.');
+        }
+
+        if (!$this->isValidFormat($contracts)) {
+            $this->deleteImportFolder($import_key);
+            throw new Exception('File is not in valid format. Please check sample csv file for the valid format.');
         }
 
         $this->exportToJson($import_key, $contracts, $originalFileName);
@@ -181,6 +208,7 @@ class ImportService
         $contract['metadata']['country']                       = $this->getCountry($results['country']);
         $contract['metadata']['signature_date']                = $this->dateFormat($results['signature_date']);
         $contract['metadata']['language']                      = $this->getLanguage($results['language']);
+        $contract['metadata']['category']                      = [];
 
         return $contract;
     }
@@ -588,10 +616,28 @@ class ImportService
         $time = strtotime($date);
 
         if ($time != '') {
-            return date('Y-m-d H:i:s', $time);
+            return date('Y-m-d', $time);
         }
 
         return '';
+    }
+
+    /**
+     * Check for valid format
+     *
+     * @param $contracts
+     * @return bool
+     */
+    protected function isValidFormat($contracts)
+    {
+        $titles = array_keys($contracts[0]);
+        $diff   = array_diff($this->keys, $titles);
+
+        if (count($diff) > 0) {
+            return false;
+        }
+
+        return true;
     }
 
 
