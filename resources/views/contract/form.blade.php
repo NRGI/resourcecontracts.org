@@ -1,5 +1,10 @@
 @section('css')
     <link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
+    <style>
+        .other_toc, .dt {
+            margin-top: 10px;
+        }
+    </style>
 @stop
 
 @if($action == 'add')
@@ -89,12 +94,25 @@
 
 
     <div class="col-sm-7">
+        <?php
+        $toc = isset($contract->metadata->type_of_contract) ? $contract->metadata->type_of_contract : old('type_of_contract');
+        if(!in_array($toc, trans('codelist/contract_type')) AND $toc !='')
+            {
+                $toc ='Other';
+            }
+        ?>
         {!! Form::select('type_of_contract', ['' => 'select']+trans('codelist/contract_type'),
-        isset($contract->metadata->type_of_contract)?$contract->metadata->type_of_contract:null,
+        $toc,
         ["class"=>"form-control"])!!}
+
+        @if($toc == 'Other')
+            {!! Form::text('type_of_contract',
+            isset($contract->metadata->type_of_contract)?$contract->metadata->type_of_contract:null,
+            ["id" =>'', "class"=>"form-control other_toc"])!!}
+        @endif
+
     </div>
 </div>
-
 
 <div class="form-group">
     <label for="signature_date" class="col-sm-2 control-label">@lang('contract.signature_date')</label>
@@ -107,10 +125,22 @@
 </div>
 
 <div class="form-group">
+    <?php
+    $dt = isset($contract->metadata->document_type) ? $contract->metadata->document_type : old('document_type');
+    if(!in_array($dt, trans('codelist/documentType')) AND $dt !='')
+    {
+        $dt ='Others';
+    }
+    ?>
     {!! Form::label('document_type', trans('contract.document_type'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
         {!! Form::select('document_type', trans('codelist/documentType'),
-        isset($contract->metadata->document_type)?$contract->metadata->document_type:null, ["class"=>"form-control"])!!}
+        $dt, ["class"=>"form-control"])!!}
+        @if($dt == 'Others')
+            {!! Form::text('document_type',
+            isset($contract->metadata->document_type)?$contract->metadata->document_type:null,
+            ["id" =>'', "class"=>"form-control dt"])!!}
+        @endif
     </div>
 </div>
 
@@ -412,9 +442,6 @@
 
 <div class="btn btn-default new-concession">Add new License</div>
 
-
-
-
 <h3>@lang('contract.source')</h3>
 <hr/>
 
@@ -499,6 +526,37 @@
 
     @include('contract.company_template')
     <script>
+        var input = '<input class="form-control other_toc" name="type_of_contract" type="text">';
+
+        $(document).on('change', '#type_of_contract', function(){
+            if(($(this).val() == 'Other'))
+            {
+                $(this).parent().append(input)
+            }else{
+                if($('.other_toc').length)
+                {
+                    input = $('.other_toc');
+                }
+                $('.other_toc').remove();
+            }
+        });
+
+        var input_dt = '<input class="form-control dt" name="document_type" type="text">';
+
+        $(document).on('change', '#document_type', function(){
+            if(($(this).val() == 'Others'))
+            {
+                $(this).parent().append(input_dt)
+            }else{
+                if($('.dt').length)
+                {
+                    input_dt = $('.dt');
+                }
+                $('.dt').remove();
+            }
+        });
+
+
         var i = {{$i or 0}};
         var j = {{$j or 0}};
         var country_list = {!!json_encode($country_list)!!};
