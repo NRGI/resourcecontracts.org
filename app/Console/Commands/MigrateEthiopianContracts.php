@@ -23,7 +23,7 @@ class MigrateEthiopianContracts extends Command
      *
      * @var string
      */
-    protected $name = 'nrgi:migrate-ethiopian';
+    protected $name = 'nrgi:migrateolc';
 
     /**
      * The console command description.
@@ -32,7 +32,7 @@ class MigrateEthiopianContracts extends Command
      */
     protected $description = 'Reads excel  files insert to db.';
     /**
-     * @var MigrationService
+     * @var EthiopianMigrationService
      */
     protected $migration;
     /**
@@ -101,11 +101,48 @@ class MigrateEthiopianContracts extends Command
             $this->info("all files converted to json!");
             exit;
         }
+        if ($this->input->getOption('update')) {
+            $this->updateFromExcel();
+            $this->info("Done!");
+            exit;
+        }
         if ($this->input->getOption('annotation')) {
             $this->updateOlcAnnotation();
         } else {
             $this->readFromJson();
         };
+    }
+
+    /**
+     * update from excel file
+     */
+    public function updateFromExcel()
+    {
+        $failedContracts = 0;
+        $savedContracts  = 0;
+        //dd($this->getFile('ethiopian-contracts/update/olc_update_data.csv'));
+        $contracts = $this->extractRecords(null, $this->getFile('ethiopian-contracts/update/olc_update_data.csv'));
+
+        foreach ($contracts as $contractXlData) {
+            $query    = Contract::select('*');
+            $contract = $query->whereRaw(
+                sprintf("contracts.metadata->>'contract_name'='%s'", $contractXlData['contract_title'])
+            )->first();
+            //ksort($contractXlData);
+            if ($contract) {
+                $contract->metadata = $this->migration->updateContractMetadata($contractXlData, $contract);
+                $contract->save();
+                $this->info(sprintf('Success - %s - %s', "done", $contractXlData['contract_title']));
+                $savedContracts ++;
+
+            } else {
+                $failedContracts ++;
+                $this->error(sprintf('Failed - %s - %s', "contract not found", $contractXlData['contract_title']));
+            }
+        }
+        $this->info("Number of failed contracts {$failedContracts}");
+        $this->info("Number of successful contracts {$savedContracts}");
+        $this->info("Done!");
     }
 
     /**
@@ -193,6 +230,9 @@ class MigrateEthiopianContracts extends Command
      */
     protected function extractRecords($fileType, $file)
     {
+        if (is_null($fileType)) {
+            return $this->excel->load($file)->all()->toArray();
+        }
         $columns = $this->setConfig($file);
 
         if ($fileType == "xlsm") {
@@ -293,8 +333,10 @@ class MigrateEthiopianContracts extends Command
     {
         return [
             ['annotation', null, InputOption::VALUE_NONE, 'updates annotations.', null],
-            ['rebuild', null, InputOption::VALUE_NONE, 'updates annotations.', null],
-            ['json', null, InputOption::VALUE_NONE, 'updates annotations.', null],
+            ['rebuild', null, InputOption::VALUE_NONE, 'generate folder.', null],
+            ['json', null, InputOption::VALUE_NONE, 'generate json.', null],
+            ['update', null, InputOption::VALUE_NONE, 'updates from csv.', null],
+
         ];
     }
 
@@ -380,6 +422,18 @@ class MigrateEthiopianContracts extends Command
         }
 
         return $columns;
+    }
+
+    /**
+     * Get File
+     *
+     * @param string $key
+     * @param string $fileName
+     * @return string
+     */
+    public function getFile($path)
+    {
+        return public_path($path);
     }
 
 }
