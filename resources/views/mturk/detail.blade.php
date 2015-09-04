@@ -20,7 +20,9 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="textarea" style="border: 1px solid #ccc; overflow: scroll; padding: 15px; height:580px">
+                        @if(is_string($task->assignments->assignment->answer) && $task->assignments->assignment->answer !='')
                         {!! nl2br($task->assignments->assignment->answer) !!}
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-6">

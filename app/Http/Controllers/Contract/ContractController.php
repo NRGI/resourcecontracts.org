@@ -70,7 +70,7 @@ class ContractController extends Controller
      */
     public function index(Request $request)
     {
-        $filters   = $request->only('resource', 'year', 'country', 'category', 'resource', 'type', 'word', 'issue','status');
+        $filters   = $request->only('resource', 'year', 'country', 'category', 'resource', 'type', 'word', 'issue', 'status');
         $contracts = $this->contractFilter->getAll($filters);
         $years     = $this->contractFilter->getUniqueYears();
         $countries = $this->contractFilter->getUniqueCountries();
@@ -269,6 +269,40 @@ class ContractController extends Controller
         }
 
         return abort(404);
+    }
+
+    /**
+     * Download Word File
+     *
+     * @param $contract_id
+     */
+    public function download($contract_id)
+    {
+        $contract = $this->contract->find($contract_id);
+
+        if (empty($contract)) {
+            abort(404);
+        }
+
+        $text = $this->contract->getTextFromS3($contract->id, $contract->file);
+
+        if (empty($text)) {
+            abort(404);
+        }
+
+        $filename = sprintf('%s-%s', $contract->id, str_limit(str_slug($contract->title), 70));
+
+        header("Content-type: application/vnd.ms-wordx");
+        header("Content-Disposition: attachment;Filename=$filename.doc");
+
+        $html = "<html>";
+        $html .= "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">";
+        $html .= "<body>";
+        $html .= $text;
+        $html .= "</body>";
+        $html .= "</html>";
+        echo $html;
+        exit;
     }
 
 }

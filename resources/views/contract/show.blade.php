@@ -65,7 +65,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <ul class="dropdown-menu">
                     <li><a target="_blank" href="{{$contract->file_url}}">@lang('PDF')</a></li>
                     @if($contract->word_file !='')
-                        <li><a href="{{$contract->word_file}}">@lang('Word')</a></li>
+                        <li><a href="{{route('contract.download', $contract->id)}}">@lang('Word')</a></li>
                     @endif
                 </ul>
             </div>
@@ -371,6 +371,8 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     <ul>
                         @forelse($annotations as $annotation)
                             <li>
+                                {{$annotation->annotation->category}}
+                                <br>
                                 <span><a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate&page={{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>[Page {{$annotation->document_page_no}}
                                     ]</span>
 

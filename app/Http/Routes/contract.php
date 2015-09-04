@@ -3,6 +3,8 @@ $router->group(
     ['namespace' => 'Contract'],
     function () use ($router) {
         $router->resource('contract', 'ContractController');
+        $router->get
+        ('contract/{id}/download', ['as' => 'contract.download', 'uses' => 'ContractController@download']);
         $router->post('contract/{id}/page', ['as' => 'contract.page.store', 'uses' => 'Page\PageController@store']);
         $router->post('contract/{id}/output', ['as' => 'contract.output.save', 'uses' => 'ContractController@saveOutputType']);
         $router->post('contract/{id}/status', ['as' => 'contract.status', 'uses' => 'ContractController@updateStatus']);

@@ -1,11 +1,69 @@
 <?php namespace App\Nrgi\Services\Contract;
 
+use Illuminate\Filesystem\Filesystem;
 use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Shared\Html;
 
 class WordGenerator
 {
+    /**
+     * @var Filesystem
+     */
+    protected $filesystem;
+
+    /**
+     * @param Filesystem $filesystem
+     */
+    public function __construct(Filesystem $filesystem)
+    {
+        $this->filesystem = $filesystem;
+    }
+
+    /**
+     * Create document
+     *
+     * @param array $text
+     * @param       $file
+     * @return mixed
+     * @throws \Exception
+     */
+    public function create(array $text, $file)
+    {
+        $fileArray = explode('.',$file);
+        $ext = end($fileArray);
+        $method = sprintf('create%s',ucfirst($ext));
+
+        if(method_exists($this,$method))
+           {
+               return $this->$method($text, $file);
+           }
+
+        throw new \Exception( sprintf('%s :Invalid file extension', $ext));
+    }
+
+    /**
+     * Create plain text file
+     *
+     * @param array $text
+     * @param       $file
+     * @return string
+     * @throws \PhpOffice\PhpWord\Exception\Exception
+     */
+    public function createTxt(array $text, $file)
+    {
+        $file_path = public_path($file);
+
+        $txt = '';
+        foreach ($text as $page) {
+            $txt .= $page;
+        }
+
+        $this->filesystem->put($file_path, $txt);
+
+        return $file_path;
+    }
+
     /**
      * Create word file using phpWord library
      *
@@ -14,7 +72,7 @@ class WordGenerator
      * @return string
      * @throws \PhpOffice\PhpWord\Exception\Exception
      */
-    public function create(array $text, $file)
+    public function createDocx(array $text, $file)
     {
         $file_path = public_path($file);
         $phpWord   = new PhpWord();
