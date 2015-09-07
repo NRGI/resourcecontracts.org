@@ -131,6 +131,7 @@ class MigrateEthiopianContracts extends Command
             //ksort($contractXlData);
             if ($contract) {
                 $contract->metadata = $this->migration->updateContractMetadata($contractXlData, $contract);
+                $this->info($contract->metadata->signature_date);
                 $contract->save();
                 $this->info(sprintf('Success - %s - %s', "done", $contractXlData['contract_title']));
                 $savedContracts ++;

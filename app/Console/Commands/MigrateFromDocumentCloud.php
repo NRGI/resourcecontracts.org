@@ -94,6 +94,7 @@ class MigrateFromDocumentCloud extends Command
             )->first();
             if ($contract) {
                 $contract->metadata = $this->migration->buildContractMetadata($contractXlData, $contract);
+                $this->info($contract->metadata->signature_date);
                 $contract->save();
                 $this->info(sprintf('Success - %s - %s', "done", $contractXlData['m_contract_name']));
                 $savedContracts ++;
