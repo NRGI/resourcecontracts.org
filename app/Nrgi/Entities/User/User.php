@@ -116,6 +116,20 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
+     * Check if user is admin.
+     * 
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        if ($this->hasRole(['superadmin', 'country-admin'])) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * @param $data
      * @return array
      */

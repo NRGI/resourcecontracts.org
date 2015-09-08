@@ -4,7 +4,15 @@ use App\Nrgi\Entities\Contract\Annotation;
 
 ?>
 <div class="state-wrap">
-    <p> @lang('Contract State'):</p>
+    <p> @lang('Contract State'):
+        @if($current_user->isAdmin())
+            {!!Form::open(['route'=>['contract.publish', $contract->id], 'style'=>"display:inline",
+            'method'=>'post'])!!}
+            {!!Form::button(trans('contract.publish.all'), ['type'=>'submit','class'=>'btn btn-success btn-sm confirm',
+            'data-confirm'=>trans('contract.publish.confirm')])!!}
+            {!!Form::close()!!}
+        @endif
+    </p>
     <ul>
         <li>
             @include('contract.partials.show.metadata_status')

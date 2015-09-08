@@ -117,6 +117,10 @@ return [
         'save'      => 'Your corrections / changes have been saved',
         'save_fail' => 'Changes couldn\'t be saved',
     ],
+    'publish'                       => [
+        'all' => 'Publish All',
+        'confirm' => 'Publish All ?'
+    ],
     'import'                        => [
         'name'           => "Import Contract",
         'title'          => "Open Oil Contract Import",
