@@ -314,7 +314,7 @@ class ImportService
 
             return $pdf_name;
         } catch (\Exception $e) {
-            $this->logger->error($e->getMessage());
+            $this->logger->error('PDF Download Error:'.$e->getMessage());
 
             return null;
         }
