@@ -7,6 +7,16 @@
     </style>
 @stop
 
+<?php
+$corporate_groups = config('groups');
+$groups = array();
+foreach ($corporate_groups as $group) {
+    $groups[$group['name']] = $group['name'];
+}
+asort($groups);
+$groups = [0=>'Select'] + $groups;
+?>
+
 @if($action == 'add')
     <div class="form-group">
         <label for="Select PDF" class="col-sm-2 control-label">@lang('contract.contract_file') <span
@@ -96,10 +106,9 @@
     <div class="col-sm-7">
         <?php
         $toc = isset($contract->metadata->type_of_contract) ? $contract->metadata->type_of_contract : old('type_of_contract');
-        if(!in_array($toc, trans('codelist/contract_type')) AND $toc !='')
-            {
-                $toc ='Other';
-            }
+        if (!in_array($toc, trans('codelist/contract_type')) AND $toc != '') {
+            $toc = 'Other';
+        }
         ?>
         {!! Form::select('type_of_contract', ['' => 'select']+trans('codelist/contract_type'),
         $toc,
@@ -127,9 +136,8 @@
 <div class="form-group">
     <?php
     $dt = isset($contract->metadata->document_type) ? $contract->metadata->document_type : old('document_type');
-    if(!in_array($dt, trans('codelist/documentType')) AND $dt !='')
-    {
-        $dt ='Others';
+    if (!in_array($dt, trans('codelist/documentType')) AND $dt != '') {
+        $dt = 'Others';
     }
     ?>
     {!! Form::label('document_type', trans('contract.document_type'), ['class'=>'col-sm-2 control-label'])!!}
@@ -226,15 +234,15 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2
-                        control-label'])!!}
+                        {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2 control-label'])!!}
                         <div class="col-sm-7">
-                            {!! Form::text("company[$i][parent_company]",
-                            isset($v->parent_company)?$v->parent_company:null,
-                            ["class"=>"form-control"])!!}
+                            <?php if(isset($v->parent_company) && !in_array($v->parent_company,$groups)):
+                                $groups[$v->parent_company] = $v->parent_company;
+                             endif;?>
+
+                            {!! Form::select("company[$i][parent_company]", $groups , isset($v->parent_company)?$v->parent_company:null , ['class' => 'form-control parent_company']) !!}
                         </div>
                     </div>
-
 
                     <div class="form-group">
                         <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> {!!
@@ -324,13 +332,11 @@
             </div>
 
             <div class="form-group">
-                {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2
-                control-label'])!!}
+                {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][parent_company]",null,["class"=>"form-control"])!!}
+                    {!! Form::select('company[0][parent_company]', $groups , isset($v->parent_company)?$v->parent_company:null , ['class' => 'form-control parent_company']) !!}
                 </div>
             </div>
-
 
             <div class="form-group">
                 <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> {!!
@@ -528,13 +534,11 @@
     <script>
         var input = '<input class="form-control other_toc" name="type_of_contract" type="text">';
 
-        $(document).on('change', '#type_of_contract', function(){
-            if(($(this).val() == 'Other'))
-            {
+        $(document).on('change', '#type_of_contract', function () {
+            if (($(this).val() == 'Other')) {
                 $(this).parent().append(input)
-            }else{
-                if($('.other_toc').length)
-                {
+            } else {
+                if ($('.other_toc').length) {
                     input = $('.other_toc');
                 }
                 $('.other_toc').remove();
@@ -543,13 +547,11 @@
 
         var input_dt = '<input class="form-control dt" name="document_type" type="text">';
 
-        $(document).on('change', '#document_type', function(){
-            if(($(this).val() == 'Others'))
-            {
+        $(document).on('change', '#document_type', function () {
+            if (($(this).val() == 'Others')) {
                 $(this).parent().append(input_dt)
-            }else{
-                if($('.dt').length)
-                {
+            } else {
+                if ($('.dt').length) {
                     input_dt = $('.dt');
                 }
                 $('.dt').remove();
