@@ -39,5 +39,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('nrgi:updategroup')->dailyAt('10:00');
         $schedule->command('nrgi:renewmturktask')->dailyAt('01:00');
         $schedule->command('nrgi:mturkbalance')->twiceDaily();
+        $schedule->command("db:backup  --database=pgsql --destination=s3 --destinationPath=backup/{date('Y-m-d H:i:s')} --compression=gzip")->dailyAt('10:00');
     }
 }

@@ -34,6 +34,7 @@ $providers = [
     'Illuminate\View\ViewServiceProvider',
     'Illuminate\Html\HtmlServiceProvider',
     'Maatwebsite\Excel\ExcelServiceProvider',
+    'BackupManager\Laravel\Laravel5ServiceProvider',
 
     /*
      * Application Service Providers...
