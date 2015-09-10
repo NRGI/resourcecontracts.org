@@ -145,14 +145,18 @@ class ElasticSearchService
         $data           = [];
         $annotations    = $contract->annotations;
         foreach ($annotations as $annotation) {
-            $json              = $annotation->annotation;
+            $json               = $annotation->annotation;
+            $json->category_key = $json->category;
+            $json->category     = _l("codelist/annotation.annotation_category.{$json->category}");
+
             $json->id          = $annotation->id;
             $json->contract_id = $contract->id;
             //$json->metadata   = $this->getMetadataForES($contract->metadata, true);
             $annotationData[] = $json;
+            dd($json);
         }
         $data['annotations'] = json_encode($annotationData);
-        $this->logger->info(json_encode($annotationData));
+        //$this->logger->info(json_encode($annotationData));
         try {
             $request  = $this->http->post($this->apiURL('contract/annotations'), null, $data);
             $response = $request->send();
