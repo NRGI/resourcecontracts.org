@@ -128,13 +128,26 @@ Annotator.Plugin.Categories = (function(superClass) {
     // }
     categoryHTML = "<select id='annotation-plugin-select-category'>";
     ref = this.options.category;
-    for (j = 0, len = ref.length; j < len; j++) {
-      category = ref[j];
-      categoryHTML += '<option class="' + this.options.categoryClass;
-      categoryHTML += ' ' + this.options.categoryColorClasses[category] + '"';
-      categoryHTML += ' value="' + category + '">';
-      categoryHTML += category;
-      categoryHTML += '</option>';
+
+    var subHeaderPattern = new RegExp("^[0-9]+(-[a-zA-Z0-9-]+)");
+    var headerPattern = new RegExp("^[i*]+(-[a-zA-Z0-9-]+)");
+
+    for (var category in ref){
+      if (ref.hasOwnProperty(category)) {
+        var obj = ref[category];
+        var categoryClass = 'val';
+        if(subHeaderPattern.test(obj.key)){
+          categoryClass = "sub-category";
+        }
+        if(headerPattern.test(obj.key)){
+          categoryClass = "category";
+        }
+        categoryHTML += '<option class="' + this.options.categoryClass;
+        categoryHTML += ' ' + categoryClass + '"';
+        categoryHTML += ' value="' + obj.key + '">';
+        categoryHTML += obj.name;
+        categoryHTML += '</option>';
+      }
     }
     categoryHTML += "</select>";
 
