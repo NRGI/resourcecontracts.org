@@ -59,16 +59,6 @@ $(function () {
         $('.concession .con-item:last-child').after(rendered);
     })
 
-    $(document).on('change', '.operator', function () {
-        var val = 0;
-
-        if (this.checked) {
-            val = $(this).val();
-        }
-        console.log(val);
-        $(this).parent().find('.hidden-operator').val(val);
-    });
-
 
     $(document).on('click', '.selected-document .document .delete', function (e) {
         $(this).parent().remove();

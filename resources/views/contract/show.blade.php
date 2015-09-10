@@ -269,7 +269,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                         <a target="_blank"
                                            href="{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
                                 </p>
-                                @if(isset($v->operator)) <p><strong>@lang('contract.operator'):</strong>@if($v->operator==1)Yes  @endif</p>@endif
+                                @if(isset($v->operator)) <p><strong>@lang('contract.operator'):</strong>@if($v->operator==1)Yes @elseif($v->operator==0) No @elseif($v->operator==-1) Not Available  @endif</p>@endif
                             </div>
                         @endforeach
                     </li>
