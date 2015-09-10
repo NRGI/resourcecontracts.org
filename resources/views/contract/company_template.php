@@ -76,8 +76,9 @@
       <label for="parent_company" class="col-sm-2
         control-label">Is Operator?</label>
         <div class="col-sm-7">
-            <input  name="company[{{item}}][operator]" type="checkbox" value="" class="operator">
-            <input  name="company[{{item}}][operator]" type="hidden" value="" class="hidden-operator">
+             <input class="field" name="company[{{item}}][operator]" type="radio" value="1"> Yes
+             <input class="field" name="company[{{item}}][operator]" type="radio" value="0"> No
+             <input class="field" name="company[{{item}}][operator]" type="radio" value="-1"> Not Available
         </div>
     </div>
     <div class="delete">delete</div>

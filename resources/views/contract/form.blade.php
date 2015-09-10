@@ -255,11 +255,16 @@ $groups = [0=>'Select'] + $groups;
                             ["class"=>"digit form-control"])!!}
                         </div>
                     </div>
+
                     <div class="form-group">
                         {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
                         <div class="col-sm-7">
-                            {!! Form::checkbox("company[$i][operator]",'1', isset($v->operator)?$v->operator:null,['class'=>'operator']) !!}
-                            <input name=company[{{$i}}][operator] type="hidden" value="" class="hidden-operator">
+
+                             {!! Form::radio("company[$i][operator]", 1, ($v->operator==1)?true:false , ['class' => 'field']) !!} Yes
+                             {!! Form::radio("company[$i][operator]", 0, ($v->operator==0)?true:false, ['class' => 'field']) !!} No
+                             {!! Form::radio("company[$i][operator]", -1, ($v->operator==-1)?true:false, ['class' => 'field']) !!} Not Available
+
+
                         </div>
                     </div>
                     @if($k > 0)
@@ -351,8 +356,9 @@ $groups = [0=>'Select'] + $groups;
             <div class="form-group">
                 {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
                 <div class="col-sm-7">
-                    {!! Form::checkbox("company[0][operator]",'1',null,['class'=>'operator']) !!}
-                    <input name=company[0][operator] type="hidden" value="" class="hidden-operator">
+                     {!! Form::radio('company[0][operator]', 1, false, ['class' => 'field']) !!} Yes
+                     {!! Form::radio('company[0][operator]', 0, false, ['class' => 'field']) !!} No
+                     {!! Form::radio('company[0][operator]', -1, true, ['class' => 'field']) !!} Not Available
                 </div>
             </div>
         </div>
