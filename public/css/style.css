@@ -62,16 +62,16 @@ input:focus, button:focus, textarea:focus {
     font-style: italic;
 }
 
-.table-contract > tbody > tr > td,.table-dashboard > tbody > tr > td {
+.table-contract > tbody > tr > td, .table-dashboard > tbody > tr > td {
     padding: 16px 8px;
 }
 
-.table-contract > tbody > tr:first-child > td,.table-dashboard > tbody > tr:first-child > td {
+.table-contract > tbody > tr:first-child > td, .table-dashboard > tbody > tr:first-child > td {
     border-top: 0;
     padding: 7px 8px 17px;
 }
 
-.table-contract > tbody > tr:last-child > td,.table-dashboard > tbody > tr:last-child > td {
+.table-contract > tbody > tr:last-child > td, .table-dashboard > tbody > tr:last-child > td {
     padding: 17px 8px 7px;
 }
 
@@ -317,7 +317,7 @@ header {
     display: inline-block;
 }
 
-.state-wrap ul li > span, .annotation-status span,.comment-section span:first-child {
+.state-wrap ul li > span, .annotation-status span, .comment-section span:first-child {
     display: inline-block;
     background-color: #EABA24;
     border-radius: 30px;
@@ -328,15 +328,15 @@ header {
     color: #fff;
 }
 
-.state-wrap ul li > span.completed, .annotation-status span.completed,.comment-section span.completed {
+.state-wrap ul li > span.completed, .annotation-status span.completed, .comment-section span.completed {
     background: #5896CB;
 }
 
-.state-wrap ul li > span.published, .annotation-status span.published,.comment-section span.published {
+.state-wrap ul li > span.published, .annotation-status span.published, .comment-section span.published {
     background: #6BA864;
 }
 
-.state-wrap ul li > span.rejected, .annotation-status span.rejected,.comment-section span.rejected {
+.state-wrap ul li > span.rejected, .annotation-status span.rejected, .comment-section span.rejected {
     background: #EA2E0C;
     margin-right: 25px;
 }
@@ -360,14 +360,14 @@ header {
     color: red
 }
 
-.company .item,.con-item {
+.company .item, .con-item {
     background: #F4F4F4;
     padding: 15px;
     margin-bottom: 20px;
     position: relative;
 }
 
-.company .delete,.con-item .delete,.selected-document .delete {
+.company .delete, .con-item .delete, .selected-document .delete {
     position: absolute;
     top: 7px;
     right: 15px;
@@ -387,7 +387,7 @@ header {
     display: inline-block;
 }
 
-.btn-annotation,.btn-metadata {
+.btn-annotation, .btn-metadata {
     margin-right: 10px;
 }
 
@@ -425,7 +425,7 @@ header {
     margin-left: 2%;
 }
 
-.panel-dashboard .col-sm-2{
+.panel-dashboard .col-sm-2 {
     width: 19.2%;
 }
 
@@ -466,13 +466,14 @@ header {
 .table-dashboard td span {
     color: #666;
 }
-#annotation-plugin-select-category{
+
+#annotation-plugin-select-category {
     width: 100%;
 }
 
 .comment-section {
     margin-bottom: 16px;
-    border-bottom: 1px solid rgb(221, 221, 221)  ;
+    border-bottom: 1px solid rgb(221, 221, 221);
     padding-bottom: 16px;
     display: none;
 }
@@ -511,13 +512,15 @@ header {
 .select2-results__group {
     background: #ccc;
 }
-.mturk-btn-group > form{
+
+.mturk-btn-group > form {
     display: inline-block;
 }
 
 .form-group:last-child {
     margin-bottom: 0;
 }
+
 .concession {
     border-top: 1px dashed #ccc;
     padding-top: 20px;
@@ -543,7 +546,7 @@ header {
     border: 1px solid #286090;
 }
 
-.new-company:hover,.new-concession:hover {
+.new-company:hover, .new-concession:hover {
     background: #286090;
     color: #fff;
 }
@@ -553,6 +556,7 @@ header {
     padding-bottom: 12px;
     margin-bottom: 8px;
 }
+
 .small-input {
     width: 50px !important;
     text-align: center;
@@ -608,7 +612,11 @@ header {
     margin-bottom: 4px;
 }
 
-
 .document > * {
-   display: inline;
+    display: inline;
+}
+
+.state-wrap-title {
+    overflow: hidden;
+    margin-bottom: 10px;
 }

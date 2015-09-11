@@ -8,7 +8,7 @@
 */
 
 return [
-    'tags'                       => [
+    'tags'                => [
         "Country",
         "Local-Company-Name",
         "Legal-Enterprise-Identifier",
@@ -26,7 +26,7 @@ return [
         "Stabilization-clause",
         "Arbitration-and-dispute-resolution"
     ],
-    'categories'                 =>
+    'categories'          =>
         [
             "I. General information",
             "Country",
@@ -124,7 +124,7 @@ return [
             "Pages missing from  copy",
             "Annexes missing from copy"
         ],
-    'categories_new'             =>
+    'categories_new'      =>
         [
             "I. General information" =>
                 [
@@ -238,7 +238,68 @@ return [
                     "Annexes missing from copy"
                 ]
         ],
-    "annotation_category"        => [
+    'categories_old'          => [
+        'Arbitration and dispute resolution',
+        'Assignment or transfer',
+        'Audit',
+        'Bonuses',
+        'Cancellation or termination',
+        'Closest community',
+        'Community consultation',
+        'Confidentiality',
+        'Country',
+        'Date - contract signature',
+        'Date - issue of title or permit',
+        'Date of ratification',
+        'Environmental impact assessment and management plan',
+        'Environmental monitoring',
+        'Environmental protections',
+        'Governing law',
+        'Hardship clause or force majeure',
+        'Income tax: exemptions',
+        'Income tax: other',
+        'Income tax: rate',
+        'Infrastructure',
+        'Infrastructure - third party use',
+        'Language',
+        'Local development agreement',
+        'Local employment',
+        'Local procurement',
+        'Location',
+        'Name and/or composition of company created',
+        'Name of company executing document ',
+        'Name of field, block, deposit, or site',
+        'Other - environmental',
+        'Other - financial / fiscal',
+        'Other - general',
+        'Other - miscellaneous ',
+        'Other - operational',
+        'Other - social / human rights',
+        'Parent company or affiliates outside of country',
+        'Physical security or protection of property',
+        'Production Share - "Cost Oil" features',
+        'Production Share - "Profit Oil" features',
+        'Project title',
+        'Protections or benefits for employees, dependents, or others',
+        'Resettlement',
+        'Resource(s)',
+        'Restrictions on transactions with affiliated parties',
+        'Royalties',
+        'Service Agreement - Fee to developer or contractor',
+        'Signatories, State',
+        'Signatories, company',
+        'Size of concession area',
+        'Stabilization clause',
+        'State agency, national company, or ministry executing document',
+        'State participation',
+        'Term',
+        'Type of contract',
+        'Water user',
+        'Work and investment commitments',
+        'Year of contract signature',
+        'Year of issue of title / permit',
+    ],
+    "annotation_category" => [
         'i-general-information'                                                                                                           => 'I. General information',
         'country'                                                                                                                         => 'Country',
         'name-of-company-executing-document'                                                                                              => 'Name of company executing document',
