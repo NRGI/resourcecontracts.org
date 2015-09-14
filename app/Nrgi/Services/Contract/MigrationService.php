@@ -3,6 +3,9 @@ namespace App\Nrgi\Services\Contract;
 
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
+use Aws\S3\Enum\ServerSideEncryption;
+use Aws\S3\Model\MultipartUpload\TransferState;
+use Aws\S3\S3Client;
 use Exception;
 use Illuminate\Contracts\Logging\Log;
 use Illuminate\Contracts\Queue\Queue;
@@ -963,14 +966,15 @@ class MigrationService
         $mappings = config('annotation_mapping');
         $title    = trim(trim($title), ',');
         foreach ($mappings as $key => $map) {
-            $key = trim(trim($key), ',');
-
+            $key   = trim(trim($key), ',');
             $from  = [' / ', '  ', '/ ', ' /', ' - ', '- ', ' -'];
             $to    = ['/', ' ', '/', '/', '-', '-', '-'];
             $title = str_replace($from, $to, $title);
             $key   = str_replace($from, $to, $key);
 
             if ($this->isStringMatch($title, $key) !== false) {
+                //echo $map;
+                //echo PHP_EOL . '-----------------------------------' . PHP_EOL;
                 return $map;
             }
         }
@@ -1008,6 +1012,31 @@ class MigrationService
             'code' => trim($countryCode),
             "name" => trim($countryName)
         ];
+    }
+
+    public function copyS3directory($key)
+    {
+        $client = S3Client::factory(
+            [
+                'key'    => env('AWS_KEY'),
+                'secret' => env('AWS_SECRET'),
+                'region' => env('AWS_REGION'),
+            ]
+        );
+
+        $targetBucket  = 'rc-local';
+        $targetKeyname = 'done/';
+        $sourceBucket  = 'rc-local';
+        $sourceKeyname = 'folder1/';
+
+        $object = [
+            'Bucket'                => $targetBucket,
+            'Key'                   => $targetKeyname,
+            'CopySource'            => "{$sourceBucket}/{$sourceKeyname}",
+//           'ServerSideEncryption'  => ServerSideEncryption::AES256,
+        ];
+        dd($client->copyObject($object));
+
     }
 
 }
