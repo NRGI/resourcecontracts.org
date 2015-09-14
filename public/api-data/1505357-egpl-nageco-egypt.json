@@ -1,0 +1,37 @@
+{
+    "document":{
+        "file_hash":"ab1ad7085bd5bbc651c0124b6bcde05433c8d3f3",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"EGPL, NAGECO - Egypt",
+        "data":{
+            "Type of Mining Title":"Concession",
+            "Resource":"Hydrocarbons",
+            "Countries":"Egypt"
+        },
+        "created_at":"Tue, 20 Jan 2015 03:33:35 +0000",
+        "display_language":"eng",
+        "updated_at":"Fri, 24 Apr 2015 07:12:22 +0000",
+        "id":"1505357-egpl-nageco-egypt",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505357/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505357/egpl-nageco-egypt.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505357/pages/egpl-nageco-egypt-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505357/pages/egpl-nageco-egypt-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505357/egpl-nageco-egypt.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505357/pages/egpl-nageco-egypt-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505357"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":115,
+        "canonical_url":"http://www.documentcloud.org/documents/1505357-egpl-nageco-egypt.html"
+    }
+}

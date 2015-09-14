@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"23414676291658dd3ba968bc783ac5744d2eed2b",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Triton, Energy Africa, Block F - Equatorial Guinea, 2000",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2000",
+            "Resource":"Hydrocarbons",
+            "Countries":"Equatorial Guinea"
+        },
+        "created_at":"Tue, 20 Jan 2015 04:32:10 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 20 Jan 2015 04:33:54 +0000",
+        "id":"1505383-triton-energy-africa-block-f-equatorial-guinea",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505383/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505383/triton-energy-africa-block-f-equatorial-guinea.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505383/pages/triton-energy-africa-block-f-equatorial-guinea-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505383/pages/triton-energy-africa-block-f-equatorial-guinea-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505383/triton-energy-africa-block-f-equatorial-guinea.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505383/pages/triton-energy-africa-block-f-equatorial-guinea-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505383"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":49,
+        "canonical_url":"http://www.documentcloud.org/documents/1505383-triton-energy-africa-block-f-equatorial-guinea.html"
+    }
+}

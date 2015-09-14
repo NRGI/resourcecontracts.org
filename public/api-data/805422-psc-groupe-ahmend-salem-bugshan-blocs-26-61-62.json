@@ -1,0 +1,94 @@
+{
+    "document":{
+        "file_hash":"ff5f3d15d0ed9a34d2ffb9519c8199500c1de8fe",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Production Sharing Agreement",
+                "location":{
+                    "image":"225,522,258,480"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805422-psc-groupe-ahmend-salem-bugshan-blocs-26-61-62/annotations/126876.js",
+                "id":126876
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat//Name of company executing the document ",
+                "page":1,
+                "content":"Le Groupe Ahmed Salem BUGSHAN Corporate Office (ASB)",
+                "location":{
+                    "image":"335,563,370,523"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805422-psc-groupe-ahmend-salem-bugshan-blocs-26-61-62/annotations/126884.js",
+                "id":126884
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":1,
+                "content":"2006",
+                "location":{
+                    "image":"508,465,544,426"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805422-psc-groupe-ahmend-salem-bugshan-blocs-26-61-62/annotations/126872.js",
+                "id":126872
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Mauritania",
+                "location":{
+                    "image":"63,534,97,491"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805422-psc-groupe-ahmend-salem-bugshan-blocs-26-61-62/annotations/126871.js",
+                "id":126871
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":3,
+                "content":"Hydrocarbons",
+                "location":{
+                    "image":"445,652,479,615"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/805422-psc-groupe-ahmend-salem-bugshan-blocs-26-61-62/annotations/126883.js",
+                "id":126883
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Groupe Ahmed, Blocs26,61,62,63 - Mauritania, 2006",
+        "data":{
+            "Type of Mining Title":"Production Sharing Contract",
+            "Signature Year":"2006",
+            "Resource":"Hydrocarbons",
+            "Countries":"Mauritania"
+        },
+        "created_at":"Wed, 16 Oct 2013 15:21:49 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 06 Aug 2014 08:47:36 +0000",
+        "id":"805422-psc-groupe-ahmend-salem-bugshan-blocs-26-61-62",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/805422/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/805422/psc-groupe-ahmend-salem-bugshan-blocs-26-61-62.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/805422/pages/psc-groupe-ahmend-salem-bugshan-blocs-26-61-62-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/805422/pages/psc-groupe-ahmend-salem-bugshan-blocs-26-61-62-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/805422/psc-groupe-ahmend-salem-bugshan-blocs-26-61-62.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/805422/pages/psc-groupe-ahmend-salem-bugshan-blocs-26-61-62-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=805422"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":69,
+        "canonical_url":"http://www.documentcloud.org/documents/805422-psc-groupe-ahmend-salem-bugshan-blocs-26-61-62.html"
+    }
+}

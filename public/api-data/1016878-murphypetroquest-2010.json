@@ -1,0 +1,490 @@
+{
+    "document":{
+        "file_hash":"80d3e932b6bd7b2709052aee01e42fb12de36521",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Production Sharing Contract--Front page, Art. 1.2",
+                "location":{
+                    "image":"196,176,215,151"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175827.js",
+                "id":175827
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Kurdistan Region of Iraq--Front page, Preamble ",
+                "location":{
+                    "image":"225,179,241,154"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175824.js",
+                "id":175824
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":1,
+                "content":"Kurdistan Regional Government of Iraq (the \"Government\") --Front page, Preamble ",
+                "location":{
+                    "image":"287,172,307,147"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175832.js",
+                "id":175832
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":1,
+                "content":"Murphy Central Dohuk Oil Co., Ltd., (\"Murphy\") and Petroquest Petrol Ve Enerji Sanayi Ticaret Limited Sirketi (\"Petroquest\"), referred to collectively as \"Contractor\" in the contract--Front page, Premable ",
+                "location":{
+                    "image":"361,180,381,155"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175831.js",
+                "id":175831
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales //Parent companies or affilates outside of the country, if different from the above mentioned; and their corporate headquarters",
+                "page":4,
+                "content":"Murphy is a company established and existing under the laws of the Bahamas (with a registered office in Nassau, the Bahamas), and Petroquest is a company established and existing under the laws of Turkey (with a registered office in Istanbul, Turkey)--Preamble ",
+                "location":{
+                    "image":"199,165,216,142"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175826.js",
+                "id":175826
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":4,
+                "content":"The Government guarantees to Murphy and Petroquest that it will maintain the stability of the legal, fiscal and economic conditions of the contract, as they exist on the date of signature of the contract, for the entire contract term. If, after the effective date, there is any change in the legal, fiscal and/ or economic framework relevant to the contract which negatively impacts Murphy and Petroquest, the terms and conditions of the contract must be altered to restore Murhphy and Petroquest (or any other person entitled to benefit under the contract) to the same overall economic position as they would have been in without the changes having taken effect; If the parties are unable to agree on measures deemed necessary by Murphy and Petroquest to restore them to their original economic position, then Murphy and Petroquest can refer the matter to arbitration under Art. 42.1; Murphy and Petroquest are entitled to benefit from any future changes to legislation affecting the contract. --Preamble, Arts. 43.3-43.5 ",
+                "location":{
+                    "image":"327,167,345,145"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175863.js",
+                "id":175863
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":7,
+                "content":"Murphy and Petroquest own a 50 and 30% respective interest in the petroleum operations in relation to the entire contract area. The Government owns the remaining 20% interest in petroleum operations in respect of the entire contract area; Murphy and Petroquest agree to fund petroleum operations (from exploration through to decommissioning) under the contract; The Government will participate in the contract through a public company with 20% interest in petroleum operations and all other rights, duties, obligations and liabilities of Murphy and Petroquest in relation to the contract area; The public company used by the Government to participate in the contract will not have any liability to Murphy and Petroquest to contribute its share of petroleum costs. These costs must be exclusively paid by Murphy and Petroquest, and may be recovered in accordance with Art. 25. The public company will however contribute its share of production bonuses payable under Art. 32. --Arts. 1.1, 4.1, 2.3(b), 4.1, 4.2",
+                "location":{
+                    "image":"500,178,518,158"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175846.js",
+                "id":175846
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":9,
+                "content":"The contract was signed on 14/10/2010 and becomes effective upon delivery of one signed counterpart of the contract from each party to each of the other parties to the contract. --Arts. 1.1, 47",
+                "location":{
+                    "image":"353,172,369,146"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175830.js",
+                "id":175830
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":12,
+                "content":"Petroleum, meaning (i) any naturally occurring hydrocarbon in a gaseous or liquid state, (ii) any mixture of such hydrocarbons, (iii) any of the above that has been returned to a reservoir. See Art. 1.1 for further details.--Arts. 1.1, 2.1, 2.2",
+                "location":{
+                    "image":"332,174,351,149"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175837.js",
+                "id":175837
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, cr\u00e9dit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":16,
+                "content":"Murphy and Petroquest will only be entitled to recover petroleum incurred under the contract costs where they make a commercial discovery; Any costs associated with Government personnel secondment or training must be considered part of petroleum costs and will therefore be recovered in accordance with Art. 25; Any expenditure incurred by Murphy and Petroquest in relation to contributing amounts to the Environment Fund are cost recoverable; Costs may be recovered only in the form of \u201cavailable petroleum\u201d, meaning all petroleum produced and saved from the contract area (except for that used in operations, re-injected in a field, lost, flared, or that which cannot be sold), after the deduction of any applicable Royalty; From the First Production in the contract area, Murphy and Petroquest will be entitled to recover all petroleum costs incurred under the contract up to a maximum of 40% of available crude oil and available associated natural gas produced and saved within any calendar year, and up to a maximum of 50% of available non-associated natural gas produced and saved within any calendar year; Petroleum costs must be recovered in the following order of priority: (i) production costs, (ii) exploration costs, (iii) gas and marketing costs, (iv) development costs, and (v) decommissioning costs; If any petroleum costs go un-recovered in a particular year, they must be carried forward indefinitely until fully recovered until termination of the contract; Any value added tax (\"VAT\") is cost recoverable; Any costs related to the design, construction, operation and maintenance of pipelines and related facilities by Murphy and Petroquest under Art. 33 are cost recoverable; Any reasonable expenditure incurred under Art. 37 in relation to the environment is cost recoverable; Additional provisions regarding the classification, definition and allocation of costs are provided in Art. 2 of Annex B; Further details regarding those costs that are recoverable without further approval of the Government, and those costs that must not be considered recoverable, can be found in Arts. 3 and 4 of Annex B. --Arts. 2.6, 23.2, 23.5, 23.8, 23.10, 25.1, 25.3, 24.4, 25.5, 25.6, 31.10, 33.5, 37.8, Annex B: Arts. 2, 3, 4 ",
+                "location":{
+                    "image":"178,188,198,165"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175843.js",
+                "id":175843
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licences, et permis)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":16,
+                "content":"Murphy and Petroquest have the right to freely use water and other natural resources located both inside and outside the contract area for petroleum operations. --Art. 2.8(c) ",
+                "location":{
+                    "image":"342,192,362,169"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175851.js",
+                "id":175851
+            },
+            {
+                "access":"public",
+                "title":"Autorisation pour utiliser les terres publique ou priv\u00e9es \u00e0 l'ext\u00e9rieur de la zone de concession//Contracting party's permitted use of public or private land outside concession area",
+                "page":16,
+                "content":"Murphy and Petroquest can freely use land or property belonging to the Kurdistan Region, and the Government agree to assist Murphy and Petroquest in being able to use any private property in the region;The Government must make any land in Kurdistan required for petroleum operations available to Murphy and Petroquest; If it becomes necessary for petroleum operations to occupy and use land or property belonging to third parties, and no amicable agreement can be reached with the owners to enable Murphy and Petroquest\u2019s occupation and use of the land, then the Government will (i) determine how much compensation should be paid to the owner, if occupation will be for a short duration, and (ii) expropriate the land in accordance with Kurdistan Region Law if the occupation will be long-lasting.  --Arts. 2.8(f), 17.1, 17.2 ",
+                "location":{
+                    "image":"453,192,474,169"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175858.js",
+                "id":175858
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) ",
+                "page":16,
+                "content":"Detailed coordinates indicating the exact location of the contract area are provided in Art. 3 of the contract, and a map of the area is provided in Annex A. --Art. 3, Annex A",
+                "location":{
+                    "image":"517,193,539,169"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175829.js",
+                "id":175829
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas//Name and/or number of field, block or deposit",
+                "page":16,
+                "content":"Central Dohuk Block--Art. 3",
+                "location":{
+                    "image":"518,165,537,143"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175828.js",
+                "id":175828
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":18,
+                "content":"Murphy Central Dohuk Oil Co., Ltd., (\"Murphy\") (the \u201cOperator\u201d) must carry out all petroleum operations on behalf of both Murphy and Petroquest Petrol Ve Enerji Sanayi Ticaret Limited Sirketi (\"Petroquest\") (referred to collectively as the \u201cContractor\u201d).  Murphy is not locally incorporated.-- Art. 5.1 ",
+                "location":{
+                    "image":"425,170,438,150"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175825.js",
+                "id":175825
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e ou envisag\u00e9e//Name and/or composition of the company created or anticipated",
+                "page":18,
+                "content":"No company is being created by the contract. However, Murphy is being appointed as \"Operator\" and must carry out all petroleum operations under the contract; Murphy and Petroquest entered into a \"Joint Operating Agreement\", which regulates between the two companies the terms under which petroleum operations will be conducted on the contract area. The joint agreement is supplementary to this contract. It must be based on the 2002 Association of International Petroleum Negotiatiors Model Joint Operating Agreement and must be consistent with the provisions of this contract. --Art. 5.1, 1.1",
+                "location":{
+                    "image":"467,169,484,149"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175833.js",
+                "id":175833
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":19,
+                "content":"The contract term is made up of the Exploration and Development Periods; The Exploration Period will be for an initial term of 5 years starting from the effective date, extendable as provided in Arts. 6.5 and 6.6 on a yearly basis for up to a maximum of 7 years. The Exploration Period will be divided into two \u2018sub-periods\u2019 (First of 3 years, and Second of 2 years); If Murphy and Petroquest make a commercial discovery of either crude oil or non-associated natural gas, they will have the exclusive right to develop and produce the discovery over 20 years, starting from the date that Murphy and Petroquest made a declaration of discovery (in accordance with the procedure in Art. 12.6a). --Arts. 6.1, 6.2, 6.10, 6.11 ",
+                "location":{
+                    "image":"170,168,188,142"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175836.js",
+                "id":175836
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Comit\u00e9 de Gestion]//Other - [Management Committee]",
+                "page":22,
+                "content":"Within 30 days of the effective date, a Management Committee (the \u201cCommittee\u201d) must be established to direct all matters relating to petroleum operations and the work programs under the contract; The Committee will be made up of 2 members chosen by the Government, and 2 members chosen by Murphy and Petroquest; The Committee will meet at least twice a year prior to the first commercial discovery, and at least 3 times a year after the first commercial discovery. Meetings will take place in Kurdistan, or at any other location agreed between the parties; Further details regarding the responsibilities, voting and decision-making rules, and meetings can be found in Art. 8. --Arts. 8.1, 8.6",
+                "location":{
+                    "image":"493,165,513,144"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175859.js",
+                "id":175859
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":26,
+                "content":"Minimum Exploration Work Obligations: During the \u201cFirst Sub-Period\u201d (i.e. the first 3 years of the contract term, starting from the effective date), Murphy and Petroquest must (a) carry out geological and geophysical studies, (b) carry out a data search for existing data specific to the contract area, (c) perform field work including structural, stratigraphic, and lithologic mapping and sampling, and (d) spend a minimum of US$20,000,000 on drilling 1 exploration well. Further details regarding this work are provided in Art. 10.2; During the \u201cSecond-Sub Period\u201d (i.e. the third and fourth year of the contract term, starting from the effective date) Murphy and Petroquest must spend a minimum of US$20,000,000 to drill a second exploration well, unless the data from the first well indicates that there is not a reasonable technical case for drilling a second well in the contract area; Exploration Work Programs and Budgets: Murphy and Petroquest must submit yearly work programs and budgets to the Management Committee, which must include details on the work to be undertaken each year (see Art. 11 for further details); Appraisal Work Programs: Appraisal work programs must also be submitted to the Management Committee within 90 days of notifying the Government of a discovery; Development Plans: A development plan must be submitted to the Management Committee within 180 days of making a declaration that a discovery is commercial. The plan must include details listed in Art. 12.8; Development and Production Work Programs and Budgets: Once a development plan is approved by the Management Committee, Murphy and Petroquest must carry out development operations for the commercial discovery in accordance with the approved plan. A Development Work Program &amp; Budget must be submitted for approval to the Management Committee, detailing the work to be carried out in the relevant production area for the duration of development operations. Further details are provided in Arts. 13.2-13.5; Annual production work programs and budgets must also be submitted for approval to the Management Committee (see Arts. 13.6-13.10 for further details). --Arts. 10.1 - 10.3, 11.1,  12.2, 12.8, 13.1, 13.2, 13.6 ",
+                "location":{
+                    "image":"441,165,460,144"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175855.js",
+                "id":175855
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":40,
+                "content":"Murphy and Petroquest must keep copies of all books and accounts of all revenues relating to petroleum operations and costs. These accounts must be kept in their offices in Kurdistan, apart from during the Exploration period when they may be kept abroad (i.e. first 5 years of the contract term, starting from the effective date). All accounts must be kept for a minimum of 5 years; The Government can request an audit of the accounts with respect to each calendar year within 2 years following the end of that calendar year, and may appoint an auditor to either assist with or carry out the audit; The cost of retaining an auditor will be paid for by the Murphy and Petroquest (and can be treated as a petroleum cost, and therefore recovered); Further details regarding the audit are available in Art. 15; Additional provisions that must apply to any audit carried out under Art. 15 are listed in Art. 1.6 of Annex B.--Arts. 15.1, 15.3, 15.4, Art. 1.6 of Annex B",
+                "location":{
+                    "image":"122,189,140,166"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175848.js",
+                "id":175848
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Besoins de consommation domestique]//Other - [Domestic consumption requirement]",
+                "page":45,
+                "content":"Murphy and Petroquest must sell and transfer to the Government any amount of crude oil necessary to satisfy domestic consumption requirements. The Government must give Murphy and Petroquest 6 months\u2019 advance written notice of its intention to buy such oil. Murphy and Petroquest\u2019s obligation to sell this oil to the Government will be pro rata to their respective production rates, as with other operators in the Kurdistan region. These provisions regarding crude oil do not apply to non-associated natural gas; Any amounts of crude oil sold to the Government under Art. 27.2 must be sold at the International Market Price, which is the weighted average price per barrel (in US $) obtained by Murphy and Petroquest at the delivery point during the quarter and month ending on the date of valuation for arm\u2019s length sales of crude oil. --Arts. 16.15, 27.2 ",
+                "location":{
+                    "image":"121,188,139,166"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175849.js",
+                "id":175849
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":45,
+                "content":"Murphy and Petroquest can build and maintain any facilities required for petroleum operations, both above and below ground. Further details are provided in Art. 17.5; Murphy and Petroquest can design, construct, operate and maintain pipelines and any related facilities for the transportation of petroleum produce under the contract; Murphy and Petroquest must pay for construction and maintenance costs associated to the pipeline and any related facilities. --Arts. 17.1, 17.5, 33.2, 33.10",
+                "location":{
+                    "image":"279,189,299,166"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175856.js",
+                "id":175856
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es a l'approvisionnement en biens et services locaux//Local procurement requirements",
+                "page":48,
+                "content":"Murphy and Petroquest must give priority to equipment and materials that are readily available in Kurdistan and other parts of Iraq, provided that their price, quality, specifications, delivery and other commercial and technical terms are comparable with those generally available in the international petroleum industry. --Art. 19.4",
+                "location":{
+                    "image":"367,190,389,167"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175839.js",
+                "id":175839
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local//Local employment requirements",
+                "page":49,
+                "content":"In hiring personnel, Murphy and Petroquest (and their subcontractors) must give preference to individuals from Kurdistan and other parts of Iraq, provided that they have the required level of capability, qualifications, competence and experience to do the work; Murphy and Petroquest should also give due consideration to the secondment of Government personnel during the various phases of petroleum operations; Murphy and Petroquest (and its affiliates and subcontractors) may hire foreign personally where personnel from Kurdistan and other parts of Iraq do not meet the requirements for recruitment. --Arts. 23.1-23.3",
+                "location":{
+                    "image":"301,189,324,165"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175838.js",
+                "id":175838
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Fonds pour l'environnement]//Other - [Environment fund]",
+                "page":51,
+                "content":"Murphy and Petroquest must contribute US$150,000 each year during the Exploration Period (first 5 years of the contract term, starting from the effective date) and US$300,000 each year during the Development Period (20 years following a commercial discovery) into the environment fund established by the Government for the benefit of the Kurdistan Region. --Art. 23.9",
+                "location":{
+                    "image":"282,189,303,167"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175852.js",
+                "id":175852
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":51,
+                "content":"Murphy and Petroquest must pay to the Government a portion of petroleum (both crude oil and non-associated natural gas) produced and saved from the contract area (\u201cexport petroleum\u201d), except for petroleum used in petroleum operations, re-injected into the field, lost, flared, or that which cannot be sold. The Royalty due on \u201cexport petroleum\u201d is 10% for both crude oil and natural gas, and must be determined daily. If the Government requires the Royalty to be paid in kind, it must give 90 days\u2019 written notice of this choice prior to commencement of the relevant quarter. If payment of the Royalty is in kind, an amount of export petroleum corresponding to the Royalty will be delivered by Murphy and Petroquest at the delivery point, and title will be transferred to the Government; Associated natural gas is exempt from any Royalty. --Arts. 24.1, 24.2, 24.4, 24.3, 24.5 ",
+                "location":{
+                    "image":"489,191,506,168"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175840.js",
+                "id":175840
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":55,
+                "content":"Murphy and Petroquest\u2019s Share:  To determine the percentage share of profit petroleum due to Murphy and Petroquest, the R Factor must be calculated and applied to the contract area; Under the contract, R is equal to the resulting amount when the cumulative revenues actually received by Murphy and Petroquest are divided by the cumulative costs actually incurred by Murphy and Petroquest; Depending on the outcome of the R Factor calculation, the following percentage share of profit crude oil will be due to Murphy and Petroquest: where R is less than or equal to 1, 32%; where R is greater than 1 and less than or equal to 2, 32% - (32% - 16%) x (R-1); where R is greater than 2, 16%. Depending on the outcome of the R Factor calculation, the following percentage share of profit natural gas will be due to Murphy and Petroquest: where R is less than or equal to 1, 35%; where R is great than 1 and less than or equal to 2, 35% - (35% - 20%) x (R x 1)/ (2.75-1)%; where R is greater than 2.75, 20%; Government\u2019s Share: The Government\u2019s share of profit petroleum must include a portion representing the corporate income tax imposed on Murphy and Petroquest and paid on their behalf directly by the Government. --Arts. 26.1, 26.3 - 26.5, 26.10 ",
+                "location":{
+                    "image":"121,186,138,165"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175844.js",
+                "id":175844
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Vente de la partie du gouvernement]//Other - [Sale of Government's Share}",
+                "page":60,
+                "content":"Upon written request from the Government, Murphy and Petroquest must help the Government sell all or part of its share of crude oil under the contract, provided that Murphy and/ or Petroquest receive a sales commission per barrel. --Art. 28",
+                "location":{
+                    "image":"268,211,285,189"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175860.js",
+                "id":175860
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":63,
+                "content":"Except for the provisions in Art. 31, Murphy and Petroquest (and their affiliates and subcontractors) will, for the entire duration of the contract, be exempt from all taxes as a result of income, assets and activities under the contract; Murphy and Petroquest will be exempt from additional profits tax, surface tax and windfall profits taxes. --Arts. 31.1, 31.4-31.6",
+                "location":{
+                    "image":"166,189,188,166"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175847.js",
+                "id":175847
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":63,
+                "content":"Murphy and Petroquest must pay corporate income tax at the rate set in Law of Taxation (No. 5 of 1999) as amended by Law No. 26 of 2007 (and as may be amended or substituted in the future). The rate of tax paid must not exceed 40%. As of the effective date of the contract, the rate is 15% for all net taxable profits. --Art. 31.3(a) ",
+                "location":{
+                    "image":"409,194,430,167"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175841.js",
+                "id":175841
+            },
+            {
+                "access":"public",
+                "title":"Primes//Bonuses",
+                "page":65,
+                "content":"Murphy must pay a signature bonus of US$625,000 to the Government within 30 days of the effective date, and Petroquest must play a signature bonus of US$375,000 to the Government within 30 days of the signature date; Murphy must pay a capacity building bonus of US$33,750,000 to the Government within 30 days of the effective date, and Petroquest must pay a capacity building bonus of US$20,250,000 to the Government within 30 days of the effective date; In the event of a crude oil commercial discovery, both Murphy and Petroquest and the public company holding the Government\u2019s interest must pay (pro rata the relevant percentage participation interests in the contract) the following crude oil production bonus to the Government within 30 days of the following relevant occurrence: US$2,500,000 when first production of crude oil from the contract area commences, US$5,000,000 when production of crude oil from the contract area reaches a cumulative amount of 10 million barrels, US$10,000,000 when cumulative production reaches 25 million barrels, and US$20,000,000 when cumulative production reaches 50 million barrels; In the event of a non-associated natural gas discovery, both Murphy and Petroquest and the public company holding the Government\u2019s interest must pay (pro rata the relevant percentage participation interests in the contract) the following crude oil production bonus to the Government within 30 days of the following relevant occurrence: US$2,500,000 when first production of non-associated natural gas from the contract area commences, US$5,000,000 when production of non-associated natural gas from the contract area reaches a cumulative amount of 10 million barrels of oil equivalent, US$10,000,000 when cumulative production reaches 25 million barrels, US$20,000,000 when cumulative production reaches 50 million barrels. --Arts. 32.1-32.4 ",
+                "location":{
+                    "image":"134,188,153,163"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175845.js",
+                "id":175845
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":71,
+                "content":"Third parties must be entitled to transport their petroleum through any of Murphy and Petroquest\u2019s pipelines, provided there is space capacity available, the third party\u2019s petroleum is compatible, reasonable commercial terms are negotiated, and Murphy and Petroquest retain priority of use. --Art. 33.4",
+                "location":{
+                    "image":"228,184,247,164"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175857.js",
+                "id":175857
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":75,
+                "content":"Apart from the exceptions contained in Art. 36 and subject to the conditions contained in that Article, all parties under the contract must keep all data and information relating to the contract and petroleum operations confidential during the entire contract term, and must not divulge or disclose information to third parties without the specific consent of the other parties. --Art. 36.7",
+                "location":{
+                    "image":"481,189,499,168"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175864.js",
+                "id":175864
+            },
+            {
+                "access":"public",
+                "title":"Autre [Protection de l'environnement pendant les op\u00e9rations]//Other - [Protection of the environment during operations] ",
+                "page":77,
+                "content":"Murphy and Petroquest must take all reasonable measures to ensure that they (and their subcontractors and agents) attend to the protection of the environment and prevention of pollution, in accordance with international industry practice and applicable Kurdistan Regional Law; Murphy and Petroquest must respect the preservation of property, agricultural areas and fisheries when carrying out petroleum operations. --Arts. 37.1, 37.4",
+                "location":{
+                    "image":"207,189,228,166"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175853.js",
+                "id":175853
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":77,
+                "content":"Murphy and Petroquest must conduct and submit to the Government an environmental impact assessment within 6 months of the effective date. --Art. 37.5",
+                "location":{
+                    "image":"425,192,442,167"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175850.js",
+                "id":175850
+            },
+            {
+                "access":"public",
+                "title":"Autre [Fonds de d\u00e9mant\u00e8lement] //Other - [Decommissioning fund] ",
+                "page":78,
+                "content":"Murphy has the right to establish a \u2018Decommissioning Reserve Fund\u2019 in order to recover the costs associated with the future decommissioning and restoration of the contract area. The Fund can be established at any time during the final 10 years of operations for a particular area. Once established, Murphy must make regular contributions to the Fund based on an estimation of decommissioning and restoration costs. If the Government takes over production operations from Murphy, then the Fund must be paid to the Government (who must then be considered liable for future decommissioning of the site). If the Fund is not sufficient to cover all decommissioning costs, Murphy must pay the additional costs. If the Fund exceeds what is needed, then the surplus must be transferred to the Government. All contributions to the Fund will be considered petroleum costs and are therefore recoverable under Art. 25 (re cost oil and gas).--Arts. 38.1, 38.2, 38.4, 38.5, 38.6",
+                "location":{
+                    "image":"271,193,291,170"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175854.js",
+                "id":175854
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":83,
+                "content":"Where a party gives the other notice that it wishes to submit a dispute for resolution, the parties must first seek settlement of the dispute by negotiation between senior representatives of each party. If the dispute cannot be resolved in this way within the time periods contained in Art. 42.1, then any party to the dispute can seek settlement by mediation in accordance with the London Court of International Arbitration (\u201cLCIA\u201d) Mediation Procedure. If the dispute continues to remain unresolved, any party may refer the dispute to arbitration under the LCIA Rules for final resolution. Details regarding this arbitration procedure are contained in Art. 42.1(c). This method of dispute resolution is also subject to exceptions regarding specific provisions within the contract \u2014 see Art. 42 for further details. --Art. 41.2",
+                "location":{
+                    "image":"169,186,192,166"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175862.js",
+                "id":175862
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":86,
+                "content":"The contract, including any dispute arising under/ from it, is governed by English law together with applicable rules, customs and practices of international law, as well as principles and practice generally accepted in petroleum producing countries and in the international petroleum industry. --Art. 43.1",
+                "location":{
+                    "image":"141,187,160,166"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175861.js",
+                "id":175861
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":92,
+                "content":"2010--Signature page ",
+                "location":{
+                    "image":"97,211,117,187"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175835.js",
+                "id":175835
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":92,
+                "content":"10/14/2010--Signature page ",
+                "location":{
+                    "image":"99,186,116,164"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175834.js",
+                "id":175834
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'imp\u00f4t sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloisonnement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":116,
+                "content":"Murphy must debit from its profit and loss account all charges incurred for petroleum operations, whether these were incurred inside or outside Kurdistan. These charges include those listed in Annex B: Art. 13.3.2. Depreciation must be debited from the account in the following manner: (i) capital expenditures incurred by Murphy for carrying out petroleum operations must be depreciated on a reducing balance basis, (ii) the depreciation rates for different types of assets are listed in Annex B: Art. 13.3.2(d)(ii). Exploration costs are also deductible on a reducing balance basis at the rate of 20% for each year. --Annex B: Arts. 13.3.2 (d) and (e)",
+                "location":{
+                    "image":"128,203,146,179"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010/annotations/175842.js",
+                "id":175842
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Murphy, Petroquest - Kurdistan, 2010",
+        "data":{
+            "Type of Mining Title":"Production Sharing Contract",
+            "Signature Year":"2010",
+            "Resource":"Hydrocarbons",
+            "Countries":"Kurdistan"
+        },
+        "created_at":"Tue, 11 Feb 2014 16:26:20 +0000",
+        "display_language":"eng",
+        "updated_at":"Sat, 11 Apr 2015 17:09:21 +0000",
+        "id":"1016878-murphypetroquest-2010",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1016878/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1016878/murphypetroquest-2010.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1016878/pages/murphypetroquest-2010-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1016878/pages/murphypetroquest-2010-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1016878/murphypetroquest-2010.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1016878/pages/murphypetroquest-2010-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1016878"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":117,
+        "canonical_url":"http://www.documentcloud.org/documents/1016878-murphypetroquest-2010.html"
+    }
+}

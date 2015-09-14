@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"7d099cbcac6d21d65b65069790d49e16c42f0d8d",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"SNH, Parenco, Kosmos - Cameroon, 2008",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2008",
+            "Resource":"Hydrocarbons",
+            "Countries":"Cameroon"
+        },
+        "created_at":"Mon, 19 Jan 2015 23:43:35 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 19 Jan 2015 23:51:30 +0000",
+        "id":"1505268-snh-parenco-kosmos-cameroon-2008",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505268/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505268/snh-parenco-kosmos-cameroon-2008.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505268/pages/snh-parenco-kosmos-cameroon-2008-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505268/pages/snh-parenco-kosmos-cameroon-2008-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505268/snh-parenco-kosmos-cameroon-2008.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505268/pages/snh-parenco-kosmos-cameroon-2008-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505268"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":46,
+        "canonical_url":"http://www.documentcloud.org/documents/1505268-snh-parenco-kosmos-cameroon-2008.html"
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "document":{
+        "file_hash":"c3c513959a59c0b84d2cfd29230f8fe4448dea2e",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"D\u00e9cret de Mise en Oeuvre de la Revue des Titres et Conventions Miniers",
+        "data":{},
+        "created_at":"Wed, 14 Nov 2012 05:56:01 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 14 Nov 2012 06:02:09 +0000",
+        "id":"515241-decret-de-mise-en-oeuvre-de-la-revue-des-titres",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/515241/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/515241/decret-de-mise-en-oeuvre-de-la-revue-des-titres.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/515241/pages/decret-de-mise-en-oeuvre-de-la-revue-des-titres-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/515241/pages/decret-de-mise-en-oeuvre-de-la-revue-des-titres-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/515241/decret-de-mise-en-oeuvre-de-la-revue-des-titres.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/515241/pages/decret-de-mise-en-oeuvre-de-la-revue-des-titres-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=515241"
+        },
+        "contributor":"Jed Miller",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":7,
+        "canonical_url":"http://www.documentcloud.org/documents/515241-decret-de-mise-en-oeuvre-de-la-revue-des-titres.html"
+    }
+}

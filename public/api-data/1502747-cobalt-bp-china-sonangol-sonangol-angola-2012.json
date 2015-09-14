@@ -1,0 +1,446 @@
+{
+    "document":{
+        "file_hash":"0cd3e71b402518c863233550bb3479f83670554b",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de p\u00e9trole/ gas//Name and/or number of field, block or deposit",
+                "page":1,
+                "content":"Block 20/11--Preamble",
+                "location":{
+                    "image":"380,302,419,270"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197602.js",
+                "id":197602
+            },
+            {
+                "access":"public",
+                "title":"Nom du projet//Project title",
+                "page":1,
+                "content":"Production Sharing Contract between Sociedade Nacional de Combustiveis de Angola Empresa Publica - (Sonangol, E.P.) and CIE Angola Block  20 LTD., Sonangol Pesquisa e Producao, S.A., BP Exploration Angola (Kwanza Benguela) Limited, China Sonangol International Holding Limited in the Area of Block 20/11--Preamble",
+                "location":{
+                    "image":"75,243,111,214"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197601.js",
+                "id":197601
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":3,
+                "content":"Production Sharing Contract--Preamble",
+                "location":{
+                    "image":"545,442,579,412"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197600.js",
+                "id":197600
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":3,
+                "content":"CIE Angola Block 20 LTD (referred to as Cobalt) which will also be the initial operator; Sonangol Pesquisa e Producao, SA (referred to as Sonangol P&amp;P) which will take on operatorship by 5th anniversary of commercial production; BP Exploration Angola (Kwanza Benguela) Limited (referred to as BP); China Sonangol International Holding Limited (referred to as China Sonangol) --Preamble, Annex F",
+                "location":{
+                    "image":"546,237,577,209"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197610.js",
+                "id":197610
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales //Parent companies or affilates outside of the country, if different from the above mentioned; and their corporate headquarters",
+                "page":3,
+                "content":"Cobalt, Cayman Islands; BP Exploration Angola (Kwanza Benguela) Limited, England - 07521628  (opencorporate.com); BP LEI - 549300CC4BI5U2VDJV83; China Sonangol - 0921071 (opencorporate.com); Hong Kong--Preamble ",
+                "location":{
+                    "image":"546,264,579,234"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197599.js",
+                "id":197599
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":3,
+                "content":"Angola--Preamble",
+                "location":{
+                    "image":"548,309,577,281"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197593.js",
+                "id":197593
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":3,
+                "content":"CIE Angola Block 20 LTD (referred to as Cobalt); Sonangol Pesquisa e Producao, SA (referred to as Sonangol P&amp;P); BP Exploration Angola (Kwanza Benguela) Limited (referred to as BP); China Sonangol International Holding Limited (referred to as China Sonangol) --Preamble",
+                "location":{
+                    "image":"549,287,579,258"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197596.js",
+                "id":197596
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":3,
+                "content":"Sociedade Nacional de Combustiveis de Angola, Empresa Publica (Sonangol, E.P.), (referred to as Sonangol)--Preamble",
+                "location":{
+                    "image":"646,38,689,9"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197611.js",
+                "id":197611
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":4,
+                "content":"Hydrocarbons--Preamble",
+                "location":{
+                    "image":"54,41,100,10"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197620.js",
+                "id":197620
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":5,
+                "content":"40909--Art. 1.15",
+                "location":{
+                    "image":"738,43,779,12"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197647.js",
+                "id":197647
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e d'octroi du permis d'exploitation ou concession//Year of issue of title/permit",
+                "page":5,
+                "content":"2012--Art. 1.15",
+                "location":{
+                    "image":"738,85,781,52"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197648.js",
+                "id":197648
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":5,
+                "content":"Contractor Group may construct and install pipelines, facilities, plants and related activities necessary to produce and operate wells and transport petroleum as approved as part of the development and production work plan. If necessary, the building and maintenance of crude oil storage tanks will be the responsibility of  Contractor Group. Contractor Group is responsible for the costs of constructing gas infrastructure though those costs are recoverable. Once built, the gas infrastructure will be managed by Sonangol who will also bear the costs--Arts. 1.18, 19, 20.3, 29.3",
+                "location":{
+                    "image":"881,44,925,12"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197640.js",
+                "id":197640
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e ou envisag\u00e9e//Name and/or composition of the company created or anticipated",
+                "page":6,
+                "content":"\"Cobalt, Sonangol P&amp;P, BP, and China Sonangol will be collectively referred to in the contract as Contractor Group -  Cobalt (40%),  Sonangol P&amp;P (30%)- BP(20%)-\n- China Sonangol (10%)\n\ufffc\n\ufffc\n\ufffc--Art. 1.30\"",
+                "location":{
+                    "image":"732,63,767,32"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197612.js",
+                "id":197612
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":10,
+                "content":"If commercial discoveries are made, the production period for each development area will be 30 years for each field from the date of commercial discovery in that area--Art. 7",
+                "location":{
+                    "image":"608,336,640,310"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197618.js",
+                "id":197618
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, cr\u00e9dit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":12,
+                "content":"Contractor Group is allowed to recover all costs and expenses under this contract up to 50% per year of all crude oil produced. Allowable costs include exploration, development, production and administration and services expenditures. The recovery limit can increase to 65% per year if development expenditures are not fully recovered within the latter of :  5 years after the commencement of commercial production or 5 years after when the expenditure incurred.--Arts. 11.1, 11.4",
+                "location":{
+                    "image":"736,42,780,10"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197630.js",
+                "id":197630
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - El\u00e9ments de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":13,
+                "content":"Each quarter all available petroleum remaining from each development area after deducting  cost recovery crude oil and crude oil used in petroleum operations is considered development area profit oil and will be shared between Sonangol and Contractor Group according to the after tax, nominal rate of return  achieved at the end of the previous quarter in that development area. If the rate of return is less than 15, Sonangol receives 30%. If it is between 15 to less than 20, Sonangol receives 40%. If it is between 20 to less than 30, Sonangol receives 75%. If it is 30 to less than 40, Sonangol receives 85%. If the rate of return is 40 or more, Sonangol receives 90%. (The rate of return is determined on the basis of the accumulated compounded net cash flow for each development area using the formula outlined in Art. 12.2(C).--Art. 12",
+                "location":{
+                    "image":"235,336,270,311"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197631.js",
+                "id":197631
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":13,
+                "content":"Rates are established in the 2004 Petroleum Activities Tax Law (Law No. 13/04) --Arts. 12.2, 1.33",
+                "location":{
+                    "image":"533,36,578,8"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197626.js",
+                "id":197626
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es a l'approvisionnement en biens et services locaux//Local procurement requirements",
+                "page":15,
+                "content":"Contractor Group must use local contractors as long as their services are similar in quality and  availability to those on the international market and prices - when subjected to the same tax charges - are no more than 10% higher. Contractor Group must also purchase Angolan materials, equipment, and consumable goods so long as their quantity, quality and delivery dates are similar to those on the international market and the cost is no more than 10% higher. --Art. 14.4",
+                "location":{
+                    "image":"342,40,377,10"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197622.js",
+                "id":197622
+            },
+            {
+                "access":"public",
+                "title":"La s\u00e9curit\u00e9 physique, la protection de la propri\u00e9t\u00e9, et / ou l'utilisation des gardes//Physical security, protection of property, and/or use of guards",
+                "page":15,
+                "content":"In the case of emergency requiring immediate action, Contractor Group may take all actions it deems necessary for the protection of human life, property, the interests of the parties and the environment--Art. 14.8",
+                "location":{
+                    "image":"892,38,935,12"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197623.js",
+                "id":197623
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":17,
+                "content":"At least 3 months prior to the beginning of each calendar year during the exploration period, Contractor Group is required to prepare an exploration work plan and budget setting forth the exploration operations which it plans to carry out during the year. Contractor Group is required to spend a minimum of US $360 million in the initial exploration phase and US $190 million in the optional additional exploration phase. If a commercial discovery is made, Contractor Group must submit a draft general development and production plan within 30 days. Following the approval of the plan, every year Contractor Group must prepare a production plan in addition to the other plans (if still applicable). --Arts. 16, 15.8",
+                "location":{
+                    "image":"868,342,905,315"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197638.js",
+                "id":197638
+            },
+            {
+                "access":"public",
+                "title":"Primes//Bonuses",
+                "page":21,
+                "content":"Cobalt, BP and China Sonangol are required to pay a US $7.5 million signature bonus and contribute US $200 million for social projects on the effective date of the contract. An additional contribution of US $350 million is required in five installments for the Sonangol Research and Technology Center. These bonuses and contributions are not recoverable and will be shared as follows: Cobalt 57.14%, BP 28.57% and China Sonangol 14.29%.--Art. 22",
+                "location":{
+                    "image":"46,341,78,315"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197632.js",
+                "id":197632
+            },
+            {
+                "access":"public",
+                "title":"Autre - [le nom de cat\u00e9gorie]//Other - [Obligation to Purchase]",
+                "page":23,
+                "content":"At the time the oil is lifted Sonangol can require Contractor Group to purchase any part of Sonangol's share of production under normal commercial terms and at market price--Art. 25",
+                "location":{
+                    "image":"153,342,190,314"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197636.js",
+                "id":197636
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'imp\u00f4t sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloisonnement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":23,
+                "content":"Sonangol has the right to buy crude oil from Contractor Group at market price in an amount equivalent in value to the income tax due by Contractor Group. --Art. 26",
+                "location":{
+                    "image":"511,337,547,309"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197629.js",
+                "id":197629
+            },
+            {
+                "access":"public",
+                "title":"Autre - [Responsabilit\u00e9 environnementale]//Other - [Abandonment]",
+                "page":24,
+                "content":"Contractor Group is required to hand over in a good state of repair and operation, all the infrastructure and equipment in the development area within 60 days of the end of the contract or following abandonment and decommissioning. If at that point Sonangol requires, Contractor Group must abandon the wells and decommission the facilities according to the Petroleum Activities Law. Following that, Contractor Group has no further responsibilities or obligations to that infrastructure except in cases of gross negligence, willful misconduct or serious fault. --Arts. 28.2, 28.5",
+                "location":{
+                    "image":"824,37,859,8"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197637.js",
+                "id":197637
+            },
+            {
+                "access":"public",
+                "title":"Autre - [le nom de cat\u00e9gorie]//Other - [Training]",
+                "page":31,
+                "content":"Contractor Group is required to train all its Angolan personnel who are involved in petroleum operations for the purpose of gradually bringing their knowledge and qualification to that of Contractor Group's foreign workers. Training has to include petroleum technology and management, enabling Angolan personnel to use the most advanced and appropriate technology related to petroleum operations, including proprietary and patented technology to the extent permitted by applicable laws and agreements. Contractor Group is required to submit its training plans and monitor implementation. Contractor Group is also required to train Sonangol personnel in petroleum operations, the costs of which are recoverable from cost petroleum.--Art. 36",
+                "location":{
+                    "image":"544,337,581,312"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197625.js",
+                "id":197625
+            },
+            {
+                "access":"public",
+                "title":"Obligations li\u00e9es \u00e0 l'emploi du personnel local//Local employment requirements",
+                "page":31,
+                "content":"\"The Contractor Group is required to comply with Decree-Law No. 17/09 from 26 June 2009 as well as applicable legislation regarding the recruitment, integration and training of Angolan personnel. However, the Operator has the right to staff the Petroleum Operations with those whom it believes are necessary for efficient administration and operation, without considering citizenship or residency. \n--Art.11.10, Art. 36.1\"",
+                "location":{
+                    "image":"598,55,634,26"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197621.js",
+                "id":197621
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: exon\u00e9ration//Income tax: exemptions",
+                "page":32,
+                "content":"Sonangol will consider any amendments or revisions to this contract that will avoid the international double taxation of Contractor Group's income, so long as those revisions do not impact on Sonangol or Angola's economic benefits resulting from this contract--Art. 37.1",
+                "location":{
+                    "image":"187,41,224,12"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197628.js",
+                "id":197628
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":32,
+                "content":"In the event of changes in the provisions of any law, decree or regulation after the signing of the contract which adversely affects its obligations, rights and benefits, then both parties will agree on contract amendments to restore the contract's original rights, obligations and benefits--Art. 37.2",
+                "location":{
+                    "image":"248,41,292,11"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197644.js",
+                "id":197644
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":34,
+                "content":"This contract and, unless otherwise agreed, all technical, economic, accounting, or any other data developed through the conduct of petroleum operations is strictly confidential with the exception of affiliates, in connection with the arranging of financing, or to employees, consultants or other third parties needed to execute petroleum operations providing they agree to the confidentiality requirement. Disclosure is also allowed to the extent required by applicable law.--Arts. 40, 33.2",
+                "location":{
+                    "image":"191,344,226,318"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197645.js",
+                "id":197645
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":34,
+                "content":"Any disputes between Contractor Group and Sonangol that cant be resolved amicably within 90 days, can be submitted to be  settled by arbitration in accordance with the UNCITRAL Arbitration Rules. There will be 3 arbitrators, one appointed by each party and the third jointly appointed by the two parties. Arbitration will take place in Luanda, Angola. Both parties waive immunity against validity or enforcement of any award resulting from arbitration. --Art. 41",
+                "location":{
+                    "image":"509,341,545,313"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197643.js",
+                "id":197643
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":34,
+                "content":"Angolan law will govern any dispute--Art. 41 .4",
+                "location":{
+                    "image":"880,35,914,9"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197642.js",
+                "id":197642
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":35,
+                "content":"The contract was prepared and signed in Portuguese, which is the only valid official version--Art. 44",
+                "location":{
+                    "image":"589,342,630,314"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197646.js",
+                "id":197646
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":36,
+                "content":"2011--Signature",
+                "location":{
+                    "image":"396,71,435,41"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197614.js",
+                "id":197614
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":36,
+                "content":"20/12/2011--Signature",
+                "location":{
+                    "image":"397,37,436,10"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197613.js",
+                "id":197613
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep) ",
+                "page":36,
+                "content":"Location coordinates detailed in Annex A and mapped in Annex B--Annex A, Annex B",
+                "location":{
+                    "image":"866,334,902,307"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197603.js",
+                "id":197603
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":40,
+                "content":"An annual audit of Contractor Group's accounting records will be conducted by an international independent auditing company selected by Sonangol. Sonangol also has the right, upon giving reasonable notice, to carry out operational inspections or audits of all facilities, records, documents or assets of any kind to verify compliance with contract provisions.--Annex C (Art. 1.5)",
+                "location":{
+                    "image":"851,44,898,12"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197634.js",
+                "id":197634
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":42,
+                "content":"In order for the services provided by affiliates of the operator or Sonangol to be eligible as expenses debited to the joint account they must meet conditions, including preapproval, detailed in Annex C--Annex C (Arts. 2.4, 2.5b) ",
+                "location":{
+                    "image":"782,46,831,9"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012/annotations/197635.js",
+                "id":197635
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Cobalt, BP, China Sonangol, Sonangol - Angola, 2012",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2012",
+            "Resource":"Hydrocarbons",
+            "Countries":"Angola"
+        },
+        "created_at":"Thu, 15 Jan 2015 16:48:24 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 14 Apr 2015 11:12:41 +0000",
+        "id":"1502747-cobalt-bp-china-sonangol-sonangol-angola-2012",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1502747/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1502747/cobalt-bp-china-sonangol-sonangol-angola-2012.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1502747/pages/cobalt-bp-china-sonangol-sonangol-angola-2012-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1502747/pages/cobalt-bp-china-sonangol-sonangol-angola-2012-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1502747/cobalt-bp-china-sonangol-sonangol-angola-2012.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1502747/pages/cobalt-bp-china-sonangol-sonangol-angola-2012-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1502747"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":54,
+        "canonical_url":"http://www.documentcloud.org/documents/1502747-cobalt-bp-china-sonangol-sonangol-angola-2012.html"
+    }
+}

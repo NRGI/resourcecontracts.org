@@ -1,0 +1,94 @@
+{
+    "document":{
+        "file_hash":"36bd2b6f53ac1279eb97f535b4bf7ed7832c0395",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Production Sharing",
+                "location":{
+                    "image":"152,270,173,241"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/810790-psc-cnpc-bloc-ta21/annotations/129309.js",
+                "id":129309
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Mauritania",
+                "location":{
+                    "image":"189,281,215,251"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/810790-psc-cnpc-bloc-ta21/annotations/129303.js",
+                "id":129303
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat//Name of company executing the document ",
+                "page":1,
+                "content":"CNPC International Limited",
+                "location":{
+                    "image":"229,139,253,109"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/810790-psc-cnpc-bloc-ta21/annotations/129315.js",
+                "id":129315
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":1,
+                "content":"2004",
+                "location":{
+                    "image":"369,238,394,209"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/810790-psc-cnpc-bloc-ta21/annotations/129306.js",
+                "id":129306
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":1,
+                "content":"Hydrocarbons",
+                "location":{
+                    "image":"644,102,657,78"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/810790-psc-cnpc-bloc-ta21/annotations/129316.js",
+                "id":129316
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"CNPC BlocTa21 - Mauritania, 2004",
+        "data":{
+            "Type of Mining Title":"Production Sharing Contract",
+            "Signature Year":"2004",
+            "Resource":"Hydrocarbons",
+            "Countries":"Mauritania"
+        },
+        "created_at":"Mon, 28 Oct 2013 16:21:42 +0000",
+        "display_language":"eng",
+        "updated_at":"Thu, 21 Nov 2013 19:47:39 +0000",
+        "id":"810790-psc-cnpc-bloc-ta21",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/810790/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/810790/psc-cnpc-bloc-ta21.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/810790/pages/psc-cnpc-bloc-ta21-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/810790/pages/psc-cnpc-bloc-ta21-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/810790/psc-cnpc-bloc-ta21.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/810790/pages/psc-cnpc-bloc-ta21-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=810790"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":15,
+        "canonical_url":"http://www.documentcloud.org/documents/810790-psc-cnpc-bloc-ta21.html"
+    }
+}

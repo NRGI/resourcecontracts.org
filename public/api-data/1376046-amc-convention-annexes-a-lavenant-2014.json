@@ -1,0 +1,36 @@
+{
+    "document":{
+        "file_hash":"238ae797ed90b6182452d1769f4c638e25edb7cd",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"AMC, Convention Annexes a l'Avenant 2014 - Guin\u00e9e",
+        "data":{
+            "Signature Year":"2014",
+            "Countries":"Guinea"
+        },
+        "created_at":"Sun, 07 Dec 2014 00:47:47 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 29 Apr 2015 14:11:39 +0000",
+        "id":"1376046-amc-convention-annexes-a-lavenant-2014",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1376046/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1376046/amc-convention-annexes-a-lavenant-2014.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1376046/pages/amc-convention-annexes-a-lavenant-2014-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1376046/pages/amc-convention-annexes-a-lavenant-2014-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1376046/amc-convention-annexes-a-lavenant-2014.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1376046/pages/amc-convention-annexes-a-lavenant-2014-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1376046"
+        },
+        "contributor":"Jed Miller",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":14,
+        "canonical_url":"http://www.documentcloud.org/documents/1376046-amc-convention-annexes-a-lavenant-2014.html"
+    }
+}

@@ -1,0 +1,359 @@
+{
+    "document":{
+        "file_hash":"26790aaebb320999b0ccf6dc7cbf80bf40d5f79a",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Burkina Faso--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"223,241,257,196"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100427.js",
+                "id":100427
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":1,
+                "content":"Societe des Mines de Belahouro S.A--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"348,144,389,107"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100433.js",
+                "id":100433
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":1,
+                "content":"Societe des Mines de Belahouro S.A--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"355,192,394,151"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100428.js",
+                "id":100428
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement//Deposit/site name",
+                "page":1,
+                "content":"Mine de Inata--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"410,143,446,102"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100430.js",
+                "id":100430
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":1,
+                "content":"30 aout 2007--Signatures\n",
+                "location":{
+                    "image":"582,645,613,611"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100435.js",
+                "id":100435
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":1,
+                "content":"2007--Signatures\n",
+                "location":{
+                    "image":"629,641,663,604"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100436.js",
+                "id":100436
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":1,
+                "content":"Ministre des mines, des carri\u00e8res et de l'\u00e9nergie--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"84,156,125,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100434.js",
+                "id":100434
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":3,
+                "content":"Tout minerai ou substance min\u00e9rale extrait du p\u00e9rim\u00e8tre \u00e0 des fins commerciales--Art. 1.1\n",
+                "location":{
+                    "image":"136,68,172,33"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100438.js",
+                "id":100438
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":5,
+                "content":"Permis de recherche et d'exploitation--Definitions\n",
+                "location":{
+                    "image":"393,64,427,26"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100429.js",
+                "id":100429
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":11,
+                "content":"La dur\u00e9e de la convention correspond \u00e0 la dur\u00e9e du permis d'exploitation, renouvelable pour une ou plusieurs periodes de 10 ans--Art. 5\n",
+                "location":{
+                    "image":"12,67,42,31"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100437.js",
+                "id":100437
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":11,
+                "content":"Priorit\u00e9 \u00e0 l'achat aupr\u00e8s d'entreprises locales si services, mati\u00e8res premi\u00e8res et produits sont disponibles \u00e0 des conditions comp\u00e9titives de prix, qualit\u00e9, quantit\u00e9, d\u00e9lais de livraison.--Art. 6\n",
+                "location":{
+                    "image":"330,62,363,30"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100441.js",
+                "id":100441
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":11,
+                "content":"L'investisseur s'engage \u00e0 employer en priorit\u00e9 du personnel local et de permettre son accession \u00e0 des emplois en rapport avec ses qualifications. L'investisseur mettra en place un plan de formation et de promotion de ce personnel. L'investisseur remplacera au fur et \u00e0 mesure le personnel expatrie par le personnel local ayant re\u00e7u cette formation--Art. 7.1\n",
+                "location":{
+                    "image":"467,66,500,32"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100440.js",
+                "id":100440
+            },
+            {
+                "access":"public",
+                "title":"Convention de d\u00e9veloppement local//Local development agreement",
+                "page":11,
+                "content":"A partir de la premi\u00e8re production commerciale, l'investisseur s'engage \u00e0 cr\u00e9er, augmenter ou am\u00e9liorer une infrastructure m\u00e9dicale et scolaire \u00e0 une distance raisonnable du gisement correspondant aux besoins normaux des travailleurs et de leurs familles.--Art. 7.3\n",
+                "location":{
+                    "image":"738,82,773,42"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100439.js",
+                "id":100439
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":15,
+                "content":"L'investisseur pr\u00e9servera les infrastructures utilis\u00e9e et toute d\u00e9t\u00e9rioration au-del\u00e0 de l'usage normal devra \u00eatre r\u00e9par\u00e9 par l'investisseur--Art. 11.1\n",
+                "location":{
+                    "image":"157,78,192,39"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100452.js",
+                "id":100452
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":15,
+                "content":"L'investisseur s'engage \u00e0 respecter l'\u00e9tude ou la notice d'impact environnementale r\u00e9alis\u00e9e lors de la demande de permis d'exploitation--Art.11.2\n",
+                "location":{
+                    "image":"228,88,263,50"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100450.js",
+                "id":100450
+            },
+            {
+                "access":"public",
+                "title":"Autre - Dispositions environnementales//Other - Environmental provisions",
+                "page":15,
+                "content":"L'investisseur devra faire un rapport concernant son activit\u00e9 en mati\u00e8re de protection de l'environnement lors des rapports d'activit\u00e9s dus par le titulaire de tout titre minier. L'investisseur devra alimenter un compte la Banque Centrale des \u00c9tats d'Afrique de l'Ouest en vue d'\u00e9tablir un fond de pr\u00e9servation et r\u00e9habilitation de l'environnement. Les modalit\u00e9s sont d\u00e9finies par la r\u00e8glementation mini\u00e8re et ces sommes sont d\u00e9ductibles du BIC.--Art 11.2 et 11.3\n",
+                "location":{
+                    "image":"280,78,316,42"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100451.js",
+                "id":100451
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":17,
+                "content":"Dans le cas d'un octroi de permis d'exploitation de grande mine, l'Etat recevra une participation de 10% dans la soci\u00e9t\u00e9 d'exploitation, libre de toutes charges. L'Etat pourra souscrire des actions de numeraires de la societe d'exploitation.--Art. 13.1 et 13.2\n",
+                "location":{
+                    "image":"86,64,124,25"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100446.js",
+                "id":100446
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":19,
+                "content":"L'Etat garantie \u00e0 l'investisseur et ses affili\u00e9es la stabilit\u00e9  du r\u00e9gime fiscal et douaniers , et des r\u00e8glementation de change. Les taux d'assiette des imp\u00f4ts et des taxes vises \u00e0 la convention demeureront les m\u00eames que ceux qu'ils \u00e9taient \u00e0 la date d'attribution du permis.--Art. 18.1\n",
+                "location":{
+                    "image":"575,81,613,45"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100456.js",
+                "id":100456
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining tax/royalty tax",
+                "page":21,
+                "content":"Redevance proportionnelle trimestrielle calcul\u00e9e en pourcentage de la valeur FOB de la production trimestrielle. Ces redevances sont d\u00e9crites \u00e0 l'article 12 de l'annexe 4: 7% pour les diamants et pierres pr\u00e9cieuses, 4% pour les m\u00e9taux de bases et autres substances min\u00e9rales, 3% pour l'or industriel et les m\u00e9taux pr\u00e9cieux. Pour l'or produit artisanalement, d\u00e9cote de 100 FCFA/gramme avant d'appliquer le taux de 3%.--Art. 19.3  et Article 12 de l'annexe 4\n",
+                "location":{
+                    "image":"441,73,479,34"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100442.js",
+                "id":100442
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":21,
+                "content":"D\u00e9termin\u00e9 par la r\u00e8glementation mini\u00e8re en la mati\u00e8re, jointe \u00e0 l'annexe 4 de la convention--Art. 19.4\n",
+                "location":{
+                    "image":"543,76,581,37"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100444.js",
+                "id":100444
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: \u00e9xoneration//Income tax: exemptions",
+                "page":21,
+                "content":"Imp\u00f4t sur le revenu r\u00e9duit de 10 points  pendant la phase de recherche--Art. 20.1(a)\n",
+                "location":{
+                    "image":"727,118,760,85"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100445.js",
+                "id":100445
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":23,
+                "content":"Avantages fiscaux pendant la phase de travaux pr\u00e9paratoires, qui consistent en une exon\u00e9ration de la TVA pour les \u00e9quipements importes et les services des entreprises de g\u00e9o servies. Avantages fiscaux pendant la phase de production, incluant exon\u00e9ration pendant 7 ans de l'Imp\u00f4t Minimum Forfaitaire sur les professions industrielles et commerciales, contribution de patente, la TPA et la TBM. Exoneration des droits de douane pendant la periode de travaux preparatoires--Art. 20.1 (b) et  20.2 \n",
+                "location":{
+                    "image":"142,106,177,72"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100447.js",
+                "id":100447
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":25,
+                "content":"Avantages fiscaux pendant la phase de travaux pr\u00e9paratoires, qui consistent en une exon\u00e9ration de la TVA pour les \u00e9quipements importes et les services des entreprises de g\u00e9o servies. Avantages fiscaux pendant la phase de production, incluant exon\u00e9ration pendant 7 ans de l'Imp\u00f4t Minimum Forfaitaire sur les professions industrielles et commerciales, contribution de patente, la TPA et la TBM. Exoneration des droits de douane pendant la periode de travaux preparatoires--Art. 20.1 (b) et 20.2 \n",
+                "location":{
+                    "image":"238,101,270,67"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100448.js",
+                "id":100448
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":31,
+                "content":"L'investisseur devra tenir une comptabilit\u00e9 d\u00e9taill\u00e9e conform\u00e9ment au plan comptable au Burkina Faso. L'investisseur fera v\u00e9rifier annuellement et \u00e0 ses frais ses \u00e9tats financiers par un cabinet comptable autoris\u00e9 \u00e0 exercer au Burkina Faso. Les repr\u00e9sentants de l'Etat peuvent inspecter \u00e0 tout moment les installations et documents relatifs aux installations mini\u00e8re. L'Etat peut se faire assister \u00e0 ses frais par une soci\u00e9t\u00e9 d'audit reconnue.--Art. 26\n",
+                "location":{
+                    "image":"594,60,628,18"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100449.js",
+                "id":100449
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":35,
+                "content":"Priorit\u00e9 au r\u00e8glement \u00e0 l'amiable. En cas d'\u00e9chec, r\u00e8glement du litige pour les mati\u00e8res autres que purement techniques et/ou dont le montant est sup\u00e9rieur \u00e0 $500,000, le litige sera soumis \u00e0 l'arbitrage de la Chambre de Commerce Internationale, dont le r\u00e8glement est en Annexe 5. L'arbitrage se tiendra \u00e0 Paris.--Art. 28.2\n",
+                "location":{
+                    "image":"206,74,237,40"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100454.js",
+                "id":100454
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":35,
+                "content":"Fran\u00e7aise--Art. 29.1\n",
+                "location":{
+                    "image":"527,77,559,40"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100455.js",
+                "id":100455
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":35,
+                "content":"Droit du Burkina Faso--Art. 30\n",
+                "location":{
+                    "image":"707,69,741,32"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100453.js",
+                "id":100453
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":48,
+                "content":"25 mai 2007--Annexe 2\n",
+                "location":{
+                    "image":"142,448,176,414"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100431.js",
+                "id":100431
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e d'octroi du permis d'exploitation ou concession//Year of issue of title/permit",
+                "page":48,
+                "content":"2007--Annexe 2\n",
+                "location":{
+                    "image":"143,404,183,367"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/693478-smb-inata/annotations/100432.js",
+                "id":100432
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Societe des Mines de Belahouro - Burkina Faso, 2007",
+        "data":{
+            "Signature Date":"30/08/2007",
+            "Type of Mining Title":"Exploitation Permit/License",
+            "Signature Year":"2007",
+            "Resource":"Minerals",
+            "Countries":"Burkina Faso"
+        },
+        "created_at":"Thu, 25 Apr 2013 18:59:22 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 03 Feb 2015 14:07:17 +0000",
+        "id":"693478-smb-inata",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/693478/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/693478/smb-inata.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/693478/pages/smb-inata-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/693478/pages/smb-inata-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/693478/smb-inata.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/693478/pages/smb-inata-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=693478"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":72,
+        "canonical_url":"http://www.documentcloud.org/documents/693478-smb-inata.html"
+    }
+}

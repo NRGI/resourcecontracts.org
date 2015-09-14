@@ -1,0 +1,249 @@
+{
+    "document":{
+        "file_hash":"0fcab241ddbb46ac1b1da3d1ab9dd4181df80707",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom du projet//Project title",
+                "page":1,
+                "content":"Haute Mer C--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"116,536,147,492"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124946.js",
+                "id":124946
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Republic of  Congo--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"188,82,218,39"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124941.js",
+                "id":124941
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":1,
+                "content":"Ministre des hydrocarbures--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"209,651,241,611"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124954.js",
+                "id":124954
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":1,
+                "content":"Total E&amp;P Congo--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"319,89,350,44"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124943.js",
+                "id":124943
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":1,
+                "content":"Total E&amp;P Congo, soci\u00e9t\u00e9 de droit congolais--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"324,659,360,617"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124953.js",
+                "id":124953
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep)",
+                "page":1,
+                "content":"Haute Mer --Pr\u00e9ambule\n",
+                "location":{
+                    "image":"615,90,652,44"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124948.js",
+                "id":124948
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":1,
+                "content":"26 septembre 2003 --Preambule\n",
+                "location":{
+                    "image":"623,672,657,636"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124949.js",
+                "id":124949
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e d'octroi du permis d'exploitation ou concession//Year of issue of title/permit",
+                "page":1,
+                "content":"2003--Preambule\n",
+                "location":{
+                    "image":"667,682,701,636"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124951.js",
+                "id":124951
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Production Sharing--Pr\u00e9ambule\n",
+                "location":{
+                    "image":"77,563,109,527"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124945.js",
+                "id":124945
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":5,
+                "content":"Hydrocarbons --Art. 2\n",
+                "location":{
+                    "image":"408,91,441,46"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124958.js",
+                "id":124958
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":5,
+                "content":"L'operateur devra tenir la comptabilit\u00e9 des Travaux P\u00e9troliers, pr\u00e9parer et soumettre annuellement au Congo les comptes, conform\u00e9ment aux dispositions de la Proc\u00e9dure \u00c7omptable--Art. 3.3\n",
+                "location":{
+                    "image":"677,94,712,51"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124963.js",
+                "id":124963
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - Elements de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, credit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":16,
+                "content":"Le contracteur assurera le financement de l'int\u00e9gralit\u00e9 des couts p\u00e9troliers. Le remboursement de ces co\u00fbts p\u00e9troliers se fera par le pr\u00e9l\u00e8vement par le contracteur chaque ann\u00e9e d'une part de la production d'hydrocarbure (le \"\"Cost Oil\"\"). Ce recouvrement des co\u00fbts ne pourra pas aller au-del\u00e0 d'un valeur maximale du Cost Oil (le \"\"Cost Stop\"\").  Le Cost Stop est variable selon le prix du p\u00e9trole (le limite sur le recouvrement des co\u00fbts est plus \u00e9lev\u00e9 quand le prix du p\u00e9trole est plus bas) et est d\u00e9termin\u00e9 ainsi:\n\u2022 Prix inf\u00e9rieur \u00e0 $10 par baril \u2013 Cost Stop de 84% x prix par baril x barils produits\n\u2022 Prix entre $10 et $14 par baril \u2013 Cost Stop de $8.4 x barils produits \n\u2022 Prix entre $14 et $22 par baril \u2013 Cost Stop de 60% x prix par baril x barils produits\n\u2022 Prix sup\u00e9rieurs \u00e0 $22 par baril \u2013 Cost Stop de 60% x $22 (valeur actualis\u00e9e par un indice de l\u2019inflation aux Etats-Unis) x barils produits\nLe contrat pr\u00e9voit un report sur les ann\u00e9es suivantes des co\u00fbts p\u00e9troliers non r\u00e9cup\u00e9r\u00e9s en raison des limitations de recouvrement des co\u00fbts.\nLes limites sur le recouvrement des co\u00fbts ne s\u2019applique pas aux co\u00fbts p\u00e9troliers s\u2019agissant de fonds \u00e0 investissements vers\u00e9s par le Contracteur au Congo selon la Provision pour Investissement Diversifi\u00e9s (\u00ab PID \u00bb). Le montant de la PID est fix\u00e9 pour chaque ann\u00e9e \u00e0 1% de la valeur de la production. La PID est destin\u00e9 pour la promotion des petites et moyennes entreprises et le financement des projets de promoteurs nationaux. \n \n--Arts. 7.2.1-7.2.5\n",
+                "location":{
+                    "image":"82,72,117,31"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124961.js",
+                "id":124961
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - Elements de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":18,
+                "content":"Apr\u00e8s la d\u00e9duction de redevance mini\u00e8re et de recouvrement des couts en tant que \"\"cost oil\"\" par le contracteur, le reste de la production (le \u00ab Profit Oil \u00bb) sera partag\u00e9 entre le Contracteur et la R\u00e9publique du Congo de la mani\u00e8re suivante :\n\u2022 Pour une production entre 0 et 100 millions de barils, 40 % du Profit Oil ira \u00e0 la R\u00e9publique du Congo et 60 % au Contracteur\n\u2022 Pour une Production sup\u00e9rieure \u00e0 100 millions de barils, 50 % du Profit Oil ira \u00e0 la R\u00e9publique du Congo et 50 % au Contracteur\nMais la r\u00e9partition du Profit Oil est modifi\u00e9 dans les circonstances suivantes :\n\u2022 Si le Cost Oil est inf\u00e9rieur a 60% de l'ensemble de la production (\u00e0 cause du Cost Stop) la partie du Profit Oil qui constitue la diff\u00e9rence entre les couts petroliers et le 60% de de la production (le \"\"Excess oil\"\") sera partag\u00e9 50%-50% entre la R\u00e9publique du Congo et le Contracteur. \n\u2022 Si le prix du p\u00e9trole est sup\u00e9rieur \u00e0 $22 par baril, la part du Profit Oil \u00e9quivalent \u00e0 la diff\u00e9rence entre la valeur r\u00e9elle de la production et la valeur \u00e0 $22 par baris  sera partag\u00e9 \u00e0 85% pour la R\u00e9publique du Congo et 15 % pour le Contracteur. \n--Art. 8.1.2\n",
+                "location":{
+                    "image":"339,89,378,47"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124962.js",
+                "id":124962
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":20,
+                "content":"Taux de 15% appliqu\u00e9 \u00e0 la production nette. Constitue des co\u00fbts p\u00e9troliers.--Art. 11.1\n",
+                "location":{
+                    "image":"866,81,896,41"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124959.js",
+                "id":124959
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":21,
+                "content":"Le \"cost oil\" et le \"profit oil\" revenant au Contracteur est nette de tout imp\u00f4t. Le \"profit oil\" revenant au Congo comprend l'imp\u00f4t sur les soci\u00e9t\u00e9s calcul\u00e9 au taux correspondant au pourcentage de \"profit oil\" revenant au Congo.--Art 11.2\n",
+                "location":{
+                    "image":"273,89,307,47"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124960.js",
+                "id":124960
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":23,
+                "content":"Droit du Congo--Art. 20.1\n",
+                "location":{
+                    "image":"652,90,693,41"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124964.js",
+                "id":124964
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":23,
+                "content":"Tous diff\u00e9rends d\u00e9coulant du Contrat seront tranch\u00e9s d\u00e9finitivement conform\u00e9ment \u00e0 la \"convention pour le r\u00e8glement des diff\u00e9rends relatifs aux investissements entre Etats et ressortissants d'autres Etats\" (CRDI) du 18 mars 1965, par un coll\u00e8ge arbitral compos\u00e9 de trois arbitres nomm\u00e9s conform\u00e9ment aux dispositions de cette convention. Le si\u00e8ge de l'arbitrage sera Paris, France.--Art. 20.2\n",
+                "location":{
+                    "image":"710,94,749,48"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124965.js",
+                "id":124965
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":24,
+                "content":"7 janvier 2004--Signatures\n",
+                "location":{
+                    "image":"441,413,476,372"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124956.js",
+                "id":124956
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":24,
+                "content":"2004--Signatures\n",
+                "location":{
+                    "image":"445,478,485,437"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c/annotations/124957.js",
+                "id":124957
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Total E&amp;P - Congo-Brazzaville, 2004",
+        "data":{
+            "Signature Date":"7/1/2004",
+            "Type of Mining Title":"Production Sharing Contract",
+            "Signature Year":"2004",
+            "Resource":"Hydrocarbons",
+            "Countries":"Republic of Congo"
+        },
+        "created_at":"Mon, 07 Oct 2013 15:32:02 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 28 Apr 2015 09:09:53 +0000",
+        "id":"802266-cpp-haute-mer-c",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/802266/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/802266/cpp-haute-mer-c.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/802266/pages/cpp-haute-mer-c-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/802266/pages/cpp-haute-mer-c-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/802266/cpp-haute-mer-c.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/802266/pages/cpp-haute-mer-c-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=802266"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":24,
+        "canonical_url":"http://www.documentcloud.org/documents/802266-cpp-haute-mer-c.html"
+    }
+}

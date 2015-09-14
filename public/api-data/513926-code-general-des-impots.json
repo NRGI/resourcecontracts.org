@@ -1,0 +1,35 @@
+{
+    "document":{
+        "file_hash":"4389ef201debf48694b0d03183200882df98e600",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Code G\u00e9n\u00e9ral des Imp\u00f4ts",
+        "data":{
+            "Countries":"Guinea"
+        },
+        "created_at":"Sat, 10 Nov 2012 20:56:42 +0000",
+        "display_language":"eng",
+        "updated_at":"Sat, 07 Mar 2015 17:09:51 +0000",
+        "id":"513926-code-general-des-impots",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/513926/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513926/code-general-des-impots.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/513926/pages/code-general-des-impots-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513926/pages/code-general-des-impots-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513926/code-general-des-impots.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513926/pages/code-general-des-impots-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=513926"
+        },
+        "contributor":"Jed Miller",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":250,
+        "canonical_url":"http://www.documentcloud.org/documents/513926-code-general-des-impots.html"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"c0738fed3cd276974de285a09dc8f27a229864c4",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"ECOPETROL, Harken - Colombia, 2002",
+        "data":{
+            "Signature Date":"2002",
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Resource":"Hydrocarbons",
+            "Countries":"Colombia"
+        },
+        "created_at":"Tue, 20 Jan 2015 02:15:20 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 24 Mar 2015 03:12:55 +0000",
+        "id":"1505328-ecopetrol-harken-colombia-2002",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505328/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505328/ecopetrol-harken-colombia-2002.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505328/pages/ecopetrol-harken-colombia-2002-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505328/pages/ecopetrol-harken-colombia-2002-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505328/ecopetrol-harken-colombia-2002.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505328/pages/ecopetrol-harken-colombia-2002-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505328"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":79,
+        "canonical_url":"http://www.documentcloud.org/documents/1505328-ecopetrol-harken-colombia-2002.html"
+    }
+}

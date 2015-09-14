@@ -1,0 +1,37 @@
+{
+    "document":{
+        "file_hash":"f7d3f48156cff8a068a19c19a6ecffd5ab8a8f16",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Clyde, Norsk, Oranje-Nassau, Ansan - Yemen",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Resource":"Hydrocarbons",
+            "Countries":"Yemen"
+        },
+        "created_at":"Tue, 20 Jan 2015 17:33:48 +0000",
+        "display_language":"eng",
+        "updated_at":"Thu, 23 Apr 2015 20:12:36 +0000",
+        "id":"1506083-clyde-norsk-oranje-nassau-ansan-yemen",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1506083/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506083/clyde-norsk-oranje-nassau-ansan-yemen.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1506083/pages/clyde-norsk-oranje-nassau-ansan-yemen-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506083/pages/clyde-norsk-oranje-nassau-ansan-yemen-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506083/clyde-norsk-oranje-nassau-ansan-yemen.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1506083/pages/clyde-norsk-oranje-nassau-ansan-yemen-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1506083"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":82,
+        "canonical_url":"http://www.documentcloud.org/documents/1506083-clyde-norsk-oranje-nassau-ansan-yemen.html"
+    }
+}

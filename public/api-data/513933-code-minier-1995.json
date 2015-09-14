@@ -1,0 +1,35 @@
+{
+    "document":{
+        "file_hash":"cd55e712f3381ed469d6c2ec3b62ca8952581e2f",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Code Minier 1995",
+        "data":{
+            "Lois":"Codes Miniers"
+        },
+        "created_at":"Sat, 10 Nov 2012 20:57:21 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 01 Jul 2013 20:27:20 +0000",
+        "id":"513933-code-minier-1995",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/513933/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513933/code-minier-1995.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/513933/pages/code-minier-1995-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513933/pages/code-minier-1995-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513933/code-minier-1995.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/513933/pages/code-minier-1995-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=513933"
+        },
+        "contributor":"Jed Miller",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":53,
+        "canonical_url":"http://www.documentcloud.org/documents/513933-code-minier-1995.html"
+    }
+}

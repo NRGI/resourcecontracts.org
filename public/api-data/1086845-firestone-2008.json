@@ -1,0 +1,701 @@
+{
+    "document":{
+        "file_hash":"bfae53fe6eb15e0e735722f2b1c444b0d2dac022",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":1,
+                "content":"English\n",
+                "location":{
+                    "image":"21,634,51,597"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149556.js",
+                "id":149556
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":9,
+                "content":"Republic of Liberia--Preamble\n",
+                "location":{
+                    "image":"186,337,210,300"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149477.js",
+                "id":149477
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":9,
+                "content":"Firestone Liberia Inc.--Preamble\n",
+                "location":{
+                    "image":"211,346,235,306"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149478.js",
+                "id":149478
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":9,
+                "content":"Firestone Liberia Inc.--Preamble\n",
+                "location":{
+                    "image":"211,383,240,349"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149483.js",
+                "id":149483
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales //Parent companies or affiliates outside of the country, if different from the above mentioned; and their corporate headquarters",
+                "page":9,
+                "content":"Bridgestone Firestone North American Tire, LLC--Preamble\n",
+                "location":{
+                    "image":"386,493,413,462"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149479.js",
+                "id":149479
+            },
+            {
+                "access":"public",
+                "title":"Structure du Capital//Company structure",
+                "page":9,
+                "content":"Private limited company--Preamble \n",
+                "location":{
+                    "image":"392,247,416,214"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149564.js",
+                "id":149564
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) miniere(s) concern\u00e9es (type de mineral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":9,
+                "content":"Rubber and rubber products--Preamble\n",
+                "location":{
+                    "image":"511,545,536,514"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149497.js",
+                "id":149497
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":11,
+                "content":"Amended and Restated Land Concession Agreement--Art. 1.4\n",
+                "location":{
+                    "image":"147,231,176,198"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149480.js",
+                "id":149480
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":15,
+                "content":"The regular term is 26 years from 31/12/2015 until 31/12/2041. It is preceded by a rehabilitation period from 12/4/2005 until 31/12/2015--Art. 3.2\n",
+                "location":{
+                    "image":"636,218,661,186"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149493.js",
+                "id":149493
+            },
+            {
+                "access":"public",
+                "title":"Conditions de renouvellement//Conditions for renewal ",
+                "page":15,
+                "content":"Parties shall meet no later than five years before the expiry of the contract to extend the contract for such a period and on such terms as the parties may agree.--Art. 3.3\n",
+                "location":{
+                    "image":"703,215,729,184"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149495.js",
+                "id":149495
+            },
+            {
+                "access":"public",
+                "title":"Superficie de la concession//Size of concession area",
+                "page":16,
+                "content":"Approximately 118,990 acres of production area plus any additional areas that become part of the concession area.  --Art. 4.1(c)\n",
+                "location":{
+                    "image":"490,190,516,154"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149498.js",
+                "id":149498
+            },
+            {
+                "access":"public",
+                "title":"Financement d\u2019infrastructure//Financing of infrastructure",
+                "page":17,
+                "content":"Firestone Liberia shall have the exclusive right to install and maintain, at its own expense, infrastructure within the concession area with prior approval of the government. It shall have the non-exclusive right to do so, outside the concession area.--Art. 4.3 (a) (i) and (ii)\n",
+                "location":{
+                    "image":"202,229,225,194"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149539.js",
+                "id":149539
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licenses, et permis)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":17,
+                "content":"Firestone Liberia has the right, within the production area, to take and use water free of charge, but not to sell it to any other person without the prior written approval of the Liberian government. It also can continue to construct wells or provide other sources of potable drinking water to households in the concession area. --Arts. 4.3(a)(v) and 8.3\n",
+                "location":{
+                    "image":"670,246,693,210"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149534.js",
+                "id":149534
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":20,
+                "content":"Firestone Liberia shall permit the use of roads, other than farm roads, by other persons within the concession area to the extent its activities are not unduly impeded.--Art. 6\n",
+                "location":{
+                    "image":"719,319,753,284"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149538.js",
+                "id":149538
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":22,
+                "content":"Firestone Liberia shall pay for services from affiliates on an actual cost reimbursement basis and competitive international prices as would be fair and reasonable, had the transaction taken place between unrelated parties dealing at arms' length. --Arts. 7.3\n",
+                "location":{
+                    "image":"457,196,481,158"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149525.js",
+                "id":149525
+            },
+            {
+                "access":"public",
+                "title":"La s\u00e9curit\u00e9 physique, la protection de la propri\u00e9t\u00e9, et / ou l'utilisation des gardes//Physical security, protection of property, and/or use of guards",
+                "page":24,
+                "content":"The Liberian government authorizes Firestone Liberia directly or under contract with other persons of its choosing, to establish, maintain a Plant Protection Department for the purposes of maintaining law, order and security through its own fully effective security force in the Concession area and in other areas that Firestone Liberia has property and assets.  Parties agree to adhere to Voluntary Principles on Security and Human Rights. The Plan Protection Department shall generally have (i) the power of apprehension and detention in accordance with the Law, the detention of any person must be immediately notified to the appropriate government authority and any detained person to be turned over to such authority as soon as possible no later than 24 hours from the time of detention (ii) the power to search and exclude or evict unauthorized persons from the production area and from such other areas as may be properly restricted for economic, operational or security reasons. Firestone Liberia should coordinate activities of the Plant Protection Department with Government's police, law enforcement and security authorities and periodically report on activities to the Ministry of Justice. --Art 8.2\n",
+                "location":{
+                    "image":"563,95,595,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149510.js",
+                "id":149510
+            },
+            {
+                "access":"public",
+                "title":"Obligations concernant les travailleurs ou les habitants dans ou pr\u00e8s des concessions en ce qui concerne la sant\u00e9 et la s\u00e9curit\u00e9 au travail, l'acc\u00e8s \u00e0 l'eau potable, le logement, les soins m\u00e9dicaux ou l'\u00e9ducation//Requirements regarding workers or farm/concession dwellers within concession areas or in nearby communities in respect of occupational health and safety, access to clean water, housing, medical care, or education",
+                "page":26,
+                "content":"Firestone Liberia shall practice modern public health and safe practices with respect to clean water, sanitation, employee housing, medical care and education. Firestone Liberia shall continue to construct wells or provide other sources of potable water so that by the end of the rehabilitation period water is either provided by a standpipe, or there is a well for every 30 houses in a division; Firestone Liberia shall build latrines or bathrooms so that each household in the production area has access to a bathroom or safe and clean latrine by December 31, 2011; Firestone Liberia shall continue to construct new housing to an improved standard. By the end of the rehabilitation period, each employee that is entitled to housing shall have received it. By the end of 2017, Firestone Liberia shall have rehabilitated all damaged or older households in the production area that are to be put to use; Firestone Liberia shall ensure medical treatment, care and attention (free of charge) shall be made available to all employees and their dependents. Firestone Liberia shall evaluate the feasibility of re-establishing training programs for nurses and paramedics. Firestone Liberia shall make Duside hospital facility and two clinics available in the production area; Firestone Liberia shall provide education (junior and secondary) to each registered dependent child free of charge. Firestone Liberia shall also provide financial assistance to Harbel Multilateral Highschool of  US$75,000, US$55,000 and US$35,000 respectively for the first three years of the contract. Thereafter it shall provide further additional financial assistance at its discretion. Firestone Liberia shall also contribute US$35,000 annually to a government-administered adult education program in the production area until the end of 2015.--Arts. 8.1-8.5, 9, 10.\n",
+                "location":{
+                    "image":"239,311,266,276"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149509.js",
+                "id":149509
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":27,
+                "content":"In no case shall Firestone Liberia hire non-Liberian citizens for unskilled labor positions. Firestone Liberia shall give preference to qualified Liberian citizens for employment at all levels of financial, accounting, technical, administrative, supervisory and senior management positions and other skilled positions. Firestone Liberia shall employ Liberian citizens for at least 30% of the ten most senior management positions within five years of the first amendment effective date and at least 50% of such positions within ten years of the said date, subject to availability of qualified applicants.--Art. 11.1\n",
+                "location":{
+                    "image":"218,221,244,182"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149505.js",
+                "id":149505
+            },
+            {
+                "access":"public",
+                "title":"Formation des cadres locals//Management training requirement for nationals",
+                "page":27,
+                "content":"Firestone Liberia must provide training to Liberian citizens in order to qualify them for positions that Firestone Liberia is obliged to employ them in. Firestone Liberia must provide on-the-job training, utilize vocational training facilities in Liberia and undertake whatever other measures are necessary and reasonable to achieve the employment objectives of the contract. --Art. 11.2\n",
+                "location":{
+                    "image":"487,224,513,186"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149504.js",
+                "id":149504
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":28,
+                "content":"Firestone Liberia shall give preferences to goods produced in Liberia by Liberian citizens and services provided by Liberian citizens who are resident in Liberia, which are equal to or better than comparable goods and services obtainable from other persons taking into account price, quality, delivery schedules, availability and other terms. In addition, Firestone Liberia agrees to include in its contracts and work orders  with its major contractors and associates a provision requiring them to adhere to the requirements  and to require their sub-contractors to do so. --Art. 12\n",
+                "location":{
+                    "image":"175,325,208,287"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149506.js",
+                "id":149506
+            },
+            {
+                "access":"public",
+                "title":"Ventes locales / usage domestique//Local sales requirements/domestic use",
+                "page":28,
+                "content":"Firestone Liberia shall sell to all manufacturers, using Rubber Wood as raw material and established within Liberia, a minimum 35% of the Rubber Wood that is rough sawn lumber as a final product, subject to prior contractual commitments. It shall also sell processed Rubber Products other than Rubber Wood to other manufacturers established within Liberia.--Arts. 13.3 and 13.4\n",
+                "location":{
+                    "image":"719,194,741,159"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149507.js",
+                "id":149507
+            },
+            {
+                "access":"public",
+                "title":"Protection des lieux sacr\u00e9s, des sources et du milieu de vie//Protection of sacred locations, resources and environment",
+                "page":29,
+                "content":"Beginning on April 12, 2005 Firestone Liberia will implement a plan to replant rubber trees so that, by April 12, 2009, it is replanting at least 5,000 acres of rubber trees per year and has planted 50,000 by December 31, 2017. During the regular term, Firestone Liberia must continue to replant rubber trees so that by the end of the term at least 65,000 acres of rubber trees have been replanted; Firestone Liberia will discharge obligations under the Environmental Protection and Management Law.--Art. 7.5, 14, 15\n",
+                "location":{
+                    "image":"632,338,660,307"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149501.js",
+                "id":149501
+            },
+            {
+                "access":"public",
+                "title":"Convention de d\u00e9veloppement local//Local development plan",
+                "page":29,
+                "content":"Firestone Liberia shall in good faith cooperate with the Liberian government's efforts to establish plans and programs to ensure the continuing economic and social viability that form as a result of the production. Firestone Liberia shall also conduct a feasibility study regarding the supply of electric power to communities in the production area. --Art. 14.1\n",
+                "location":{
+                    "image":"677,223,703,186"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149500.js",
+                "id":149500
+            },
+            {
+                "access":"public",
+                "title":"Les plans de gestion sociaux (y compris les droits humains), et la mode et fr\u00e9quence de suivi//Social/human rights management plans and monitoring requirements",
+                "page":29,
+                "content":"Production must be carried out in a way that ensures the continuing economic and social viability of the communities that have formed and may form around the production. At the government's request, Firestone Liberia must consult with the government to establish additional plans and programs for the implementation of this objective and shall cooperate in good faith with the government to realize those plans. Firestone Liberia must also conduct a feasibility study about the possibility for providing electricity to communities in the production area of a sufficient size to justify the provision of power. Firestone Liberia will review the feasibility with the government, but is not obliged to incur more costs than it would during the ordinary course of business in relation to the provision of electricity to communities.--Art. 14.1\n",
+                "location":{
+                    "image":"679,188,705,153"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149502.js",
+                "id":149502
+            },
+            {
+                "access":"public",
+                "title":"Programme de Outgrowers (d\u00e9tails, des terres suppl\u00e9mentaires fournis, etc)//Outgrowers' Program (details, additional land provided, etc)",
+                "page":30,
+                "content":"Firestone Liberia shall provide farm advisory support and, subject to availability, farm supplies to qualified Liberian rubber farmers at charges no greater than Firestone Liberia's own cost for such items to which shall be added any taxes and duties imposed by law on such items. A \"qualified Liberian rubber farmer\" is any Liberian rubber farmer who satisfies Firestone Liberia that he/she in fact owns and operates a rubber farm in Liberia and receives all or substantial part of the income of the rubber farm and any other criteria Firestone Liberia reasonably imposes. During the rehabilitation term, Firestone Liberia shall ensure that qualified Liberian rubber farmers receive free of any charges 700,000 rubber stumps of the same quality used for replanting by Firestone Liberia per year beginning in 2008 (until 31/12/2015). --Art. 14.2\n",
+                "location":{
+                    "image":"238,184,268,154"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149508.js",
+                "id":149508
+            },
+            {
+                "access":"public",
+                "title":"Protection de l'environement, des pratiques de recoltes et prevention de la pollution//Protection of environment, harvesting practices (for forestry contracts), prevention of pollution, etc",
+                "page":33,
+                "content":"Firestone Liberia shall take reasonable measures to ensure that production does not cause unreasonable risks to public health or damage to the environment and shall employ protective measures as employed by persons in Liberia and elsewhere engaged in production on a basis similar to production under this agreement.--Art. 15 (a)\n",
+                "location":{
+                    "image":"235,234,261,199"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149532.js",
+                "id":149532
+            },
+            {
+                "access":"public",
+                "title":"Les plans de gestion environnementaux //Environmental management plans",
+                "page":33,
+                "content":"As part of its annual update of the development plan, Firestone Liberia shall report the status of implementation of the Environmental Management Plan (EMP). Approval shall be deemed granted if the government does not reject the EMP within 90 days thereafter. --Art. 15 (b)\n",
+                "location":{
+                    "image":"315,197,342,165"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149530.js",
+                "id":149530
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact environnemental//Environmental impact assessments ",
+                "page":33,
+                "content":"Firestone Liberia shall, by April 12, 2006 (one year after the effective date), provide the government by notice with an environment assessment report describing the environmental effects of production intended to be managed.--Art. 15 (b)\n",
+                "location":{
+                    "image":"316,229,340,198"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149529.js",
+                "id":149529
+            },
+            {
+                "access":"public",
+                "title":"Mode et fr\u00e9quence de suivi//Environmental monitoring",
+                "page":33,
+                "content":"Firestone Liberia's obligations with respect to the environment, including monitoring, shall be set out in the Environmental Management Plan.--Art. 15 (c)",
+                "location":{
+                    "image":"512,227,537,196"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149531.js",
+                "id":149531
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":35,
+                "content":"Firestone Liberia shall be taxed on its net taxable income pursuant to law at a rate not exceeding 30% of such net taxable income in any calendar year after the rehabilitation term; In any calendar year after the rehabilitation period until January 1, 2014, Firestone Liberia's income tax liability (excluding loss carry forward and any turnover tax credits) shall be limited to 110% of the amount which would be payable for such calendar year if Firestone Liberia's income tax liability were computed in accordance with the law effect on July 1, 2007 using a 30% tax rate.--Arts. 18.1, 18.4\n",
+                "location":{
+                    "image":"367,219,391,188"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149512.js",
+                "id":149512
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'impot sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloissonement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":35,
+                "content":"In computing Firestone Liberia's net taxable income, deductions such as depreciation and prior year losses incurred, shall be allowed as deductions from its gross income.--Art. 18.3\n",
+                "location":{
+                    "image":"588,220,613,183"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149513.js",
+                "id":149513
+            },
+            {
+                "access":"public",
+                "title":"Redevances superficiaires//Surface fees",
+                "page":36,
+                "content":"Firestone Liberia shall pay a surface rental equal to US$2 per acre for a total of US$237,980, before January 15th of the year for which the payment is being made, for all government land within the production area.--Art. 19.1\n",
+                "location":{
+                    "image":"336,196,365,159"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149517.js",
+                "id":149517
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":36,
+                "content":"Firestone Liberia shall be liable to pay turnover tax quarterly, which amount shall not exceed 2% of its gross income. The turnover tax reduces to 1% during the first calendar year after (1) Firestone Liberia has a negative taxable income and (2) the cumulative total un-credited turnover tax paid up until that date exceeds US$4 million. --Art. 20.1\n",
+                "location":{
+                    "image":"586,198,611,161"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149511.js",
+                "id":149511
+            },
+            {
+                "access":"public",
+                "title":"//Other - ECOWAS trade Levy",
+                "page":37,
+                "content":"Firestone Liberia shall be subject to the ECOWAS Trade Levy on all goods from non-ECOWAS States which it imports into Liberia at a rate established by Liberian law but not to exceed 1% of the CIF value of such goods unless such higher rate is generally applicable in all ECOWAS member states without exception. --Art. 20.3\n",
+                "location":{
+                    "image":"702,227,732,194"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149526.js",
+                "id":149526
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase d'exploitation//Custom duties during  operation phase",
+                "page":37,
+                "content":"Firestone Liberia must pay a customs user fee on imports as required by Liberian law on all items not otherwise subject to import duties. However, during the rehabilitation term, the rate at which the fee is imposed must not exceed 1.5% of CIF value.--Art. 20.4\n",
+                "location":{
+                    "image":"778,227,805,193"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149574.js",
+                "id":149574
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des nationaux//Witholding tax on national salaries",
+                "page":38,
+                "content":"Firestone Liberia must withhold from payments to any person the items set forth in Section 905(e) of the 2000 Revenue code of Liberia, which includes payment of salaries, the amount required by law, so long as it does not exceed 8% during the rehabilitation term and 10% during the regular term.--Art. 20.7\n",
+                "location":{
+                    "image":"304,193,329,156"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149514.js",
+                "id":149514
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les loyers des immeubles//Witholding tax on rent",
+                "page":38,
+                "content":"Firestone Liberia must withhold from payments to any person the items set forth in Section 806(d) of the 2000 Revenue code of Liberia, which includes payment of rent of over 70,000 in a 12-month period, the amount required by law, so long as it does not exceed 8% during the rehabilitation term and 10% during the regular term.--Art. 20.7\n",
+                "location":{
+                    "image":"307,118,333,83"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149516.js",
+                "id":149516
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des expatri\u00e9s//Witholding tax on expatriate salaries",
+                "page":38,
+                "content":"Firestone Liberia must withhold from payments to any person the items set forth in Section 905(e) of the 2000 Revenue code of Liberia, which includes payment of salaries, the amount required by law, so long as it does not exceed 8% during the rehabilitation term and 10% during the regular term.--Art. 20.7\n",
+                "location":{
+                    "image":"309,153,331,119"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149515.js",
+                "id":149515
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":38,
+                "content":"Firestone Liberia shall be exempt from a goods and services tax on capital goods or materials and supplies used for production prior to January 1, 2042, or to meet social obligations. Firestone Liberia shall also be exempt from taxes and duties on the export of rubber products prior to this date and from real property taxes during the rehabilitation term (until December 31, 2015)--Art1. 20.8-10\n",
+                "location":{
+                    "image":"389,190,418,156"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149520.js",
+                "id":149520
+            },
+            {
+                "access":"public",
+                "title":"Obligations communautaires ou sous-nationales//Community and regional obligations",
+                "page":39,
+                "content":"Firestone Liberia shall pay  US$50,000 to the general revenue account of the Ministry of Finance to be used exclusively to pay fees for an independent study to be commissioned by the Ministry of Agriculture regarding ways to support and enhance the rehabilitation of the natural rubber industry in Liberia and to support small holders. Therefore, Firestone Liberia shall pay to the Rubber Development Fund such fees as may be required by Liberian Law. --Arts. 14.4, 20.12\n",
+                "location":{
+                    "image":"289,216,314,179"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149518.js",
+                "id":149518
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit//Audit mechanisms",
+                "page":41,
+                "content":"Firestone Liberia shall get its books of account audited, within three months after the close of each fiscal year, by an independent auditor and furnish a certified copy of the annual financial statement to the government. The government shall have the right to freely discuss with the auditor such results and Firestone Liberia shall cooperate with the government to complete the audit.--Art. 21.5\n",
+                "location":{
+                    "image":"461,210,489,170"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149522.js",
+                "id":149522
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit//Audit mechanisms",
+                "page":41,
+                "content":"Firestone Liberia must have its books of account audited, within three months after the close of each fiscal year, by an independent auditor and furnish a certified copy of the annual financial statement to the government. The government has the right to freely discuss the results of the audit with the auditor and Firestone Liberia must cooperate with the government to complete the audit.--Art. 21.5\n",
+                "location":{
+                    "image":"482,171,509,136"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149537.js",
+                "id":149537
+            },
+            {
+                "access":"public",
+                "title":"Obligations de reports et les m\u00e9thodes de c\u00f4ntrole de la conformit\u00e9//Reporting Requirements and other methods of monitoring compliance",
+                "page":42,
+                "content":"Firestone Liberia must maintain accurate records of all operations and transactions under the contract and submit reports as required by the government. The government may inspect such records with 24 hours' notice.--Art. 22.1, 22.3 and 22.4\n",
+                "location":{
+                    "image":"434,180,461,145"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149557.js",
+                "id":149557
+            },
+            {
+                "access":"public",
+                "title":"L'\u00e9tude de faisabilit\u00e9 et le plan d'affaires//Feasibility studies and requirement of business plan",
+                "page":42,
+                "content":"Within 90 days of April 1, 2008, and on or before June 1 of each succeeding year during the term of the contract, Firestone Liberia must submit a rolling five year development plan, which may be reviewed but not modified by the government. Any reporting requirements which require approval by government under law or this contract are to be reported separately as specified by law or this contract. To the extent that such requirements for the development plan and other Firestone Liberia activities overlap, they shall only be included in the former.--Art. 22.2\n",
+                "location":{
+                    "image":"669,185,695,151"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149535.js",
+                "id":149535
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":43,
+                "content":"Confidential information provided to one party by the other shall only be used for the purpose for which it was obtained.--Art. 22.5\n",
+                "location":{
+                    "image":"412,221,438,185"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149555.js",
+                "id":149555
+            },
+            {
+                "access":"public",
+                "title":"Cession / transfert//Assignment / transfer",
+                "page":44,
+                "content":"Firestone Liberia shall not assign its obligations to any person without the prior written consent of the government.--Art. 23\n",
+                "location":{
+                    "image":"367,322,395,287"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149551.js",
+                "id":149551
+            },
+            {
+                "access":"public",
+                "title":"//Force majeure",
+                "page":44,
+                "content":"If any party is unable to perform its obligations due to force majeure, other than an obligation to make payments due that accrued prior to commencement of such force majeure, such party shall give notice and the particulars of such force majeure in writing to the other party as soon as practicable after its occurrence. All time periods specified, except for payments due, shall be extended by the period of time the inability caused by such force majeure exists. Firestone Liberia can terminate the contract 60 days after such notice to the government, if force majeure has existed for a period of one year or more.--Art. 23\n",
+                "location":{
+                    "image":"368,366,398,330"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149558.js",
+                "id":149558
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9siliation / termination//Cancellation / termination",
+                "page":45,
+                "content":"The contract terminates at the end of its regular term or earlier by notice or occurrence of an event of default.--Art. 25\n",
+                "location":{
+                    "image":"494,364,527,330"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149552.js",
+                "id":149552
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":50,
+                "content":"All disputes concerning the concession agreement shall be finally settled by binding arbitration under the UNCITRAL rules. Firestone Liberia shall be considered a U.S. investor for the purposes of an arbitration. There shall be three arbitrators. The seat of the arbitration shall be Washington D.C.  Arbitration shall be the exclusive remedy to settle any dispute arising out of the contract and parties shall not be required to exhaust local remedies.--Art. 27\n",
+                "location":{
+                    "image":"396,325,427,287"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149546.js",
+                "id":149546
+            },
+            {
+                "access":"public",
+                "title":"Indemnisation//Indemnification",
+                "page":52,
+                "content":"Any breach by a party of an obligation due to a change in law subsequent to the date the contract comes into force, where such government action in the absence of a change in law would have resulted in a breach, shall entitle the aggrieved party to be indemnified by the defaulting party by an amount equal to the damage suffered by the aggrieved party--Art. 28\n",
+                "location":{
+                    "image":"703,317,730,284"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149554.js",
+                "id":149554
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":55,
+                "content":"Liberian law--Art. 30.1\n",
+                "location":{
+                    "image":"235,216,262,183"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149544.js",
+                "id":149544
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":55,
+                "content":"In the event of a conflict between the terms of this contract and any Liberian law (other than the Constitution of Liberia as at the date of the amended contract), the terms of this contract will prevail. --Art. 31.2\n",
+                "location":{
+                    "image":"643,220,671,185"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149548.js",
+                "id":149548
+            },
+            {
+                "access":"public",
+                "title":"Expropriation//Expropriation / nationalization",
+                "page":57,
+                "content":"The government must not nationalize any property of Firestone Liberia. If the government violates this provision Firestone Liberia will be entitled to a payment of the equivalent fair market value of its investment. --Art. 32.7\n",
+                "location":{
+                    "image":"214,228,239,193"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149559.js",
+                "id":149559
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), Etat//Signatories, State",
+                "page":60,
+                "content":"J Chris Toe, Minister of Agriculture and Antoinette M. Sayeh, Minister of Finance--Signature page\n",
+                "location":{
+                    "image":"374,356,402,318"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149487.js",
+                "id":149487
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":60,
+                "content":"Ministry of Agriculture and Ministry of Finance--Signature Page\n",
+                "location":{
+                    "image":"377,540,404,492"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149485.js",
+                "id":149485
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), soci\u00e9t\u00e9 //Signatories, company",
+                "page":61,
+                "content":"Charles E. Stuart, President--Signature page\n",
+                "location":{
+                    "image":"234,358,264,321"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149484.js",
+                "id":149484
+            },
+            {
+                "access":"public",
+                "title":"Date de ratification//Date of ratification",
+                "page":61,
+                "content":"22/02/2008--Signature page\n",
+                "location":{
+                    "image":"577,411,604,381"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149482.js",
+                "id":149482
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":61,
+                "content":"22/02/2008--Signature page\n",
+                "location":{
+                    "image":"578,244,611,202"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149488.js",
+                "id":149488
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":61,
+                "content":"22/02/2008--Signature page\n",
+                "location":{
+                    "image":"586,293,617,255"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149489.js",
+                "id":149489
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep)",
+                "page":62,
+                "content":"85,800 acres in Du and Farmington areas and 19,360 acres in the Cavalla area situated in Montserrado and Maryland Counties--Appendix 1\n",
+                "location":{
+                    "image":"168,297,195,257"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086845-firestone-2008/annotations/149481.js",
+                "id":149481
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Firestone Liberia, Inc. - Liberia, 2008",
+        "data":{
+            "Resource":"Rubber",
+            "Countries":"Liberia",
+            "Signature Date":"22/02/2008",
+            "Contract Term (duration) in Years":"26",
+            "Title Type":"Concession",
+            "Signature Year":"2008"
+        },
+        "created_at":"Fri, 14 Mar 2014 15:58:13 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 20 Apr 2015 10:12:52 +0000",
+        "id":"1086845-firestone-2008",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1086845/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086845/firestone-2008.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1086845/pages/firestone-2008-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086845/pages/firestone-2008-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086845/firestone-2008.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086845/pages/firestone-2008-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1086845"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":108,
+        "canonical_url":"http://www.documentcloud.org/documents/1086845-firestone-2008.html"
+    }
+}

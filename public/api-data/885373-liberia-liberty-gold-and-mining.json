@@ -1,0 +1,415 @@
+{
+    "document":{
+        "file_hash":"0371e7d5211f7a4d4df5d12befdda065f275c5b3",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Agence de l'etat, soci\u00e9t\u00e9 nationale, minist\u00e8re//State agency, national company, ministry executing the document",
+                "page":2,
+                "content":"Republic of Liberia, through its Government represented by the Deputy Minister for Operations of the Ministry of Lands, Mines &amp; Energy.--Preamble\n",
+                "location":{
+                    "image":"113,104,149,65"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/135217.js",
+                "id":135217
+            },
+            {
+                "access":"public",
+                "title":"Nom de la Soci\u00e9t\u00e9 locale//Local company name",
+                "page":2,
+                "content":"Liberty Gold and Diamond Mining Inc.--Preamble\n",
+                "location":{
+                    "image":"202,101,236,64"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/135206.js",
+                "id":135206
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":2,
+                "content":"Liberty Gold and Diamond Mining Inc., a corporation existing and doing business under the laws of Liberia, represented by Len Lindstrom--Preamble\n",
+                "location":{
+                    "image":"226,90,263,52"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/135216.js",
+                "id":135216
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":2,
+                "content":"Republic of Liberia--Recitals\n",
+                "location":{
+                    "image":"94,93,126,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/135205.js",
+                "id":135205
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":3,
+                "content":"Gold, Diamonds, Associated Minerals and any other mineral deposit (except iron ore). Associated Minerals are any mineral, metal element or precious or semi-precious stone(s) other than gold which is found, discovered, mined, removed, extracted or otherwise produced from the exploration area as an incident to Operator's activities in exploiting a gold deposit. --Art. 1.2 and Art. 3.1\n",
+                "location":{
+                    "image":"247,113,278,79"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136101.js",
+                "id":136101
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":4,
+                "content":"Operator undertakes at its cost to conduct the construction, installation and improvement of all or any part of the infrastructure, and such infrastructure shall be maintained and operated by the Operator in a reasonably good manner. Infrastructure shall be understood, for purposes of the agreement, as assets of the following types: (a) immovable transportation and communication facilities; (b) immovable port facilities; (c) immovable power, water and sewerage facilities; (d) immovable public welfare facilities (including schools, hospitals and public halls); (e) miscellaneous immovable facilities used primarily in connection with the operation of other facilities; and (f) movable facilities and equipment affixed to and used as an integral part of the immovable facilities described above.--Art. 1.10 and Art. 7.1\n",
+                "location":{
+                    "image":"72,134,101,96"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136116.js",
+                "id":136116
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":5,
+                "content":"Until the earlier of (a) such time as the Operator has completed the exploration activities, or (b) 3 years after the Effective Date (the date of execution of the agreement), with an extension for another 2 years at the option of Operator, plus any period of renewal to which the Government my agree. --Art. 2.1\n",
+                "location":{
+                    "image":"441,106,469,65"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136099.js",
+                "id":136099
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":5,
+                "content":"Exploration license to explore for Gold, Diamonds, Associated Minerals and any other mineral deposit (except iron ore) in the Exploration Area, that also encompasses pilot mining rights, being the right to produce gold and/or other minerals under a pilot mining plan to be approved by the Minister of Lands, Mines and Energy.--Art. 3.1 and Art. 4.0\n",
+                "location":{
+                    "image":"586,114,620,75"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/135207.js",
+                "id":135207
+            },
+            {
+                "access":"public",
+                "title":"Nom du Gisement//Deposit/site name",
+                "page":6,
+                "content":"The Exploration Area lies in Gbarpolu County and Rivercess County Area--Art. 3.2(a)\n",
+                "location":{
+                    "image":"134,158,171,117"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/135209.js",
+                "id":135209
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, Longitude et Latitude//Location, longitude and latitude",
+                "page":6,
+                "content":"Gbarpolu County and Rivercess County Area, as described in Appendix A, totalizing an area of 2150 square Km. --Art. 3.2(a), Appendix A \n",
+                "location":{
+                    "image":"142,140,182,94"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/135210.js",
+                "id":135210
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":6,
+                "content":"During the exploration, Operator shall spend no less than US$ 2.00 per acre during each calendar year as exploration costs. Exploration shall commence no later than 6 months after the date of execution of the agreement, and shall not be interrupted at any time. --Art. 3.4(a) and Art. 3.4(b)\n",
+                "location":{
+                    "image":"641,165,670,130"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136115.js",
+                "id":136115
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":7,
+                "content":"Operator is subject to all taxes, fees, duties, excises and other charges imposed by Liberian Laws of general application, except as may be otherwise provided by other laws and administrative regulations granting exemptions from custom duties and excise taxes. Operator may also remove, extract and use for exploration purposes any water, gravel, sand, clay, stone and timber, free of any tax or charge.--Art. 6.1(b), Art. 13.1, Art. 25.1(b)\n",
+                "location":{
+                    "image":"529,170,555,140"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136109.js",
+                "id":136109
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licences, et permis)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":7,
+                "content":"Liberty Gold and Diamond Mining may remove, extract and use for exploration purposes any water in the area, provided that the society is not deprived of a constant and reasonable source of water. It may not interfere with the water rights set up by any other entity with the government.--Art. 6.1 (b)\n",
+                "location":{
+                    "image":"572,163,601,126"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/147552.js",
+                "id":147552
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":7,
+                "content":"The Government reserves the right, on reasonable notice to the Operator, to construct roads, highways, railroads, telegraph and telephone lines, and other lines of communication within the Exploration Area.--Art. 6.2\n",
+                "location":{
+                    "image":"703,127,732,89"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/147553.js",
+                "id":147553
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9installation des habitants//Resettlement",
+                "page":8,
+                "content":"If the operator requires the use of privately owned property within the Exploration Area and cannot come to an agreement with the owner, it may request the Government to exercise its right of eminent domain, and shall reimburse the Government of any compensation paid to the owner. --Art. 6.3\n",
+                "location":{
+                    "image":"109,118,142,85"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/147551.js",
+                "id":147551
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":9,
+                "content":"No foreign unskilled employees shall be hired and, to the maximum extent feasible, Operator shall employ Liberian citizens at all levels, and provide training to them on a continuing basis to qualify them for skilled, technical administrative and management positions. Additionally, at least two professionals (mining engineers / geologists) from the Liberian Ministry of Lands, Mines &amp; Energy shall be seconded to Liberty's operations, at the Operator's expenses.--Art. 10.1, Art. 10.2 and Art. 10.3\n",
+                "location":{
+                    "image":"493,108,522,73"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136104.js",
+                "id":136104
+            },
+            {
+                "access":"public",
+                "title":"Convention de d\u00e9veloppement locale//Local development agreement",
+                "page":9,
+                "content":"Operator shall encourage economic and social development during the operation term. --Art. 11.1\n",
+                "location":{
+                    "image":"761,118,793,82"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136102.js",
+                "id":136102
+            },
+            {
+                "access":"public",
+                "title":"Exigences des consultations communautaires//Requirements for community consultation ",
+                "page":9,
+                "content":"Operator shall provide for meetings on a regular basis with the local communities for the purposes of considering and making recommendations to the operator and the Government, with respect to matters of community interest, such that it shall not hinder the Operator's work.--Art. 11.1\n",
+                "location":{
+                    "image":"789,138,821,104"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136103.js",
+                "id":136103
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: \u00e9xoneration//Income tax: exemptions",
+                "page":10,
+                "content":"As set out in Liberian laws of general application--Art. 13.1\n",
+                "location":{
+                    "image":"459,126,487,89"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136107.js",
+                "id":136107
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":10,
+                "content":"Operator is subject to all taxes, fees, duties, excises and other charges imposed by Liberian Laws of general application, except as may be otherwise provided by other laws and administrative regulations granting exemptions from custom duties and excise taxes. Operator may also remove, extract and use for exploration purposes any water, gravel, sand, clay, stone and timber, free of any tax or charge.--Art. 6.1(b), Art. 13.1, Art. 25.1(b)\n",
+                "location":{
+                    "image":"488,126,515,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136108.js",
+                "id":136108
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":10,
+                "content":"30%--Art. 13.2\n",
+                "location":{
+                    "image":"550,126,579,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136106.js",
+                "id":136106
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":10,
+                "content":"Notwithstanding Liberian Income Tax Law of General Application, the income tax rate is 30%.--Art. 13.2\n",
+                "location":{
+                    "image":"584,131,613,92"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136119.js",
+                "id":136119
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining Tax/Royalty Tax",
+                "page":10,
+                "content":"The Operation shall pay to the government a royalty in respect of all gold discovered during exploration and produced under pilot mining.  The amount of the royalty shall be 3% of the selling prices (F.O.B. Monrovia) of the Gold and Diamond  and paid to the Government of Liberia within 30 days of exports. A Royalty will also be due in reference to the production of Associated Minerals and Other Mineral Deposits in the exploration area, but the amount shall be negotiated and agreed upon by the parties.--Art. 14.1 and Art. 14.2.\n",
+                "location":{
+                    "image":"684,129,712,92"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136105.js",
+                "id":136105
+            },
+            {
+                "access":"public",
+                "title":"Autre - Dispositions environnementales//Other - Environmental provisions",
+                "page":10,
+                "content":"Operator shall take preventive, corrective and/or restorative measures to ensure that the environment (streams, water bodies, dry lands and the atmosphere) is protected from pollution, contamination and damages as result of the operation, and, eventually, that such pollution, contamination and/or damages are rectified. Furthermore, the terrain in general shall be restored and left in a usable state for purposes which are economically or socially desirable.--Art. 11.2\n",
+                "location":{
+                    "image":"87,117,121,79"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136114.js",
+                "id":136114
+            },
+            {
+                "access":"public",
+                "title":"Autre - Obligations financi\u00e8res du d\u00e9tenteur du titre//Other - Developer's financial obligations",
+                "page":11,
+                "content":"Operator shall, additionally, pay exploration fees and surface rental to the Government of Liberia, as follows: (a) for the grant or renewal of the exploration license, an annual payment of US$ 5,000 shall be made; and (b) annual lump sum rental payments of US$ 40,000.00 for all unsurrendered portions of the Exploration Area are due in the first 2 years, and US$ 0,18 per acre thereafter, as well as US$ 3.00 per acre for all areas operated under pilot mining.--Art. 15.1 and Art. 15.2\n",
+                "location":{
+                    "image":"257,196,284,159"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136113.js",
+                "id":136113
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":11,
+                "content":"Operator shall maintain all documents and information obtained or compiled by it as result of its mining operations at its principal office in Liberia. The Operator is allowed to move such data to other locations and to foreign countries (provided that such occurs for purposes of studies and evaluations and with the Government's prior notice). The Government shall be informed of the operations and acitivities carried out in the Exploration Area, and is entitled to monitor exploration and pilot mining activities, including by means of on-site inspections by Government officials (with prior notice and at reasonable times). Additionally, within 30 days after the end of each quarter, the Operator shall provide the Government with a report on all operations and activities for that calendar quarter, including minerals recovered and sold. An annual report in the same terms shall also be presented in up to 90 days following the end of each financial year. Operator's books and accounts are also subject to auditing by the Government at any time, upon reasonable notification to the Operator, and Operator shall make its appropriate employees available to render assistance with respect to any such inspection. The Operator shall also cause its books of accounts to be audited within 3 months counted as from the end of each Financial or Fiscal year by an internationally recognized independent auditor selected by it, and satisfactory to the Government, and a copy of such annual financial statement (certified by the auditor) shall be sent to the Government within 20 days of its receipt by the operator. If the Government decides to conduct its own auditing of Liberty's books of accounts, Operator shall have access to a copy of such audit within 45 days of receipt. Any books of accounts audited by the Government or the Operator, and the financial statement thus audited, shall be considered acceptable and the audit results' binding and conclusive as to its findings unless any of the parties' indicates to the contrary within 90 days after receipt of the audited financial statement.   --Arts. 16.1 - 16.4, Art. 24.5(a) and Art. 24.5(b)\n",
+                "location":{
+                    "image":"515,203,545,166"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136112.js",
+                "id":136112
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":12,
+                "content":"Not applicable to the agreement as a whole or to the parties relationship, but all reports prepared or furnished by Operator to the Government shall be considered confidential and shall not be disclosed without the Operator's previous consent. Additionally, financial information about the Operator shall be deemed as confidential for a term of 1 year, counted as from the date of submission of such information, provided that the Government is allowed to use this information in general reports, and also in case a dispute arises against the operator.--Art. 16.5\n",
+                "location":{
+                    "image":"611,125,641,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136120.js",
+                "id":136120
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":17,
+                "content":"Operator is subject to all taxes, fees, duties, excises and other charges imposed by Liberian Laws of general application, except as may be otherwise provided by other laws and administrative regulations granting exemptions from custom duties and excise taxes. Operator may also remove, extract and use for exploration purposes any water, gravel, sand, clay, stone and timber, free of any tax or charge.--Art. 6.1(b), Art. 13.1, Art. 25.1(b)\n",
+                "location":{
+                    "image":"306,156,335,122"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136110.js",
+                "id":136110
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":20,
+                "content":"All disputes arising out of the agreement shall be exclusively and finally settled by binding arbitration, pursuant to the Convention on Settlement of Investment Disputes between States and Nationals of Other States, and in accordance with the rules of the International Centre for Settlement of Investment Disputes established under the auspices of the International Bank for Reconstruction and Development. Although the Operator is incorporated in Liberia, it shall be considered a national of the United States or at its election of any other state which under the Convention, international law or the law of such state, it is a  national. The venue of arbitration shall be Washington-DC, and each party shall appoint one arbitrator, being the third arbitrator (who shall also be the president of the tribunal) appointed by the Centre. Alternativelly, the parties may opt for an arbitration procedure conducted by only one referee, to be appointed by the Centre, except in case the dispute refers to matters related to Sections 3, 4, 5, 6, 20, 21, 23, 24, 27, 29, 31 and/or 33 of the agreement, as well as articles 18.7, 18.8 and 18.9 thereto. Neither party shall have any liability for either consequential damages or exemplary or punitive damages. Furthermore, liability of the operator under the agreement is limited to the net book value of its investment in Liberia at the time of any award.  --Art. 29\n",
+                "location":{
+                    "image":"280,110,307,71"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/136118.js",
+                "id":136118
+            },
+            {
+                "access":"public",
+                "title":"An d'Octroi du permis d'exploitation ou concession//Year of issue of title/permit",
+                "page":25,
+                "content":"2005--Art. 3.1, signatures page\n",
+                "location":{
+                    "image":"191,621,225,585"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/135213.js",
+                "id":135213
+            },
+            {
+                "access":"public",
+                "title":"Date d'Octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":25,
+                "content":"26/10/2005, the date of execution of the agreement.--Art. 3.1, signatures page\n",
+                "location":{
+                    "image":"192,589,228,552"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/135214.js",
+                "id":135214
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":25,
+                "content":"26/10/2005--Signatures page\n",
+                "location":{
+                    "image":"223,529,252,494"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/135218.js",
+                "id":135218
+            },
+            {
+                "access":"public",
+                "title":"An de signature du contrat//Year of contract signature",
+                "page":25,
+                "content":"2005--Signatures page\n",
+                "location":{
+                    "image":"233,572,266,535"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/135219.js",
+                "id":135219
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, Longitude et Latitude//Location, longitude and latitude",
+                "page":26,
+                "content":"Gbarpolu County and Rivercess County Area, as described in Appendix A, totalizing an area of 2150 square Km. --Art. 3.2(a), Appendix A \n",
+                "location":{
+                    "image":"55,658,94,614"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining/annotations/135215.js",
+                "id":135215
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Liberty Gold and Diamond Mining - Liberia, 2005",
+        "data":{
+            "Type of Mining Title":"Exploration Permit/License",
+            "Resource":"Gold,Diamond,Other Minerals",
+            "Countries":"Liberia",
+            "Signature Date":"26/10/2005",
+            "Contract Term (duration) in Years":"3",
+            "Signature Year":"2005"
+        },
+        "created_at":"Wed, 04 Dec 2013 16:21:31 +0000",
+        "display_language":"eng",
+        "updated_at":"Sat, 28 Mar 2015 07:10:48 +0000",
+        "id":"885373-liberia-liberty-gold-and-mining",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/885373/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/885373/liberia-liberty-gold-and-mining.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/885373/pages/liberia-liberty-gold-and-mining-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/885373/pages/liberia-liberty-gold-and-mining-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/885373/liberia-liberty-gold-and-mining.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/885373/pages/liberia-liberty-gold-and-mining-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=885373"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":29,
+        "canonical_url":"http://www.documentcloud.org/documents/885373-liberia-liberty-gold-and-mining.html"
+    }
+}

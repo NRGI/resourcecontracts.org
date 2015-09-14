@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"0d2a2518e651d908aee8eaeaf7f1e3af566fb0ab",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"ONGC, ACL, CENTURION, CANARO - India, 1999",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"1999",
+            "Resource":"Hydrocarbons",
+            "Countries":"India"
+        },
+        "created_at":"Tue, 20 Jan 2015 15:48:47 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 20 Jan 2015 16:36:18 +0000",
+        "id":"1505881-ongc-acl-centurion-canaro-india-1999",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505881/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505881/ongc-acl-centurion-canaro-india-1999.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505881/pages/ongc-acl-centurion-canaro-india-1999-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505881/pages/ongc-acl-centurion-canaro-india-1999-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505881/ongc-acl-centurion-canaro-india-1999.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505881/pages/ongc-acl-centurion-canaro-india-1999-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505881"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":116,
+        "canonical_url":"http://www.documentcloud.org/documents/1505881-ongc-acl-centurion-canaro-india-1999.html"
+    }
+}

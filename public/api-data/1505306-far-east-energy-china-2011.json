@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"b0c4fc5832a8038c2558f25b0329c62150419a6c",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"Far East Energy - China, 2011",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2011",
+            "Resource":"Hydrocarbons",
+            "Countries":"China"
+        },
+        "created_at":"Tue, 20 Jan 2015 01:20:09 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 16 Mar 2015 16:11:10 +0000",
+        "id":"1505306-far-east-energy-china-2011",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505306/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505306/far-east-energy-china-2011.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505306/pages/far-east-energy-china-2011-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505306/pages/far-east-energy-china-2011-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505306/far-east-energy-china-2011.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505306/pages/far-east-energy-china-2011-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505306"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":17,
+        "canonical_url":"http://www.documentcloud.org/documents/1505306-far-east-energy-china-2011.html"
+    }
+}

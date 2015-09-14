@@ -1,0 +1,382 @@
+{
+    "document":{
+        "file_hash":"4fcd06ff93869e9e20a3fc6d88251d75a4884566",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":1,
+                "content":"Production sharing contract\n",
+                "location":{
+                    "image":"351,578,381,539"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/133017.js",
+                "id":133017
+            },
+            {
+                "access":"public",
+                "title":"Nom du projet//Project title",
+                "page":1,
+                "content":"S-06-02\n",
+                "location":{
+                    "image":"389,446,420,408"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/133018.js",
+                "id":133018
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de petrole/ gas//Name and/or number of field, block or deposit",
+                "page":1,
+                "content":"Contract Area B\n",
+                "location":{
+                    "image":"497,496,540,449"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/133019.js",
+                "id":133019
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":6,
+                "content":"Timor-Leste\n",
+                "location":{
+                    "image":"199,160,223,129"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/133015.js",
+                "id":133015
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":6,
+                "content":"Eni Timor Leste S.p.A--Preamble\n",
+                "location":{
+                    "image":"254,101,283,64"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/133016.js",
+                "id":133016
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":6,
+                "content":"03/11/2006--Preamble\n",
+                "location":{
+                    "image":"90,89,116,55"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136172.js",
+                "id":136172
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":6,
+                "content":"2006--Preamble\n",
+                "location":{
+                    "image":"92,179,120,138"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136173.js",
+                "id":136173
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":10,
+                "content":"Petroleum--Arts 1.1 (definitions), 2.1\n",
+                "location":{
+                    "image":"245,143,277,107"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136177.js",
+                "id":136177
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":13,
+                "content":"The agreement terminates on the first date of either: the contract area being relinquished, the parties agreeing, or if the Minister terminates the agreement on the basis of the contractor being in material default.  Maximum 7 year exploration period, after which all of contract area except for any development area must be relinquished. Maximum 25 year development and production period. --Art 2.3, Art 2.4, Art 3.2, Art. 3.3 \n",
+                "location":{
+                    "image":"790,182,817,144"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136175.js",
+                "id":136175
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":17,
+                "content":"Minimum activities detailed for each of three sub-periods of exploration. Non-performance of these minimum exploration activities can be grounds for termination or a requirement to pay damages for the cost of the Exploration not carried out. Work programs and budgets must be approved by the Ministry. Contractors shall carry on Petroleum Operations in a proper, efficient and workmanlike manner.--Art 4\n",
+                "location":{
+                    "image":"231,247,259,210"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136196.js",
+                "id":136196
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":20,
+                "content":"Timor-Leste may decide to participate in the development of petroleum through a state-owned contractor within 60 days of a declaration of a commercial discovery, and shall specify the percentage of the participation, up to a maximum of 20%; the state-owned contractor is to contibute (in the specified percentage) to expenditures under an approved Development Work Programme and Budget--Art 8, Art 4.10\n",
+                "location":{
+                    "image":"597,189,626,146"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136191.js",
+                "id":136191
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":21,
+                "content":"A Development Plan must include an environmental impact statement, and proposals for environmental management over the life of the development--Art. 4.11(d)(v)\nWithin 3 months of the effective date, the Contractor shall submit tot the Ministry plans regarding the health, safety and welfare of all persons affected by Petroleum Operations, and the protection of the environment.--Art. 5.3\n",
+                "location":{
+                    "image":"830,184,857,145"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136193.js",
+                "id":136193
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":22,
+                "content":"A Development Plan must include proposals for the use of Timor-Leste goods and services; the contractor must comply with proposals for the acquisition of goods and services that are submitted with its application under Article 13 of the Petroleum Act, and otherwise must give preference to the acquisition of goods and services from persons based in Timor-Leste, provided they are offered on competitive terms and conditions--Art 4.11(d)(vii)(aa), Art 5.4(a)\n",
+                "location":{
+                    "image":"101,225,128,186"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136182.js",
+                "id":136182
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":22,
+                "content":"A Development Plan must include proposals for the training and employment of Timor-Leste nationals; the contractor must comply with proposals for employment that are submitted with its application under Article 13 of the Petroleum Act, and otherwise must give preference in employment to nationals of Timor-Leste, with due regard to occupational health and safety requirements--Art 4.11(d)(vii)(bb), Art 5.4 (b)\n",
+                "location":{
+                    "image":"131,229,159,194"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136179.js",
+                "id":136179
+            },
+            {
+                "access":"public",
+                "title":"Exigences des consultations communautaires//Requirements for community consultation ",
+                "page":23,
+                "content":"The Ministry may give the opportunity to persons likely to be affected to make representations about the Decommissioning Plan--Art 4.14(c)\n",
+                "location":{
+                    "image":"503,137,534,100"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136178.js",
+                "id":136178
+            },
+            {
+                "access":"public",
+                "title":"Autre - Dispositions environnementales//Other - Environmental provisions",
+                "page":24,
+                "content":"Contractors are to carry on operations in a way that protects the environment and ensures that the petroleum operations result in minimum ecological damage or destruction; upon termination or when property is no longer required, to remove and dispose of the property and works, clean up the contract area and protect and restore the environment; the contractors must remedy any damage caused to the environment in a timely manner;  the contractors are to apply stringent standards, practices, methods and procedures with regard to environmental protection, as employed by others in Timor-Leste and by the contractor in comparable places or circumstances, the contractors must also prepare a plan outlying compliance with these requirements,  and the contractor must clean up pollution to the satisfaction of the Ministry and meet the costs of doing so if done by anyone else--Art.  5.1(b)(ii), 5.1(v), 5.1(xii), Art 5.3 (a)-(c)\n",
+                "location":{
+                    "image":"383,180,409,148"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136194.js",
+                "id":136194
+            },
+            {
+                "access":"public",
+                "title":"Mode et fr\u00e9quence de suivi des risques sociaux (y compris enfreinte aux droits de l'homme) ou environnementaux//Social, environmental and/or human rights monitoring requirements",
+                "page":26,
+                "content":"The plans need to be reviewed annually and amended from time to time to ensure continous compliance with article 5.3 and standard, practice and method cannot become less stringent without the consent of the Ministry-- Art. 5.3\n",
+                "location":{
+                    "image":"227,100,258,67"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/147542.js",
+                "id":147542
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":26,
+                "content":"A Development Plan must include proposals for the use of Timor-Leste goods and services; the contractor must comply with proposals for the acquisition of goods and services that are submitted with its application under Article 13 of the Petroleum Act, and otherwise must give preference to the acquisition of goods and services from persons based in Timor-Leste, provided they are offered on competitive terms and conditions--Art 4.11(d)(vii)(aa), Art 5.4(a)\n",
+                "location":{
+                    "image":"459,140,485,105"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136181.js",
+                "id":136181
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":26,
+                "content":"A Development Plan must include proposals for the training and employment of Timor-Leste nationals; the contractor must comply with proposals for employment that are submitted with its application under Article 13 of the Petroleum Act, and otherwise must give preference in employment to nationals of Timor-Leste, with due regard to occupational health and safety requirements--Art 4.11(d)(vii)(bb), Art 5.4 (b)\n",
+                "location":{
+                    "image":"502,141,532,104"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136180.js",
+                "id":136180
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - Elements de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, credit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":27,
+                "content":"Contractor may recover all allowable costs, including the sum of exploration costs, appraisal costs, capital costs and operating costs. Cost oil limited to 95% of value of petroleum.--Arts. 6.2, 7.1(a)(i)\n",
+                "location":{
+                    "image":"218,181,241,143"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136183.js",
+                "id":136183
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - Elements de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":28,
+                "content":"Ministry entitled to 5% of all petroleum exported. Petroleum remaining after the Ministry\u2019s initial 5% and the recovery of allowable costs is to be split 40% to the Ministry and 60% to the Contractor. Unless Ministry elects to receive its share of petroleum in kind, the Contractor is to receive and dispose of both the Ministry's and the contractor's shares of petroleum, and obligated to pay the Ministry the value of Timor-Leste's share within 36 hours of receipt.--Arts. 7.1,  7.2,7.5, 10\n",
+                "location":{
+                    "image":"144,183,169,142"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136186.js",
+                "id":136186
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":29,
+                "content":"Timor-Leste may decide to participate in the development of petroleum through a state-owned contractor within 60 days of a declaration of a commercial discovery, and shall specify the percentage of the participation, up to a maximum of 20%; the state-owned contractor is to contibute (in the specified percentage) to expenditures under an approved Development Work Programme and Budget--Art 8, Art 4.10\n",
+                "location":{
+                    "image":"219,282,250,242"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136190.js",
+                "id":136190
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":33,
+                "content":"If a dispute arises between the Ministry and the contractor, the parties are to attempt to resolve the dispute by negotiation; if the dispute cannot be resolved by negotiation, it is to be submitted to arbitration in accordance with rules of 1965 Washington Convention, International Centre for Settlement of Investment Disputes (ICSID), or of other international bodies with recognized standing--Art 14\n",
+                "location":{
+                    "image":"713,252,743,220"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136198.js",
+                "id":136198
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":34,
+                "content":"The Ministry shall not publicly disclose data or information that the contractor collects and compiles, until the earlier of 5 years after it was acquired, or the agreement ceases to apply in respect of it, and the contractor is not to disclose the data or information except to its employees, as required by law, to resolve disputes, or as required by a stock exchange; The Ministry shall not publicly disclose any data or information submitted by the contractor which is a trade secret of, or data and information the disclosure of which would adversely affect the contractor in respect of its lawful business, commercial or financial affairs, and is marked as such when submitted to the Ministry--Art 15\n",
+                "location":{
+                    "image":"411,192,438,154"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136199.js",
+                "id":136199
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":37,
+                "content":"The contractor shall provide for third party access to the structures, facilities, installations, equipment, and other property within the Contract Area on reasonable terms and conditions. When mutual agreements cannot be reached, the Government shall set up terms in accordance with international principles.-- Art. 17\n",
+                "location":{
+                    "image":"190,288,218,247"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/147543.js",
+                "id":147543
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":37,
+                "content":"Ministry may require an independent audit of Contractor\u2019s books and accounts at Contractor\u2019s cost. Ministry may inspect and audit Contractor\u2019s books and accounts at Ministry\u2019s own costs. Contractor shall fully assist and cooperate with audits.--Art 18\n",
+                "location":{
+                    "image":"368,323,397,289"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136192.js",
+                "id":136192
+            },
+            {
+                "access":"public",
+                "title":"Langue//Language",
+                "page":41,
+                "content":"The agreement has been drafted in both Portuguese and English, which are both binding, however the Portuguese text is to prevail in the case of conflict--Art 22.3\n",
+                "location":{
+                    "image":"553,181,582,143"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136200.js",
+                "id":136200
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":41,
+                "content":"The agreement is to be governed by the laws of Timor-Leste--Art 22.4\n",
+                "location":{
+                    "image":"670,182,702,145"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136197.js",
+                "id":136197
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":42,
+                "content":"Ministry of Natural Resources, Minerals and Energy Policy--Signatures\n",
+                "location":{
+                    "image":"276,126,304,90"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136171.js",
+                "id":136171
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":42,
+                "content":"Eni Timor Leste S.p.A--Signatures\n",
+                "location":{
+                    "image":"355,120,382,86"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/136170.js",
+                "id":136170
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep)",
+                "page":43,
+                "content":"The area bounded by the line:(a) commencing at the point of latitute 9 degrees 13'39.25\" south, longitude 125 degrees 30'00.00\" east;(b) running southly to the point of latitude 9 degrees  30'00.00\" south, longitude 125 degrees 30'00.00\" east (c) then eastly to the point of latitude 9 degrees 30'00.00\" south, longitude 126 degrees 00'00.00\" east; (d) then south-westerly along the Boyes Marine baseline to the point of commencement; offshore--Annex A\n",
+                "location":{
+                    "image":"49,258,80,210"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b/annotations/133020.js",
+                "id":133020
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Eni Timor Leste, PSC S0602-B - Timor-Leste, 2006",
+        "data":{
+            "Type of Mining Title":"Production Sharing Contract",
+            "Resource":"Hydrocarbons",
+            "Countries":"Timor-Leste",
+            "Signature Date":"03/11/2006",
+            "Contract Term (duration) in Years":"25",
+            "Signature Year":"2006"
+        },
+        "created_at":"Wed, 20 Nov 2013 23:50:31 +0000",
+        "display_language":"eng",
+        "updated_at":"Thu, 15 May 2014 13:26:07 +0000",
+        "id":"837875-psc-06-02-b",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/837875/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/837875/psc-06-02-b.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/837875/pages/psc-06-02-b-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/837875/pages/psc-06-02-b-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/837875/psc-06-02-b.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/837875/pages/psc-06-02-b-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=837875"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":56,
+        "canonical_url":"http://www.documentcloud.org/documents/837875-psc-06-02-b.html"
+    }
+}

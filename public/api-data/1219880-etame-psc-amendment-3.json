@@ -1,0 +1,96 @@
+{
+    "document":{
+        "file_hash":"0d7855b8a89bad054f37e72d6afe0af14408e2fb",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements // Work and investment commitments",
+                "page":4,
+                "content":"Durant la 6e p\u00e9riode d\u2019exploitation, le contracteur doit r\u00e9aliser au moins le forage de 2 puits fermes et une acquisition de 150km\u00b2 de sismique 3D dans les conditions techniques les meilleures g\u00e9n\u00e9ralement admises dans l'industrie internationale des hydrocarbures. Le contracteur investira 17 500 000 USD.--Art. 2\n",
+                "location":{
+                    "image":"531,707,563,607"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219880-etame-psc-amendment-3/annotations/167133.js",
+                "id":167133
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e // Term",
+                "page":4,
+                "content":"Si le contracteur, durant la 5e p\u00e9riode (\u00e9ventuellement prorog\u00e9e) a satisfait \u00e0 ses obligations contractuelles, l'autorisation exclusive d'exploration est renouvel\u00e9e pour une 6e p\u00e9riode de 5 ans, \u00e0 sa demande (avec au moins 30 jours d'anticipation) sur la totalit\u00e9 de la zone d\u00e9limit\u00e9e. Cette p\u00e9riode peut \u00eatre prorog\u00e9e de 3 mois aux maximum dans les m\u00eames conditions de l'article 1 de l'avenant 2.\nSi,le contracteur a b\u00e9n\u00e9fici\u00e9 de la prorogation de l'article 1 de l'avenant 2, le d\u00e9lai de 40 jours court \u00e0 compter de la fin de la prorogation, afin de lui permettre d'examiner et d'\u00e9valuer les r\u00e9sultats des travaux et de juger de l'int\u00e9r\u00eat de pr\u00e9senter une demande de renouvellement. Le renouvellement est accord\u00e9 par arr\u00eat\u00e9 du Ministre en charge des hydrocarbures.--Art. 1",
+                "location":{
+                    "image":"54,699,86,637"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219880-etame-psc-amendment-3/annotations/167131.js",
+                "id":167131
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat // Date of contract signature",
+                "page":5,
+                "content":"26 novembre 2009--Signature\n",
+                "location":{
+                    "image":"398,654,434,600"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219880-etame-psc-amendment-3/annotations/167129.js",
+                "id":167129
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat // Year of contract signature",
+                "page":5,
+                "content":"2009--Signature\n",
+                "location":{
+                    "image":"401,707,446,657"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219880-etame-psc-amendment-3/annotations/167130.js",
+                "id":167130
+            },
+            {
+                "access":"public",
+                "title":"Autre \u2013 [Fonds de d\u00e9veloppement des communaut\u00e9s locales] // Other - [Fund to develop local communities]",
+                "page":5,
+                "content":"le contracteur doit contribuer \u00e0 un fonds destin\u00e9 au d\u00e9veloppement des communaut\u00e9s locales \u00e0 hauteur de 250 000 USD par ann\u00e9e civile. Cette contribution est incluse dans les co\u00fbts p\u00e9troliers.--Art. 3 (new 21.8 of contract)\n",
+                "location":{
+                    "image":"7,706,45,629"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1219880-etame-psc-amendment-3/annotations/167134.js",
+                "id":167134
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Vaalco Gabon (Etame) Inc, Gabon, 2009, Amendment 3",
+        "data":{
+            "Type of Mining Title":"Production Sharing Contract",
+            "Resource":"Hydrocarbons",
+            "Countries":"Gabon",
+            "Signature Date":"26/11/2009",
+            "Contract Term (duration) in Years":"5",
+            "Signature Year":"2009"
+        },
+        "created_at":"Wed, 16 Jul 2014 19:42:59 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 24 Mar 2015 01:09:35 +0000",
+        "id":"1219880-etame-psc-amendment-3",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1219880/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1219880/etame-psc-amendment-3.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1219880/pages/etame-psc-amendment-3-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1219880/pages/etame-psc-amendment-3-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1219880/etame-psc-amendment-3.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1219880/pages/etame-psc-amendment-3-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1219880"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":5,
+        "canonical_url":"http://www.documentcloud.org/documents/1219880-etame-psc-amendment-3.html"
+    }
+}

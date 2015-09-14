@@ -1,0 +1,282 @@
+{
+    "document":{
+        "file_hash":"4bca6a6bd7c102e4e62ec8d8050f33d07b4cc070",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":5,
+                "content":"La g\u00e9n\u00e9rale des carri\u00e8res de mines (GECAMINES)--Preambule\n",
+                "location":{
+                    "image":"125,704,154,648"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172088.js",
+                "id":172088
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":5,
+                "content":"R\u00e9publique D\u00e9mocratique du Congo.--Preambule\n",
+                "location":{
+                    "image":"5,701,42,637"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172087.js",
+                "id":172087
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) miniere(s) concern\u00e9es//Type of resources ",
+                "page":10,
+                "content":"Le High grade, cobalt cathodique et autres substances valorisables--Definition\n",
+                "location":{
+                    "image":"188,681,219,625"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172098.js",
+                "id":172098
+            },
+            {
+                "access":"public",
+                "title":"Type du titre minier associ\u00e9 au contrat//Type of mining title associated with the contract",
+                "page":12,
+                "content":"Cr\u00e9ation d'une soci\u00e9t\u00e9 privee \u00e0 responsabilit\u00e9 limit\u00e9e  partenariat pour exploiter le gisement de Chabara.--Article 2\n",
+                "location":{
+                    "image":"110,704,151,633"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172245.js",
+                "id":172245
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e ou envisag\u00e9e//Name and/or composition of the company created or anticipated",
+                "page":12,
+                "content":"La Soci\u00e9t\u00e9 d'exploitation de Chabara Sprl (Chabara Sprl) - Gecamines d\u00e9tient 30% du Capital Social de Chabara et Dino Steel d\u00e9tient 70% du Capital Social--Art. 2.2, Art. 10.1\n",
+                "location":{
+                    "image":"262,698,295,636"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172094.js",
+                "id":172094
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement//Deposit/site name",
+                "page":12,
+                "content":"Gisements de Chibara--Art.3\n",
+                "location":{
+                    "image":"456,695,498,634"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172090.js",
+                "id":172090
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":12,
+                "content":"Mise \u00e0 disposition de Chabara par Dino Steel d'engins miniers en vue de l'extraction du gisement. Chabara devra encadrer les creuseurs artisanaux dans le p\u00e9rim\u00e8tre du gisement. Une \u00e9tude de faisabilit\u00e9 financ\u00e9e par Dino Steel devra \u00eatre r\u00e9alis\u00e9e dans les 20 mois pour le compte de Chabara.--Art. 3\n",
+                "location":{
+                    "image":"460,627,507,570"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172106.js",
+                "id":172106
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining tax/royalty tax",
+                "page":14,
+                "content":"Chabara paiera Gecamines 2% du Chiffre d'affaires net sous forme de royalties en compensation de la consommation du gisement. Le chiffre d'affaire net d\u00e9signe l'assiette de la redevance mini\u00e8re de l'article 240 du Code Minier.--Art. 4.4\n",
+                "location":{
+                    "image":"294,710,336,649"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172100.js",
+                "id":172100
+            },
+            {
+                "access":"public",
+                "title":"Primes//Bonuses",
+                "page":14,
+                "content":"Dino Steel devra payer \u00e0 G\u00e9camines un pas de porte de 1 million de US dollars dans les 30 jours de l'entr\u00e9e en vigueur de la convention. En plus, Dino Steel devra payer un pas de porte compl\u00e9mentaire a G\u00e9camines dans les 30 jours suivant l'approbation de l'\u00e9tude de faisabilit\u00e9, sur la base de 35US$ la tonne de cuivre dans les r\u00e9serves g\u00e9ologiques exploitables mises en \u00e9vidence par l'\u00e9tude de faisabilit\u00e9. --Art. 4.3\n",
+                "location":{
+                    "image":"45,698,79,631"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172102.js",
+                "id":172102
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit//Audit mechanisms",
+                "page":14,
+                "content":"Gecamines et Dino Steel auront le droit de v\u00e9rifier apr\u00e8s notification \u00e9crite \u00e0 Chabara, par elle-m\u00eame ou par un expert, les comptes de Chabara et les paiements de royalties. Des commissaires aux comptes ont le contr\u00f4lent les comptes de Chabara et peuvent se faire assister par un cabinet d'audit de leur choix.--Art. 4.4.3 et Art. 41\n",
+                "location":{
+                    "image":"627,706,663,653"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172104.js",
+                "id":172104
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":27,
+                "content":"Tous droits, imp\u00f4ts, taxes et redevances mis \u00e0 charge du  gisement de Charaba sont int\u00e9gralement payes et le gisement est libre de toutes charges fiscales et autres au regard des lois de la RDC--Art. 18.5\n",
+                "location":{
+                    "image":"137,698,180,643"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172103.js",
+                "id":172103
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":30,
+                "content":"La convention demeurera en vigueur pour toute la dur\u00e9e de vie de Chabara Sprl--Art. 22\n",
+                "location":{
+                    "image":"228,700,267,650"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172097.js",
+                "id":172097
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":30,
+                "content":"Convention r\u00e9gie et interpr\u00e9t\u00e9e conform\u00e9ment aux lois de la RDC--Art. 23.1\n",
+                "location":{
+                    "image":"540,695,584,642"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172107.js",
+                "id":172107
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":30,
+                "content":"Les parties tenteront d'abord de r\u00e9gler leur diff\u00e8rent \u00e0 l'amiable. En cas d'\u00e9chec, le litige sera soumis \u00e0 la Chambre de Commerce Internationale de Paris. Le litige sera tranche selon le R\u00e8glement de la CCI.--Art. 23.2\n",
+                "location":{
+                    "image":"600,700,642,648"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172108.js",
+                "id":172108
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":42,
+                "content":"Chabara est libre de choisir, recruter, licencier et employer les travailleurs en respect des dispositions du Code du travail--Art. 52\n",
+                "location":{
+                    "image":"331,704,377,641"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172099.js",
+                "id":172099
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":46,
+                "content":"Toutes les informations d\u00e9clar\u00e9es confidentielles par les parties et concernant le gisement seront trait\u00e9es comme confidentielles et ne seront pas divulgu\u00e9es sans accord pr\u00e9alable et \u00e9crit de la partie concern\u00e9e, \u00e0 moins que cette divulgation ne soit n\u00e9cessaire pour r\u00e9aliser une vente \u00e0 un tiers ou ne soit requise par la loi.--Art. 58\n",
+                "location":{
+                    "image":"608,701,652,628"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172109.js",
+                "id":172109
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":47,
+                "content":"Chabara paiera les imp\u00f4ts et taxes dues \u00e0 l'Etat conform\u00e9ment \u00e0 la l\u00e9gislation en vigueur. --Art. 59\n",
+                "location":{
+                    "image":"213,698,252,643"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172101.js",
+                "id":172101
+            },
+            {
+                "access":"public",
+                "title":"Autre - Normes environnementale//Other - Environmental norms",
+                "page":48,
+                "content":"Les activit\u00e9s de Chabara Sprl s'exerceront dans les respect de la loi en vigueur en RDC en mati\u00e8re d'environnement et des normes adopt\u00e9es de l'industrie mini\u00e8re, notamment prendre des mesures ad\u00e9quates pour prot\u00e9ger l'environnement et les infrastructures publiques pendant la dur\u00e9e de la convention, conform\u00e9ment aux normes et usages internationaux de l'industrie mini\u00e8re, minimiser les dommages et se conformer \u00e0 la l\u00e9gislation en vigueur sur les d\u00e9chets dangereux et dommages aux ressources naturelles.--Art. 60.6\n",
+                "location":{
+                    "image":"370,706,413,641"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172105.js",
+                "id":172105
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":49,
+                "content":"13 fevrier 2010--Art. 62\n",
+                "location":{
+                    "image":"527,702,567,656"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172095.js",
+                "id":172095
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":49,
+                "content":"2010--Art. 62\n",
+                "location":{
+                    "image":"576,703,613,655"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172096.js",
+                "id":172096
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":49,
+                "content":"Dino Steel International Sprl, soci\u00e9t\u00e9 de droit congolais.--Page de Signature\n",
+                "location":{
+                    "image":"841,575,876,515"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172092.js",
+                "id":172092
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":49,
+                "content":"Administrateur directeur g\u00e9n\u00e9ral et Pr\u00e9sident du Conseil d'administration de Gecamines--Page de Signature\n",
+                "location":{
+                    "image":"844,706,889,652"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara/annotations/172093.js",
+                "id":172093
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Chabara - DRC, 2010",
+        "data":{
+            "Signature Date":"13/02/2010",
+            "Type of Mining Title":"Cr\u00e9ation d'une soci\u00e9t\u00e9",
+            "Signature Year":"2010",
+            "Resource":"Cobalt",
+            "Countries":"Democratic Republic of Congo"
+        },
+        "created_at":"Wed, 13 Aug 2014 20:59:41 +0000",
+        "display_language":"eng",
+        "updated_at":"Thu, 29 Jan 2015 17:10:38 +0000",
+        "id":"1274146-drc-dino-steel-chabara",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1274146/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1274146/drc-dino-steel-chabara.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1274146/pages/drc-dino-steel-chabara-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1274146/pages/drc-dino-steel-chabara-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1274146/drc-dino-steel-chabara.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1274146/pages/drc-dino-steel-chabara-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1274146"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":51,
+        "canonical_url":"http://www.documentcloud.org/documents/1274146-drc-dino-steel-chabara.html"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"5fd82b9fc7bc4d1fd802066af6fa6474a00109e1",
+        "annotations":[],
+        "description":null,
+        "language":"eng",
+        "title":"DWM Petroleum, Tsagaan Els XIII Area - Mongolia, 2009",
+        "data":{
+            "Type of Mining Title":"Profit Sharing Contract",
+            "Signature Year":"2009",
+            "Resource":"Hydrocarbons",
+            "Countries":"Mongolia"
+        },
+        "created_at":"Tue, 20 Jan 2015 16:44:03 +0000",
+        "display_language":"eng",
+        "updated_at":"Sat, 11 Apr 2015 08:11:29 +0000",
+        "id":"1505972-dwm-petroleum-tsagaan-els-xiii-area-mongolia-2009",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1505972/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505972/dwm-petroleum-tsagaan-els-xiii-area-mongolia-2009.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1505972/pages/dwm-petroleum-tsagaan-els-xiii-area-mongolia-2009-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505972/pages/dwm-petroleum-tsagaan-els-xiii-area-mongolia-2009-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505972/dwm-petroleum-tsagaan-els-xiii-area-mongolia-2009.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1505972/pages/dwm-petroleum-tsagaan-els-xiii-area-mongolia-2009-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1505972"
+        },
+        "contributor":"Amy Baum",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":62,
+        "canonical_url":"http://www.documentcloud.org/documents/1505972-dwm-petroleum-tsagaan-els-xiii-area-mongolia-2009.html"
+    }
+}

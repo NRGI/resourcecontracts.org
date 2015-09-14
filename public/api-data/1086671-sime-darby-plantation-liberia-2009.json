@@ -1,0 +1,712 @@
+{
+    "document":{
+        "file_hash":"669c242f487f509ae63ba3fa917d5bf3c907c196",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Liberia\n",
+                "location":{
+                    "image":"344,373,382,334"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148788.js",
+                "id":148788
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":15,
+                "content":"Sime Darby Plantation (Liberia) Inc.--Preamble\n",
+                "location":{
+                    "image":"139,230,167,199"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148789.js",
+                "id":148789
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":15,
+                "content":"Sime Darby Plantation (Liberia) Inc. fully owned by Sime Darby Plantation Investment (Liberia) Private Limited (Singapore company).--Preamble, Appendix II\n",
+                "location":{
+                    "image":"140,271,173,238"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148794.js",
+                "id":148794
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":15,
+                "content":"Republic of Liberia, through its government represented by the acting Minister of Agriculture and the Minister of Finance of Liberia.--Preamble\n",
+                "location":{
+                    "image":"202,94,231,58"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148797.js",
+                "id":148797
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":15,
+                "content":"Amended and Restated Concession Agreement.--Preamble\n",
+                "location":{
+                    "image":"75,283,109,249"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148792.js",
+                "id":148792
+            },
+            {
+                "access":"public",
+                "title":"Structure du Capital//Company structure",
+                "page":16,
+                "content":"Sime Darby Plantation (Liberia) Inc. is a subsidiary of Sime Darby Berhad--Preamble\n",
+                "location":{
+                    "image":"335,646,362,607"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148790.js",
+                "id":148790
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":24,
+                "content":"The term of the contract is 63 years from the date the contract comes into force, unless otherwise extended or terminated earlier in accordance with the contract.--Art. 3.1\n",
+                "location":{
+                    "image":"167,135,197,104"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148800.js",
+                "id":148800
+            },
+            {
+                "access":"public",
+                "title":"Conditions de renouvellement//Conditions for renewal ",
+                "page":24,
+                "content":"The term of the contract may be extended for such period and on such terms and conditions as the parties to the contract may agree to prior to the expiration of its term. The parties to the contract will meet not later than ten years before the expiration of the term to discuss any possible extension and the conditions of such extension. --Art. 3.2\n",
+                "location":{
+                    "image":"244,141,276,107"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148801.js",
+                "id":148801
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) miniere(s) concern\u00e9es (type de mineral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":24,
+                "content":"Rubber, rubber products, and oil palm products.--Art. 4.1(a)-(b)\n",
+                "location":{
+                    "image":"455,145,483,114"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148802.js",
+                "id":148802
+            },
+            {
+                "access":"public",
+                "title":"Superficie de la concession//Size of concession area",
+                "page":25,
+                "content":"The gross concession area consists of 220,000 hectares of land for the concession area and an additional 44,000 hectares of land for the implementation of the outgrowers' program. --Preamble, Art. 4.1( c)\n",
+                "location":{
+                    "image":"179,157,208,118"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148803.js",
+                "id":148803
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep)",
+                "page":25,
+                "content":"Grand Cape Mount, Bomi, Bong &amp; Gbarpolu Counties.--Appendix I, Art.4.1 (c)\n",
+                "location":{
+                    "image":"181,192,208,160"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148793.js",
+                "id":148793
+            },
+            {
+                "access":"public",
+                "title":"Autorisation pour utiliser les terres publique ou priv\u00e9es \u00e0 l'exterieur de la zone de concession//Contracting party's permitted use of public or private land outside concession area",
+                "page":25,
+                "content":"Sime Darby Plantation may lease or otherwise acquire any private land in Liberia that is owned by an entity other than the Liberian government to produce or process agricultural products. Such additional areas may not be acquired for the sole purpose of receiving any carbon rights to reduction in emissions caused by the development of the concession area or other areas by the right's holder. Sime Darby Plantation will notify the Liberian government of lease or acquisition of private land within 3 months of the commencement of such lease/acquisition. Such additional areas shall be subject to the same rights and conditions set forth in the contract, however Sime Darby will not pay surface rental fees to the Liberian government for such land.--Art.4.2\n",
+                "location":{
+                    "image":"584,160,613,123"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148835.js",
+                "id":148835
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9installation des habitants//Resettlement",
+                "page":25,
+                "content":"Sime Darby Plantation may request that certain settlements be relocated if it can demonstrate that such existing settlement and its inhabitants impede the development of the concession area and interferes with its activities. Both Sime Darby Plantation and the Liberian government share the responsibility of resettlement, including the management of any resettlement plans and the execution of resettlement logistics. Sime Darby Plantation will compensate resettlement expenses up to a maximum of US$200 per hectare of resettled land, and the government will compensate resettlement expenses that exceed US$200 per hectare of resettled land. Sime Darby Plantation is entitled to a 50% tax credit of resettlement expenses that it may incur. The Liberian government and Sime Darby Plantation agree to establish a resettlement supervising committee with six members (3 chosen by the government and 3 by Sime Darby Plantation); two of those members shall be community representatives (1 chosen by the government and 1 by Sime Darby Plantation).--Art. 4.3\n",
+                "location":{
+                    "image":"760,167,792,135"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148808.js",
+                "id":148808
+            },
+            {
+                "access":"public",
+                "title":"Droits d'acc\u00e8s / utilisation \u00e0 la zone de concession pour les parties non contractantes (y compris l'agriculture ind\u00e9pendante autoris\u00e9e dans la zone de concession)//Rights of access/use to concession area for non-contracting parties (including permitted independent farming in concession area)",
+                "page":26,
+                "content":"Sime Darby Plantation will permit independent farming activities within areas of the concession which are not suitable for production, provided that independent farmers: (i) limit farming activities to non-commercial food cultivation, (ii) live within the concession area or had lived there before resettlement that occurred because of Sime Darby Plantation\u2019s investment, and (iii) seek the permission of Sime Darby before beginning such farming activities. Sime Darby Plantation may withhold such permission if it reasonably believes such independent farming activities would interfere with its activities or pose a security risk, but it may not unreasonably withhold such permission. Determinations of which areas of the concession area are not suitable for production are within the discretion of Sime Darby Plantations but may be reviewed and disputed by the Liberian government. All roads across the concession area that are used immemorially by the population shall remain open to free use by the public for commercial and public purposes as long as such use does not unreasonably interfere with Sime Darby Plantation's activities.--Art. 8.10, 4.4 \n",
+                "location":{
+                    "image":"288,127,318,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148810.js",
+                "id":148810
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":26,
+                "content":"Sime Darby Plantation has the right to develop and maintain at its own expense infrastructure within the concession area and any other acquired areas, provided that it first obtains approval of the Liberian government concerning the design, location, size and environmental impact. Sime Darby Plantation shall only be responsible for the on-going maintenance or repair of any such infrastructure to the extent specified in the relevant governmental approval. Nothing in the contract restricts Sime Darby Plantation's right to construct necessary or desirable farm roads within the concession area. All roads across the concession area that are used immemorially by the population shall remain open to free use by the public for commercial and public purposes as long as such use does not unreasonably interfere with Sime Darby Plantation's activities. Sime Darby Plantation may deny public access to private areas within the concession area and, with prior notice to the Liberian government, impose reasonable restrictions to protect the security of its assets and safety of its employees, and dependents. In addition, Sime Darby Plantation has the right to develop and maintain at its own expense infrastructure outside the concession area, subject to prior written approval by the Liberian government. All highways and roadways constructed will become public property, provided that Sime Darby Plantation has the right to use these roads without charge. The Liberian government has no obligation to refund any amounts spent by Sime Darby Plantation in the development and maintenance of such infrastructure, and Sime Darby Plantation has no obligation to maintain and/or repair such infrastructure.  --Art. 4.4 (a) - (b)\n",
+                "location":{
+                    "image":"366,163,395,128"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148832.js",
+                "id":148832
+            },
+            {
+                "access":"public",
+                "title":"Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou \u00e0 cot\u00e9) (y compris les tarifs, licenses, et permis)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)",
+                "page":27,
+                "content":"Sime Darby Plantation has the right to take and use, within the concession area and other acquired areas, free of charge, water that it considers necessary or useful for its activities, provided that this does not interfere with the rights of third parties or with use by the Liberian government. Sime Darby Plantation may not dam any streams or use amounts of water that could materially interfere with the activities of farmers or residents. Prior to damming any streams or other bodies of water, Sime Darby Plantation shall seek approval from the relevant governmental authority, which should not unreasonably withhold approval unless there is evidence that the construction of the dam or dams would break this section of the contract. The Liberian government approval shall be conclusively deemed if it has not indicated a decision to withhold approval by notice within 60 days of application. Sime Darby Plantation has the right to provide water for the purposes of supplying buildings and other facilities within the concession area and any other acquired land. The Liberian government will not charge Sime Darby Plantation for the provision of water unless Sime Darby Plantation generates some net income from such activity. Sime Darby Plantation may agree, but is not under the obligation, to provide water to the Liberian government or individuals/legal entities outside the concession area in case it produces water exceeding its needs. The Liberian government has a priority right to buy any surplus of water at a price of its production, if not agreed otherwise by the parties. Any surplus may be sold to the public at the rates generally used in Liberia for public water utilities.--Art. 4.4(e); Art. 7.2\n",
+                "location":{
+                    "image":"363,192,389,154"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148830.js",
+                "id":148830
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":34,
+                "content":"Any transactions between Sime Darby Plantation and its affiliates in relation to the sale of rubber, crude palm oil and crude palm kernel oil shall be on the basis of international prices as follows: for technically specific rubber (dry rubber) the export sales price shall be the daily closing price quoted on the Singapore Commodity Exchange of TSR20 rubber. For liquid latex concentrate, the export sales price shall be the daily closing price established by the Malaysian Rubber Board. And for crude palm oil and crude palm kernel oil, the export sales price shall be the daily closing price quoted on the Bursa Malaysia Derivatives Berhad.  However, these prices shall be used only as a reference.  For all forward sales and contracts, the price can be adjusted based on the quality, nature, grade, quantities of the products, duration of the contract under which they are sold, mode of delivery, market conditions, price projections, and price forecast at the time of sale of the products provided.  However, all forward sales or forward contracts must be fair, competitive and consistent with the terms and conditions (including without limitation the price and any adjustments made to such price) of similar transactions as if made between unrelated parties dealing at arm's length. Sime Darby Plantation must provide the Liberian government with any sales or services agreements with its affiliates.--Art 8.3 (a-b), 8.3\n",
+                "location":{
+                    "image":"263,169,292,135"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148824.js",
+                "id":148824
+            },
+            {
+                "access":"public",
+                "title":"M\u00e9thode d\u2019\u00e9valuation de prix //Method for evaluating price",
+                "page":35,
+                "content":"Sime Darby Plantation has the right to sell rubber and oil palm products at prices it considers to be appropriate taking into account modern and competitive business practices, provided it informs the Liberian government of its terms and conditions every 6 months. --Art. 8.4\n",
+                "location":{
+                    "image":"226,157,255,121"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148818.js",
+                "id":148818
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":35,
+                "content":"Sime Darby Plantation will implement  a program to plant and/or replant rubber trees and oil palms in the concession area as specified in the development plan.  Sime Darby Plantation's minimum development obligations are to have not less than 75% of the concession area to be planted and/or replanted  with commercially viable oil palms or rubber trees in accordance with the development plan by the end of the 15th year after the contract comes into force, and respectively have 100% planted and/or replanted by the end of the 20th year.  Sime Darby agrees that as long as the remainder of the term of the contract is adequate and sufficient to assure the viability of the replanting program, Sime Darby Plantation will begin replanting relevant parcels of land in the concession area within 12 months of the end of the cycle of each such identified parcel of land, in accordance with the development plan.  In the event new oil palms or rubber trees are not planted within 12 months of the end of the cycle for the relevant parcel of land, or if Sime Darby Plantation gives notice to the Liberian government that it will neither replant nor, with the consent of the Liberian government, use the relevant parcel of land for its activities, then the Liberian government may repossess the parcel of land that has not been replanted.  Sime Darby Plantation shall be deemed to have satisfied its obligation to replant as long as it has begun the replanting process prior to the end of such 12 month period and diligently continues its efforts to replant.--Art. 8.5\n",
+                "location":{
+                    "image":"335,160,366,131"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148831.js",
+                "id":148831
+            },
+            {
+                "access":"public",
+                "title":"Incapacit\u00e9 \u00e0 d\u00e9velopper//Failure to develop",
+                "page":35,
+                "content":"If Sime Darby Plantation fails to develop the concession area in accordance with its minimum development obligations, the Liberian government may send a notice to Sime Darby Plantation of the alleged default and of its intention to reclaim any undeveloped portion of the concession area.  The Liberian government shall offer Sime Darby Plantation a fair opportunity to consult with it to resolve the matter.  Within six months following receipt of such notice, Sime Darby Plantation must provide a plan to cure such failure (including performance metrics and a schedule for completion of those metrics), and evidence to the reasonable satisfaction of the Liberian government that the matter will be resolved.  During this time,  the Liberian government will work with Sime Darby Plantation to determine the extent to which Sime Darby Plantation does not plan to develop the concession area and the exact  areas of land that Sime Darby Plantation does not plan to develop and plant.  If, after the end of the 6 month period, the Liberian government is of the reasonable opinion that the default cannot be cured, then the undeveloped portion of the concession area shall be forfeited to the Liberian government.  In the event that Sime Darby Plantation's failure to develop the concession area is due to the fact that the land is not free from encumbrances or to any act, omission or default of the Liberian government or government's agents or in an event of force majeure, then Sime Darby Plantation shall not be held responsible for the lack of development.  In this case, Sime Darby Plantation's failure to develop the concession area in accordance with the minimum development obligations shall not constitute an event of default.--Art 8.6\n",
+                "location":{
+                    "image":"653,175,679,135"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148833.js",
+                "id":148833
+            },
+            {
+                "access":"public",
+                "title":"La s\u00e9curit\u00e9 physique, la protection de la propri\u00e9t\u00e9, et / ou l'utilisation des gardes//Physical security, protection of property, and/or use of guards",
+                "page":38,
+                "content":"Sime Darby Plantation is authorized by the Liberian government to establish, manage and maintain its own asset and employee security protection services either directly or through a contract for the purpose of maintaining law, order and security in the concession area or any other areas where Sime Darby Plantation maintains property or assets. For such purposes, Sime Darby Plantation may establish its own plant protection department with the prior approval of the Ministry of Justice of Liberia. The members of the plant protection department must be specially trained and qualified, and attested by the Ministry of Justice to possess the required training and skills. Members of the plant protection department will have: enforcement powers within the concession area; the power of detention and apprehension in accordance with the laws of Liberia and the contract; the power to search and exclude or evict unauthorized persons from the concession area and other areas of restricted access in accordance with the laws of Liberia. Sime Darby Plantation must coordinate the activity of the plant protection department with law enforcement, and periodically report to the Ministry of Justice on its activities. The Liberian government may assign at its own expense personnel to assist the plant protection department and to monitor its actions, including the monitoring of any security gates created under the contract.--Art. 9.3\n",
+                "location":{
+                    "image":"297,148,324,115"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148812.js",
+                "id":148812
+            },
+            {
+                "access":"public",
+                "title":"Obligations concernant les travailleurs ou les habitants dans ou pr\u00e8s des concessions en ce qui concerne la sant\u00e9 et la s\u00e9curit\u00e9 au travail, l'acc\u00e8s \u00e0 l'eau potable, le logement, les soins m\u00e9dicaux ou l'\u00e9ducation//Requirements regarding workers or farm/concession dwellers within concession areas or in nearby communities in respect of occupational health and safety, access to clean water, housing, medical care, or education",
+                "page":40,
+                "content":" Sime Darby Plantation agrees to provide primary education and high school education free of charge to each person who is a dependent of Sime Darby Plantation and/or who are the minor children and spouses of Government officials who are assigned to and/or resident in the developed parts of the concession area.  Sime Darby Plantation may invest in existing local schools provided that such local schools are in sufficient number to educate all dependents, are not overcrowded and are either within the developed areas (i.e. within the concession area) or not more than 30 miles from such areas.  If such local schools are located outside the developed areas, Sime Darby Plantation shall provide free transportation for the dependents who attend such local schools. If there are no schools located within a reasonable distance to the developed areas, Sime Darby Plantation should construct educational facilities, at a rate and in a number approved by the Liberian government. Sime Darby Plantation should also invest not less than US$25,000 annually in vocational training and adult literacy programs for its employees.                                                                                                    Sime Darby Plantation shall provide one unit of adequate housing facility per family for each of its employees and the dependents, which shall comply with or exceed the minimum housing standards issued for general application by the Ministry of Public Works of Liberia and other relevant government agencies of Liberia.                                                                       Sime Darby Plantation shall ensure that all employee residential communities within the developed areas (i.e. the concession area) are being supplied on a regular basis with clean and safe drinking water and all common water sources are easily accessible from employees' homes within the developed areas. Sime Darby Plantation shall construct a sufficient number of wells or provide other common sources of portable water to provide an uninterrupted supply of clean and safe drinking water in each of its developed plantation sub-divisions.                                      Sime Darby Plantation shall provide for its employees commonly used medicines and basic medical treatment, care and attention in accordance with the laws of Liberia and such standards as are generally applicable in Liberia. Such treatment, care and attention shall be free of charge for Sime Darby Plantation employees and their dependents. To ensure that care is available for its employees and their dependents, Sime Darby Plantation shall construct and during the term of the contract maintain and operate health facilities to ensure the availability of basic medical treatment, care and attention in accordance with the laws of Liberia and standards that are generally applicable in Liberia. Sime Darby shall construct and operate at least one centrally located hospital with basic facilities within 10 years of the date the contract comes into force, and adequate outpatient clinics in the developed areas within standards that are generally applicable in Liberia. --Art.11.1, 9.5,9.4, 10\n",
+                "location":{
+                    "image":"469,181,495,146"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148811.js",
+                "id":148811
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":41,
+                "content":"Sime Darby Plantation\u2019s employment practices, including compensation and working conditions, must be in compliance with the laws of Liberia. In no case must Sime Darby Plantation hire non-Liberian nationals for unskilled labor position. Sime Darby Plantation will not knowingly hire or cause to be hired any minor. Preference is given to qualified Liberian nationals who meet the expectations of Sime Darby Plantation for skilled positions, so that operations are conducted primarily by Liberian nationals to the extent possible. Subject to availability of qualified candidates, Sime Darby Plantation will hire Liberian nationals for at least 50% of the ten most senior management positions within 5 years after the contract comes into force, and at least 75% of such positions within 10 years after the contract comes into force. Sime Darby Plantation must report on its compliance with this requirement. Failure to meet the 50 % or 75% targets may require Sime Darby Plantation to demonstrate that all efforts were made to fill the positions with Liberian nationals. Any compensation to the employees of Sime Darby Plantations will be made in compliance with the laws of Liberia. The parties agree that for the purposes of any law of Liberia determining minimum wages, compensation will include employee's salaries only and will not include the value of any additional values, including, but not limited to, housing, medical care and education for the dependents of the employees.--Art. 12.1, 12.3\n",
+                "location":{
+                    "image":"147,126,178,92"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148805.js",
+                "id":148805
+            },
+            {
+                "access":"public",
+                "title":"Formation des cadres locals//Management training requirement for nationals",
+                "page":41,
+                "content":"Sime Darby Plantation will provide for the training of Liberian nationals in order to qualify them for management and other skilled positions and as required by its operations. Sime Darby Plantation will provide necessary on-the-job and vocational training, as well as opportunities for employees to learn new techniques that will allow them to progress into other positions. Sime Darby Plantation agrees to implement a policy of technology transfer to Liberian nationals, which will include a transfer of operational techniques and modern management techniques. --Art. 12.1, 12.2\n",
+                "location":{
+                    "image":"147,161,173,125"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148804.js",
+                "id":148804
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":42,
+                "content":"Preference to be given to goods (excluding sundry goods) produced in Liberia by Liberians, and to services provided by Liberians in Liberia, provided that such goods and services are equal to or better than goods or services available outside Liberia. Sime Darby Plantation must include a provision in each contract or work order with a contractor that requires the contractor and any sub-contractors to also give preference to Liberian goods and services for any activities undertaken in Liberia on behalf of Sime Darby Plantation. \nFrom time to time, Sime Darby Plantation will provide to the Minister of Commerce of Liberia a list of proposed suppliers for related goods and services. The Minister of Commerce will certify within 30 days that such suppliers do or do not qualify. If the Minister of Commerce does not respond within 30 days, the list is considered to have been approved.\n--Art. 13",
+                "location":{
+                    "image":"128,319,156,283"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148806.js",
+                "id":148806
+            },
+            {
+                "access":"public",
+                "title":"Activit\u00e9 de beneficiation/ valeur ajout\u00e9e//Value addition/downstream activities",
+                "page":42,
+                "content":"The Liberian Government will provide an additional 100,000 hectares of land within the concession area to Sime Darby Plantation to support its commitment to conduct downstream activities in Liberia. Sime Darby Plantation will start downstream activities in Liberia, including the construction of a vegetable oil refinery, when the viability of such enterprises or activities is assured and there are sufficient supplies, as well as other conditions to support such downstream activities in Liberia. No later than 10 years after the date the contract came into force Sime Darby Plantations will assess the viability of constructing a vegetable oil refinery within 15 years from the date the contract came into force based on the commercial viability of the project and the availability of raw materials. If the project is commercially viable, the vegetable oil refinery should be constructed within 15 years from the date the contract came into force. If not commercially viable, Sime Darby Planation will have the option either to review the assessment results with the Liberian government and discuss any further downstream activities; or surrender the underdeveloped land granted, which will suspend the obligation to pay surface rental fees for such land. Sime Darby Plantation should notify the Liberian government in writing of its intention to invest in the process or refinery of Liberian agricultural products outside Liberia.--Art. 14.2\n",
+                "location":{
+                    "image":"681,157,708,122"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148834.js",
+                "id":148834
+            },
+            {
+                "access":"public",
+                "title":"Ventes locales / usage domestique//Local sales requirements/domestic use",
+                "page":43,
+                "content":"Sime Darby Plantation agrees to a minimum local sales amount; it must sell at least 25% by volume of its estimated annual gross sales of crude palm oil to satisfy demand in Liberia. All domestic sales of crude palm oil will be made at free-on-board Monrovia prices. The first 5% of the minimum local sales amount will be sold at a price determined in accordance with prevailing domestic prices in Liberia. The remaining 20% will be sold at a price determined in accordance with prevailing international and market rates. If there is no domestic demand for crude palm oil, Sime Darby Plantation may export 100% of its crude palm oil. If any manufacturing facility is established in Liberia that uses rubber wood as a basic raw material, the government may require that Sime Darby Plantations (subject to its prior contractual commitments) sell to such manufacturers for use in Liberian facilities a minimum of 35% of its estimated total production of rubber wood for the year at market prices and terms. In addition, if any manufacturing facility is established in Liberia that uses other processed rubber products or certain oil palm products as basic raw materials, the government may require that Sime Darby Plantation (subject to its prior contractual commitments) sell to such manufacturers for use in Liberian facilities at least 5% of its estimated total production for the year, unless Sime Darby Plantations commences downstream processing of oil palm products in Liberia, in which case this would not be applicable with respect to oil palm products.--Art. 8.7, 14.3, 14.4\n",
+                "location":{
+                    "image":"285,144,310,108"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148807.js",
+                "id":148807
+            },
+            {
+                "access":"public",
+                "title":"Programme de Outgrowers (d\u00e9tails, des terres suppl\u00e9mentaires fournis, etc)//Outgrowers' Program (details, additional land provided, etc)",
+                "page":44,
+                "content":"Sime Darby Plantation will establish an Outgrowers' program within 3 years after the contract comes into force, details of which will be included in the development plan. Under the Outgrowers' program, Sime Darby Plantation will develop and exercise exclusive management of the land designated for the program on a cost recovery basis for the benefit of Liberian small land holders (\u201coutgrowers\u201d) that were chosen to participate in the program and have agreed to be bound by its requirements. Sime Darby Plantation has the exclusive rights and commits to purchase the produce harvested within the Outgrowers' program. The Liberian government will provide 44,000 hectares of land that is outside the concession area, but within the gross concession area; seek funding for the program; select the small land holders to participate as outgrowers; and manage any social or environmental issues that may arise from the program. Sime Darby will develop and manage the land for the program; assist the government in seeking funding for the program; identify suitable land and outgrowers for the program; purchase outgrowers\u2019 harvest of fresh fruit bunches and rubber; and support outgrowers in purchasing equipment and fertilizers, and by providing technical and management training.  Liberian small land holders chosen for the program will agree to become members of a cooperative; pay agreed upon crop and management fees to Sime Darby; adhere to Sime Darby\u2019s work methods and agricultural standards; and participate in training sessions. If funding cannot be obtained for the program, the government will not be in breach and Sime Darby does not need to start the Outgrowers\u2019 program.--Art. 15.2\n",
+                "location":{
+                    "image":"164,148,193,114"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148809.js",
+                "id":148809
+            },
+            {
+                "access":"public",
+                "title":"Les plans de gestion environnementaux //Environmental management plans",
+                "page":45,
+                "content":"Sime Darby Plantation's obligations with respect to the environment shall be in accordance with Environmental Protection and Management Law of Liberia or any other law or regulation of Liberia, regulations of the Environmental Protection Agency, and the Principles of the Roundtable on Sustainable Palm Oil.--Art. 16\n",
+                "location":{
+                    "image":"228,343,261,310"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148829.js",
+                "id":148829
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":47,
+                "content":"Sime Darby Plantation shall be taxed on its net taxable income pursuant to the laws of Liberia. However, the income tax rate is not to exceed 25% for a 25 year period from the date the contract comes into force. If the rate of general application is less than 25% during the 25 year period, then Sime Darby Plantation will be entitled to be taxed at a lower rate. --Art. 19.1\n",
+                "location":{
+                    "image":"115,157,141,122"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148813.js",
+                "id":148813
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'impot sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloissonement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":47,
+                "content":"For determining the taxable income, net operating losses incurred after the date the contract came into force (but no later than the 10th year after such date) may be carried forward for 10 years from the year in which the loss was incurred. For the remainder of the term of the contract, net operating losses may be carried forward for the period allowed by the laws of Liberia. In any calendar year within 40 years of the date the contract comes into force, Sime Darby Plantation's aggregate income tax liability, exclusive of any loss carried forward, shall be limited to 120% of the amount that would have been payable for that year if Sime Darby Plantation's taxes were computed in accordance with the laws of Liberia effective on the date the contract came into force. Sime Darby Plantation is also entitled to maximum capital allowances and incentives provided by the Revenue Code of Liberia. It is also entitled to an additional incentive deduction of 30% of the purchase price of equipment and machinery used in Sime Darby Plantation's activities in the year that the qualifying asset is placed in service; an additional 5% zonal incentive deduction on all capital expenses incurred in counties in which the concession area is located; and, when certified by the Minister of Finance of Liberia, an additional 5% incentive deduction for investment activities if Sime Darby Plantation employs more than 1,000 people in Liberia. Sums paid as turnover taxes (not more than 1% of Sime Darby Plantation\u2019s gross income) shall be treated as a prepayment of and a credit against income taxes payable pursuant to the laws of Liberia, provided that any amount paid during the term of the contract as a turnover tax in any year in excess of the amount of income tax that is payable in such year shall be carried over as a credit against income taxes payable in the next succeeding year; and, if any uncredited amount remains, the balance of such uncredited amount shall be carried over as a credit against income taxes in the succeeding year and in each following year until such credit is fully used.                                                  Sime Darby Plantation will pay the turnover tax quarterly pursuant to the laws of Liberia and the amount of the turnover tax payments due will not exceed 1 % of Sime Darby Plantation's gross income during the term of the contract. The sums paid as turnover taxes will be treated as prepayment of income taxes payable by Sime Darby Plantation under the laws of Liberia. If the amount of the turnover tax in any year exceeds the amount of income tax payable that year, the excess amount of the turnover tax should be credited against income taxes payable by Sime Darby Plantation in the next succeeding year. If any uncredited amount of turnover taxes remains after such transfer, such uncredited amount should be credited against the income taxes in succeeding year and in each ensuing year until credit is exhausted. If the Liberian government fails to fulfill its obligations under the contract Sime Darby Plantation may, upon providing the Liberian government with a notice of termination of the contract triggered by such failure, apply without exception any unused turnover tax credit against any financial obligation owed by Sime Darby Plantation to the Liberian government. --Art. 19.3, Art. 19.4, Art. 19.8, 21.1\n",
+                "location":{
+                    "image":"285,159,312,122"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148814.js",
+                "id":148814
+            },
+            {
+                "access":"public",
+                "title":"Obligations communautaires ou sous-nationales//Community and regional obligations",
+                "page":47,
+                "content":"Sime Darby Plantation will make an annual community development contribution of US$5.00 per hectare of land within the developed areas to a community development fund administered by a management team of not more than 10 members selected by the surrounding community, the Liberian government and Sime Darby Plantation. Amounts received by the community development fund will be placed into a federally-insured, interest-bearing depositary account and be administered jointly by the fund's management team. Any expenses incurred by Sime Darby Plantation while fulfilling its obligations under the contract will not be deducted from the community development fund. At the same time the development contributions will be tax deductible and may be carried forward for an indefinite period during the term of the contract.\nSime Darby Plantation will contribute 1 % of its annual gross sales of oil palm products (other than oil palm derivatives or by-products) as accrued at the end of each year of the term of the contract to the oil palm development fund. The obligation to do so will not arise until the oil palm development fund has been duly established and constituted by the laws of Liberia. The government may agree to lower the agreed contribution rate to the oil palm development fund.  The fund will be administered by a management team selected by the surrounding community, the Liberian government and Sime Darby Plantation or as otherwise required by the laws of Liberia. Amounts received by the community development fund will be placed into a federally-insured, interest-bearing depositary account and be administered jointly by the fund's management team or as otherwise required by the laws of Liberia.\nSime Darby Plantation will also contribute 1 % of its annual gross sales of rubber products as accrued at the end of each year of the term of the contract to the rubber development fund on terms and condition applicable to the oil palm development fund.--Art.19.5-19.7\n",
+                "location":{
+                    "image":"503,163,533,120"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148821.js",
+                "id":148821
+            },
+            {
+                "access":"public",
+                "title":"Redevances superficiaires//Surface fees",
+                "page":49,
+                "content":"Sime Darby Plantation will pay the Liberian government a surface rental fee equal to US$ 5.00 per hectare of land within the developed areas during each year of the term of the contracts. Such surface rental fees are payable to the Liberian government annually in advance, on or before January 15th of the year for which the payment is made, to the Ministry of Finance of Liberia if not directed otherwise by the Liberian government. The amount of surface rental fees due should be adjusted once every 5 years beginning from the 5 year anniversary after the date the contract came into force. The first adjusted amount should be equal to the total amount of surface rental fees times the ratio the harmonized consumer price index for Liberia (quarterly published by the Central Bank of Liberia) effective on the date the contract came into force. For subsequent adjustments the applicable ratio will be the last published harmonized consumer price index effective at the subsequent five year anniversary following the previous adjustment. In any case such adjustment will not exceed 20 % of the prevailing surface rental fee for every five year period.  Within the first 8 years of the term of the contract Sime Darby Plantation will also pay US$1.25 per hectare of land not within the developed areas but within the concession area and US$2.50 per hectare of such undeveloped land thereafter.--Art. 20.1, 20.2\n",
+                "location":{
+                    "image":"114,163,144,125"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148820.js",
+                "id":148820
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane pour le mat\u00e9riel de traitement//Custom duties on processing equipment",
+                "page":49,
+                "content":"For a period of 8 years from the date the contract comes into force, Sime Darby Plantation shall not be subject to import duties on capital goods and capital spare parts and items used directly in production. For the 7 year period of time between the date that is 8 years from the date the contract comes into force and the date that is 15 years from the date the contract comes into force, Sime Darby Plantation shall not be subject to import duties for capital equipment imported specifically for and subsequently used in the construction or operation of its oil mill and vegetable oil refinery as set forth in a list to be provided by Sime Darby Plantation requesting such exemptions. Farm supplies sold or conveyed to Liberian rubber farmers or Liberian oil palm farmers by Sime Darby Plantation shall be exempt from taxes and duties on their importation. Sime Darby Plantation shall not be subject to import duties on goods and materials imported by Sime Darby Plantation to meet its social obligations, including approved medical and educational materials. Sime Darby Plantation shall be subject to import duties on rice imported into Liberia to be provided to its employees at the rates established by the laws of Liberia provided that for a period of 7 years from the date the contract comes into force, such import duties shall not exceed US$ 1.00 per 50 kg bag of rice.                                                                                                    Sime Darby Plantation shall pay taxes and duties on the import of fuel and other goods at rates established by laws of Liberia, provided that such taxes and duties on fuel shall not exceed 50% of the rates established by the laws of Liberia for a period of 7 years from the date the contract came into force. All goods and materials imported by Sime Darby Plantation that are not subject to full or partial exemption from import duties shall be taxed in accordance with the laws of Liberia.                      Sime Darby Plantation shall pay a customs service fee on imports as required by the laws of Liberia on all items not otherwise subject to import duties provided however that during the term of the contract the rate at which such fee is imposed shall not exceed 1.5% of the imports CIF value.--Art. 21.2, 21.3, 21.4\n",
+                "location":{
+                    "image":"743,169,773,129"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148819.js",
+                "id":148819
+            },
+            {
+                "access":"public",
+                "title":"//ECOWAS Trade Levy",
+                "page":50,
+                "content":"Sime Darby Plantation is subject to the Economic Community Of West African States (ECOWAS) Trade Levy on all goods from non-ECOWAS states which it imports into Liberia at the rate established by the Laws of Liberia but not to exceed 1% of the CIF value of such goods unless such higher rate is generally applicable in all ECOWAS member states. --Art. 21.3\n",
+                "location":{
+                    "image":"443,157,474,116"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148828.js",
+                "id":148828
+            },
+            {
+                "access":"public",
+                "title":"//Withholding Tax on Interest",
+                "page":50,
+                "content":"Commencing on the date the contract came into force and continuing until the expiry of the contract's initial term of 63 years Sime Darby Plantation shall withhold from interest paid to non-resident individuals/legal entities the amount of taxes and duties to be paid by it under the laws of Liberia. In the event the term of the contract is extended the parties shall renegotiate such withholding tax on interest for the extended term.--Art. 21.5\n",
+                "location":{
+                    "image":"612,157,638,126"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148826.js",
+                "id":148826
+            },
+            {
+                "access":"public",
+                "title":"//Withholding Tax on Dividends",
+                "page":50,
+                "content":"Commencing on the date the contract came into force and continuing until the expiry of the contract's initial term of 63 years Sime Darby Plantation shall withhold from dividends paid to its shareholders or owners during the term of the contract in the amount of taxes and duties required by the laws of Liberia to be withheld, but not to exceed 10% of such payments. In the event the term of the contract is extended the parties shall renegotiate such withholding tax on dividends for the extended term.--Art. 21.6\n",
+                "location":{
+                    "image":"714,157,746,117"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148827.js",
+                "id":148827
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les prestations de service par des entreprises non r\u00e9sidentes//Witholding tax on services of non-resident companies",
+                "page":51,
+                "content":"Sime Darby Plantation shall withhold an amount required by the laws of Liberia from the payments due to any legal entity that is not a resident of Liberia for the items set forth in the Revenue Code of Liberia. In any case such amount should not exceed 10% of the payments due to legal entities that are not residents of Liberia.--Art. 21.7\n",
+                "location":{
+                    "image":"76,206,109,169"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148817.js",
+                "id":148817
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des expatri\u00e9s//Witholding tax on expatriate salaries",
+                "page":51,
+                "content":"Sime Darby Plantation shall withhold an amount required by the laws of Liberia from the payments due to any individual that is not a national of Liberia for the items set forth in the Revenue Code of Liberia. In any case such amount should not exceed 10% of the payments due to individuals that are not nationals of Liberia.--Art. 21.7\n",
+                "location":{
+                    "image":"78,130,111,93"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148816.js",
+                "id":148816
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des nationaux//Witholding tax on national salaries",
+                "page":51,
+                "content":"Sime Darby Plantation shall withhold an amount required by the laws of Liberia from the payments due to any individual that is a national of Liberia for the items set forth in the Revenue Code of Liberia. In any case such amount should not exceed 8% of the payments due to individuals that are nationals of Liberia.--Art. 21.7\n",
+                "location":{
+                    "image":"83,165,112,129"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148815.js",
+                "id":148815
+            },
+            {
+                "access":"public",
+                "title":"Credits de carbone//Carbon credits",
+                "page":52,
+                "content":"To the extent that Sime Darby Plantation realizes certified emission reduction credits or other carbon or carbon-equivalent emission reduction credits, or any corresponding monetary value or cost savings that result from greenhouse gas emission reductions whether created by Sime Darby Plantation or a third party working under its direction, such credits, value or savings must be declared as taxable income and are taxable in accordance with the laws of Liberia. For tax purposes, credits, value and savings shall be valued at a fair market value, meaning the value which is estimated should be paid in an arm's length transaction by an unrelated willing and knowledgeable buyer to an unrelated willing and knowledgeable seller. --Art. 21.12\n",
+                "location":{
+                    "image":"77,148,107,104"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148822.js",
+                "id":148822
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit//Audit mechanisms",
+                "page":53,
+                "content":"Sime Darby Plantation will have its books of account audited within 3 months, or any longer period approved by the Minister of Finance of Liberia, after the close of each fiscal year (starting from July 1 and ending on June 30 of the succeeding year) by an independent reputable international accounting firm selected by Sime Darby Plantations as an auditor. A copy of Sime Darby Plantation's annual financial statement with any management letters will be provided to the Liberian government by Sime Darby Planation as required by the laws of Liberia. The Liberian government may carry out its own audit of the books of account of Sime Darby Plantation, provided that Sime Darby will be provided with a copy of the such audit within 45 days of receipt. Once either Sime Darby Plantation or the Liberian government have audited the books of account, the financial statement of Sime Darby Plantation should be considered acceptable and the audit results binding and conclusive as its findings, save for any manifest errors.\nSime Darby Plantation agrees to keep a comprehensive set of its own books and records in Liberia at all times. In case these books and records are needed for review outside Liberia, the Liberian government should receive copies of these documents needed to complete the audit in a timely manner.--Art.22.5\n",
+                "location":{
+                    "image":"578,163,611,127"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148823.js",
+                "id":148823
+            },
+            {
+                "access":"public",
+                "title":"Obligations de reports et les m\u00e9thodes de c\u00f4ntrole de la conformit\u00e9//Reporting Requirements and other methods of monitoring compliance",
+                "page":54,
+                "content":"Sime Darby Plantation will maintain all records, as required by the laws of Liberia relating to its operations under contract. Sime Darby Plantation will also report to the Liberian government as required about its progress and development within 90 days of each anniversary of the date the contract comes into force within the term of contract on the same date as the delivery of the development plan. --Art. 23.1 and 23.3\n",
+                "location":{
+                    "image":"370,150,398,112"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148843.js",
+                "id":148843
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":55,
+                "content":"Confidential information provided by one party to the other party of the contract can only be used by the party receiving the confidential information and its representatives, and only for the purpose for which it was obtained. The confidential information may be released if required by law or if such confidential information becomes publicly available. If any individual or legal entity in course of formal dispute resolution applies to a court in Liberia the production of confidential information from the information receiving party, such party shall notify the information producing party about such event.--Art.23.5\n",
+                "location":{
+                    "image":"491,160,517,124"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148842.js",
+                "id":148842
+            },
+            {
+                "access":"public",
+                "title":"Cession / transfert//Assignment / transfer",
+                "page":56,
+                "content":"Sime Darby Plantation shall not assign its rights under this contract to any individual or legal entity without the prior consent of the Liberian government, which shall be deemed to have given the consent, if it does not indicate a decision to the contrary within 60 days of notice of such assignment or change of control in Sime Darby Plantation. In no event can an assignment be made in favor, either directly or indirectly, of any individual or legal entity defined as a 'Prohibited Person' in the contract. A 'Prohibited Person' is an individual or legal entity notified to Sime Darby Plantation by the Liberian government that is subject to sanctions of any international organization Liberia is a member of; or is subject to sanctions under an international treaty Liberia is a party to; or has been identified by the Liberian government as an infidel or legal entity imposing a serious risk to the national security, public health and safety of the economic or political stability of the Liberian government.--Art.24.1, 24.2\n",
+                "location":{
+                    "image":"431,155,461,114"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148839.js",
+                "id":148839
+            },
+            {
+                "access":"public",
+                "title":"//Force majeure",
+                "page":56,
+                "content":"If a party is unable to meet its obligations due to a force majeure event, it must give a notice to the other party of that force majeure event as soon as practicable. If the force majeure event causes a complete abandonment of the concession area and impacts Sime Darby Plantation's ability to operate in it, then Sime Darby Plantation's obligation to make payments due will be limited to amounts accrued prior to start of the force majeure event. All time periods in the contract affected by force majeure, except continued obligation to make payments of money, completion of the minimum development obligations and Outgrower's program obligations, will be extended.  All obligations are to be reinstated after cessation of the force majeure event, as if such suspension had not occurred. If the force majeure extends for one year or more in respect of Sime Darby Plantation's rights or four years or more in respect of the Liberian government's rights to terminate the contract, either party can terminate the contract by giving 60 days' prior notice.--Art. 25\n",
+                "location":{
+                    "image":"658,332,685,295"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148844.js",
+                "id":148844
+            },
+            {
+                "access":"public",
+                "title":"R\u00e9siliation / termination//Cancellation / termination",
+                "page":58,
+                "content":"The contract terminates at the end of its term or earlier either by the agreement of the parties or in the following situations. Sime Darby Plantation may terminate the contract without cause 365 days after giving notice to the government; in case of a force majeure event as provided for in the contract; or if the Liberian government fails to comply with any of its material obligations under the contract. Any termination is subject to the obligations of Sime Darby Plantation under the contract accrued prior to the date of termination. In the case of the government's failure, Sime Darby Plantations should notify the government of such failure. If the failure is not fixed within 60 days after the notice (or a longer period specified in the notice), then the contract is deemed terminated. The Liberian government may terminate the contract, subject to an occurrence of a force majeure event, if any of the following events of defaults take place and continue: (a) Sime Darby Plantation fails to comply with any of its material obligations under this contract; (b) Sime Darby Plantation voluntarily assigns its assets to creditors without the prior approval of the Liberian government other than an assignment made to secure indebtedness incurred in the ordinary course of business; a petition or application is filed to any tribunal for trustee or receiver appointment for all or substantially all of Sime Darby Plantation's investments; proceedings for bankruptcy, reorganization, arrangement, or insolvency of Sime Darby Plantation are commenced and steps are not taken to dismiss proceedings within 90 days of their commencement; or if any order is entered appointing trustee or receiver, or finding Sime Darby Plantation bankrupt or insolvent, or approving petition in any proceedings and no steps are taken to set aside proceedings or dismiss the order within 90 days from date the petition or order is served to Sime Darby Plantation; (c) Sime Darby Plantation ceases production for more than 365 consecutive days unless the Liberian government consents to cessation or the cessation results from force majeure or any government act of prevention or failure to comply with an obligation under the contract. If there is an event of default, the Liberian government must provide notice to Sime Darby Plantation and offer a fair opportunity to resolve the matter. If after a reasonable period of consultations, the Government believes that the disputed matter cannot be resolved with additional consultations, the Liberian government must notify of its intention to terminate. If an event of default is not cured within 60 days after the relevant notice (or a longer period specified by the government), the contract is terminated. If the Liberian government disagrees that it has failed to comply with an obligation or if Sime Darby Plantation disagrees that there has been an event of defaults, either party has 90 days after the notice of termination to refer the dispute to arbitration in accordance with the contract. If so, then a termination will not take place until the finality of and in accordance with the arbitration award.--Arts. 26.1 - 26.4, 26.6\n",
+                "location":{
+                    "image":"369,148,397,114"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148840.js",
+                "id":148840
+            },
+            {
+                "access":"public",
+                "title":"//Winding up Commission",
+                "page":59,
+                "content":"In case of a termination, the parties shall set up a winding up commission which will include members of the coordination committee, the Liberian Minister of Agriculture as chairperson, and one additional member to be appointed by Sime Darby Plantation. Each member will have one vote and the chairperson will only use his vote in the event of a tie. The chairperson will issue a notice and agenda for the first meeting, which will be held no later than 3 weeks after the winding up commission is established. After, periodic meetings should be held at least once each calendar month. Sime Darby Plantation should present to the winding up commission a detailed status report on operations so that the commission can recommend steps to the Liberian government to preserve the viability of the enterprise, employment in the area, and the centers of population. At the request of the Liberian government, the winding up commission will establish plans for full or partial cessation of operations, including the disposition of assets and their demolition or removal. At the request of either party, any meeting of the winding up commission may be held outside of Liberia and the requesting party will be responsible for the travel costs of the participants. Sime Darby Plantation may choose not to participate on the  winding up commission, in which event its only obligations are to provide a detailed status report on operations.--Art. 26.5\n",
+                "location":{
+                    "image":"522,158,547,118"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148847.js",
+                "id":148847
+            },
+            {
+                "access":"public",
+                "title":"//Other - Disposition of Assets",
+                "page":60,
+                "content":"Immovable assets: Upon termination of the contract, all permanent non-movable tangible assets of Sime Darby Plantation (including rubber trees and oil palms) in the concession area will become property of the Liberian government without charge. If Sime Darby Plantation terminates the contract due to the Liberian government's failure to comply with its obligations, the above-mentioned assets are to be bought by the Liberian government at their fair market value. Such fair market value will be agreed to by parties, and if not so agreed within 28 days of the contract's termination, either party may give notice of intention to refer the matter to an independent valuer, who will be jointly appointed by both parties. If not appointed within 10 days of such notice, either party can request that the independent valuer be appointed by the International Centre for Expertise in accordance with the provisions for appointment of experts under the Rules for Expertise of the International Chamber of Commerce. Movable Assets:  If Sime Darby Plantation wishes to sell any of its movable assets located in Liberia, the Liberian government will enjoy priority to purchase them at a fair market price, paid in dollars. If the Liberian government does not use this option within 60 days of being informed of the sale, Sime Darby Plantation may sell the asset to any other person, including the Liberian government or its affiliate, for any price it can obtain or remove the assets from Liberia. The proceeds of such sale will go to Sime Darby Plantation, subject to taxes or duties. If the Liberian government purchases any asset, it shall pay the purchase price within 60 days of the price being agreed upon, unless the parties agree otherwise. The Liberian government can provide notice to Sime Darby Plantation within one year of termination of the contract and require reasonable disposal or removal of movable assets, including unusable assets, remaining within the concession area. If Sime Darby Plantation does not reasonably dispose of or remove assets within a reasonable period, the Liberian government may complete the disposal or removal at the expense of Sime Darby Plantation, but Sime Darby Plantation is entitled to any income received from salvage of those assets.--Art. 27\n",
+                "location":{
+                    "image":"327,313,356,277"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148846.js",
+                "id":148846
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":61,
+                "content":"Any dispute between the Liberian government and Sime Darby Plantation arising out of or in relation to the contract shall be settled by binding arbitration, unless specifically provided elsewhere in the contract for resolution by submission to an expert. The arbitration shall be under the rules of the International Centre for Settlement of Investment Disputes (ICSID) effective on the date the contract comes into force. In the event of conflict between ICSID rules and the contract, the contract prevails. Either party to the contract may institute arbitration proceedings by giving notice to the other party and the Secretary General of ICSID. Each party appoints one arbitrator, and the Secretary General of ICSID will appoint a third arbitrator who is neither a citizen of Liberia or Malaysia and will serve as president of the arbitral tribunal. All arbitrators will be qualified to serve as arbitrators in the matter submitted and none will have an interest in the matter. Arbitration proceedings will be held in English, in Washington, D.C. or such other place the parties mutually agree, subject to the approval of the Centre and arbitral tribunal. The arbitral tribunal will determine how the costs of the proceedings (costs and fees incurred and imposed by the Centre and the arbitrators) are assessed between the two parties. Each party shall pay for its own costs and attorney fees. Any procedural issue that can't be determined under the rules of ICSID will be determined under the governing law. The arbitrators, by majority vote, render a written decision and publicly state it within 3 months after the hearing has concluded. Any monetary award shall be payable in dollars through a bank designated by the recipient and any award to Sime Darby Plantation will not be subject to taxes and duties. Neither party shall have liability for consequential damages or exemplary or punitive damages. Interest shall be applied at a rate of LIBOR (London Interbank Offered Rate) plus one percentage point from the date of the award until satisfaction. If LIBOR is no longer reported, then another agreed substitute rate should be applied. If the decision of the arbitral tribunal is adverse to either party, the tribunal, in its discretion, may allow a grace period to cure defect or default, up to 180 days from the time that payment would have been required. The Liberian government waives any defense related to sovereign immunity. The right to refer a claim or dispute to arbitration will not be affected by the fact that either party has received partial compensation from another person for a loss or injury related to the claim or dispute. That person may participate in the proceedings. The award may contain orders such as specific performance, setoff, other equitable relief or monetary damage. The parties shall take all actions necessary to completely fulfill the award which is binding and enforceable against them. The consent to jurisdiction of ICSID shall equally bind any successors or successors-in-interest to each party. Should ICSID be replaced by or functions transferred to another international organization, the parties will have the right to submit any dispute to that body for settlement. If ICSID ceases to exist without replacement, the parties may submit disputes to other centers mutually agreed upon. At all times, the right to arbitration is fully binding on both parties. Sime Darby Plantation is authorized to continue operations consistent with the terms of the contract during the pendency of a decision of a referee or arbitral tribunal. At the request of either party and subject to approval by the other party, any matter can instead be referred to a single referee appointed by the Secretary General of ICSID. Referring the matter to a single referee does not apply to disputes arising out of provisions of the contract related to the grant of rights, conduct of operations, income taxation, surface rental, payments to Liberian government, financial reporting and currency; records, reports and inspection; termination; disposition of assets; governing law; periodic review and survival and severability provisions; unless the parties agree the dispute is not material. The decision of the referee will be final and binding unless appealed by either party to arbitrators who shall examine the decision only as to manifest error of law, findings of fact not supported by credible evidence, and abuse of authority, misconduct or other unauthorized act by the referee. --Art.28\n",
+                "location":{
+                    "image":"316,328,346,293"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148837.js",
+                "id":148837
+            },
+            {
+                "access":"public",
+                "title":"Indemnisation//Indemnification",
+                "page":63,
+                "content":"One party to the contract agrees to indemnify the other party from any third party claims or liabilities or any damages suffered as a result of contractual breaches by the other party, including those deriving from the breach of the contract. One party will further indemnify the other party from any claims arising from the death or injury to any legal person or individual or damage of any property in Liberia as a result of its willful misconduct or gross negligence. --Arts. 29.1 - 29.3\n",
+                "location":{
+                    "image":"556,158,585,122"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148841.js",
+                "id":148841
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":66,
+                "content":"In case of a dispute among the parties the governing law will be the laws of Liberia, including any labor, environmental, health, safety, customs and tax statutes and any international treaties Liberia is a party to. When resolving a dispute the arbitral tribunal shall construe and interpret the rights and obligations of the parties under the contract in accordance with the laws of Liberia and by such rules and principles of generally accepted international law in the area of international investment that may be applicable. In case of a conflict between the provisions of the contract and any provisions of the laws of Liberia enacted after the contract came into force, the provisions of the contract shall prevail. The Constitution of Liberia shall always prevail.--Arts. 31.1 - 31.2\n",
+                "location":{
+                    "image":"119,143,152,106"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148836.js",
+                "id":148836
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":66,
+                "content":"In the event of a conflict between this contract and any law of Liberia enacted after the contract came into force (except the Constitution of Liberia), the rights, duties and obligations of Sime Darby Plantation and the Liberian government are the ones listed in the contract.--Art.31(2)\n",
+                "location":{
+                    "image":"210,145,241,110"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148838.js",
+                "id":148838
+            },
+            {
+                "access":"public",
+                "title":"Expropriation//Expropriation / nationalization",
+                "page":67,
+                "content":"The Liberian government undertakes not to nationalize or expropriate (or take any measures tantamount to nationalization or expropriation) in relation to: infrastructure and property of Sime Darby Plantation, its affiliates, associates and those of their respective employees, agents and representatives, to the extent that this may affect the activities of Sime Darby Plantation as an investor; agricultural products produced in course of Sime Darby Plantation's activities; shares, equity or ownership interest of Sime Darby Plantation; any structure or entity put in place for the activities of Sime Darby Plantation under the contract; and any capital invested by Sime Darby Plantation or its affiliates or associates in Liberia. If the no-expropriation/ nationalization duty is breached, the government is required to pay the fair market value of the expropriated/nationalized investment as defined under the contract; and Sime Darby Plantation may terminate the contract. --Art. 33.5\n",
+                "location":{
+                    "image":"340,161,373,120"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148845.js",
+                "id":148845
+            },
+            {
+                "access":"public",
+                "title":"//Tax benefits",
+                "page":68,
+                "content":"The Liberian government affirms that the investments of Sime Darby Plantation meet the threshold value to qualify for tax benefits under section 204(e) of the Revenue Code of Liberia.--Art. 33.6\n",
+                "location":{
+                    "image":"190,145,221,105"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148825.js",
+                "id":148825
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), Etat//Signatories, State",
+                "page":70,
+                "content":"Borkai Sirleaf, Acting Minister of Agriculture ; Augustine Ngafuan, Minister of Finance.--Signature page\n",
+                "location":{
+                    "image":"213,366,250,332"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148796.js",
+                "id":148796
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), soci\u00e9t\u00e9 //Signatories, company",
+                "page":70,
+                "content":"Dato' Azhar Abdul Hamid--Signature page\n",
+                "location":{
+                    "image":"428,258,464,222"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148795.js",
+                "id":148795
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":70,
+                "content":"30/03/2009--Signature page\n",
+                "location":{
+                    "image":"640,251,669,211"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148798.js",
+                "id":148798
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":70,
+                "content":"2009--Signature page\n",
+                "location":{
+                    "image":"648,387,682,349"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148799.js",
+                "id":148799
+            },
+            {
+                "access":"public",
+                "title":"Annexes Manquantes de la copie//Annexes missing from copy",
+                "page":73,
+                "content":"Appendix 1A - Map of the Concession Area\n",
+                "location":{
+                    "image":"46,100,79,60"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148850.js",
+                "id":148850
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales //Parent companies or affilates outside of the country, if different from the above mentioned; and their corporate headquarters",
+                "page":77,
+                "content":"Sime Darby Berhad owns 100% of Sime Darby Eastern Limited (Singapore company), which owns 100% of Edible Products Limited (Singapore company), which owns 100% of Sime Darby Plantation Investment (Liberia) Private Limited (Singapore company), which owns 100% of Sime Darby Plantation (Liberia) Inc. (the Sime Darby Plantation).--Appendix II\n",
+                "location":{
+                    "image":"427,69,460,32"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009/annotations/148791.js",
+                "id":148791
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"Sime Darby Plantation (Liberia) Inc. - Liberia, 2009",
+        "data":{
+            "Resource":"Rubber,Palm Oil",
+            "Countries":"Liberia",
+            "Signature Date":"30/03/2009",
+            "Contract Term (duration) in Years":"63",
+            "Title Type":"Concession",
+            "Signature Year":"2009"
+        },
+        "created_at":"Thu, 13 Mar 2014 21:38:04 +0000",
+        "display_language":"eng",
+        "updated_at":"Mon, 13 Apr 2015 10:09:30 +0000",
+        "id":"1086671-sime-darby-plantation-liberia-2009",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/1086671/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086671/sime-darby-plantation-liberia-2009.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/1086671/pages/sime-darby-plantation-liberia-2009-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086671/pages/sime-darby-plantation-liberia-2009-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086671/sime-darby-plantation-liberia-2009.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/1086671/pages/sime-darby-plantation-liberia-2009-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=1086671"
+        },
+        "contributor":"Kaitlin Cordes",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":97,
+        "canonical_url":"http://www.documentcloud.org/documents/1086671-sime-darby-plantation-liberia-2009.html"
+    }
+}

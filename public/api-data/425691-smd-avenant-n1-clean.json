@@ -1,0 +1,326 @@
+{
+    "document":{
+        "file_hash":null,
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom(s) de la soci\u00e9t\u00e9(s) contractante(s)//Name of contracting company",
+                "page":2,
+                "content":"Soci\u00e9t\u00e9 Delta Gold Mining (DGM) LTD--Preliminaires\n",
+                "location":{
+                    "image":"478,562,516,519"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71797.js",
+                "id":71797
+            },
+            {
+                "access":"public",
+                "title":"Agence(s) de l'Etat signataire(s)//State agency, National Company, Ministry ",
+                "page":2,
+                "content":"Minist\u00e8re des Ressources Naturelles, des Energies et de l'Environnement et Minist\u00e8re du Plan et des Finances--Preliminaires\n",
+                "location":{
+                    "image":"479,617,516,573"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71796.js",
+                "id":71796
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 cr\u00e9\u00e9e ou envisag\u00e9e pour ex\u00e9cuter le projet//Name and/or composition of executing company created or anticipated ",
+                "page":3,
+                "content":"La soci\u00e9t\u00e9 SMD initialement cr\u00e9\u00e9e par la Convention de base \u00e9tait une soci\u00e9t\u00e9 d'\u00e9conomie mixte d\u00e9tenue par l'Etat \u00e0 50% et par DGM \u00e0 50%. Pour les besoins de financement du projet, les parties ont transform\u00e9 cette soci\u00e9t\u00e9 en soci\u00e9t\u00e9 anonyme d\u00e9tenue \u00e0 85% par DGM et 15% par l'Etat. L'avenant refl\u00e8te cette modification.--R\u00e9citations, Arts. II - III\n",
+                "location":{
+                    "image":"110,374,145,331"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71799.js",
+                "id":71799
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 guin\u00e9enne//Local company name",
+                "page":3,
+                "content":"Soci\u00e9t\u00e9 Mini\u00e8re de Dinguiraye (SMD)--Art. 2\n",
+                "location":{
+                    "image":"598,426,631,388"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71792.js",
+                "id":71792
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State equity ",
+                "page":3,
+                "content":"La SMD est d\u00e9tenue \u00e0 85% par DGM et 15% par l'Etat. L'Etat re\u00e7oit ces actions en \u00e9change de la mise en disposition de titres miniers, mais ne participe \u00e0 aucune contribution financi\u00e8re et n'apporte aucune garantie ou caution. A partir de la p\u00e9riode de retour sur investissement, la soci\u00e9t\u00e9 poss\u00e9dant 85% s'engage \u00e0 offrir aux priv\u00e9s guin\u00e9ens une option d'achat sur 10% de ses titres par tranche minimum de 5%.--Art.3\n",
+                "location":{
+                    "image":"731,536,769,497"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71837.js",
+                "id":71837
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de recherche//Custom duties during exploration phase",
+                "page":5,
+                "content":"La soci\u00e9t\u00e9, ses entrepreneurs et ses sous-traitants b\u00e9n\u00e9ficient du r\u00e9gime douanier d\u00e9crit \u00e0 l'article 5 de l'avenant, couvrant, entre autres, l'admission temporaire \u00ab Prorata Temporis \u00bb gratuit pour le mat\u00e9riel, machines, appareil, engins lourds, v\u00e9hicules utilitaires  et biens destin\u00e9s \u00e0 \u00eatre r\u00e9export\u00e9s, et l\u2019exon\u00e9ration des droits et taxes d\u2019entr\u00e9e y compris la redevance pour traitement et liquidation exigible sur mat\u00e9riels, produits et pi\u00e8ces \u00e9num\u00e9r\u00e9s.--Art.15\n",
+                "location":{
+                    "image":"320,434,354,390"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71826.js",
+                "id":71826
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase de construction//Custom duties during construction phase",
+                "page":5,
+                "content":"La soci\u00e9t\u00e9, ses entrepreneurs et ses sous-traitants b\u00e9n\u00e9ficient du r\u00e9gime douanier d\u00e9crit \u00e0 l'article 5 de l'avenant, couvrant, entre autres, l'admission temporaire \u00ab Prorata Temporis \u00bb gratuit pour le mat\u00e9riel, machines, appareil, engins lourds, v\u00e9hicules utilitaires  et biens destin\u00e9s \u00e0 \u00eatre r\u00e9export\u00e9s, et l\u2019exon\u00e9ration des droits et taxes d\u2019entr\u00e9e y compris la redevance pour traitement et liquidation exigible sur mat\u00e9riels, produits et pi\u00e8ces \u00e9num\u00e9r\u00e9s.--Art.15\n",
+                "location":{
+                    "image":"321,484,357,443"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71827.js",
+                "id":71827
+            },
+            {
+                "access":"public",
+                "title":"Droits de douane en phase d'exploitation//Custum duties during  operation phase",
+                "page":5,
+                "content":"Apr\u00e8s une p\u00e9riode initiale de deux ans correspondant au r\u00e9gime applicable en phase de recherche et de construction, tous les biens import\u00e9s par la SMD, ses sous-traitants et entrepreneurs pour les besoins de l'exploitation acquitteront un droit de douane privil\u00e9gi\u00e9, plafonn\u00e9 \u00e0 7,6% de la valeur des biens import\u00e9s entre la troisi\u00e8me et la cinqui\u00e8me ann\u00e9e. Apr\u00e8s la cinqui\u00e8me ann\u00e9e, la Soci\u00e9t\u00e9 payera un taux cumul\u00e9 de droits de douane de 10%.Pour les produits p\u00e9troliers, application du r\u00e9gime applicable au secteur minier. Pour le fuel lourd destin\u00e9 \u00e0 la production d'\u00e9nergie, exon\u00e9ration totale pendant toute la dur\u00e9e de l'exploitation et ses renouvellements.--Art.15.2",
+                "location":{
+                    "image":"325,534,363,490"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71829.js",
+                "id":71829
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":7,
+                "content":"Or--Art. 16\n",
+                "location":{
+                    "image":"106,407,144,363"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71804.js",
+                "id":71804
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining Tax/ Royalty Tax",
+                "page":7,
+                "content":"\u00ab Taxe \u00e0 l\u2019exportation \u00bb de 5% sur la base du prix FOB Conakry. Prix calcul\u00e9 sur la base du certificat de l'usine (poids et puret\u00e9 d\u2019or) et du fixing de Londres du jour de l'exp\u00e9dition.--Art. 16\n",
+                "location":{
+                    "image":"110,462,150,417"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71807.js",
+                "id":71807
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":7,
+                "content":"30%--Art. 17 m)\n",
+                "location":{
+                    "image":"219,470,252,427"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71808.js",
+                "id":71808
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: amortissement//Income tax: amortization",
+                "page":7,
+                "content":"D\u00e9termin\u00e9s conform\u00e9ment avec les principes du code des imp\u00f4ts direct d'Etat (CIDE). Amortissements lin\u00e9aires de 3 ans pour les frais de premiers \u00e9tablissement et de 4 ans pour les autres investissements. Amortissements d\u00e9gressifs en appliquant un coefficient multiplicateur aux amortissements lin\u00e9aires de 2 pour les biens amortissables sur 3 ans et de 2.5 pour les biens amortissables sur plus de 3 ans.--Art. 17, \u00ab Tableau d\u2019Amortissement \u00bb\n",
+                "location":{
+                    "image":"219,516,255,478"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71809.js",
+                "id":71809
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":7,
+                "content":"La soci\u00e9t\u00e9 sera pendant l'exploitation de la concession, lib\u00e9r\u00e9e et exon\u00e9r\u00e9e de toute contribution, charge, imp\u00f4t, taxe, droits, commission, charges existantes ou qui seraient cr\u00e9\u00e9es ult\u00e9rieurement\u00e0 l'exception des taxes pr\u00e9vues dans la pr\u00e9sente Convention. Il en sera de m\u00eame pour les entrepreneurs et les sous-traitants pendant l'installation des chantiers et les constructions mais seulement pour leur activit\u00e9 dans le cadre de cette op\u00e9ration.--Art.17",
+                "location":{
+                    "image":"223,567,258,526"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71840.js",
+                "id":71840
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: d\u00e9ductibilit\u00e9 des frais financiers//Income tax: deductibility of expenses",
+                "page":7,
+                "content":"Sont d\u00e9ductibles les int\u00e9r\u00eats et autres d\u00e9penses relatifs aux fonds que les parties auront mis ou fait mettre au titre des travaux de recherche ou de l'exploitation.--Art. 17(a)\n",
+                "location":{
+                    "image":"407,91,447,52"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71814.js",
+                "id":71814
+            },
+            {
+                "access":"public",
+                "title":"Autres exon\u00e9rations//Other exemptions ",
+                "page":9,
+                "content":"A l\u2019exception de ce qui a \u00e9t\u00e9 \u00e9num\u00e9r\u00e9 dans la convention telle que modifi\u00e9e par l'avenant, l\u2019Etat accorde \u00e0 la Soci\u00e9t\u00e9 et aux actionnaires franchise compl\u00e8te de tous imp\u00f4ts, taxes fiscales et autres charges de quelque nature que ce soit.--Arts. 18.1, 18.2",
+                "location":{
+                    "image":"210,114,244,69"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71838.js",
+                "id":71838
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les salaires des nationaux//Witholding tax on national salaries",
+                "page":9,
+                "content":"Versement forfaitaire de 5% du total du montant brut des r\u00e9mun\u00e9rations, traitement et salaires des employ\u00e9s guin\u00e9ens durant les phases de recherche, d\u00e9veloppement, construction, extension de la production et pendant les deux premi\u00e8res ann\u00e9es de production.  La SMD s\u2019engage \u00e0 d\u00e9penser au minimum 1,5% de la masse salariale pay\u00e9e en Guin\u00e9e pour\u00a0la formation professionnelle\u00a0pendant la phase d\u2019exploitation; si les d\u00e9penses s\u2019av\u00e9raient inf\u00e9rieures \u00e0 ce montant, la SMD devrait acquitter la diff\u00e9rence sous forme d\u2019une taxe d\u00e9ductible de ses r\u00e9sultats imposables.--Arts. 18.1(a), 18.2(b), 18.2(k)\n",
+                "location":{
+                    "image":"331,156,364,120"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71817.js",
+                "id":71817
+            },
+            {
+                "access":"public",
+                "title":"Part patronale des cotisations de s\u00e9curit\u00e9 sociale//Social security contributions by employer",
+                "page":9,
+                "content":"La soci\u00e9t\u00e9 paiera les charges sociales et cotisations patronales dues pour les employ\u00e9s autres que les employ\u00e9s expatri\u00e9s conform\u00e9ment \u00e0 la r\u00e9glementation en vigueur.  Le personnel non guin\u00e9en de la soci\u00e9t\u00e9, les sous-traitants et entrepreneurs \u00e9trangers ne seront pas soumis \u00e0 la l\u00e9gislation guin\u00e9enne en mati\u00e8re de s\u00e9curit\u00e9 sociale et en cons\u00e9quence, la soci\u00e9t\u00e9 ne payera pas la cotisation patronale pour cette cat\u00e9gorie de travailleurs.--Arts. 18.1(b), 18.2(d)\n",
+                "location":{
+                    "image":"532,143,570,99"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71832.js",
+                "id":71832
+            },
+            {
+                "access":"public",
+                "title":"Retenue \u00e0 la source sur les prestations de service par des entreprises non r\u00e9sidentes//Witholding tax on services of non-resident companies ",
+                "page":9,
+                "content":"Retenue \u00e0 la source de 10%, sauf pour les prestations r\u00e9alis\u00e9es par la soci\u00e9t\u00e9 m\u00e8re ou affili\u00e9e \u00e0 prix co\u00fbtant.--Art. 17 l) 18.1(c) et 18.2(e)\n",
+                "location":{
+                    "image":"607,137,640,97"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71824.js",
+                "id":71824
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":10,
+                "content":"Durant la phase de recherche, de d\u00e9veloppement, construction et d'extension de la production ainsi que pendant les deux premi\u00e8res ann\u00e9es de production, la soci\u00e9t\u00e9, ses affili\u00e9es et/ou ses sous-traitants seront exon\u00e8res selon le cas, de tous imp\u00f4ts, droits, contributions, redevances ou toutes autres taxes directes ou indirectes qu'ils auraient a acquitter personnellement ou dont ils auraient a supporter la charge \u00e0 l'exception de ceux qui sont \u00e9num\u00e9r\u00e9s \u00e0 l'article 18.1. Durant la phase d\u2019exploitation, \u00e0 l\u2019exception de ce qui \u00e9t\u00e9 \u00e9num\u00e9r\u00e9, l\u2019Etat accorde \u00e0 la Soci\u00e9t\u00e9 et aux actionnaires franchise compl\u00e8te de tous imports, taxes fiscales et autres charges de quelque nature que ce soit.--Arts. 18.1, 18.2\n",
+                "location":{
+                    "image":"124,95,161,49"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71839.js",
+                "id":71839
+            },
+            {
+                "access":"public",
+                "title":"Redevances superficiaires//Surface fees",
+                "page":10,
+                "content":"5000 FG par km2 pendant la phase d'exploitation.--Art.18.2(a)\n",
+                "location":{
+                    "image":"189,160,221,121"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71834.js",
+                "id":71834
+            },
+            {
+                "access":"public",
+                "title":"Contribution au d\u00e9veloppement communautaire ou local//Community and local obligations ",
+                "page":11,
+                "content":"Contribution des patentes et contribution fonci\u00e8re des propri\u00e9t\u00e9s b\u00e2ties au profit des budgets pr\u00e9fectoraux sur la base d'un taux forfaitaire maximum de 0,4% du chiffre d'affaire et qui remplace toute contribution ou taxe locale.--Art.18.2(h)\n",
+                "location":{
+                    "image":"122,160,156,120"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71836.js",
+                "id":71836
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les Revenus des Valeurs Mobili\u00e8res (IRVM)//Capital gains tax ",
+                "page":11,
+                "content":"Exon\u00e9ration--Art. 18.2 (j)\n",
+                "location":{
+                    "image":"331,145,365,103"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71816.js",
+                "id":71816
+            },
+            {
+                "access":"public",
+                "title":"Formation du personnel guin\u00e9en//Management training requirement for nationals ",
+                "page":11,
+                "content":"La SMD s\u2019engage \u00e0 d\u00e9penser au minimum 1,5% de la masse salariale pay\u00e9e en Guin\u00e9e pour\u00a0la formation professionnelle\u00a0pendant la phase d\u2019exploitation; si les d\u00e9penses s\u2019av\u00e9raient inf\u00e9rieures \u00e0 ce montant, la SMD devrait acquitter la diff\u00e9rence sous forme d\u2019une taxe d\u00e9ductible de ses r\u00e9sultats imposables.--Art. 18.2(k)\n",
+                "location":{
+                    "image":"373,137,406,97"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71805.js",
+                "id":71805
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), pour l'Etat//Signatories, State ",
+                "page":14,
+                "content":"Docteur Toumany Dakoun Sakho, Ministre des Ressources Naturelles, des Energies et de l'Environnement et M. Soriba Kaba, Ministre du Plan et des Finances.--Signatures\n",
+                "location":{
+                    "image":"79,232,122,181"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71798.js",
+                "id":71798
+            },
+            {
+                "access":"public",
+                "title":"Signataire(s), pour la soci\u00e9t\u00e9 //Signatories, company ",
+                "page":14,
+                "content":"Trygve Kroepelien, Pr\u00e9sident du Conseil d\u2019Administration, DGM et Directeur G\u00e9n\u00e9ral de Kenor A/S ; Etienne Wilhemn, repr\u00e9sentant de SEREM--Signatures\n",
+                "location":{
+                    "image":"80,171,120,121"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71795.js",
+                "id":71795
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":14,
+                "content":"23/10/1993--Signatures\n",
+                "location":{
+                    "image":"80,290,125,243"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean/annotations/71802.js",
+                "id":71802
+            }
+        ],
+        "description":"<i>Nom de la soci\u00e9t\u00e9 guin\u00e9enne : </i>Soci\u00e9t\u00e9 Mini\u00e8re de Dinguiraye (SMD)<br><i>Si\u00e8ge social : </i>Immeuble Lab\u00e9, Cit\u00e9 Chemin de Fer, Commune de Kaloum. BP 2162 Conakry, R\u00e9publique de Guin\u00e9e<br><i> Structure du Capital : </i>La SMD \u00e9tait \u00e0 l'origine d\u00e9tenue \u00e0 50% par DGM et 50% par l'Etat. L'actionnariat a \u00e9volu\u00e9 \u00e0 85% pour DGM et 15% pour l'Etat, DGM passant sous le contr\u00f4le de CrewGold, soci\u00e9t\u00e9 anglaise. En 2006, les 15% de l'Etat ont \u00e9t\u00e9 c\u00e9d\u00e9s \u00e0 Crewgold. Depuis janvier 2011, Severstal, \u00e0 travers plusieurs filiales dont Bluecone et Nord Gold N.V., a rachet\u00e9 l\u2019int\u00e9gralit\u00e9 des actions de Crew Gold. <br><i>Soci\u00e9t\u00e9 m\u00e8re ou affili\u00e9e hors de la Guin\u00e9e; et leurs si\u00e8ges sociaux : </i>Nord Gold poss\u00e8de 100% des actions de CrewGold, enregistr\u00e9 au Canada, qui contr\u00f4le 100% de la SMD. Nord Gold a \u00e9t\u00e9 cr\u00e9\u00e9e en 2007 pour g\u00e9rer toute la production d\u2019or de Severstal. Nord Gold est enregistr\u00e9e aux Pays-Bas mais list\u00e9e \u00e0 la bourse de Londres. Son si\u00e8ge social est: Herikerbergweg 238 Luna ArenA\u20281101 CM Amsterdam Zuidoost, The Netherlands <br><i>Site web de l\u2019entreprise : </i>http://www.nordgold.com/en/index.aspx<br><i>Date d'octroi du permis d'exploitation ou de la concession : </i>21/03/1994<br><i>Investissement estim\u00e9 : </i>La SMD d\u00e9clare avoir investi plus de $450 millions dans le projet et pr\u00e9voyait en 2010 un programme d\u2019exploration suppl\u00e9mentaire de $40 million sur 5 \u00e0 8 ans.<br><i>Production attendue : </i>Production annuelle moyenne de 200,000 onces.<br><i>R\u00e9serves estim\u00e9es : </i>88,2 millions de tonnes<br><br><br><i>Note : Ce r\u00e9sum\u00e9 est destin\u00e9 \u00e0 faciliter la compr\u00e9hension par un large public des points importants du document original. Il ne s\u2019agit en aucun cas d\u2019une liste exhaustive des obligations l\u00e9gales li\u00e9es au projet minier concern\u00e9. Ce r\u00e9sum\u00e9 ne comporte aucune opinion quant au statut juridique du document ou de tout \u00e9l\u00e9ment du document, et ne refl\u00e8te aucunement des d\u00e9cisions ou positions du CTRTCM ou du Gouvernement de la R\u00e9publique de Guin\u00e9e en lien avec le processus de revue des conventions et titres miniers. Ce r\u00e9sum\u00e9 doit \u00eatre lu en lien avec le texte int\u00e9gral du document original et avec les lois et textes r\u00e9glementaires applicables. Un certain nombre de lois et r\u00e9glementations applicables directement ou indirectement au secteur minier sont disponibles <a href=\"http://www.contratsminiersguinee.org/about/legislation.html\">ici</a>.</i>",
+        "language":"eng",
+        "title":"SMD, Amendment 1 - Guin\u00e9e, 1993",
+        "data":{
+            "Signature Date":"23/10/1993",
+            "Type of Mining Title":"Concession",
+            "Signature Year":"1993",
+            "Resource":"Or",
+            "Countries":"Guinea"
+        },
+        "created_at":"Mon, 10 Sep 2012 20:57:11 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 21 Apr 2015 13:12:36 +0000",
+        "id":"425691-smd-avenant-n1-clean",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/425691/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/425691/smd-avenant-n1-clean.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/425691/pages/smd-avenant-n1-clean-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/425691/pages/smd-avenant-n1-clean-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/425691/smd-avenant-n1-clean.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/425691/pages/smd-avenant-n1-clean-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=425691"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":14,
+        "canonical_url":"http://www.documentcloud.org/documents/425691-smd-avenant-n1-clean.html"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "document":{
+        "file_hash":"b44fe983f7a3f730010f086bf9921392eb4f0538",
+        "annotations":[],
+        "description":"<i>Nom de la soci\u00e9t\u00e9 guin\u00e9enne : </i>Soci\u00e9t\u00e9 Aurif\u00e8re de Guin\u00e9e (SAG)<br><i>Si\u00e8ge social : </i>Immeuble Bok\u00e9, cit\u00e9 Lansana Cont\u00e9, Quartier Coronthie commune de Kaloum, Conakry Republique de guin\u00e9e<br><i> Structure du Capital : </i>D\u00e9tenue \u00e0 15% par la R\u00e9publique de Guin\u00e9e et 85% par Anglo Gold Ashanti LTD<br><i>Soci\u00e9t\u00e9 m\u00e8re ou affili\u00e9e hors de la Guin\u00e9e; et leurs si\u00e8ges sociaux : </i>Anglo gold Ashanti Limited, 76 jeppe Street, Newtown 2001 PO.Box 62117 Marshal 2107.South Africa<br><i>Site web de l\u2019entreprise : </i>http://www.anglogold.co.za/<br><i>Date d'octroi du permis d'exploitation ou de la concession : </i>04/08/1997<br><i>Investissement estim\u00e9 : </i>US$ 200 millions<br><i>Production attendue : </i>300,000 onces/an<br><i>R\u00e9serves estim\u00e9es : </i>5,2 millions d'onces<br><br><br><i>Note : Ce r\u00e9sum\u00e9 est destin\u00e9 \u00e0 faciliter la compr\u00e9hension par un large public des points importants du document original. Il ne s\u2019agit en aucun cas d\u2019une liste exhaustive des obligations l\u00e9gales li\u00e9es au projet minier concern\u00e9. Ce r\u00e9sum\u00e9 ne comporte aucune opinion quant au statut juridique du document ou de tout \u00e9l\u00e9ment du document, et ne refl\u00e8te aucunement des d\u00e9cisions ou positions du CTRTCM ou du Gouvernement de la R\u00e9publique de Guin\u00e9e en lien avec le processus de revue des conventions et titres miniers. Ce r\u00e9sum\u00e9 doit \u00eatre lu en lien avec le texte int\u00e9gral du document original et avec les lois et textes r\u00e9glementaires applicables. Un certain nombre de lois et r\u00e9glementations applicables directement ou indirectement au secteur minier sont disponibles <a href=\"http://www.contratsminiersguinee.org/about/legislation.html\">ici</a>.</i>",
+        "language":"eng",
+        "title":"SAG Convention Amendment 1 English",
+        "data":{
+            "Signature Date":"25/07/2005",
+            "Signature Year":"2005",
+            "Resource":"Gold,Silver,Diamond",
+            "Countries":"Guinea"
+        },
+        "created_at":"Mon, 21 Jan 2013 01:56:10 +0000",
+        "display_language":"eng",
+        "updated_at":"Tue, 24 Mar 2015 19:12:17 +0000",
+        "id":"560257-sag-convention-amendment-1-english",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/560257/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/560257/sag-convention-amendment-1-english.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/560257/pages/sag-convention-amendment-1-english-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/560257/pages/sag-convention-amendment-1-english-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/560257/sag-convention-amendment-1-english.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/560257/pages/sag-convention-amendment-1-english-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=560257"
+        },
+        "contributor":"Samantha Sunne",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":4,
+        "canonical_url":"http://www.documentcloud.org/documents/560257-sag-convention-amendment-1-english.html"
+    }
+}

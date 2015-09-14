@@ -1,0 +1,437 @@
+{
+    "document":{
+        "file_hash":"602c261e82528c41447a2e4aa3c2041d9dda1d9d",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Nom du projet//Project title",
+                "page":1,
+                "content":"Amu Darya Basin EPSC--Preamble\n",
+                "location":{
+                    "image":"154,612,185,577"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101414.js",
+                "id":101414
+            },
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Afghanistan--Recitals\n",
+                "location":{
+                    "image":"277,590,307,549"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101408.js",
+                "id":101408
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":4,
+                "content":"26/11/2011--Preamble \n",
+                "location":{
+                    "image":"172,467,200,431"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101432.js",
+                "id":101432
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":4,
+                "content":"2011--Preamble \n",
+                "location":{
+                    "image":"173,514,206,475"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101433.js",
+                "id":101433
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":4,
+                "content":"The Ministry of Mines of the Government of the Islamic Republic of Afghanistan--Preamble and Signatures page\n",
+                "location":{
+                    "image":"200,88,231,47"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101429.js",
+                "id":101429
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":4,
+                "content":"CNPCI Watan Oil and Gas Afghanistan Ltd., a subsidiary of CNPC International, Ltd.--Preamble and Signatures page\n",
+                "location":{
+                    "image":"216,681,246,644"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101426.js",
+                "id":101426
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 locale//Local company name",
+                "page":4,
+                "content":"CNPCI Watan Oil and Gas Afghanistan Ltd. (\"Contractor\")--Preamble\n",
+                "location":{
+                    "image":"251,674,278,641"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101409.js",
+                "id":101409
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":4,
+                "content":"Liquid Hydrocarbons (crude mineral oil, asphalt, and all other kinds of hydrocarbons and bitumen) and Natural Gas--Recitals and Definitions\n",
+                "location":{
+                    "image":"386,90,415,54"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101435.js",
+                "id":101435
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales //Parent companies or affilates outside of the country, if different from the above mentionned; and their corporate headquarters",
+                "page":6,
+                "content":"CNPC International, Ltd., organized and existing under the laws of the Cayman Islands, with offices in Beijing, China, at No. 6-1, Fuchengmen Beidajie, Xicheng District, 100034--Definitions; Article XXXIV\n",
+                "location":{
+                    "image":"193,118,225,82"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101411.js",
+                "id":101411
+            },
+            {
+                "access":"public",
+                "title":"Restrictions sur les transactions avec les parties li\u00e9es//Restrictions on transactions with affiliated parties",
+                "page":6,
+                "content":"The Contractor shall give preference to purchases by Afghan nationals and companies in marketing its products, in case such purchases are at prices not less that the price for arm's-length sales (understood as sales made between willing and unrelated buyers and sellers in exchange for cash, excluding sales involving barter, sales from government to government and other transactions motivated in whole or in part by considerations other than the usual economic benefits involved in sales of Hydrocarbons in the international market).--Definitions and Section 12.1\n",
+                "location":{
+                    "image":"503,62,534,27"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101454.js",
+                "id":101454
+            },
+            {
+                "access":"public",
+                "title":"Date d'octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":7,
+                "content":"26/12/2011--Definitions and Section 3.1(a)\n",
+                "location":{
+                    "image":"464,136,493,98"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101421.js",
+                "id":101421
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e d'octroi du permis d'exploitation ou concession//Year of issue of title/permit",
+                "page":7,
+                "content":"2011--Definitions and Section 3.1(a)\n",
+                "location":{
+                    "image":"465,101,499,61"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101425.js",
+                "id":101425
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":11,
+                "content":"License for exploration, development and production of Hydrocarbons within the Contract Area, as per the terms and conditions of the Exploration and Production Sharing Contract--Section 2.1\n",
+                "location":{
+                    "image":"805,89,834,53"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101413.js",
+                "id":101413
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":12,
+                "content":"For the parts of the Contract Area located outside the Designated Fields, the Contractor is authorised to conduct Exploration Operations during an Exploration Phase which shall be comprised of an initial exploration period of 4 years and 6 months, subject to two extensions of 2 years each (upon request and subject to the conditions of the agreement). If as result of the exploration the Contractor makes a commercially relevant discovery, the applicable Contract Area shall be converted into a Field, and the development and production phase shall start, with a duration of up to 25 years counted as from the discovery date (subject to one extention by request, for a term of up to 10 years). In case no commercially relevant discovery occurs within the Contract Area, at the end of the Exploration Phase, the Contract shall be automatically terminated for all parts of the Contract Area other than the Designated Fields. In the case of the Designated Fields, the duration of the Contract shall not exceed 25 years from the Effective Date (26/12/2011).--Section 3.1\n",
+                "location":{
+                    "image":"448,90,478,51"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101434.js",
+                "id":101434
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":15,
+                "content":"All operations shall be carried out in accordance with the applicable laws and pursuant to Work Programmes and Work Programmes Budgets approved by the parties during the term of the agreement. Each Work Programme and Work Program Budget shall comply with the minimum exploration programme and the minimum production requirements established among the parties (and set forth, respectivelly, in part I and part II of Exhibit H to the agreement).  Contractor shall advance all funds and purchase or lease all required technology, equipment, machinery, materials and supplies for purposes of the operations. The Contractor shall submit a financial guarantee in an amount equal to the estimated expenditures necessary to perform the minimum exploration program for the initial exploration period. Contractor also executed and delivered a General Performance Guarantee to the Ministry.--Sections 5.1 and 5.3, Article VIII\n",
+                "location":{
+                    "image":"350,110,377,73"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101462.js",
+                "id":101462
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":25,
+                "content":"In case of discovery of commercially relevant resources in any of the research areas, Contractor shall present to the Ministry a detailed proposal for the construction, establishment and operation of all facilities and services for and incidental to development, extraction, production, storage, transportation, sale and other disposal of Hydrocarbons. If the plan is approved and exploration of new wells is made possible, the Contractor shall carry out all development and production activities in such wells in accordance with the approved plan.--Sections 7.1(h), 7.1(j)\n",
+                "location":{
+                    "image":"121,135,153,95"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101463.js",
+                "id":101463
+            },
+            {
+                "access":"public",
+                "title":"Participation de l'Etat//State participation",
+                "page":33,
+                "content":"The Afghan Ministry of Mines is entitled to receive 15% of the Fields' Liquid Hydrocarbons production as royalties, a--Section 10.1(a) and Article VIII\n",
+                "location":{
+                    "image":"104,460,133,423"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101449.js",
+                "id":101449
+            },
+            {
+                "access":"public",
+                "title":"La s\u00e9curit\u00e9 physique, la protection de la propri\u00e9t\u00e9, et / ou l'utilisation de gardes//Physical security, protection of property, and/or use of guards",
+                "page":35,
+                "content":"The Ministry shall endeavor to provide adequate security within the Contract Area and any other areas in which Hydrocarbons Operations are conducted, including during travel to and from such areas. In the event that the Contractor considers the security provided for its personnel inadequate or inconsistent with its policies, supplementary security measures shall be implemented by the Contractor, including, but not limited to, the engagement of competent private security providers licensed to operate in Afghanistan. Such arrangements shall be revised from time to time in response to changes in security conditions.--Art 9.3\n",
+                "location":{
+                    "image":"284,115,310,85"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/151613.js",
+                "id":151613
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re / redevance//Mining tax / royalty tax",
+                "page":36,
+                "content":"Royalties due to the Ministry shall correspond to 15% of the Hydrocarbons produced and saved from the Contract Area in any month, and not used in Hydrocarbons' Operations or flared or re-injected into the Contract Area--Section 10.1(a)\n",
+                "location":{
+                    "image":"249,127,278,90"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101443.js",
+                "id":101443
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - Elements de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, credit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)",
+                "page":36,
+                "content":"No cost recovery cap. In any month, Contractor is entitled to retain hydrocarbons in the amount of outstanding costs incurred and not recovered in a previous month. Hydrocarbons are ring-fenced for cost-recovery purposes; costs incurred in fields other than the \u201cdesignated fields\u201d (Kashkari, Angot, Aq Darya, Bazarkhami, Zamarudsay) cannot be recovered via hydrocarbons produced in those \"designated fields.\"--Section 10.1(b)\n",
+                "location":{
+                    "image":"342,133,371,98"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101446.js",
+                "id":101446
+            },
+            {
+                "access":"public",
+                "title":"Partage de production - Elements de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)",
+                "page":36,
+                "content":"\"After deduction of royalties and the recovery of cost oil by the Contractor, the Ministry shall be allocated a portion of the hydrocarbons produced and saved in any month as follows. If cumulative Gross Contractor Revenues divided by cumulative Hydrocarbons Operations Expenditures incurred up to the immediately preceding month are:\n\u25cf less than or equal to 1, the Ministry is entitled to 0% of profit oil;\n\u25cf greater than 1 but less than or equal to 1.3, the Ministry is entitled to 50% of profit oil;\n\u25cf greater than 1.3 but less than or equal to 2.5, the Ministry is entitled to a sliding scale of between 50 and 70% of profit oil;\n\u25cf greater than 2.5, the Ministry is entitled to 70% of profit oil.\n\nThese calculations shall be made separately in respect of the \u201cdesignated fields\u201d Kashkari, Angot, Aq Darya, Bazarkhami, Zamarudsay) and the rest of the contract area.--Section 10.1(c )\"\n",
+                "location":{
+                    "image":"689,140,719,103"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101447.js",
+                "id":101447
+            },
+            {
+                "access":"public",
+                "title":"Autre - Obligations \u00e0 l'\u00e9gard des communaut\u00e9s, la protection sociale et l\u2019\u00e9conomie locale/r\u00e9gionale//Other - Community and social obligations",
+                "page":41,
+                "content":"Contractor shall give preference to purchases by Afghan nationals and companies when marketing any part of its share of the Liquid Hydrocarbons produced and saved from the Contract Area, provided that the amount of such purchases is in accordance with the pricing standards established in the contract. The Ministry will also inform to the Contractor the amount of Liquid Hydrocarbons and Natural Gas it needs to meet Afghanistan's internal consumption requirements. Contractor shall be reimbursed for the cost of such products required by the Ministry.--Article 12\n",
+                "location":{
+                    "image":"103,458,131,423"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101441.js",
+                "id":101441
+            },
+            {
+                "access":"public",
+                "title":"Autre//Other- domestic obligation",
+                "page":41,
+                "content":"The Afghan Ministry of Mines is entitled to purchase (for a price determined in accordance with the agreement) a quantiy of Liquid Hydrocarbons and Natural Gas to meet the country's internal comsumption needs on any year.--12.3\n",
+                "location":{
+                    "image":"411,125,442,86"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101456.js",
+                "id":101456
+            },
+            {
+                "access":"public",
+                "title":"Autre//Other- surface rent",
+                "page":43,
+                "content":" Contractor will also be responsible for the payment of annual surface rental fees to the Ministry in accordance to the following: during the initial exploration period, the amount of US$ 1.00 per hectare will be due; during the first extension period, the amount of US$ 4.00 per hectare; during the second extension period, the amount of US$ 8.00 per hectare; during the period from the first declaration of commercial discovery, the amount of US$ 15.00 per hectare/ abd during the development and production phase with respect to each field, the amount of US$ 40.00 per hectare. Surface rental fees shall alsobe paid to the owner of any utilized privately owned land. The amount shall be stipulated among the parties, or determined by a dispute resolution board.--Article XIV \n",
+                "location":{
+                    "image":"323,461,352,424"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101455.js",
+                "id":101455
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":45,
+                "content":"At the Effective Date, the income tax rate in Afghanistan was of 20%. The contract sets forth, however, that Contractor's taxable income shall be subject to an income tax rate of 30%, stabilized for the remaining period of the agreement.--Sections 16.1 and 16.2\n",
+                "location":{
+                    "image":"645,100,673,64"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101444.js",
+                "id":101444
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: \u00e9xoneration//Income tax: exemptions",
+                "page":45,
+                "content":"Contractor is exempted from Business Tax Receipt during the term of the agreement for all business conducted in connection with its terms and conditions.--Section 16.3\n",
+                "location":{
+                    "image":"802,113,830,78"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101445.js",
+                "id":101445
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":48,
+                "content":"Contractor shall give preference to goods that are produced or available in Afghanistan, and services that are rendered by Afghan nationals and companies, provided that such goods are similar in quality, quantity and price to imported foreign goods and services available at the time. Locally produced or available equipment, materials and supplies shall be deemed equal in price to imported items if the local cost of such locally produced or available items at the Contractor's operating base in Afghanistan is not more than 15% percent higher than the cost of such imported items before Customs Duties but after transportation and insurance costs have been added.--Article XXI\n",
+                "location":{
+                    "image":"465,469,499,430"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101439.js",
+                "id":101439
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":50,
+                "content":"Prior to the commencement of operations, Contractor shall undertake and complete a Baseline Environmental Assessment of the relevant field or area, consistent with International Best Practices and applicable laws.In the course of operations the Contractor shall consider, investigate, assess and manage the impact of the activities in the environment and the socio-economic conditions of any person who might be directly affected thereby. --Section 23.2\n",
+                "location":{
+                    "image":"464,124,495,88"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101457.js",
+                "id":101457
+            },
+            {
+                "access":"public",
+                "title":"Autre - Dispositions environnementales//Other - Environmental provisions",
+                "page":50,
+                "content":"Upon completion of the operations, Contractor shall rehabilitate as far as reasonably possible the environment affected thereby to its natural or predetermined state or to land use. Additional protective measures shall also be taken by Contractor, including, but not limited to, preventing the pollution of any water well, river or lake; treatment and disposal of waste liquids in a manner approved by the Ministry of Mines; and properly secure permanent installations. Contractor shall also take all practical measures to minimize flaring of natural gas. The Ministry is entitled to require the Contractor to take remedial measures within a reasonable period established by the Ministry and to repair any damage to the environment in case the operations conducted by the Contractor endanger persons or third-party property, cause pollution or harm wildlife or the environment to an unnaceptable degree. --Sections 23.2, 23.5, 23.6 and 23.7\n",
+                "location":{
+                    "image":"522,125,552,88"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101458.js",
+                "id":101458
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":53,
+                "content":"Any dispute or controversy not solved by mutual agreement within 45 days shall be settled by arbitration initiated by either party by submission to the International Centre for Settlement of Investment Disputes (ICSID), pursuant to the ICSID Convention of March 18, 1965. The Contractor shall not be treated as an Afghan company. The number of arbitrators shall be three, and the proceedings will be conducted in the English language, with the place of arbitration being London, England. Alternativelly to seeking a mutual agreement before the initiation of an arbitration procedure, the parties agree to submit the matter in dispute, in first instance, to administered expertise proceedings in accordance with the Rules for Expertise of the International Chamber of Commerce. The results of this procedure will not be binding, and all documents presented or produced shall be treated as confidential, and cannot be used in the course of an eventual arbitration procedure. Finally, the Ministry waives any rights it may have to claim sovereign immunity for itself or any of its assets to the fullest extent permitted by the laws of any applicable jurisdiction.--Article XXIV\n",
+                "location":{
+                    "image":"438,470,468,433"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101467.js",
+                "id":101467
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":56,
+                "content":"No later than June 30 of each year, Contractor shall submit detailed accounts showing all Hydrocarbonet Operations Expenditures and all Gross Contractor Revenues during the previous year. Accounts shall be audited by an accountant or auditor approved by both parties. The Ministry will be entitled to inspect the Contractor's accounts, books and records either directly or through an independent accountant. The Ministry shall have full and complete access to the contract area to observe the operations  and perform examinations, surveys, drawings, tests and analyses. --Sections 26.2 and 26.3\n",
+                "location":{
+                    "image":"508,121,535,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101450.js",
+                "id":101450
+            },
+            {
+                "access":"public",
+                "title":"M\u00e9canismes de r\u00e9clamation pour les parties non contractantes//Indemnification",
+                "page":58,
+                "content":"The Contractor shall indemnify, defend and hold the Government harmless against all claims, losses and damages of any nature, including claims for loss or damage to property or injury or death to persons, resulting from any Hydrocarbons Operations conducted by or on behalf of the Contractor, provided that the Contractor shall not be held responsible to the Government for any loss, claim, damage or injury caused by or resulting from any negligent action of personnel of the Govemment or from any environmental contamination existing in the Contract Area on or prior to the Effective Date.--Art. 27.2\n",
+                "location":{
+                    "image":"668,112,699,79"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/151614.js",
+                "id":151614
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":61,
+                "content":"The laws of Afghanistan--Article XXIX\n",
+                "location":{
+                    "image":"527,290,555,252"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101465.js",
+                "id":101465
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":63,
+                "content":"The agreement is not confidential--Article XXXIII\n",
+                "location":{
+                    "image":"108,496,136,455"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101468.js",
+                "id":101468
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, longitude et latitude / terrestre vs marin (peu profond vs. profond) //Location, longitude and latitude /  Onshore vs Offshore (shallow vs. deep)",
+                "page":68,
+                "content":"As informed in Exhibit A - Description of Contract Area--Exhibit A - Description of Contract Area\n",
+                "location":{
+                    "image":"20,86,50,46"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101419.js",
+                "id":101419
+            },
+            {
+                "access":"public",
+                "title":"Nom du gisement/ champ de petrole/ gas//Name and/or number of field, block or deposit",
+                "page":68,
+                "content":"The Contract Area consists of the following three blocks: Kashkari Block, Bazarkhami Block and Zamarudsay Block. The Designated Fields consist of the following five fields: Angot Field, Kashkari Field, Aq Darya Field, Bazarkhami Field, and Zamarudsay Field--Exhibit A - Description of Contract Area\n",
+                "location":{
+                    "image":"72,75,101,36"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/696884-amu-darya-english/annotations/101416.js",
+                "id":101416
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"CNPCIW - Afghanistan, 2011",
+        "data":{
+            "Type of Mining Title":"Exploration Permit/License,Production Sharing Contract",
+            "Resource":"Hydrocarbons",
+            "Countries":"Afghanistan",
+            "Signature Date":"26/11/2011",
+            "Contract Term (duration) in Years":"25",
+            "Signature Year":"2011"
+        },
+        "created_at":"Tue, 07 May 2013 14:51:39 +0000",
+        "display_language":"eng",
+        "updated_at":"Wed, 22 Apr 2015 16:14:22 +0000",
+        "id":"696884-amu-darya-english",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/696884/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/696884/amu-darya-english.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/696884/pages/amu-darya-english-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/696884/pages/amu-darya-english-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/696884/amu-darya-english.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/696884/pages/amu-darya-english-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=696884"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":130,
+        "canonical_url":"http://www.documentcloud.org/documents/696884-amu-darya-english.html"
+    }
+}

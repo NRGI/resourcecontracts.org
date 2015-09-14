@@ -1,0 +1,481 @@
+{
+    "document":{
+        "file_hash":"5c5eb5a7c1132a371bde6294f4368f2ce1da211c",
+        "annotations":[
+            {
+                "access":"public",
+                "title":"Pays//Country",
+                "page":1,
+                "content":"Republic of Liberia--Recitals\n",
+                "location":{
+                    "image":"386,516,414,482"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136121.js",
+                "id":136121
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales //Parent companies or affilates outside of the country, if different from the above mentionned; and their corporate headquarters",
+                "page":1,
+                "content":"China-Union (Hong Kong) Mining Co., Ltd., a corporation organized and with head offices in Hong Kong, having as shareholders the legal entities China-Africa Development Fund Co., Ltd. (CADFund), Tianjin the Leader Group Co., Ltd., Henan Jianghai Group Co., Ltd., Hong Kong Gingko Group Co., Ltd., and Guizhou Jinda Group Co., Ltd.--Parties and Schedule 21.1.c\n",
+                "location":{
+                    "image":"426,629,455,595"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136123.js",
+                "id":136123
+            },
+            {
+                "access":"public",
+                "title":"Nom de la Soci\u00e9t\u00e9 locale//Local company name",
+                "page":1,
+                "content":"China-Union Investment (Liberia) Bong Mines Co., Ltd. --Parties\n",
+                "location":{
+                    "image":"526,551,552,521"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136122.js",
+                "id":136122
+            },
+            {
+                "access":"public",
+                "title":"Date de signature du contrat//Date of contract signature",
+                "page":1,
+                "content":"19/01/2009--Preamble\n",
+                "location":{
+                    "image":"598,509,624,469"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136141.js",
+                "id":136141
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e de signature du contrat//Year of contract signature",
+                "page":1,
+                "content":"2009--Preamble\n",
+                "location":{
+                    "image":"636,495,662,453"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136142.js",
+                "id":136142
+            },
+            {
+                "access":"public",
+                "title":"Nom du Projet//Project title",
+                "page":9,
+                "content":"Bong Project--Recitals\n",
+                "location":{
+                    "image":"143,137,167,103"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136129.js",
+                "id":136129
+            },
+            {
+                "access":"public",
+                "title":"Ressource(s) mini\u00e8re(s) concern\u00e9es (type de min\u00e9ral, p\u00e9trole, gas, bois) ou les r\u00e9coltes/denr\u00e9es//Type of resources (mineral type, crude oil, gas, timber, etc.) OR specific crops planned (ex:  food crops, oil palm, etc.)",
+                "page":9,
+                "content":"Iron Ore, provided that if other minerals are found within the Concession Area, the concessionaire / operator shall be given the right of first refusal to undertake exploration and mining of such minerals--Recitals, Art. 3.3\n",
+                "location":{
+                    "image":"167,128,194,94"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136145.js",
+                "id":136145
+            },
+            {
+                "access":"public",
+                "title":"Nom et/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e ou envisag\u00e9e//Name and/or composition of the company created or anticipated",
+                "page":17,
+                "content":"China-Union Investment (Liberia) Bong Mines Co., Ltd., was created by the concessionaire to be the operator--Definitions, Terminology and Interpretation Section\n",
+                "location":{
+                    "image":"453,111,481,78"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136140.js",
+                "id":136140
+            },
+            {
+                "access":"public",
+                "title":"Type du titre associ\u00e9 au contrat (concession, bail, contrat de partage, contrat de service\u2026)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)",
+                "page":21,
+                "content":"Exploration license, initially, but the agreement further sets forth the possibility of the operator being granted with Class A mining exploitation licenses provided that operator is in compliance with the terms of the agreement, and observes the procedures established by the Government (based upon Liberia's Mining Code) for the granting of mining licenses. --Art. 3.1, Art. 4.1, Art. 5.1(a), Art. 5.1(b)\n",
+                "location":{
+                    "image":"564,161,593,125"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136126.js",
+                "id":136126
+            },
+            {
+                "access":"public",
+                "title":"Nom du Gisement//Deposit/site name",
+                "page":21,
+                "content":"Goma Deposits Area (Goma Peak) and Non-Goma Deposits Area (Zaweah 1, Zaweah 2 and Bong Peak) --Art. 3.1\n",
+                "location":{
+                    "image":"597,167,623,128"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136130.js",
+                "id":136130
+            },
+            {
+                "access":"public",
+                "title":"Dur\u00e9e//Term",
+                "page":23,
+                "content":"25 years counted as from the Effective Date (not identified in the agreement), subject to automatic extensions to match any extension of the term of any Mining License issued pursuant to the agreement.--Art. 3.4\n",
+                "location":{
+                    "image":"172,150,201,109"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136143.js",
+                "id":136143
+            },
+            {
+                "access":"public",
+                "title":"Date d'Octroi du permis d'exploitation ou concession//Date of issue of title/permit",
+                "page":23,
+                "content":"Exploration License issued on the date of execution of the agreement (January 19, 2009). Eventual Mining Licenses granted after such date are formalized in separate mining agreements.--Art. 4.1\n",
+                "location":{
+                    "image":"311,126,339,92"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136134.js",
+                "id":136134
+            },
+            {
+                "access":"public",
+                "title":"Ann\u00e9e d'Octroi du permis d'exploitation ou concession//Year of issue of title/permit",
+                "page":23,
+                "content":"2009 (Exploration License)--Art. 4.1\n",
+                "location":{
+                    "image":"326,157,356,122"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136135.js",
+                "id":136135
+            },
+            {
+                "access":"public",
+                "title":"Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans",
+                "page":29,
+                "content":"Concessionaire shall, before starting operations, submit an Environmental Impact Statement (EIA) and an Environmental Management Plan (EMP) in compliance with the requirements of the EPA that will show the adverse effects of operations on the environment and plans to mitigate them. Each EMP needs to include a closure management plan and a closure management budget . The EMP needs also to present the funding solution for the environmental and remediation obligations under the Mining Law so that the cost is entirely born by the concessionaire --Art. 5.3\nThe Concessionaire shall conduct a Social Impact Assessment and produce an SAP in accordance with the Bid materials. It shall set forth procedures to mitigate the adverse impacts and hold public hearings on the SIA and SAP. --Art. 5.4\n",
+                "location":{
+                    "image":"350,125,378,89"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136160.js",
+                "id":136160
+            },
+            {
+                "access":"public",
+                "title":"Obligations de travaux, d'investissements//Work and investment commitments",
+                "page":32,
+                "content":"Concessionaire shall use commecially reasonable efforts to incur capital expenditures and commence and continue construction, acquisiton and installation of the relevant mines, mining plants, infrastructure and related equipment, all in accordance in all material respects with the bid materials made available to China-Union prior to the tender, as well as with the applicable feasibility studies. --Art. 6.1\n",
+                "location":{
+                    "image":"748,122,776,84"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136162.js",
+                "id":136162
+            },
+            {
+                "access":"public",
+                "title":"Construction et entretien d'infrastructure//Construction and maintenance of infrastructure",
+                "page":38,
+                "content":"Concessionaire was granted with the rights to develop, use, operate and maintain (i) the railroad linking the Non-Goma Rights (a parcel of the Concession Area) to the Port Facility in Monrovia, considering the Concessionaire's undertaking to conduct renovations within 5 years to reach the capacity 12 mtpa of concentrate +common carried freigh and pasenger services , and (ii) the Port Facility in Monrovia, subject to certain third-parties' rights.  In addition, Concessionaire shall complete the renovation of all existing roads in the Non-Goma Deposits Area. In any case, Concessionaire shall permit third-parties to have access without charge to all roads within the Concession Area. With respect to the Railroad and the Port Facility, access and use by third-parties shall be permitted in the extent of the excess capacity of such infrastructure and if using this excess capacity by a third party does not interfere with efficient and economic conduct of operations. All costs related to third party access will be borne by the third party. All complaints related to third party access shall be reviewed by an impartial committee. In addition the concessionaire is entitled to provide for the installation of electric generating capacity to meet its needs and therefore to construct a heavy oil power plant, a hydroelectric power plant in compliance wiht the National Power Development Plan for the St Paul River basin, to purchase 100 MW from other hydrolectric power plants. If more electricity is produced than utilized it can be sold, at a price equal to costs + reasonable margin, to the government or to a third party if the government refuses --Art. 6.6, Art. 6.7, Art. 19.3 a)\n",
+                "location":{
+                    "image":"577,137,599,101"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136163.js",
+                "id":136163
+            },
+            {
+                "access":"public",
+                "title":"Utilisation d\u2019infrastructure par les tiers//Third party use of infrastructure",
+                "page":40,
+                "content":"Third parties will be permitted to have access, without charge, to all the roads within the Concession Area. The Government can authorize access to the Railroad and Port provided that excess capacity exists. The terms must be mutually agreed to between the Government, Concessionaire and third party and must be at no cost to the Concessionaire.--Art. 6.7\n",
+                "location":{
+                    "image":"675,127,700,91"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/147540.js",
+                "id":147540
+            },
+            {
+                "access":"public",
+                "title":"Exigences des consultations communautaires//Requirements for community consultation ",
+                "page":47,
+                "content":"Concessionaire is obliged to consult with Government (upon its request) and the local communities to mutually establish plans and programs to ensure operations are carried out in a manner consistent with continuing economic and social viability of centres of population that have formed and which may form as a result of the operations.--Art. 8.1\n",
+                "location":{
+                    "image":"216,130,243,96"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136148.js",
+                "id":136148
+            },
+            {
+                "access":"public",
+                "title":"Convention de d\u00e9veloppement local//Local development agreement",
+                "page":47,
+                "content":"Concessionaire shall provide an annual social contribution of US$ 3.5 million managed and disbursed for the benefit of Liberian communities in the counties affected by the mining operations. Payments are made on annual basis to the general revenue account. A development committee will be created by the Government to develop an annual budget in consultation with the Government and China-Union. In accordance to this budget, the Government will disburse funds from this the general revenue account. This account will be be public and audited according the same procedures as for expenditures. Additionally, the Concessionaire shall provide funds on an annual basis for the granting of scholarships for students, as well as for the creation and operation of a Mining and Geology Institute at the University of Liberia. Concessionaire is also obliged to promote graduate training programs in Geology and Mining Engineering at state operated higher education institutes and sponsor exchange programs for such students (structured to provide reasonable incentive for them to return to Liberia upon completion of their programs).--Art. 8.2, Art. 11.3\n",
+                "location":{
+                    "image":"380,131,406,94"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136146.js",
+                "id":136146
+            },
+            {
+                "access":"public",
+                "title":"La s\u00e9curit\u00e9 physique, la protection de la propri\u00e9t\u00e9, et / ou l'utilisation de gardes//Physical security, protection of property, and/or use of guards",
+                "page":48,
+                "content":"The Concessionaire may establish its own asset and and employeee security protection service/ Their security force will be given the powers listed in 9.2(b) and must coordinate its activites with the government's forces.--Art. 9.2\n",
+                "location":{
+                    "image":"180,126,209,93"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/147538.js",
+                "id":147538
+            },
+            {
+                "access":"public",
+                "title":"Emploi du personnel local//Local employment requirements",
+                "page":50,
+                "content":"Concessionaire shall not import unskilled labor in the Republic of Liberia and should hire qualified Liberian citizens for skilled positions. The operations of the Concessionaire under the agreement should be conducted and managed primarily by citizens of Liberia, in accordance with the schedule and goals established in the agreement (30% of the management positions - including 30% of its 10 most senior positions within 5 years and 70% within 10 years). Concessionaire shall also provide on a continuing basis training of citizens of Liberia in order to qualify them to occupy skilled positions in the operation as well as provide for on-the-job trainings, operate vocational facilities.--Art. 11.1, Art. 11.2\n",
+                "location":{
+                    "image":"160,131,189,92"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136149.js",
+                "id":136149
+            },
+            {
+                "access":"public",
+                "title":"Achats Locaux//Local procurement requirements",
+                "page":51,
+                "content":"Concessionaire shall give preference to Liberian entities where Liberian citizens and residents are entitled to receive 60% of more of the profits and provided that Liberian goods and services are equal to or better in quality, terms, delivery service, price and quantity than goods and services obtainable outside Liberia. --Section 12\n",
+                "location":{
+                    "image":"489,223,516,187"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136150.js",
+                "id":136150
+            },
+            {
+                "access":"public",
+                "title":"Autre - Dispositions environnementales//Other - Environmental provisions",
+                "page":52,
+                "content":"The Minister will conduct periodic environmental assessment to ensure compliance with the EIS and plans. Concessionaire shall also conduct annual environmental audit in the concession areas and update the EIA and EMP plans.--Art. 13.1 - Art. 13.5\n",
+                "location":{
+                    "image":"146,131,179,95"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136161.js",
+                "id":136161
+            },
+            {
+                "access":"public",
+                "title":"Exon\u00e9rations non-pr\u00e9cis\u00e9es ailleurs//Other exemptions",
+                "page":54,
+                "content":"Concessionaire shall be exempt from (i) Surtax on high yield projects during the first 25 years, (ii) the payment of the Goods and Services tax on capital goods used in the conduct of operations or the construction or equipping of facilities in connection with the performance of its obligations, during the first 25 years, (iii) the payment of export taxes, in any, on Iron Ore during the first 25 years, (iv) all import duties on all goods related to the production or operations during the first 10 years, and (v) real property tax in property used for purposes of production, as well as for properties primarily utilized as residences by employees; Concessionaire shall not be subject to any water use levy or similar charge for water use in connection with its operations--Art. 14.3; Art. 15.5\n",
+                "location":{
+                    "image":"171,130,198,87"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136156.js",
+                "id":136156
+            },
+            {
+                "access":"public",
+                "title":"Imp\u00f4t sur les b\u00e9n\u00e9fices: taux//Income tax: rate",
+                "page":54,
+                "content":"During the first 25 years of operation the income tax rate applicable to Concessionaire shall not exceed 25%. In case the Government comes to amend the Revenue Code in the future so as to reduce the rate of income tax below 25%, Concessionaire shall be entitled to the benefit of such a change.--Art. 14.3.a\n",
+                "location":{
+                    "image":"219,164,245,130"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136152.js",
+                "id":136152
+            },
+            {
+                "access":"public",
+                "title":"Clause de stabilisation//Stabilization clause",
+                "page":55,
+                "content":"In case of a conflict between the agreement and any other law, the agreement shall govern the rights, obligations and duties of the parties. Any amendments to existing laws or policies having the effect of imposing an additional or higher tax, duty, custom, royalty or similar charge on the Concessionaire shall not apply to the Concessionaire. --Art. 14.4\n",
+                "location":{
+                    "image":"398,129,424,90"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136169.js",
+                "id":136169
+            },
+            {
+                "access":"public",
+                "title":"Taxe mini\u00e8re//Mining Tax/Royalty Tax",
+                "page":56,
+                "content":"Royalty for shipments or sales of Iron Ore shall be calculated as follows: (i) when the Index Price is US$100 per metric ton or less the royalty will be 3.25%. (ii) when the Index Price is greater than  US$100 per metric ton and less than US$125, the royalty will be 3.5%, (iii) when the Index Price is greater than US$125 per metric ton and less than US$150 per metric ton, the royalty will be 4%, and (iv) when the Index Price is US$150 per metric ton or more the royalty will be 4.5%. \"Index Price\" shall be understood for purposes of the agreement as the CVRD (Companhia Vale do Rio Doce) spot price FOB Brazil for shipment to China for the same product of equivalent grade and quality produced at Bong.--Art. 15.1\n",
+                "location":{
+                    "image":"423,128,450,95"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136151.js",
+                "id":136151
+            },
+            {
+                "access":"public",
+                "title":"Autre - Obligations financi\u00e8res du d\u00e9tenteur du titre//Other - Developer's financial obligations",
+                "page":57,
+                "content":"Concessionaire shall make the following payments to the Government, in addition to royalties and the up-front payment: (i) surface rent in the amount of US$100,00 per year for the first 10 years, and US$250,000 per years for the next 15 years, (ii) inspection fees on all imports and exports, (iii) regulatory fees in connection with the granting by the government of licenses or permits, (iv) one-time payment of US$ 50,000 for the Mineral Development Fund, (v) annual contribution of US$100,000 for the Scientific Research Fund.--Art. 15.4, Art. 16.1 - Art. 16.5\n",
+                "location":{
+                    "image":"622,138,648,101"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136159.js",
+                "id":136159
+            },
+            {
+                "access":"public",
+                "title":"Primes//Bonuses",
+                "page":58,
+                "content":"In consideration of the rights granted by the Government to Concessionaire, the Concessionaire shall pay US$40,000,000 in cash, in two different installments of US$20,000,000.--Art. 16.6\n",
+                "location":{
+                    "image":"591,137,617,97"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136154.js",
+                "id":136154
+            },
+            {
+                "access":"public",
+                "title":"Modes d'audit \u00e0 l'\u00e9gard des obligations financi\u00e8res du d\u00e9tenteur du titre//Audit mechanisms - financial obligations",
+                "page":60,
+                "content":"Concessionaire and Operator shall cause its books of account to be audited within 3 months after the close of Financial Year by an independent auditor, and the financial statements shall be prepared in accordance with US GAAP or IFRS, consistently applied. The Government however reserves the right to conduct an independent audit, and Concessionaire undertakes to cooperate with the Government in this case.--Art. 17.6\n",
+                "location":{
+                    "image":"385,141,416,106"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136157.js",
+                "id":136157
+            },
+            {
+                "access":"public",
+                "title":"Arbitrage et r\u00e8glement des diff\u00e9rends//Arbitration and dispute resolution",
+                "page":88,
+                "content":"Any disputes related to the agreement shall be settled by binding and enforceable arbitration under the rules of UNCITRAL, provided that in case of conflict the provisions of the agreement shall prevail. The competent arbitration chamber is the ICC - International Chamber of Commerce. Each party shall appoint one arbitrator, and the ICC shall appoint the other member of the tribunal (which shall be the president of the tribunal). The parties may also elect to have a single arbitrator settleling the dispute, to be appointed either jointly by the parties or by the ICC. The arbitration procedures shall be held in Singapore, and in the English language. --Section 26\n",
+                "location":{
+                    "image":"662,220,692,182"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136167.js",
+                "id":136167
+            },
+            {
+                "access":"public",
+                "title":"Loi applicable en cas des diff\u00e9rends//Governing law in case of dispute",
+                "page":94,
+                "content":"The contract is governed by the laws of the Republic of Liberia (except if otherwise provided in connection with the taxation provisions of the agreement, in which case the agreement shall prevail), and construed by Liberian law as well as generally accepted principles of international law when applicable.--Section 29\n",
+                "location":{
+                    "image":"328,233,357,196"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136166.js",
+                "id":136166
+            },
+            {
+                "access":"public",
+                "title":"Confidentialit\u00e9//Confidentiality",
+                "page":95,
+                "content":"For a 3-year period counted as from disclosure, all information designated confidential by the parties can not be divulge without the prior consent of the other party.Confidential information does not include information that was publicly available before disclosure, that subsequently becomes publicly known, otherwise   becomes know to a party other than through disclosure, constitutes financial statements submitted to the government, is scientific rather than commercial such as geological information related to an area non exploited by the concessionaire, has been disclosed pursuant to generally applicable law or any court order.The agreement and its amendments thereto, however, are not confidential. No confidentiality related to timing and amount of royalties and other payments due under the terms of the agreement.--Section 32\n",
+                "location":{
+                    "image":"436,226,468,189"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136168.js",
+                "id":136168
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":99,
+                "content":"Minister of Lands, Mines &amp; Energy; Minister of Finance; and by the Chairman of National Investment Commission. Attested to by the Minister of Justice and Attorney General, and approved by the President of the Republic of Liberia.--Signature page\n",
+                "location":{
+                    "image":"203,305,232,270"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136138.js",
+                "id":136138
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":100,
+                "content":"China-Union Investment (Liberia) Bong Mines Co., Ltd.  executed the agreement as the operator, and China-Union (Hong Kong) Mining Co., Ltd. executed the agreement as the concessionaire. The shareholders of China-Union (Hong Kong) Mining Co., Ltd. are the legal entities China-Africa Development Fund Co., Ltd. (CADFund), Tianjin the Leader Group Co., Ltd., Henan Jianghai Group Co., Ltd., Hong Kong Gingko Group Co., Ltd., and Guizhou Jinda Group Co., Ltd--Signature page\n",
+                "location":{
+                    "image":"232,299,260,262"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136136.js",
+                "id":136136
+            },
+            {
+                "access":"public",
+                "title":"Agence de l'Etat, soci\u00e9t\u00e9 nationale, minist\u00e8re signataire du contrat//State agency, national company, ministry executing the document",
+                "page":101,
+                "content":"Minister of Lands, Mines &amp; Energy; Minister of Finance; and by the Chairman of National Investment Commission. Attested to by the Minister of Justice and Attorney General, and approved by the President of the Republic of Liberia.--Signature page\n",
+                "location":{
+                    "image":"227,304,260,263"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136139.js",
+                "id":136139
+            },
+            {
+                "access":"public",
+                "title":"Emplacement, Longitude et Latitude//Location, longitude and latitude",
+                "page":115,
+                "content":"As set out in Schedule 2A, Schedule 2B and Schedule 3.1--Schedule 2A, Schedule 2B and Schedule 3.1\n",
+                "location":{
+                    "image":"13,68,46,31"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136133.js",
+                "id":136133
+            },
+            {
+                "access":"public",
+                "title":"Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays, si diff\u00e8rent de celle(s) not\u00e9e(s) ci-dessus; et leurs si\u00e8ges sociales //Parent companies or affilates outside of the country, if different from the above mentionned; and their corporate headquarters",
+                "page":122,
+                "content":"China-Union (Hong Kong) Mining Co., Ltd., a corporation organized and with head offices in Hong Kong, having as shareholders the legal entities China-Africa Development Fund Co., Ltd. (CADFund), Tianjin the Leader Group Co., Ltd., Henan Jianghai Group Co., Ltd., Hong Kong Gingko Group Co., Ltd., and Guizhou Jinda Group Co., Ltd.--Parties and Schedule 21.1.c\n",
+                "location":{
+                    "image":"112,141,145,98"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136125.js",
+                "id":136125
+            },
+            {
+                "access":"public",
+                "title":"Nom de la soci\u00e9t\u00e9 signataire du contrat et composition des actionnaires mentionn\u00e9s dans le document//Name of company executing the document and composition of the shareholders",
+                "page":122,
+                "content":"China-Union Investment (Liberia) Bong Mines Co., Ltd.  executed the agreement as the operator, and China-Union (Hong Kong) Mining Co., Ltd. executed the agreement as the concessionaire. The shareholders of China-Union (Hong Kong) Mining Co., Ltd. are the legal entities China-Africa Development Fund Co., Ltd. (CADFund), Tianjin the Leader Group Co., Ltd., Henan Jianghai Group Co., Ltd., Hong Kong Gingko Group Co., Ltd., and Guizhou Jinda Group Co., Ltd--Signature page\n",
+                "location":{
+                    "image":"132,124,168,84"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136137.js",
+                "id":136137
+            },
+            {
+                "access":"public",
+                "title":"Autre aspects de l'impot sur les b\u00e9n\u00e9fices: (l\u2019amortissement, d\u00e9ductibilit\u00e9 des frais financiers, report des pertes, cloissonement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)",
+                "page":132,
+                "content":"Carry forward of net operating loss from one year to othe other limited to 7 years, allowance for depreciation at 20% a year for project's tangible fixed property in the mining area and 15% outside, deduction for financial costs, exploration expenditure, payments to the reclamation and decommissioning fund,   management fees for a maximum of 2% of operating expenses, charitable contributions made in Liberia--Schedule 6 - Section 705 - 710\n",
+                "location":{
+                    "image":"186,151,219,111"
+                },
+                "resource_url":"http://www.documentcloud.org/documents/885383-liberia-china-union/annotations/136153.js",
+                "id":136153
+            }
+        ],
+        "description":null,
+        "language":"eng",
+        "title":"China-Union Investment (Liberia) Bong Mines - Liberia, 2009",
+        "data":{
+            "Type of Mining Title":"Exploration Permit/License",
+            "Resource":"Iron Ore",
+            "Countries":"Liberia",
+            "Signature Date":"19/01/2009",
+            "Contract Term (duration) in Years":"25",
+            "Signature Year":"2009"
+        },
+        "created_at":"Wed, 04 Dec 2013 16:57:04 +0000",
+        "display_language":"eng",
+        "updated_at":"Thu, 23 Apr 2015 14:13:59 +0000",
+        "id":"885383-liberia-china-union",
+        "access":"public",
+        "source":null,
+        "resources":{
+            "search":"https://www.documentcloud.org/documents/885383/search.json?q={query}",
+            "text":"https://s3.amazonaws.com/s3.documentcloud.org/documents/885383/liberia-china-union.txt",
+            "translations_url":"https://www.documentcloud.org/translations/{realm}/{language}",
+            "page":{
+                "text":"https://www.documentcloud.org/documents/885383/pages/liberia-china-union-p{page}.txt",
+                "image":"https://s3.amazonaws.com/s3.documentcloud.org/documents/885383/pages/liberia-china-union-p{page}-{size}.gif"
+            },
+            "pdf":"https://s3.amazonaws.com/s3.documentcloud.org/documents/885383/liberia-china-union.pdf",
+            "thumbnail":"https://s3.amazonaws.com/s3.documentcloud.org/documents/885383/pages/liberia-china-union-p1-thumbnail.gif",
+            "print_annotations":"https://www.documentcloud.org/notes/print?docs[]=885383"
+        },
+        "contributor":"Koel Bose",
+        "contributor_organization":"Revue des Conventions Miniers",
+        "sections":[],
+        "pages":208,
+        "canonical_url":"http://www.documentcloud.org/documents/885383-liberia-china-union.html"
+    }
+}
