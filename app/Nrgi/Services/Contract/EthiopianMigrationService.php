@@ -229,6 +229,7 @@ class EthiopianMigrationService
         $data['tags']             = ($category == '') ? [$annotation['text']] : [];
         $data['page']             = $annotation['page_no'];
         $data['document_page_no'] = $annotation['page_no'];
+        $data['position']         = $annotation['position'];
         $data['id']               = "";
 
         return $data;
