@@ -57,6 +57,7 @@ class AnnotationService
      * @param LoggerInterface|Log           $logger
      * @param ContractService               $contract
      * @param Queue                         $queue
+     * @param ElasticSearchService          $elasticSearch
      */
 
     public function __construct(
@@ -238,6 +239,8 @@ class AnnotationService
     }
 
     /**
+     * get all annotation of contact
+     *
      * @param $contractId
      * @return array
      */
@@ -247,6 +250,7 @@ class AnnotationService
         $contract       = $this->annotation->getContractPagesWithAnnotations($contractId);
         foreach ($contract->annotations as $annotation) {
             $json             = $annotation->annotation;
+            $json->category   = _l("codelist/annotation.annotation_category.{$json->category}");
             $json->page       = $annotation->document_page_no;
             $json->id         = $annotation->id;
             $annotationData[] = $json;

@@ -1,5 +1,6 @@
 $(function () {
     $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
+    $('.parent_company').select2({placeholder: "Select", allowClear: true, tags: true, theme: "classic"});
     $('.contract-form').validate();
 
     $('.datepicker').datetimepicker({
@@ -36,6 +37,8 @@ $(function () {
         var rendered = Mustache.render(template, {item: i});
         $('.company .item:last-child').after(rendered);
         $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
+        $('.parent_company').select2({placeholder: "Select", allowClear: true, tags: true, theme: "classic"});
+
         $('.datepicker').datetimepicker({
             timepicker: false,
             format: 'Y-m-d',

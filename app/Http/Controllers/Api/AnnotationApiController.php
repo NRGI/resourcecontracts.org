@@ -52,7 +52,7 @@ class AnnotationApiController extends Controller
 
     /**
      * @param Request $request
-     * @return mixed
+     * @return json
      */
     public function search(Request $request)
     {
@@ -61,10 +61,14 @@ class AnnotationApiController extends Controller
         return response()->json($response);
     }
 
+    /**
+     * @param $contractId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function getContractAnnotations($contractId)
     {
         $contractAnnotations = $this->annotationService->getContractAnnotations($contractId);
-        print json_encode($contractAnnotations);
 
+        return response()->json($contractAnnotations);
     }
 }

@@ -221,7 +221,7 @@ var metadataButtonView = new MetadataButtonView({
     <div>
         <a href='#' class="quote">
             <% if (typeof quote !== "undefined") { %>
-            <%= quote %> 
+            <%= quote %>
             <% } %>
         [P <%= page %>]</a>
         <span class="text"><%= text %></span>
@@ -234,10 +234,10 @@ var metadataButtonView = new MetadataButtonView({
 </script>
 
 <script type="text/javascript">
-    var categories = {!! json_encode(trans("codelist/annotation.categories")) !!}
+    var categories = {!! json_encode(trans("codelist/annotation.annotation_category")) !!}
     var annotationCategories = new AnnotationCategories();
-    _.each(categories, function(category) {
-        annotationCategories.add({name: category});
+    _.each(categories, function(category, key) {
+        annotationCategories.add({key:key,name: category});
     });
     var annotationCollection = new AnnotationCollection();
     annotationCollection.url = "{{route('contract.annotations', ['id'=>$contract->id])}}";

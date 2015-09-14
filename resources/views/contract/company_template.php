@@ -53,13 +53,16 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <label for="parent_company" class="col-sm-2
-        control-label">Corporate Grouping</label>
-        <div class="col-sm-7">
-            <input class="form-control" name="company[{{item}}][parent_company]" type="text">
-        </div>
-    </div>
+     <div class="form-group">
+        <label for="parent_company" class="col-sm-2 control-label"><?php echo trans('contract.corporate_grouping');?></label>
+            <div class="col-sm-7">
+                <select name="company[{{item}}][parent_company]" class="form-control parent_company">
+                <?php foreach($groups as $g):?>
+                    <<option value="<?php echo $g;?>"><?php echo $g;?></option>
+                <?php endforeach;?>
+                </select>
+            </div>
+     </div>
 
     <div class="form-group">
         <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> <label for="open_corporate_id" class="col-sm-2

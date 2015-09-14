@@ -52,11 +52,16 @@ class ImportController extends Controller
      */
     public function importPost(ImportRequest $request)
     {
-        if ($key = $this->contractImport->import($request)) {
-            return redirect()->route('contract.import.confirm', $key);
-        }
+        try {
+            if ($key = $this->contractImport->import($request)) {
+                return redirect()->route('contract.import.confirm', $key);
+            }
+            $this->contractImport->deleteImportFolder($key);
 
-        return redirect()->route('contract.import')->withError(trans('contract.import.fail'));
+            return redirect()->route('contract.import')->withError(trans('contract.import.fail'));
+        } catch (\Exception $e) {
+            return redirect()->route('contract.import')->withError($e->getMessage());
+        }
     }
 
     /**

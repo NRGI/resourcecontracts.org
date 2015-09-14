@@ -21,6 +21,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\MigrateEthiopianContracts',
         'App\Console\Commands\ChangeFileNameCommand',
         'App\Console\Commands\MturkNotificationCommand',
+        'App\Console\Commands\UpdateCorporateGroupList',
     ];
 
     /**
@@ -32,5 +33,6 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('nrgi:mturk')->dailyAt('13:00');
+        $schedule->command('nrgi:updategroup')->dailyAt('10:00');
     }
 }

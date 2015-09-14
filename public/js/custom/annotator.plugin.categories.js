@@ -35,7 +35,7 @@ Annotator.Plugin.Categories = (function(superClass) {
     $(document).delegate(".annotator-category", "tap", {
       preventDefault: false
     }, this.changeSelectedCategory);
-    this.annotator.viewer.addField({  
+    this.annotator.viewer.addField({
       load: this.updateViewer,
       options: this.options
     });
@@ -72,7 +72,7 @@ Annotator.Plugin.Categories = (function(superClass) {
 
   Categories.prototype.setSelectedCategory = function(currentCategory) {
     $(this.field).find('.annotator-category').removeClass(this.options.classForSelectedCategory);
-    if(currentCategory) $(this.field).find('select').val(currentCategory);   
+    if(currentCategory) $(this.field).find('select').val(currentCategory);
     $('#annotation-plugin-select-category').select2({placeholder: 'Select Category'});
     return $(this.field).find('.annotator-category:contains(' + currentCategory + ')').addClass(this.options.classForSelectedCategory);
   };
@@ -128,13 +128,31 @@ Annotator.Plugin.Categories = (function(superClass) {
     // }
     categoryHTML = "<select id='annotation-plugin-select-category'>";
     ref = this.options.category;
-    for (j = 0, len = ref.length; j < len; j++) {
-      category = ref[j];
-      categoryHTML += '<option class="' + this.options.categoryClass;
-      categoryHTML += ' ' + this.options.categoryColorClasses[category] + '"';
-      categoryHTML += ' value="' + category + '">';
-      categoryHTML += category;
-      categoryHTML += '</option>';
+
+    var subHeaderPattern = new RegExp("^[0-9]+(-[a-zA-Z0-9-]+)");
+    var headerPattern = new RegExp("^[i*]+(-[a-zA-Z0-9-]+)");
+
+    for (var category in ref){
+      if (ref.hasOwnProperty(category)) {
+        var obj = ref[category];
+          var categoryClass = "val";
+        var withSpaces = "&nbsp&nbsp&nbsp&nbsp&nbsp"+obj.name;
+        if(subHeaderPattern.test(obj.key)){
+            categoryClass = "sub-category";
+            withSpaces = "&nbsp&nbsp"+obj.name;
+            console.log("sub-category")
+        }
+        if(headerPattern.test(obj.key)){
+            console.log("category")
+            withSpaces = obj.name;
+            categoryClass = "category";
+        }
+        categoryHTML += '<option class="' + this.options.categoryClass;
+        categoryHTML += ' ' + categoryClass + '"';
+        categoryHTML += ' value="' + obj.key + '">';
+        categoryHTML += withSpaces;
+        categoryHTML += '</option>';
+      }
     }
     categoryHTML += "</select>";
 

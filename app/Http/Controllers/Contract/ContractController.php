@@ -70,7 +70,17 @@ class ContractController extends Controller
      */
     public function index(Request $request)
     {
-        $filters   = $request->only('resource', 'year', 'country', 'category', 'resource', 'type', 'word', 'issue', 'status');
+        $filters   = $request->only(
+            'resource',
+            'year',
+            'country',
+            'category',
+            'resource',
+            'type',
+            'word',
+            'issue',
+            'status'
+        );
         $contracts = $this->contractFilter->getAll($filters);
         $years     = $this->contractFilter->getUniqueYears();
         $countries = $this->contractFilter->getUniqueCountries();
@@ -131,7 +141,10 @@ class ContractController extends Controller
         $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
         $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
 
-        return view('contract.show', compact('contract', 'status', 'annotations', 'annotationStatus', 'translatedFrom', 'supportingDocument'));
+        return view(
+            'contract.show',
+            compact('contract', 'status', 'annotations', 'annotationStatus', 'translatedFrom', 'supportingDocument')
+        );
     }
 
     /**
@@ -303,6 +316,34 @@ class ContractController extends Controller
         $html .= "</html>";
         echo $html;
         exit;
+    }
+
+    /**
+     * Save Contract Comment
+     * @param         $contract_id
+     * @param Request $request
+     * @param Guard   $auth
+     * @return Response
+     */
+    public function publish($contract_id, Guard $auth)
+    {
+        if (!$auth->user()->isAdmin()) {
+            return back()->withError(trans('contract.permission_denied'));
+        }
+        $status = "published";
+        $types  = ["metadata", "text"];
+        foreach ($types as $type) {
+            if (!$this->contract->updateStatus($contract_id, $status, $type)
+            ) {
+                return back()->withError(trans('contract.invalid_status'));
+            }
+        }
+
+        if (!$this->annotation->updateStatus("published", $contract_id)) {
+            return back()->withError(trans('contract.invalid_status'));
+        }
+
+        return back()->withSuccess(trans('contract.status_update'));
     }
 
 }

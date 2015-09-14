@@ -38,7 +38,7 @@ var AnnotatorjsView = Backbone.View.extend({
     },
     populateCategories: function() {
         this.content.annotator('addPlugin', 'Categories', {
-            category: this.annotationCategories.pluck('name')
+            category: this.annotationCategories.invoke("pick", ["key","name"])
         });
     },
     setupStore: function() {

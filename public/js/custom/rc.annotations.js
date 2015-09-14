@@ -84,6 +84,7 @@ var AnnotationsListView = Backbone.View.extend({
         $(self.el).html('');
         $(self.el).append(this.annotationsTitleView.$el);
         var annotationsByCategories = this.collection.groupBy('category');
+
         this.renderBlankCategories(annotationsByCategories);
         this.renderAnnotationWithCategories(annotationsByCategories);
         return this;

@@ -1,4 +1,7 @@
 <?php
+use Illuminate\Support\Facades\Lang;
+
+
 /**
  * Get formatted file size
  * @param $bytes
@@ -36,6 +39,21 @@ function getFileSize($bytes)
 function getFileHash($file)
 {
     return hash_file('md5', $file);
+}
+
+/**
+ * get language
+ *
+ * @param String
+ */
+function _l($key)
+{
+    if (Lang::has($key)) {
+        return Lang::get($key);
+    }
+    $array = explode('.', $key);
+
+    return end($array);
 }
 
 
