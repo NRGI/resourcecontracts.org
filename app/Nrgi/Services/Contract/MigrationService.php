@@ -600,7 +600,7 @@ class MigrationService
             ]
         ];
         $category                 = $this->refineAnnotationCategory($annotation->title);
-        $data['category']         = ($category == '') ? 'General Information' : $category;
+        $data['category']         = ($category == '') ? 'i-general-information' : str_slug($category);
         $data['tags']             = ($category == '') ? [$this->getAnnotationTitle($annotation->title)] : [];
         $data['page']             = $annotation->page;
         $data['document_page_no'] = $annotation->page;

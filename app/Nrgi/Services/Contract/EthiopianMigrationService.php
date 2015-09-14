@@ -225,7 +225,7 @@ class EthiopianMigrationService
             ]
         ];
         $category                 = $this->refineAnnotationCategory($annotation['category']);
-        $data['category']         = ($category == '') ? 'General Information' : $category;
+        $data['category']         = ($category == '') ? 'i-general-information' : str_slug($category);
         $data['tags']             = ($category == '') ? [$annotation['text']] : [];
         $data['page']             = $annotation['page_no'];
         $data['document_page_no'] = $annotation['page_no'];
@@ -753,7 +753,7 @@ class EthiopianMigrationService
         $metadata                   = json_decode(json_encode($contract->metadata), true);
         $metadata['signature_date'] = $this->getSignatureDate($data['n_signature_date']);
         //$metadata['signature_year'] = $data['n_signature_year'];
-        $metadata['language']       = "en";
+        $metadata['language'] = "en";
 
         $metadata['resource']                      = array_map('trim', explode(",", $data['n_resource']));
         $metadata['country']                       = $this->country->getCountryByName($data['n_country']);
