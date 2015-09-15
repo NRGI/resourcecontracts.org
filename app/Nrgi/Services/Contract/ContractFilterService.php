@@ -111,7 +111,7 @@ class ContractFilterService
         }
         asort($data);
 
-        return $data;
+        return array_filter($data);
     }
 
     public function getContractByAnnotationStatus()
