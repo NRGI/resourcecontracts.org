@@ -243,7 +243,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
                                 <p><strong>@lang('contract.company_number'):</strong> @if(isset($v->company_number)){{$v->company_number}}@endif</p>
 
-                                <p><strong>@lang('contract.parent_company'):</strong> {{$v->parent_company}}</p>
+                                <p><strong>@lang('contract.corporate_grouping'):</strong> {{$v->parent_company}}</p>
 
                                 <p><strong>@lang('contract.open_corporate')
                                         :</strong> @if(!empty($v->open_corporate_id))
@@ -316,10 +316,10 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     <ul>
                         @forelse($annotations as $annotation)
                             <li>
-                                {{$annotation->annotation->category}}<br/>
+                                {{_l("codelist/annotation.annotation_category.{$annotation->annotation->category}")}}
+                                <br/>
                                 <p>{{$annotation->annotation->text}}</p><br/>
-                                <span style="clear: both;"><a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate&page={{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>[Page {{$annotation->document_page_no}}
-                                    ]</span>
+                                <span style="clear: both;"><a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate&page={{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>[Page {{$annotation->document_page_no}}]</span>
 
                                 @foreach($annotation->annotation->tags as $tag)
                                     <div>{{$tag}}</div>

@@ -50,15 +50,14 @@ class QualityService
      */
     public function getAnnotationsQuality()
     {
-        $annotations       = [];
-        $annotationsSchema = trans('codelist/annotation.categories');
-        asort($annotationsSchema);
-
-        foreach ($annotationsSchema as $key) {
-            $response = $this->contract->getAnnotationsQuality($key);
-            $count = !empty($response)?count($response):0;
-            $annotations[$key]=$count;
+        $annotations         = [];
+        $annotationsCategory = trans('codelist/annotation.annotation_category');
+        foreach ($annotationsCategory as $key => $value) {
+            $response          = $this->contract->getAnnotationsQuality($key);
+            $count             = !empty($response) ? count($response) : 0;
+            $annotations[$key] = $count;
         }
+
         return $annotations;
     }
 

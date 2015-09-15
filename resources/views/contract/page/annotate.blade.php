@@ -13,7 +13,7 @@
     <div class="panel panel-default">
         <div class="panel-heading panel-heading-fixed">
             <div class="word-wrapper">
-                <div class="wordwrap pull-left"> 
+                <div class="wordwrap pull-left">
                     <a href="{{route('contract.show', $contract->id)}}" class="back pull-left">Go back</a>
                     <span class="pull-left">{{str_limit($contract->title, 80)}}</span>
                 </div>
@@ -26,8 +26,8 @@
             </div>
             <div class="document-wrap-head">
             <div class="navigation">
-                <a href="#" id="text-view">text</a> 
-                <a href='#' id="pdf-view">pdf</a> 
+                <a href="#" id="text-view">text</a>
+                <a href='#' id="pdf-view">pdf</a>
                 <a href='#' id="pdf-text-view">both</a>
                 <div class="column-text column-common">
                     <div id="search-form">
@@ -66,17 +66,17 @@
                     <span class="text-view-block" >
 
                         <div id="text-viewer-wrapper-overflow-scroll" class="_ annotator-text view-wrap">
-                            <!-- 
-                            don't understand why class="annotator-text" doesn't work, putting any dummy class makes the popup appear 
+                            <!--
+                            don't understand why class="annotator-text" doesn't work, putting any dummy class makes the popup appear
                             similarly one extra <div> is required after <div class="annotator-text">, otherwise the annotation also doesn't appear
                             -->
                             <div></div>
                             <div class="text-viewer-wrapper">
-                                <div id="text-viewer-overflow-scroll" class="text-viewer" >Loading ...</div>    
+                                <div id="text-viewer-overflow-scroll" class="text-viewer" >Loading ...</div>
                             </div>
-                            
+
                         </div>
-                    </span>                            
+                    </span>
                 </div>
                 <div class="column-pdf" style="display:none">
                     <span class="pdf-view-block">
@@ -86,7 +86,7 @@
                     </span>
                 </div>
                 <div class="column-annotations">
-                    <div id="annotations-list-view" class="annotation-list-view annotations-view-block"></div>                    
+                    <div id="annotations-list-view" class="annotation-list-view annotations-view-block"></div>
                 </div>
                 <div class="column-search-results" style='display:none'>
                     <div id="search-results-list"></div>
@@ -102,14 +102,14 @@
     <script src="{{ asset('js/lib/annotator/annotator-full.min.js') }}"></script>
     <script src="{{ asset('js/lib/pdfjs/pdf.js') }}"></script>
 
-    <script src="{{ asset('js/lib/underscore.js') }}"></script>    
+    <script src="{{ asset('js/lib/underscore.js') }}"></script>
     <script src="{{ asset('js/lib/backbone.js') }}"></script>
-    <script src="{{ asset('js/lib/jquery.xpath.js') }}"></script> 
-    <script src="{{ asset('js/lib/jquery.waypoints.js') }}"></script>    
+    <script src="{{ asset('js/lib/jquery.xpath.js') }}"></script>
+    <script src="{{ asset('js/lib/jquery.waypoints.js') }}"></script>
 
     <script src="{{ asset('js/annotator.plugin.annotorious.js') }}"></script>
-    <script src="{{ asset('js/custom/rc.pages.collection.js') }}"></script> 
-    <script src="{{ asset('js/custom/rc.text.viewer.js') }}"></script> 
+    <script src="{{ asset('js/custom/rc.pages.collection.js') }}"></script>
+    <script src="{{ asset('js/custom/rc.text.viewer.js') }}"></script>
 
     <script src="{{ asset('js/custom/rc.utils.js') }}"></script>
     <script src="{{ asset('js/custom/rc.contract.js') }}"></script>
@@ -122,7 +122,7 @@
     <script src="{{ asset('js/custom/rc.annotations.js') }}"></script>
     <script src="{{ asset('js/custom/rc.annotator.js') }}"></script>
     <script src="{{ asset('js/custom/rc.metadata.js') }}"></script>
-    <script src="{{ asset('js/custom/rc.search.js') }}"></script>    
+    <script src="{{ asset('js/custom/rc.search.js') }}"></script>
 
     <script type="text/template" id="text-page-partial-view">
         <span id="<%= page_no %>">
@@ -132,7 +132,7 @@
     </script>
     <script type="text/template" id="annotation-list-title-template">
         <div class="annotation-title">Annotations</div>
-        <div>            
+        <div>
             <button id='all'>All - <%= total %></button>
             <button id='done-annotated'>Done - <%= done %></button>
             <button id='not-annotated'>Remainings - <%= remaining %></button>
@@ -176,7 +176,7 @@
         <p><strong>Resource:</strong>
             <%=resource%>
         </p></div>
-    </script>    
+    </script>
     <script>
     var contract = new Contract({
         id: '{{$contract->id}}',
@@ -189,10 +189,10 @@
     var rcEvents = {};
     _.extend(rcEvents, Backbone.Events);
 
-    var categories = {!! json_encode(trans("codelist/annotation.categories")) !!}
+    var categories = {!! json_encode(trans("codelist/annotation.annotation_category")) !!}
     var annotationCategories = new AnnotationCategories();
-    _.each(categories, function(category) {
-        annotationCategories.add({name: category});
+    _.each(categories, function(category, key) {
+        annotationCategories.add({key:key,name: category});
     });
     var annotationCollection = new AnnotationCollection();
     annotationCollection.url = "{{route('contract.annotations', ['id'=>$contract->id])}}";
@@ -208,13 +208,13 @@
             "click a#search-results-cache": "searchView"
         },
         initialize: function() {
-            this.textTabEl = $('.text-view-block');           
+            this.textTabEl = $('.text-view-block');
             this.pdfTabEl = $('.pdf-view-block');
             this.currentPage = null;
             this.viewerPage = null;
             this.currentPdfPage = null;
             this.pdfAnnotatorjsView = null;
-            this.annotationsTabEl = $('.annotations-view-block');                        
+            this.annotationsTabEl = $('.annotations-view-block');
             this.initAnnotationsView();
             this.initTextView();
             this.initPdfView();
@@ -231,7 +231,7 @@
             $('.column-text').removeClass('column-common');
             $('.column-pdf').hide();
             $('.column-annotations').show();
-            $('.column-search-results').hide();  
+            $('.column-search-results').hide();
         },
         pdfView: function(e) {
             if(e) e.preventDefault();
@@ -242,7 +242,7 @@
             $('.column-pdf').show();
             $('.column-pdf').removeClass('column-common');
             $('.column-annotations').show();
-            $('.column-search-results').hide();  
+            $('.column-search-results').hide();
             if(!this.pdfAnnotatorjsView) {
                 this.pdfAnnotatorjsView = new PdfAnnotatorjsView({
                     el: ".annotator-pdf",
@@ -253,7 +253,7 @@
                     collection: annotationCollection,
                     annotationCategories: annotationCategories,
                     enablePdfAnnotation: true
-                });   
+                });
             }
         },
         textPdfView: function(e) {
@@ -266,7 +266,7 @@
             $('.column-pdf').show();
             $('.column-pdf').addClass('column-common');
             $('.column-annotations').hide();
-            $('.column-search-results').hide();  
+            $('.column-search-results').hide();
         },
         searchView: function(e) {
             if(e) e.preventDefault();
@@ -274,7 +274,7 @@
             $('.column-text').removeClass('column-common');
             $('.column-pdf').hide();
             $('.column-annotations').hide();
-            $('.column-search-results').show();               
+            $('.column-search-results').show();
         },
         initTextView: function() {
             this.viewerPages = new ViewerPagesCollection([], {
@@ -294,7 +294,7 @@
                 el: '#pagination',
                 collection: this.viewerPages,
                 currentPage: currentPage
-            });  
+            });
             new AnnotatorjsView({
                 el: ".annotator-text",
                 currentPage: currentPage,
@@ -344,9 +344,9 @@
         initSearch: function() {
             var searchResultCollection = new SearchResultCollection({
                 eventsPipe: rcEvents
-            }); 
+            });
             this.listenTo(searchResultCollection, 'dataCollected', this.searchView);
-            this.bind('dataCollected', this.searchView, this);                               
+            this.bind('dataCollected', this.searchView, this);
             var searchFormView = new SearchFormView({
                 el: '#search-form',
                 collection: searchResultCollection,

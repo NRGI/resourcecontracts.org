@@ -42,7 +42,7 @@
                     <tbody>
                     @foreach($data['annotations'] as $key=>$value)
                         <tr>
-                            <td>{{$key}}</td><td><a href="{{route('contract.index',["type"=>"annotations","word"=>$key,"issue"=>"present"])}}">{{$value}}</a></td><td><a href="{{route('contract.index',["type"=>"annotations","word"=>$key,"issue"=>"missing"])}}">{{$data['total']-$value}}</a></td>
+                            <td>{{_l("codelist/annotation.annotation_category.{$key}")}}</td><td><a href="{{route('contract.index',["type"=>"annotations","word"=>$key,"issue"=>"present"])}}">{{$value}}</a></td><td><a href="{{route('contract.index',["type"=>"annotations","word"=>$key,"issue"=>"missing"])}}">{{$data['total']-$value}}</a></td>
                         </tr>
                      @endforeach
                     </tbody>
