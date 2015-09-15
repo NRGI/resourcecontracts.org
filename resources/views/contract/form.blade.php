@@ -14,7 +14,7 @@ foreach ($corporate_groups as $group) {
     $groups[$group['name']] = $group['name'];
 }
 asort($groups);
-$groups = [0=>'Select'] + $groups;
+$groups = [''=>'Select'] + $groups;
 ?>
 
 @if($action == 'add')
