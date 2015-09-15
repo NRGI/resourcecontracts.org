@@ -518,7 +518,7 @@ $groups = [0=>'Select'] + $groups;
     @if(!empty($supportingDocument))
         @foreach($supportingDocument as $doc)
             <div class="document">
-                <a href="{{route('contract.show',$doc['id'])}}">{{json_decode($doc['contract_name'])}}</a><br>
+                <a href="{{route('contract.show',$doc['id'])}}">{{$doc['contract_name']}}</a><br>
                 <input type="hidden" name="supporting_document[]" value="{{$doc['id']}}">
                 <?php
                 array_push($docId, $doc['id']);

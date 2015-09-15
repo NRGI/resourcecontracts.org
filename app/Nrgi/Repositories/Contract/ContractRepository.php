@@ -380,8 +380,9 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getSupportingContracts($id)
     {
-        return $this->contract->select(DB::raw("id,metadata->'contract_name' as contract_name"))
+        return $this->contract->select(DB::raw("id, metadata->>'contract_name' as contract_name"))
                               ->whereIn('id', $id)
+                              ->orderByRaw("metadata->>'contract_name' ASC")
                               ->get()
                               ->toArray();
 
