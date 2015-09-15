@@ -151,12 +151,9 @@ class ElasticSearchService
 
             $json->id          = $annotation->id;
             $json->contract_id = $contract->id;
-            //$json->metadata   = $this->getMetadataForES($contract->metadata, true);
-            $annotationData[] = $json;
-            dd($json);
+            $annotationData[]  = $json;
         }
         $data['annotations'] = json_encode($annotationData);
-        //$this->logger->info(json_encode($annotationData));
         try {
             $request  = $this->http->post($this->apiURL('contract/annotations'), null, $data);
             $response = $request->send();
