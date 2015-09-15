@@ -156,11 +156,11 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 </div>
             </div>
         @elseif($status == $contract_processing_failed)
-            <div class="status">@lang('contract.status') : @lang('Failed')</div>
+            <div class="status">@lang('contract.status'): @lang('Failed') (@lang('contract.fail_status', ['status'=>$contract->pdf_structure]))</div>
         @elseif($status== $contract_processing_running)
-            <div class="status">@lang('contract.status') : @lang('Processing')</div>
+            <div class="status">@lang('contract.status'): @lang('Processing')</div>
         @else($status== $contract_processing_pipline)
-            <div class="status">@lang('contract.status') : @lang('Pipeline')</div>
+            <div class="status">@lang('contract.status'): @lang('Pipeline')</div>
         @endif
 
 
@@ -179,26 +179,22 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 </li>
             @endif
 
-            @if(isset($contract->metadata->contract_name))
                 <li>
-                    <strong>@lang('contract.contract_name'):</strong> {{$contract->metadata->contract_name}}
+                    <strong>@lang('contract.contract_name'):</strong> {{$contract->metadata->contract_name or ''}}
                 </li>
-            @endif
 
-            @if(isset($contract->metadata->contract_identifier))
                 <li>
-                    <strong>@lang('contract.contract_identifier'):</strong> {{$contract->metadata->contract_identifier}}
+                    <strong>@lang('contract.contract_identifier'):</strong> {{$contract->metadata->contract_identifier or ''}}
                 </li>
-            @endif
 
 
             @if(isset($contract->metadata->language))
-                <?php $lang = config('metadata.language');?>
                 <li>
-                    <strong>@lang('contract.language'):</strong> {{$lang[$contract->metadata->language]}}
+                    <strong>@lang('contract.language'):</strong> {{getLanguageName($contract->metadata->language)}}
                     [{{$contract->metadata->language}}]
                 </li>
             @endif
+
             @if(isset($contract->metadata->country->name))
                 <li>
                     <strong>@lang('contract.country'):</strong> {{$contract->metadata->country->name or ''}}
@@ -211,30 +207,15 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
             @if(is_array($contract->metadata->resource) && count($contract->metadata->resource)>0)
                 <li><strong>@lang('contract.resource'): </strong>{{join(', ', $contract->metadata->resource)}}</li>
+            @else
+                <li><strong>@lang('contract.resource'): </strong></li>
             @endif
 
-            @if(isset($contract->metadata->government_entity))
-                <li><strong>@lang('contract.government_entity'):</strong> {{$contract->metadata->government_entity}}
-                </li>
-            @endif
-
-            @if(isset($contract->metadata->government_identifier))
-                <li><strong>@lang('contract.government_identifier')
-                        :</strong> {{$contract->metadata->government_identifier}}</li>
-            @endif
-
-            @if(isset($contract->metadata->type_of_contract))
-                <li><strong>@lang('contract.type_of_contract'):</strong> {{$contract->metadata->type_of_contract}}</li>
-            @endif
-            @if(isset($contract->metadata->signature_date))
-                <li><strong>@lang('contract.signature_date'):</strong> {{$contract->metadata->signature_date}}</li>
-            @endif
-
-            @if(isset($contract->metadata->document_type))
-                <li><strong>@lang('contract.document_type'):</strong> {{$contract->metadata->document_type}}</li>
-            @endif
-
-
+            <li><strong>@lang('contract.government_entity'):</strong> {{$contract->metadata->government_entity or ''}}</li>
+            <li><strong>@lang('contract.government_identifier'):</strong> {{$contract->metadata->government_identifier or ''}}</li>
+            <li><strong>@lang('contract.type_of_contract'):</strong> {{$contract->metadata->type_of_contract or ''}}</li>
+            <li><strong>@lang('contract.signature_date'):</strong> {{$contract->metadata->signature_date or ''}}</li>
+            <li><strong>@lang('contract.document_type'):</strong> {{$contract->metadata->document_type or ''}}</li>
 
             @if(isset($contract->metadata->company))
                 <?php $companies = $contract->metadata->company;?>
@@ -291,77 +272,41 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                    @endforeach
                </div>
             @endif
-            @if(isset($contract->metadata->license_source_url))
-                <li><strong>@lang('contract.license_source_url'):</strong> {{$concession->license_source_url}}
-                </li>
-            @endif
-            @if(isset($contract->metadata->license_type))
-                <li><strong>@lang('contract.license_type'):</strong> {{$contract->metadata->license_type}}</li>
-            @endif
-            @if(isset($contract->metadata->project_title))
-                <li><strong>@lang('contract.project_title'):</strong> {{$contract->metadata->project_title}}</li>
-            @endif
-            @if(isset($contract->metadata->project_identifier))
-                <li><strong>@lang('contract.project_identifier'):</strong> {{$contract->metadata->project_identifier}}
-                </li>
-            @endif
-            @if(isset($contract->metadata->date_granted))
-                <li><strong>@lang('contract.date_granted'):</strong> {{$contract->metadata->date_granted}}</li>
-            @endif
-            @if(isset($contract->metadata->year_granted))
-                <li><strong>@lang('contract.year_granted'):</strong> {{$contract->metadata->year_granted}}</li>
-            @endif
-            @if(isset($contract->metadata->ratification_date))
-                <li><strong>@lang('contract.date_of_ratification'):</strong> {{$contract->metadata->ratification_date}}
-                </li>
-            @endif
-            @if(isset($contract->metadata->ratification_year))
-                <li><strong>@lang('contract.year_of_ratification'):</strong> {{$contract->metadata->ratification_year}}
-                </li>
-            @endif
-
-            <li><h3>@lang('contract.source')</h3></li>
-            @if(isset($contract->metadata->source_url))
-                <li><strong>Source URL:</strong> {{$contract->metadata->source_url}}</li>
-            @endif
-            @if(isset($contract->metadata->disclosure_mode))
-                <li><strong>@lang('contract.disclosure_mode'):</strong> {{$contract->metadata->disclosure_mode}}</li>
-            @endif
-            @if(isset($contract->metadata->date_retrieval))
+                <li><strong>@lang('contract.project_title'):</strong> {{$contract->metadata->project_title or ''}}</li>
+                <li><strong>@lang('contract.project_identifier'):</strong> {{$contract->metadata->project_identifier or ''}}</li>
+                <li><h3>@lang('contract.source')</h3></li>
+                <li><strong>Source URL:</strong> {{$contract->metadata->source_url or ''}}</li>
+                <li><strong>@lang('contract.disclosure_mode'):</strong> {{$contract->metadata->disclosure_mode or ''}}</li>
                 <li><strong>@lang('contract.date_of_retrieval'):</strong> {{$contract->metadata->date_retrieval}}</li>
-            @endif
-            @if(isset($contract->metadata->location))
-                <li><strong>@lang('contract.location'):</strong> {{$contract->metadata->location}}</li>
-            @endif
+                <li><strong>@lang('contract.category'):</strong>
+                <?php $catConfig = config('metadata.category');?>
 
+                @if(isset($contract->metadata->category) && is_array($contract->metadata->category) && count($contract->metadata->category)>0)
+                        <?php $cat = [];
+                        foreach ($contract->metadata->category as $key):
+                            $cat[] = $catConfig[$key];
+                        endforeach;
+                        ?>
+                        {{join(', ', $cat)}}
+                    @endif
+                </li>
                 <li><h3>@lang('contract.associated_contracts')</h3></li>
                 @if(!empty($translatedFrom))
                     <li><strong>@lang('contract.parent_document'):</strong>
-                        <a href="{{route('contract.show',$translatedFrom[0]['id'])}}">{{json_decode($translatedFrom[0]['contract_name'])}}</a>
+                        <a href="{{route('contract.show',$translatedFrom[0]['id'])}}">{{$translatedFrom[0]['contract_name']}}</a>
                     </li>
                 @endif
-            @if(!empty($supportingDocument))
-                <div class="document-link-wrapper">
-                    <li><strong>@lang('contract.supporting_documents'):</strong>
-                    @foreach($supportingDocument as $contract_sup)
-                        <div class="document-link">
-                            <a href="{{route('contract.show',$contract_sup['id'])}}">{{json_decode($contract_sup['contract_name'])}}</a>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-            <?php $catConfig = config('metadata.category');?>
 
-            @if(isset($contract->metadata->category) && is_array($contract->metadata->category) && count($contract->metadata->category)>0)
-                <li><strong>@lang('contract.category'):</strong>
-                    <?php $cat = [];
-                    foreach ($contract->metadata->category as $key):
-                        $cat[] = $catConfig[$key];
-                    endforeach;
-                    ?>
-                    {{join(', ', $cat)}}
-                </li>
-            @endif
+                @if(!empty($supportingDocument))
+                    <div class="document-link-wrapper">
+                        <li><strong>@lang('contract.supporting_documents'):</strong>
+                        @foreach($supportingDocument as $contract_sup)
+                            <div class="document-link">
+                                <a href="{{route('contract.show',$contract_sup['id'])}}">{{$contract_sup['contract_name']}}</a>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
         </ul>
         @if($status == $contract_processing_completed)
             <div class="annotation-wrap">
@@ -371,12 +316,11 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     <ul>
                         @forelse($annotations as $annotation)
                             <li>
-                                {{$annotation->annotation->category}}
-                                <br>
-                                <span><a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate&page={{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>[Page {{$annotation->document_page_no}}
+                                {{$annotation->annotation->category}}<br/>
+                                <p>{{$annotation->annotation->text}}</p><br/>
+                                <span style="clear: both;"><a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate&page={{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>[Page {{$annotation->document_page_no}}
                                     ]</span>
 
-                                <p>{{$annotation->annotation->text}}</p>
                                 @foreach($annotation->annotation->tags as $tag)
                                     <div>{{$tag}}</div>
                                 @endforeach

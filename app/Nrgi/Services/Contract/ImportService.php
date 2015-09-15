@@ -201,6 +201,7 @@ class ImportService
         $contract['create_remarks'] = '';
 
         $contract['user_id']                                   = $this->auth->id();
+        $contract['metadata']['resource']                      = ['Hydrocarbons'];
         $contract['metadata']['project_title']                 = $results['title'];
         $contract['metadata']['company']                       = $companies;
         $contract['metadata']['disclosure_mode']               = $results['disclosure_mode'];
@@ -314,7 +315,7 @@ class ImportService
 
             return $pdf_name;
         } catch (\Exception $e) {
-            $this->logger->error('PDF Download Error:'.$e->getMessage());
+            $this->logger->error('PDF Download Error:' . $e->getMessage());
 
             return null;
         }

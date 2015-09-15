@@ -28,6 +28,7 @@ class ImportController extends Controller
      */
     public function __construct(ContractService $contract, ImportService $contractImport)
     {
+        $this->middleware('auth');
         $this->contract       = $contract;
         $this->contractImport = $contractImport;
     }

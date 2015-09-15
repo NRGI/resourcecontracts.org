@@ -105,6 +105,7 @@ return [
     'supporting_documents'          => 'Supporting Documents',
     'parent_document'               => 'Parent Document',
     'associated_contracts'          => 'Associated Documents',
+    'fail_status'                   => 'Pdf file is :status',
     /*Logs*/
     'log'                           => [
         'save'      => 'Contract created',
@@ -118,7 +119,7 @@ return [
         'save_fail' => 'Changes couldn\'t be saved',
     ],
     'publish'                       => [
-        'all' => 'Publish All',
+        'all'     => 'Publish All',
         'confirm' => 'Publish All ?'
     ],
     'import'                        => [
