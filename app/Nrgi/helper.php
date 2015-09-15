@@ -53,3 +53,18 @@ function getS3FileURL($fileName = '')
                    ->getClient()
                    ->getObjectUrl(env('AWS_BUCKET'), $fileName);
 }
+
+/**
+ * Get Language Name by code
+ *
+ * @param $code
+ * @return null
+ */
+function getLanguageName($code)
+{
+    $lang = trans('codelist/language');
+    $lang = $lang['major'] + $lang['minor'];
+    $code = strtolower($code);
+
+    return isset($lang[$code]) ? $lang[$code] : null;
+}
