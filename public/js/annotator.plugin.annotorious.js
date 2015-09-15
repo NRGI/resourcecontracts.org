@@ -19660,6 +19660,7 @@ annotorious.modules.image.Viewer.prototype._onMouseMove = function(event) {
  * @private
  */
 annotorious.modules.image.Viewer.prototype._draw = function(shape, highlight) {
+  if(shape === undefined) return;
   var selector = goog.array.find(this._annotator.getAvailableSelectors(), function(selector) {
     return selector.getSupportedShapeType() == shape.type;
   });  

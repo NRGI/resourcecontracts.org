@@ -15,6 +15,7 @@ use App\Nrgi\Entities\Contract\Annotation;
 class EthiopianMigrationService
 {
     const UPLOAD_FOLDER = 'data/temp';
+
     protected $raw_data;
 
     protected $contract_name;
@@ -22,7 +23,6 @@ class EthiopianMigrationService
     protected $file_type;
 
     protected $file_name;
-
 
     protected $pdf_url;
 
@@ -63,8 +63,10 @@ class EthiopianMigrationService
         $this->country = $country;
     }
 
+
     /**
-     * @return object
+     * @param $data
+     * @return mixed
      */
     public function setData($data)
     {
@@ -156,52 +158,132 @@ class EthiopianMigrationService
         return null;
     }
 
-    public function refineAnnotation($annotations)
+    /**
+     * @param $annotations
+     * @return array
+     */
+    public function getAnnotationByPagePosition($annotations)
     {
-        $annotationArr = [];
+        $annotationArray = [];
         foreach ($annotations as $annotationObj) {
+
             if (!is_null($annotationObj['page'])) {
-                //todo check for multiple page annotation
                 $annotationPages = $this->getPages($annotationObj['page']);
                 foreach ($annotationPages as $pages) {
                     list($page, $position) = $this->getAnnotationPagePosition($pages);
-                    $annotationObj['position']      = $position;
-                    $annotationObj['page_no']       = $page;
-                    $annotation['annotation']       = $this->buildAnnotation($annotationObj);
-                    $annotation['document_page_no'] = $page;
+                    $annotation['position']   = $position;
+                    $annotation['page_no']    = $page;
+                    $annotation['annotation'] = $annotationObj;
 
-                    $annotationArr[] = $annotation;
+                    $annotationArray[] = $annotation;
                 }
             }
         }
 
-        return $annotationArr;
+        $groupByPage = $this->groupAnnotation($annotationArray, 'page_no');
+        foreach ($groupByPage as $page => $value) {
+            $groupByPosition                 = $this->groupAnnotation($value, 'position');
+            $groupByPage[$page]['positions'] = $groupByPosition;
+        }
+
+        return $groupByPage;
     }
 
     /**
-     * @param $contract
      * @param $annotations
+     * @return array
+     */
+    public function refineAnnotation($annotations)
+    {
+        $annotationArray  = [];
+        $annotationByPage = $this->getAnnotationByPagePosition($annotations);
+        foreach ($annotationByPage as $page => $annotationObj) {
+            foreach ($annotationObj['positions'] as $position => $annotations) {
+                foreach ($annotations as $key => $annotationObj1) {
+                    $annotation1['position']        = $position;
+                    $annotation1['page_no']         = $page;
+                    $annotation1['text']            = $annotationObj1['annotation']['text'];
+                    $annotation1['category']        = $annotationObj1['annotation']['category'];
+                    $annotation['annotation']       = $this->buildAnnotation($annotation1, $key);
+                    $annotation['document_page_no'] = $page;
+                    $annotationArray[]              = $annotation;
+                }
+            }
+
+        }
+
+        return $annotationArray;
+    }
+
+//    public function refineAnnotation($annotations)
+//    {
+//        $annotationArray = [];
+//        $this->getAnnotationByPagePosition($annotations);
+//        foreach ($annotations as $annotationObj) {
+//
+//            if (!is_null($annotationObj['page'])) {
+//                $annotationPages = $this->getPages($annotationObj['page']);
+//                //todo annotation group by page and position
+//                foreach ($annotationPages as $pages) {
+//                    list($page, $position) = $this->getAnnotationPagePosition($pages);
+//                    $annotationObj['position']      = $position;
+//                    $annotationObj['page_no']       = $page;
+//                    $annotation['annotation']       = $this->buildAnnotation($annotationObj);
+//                    $annotation['document_page_no'] = $page;
+//
+//                    $annotationArray[] = $annotation;
+//                }
+//            }
+//        }
+//
+//        //$annotations     = $this->groupAnnotation($annotations);
+//
+//        return $annotationArray;
+//    }
+
+    /**
+     * @param $annotations
+     * return array
+     */
+    public function groupAnnotation($annotations, $key)
+    {
+        $return = array();
+        foreach ($annotations as $val) {
+            $return[$val[$key]][] = $val;
+        }
+
+        //dd($return);
+        return $return;
+    }
+
+    /**
+     * @param $contract_id
+     * @param $annotations
+     * @internal param $contract
      */
     public function saveAnnotations($contract_id, $annotations)
     {
         $annotationData = [];
-        foreach ($annotations as $annotationArr) {
+        foreach ($annotations as $annotationArray) {
 
             $annotation                     = [];
             $annotation['contract_id']      = $contract_id;
-            $annotation['annotation']       = json_encode($annotationArr['annotation']);
+            $annotation['annotation']       = json_encode($annotationArray['annotation']);
             $annotation['url']              = "";
             $annotation['user_id']          = 1;
-            $annotation['document_page_no'] = $annotationArr['document_page_no'];
+            $annotation['document_page_no'] = $annotationArray['document_page_no'];
             $annotation['created_at']       = date('Y-m-d H:i:s');
             $annotation['updated_at']       = date('Y-m-d H:i:s');
             $annotationData[]               = $annotation;
         }
 
-
         Annotation::insert($annotationData);
     }
 
+    /**
+     * @param $pages
+     * @return array
+     */
     public function getPages($pages)
     {
         //$pages = "13 (middle, bottom), 17 (middle)";
@@ -211,17 +293,19 @@ class EthiopianMigrationService
     }
 
     /**
-     * @param $data
-     * @param $annotation
+     * @param     $annotation
+     * @param int $factor
+     * @return
+     * @internal param $data
      */
-    public function buildAnnotation($annotation)
+    public function buildAnnotation($annotation, $factor = 0)
     {
         $data['url']              = "";
         $data['text']             = $annotation['text'];
         $data['shapes']           = [
             [
                 "type"     => "rect",
-                "geometry" => $this->getPosition($annotation['position'])
+                "geometry" => $this->getPosition($annotation['position'], $factor)
             ]
         ];
         $category                 = $this->refineAnnotationCategory($annotation['category']);
@@ -238,47 +322,53 @@ class EthiopianMigrationService
     /**
      * Convert annotation rectangle point from document cloud to annotorious plugin
      *
-     * @param $data
+     * @param $position
+     * @param $factor
      * @return array
+     * @internal param $data
      */
-    public function getPosition($position)
+    public function getPosition($position, $factor)
     {
         $positionMapping = array(
             "top"       => array(
-                'x'      => 0.018425460636516001,
-                'width'  => 0.085427135678391997,
+                'x'      => 0.018425460636516001 + ($factor * .1),
+                'width'  => 0.065427135678391997,
                 'y'      => 0.074408117249153999,
-                'height' => 0.033821871476887998,
+                'height' => 0.023821871476887998,
             ),
             "topmiddle" => array(
-                'x'      => 0.03182579564489900,
-                'width'  => 0.085427135678391997,
+                'x'      => 0.03182579564489900 + ($factor * .1),
+                'width'  => 0.065427135678391997,
                 'y'      => 0.51747463359090901,
-                'height' => 0.032694475760991999,
+                'height' => 0.022694475760991999,
             ),
             "middle"    => array(
-                'x'      => 0.031825795644890999,
-                'width'  => 0.085427135678391997,
+                'x'      => 0.031825795644890999 + ($factor * .1),
+                'width'  => 0.065427135678391997,
                 'y'      => 0.51747463359639001,
-                'height' => 0.032694475760991999,
+                'height' => 0.022694475760991999,
             ),
             "bottom"    => array(
-                'x'      => 0.023450586264657,
-                'width'  => 0.11055276381909999,
+                'x'      => 0.023450586264657 + ($factor * .1),
+                'width'  => 0.065427135678391997,
                 'y'      => 0.89740698985344003,
-                'height' => 0.037204058624576999,
+                'height' => 0.027204058624576999,
             ),
             "topbottom" => array(
-                'x'      => 0.023450586264657,
-                'width'  => 0.11055276381909999,
+                'x'      => 0.023450586264657 + ($factor * .1),
+                'width'  => 0.065427135678391997,
                 'y'      => 0.89740698985344003,
-                'height' => 0.037204058624576999,
+                'height' => 0.027204058624576999,
             ),
         );
 
         return $positionMapping[$position];
     }
 
+    /**
+     * @param $title
+     * @return string
+     */
     public function refineAnnotationCategory($title)
     {
         $mappings = config('annotation_mapping');
@@ -389,32 +479,6 @@ class EthiopianMigrationService
         }
     }
 
-    public function addMPrifix($array)
-    {
-        return array_combine(
-            array_map(
-                function ($k) {
-                    return "m_" . $k;
-                },
-                array_keys($array)
-            ),
-            $array
-        );
-    }
-
-    public function addAPrifix($array)
-    {
-        return array_combine(
-            array_map(
-                function ($k) {
-                    return "a_" . $k;
-                },
-                array_keys($array)
-            ),
-            $array
-        );
-    }
-
     /**
      * @param $annotations
      * @return array
@@ -435,8 +499,9 @@ class EthiopianMigrationService
         return $metadata;
     }
 
+
     /**
-     *
+     * @return array
      */
     public function getMetaDataFromAnnotation()
     {
@@ -454,8 +519,9 @@ class EthiopianMigrationService
         return $metadata;
     }
 
+
     /**
-     *
+     * @return array
      */
     public function getMetaDataFromMetadata()
     {
@@ -622,6 +688,10 @@ class EthiopianMigrationService
         return $data;
     }
 
+    /**
+     * @param $string
+     * @return array
+     */
     public function getAnnotationPagePosition($string)
     {
         list ($page, $position) = explode(" ", trim($string));
@@ -673,6 +743,10 @@ class EthiopianMigrationService
         }
     }
 
+    /**
+     * @param $file
+     * @return bool
+     */
     public function convertToCsv($file)
     {
         $command = sprintf('xlsx2csv %s  "%s" -a -i', $this->getMigrationFile($file), $this->getConvertedDir($file));
@@ -804,6 +878,10 @@ class EthiopianMigrationService
         return $metadata;
     }
 
+    /**
+     * @param $signature_date
+     * @return bool|\DateTime|mixed|string
+     */
     protected function getSignatureDate($signature_date)
     {
         $signature_date = trim($signature_date, '"');
