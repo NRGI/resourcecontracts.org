@@ -310,7 +310,7 @@ class EthiopianMigrationService
         ];
         $category                 = $this->refineAnnotationCategory($annotation['category']);
         $data['category']         = ($category == '') ? 'i-general-information' : str_slug($category);
-        $data['tags']             = ($category == '') ? [$annotation['text']] : [];
+        $data['tags']             = ($category == '') ? [$annotation['category']] : [];
         $data['page']             = $annotation['page_no'];
         $data['document_page_no'] = $annotation['page_no'];
         $data['position']         = $annotation['position'];

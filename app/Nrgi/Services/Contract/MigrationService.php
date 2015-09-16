@@ -601,7 +601,7 @@ class MigrationService
         ];
         $category                 = $this->refineAnnotationCategory($annotation->title);
         $data['category']         = ($category == '') ? 'i-general-information' : str_slug($category);
-        $data['tags']             = ($category == '') ? [$this->getAnnotationTitle($annotation->title)] : [];
+        $data['tags']             = ($category == '') ? [$annotation->title] : [];
         $data['page']             = $annotation->page;
         $data['document_page_no'] = $annotation->page;
         $data['id']               = "";
@@ -987,7 +987,10 @@ class MigrationService
         return '';
     }
 
-
+    /**
+     * @param $title
+     * @return string
+     */
     function getAnnotationTitle($title)
     {
         $title = explode('//', $title);
@@ -1030,10 +1033,10 @@ class MigrationService
         $sourceKeyname = 'folder1/';
 
         $object = [
-            'Bucket'                => $targetBucket,
-            'Key'                   => $targetKeyname,
-            'CopySource'            => "{$sourceBucket}/{$sourceKeyname}",
-//           'ServerSideEncryption'  => ServerSideEncryption::AES256,
+            'Bucket'     => $targetBucket,
+            'Key'        => $targetKeyname,
+            'CopySource' => "{$sourceBucket}/{$sourceKeyname}",
+            //           'ServerSideEncryption'  => ServerSideEncryption::AES256,
         ];
         dd($client->copyObject($object));
 
