@@ -191,7 +191,27 @@ class ElasticSearchService
         try {
             $request  = $this->http->post($this->apiURL('contract/delete'), null, ['id' => $contract_id]);
             $response = $request->send();
-            $this->logger->info('Contract delete submitted to Elastic Search.', $response->json());
+            $this->logger->info('Contract deleted from Elastic Search.', $response->json());
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+    }
+
+    /**
+     * Delete contract Annotations in elastic search
+     *
+     * @param $contract_id
+     */
+    public function deleteAnnotations($contract_id)
+    {
+        try {
+            $request  = $this->http->post(
+                $this->apiURL('contract/delete/annotation'),
+                null,
+                ['contract_id' => $contract_id]
+            );
+            $response = $request->send();
+            $this->logger->info('Contract Annotations deleted from Elastic Search.', $response->json());
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }

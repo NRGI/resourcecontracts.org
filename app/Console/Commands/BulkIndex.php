@@ -72,6 +72,7 @@ class BulkIndex extends Command
                 $this->info(sprintf('Contract %s : Text Indexed.', $contract->id));
             }
             if ($this->annotations->getStatus($contract->id) == "published") {
+                $this->elastic->deleteAnnotations($contract->id);
                 $this->elastic->postAnnotation($contract->id);
                 $this->info(sprintf('Contract %s : Annotations Indexed.', $contract->id));
             }
