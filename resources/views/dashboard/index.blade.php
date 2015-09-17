@@ -10,6 +10,7 @@
         .contract-list .media {
             margin-bottom: 20px;
         }
+        .row-dashboard ul {padding:0px;}
     </style>
 @stop
 
@@ -137,8 +138,8 @@
                                 , {{$contract->metadata->signature_year or ''}}</h5>
                             <span>- {{$contract->created_user->name}}</span>
                         </td>
-                        <td>
-                            <small>{{$contract->created_datetime->diffForHumans()}}</small>
+                        <td style="width: 160px;">
+                            <small>{{$contract->created_datetime->format('M d. Y \a\t H:i A')}}</small>
                         </td>
                     </tr>
                 @empty

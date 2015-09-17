@@ -56,7 +56,7 @@ class WordGenerator
 
         $txt = '';
         foreach ($text as $page) {
-            $txt .= $page;
+            $txt .= nl2br($page);
         }
 
         $this->filesystem->put($file_path, $txt);

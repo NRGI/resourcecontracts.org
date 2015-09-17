@@ -419,9 +419,11 @@ class TaskService
         $tasks = $this->task->getAll($contract_id);
 
         foreach ($tasks as $task) {
-            $this->page->saveText($contract_id, $task->page_no, $task->assignments->assignment->answer, false);
+            $pdf_text = nl2br($task->assignments->assignment->answer);
+            $this->page->saveText($contract_id, $task->page_no, $pdf_text, false);
         }
 
+        $this->contract->updateWordFile($contract_id);
         $contract               = $this->contract->find($contract_id);
         $contract->mturk_status = Contract::MTURK_COMPLETE;
 
