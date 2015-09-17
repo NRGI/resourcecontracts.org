@@ -59,6 +59,21 @@ $(function () {
         $('.concession .con-item:last-child').after(rendered);
     })
 
+    $(document).on('click', '.government_entity .government-item .delete', function (e) {
+        $(this).parent().remove();
+    });
+
+    $('.new-government-entity').on('click', function (e) {
+
+        e.preventDefault();
+        g += 1;
+        var template = $('#government-entity').html();
+        Mustache.parse(template);
+        var rendered = Mustache.render(template, {item: g});
+        $('.government_entity .government-item:last-child').after(rendered);
+        console.log(g);
+    })
+
 
     $(document).on('click', '.selected-document .document .delete', function (e) {
         $(this).parent().remove();

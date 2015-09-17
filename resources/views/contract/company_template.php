@@ -110,6 +110,28 @@
 
 </script>
 
+<script id="government-entity" type="x-tmpl-mustache">
+
+    <div class="government-item">
+    <br>
+            <div class="form-group">
+                <label for="government_entity" class="col-sm-2 control-label">Government Entity</label>
+                <div class="col-sm-7">
+                    <input class="form-control" name="government_entity[{{item}}][entity]" type="text">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="government_identifier" class="col-sm-2
+                control-label">Government Identifier</label>
+                <div class="col-sm-7">
+                    <input class="form-control" name="government_entity[{{item}}][identifier]" type="text">
+                </div>
+            </div>
+        <div class="delete">delete</div>
+    </div>
+</script>
+
 <script type="text/template" id="document">
     <div class="document">
         <a href="/contract/{{id}}">{{name}}</a>

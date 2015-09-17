@@ -551,7 +551,7 @@ header {
     color: #fff;
 }
 
-.license-wrap li:nth-child(even) {
+ .license-wrap li:nth-child(even) {
     border-bottom: 1px dashed #ccc;
     padding-bottom: 12px;
     margin-bottom: 8px;

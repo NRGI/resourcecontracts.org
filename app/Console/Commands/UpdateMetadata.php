@@ -90,8 +90,20 @@ class UpdateMetadata extends Command
     protected function applyRules(array $metadata)
     {
         if (!isset($metadata['open_contracting_id'])) {
-            $metadata['open_contracting_id'] = getContractIdentifier();
+            $metadata['open_contracting_id'] = getContractIdentifier('');
         }
+
+        if (isset($metadata['government_entity']) && isset($metadata['government_identifier'])) {
+            $governmentEntity     = $metadata['government_entity'];
+            $governmentIdentifier = $metadata['government_identifier'];
+            unset($metadata['government_identifier']);
+            $metadata['government_entity']   = [];
+            $metadata['government_entity'][] = [
+                "entity"     => $governmentEntity,
+                "identifier" => $governmentIdentifier
+            ];
+        }
+
 
         return $metadata;
     }
