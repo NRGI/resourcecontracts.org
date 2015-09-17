@@ -338,9 +338,7 @@ class ContractController extends Controller
             }
         }
 
-        if (!$this->annotation->updateStatus("published", $contract_id)) {
-            return back()->withError(trans('contract.invalid_status'));
-        }
+        $this->annotation->updateStatus("published", $contract_id);
 
         return back()->withSuccess(trans('contract.status_update'));
     }
