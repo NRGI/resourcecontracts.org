@@ -78,7 +78,7 @@
         <div class="col-sm-7">
              <input class="field" name="company[{{item}}][operator]" type="radio" value="1"> Yes
              <input class="field" name="company[{{item}}][operator]" type="radio" value="0"> No
-             <input class="field" name="company[{{item}}][operator]" type="radio" value="-1"> Not Available
+             <input class="field" name="company[{{item}}][operator]" type="radio" checked="checked" value="-1"> Not Available
         </div>
     </div>
     <div class="delete">delete</div>
