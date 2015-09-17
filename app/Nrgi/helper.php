@@ -86,3 +86,14 @@ function getLanguageName($code)
 
     return isset($lang[$code]) ? $lang[$code] : null;
 }
+
+/**
+ * Get Open Contracting identifier
+ *
+ * @return \App\Nrgi\Services\Contract\Identifier\ContractIdentifier
+ */
+function getContractIdentifier()
+{
+    $ci = new \App\Nrgi\Services\Contract\Identifier\ContractIdentifier();
+    return $ci->generate();
+}

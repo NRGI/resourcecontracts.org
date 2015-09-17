@@ -20,6 +20,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\ChangeFileNameCommand',
         'App\Console\Commands\MturkNotificationCommand',
         'App\Console\Commands\UpdateCorporateGroupList',
+        'App\Console\Commands\UpdateMetadata',
     ];
 
     /**

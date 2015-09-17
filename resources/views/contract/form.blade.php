@@ -259,12 +259,9 @@ $groups = [''=>'Select'] + $groups;
                     <div class="form-group">
                         {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
                         <div class="col-sm-7">
-
-                             {!! Form::radio("company[$i][operator]", 1, ($v->operator==1)?true:false , ['class' => 'field']) !!} Yes
-                             {!! Form::radio("company[$i][operator]", 0, ($v->operator==0)?true:false, ['class' => 'field']) !!} No
-                             {!! Form::radio("company[$i][operator]", -1, ($v->operator==-1)?true:false, ['class' => 'field']) !!} Not Available
-
-
+                             {!! Form::radio("company[$i][operator]", 1, (isset($v->operator) && $v->operator==1)?true:false , ['class' => 'field']) !!} Yes
+                             {!! Form::radio("company[$i][operator]", 0, (isset($v->operator) && $v->operator==0)?true:false, ['class' => 'field']) !!} No
+                             {!! Form::radio("company[$i][operator]", -1, (isset($v->operator) && $v->operator==-1)?true:false, ['class' => 'field']) !!} Not Available
                         </div>
                     </div>
                     @if($k > 0)
