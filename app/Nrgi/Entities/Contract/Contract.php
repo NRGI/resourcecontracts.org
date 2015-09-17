@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\Collection;
 use App\Nrgi\Scope\CountryScope;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
 
 /**
@@ -53,23 +54,23 @@ class Contract extends Model
     /**
      * Contract Status
      */
-    const STATUS_DRAFT = 'draft';
+    const STATUS_DRAFT     = 'draft';
     const STATUS_COMPLETED = 'completed';
     const STATUS_PUBLISHED = 'published';
-    const STATUS_REJECTED = 'rejected';
+    const STATUS_REJECTED  = 'rejected';
 
     /**
      * Contract Processing
      */
     const PROCESSING_PIPELINE = 0;
-    const PROCESSING_RUNNING = 1;
+    const PROCESSING_RUNNING  = 1;
     const PROCESSING_COMPLETE = 2;
-    const PROCESSING_FAILED = 3;
+    const PROCESSING_FAILED   = 3;
 
     /**
      * MTurk Status
      */
-    const MTURK_SENT = 1;
+    const MTURK_SENT     = 1;
     const MTURK_COMPLETE = 2;
 
     /**
@@ -95,11 +96,7 @@ class Contract extends Model
      */
     public function getFileUrlAttribute()
     {
-        if ($this->pdf_process_status == static::PROCESSING_COMPLETE) {
-            return getS3FileURL($this->id . '/' . $this->file);
-        }
-
-        return getS3FileURL($this->file);
+        return getS3FileURL($this->id . '/' . $this->file);
     }
 
     /**
@@ -307,7 +304,6 @@ class Contract extends Model
         return sprintf("%s-%s.pdf", $this->id, $this->Slug);
     }
 
-
     /**
      * Sync of supporting contracts
      *
@@ -316,7 +312,7 @@ class Contract extends Model
      */
     public function syncSupportingContracts($contract_id)
     {
-        \DB::table('supporting_contracts')->where('contract_id', $this->id)->delete();
+        DB::table('supporting_contracts')->where('contract_id', $this->id)->delete();
 
         if (empty($contract_id)) {
             return true;
@@ -335,7 +331,7 @@ class Contract extends Model
             ];
         }
 
-        return \DB::table('supporting_contracts')->insert($insert);
+        return DB::table('supporting_contracts')->insert($insert);
     }
 
     /**
@@ -345,7 +341,7 @@ class Contract extends Model
      */
     public function getSupportingContract()
     {
-        return \DB::table('supporting_contracts')->where('contract_id', $this->id)->lists('supporting_contract_id');
+        return DB::table('supporting_contracts')->where('contract_id', $this->id)->lists('supporting_contract_id');
     }
 
 }

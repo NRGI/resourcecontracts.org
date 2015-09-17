@@ -169,6 +169,10 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
            href="{{route('contract.comment.list',$contract->id)}}">View all comments</a>
 
         <ul class="contract-info">
+            <li><strong>@lang('Open Contracting ID'):</strong>
+                {{$contract->metadata->open_contracting_id or ''}}
+            </li>
+
             <li><strong>@lang('contract.created_by'):</strong>
                 {{$contract->created_user->name}} on {{$contract->created_datetime->format('D M d, Y h:i A')}} (GMT)
             </li>

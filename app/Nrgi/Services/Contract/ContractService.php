@@ -260,9 +260,10 @@ class ContractService
             )
         ) : '';
 
-        $formData['country']  = $this->countryService->getInfoByCode($formData['country']);
-        $formData['resource'] = (!empty($formData['resource'])) ? $formData['resource'] : [];
-        $formData['category'] = (!empty($formData['category'])) ? $formData['category'] : [];
+        $formData['country']             = $this->countryService->getInfoByCode($formData['country']);
+        $formData['resource']            = (!empty($formData['resource'])) ? $formData['resource'] : [];
+        $formData['category']            = (!empty($formData['category'])) ? $formData['category'] : [];
+        $formData['open_contracting_id'] = getContractIdentifier();
 
         return array_only(
             $formData,
@@ -289,7 +290,8 @@ class ContractService
                 "category",
                 "signature_year",
                 "participation_share",
-                "disclosure_mode"
+                "disclosure_mode",
+                "open_contracting_id"
             ]
         );
     }
@@ -750,12 +752,12 @@ class ContractService
      */
     public function getTextFromS3($contract_id, $file)
     {
-        list($filename, $ext)= explode('.', $file);
+        list($filename, $ext) = explode('.', $file);
 
         try {
             return $this->storage->disk('s3')->get($contract_id . '/' . $filename . '.txt');
         } catch (Exception $e) {
-            $this->logger->error('File not found:'.$e->getMessage());
+            $this->logger->error('File not found:' . $e->getMessage());
 
             return null;
         }
