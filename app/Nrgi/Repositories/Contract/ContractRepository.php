@@ -286,17 +286,17 @@ class ContractRepository implements ContractRepositoryInterface
 
     /**
      * Get Contract List
-     * @return mixed
+     * @return Collection
      */
     public function getList()
     {
-        return $this->contract->all();
+        return $this->contract->orderByRaw("metadata->>'contract_name' ASC")->get();
     }
 
     /**
      * Get Contracts having MTurk Tasks
      *
-     * @return collection
+     * @return Collection
      */
     public function getMTurkContracts()
     {
