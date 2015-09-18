@@ -207,16 +207,15 @@ class ContractService
     public function saveContract(array $formData)
     {
         if ($file = $this->uploadContract($formData['file'])) {
-            $metadata                        = $this->processMetadata($formData);
-            $metadata['open_contracting_id'] = getContractIdentifier();
-            $metadata['file_size']           = $file['size'];
-            $data                            = [
+            $metadata              = $this->processMetadata($formData);
+            $metadata['file_size'] = $file['size'];
+            $data                  = [
                 'file'     => $file['name'],
                 'filehash' => $file['hash'],
                 'user_id'  => $this->auth->user()->id,
                 'metadata' => $metadata,
             ];
-            $supportingDocuments             = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
+            $supportingDocuments   = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
             try {
                 $contract = $this->contract->save($data);
 
@@ -261,11 +260,9 @@ class ContractService
             )
         ) : '';
 
-        $formData['country']    = $this->countryService->getInfoByCode($formData['country']);
-        $formData['resource']   = (!empty($formData['resource'])) ? $formData['resource'] : [];
-        $formData['category']   = (!empty($formData['category'])) ? $formData['category'] : [];
-        $formData['company']    = $this->removeKeys($formData['company']);
-        $formData['concession'] = $this->removeKeys($formData['concession']);
+        $formData['country']  = $this->countryService->getInfoByCode($formData['country']);
+        $formData['resource'] = (!empty($formData['resource'])) ? $formData['resource'] : [];
+        $formData['category'] = (!empty($formData['category'])) ? $formData['category'] : [];
 
         return array_only(
             $formData,
@@ -292,8 +289,7 @@ class ContractService
                 "category",
                 "signature_year",
                 "participation_share",
-                "disclosure_mode",
-                "open_contracting_id"
+                "disclosure_mode"
             ]
         );
     }
@@ -314,7 +310,6 @@ class ContractService
 
             return false;
         }
-
         $file_size                 = $contract->metadata->file_size;
         $metadata                  = $this->processMetadata($formData);
         $metadata['file_size']     = $file_size;
@@ -322,7 +317,6 @@ class ContractService
         $contract->updated_by      = $this->auth->user()->id;
         $contract->metadata_status = Contract::STATUS_DRAFT;
         $supportingDocuments       = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
-
         try {
             if ($contract->save()) {
                 $contract->syncSupportingContracts($supportingDocuments);
@@ -605,6 +599,7 @@ class ContractService
         foreach ($contracts as $k => $v) {
             $data[$v['id']] = $v['metadata']->contract_name;
         }
+        asort($data);
 
         return $data;
     }
@@ -765,23 +760,6 @@ class ContractService
 
             return null;
         }
-    }
-
-    /**
-     * Remove Keys From Array
-     *
-     * @param $items
-     * @return array
-     */
-    protected function removeKeys($items)
-    {
-        $i = [];
-
-        foreach ($items as $items) {
-            $i[] = $items;
-        }
-
-        return $i;
     }
 
 }
