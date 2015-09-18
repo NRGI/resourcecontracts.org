@@ -426,4 +426,35 @@ class ContractRepository implements ContractRepositoryInterface
 
         return $this->contract->whereIn('id', $ids)->get();
     }
+
+    public function getQualityCountOfMultipleMeta()
+    {
+        return DB::select('select get_quality_issue()');
+    }
+
+    public function getMultipleMetadataContract($string)
+    {
+        return DB::select(sprintf("select getMultipleMetadataContract('%s')", $string));
+    }
+
+    public function getContractFilterByMetadata($filters, $limit, $contractId)
+    {
+        $query    = $this->contract->select('*');
+        $from     = "contracts ";
+        $operator = "";
+        $filters  = array_map('trim', $filters);
+        extract($filters);
+
+        if ($issue == "present") {
+            $query->WhereIn("id", $contractId);
+        }
+        if ($issue == "missing") {
+            $query->WhereNotIn("id", $contractId);
+        }
+
+        $query->from($this->db->raw($from));
+
+        return $query->orderBy('created_datetime', 'DESC')->paginate($limit);
+
+    }
 }

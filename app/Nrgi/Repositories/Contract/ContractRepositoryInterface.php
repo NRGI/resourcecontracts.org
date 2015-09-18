@@ -202,4 +202,10 @@ interface ContractRepositoryInterface
      * @return Collection
      */
     public function getContract($ids, $limit);
+
+    public function getQualityCountOfMultipleMeta();
+
+    public function getMultipleMetadataContract($string);
+
+    public function getContractFilterByMetadata($filters, $limit, $contractId);
 }

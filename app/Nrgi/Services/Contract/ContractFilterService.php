@@ -57,6 +57,11 @@ class ContractFilterService
             return $contracts;
         }
 
+        if ($filters['type'] == "metadata" && ($filters['word'] == "Concession" || $filters['word'] == "Government Entity" || $filters['word'] == "Company")) {
+            $contracts = $this->getMultipleMetadataContracts($filters, $limit);
+            return $contracts;
+        }
+
         $contracts = $this->contract->getAll($filters, $limit);
 
         return $contracts;
@@ -145,4 +150,35 @@ class ContractFilterService
 
         return array_merge($default, $contract);
     }
+
+    private function getMultipleMetadataContracts($filters, $limit)
+    {
+        $contractId = '';
+        if ($filters['word'] == "Government Entity") {
+            $contractId = $this->contract->getMultipleMetadataContract("government");
+        }
+        if ($filters['word'] == "Company") {
+            $contractId = $this->contract->getMultipleMetadataContract("company");
+        }
+        if ($filters['word'] == "Concession") {
+            $contractId = $this->contract->getMultipleMetadataContract("concession");
+        }
+
+        $contractId = explode("=", $contractId[0]->getmultiplemetadatacontract);
+        $contractId = str_replace(['{', '}'], ['', ''], $contractId[1]);
+        $contractId = explode(",", $contractId);
+
+        foreach ($contractId as $key => $id) {
+            if (!is_numeric($id)) {
+                unset($contractId[$key]);
+            }
+        }
+
+        $contracts = $this->contract->getContractFilterByMetadata($filters, $limit, $contractId);
+
+        return $contracts;
+
+    }
+
+
 }

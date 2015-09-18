@@ -15,11 +15,12 @@ class QualityIssue extends Migration
     {
         DB::statement(
             "
-	CREATE OR REPLACE FUNCTION get_quality_issue( word text)
-  	RETURNS integer AS
+
+	CREATE OR REPLACE FUNCTION get_quality_issue()
+  	RETURNS quality AS
 	\$BODY\$BEGIN
 	DECLARE
-
+		issue quality;
 		company json;
 		metadata_data json;
 		company_no integer;
@@ -29,6 +30,7 @@ class QualityIssue extends Migration
 		government_no integer;
 
 	BEGIN
+
 		company_no=0;
 		concession_no=0;
 		government_no=0;
@@ -37,24 +39,29 @@ class QualityIssue extends Migration
 			company=metadata_data->'company';
 			concession=metadata_data->'concession';
 			government=metadata_data->'government_entity';
+
 			IF company->0->>'name'<>'' THEN
 				company_no=company_no+1;
 			END IF;
 			IF concession->0->>'license_name'<>'' THEN
 				concession_no=concession_no+1;
 			END IF;
+			IF government->0->>'entity'<>'' THEN
+				government_no=government_no+1;
+			END IF;
+
 
 		END LOOP;
-		if word='concession' THEN
-			RETURN concession_no;
-		END IF;
-		if word='company' THEN
-			RETURN company_no;
-		END IF;
+		issue.company_no=company_no;
+		issue.concession_no=concession_no;
+		issue.government_no=government_no;
+
+		RETURN issue;
 
 	END;
 	END;\$BODY\$
-  	LANGUAGE plpgsql VOLATILE;"
+  	LANGUAGE plpgsql VOLATILE;
+			"
         );
     }
 
@@ -65,7 +72,7 @@ class QualityIssue extends Migration
      */
     public function down()
     {
-		DB::statement("DROP function get_quality_issue(word text)");
+		DB::statement("DROP function get_quality_issue()");
     }
 
 }
