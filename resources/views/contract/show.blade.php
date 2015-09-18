@@ -215,7 +215,8 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <li><strong>@lang('contract.resource'): </strong></li>
             @endif
             @if(isset($contract->metadata->government_entity))
-                <div class="government-entity-wrap">
+
+                <div class="government-entity-wrap license-wrap">
                 @foreach($contract->metadata->government_entity as $governmentEntity)
                     <li><strong>@lang('contract.government_entity'):</strong> {{$governmentEntity->entity or ''}}</li>
                     <li><strong>@lang('contract.government_identifier'):</strong> {{$governmentEntity->identifier or ''}}</li>

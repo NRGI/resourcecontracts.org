@@ -141,7 +141,8 @@ $groups = [''=>'Select'] + $groups;
     @endif
 
 </div>
-<div type="button" class="btn btn-default new-government-entity">Add new Government Entity</div>
+
+<button type="button" class="btn btn-default new-government-entity add-new-btn">Add new Government Entity</button>
 
 
 <div class="form-group">
@@ -411,7 +412,7 @@ $groups = [''=>'Select'] + $groups;
 </div>
 
 
-<div type="button" class="btn btn-default new-company">Add new company</div>
+<div type="button" class="btn btn-default new-company add-new-btn">Add new company</div>
 
 <h3>@lang('contract.license_and_project')</h3>
 <hr/>
@@ -495,7 +496,7 @@ $groups = [''=>'Select'] + $groups;
 
 </div>
 
-<div class="btn btn-default new-concession">Add new License</div>
+<div class="btn btn-default new-concession add-new-btn">Add new License</div>
 
 <h3>@lang('contract.source')</h3>
 <hr/>

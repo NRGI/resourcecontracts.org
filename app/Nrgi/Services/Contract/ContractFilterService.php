@@ -59,6 +59,7 @@ class ContractFilterService
 
         if ($filters['type'] == "metadata" && ($filters['word'] == "Concession" || $filters['word'] == "Government Entity" || $filters['word'] == "Company")) {
             $contracts = $this->getMultipleMetadataContracts($filters, $limit);
+
             return $contracts;
         }
 
@@ -164,10 +165,15 @@ class ContractFilterService
             $contractId = $this->contract->getMultipleMetadataContract("concession");
         }
 
-        $contractId = explode("=", $contractId[0]->getmultiplemetadatacontract);
-        $contractId = str_replace(['{', '}'], ['', ''], $contractId[1]);
-        $contractId = explode(",", $contractId);
+        $meta = $contractId[0]->getmultiplemetadatacontract;
 
+        if (strpos($meta, '=') == true) {
+            $contractId = explode("=", $meta);
+            $meta = $contractId[1];
+        }
+
+        $contractId = str_replace(['{', '}'], ['', ''], $meta);
+        $contractId = explode(",", $contractId);
         foreach ($contractId as $key => $id) {
             if (!is_numeric($id)) {
                 unset($contractId[$key]);

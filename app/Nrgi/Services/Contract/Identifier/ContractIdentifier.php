@@ -26,7 +26,7 @@ class ContractIdentifier
     /**
      * @var string
      */
-    protected $namespace = 'nrgi';
+    protected $namespace = 'rc';
     /**
      * @var
      */

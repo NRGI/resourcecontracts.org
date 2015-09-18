@@ -360,14 +360,18 @@ header {
     color: red
 }
 
-.company .item, .con-item {
+.company .item, .con-item,.government-item+.government-item {
     background: #F4F4F4;
     padding: 15px;
     margin-bottom: 20px;
     position: relative;
 }
 
-.company .delete, .con-item .delete, .selected-document .delete {
+.government-item+.government-item {
+    margin: 20px 0 0;
+}
+
+.delete, .company .delete, .con-item .delete, .selected-document .delete {
     position: absolute;
     top: 7px;
     right: 15px;
@@ -533,7 +537,7 @@ header {
     background: transparent;
 }
 
-.new-company {
+.add-new-btn {
     color: #286090;
     border: 1px solid #286090;
 }
@@ -546,7 +550,11 @@ header {
     border: 1px solid #286090;
 }
 
-.new-company:hover, .new-concession:hover {
+.new-government-entity {
+    margin: 20px 0;
+}
+
+.add-new-btn:hover,.add-new-btn:focus {
     background: #286090;
     color: #fff;
 }
@@ -620,3 +628,53 @@ header {
     overflow: hidden;
     margin-bottom: 10px;
 }
+
+
+.panel-dashboard {
+    border: 0;
+    box-shadow: none;
+}
+
+.dashboard-top-wrapper > .col-lg-10 {
+    overflow: hidden;
+    border-right: 1px solid #f5f5f5;
+    width: 79%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.dashboard-top-wrapper > .col-lg-2 {
+    background-color: #f5f5f5;
+    margin: 40px 0 0 10px!important;
+    text-align: center;
+    min-height: 135px;
+}
+
+.contract-upload-wrap {
+    background: #f5f5f5;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.contract-upload-wrap .col-sm-3 {
+    background-color: #fff;
+    padding: 20px;
+    float: left;
+    border: 1px solid #ddd;
+    text-align: center;
+    border-right: 0;
+}
+
+.contract-upload-wrap .col-sm-3:last-child {
+    border-right: 1px solid #ddd;
+}
+
+.contract-upload-wrap .col-sm-3+.col-sm3 {
+    margin-left: 13px;
+}
+
+.dashboard-top-wrapper h3 {
+    text-align: left;
+    margin: 0 0 14px;
+}
+
