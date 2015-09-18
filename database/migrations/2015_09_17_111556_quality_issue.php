@@ -15,9 +15,9 @@ class QualityIssue extends Migration
     {
         DB::statement(
             "
-CREATE OR REPLACE FUNCTION get_quality_issue( word text)
-  RETURNS integer AS
-\$BODY\$BEGIN
+	CREATE OR REPLACE FUNCTION get_quality_issue( word text)
+  	RETURNS integer AS
+	\$BODY\$BEGIN
 	DECLARE
 
 		company json;
@@ -53,8 +53,8 @@ CREATE OR REPLACE FUNCTION get_quality_issue( word text)
 		END IF;
 
 	END;
-END;\$BODY\$
-  LANGUAGE plpgsql VOLATILE;"
+	END;\$BODY\$
+  	LANGUAGE plpgsql VOLATILE;"
         );
     }
 
