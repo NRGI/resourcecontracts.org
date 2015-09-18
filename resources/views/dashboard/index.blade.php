@@ -15,28 +15,34 @@
 @stop
 
 @section('content')
-    <div class="panel panel-default panel-dashboard" style="background-color: #F5F5F5;">
-        <div class="row" style="  padding: 5px; text-align: center; }">
-            <div class="col-xs-6 col-sm-2 col-md-offset-1">
-                <h4>Total Contract</h4>
+    <div class="panel panel-default panel-dashboard">
+        <div class="row dashboard-top-wrapper">
+            <div class="col-sm-10 col-lg-10">
+                <h3>Contracts Uploaded</h3>
+                <div class="contract-upload-wrap">
+                <div class="col-xs-6 col-sm-3">
+                    <h4>Last Month</h4>
+                    <span class="text-muted">{{$stats['last_month'] or 0}}</span>
+                </div>
+                <div class="colm-xs-6 col-sm-3">
+                    <h4>This Month</h4>
+                    <span class="text-muted">{{$stats['this_month'] or 0}}</span>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <h4>Yesterday</h4>
+                    <span class="text-muted">{{$stats['yesterday'] or 0}}</span>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <h4>Today</h4>
+                    <span class="text-muted">{{$stats['today'] or 0}}</span>
+                </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-2 col-lg-2 col-md-offset-1">
+                <h4>Total Contracts</h4>
                 <span class="text-muted">{{$stats['total'] or 0}}</span>
             </div>
-            <div class="col-xs-6 col-sm-2">
-                <h4>Last Month</h4>
-                <span class="text-muted">{{$stats['last_month'] or 0}}</span>
-            </div>
-            <div class="col-xs-6 col-sm-2">
-                <h4>This Month</h4>
-                <span class="text-muted">{{$stats['this_month'] or 0}}</span>
-            </div>
-            <div class="col-xs-6 col-sm-2">
-                <h4>Yesterday</h4>
-                <span class="text-muted">{{$stats['yesterday'] or 0}}</span>
-            </div>
-            <div class="col-xs-6 col-sm-2">
-                <h4>Today</h4>
-                <span class="text-muted">{{$stats['today'] or 0}}</span>
-            </div>
+
         </div>
     </div>
 
