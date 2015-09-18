@@ -90,10 +90,11 @@ function getLanguageName($code)
 /**
  * Get Open Contracting identifier
  *
+ * @param $contract_id
  * @return \App\Nrgi\Services\Contract\Identifier\ContractIdentifier
  */
-function getContractIdentifier()
+function getContractIdentifier($contract_id)
 {
-    $ci = new \App\Nrgi\Services\Contract\Identifier\ContractIdentifier();
+    $ci = new \App\Nrgi\Services\Contract\Identifier\ContractIdentifier($contract_id);
     return $ci->generate();
 }

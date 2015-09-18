@@ -207,18 +207,22 @@ class ContractService
     public function saveContract(array $formData)
     {
         if ($file = $this->uploadContract($formData['file'])) {
-            $metadata                        = $this->processMetadata($formData);
-            $metadata['open_contracting_id'] = getContractIdentifier();
-            $metadata['file_size']           = $file['size'];
-            $data                            = [
+            $metadata              = $this->processMetadata($formData);
+            $metadata['file_size'] = $file['size'];
+            $data                  = [
                 'file'     => $file['name'],
                 'filehash' => $file['hash'],
                 'user_id'  => $this->auth->user()->id,
                 'metadata' => $metadata,
             ];
-            $supportingDocuments             = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
+            $supportingDocuments   = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
             try {
-                $contract = $this->contract->save($data);
+
+                $contract                        = $this->contract->save($data);
+                $metadata                        = json_decode(json_encode($contract->metadata), true);
+                $metadata['open_contracting_id'] = getContractIdentifier($contract->id);
+                $contract->metadata              = $metadata;
+                $contract->save();
 
                 if (!empty($supportingDocuments)) {
                     $contract->syncSupportingContracts($supportingDocuments);

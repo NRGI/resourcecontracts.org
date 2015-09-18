@@ -286,17 +286,17 @@ class ContractRepository implements ContractRepositoryInterface
 
     /**
      * Get Contract List
-     * @return mixed
+     * @return Collection
      */
     public function getList()
     {
-        return $this->contract->all();
+        return $this->contract->orderByRaw("metadata->>'contract_name' ASC")->get();
     }
 
     /**
      * Get Contracts having MTurk Tasks
      *
-     * @return collection
+     * @return Collection
      */
     public function getMTurkContracts()
     {
@@ -425,5 +425,36 @@ class ContractRepository implements ContractRepositoryInterface
         }
 
         return $this->contract->whereIn('id', $ids)->get();
+    }
+
+    public function getQualityCountOfMultipleMeta()
+    {
+        return DB::select('select get_quality_issue()');
+    }
+
+    public function getMultipleMetadataContract($string)
+    {
+        return DB::select(sprintf("select getMultipleMetadataContract('%s')", $string));
+    }
+
+    public function getContractFilterByMetadata($filters, $limit, $contractId)
+    {
+        $query    = $this->contract->select('*');
+        $from     = "contracts ";
+        $operator = "";
+        $filters  = array_map('trim', $filters);
+        extract($filters);
+
+        if ($issue == "present") {
+            $query->WhereIn("id", $contractId);
+        }
+        if ($issue == "missing") {
+            $query->WhereNotIn("id", $contractId);
+        }
+
+        $query->from($this->db->raw($from));
+
+        return $query->orderBy('created_datetime', 'DESC')->paginate($limit);
+
     }
 }

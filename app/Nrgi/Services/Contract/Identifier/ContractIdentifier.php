@@ -4,6 +4,10 @@
  * Class Generator
  * @package App\Nrgi\Services\Contract\Identifier
  */
+/**
+ * Class ContractIdentifier
+ * @package App\Nrgi\Services\Contract\Identifier
+ */
 class ContractIdentifier
 {
     /**
@@ -18,6 +22,23 @@ class ContractIdentifier
      * @var int
      */
     protected $prefix_length = 6;
+
+    /**
+     * @var string
+     */
+    protected $namespace = 'rc';
+    /**
+     * @var
+     */
+    protected $identifier;
+
+    /**
+     * @param $identifier
+     */
+    public function __construct($identifier)
+    {
+        $this->identifier = $identifier;
+    }
 
     /**
      * Return random ID
@@ -66,7 +87,7 @@ class ContractIdentifier
      */
     protected function getPublisherNamespace()
     {
-        return str_random(2);
+        return $this->namespace;
     }
 
     /**
@@ -76,7 +97,7 @@ class ContractIdentifier
      */
     protected function getInternalIdentifier()
     {
-        return str_random(5);
+        return $this->identifier;
     }
 
 }

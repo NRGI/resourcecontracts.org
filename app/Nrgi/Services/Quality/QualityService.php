@@ -39,6 +39,13 @@ class QualityService
             $count          = $this->contract->getMetadataQuality($key);
             $metadata[$key] = $count;
         }
+        $multipleMetadata                    = $this->contract->getQualityCountOfMultipleMeta();
+        $multipleMetadata                    = $multipleMetadata[0]->get_quality_issue;
+        $data                                = str_replace(['(', ')'], ['', ''], $multipleMetadata);
+        $data                                = explode(',', $data);
+        $metadata["Government Entity"] = $data[2];
+        $metadata["Company"]           = $data[0];
+        $metadata["Concession"]        = $data[1];
 
         return $metadata;
     }

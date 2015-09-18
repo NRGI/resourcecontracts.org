@@ -8,6 +8,7 @@
 @stop
 
 <?php
+
 $corporate_groups = config('groups');
 $groups = array();
 foreach ($corporate_groups as $group) {
@@ -79,24 +80,70 @@ $groups = [''=>'Select'] + $groups;
     </div>
 </div>
 
-<div class="form-group">
-    {!! Form::label('government_entity', trans('contract.government_entity'), ['class'=>'col-sm-2 control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::text('government_entity',
-        isset($contract->metadata->government_entity)?$contract->metadata->government_entity:null,
-        ["class"=>"form-control"])!!}
-    </div>
+
+<div class="government_entity">
+    @if(isset($contract->metadata->government_entity) || old('government_entity'))
+        <?php
+            $governmentEntity = empty(old('government_entity')) ? $contract->metadata->government_entity : old('government_entity');
+            $g = 0;
+        ?>
+
+        @if(count($governmentEntity)>0)
+            @foreach($governmentEntity as $k => $v)
+                <div class="government-item" {{$k ==0 ? 'id=template' : ''}}>
+                    <div class="form-group">
+                        {!! Form::label('entity', trans('contract.government_entity'), ['class'=>'col-sm-2 control-label'])!!}
+                        <div class="col-sm-7">
+                            {!! Form::text("government_entity[$g][entity]",
+                            isset($v->entity)?$v->entity:null,
+                            ["class"=>"form-control"])!!}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('identifier', trans('contract.government_identifier'), ['class'=>'col-sm-2
+                        control-label'])!!}
+                        <div class="col-sm-7">
+                            {!! Form::text("government_entity[$g][identifier]",
+                            isset($v->identifier)?$v->identifier:null,
+                            ["class"=>"form-control"])!!}
+                        </div>
+
+                    </div>
+                    @if($k>0)
+                        <div class="delete">delete</div>
+                    @endif
+                </div>
+
+                <?php $g ++?>
+            @endforeach
+        @endif
+    @else
+        <div class="government-item">
+            <div class="form-group">
+                {!! Form::label('government_entity', trans('contract.government_entity'), ['class'=>'col-sm-2 control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::text("government_entity[0][entity]",null,
+                    ["class"=>"form-control"])!!}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('government_identifier', trans('contract.government_identifier'), ['class'=>'col-sm-2
+                control-label'])!!}
+                <div class="col-sm-7">
+                    {!! Form::text("government_entity[0][identifier]",null,
+                    ["class"=>"form-control"])!!}
+
+                </div>
+            </div>
+        </div>
+    @endif
+
 </div>
 
-<div class="form-group">
-    {!! Form::label('government_identifier', trans('contract.government_identifier'), ['class'=>'col-sm-2
-    control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::text('government_identifier',
-        isset($contract->metadata->government_identifier)?$contract->metadata->government_identifier:null,
-        ["class"=>"form-control"])!!}
-    </div>
-</div>
+<button type="button" class="btn btn-default new-government-entity add-new-btn">Add new Government Entity</button>
+
 
 <div class="form-group">
     {!! Form::label('type_of_contract', trans('contract.type_of_contract'), ['class'=>'col-sm-2
@@ -365,7 +412,7 @@ $groups = [''=>'Select'] + $groups;
 </div>
 
 
-<div type="button" class="btn btn-default new-company">Add new company</div>
+<div type="button" class="btn btn-default new-company add-new-btn">Add new company</div>
 
 <h3>@lang('contract.license_and_project')</h3>
 <hr/>
@@ -449,7 +496,7 @@ $groups = [''=>'Select'] + $groups;
 
 </div>
 
-<div class="btn btn-default new-concession">Add new License</div>
+<div class="btn btn-default new-concession add-new-btn">Add new License</div>
 
 <h3>@lang('contract.source')</h3>
 <hr/>
@@ -564,6 +611,7 @@ $groups = [''=>'Select'] + $groups;
 
         var i = {{$i or 0}};
         var j = {{$j or 0}};
+        var g = {{$g or 0}};
         var country_list = {!!json_encode($country_list)!!};
         var contracts = {!!json_encode($contracts)!!};
         var docId = {{json_encode($docId)}};
