@@ -93,7 +93,7 @@ class UpdateMetadata extends Command
             $metadata['open_contracting_id'] = getContractIdentifier($contract_id);
         }
 
-        if (isset($metadata['government_entity']) && isset($metadata['government_identifier'])) {
+        if (isset($metadata['government_entity']) && isset($metadata['government_identifier']) && !is_array($metadata['government_entity'])) {
             $governmentEntity     = $metadata['government_entity'];
             $governmentIdentifier = $metadata['government_identifier'];
             unset($metadata['government_identifier']);
