@@ -803,13 +803,18 @@ class ContractService
         }
 
         $old_identifier = isset($category[0]) ? $category[0] : '';
-        $new_identifier = $new_metadata['category'][0];
+        $new_identifier = isset($new_metadata['category'][0]) ? $new_metadata['category'][0] : '';
         $old_iso = $old_metadata->country->code;
         $new_iso = $new_metadata['country']['code'];
 
         if(!isset($old_metadata->open_contracting_id) || $old_metadata->open_contracting_id =='')
         {
-            return getContractIdentifier($new_metadata['category'][0], $new_metadata['country']['code']);
+            if($new_identifier != '' && $new_iso !='')
+            {
+                return getContractIdentifier($new_identifier , $new_iso);
+            }
+
+            return "";
         }
 
         $opcid = $old_metadata->open_contracting_id;

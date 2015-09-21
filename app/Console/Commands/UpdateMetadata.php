@@ -89,8 +89,15 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        if (!isset($metadata['open_contracting_id']) && isset($metadata['category'][0]) && isset($metadata['country']->code)) {
-            $metadata['open_contracting_id'] = getContractIdentifier($metadata['category'][0], $metadata['country']->code);
+        if (!isset($metadata['open_contracting_id'])) {
+            $metadata['open_contracting_id'] = '';
+        }
+
+        $category = isset($metadata['category'][0]) ? $metadata['category'][0] : '';
+        $code     = isset($metadata['country']->code) ? $metadata['country']->code : '';
+
+        if ($metadata['open_contracting_id'] == '' && $category != '' && $code != '') {
+            $metadata['open_contracting_id'] = getContractIdentifier($category, $code);
         }
 
         if (isset($metadata['government_entity']) && isset($metadata['government_identifier']) && !is_array($metadata['government_entity'])) {
