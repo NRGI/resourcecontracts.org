@@ -96,6 +96,9 @@ class MigrateEthiopianContracts extends Command
             $this->processExcel($data);
             $this->readFromExcel();
         }
+        if ($this->input->getOption('breakxl')) {
+            $this->breakExceltoDirectory();
+        }
         if ($this->input->getOption('json')) {
             $this->readFromExcel();
             $this->info("all files converted to json!");
@@ -111,6 +114,19 @@ class MigrateEthiopianContracts extends Command
         } else {
             $this->readFromJson();
         };
+    }
+
+    /**
+     * break excel
+     */
+    public function breakExceltoDirectory()
+    {
+        $dir   = $this->migration->getMigrationFile();
+        $files = $this->fileSystem->files($dir);
+        foreach ($files as $file) {
+            $this->info("converting {$file} to directory");
+            $this->migration->convertToCsv(basename($file));
+        }
     }
 
     /**
@@ -175,6 +191,9 @@ class MigrateEthiopianContracts extends Command
         $this->info('done');
     }
 
+    /**
+     * read from json file
+     */
     public function readFromJson()
     {
         $files = $this->fileSystem->files($this->getConvertedJsonDir());
@@ -212,7 +231,13 @@ class MigrateEthiopianContracts extends Command
     public function processExcel($data)
     {
         foreach ($data as $contract) {
-            if (!is_null($contract['metadata'])) {
+            $valid         = true;
+            $contract_name = urldecode(pathinfo($contract['m_link_template'], PATHINFO_FILENAME));
+            $query         = Contract::select('*');
+            $contractObj   = $query->whereRaw(
+                sprintf("contracts.metadata->>'contract_name'='%s'", trim($contract_name))
+            )->first();
+            if ($valid) {
                 $this->info("downloading {$contract['m_link_template']}");
                 $this->migration->setPdfUrl($contract['m_link_template']);
                 $contractDir = $this->migration->downloadExcel($contract['m_link_template']);
@@ -220,6 +245,7 @@ class MigrateEthiopianContracts extends Command
                 \File::put($this->migration->getConvertedDir($contractDir) . "/data.json", json_encode($contract));
                 $this->info("done!");
             }
+
         }
     }
 
@@ -278,7 +304,6 @@ class MigrateEthiopianContracts extends Command
     public function readFiles($dir)
     {
         try {
-
             $files        = $this->fileSystem->files($dir);
             $data         = [];
             $contractName = basename($dir);
@@ -304,7 +329,7 @@ class MigrateEthiopianContracts extends Command
                     $data[$type] = $this->extractRecords($filetype, $file);
                 }
             }
-            $this->fileSystem->deleteDirectory($dir);
+
             $this->migration->setData($data);
             $this->info("done {$contractName}");
 
@@ -313,6 +338,7 @@ class MigrateEthiopianContracts extends Command
         } catch (\Exception  $e) {
             $this->error($e->getMessage());
         }
+        $this->fileSystem->deleteDirectory($dir);
     }
 
     /**
@@ -337,6 +363,7 @@ class MigrateEthiopianContracts extends Command
             ['rebuild', null, InputOption::VALUE_NONE, 'generate folder.', null],
             ['json', null, InputOption::VALUE_NONE, 'generate json.', null],
             ['update', null, InputOption::VALUE_NONE, 'updates from csv.', null],
+            ['breakxl', null, InputOption::VALUE_NONE, 'updates from csv.', null],
 
         ];
     }
