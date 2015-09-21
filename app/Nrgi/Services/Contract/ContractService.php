@@ -207,22 +207,18 @@ class ContractService
     public function saveContract(array $formData)
     {
         if ($file = $this->uploadContract($formData['file'])) {
-            $metadata              = $this->processMetadata($formData);
-            $metadata['file_size'] = $file['size'];
-            $data                  = [
+            $metadata                        = $this->processMetadata($formData);
+            $metadata['file_size']           = $file['size'];
+            $metadata['open_contracting_id'] = getContractIdentifier($metadata['category'][0], $metadata['country']['code']);
+            $data                            = [
                 'file'     => $file['name'],
                 'filehash' => $file['hash'],
-                'user_id'  => $this->auth->user()->id,
+                'user_id'  => $this->auth->id(),
                 'metadata' => $metadata,
             ];
-            $supportingDocuments   = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
+            $supportingDocuments             = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
             try {
-
-                $contract                        = $this->contract->save($data);
-                $metadata                        = json_decode(json_encode($contract->metadata), true);
-                $metadata['open_contracting_id'] = getContractIdentifier($contract->id);
-                $contract->metadata              = $metadata;
-                $contract->save();
+                $contract = $this->contract->save($data);
 
                 if (!empty($supportingDocuments)) {
                     $contract->syncSupportingContracts($supportingDocuments);
@@ -270,6 +266,7 @@ class ContractService
         $formData['category']   = (!empty($formData['category'])) ? $formData['category'] : [];
         $formData['company']    = $this->removeKeys($formData['company']);
         $formData['concession'] = $this->removeKeys($formData['concession']);
+        $formData['government_entity'] = $this->removeKeys($formData['government_entity']);
 
         return array_only(
             $formData,
@@ -280,7 +277,6 @@ class ContractService
                 "country",
                 "resource",
                 "government_entity",
-                "government_identifier",
                 "type_of_contract",
                 "signature_date",
                 "document_type",
@@ -322,8 +318,10 @@ class ContractService
         $file_size                 = $contract->metadata->file_size;
         $metadata                  = $this->processMetadata($formData);
         $metadata['file_size']     = $file_size;
+
+        $metadata['open_contracting_id'] = $this->getOpenContractingId($contract->metadata, $metadata);
         $contract->metadata        = $metadata;
-        $contract->updated_by      = $this->auth->user()->id;
+        $contract->updated_by      = $this->auth->id();
         $contract->metadata_status = Contract::STATUS_DRAFT;
         $supportingDocuments       = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
 
@@ -786,6 +784,47 @@ class ContractService
         }
 
         return $i;
+    }
+
+    /**
+     * Get Updated Open Contracting ID
+     *
+     * @param $old_metadata
+     * @param $new_metadata
+     * @return mixed
+     */
+    protected function getOpenContractingId($old_metadata, $new_metadata)
+    {
+        $category = $old_metadata->category;
+
+        if(!isset($new_metadata['category'][0]))
+        {
+            return isset($old_metadata->open_contracting_id) ? $old_metadata->open_contracting_id : '';
+        }
+
+        $old_identifier = isset($category[0]) ? $category[0] : '';
+        $new_identifier = $new_metadata['category'][0];
+        $old_iso = $old_metadata->country->code;
+        $new_iso = $new_metadata['country']['code'];
+
+        if(!isset($old_metadata->open_contracting_id) || $old_metadata->open_contracting_id =='')
+        {
+            return getContractIdentifier($new_metadata['category'][0], $new_metadata['country']['code']);
+        }
+
+        $opcid = $old_metadata->open_contracting_id;
+
+        if($old_identifier != $new_identifier)
+        {
+            $opcid = str_replace(mb_substr(strtoupper($old_identifier),0,2) , mb_substr(strtoupper($new_identifier), 0, 2),  $opcid);
+        }
+
+        if($old_iso != $new_iso)
+        {
+            $opcid = str_replace(mb_substr(strtoupper($old_iso),0,2) , mb_substr(strtoupper($new_iso), 0, 2),  $opcid);
+        }
+
+        return $opcid;
     }
 
 }

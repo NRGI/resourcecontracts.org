@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
 
-                @forelse($users as $user)
+                @forelse($users as $key => $user)
                     <tr>
                         <td>{{$user->id}}</td>
                         <td>{{$user->name}}</td>
@@ -28,8 +28,8 @@
                         <td>{{$user->status == 'true' ? 'Active' : 'Inactive'}}</td>
                         <td>{{$user->created_at->format('D M d, Y h:i A')}}</td>
                         <td>
-                            <a href="{{route('user.edit', $user->id)}}" class="btn btn-primary">Edit</a>
-                            <a href="{{route('user.delete', $user->id)}}" class="btn btn-danger confirm"
+                            <a href="{{route('user.edit', $user->id)}}" id="user_edit_{{$key}}" class="btn btn-primary">Edit</a>
+                            <a href="{{route('user.delete', $user->id)}}" id="user_delete_{{$key}}" class="btn btn-danger confirm"
                                data-confirm="Are you sure you want to delete this user?">Delete</a>
                         </td>
 

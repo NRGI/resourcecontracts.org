@@ -90,11 +90,30 @@ function getLanguageName($code)
 /**
  * Get Open Contracting identifier
  *
- * @param $contract_id
+ * @param $identifier
+ * @param $iso_code
  * @return \App\Nrgi\Services\Contract\Identifier\ContractIdentifier
  */
-function getContractIdentifier($contract_id)
+function getContractIdentifier($identifier, $iso_code)
 {
-    $ci = new \App\Nrgi\Services\Contract\Identifier\ContractIdentifier($contract_id);
+    $ci = new \App\Nrgi\Services\Contract\Identifier\ContractIdentifier($identifier, $iso_code);
+
     return $ci->generate();
+}
+
+/**
+ * Generate random number
+ *
+ * @param $length
+ * @return string
+ */
+function str_random_number($length)
+{
+    $number = '';
+
+    for ($i = 0; $i < $length; $i ++) {
+        $number .= mt_rand(0, 9);
+    }
+
+    return $number;
 }

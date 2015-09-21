@@ -15,7 +15,7 @@ foreach ($corporate_groups as $group) {
     $groups[$group['name']] = $group['name'];
 }
 asort($groups);
-$groups = [''=>'Select'] + $groups;
+$groups = ['' => 'Select'] + $groups;
 ?>
 
 @if($action == 'add')
@@ -84,8 +84,8 @@ $groups = [''=>'Select'] + $groups;
 <div class="government_entity">
     @if(isset($contract->metadata->government_entity) || old('government_entity'))
         <?php
-            $governmentEntity = empty(old('government_entity')) ? $contract->metadata->government_entity : old('government_entity');
-            $g = 0;
+        $governmentEntity = empty(old('government_entity')) ? $contract->metadata->government_entity : old('government_entity');
+        $g = 0;
         ?>
 
         @if(count($governmentEntity)>0)
@@ -283,9 +283,9 @@ $groups = [''=>'Select'] + $groups;
                     <div class="form-group">
                         {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2 control-label'])!!}
                         <div class="col-sm-7">
-                            <?php if(isset($v->parent_company) && !in_array($v->parent_company,$groups)):
+                            <?php if (isset($v->parent_company) && !in_array($v->parent_company, $groups)):
                                 $groups[$v->parent_company] = $v->parent_company;
-                             endif;?>
+                            endif;?>
 
                             {!! Form::select("company[$i][parent_company]", $groups , isset($v->parent_company)?$v->parent_company:null , ['class' => 'form-control parent_company']) !!}
                         </div>
@@ -306,9 +306,9 @@ $groups = [''=>'Select'] + $groups;
                     <div class="form-group">
                         {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
                         <div class="col-sm-7">
-                             {!! Form::radio("company[$i][operator]", 1, (isset($v->operator) && $v->operator==1)?true:false , ['class' => 'field']) !!} Yes
-                             {!! Form::radio("company[$i][operator]", 0, (isset($v->operator) && $v->operator==0)?true:false, ['class' => 'field']) !!} No
-                             {!! Form::radio("company[$i][operator]", -1, (isset($v->operator) && $v->operator==-1)?true:false, ['class' => 'field']) !!} Not Available
+                            {!! Form::radio("company[$i][operator]", 1, (isset($v->operator) && $v->operator==1)?true:false , ['class' => 'field']) !!} Yes
+                            {!! Form::radio("company[$i][operator]", 0, (isset($v->operator) && $v->operator==0)?true:false, ['class' => 'field']) !!} No
+                            {!! Form::radio("company[$i][operator]", -1, (isset($v->operator) && $v->operator==-1)?true:false, ['class' => 'field']) !!} Not Available
                         </div>
                     </div>
                     @if($k > 0)
@@ -400,9 +400,9 @@ $groups = [''=>'Select'] + $groups;
             <div class="form-group">
                 {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
                 <div class="col-sm-7">
-                     {!! Form::radio('company[0][operator]', 1, false, ['class' => 'field']) !!} Yes
-                     {!! Form::radio('company[0][operator]', 0, false, ['class' => 'field']) !!} No
-                     {!! Form::radio('company[0][operator]', -1, true, ['class' => 'field']) !!} Not Available
+                    {!! Form::radio('company[0][operator]', 1, false, ['class' => 'field']) !!} Yes
+                    {!! Form::radio('company[0][operator]', 0, false, ['class' => 'field']) !!} No
+                    {!! Form::radio('company[0][operator]', -1, true, ['class' => 'field']) !!} Not Available
                 </div>
             </div>
         </div>
@@ -531,12 +531,13 @@ $groups = [''=>'Select'] + $groups;
 <div class="form-group">
     {!! Form::label('category', trans('contract.category'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
+        <?php
+        $old_category = isset($contract->metadata->category) ? $contract->metadata->category : old('category');
+        $old_category = empty($old_category) ? ['rc'] : $old_category;
+        ?>
         @foreach(config('metadata.category') as $key => $category)
             <label class="checkbox-inline">
-                {!! Form::checkbox('category[]', $key,
-                (isset($contract->metadata->category) && is_array($contract->metadata->category) && in_array($key,
-                $contract->metadata->category))? true : null)!!}
-                {{$category}}
+                <input name="category[]" {{(is_array($old_category) && in_array($key, $old_category)) ? "checked='checked'" : ''}} type="radio" value="{{$key}}"> {{$category}}
             </label>
         @endforeach
     </div>
@@ -548,7 +549,6 @@ $groups = [''=>'Select'] + $groups;
     {!! Form::label('translated_from', trans('contract.parent_document'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
         {!! Form::select('translated_from',['' => 'select']+$contracts, isset($contract->metadata->translated_from)?$contract->metadata->translated_from:null, ["class"=>"form-control"])!!}
-
     </div>
 </div>
 <div class="form-group support-form-group">
@@ -614,7 +614,7 @@ $groups = [''=>'Select'] + $groups;
         var g = {{$g or 0}};
         var country_list = {!!json_encode($country_list)!!};
         var contracts = {!!json_encode($contracts)!!};
-        var docId = {{json_encode($docId)}};
+        var docId = {!!json_encode($docId)!!};
 
     </script>
     <script src="{{asset('js/contract.js')}}"></script>

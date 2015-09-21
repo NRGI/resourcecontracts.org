@@ -1,10 +1,6 @@
 <?php namespace App\Nrgi\Services\Contract\Identifier;
 
 /**
- * Class Generator
- * @package App\Nrgi\Services\Contract\Identifier
- */
-/**
  * Class ContractIdentifier
  * @package App\Nrgi\Services\Contract\Identifier
  */
@@ -13,7 +9,7 @@ class ContractIdentifier
     /**
      * @var string
      */
-    protected $agency = 'ocds';
+    protected $agency = 'ocds-591adf';
     /**
      * @var string
      */
@@ -21,23 +17,25 @@ class ContractIdentifier
     /**
      * @var int
      */
-    protected $prefix_length = 6;
-
+    protected $random_length = 10;
     /**
      * @var string
-     */
-    protected $namespace = 'rc';
-    /**
-     * @var
      */
     protected $identifier;
 
     /**
-     * @param $identifier
+     * @var string
      */
-    public function __construct($identifier)
+    protected $iso_code;
+
+    /**
+     * @param $identifier
+     * @param $iso_code
+     */
+    public function __construct($identifier, $iso_code)
     {
         $this->identifier = $identifier;
+        $this->iso_code   = $iso_code;
     }
 
     /**
@@ -57,7 +55,13 @@ class ContractIdentifier
      */
     public function generate()
     {
-        return sprintf($this->format(), $this->agency, $this->getRegisteredPrefix(), $this->getPublisherNamespace(), $this->getInternalIdentifier());
+        return sprintf(
+            $this->format(),
+            $this->agency,
+            $this->getIsoCode(),
+            $this->getRandomNumber(),
+            $this->getIdentifier()
+        );
     }
 
     /**
@@ -67,7 +71,7 @@ class ContractIdentifier
      */
     public function format()
     {
-        return '%s' . $this->separator . '%s%s' . $this->separator . '%s';
+        return '%s' . $this->separator . '%s%s%s';
     }
 
     /**
@@ -75,19 +79,19 @@ class ContractIdentifier
      *
      * @return string
      */
-    protected function getRegisteredPrefix()
+    protected function getRandomNumber()
     {
-        return str_random($this->prefix_length);
+        return str_random_number($this->random_length);
     }
 
     /**
-     * Get Publisher namespace
+     * Get Country Iso Code
      *
      * @return string
      */
-    protected function getPublisherNamespace()
+    protected function getIsoCode()
     {
-        return $this->namespace;
+        return strtoupper($this->iso_code);
     }
 
     /**
@@ -95,9 +99,9 @@ class ContractIdentifier
      *
      * @return string
      */
-    protected function getInternalIdentifier()
+    protected function getIdentifier()
     {
-        return $this->identifier;
+        return strtoupper($this->identifier);
     }
 
 }
