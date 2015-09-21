@@ -91,7 +91,7 @@ class ContractIdentifier
      */
     protected function getIsoCode()
     {
-        return strtoupper($this->iso_code);
+        return mb_substr(strtoupper($this->iso_code), 0, 2);
     }
 
     /**
@@ -101,7 +101,7 @@ class ContractIdentifier
      */
     protected function getIdentifier()
     {
-        return strtoupper($this->identifier);
+        return mb_substr(strtoupper($this->identifier), 0, 2);
     }
 
 }
