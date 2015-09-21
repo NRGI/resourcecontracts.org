@@ -11,6 +11,7 @@ git clone https://github.com/kr/beanstalkd.git /home/ec2-user/beanstalkd
 cd /home/ec2-user/beanstalkd
 make
 
+cd /home/ec2-user
 cp /home/ec2-user/beanstalkd/beanstalkd /usr/bin/
 ln -s /usr/bin/beanstalkd /usr/sbin/beanstalkd
 rm -rf /home/ec2-user/beanstalkd
@@ -23,6 +24,7 @@ cd /home/ec2-user/daemonize
 sh configure
 make
 
+cd /home/ec2-user
 cp -rf /home/ec2-user/daemonize/daemonize /usr/bin/
 ln -s /usr/bin/daemonize /usr/sbin/daemonize
 rm -rf /home/ec2-user/daemonize
