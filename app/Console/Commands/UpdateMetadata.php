@@ -74,7 +74,7 @@ class UpdateMetadata extends Command
 
         unset($metadata['amla_url'], $metadata['file_url'], $metadata['word_file']);
 
-        $contract->metadata = $this->applyRules($metadata, $contract->id);
+        $contract->metadata = $this->applyRules($metadata);
 
         $contract->save();
 
@@ -87,13 +87,13 @@ class UpdateMetadata extends Command
      * @param array $metadata
      * @return array
      */
-    protected function applyRules(array $metadata, $contract_id)
+    protected function applyRules(array $metadata)
     {
-        if (!isset($metadata['open_contracting_id'])) {
-            $metadata['open_contracting_id'] = getContractIdentifier($contract_id);
+        if (!isset($metadata['open_contracting_id']) && isset($metadata['category'][0]) && isset($metadata['country']->code)) {
+            $metadata['open_contracting_id'] = getContractIdentifier($metadata['category'][0], $metadata['country']->code);
         }
 
-        if (isset($metadata['government_entity']) && isset($metadata['government_identifier'])) {
+        if (isset($metadata['government_entity']) && isset($metadata['government_identifier']) && !is_array($metadata['government_entity'])) {
             $governmentEntity     = $metadata['government_entity'];
             $governmentIdentifier = $metadata['government_identifier'];
             unset($metadata['government_identifier']);
