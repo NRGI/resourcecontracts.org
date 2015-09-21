@@ -14,7 +14,6 @@ class ProcedureCustomType extends Migration
     public function up()
     {
         DB::statement("CREATE TYPE quality AS (company_no integer,concession_no integer,government_no integer)");
-        //DB::statement("CREATE TYPE multipleArray AS (present int[][],missing int[][])");
     }
 
     /**
@@ -24,8 +23,7 @@ class ProcedureCustomType extends Migration
      */
     public function down()
     {
-        /*DB::statement("DROP type quality");
-        DB::statement("DROP type multipleArray");*/
+        DB::statement("DROP TYPE IF EXISTS quality");
     }
 
 }
