@@ -324,6 +324,7 @@ class MigrateEthiopianContracts extends Command
             $this->migration->setFileName($contractName);
             $this->migration->setFileType($filetype);
             foreach ($files as $file) {
+                dump($file);
                 $type = basename($file, ".csv");
                 if ($type != "picklists") {
                     $data[$type] = $this->extractRecords($filetype, $file);
@@ -336,9 +337,10 @@ class MigrateEthiopianContracts extends Command
             \File::put($this->getJsonDir($contractName), json_encode($this->migration->run()));
 
         } catch (\Exception  $e) {
+            $this->logger->error($e);
             $this->error($e->getMessage());
         }
-        $this->fileSystem->deleteDirectory($dir);
+        //$this->fileSystem->deleteDirectory($dir);
     }
 
     /**
