@@ -1,6 +1,7 @@
 $(function () {
     $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
     $('.parent_company').select2({placeholder: "Select", allowClear: true, tags: true, theme: "classic"});
+    $('.resource-list').select2({placeholder: "Select", allowClear: true, tags: true, theme: "classic"});
     $('.contract-form').validate();
 
     $('.datepicker').datetimepicker({
