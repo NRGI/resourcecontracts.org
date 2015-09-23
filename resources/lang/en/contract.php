@@ -82,7 +82,7 @@ return [
     'annotation_list'               => "Annotation List",
     'users'                         => 'Users',
     /*ContractController*/
-    'save_success'                  => 'Contract successfully uploaded.',
+    'save_success'                  => 'Contract successfully uploaded. You will receive an email notification once the contract processing is complete allowing for the text review',
     'save_fail'                     => 'Contract could not be saved.',
     'update_success'                => 'Contract successfully updated.',
     'update_fail'                   => 'Contract could not be updated.',

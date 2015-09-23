@@ -79,7 +79,8 @@ class ContractController extends Controller
             'type',
             'word',
             'issue',
-            'status'
+            'status',
+            'q'
         );
         $contracts = $this->contractFilter->getAll($filters);
         $years     = $this->contractFilter->getUniqueYears();
@@ -342,5 +343,6 @@ class ContractController extends Controller
 
         return back()->withSuccess(trans('contract.status_update'));
     }
+
 
 }
