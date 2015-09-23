@@ -38,7 +38,7 @@
             {!! Form::select('resource', ['all'=>trans('contract.resource')] + $resources , Input::get('resource') ,
             ['class' =>'form-control']) !!}
 
-            {!! Form::text('q', Input::get('q') , ['class' =>'form-control']) !!}
+            {!! Form::text('q', Input::get('q') , ['class' =>'form-control','placeholder'=>'Search by contract title']) !!}
 
             {!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
