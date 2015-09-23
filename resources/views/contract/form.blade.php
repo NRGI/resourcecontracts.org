@@ -70,13 +70,21 @@ $groups = ['' => 'Select'] + $groups;
         <label id="country-error" class="error" for="country"></label>
     </div>
 </div>
-
+<?php
+$resourceList = trans('codelist/resource');
+if (isset($contract->metadata->resource)) {
+    $diff = array_diff($contract->metadata->resource, $resourceList);
+    foreach ($diff as $resource) {
+        $resourceList[$resource] = $resource;
+    }
+}
+?>
 <div class="form-group">
     {!! Form::label('resource', trans('contract.resource'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
-        {!! Form::select('resource[]', trans('codelist/resource'),
+        {!! Form::select('resource[]', $resourceList,
         isset($contract->metadata->resource)?$contract->metadata->resource:null, ['multiple'=>'multiple',
-        "class"=>"form-control"])!!}
+        "class"=>"form-control resource-list"])!!}
     </div>
 </div>
 
@@ -612,7 +620,7 @@ $groups = ['' => 'Select'] + $groups;
         var i = {{$i or 0}};
         var j = {{$j or 0}};
         var g = {{$g or 0}};
-        var country_list = {!!json_encode($country_list)!!};
+        var country_list = {!!json_encode($country_list) !!};
         var contracts = {!!json_encode($contracts)!!};
         var docId = {!!json_encode($docId)!!};
 
