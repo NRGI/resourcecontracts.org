@@ -119,7 +119,10 @@ class ContractRepository implements ContractRepositoryInterface
                 $query->whereNotIn("id", $contracts);
             }
         }
-
+        if ($q != '') {
+            $q = '%' . $q . '%';
+            $query->whereRaw("contracts.metadata->>'contract_name' ILIKE ?", [$q]);
+        }
         $query->from($this->db->raw($from));
 
         return $query->orderBy('created_datetime', 'DESC')->paginate($limit);

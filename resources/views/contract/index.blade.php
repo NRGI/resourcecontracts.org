@@ -3,7 +3,7 @@
 @section('css')
     <style>
         .select2 {
-            width: 20% !important;
+            width: 16% !important;
             float: left;
             margin-right: 20px !important;
             margin-top: 4px !important;
@@ -17,6 +17,7 @@
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">@lang('contract.all_contract')
+
             <div class="btn-group pull-right" role="group" aria-label="...">
                 <a href="{{route('contract.import')}}" class="btn btn-default">@lang('contract.import.name')</a>
                 <a href="{{route('contract.create')}}" class="btn btn-primary btn-import">@lang('contract.add')</a>
@@ -36,6 +37,8 @@
 
             {!! Form::select('resource', ['all'=>trans('contract.resource')] + $resources , Input::get('resource') ,
             ['class' =>'form-control']) !!}
+
+            {!! Form::text('q', Input::get('q') , ['class' =>'form-control']) !!}
 
             {!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
