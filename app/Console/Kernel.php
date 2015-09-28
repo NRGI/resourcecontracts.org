@@ -21,6 +21,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\MturkNotificationCommand',
         'App\Console\Commands\UpdateCorporateGroupList',
         'App\Console\Commands\UpdateMetadata',
+        'App\Console\Commands\UpdateAnnotation',
     ];
 
     /**

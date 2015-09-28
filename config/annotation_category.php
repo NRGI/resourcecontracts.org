@@ -112,8 +112,7 @@ return [
                 'pages-missing-from-copy',
                 'annexes-missing-from-copy'
             ]
-    ]
-    ,
+    ],
     'cluster'                    => [
         "i-general-information"                                                                                                           => "Other",
         "country"                                                                                                                         => "General",
