@@ -162,6 +162,8 @@ class EthiopianMigrationService
                     $contract['annotations'] = $this->refineAnnotation($contract['annotations']);
 
                     return $contract;
+                }else{
+                    echo "{$contract['m_contract_name']} already exists";
                 }
             }
         }

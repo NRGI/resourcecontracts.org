@@ -4,6 +4,7 @@ use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\ContractFilterService;
 use App\Nrgi\Services\Contract\EthiopianMigrationService;
 use App\Nrgi\Services\Contract\MigrationService;
+use App\Nrgi\Services\Contract\Page\ProcessService;
 use Illuminate\Console\Command;
 use Maatwebsite\Excel\Excel;
 use Symfony\Component\Console\Input\InputOption;
@@ -55,6 +56,10 @@ class MigrateEthiopianContracts extends Command
      * @var ContractFilterService
      */
     protected $contract;
+    /**
+     * @var ProcessService
+     */
+    private $process;
 
     /**
      * Create a new command instance.
@@ -64,7 +69,8 @@ class MigrateEthiopianContracts extends Command
      * @param Excel                                      $excel
      * @param Log                                        $logger
      * @param MigrationService                           $mService
-     * @param ContractService                            $contract
+     * @param ContractService|ContractFilterService      $contract
+     * @param ProcessService                             $process
      * @internal param MigrationService $migrate
      */
     public function __construct(
@@ -73,7 +79,8 @@ class MigrateEthiopianContracts extends Command
         Excel $excel,
         Log $logger,
         MigrationService $mService,
-        ContractFilterService $contract
+        ContractFilterService $contract,
+        ProcessService $process
     ) {
         parent::__construct();
         $this->migration  = $migration;
@@ -82,6 +89,7 @@ class MigrateEthiopianContracts extends Command
         $this->logger     = $logger;
         $this->mService   = $mService;
         $this->contract   = $contract;
+        $this->process    = $process;
     }
 
     /**
@@ -91,6 +99,7 @@ class MigrateEthiopianContracts extends Command
      */
     public function fire()
     {
+        ini_set('memory_limit', '5216M');
         if ($this->input->getOption('rebuild')) {
             $data = $this->extractCsvRecords($this->getCsv());
             $this->downloadExcel($data);
@@ -120,6 +129,18 @@ class MigrateEthiopianContracts extends Command
         }
         if ($this->input->getOption('annotation')) {
             $this->updateOlcAnnotation();
+            exit;
+        }
+        if ($this->input->getOption('check')) {
+            $this->checkOlcContracts();
+            exit;
+        }
+        if ($this->input->getOption('process')) {
+            for ($i = 1169; $i <= 1180; $i ++) {
+                $this->process->execute($i);
+            }
+
+            exit;
         } else {
             $this->readFromJson();
         };
@@ -164,6 +185,35 @@ class MigrateEthiopianContracts extends Command
             } else {
                 $failedContracts ++;
                 $this->error(sprintf('Failed - %s - %s', "contract not found", $contractXlData['contract_title']));
+            }
+        }
+        $this->info("Number of failed contracts {$failedContracts}");
+        $this->info("Number of successful contracts {$savedContracts}");
+        $this->info("Done!");
+    }
+
+    /**
+     * update from excel file
+     */
+    public function checkOlcContracts()
+    {
+        $failedContracts = 0;
+        $savedContracts  = 0;
+        //dd($this->getFile('ethiopian-contracts/update/olc_update_data.csv'));
+        $contracts = $this->extractRecords(null, $this->getFile('OLC_data_migration.csv'));
+
+        foreach ($contracts as $contractXlData) {
+            $query    = Contract::select('*');
+            $contract = $query->whereRaw(
+                sprintf("contracts.metadata->>'contract_name'='%s'", $contractXlData['m_contract_name'])
+            )->first();
+            if ($contract) {
+                $this->info(sprintf('Success - %s - %s', "done", $contractXlData['m_contract_name']));
+                $savedContracts ++;
+
+            } else {
+                $failedContracts ++;
+                $this->error(sprintf('Failed - %s - %s', "contract not found", $contractXlData['m_contract_name']));
             }
         }
         $this->info("Number of failed contracts {$failedContracts}");
@@ -220,8 +270,8 @@ class MigrateEthiopianContracts extends Command
                 $this->info(sprintf('Reading - %s', $file));
                 $contractArray = $this->migration->setupContract($contract);
 
-                $contractObj   = json_decode(json_encode($contractArray), false);
-                if($contractObj) {
+                $contractObj = json_decode(json_encode($contractArray), false);
+                if ($contractObj) {
                     $con = $this->mService->uploadPdfToS3AndCreateContracts($contractObj->data);
                     if ($con) {
                         $this->migration->saveAnnotations($con->id, $contractArray['annotations']);
@@ -329,7 +379,7 @@ class MigrateEthiopianContracts extends Command
                 $type = basename($file, ".csv");
                 if ($type == "picklists" || $type == "Categories") {
                     continue;
-                }else{
+                } else {
                     $data[$type] = $this->extractRecords($filetype, $file);
                 }
 
@@ -373,6 +423,8 @@ class MigrateEthiopianContracts extends Command
             ['update', null, InputOption::VALUE_NONE, 'updates from csv.', null],
             ['generate-excel', null, InputOption::VALUE_NONE, 'updates from csv.', null],
             ['xl-to-folder', null, InputOption::VALUE_NONE, 'updates from csv . ', null],
+            ['check', null, InputOption::VALUE_NONE, 'updates from csv . ', null],
+            ['process', null, InputOption::VALUE_NONE, 'updates from csv . ', null],
 
         ];
     }
