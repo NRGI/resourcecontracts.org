@@ -74,8 +74,8 @@ return [
         'income-tax-rate'                                                                                                                 => 'Income tax: rate',
         'income-tax-exemptions'                                                                                                           => 'Income tax: exemptions',
         'income-tax-other'                                                                                                                => 'Income tax: other',
-        'production-share-cost-oil-features-basis-of-calculation-limits-on-cost-recovery-eg-as-of-revenue-or-production-capex-uplift-etc' => 'Production Share - Cost Oil features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)',
-        'production-share-profit-oil-features-triggers-for-variations-in-split-irr-factor-production-etc'                                 => 'Production Share - "Profit Oil features  (triggers for variations in split - IRR, factor, production, etc.)',
+        'production-share-cost-oil-features-basis-of-calculation-limits-on-cost-recovery-eg-as-of-revenue-or-production-capex-uplift-etc' => 'Production Share - Cost Oil features (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)',
+        'production-share-profit-oil-features-triggers-for-variations-in-split-irr-factor-production-etc'                                 => 'Production Share - "Profit Oil features (triggers for variations in split - IRR, factor, production, etc.)',
         'service-agreement-fee-to-developer-or-contractor'                                                                                => 'Service Agreement - Fee to developer or contractor',
         'capital-gains-tax'                                                                                                               => 'Capital gains tax',
         'withholding-tax'                                                                                                                 => 'Withholding tax',
@@ -120,6 +120,6 @@ return [
         'other-miscellaneous'                                                                                                             => 'Other - miscellaneous',
         'iii-document-notes'                                                                                                              => 'III. Document notes',
         'pages-missing-from-copy'                                                                                                         => 'Pages missing from  copy',
-        'annexes-missing-from-copy'                                                                                                       => 'Annexes missing from copy'
+        'other'                                                                                                                           => "Other"
     ]
 ];
