@@ -240,21 +240,11 @@ class MigrateEthiopianContracts extends Command
     public function downloadExcel($data)
     {
         foreach ($data as $contract) {
-            $valid         = true;
-            $contract_name = urldecode(pathinfo($contract['m_link_template'], PATHINFO_FILENAME));
-            $query         = Contract::select('*');
-            $contractObj   = $query->whereRaw(
-                sprintf("contracts.metadata->>'contract_name'='%s'", trim($contract_name))
-            )->first();
-            if ($valid) {
-                $this->info("downloading {$contract['m_link_template']}");
+            $this->info("downloading {$contract['m_link_template']}");
                 $this->migration->setPdfUrl($contract['m_link_template']);
                 $contractDir = $this->migration->downloadExcel($contract['m_link_template']);
-
                 \File::put($this->migration->getConvertedDir($contractDir) . "/data.json", json_encode($contract));
                 $this->info("done!");
-            }
-
         }
     }
 

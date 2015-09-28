@@ -742,8 +742,8 @@ class EthiopianMigrationService
         $url       = $url . "?dl=1";
         $temp_path = $this->getMigrationFile($fileName);
         try {
-            copy($url, $temp_path);
-            $this->convertToCsv($fileName);
+            //copy($url, $temp_path);
+            //$this->convertToCsv($fileName);
 
             return $fileName;
         } catch (\Exception $e) {
