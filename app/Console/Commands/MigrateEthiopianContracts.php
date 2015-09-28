@@ -219,13 +219,16 @@ class MigrateEthiopianContracts extends Command
             if (!is_null($contract)) {
                 $this->info(sprintf('Reading - %s', $file));
                 $contractArray = $this->migration->setupContract($contract);
+
                 $contractObj   = json_decode(json_encode($contractArray), false);
-                $con           = $this->mService->uploadPdfToS3AndCreateContracts($contractObj->data);
-                if ($con) {
-                    $this->migration->saveAnnotations($con->id, $contractArray['annotations']);
-                    $this->info(sprintf('Success - %s - %s', $file, $contractObj->data->metadata->contract_name));
+                if($contractObj) {
+                    $con = $this->mService->uploadPdfToS3AndCreateContracts($contractObj->data);
+                    if ($con) {
+                        $this->migration->saveAnnotations($con->id, $contractArray['annotations']);
+                        $this->info(sprintf('Success - %s - %s', $file, $contractObj->data->metadata->contract_name));
+                    }
+                    continue;
                 }
-                continue;
             }
 
             $this->error(sprintf('Failed - %s', $file));
@@ -241,10 +244,10 @@ class MigrateEthiopianContracts extends Command
     {
         foreach ($data as $contract) {
             $this->info("downloading {$contract['m_link_template']}");
-                $this->migration->setPdfUrl($contract['m_link_template']);
-                $contractDir = $this->migration->downloadExcel($contract['m_link_template']);
-                \File::put($this->migration->getConvertedDir($contractDir) . "/data.json", json_encode($contract));
-                $this->info("done!");
+            $this->migration->setPdfUrl($contract['m_link_template']);
+            $contractDir = $this->migration->downloadExcel($contract['m_link_template']);
+            \File::put($this->migration->getConvertedDir($contractDir) . "/data.json", json_encode($contract));
+            $this->info("done!");
         }
     }
 
@@ -324,9 +327,12 @@ class MigrateEthiopianContracts extends Command
             foreach ($files as $file) {
                 dump($file);
                 $type = basename($file, ".csv");
-                if ($type != "picklists") {
+                if ($type == "picklists" || $type == "Categories") {
+                    continue;
+                }else{
                     $data[$type] = $this->extractRecords($filetype, $file);
                 }
+
             }
 
             $this->migration->setData($data);
@@ -340,7 +346,7 @@ class MigrateEthiopianContracts extends Command
 
             return null;
         }
-        $this->fileSystem->deleteDirectory($dir);
+        //$this->fileSystem->deleteDirectory($dir);
     }
 
     /**

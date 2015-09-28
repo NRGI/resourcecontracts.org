@@ -133,15 +133,15 @@ class EthiopianMigrationService
      */
     public function run()
     {
-        $metadataFromAnnotations  = $this->getMetaDataFromAnnotation();
-        $metadata['annotation']   = $this->extractMetadataFromAnnotation($metadataFromAnnotations);
+        //$metadataFromAnnotations  = $this->getMetaDataFromAnnotation();
+        $metadata['annotation']   = [];//$this->extractMetadataFromAnnotation($metadataFromAnnotations);
         $metadata['metadata']     = $this->filterData($this->getMetaDataFromMetadata(), $this->metadataMapping());
         $metadata['metadata_new'] = $this->excel_metadata;
 
         $metadata ['contract_name'] = $this->contract_name;
         $metadata['file_name']      = $this->file_name;
         $metadata['pdf_url']        = $this->pdf_url;
-        $metadata['annotations']    = $this->getAnnotations();
+        $metadata['annotations']    = [];//$this->getAnnotations();
 
         return $metadata;
     }
@@ -404,31 +404,29 @@ class EthiopianMigrationService
      */
     protected function getContractArray($data)
     {
-        $contract         = config('metadata.schema');
-        $company_template = $contract['metadata']['company'][0];
+        $contract                  = config('metadata.schema');
+        $company_template          = $contract['metadata']['company'][0];
 
         $contract['user_id']                                   = 1;
         $contract['file']                                      = $data['file'];
         $contract['filehash']                                  = getFileHash($this->getMigrationPdfFile($data['file']));
         $contract['metadata']['file_size']                     = filesize($this->getMigrationPdfFile($data['file']));
-        $contract['metadata']['contract_name']                 = urldecode(
-            pathinfo($data['contract_name'], PATHINFO_FILENAME)
-        );
+        $contract['metadata']['contract_name']                 = $data['metadata_new']['m_contract_name'];
         $contract['metadata']['language']                      = "EN";
-        $contract['metadata']['signature_date']                = $this->getMetadataByKey($data, 'signature_date');
+        $contract['metadata']['signature_date']                = $data['metadata_new']['n_signature_date']; //$this->getMetadataByKey($data, 'signature_date');
         $contract['metadata']['signature_year']                = $this->getMetadataByKey($data, "signature_year");
-        $contract['metadata']['resource']                      = [$this->getMetadataByKey($data, "resource")];
+        $contract['metadata']['resource']                      = explode(',',$data['metadata_new']['n_resources']);//[$this->getMetadataByKey($data, "resource")];
         $contract['metadata']['country']                       = $this->country->getCountryByName(
-            $data['metadata']['country']
+            $data['metadata_new']['n_country']
         );
         $contract['metadata']['contract_identifier']           = $this->getMetadataByKey($data, "contract_identifier");
-        $contract['metadata']['project_title']                 = $this->getMetadataByKey($data, "project_title");
-        $contract['metadata']['type_of_contract']              = $this->getMetadataByKey($data, "type_of_contract");
-        $contract['metadata']['concession'][0]['license_name'] = $this->getMetadataByKey($data, "license_name");
-        $contract['metadata']['government_entity']             = $this->getMetadataByKey($data, "government_entity");
+        $contract['metadata']['project_title']                 = $data['metadata_new']['n_project_title'];//$this->getMetadataByKey($data, "project_title");
+        $contract['metadata']['type_of_contract']              = $data['metadata_new']['n_type_of_contract'];//$this->getMetadataByKey($data, "type_of_contract");
+        $contract['metadata']['concession'][0]['license_name'] =$data['metadata_new']['n_license_concession_name'];// $this->getMetadataByKey($data, "license_name");
+        //$contract['metadata']['government_entity']             = $this->getMetadataByKey($data, "government_entity");
         $contract['metadata']['category']                      = ['olc'];
 
-        $company_arr = array_map('trim', $data['annotation']['company']);
+        $company_arr = array_map('trim', explode(',',$data['metadata_new']['n_company']));
 
         $companies = [];
         if (empty($company_arr)) {
@@ -443,6 +441,24 @@ class EthiopianMigrationService
 
         }
         $contract['metadata']['company'] = $companies;
+
+        $goverment_entity_template = $contract['metadata']['government_entity'][0];
+
+        $goverment_entity_arr = array_map('trim', explode(',',$data['metadata_new']['n_government_entities']));
+
+        $companies = [];
+        if (empty($goverment_entity_arr)) {
+            $companies[] = $goverment_entity_template;
+        } else {
+            foreach ($goverment_entity_arr as $goverment_entity) {
+                if (!is_null($goverment_entity)) {
+                    $goverment_entity_template['entity'] = $goverment_entity;
+                    $government_entities[]              = $goverment_entity_template;
+                }
+            }
+
+        }
+        $contract['metadata']['government_entity'] = $government_entities;
 
         return $contract;
     }
@@ -742,8 +758,8 @@ class EthiopianMigrationService
         $url       = $url . "?dl=1";
         $temp_path = $this->getMigrationFile($fileName);
         try {
-            //copy($url, $temp_path);
-            //$this->convertToCsv($fileName);
+            copy($url, $temp_path);
+            $this->convertToCsv($fileName);
 
             return $fileName;
         } catch (\Exception $e) {
