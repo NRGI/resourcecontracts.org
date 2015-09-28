@@ -71,10 +71,10 @@ class UpdateAnnotation extends Command
                 $annotationArray = json_encode($annotation->annotation);
                 $annotationArray = json_decode($annotationArray, true);
                 $category_mapped = array_search($annotationArray['category'], $annotation_mapping_category);
+                $annotationArray['cluster'] = _l(config("annotation_category.cluster.{$annotationArray['category']}"));
                 if (false !== $category_mapped) {
                     $annotationArray['category'] = 'other';
                 }
-                $annotationArray['cluster'] = _l(config("annotation_category.cluster.{$annotationArray['category']}"));
                 $annotation->annotation     = $annotationArray;
                 $this->info($annotation->save());
             }
