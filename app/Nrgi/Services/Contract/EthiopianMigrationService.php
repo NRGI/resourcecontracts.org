@@ -25,6 +25,7 @@ class EthiopianMigrationService
     protected $file_name;
 
     protected $pdf_url;
+    protected $excel_metadata;
 
     /**
      * @var Log
@@ -71,6 +72,15 @@ class EthiopianMigrationService
     public function setData($data)
     {
         return $this->raw_data = $data;
+    }
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function setExcelMetadata($data)
+    {
+        return $this->excel_metadata = $data;
     }
 
     /**
@@ -123,10 +133,11 @@ class EthiopianMigrationService
      */
     public function run()
     {
-        $metadataFromAnnotations = $this->getMetaDataFromAnnotation();
-        $metadata['annotation']  = $this->extractMetadataFromAnnotation($metadataFromAnnotations);
+        $metadataFromAnnotations  = $this->getMetaDataFromAnnotation();
+        $metadata['annotation']   = $this->extractMetadataFromAnnotation($metadataFromAnnotations);
+        $metadata['metadata']     = $this->filterData($this->getMetaDataFromMetadata(), $this->metadataMapping());
+        $metadata['metadata_new'] = $this->excel_metadata;
 
-        $metadata['metadata']       = $this->filterData($this->getMetaDataFromMetadata(), $this->metadataMapping());
         $metadata ['contract_name'] = $this->contract_name;
         $metadata['file_name']      = $this->file_name;
         $metadata['pdf_url']        = $this->pdf_url;
@@ -396,14 +407,13 @@ class EthiopianMigrationService
         $contract         = config('metadata.schema');
         $company_template = $contract['metadata']['company'][0];
 
-        $contract['user_id']                   = 1;
-        $contract['file']                      = $data['file'];
-        $contract['filehash']                  = getFileHash($this->getMigrationPdfFile($data['file']));
-        $contract['metadata']['file_size']     = filesize($this->getMigrationPdfFile($data['file']));
-        $contract['metadata']['contract_name'] = urldecode(pathinfo($data['contract_name'], PATHINFO_FILENAME));
-//        $contract['created_datetime']      = $data['created_datetime'];
-//        $contract['last_updated_datetime'] = $data['last_updated_datetime'];
-
+        $contract['user_id']                                   = 1;
+        $contract['file']                                      = $data['file'];
+        $contract['filehash']                                  = getFileHash($this->getMigrationPdfFile($data['file']));
+        $contract['metadata']['file_size']                     = filesize($this->getMigrationPdfFile($data['file']));
+        $contract['metadata']['contract_name']                 = urldecode(
+            pathinfo($data['contract_name'], PATHINFO_FILENAME)
+        );
         $contract['metadata']['language']                      = "EN";
         $contract['metadata']['signature_date']                = $this->getMetadataByKey($data, 'signature_date');
         $contract['metadata']['signature_year']                = $this->getMetadataByKey($data, "signature_year");

@@ -93,11 +93,20 @@ class MigrateEthiopianContracts extends Command
     {
         if ($this->input->getOption('rebuild')) {
             $data = $this->extractCsvRecords($this->getCsv());
-            $this->processExcel($data);
+            $this->downloadExcel($data);
             $this->readFromExcel();
         }
-        if ($this->input->getOption('breakxl')) {
+        if ($this->input->getOption('generate-excel')) {
+            $data = $this->extractCsvRecords($this->getCsv());
+            $this->downloadExcel($data);
             $this->breakExceltoDirectory();
+            exit;
+
+        }
+        if ($this->input->getOption('xl-to-folder')) {
+            $this->breakExceltoDirectory();
+            exit;
+
         }
         if ($this->input->getOption('json')) {
             $this->readFromExcel();
@@ -228,7 +237,7 @@ class MigrateEthiopianContracts extends Command
     /**
      * @param $data
      */
-    public function processExcel($data)
+    public function downloadExcel($data)
     {
         foreach ($data as $contract) {
             $valid         = true;
@@ -261,7 +270,6 @@ class MigrateEthiopianContracts extends Command
             return $this->excel->load($file)->all()->toArray();
         }
         $columns = $this->setConfig($file);
-
         if ($fileType == "xlsm") {
             $columns = $this->setXlsmConfig($file);
         }
@@ -306,7 +314,8 @@ class MigrateEthiopianContracts extends Command
         try {
             $files        = $this->fileSystem->files($dir);
             $data         = [];
-            $contractName = basename($dir);
+            $excelData    = json_decode(file_get_contents($dir . "/data.json"), 1);
+            $contractName = $excelData['m_contract_name'];
             if (count($files) < 1) {
                 $this->error('file not found');
 
@@ -318,8 +327,7 @@ class MigrateEthiopianContracts extends Command
             if (count($files) == 4) {
                 $filetype = "xlsm";
             }
-            $excelData = json_decode(file_get_contents($dir . "/data.json"), 1);
-
+            $this->migration->setExcelMetadata($excelData);
             $this->migration->setPdfUrl($excelData['m_pdf_url']);
             $this->migration->setFileName($contractName);
             $this->migration->setFileType($filetype);
@@ -335,6 +343,7 @@ class MigrateEthiopianContracts extends Command
             $this->info("done {$contractName}");
 
             \File::put($this->getJsonDir($contractName), json_encode($this->migration->run()));
+            exit;
 
         } catch (\Exception  $e) {
             $this->logger->error($e);
@@ -365,7 +374,8 @@ class MigrateEthiopianContracts extends Command
             ['rebuild', null, InputOption::VALUE_NONE, 'generate folder.', null],
             ['json', null, InputOption::VALUE_NONE, 'generate json.', null],
             ['update', null, InputOption::VALUE_NONE, 'updates from csv.', null],
-            ['breakxl', null, InputOption::VALUE_NONE, 'updates from csv.', null],
+            ['generate-excel', null, InputOption::VALUE_NONE, 'updates from csv.', null],
+            ['xl-to-folder', null, InputOption::VALUE_NONE, 'updates from csv . ', null],
 
         ];
     }
@@ -414,13 +424,7 @@ class MigrateEthiopianContracts extends Command
         config()->set('excel.import.startRow', 1);
         if ($type == "Categories") {
             config()->set('excel.import.startRow', 2);
-            if (preg_match('/Heng%20Yue_Cambodia.xlsx/', $file)
-                || preg_match('/Company_Sierra%20Leone/', $file)
-                || preg_match('/Holdings_Sierra%20Leone.xlsx/', $file)
-                || preg_match('/Nile%20Trading%20%26%20Development_South%20Sudan/', $file)
-            ) {
-                config()->set('excel.import.startRow', 3);
-            }
+
             $columns = ['francais', 'english', 'details', 'articlereference', 'page_permalink'];
 
             return $columns;
