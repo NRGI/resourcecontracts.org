@@ -343,13 +343,14 @@ class MigrateEthiopianContracts extends Command
             $this->info("done {$contractName}");
 
             \File::put($this->getJsonDir($contractName), json_encode($this->migration->run()));
-            exit;
-
         } catch (\Exception  $e) {
+
             $this->logger->error($e);
             $this->error($e->getMessage());
+
+            return null;
         }
-        //$this->fileSystem->deleteDirectory($dir);
+        $this->fileSystem->deleteDirectory($dir);
     }
 
     /**
