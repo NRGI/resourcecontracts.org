@@ -353,7 +353,6 @@ class MigrateEthiopianContracts extends Command
      */
     public function readFiles($dir)
     {
-        $this->moveDirectory($dir);
         try {
             $files        = $this->fileSystem->files($dir);
             $data         = [];
@@ -393,8 +392,7 @@ class MigrateEthiopianContracts extends Command
 
             \File::put($this->getJsonDir($contractName), json_encode($this->migration->run()));
         } catch (\Exception  $e) {
-
-
+            $this->moveDirectory($dir);
             $this->logger->error($e);
             $this->error($e->getMessage());
 
@@ -430,7 +428,6 @@ class MigrateEthiopianContracts extends Command
         }
 
         $this->fileSystem->move($dir, $failContractDir);
-        exit;
     }
 
     /**
