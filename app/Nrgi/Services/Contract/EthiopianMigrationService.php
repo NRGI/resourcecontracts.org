@@ -162,8 +162,6 @@ class EthiopianMigrationService
                     $contract['annotations'] = $this->refineAnnotation($contract['annotations']);
 
                     return $contract;
-                }else{
-                    echo "{$contract['m_contract_name']} already exists";
                 }
             }
         }
@@ -471,7 +469,7 @@ class EthiopianMigrationService
      * @param $file
      * @return bool
      */
-    protected function isPdfExists($file)
+    public function isPdfExists($file)
     {
         $file     = $this->getMigrationPdfFile($file);
         $fileHash = getFileHash($file);
@@ -491,7 +489,7 @@ class EthiopianMigrationService
      * @param $pdf
      * @return null|string
      */
-    protected function downloadPdf($pdf)
+    public function downloadPdf($pdf)
     {
         $pdf_name  = sha1(str_random()) . '.pdf';
         $temp_path = $this->getMigrationPdfFile($pdf_name);

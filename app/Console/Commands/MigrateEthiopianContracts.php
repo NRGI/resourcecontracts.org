@@ -213,6 +213,11 @@ class MigrateEthiopianContracts extends Command
 
             } else {
                 $failedContracts ++;
+                if ($pdf = $this->migration->downloadPdf($contractXlData['m_pdf_url'] . "?dl=1")) {
+                    if ($this->migration->isPdfExists($pdf)) {
+                        $this->error("{$contractXlData['m_contract_name']} already exists");
+                    }
+                }
                 $this->error(sprintf('Failed - %s - %s', "contract not found", $contractXlData['m_contract_name']));
             }
         }
