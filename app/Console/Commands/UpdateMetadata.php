@@ -93,10 +93,14 @@ class UpdateMetadata extends Command
             $metadata['open_contracting_id'] = getContractIdentifier($metadata['category'][0], $metadata['country']->code);
         }
 
-        if (isset($metadata['government_entity']) && isset($metadata['government_identifier']) && !is_array($metadata['government_entity'])) {
-            $governmentEntity     = $metadata['government_entity'];
-            $governmentIdentifier = $metadata['government_identifier'];
-            unset($metadata['government_identifier']);
+        if (!is_array($metadata['government_entity'])) {
+            $governmentEntity     = isset($metadata['government_entity']) ? $metadata['government_entity'] : '';
+            $governmentIdentifier = isset($metadata['government_identifier']) ? $metadata['government_identifier'] : '';
+
+            if (isset($metadata['government_identifier'])) {
+                unset($metadata['government_identifier']);
+            }
+
             $metadata['government_entity']   = [];
             $metadata['government_entity'][] = [
                 "entity"     => $governmentEntity,
@@ -104,6 +108,11 @@ class UpdateMetadata extends Command
             ];
         }
 
+        if (isset($metadata['government_identifier'])) {
+            unset($metadata['government_identifier']);
+        }
+
+        $metadata['resource'] = $this->mapResource($metadata['resource']);
 
         return $metadata;
     }
@@ -117,6 +126,75 @@ class UpdateMetadata extends Command
     {
         return [
             ['id', null, InputOption::VALUE_OPTIONAL, 'Contract ID.', null],
+        ];
+    }
+
+    /**
+     * Map Resources
+     *
+     * @param array $resource
+     * @return array
+     */
+    protected function mapResource(array $resource)
+    {
+        $resourceMapList = $this->getResourceMappingList();
+
+        if (empty($resource)) {
+            return [];
+        }
+
+        $return = [];
+
+        foreach ($resource as $res) {
+            if (array_key_exists($res, $resourceMapList)) {
+                $return[] = $resourceMapList[$res];
+            } else {
+                $return[] = $res;
+            }
+        }
+
+        return $return;
+    }
+
+    /**
+     * Get Resource Mapping list
+     *
+     * @return array
+     */
+    protected function getResourceMappingList()
+    {
+        return [
+            'Acacia'                        => 'Acacia',
+            'Agroindustry'                  => 'Agroindustry',
+            'Biofuels'                      => 'Biofuels',
+            'Castor oil (Ricinus communis)' => 'Castor oil (Ricinus communis)',
+            'Cereal crops'                  => 'Cereal crops',
+            'Coffee'                        => 'Coffee',
+            'Cotton'                        => 'Cotton',
+            'Eucalyptus'                    => 'Eucalyptus',
+            'Grain legumes (Pulses)'        => 'Grain legumes (Pulses)',
+            'Groundnuts'                    => 'Groundnuts',
+            'Jatropha curcas'               => 'Jatropha curcas',
+            'Maize (Corn)'                  => 'Maize (Corn)',
+            'Medicinal plants'              => 'Medicinal plants',
+            'Megafolia-paulownia'           => 'Timber (Wood)',
+            'Oil crops'                     => 'Oil crops',
+            'Oil palm'                      => 'Oil palm or palm oils',
+            'Oilseeds'                      => 'Oilseeds',
+            'Other crops'                   => 'Other crops',
+            'Palm oil'                      => 'Oil palm or palm oils',
+            'Palm oils'                     => 'Oil palm or palm oils',
+            'Pongamia'                      => 'Biofuels ',
+            'Rice'                          => 'Rice',
+            'Rubber'                        => 'Rubber ',
+            'Sesame'                        => 'Sesame',
+            'Soybeans (Soya beans)'         => 'Soybeans (Soya beans)',
+            'Sugarcane'                     => 'Sugarcane',
+            'Tea'                           => 'Tea',
+            'Teak (Tectona grandis)'        => 'Teak (Tectona grandis)',
+            'Timber'                        => 'Timber (Wood)',
+            'Timber (wood)'                 => 'Timber (Wood)',
+            'Value-added crops'             => 'Value-added crops'
         ];
     }
 
