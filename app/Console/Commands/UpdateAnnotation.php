@@ -61,8 +61,7 @@ class UpdateAnnotation extends Command
             '5-operational-provisions',
             '6-miscellaneous-provisions',
             'iii-document-notes',
-            'ii-summary-of-terms',
-            'environmental-monitoring'
+            'ii-summary-of-terms'
         ];
         $contracts                   = $this->contract->all();
         foreach ($contracts as $contract) {
