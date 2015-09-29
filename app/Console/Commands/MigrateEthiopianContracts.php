@@ -99,7 +99,7 @@ class MigrateEthiopianContracts extends Command
      */
     public function fire()
     {
-        ini_set('memory_limit', 0);
+        ini_set('memory_limit', '-1');
         if ($this->input->getOption('rebuild')) {
             $data = $this->extractCsvRecords($this->getCsv());
             $this->downloadExcel($data);
@@ -353,6 +353,7 @@ class MigrateEthiopianContracts extends Command
      */
     public function readFiles($dir)
     {
+        $this->moveDirectory($dir);
         try {
             $files        = $this->fileSystem->files($dir);
             $data         = [];
@@ -393,6 +394,7 @@ class MigrateEthiopianContracts extends Command
             \File::put($this->getJsonDir($contractName), json_encode($this->migration->run()));
         } catch (\Exception  $e) {
 
+
             $this->logger->error($e);
             $this->error($e->getMessage());
 
@@ -409,6 +411,26 @@ class MigrateEthiopianContracts extends Command
     protected function getArguments()
     {
         return [];
+    }
+
+    /**
+     * @param $dir
+     */
+    protected function moveDirectory($dir)
+    {
+        $failDir = $this->getFailedDir('failed');
+        // dd($failDir);
+        if (!$this->fileSystem->isDirectory($failDir)) {
+            $this->fileSystem->makeDirectory($failDir);
+        }
+
+        $failContractDir = $failDir . '/' . basename($dir);
+        if (!$this->fileSystem->isDirectory($failContractDir)) {
+            $this->fileSystem->makeDirectory($failContractDir);
+        }
+
+        $this->fileSystem->move($dir, $failContractDir);
+        exit;
     }
 
     /**
@@ -519,6 +541,15 @@ class MigrateEthiopianContracts extends Command
     public function getFile($path)
     {
         return public_path($path);
+    }
+
+    /**
+     * @param string $dir
+     * @return string
+     */
+    protected function getFailedDir($dir = '')
+    {
+        return public_path('ethiopian-contracts' . '/' . $dir);
     }
 
 }
