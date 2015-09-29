@@ -89,28 +89,28 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        if (!isset($metadata['open_contracting_id']) && isset($metadata['category'][0]) && isset($metadata['country']->code)) {
-            $metadata['open_contracting_id'] = getContractIdentifier($metadata['category'][0], $metadata['country']->code);
-        }
+         if (!isset($metadata['open_contracting_id']) && isset($metadata['category'][0]) && isset($metadata['country']->code)) {
+             $metadata['open_contracting_id'] = getContractIdentifier($metadata['category'][0], $metadata['country']->code);
+         }
 
-        if (!is_array($metadata['government_entity'])) {
-            $governmentEntity     = isset($metadata['government_entity']) ? $metadata['government_entity'] : '';
-            $governmentIdentifier = isset($metadata['government_identifier']) ? $metadata['government_identifier'] : '';
+         if (!is_array($metadata['government_entity'])) {
+             $governmentEntity     = isset($metadata['government_entity']) ? $metadata['government_entity'] : '';
+             $governmentIdentifier = isset($metadata['government_identifier']) ? $metadata['government_identifier'] : '';
 
-            if (isset($metadata['government_identifier'])) {
-                unset($metadata['government_identifier']);
-            }
+             if (isset($metadata['government_identifier'])) {
+                 unset($metadata['government_identifier']);
+             }
 
-            $metadata['government_entity']   = [];
-            $metadata['government_entity'][] = [
-                "entity"     => $governmentEntity,
-                "identifier" => $governmentIdentifier
-            ];
-        }
+             $metadata['government_entity']   = [];
+             $metadata['government_entity'][] = [
+                 "entity"     => $governmentEntity,
+                 "identifier" => $governmentIdentifier
+             ];
+         }
 
-        if (isset($metadata['government_identifier'])) {
-            unset($metadata['government_identifier']);
-        }
+         if (isset($metadata['government_identifier'])) {
+             unset($metadata['government_identifier']);
+         }
 
         $metadata['resource'] = $this->mapResource($metadata['resource']);
 
@@ -135,7 +135,7 @@ class UpdateMetadata extends Command
      * @param array $resource
      * @return array
      */
-    protected function mapResource(array $resource)
+    protected function mapResource($resource)
     {
         $resourceMapList = $this->getResourceMappingList();
 
@@ -149,7 +149,11 @@ class UpdateMetadata extends Command
             if (array_key_exists($res, $resourceMapList)) {
                 $return[] = $resourceMapList[$res];
             } else {
-                $return[] = $res;
+                if ($res == 'null' || is_null($res)) {
+                    $return[] = '';
+                } else {
+                    $return[] = trim($res);
+                }
             }
         }
 
