@@ -133,15 +133,15 @@ class EthiopianMigrationService
      */
     public function run()
     {
-        //$metadataFromAnnotations  = $this->getMetaDataFromAnnotation();
-        $metadata['annotation']   = [];//$this->extractMetadataFromAnnotation($metadataFromAnnotations);
+        $metadataFromAnnotations  = $this->getMetaDataFromAnnotation();
+        $metadata['annotation']   = $this->extractMetadataFromAnnotation($metadataFromAnnotations);
         $metadata['metadata']     = $this->filterData($this->getMetaDataFromMetadata(), $this->metadataMapping());
         $metadata['metadata_new'] = $this->excel_metadata;
 
         $metadata ['contract_name'] = $this->contract_name;
         $metadata['file_name']      = $this->file_name;
         $metadata['pdf_url']        = $this->pdf_url;
-        $metadata['annotations']    = [];//$this->getAnnotations();
+        $metadata['annotations']    = $this->getAnnotations();
 
         return $metadata;
     }

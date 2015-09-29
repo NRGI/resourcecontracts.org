@@ -382,7 +382,7 @@ class MigrateEthiopianContracts extends Command
             foreach ($files as $file) {
                 dump($file);
                 $type = basename($file, ".csv");
-                if ($type == "picklists" || $type == "Categories") {
+                if ($type == "picklists") {
                     continue;
                 } else {
                     $data[$type] = $this->extractRecords($filetype, $file);
