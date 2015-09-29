@@ -236,7 +236,7 @@ class MigrateEthiopianContracts extends Command
         foreach ($files as $file) {
             $contractJson = json_decode(file_get_contents($file), 1);
 
-            $name     = urldecode(pathinfo($contractJson['contract_name'], PATHINFO_FILENAME));
+            $name = urldecode(pathinfo($contractJson['contract_name'], PATHINFO_FILENAME));
 
             $query    = Contract::select('*');
             $contract = $query->whereRaw(
@@ -365,8 +365,8 @@ class MigrateEthiopianContracts extends Command
             $data         = [];
             $excelData    = json_decode(file_get_contents($dir . "/data.json"), 1);
             $contractName = $excelData['m_contract_name'];
-            if(is_null($excelData['m_contract_name'])){
-
+            if (is_null($excelData['m_contract_name'])) {
+                $contractName = basename($dir);
             }
             if (count($files) < 1) {
                 $this->error('file not found');
