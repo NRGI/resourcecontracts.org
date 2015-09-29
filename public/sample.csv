@@ -1,1 +1,1 @@
-Contract,Title,Company,PDF URL,Country,Concession/License name,Signature date,Language,Disclosure mode
+contract_name,country,type_of_contract,resource,company_name,corporate_group,company_address,company_number,open_corporate_id,PDF URL,signature_date,language,disclosure_mode,date_retrieval,project_title,project_identifier,license_name,license_identifier,government_entity,government_identifier,category
