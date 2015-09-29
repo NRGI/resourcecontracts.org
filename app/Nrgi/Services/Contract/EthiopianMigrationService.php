@@ -206,6 +206,7 @@ class EthiopianMigrationService
      */
     public function refineAnnotation($annotations)
     {
+        dd($annotations);
         $annotationArray  = [];
         $annotationByPage = $this->getAnnotationByPagePosition($annotations);
         foreach ($annotationByPage as $page => $annotationObj) {
@@ -705,7 +706,7 @@ class EthiopianMigrationService
                 $text = $annotation_raw_data['details'];
             }
             $annotation['page'] = $page;
-            //$annotation['position'] = $position;
+            $annotation['articlereference'] = $annotation_raw_data['articlereference'];
             $annotation['text']     = $text;
             $annotation['category'] = $annotation_raw_data['english'];
             $data[]                 = $annotation;

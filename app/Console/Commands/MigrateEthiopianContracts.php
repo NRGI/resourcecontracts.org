@@ -401,7 +401,7 @@ class MigrateEthiopianContracts extends Command
 
             return null;
         }
-        //$this->fileSystem->deleteDirectory($dir);
+        $this->fileSystem->deleteDirectory($dir);
     }
 
     /**
