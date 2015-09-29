@@ -99,7 +99,7 @@ class MigrateEthiopianContracts extends Command
      */
     public function fire()
     {
-        ini_set('memory_limit', '5216M');
+        ini_set('memory_limit', 0);
         if ($this->input->getOption('rebuild')) {
             $data = $this->extractCsvRecords($this->getCsv());
             $this->downloadExcel($data);
@@ -133,13 +133,6 @@ class MigrateEthiopianContracts extends Command
         }
         if ($this->input->getOption('check')) {
             $this->checkOlcContracts();
-            exit;
-        }
-        if ($this->input->getOption('process')) {
-            for ($i = 1169; $i <= 1180; $i ++) {
-                $this->process->execute($i);
-            }
-
             exit;
         } else {
             $this->readFromJson();

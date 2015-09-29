@@ -707,7 +707,7 @@ class EthiopianMigrationService
             }
             $annotation['page'] = $page;
             $annotation['articlereference'] = $annotation_raw_data['articlereference'];
-            $annotation['text']     = $text;
+            $annotation['text']     = $text +"--"+$annotation_raw_data['articlereference'];
             $annotation['category'] = $annotation_raw_data['english'];
             $data[]                 = $annotation;
         }
