@@ -93,6 +93,7 @@ class AnnotationService
         $contactAnnotation                   = $this->annotation->findOrCreate(
             isset($data['id']) ? $data['id'] : null
         );
+        $data ['cluster']                    = _l(config("annotation_category.cluster.{$data['category']}"));
         $contactAnnotation->annotation       = $data;
         $contactAnnotation->user_id          = $this->user->id;
         $contactAnnotation->contract_id      = $inputData['contract'];
