@@ -54,6 +54,7 @@ class UpdateAnnotation extends Command
     {
         $annotation_mapping_category = [
             'i-general-information',
+            'general-information',
             '1-fundamental-provisions',
             '2-community-and-social-obligations',
             '3-developers-financial-obligations',
@@ -67,14 +68,14 @@ class UpdateAnnotation extends Command
         foreach ($contracts as $contract) {
             foreach ($contract->annotations as $annotation) {
                 $this->info("contractID => {$contract->id}");
-                $annotationArray = json_encode($annotation->annotation);
-                $annotationArray = json_decode($annotationArray, true);
-                $category_mapped = array_search($annotationArray['category'], $annotation_mapping_category);
+                $annotationArray            = json_encode($annotation->annotation);
+                $annotationArray            = json_decode($annotationArray, true);
+                $category_mapped            = array_search($annotationArray['category'], $annotation_mapping_category);
                 $annotationArray['cluster'] = _l(config("annotation_category.cluster.{$annotationArray['category']}"));
                 if (false !== $category_mapped) {
                     $annotationArray['category'] = 'other';
                 }
-                $annotation->annotation     = $annotationArray;
+                $annotation->annotation = $annotationArray;
                 $this->info($annotation->save());
             }
         }
