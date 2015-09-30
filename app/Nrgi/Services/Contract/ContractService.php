@@ -267,6 +267,7 @@ class ContractService
         $formData['company']    = $this->removeKeys($formData['company']);
         $formData['concession'] = $this->removeKeys($formData['concession']);
         $formData['government_entity'] = $this->removeKeys($formData['government_entity']);
+        $formData['show_pdf_text']       = isset($formData['show_pdf_text']) ? $formData['show_pdf_text'] : 1;
 
         return array_only(
             $formData,
@@ -291,9 +292,9 @@ class ContractService
                 "date_retrieval",
                 "category",
                 "signature_year",
-                "participation_share",
                 "disclosure_mode",
-                "open_contracting_id"
+                "open_contracting_id",
+                'show_pdf_text',
             ]
         );
     }
