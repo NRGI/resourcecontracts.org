@@ -28,8 +28,12 @@ return [
                 'name' => '',
             ],
             'resource'                  => [],
-            'government_entity'         => '',
-            'government_identifier'     => '',
+            'government_entity'         => [
+                [
+                    'entity'     => '',
+                    'identifier' => '',
+                ]
+            ],
             'type_of_contract'          => '',
             'signature_date'            => '',
             'document_type'             => '',
@@ -62,7 +66,10 @@ return [
             'date_retrieval'            => '',
             'category'                  => '',
             'signature_year'            => '',
-            'file_size'                 => ''
+            'file_size'                 => '',
+            'open_contracting_id'       => '',
+            'show_pdf_text'             => '',
+
         ],
     ]
 ];
