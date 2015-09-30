@@ -121,6 +121,7 @@ return [
         "other-miscellaneous"                                                                                                             => "Other - miscellaneous//Autre - divers",
         "iii-document-notes"                                                                                                              => "III. Document notes//III. Notes sur le document",
         "pages-missing-from-copy"                                                                                                         => "Pages missing from  copy//Pages Manquantes de la copie",
-        "annexes-missing-from-copy"                                                                                                       => "Annexes missing from copy//Annexes Manquantes de la copie"
+        "annexes-missing-from-copy"                                                                                                       => "Annexes missing from copy//Annexes Manquantes de la copie",
+        "other"                                                                                                                           => "Other"
     ]
 ];
