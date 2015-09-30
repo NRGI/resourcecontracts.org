@@ -209,6 +209,7 @@ class ContractService
         if ($file = $this->uploadContract($formData['file'])) {
             $metadata                        = $this->processMetadata($formData);
             $metadata['file_size']           = $file['size'];
+            $metadata['show_pdf_text']       = 1;
             $metadata['open_contracting_id'] = getContractIdentifier($metadata['category'][0], $metadata['country']['code']);
             $data                            = [
                 'file'     => $file['name'],

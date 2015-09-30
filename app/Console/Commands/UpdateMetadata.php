@@ -89,30 +89,10 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        if (!isset($metadata['open_contracting_id']) && isset($metadata['category'][0]) && isset($metadata['country']->code)) {
-            $metadata['open_contracting_id'] = getContractIdentifier($metadata['category'][0], $metadata['country']->code);
-        }
-
-        if (!is_array($metadata['government_entity'])) {
-            $governmentEntity     = isset($metadata['government_entity']) ? $metadata['government_entity'] : '';
-            $governmentIdentifier = isset($metadata['government_identifier']) ? $metadata['government_identifier'] : '';
-
-            if (isset($metadata['government_identifier'])) {
-                unset($metadata['government_identifier']);
-            }
-
-            $metadata['government_entity']   = [];
-            $metadata['government_entity'][] = [
-                "entity"     => $governmentEntity,
-                "identifier" => $governmentIdentifier
-            ];
-        }
-
-        if (isset($metadata['government_identifier'])) {
-            unset($metadata['government_identifier']);
-        }
-
-        $metadata['resource'] = $this->mapResource($metadata['resource']);
+        //$this->generateOpenContractID($metadata);
+        //$this->updateGovernmentEntity($metadata);
+        $this->publishPdfText($metadata);
+       // $metadata['resource'] = $this->mapResource($metadata['resource']);
 
         return $metadata;
     }
@@ -127,6 +107,54 @@ class UpdateMetadata extends Command
         return [
             ['id', null, InputOption::VALUE_OPTIONAL, 'Contract ID.', null],
         ];
+    }
+
+    /**
+     * Generate Open Contract ID
+     *
+     * @param $metadata
+     * @return \App\Nrgi\Services\Contract\Identifier\ContractIdentifier
+     */
+    protected function generateOpenContractID(&$metadata)
+    {
+        if (!isset($metadata['open_contracting_id']) && isset($metadata['category'][0]) && isset($metadata['country']->code)) {
+            $metadata['open_contracting_id'] = getContractIdentifier($metadata['category'][0], $metadata['country']->code);
+        }
+    }
+
+
+    /**
+     * publish pdf text
+     *
+     * @param $metadata
+     */
+    protected function publishPdfText(&$metadata)
+    {
+        $metadata['show_pdf_text'] = 1;
+    }
+
+    /**
+     * Update Government Entity
+     *
+     * @param $metadata
+     * @return array
+     */
+    protected function updateGovernmentEntity(&$metadata)
+    {
+        if (!is_array($metadata['government_entity'])) {
+            $governmentEntity     = isset($metadata['government_entity']) ? $metadata['government_entity'] : '';
+            $governmentIdentifier = isset($metadata['government_identifier']) ? $metadata['government_identifier'] : '';
+
+            $metadata['government_entity']   = [];
+            $metadata['government_entity'][] = [
+                "entity"     => $governmentEntity,
+                "identifier" => $governmentIdentifier
+            ];
+        }
+
+        if (isset($metadata['government_identifier'])) {
+            unset($metadata['government_identifier']);
+        }
     }
 
     /**
@@ -197,5 +225,4 @@ class UpdateMetadata extends Command
             'Value-added crops'             => 'Value-added crops'
         ];
     }
-
 }

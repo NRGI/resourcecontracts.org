@@ -210,6 +210,7 @@ class ImportService
         $contract['metadata']['signature_date']                = $this->dateFormat($results['signature_date']);
         $contract['metadata']['language']                      = $this->getLanguage($results['language']);
         $contract['metadata']['category']                      = [];
+        $metadata['metadata']['show_pdf_text']                 = 1;
 
         return $contract;
     }
