@@ -90,6 +90,7 @@ class UpdateMetadata extends Command
     protected function applyRules(array $metadata)
     {
         $this->publishPdfText($metadata);
+        $this->updateContractType($metadata);
 
         return $metadata;
     }
@@ -115,7 +116,10 @@ class UpdateMetadata extends Command
     protected function generateOpenContractID(&$metadata)
     {
         if (!isset($metadata['open_contracting_id']) && isset($metadata['category'][0]) && isset($metadata['country']->code)) {
-            $metadata['open_contracting_id'] = getContractIdentifier($metadata['category'][0], $metadata['country']->code);
+            $metadata['open_contracting_id'] = getContractIdentifier(
+                $metadata['category'][0],
+                $metadata['country']->code
+            );
         }
     }
 
@@ -128,6 +132,16 @@ class UpdateMetadata extends Command
     protected function publishPdfText(&$metadata)
     {
         $metadata['show_pdf_text'] = 1;
+    }
+
+    /**
+     * publish pdf text
+     *
+     * @param $metadata
+     */
+    protected function updateContractType(&$metadata)
+    {
+        $metadata['type_of_contract'] = $this->mapContractType($metadata['type_of_contract']);
     }
 
     /**
@@ -182,6 +196,23 @@ class UpdateMetadata extends Command
     }
 
     /**
+     * Map Contract Type
+     *
+     * @param $type
+     * @return string
+     */
+    protected function mapContractType($type)
+    {
+        $contractTypeList = $this->getContractTypeMappingList();
+
+        if (array_key_exists($type, $contractTypeList)) {
+            return $contractTypeList[$type];
+        } else {
+            return $type;
+        }
+    }
+
+    /**
      * Get Resource Mapping list
      *
      * @return array
@@ -222,4 +253,32 @@ class UpdateMetadata extends Command
             'Value-added crops'             => 'Value-added crops'
         ];
     }
+
+    /**
+     * Get ContractType Mapping list
+     *
+     * @return array
+     */
+    protected function getContractTypeMappingList()
+    {
+        return
+            [
+                "Amended and Restated Concession Agreement."      => "Concession Agreement",
+                "Amended and Restated Land Concession Agreement " => "Concession Agreement",
+                "Concession"                                      => "Concession Agreement",
+                "Concession Agreement"                            => "Concession Agreement",
+                "Contract to manage timber sale area"             => "Timber Sale Contract",
+                "Contrat de concession forestiere"                => "Contrat de Concession Forestière",
+                "Land Lease Agreement"                            => "Land Lease Agreement",
+                "Land lease agreement"                            => "Land Lease Agreement",
+                "Lease"                                           => "Land Lease Agreement",
+                "Lease Agreement"                                 => "Land Lease Agreement",
+                "Memorandum of Understanding"                     => "Memorandum of Understanding",
+                "Memorandum of Understanding and Agreement"       => "Memorandum of Understanding",
+                "Sub-lease"                                       => "Sub-lease",
+                "Timber Sale Contract"                            => "Timber Sale Contract",
+                "Timber Sales Contract"                           => "Timber Sale Contract",
+            ];
+    }
+
 }
