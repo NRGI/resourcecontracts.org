@@ -580,6 +580,26 @@ if (isset($contract->metadata->resource)) {
         @endforeach
     @endif
 </div>
+
+@if($action == 'edit')
+    <div class="form-group" style="clear:both">
+        {!! Form::label('show_pdf_text', trans('contract.show_pdf_text'), ['class'=>'col-sm-2 control-label'])!!}
+        <div class="col-sm-7">
+            <?php
+            $show_pdf_text = isset($contract->metadata->show_pdf_text) ? $contract->metadata->show_pdf_text : null;
+            ?>
+            <label class="checkbox-inline">
+                {!! Form::radio('show_pdf_text', '1', ($show_pdf_text=='1') ? true : null) !!}
+                @lang('global.yes')
+            </label>
+            <label class="checkbox-inline">
+                {!! Form::radio('show_pdf_text', '0', ($show_pdf_text==0) ? true : null) !!}
+                @lang('global.no')
+            </label>
+        </div>
+    </div>
+@endif
+
 @section('script')
     <script src="{{asset('js/jquery.validate.min.js')}}"></script>
     <script src="{{asset('js/select2.min.js')}}"></script>

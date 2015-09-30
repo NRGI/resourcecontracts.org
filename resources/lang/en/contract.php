@@ -106,6 +106,8 @@ return [
     'parent_document'               => 'Parent Document',
     'associated_contracts'          => 'Associated Documents',
     'fail_status'                   => 'Pdf file is :status',
+    'show_pdf_text'                 => 'Show Pdf Text',
+    'text_type'                     => 'Text Type',
     /*Logs*/
     'log'                           => [
         'save'      => 'Contract created',

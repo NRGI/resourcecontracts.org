@@ -80,19 +80,24 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
         </div>
 
         @if($status == $contract_processing_completed)
-            <div style="padding: 40px;">
+            <div style="padding: 20px 20px 0px;">
                 <a href="{{route('contract.review', ['id'=>$contract->id])}}"
                    class="btn btn-default">@lang('contract.view_pages')</a>
                 <a href="{{route('contract.annotate', ['id'=>$contract->id])}}"
                    class="btn btn-default">@lang('contract.annotate_contract')</a>
                 <br>
                 <br>
+
+                <p>
+                    <strong>@lang('contract.show_pdf_text'):</strong> @if(isset($contract->metadata->show_pdf_text) && $contract->metadata->show_pdf_text ==1) @lang('global.yes') @else @lang('global.no') @endif
+                </p>
+
                 @if($contract->pdf_structure != null)
                     <p>
                         <strong>@lang('contract.pdf_type')</strong> {{ucfirst($contract->pdf_structure)}}
                     </p>
                 @endif
-                <p>Text type :
+                <p><strong>@lang('contract.text_type'):</strong>
                     <a href="#" data-key="{{$contract->textType}}" class="text-type-block"
                        data-toggle="modal"
                        data-target=".text-type-modal">
