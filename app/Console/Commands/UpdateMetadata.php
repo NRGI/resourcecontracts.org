@@ -89,10 +89,7 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        //$this->generateOpenContractID($metadata);
-        //$this->updateGovernmentEntity($metadata);
         $this->publishPdfText($metadata);
-       // $metadata['resource'] = $this->mapResource($metadata['resource']);
 
         return $metadata;
     }

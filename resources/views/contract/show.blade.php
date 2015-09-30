@@ -89,7 +89,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <br>
 
                 <p>
-                    <strong>Show OCR Text:</strong> @if(isset($contract->metadata->show_pdf_text) && $contract->metadata->show_pdf_text ==1) Yes @else No @endif
+                    <strong>@lang('contract.show_pdf_text'):</strong> @if(isset($contract->metadata->show_pdf_text) && $contract->metadata->show_pdf_text ==1) @lang('global.yes') @else @lang('global.no') @endif
                 </p>
 
                 @if($contract->pdf_structure != null)
@@ -97,7 +97,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                         <strong>@lang('contract.pdf_type')</strong> {{ucfirst($contract->pdf_structure)}}
                     </p>
                 @endif
-                <p><strong>Text type:</strong>
+                <p><strong>@lang('contract.text_type'):</strong>
                     <a href="#" data-key="{{$contract->textType}}" class="text-type-block"
                        data-toggle="modal"
                        data-target=".text-type-modal">
