@@ -89,7 +89,7 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        $this->publishPdfText($metadata);
+        //$this->publishPdfText($metadata);
         $this->updateContractType($metadata);
 
         return $metadata;
@@ -263,21 +263,25 @@ class UpdateMetadata extends Command
     {
         return
             [
-                "Amended and Restated Concession Agreement."      => "Concession Agreement",
-                "Amended and Restated Land Concession Agreement " => "Concession Agreement",
-                "Concession"                                      => "Concession Agreement",
-                "Concession Agreement"                            => "Concession Agreement",
-                "Contract to manage timber sale area"             => "Timber Sale Contract",
-                "Contrat de concession forestiere"                => "Contrat de Concession Forestière",
-                "Land Lease Agreement"                            => "Land Lease Agreement",
-                "Land lease agreement"                            => "Land Lease Agreement",
-                "Lease"                                           => "Land Lease Agreement",
-                "Lease Agreement"                                 => "Land Lease Agreement",
-                "Memorandum of Understanding"                     => "Memorandum of Understanding",
-                "Memorandum of Understanding and Agreement"       => "Memorandum of Understanding",
-                "Sub-lease"                                       => "Sub-lease",
-                "Timber Sale Contract"                            => "Timber Sale Contract",
-                "Timber Sales Contract"                           => "Timber Sale Contract",
+                "Amended and Restated Concession Agreement"                                   => "Concession Agreement",
+                "Amended and Restated Concession Agreement."                                  => "Concession Agreement",
+                "Amended and Restated Land Concession Agreement "                             => "Concession Agreement",
+                "Amended and Restated Land Concession Agreement"                              => "Concession Agreement",
+                "Concession"                                                                  => "Concession Agreement",
+                "Concession Agreement"                                                        => "Concession Agreement",
+                "Contract to manage timber sale area"                                         => "Timber Sale Contract",
+                "Contrat de concession forestiere"                                            => "Contrat de Concession Forestière",
+                "Contrat de concession forestière"                                            => "Contrat de Concession Forestière",
+                "Land Lease Agreement"                                                        => "Land Lease Agreement",
+                "Land lease agreement"                                                        => "Land Lease Agreement",
+                "Lease"                                                                       => "Land Lease Agreement",
+                "Lease Agreement"                                                             => "Land Lease Agreement",
+                "Memorandum of Understanding"                                                 => "Memorandum of Understanding",
+                "Memorandum of Understanding and Agreement"                                   => "Memorandum of Understanding",
+                "Sub-lease"                                                                   => "Sub-lease",
+                "Timber Sale Contract"                                                        => "Timber Sale Contract",
+                "Timber Sales Contract"                                                       => "Timber Sale Contract",
+                "Convention Particulière sur les Conditions de Cession et de Bail des Terres" => "Contrat de Concession Agricole",
             ];
     }
 

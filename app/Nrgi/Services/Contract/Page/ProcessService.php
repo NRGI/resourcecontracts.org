@@ -116,10 +116,12 @@ class ProcessService
                 $this->uploadPdfsToS3($contract->id);
                 $this->deleteContractFolder($contract->id);
                 $this->contract->updateWordFile($contract->id);
+                $this->fileSystem->delete($readFilePath);
 
                 return true;
             }
         } catch (\Exception $e) {
+            $this->fileSystem->delete($readFilePath);
             $this->processStatus(Contract::PROCESSING_FAILED);
             $this->mailer->send(
                 [
@@ -244,9 +246,12 @@ class ProcessService
     {
         $this->logger->info('Download started...', ['file' => $contract->file]);
         $pdfFile = '';
-
         try {
-            $pdfFile = $this->storage->disk('s3')->get($contract->file);
+            if ($this->storage->disk('s3')->exists($contract->file)) {
+                $pdfFile = $this->storage->disk('s3')->get($contract->file);
+            } else {
+                $pdfFile = $this->storage->disk('s3')->get($contract->id . '/' . $contract->file);
+            }
         } catch (\Exception $e) {
             $this->logger->error($e->getMessage(), ['contract id' => $contract->id, 'file' => $contract->file]);
         }
