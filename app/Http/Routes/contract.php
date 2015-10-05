@@ -20,5 +20,6 @@ $router->group(
         $router->get('contract/{id}/allpage', ['as' => 'contract.allpage.get', 'uses' => 'Page\PageController@getAllText']);
         $router->get('contract/{id}/annotate', ['as' => 'contract.annotate', 'uses' => 'Page\PageController@annotate']);
         $router->get('contract/{id}/review', ['as' => 'contract.review', 'uses' => 'Page\PageController@review']);
+        $router->post('contract/{id}/unpublish', ['as' => 'contract.unpublish', 'uses' => 'ContractController@unPublish']);
     }
 );

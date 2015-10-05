@@ -115,6 +115,7 @@ return [
         'delete'    => 'Contract ":contract" deleted',
         'status'    => 'Contract :type status updated from :old_status to :new_status',
         'save_page' => 'Page no :page updated',
+        'unpublish' => 'Unpublished',
     ],
     'page'                          => [
         'save'      => 'Your corrections / changes have been saved',
@@ -123,6 +124,12 @@ return [
     'publish'                       => [
         'all'     => 'Publish All',
         'confirm' => 'Publish All ?'
+    ],
+    'unpublish'                     => [
+        'all'     => 'Unpublish',
+        'success' => 'Contract has been successfully unpublish.',
+        'fail'    => 'Error unpublishing this contract.',
+        'confirm' => 'Unpublish this contract ?'
     ],
     'import'                        => [
         'name'           => "Import Contract",

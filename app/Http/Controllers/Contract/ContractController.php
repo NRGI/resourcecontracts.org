@@ -344,5 +344,25 @@ class ContractController extends Controller
         return back()->withSuccess(trans('contract.status_update'));
     }
 
+    /**
+     * Unpublish Contract
+     * @param         $contract_id
+     * @param Guard   $auth
+     * @return Response
+     */
+    public function unpublish($contract_id, Guard $auth)
+    {
+        if (!$auth->user()->isAdmin()) {
+            return back()->withError(trans('contract.permission_denied'));
+        }
+        if ($this->contract->unPublishContract($contract_id)) {
+            $this->annotation->updateStatus("draft", $contract_id);
+
+            return back()->withSuccess(trans('contract.unpublish.success'));
+        }
+
+        return back()->withError(trans('contract.unpublish.fail'));
+    }
+
 
 }

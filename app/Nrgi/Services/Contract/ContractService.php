@@ -828,4 +828,36 @@ class ContractService
         return $opcid;
     }
 
+    /**
+     * Unpublish Contract
+     *
+     * @param $id
+     * @return bool
+     */
+    public function unPublishContract($id)
+    {
+        try {
+            $contract = $this->contract->findContract($id);
+        } catch (Exception $e) {
+            $this->logger->error('Contract not found.', ['Contract ID' => $id]);
+
+            return false;
+        }
+        if($this->queue->push(
+                'App\Nrgi\Services\Queue\DeleteToElasticSearchQueue',
+                ['contract_id' => $id],
+                'elastic_search'
+            )){
+            $this->logger->info('Contract successfully deleted.', ['Contract Id' => $id]);
+            $this->logger->activity('contract.log.unpublish', ['contract' => $contract->title], $id);
+            $contract->metadata_status = Contract::STATUS_DRAFT;
+            $contract->text_status = Contract::STATUS_DRAFT;
+            $contract->save();
+
+            return true;
+        }
+
+        return false;
+    }
+
 }
