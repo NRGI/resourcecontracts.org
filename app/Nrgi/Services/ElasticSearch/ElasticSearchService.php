@@ -119,7 +119,7 @@ class ElasticSearchService
         $pages    = [
             'contract_id' => $contract->id,
             'total_pages' => $contract->pages->count(),
-            'pages'       => $contract->pages->toJson(),
+            'pages'       => $this->formatPdfTextPages($contract),
             'metadata'    => $this->getMetadataForES($contract->metadata)
         ];
 
@@ -215,6 +215,24 @@ class ElasticSearchService
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
+    }
+
+    /**
+     * @param $contract
+     * @return string
+     */
+    function formatPdfTextPages($contract)
+    {
+        if (isset($contract->metadata->show_pdf_text) && $contract->metadata->show_pdf_text == 1) {
+            return $contract->pages->toJson();
+        }
+        $contractPagesArray = [];
+        foreach ($contract->pages->toArray() as $array) {
+            $array['text']        = "";
+            $contractPagesArray[] = $array;
+        }
+
+        return json_encode($contractPagesArray);
     }
 
 }
