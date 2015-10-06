@@ -269,7 +269,7 @@ class ContractService
         $formData['government_entity'] = $this->removeKeys($formData['government_entity']);
         $formData['show_pdf_text']       = isset($formData['show_pdf_text']) ? $formData['show_pdf_text'] : 1;
 
-        return array_only(
+        $data = array_only(
             $formData,
             [
                 "contract_name",
@@ -297,6 +297,22 @@ class ContractService
                 'show_pdf_text',
             ]
         );
+
+        return $this->trimArray($data);
+    }
+
+    /**
+     * Trim array values
+     *
+     * @param $value
+     * @return array|string
+     */
+    function trimArray($value){
+
+        if (!is_array($value))
+            {return trim($value);}
+
+        return array_map([$this, 'trimArray'], $value);
     }
 
     /**
