@@ -62,18 +62,22 @@ class BulkIndex extends Command
      */
     public function fire()
     {
-        $contracts = $this->contract->all();
-
+        $this->info("getting contracts");
+        $contracts = $this->getContracts();
+        $this->info("no of contract to publish =>{$contracts->count()}");
+        $this->info("started publishing");
         if ($this->input->getOption('annotation')) {
             $this->publishAnnotations($contracts);
 
             return;
         }
+
         $this->publishContracts($contracts);
     }
 
     /**
      * Publish all contract annotations
+     * @param $contracts
      */
     public function publishAnnotations($contracts)
     {
@@ -100,7 +104,10 @@ class BulkIndex extends Command
      */
     protected function getOptions()
     {
-        return [['annotation', null, InputOption::VALUE_NONE, 'publish annotation all contracts', null]];
+        return [
+            ['annotation', null, InputOption::VALUE_NONE, 'publish annotation all contracts', null],
+            ['category', null, InputOption::VALUE_OPTIONAL, 'publish contract based on contract type', null]
+        ];
 
     }
 
@@ -134,6 +141,30 @@ class BulkIndex extends Command
             }
             $this->publishAnnotation($contract);
         }
+    }
+
+    /**
+     * get contracts based on option category
+     * @return Collection
+     */
+    protected function getContracts()
+    {
+        $category = $this->input->getOption('category');
+        if (is_null($category)) {
+            $contracts = $this->contract->all();
+
+            return $contracts;
+        }
+
+        $query = $this->contract->select('*');
+        $from  = "contracts ";
+        $from .= ",json_array_elements(contracts.metadata->'category') cat";
+
+        $query->whereRaw("trim(both '\"' from cat::text) = '" . $category . "'");
+        $query->from(\DB::raw($from));
+        $contracts = $query->get();
+
+        return $contracts;
     }
 
 }
