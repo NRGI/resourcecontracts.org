@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Services\Contract;
 
+use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use Exception;
 use Illuminate\Auth\Guard;
@@ -60,15 +61,27 @@ class ImportService
      * Valid Keys
      */
     protected $keys = [
-        "contract",
-        "title",
-        "company",
-        "pdf_url",
+        "contract_name",
         "country",
-        "concessionlicense_name",
+        "type_of_contract",
+        "resource",
+        "company_name",
+        "corporate_group",
+        "company_address",
+        "company_number",
+        "open_corporate_id",
+        "pdf_url",
         "signature_date",
         "language",
-        "disclosure_mode"
+        "disclosure_mode",
+        "date_retrieval",
+        "project_title",
+        "project_identifier",
+        "license_name",
+        "license_identifier",
+        "government_entity",
+        "government_identifier",
+        "category",
     ];
 
     /**
@@ -181,15 +194,24 @@ class ImportService
     {
         $contract                              = config('metadata.schema');
         $company_template                      = $contract['metadata']['company'][0];
-        $contract['metadata']['contract_name'] = $results['contract'];
+        $contract['metadata']['contract_name'] = $results['contract_name'];
 
-        $company_arr = explode(',', $results['company']);
-        $company_arr = array_map('trim', $company_arr);
-        $companies   = [];
+        $company_name_arr      = explode(',', $results['company_name']);
+        $corporate_group_arr   = explode(',', $results['corporate_group']);
+        $company_address_arr   = explode(',', $results['company_address']);
+        $company_number_arr    = explode(',', $results['company_number']);
+        $open_corporate_id_arr = explode(',', $results['open_corporate_id']);
 
-        foreach ($company_arr as $company) {
-            $company_template['name'] = $company;
-            $companies[]              = $company_template;
+        $companies = [];
+        foreach ($company_name_arr as $key => $company) {
+            $com_default = $company_template;
+
+            $com_default['name']              = $company;
+            $com_default['parent_company']    = isset($corporate_group_arr[$key]) ? $corporate_group_arr[$key] : '';
+            $com_default['company_address']   = isset($company_address_arr[$key]) ? $company_address_arr[$key] : '';
+            $com_default['company_number']    = isset($company_number_arr[$key]) ? $company_number_arr[$key] : '';
+            $com_default['open_corporate_id'] = isset($open_corporate_id_arr[$key]) ? $open_corporate_id_arr[$key] : '';
+            $companies[]                      = $com_default;
         }
 
         $contract['pdf_url'] = $results['pdf_url'];
@@ -200,17 +222,46 @@ class ImportService
         $contract['create_status']  = '';
         $contract['create_remarks'] = '';
 
-        $contract['user_id']                                   = $this->auth->id();
-        $contract['metadata']['resource']                      = ['Hydrocarbons'];
-        $contract['metadata']['project_title']                 = $results['title'];
-        $contract['metadata']['company']                       = $companies;
-        $contract['metadata']['disclosure_mode']               = $results['disclosure_mode'];
-        $contract['metadata']['concession'][0]['license_name'] = $results['concessionlicense_name'];
-        $contract['metadata']['country']                       = $this->getCountry($results['country']);
-        $contract['metadata']['signature_date']                = $this->dateFormat($results['signature_date']);
-        $contract['metadata']['language']                      = $this->getLanguage($results['language']);
-        $contract['metadata']['category']                      = [];
-        $metadata['metadata']['show_pdf_text']                 = 1;
+        $contract['user_id']                        = $this->auth->id();
+        $contract['metadata']['resource']           = array_filter(explode(',', $results['resource']));
+        $contract['metadata']['project_title']      = $results['project_title'];
+        $contract['metadata']['project_identifier'] = $results['project_identifier'];
+
+        $contract['metadata']['company']          = $companies;
+        $contract['metadata']['disclosure_mode']  = $results['disclosure_mode'];
+        $contract['metadata']['type_of_contract'] = $results['type_of_contract'];
+        $contract['metadata']['date_retrieval']   = $results['date_retrieval'];
+
+        $license_name       = explode(",", $results["license_name"]);
+        $license_identifier = explode(",", $results["license_identifier"]);
+        $count              = (count($license_name) > count($license_identifier)) ? count($license_name) : count($license_identifier);
+
+        for ($i = 0; $i < $count; $i ++) {
+            $contract['metadata']['concession'][$i]['license_name']       = isset($license_name[$i]) ? $license_name[$i] : '';
+            $contract['metadata']['concession'][$i]['license_identifier'] = isset($license_identifier[$i]) ? $license_identifier[$i] : '';
+        }
+
+        $government_entity = explode(",", $results["government_entity"]);
+
+        $government_identifier = [];
+        if (isset($results["government_identifier"])) {
+            $government_identifier = explode(",", $results["government_identifier"]);
+        }
+
+        $count = (count($government_entity) > count($government_identifier)) ? count($government_entity) : count($government_identifier);
+
+        for ($i = 0; $i < $count; $i ++) {
+            $contract['metadata']['government_entity'][$i]['entity']     = isset($government_entity[$i]) ? $government_entity[$i] : '';
+            $contract['metadata']['government_entity'][$i]['identifier'] = isset($government_identifier[$i]) ? $government_identifier[$i] : '';
+        }
+
+        $contract['metadata']['country']             = $this->getCountry($results['country']);
+        $contract['metadata']['signature_date']      = $this->dateFormat($results['signature_date']);
+        $contract['metadata']['signature_year']      = $this->dateFormat($results['signature_date'], 'Y');
+        $contract['metadata']['language']            = $this->getLanguage($results['language']);
+        $contract['metadata']['category']            = [$results['category']];
+        $contract['metadata']['show_pdf_text']       = Contract::SHOW_PDF_TEXT;
+        $contract['metadata']['open_contracting_id'] = getContractIdentifier($contract['metadata']['category'][0], $contract['metadata']['country']['code']);
 
         return $contract;
     }
@@ -227,8 +278,10 @@ class ImportService
         foreach ($contracts as $contract) {
             $this->updateContractJsonByID($import_key, $contract->id, ['download_status' => static::PROCESSING]);
 
-            if (empty($contract->pdf_url)) {
-                $this->updateContractJsonByID($import_key, $contract->id, ['download_remarks' => trans('Pdf file url is required'), 'download_status' => static::FAILED]);
+            list($status, $message) = $this->validateContract($contract);
+
+            if (!$status) {
+                $this->updateContractJsonByID($import_key, $contract->id, ['download_remarks' => $message, 'download_status' => static::FAILED]);
                 continue;
             }
 
@@ -569,12 +622,14 @@ class ImportService
     /**
      * Get Country code and name
      *
-     * @param $country
+     * @param $code
      * @return array
      */
-    protected function getCountry($country)
+    protected function getCountry($code)
     {
-        return $this->country->getCountryByName($country);
+        $country = $this->country->getInfoByCode(strtoupper($code));
+
+        return is_array($country) ? $country : ['code' => '', 'name' => ''];
     }
 
     /**
@@ -610,15 +665,16 @@ class ImportService
     /**
      * Get Formatted date
      *
-     * @param $date
+     * @param        $date
+     * @param string $format
      * @return string
      */
-    public function dateFormat($date)
+    public function dateFormat($date, $format = 'Y-m-d')
     {
         $time = strtotime($date);
 
         if ($time != '') {
-            return date('Y-m-d', $time);
+            return date($format, $time);
         }
 
         return '';
@@ -642,5 +698,41 @@ class ImportService
         return true;
     }
 
+    /**
+     * Validate Contract
+     *
+     * @param $contract
+     * @return array
+     */
+    protected function validateContract($contract)
+    {
+        $required = [
+            "contract_name",
+            "signature_date",
+            "language",
+        ];
 
+        $message = '';
+
+        foreach ($required as $key) {
+            if ($contract->metadata->$key == '') {
+                $message .= '<p>' . $key . ' is required.</p>';
+            }
+        }
+
+        if ($contract->metadata->country->code == '') {
+            $message .= '<p>Country code is invalid.</p>';
+        }
+
+        if (empty($contract->pdf_url)) {
+            $message .= '<p>Pdf file url is required</p>';
+        }
+
+        $category = strtolower($contract->metadata->category[0]);
+        if ($category != 'rc' && $category != 'olc') {
+            $message .= "<p>Category is invalid ['rc' or 'olc'].</p>";
+        }
+
+        return [($message == ''), $message];
+    }
 }

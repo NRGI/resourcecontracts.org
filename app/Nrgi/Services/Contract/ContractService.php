@@ -267,7 +267,7 @@ class ContractService
         $formData['company']    = $this->removeKeys($formData['company']);
         $formData['concession'] = $this->removeKeys($formData['concession']);
         $formData['government_entity'] = $this->removeKeys($formData['government_entity']);
-        $formData['show_pdf_text']       = isset($formData['show_pdf_text']) ? $formData['show_pdf_text'] : 1;
+        $formData['show_pdf_text']       = isset($formData['show_pdf_text']) ? $formData['show_pdf_text'] : Contract::SHOW_PDF_TEXT;;
 
         $data = array_only(
             $formData,

@@ -73,6 +73,8 @@ class Contract extends Model
     const MTURK_SENT     = 1;
     const MTURK_COMPLETE = 2;
 
+    const SHOW_PDF_TEXT = 1;
+
     /**
      * Convert json metadata to array
      *
