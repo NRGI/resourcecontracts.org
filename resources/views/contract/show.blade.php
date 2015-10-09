@@ -291,7 +291,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <li><strong>@lang('contract.project_title'):</strong> {{$contract->metadata->project_title or ''}}</li>
                 <li><strong>@lang('contract.project_identifier'):</strong> {{$contract->metadata->project_identifier or ''}}</li>
                 <li><h3>@lang('contract.source')</h3></li>
-                <li><strong>Source URL:</strong> {{$contract->metadata->source_url or ''}}</li>
+                <li><strong>Source URL:</strong> <a href="{{$contract->metadata->source_url}}">{{$contract->metadata->source_url}}</a></li>
                 <li><strong>@lang('contract.disclosure_mode'):</strong> {{$contract->metadata->disclosure_mode or ''}}</li>
                 <li><strong>@lang('contract.date_of_retrieval'):</strong> {{$contract->metadata->date_retrieval}}</li>
                 <li><strong>@lang('contract.category'):</strong>
