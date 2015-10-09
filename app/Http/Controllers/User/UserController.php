@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserRequest;
-use App\Nrgi\Entities\User\Role\Role;
 use App\Nrgi\Services\Contract\CountryService;
 use App\Nrgi\Services\User\UserService;
 use Illuminate\Auth\Guard;
+use Illuminate\Http\Request;
 
 /**
  * Class UserController
@@ -119,7 +119,7 @@ class UserController extends Controller
             return redirect()->route('user.list')->withSuccess(trans('user.update_success'));
         }
 
-        return redirect()->route('user.list')->withSuccess(trans('user.update_fail'));
+        return redirect()->route('user.list')->withError(trans('user.update_fail'));
     }
 
     /**
@@ -138,3 +138,4 @@ class UserController extends Controller
     }
 
 }
+

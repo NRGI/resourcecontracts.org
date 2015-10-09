@@ -118,23 +118,25 @@ class UserService
      * @param       $role
      * @return bool
      */
-    public function update($user_id, array $formData, $role)
+    public function update($user_id, array $formData, $role = null)
     {
         $user = $this->find($user_id);
         $role = $this->role->where('name', $role)->first();
-        if (!empty($formData['password'])) {
+        if (isset($formData['password']) && !empty($formData['password'])) {
             $user->password = $this->hash->make($formData['password']);
         }
 
-        $user->email        = $formData['email'];
-        $user->organization = $formData['organization'];
-        $user->status       = $formData['status'];
-        $user->name         = $formData['name'];
-        $user->country      = $formData['country'];
+        $data = array_except($formData, 'password');
+
+        foreach ($data as $key => $value) {
+            $user->$key = $value;
+        }
 
         try {
             if ($user->save()) {
-                $user->roles()->sync([$role->id]);
+                if (!is_null($role)) {
+                    $user->roles()->sync([$role->id]);
+                }
                 $this->logger->info('User successfully updated.', $formData);
 
                 return true;

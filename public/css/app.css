@@ -7651,3 +7651,16 @@ input.error {
     display: inline-block;
     margin-top: 30px;
 }
+
+.profile-details {
+    list-style: none;
+    padding-left: 0;
+}
+
+.profile-details li {
+    padding-bottom: 5px;
+}
+
+.profile-details li strong {
+    padding-right: 2px;
+}

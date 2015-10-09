@@ -16,8 +16,12 @@
                                     <span class="role-name">{{$current_user->roleName()}}</span>
                                 </li>
                                 <li>
+                                    <a href="{{url('/profile')}}">Profile</a>
+                                </li>
+                                <li>
                                     <a href="{{url('/auth/logout')}}">Logout</a>
                                 </li>
+
                             </ul>
                         </li>
                     </ul>
