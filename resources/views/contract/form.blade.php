@@ -184,7 +184,7 @@ if (isset($contract->metadata->resource)) {
     <div class="col-sm-7">
         {!! Form::text('signature_date',
         isset($contract->metadata->signature_date)?$contract->metadata->signature_date:null,
-        ["class"=>"datepicker form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
+        ["class"=>"datepicker form-control", 'placeholder' => 'YYYY-MM-DD' , 'id' => 'signature_date'])!!}
     </div>
 </div>
 
@@ -651,6 +651,6 @@ if (isset($contract->metadata->resource)) {
 
 <div class="form-action">
     <div class="col-sm-7 col-lg-offset-2">
-        {!! Form::submit(trans('contract.submit'),['class'=>'btn btn-lg pull-right btn-primary']) !!}
+        {!! Form::submit(trans('contract.submit'),['class'=>'btn btn-lg pull-right btn-primary' , 'id' => 'Submit']) !!}
     </div>
 </div>

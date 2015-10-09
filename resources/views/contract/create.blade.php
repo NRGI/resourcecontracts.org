@@ -13,7 +13,7 @@
                     </ul>
                 </div>
             @endif
-            {!! Form::open(['route' => 'contract.store', 'class'=>'form-horizontal contract-form', 'files' => true]) !!}
+            {!! Form::open(['route' => 'contract.store','class'=>'form-horizontal contract-form', 'files' => true]) !!}
             @include('contract.form', ['action'=>'add'])
             {!! Form::close() !!}
         </div>
