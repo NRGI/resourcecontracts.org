@@ -9,5 +9,11 @@ $router->group(
         $router->patch('user/{id}/update', ['as' => 'user.update', 'uses' => 'UserController@update']);
         $router->get('user/{id}/delete', ['as' => 'user.delete', 'uses' => 'UserController@delete']);
 
+        $router->get('profile', ['as' => 'user.profile', 'uses' => 'ProfilesController@profile']);
+        $router->get('profile/edit', ['as' => 'user.editProfile', 'uses' => 'ProfilesController@editProfile']);
+
+        $router->patch('profile/update', ['as' => 'profile.update', 'uses' => 'ProfilesController@updateUser']);
+
     }
 );
+
