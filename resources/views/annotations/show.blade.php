@@ -105,7 +105,7 @@ use App\Nrgi\Entities\Contract\Annotation;
         </div>
 
         @else
-            @lang('Annotation not created. Please create') <a style="font-size: 14px" href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate">here</a></li>
+            @lang('Annotation not created. Please create') <a style="font-size: 14px" href="{{route('contract.annotate', ['id'=>$contract->id])}}?action=annotate">here</a></li>
         @endif
     </div>
 @stop

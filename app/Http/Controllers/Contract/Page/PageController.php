@@ -209,6 +209,43 @@ class PageController extends Controller
         return view('contract.page.review', compact('contract', 'pages', 'page', 'canEdit', 'canAnnotate'));
     }
 
+    public function annotatenew(Request $request, $contractId)
+    {
+
+        try {
+            $back        = \Request::server('HTTP_REFERER');
+            $page        = $this->pages->getText($contractId, $request->input('page', '1'));
+            $action      = $request->input('action', '');
+            $canEdit     = $action == "edit" ? 'true' : 'false';
+            $canAnnotate = $action == "annotate" ? 'true' : 'false';
+            $contract    = $this->contract->findWithPages($contractId);
+            $pages       = $contract->pages;
+        } catch (\Exception $e) {
+
+            return abort(404);
+        }
+
+        return view('contract.page.annotatenew', compact('contract', 'pages', 'page', 'canEdit', 'canAnnotate', 'back'));
+    }
+
+    public function reviewnew(Request $request, $contractId)
+    {
+        try {
+            $back        = \Request::server('HTTP_REFERER');
+            $page        = $this->pages->getText($contractId, $request->input('page', '1'));
+            $action      = $request->input('action', '');
+            $canEdit     = true;
+            $canAnnotate = false;
+            $contract    = $this->contract->findWithPages($contractId);
+            $pages       = $contract->pages;
+        } catch (\Exception $e) {
+
+            return abort(404);
+        }
+
+        return view('contract.page.reviewnew', compact('contract', 'pages', 'page', 'back'));
+    }    
+
     /**
      * Full text search
      * @param         $contract_id
@@ -217,7 +254,11 @@ class PageController extends Controller
      */
     public function search($contract_id, Request $request)
     {
-        return response()->json($this->pages->fullTextSearch($contract_id, $request->input('q')));
+        return response()->json(
+            [
+                'results'  => $this->pages->fullTextSearch($contract_id, $request->input('q'))
+            ]
+        );
     }
 
 }
