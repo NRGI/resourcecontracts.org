@@ -9,11 +9,11 @@ use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Logging\Log;
+use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Contracts\Queue\Queue;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -247,6 +247,41 @@ class ContractService
     }
 
     /**
+     * Upload contract file
+     *
+     * @param UploadedFile $file
+     * @return array
+     */
+    protected function uploadContract(UploadedFile $file)
+    {
+        if ($file->isValid()) {
+            $fileName    = $file->getClientOriginalName();
+            $file_type   = $file->getClientOriginalExtension();
+            $newFileName = sprintf("%s.%s", sha1($fileName . time()), $file_type);
+            try {
+                $data = $this->storage->disk('s3')->put(
+                    $newFileName,
+                    $this->filesystem->get($file)
+                );
+            } catch (Exception $e) {
+                $this->logger->error(sprintf('File could not be uploaded : %s', $e->getMessage()));
+
+                return false;
+            }
+
+            if ($data) {
+                return [
+                    'name' => $newFileName,
+                    'size' => $file->getSize(),
+                    'hash' => getFileHash($file->getPathName())
+                ];
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Process meta data
      *
      * @param $formData
@@ -302,6 +337,23 @@ class ContractService
     }
 
     /**
+     * Remove Keys From Array
+     *
+     * @param $items
+     * @return array
+     */
+    protected function removeKeys($items)
+    {
+        $i = [];
+
+        foreach ($items as $items) {
+            $i[] = $items;
+        }
+
+        return $i;
+    }
+
+    /**
      * Trim array values
      *
      * @param $value
@@ -316,14 +368,30 @@ class ContractService
     }
 
     /**
+     * Delete File from aws s3
+     *
+     * @param $file
+     * @return bool
+     * @throws Exception
+     */
+    protected function deleteFileFromS3($file)
+    {
+        if (!$this->storage->disk('s3')->exists($file)) {
+            throw new FileNotFoundException(sprintf(' % not found', $file));
+        }
+
+        return $this->storage->disk('s3')->delete($file);
+    }
+
+    /**
      * Update Contract
      *
+     * @param       $contractID
      * @param array $formData
      * @return bool
      */
     public function updateContract($contractID, array $formData)
     {
-
         try {
             $contract = $this->contract->findContract($contractID);
         } catch (Exception $e) {
@@ -332,15 +400,26 @@ class ContractService
             return false;
         }
 
-        $file_size                 = $contract->metadata->file_size;
-        $metadata                  = $this->processMetadata($formData);
-        $metadata['file_size']     = $file_size;
+        $file_size             = $contract->metadata->file_size;
+        $metadata              = $this->processMetadata($formData);
+        $metadata['file_size'] = $file_size;
+        if (isset($formData['file']) && $file = $this->uploadContract($formData['file'])) {
+            $contract->file        = $file['name'];
+            $contract->filehash    = $file['hash'];
+            $metadata['file_size'] = $file['size'];
+            $contract->pages()->delete();
+            $this->deleteContractFileAndFolder($contract);
+            $contract->save();
+            $this->queue->push('App\Nrgi\Services\Queue\ProcessDocumentQueue', ['contract_id' => $contract->id]);
+            $this->logger->info('Contract pdf reuploaded', ['Contract ID' => $contractID]);
 
+            $this->logger->activity('contract.log.pdfupdate', ['contract' => $contract->title], $contract->id);
+        }
         $metadata['open_contracting_id'] = $this->getOpenContractingId($contract->metadata, $metadata);
-        $contract->metadata        = $metadata;
-        $contract->updated_by      = $this->auth->id();
-        $contract->metadata_status = Contract::STATUS_DRAFT;
-        $supportingDocuments       = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
+        $contract->metadata              = $metadata;
+        $contract->updated_by            = $this->auth->id();
+        $contract->metadata_status       = Contract::STATUS_DRAFT;
+        $supportingDocuments             = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
 
         try {
             if ($contract->save()) {
@@ -360,42 +439,47 @@ class ContractService
             return false;
         }
 
-
     }
 
     /**
-     * Upload contract file
+     * Get Updated Open Contracting ID
      *
-     * @param UploadedFile $file
-     * @return array
+     * @param $old_metadata
+     * @param $new_metadata
+     * @return mixed
      */
-    protected function uploadContract(UploadedFile $file)
+    protected function getOpenContractingId($old_metadata, $new_metadata)
     {
-        if ($file->isValid()) {
-            $fileName    = $file->getClientOriginalName();
-            $file_type   = $file->getClientOriginalExtension();
-            $newFileName = sprintf("%s.%s", sha1($fileName . time()), $file_type);
-            try {
-                $data = $this->storage->disk('s3')->put(
-                    $newFileName,
-                    $this->filesystem->get($file)
-                );
-            } catch (Exception $e) {
-                $this->logger->error(sprintf('File could not be uploaded : %s', $e->getMessage()));
+        $category = $old_metadata->category;
 
-                return false;
-            }
-
-            if ($data) {
-                return [
-                    'name' => $newFileName,
-                    'size' => $file->getSize(),
-                    'hash' => getFileHash($file->getPathName())
-                ];
-            }
+        if(!isset($new_metadata['category'][0]))
+        {
+            return isset($old_metadata->open_contracting_id) ? $old_metadata->open_contracting_id : '';
         }
 
-        return false;
+        $old_identifier = isset($category[0]) ? $category[0] : '';
+        $new_identifier = $new_metadata['category'][0];
+        $old_iso = $old_metadata->country->code;
+        $new_iso = $new_metadata['country']['code'];
+
+        if(!isset($old_metadata->open_contracting_id) || $old_metadata->open_contracting_id =='')
+        {
+            return getContractIdentifier($new_metadata['category'][0], $new_metadata['country']['code']);
+        }
+
+        $opcid = $old_metadata->open_contracting_id;
+
+        if($old_identifier != $new_identifier)
+        {
+            $opcid = str_replace(mb_substr(strtoupper($old_identifier),0,2) , mb_substr(strtoupper($new_identifier), 0, 2),  $opcid);
+        }
+
+        if($old_iso != $new_iso)
+        {
+            $opcid = str_replace(mb_substr(strtoupper($old_iso),0,2) , mb_substr(strtoupper($new_iso), 0, 2),  $opcid);
+        }
+
+        return $opcid;
     }
 
     /**
@@ -443,25 +527,20 @@ class ContractService
     }
 
     /**
-     * Delete File from aws s3
+     * Delete contract file and Folder in S#
      *
-     * @param $file
-     * @return bool
-     * @throws Exception
+     * @param $contract
+     * @throws FileNotFoundException
      */
-    protected function deleteFileFromS3($file)
+    protected function deleteContractFileAndFolder($contract)
     {
-        if (!$this->storage->disk('s3')->exists($file)) {
-            throw new FileNotFoundException(sprintf(' % not found', $file));
-        }
-
-        return $this->storage->disk('s3')->delete($file);
+        $this->storage->disk('s3')->deleteDirectory($contract->id);
     }
 
     /**
      * Get Contract Status by ContractID
      *
-     * @param $contractId
+     * @param $contractID
      * @return int
      */
     public function getStatus($contractID)
@@ -504,6 +583,35 @@ class ContractService
         if ($contract->save()) {
             return $contract;
         }
+
+        return false;
+    }
+
+    /**
+     * Update status with message
+     *
+     * @param $contract_id
+     * @param $status
+     * @param $message
+     * @param $type
+     * @return bool
+     */
+    public function updateStatusWithComment($contract_id, $status, $message, $type)
+    {
+        $this->database->beginTransaction();
+
+        if ($this->updateStatus($contract_id, $status, $type) and $this->comment->save(
+                $contract_id,
+                $message,
+                $type,
+                $status
+            )
+        ) {
+            $this->database->commit();
+
+            return true;
+        }
+        $this->database->rollback();
 
         return false;
     }
@@ -565,35 +673,6 @@ class ContractService
     }
 
     /**
-     * Update status with message
-     *
-     * @param $contract_id
-     * @param $status
-     * @param $message
-     * @param $type
-     * @return bool
-     */
-    public function updateStatusWithComment($contract_id, $status, $message, $type)
-    {
-        $this->database->beginTransaction();
-
-        if ($this->updateStatus($contract_id, $status, $type) and $this->comment->save(
-                $contract_id,
-                $message,
-                $type,
-                $status
-            )
-        ) {
-            $this->database->commit();
-
-            return true;
-        }
-        $this->database->rollback();
-
-        return false;
-    }
-
-    /**
      * Check for unique file hash
      *
      * @param $file
@@ -626,17 +705,6 @@ class ContractService
         }
 
         return $data;
-    }
-
-    /**
-     * Delete contract file and Folder in S#
-     *
-     * @param $contract
-     * @throws FileNotFoundException
-     */
-    protected function deleteContractFileAndFolder($contract)
-    {
-        $this->storage->disk('s3')->deleteDirectory($contract->id);
     }
 
     /**
@@ -716,19 +784,6 @@ class ContractService
     }
 
     /**
-     * Get the contract's id and name
-     *
-     * @param $id
-     * @return array
-     */
-    public function getcontracts($id)
-    {
-        $contracts = $this->contract->getSupportingContracts((array) $id);
-
-        return $contracts;
-    }
-
-    /**
      * Get the supporting Contracts
      *
      * @param $id
@@ -746,6 +801,19 @@ class ContractService
             array_push($contractsId, $contractId['supporting_contract_id']);
         }
         $contracts = $this->getcontracts($contractsId);
+
+        return $contracts;
+    }
+
+    /**
+     * Get the contract's id and name
+     *
+     * @param $id
+     * @return array
+     */
+    public function getcontracts($id)
+    {
+        $contracts = $this->contract->getSupportingContracts((array) $id);
 
         return $contracts;
     }
@@ -784,64 +852,6 @@ class ContractService
 
             return null;
         }
-    }
-
-    /**
-     * Remove Keys From Array
-     *
-     * @param $items
-     * @return array
-     */
-    protected function removeKeys($items)
-    {
-        $i = [];
-
-        foreach ($items as $items) {
-            $i[] = $items;
-        }
-
-        return $i;
-    }
-
-    /**
-     * Get Updated Open Contracting ID
-     *
-     * @param $old_metadata
-     * @param $new_metadata
-     * @return mixed
-     */
-    protected function getOpenContractingId($old_metadata, $new_metadata)
-    {
-        $category = $old_metadata->category;
-
-        if(!isset($new_metadata['category'][0]))
-        {
-            return isset($old_metadata->open_contracting_id) ? $old_metadata->open_contracting_id : '';
-        }
-
-        $old_identifier = isset($category[0]) ? $category[0] : '';
-        $new_identifier = $new_metadata['category'][0];
-        $old_iso = $old_metadata->country->code;
-        $new_iso = $new_metadata['country']['code'];
-
-        if(!isset($old_metadata->open_contracting_id) || $old_metadata->open_contracting_id =='')
-        {
-            return getContractIdentifier($new_metadata['category'][0], $new_metadata['country']['code']);
-        }
-
-        $opcid = $old_metadata->open_contracting_id;
-
-        if($old_identifier != $new_identifier)
-        {
-            $opcid = str_replace(mb_substr(strtoupper($old_identifier),0,2) , mb_substr(strtoupper($new_identifier), 0, 2),  $opcid);
-        }
-
-        if($old_iso != $new_iso)
-        {
-            $opcid = str_replace(mb_substr(strtoupper($old_iso),0,2) , mb_substr(strtoupper($new_iso), 0, 2),  $opcid);
-        }
-
-        return $opcid;
     }
 
     /**

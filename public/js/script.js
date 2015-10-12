@@ -16,6 +16,10 @@ $(document).ready(function () {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+    $("#show-new-document").click(function(e) {
+        e.preventDefault();
+        $("#new-document").toggle();
+    });
 
     $('#tabAll').click(function(){
         $('#myTabs li').removeClass('active');
