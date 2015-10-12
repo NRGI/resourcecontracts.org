@@ -335,15 +335,20 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                 {{_l("codelist/annotation.annotation_category.{$annotation->annotation->category}")}}
                                 <br/>
                                 <p>{{$annotation->annotation->text}}</p><br/>
-                                <span style="clear: both;"><a href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate&page={{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>[Page {{$annotation->document_page_no}}]</span>
-
-                                @foreach($annotation->annotation->tags as $tag)
-                                    <div>{{$tag}}</div>
-                                @endforeach
+                                @if(property_exists($annotation->annotation, "shapes"))
+                                <span style="clear: both;"><a href="{{route('contract.annotate', ['id'=>$contract->id])}}#/pdf/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>[Page {{$annotation->document_page_no}}]</span>
+                                @else
+                                <span style="clear: both;"><a href="{{route('contract.annotate', ['id'=>$contract->id])}}#/text/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'text annotation'}} </a>[Page {{$annotation->document_page_no}}]</span>
+                                @endif
+                                @if(property_exists($annotation->annotation, 'tags'))
+                                    @foreach($annotation->annotation->tags as $tag)
+                                        <div>{{$tag}}</div>
+                                    @endforeach
+                                @endif
                             </li>
                         @empty
                             <li>@lang('Annotation not created. Please create') <a style="font-size: 14px"
-                                                                                  href="{{route('contract.pages', ['id'=>$contract->id])}}?action=annotate">here</a>
+                                                                                  href="{{route('contract.annotate', ['id'=>$contract->id])}}">here</a>
                             </li>
                         @endforelse
                     </ul>

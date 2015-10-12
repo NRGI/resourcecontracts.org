@@ -93,7 +93,7 @@ class AnnotationService
         $contactAnnotation                   = $this->annotation->findOrCreate(
             isset($data['id']) ? $data['id'] : null
         );
-        $data ['cluster']                    = _l(config("annotation_category.cluster.{$data['category']}"));
+        $data ['cluster']                    = _l(config("annotation_category.cluster.{$data['category_key']}"));
         $contactAnnotation->annotation       = $data;
         $contactAnnotation->user_id          = $this->user->id;
         $contactAnnotation->contract_id      = $inputData['contract'];
@@ -251,12 +251,20 @@ class AnnotationService
         $contract       = $this->annotation->getContractPagesWithAnnotations($contractId);
         foreach ($contract->annotations as $annotation) {
             $json             = $annotation->annotation;
-            $json->category   = _l("codelist/annotation.annotation_category.{$json->category}");
+            try {
+                if(!isset($json->category_key)) {
+                    $json->category_key = $json->category;
+                }
+                $json->category = (isset($json->category_key))?_l("codelist/annotation.annotation_category.{$json->category_key}"):"";
+            }
+            catch (Exception $e) {
+                $json->category = "";
+            }
             $json->page       = $annotation->document_page_no;
             $json->id         = $annotation->id;
             $annotationData[] = $json;
         }
 
-        return $annotationData;
+        return ["result" => $annotationData];
     }
 }
