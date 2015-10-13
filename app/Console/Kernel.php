@@ -21,6 +21,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\MturkNotificationCommand',
         'App\Console\Commands\UpdateCorporateGroupList',
         'App\Console\Commands\UpdateMetadata',
+        'App\Console\Commands\RenewMTurkTask',
     ];
 
     /**
@@ -33,5 +34,6 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('nrgi:mturk')->dailyAt('13:00');
         $schedule->command('nrgi:updategroup')->dailyAt('10:00');
+        $schedule->command('nrgi:renewmturktask')->dailyAt('01:00');
     }
 }

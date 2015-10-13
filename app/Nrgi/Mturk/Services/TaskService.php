@@ -356,9 +356,10 @@ class TaskService
             $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
             return false;
         }
-            $title       = sprintf('%s page-%s', $contract->title, $task->page_no);
-            $url         = $this->task_url . $task->pdf_url;
-            $description = 'Some description goes here';
+
+        $title       = sprintf("Transcription of Contract '%s' - Pg: %s Lang: %s",  str_limit($contract->title, 70), $task->page_no, $contract->metadata->language);
+        $url         = $this->task_url . $task->pdf_url;
+        $description = config('mturk.defaults.production.Description');
 
         try{
             $ret = $this->turk->createHIT($title, $description, $url);
@@ -371,13 +372,17 @@ class TaskService
                 'assignments' => null,
                 'status'      => 0,
                 'approved'    => 0,
-                'hit_type_id' => $ret->hit_type_id
+                'hit_type_id' => $ret->hit_type_id,
+                'created_at' => date('Y-m-d H:i:s')
             ];
 
             if ($ret) {
                 $this->task->update($task->contract_id, $task->page_no, $update);
                 $this->logger->info('HIT successfully reset', [ 'Contract id' => $contract_id,  'Task' => $task_id]);
-                $this->logger->mTurkActivity('mturk.log.reset',null,$task->contract_id,$task_id);
+
+                if(php_sapi_name()!='cli'){
+                    $this->logger->mTurkActivity('mturk.log.reset',null,$task->contract_id,$task_id);
+                }
 
                 return true;
             }
@@ -472,5 +477,15 @@ class TaskService
     public function getApprovalPendingTask($contract_id)
     {
         return $this->task->getApprovalPendingTask($contract_id);
+    }
+
+    /**
+     * Get Expired Tasks
+     *
+     * @return Collection
+     */
+    public function getExpired()
+    {
+        return $this->task->getExpired();
     }
 }

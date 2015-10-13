@@ -59,8 +59,8 @@ return [
                 'Amount'       => '0.50',
                 'CurrencyCode' => 'USD'
             ],
-            'LifetimeInSeconds'           => '1209600',
-            'AssignmentDurationInSeconds' => '1209600',
+            'LifetimeInSeconds'           => 10*24*60*60,
+            'AssignmentDurationInSeconds' => 10*24*60*60,
         ],
 
     ],
