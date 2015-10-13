@@ -64,7 +64,7 @@
 
                     {!!Form::open(['route'=>['contract.import.delete', $import_key], 'style'=>"display:inline",
                     'method'=>'delete'])!!}
-                    {!!Form::button(trans('contract.import.upload_another'), ['type'=>'submit', 'disabled'=>'disabled', 'class'=>'btn btn-delete btn-primary'])!!}
+                    {!!Form::button(trans('contract.import.upload_another'), ['type'=>'submit', 'class'=>'btn btn-delete btn-primary'])!!}
                     {!!Form::close()!!}
                 </div>
             </div>
@@ -103,12 +103,10 @@
                     {
                         tracker = false;
                         $('.btn-confirm-submit').removeAttr('disabled');
-                        $('.btn-delete').removeAttr('disabled');
                     }
                     else
                     {
                         $('.btn-confirm-submit').attr('disabled', 'disabled');
-                        $('.btn-delete').attr('disabled', 'disabled');
                     }
                 });
             }

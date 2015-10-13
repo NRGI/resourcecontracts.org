@@ -11,9 +11,13 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 
+/**
+ * Class ImportService
+ * @package App\Nrgi\Services\Contract
+ */
 class ImportService
 {
-    const UPLOAD_FOLDER = 'data/temp';
+    const UPLOAD_FOLDER = 'app';
     const PIPELINE      = 0;
     const PROCESSING    = 1;
     const COMPLETED     = 2;
@@ -23,6 +27,8 @@ class ImportService
     const CREATE_PROCESSING = 1;
     const CREATE_COMPLETED  = 2;
     const CREATE_FAILED     = 3;
+
+    protected $separator = '//';
 
     /**
      * @var Excel
@@ -60,6 +66,7 @@ class ImportService
     /*
      * Valid Keys
      */
+
     protected $keys = [
         "contract_name",
         "country",
@@ -69,7 +76,7 @@ class ImportService
         "corporate_group",
         "company_address",
         "company_number",
-        "open_corporate_id",
+        "open_corporate_link",
         "pdf_url",
         "signature_date",
         "language",
@@ -143,7 +150,7 @@ class ImportService
             throw new Exception('File is not in valid format. Please check sample csv file for the valid format.');
         }
 
-        $this->exportToJson($import_key, $contracts, $originalFileName);
+        $this->exportToJson($import_key, $contracts);
 
         $this->queue->push(
             'App\Nrgi\Services\Queue\ContractDownloadQueue',
@@ -196,11 +203,11 @@ class ImportService
         $company_template                      = $contract['metadata']['company'][0];
         $contract['metadata']['contract_name'] = $results['contract_name'];
 
-        $company_name_arr      = explode(',', $results['company_name']);
-        $corporate_group_arr   = explode(',', $results['corporate_group']);
-        $company_address_arr   = explode(',', $results['company_address']);
-        $company_number_arr    = explode(',', $results['company_number']);
-        $open_corporate_id_arr = explode(',', $results['open_corporate_id']);
+        $company_name_arr      = explode($this->separator, $results['company_name']);
+        $corporate_group_arr   = explode($this->separator, $results['corporate_group']);
+        $company_address_arr   = explode($this->separator, $results['company_address']);
+        $company_number_arr    = explode($this->separator, $results['company_number']);
+        $open_corporate_id_arr = explode($this->separator, $results['open_corporate_link']);
 
         $companies = [];
         foreach ($company_name_arr as $key => $company) {
@@ -211,7 +218,7 @@ class ImportService
             $com_default['company_address']   = isset($company_address_arr[$key]) ? $company_address_arr[$key] : '';
             $com_default['company_number']    = isset($company_number_arr[$key]) ? $company_number_arr[$key] : '';
             $com_default['open_corporate_id'] = isset($open_corporate_id_arr[$key]) ? $open_corporate_id_arr[$key] : '';
-            $companies[]                      = $com_default;
+            $companies[]                        = $com_default;
         }
 
         $contract['pdf_url'] = $results['pdf_url'];
@@ -223,7 +230,7 @@ class ImportService
         $contract['create_remarks'] = '';
 
         $contract['user_id']                        = $this->auth->id();
-        $contract['metadata']['resource']           = array_filter(explode(',', $results['resource']));
+        $contract['metadata']['resource']           = array_filter(explode($this->separator, $results['resource']));
         $contract['metadata']['project_title']      = $results['project_title'];
         $contract['metadata']['project_identifier'] = $results['project_identifier'];
 
@@ -232,8 +239,8 @@ class ImportService
         $contract['metadata']['type_of_contract'] = $results['type_of_contract'];
         $contract['metadata']['date_retrieval']   = $results['date_retrieval'];
 
-        $license_name       = explode(",", $results["license_name"]);
-        $license_identifier = explode(",", $results["license_identifier"]);
+        $license_name       = explode($this->separator, $results["license_name"]);
+        $license_identifier = explode($this->separator, $results["license_identifier"]);
         $count              = (count($license_name) > count($license_identifier)) ? count($license_name) : count($license_identifier);
 
         for ($i = 0; $i < $count; $i ++) {
@@ -241,11 +248,11 @@ class ImportService
             $contract['metadata']['concession'][$i]['license_identifier'] = isset($license_identifier[$i]) ? $license_identifier[$i] : '';
         }
 
-        $government_entity = explode(",", $results["government_entity"]);
+        $government_entity = explode($this->separator, $results["government_entity"]);
 
         $government_identifier = [];
         if (isset($results["government_identifier"])) {
-            $government_identifier = explode(",", $results["government_identifier"]);
+            $government_identifier = explode($this->separator, $results["government_identifier"]);
         }
 
         $count = (count($government_entity) > count($government_identifier)) ? count($government_entity) : count($government_identifier);
@@ -258,8 +265,8 @@ class ImportService
         $contract['metadata']['country']             = $this->getCountry($results['country']);
         $contract['metadata']['signature_date']      = $this->dateFormat($results['signature_date']);
         $contract['metadata']['signature_year']      = $this->dateFormat($results['signature_date'], 'Y');
-        $contract['metadata']['language']            = $this->getLanguage($results['language']);
-        $contract['metadata']['category']            = [$results['category']];
+        $contract['metadata']['language']            = $this->getLanguage(strtolower($results['language']));
+        $contract['metadata']['category']            = [strtolower($results['category'])];
         $contract['metadata']['show_pdf_text']       = Contract::SHOW_PDF_TEXT;
         $contract['metadata']['open_contracting_id'] = getContractIdentifier($contract['metadata']['category'][0], $contract['metadata']['country']['code']);
 
@@ -518,15 +525,15 @@ class ImportService
     public function getFilePath($key = '', $fileName = '')
     {
         if ($key == '' && $fileName == '') {
-            return public_path(static::UPLOAD_FOLDER);
+            return storage_path(static::UPLOAD_FOLDER);
         }
 
         if ($key != '' && $fileName != '') {
-            return sprintf('%s/%s/%s', public_path(static::UPLOAD_FOLDER), $key, $fileName);
+            return sprintf('%s/%s/%s', storage_path(static::UPLOAD_FOLDER), $key, $fileName);
         }
 
         if ($key != '' && $fileName == '') {
-            return sprintf('%s/%s', public_path(static::UPLOAD_FOLDER), $key);
+            return sprintf('%s/%s', storage_path(static::UPLOAD_FOLDER), $key);
         }
     }
 
@@ -611,7 +618,7 @@ class ImportService
         $languages = trans('codelist/language')['major'] + trans('codelist/language')['minor'];
 
         foreach ($languages as $code => $name) {
-            if ($name == $code || $name == $lang) {
+            if ($lang == $code || $name == $lang) {
                 return $code;
             }
         }
@@ -730,7 +737,7 @@ class ImportService
 
         $category = strtolower($contract->metadata->category[0]);
         if ($category != 'rc' && $category != 'olc') {
-            $message .= "<p>Category is invalid ['rc' or 'olc'].</p>";
+            $message .= "<p>Category is empty or invalid ['rc' or 'olc'].</p>";
         }
 
         return [($message == ''), $message];

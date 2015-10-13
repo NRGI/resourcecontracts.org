@@ -79,7 +79,7 @@ class ImportController extends Controller
                 return redirect()->route('contract.import.status', $import_key);
             }
 
-            $import_json = url(sprintf('%s/%s/%s.json', ImportService::UPLOAD_FOLDER, $import_key, $import_key));
+            $import_json = route('contract.import.notify', $import_key);
             $contracts   = $json->contracts;
 
             return view('contract.import.confirm', compact('contracts', 'import_key', 'import_json'));
@@ -138,6 +138,23 @@ class ImportController extends Controller
         $this->contractImport->deleteImportFolder($key);
 
         return redirect()->route('contract.import');
+    }
+
+    /**
+     * Notify url for import
+     *
+     * @param $key
+     * @return string
+     */
+    public function notify($key)
+    {
+        $json = storage_path(sprintf('%s/%s/%s.json', ImportService::UPLOAD_FOLDER, $key, $key));
+
+        if (file_exists($json)) {
+            return file_get_contents($json);
+        }
+
+        abort(404, 'File not found');
     }
 
 }
