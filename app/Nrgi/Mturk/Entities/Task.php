@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Mturk\Entities;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -35,12 +36,12 @@ class Task extends Model
         'approve'
     ];
 
-    const PENDING = 0;
+    const PENDING   = 0;
     const COMPLETED = 1;
 
     const APPROVAL_PENDING = 0;
-    const APPROVED = 1;
-    const REJECTED = 2;
+    const APPROVED         = 1;
+    const REJECTED         = 2;
 
     /**
      * Get task Status
@@ -133,6 +134,31 @@ class Task extends Model
     public function setAssignmentsAttribute($assignments)
     {
         $this->attributes['assignments'] = empty($assignments) ? '' : json_encode($assignments);
+    }
+
+    /**
+     * Select expired tasks
+     *
+     * @param $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeExpired($query)
+    {
+        $expire_in_sec = config('mturk.defaults.production.AssignmentDurationInSeconds');
+        $date          = Carbon::now()->subSeconds($expire_in_sec);
+
+        return $query->where('created_at', '<=', $date->format('Y-m-d H:i:s'));
+    }
+
+    /**
+     * Select pending tasks
+     *
+     * @param $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePending($query)
+    {
+        return $query->where('status', '=', static::PENDING);
     }
 
 }

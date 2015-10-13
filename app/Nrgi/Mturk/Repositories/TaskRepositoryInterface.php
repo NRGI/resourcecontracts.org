@@ -68,4 +68,11 @@ interface TaskRepositoryInterface
      */
     public function getApprovalPendingTask($contract_id);
 
+    /**
+     * Get All Expired Tasks
+     *
+     * @return Collection
+     */
+    public function getExpired();
+
 }

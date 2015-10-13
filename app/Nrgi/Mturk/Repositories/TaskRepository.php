@@ -125,4 +125,13 @@ class TaskRepository implements TaskRepositoryInterface
         return $this->task->completed()->approvalPending()->where('contract_id', $contract_id)->get();
     }
 
+    /**
+     * Get All Expired Tasks
+     *
+     * @return Collection
+     */
+    public function getExpired()
+    {
+        return $this->task->expired()->pending()->get();
+    }
 }
