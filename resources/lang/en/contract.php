@@ -141,7 +141,7 @@ return [
         'sn'             => 'SN',
         'file_name'      => 'File Name',
         'contract_title' => 'Open Oil Contract Title',
-        'status_name'    => 'status',
+        'status_name'    => 'Status',
         'remarks'        => 'Remarks',
         'pending'        => 'Pending',
         'processing'     => 'Processing',

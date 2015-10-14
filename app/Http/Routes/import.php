@@ -8,5 +8,6 @@ $router->group(
         $router->post('contract/import/confirm/{key}', ['as' => 'contract.import.confirm.post', 'uses' => 'Import\ImportController@confirmPost']);
         $router->get('contract/import/status/{key}', ['as' => 'contract.import.status', 'uses' => 'Import\ImportController@status']);
         $router->delete('contract/import/delete/{key}', ['as' => 'contract.import.delete', 'uses' => 'Import\ImportController@delete']);
+        $router->get('contract/import/notify/{key}', ['as' => 'contract.import.notify', 'uses' => 'Import\ImportController@notify']);
     }
 );

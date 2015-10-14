@@ -117,10 +117,11 @@ class ElasticSearchService
     {
         $contract = $this->contract->findWithPages($id);
         $pages    = [
-            'contract_id' => $contract->id,
-            'total_pages' => $contract->pages->count(),
-            'pages'       => $this->formatPdfTextPages($contract),
-            'metadata'    => $this->getMetadataForES($contract->metadata)
+            'contract_id'         => $contract->id,
+            'open_contracting_id' => $contract->metadata->open_contracting_id,
+            'total_pages'         => $contract->pages->count(),
+            'pages'               => $this->formatPdfTextPages($contract),
+            'metadata'            => $this->getMetadataForES($contract->metadata)
         ];
 
         try {
@@ -148,12 +149,13 @@ class ElasticSearchService
             $json               = $annotation->annotation;
             $json->category_key = $json->category;
             $json->category     = _l("codelist/annotation.annotation_category.{$json->category}");
-
             $json->id          = $annotation->id;
             $json->contract_id = $contract->id;
+            $json->open_contracting_id = $contract->metadata->open_contracting_id;
             $annotationData[]  = $json;
         }
         $data['annotations'] = json_encode($annotationData);
+
         try {
             $request  = $this->http->post($this->apiURL('contract/annotations'), null, $data);
             $response = $request->send();
