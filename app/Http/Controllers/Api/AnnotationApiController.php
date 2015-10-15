@@ -71,4 +71,25 @@ class AnnotationApiController extends Controller
 
         return response()->json($contractAnnotations);
     }
+
+    /**
+     * update annotations
+     * @param Request $request
+     * @return string
+     */
+    public function update(Request $request)
+    {
+        $id   = $request->get('pk');
+        $data = [];
+        if (!in_array($request->get('name'), ['text', 'category'])) {
+            return response()->json(['status' => 'error']);
+        }
+        $data[$request->get('name')] = $request->get('value');
+        $annotation                  = $this->annotationService->update($id, $data);
+        if ($annotation) {
+            return response()->json(['status' => 'success']);
+        }
+
+        return response()->json(['status' => 'error']);
+    }
 }

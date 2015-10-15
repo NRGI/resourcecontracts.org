@@ -6,10 +6,66 @@ $contract_processing_failed = \App\Nrgi\Entities\Contract\Contract::PROCESSING_F
 $contract_processing_running = \App\Nrgi\Entities\Contract\Contract::PROCESSING_RUNNING;
 $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_PIPELINE;
 ?>
+@section('css')
+    <link href="{{asset('css/bootstrap-editable.css')}}" rel="stylesheet"/>
+    <link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
+    <style>
+        textarea.form-control.input-large {
+            width: 500px !important;
+        }
+
+        .input-sm {
+            width: 400px !important;
+        }
+    </style>
+@endsection
 
 @section('script')
+    <script src="{{asset('js/select2.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap-editable.min.js')}}"></script>
     <script>
         $(function () {
+                    $.fn.editable.defaults.mode = 'inline';
+                    $('.edit-annotation-text').on('click', function () {
+                                $(this).editable();
+                            }
+                    );
+
+                    $('.annotation-delete-btn').on('click', function (e) {
+                                e.preventDefault();
+                                if (!confirm("{{_l("annotation.delete_confirm")}}")) {
+                                    return;
+                                }
+                                console.log($(this).data('pk'));
+                                $(this).parent().fadeOut('slow');
+                                var id = $(this).data('pk');
+                                var url = app_url + "/api/annotation/" + id + "/delete";
+                                $.ajax({
+                                    url: url,
+                                    type: "POST",
+                                    data:{'id':id},
+                                    success: function (data) {
+                                        $(this).parent().remove();
+                                    },
+                                    error: function(){
+                                        $(this).parent().fadeIn('slow');
+                                    }
+                                });
+                            }
+                    );
+
+                    $('.edit-annotation-category').on('click', function () {
+                        var categories = {!!json_encode(trans("codelist/annotation.annotation_category"))!!};
+                    $(this).editable({
+                        source: categories,
+                        select2: {
+                            width: 400,
+                            placeholder: 'Select category',
+                            allowClear: true
+                        }
+                    });
+                }
+        );
             var form = $('.output-type-form');
 
             $(form).on('submit', function (e) {
@@ -40,7 +96,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     alert('Suggestion message is required.');
                     return false;
                 }
-                else{
+                else {
                     $(this).find('input[type=submit]').text('loading...');
                     $(this).find('input[type=submit]').attr('disabled', 'disabled');
                     return true;
@@ -59,7 +115,8 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             <a href="{{route('contract.edit', $contract->id)}}" class="btn btn-default">@lang('contract.edit')</a>
 
             <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                     @lang('Download') <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
@@ -89,7 +146,8 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <br>
 
                 <p>
-                    <strong>@lang('contract.show_pdf_text'):</strong> @if(isset($contract->metadata->show_pdf_text) && $contract->metadata->show_pdf_text ==1) @lang('global.yes') @else @lang('global.no') @endif
+                    <strong>@lang('contract.show_pdf_text')
+                        :</strong> @if(isset($contract->metadata->show_pdf_text) && $contract->metadata->show_pdf_text ==1) @lang('global.yes') @else @lang('global.no') @endif
                 </p>
 
                 @if($contract->pdf_structure != null)
@@ -112,12 +170,15 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
                     @if($contract->textType == 3 && is_null($contract->mturk_status))
                         {!! Form::open(['route' => ['mturk.add', $contract->id], 'method' => 'post']) !!}
-                            {!! Form::button(trans('Send to Manual Transcription tasks'), ['type' =>'submit', 'class' => 'btn btn-default confirm', 'data-confirm'=>'Are you sure you want to send this contract to Mechanical Turk?']) !!}
+                        {!! Form::button(trans('Send to Manual Transcription tasks'), ['type' =>'submit', 'class' =>'btn
+                        btn-default confirm', 'data-confirm'=>'Are you sure you want to send this contract toMechanical
+                        Turk?']) !!}
                         {!! Form::close() !!}
                     @endif
 
                     @if($contract->mturk_status  == \App\Nrgi\Entities\Contract\Contract::MTURK_SENT)
-                         @lang('Sent to MTurk') <a class="btn btn-default" href="{{route('mturk.tasks', $contract->id)}}">@lang('View')</a>
+                        @lang('Sent to MTurk') <a class="btn btn-default"
+                                                  href="{{route('mturk.tasks', $contract->id)}}">@lang('View')</a>
                     @endif
 
                     @if($contract->mturk_status  == \App\Nrgi\Entities\Contract\Contract::MTURK_COMPLETE)
@@ -161,7 +222,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 </div>
             </div>
         @elseif($status == $contract_processing_failed)
-            <div class="status">@lang('contract.status'): @lang('Failed') (@lang('contract.fail_status', ['status'=>$contract->pdf_structure]))</div>
+            <div class="status">@lang('contract.status'): @lang('Failed')
+                (@lang('contract.fail_status', ['status'=>$contract->pdf_structure]))
+            </div>
         @elseif($status== $contract_processing_running)
             <div class="status">@lang('contract.status'): @lang('Processing')</div>
         @else($status== $contract_processing_pipline)
@@ -188,13 +251,14 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 </li>
             @endif
 
-                <li>
-                    <strong>@lang('contract.contract_name'):</strong> {{$contract->metadata->contract_name or ''}}
-                </li>
+            <li>
+                <strong>@lang('contract.contract_name'):</strong> {{$contract->metadata->contract_name or ''}}
+            </li>
 
-                <li>
-                    <strong>@lang('contract.contract_identifier'):</strong> {{$contract->metadata->contract_identifier or ''}}
-                </li>
+            <li>
+                <strong>@lang('contract.contract_identifier')
+                    :</strong> {{$contract->metadata->contract_identifier or ''}}
+            </li>
 
 
             @if(isset($contract->metadata->language))
@@ -222,14 +286,17 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             @if(isset($contract->metadata->government_entity))
 
                 <div class="government-entity-wrap license-wrap">
-                @foreach($contract->metadata->government_entity as $governmentEntity)
-                    <li><strong>@lang('contract.government_entity'):</strong> {{$governmentEntity->entity or ''}}</li>
-                    <li><strong>@lang('contract.government_identifier'):</strong> {{$governmentEntity->identifier or ''}}</li>
-                @endforeach
+                    @foreach($contract->metadata->government_entity as $governmentEntity)
+                        <li><strong>@lang('contract.government_entity'):</strong> {{$governmentEntity->entity or ''}}
+                        </li>
+                        <li><strong>@lang('contract.government_identifier')
+                                :</strong> {{$governmentEntity->identifier or ''}}</li>
+                    @endforeach
                 </div>
             @endif
 
-            <li><strong>@lang('contract.type_of_contract'):</strong> {{$contract->metadata->type_of_contract or ''}}</li>
+            <li><strong>@lang('contract.type_of_contract'):</strong> {{$contract->metadata->type_of_contract or ''}}
+            </li>
             <li><strong>@lang('contract.signature_date'):</strong> {{$contract->metadata->signature_date or ''}}</li>
             <li><strong>@lang('contract.document_type'):</strong> {{$contract->metadata->document_type or ''}}</li>
 
@@ -242,7 +309,8 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
                                 <p><strong>@lang('contract.company_name'):</strong>  {{$v->name}}</p>
                                 @if(isset($v->participation_share))
-                                    <p><strong>@lang('contract.participation_share'):</strong> {{$v->participation_share}}
+                                    <p><strong>@lang('contract.participation_share')
+                                            :</strong> {{$v->participation_share}}
                                     </p>
                                 @endif
 
@@ -257,7 +325,8 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
                                 <p><strong>@lang('contract.company_address') :</strong> {{$v->company_address}}</p>
 
-                                <p><strong>@lang('contract.company_number'):</strong> @if(isset($v->company_number)){{$v->company_number}}@endif</p>
+                                <p><strong>@lang('contract.company_number')
+                                        :</strong> @if(isset($v->company_number)){{$v->company_number}}@endif</p>
 
                                 <p><strong>@lang('contract.corporate_grouping'):</strong> {{$v->parent_company}}</p>
 
@@ -266,7 +335,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                         <a target="_blank"
                                            href="{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
                                 </p>
-                                @if(isset($v->operator)) <p><strong>@lang('contract.operator'):</strong>@if($v->operator==1)Yes @elseif($v->operator==0) No @elseif($v->operator==-1) Not Available  @endif</p>@endif
+                                @if(isset($v->operator)) <p><strong>@lang('contract.operator')
+                                        :</strong>@if($v->operator==1)Yes @elseif($v->operator==0)
+                                        No @elseif($v->operator==-1) Not Available  @endif</p>@endif
                             </div>
                         @endforeach
                     </li>
@@ -275,54 +346,56 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
             <li><h3>@lang('contract.license_and_project')</h3></li>
             @if(isset($contract->metadata->concession))
-               <div class="license-wrap">
-                   @foreach($contract->metadata->concession as $concession)
-                       @if(isset($concession->license_name))
-                           <li><strong>@lang('contract.license_name_only'):</strong> {{$concession->license_name}}</li>
-                       @endif
-                       @if(isset($concession->license_identifier))
-                           <li><strong>@lang('contract.license_identifier_only')
-                                   :</strong> {{$concession->license_identifier}}</li>
-                       @endif
+                <div class="license-wrap">
+                    @foreach($contract->metadata->concession as $concession)
+                        @if(isset($concession->license_name))
+                            <li><strong>@lang('contract.license_name_only'):</strong> {{$concession->license_name}}</li>
+                        @endif
+                        @if(isset($concession->license_identifier))
+                            <li><strong>@lang('contract.license_identifier_only')
+                                    :</strong> {{$concession->license_identifier}}</li>
+                        @endif
 
-                   @endforeach
-               </div>
+                    @endforeach
+                </div>
             @endif
-                <li><strong>@lang('contract.project_title'):</strong> {{$contract->metadata->project_title or ''}}</li>
-                <li><strong>@lang('contract.project_identifier'):</strong> {{$contract->metadata->project_identifier or ''}}</li>
-                <li><h3>@lang('contract.source')</h3></li>
-                <li><strong>Source URL:</strong> <a href="{{$contract->metadata->source_url}}">{{$contract->metadata->source_url}}</a></li>
-                <li><strong>@lang('contract.disclosure_mode'):</strong> {{$contract->metadata->disclosure_mode or ''}}</li>
-                <li><strong>@lang('contract.date_of_retrieval'):</strong> {{$contract->metadata->date_retrieval}}</li>
-                <li><strong>@lang('contract.category'):</strong>
+            <li><strong>@lang('contract.project_title'):</strong> {{$contract->metadata->project_title or ''}}</li>
+            <li><strong>@lang('contract.project_identifier'):</strong> {{$contract->metadata->project_identifier or ''}}
+            </li>
+            <li><h3>@lang('contract.source')</h3></li>
+            <li><strong>Source URL:</strong> <a
+                        href="{{$contract->metadata->source_url}}">{{$contract->metadata->source_url}}</a></li>
+            <li><strong>@lang('contract.disclosure_mode'):</strong> {{$contract->metadata->disclosure_mode or ''}}</li>
+            <li><strong>@lang('contract.date_of_retrieval'):</strong> {{$contract->metadata->date_retrieval}}</li>
+            <li><strong>@lang('contract.category'):</strong>
                 <?php $catConfig = config('metadata.category');?>
 
                 @if(isset($contract->metadata->category) && is_array($contract->metadata->category) && count($contract->metadata->category)>0)
-                        <?php $cat = [];
-                        foreach ($contract->metadata->category as $key):
-                            $cat[] = $catConfig[$key];
-                        endforeach;
-                        ?>
-                        {{join(', ', $cat)}}
-                    @endif
-                </li>
-                <li><h3>@lang('contract.associated_contracts')</h3></li>
-                @if(!empty($translatedFrom))
-                    <li><strong>@lang('contract.parent_document'):</strong>
-                        <a href="{{route('contract.show',$translatedFrom[0]['id'])}}">{{$translatedFrom[0]['contract_name']}}</a>
-                    </li>
+                    <?php $cat = [];
+                    foreach ($contract->metadata->category as $key):
+                        $cat[] = $catConfig[$key];
+                    endforeach;
+                    ?>
+                    {{join(', ', $cat)}}
                 @endif
+            </li>
+            <li><h3>@lang('contract.associated_contracts')</h3></li>
+            @if(!empty($translatedFrom))
+                <li><strong>@lang('contract.parent_document'):</strong>
+                    <a href="{{route('contract.show',$translatedFrom[0]['id'])}}">{{$translatedFrom[0]['contract_name']}}</a>
+                </li>
+            @endif
 
-                @if(!empty($supportingDocument))
-                    <div class="document-link-wrapper">
-                        <li><strong>@lang('contract.supporting_documents'):</strong>
+            @if(!empty($supportingDocument))
+                <div class="document-link-wrapper">
+                    <li><strong>@lang('contract.supporting_documents'):</strong>
                         @foreach($supportingDocument as $contract_sup)
                             <div class="document-link">
                                 <a href="{{route('contract.show',$contract_sup['id'])}}">{{$contract_sup['contract_name']}}</a>
                             </div>
-                        @endforeach
-                    </div>
-                @endif
+                    @endforeach
+                </div>
+            @endif
         </ul>
         @if($status == $contract_processing_completed)
             <div class="annotation-wrap">
@@ -332,13 +405,24 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     <ul>
                         @forelse($annotations as $annotation)
                             <li>
-                                {{_l("codelist/annotation.annotation_category.{$annotation->annotation->category}")}}
-                                <br/>
-                                <p>{{$annotation->annotation->text}}</p><br/>
+                                <a href="javascript:void(0)" data-pk="{{$annotation->id}}"
+                                   class="annotation-delete-btn">delete</a>
+                                <span data-pk="{{$annotation->id}}" data-name="category"
+                                      data-url="{{route('annotation.update')}}"
+                                      data-value="{{$annotation->annotation->category}}" data-type="select"
+                                      class="edit-annotation-category">{{_l("codelist/annotation.annotation_category.{$annotation->annotation->category}")}}</span>
+
+                                <p data-pk="{{$annotation->id}}" data-name="text"
+                                   data-url="{{route('annotation.update')}}" data-type="textarea"
+                                   class="edit-annotation-text">{{$annotation->annotation->text}}</p><br/>
                                 @if(property_exists($annotation->annotation, "shapes"))
-                                <span style="clear: both;"><a href="{{route('contract.annotate', ['id'=>$contract->id])}}#/pdf/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>[Page {{$annotation->document_page_no}}]</span>
+                                    <span style="clear: both;"><a
+                                                href="{{route('contract.annotate', ['id'=>$contract->id])}}#/pdf/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>[Page {{$annotation->document_page_no}}
+                                        ]</span>
                                 @else
-                                <span style="clear: both;"><a href="{{route('contract.annotate', ['id'=>$contract->id])}}#/text/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'text annotation'}} </a>[Page {{$annotation->document_page_no}}]</span>
+                                    <span style="clear: both;"><a
+                                                href="{{route('contract.annotate', ['id'=>$contract->id])}}#/text/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'text annotation'}} </a>[Page {{$annotation->document_page_no}}
+                                        ]</span>
                                 @endif
                                 @if(property_exists($annotation->annotation, 'tags'))
                                     @foreach($annotation->annotation->tags as $tag)

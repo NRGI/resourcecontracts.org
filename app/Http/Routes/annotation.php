@@ -10,10 +10,30 @@ $router->group(
             ]
         );
         $router->put('annotations/{id}', 'AnnotationApiController@save');
-        $router->post('annotations/{id}', 'AnnotationApiController@delete');
         $router->post('annotations', 'AnnotationApiController@save');
         $router->put('annotations', 'AnnotationApiController@save');
         $router->get('search', 'AnnotationApiController@search');
+        $router->post(
+            'annotations/{id}',
+            [
+                'as'   => 'annotation.delete',
+                'uses' => 'AnnotationApiController@delete'
+            ]
+        );
+        $router->post(
+            '/annotation/update',
+            [
+                'as'   => 'annotation.update',
+                'uses' => 'AnnotationApiController@update'
+            ]
+        );
+        $router->post(
+            'annotation/{id}/delete',
+            [
+                'as'   => 'annotation.delete',
+                'uses' => 'AnnotationApiController@delete'
+            ]
+        );
     }
 );
 $router->resource('contract.annotations', 'Annotation\AnnotationController');

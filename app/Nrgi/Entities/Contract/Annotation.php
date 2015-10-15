@@ -5,6 +5,7 @@ use App\Nrgi\Scope\CountryScope;
 
 /**
  * Class Contract
+ * @property int                       status
  * @package App\Nrgi\Entities\Contract
  */
 class Annotation extends Model

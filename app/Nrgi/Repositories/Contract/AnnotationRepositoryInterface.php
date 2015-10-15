@@ -59,4 +59,19 @@ interface AnnotationRepositoryInterface
      * @return array
      */
     public function getStatusCountByType($statusType);
+
+    /**
+     * update annotation category or text
+     * @param       $id
+     * @param array $data
+     * @return bool
+     */
+    public function updateAnnotationField($id, array $data);
+
+    /**
+     * find annotation by id
+     * @param $id
+     * @return Annotation
+     */
+    public function getById($id);
 }

@@ -54,7 +54,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      */
     public function search(array $params)
     {
-        if($params['document_page_no']) {
+        if ($params['document_page_no']) {
             $annotations = $this->annotation
                 ->where('contract_id', $params['contract'])
                 ->where('document_page_no', $params['document_page_no'])
@@ -184,15 +184,39 @@ class AnnotationRepository implements AnnotationRepositoryInterface
     public function getStatusCountByType($statusType)
     {
         return $this->contract
-                                ->distinct()
-                                ->select('contracts.id', 'a.status')
-                                ->from('contracts')
-                                ->leftJoin(
-                                    'contract_annotations as a',
-                                    function ($join) use ($statusType) {
-                                        $join->on('contracts.id', '=', 'a.contract_id')->where('a.status', '=', $statusType);
-                                    }
-                                )
-                                ->get();
+            ->distinct()
+            ->select('contracts.id', 'a.status')
+            ->from('contracts')
+            ->leftJoin(
+                'contract_annotations as a',
+                function ($join) use ($statusType) {
+                    $join->on('contracts.id', '=', 'a.contract_id')->where('a.status', '=', $statusType);
+                }
+            )
+            ->get();
+    }
+
+    /**
+     * updated annotation text or category
+     *
+     * @param       $id
+     * @param array $data
+     * @return bool
+     */
+    public function updateAnnotationField($id, array $data)
+    {
+        $annotation      = $this->annotation->find($id);
+        $annotationArray = json_encode($annotation->annotation);
+        $annotationArray = json_decode($annotationArray, true);
+        if (array_key_exists('text', $data)) {
+            $annotationArray['text'] = $data['text'];
+        }
+        if (array_key_exists('category', $data)) {
+            $annotationArray['category'] = $data['category'];
+            $annotationArray['cluster']  = _l(config("annotation_category.cluster.{$annotationArray['category']}"));
+        }
+        $annotation->annotation = $annotationArray;
+
+        return $annotation->save();
     }
 }
