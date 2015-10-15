@@ -7597,6 +7597,7 @@ input.error {
 .annotation-list li {
     margin-bottom: 20px;
     overflow: hidden;
+    border-bottom: solid 1px #ccc;
 }
 
 .annotation-list li span {
@@ -7664,3 +7665,4 @@ input.error {
 .profile-details li strong {
     padding-right: 2px;
 }
+

@@ -46,7 +46,7 @@ class AnnotationService
     /**
      * @var ElasticSearchService
      */
-    private $elasticSearch;
+    protected $elasticSearch;
 
     /**
      * Constructor
@@ -123,8 +123,18 @@ class AnnotationService
     public function delete($inputs)
     {
         $contactAnnotationId = $inputs['id'];
+        $annotation          = $this->annotation->getById($contactAnnotationId);
         if ($this->annotation->delete($contactAnnotationId)) {
-            $this->logger->activity('annotation.annotation_deleted', [$contactAnnotationId], $inputs['contract']);
+            $this->logger->activity(
+                'annotation.annotation_deleted',
+                [
+                    'contract' => $annotation->contract_id,
+                    'page' => $annotation->document_page_no,
+                    'title' => $annotation->annotation->text
+                ],
+                $annotation->contract_id
+            );
+            $this->logger->info('annotation deleted', $annotation->toArray());
 
             return true;
         }
@@ -152,6 +162,7 @@ class AnnotationService
     }
 
     /**
+     * get all annotation by contract id
      * @param $contractId
      * return List of annotation
      */
@@ -161,6 +172,7 @@ class AnnotationService
     }
 
     /**
+     * get contract with pages and annotations
      * @param $contractId
      * @return \App\Nrgi\Repositories\Contract\contract
      */
@@ -170,6 +182,8 @@ class AnnotationService
     }
 
     /**
+     * get status of annotation
+     *
      * @param $contractId
      * @return annotation status
      */
@@ -179,6 +193,7 @@ class AnnotationService
     }
 
     /**
+     * updates status of annotations of contract
      * @param $annotationStatus
      * @param $contractId
      * @return bool
@@ -209,6 +224,7 @@ class AnnotationService
     }
 
     /**
+     * adds annotation comment to contract
      * @param $contractId
      * @param $message
      * @param $type
@@ -250,14 +266,15 @@ class AnnotationService
         $annotationData = [];
         $contract       = $this->annotation->getContractPagesWithAnnotations($contractId);
         foreach ($contract->annotations as $annotation) {
-            $json             = $annotation->annotation;
+            $json = $annotation->annotation;
             try {
-                if(!isset($json->category_key)) {
+                if (!isset($json->category_key)) {
                     $json->category_key = $json->category;
                 }
-                $json->category = (isset($json->category_key))?_l("codelist/annotation.annotation_category.{$json->category_key}"):"";
-            }
-            catch (Exception $e) {
+                $json->category = (isset($json->category_key)) ? _l(
+                    "codelist/annotation.annotation_category.{$json->category_key}"
+                ) : "";
+            } catch (Exception $e) {
                 $json->category = "";
             }
             $json->page       = $annotation->document_page_no;
@@ -266,5 +283,42 @@ class AnnotationService
         }
 
         return ["result" => $annotationData];
+    }
+
+    /**
+     * updates text or category of annotation
+     * @param       $id
+     * @param array $data
+     * @return bool
+     */
+    public function update($id, array $data)
+    {
+        try {
+            $status = $this->annotation->updateAnnotationField($id, $data);
+
+            if (!$status) {
+                return false;
+            }
+
+            $annotation = $this->annotation->getById($id);
+
+            $annotation->status = Annotation::DRAFT;
+            $annotation->save();
+            $this->logger->activity(
+                "annotation.annotation_updated",
+                ['contract' => $annotation->contract_id, 'page' => $annotation->document_page_no],
+                $annotation->contract_id
+            );
+            $this->logger->info(
+                'Annotation updated.',
+                ['id' => $id]
+            );
+
+            return true;
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+
+        return false;
     }
 }
