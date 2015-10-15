@@ -351,7 +351,9 @@ class TaskService
         }
 
         try{
-            $this->turk->deleteHIT($task->hit_id);
+           if(!$this->turk->deleteHIT($task->hit_id)){
+               return false;
+           }
         }catch (Exception $e){
             $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
             return false;
