@@ -8,17 +8,22 @@ use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
 
 /**
  * Class Contract
- * @property Collection                tasks
- * @property Collection                pages
- * @property int                       id
- * @property int                       mturk_status
- * @property array                     metadata
- * @property int                       textType
- * @property string                    title
- * @property Collection                annotations
- * @property string                    file
- * @property int                       pdf_process_status
- * @property string                    word_file
+ * @property Collection                                                                   tasks
+ * @property Collection                                                                   pages
+ * @property int                                                                          id
+ * @property int                                                                          mturk_status
+ * @property array                                                                        metadata
+ * @property int                                                                          textType
+ * @property string                                                                       title
+ * @property Collection                                                                   annotations
+ * @property string                                                                       file
+ * @property string                                                                       filehash
+ * @property int                                                                          pdf_process_status
+ * @property string                                                                       word_file
+ * @property int                                                                          updated_by
+ * @property string                                                                       metadata_status
+ * @property string                                                                       text_status
+ * @property int                                                                          created_user
  * @package App\Nrgi\Entities\Contract
  */
 class Contract extends Model
@@ -72,8 +77,7 @@ class Contract extends Model
      */
     const MTURK_SENT     = 1;
     const MTURK_COMPLETE = 2;
-
-    const SHOW_PDF_TEXT = 1;
+    const SHOW_PDF_TEXT  = 1;
 
     /**
      * Convert json metadata to array
@@ -328,7 +332,7 @@ class Contract extends Model
 
         foreach ($contract_id as $id) {
             $insert[] = [
-                'contract_id'            => $this->id,
+                'contract_id' => $this->id,
                 'supporting_contract_id' => $id
             ];
         }

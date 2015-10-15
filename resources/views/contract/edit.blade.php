@@ -10,7 +10,7 @@
                     <strong>@lang('contract.whoops')</strong> @lang('contract.problem')<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
+                            <li>{!! $error !!}</li>
                         @endforeach
                     </ul>
                 </div>

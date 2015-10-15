@@ -121,6 +121,7 @@ class ContractController extends Controller
     /**
      * Display specified contract
      *
+     * @param $id
      * @return Response
      */
     public function show($id)
@@ -150,6 +151,7 @@ class ContractController extends Controller
     /**
      * Display contract edit form.
      *
+     * @param $id
      * @return Response
      */
     public function edit($id)

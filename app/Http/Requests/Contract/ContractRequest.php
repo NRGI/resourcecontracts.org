@@ -41,29 +41,30 @@ class ContractRequest extends Request
         $validator->after(
             function () use ($validator) {
 
-                if ($this->isMethod('POST')) {
-
-                    if ($this->file('file')->isValid()) {
-                        $file            = $this->file('file');
-                        $hash            = getFileHash($file->getPathName());
-                        $contractService = app('App\Nrgi\Services\Contract\ContractService');
-
-                        if ($contract = $contractService->getContractIfFileHashExist($hash)) {
-                            $message = trans(
-                                "The contract file is already present in our system. Please check the following Title of contract with which the uploaded file is linked and make necessary updates."
-                            );
-                            $message .= sprintf(
-                                "<div><a target='_blank' href='%s'>%s</a></div>",
-                                route('contract.show', $contract->id),
-                                $contract->title
-                            );
-
-                            $validator->errors()->add('file', $message);
-                        }
-                    } else {
-                        $validator->errors()->add('file', $this->file('file')->getError());
-                    }
+                if (!$this->file('file')) {
+                    return;
                 }
+                if ($this->file('file')->isValid()) {
+                    $file            = $this->file('file');
+                    $hash            = getFileHash($file->getPathName());
+                    $contractService = app('App\Nrgi\Services\Contract\ContractService');
+
+                    if ($contract = $contractService->getContractIfFileHashExist($hash)) {
+                        $message = trans(
+                            "The contract file is already present in our system. Please check the following Title of contract with which the uploaded file is linked and make necessary updates."
+                        );
+                        $message .= sprintf(
+                            "<div><a target='_blank' href='%s'>%s</a></div>",
+                            route('contract.show', $contract->id),
+                            $contract->title
+                        );
+
+                        $validator->errors()->add('file', $message);
+                    }
+                } else {
+                    $validator->errors()->add('file', $this->file('file')->getError());
+                }
+
             }
         );
 

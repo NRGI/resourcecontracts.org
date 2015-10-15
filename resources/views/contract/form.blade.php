@@ -30,6 +30,27 @@ $groups = ['' => 'Select'] + $groups;
     </div>
 @endif
 
+@if($action == 'edit')
+
+    <div id="new-document" style="display: none" class="form-group">
+        <label for="Select PDF" class="col-sm-2 control-label">@lang('contract.contract_file')</label>
+
+        <div class="col-sm-7">
+            {!! Form::file('file')!!}
+            <p class="help-block">@lang('contract.pdf_only').</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Select PDF" class="col-sm-2 control-label"></label>
+
+        <div class="col-sm-7">
+            <a target="_blank" href="{{$contract->file_url}}">View document</a> | <a id="show-new-document"
+                                                                                     href="javascript:void();">Change</a>
+        </div>
+    </div>
+
+@endif
+
 <div class="form-group">
     <label for="contract_name" class="col-sm-2 control-label">@lang('contract.contract_name') <span class="red">*</span></label>
 
@@ -92,7 +113,9 @@ if (isset($contract->metadata->resource)) {
 <div class="government_entity">
     @if(isset($contract->metadata->government_entity) || old('government_entity'))
         <?php
-        $governmentEntity = empty(old('government_entity')) ? $contract->metadata->government_entity : old('government_entity');
+        $governmentEntity = empty(old('government_entity')) ? $contract->metadata->government_entity : old(
+                'government_entity'
+        );
         $g = 0;
         ?>
 
@@ -100,7 +123,8 @@ if (isset($contract->metadata->resource)) {
             @foreach($governmentEntity as $k => $v)
                 <div class="government-item" {{$k ==0 ? 'id=template' : ''}}>
                     <div class="form-group">
-                        {!! Form::label('entity', trans('contract.government_entity'), ['class'=>'col-sm-2 control-label'])!!}
+                        {!! Form::label('entity', trans('contract.government_entity'), ['class'=>'col-sm-2
+                        control-label'])!!}
                         <div class="col-sm-7">
                             {!! Form::text("government_entity[$g][entity]",
                             isset($v->entity)?$v->entity:null,
@@ -129,7 +153,8 @@ if (isset($contract->metadata->resource)) {
     @else
         <div class="government-item">
             <div class="form-group">
-                {!! Form::label('government_entity', trans('contract.government_entity'), ['class'=>'col-sm-2 control-label'])!!}
+                {!! Form::label('government_entity', trans('contract.government_entity'), ['class'=>'col-sm-2
+                control-label'])!!}
                 <div class="col-sm-7">
                     {!! Form::text("government_entity[0][entity]",null,
                     ["class"=>"form-control"])!!}
@@ -229,7 +254,8 @@ if (isset($contract->metadata->resource)) {
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('participation_share', trans('contract.participation_share'), ['class'=>'col-sm-2
+                        {!! Form::label('participation_share', trans('contract.participation_share'),
+                        ['class'=>'col-sm-2
                         control-label'])!!}
                         <div class="col-sm-7">
                             {!! Form::input('text',"company[$i][participation_share]",isset($v->participation_share)?$v->participation_share:null
@@ -289,7 +315,8 @@ if (isset($contract->metadata->resource)) {
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2 control-label'])!!}
+                        {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2
+                        control-label'])!!}
                         <div class="col-sm-7">
                             <?php if (isset($v->parent_company) && !in_array($v->parent_company, $groups)):
                                 $groups[$v->parent_company] = $v->parent_company;
@@ -312,7 +339,8 @@ if (isset($contract->metadata->resource)) {
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
+                        {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label'])
+                        !!}
                         <div class="col-sm-7">
                             {!! Form::radio("company[$i][operator]", 1, (isset($v->operator) && $v->operator==1)?true:false , ['class' => 'field']) !!} Yes
                             {!! Form::radio("company[$i][operator]", 0, (isset($v->operator) && $v->operator==0)?true:false, ['class' => 'field']) !!} No
@@ -389,7 +417,8 @@ if (isset($contract->metadata->resource)) {
             </div>
 
             <div class="form-group">
-                {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2 control-label'])!!}
+                {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2
+                control-label'])!!}
                 <div class="col-sm-7">
                     {!! Form::select('company[0][parent_company]', $groups , isset($v->parent_company)?$v->parent_company:null , ['class' => 'form-control parent_company']) !!}
                 </div>
@@ -453,7 +482,8 @@ if (isset($contract->metadata->resource)) {
             @foreach($concession as $k => $v)
                 <div class="con-item" {{$k ==0 ? 'id=template' : ''}}>
                     <div class="form-group">
-                        {!! Form::label('license_name', trans('contract.license_name'), ['class'=>'col-sm-2 control-label'])!!}
+                        {!! Form::label('license_name', trans('contract.license_name'), ['class'=>'col-sm-2
+                        control-label'])!!}
                         <div class="col-sm-7">
                             {!! Form::text("concession[$j][license_name]",
                             isset($v->license_name)?$v->license_name:null,
@@ -545,7 +575,8 @@ if (isset($contract->metadata->resource)) {
         ?>
         @foreach(config('metadata.category') as $key => $category)
             <label class="checkbox-inline">
-                <input name="category[]" {{(is_array($old_category) && in_array($key, $old_category)) ? "checked='checked'" : ''}} type="radio" value="{{$key}}"> {{$category}}
+                <input name="category[]" {{(is_array($old_category) && in_array($key, $old_category)) ? "checked='checked'" : ''}}
+                       type="radio" value="{{$key}}"> {{$category}}
             </label>
         @endforeach
     </div>
@@ -640,7 +671,7 @@ if (isset($contract->metadata->resource)) {
         var i = {{$i or 0}};
         var j = {{$j or 0}};
         var g = {{$g or 0}};
-        var country_list = {!!json_encode($country_list) !!};
+        var country_list = {!!json_encode($country_list)!!};
         var contracts = {!!json_encode($contracts)!!};
         var docId = {!!json_encode($docId)!!};
 
