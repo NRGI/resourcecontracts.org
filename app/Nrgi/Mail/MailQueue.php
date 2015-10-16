@@ -38,7 +38,32 @@ class MailQueue
             $data,
             function ($message) use ($to, $subject) {
                 $message->to($to['email'], $to['name'])->subject($subject);
-                $message->bcc('manoj.byanjankar@yipl.com.np', 'Manoj Byanjankar');
+                if (env('NOTIFY_MAIL')) {
+                    $message->bcc(env('NOTIFY_MAIL'));
+                }
+            }
+        );
+    }
+
+    /**
+     * send mail to multiple recipients
+     * @param array $recipients
+     * @param       $subject
+     * @param       $view
+     * @param array $data
+     * @return int
+     */
+    public function sendMultiple(array $recipients, $subject, $view, $data = [])
+    {
+        return $this->mailer->queueOn(
+            'queue-mail',
+            $view,
+            $data,
+            function ($message) use ($recipients, $subject) {
+                $message->to($recipients)->subject($subject);
+                if (env('NOTIFY_MAIL')) {
+                    $message->bcc(env('NOTIFY_MAIL'));
+                }
             }
         );
     }
