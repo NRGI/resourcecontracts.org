@@ -333,7 +333,7 @@ class ContractService
             ]
         );
 
-        return $this->trimArray($data);
+        return trimArray($data);
     }
 
     /**
@@ -351,20 +351,6 @@ class ContractService
         }
 
         return $i;
-    }
-
-    /**
-     * Trim array values
-     *
-     * @param $value
-     * @return array|string
-     */
-    function trimArray($value){
-
-        if (!is_array($value))
-            {return trim($value);}
-
-        return array_map([$this, 'trimArray'], $value);
     }
 
     /**

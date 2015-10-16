@@ -117,3 +117,18 @@ function str_random_number($length)
 
     return $number;
 }
+
+/**
+ * Trim array values
+ *
+ * @param $value
+ * @return array|string
+ */
+function trimArray($value)
+{
+    if (!is_array($value)) {
+        return trim($value);
+    }
+
+    return array_map('trimArray', $value);
+}

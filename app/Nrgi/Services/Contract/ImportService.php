@@ -211,14 +211,14 @@ class ImportService
 
         $companies = [];
         foreach ($company_name_arr as $key => $company) {
-            $com_default = $company_template;
+            $company_default = $company_template;
 
-            $com_default['name']              = $company;
-            $com_default['parent_company']    = isset($corporate_group_arr[$key]) ? $corporate_group_arr[$key] : '';
-            $com_default['company_address']   = isset($company_address_arr[$key]) ? $company_address_arr[$key] : '';
-            $com_default['company_number']    = isset($company_number_arr[$key]) ? $company_number_arr[$key] : '';
-            $com_default['open_corporate_id'] = isset($open_corporate_id_arr[$key]) ? $open_corporate_id_arr[$key] : '';
-            $companies[]                        = $com_default;
+            $company_default['name']              = $company;
+            $company_default['parent_company']    = isset($corporate_group_arr[$key]) ? $corporate_group_arr[$key] : '';
+            $company_default['company_address']   = isset($company_address_arr[$key]) ? $company_address_arr[$key] : '';
+            $company_default['company_number']    = isset($company_number_arr[$key]) ? $company_number_arr[$key] : '';
+            $company_default['open_corporate_id'] = isset($open_corporate_id_arr[$key]) ? $open_corporate_id_arr[$key] : '';
+            $companies[]                      = $company_default;
         }
 
         $contract['pdf_url'] = $results['pdf_url'];
@@ -270,7 +270,7 @@ class ImportService
         $contract['metadata']['show_pdf_text']       = Contract::SHOW_PDF_TEXT;
         $contract['metadata']['open_contracting_id'] = getContractIdentifier($contract['metadata']['category'][0], $contract['metadata']['country']['code']);
 
-        return $contract;
+        return trimArray($contract);
     }
 
     /**
