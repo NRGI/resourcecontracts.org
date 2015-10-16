@@ -218,7 +218,13 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function findContractWithAnnotations($contractId)
     {
-        return $this->contract->with('created_user', 'updated_user', 'annotations')->findOrFail($contractId);
+        return $this->contract->with(
+            [
+                'annotations' => function ($query) {
+                    $query->orderByRaw("annotation->>'category'");
+                }
+            ]
+        )->with('created_user', 'updated_user')->findOrFail($contractId);
     }
 
     /**

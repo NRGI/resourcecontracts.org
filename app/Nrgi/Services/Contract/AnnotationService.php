@@ -85,7 +85,7 @@ class AnnotationService
      * Store/Update a contact annotation.
      * @param $annotation
      * @param $inputData
-     * @return mixed
+     * @return Annotation
      */
     public function save($annotation, $inputData)
     {
@@ -93,6 +93,7 @@ class AnnotationService
         $contactAnnotation                   = $this->annotation->findOrCreate(
             isset($data['id']) ? $data['id'] : null
         );
+        $data['category']                    = $data['category_key'];
         $data ['cluster']                    = _l(config("annotation_category.cluster.{$data['category_key']}"));
         $contactAnnotation->annotation       = $data;
         $contactAnnotation->user_id          = $this->user->id;

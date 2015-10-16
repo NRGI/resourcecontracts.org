@@ -17,6 +17,10 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
         .input-sm {
             width: 400px !important;
         }
+        .editable-click, a.editable-click, a.editable-click:hover {
+            text-decoration: none;
+            border-bottom: none!important;
+        }
     </style>
 @endsection
 
@@ -399,7 +403,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
         </ul>
         @if($status == $contract_processing_completed)
             <div class="annotation-wrap">
-                <h3>@lang('contract.annotations')</h3>
+                <h3>@lang('contract.annotations')<span>Double click to edit.</span></h3>
 
                 <div class="annotation-list">
                     <ul>
@@ -414,7 +418,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
                                 <p data-pk="{{$annotation->id}}" data-name="text"
                                    data-url="{{route('annotation.update')}}" data-type="textarea"
-                                   class="edit-annotation-text">{{$annotation->annotation->text}}</p><br/>
+                                   class="edit-annotation-text">{{$annotation->annotation->text}}</p>
                                 @if(property_exists($annotation->annotation, "shapes"))
                                     <span style="clear: both;"><a
                                                 href="{{route('contract.annotate', ['id'=>$contract->id])}}#/pdf/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>[Page {{$annotation->document_page_no}}
