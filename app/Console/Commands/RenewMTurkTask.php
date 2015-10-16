@@ -46,12 +46,14 @@ class RenewMTurkTask extends Command
         foreach ($pages as $key => $page) {
             $contract_id = $page->contract_id;
             $hit_id      = $page->hit_id;
+            $page_no     = $page->page_no;
 
             if ($task->resetHIT($contract_id, $page->id)) {
-                $this->info(sprintf('Contract ID : %s with HIT: %s updated', $contract_id, $hit_id));
+                $this->info(sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contract_id, $hit_id, $page_no));
             } else {
-                $this->error(sprintf('Contract ID : %s with HIT: %s failed', $contract_id, $hit_id));
+                $this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contract_id, $hit_id, $page_no));
             }
+
         }
 
         $this->info('Process Completed');

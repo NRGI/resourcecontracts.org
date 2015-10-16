@@ -10,6 +10,10 @@ use Illuminate\Contracts\Logging\Log;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * Class TaskService
+ * @package App\Nrgi\Mturk\Services
+ */
 class TaskService
 {
     /**
@@ -170,6 +174,9 @@ class TaskService
 
             try{
                 $ret    = $this->turk->createHIT($title, $description, $url);
+            }catch (MTurkException $e) {
+                $this->logger->error($e->getMessage(), ['Contract id' => $contract->id, 'Errors' => $e->getErrors()]);
+                return false;
             }catch (Exception $e){
                 $this->logger->error('createHIT: '. $e->getMessage(), ['Contract_id' => $contract->id, 'Page' => $page->page_no]);
                 continue;
@@ -252,6 +259,9 @@ class TaskService
         if ($task->assignments->assignment->status == 'Submitted') {
             try{
                 $response = $this->turk->approve($task->assignments->assignment->assignment_id);
+            }catch (MTurkException $e) {
+                $this->logger->error($e->getMessage(), ['Contract id' => $contract_id, 'Page' => $task->page_no, 'Errors' => $e->getErrors()]);
+                return false;
             }catch (Exception $e){
                 $this->logger->error($e->getMessage(), ['Contract id' => $contract_id, 'Page' => $task->page_no]);
                 return false;
@@ -292,8 +302,11 @@ class TaskService
         if ($task->assignments->assignment->status == 'Submitted') {
            try{
                $response = $this->turk->reject($task->assignments->assignment->assignment_id, $message);
-           } catch(Exception $e)
-           {
+
+           }catch (MTurkException $e) {
+               $this->logger->error($e->getMessage(), ['Contract id' => $contract_id, 'Page' => $task_id, 'Errors' => $e->getErrors()]);
+               return false;
+           }catch(Exception $e){
                $this->logger->error($e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task_id]);
                return false;
            }
@@ -354,6 +367,9 @@ class TaskService
            if(!$this->turk->deleteHIT($task->hit_id)){
                return false;
            }
+        }catch (MTurkException $e){
+                $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id, 'Errors'=> $e->getErrors()]);
+                return false;
         }catch (Exception $e){
             $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
             return false;
@@ -365,11 +381,14 @@ class TaskService
 
         try{
             $ret = $this->turk->createHIT($title, $description, $url);
-        }catch (Exception $e){
-            $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id,  'Task' => $task_id]);
+        } catch (MTurkException $e){
+            $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id,  'Task' => $task_id, 'Page no'=>$task->page_no, 'Errors'=> $e->getErrors()]);
+            return false;
+        } catch (Exception $e){
+            $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id,  'Task' => $task_id, 'Page no'=>$task->page_no]);
             return false;
         }
-            $update = [
+        $update = [
                 'hit_id'      => $ret->hit_id,
                 'assignments' => null,
                 'status'      => 0,

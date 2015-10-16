@@ -132,7 +132,7 @@ class MTurkController extends Controller
         }
 
         if ($this->task->rejectTask($contract_id, $task_id, $message)) {
-            return redirect()->back()->withSuccess(trans('mturk.action.rejected'));
+            return redirect()->back()->withSuccess(trans('mturk.action.reject'));
         }
 
         return redirect()->back()->withError(trans('mturk.action.reject_fail'));
