@@ -8,7 +8,6 @@ if ([ $newEC2Instance ]) then
     bash /home/ec2-user/scripts/setup-all.sh
 else
     /etc/init.d/supervisord restart
-    /etc/init.d/beanstalk restart
 fi
 
 if ([ $newEC2Instance ]) then
