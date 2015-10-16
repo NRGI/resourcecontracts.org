@@ -7591,7 +7591,14 @@ input.error {
 .annotation-wrap h3 {
     border-bottom: 1px solid #bbb;
     margin-bottom: 12px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.annotation-wrap h3 span{
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+    color: #666;
 }
 
 .annotation-list li {
@@ -7608,7 +7615,6 @@ input.error {
 
 .annotation-list li p {
     color: #8b8b8b;
-    float: left;
     margin-right: 6px;
     margin-bottom: 4px;
 }
