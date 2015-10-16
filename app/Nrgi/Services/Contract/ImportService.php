@@ -28,7 +28,7 @@ class ImportService
     const CREATE_COMPLETED  = 2;
     const CREATE_FAILED     = 3;
 
-    protected $separator = '//';
+    protected $separator = '||';
 
     /**
      * @var Excel

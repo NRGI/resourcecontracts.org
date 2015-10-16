@@ -118,7 +118,7 @@ class ImportController extends Controller
                 return redirect()->route('contract.import.confirm', $import_key);
             }
 
-            $import_json = url(sprintf('%s/%s/%s.json', ImportService::UPLOAD_FOLDER, $import_key, $import_key));
+            $import_json = route('contract.import.notify', $import_key);
             $contracts   = $json->contracts;
 
             return view('contract.import.status', compact('contracts', 'import_key', 'import_json'));
