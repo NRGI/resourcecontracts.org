@@ -176,7 +176,7 @@ class TaskService
                 $ret    = $this->turk->createHIT($title, $description, $url);
             }catch (MTurkException $e) {
                 $this->logger->error($e->getMessage(), ['Contract id' => $contract->id, 'Errors' => $e->getErrors()]);
-                return false;
+                continue;
             }catch (Exception $e){
                 $this->logger->error('createHIT: '. $e->getMessage(), ['Contract_id' => $contract->id, 'Page' => $page->page_no]);
                 continue;
@@ -369,7 +369,6 @@ class TaskService
            }
         }catch (MTurkException $e){
                 $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id, 'Errors'=> $e->getErrors()]);
-                return false;
         }catch (Exception $e){
             $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
             return false;

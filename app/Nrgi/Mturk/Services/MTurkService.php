@@ -24,7 +24,7 @@ class MTurkService extends MechanicalTurk
     {
         $balance = $this->getAccountBalance();
 
-        return (object) $balance['GetAccountBalanceResult']['AvailableBalance'];
+        return $balance['GetAccountBalanceResult']['AvailableBalance'];
     }
 
     /**

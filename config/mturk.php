@@ -56,7 +56,7 @@ return [
             'MaxAssignments'              => 1,
             'Keywords'                    => ['transcription', 'pdf', 'language'],
             'Reward'                      => [
-                'Amount'       => '0.50',
+                'Amount'       => '0.30',
                 'CurrencyCode' => 'USD'
             ],
             'LifetimeInSeconds'           => 10*24*60*60,
@@ -65,4 +65,5 @@ return [
 
     ],
 
+    'minimum_balance' => '50'
 ];

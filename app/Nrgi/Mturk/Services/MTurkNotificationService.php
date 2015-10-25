@@ -1,9 +1,7 @@
 <?php namespace App\Nrgi\Mturk\Services;
 
 use App\Nrgi\Mail\MailQueue;
-use App\Nrgi\Mturk\Services\TaskService;
 use App\Nrgi\Services\Contract\ContractService;
-use Exception;
 use Illuminate\Contracts\Logging\Log;
 
 /**
@@ -13,7 +11,7 @@ use Illuminate\Contracts\Logging\Log;
 class MTurkNotificationService
 {
     /**
-     * @var Task
+     * @var TaskService
      */
     protected $task;
     /**
@@ -28,10 +26,15 @@ class MTurkNotificationService
      * @var MailQueue
      */
     protected $mailer;
+    /**
+     * @var MTurkService
+     */
+    protected $mturk;
 
     /**
      * @param ContractService $contract
-     * @param Task            $task
+     * @param TaskService     $task
+     * @param MTurkService    $mturk
      * @param Log             $logger
      * @param MailQueue       $mailer
      * @internal param MTurkService $turk
@@ -39,6 +42,7 @@ class MTurkNotificationService
     public function __construct(
         ContractService $contract,
         TaskService $task,
+        MTurkService $mturk,
         Log $logger,
         MailQueue $mailer
     ) {
@@ -46,8 +50,8 @@ class MTurkNotificationService
         $this->logger   = $logger;
         $this->mailer   = $mailer;
         $this->task     = $task;
+        $this->mturk    = $mturk;
     }
-
 
     /**
      * Display all the tasks for a specific contract
@@ -68,7 +72,7 @@ class MTurkNotificationService
                 sprintf("Mturk assignments for your action for [%s]", $contract->title),
                 'mturk.email.notify',
                 [
-                    'task' => $tasks,
+                    'task'     => $tasks,
                     'contract' => ['id' => $contract->id, 'title' => $contract->title],
                 ]
             );
@@ -92,7 +96,28 @@ class MTurkNotificationService
             $recipients = explode(',', env('MTURK_NOTIFY_' . strtoupper($resourceType)));
         }
         array_push($recipients, $uploader);
-        
+
         return $recipients;
     }
+
+    /**
+     * Check minimum balance
+     *
+     */
+    public function checkBalance()
+    {
+        $minimum_balance = config('mturk.minimum_balance');
+        $balance         = $this->mturk->getBalance();
+        if ($balance['Amount'] < $minimum_balance) {
+            $this->mailer->sendMultiple(
+                explode(',', env('NOTIFY_MAIL')),
+                "MTurk balance is getting low.",
+                'mturk.email.balance',
+                [
+                    'balance' => $balance['FormattedPrice'],
+                ]
+            );
+        }
+    }
+
 }

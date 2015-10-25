@@ -53,7 +53,6 @@ class RenewMTurkTask extends Command
             } else {
                 $this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contract_id, $hit_id, $page_no));
             }
-
         }
 
         $this->info('Process Completed');
