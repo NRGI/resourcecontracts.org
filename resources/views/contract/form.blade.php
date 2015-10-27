@@ -1,7 +1,7 @@
 @section('css')
     <link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
     <style>
-        .other_toc, .dt {
+        .other_toc, .dt, .disclosure_mode_other {
             margin-top: 10px;
         }
     </style>
@@ -549,13 +549,24 @@ if (isset($contract->metadata->resource)) {
 </div>
 
 <div class="form-group">
+    <?php
+    $disclosure_mode = isset($contract->metadata->disclosure_mode) ? $contract->metadata->disclosure_mode : old('disclosure_mode');
+    if (!in_array($disclosure_mode, trans('codelist/disclosure_mode')) AND $disclosure_mode != '') {
+        $disclosure_mode = 'Other';
+    }
+    ?>
     {!! Form::label('disclosure_mode', trans('contract.disclosure_mode'), ['class'=>'col-sm-2 control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::select('disclosure_mode', ['' => 'select']+trans('codelist/disclosure_mode'),
-        isset($contract->metadata->disclosure_mode)?$contract->metadata->disclosure_mode:null, [
-        "class"=>"form-control"])!!}
+        <div class="col-sm-7">
+        {!! Form::select('disclosure_mode', ['' => 'selects']+trans('codelist/disclosure_mode'),
+        $disclosure_mode, ["class"=>"form-control"])!!}
+        @if($disclosure_mode == 'Other')
+            {!! Form::text('disclosure_mode',
+            isset($contract->metadata->disclosure_mode)?$contract->metadata->disclosure_mode:null,
+            ["id" =>'disclosure_mode_other', "class"=>"form-control disclosure_mode_other"])!!}
+        @endif
     </div>
 </div>
+
 
 <div class="form-group">
     {!! Form::label('date_retrieval', trans('contract.date_of_retrieval'), ['class'=>'col-sm-2 control-label'])!!}
@@ -667,6 +678,18 @@ if (isset($contract->metadata->resource)) {
             }
         });
 
+        var input_disclosure_mode = '<input class="form-control disclosure_mode_other" name="disclosure_mode" type="text">';
+
+        $(document).on('change', '#disclosure_mode', function () {
+            if (($(this).val() == 'Other')) {
+                $(this).parent().append(input_disclosure_mode)
+            } else {
+                if ($('.disclosure_mode_other').length) {
+                    input_disclosure_mode = $('.disclosure_mode_other');
+                }
+                $('.disclosure_mode_other').remove();
+            }
+        });
 
         var i = {{$i or 0}};
         var j = {{$j or 0}};

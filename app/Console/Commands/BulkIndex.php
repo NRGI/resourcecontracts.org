@@ -32,15 +32,20 @@ class BulkIndex extends Command
     /**
      * @var ElasticSearchService
      */
-    private $elastic;
+    protected $elastic;
     /**
      * @var AnnotationService
      */
-    private $annotations;
+    protected $annotations;
     /**
      * @var Contract
      */
-    private $contract;
+    protected $contract;
+
+    /**
+     * @var contractCount
+     */
+    protected $contractCount;
 
     /**
      * Create a new command instance.
@@ -63,11 +68,24 @@ class BulkIndex extends Command
     public function fire()
     {
         $this->info("getting contracts");
-        $contracts = $this->getContracts();
-        $this->info("no of contract to publish =>{$contracts->count()}");
-        $this->info("started publishing");
+        $contracts           = $this->getContracts();
+        $this->contractCount = $contracts->count();
+        $this->info("no of contract to publish =>{$this->contractCount}");
+        $this->info("publishing...");
         if ($this->input->getOption('annotation')) {
             $this->publishAnnotations($contracts);
+
+            return;
+        }
+
+        if ($this->input->getOption('metadata')) {
+            $this->publishAllMetadata($contracts);
+
+            return;
+        }
+
+        if ($this->input->getOption('text')) {
+            $this->publishAllText($contracts);
 
             return;
         }
@@ -81,41 +99,47 @@ class BulkIndex extends Command
      */
     public function publishAnnotations($contracts)
     {
+        $index = 0;
         foreach ($contracts as $contract) {
             $this->publishAnnotation($contract);
+            $this->status($index ++);
         }
 
     }
 
     /**
-     * Get the console command arguments.
-     *
-     * @return array
+     * Publish all contract Metadata
+     * @param $contracts
      */
-    protected function getArguments()
+    public function publishAllMetadata($contracts)
     {
-        return [];
+        $index = 0;
+        foreach ($contracts as $contract) {
+            $this->publishMetadata($contract);
+            $this->status($index ++);
+        }
+
     }
 
     /**
-     * Get the console command options.
-     *
-     * @return array
+     * Publish all contract Text
+     * @param $contracts
      */
-    protected function getOptions()
+    public function publishAllText($contracts)
     {
-        return [
-            ['annotation', null, InputOption::VALUE_NONE, 'publish annotation all contracts', null],
-            ['category', null, InputOption::VALUE_OPTIONAL, 'publish contract based on contract type', null]
-        ];
+        $index = 0;
+        foreach ($contracts as $contract) {
+            $this->publishText($contract);
+            $this->status($index ++);
+        }
 
     }
 
     /**
      * publish individual contract annotation
-     * @param $contract
+     * @param Contract $contract
      */
-    protected function publishAnnotation($contract)
+    protected function publishAnnotation(Contract $contract)
     {
         if ($this->annotations->getStatus($contract->id) == Annotation::PUBLISHED) {
             $this->elastic->deleteAnnotations($contract->id);
@@ -125,22 +149,52 @@ class BulkIndex extends Command
     }
 
     /**
+     * publish individual contract text only
+     * @param Contract $contract
+     */
+    protected function publishText(Contract $contract)
+    {
+        if ($contract->text_status == Contract::STATUS_PUBLISHED) {
+            $this->elastic->postText($contract->id);
+            $this->info(sprintf('Contract %s : Text Indexed.', $contract->id));
+        }
+    }
+
+    /**
+     * publish individual contract metadata only
+     * @param Contract $contract
+     */
+    protected function publishMetadata(Contract $contract)
+    {
+        if ($contract->metadata_status == Contract::STATUS_PUBLISHED) {
+            $this->elastic->postMetadata($contract->id);
+            $this->info(sprintf('Contract %s : Metadata Indexed.', $contract->id));
+        }
+    }
+
+    /**
      * Publish text,metadata,annotation of all contracts
      * @param $contracts
      */
     protected function publishContracts($contracts)
     {
+        $index = 0;
         foreach ($contracts as $contract) {
-            if ($contract->metadata_status == Contract::STATUS_PUBLISHED) {
-                $this->elastic->postMetadata($contract->id);
-                $this->info(sprintf('Contract %s : Metadata Indexed.', $contract->id));
-            }
-            if ($contract->text_status == Contract::STATUS_PUBLISHED) {
-                $this->elastic->postText($contract->id);
-                $this->info(sprintf('Contract %s : Text Indexed.', $contract->id));
-            }
+            $this->publishMetadata($contract);
+            $this->publishText($contract);
             $this->publishAnnotation($contract);
+            $this->status($index ++);
         }
+    }
+
+    /**
+     * @param $contracts
+     * @param $index
+     */
+    protected function status($index)
+    {
+        $remaining = $this->contractCount - $index;
+        $this->info("remaining contracts to be indexed =>{$remaining}");
     }
 
     /**
@@ -167,4 +221,28 @@ class BulkIndex extends Command
         return $contracts;
     }
 
+    /**
+     * Get the console command arguments.
+     *
+     * @return array
+     */
+    protected function getArguments()
+    {
+        return [];
+    }
+
+    /**
+     * Get the console command options.
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        return [
+            ['annotation', null, InputOption::VALUE_NONE, 'publish annotation all contracts', null],
+            ['metadata', null, InputOption::VALUE_NONE, 'publish metadata all contracts', null],
+            ['text', null, InputOption::VALUE_NONE, 'publish text all contracts', null],
+            ['category', null, InputOption::VALUE_OPTIONAL, 'publish contract based on contract type', null]
+        ];
+    }
 }

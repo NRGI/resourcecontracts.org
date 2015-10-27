@@ -90,7 +90,7 @@ class UpdateMetadata extends Command
     protected function applyRules(array $metadata)
     {
         //$this->publishPdfText($metadata);
-        $this->updateContractType($metadata);
+        $this->updateDisclosureMode($metadata);
 
         return $metadata;
     }
@@ -132,6 +132,18 @@ class UpdateMetadata extends Command
     protected function publishPdfText(&$metadata)
     {
         $metadata['show_pdf_text'] = 1;
+    }
+
+    /**
+     * update disclosure mode
+     *
+     * @param $metadata
+     */
+    protected function updateDisclosureMode(&$metadata)
+    {
+        if ($metadata['disclosure_mode'] == "Corporate") {
+            $metadata['disclosure_mode'] = "Company";
+        }
     }
 
     /**
