@@ -45,7 +45,10 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function save($contractDetail)
     {
-        return $this->contract->create($contractDetail);
+        $contract = $this->contract->create($contractDetail);
+        $this->updateOCID($contract);
+
+        return $contract;
     }
 
     /**
@@ -419,7 +422,6 @@ class ContractRepository implements ContractRepositoryInterface
         return $this->document->where('parent_contract_id', $contractID)->first();
     }
 
-
     /**
      * Get all the contracts.
      *
@@ -466,4 +468,22 @@ class ContractRepository implements ContractRepositoryInterface
         return $query->orderBy('created_datetime', 'DESC')->paginate($limit);
 
     }
+
+    /**
+     * Update OCID
+     *
+     * @param Contract $contract
+     */
+    public function updateOCID(Contract $contract)
+    {
+        if (!empty($contract->metadata->translated_from)) {
+            $parent_contract                 = $this->findContract($contract->metadata->translated_from);
+            $ocid                            = $parent_contract->metadata->open_contracting_id . '-' . $contract->id;
+            $metadata                        = json_decode(json_encode($contract->metadata), true);
+            $metadata['open_contracting_id'] = $ocid;
+            $contract->metadata              = $metadata;
+            $contract->save();
+        }
+    }
+
 }

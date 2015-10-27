@@ -194,7 +194,6 @@ interface ContractRepositoryInterface
      */
     public function findSupportingContract($contractID);
 
-
     /**
      * Get all the contracts.
      * @param array $ids
@@ -208,4 +207,12 @@ interface ContractRepositoryInterface
     public function getMultipleMetadataContract($string);
 
     public function getContractFilterByMetadata($filters, $limit, $contractId);
+
+    /**
+     * Update OCID
+     *
+     * @param Contract $contract
+     */
+    public function updateOCID(Contract $contract);
+
 }

@@ -102,7 +102,13 @@ class Contract extends Model
      */
     public function getFileUrlAttribute()
     {
-        return getS3FileURL($this->id . '/' . $this->file);
+        $path = $this->id . '/' . $this->file;
+
+        if ($this->pdf_process_status == self::PROCESSING_PIPELINE || $this->pdf_process_status == self::PROCESSING_RUNNING) {
+            $path = $this->file;
+        }
+
+        return getS3FileURL($path);
     }
 
     /**
@@ -332,7 +338,7 @@ class Contract extends Model
 
         foreach ($contract_id as $id) {
             $insert[] = [
-                'contract_id' => $this->id,
+                'contract_id'            => $this->id,
                 'supporting_contract_id' => $id
             ];
         }

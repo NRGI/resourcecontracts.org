@@ -219,7 +219,6 @@ class ContractService
             $supportingDocuments             = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
             try {
                 $contract = $this->contract->save($data);
-
                 if (!empty($supportingDocuments)) {
                     $contract->syncSupportingContracts($supportingDocuments);
                 }
@@ -409,6 +408,7 @@ class ContractService
 
         try {
             if ($contract->save()) {
+                $this->contract->updateOCID($contract);
                 $contract->syncSupportingContracts($supportingDocuments);
             }
             $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
@@ -871,5 +871,4 @@ class ContractService
 
         return false;
     }
-
 }
