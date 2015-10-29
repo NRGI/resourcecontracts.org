@@ -50,7 +50,7 @@
 
                 @forelse($activityLogs as $activitylog)
                     <tr>
-                        <td>{{ $activitylog->contract->metadata->contract_name or ''}}</td>
+                        <td><a href="{{route('contract.show',$activitylog->contract_id)}}">{{ $activitylog->contract->metadata->contract_name or ''}}</a></td>
                         <td>
                             {{ trans($activitylog->message,$activitylog->message_params) }} <br>
                             @lang('by') {{$activitylog->user->name}} @lang('on') {{$activitylog->created_at->format('D F d, Y h:i a')}}

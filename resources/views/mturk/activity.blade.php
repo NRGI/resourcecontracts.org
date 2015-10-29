@@ -50,7 +50,7 @@
                 <tbody>
                 @forelse($activities as $activity)
                     <tr>
-                        <td>{{ $activity->contract->metadata->contract_name or ''}}</td>
+                        <td><a href="{{route('contract.show',$activity->contract_id)}}">{{ $activity->contract->metadata->contract_name or ''}}</a></td>
                         <td>{{ $activity->page_no or ''}}</td>
 
                         <td>
