@@ -32,8 +32,8 @@
       return app_url + "/contract/" + this.getContractId();
     },
     getMetadataUrl: function() {
-      return this.get('esapi') + "contract/" + this.getContractId() + "/metadata";  
-    },  
+      return this.get('esapi') + "contract/" + this.getContractId() + "/metadata";
+    },
     getAllPageUrl: function() {
       return this.get("allpage_url");
     },
@@ -42,20 +42,20 @@
     },
     getSearchUrl: function() {
       return this.get("search_url");
-    },    
+    },
     getPdfUrl: function() {
       if(typeof pagesCollection !== "undefined" && pagesCollection.models.length) {
         var page_no = parseInt(this.getCurrentPage());
         var pageModel = pagesCollection.where({ page_no: page_no});
         if(pageModel && pageModel[0] && pageModel[0].attributes) {
             return pageModel[0].get("pdf_url");
-        }        
+        }
       } else {
         if(this.get("pdf_url")) {
           return this.get("pdf_url");
         }
       }
-      return "";      
+      return "";
     },
     getFullPdfUrl: function() {
       return "";
@@ -65,7 +65,7 @@
     },
     getAnnotationCategories: function() {
       return this.annotationCategories;
-    },    
+    },
     getAnnotationsListAnchor: function() {
       return app_url + "/contract/" + this.getContractId() + "#annotations";
     },
