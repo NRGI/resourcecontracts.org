@@ -1,6 +1,12 @@
 @extends('layout.app')
 @section('css')
     <style>
+        .balance{
+            padding: 10px;
+            background-color: #F7F7F7;
+            border-bottom: 1px solid #CECECE;
+            margin-bottom: 19px;
+        }
         .col-sm-2 {
             background-color: #fff;
             padding: 25px 0px;
@@ -45,6 +51,7 @@
 
         </div>
     </div>
+    <div class="balance">MTurk Available Balance: {{$stats['balance']['FormattedPrice'] or '-'}}</div>
 
     <div class="row row-dashboard">
         <div class="col-xs-6 col-sm-3">

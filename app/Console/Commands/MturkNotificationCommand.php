@@ -45,7 +45,6 @@ class MturkNotificationCommand extends Command
     {
         parent::__construct();
         $this->task = $task;
-
         $this->notify = $notify;
     }
 

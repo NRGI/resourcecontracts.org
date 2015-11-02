@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Nrgi\Mturk\Services\MTurkNotificationService;
+use App\Nrgi\Mturk\Services\MTurkService;
 use App\Nrgi\Services\Dashboard\DashboardService;
-use Aws\S3\S3Client;
 use Illuminate\Http\Response;
 
 /**
@@ -32,11 +33,14 @@ class DashboardController extends Controller
     /**
      * Dashboard Home
      *
+     * @param MTurkService             $mTurk
+     * @param MTurkNotificationService $com
      * @return Response
      */
-    public function index()
+    public function index(MTurkService $mTurk, MTurkNotificationService $com)
     {
         $stats = [
+            'balance'    => $mTurk->getBalance(),
             'total'      => $this->dashboard->countContractTotal(),
             'last_month' => $this->dashboard->countContractTotal('last_month'),
             'this_month' => $this->dashboard->countContractTotal('this_month'),
@@ -46,12 +50,12 @@ class DashboardController extends Controller
 
         list($metadata, $pdfText) = $this->dashboard->contractStatusCount();
 
-        $annotation = $this->dashboard->annotationStatusCount();
+        $annotation     = $this->dashboard->annotationStatusCount();
         $ocrStatusCount = $this->dashboard->getOcrStatusCount();
-        $status = compact('metadata', 'pdfText', 'annotation');
+        $status         = compact('metadata', 'pdfText', 'annotation');
 
         $recent_contracts = $this->dashboard->recent(static::NO_OF_RECENT_CONTRACTS);
 
-        return view('dashboard.index', compact('stats', 'recent_contracts', 'status','ocrStatusCount'));
+        return view('dashboard.index', compact('stats', 'recent_contracts', 'status', 'ocrStatusCount'));
     }
 }

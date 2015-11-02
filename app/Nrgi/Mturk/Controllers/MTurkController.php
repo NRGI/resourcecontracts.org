@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Nrgi\Mturk\Services\ActivityService;
+use App\Nrgi\Mturk\Services\MTurkService;
 use App\Nrgi\Mturk\Services\TaskService;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\User\UserService;
