@@ -8,7 +8,7 @@
 return [
 
     "Government" => "Government",
-    "Corporate"  => "Corporate",
+    "Company"    => "Company",
     "Other"      => "Other"
 
 ];
