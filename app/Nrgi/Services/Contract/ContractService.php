@@ -220,13 +220,13 @@ class ContractService
                 'user_id'  => $this->auth->id(),
                 'metadata' => $metadata,
             ];
-            $supportingDocuments             = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
             try {
                 $contract = $this->contract->save($data);
 
-                if (!empty($supportingDocuments)) {
-                    $contract->syncSupportingContracts($supportingDocuments);
+                if (isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '1' && isset($formData['translated_from'])) {
+                    $contract->syncSupportingContracts($formData['translated_from']);
                 }
+                $this->contract->updateOCID($contract);
                 $this->logger->activity('contract.log.save', ['contract' => $contract->title], $contract->id);
 
                 $this->logger->info(
@@ -320,9 +320,6 @@ class ContractService
                 "type_of_contract",
                 "signature_date",
                 "document_type",
-                "translation_from_original",
-                "translation_parent",
-                "translated_from",
                 "company",
                 "concession",
                 "project_title",
@@ -333,6 +330,7 @@ class ContractService
                 "signature_year",
                 "disclosure_mode",
                 "open_contracting_id",
+                'is_supporting_document',
                 'show_pdf_text',
             ]
         );
@@ -409,12 +407,19 @@ class ContractService
         $contract->metadata              = $metadata;
         $contract->updated_by            = $this->auth->id();
         $contract->metadata_status       = Contract::STATUS_DRAFT;
-        $supportingDocuments             = isset($formData['supporting_document']) ? $formData['supporting_document'] : [];
 
         try {
-            if ($contract->save()) {
-                $contract->syncSupportingContracts($supportingDocuments);
+            if (!$contract->save()) {
+                return false;
             }
+
+            if(isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '1'  && isset($formData['translated_from'])){
+                $contract->syncSupportingContracts($formData['translated_from']);
+            }
+            if(isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '0'){
+                $this->contract->removeAsSupportingContract($contract->id);
+            }
+            $this->contract->updateOCID($contract);
             $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
 
             $this->logger->activity('contract.log.update', ['contract' => $contract->title], $contract->id);
@@ -874,6 +879,19 @@ class ContractService
         }
 
         return false;
+    }
+
+    /**
+     * @return array
+     */
+    public function parentContracts(){
+        $contracts = $this->contract->getParentContracts()->toArray();
+        $data      = [];
+        foreach ($contracts as $k => $v) {
+            $data[$v['id']] = $v['metadata']->contract_name;
+        }
+
+        return $data;
     }
 
 }

@@ -79,14 +79,10 @@ class ElasticSearchService
 
         $contract->metadata->contract_id = $contract->id;
         $contract->metadata->page_number = $contract->pages()->count();
-        $translatedFrom                  = [];
         $metadataAttr                    = $contract->metadata;
-        if (isset($contract->metadata->translated_from) && !empty($contract->metadata->translated_from)) {
-            $translatedFrom = $this->contract->getcontracts((int) $contract->metadata->translated_from);
-        }
-        $metadataAttr->translated_from = $translatedFrom;
-        $contract->metadata            = $metadataAttr;
-        $metadata                      = [
+        $metadataAttr->translated_from   = $contract->getParentContract();
+        $contract->metadata              = $metadataAttr;
+        $metadata                        = [
             'id'                   => $contract->id,
             'metadata'             => collect($contract->metadata)->toJson(),
             'total_pages'          => $contract->pages->count(),
@@ -146,13 +142,13 @@ class ElasticSearchService
         $data           = [];
         $annotations    = $contract->annotations;
         foreach ($annotations as $annotation) {
-            $json               = $annotation->annotation;
-            $json->category_key = $json->category;
-            $json->category     = _l("codelist/annotation.annotation_category.{$json->category}");
-            $json->id          = $annotation->id;
-            $json->contract_id = $contract->id;
+            $json                      = $annotation->annotation;
+            $json->category_key        = $json->category;
+            $json->category            = _l("codelist/annotation.annotation_category.{$json->category}");
+            $json->id                  = $annotation->id;
+            $json->contract_id         = $contract->id;
             $json->open_contracting_id = $contract->metadata->open_contracting_id;
-            $annotationData[]  = $json;
+            $annotationData[]          = $json;
         }
         $data['annotations'] = json_encode($annotationData);
 

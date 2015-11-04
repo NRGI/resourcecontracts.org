@@ -384,9 +384,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 @endif
             </li>
             <li><h3>@lang('contract.associated_contracts')</h3></li>
-            @if(!empty($translatedFrom))
+            @if(!empty($parentContract))
                 <li><strong>@lang('contract.parent_document'):</strong>
-                    <a href="{{route('contract.show',$translatedFrom[0]['id'])}}">{{$translatedFrom[0]['contract_name']}}</a>
+                    <a href="{{route('contract.show',$parentContract->id)}}">{{$parentContract->title}}</a>
                 </li>
             @endif
 

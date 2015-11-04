@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contract\ContractRequest;
 use App\Nrgi\Entities\Contract\Comment\Comment;
+use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\AnnotationService;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\ContractFilterService;
@@ -93,14 +94,16 @@ class ContractController extends Controller
     /**
      * Display contract create form.
      *
+     * @param Request $request
      * @return Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $country   = $this->countries->all();
-        $contracts = $this->contract->getList();
+        $contracts = $this->contract->parentContracts();
+        $contract  = $this->contract->find($request->get('parent'));
 
-        return view('contract.create', compact('country', 'contracts'));
+        return view('contract.create', compact('country', 'contracts', 'contract'));
     }
 
     /**
@@ -127,12 +130,13 @@ class ContractController extends Controller
     public function show($id)
     {
         $contract = $this->contract->findWithAnnotations($id);
+
         if (!$contract) {
             abort('404');
         }
-        $translatedFrom = [];
-        if (isset($contract->metadata->translated_from) && !empty($contract->metadata->translated_from)) {
-            $translatedFrom = $this->contract->getcontracts($contract->metadata->translated_from);
+        $parentContract = [];
+        if ($parent = $contract->getParentContract()) {
+            $parentContract = $this->contract->find($parent);
         }
         $supportingDocument           = $this->contract->getSupportingDocuments($contract->id);
         $status                       = $this->contract->getStatus($id);
@@ -144,7 +148,7 @@ class ContractController extends Controller
 
         return view(
             'contract.show',
-            compact('contract', 'status', 'annotations', 'annotationStatus', 'translatedFrom', 'supportingDocument')
+            compact('contract', 'status', 'annotations', 'annotationStatus', 'parentContract', 'supportingDocument')
         );
     }
 
@@ -366,5 +370,15 @@ class ContractController extends Controller
         return back()->withError(trans('contract.unpublish.fail'));
     }
 
+    /**
+     * Display contract type selection form.
+     *
+     * @return Response
+     */
+    public function contractType()
+    {
+        $parentContracts = $this->contract->parentContracts();
 
+        return view('contract.type_selection', compact('parentContracts'));
+    }
 }
