@@ -3,8 +3,7 @@ $router->group(
     ['namespace' => 'Contract'],
     function () use ($router) {
         $router->resource('contract', 'ContractController');
-        $router->get
-        ('contract/{id}/download', ['as' => 'contract.download', 'uses' => 'ContractController@download']);
+        $router->get('contract/{id}/download', ['as' => 'contract.download', 'uses' => 'ContractController@download']);
         $router->post('contract/{id}/page', ['as' => 'contract.page.store', 'uses' => 'Page\PageController@store']);
         $router->post('contract/{id}/output', ['as' => 'contract.output.save', 'uses' => 'ContractController@saveOutputType']);
         $router->post('contract/{id}/status', ['as' => 'contract.status', 'uses' => 'ContractController@updateStatus']);
@@ -20,5 +19,6 @@ $router->group(
         $router->post('contract/{id}/unpublish', ['as' => 'contract.unpublish', 'uses' => 'ContractController@unPublish']);
         $router->get('contract/{id}/annotate', ['as' => 'contract.annotate', 'uses' => 'Page\PageController@annotatenew']);
         $router->get('contract/{id}/review', ['as' => 'contract.review', 'uses' => 'Page\PageController@reviewnew']);
+        $router->get('contract/select/type', ['as' => 'contract.select.type', 'uses' => 'ContractController@contractType']);
     }
 );

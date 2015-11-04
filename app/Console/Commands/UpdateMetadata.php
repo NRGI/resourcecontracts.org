@@ -53,6 +53,7 @@ class UpdateMetadata extends Command
             $contracts = $this->contract->getList();
 
             foreach ($contracts as $contract) {
+                $this->contract = $contract;
                 $this->updateMetadata($contract);
             }
         } else {
@@ -91,6 +92,7 @@ class UpdateMetadata extends Command
     {
         //$this->publishPdfText($metadata);
         $this->updateDisclosureMode($metadata);
+        $this->addIsSupportingDocument($metadata);
 
         return $metadata;
     }
@@ -144,6 +146,32 @@ class UpdateMetadata extends Command
         if ($metadata['disclosure_mode'] == "Corporate") {
             $metadata['disclosure_mode'] = "Company";
         }
+    }
+
+    /**
+     * update disclosure mode
+     *
+     * @param $metadata
+     */
+    protected function addIsSupportingDocument(&$metadata)
+    {
+        unset($metadata['translated_from']);
+        $metadata['is_supporting_document'] = $this->getIsSupportingContract();
+    }
+
+    /**
+     * @return int
+     */
+    protected function getIsSupportingContract()
+    {
+        $exists = \DB::table('supporting_contracts')
+                     ->whereSupportingContractId($this->contract->id)
+                     ->count() > 0;
+        if ($exists) {
+            return "1";
+        }
+
+        return "0";
     }
 
     /**

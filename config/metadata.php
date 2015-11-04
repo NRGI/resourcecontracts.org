@@ -20,26 +20,24 @@ return [
         'filehash' => '',
         'user_id'  => '',
         'metadata' => [
-            'contract_name'             => '',
-            'contract_identifier'       => '',
-            'language'                  => '',
-            'country'                   => [
+            'contract_name'          => '',
+            'contract_identifier'    => '',
+            'language'               => '',
+            'country'                => [
                 'code' => '',
                 'name' => '',
             ],
-            'resource'                  => [],
-            'government_entity'         => [
+            'resource'               => [],
+            'government_entity'      => [
                 [
                     'entity'     => '',
                     'identifier' => '',
                 ]
             ],
-            'type_of_contract'          => '',
-            'signature_date'            => '',
-            'document_type'             => '',
-            'translation_from_original' => '',
-            'translation_parent'        => '',
-            'company'                   => [
+            'type_of_contract'       => '',
+            'signature_date'         => '',
+            'document_type'          => '',
+            'company'                => [
                 [
                     'name'                          => '',
                     'participation_share'           => '',
@@ -53,23 +51,23 @@ return [
                     'operator'                      => ''
                 ]
             ],
-            'project_title'             => '',
-            'project_identifier'        => '',
-            'concession'                => [
+            'project_title'          => '',
+            'project_identifier'     => '',
+            'concession'             => [
                 [
                     'license_name'       => '',
                     'license_identifier' => ''
                 ]
             ],
-            'source_url'                => '',
-            'disclosure_mode'           => '',
-            'date_retrieval'            => '',
-            'category'                  => '',
-            'signature_year'            => '',
-            'file_size'                 => '',
-            'open_contracting_id'       => '',
-            'show_pdf_text'             => '',
-
+            'source_url'             => '',
+            'disclosure_mode'        => '',
+            'date_retrieval'         => '',
+            'category'               => '',
+            'signature_year'         => '',
+            'file_size'              => '',
+            'open_contracting_id'    => '',
+            'show_pdf_text'          => '',
+            'is_supporting_document' => '',
         ],
     ]
 ];
