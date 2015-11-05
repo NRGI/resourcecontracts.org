@@ -68,26 +68,34 @@ class ImportService
      */
 
     protected $keys = [
+        "pdf_url",
         "contract_name",
-        "country",
-        "type_of_contract",
+        "contract_identifier",
+        "language",
+        "country_code",
         "resource",
+        "government_entity",
+        "government_identifier",
+        "contract_type",
+        "signature_date",
+        "document_type",
         "company_name",
-        "corporate_group",
+        "participation_share",
+        "jurisdiction_of_incorporation",
+        "registration_agency",
+        "incorporation_date",
         "company_address",
         "company_number",
+        "corporate_grouping",
         "open_corporate_link",
-        "pdf_url",
-        "signature_date",
-        "language",
-        "disclosure_mode",
-        "date_retrieval",
+        "operator",
         "project_title",
         "project_identifier",
         "license_name",
         "license_identifier",
-        "government_entity",
-        "government_identifier",
+        "source_url",
+        "disclosure_mode",
+        "retrieval_date",
         "category",
     ];
 
@@ -199,26 +207,38 @@ class ImportService
      */
     protected function getFormattedJsonData(array $results)
     {
-        $contract                              = config('metadata.schema');
-        $company_template                      = $contract['metadata']['company'][0];
-        $contract['metadata']['contract_name'] = $results['contract_name'];
+        $results = trimArray($results);
 
-        $company_name_arr      = explode($this->separator, $results['company_name']);
-        $corporate_group_arr   = explode($this->separator, $results['corporate_group']);
-        $company_address_arr   = explode($this->separator, $results['company_address']);
-        $company_number_arr    = explode($this->separator, $results['company_number']);
-        $open_corporate_id_arr = explode($this->separator, $results['open_corporate_link']);
+        $contract                                    = config('metadata.schema');
+        $company_template                            = $contract['metadata']['company'][0];
+        $contract['metadata']['contract_name']       = $results['contract_name'];
+        $contract['metadata']['contract_identifier'] = $results['contract_identifier'];
+
+        $company_name_arr                  = explode($this->separator, $results['company_name']);
+        $participation_share_arr           = explode($this->separator, $results['participation_share']);
+        $jurisdiction_of_incorporation_arr = explode($this->separator, $results['jurisdiction_of_incorporation']);
+        $registration_agency_arr           = explode($this->separator, $results['registration_agency']);
+        $incorporation_date_arr            = explode($this->separator, $results['incorporation_date']);
+        $company_address_arr               = explode($this->separator, $results['company_address']);
+        $company_number_arr                = explode($this->separator, $results['company_number']);
+        $corporate_grouping_arr            = explode($this->separator, $results['corporate_grouping']);
+        $open_corporate_id_arr             = explode($this->separator, $results['open_corporate_link']);
+        $operator_arr                      = explode($this->separator, $results['operator']);
 
         $companies = [];
         foreach ($company_name_arr as $key => $company) {
-            $company_default = $company_template;
-
-            $company_default['name']              = $company;
-            $company_default['parent_company']    = isset($corporate_group_arr[$key]) ? $corporate_group_arr[$key] : '';
-            $company_default['company_address']   = isset($company_address_arr[$key]) ? $company_address_arr[$key] : '';
-            $company_default['company_number']    = isset($company_number_arr[$key]) ? $company_number_arr[$key] : '';
-            $company_default['open_corporate_id'] = isset($open_corporate_id_arr[$key]) ? $open_corporate_id_arr[$key] : '';
-            $companies[]                      = $company_default;
+            $company_default                                  = $company_template;
+            $company_default['name']                          = $company;
+            $company_default['participation_share']           = isset($participation_share_arr[$key]) ? $this->getParticipation_share($participation_share_arr[$key]) : '';
+            $company_default['jurisdiction_of_incorporation'] = isset($jurisdiction_of_incorporation_arr[$key]) ? $jurisdiction_of_incorporation_arr[$key] : '';
+            $company_default['registration_agency']           = isset($registration_agency_arr[$key]) ? $registration_agency_arr[$key] : '';
+            $company_default['company_founding_date']         = isset($incorporation_date_arr[$key]) ? $this->dateFormat($incorporation_date_arr[$key]) : '';
+            $company_default['company_address']               = isset($company_address_arr[$key]) ? $company_address_arr[$key] : '';
+            $company_default['company_number']                = isset($company_number_arr[$key]) ? $company_number_arr[$key] : '';
+            $company_default['parent_company']                = isset($corporate_grouping_arr[$key]) ? $corporate_grouping_arr[$key] : '';
+            $company_default['open_corporate_id']             = isset($open_corporate_id_arr[$key]) ? $open_corporate_id_arr[$key] : '';
+            $company_default['operator']                      = isset($operator_arr[$key]) ? $this->getOperatorValue($operator_arr[$key]) : '';
+            $companies[]                                      = $company_default;
         }
 
         $contract['pdf_url'] = $results['pdf_url'];
@@ -236,8 +256,9 @@ class ImportService
 
         $contract['metadata']['company']          = $companies;
         $contract['metadata']['disclosure_mode']  = $results['disclosure_mode'];
-        $contract['metadata']['type_of_contract'] = $results['type_of_contract'];
-        $contract['metadata']['date_retrieval']   = $results['date_retrieval'];
+        $contract['metadata']['type_of_contract'] = $results['contract_type'];
+        $contract['metadata']['date_retrieval']   = $this->dateFormat($results['retrieval_date']);
+        $contract['metadata']['source_url']       = $results['source_url'];
 
         $license_name       = explode($this->separator, $results["license_name"]);
         $license_identifier = explode($this->separator, $results["license_identifier"]);
@@ -262,7 +283,7 @@ class ImportService
             $contract['metadata']['government_entity'][$i]['identifier'] = isset($government_identifier[$i]) ? $government_identifier[$i] : '';
         }
 
-        $contract['metadata']['country']             = $this->getCountry($results['country']);
+        $contract['metadata']['country']             = $this->getCountry($results['country_code']);
         $contract['metadata']['signature_date']      = $this->dateFormat($results['signature_date']);
         $contract['metadata']['signature_year']      = $this->dateFormat($results['signature_date'], 'Y');
         $contract['metadata']['language']            = $this->getLanguage(strtolower($results['language']));
@@ -618,7 +639,7 @@ class ImportService
         $languages = trans('codelist/language')['major'] + trans('codelist/language')['minor'];
 
         foreach ($languages as $code => $name) {
-            if ($lang == $code || $name == $lang) {
+            if ($lang == $code || strtolower($name) == $lang) {
                 return $code;
             }
         }
@@ -717,18 +738,19 @@ class ImportService
             "contract_name",
             "signature_date",
             "language",
+            "resource",
         ];
 
         $message = '';
 
         foreach ($required as $key) {
-            if ($contract->metadata->$key == '') {
-                $message .= '<p>' . $key . ' is required.</p>';
+            if (empty($contract->metadata->$key)) {
+                $message .= '<p>' . ucwords(str_replace('_', ' ', $key)) . ' is required.</p>';
             }
         }
 
         if ($contract->metadata->country->code == '') {
-            $message .= '<p>Country code is invalid.</p>';
+            $message .= '<p>Country Code is invalid.</p>';
         }
 
         if (empty($contract->pdf_url)) {
@@ -742,4 +764,41 @@ class ImportService
 
         return [($message == ''), $message];
     }
+
+    /**
+     * GET Operator Value
+     *
+     * @param $key
+     * @return int
+     */
+    protected function getOperatorValue($key)
+    {
+        $key = trim(strtolower($key));
+
+        if ($key == 'yes') {
+            return 1;
+        }
+
+        if ($key == 'no') {
+            return 0;
+        }
+
+        return - 1;
+    }
+
+    /**
+     * Get Valid participation share
+     *
+     * @param $share
+     * @return string
+     */
+    protected function getParticipation_share($share)
+    {
+        if ($share <= 1) {
+            return $share;
+        }
+
+        return "";
+    }
+
 }
