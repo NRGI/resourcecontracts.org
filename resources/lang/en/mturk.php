@@ -2,6 +2,10 @@
  return [
      'mturk'         => 'Mechanical Turk',
      'activity'      => 'Activity',
+     'category'      => 'Category',
+     'created_on' => 'Created on',
+     'requiring_action' => 'Requiring Action',
+     'sent_to_rc_on' => 'Sent to RC on',
      'index_title'   => 'Contracts Sent for Mturk',
      'contract_name' => 'Contract Name',
      'pages'         => 'Pages',

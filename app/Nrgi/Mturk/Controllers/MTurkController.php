@@ -1,6 +1,8 @@
 <?php namespace App\Nrgi\Mturk\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Nrgi\Entities\Contract\Contract;
+use App\Nrgi\Mturk\Entities\Task;
 use App\Nrgi\Mturk\Services\ActivityService;
 use App\Nrgi\Mturk\Services\MTurkService;
 use App\Nrgi\Mturk\Services\TaskService;
@@ -45,11 +47,14 @@ class MTurkController extends Controller
     /**
      * Display all the contracts sent for MTurk
      *
+     * @param Request $request
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $contracts = $this->task->getContracts();
+        $status = $request->get('status', Contract::MTURK_SENT);
+
+        $contracts = $this->task->getContracts($status);
 
         return view('mturk.index', compact('contracts'));
     }
@@ -57,13 +62,19 @@ class MTurkController extends Controller
     /**
      * Display all the tasks for a specific contract
      *
+     * @param Request $request
+     * @param         $contract_id
      * @return string
      */
-    public function tasksList($contract_id)
+    public function tasksList(Request $request, $contract_id)
     {
-        $contract        = $this->contract->findWithTasks($contract_id);
+        $status      = $request->get('status', null);
+        $approved    = $request->get('approved', null);
+        $contract    = $this->contract->findWithTasks($contract_id, $status, $approved);
+        $contractAll = $this->contract->findWithTasks($contract_id);
+
         $contract->tasks = $this->task->appendAssignment($contract->tasks);
-        $total_pages     = $contract->tasks->count();
+        $total_pages     = $contractAll->tasks->count();
         $total_hit       = $this->task->getTotalHits($contract_id);
         $status          = $this->task->getTotalByStatus($contract_id);
 
@@ -184,5 +195,25 @@ class MTurkController extends Controller
 
         return view('mturk.activity', compact('activities', 'users', 'contracts'));
     }
+
+
+    /**
+     * Display all tasks
+     *
+     * @param Request $request
+     * @return View
+     */
+    public function allTasks(Request $request)
+    {
+        $filter = [
+            'status'   => $request->get('status', null),
+            'approved' => $request->get('approved', null)
+        ];
+
+        $tasks = $this->task->allTasks($filter);
+
+        return view('mturk.allTasks', compact('tasks'));
+    }
+
 
 }

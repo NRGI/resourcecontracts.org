@@ -134,4 +134,35 @@ class TaskRepository implements TaskRepositoryInterface
     {
         return $this->task->expired()->pending()->get();
     }
+
+    /**
+     * Get all Tasks
+     *
+     * @param $filter
+     * @param $null
+     * @return Collection
+     */
+    public function allTasks($filter, $perPage = null)
+    {
+        $status   = $filter['status'];
+        $approved = $filter['approved'];
+
+        $query = $this->task->join('contracts', 'mturk_tasks.contract_id', '=', 'contracts.id')
+                            ->select('contracts.*', 'mturk_tasks.*')
+                            ->orderBy('mturk_tasks.created_at', 'DESC');
+
+        if (!is_null($status)) {
+            $query->where('mturk_tasks.status', $status);
+        }
+
+        if (!is_null($approved)) {
+            $query->where('mturk_tasks.approved', $approved);
+        }
+
+        if (!is_null($perPage)) {
+            return $query->paginate($perPage);
+        }
+
+        return $query->get();
+    }
 }

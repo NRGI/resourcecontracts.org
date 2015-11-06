@@ -21,4 +21,13 @@ interface ActivityLogRepositoryInterface
      * @return ActivityLog
      */
     public function paginate($filter, $limit);
+
+    /**
+     * Get Mturk Log
+     *
+     * @param $contract_id
+     * @param $log
+     * @return ActivityLog
+     */
+    public function mturk($contract_id, $log);
 }
