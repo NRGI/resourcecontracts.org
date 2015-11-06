@@ -1,5 +1,6 @@
 <?php
 $router->get('/mturk', ['as' => 'mturk.index', 'uses' => 'MTurkController@index']);
+$router->get('/mturk/tasks', ['as' => 'mturk.allTasks', 'uses' => 'MTurkController@allTasks']);
 $router->post('/mturk/add/{contract_id}/tasks', ['as' => 'mturk.add', 'uses' => 'MTurkController@createTasks']);
 $router->get('/mturk/activity/', ['as' => 'mturk.activity', 'uses' => 'MTurkController@activity']);
 $router->get('/mturk/{contract_id}', ['as' => 'mturk.tasks', 'uses' => 'MTurkController@tasksList']);

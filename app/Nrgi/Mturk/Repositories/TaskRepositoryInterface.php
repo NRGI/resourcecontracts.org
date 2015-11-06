@@ -75,4 +75,13 @@ interface TaskRepositoryInterface
      */
     public function getExpired();
 
+    /**
+     * Get all Tasks
+     *
+     * @param $filter
+     * @param $null
+     * @return Collection
+     */
+    public function allTasks($filter, $perPage);
+
 }

@@ -184,14 +184,24 @@ class ContractRepository implements ContractRepositoryInterface
     /**
      * Get Contract with tasks
      *
-     * @param $contractId
+     * @param      $contractId
+     * @param null $status
+     * @param null $approved
      * @return Contract
      */
-    public function findContractWithTasks($contractId)
+    public function findContractWithTasks($contractId, $status = null, $approved = null)
     {
         return $this->contract->with(
             [
-                'tasks' => function ($query) {
+                'tasks' => function ($query) use ($status, $approved) {
+                    if (!is_null($status)) {
+                        $query->where('status', $status);
+                    }
+
+                    if (!is_null($approved)) {
+                        $query->where('approved', $approved);
+                    }
+
                     $query->orderBy('page_no', 'ASC');
                 }
             ]
@@ -305,13 +315,26 @@ class ContractRepository implements ContractRepositoryInterface
     /**
      * Get Contracts having MTurk Tasks
      *
+     * @param int $status
+     * @param int $perPage
      * @return Collection
      */
-    public function getMTurkContracts()
+    public function getMTurkContracts($status = null, $perPage = null)
     {
-        return $this->contract->with('tasks')->where('mturk_status', '!=', '')->get();
-    }
+        $query = $this->contract->with('tasks');
 
+        if (!is_null($status)) {
+            $query->where('mturk_status', $status);
+        }
+
+        $query->orderBy('created_datetime', 'DESC');
+
+        if (!is_null($perPage)) {
+            return $query->paginate($perPage);
+        }
+
+        return $query->get();
+    }
 
     /**
      * Get Contract with pdf process status

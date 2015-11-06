@@ -1,8 +1,10 @@
 <?php namespace App\Nrgi\Mturk\Services;
 
+use App\Nrgi\Entities\ActivityLog\ActivityLog;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Mturk\Entities\Task;
 use App\Nrgi\Mturk\Repositories\TaskRepositoryInterface;
+use App\Nrgi\Services\ActivityLog\ActivityLogService;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\Pages\PagesService;
 use Exception;
@@ -44,6 +46,14 @@ class TaskService
      * @var Queue
      */
     protected $queue;
+    /**
+     * @var int
+     */
+    protected $perPage = 50;
+    /**
+     * @var ActivityLogService
+     */
+    protected $logService;
 
     /**
      * @param TaskRepositoryInterface $task
@@ -52,6 +62,7 @@ class TaskService
      * @param MTurkService            $turk
      * @param PagesService            $page
      * @param Queue                   $queue
+     * @param ActivityLogService      $logService
      */
     public function __construct(
         TaskRepositoryInterface $task,
@@ -59,7 +70,8 @@ class TaskService
         Log $logger,
         MTurkService $turk,
         PagesService $page,
-        Queue $queue
+        Queue $queue,
+        ActivityLogService $logService
     ) {
         $this->task     = $task;
         $this->contract = $contract;
@@ -67,6 +79,7 @@ class TaskService
         $this->turk     = $turk;
         $this->page     = $page;
         $this->queue    = $queue;
+        $this->logService = $logService;
     }
 
     /**
@@ -74,14 +87,30 @@ class TaskService
      *
      * @return Collection|null
      */
-    public function getContracts()
+    public function getContracts($status)
     {
-        $contracts = $this->contract->getMTurkContracts();
+        if(!in_array($status, [Contract::MTURK_SENT, Contract::MTURK_COMPLETE])){
+            $status = Contract::MTURK_SENT;
+        }
+
+        if($status == Contract::MTURK_SENT){
+            $this->perPage = null;
+        }
+
+        $contracts = $this->contract->getMTurkContracts($status, $this->perPage);
 
         if(!is_null($contracts)){
             foreach ($contracts as &$contract) {
                 $contract->total_hits   = $this->getTotalHits($contract->id);
                 $contract->count_status = $this->getTotalByStatus($contract->id);
+                $info = $this->getMTurkInfo($contract->id);
+
+                $contract->mturk_created_at = $info['created_at'];
+                $contract->mturk_created_by = $info['created_by'];
+
+                $contract->mturk_sent_at = $info['sent_at'];
+                $contract->mturk_sent_by = $info['sent_by'];
+
             }
         }
 
@@ -507,5 +536,35 @@ class TaskService
     public function getExpired()
     {
         return $this->task->getExpired();
+    }
+
+    /**
+     * Get MTurk Information
+     *
+     * @param $id
+     * @return array
+     */
+    public function getMTurkInfo($id)
+    {
+        $create = $this->logService->mturk($id, 'create');
+        $sent = $this->logService->mturk($id, 'sent_to_rc');
+
+        return  [
+            'created_at' => $create->created_at->format('Y-m-d'),
+            'created_by' => $create->user->name,
+            'sent_at' => isset($sent->created_at) ? $sent->created_at->format('Y-m-d') : '',
+            'sent_by' => isset($sent->user->name) ? $sent->user->name : ''
+        ];
+    }
+
+    /**
+     * Get all Tasks
+     *
+     * @param $filter
+     * @return Collection
+     */
+    public function allTasks($filter)
+    {
+       return  $this->task->allTasks($filter, null);
     }
 }

@@ -51,4 +51,15 @@ class ActivityLogService
     {
         return $this->activityLog->paginate($filter, $perPage);
     }
+
+    /**
+     * Get MTurk Log
+     *
+     * @param $log
+     * @return ActivityLog
+     */
+    public function mturk($contract_id, $log)
+    {
+        return $this->activityLog->mturk($contract_id, $log);
+    }
 }

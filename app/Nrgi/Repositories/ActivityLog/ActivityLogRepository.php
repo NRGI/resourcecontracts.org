@@ -59,4 +59,16 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
 
         return $query->paginate($limit);
     }
+
+    /**
+     * Get Mturk Log
+     *
+     * @param $contract_id
+     * @param $log
+     * @return ActivityLog
+     */
+    public function mturk($contract_id, $log)
+    {
+       return ActivityLog::with('user')->where('contract_id', $contract_id)->where('message', 'mturk.log.'.$log)->first();
+    }
 }

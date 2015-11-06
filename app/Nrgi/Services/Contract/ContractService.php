@@ -148,12 +148,14 @@ class ContractService
      * Get Contract With Tasks
      *
      * @param $id
+     * @param $status
+     * @param $approved
      * @return Contract
      */
-    public function findWithTasks($id)
+    public function findWithTasks($id, $status=null, $approved=null)
     {
         try {
-            return $this->contract->findContractWithTasks($id);
+            return $this->contract->findContractWithTasks($id, $status, $approved);
         } catch (ModelNotFoundException $e) {
             $this->logger->error('Contract not found.', ['Contract ID' => $id]);
         } catch (Exception $e) {
@@ -166,12 +168,14 @@ class ContractService
     /**
      * Get Contracts Having MTurk tasks
      *
+     * @param     $status
+     * @param int $perPage
      * @return Collection|null
      */
-    public function getMTurkContracts()
+    public function getMTurkContracts($status = null, $perPage = null)
     {
         try {
-            return $this->contract->getMTurkContracts();
+            return $this->contract->getMTurkContracts($status, $perPage);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
