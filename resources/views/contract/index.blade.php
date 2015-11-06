@@ -20,7 +20,7 @@
 
             <div class="btn-group pull-right" role="group" aria-label="...">
                 <a href="{{route('contract.import')}}" class="btn btn-default">@lang('contract.import.name')</a>
-                <a href="{{route('contract.create')}}" class="btn btn-primary btn-import">@lang('contract.add')</a>
+                <a href="{{route('contract.select.type')}}" class="btn btn-primary btn-import">@lang('contract.add')</a>
             </div>
         </div>
         <div class="panel-body">

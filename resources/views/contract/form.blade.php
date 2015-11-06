@@ -8,7 +8,6 @@
 @stop
 
 <?php
-
 $corporate_groups = config('groups');
 $groups = array();
 foreach ($corporate_groups as $group) {
@@ -550,13 +549,15 @@ if (isset($contract->metadata->resource)) {
 
 <div class="form-group">
     <?php
-    $disclosure_mode = isset($contract->metadata->disclosure_mode) ? $contract->metadata->disclosure_mode : old('disclosure_mode');
+    $disclosure_mode = isset($contract->metadata->disclosure_mode) ? $contract->metadata->disclosure_mode : old(
+            'disclosure_mode'
+    );
     if (!in_array($disclosure_mode, trans('codelist/disclosure_mode')) AND $disclosure_mode != '') {
         $disclosure_mode = 'Other';
     }
     ?>
     {!! Form::label('disclosure_mode', trans('contract.disclosure_mode'), ['class'=>'col-sm-2 control-label'])!!}
-        <div class="col-sm-7">
+    <div class="col-sm-7">
         {!! Form::select('disclosure_mode', ['' => 'selects']+trans('codelist/disclosure_mode'),
         $disclosure_mode, ["class"=>"form-control"])!!}
         @if($disclosure_mode == 'Other')
@@ -592,32 +593,78 @@ if (isset($contract->metadata->resource)) {
         @endforeach
     </div>
 </div>
-
 <h3>@lang('contract.associated_contracts')</h3>
 <hr>
 <div class="form-group">
-    {!! Form::label('translated_from', trans('contract.parent_document'), ['class'=>'col-sm-2 control-label'])!!}
+    {!! Form::label('operator',trans('contract.is_supporting_document'),['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
-        {!! Form::select('translated_from',['' => 'select']+$contracts, isset($contract->metadata->translated_from)?$contract->metadata->translated_from:null, ["class"=>"form-control"])!!}
+        <?php
+        $is_supporting_document_value = false;
+        $is_parent_document_value = false;
+        $disable_supporting = 'disabled';
+        $disable_parent = 'disabled';
+        if(isset($contract->metadata->is_supporting_document) && $contract->metadata->is_supporting_document==1){
+            $is_supporting_document_value = true;
+            $disable_supporting = 'enabled';
+        }else{
+            $is_parent_document_value = true;
+            $disable_parent = 'enabled';
+        }
+        if($action == 'add' && ($is_supporting)){
+            $is_supporting_document_value = true;
+            $is_parent_document_value = false;
+            $disable_parent = 'disabled';
+            $disable_supporting = 'enabled';
+        }
+        if($action == 'edit' && isset($contract->metadata->is_supporting_document) && $contract->metadata->is_supporting_document==0){
+            $is_supporting = false;
+        }
+        if($action == 'add' && !$is_supporting){
+            $is_parent_document_value = true;
+        }
+
+        if($action == 'edit' && empty($supportingDocument)){
+            $disable_supporting = 'enabled';
+            $disable_parent = 'enabled';
+        }
+
+        ?>
+        <label class="checkbox-inline">
+            {!! Form::radio("is_supporting_document", 1, $is_supporting_document_value , ['class' => 'field is-supporting-document',$disable_supporting]) !!} Yes
+        </label>
+        <label class="checkbox-inline">
+            {!! Form::radio("is_supporting_document", 0, $is_parent_document_value, ['class' => 'field is-supporting-document',$disable_parent]) !!} No
+        </label>
+
     </div>
 </div>
-<div class="form-group support-form-group">
-    {!! Form::label('translated_from', trans('contract.supporting_documents'), ['class'=>'col-sm-2 control-label'])!!}
+<div class="form-group parent-document" style="display: @if($action == 'edit' && isset($contract->metadata->is_supporting_document) &&  $contract->metadata->is_supporting_document==1 or ($is_supporting))block @else none @endif">
+    {!! Form::label('translated_from', trans('contract.parent_document'), ['class'=>'col-sm-2 control-label parent-document-select'])!!}
+    <?php
+    $parent_contract = null;
+    if($action == 'edit' && $contract->getParentContract()){
+        $parent_contract = $contract->getParentContract();
+    }
+    if(isset($is_supporting) && $is_supporting){
+        $parent_contract = Request::get('parent');
+    }
+    ?>
     <div class="col-sm-7">
-        {!! Form::select('',['' => 'select']+$contracts,null, ["class"=>"form-control select-document"])!!}
+        {!! Form::select('translated_from',['' => 'select']+$contracts, $parent_contract, ["class"=>"form-control"])!!}
     </div>
 </div>
+
 <?php $docId = []; ?>
 <div id="selected-document" class="selected-document">
     @if(!empty($supportingDocument))
         @foreach($supportingDocument as $doc)
             <div class="document">
-                <a href="{{route('contract.show',$doc['id'])}}">{{$doc['contract_name']}}</a><br>
+                <a href="{{route('contract.edit',$doc['id'])}}">{{$doc['contract_name']}}</a><br>
                 <input type="hidden" name="supporting_document[]" value="{{$doc['id']}}">
                 <?php
                 array_push($docId, $doc['id']);
                 ?>
-                <div class="delete" id="{{$doc['id']}}">delete</div>
+
             </div>
         @endforeach
     @endif
@@ -678,6 +725,15 @@ if (isset($contract->metadata->resource)) {
             }
         });
 
+        $(document).on('click', '.is-supporting-document', function () {
+            if (($(this).val() == '1')) {
+                $('.parent-document').show();
+            } else {
+                $('.parent-document').hide();
+                $("#translated_from").val(null).trigger("change");
+            }
+        });
+
         var input_disclosure_mode = '<input class="form-control disclosure_mode_other" name="disclosure_mode" type="text">';
 
         $(document).on('change', '#disclosure_mode', function () {
@@ -706,5 +762,6 @@ if (isset($contract->metadata->resource)) {
 <div class="form-action">
     <div class="col-sm-7 col-lg-offset-2">
         {!! Form::submit(trans('contract.submit'),['class'=>'btn btn-lg pull-right btn-primary' , 'id' => 'Submit']) !!}
+        <a style="margin-right: 50px;" class="btn btn-lg pull-right btn-danger pull-right back" href="{{route('contract.select.type')}}">@lang('contract.cancel')</a>
     </div>
 </div>

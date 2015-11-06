@@ -208,4 +208,19 @@ interface ContractRepositoryInterface
     public function getMultipleMetadataContract($string);
 
     public function getContractFilterByMetadata($filters, $limit, $contractId);
+
+    /**
+     * Update OCID
+     *
+     * @param Contract $contract
+     */
+    public function updateOCID(Contract $contract);
+
+    /**
+     * remove supporting contracts
+     *
+     * @param $contractId
+     * @return bool
+     */
+    public function removeAsSupportingContract($contractId);
 }

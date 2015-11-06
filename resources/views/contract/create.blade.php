@@ -1,7 +1,8 @@
 @extends('layout.app')
 @section('content')
+    <?php $is_supporting = Request::has('parent');?>
     <div class="panel panel-default">
-        <div class="panel-heading">@lang('contract.add')</div>
+        <div class="panel-heading">@if($is_supporting) @lang('contract.add_supporting_document') @else @lang('contract.add')@endif</div>
         <div class="panel-body">
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
@@ -13,7 +14,7 @@
                     </ul>
                 </div>
             @endif
-            {!! Form::open(['route' => 'contract.store','class'=>'form-horizontal contract-form', 'files' => true]) !!}
+            {!! Form::model($contract,['route' => 'contract.store','class'=>'form-horizontal contract-form', 'files' => true]) !!}
             @include('contract.form', ['action'=>'add'])
             {!! Form::close() !!}
         </div>

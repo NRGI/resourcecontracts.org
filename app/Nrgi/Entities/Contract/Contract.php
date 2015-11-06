@@ -102,7 +102,13 @@ class Contract extends Model
      */
     public function getFileUrlAttribute()
     {
-        return getS3FileURL($this->id . '/' . $this->file);
+        $path = $this->id . '/' . $this->file;
+
+        if ($this->pdf_process_status == self::PROCESSING_PIPELINE || $this->pdf_process_status == self::PROCESSING_RUNNING) {
+            $path = $this->file;
+        }
+
+        return getS3FileURL($path);
     }
 
     /**
@@ -318,24 +324,16 @@ class Contract extends Model
      */
     public function syncSupportingContracts($contract_id)
     {
-        DB::table('supporting_contracts')->where('contract_id', $this->id)->delete();
-
         if (empty($contract_id)) {
             return true;
         }
 
-        if (!is_array($contract_id)) {
-            $contract_id = [$contract_id];
-        }
+        DB::table('supporting_contracts')->where('supporting_contract_id', $this->id)->delete();
 
-        $insert = [];
-
-        foreach ($contract_id as $id) {
-            $insert[] = [
-                'contract_id' => $this->id,
-                'supporting_contract_id' => $id
-            ];
-        }
+        $insert = [
+            'contract_id'            => $contract_id,
+            'supporting_contract_id' => $this->id
+        ];
 
         return DB::table('supporting_contracts')->insert($insert);
     }
@@ -350,4 +348,19 @@ class Contract extends Model
         return DB::table('supporting_contracts')->where('contract_id', $this->id)->lists('supporting_contract_id');
     }
 
+    /**
+     * Get the parent contract
+     *
+     * @return array
+     */
+    public function getParentContract()
+    {
+        return (DB::table('supporting_contracts')
+                  ->where('supporting_contract_id', $this->id)
+                  ->orderBy('id', 'DESC')
+                  ->first()) ? DB::table(
+            'supporting_contracts'
+        )->where('supporting_contract_id', $this->id)->orderBy('id', 'DESC')->first()->contract_id : null;
+
+    }
 }
