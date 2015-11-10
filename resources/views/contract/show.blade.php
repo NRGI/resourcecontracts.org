@@ -332,7 +332,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                 <p><strong>@lang('contract.company_number')
                                         :</strong> @if(isset($v->company_number)){{$v->company_number}}@endif</p>
 
-                                <p><strong>@lang('contract.corporate_grouping'):</strong> {{$v->parent_company}}</p>
+                                <p><strong>@lang('contract.corporate_grouping'):</strong>@if(isset($v->parent_company)) {{$v->parent_company}}@endif</p>
 
                                 <p><strong>@lang('contract.open_corporate')
                                         :</strong> @if(!empty($v->open_corporate_id))
