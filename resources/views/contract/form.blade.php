@@ -326,13 +326,13 @@ if (isset($contract->metadata->resource)) {
                                 $v->parent_company = 'Other';
                             }
                             ?>
-                            <select name="<?php 'company['.$i.'][parent_company]' ?>" class="form-control parent_company" id="corporate_grouping">
+                            <select name="<?php echo 'company['.$i.'][parent_company]'; ?>" class="form-control parent_company" id="corporate_grouping">
                                 @foreach($groups as $key=>$value)
                                     <option value="{{$key}}" @if($key==$parentCompany) selected @endif>{{$value}}</option>
                                 @endforeach
                             </select>
                             
-                            @if($v->parent_company == 'Other')
+                            @if(isset($v->parent_company) && $v->parent_company == 'Other')
                                 {!! Form::text("company[$i][parent_company]",
                                 $parentCompany,
                                 ["id" =>'', "class"=>"form-control corporate_grouping_other"])!!}
