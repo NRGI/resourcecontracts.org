@@ -18,10 +18,22 @@ class ContractRequest extends Request
         $rules = [
             'contract_name'       => 'required',
             'country'             => 'required',
-            'signature_date'      => 'date',
+            'signature_date'      => 'required|date',
             'file'                => 'required|mimes:pdf|max:1048576',
-            'participation_share' => 'numeric|min:0|max:1'
+            'participation_share' => 'numeric|min:0|max:1',
+            'language'            => 'required',
+            'resource'            => 'required',
+            'type_of_contract'    => 'required',
+            'disclosure_mode'     => 'required'
         ];
+        foreach($this->request->get('company') as $key => $val)
+        {
+            $rules['company.'.$key.'.name'] = 'required';
+        }
+        foreach($this->request->get('government_entity') as $key => $val)
+        {
+            $rules['government_entity.'.$key.'.entity'] = 'required';
+        }
 
         if ($this->isMethod('PATCH')) {
             unset($rules['file']);
