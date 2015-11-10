@@ -29,7 +29,6 @@ $(function () {
     $(document).on('click', '.company .item .delete', function (e) {
         $(this).parent().remove();
     });
-
     $('.new-company').on('click', function (e) {
         e.preventDefault();
         i += 1;
@@ -46,6 +45,20 @@ $(function () {
             scrollInput: false
         });
     })
+
+    $(document).on('change', '#corporate_grouping', function () {
+        var corporate_grouping_mode = '<input class="form-control corporate_grouping_other" name="company[' + i + '][parent_company]" type="text">';
+        if (($(this).val() == 'Other')) {
+            $(this).parent().append(corporate_grouping_mode)
+        } else {
+            if ($('.corporate_grouping_other').length) {
+                corporate_grouping_mode = $('.corporate_grouping_other');
+            }
+            $('.corporate_grouping_other').remove();
+        }
+    });
+
+
 
     $(document).on('click', '.concession .con-item .delete', function (e) {
         $(this).parent().remove();

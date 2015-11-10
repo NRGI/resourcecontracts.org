@@ -1,7 +1,7 @@
 @section('css')
     <link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
     <style>
-        .other_toc, .dt, .disclosure_mode_other {
+        .other_toc, .dt, .disclosure_mode_other, .corporate_grouping_other {
             margin-top: 10px;
         }
     </style>
@@ -14,7 +14,7 @@ foreach ($corporate_groups as $group) {
     $groups[$group['name']] = $group['name'];
 }
 asort($groups);
-$groups = ['' => 'Select'] + $groups;
+$groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
 ?>
 
 @if($action == 'add')
@@ -71,11 +71,12 @@ $groups = ['' => 'Select'] + $groups;
 </div>
 
 <div class="form-group">
-    {!! Form::label('language', trans('contract.language'), ['class'=>'col-sm-2 control-label'])!!}
+    <label for="language" class="col-sm-2 control-label">@lang('contract.language') <span class="red">*</span></label>
+
     <div class="col-sm-7">
         {!! Form::select('language',
         [''=>trans('codelist/language')['major'],'Other'=>trans('codelist/language')['minor']],
-        isset($contract->metadata->language)?$contract->metadata->language:null, ["class"=>"form-control"])!!}
+        isset($contract->metadata->language)?$contract->metadata->language:null, ["class"=>"required form-control"])!!}
     </div>
 </div>
 
@@ -100,11 +101,12 @@ if (isset($contract->metadata->resource)) {
 }
 ?>
 <div class="form-group">
-    {!! Form::label('resource', trans('contract.resource'), ['class'=>'col-sm-2 control-label'])!!}
+    <label for="resource" class="col-sm-2 control-label">@lang('contract.resource') <span class="red">*</span></label>
+
     <div class="col-sm-7">
         {!! Form::select('resource[]', $resourceList,
         isset($contract->metadata->resource)?$contract->metadata->resource:null, ['multiple'=>'multiple',
-        "class"=>"form-control resource-list"])!!}
+        "class"=>"required form-control resource-list"])!!}
     </div>
 </div>
 
@@ -122,12 +124,12 @@ if (isset($contract->metadata->resource)) {
             @foreach($governmentEntity as $k => $v)
                 <div class="government-item" {{$k ==0 ? 'id=template' : ''}}>
                     <div class="form-group">
-                        {!! Form::label('entity', trans('contract.government_entity'), ['class'=>'col-sm-2
-                        control-label'])!!}
+                        <label for="entity" class="col-sm-2 control-label">@lang('contract.government_entity') <span class="red">*</span></label>
+
                         <div class="col-sm-7">
                             {!! Form::text("government_entity[$g][entity]",
                             isset($v->entity)?$v->entity:null,
-                            ["class"=>"form-control"])!!}
+                            ["class"=>"required form-control"])!!}
                         </div>
                     </div>
 
@@ -152,11 +154,10 @@ if (isset($contract->metadata->resource)) {
     @else
         <div class="government-item">
             <div class="form-group">
-                {!! Form::label('government_entity', trans('contract.government_entity'), ['class'=>'col-sm-2
-                control-label'])!!}
+                <label for="entity" class="col-sm-2 control-label">@lang('contract.government_entity') <span class="red">*</span></label>
                 <div class="col-sm-7">
                     {!! Form::text("government_entity[0][entity]",null,
-                    ["class"=>"form-control"])!!}
+                    ["class"=>"required form-control"])!!}
                 </div>
             </div>
 
@@ -178,9 +179,7 @@ if (isset($contract->metadata->resource)) {
 
 
 <div class="form-group">
-    {!! Form::label('type_of_contract', trans('contract.type_of_contract'), ['class'=>'col-sm-2
-    control-label'])!!}
-
+    <label for="type_of_contract" class="col-sm-2 control-label">@lang('contract.type_of_contract') <span class="red">*</span></label>
 
     <div class="col-sm-7">
         <?php
@@ -191,24 +190,24 @@ if (isset($contract->metadata->resource)) {
         ?>
         {!! Form::select('type_of_contract', ['' => 'select']+trans('codelist/contract_type'),
         $toc,
-        ["class"=>"form-control"])!!}
+        ["class"=>"required form-control"])!!}
 
         @if($toc == 'Other')
             {!! Form::text('type_of_contract',
             isset($contract->metadata->type_of_contract)?$contract->metadata->type_of_contract:null,
-            ["id" =>'', "class"=>"form-control other_toc"])!!}
+            ["id" =>'', "class"=>"required form-control other_toc"])!!}
         @endif
 
     </div>
 </div>
 
 <div class="form-group">
-    <label for="signature_date" class="col-sm-2 control-label">@lang('contract.signature_date')</label>
+    <label for="signature_date" class="col-sm-2 control-label">@lang('contract.signature_date') <span class="red">*</span></label>
 
     <div class="col-sm-7">
         {!! Form::text('signature_date',
         isset($contract->metadata->signature_date)?$contract->metadata->signature_date:null,
-        ["class"=>"datepicker form-control", 'placeholder' => 'YYYY-MM-DD' , 'id' => 'signature_date'])!!}
+        ["class"=>"required datepicker form-control", 'placeholder' => 'YYYY-MM-DD' , 'id' => 'signature_date'])!!}
     </div>
 </div>
 
@@ -241,14 +240,18 @@ if (isset($contract->metadata->resource)) {
         ?>
         @if(count($companies)>0)
             @foreach($companies as $k => $v)
+                <?php
+
+                   $v = (object) $v;
+
+                ?>
                 <div class="item" {{$k ==0 ? 'id=template' : ''}}>
                     <div class="form-group">
-                        {!! Form::label('company_name', trans('contract.company_name'), ['class'=>'col-sm-2
-                        control-label'])!!}
+                        <label for="company_name" class="col-sm-2 control-label">@lang('contract.company_name') <span class="red">*</span></label>
                         <div class="col-sm-7">
                             {!! Form::text("company[$i][name]",
                             isset($v->name)?$v->name:null,
-                            ["class"=>"form-control"])!!}
+                            ["class"=>"required form-control"])!!}
                         </div>
                     </div>
 
@@ -317,11 +320,24 @@ if (isset($contract->metadata->resource)) {
                         {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2
                         control-label'])!!}
                         <div class="col-sm-7">
-                            <?php if (isset($v->parent_company) && !in_array($v->parent_company, $groups)):
-                                $groups[$v->parent_company] = $v->parent_company;
-                            endif;?>
+                            <?php
+                            $parentCompany = isset($v->parent_company) ? $v->parent_company : '';
+                            if (!empty($parentCompany) && !in_array($parentCompany, $groups)) {
+                                $v->parent_company = 'Other';
+                            }
+                            ?>
+                            <select name="<?php 'company['.$i.'][parent_company]' ?>" class="form-control parent_company" id="corporate_grouping">
+                                @foreach($groups as $key=>$value)
+                                    <option value="{{$key}}" @if($key==$parentCompany) selected @endif>{{$value}}</option>
+                                @endforeach
+                            </select>
+                            
+                            @if($v->parent_company == 'Other')
+                                {!! Form::text("company[$i][parent_company]",
+                                $parentCompany,
+                                ["id" =>'', "class"=>"form-control corporate_grouping_other"])!!}
+                            @endif
 
-                            {!! Form::select("company[$i][parent_company]", $groups , isset($v->parent_company)?$v->parent_company:null , ['class' => 'form-control parent_company']) !!}
                         </div>
                     </div>
 
@@ -358,7 +374,8 @@ if (isset($contract->metadata->resource)) {
     @else
         <div class="item">
             <div class="form-group">
-                {!! Form::label('company_name', trans('contract.company_name'), ['class'=>'col-sm-2 control-label'])!!}
+                <label for="company_name" class="col-sm-2 control-label">@lang('contract.company_name') <span class="red">*</span></label>
+
                 <div class="col-sm-7">
                     {!! Form::text("company[0][name]",null,["class"=>"form-control"])!!}
                 </div>
@@ -419,7 +436,8 @@ if (isset($contract->metadata->resource)) {
                 {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2
                 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::select('company[0][parent_company]', $groups , isset($v->parent_company)?$v->parent_company:null , ['class' => 'form-control parent_company']) !!}
+                    {!! Form::select('company[0][parent_company]', $groups , null , ['class' => 'form-control parent_company','id'=>'corporate_grouping'])
+                    !!}
                 </div>
             </div>
 
@@ -556,10 +574,16 @@ if (isset($contract->metadata->resource)) {
         $disclosure_mode = 'Other';
     }
     ?>
-    {!! Form::label('disclosure_mode', trans('contract.disclosure_mode'), ['class'=>'col-sm-2 control-label'])!!}
+    <label for="disclosure_mode" class="col-sm-2 control-label">@lang('contract.disclosure_mode') <span class="red">*</span></label>
+
     <div class="col-sm-7">
-        {!! Form::select('disclosure_mode', ['' => 'selects']+trans('codelist/disclosure_mode'),
-        $disclosure_mode, ["class"=>"form-control"])!!}
+        <select class="required form-control" name="disclosure_mode" id="disclosure_mode">
+            <option value="">Select</option>
+            @foreach(trans('codelist/disclosure_mode') as $key=>$value)
+                <option value="{{$key}}" @if($key==$disclosure_mode) selected @endif>{{$value}}</option>
+            @endforeach
+        </select>
+
         @if($disclosure_mode == 'Other')
             {!! Form::text('disclosure_mode',
             isset($contract->metadata->disclosure_mode)?$contract->metadata->disclosure_mode:null,
@@ -746,6 +770,7 @@ if (isset($contract->metadata->resource)) {
                 $('.disclosure_mode_other').remove();
             }
         });
+
 
         var i = {{$i or 0}};
         var j = {{$j or 0}};

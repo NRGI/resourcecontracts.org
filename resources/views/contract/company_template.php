@@ -1,9 +1,9 @@
 <script id="company-template" type="x-tmpl-mustache">
 <div id="item{{item}}" class="item">
     <div class="form-group">
-        <label for="company_name" class="col-sm-2 control-label">Company Name</label>
+        <label for="company_name" class="col-sm-2 control-label">Company Name <span class="red">*</span></label>
         <div class="col-sm-7">
-            <input class="form-control" name="company[{{item}}][name]" type="text">
+            <input class="required form-control" name="company[{{item}}][name]" type="text">
         </div>
     </div>
     <div class="form-group">
@@ -60,7 +60,7 @@
      <div class="form-group">
         <label for="parent_company" class="col-sm-2 control-label"><?php echo trans('contract.corporate_grouping');?></label>
             <div class="col-sm-7">
-                <select name="company[{{item}}][parent_company]" class="form-control parent_company">
+                <select name="company[{{item}}][parent_company]" class="form-control parent_company" id="corporate_grouping">
                 <?php foreach($groups as $key=>$g):?>
                     <option value="<?php echo $key;?>"><?php echo $g;?></option>
                 <?php endforeach;?>
