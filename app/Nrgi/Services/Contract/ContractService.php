@@ -313,6 +313,9 @@ class ContractService
             [
                 "contract_name",
                 "contract_identifier",
+                "contract_note",
+                "deal_number",
+                "matrix_page",
                 "language",
                 "country",
                 "resource",

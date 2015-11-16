@@ -54,4 +54,15 @@ $(document).ready(function () {
         });
     });
 
+    $('#category-olc').click(function(){
+        $('.landmatrix-page-wrap').show(150);
+    });
+    $('#category-rc').click(function(){
+        $('.landmatrix-page-wrap').hide(150);
+    });
+
+    if($('#category-olc').is(':checked')) {
+        $('.landmatrix-page-wrap').show();
+    }
+
 });

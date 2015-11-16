@@ -81,6 +81,9 @@ return [
     'processing'                           => "Processing",
     'annotation_list'                      => "Annotation List",
     'users'                                => 'Users',
+    'deal_no'                              => 'Deal Number',
+    'matrix_page'                          => 'Matrix Page',
+    'note'                                 => 'Note',
     /*ContractController*/
     'save_success'                         => 'Contract successfully uploaded. You will receive an email notification once the contract processing is complete allowing for the text review',
     'save_fail'                            => 'Contract could not be saved.',

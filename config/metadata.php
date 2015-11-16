@@ -68,6 +68,10 @@ return [
             'open_contracting_id'    => '',
             'show_pdf_text'          => '',
             'is_supporting_document' => '',
+            'contract_note'          => '',
+            'deal_no'                => '',
+            'matrix_page'            => '',
+
         ],
     ]
 ];

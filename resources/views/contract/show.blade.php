@@ -383,6 +383,30 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     {{join(', ', $cat)}}
                 @endif
             </li>
+
+               @if(in_array('olc' , $contract->metadata->category))
+
+                   <li>
+                       <strong>{{ trans('contract.deal_no') }}:</strong>
+                       @if(isset($contract->metadata->deal_number))
+                            {{ $contract->metadata->deal_number }}
+                           @endif
+                   </li>
+                   <li>
+                     <strong>{{ trans('contract.matrix_page') }}:</strong>
+                       @if(isset( $contract->metadata->matrix_page))
+                       <a href="{{ $contract->metadata->matrix_page }}" target="_blank">{{$contract->metadata->matrix_page}}</a>
+                        @endif
+                   </li>
+                   @endif
+
+            <li>
+                <strong>{{trans('contract.note')}}:</strong>
+                @if(isset($contract->metadata->contract_note))
+                        {{$contract->metadata->contract_note}}
+                    @endif
+            </li>
+
             <li><h3>@lang('contract.associated_contracts')</h3></li>
             @if(!empty($parentContract))
                 <li><strong>@lang('contract.parent_document'):</strong>

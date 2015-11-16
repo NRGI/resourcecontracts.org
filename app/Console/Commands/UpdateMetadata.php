@@ -90,9 +90,7 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        //$this->publishPdfText($metadata);
-        $this->updateDisclosureMode($metadata);
-        $this->addIsSupportingDocument($metadata);
+        $this->updateAdditionalMetadata($metadata);
 
         return $metadata;
     }
@@ -323,6 +321,27 @@ class UpdateMetadata extends Command
                 "Timber Sales Contract"                                                       => "Timber Sale Contract",
                 "Convention Particulière sur les Conditions de Cession et de Bail des Terres" => "Contrat de Concession Agricole",
             ];
+    }
+
+    /**
+     * Update Additional Metadata. Add contract note , matrix page link and deal number.
+     *
+     * @param $metadata
+     */
+    private function updateAdditionalMetadata(&$metadata)
+    {
+        if (!isset($metadata['contract_note'])) {
+            $metadata['contract_note'] = "";
+        }
+
+        if (!isset($metadata['matrix_page'])) {
+            $metadata['matrix_page'] = "";
+        }
+
+        if (!isset($metadata['deal_number'])) {
+            $metadata['deal_number'] = "";
+        }
+
     }
 
 }
