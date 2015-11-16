@@ -61,6 +61,13 @@ $groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
 </div>
 
 <div class="form-group">
+    {!! Form::label('contract_description' , 'Description' , ['class' => 'col-sm-2 control-label']) !!}
+    <div class="col-sm-7">
+        {!! Form::textarea('contract_description',  isset($contract->metadata->contract_description)?$contract->metadata->contract_description:null, ['class' => 'form-control' ,  'placeholder' => 'Contract Detail','style' =>'resize: none' ]) !!}
+    </div>
+</div>
+
+<div class="form-group">
     {!! Form::label('contract_identifier', trans('contract.contract_identifier'), ['class'=>'col-sm-2
     control-label'])!!}
     <div class="col-sm-7">
@@ -612,7 +619,7 @@ if (isset($contract->metadata->resource)) {
         @foreach(config('metadata.category') as $key => $category)
             <label class="checkbox-inline">
                 <input name="category[]" {{(is_array($old_category) && in_array($key, $old_category)) ? "checked='checked'" : ''}}
-                       type="radio" value="{{$key}}"> {{$category}}
+                type="radio" value="{{$key}}"> {{$category}}
             </label>
         @endforeach
     </div>
@@ -627,29 +634,29 @@ if (isset($contract->metadata->resource)) {
         $is_parent_document_value = false;
         $disable_supporting = 'disabled';
         $disable_parent = 'disabled';
-        if(isset($contract->metadata->is_supporting_document) && $contract->metadata->is_supporting_document==1){
+        if (isset($contract->metadata->is_supporting_document) && $contract->metadata->is_supporting_document == 1) {
             $is_supporting_document_value = true;
-            $disable_supporting = 'enabled';
-        }else{
+            $disable_supporting           = 'enabled';
+        } else {
             $is_parent_document_value = true;
-            $disable_parent = 'enabled';
+            $disable_parent           = 'enabled';
         }
-        if($action == 'add' && ($is_supporting)){
+        if ($action == 'add' && ($is_supporting)) {
             $is_supporting_document_value = true;
-            $is_parent_document_value = false;
-            $disable_parent = 'disabled';
-            $disable_supporting = 'enabled';
+            $is_parent_document_value     = false;
+            $disable_parent               = 'disabled';
+            $disable_supporting           = 'enabled';
         }
-        if($action == 'edit' && isset($contract->metadata->is_supporting_document) && $contract->metadata->is_supporting_document==0){
+        if ($action == 'edit' && isset($contract->metadata->is_supporting_document) && $contract->metadata->is_supporting_document == 0) {
             $is_supporting = false;
         }
-        if($action == 'add' && !$is_supporting){
+        if ($action == 'add' && !$is_supporting) {
             $is_parent_document_value = true;
         }
 
-        if($action == 'edit' && empty($supportingDocument)){
+        if ($action == 'edit' && empty($supportingDocument)) {
             $disable_supporting = 'enabled';
-            $disable_parent = 'enabled';
+            $disable_parent     = 'enabled';
         }
 
         ?>
@@ -662,14 +669,15 @@ if (isset($contract->metadata->resource)) {
 
     </div>
 </div>
-<div class="form-group parent-document" style="display: @if($action == 'edit' && isset($contract->metadata->is_supporting_document) &&  $contract->metadata->is_supporting_document==1 or ($is_supporting))block @else none @endif">
+<div class="form-group parent-document"
+     style="display: @if($action == 'edit' && isset($contract->metadata->is_supporting_document) &&  $contract->metadata->is_supporting_document==1 or ($is_supporting))block @else none @endif">
     {!! Form::label('translated_from', trans('contract.parent_document'), ['class'=>'col-sm-2 control-label parent-document-select'])!!}
     <?php
     $parent_contract = null;
-    if($action == 'edit' && $contract->getParentContract()){
+    if ($action == 'edit' && $contract->getParentContract()) {
         $parent_contract = $contract->getParentContract();
     }
-    if(isset($is_supporting) && $is_supporting){
+    if (isset($is_supporting) && $is_supporting) {
         $parent_contract = Request::get('parent');
     }
     ?>

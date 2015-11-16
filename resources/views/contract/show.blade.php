@@ -245,6 +245,11 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 {{$contract->metadata->open_contracting_id or ''}}
             </li>
 
+            <li>
+                <strong>Description:</strong>
+              {{$contract->metadata->contract_description}}
+            </li>
+
             <li><strong>@lang('contract.created_by'):</strong>
                 {{$contract->created_user->name}} on {{$contract->created_datetime->format('D M d, Y h:i A')}} (GMT)
             </li>

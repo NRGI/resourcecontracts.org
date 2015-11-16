@@ -313,6 +313,7 @@ class ContractService
             [
                 "contract_name",
                 "contract_identifier",
+                "contract_description",
                 "language",
                 "country",
                 "resource",
