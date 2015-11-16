@@ -885,13 +885,9 @@ class ContractService
      * @return array
      */
     public function parentContracts(){
-        $contracts = $this->contract->getParentContracts()->toArray();
-        $data      = [];
-        foreach ($contracts as $k => $v) {
-            $data[$v['id']] = $v['metadata']->contract_name;
-        }
+        $contracts = $this->contract->getParentContracts();
 
-        return $data;
+        return $contracts;
     }
 
 }
