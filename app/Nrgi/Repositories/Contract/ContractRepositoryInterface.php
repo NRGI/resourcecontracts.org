@@ -223,4 +223,9 @@ interface ContractRepositoryInterface
      * @return bool
      */
     public function removeAsSupportingContract($contractId);
+
+    /**
+     * @return array
+     */
+    public function getParentContracts();
 }
