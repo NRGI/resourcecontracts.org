@@ -378,7 +378,7 @@ class ContractController extends Controller
     public function contractType()
     {
         $parentContracts = $this->contract->parentContracts();
-
+        asort($parentContracts);
         return view('contract.type_selection', compact('parentContracts'));
     }
 }

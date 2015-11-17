@@ -152,7 +152,7 @@ class ContractService
      * @param $approved
      * @return Contract
      */
-    public function findWithTasks($id, $status=null, $approved=null)
+    public function findWithTasks($id, $status = null, $approved = null)
     {
         try {
             return $this->contract->findContractWithTasks($id, $status, $approved);
@@ -300,13 +300,13 @@ class ContractService
             )
         ) : '';
 
-        $formData['country']    = $this->countryService->getInfoByCode($formData['country']);
-        $formData['resource']   = (!empty($formData['resource'])) ? $formData['resource'] : [];
-        $formData['category']   = (!empty($formData['category'])) ? $formData['category'] : [];
-        $formData['company']    = $this->removeKeys($formData['company']);
-        $formData['concession'] = $this->removeKeys($formData['concession']);
+        $formData['country']           = $this->countryService->getInfoByCode($formData['country']);
+        $formData['resource']          = (!empty($formData['resource'])) ? $formData['resource'] : [];
+        $formData['category']          = (!empty($formData['category'])) ? $formData['category'] : [];
+        $formData['company']           = $this->removeKeys($formData['company']);
+        $formData['concession']        = $this->removeKeys($formData['concession']);
         $formData['government_entity'] = $this->removeKeys($formData['government_entity']);
-        $formData['show_pdf_text']       = isset($formData['show_pdf_text']) ? $formData['show_pdf_text'] : Contract::SHOW_PDF_TEXT;;
+        $formData['show_pdf_text']     = isset($formData['show_pdf_text']) ? $formData['show_pdf_text'] : Contract::SHOW_PDF_TEXT;;
 
         $data = array_only(
             $formData,
@@ -413,10 +413,10 @@ class ContractService
                 return false;
             }
 
-            if(isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '1'  && isset($formData['translated_from'])){
+            if (isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '1' && isset($formData['translated_from'])) {
                 $contract->syncSupportingContracts($formData['translated_from']);
             }
-            if(isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '0'){
+            if (isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '0') {
                 $this->contract->removeAsSupportingContract($contract->id);
             }
             $this->contract->updateOCID($contract);
@@ -447,31 +447,27 @@ class ContractService
     {
         $category = $old_metadata->category;
 
-        if(!isset($new_metadata['category'][0]))
-        {
+        if (!isset($new_metadata['category'][0])) {
             return isset($old_metadata->open_contracting_id) ? $old_metadata->open_contracting_id : '';
         }
 
         $old_identifier = isset($category[0]) ? $category[0] : '';
         $new_identifier = $new_metadata['category'][0];
-        $old_iso = $old_metadata->country->code;
-        $new_iso = $new_metadata['country']['code'];
+        $old_iso        = $old_metadata->country->code;
+        $new_iso        = $new_metadata['country']['code'];
 
-        if(!isset($old_metadata->open_contracting_id) || $old_metadata->open_contracting_id =='')
-        {
+        if (!isset($old_metadata->open_contracting_id) || $old_metadata->open_contracting_id == '') {
             return getContractIdentifier($new_metadata['category'][0], $new_metadata['country']['code']);
         }
 
         $opcid = $old_metadata->open_contracting_id;
 
-        if($old_identifier != $new_identifier)
-        {
-            $opcid = str_replace(mb_substr(strtoupper($old_identifier),0,2) , mb_substr(strtoupper($new_identifier), 0, 2),  $opcid);
+        if ($old_identifier != $new_identifier) {
+            $opcid = str_replace(mb_substr(strtoupper($old_identifier), 0, 2), mb_substr(strtoupper($new_identifier), 0, 2), $opcid);
         }
 
-        if($old_iso != $new_iso)
-        {
-            $opcid = str_replace(mb_substr(strtoupper($old_iso),0,2) , mb_substr(strtoupper($new_iso), 0, 2),  $opcid);
+        if ($old_iso != $new_iso) {
+            $opcid = str_replace(mb_substr(strtoupper($old_iso), 0, 2), mb_substr(strtoupper($new_iso), 0, 2), $opcid);
         }
 
         return $opcid;
@@ -864,15 +860,16 @@ class ContractService
 
             return false;
         }
-        if($this->queue->push(
-                'App\Nrgi\Services\Queue\DeleteToElasticSearchQueue',
-                ['contract_id' => $id],
-                'elastic_search'
-            )){
+        if ($this->queue->push(
+            'App\Nrgi\Services\Queue\DeleteToElasticSearchQueue',
+            ['contract_id' => $id],
+            'elastic_search'
+        )
+        ) {
             $this->logger->info('Contract successfully deleted.', ['Contract Id' => $id]);
             $this->logger->activity('contract.log.unpublish', ['contract' => $contract->title], $id);
             $contract->metadata_status = Contract::STATUS_DRAFT;
-            $contract->text_status = Contract::STATUS_DRAFT;
+            $contract->text_status     = Contract::STATUS_DRAFT;
             $contract->save();
 
             return true;
@@ -884,8 +881,10 @@ class ContractService
     /**
      * @return array
      */
-    public function parentContracts(){
+    public function parentContracts()
+    {
         $contracts = $this->contract->getParentContracts()->toArray();
+
         $data      = [];
         foreach ($contracts as $k => $v) {
             $data[$v['id']] = $v['metadata']->contract_name;
