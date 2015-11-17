@@ -119,9 +119,9 @@
     <div class="government-item">
     <br>
             <div class="form-group">
-                <label for="government_entity" class="col-sm-2 control-label">Government Entity<span class="red">*</span></label>
+                <label for="government_entity" class="col-sm-2 control-label">Government Entity</label>
                 <div class="col-sm-7">
-                    <input class="required form-control" name="government_entity[{{item}}][entity]" type="text">
+                    <input class="form-control" name="government_entity[{{item}}][entity]" type="text">
                 </div>
             </div>
 
