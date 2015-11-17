@@ -50,7 +50,7 @@ $approved = \Input::get('approved',null);
                 </tr>
             @empty
                 <tr>
-                    <td colspan="6">Tasks not found.</td>
+                    <td colspan="6">Task not found.</td>
                 </tr>
             @endforelse
 

@@ -2,9 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Nrgi\Entities\Contract\Contract;
-use App\Nrgi\Mturk\Entities\Task;
 use App\Nrgi\Mturk\Services\ActivityService;
-use App\Nrgi\Mturk\Services\MTurkService;
 use App\Nrgi\Mturk\Services\TaskService;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\User\UserService;
@@ -196,7 +194,6 @@ class MTurkController extends Controller
         return view('mturk.activity', compact('activities', 'users', 'contracts'));
     }
 
-
     /**
      * Display all tasks
      *
@@ -214,6 +211,5 @@ class MTurkController extends Controller
 
         return view('mturk.allTasks', compact('tasks'));
     }
-
 
 }

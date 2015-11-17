@@ -123,7 +123,7 @@ $approved = \Input::get('approved',null);
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="2">Contract not found.</td>
+                        <td colspan="2">Task not found.</td>
                     </tr>
                 @endforelse
                 </tbody>
@@ -131,6 +131,3 @@ $approved = \Input::get('approved',null);
         </div>
     </div>
 @stop
-
-
-

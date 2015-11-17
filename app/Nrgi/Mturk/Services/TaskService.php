@@ -85,11 +85,12 @@ class TaskService
     /**
      * Get Contracts having MTurk Tasks
      *
+     * @param null $status
      * @return Collection|null
      */
-    public function getContracts($status)
+    public function getContracts($status = null)
     {
-        if(!in_array($status, [Contract::MTURK_SENT, Contract::MTURK_COMPLETE])){
+        if(!is_null($status) && !in_array($status, [Contract::MTURK_SENT, Contract::MTURK_COMPLETE])){
             $status = Contract::MTURK_SENT;
         }
 
@@ -565,6 +566,6 @@ class TaskService
      */
     public function allTasks($filter)
     {
-       return  $this->task->allTasks($filter, null);
+       return  $this->task->allTasks($filter, 50);
     }
 }
