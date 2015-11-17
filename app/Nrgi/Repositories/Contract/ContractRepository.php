@@ -493,12 +493,16 @@ class ContractRepository implements ContractRepositoryInterface
     }
 
     /**
-     * @param $query
-     * @return object
+     * @return array
      */
     public function getParentContracts()
     {
-        return $this->contract->whereRaw("metadata->>'is_supporting_document' ='0'")->get();
+        return $this->contract
+            ->selectRaw("id,metadata->>'contract_name' as name")
+            ->whereRaw("metadata->>'is_supporting_document' ='0'")->orderByRaw(
+                "metadata->>'contract_name' ASC"
+            )
+            ->lists('name', 'id');
     }
 
     /**
