@@ -24,16 +24,12 @@ class ContractRequest extends Request
             'language'            => 'required',
             'resource'            => 'required',
             'type_of_contract'    => 'required',
-            'disclosure_mode'     => 'required'
+            'category'            => 'required'
         ];
-        foreach($this->request->get('company') as $key => $val)
-        {
-            $rules['company.'.$key.'.name'] = 'required';
+        foreach ($this->request->get('company') as $key => $val) {
+            $rules['company.' . $key . '.name'] = 'required';
         }
-        foreach($this->request->get('government_entity') as $key => $val)
-        {
-            $rules['government_entity.'.$key.'.entity'] = 'required';
-        }
+
 
         if ($this->isMethod('PATCH')) {
             unset($rules['file']);

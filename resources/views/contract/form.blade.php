@@ -132,12 +132,12 @@ if (isset($contract->metadata->resource)) {
             @foreach($governmentEntity as $k => $v)
                 <div class="government-item" {{$k ==0 ? 'id=template' : ''}}>
                     <div class="form-group">
-                        <label for="entity" class="col-sm-2 control-label">@lang('contract.government_entity') <span class="red">*</span></label>
+                        <label for="entity" class="col-sm-2 control-label">@lang('contract.government_entity')</label>
 
                         <div class="col-sm-7">
                             {!! Form::text("government_entity[$g][entity]",
                             isset($v->entity)?$v->entity:null,
-                            ["class"=>"required form-control"])!!}
+                            ["class"=>"form-control"])!!}
                         </div>
                     </div>
 
@@ -162,11 +162,10 @@ if (isset($contract->metadata->resource)) {
     @else
         <div class="government-item">
             <div class="form-group">
-                <label for="entity" class="col-sm-2 control-label">@lang('contract.government_entity') <span class="red">*</span></label>
-
+                <label for="entity" class="col-sm-2 control-label">@lang('contract.government_entity')</label>
                 <div class="col-sm-7">
                     {!! Form::text("government_entity[0][entity]",null,
-                    ["class"=>"required form-control"])!!}
+                    ["class"=>"form-control"])!!}
                 </div>
             </div>
 
@@ -387,7 +386,7 @@ if (isset($contract->metadata->resource)) {
                 <label for="company_name" class="col-sm-2 control-label">@lang('contract.company_name') <span class="red">*</span></label>
 
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][name]",null,["class"=>"form-control"])!!}
+                    {!! Form::text("company[0][name]",null,["class"=>"form-control required"])!!}
                 </div>
             </div>
             <div class="form-group">
@@ -584,10 +583,10 @@ if (isset($contract->metadata->resource)) {
         $disclosure_mode = 'Other';
     }
     ?>
-    <label for="disclosure_mode" class="col-sm-2 control-label">@lang('contract.disclosure_mode') <span class="red">*</span></label>
+    <label for="disclosure_mode" class="col-sm-2 control-label">@lang('contract.disclosure_mode')</label>
 
     <div class="col-sm-7">
-        <select class="required form-control" name="disclosure_mode" id="disclosure_mode">
+        <select class="form-control" name="disclosure_mode" id="disclosure_mode">
             <option value="">Select</option>
             @foreach(trans('codelist/disclosure_mode') as $key=>$value)
                 <option value="{{$key}}" @if($key==$disclosure_mode) selected @endif>{{$value}}</option>
@@ -613,18 +612,18 @@ if (isset($contract->metadata->resource)) {
 </div>
 
 <div class="form-group">
-    {!! Form::label('category', trans('contract.category'), ['class'=>'col-sm-2 control-label'])!!}
+    <label for="category" class="col-sm-2 control-label">Category <span class="red">*</span></label>
     <div class="col-sm-7">
         <?php
         $old_category = isset($contract->metadata->category) ? $contract->metadata->category : old('category');
-        $old_category = empty($old_category) ? ['rc'] : $old_category;
         ?>
         @foreach(config('metadata.category') as $key => $category)
             <label class="checkbox-inline">
-                <input name="category[]" {{(is_array($old_category) && in_array($key, $old_category)) ? "checked='checked'" : ''}}
-                type="radio" value="{{$key}}"> {{$category}}
+                <input name="category[]" {{(is_array($old_category) && in_array($key, $old_category)) ? "checked='checked'" : ''}} type="radio" value="{{$key}}" class="required"> {{$category}}
             </label>
         @endforeach
+            <br>
+            <label id="category[]-error" class="error" for="category[]"></label>
     </div>
 </div>
 <h3>@lang('contract.associated_contracts')</h3>
