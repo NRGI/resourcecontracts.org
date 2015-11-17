@@ -7,8 +7,6 @@
 */
 
 return [
-    "3PGM+Au"                          => "3PGM+Au",
-    "6PGM+Au"                          => "6PGM+Au",
     "Acacia"                           => "Acacia",
     "Aggregates"                       => "Aggregates",
     "Agroindustry"                     => "Agroindustry",
