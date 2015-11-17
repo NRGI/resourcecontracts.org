@@ -102,7 +102,6 @@ class ContractController extends Controller
         $country   = $this->countries->all();
         $contracts = $this->contract->parentContracts();
         $contract  = $this->contract->find($request->get('parent'));
-
         return view('contract.create', compact('country', 'contracts', 'contract'));
     }
 
