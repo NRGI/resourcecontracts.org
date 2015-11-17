@@ -70,8 +70,7 @@ return [
             'is_supporting_document' => '',
             'contract_note'          => '',
             'deal_no'                => '',
-            'matrix_page'            => '',
-
+            'matrix_page'            => ''
         ],
     ]
 ];

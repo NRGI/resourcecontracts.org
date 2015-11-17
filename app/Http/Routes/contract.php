@@ -3,6 +3,9 @@ $router->group(
     ['namespace' => 'Contract'],
     function () use ($router) {
         $router->resource('contract', 'ContractController');
+        $router->get('contract/discussion/{id}/{type}/{key}', ['as'=>'contract.discussion', 'uses'=>'Discussion\DiscussionController@index']);
+        $router->post('contract/discussion/{id}/{type}/{key}', ['as'=>'contract.discussion.create', 'uses'=>'Discussion\DiscussionController@create']);
+
         $router->get('contract/{id}/download', ['as' => 'contract.download', 'uses' => 'ContractController@download']);
         $router->post('contract/{id}/page', ['as' => 'contract.page.store', 'uses' => 'Page\PageController@store']);
         $router->post('contract/{id}/output', ['as' => 'contract.output.save', 'uses' => 'ContractController@saveOutputType']);

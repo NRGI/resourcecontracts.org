@@ -88,7 +88,6 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        $this->updateCompanyJurisdiction($metadata);
         $this->updateAdditionalMetadata($metadata);
         $this->multipleContractType($metadata);
 
