@@ -299,11 +299,16 @@ class ContractService
                 $formData['signature_date']
             )
         ) : '';
+        if(in_array('Other',$formData['type_of_contract']))
+        {
+            unset($formData['type_of_contract'][array_search('Other',$formData['type_of_contract'])]);
+        }
 
         $formData['country']    = $this->countryService->getInfoByCode($formData['country']);
         $formData['resource']   = (!empty($formData['resource'])) ? $formData['resource'] : [];
         $formData['category']   = (!empty($formData['category'])) ? $formData['category'] : [];
         $formData['company']    = $this->removeKeys($formData['company']);
+        $formData['type_of_contract']    = $this->removeKeys($formData['type_of_contract']);
         $formData['concession'] = $this->removeKeys($formData['concession']);
         $formData['government_entity'] = $this->removeKeys($formData['government_entity']);
         $formData['show_pdf_text']       = isset($formData['show_pdf_text']) ? $formData['show_pdf_text'] : Contract::SHOW_PDF_TEXT;;

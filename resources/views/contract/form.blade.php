@@ -193,18 +193,25 @@ if (isset($contract->metadata->resource)) {
     <div class="col-sm-7">
         <?php
         $toc = isset($contract->metadata->type_of_contract) ? $contract->metadata->type_of_contract : old('type_of_contract');
-        if (!in_array($toc, trans('codelist/contract_type')) AND $toc != '') {
-            $toc = 'Other';
-        }
+
+
+        if(!empty($toc))
+            {
+                $intersect=array_intersect($toc,trans('codelist/contract_type'));
+                $tocDiff=array_diff($toc,$intersect);
+                if (!empty($tocDiff) AND !empty($toc)) {
+                    $toc = 'Other';
+                }
+            }
         ?>
-        {!! Form::select('type_of_contract', ['' => 'select']+trans('codelist/contract_type'),
+        {!! Form::select('type_of_contract[]', trans('codelist/contract_type'),
         $toc,
-        ["class"=>"required form-control"])!!}
+        ["multiple"=>"multiple", "class"=>"required form-control", "id"=>"type_of_contract"])!!}
 
         @if($toc == 'Other')
-            {!! Form::text('type_of_contract',
-            isset($contract->metadata->type_of_contract)?$contract->metadata->type_of_contract:null,
-            ["id" =>'', "class"=>"required form-control other_toc"])!!}
+            {!! Form::text('type_of_contract[]',
+            isset($contract->metadata->type_of_contract[0])?$contract->metadata->type_of_contract[0]:null,
+            ["id" =>'', "class"=>"form-control other_toc"])!!}
         @endif
 
     </div>
@@ -761,7 +768,7 @@ if (isset($contract->metadata->resource)) {
 
     @include('contract.company_template')
     <script>
-        var input = '<input class="form-control other_toc" name="type_of_contract" type="text">';
+        var input = '<input class="form-control other_toc" name="type_of_contract[]" type="text">';
 
         $(document).on('change', '#type_of_contract', function () {
             if (($(this).val() == 'Other')) {

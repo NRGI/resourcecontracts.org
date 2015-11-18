@@ -315,8 +315,13 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 </div>
             @endif
 
-            <li><strong>@lang('contract.type_of_contract'):</strong> {{$contract->metadata->type_of_contract or ''}}
-            </li>
+            @if(is_array($contract->metadata->type_of_contract) && count($contract->metadata->type_of_contract)>0)
+                <li><strong>@lang('contract.type_of_contract'): </strong>{{join(', ', $contract->metadata->type_of_contract)}}</li>
+            @else
+                <li><strong>@lang('contract.type_of_contract'): </strong></li>
+            @endif
+
+
             <li><strong>@lang('contract.signature_date'):</strong> {{$contract->metadata->signature_date or ''}}</li>
             <li><strong>@lang('contract.document_type'):</strong> {{$contract->metadata->document_type or ''}}</li>
 
