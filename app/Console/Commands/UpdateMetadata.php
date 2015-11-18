@@ -90,6 +90,11 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
+
+        //$this->publishPdfText($metadata);
+        //$this->updateDisclosureMode($metadata);
+        //$this->addIsSupportingDocument($metadata);
+        $this->updateCompanyJurisdiction($metadata);
         $this->updateAdditionalMetadata($metadata);
 
         return $metadata;
@@ -344,4 +349,24 @@ class UpdateMetadata extends Command
 
     }
 
+    /*
+     * Update company jurisdiction
+     */
+    private function updateCompanyJurisdiction(&$metadata)
+    {
+        $country     = trans('codelist/country');
+        $country     = array_keys($country);
+        $companys    = $metadata['company'];
+        $companyData = [];
+        foreach ($companys as $company) {
+            $jurisdiction = $company->jurisdiction_of_incorporation;
+            if (!empty($jurisdiction) && !in_array($jurisdiction, $country)) {
+                $company->jurisdiction_of_incorporation = "";
+            }
+            $companyData[] = $company;
+        }
+        $metadata['company'] = $companyData;
+
+    }
 }
+
