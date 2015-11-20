@@ -54,18 +54,16 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      */
     public function search(array $params)
     {
-        if ($params['document_page_no']) {
-            $annotations = $this->annotation
+        if ($params['page']) {
+            return $this->annotation
                 ->where('contract_id', $params['contract'])
-                ->where('document_page_no', $params['document_page_no'])
-                ->get();
-        } else {
-            $annotations = $this->annotation
-                ->where('contract_id', $params['contract'])
+                ->where('document_page_no', $params['page'])
                 ->get();
         }
 
-        return $annotations;
+        return $this->annotation
+            ->where('contract_id', $params['contract'])
+            ->get();
     }
 
     /**
@@ -209,11 +207,9 @@ class AnnotationRepository implements AnnotationRepositoryInterface
         $annotationArray = json_encode($annotationObj->annotation);
         $annotationArray = json_decode($annotationArray, true);
         if (array_key_exists('page', $data)) {
-            $annotationObj->document_page_no     = $data['page'];
-            $annotationArray['document_page_no'] = $data['page'];
-            $annotationArray['page']             = $data['page'];
+            $annotationObj->document_page_no = $data['page'];
         }
-        if (array_key_exists('', $data)) {
+        if (array_key_exists('text', $data)) {
             $annotationArray['text'] = $data['text'];
         }
         if (array_key_exists('category', $data)) {

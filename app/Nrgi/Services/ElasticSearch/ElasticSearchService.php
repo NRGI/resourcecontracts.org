@@ -148,14 +148,17 @@ class ElasticSearchService
             $json->category_key        = $json->category;
             $json->category            = _l("codelist/annotation.annotation_category.{$json->category}");
             $json->id                  = $annotation->id;
+            $json->page                = $annotation->document_page_no;
             $json->contract_id         = $contract->id;
             $json->open_contracting_id = $contract->metadata->open_contracting_id;
             $annotationData[]          = $json;
         }
         $data['annotations'] = json_encode($annotationData);
+        dd($data['annotations']);
 
         try {
             $request  = $this->http->post($this->apiURL('contract/annotations'), null, $data);
+            dd($request);
             $response = $request->send();
             $this->logger->info('Annotation successfully submitted to Elastic Search.', $response->json());
         } catch (Exception $e) {

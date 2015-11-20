@@ -418,7 +418,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             @endif
         </ul>
         @if($status == $contract_processing_completed)
-            <div class="annotation-wrap">
+            <div class="annotation-wrap" id="annotations">
                 <h3>@lang('contract.annotations')<span>Double click to edit.</span></h3>
 
                 <div class="annotation-list">

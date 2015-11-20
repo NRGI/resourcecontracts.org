@@ -39,13 +39,13 @@ class AnnotationApiController extends Controller
 
 
     /**
-     * @param Request $request
+     * @param $id
      * @return json string
      *
      */
-    public function delete(Request $request)
+    public function delete($id)
     {
-        $this->annotationService->delete($request->all());
+        $this->annotationService->delete($id);
 
         return response()->json(['status' => 'success']);
     }
