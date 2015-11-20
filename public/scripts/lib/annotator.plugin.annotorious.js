@@ -19894,23 +19894,23 @@ annotorious.okfn.ImagePlugin = function(image, okfnAnnotator) {
   
   /** Communication okfn -> yuma **/
   
-  okfnAnnotator.viewer.on('edit', function(annotation) {
-    if (annotation.url == image.src) {
-      goog.style.showElement(annotator._editCanvas, true);
-      annotator._viewer.highlightAnnotation(undefined);
+  // okfnAnnotator.viewer.on('edit', function(annotation) {
+  //   if (annotation.url == image.src) {
+  //     goog.style.showElement(annotator._editCanvas, true);
+  //     annotator._viewer.highlightAnnotation(undefined);
 
-      // TODO code duplication -> move into a function
-      var imgOffset = annotorious.dom.getOffset(image);
-      var geometry = annotation.shapes[0].geometry;
-      var x = geometry.x + imgOffset.left - baseOffset.left + 16;
-      var y = geometry.y + geometry.height + imgOffset.top - baseOffset.top + window.pageYOffset + 5;
+  //     // TODO code duplication -> move into a function
+  //     var imgOffset = annotorious.dom.getOffset(image);
+  //     var geometry = annotation.shapes[0].geometry;
+  //     var x = geometry.x + imgOffset.left - baseOffset.left + 16;
+  //     var y = geometry.y + geometry.height + imgOffset.top - baseOffset.top + window.pageYOffset + 5;
 
-      // Use editor.show instead of showEditor to prevent a second annotationEditorShown event
-      goog.style.setPosition(okfnAnnotator.editor.element[0], 0, window.pageYOffset - baseOffset.top);
-      okfnAnnotator.showEditor(annotation, {top: window.pageYOffset - baseOffset.top, left: 0});
-      goog.style.setPosition(okfnAnnotator.editor.element[0], x, y);
-    }
-  });
+  //     // Use editor.show instead of showEditor to prevent a second annotationEditorShown event
+  //     goog.style.setPosition(okfnAnnotator.editor.element[0], 0, window.pageYOffset - baseOffset.top);
+  //     okfnAnnotator.showEditor(annotation, {top: window.pageYOffset - baseOffset.top, left: 0});
+  //     goog.style.setPosition(okfnAnnotator.editor.element[0], x, y);
+  //   }
+  // });
 
   okfnAnnotator.subscribe('annotationEditorSubmit', function(editor, annotation) {
     annotation = formatAnnotation(annotation);

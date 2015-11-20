@@ -91,8 +91,12 @@ var TextPageView = React.createClass({
     },
     _onEnter: function (msg, e) {
         this.props.contractApp.triggerUpdateTextPaginationPage(this.props.page.get("page_no"));
+        // this.props.contractApp.setCurrentPage(this.props.page.get("page_no"));
     },
     _onLeave: function (e) {
+    },
+    handleClick: function(event) {
+        this.props.contractApp.setCurrentPage(this.props.page.get("page_no"));
     },
     sanitizeTxt: function (text) {
         //replace the <  and > with &lt;%gt if they are not one of the tags below
@@ -146,7 +150,7 @@ var TextPageView = React.createClass({
         }
         var page_no = this.props.page.get('page_no');
         return (
-            <span className={page_no} >
+            <span className={page_no} onClick={this.handleClick}>
                 <span>{page_no}</span>
                 <span ref="text_content" dangerouslySetInnerHTML={{__html: text}} />
                 <Waypoint

@@ -89,25 +89,25 @@ class AnnotationService
      */
     public function save($annotation, $inputData)
     {
-        $data                                = json_decode($annotation, true);
-        $contactAnnotation                   = $this->annotation->findOrCreate(
+        $data              = json_decode($annotation, true);
+        $contactAnnotation = $this->annotation->findOrCreate(
             isset($data['id']) ? $data['id'] : null
         );
-        $data['category']                    = $data['category_key'];
-        $data ['cluster']                    = _l(config("annotation_category.cluster.{$data['category_key']}"));
-        $contactAnnotation->annotation       = $data;
-        $contactAnnotation->user_id          = $this->user->id;
-        $contactAnnotation->contract_id      = $inputData['contract'];
-        $contactAnnotation->url              = $inputData['url'];
-        $contactAnnotation->document_page_no = $inputData['document_page_no'];
-        $contactAnnotation->page_id          = $inputData['page_id'];
-        $logMessage                          = 'annotation.annotation_created';
+        $logMessage        = 'annotation.annotation_created';
         if (isset($data['id'])) {
             $logMessage = 'annotation.annotation_updated';
         }
+        $data['cluster']                     = _l(config("annotation_category.cluster.{$data['category']}"));
+        $removeKeys                          = ['page', 'contract', 'status', 'id', 'category_key'];
+        $data                                = array_diff_key($data, array_flip($removeKeys));
+        $contactAnnotation->annotation       = $data;
+        $contactAnnotation->user_id          = $this->user->id;
+        $contactAnnotation->contract_id      = $inputData['contract'];
+        $contactAnnotation->document_page_no = $inputData['page'];
+
         $this->logger->activity(
             $logMessage,
-            ['contract' => $inputData['contract'], 'page' => $inputData['document_page_no']],
+            ['contract' => $inputData['contract'], 'page' => $inputData['page']],
             $inputData['contract']
         );
 
@@ -117,21 +117,21 @@ class AnnotationService
     }
 
     /**
-     * @param       $annotation
-     * @param array $inputs
-     * @return boolean
+     * delete annotation
+     *
+     * @param $contactAnnotationId
+     * @return bool
      */
-    public function delete($inputs)
+    public function delete($contactAnnotationId)
     {
-        $contactAnnotationId = $inputs['id'];
-        $annotation          = $this->annotation->getById($contactAnnotationId);
+        $annotation = $this->annotation->getById($contactAnnotationId);
         if ($this->annotation->delete($contactAnnotationId)) {
             $this->logger->activity(
                 'annotation.annotation_deleted',
                 [
                     'contract' => $annotation->contract_id,
-                    'page' => $annotation->document_page_no,
-                    'title' => $annotation->annotation->text
+                    'page'     => $annotation->document_page_no,
+                    'title'    => $annotation->annotation->text
                 ],
                 $annotation->contract_id
             );
@@ -146,7 +146,7 @@ class AnnotationService
     /**
      * search annotation
      * @param array $params
-     * @return mixed
+     * @return Array
      */
     public function search(array $params)
     {
@@ -154,8 +154,10 @@ class AnnotationService
         $annotations    = $this->annotation->search($params);
 
         foreach ($annotations as $annotation) {
-            $json             = $annotation->annotation;
-            $json->id         = $annotation->id;
+            $json       = $annotation->annotation;
+            $json->id   = $annotation->id;
+            $json->page = $annotation->document_page_no;
+
             $annotationData[] = $json;
         }
 
@@ -165,7 +167,7 @@ class AnnotationService
     /**
      * get all annotation by contract id
      * @param $contractId
-     * return List of annotation
+     * return Collection
      */
     public function getAllByContractId($contractId)
     {
@@ -228,7 +230,6 @@ class AnnotationService
      * adds annotation comment to contract
      * @param $contractId
      * @param $message
-     * @param $type
      * @param $annotationStatus
      * @return bool
      */
@@ -267,19 +268,14 @@ class AnnotationService
         $annotationData = [];
         $contract       = $this->annotation->getContractPagesWithAnnotations($contractId);
         foreach ($contract->annotations as $annotation) {
-            $json = $annotation->annotation;
-            try {
-                if (!isset($json->category_key)) {
-                    $json->category_key = $json->category;
-                }
-                $json->category = (isset($json->category_key)) ? _l(
-                    "codelist/annotation.annotation_category.{$json->category_key}"
-                ) : "";
-            } catch (Exception $e) {
-                $json->category = "";
-            }
-            $json->page       = $annotation->document_page_no;
-            $json->id         = $annotation->id;
+            $json              = $annotation->annotation;
+            $json->id          = $annotation->id;
+            $json->page        = $annotation->document_page_no;
+            $json->category_key = $json->category;
+            $json->category    = (isset($json->category)) ? _l(
+                "codelist/annotation.annotation_category.{$json->category}"
+            ) : "";
+
             $annotationData[] = $json;
         }
 

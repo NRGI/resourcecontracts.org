@@ -33,7 +33,7 @@ class Pages extends Model
      */
     public function annotations()
     {
-        return $this->hasMany('App\Nrgi\Entities\Contract\Annotation', 'page_id');
+        return $this->hasMany('App\Nrgi\Entities\Contract\Annotation', 'document_page_no');
     }
 
     /**

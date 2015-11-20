@@ -21,7 +21,6 @@ Annotator.Plugin.AnnotatorEvents = (function(_super) {
         AnnotatorEvents: {}
     };
     function AnnotatorEvents(element, options) {
-        // this.beforeAnnotationCreated = __bind(this.beforeAnnotationCreated, this);
         this.onAnnotationClicked = __bind(this.onAnnotationClicked, this);
         this.onAnnotationCreated = __bind(this.onAnnotationCreated, this);
         this.onAnnotationUpdated = __bind(this.onAnnotationUpdated, this);
@@ -34,18 +33,10 @@ Annotator.Plugin.AnnotatorEvents = (function(_super) {
     AnnotatorEvents.prototype.onAnnotationCreated = function(annotation) {
         annotation.page = this.contractApp.getCurrentPage();
         annotation.category = annotation.category.trim();
-        // annotation.id = this.collection.length + 1;
-        // if(this.currentPage) {
-        //     this.currentPage.trigger("")
-        //     annotation.page = this.currentPage.getPage();
-        //     // annotation.page_id = ;
-        // }
         var self = this;
         setTimeout(function (event) {
             self.contractApp.trigger('annotationCreated', annotation); 
-            // self.collection.trigger('annotationCreated', annotation);    
         }, 500);        
-        // this.collection.add(annotation);
     };
     AnnotatorEvents.prototype.onAnnotationUpdated = function(annotation) {
         this.contractApp.trigger('annotationUpdated', annotation);

@@ -148,6 +148,7 @@ class ElasticSearchService
             $json->category_key        = $json->category;
             $json->category            = _l("codelist/annotation.annotation_category.{$json->category}");
             $json->id                  = $annotation->id;
+            $json->page                = $annotation->document_page_no;
             $json->contract_id         = $contract->id;
             $json->open_contracting_id = $contract->metadata->open_contracting_id;
             $annotationData[]          = $json;

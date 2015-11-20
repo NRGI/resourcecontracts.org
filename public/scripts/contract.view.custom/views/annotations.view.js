@@ -226,10 +226,10 @@ var AnnotationsSort = React.createClass({
     },    
     onClickPage: function(e) {
         e.preventDefault();
-        this.props.annotationsCollection.setSortByKey("page_no");
+        this.props.annotationsCollection.setSortByKey("page");
         this.props.contractApp.resetSelectedAnnotation();
         this.props.contractApp.trigger("annotations:render");
-        this.setState({sortBy: "page_no"});
+        this.setState({sortBy: "page"});
     },
     onClickTopic: function(e) {
         e.preventDefault();
@@ -348,10 +348,6 @@ var AnnotationsList = React.createClass({
             return (
               <div className="annotations-list" id="id-annotations-list">
                 {this.getAnnotationItemsComponent(this.props.annotationsCollection, true)}
-                <div className="annotations-list-footer">
-                    <a onClick={this.scrollToTop} href="#">Go to Top</a>
-                    <a href={this.props.contractApp.getAnnotationsListAnchor()}>See all Annotations</a>
-                </div>          
               </div>
             );
         }
@@ -363,10 +359,9 @@ var AnnotationsList = React.createClass({
             return (
               <div className="annotations-list" id="id-annotations-list">
                 {this.getAnnotationItemsComponent(this.props.annotationsCollection, true)}
-                <div className="annotations-list-footer">
-                    <a onClick={this.scrollToTop} href="#">Go to Top</a>
-                    <a href={this.props.contractApp.getAnnotationsListAnchor()}>See all Annotations</a>
-                </div>          
+                <AnnotationsCategoryList 
+                    contractApp={this.props.contractApp}
+                    annotationsCollection={this.props.annotationsCollection} />
               </div>
             );
         }
@@ -389,6 +384,43 @@ var AnnotationsList = React.createClass({
     }
 });
 
+var AnnotationsCategoryList = React.createClass({
+    isHeaderCategory: function(categoryKey) {
+        var headerNumber = categoryKey.substr(0,categoryKey.indexOf("-"));
+        if(["i","ii","iii","1","2","3","4","5","6"].indexOf(headerNumber) !== -1) {
+            return true;
+        }
+        return false;
+    },
+    isUnusedCategory: function(categoryKey) {
+        if(this.usedCategories.indexOf(categoryKey) === -1) {
+            return true;
+        }
+        return false;
+    },
+    getCategoryName: function(categoryModel) {
+        return categoryModel.get("name").substr(0,categoryModel.get("name").indexOf("//"))
+    },
+    render: function() {
+        var allCategories = this.props.contractApp.getAnnotationCategories().models;
+        this.usedCategories = this.props.annotationsCollection.pluck("category_key");
+        var unusedCategoriesDom = [];
+        for(var i=0;i<allCategories.length;i++) {
+            if(this.isHeaderCategory(allCategories[i].get("key"))) {
+                unusedCategoriesDom.push(<div><b>{this.getCategoryName(allCategories[i])}</b></div>);
+            }
+            else if(this.isUnusedCategory(allCategories[i].get("key")) && this.getCategoryName(allCategories[i])) {
+                unusedCategoriesDom.push(<span>{this.getCategoryName(allCategories[i])}</span>);
+            }
+        }
+        return (
+            <div className="unused-categories">
+                <span className="unused-categories-desc">The following categories are not annotated yet.</span>
+                {unusedCategoriesDom}
+            </div>
+        );
+    }
+});
 var AnnotationsViewer = React.createClass({
     handleGotoTop: function(e) {
         e.preventDefault();

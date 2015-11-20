@@ -28,11 +28,8 @@ var AnnotatorjsView = Backbone.View.extend({
     changePage: function() {
         var store = this.content.data('annotator').plugins.Store;
         store.options.annotationData = {
-            'url': this.api,
             'contract': this.contract.get('id'),
             'page': this.currentPage.getPage(),
-            'document_page_no': this.currentPage.getPage(),
-            'page_id': 1
             // 'page_id': that.model.get('id')
         };
     },
@@ -48,17 +45,12 @@ var AnnotatorjsView = Backbone.View.extend({
             prefix: '/api',
             // Attach the uri of the current page to all annotations to allow search.
             loadFromSearch: {
-                'url': self.api,
                 'contract': self.contract.get('id'),
-                'page': 0,
-                'document_page_no': 0
+                'page': 0
             },
             annotationData: {
-                'url': self.api,
                 'contract': self.contract.get('id'),
                 'page': self.currentPage.getPage(),
-                'document_page_no': self.currentPage.getPage(),
-                'page_id': 1
             }
         });
         return this;
@@ -73,13 +65,13 @@ var AnnotatorjsView = Backbone.View.extend({
     //             'url': that.api,
     //             'contract': that.options.contract.get('id'),
     //             'page': 1,//that.model.get('pageNumber'),
-    //             'document_page_no': 1,//that.model.get('pageNumber')
+    //             'page': 1,//that.model.get('pageNumber')
     //         };
     //         store.options.annotationData = {
     //             'url': that.api,
     //             'contract': that.options.contract.get('id'),
     //             'page': 1,//that.model.get('pageNumber'),
-    //             'document_page_no': 1,//that.model.get('pageNumber'),
+    //             'page': 1,//that.model.get('pageNumber'),
     //             // 'page_id': that.model.get('id')
     //         };
     //         store.loadAnnotationsFromSearch(store.options.loadFromSearch)
@@ -92,13 +84,13 @@ var AnnotatorjsView = Backbone.View.extend({
     //                 'url': that.api,
     //                 'contract': that.options.contract.get('id'),
     //                 'page': 1,
-    //                 'document_page_no': 1
+    //                 'page': 1
     //             },
     //             annotationData: {
     //                 'url': that.api,
     //                 'contract': that.options.contract.get('id'),
     //                 'page': 1,
-    //                 'document_page_no': 1,
+    //                 'page': 1,
     //                 // 'page_id': that.model.get('id')
     //             }
     //         });
@@ -127,17 +119,12 @@ var PdfAnnotatorjsView = AnnotatorjsView.extend({
             var store = this.content.data('annotator').plugins.Store;
             if (store.annotations) store.annotations = [];
             store.options.loadFromSearch = {
-                'url': that.api,
                 'contract': that.contract.get('id'),
-                'page': page,
-                'document_page_no': page
+                'page': page
             };
             store.options.annotationData = {
-                'url': that.api,
                 'contract': that.contract.get('id'),
                 'page': page,
-                'document_page_no': page,
-                'page_id': 1
                 // 'page_id': that.model.get('id')
             };
             store.loadAnnotationsFromSearch(store.options.loadFromSearch)

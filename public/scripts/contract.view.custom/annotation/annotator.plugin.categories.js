@@ -100,13 +100,12 @@ Annotator.Plugin.Categories = (function(superClass) {
 
   Categories.prototype.saveCategory = function(event, annotation) {
     // debugger;
-    annotation.category_key = $(this.field).find('select option:selected').val();
-    annotation.category = $(this.field).find('select option:selected').text();
+    annotation.category = $(this.field).find('select option:selected').val();
     // annotation.category = $(this.field).find('.' + this.options.classForSelectedCategory).html();
     if ((annotation.text != null) && annotation.text.length > 0 && (annotation.category == null)) {
       window.alert('You did not choose a category, so the default has been chosen.');
       // annotation.category = this.options.category[0];
-      annotation.category_key = this.options.category[0];
+      annotation.category = this.options.category[0];
     }
     if (annotation.category == null) {
       annotation.category = this.options.emptyCategory;
@@ -116,8 +115,8 @@ Annotator.Plugin.Categories = (function(superClass) {
 
   Categories.prototype.highlightSelectedCategory = function(event, annotation) {
     var category, categoryHTML, j, len, ref, totalWidth;
-    if (annotation.category_key == null) {
-      annotation.category_key = this.options.emptyCategory;
+    if (annotation.category == null) {
+      annotation.category = this.options.emptyCategory;
     }
     // categoryHTML = "";
     // ref = this.options.category;
@@ -137,17 +136,20 @@ Annotator.Plugin.Categories = (function(superClass) {
     for (var category in ref){
       if (ref.hasOwnProperty(category)) {
         var obj = ref[category];
-          var categoryClass = "val";
+        var categoryClass = "val";
+        var selectable ='';
         var withSpaces = "&nbsp&nbsp&nbsp&nbsp&nbsp"+obj.name;
         if(subHeaderPattern.test(obj.key)){
-            categoryClass = "sub-category";
-            withSpaces = "&nbsp&nbsp"+obj.name;
+          selectable = 'disabled';
+          categoryClass = "sub-category";
+          withSpaces = "&nbsp&nbsp"+obj.name;
         }
         if(headerPattern.test(obj.key)){
-            withSpaces = obj.name;
-            categoryClass = "category";
+          withSpaces = obj.name;
+          selectable = 'disabled';
+          categoryClass = "category";
         }
-        categoryHTML += '<option class="' + this.options.categoryClass;
+        categoryHTML += '<option '+selectable+' class="' + this.options.categoryClass;
         categoryHTML += ' ' + categoryClass + '"';
         categoryHTML += ' value="' + obj.key + '">';
         categoryHTML += withSpaces;
@@ -165,7 +167,7 @@ Annotator.Plugin.Categories = (function(superClass) {
       });
       $(".annotator-editor .annotator-widget").width(totalWidth);
     }
-    return this.setSelectedCategory(annotation.category_key);
+    return this.setSelectedCategory(annotation.category);
   };
 
   return Categories;

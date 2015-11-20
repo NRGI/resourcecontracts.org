@@ -33,11 +33,8 @@ var AnnotatorjsView = Backbone.View.extend({
             contract_id = this.contractApp.getContractId();
         var store = this.content.data('annotator').plugins.Store;
         store.options.annotationData = {
-            'url': this.api,
             'contract': contract_id,
             'page': page_no,
-            'page_id': 1,
-            'document_page_no': page_no,
         };
     },
     populateCategories: function() {
@@ -55,18 +52,10 @@ var AnnotatorjsView = Backbone.View.extend({
             prefix: '/api',
             // Attach the uri of the current page to all annotations to allow search.
             loadFromSearch: {
-                'url': self.api,
                 'contract': contract_id,
-                'page': page_no,
-                'page_id': 1,
-                'document_page_no': page_no
             },
             annotationData: {
-                'url': self.api,
                 'contract': contract_id,
-                'page': page_no,
-                'page_id': 1,
-                'document_page_no': page_no,
             }
         });
         return this;
@@ -78,18 +67,10 @@ var AnnotatorjsView = Backbone.View.extend({
         var store = this.content.data('annotator').plugins.Store;
         if (store.annotations) store.annotations = [];
         store.options.loadFromSearch = {
-            'url': self.api,
             'contract': contract_id,
-            'page': page_no,
-            'page_id': 1,
-            'document_page_no': page_no,
         };
         store.options.annotationData = {
-            'url': self.api,
             'contract': contract_id,
-            'page': page_no,
-            'page_id': 1,
-            'document_page_no': page_no,
         };
 
         store.loadAnnotationsFromSearch(store.options.loadFromSearch);        
@@ -129,18 +110,12 @@ var PdfAnnotatorjsView = AnnotatorjsView.extend({
             var store = this.content.data('annotator').plugins.Store;
             if (store.annotations) store.annotations = [];
             store.options.loadFromSearch = {
-                'url': self.api,
                 'contract': contract_id,
                 'page': page_no,
-                'page_id': 1,
-                'document_page_no': page_no,
             };
             store.options.annotationData = {
-                'url': self.api,
                 'contract': contract_id,
                 'page': page_no,
-                'page_id': 1,
-                'document_page_no': page_no,
             };
             store.loadAnnotationsFromSearch(store.options.loadFromSearch)
         } else {

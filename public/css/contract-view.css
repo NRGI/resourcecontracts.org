@@ -194,7 +194,7 @@
     font-size: 12px;
     position: relative;
     width: 25%;
-    height: 87vh;
+    height: 97vh;
     overflow-y:scroll;
     float:left;
     background: #f0f0f0;
@@ -283,7 +283,6 @@
 }
 
 .annotation-item .annotation-category-fr {
-    padding: 0 0 10px;
     font-style: italic;
     margin: 4px 0;
 }
@@ -593,4 +592,39 @@
 
 .search-highlight-word {
     background-color: #FFFAC0;
+}
+
+.unused-categories {
+    padding: 15px 20px;
+    border-top: 1px solid #dadada;
+    margin-top: 10px;
+    background: #FFFAFA;
+}
+
+.unused-categories-desc {
+    padding-bottom: 6px;
+    display: block;
+}
+
+.unused-categories > span:not(:first-of-type) {
+    padding-left: 24px;
+    display: block;
+    padding-top: 2px;
+    position: relative;
+}
+
+.unused-categories > span:not(:first-of-type):before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #4a4a4a;
+    float: left;
+    margin-top: 6px;
+    position: absolute;
+    left: 14px;
+}
+
+.unused-categories > span:not(:first-of-type)+div {
+    margin: 20px 0 3px;
 }
