@@ -175,8 +175,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     @if($contract->textType == 3 && is_null($contract->mturk_status))
                         {!! Form::open(['route' => ['mturk.add', $contract->id], 'method' => 'post']) !!}
                         {!! Form::button(trans('Send to Manual Transcription tasks'), ['type' =>'submit', 'class' =>'btn
-                        btn-default confirm', 'data-confirm'=>'Are you sure you want to send this contract toMechanical
-                        Turk?']) !!}
+                        btn-default confirm', 'data-confirm'=>'Are you sure you want to send this contract toMechanical Turk?']) !!}
                         {!! Form::close() !!}
                     @endif
 
