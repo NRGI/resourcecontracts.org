@@ -44,6 +44,7 @@ class RenewMTurkTask extends Command
         $pages = $task->getExpired();
 
         foreach ($pages as $key => $page) {
+            $page = $task->updateAssignment($page);
             $contract_id = $page->contract_id;
             $hit_id      = $page->hit_id;
             $page_no     = $page->page_no;
