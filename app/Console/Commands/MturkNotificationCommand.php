@@ -1,7 +1,8 @@
 <?php namespace App\Console\Commands;
 
+use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Mturk\Services\MTurkNotificationService;
-use App\Nrgi\Mturk\Services\TaskService;
+use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
@@ -27,9 +28,9 @@ class MturkNotificationCommand extends Command
      */
     protected $description = 'Send  mturk contracts status email to user.';
     /**
-     * @var TaskService
+     * @var ContractService
      */
-    protected $task;
+    protected $contract;
     /**
      * @var MTurkNotificationService
      */
@@ -38,14 +39,14 @@ class MturkNotificationCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @param TaskService              $task
+     * @param ContractService          $contract
      * @param MTurkNotificationService $notify
      */
-    public function __construct(TaskService $task, MTurkNotificationService $notify)
+    public function __construct(ContractService $contract, MTurkNotificationService $notify)
     {
         parent::__construct();
-        $this->task = $task;
-        $this->notify = $notify;
+        $this->contract = $contract;
+        $this->notify   = $notify;
     }
 
     /**
@@ -55,7 +56,7 @@ class MturkNotificationCommand extends Command
      */
     public function fire()
     {
-        $contracts = $this->task->getContracts();
+        $contracts = $this->contract->getMTurkContracts(Contract::MTURK_SENT);
         foreach ($contracts as $contract) {
             $this->notify->process($contract->id);
         }

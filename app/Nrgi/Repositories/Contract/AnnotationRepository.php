@@ -205,18 +205,23 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      */
     public function updateAnnotationField($id, array $data)
     {
-        $annotation      = $this->annotation->find($id);
-        $annotationArray = json_encode($annotation->annotation);
+        $annotationObj   = $this->annotation->find($id);
+        $annotationArray = json_encode($annotationObj->annotation);
         $annotationArray = json_decode($annotationArray, true);
-        if (array_key_exists('text', $data)) {
+        if (array_key_exists('page', $data)) {
+            $annotationObj->document_page_no     = $data['page'];
+            $annotationArray['document_page_no'] = $data['page'];
+            $annotationArray['page']             = $data['page'];
+        }
+        if (array_key_exists('', $data)) {
             $annotationArray['text'] = $data['text'];
         }
         if (array_key_exists('category', $data)) {
             $annotationArray['category'] = $data['category'];
             $annotationArray['cluster']  = _l(config("annotation_category.cluster.{$annotationArray['category']}"));
         }
-        $annotation->annotation = $annotationArray;
+        $annotationObj->annotation = $annotationArray;
 
-        return $annotation->save();
+        return $annotationObj->save();
     }
 }
