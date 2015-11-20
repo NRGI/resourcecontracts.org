@@ -180,8 +180,6 @@ class TaskService
         $contract = $this->contract->findWithPages($contract_id);
 
         if($this->sendToMTurk($contract)) {
-            $this->logger->info('Contract sent to MTurk ', ['Contract_id' => $contract->id]);
-
             return true;
         }
 
@@ -205,7 +203,7 @@ class TaskService
             try{
                 $ret    = $this->turk->createHIT($title, $description, $url);
             }catch (MTurkException $e) {
-                $this->logger->error($e->getMessage(), ['Contract id' => $contract->id, 'Errors' => $e->getErrors()]);
+                $this->logger->error('createHIT: '. $e->getMessage(), ['Contract id' => $contract->id, 'Page' => $page->page_no, 'Errors' => $e->getErrors()]);
                 continue;
             }catch (Exception $e){
                 $this->logger->error('createHIT: '. $e->getMessage(), ['Contract_id' => $contract->id, 'Page' => $page->page_no]);
@@ -216,7 +214,7 @@ class TaskService
 
             if ($ret) {
                 $this->task->update($page->contract_id, $page->page_no, $update);
-                $this->logger->info('update:'. sprintf('HIT created for page no.%s', $page->page_no) , ['Contract_id' => $contract->id, 'Page' => $page->page_no]);
+                $this->logger->info('createHIT:'. sprintf('HIT created for page no.%s', $page->page_no) , ['Contract_id' => $contract->id, 'hit_id' => $ret->hit_id]);
                 continue;
             }
 
@@ -259,12 +257,14 @@ class TaskService
                 if (!is_null($assignment) && $assignment['TotalNumResults'] > 0) {
                     $task->status      = Task::COMPLETED;
                     $task->assignments = $this->getFormattedAssignment($assignment);
-                    $this->logger->info(sprintf('Tasks completed for page no.%s', $task->page_no) , ['Page' => $task->page_no]);
+                    $this->logger->info(sprintf('Update Assignment for page no.%s', $task->page_no) , ['task' => $task->toArray()]);
                     $task->save();
                 }
             }
+        }catch (MTurkException $e) {
+            $this->logger->error('Update Assignment failed:' . $e->getMessage(), ['Task' => $task->toArray(), 'Errors' => $e->getErrors()]);
         }catch (Exception $e) {
-             $this->logger->error($e->getMessage());
+            $this->logger->error('Update Assignment failed:'. $e->getMessage(), ['Task' => $task->toArray()]);
         }
 
         return $task;
@@ -282,7 +282,7 @@ class TaskService
         try{
             $task = $this->task->getTask($contract_id, $task_id);
         }catch (Exception $e){
-            $this->logger->error($e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task_id]);
+            $this->logger->error('Task does not exit:'.$e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task_id]);
             return false;
         }
 
@@ -290,10 +290,10 @@ class TaskService
             try{
                 $response = $this->turk->approve($task->assignments->assignment->assignment_id);
             }catch (MTurkException $e) {
-                $this->logger->error($e->getMessage(), ['Contract id' => $contract_id, 'Page' => $task->page_no, 'Errors' => $e->getErrors()]);
+                $this->logger->error('Approve Task failed:'.$e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task->toArray(), 'Errors' => $e->getErrors()]);
                 return false;
             }catch (Exception $e){
-                $this->logger->error($e->getMessage(), ['Contract id' => $contract_id, 'Page' => $task->page_no]);
+                $this->logger->error('Approve Task failed:'.$e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task->toArray()]);
                 return false;
             }
 
@@ -303,7 +303,7 @@ class TaskService
                 $task->assignments               = $assignments;
                 $task->approved                  = Task::APPROVED;
 
-                $this->logger->info(sprintf('Assignment approved for page no.%s', $task->page_no) , ['Page' => $task->page_no]);
+                $this->logger->info(sprintf('Assignment approved for page no.%s', $task->page_no) , ['Task' => $task->toArray()]);
                 $this->logger->mTurkActivity('mturk.log.approve',null,$contract_id,$task->page_no);
 
                 return  $task->save();
@@ -325,19 +325,18 @@ class TaskService
         try{
             $task = $this->task->getTask($contract_id, $task_id);
         } catch (Exception $e){
-            $this->logger->error($e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task_id]);
+            $this->logger->error('Task does not exist '.$e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task_id]);
             return false;
         }
 
         if ($task->assignments->assignment->status == 'Submitted') {
            try{
                $response = $this->turk->reject($task->assignments->assignment->assignment_id, $message);
-
            }catch (MTurkException $e) {
-               $this->logger->error($e->getMessage(), ['Contract id' => $contract_id, 'Page' => $task_id, 'Errors' => $e->getErrors()]);
+               $this->logger->error('Reject Task failed:'.$e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task->toArray(), 'Errors' => $e->getErrors()]);
                return false;
            }catch(Exception $e){
-               $this->logger->error($e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task_id]);
+               $this->logger->error('Reject Task failed:'.$e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task->toArray()]);
                return false;
            }
 
@@ -346,7 +345,7 @@ class TaskService
                 $assignments->assignment->status = 'Rejected';
                 $task->assignments               = $assignments;
                 $task->approved                  = Task::REJECTED;
-                $this->logger->info(sprintf('Assignment rejected for page no.%s', $task->page_no) , ['Page' => $task->page_no]);
+                $this->logger->info(sprintf('Assignment rejected for page no.%s', $task->page_no) , ['Task' => $task->toArray()]);
                 $this->logger->mTurkActivity('mturk.log.reject',null,$contract_id,$task->page_no);
 
                 return $task->save();
@@ -366,11 +365,11 @@ class TaskService
     {
         try{
             $task = $this->task->getTask($contract_id, $task_id);
-            return $this->updateAssignment($task);
 
-        }catch (Exception $e)
-        {
-            $this->logger->info( $e->getMessage() , ['Task' => $task_id]);
+            return $this->updateAssignment($task);
+        }catch (Exception $e){
+            $this->logger->info('Get Task:'.$e->getMessage() , ['Task' => $task_id]);
+
             return null;
         }
     }
@@ -389,7 +388,7 @@ class TaskService
         try{
             $task = $this->task->getTask($contract_id, $task_id);
         }catch (Exception $e){
-            $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id,  'Task' => $task_id]);
+            $this->logger->error('Task does not exit'.$e->getMessage(), [ 'Contract id' => $contract_id,  'Task' => $task_id]);
             return false;
         }
 
@@ -397,10 +396,11 @@ class TaskService
            if(!$this->turk->deleteHIT($task->hit_id)){
                return false;
            }
+            $this->logger->info('HIT successfully deleted', [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
         }catch (MTurkException $e){
-                $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id, 'Errors'=> $e->getErrors()]);
+            $this->logger->error('Delete Task:'. $e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task->toArray(), 'Errors'=> $e->getErrors()]);
         }catch (Exception $e){
-            $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
+            $this->logger->error('Delete Task:'. $e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task->toArray()]);
             return false;
         }
 
@@ -409,14 +409,15 @@ class TaskService
         $description = config('mturk.defaults.production.Description');
 
         try{
-            $ret = $this->turk->createHIT($title, $description, $url);
-        } catch (MTurkException $e){
-            $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id,  'Task' => $task_id, 'Page no'=>$task->page_no, 'Errors'=> $e->getErrors()]);
+            $ret    = $this->turk->createHIT($title, $description, $url);
+        }catch (MTurkException $e) {
+            $this->logger->error('createHIT: '. $e->getMessage(), ['Contract id' => $contract->id, 'Task' => $task->toArray(), 'Errors' => $e->getErrors()]);
             return false;
-        } catch (Exception $e){
-            $this->logger->error($e->getMessage(), [ 'Contract id' => $contract_id,  'Task' => $task_id, 'Page no'=>$task->page_no]);
+        }catch (Exception $e){
+            $this->logger->error('createHIT: '. $e->getMessage(), ['Contract_id' => $contract->id, 'Task' => $task->toArray()]);
             return false;
         }
+
         $update = [
                 'hit_id'      => $ret->hit_id,
                 'assignments' => null,
@@ -428,16 +429,16 @@ class TaskService
 
             if ($ret) {
                 $this->task->update($task->contract_id, $task->page_no, $update);
-                $this->logger->info('HIT successfully reset', [ 'Contract id' => $contract_id,  'Task' => $task_id]);
+                $this->logger->info('HIT successfully reset', [ 'Contract id' => $contract_id,  'Task' => $task->toArray()]);
 
                 if(php_sapi_name()!='cli'){
-                    $this->logger->mTurkActivity('mturk.log.reset',null,$task->contract_id,$task_id);
+                    $this->logger->mTurkActivity('mturk.log.reset',null,$task->contract_id,$task->page_no);
                 }
 
                 return true;
             }
 
-            $this->logger->error('Error in MTurk', [ 'Contract id' => $contract_id,  'Task' => $task_id]);
+            $this->logger->error('Error in MTurk', [ 'Contract id' => $contract_id,  'Task' => $task->toArray()]);
             return false;
     }
 
