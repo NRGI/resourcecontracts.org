@@ -59,15 +59,32 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     );
 
                     $('.edit-annotation-category').on('click', function () {
-                        var categories = {!!json_encode(trans("codelist/annotation.annotation_category"))!!};
-                    $(this).editable({
-                        source: categories,
-                        select2: {
-                            width: 400,
-                            placeholder: 'Select category',
-                            allowClear: true
+                            var categories = {!!json_encode(trans("codelist/annotation.annotation_category"))!!};
+                            $(this).editable({
+                                source: categories,
+                                select2: {
+                                    width: 400,
+                                    placeholder: 'Select category',
+                                    allowClear: true
+                                }
+                            });
                         }
-                    });
+                     );
+        $('.edit-annotation-page').on('click', function () {
+
+            <?php $pages = [];?>
+            @for ($i = 1; $i <= $contract->pages()->count(); $i++)
+               <?php $pages[$i] = $i; ?>
+            @endfor
+             var pages = {!!json_encode($pages)!!};
+                $(this).editable({
+                    source: pages,
+                    select2: {
+                        width: 400,
+                        placeholder: 'Select category',
+                        allowClear: true
+                    }
+                });
                 }
         );
             var form = $('.output-type-form');
@@ -175,8 +192,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     @if($contract->textType == 3 && is_null($contract->mturk_status))
                         {!! Form::open(['route' => ['mturk.add', $contract->id], 'method' => 'post']) !!}
                         {!! Form::button(trans('Send to Manual Transcription tasks'), ['type' =>'submit', 'class' =>'btn
-                        btn-default confirm', 'data-confirm'=>'Are you sure you want to send this contract toMechanical
-                        Turk?']) !!}
+                        btn-default confirm', 'data-confirm'=>'Are you sure you want to send this contract toMechanical Turk?']) !!}
                         {!! Form::close() !!}
                     @endif
 
@@ -443,14 +459,19 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                 <p data-pk="{{$annotation->id}}" data-name="text"
                                    data-url="{{route('annotation.update')}}" data-type="textarea"
                                    class="edit-annotation-text">{{$annotation->annotation->text}}</p>
+
                                 @if(property_exists($annotation->annotation, "shapes"))
                                     <span style="clear: both;"><a
-                                                href="{{route('contract.annotate', ['id'=>$contract->id])}}#/pdf/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>[Page {{$annotation->document_page_no}}
-                                        ]</span>
+                                                href="{{route('contract.annotate', ['id'=>$contract->id])}}#/pdf/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a><p data-pk="{{$annotation->id}}" data-name="page"
+                                                                                                                                                                                                                             data-url="{{route('annotation.update')}}"
+                                                                                                                                                                                                                             data-value="{{$annotation->document_page_no}}" data-type="select"
+                                                                                                                                                                                                                             class="edit-annotation-page">[Page {{$annotation->document_page_no}}]</p></span>
                                 @else
                                     <span style="clear: both;"><a
-                                                href="{{route('contract.annotate', ['id'=>$contract->id])}}#/text/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'text annotation'}} </a>[Page {{$annotation->document_page_no}}
-                                        ]</span>
+                                                href="{{route('contract.annotate', ['id'=>$contract->id])}}#/text/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'text annotation'}} </a> <p data-pk="{{$annotation->id}}" data-name="page"
+                                                                                                                                                                                                                               data-url="{{route('annotation.update')}}"
+                                                                                                                                                                                                                               data-value="{{$annotation->document_page_no}}" data-type="select"
+                                                                                                                                                                                                                               class="edit-annotation-page">[Page {{$annotation->document_page_no}}]</p></span>
                                 @endif
                                 @if(property_exists($annotation->annotation, 'tags'))
                                     @foreach($annotation->annotation->tags as $tag)
