@@ -16,6 +16,7 @@
 <?php
 $get_status = \Input::get('status',null);
 $approved = \Input::get('approved',null);
+$requiring_action = $status['total_completed']-$status['total_approved']-$status['total_rejected'];
 ?>
 
 @section('content')
@@ -33,8 +34,13 @@ $approved = \Input::get('approved',null);
                     <li>Completed: {{$status['total_completed'] or '0'}}</li>
                     <li>Approved: {{$status['total_approved'] or '0'}}</li>
                     <li>Rejected: {{$status['total_rejected'] or '0'}}</li>
-                    <li>Requiring Action: {{$status['total_completed']-$status['total_approved']-$status['total_rejected']}}</li>
+                    <li>Requiring Action: {{$requiring_action}}</li>
                 </ul>
+                @if($requiring_action > 1)
+                    {!! Form::open(['url' =>route('mturk.task.approveAll',['contract_id'=>$contract->id]), 'method' => 'post']) !!}
+                    {!! Form::button(trans('Approve All'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>'Are you sure you want to approve all assignments?'])!!}
+                    {!! Form::close() !!}
+                @endif
 
             </div>
 

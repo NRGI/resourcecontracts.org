@@ -56,7 +56,7 @@ class MturkNotificationCommand extends Command
      */
     public function fire()
     {
-        $contracts = $this->contract->getMTurkContracts(Contract::MTURK_SENT);
+        $contracts = $this->contract->getMTurkContracts(['status' => Contract::MTURK_SENT]);
         foreach ($contracts as $contract) {
             $this->notify->process($contract->id);
         }

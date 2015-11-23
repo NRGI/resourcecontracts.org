@@ -127,9 +127,11 @@ interface ContractRepositoryInterface
     /**
      * Get Contracts having MTurk Tasks
      *
-     * @return collection
+     * @param array $filter
+     * @param       $perPage
+     * @return Collection
      */
-    public function getMTurkContracts();
+    public function getMTurkContracts(array $filter = [] , $perPage);
 
     /**
      * Get Contract with pdf process status

@@ -168,14 +168,14 @@ class ContractService
     /**
      * Get Contracts Having MTurk tasks
      *
-     * @param     $status
-     * @param int $perPage
+     * @param array $filter
+     * @param int   $perPage
      * @return Collection|null
      */
-    public function getMTurkContracts($status = null, $perPage = null)
+    public function getMTurkContracts(array $filter = [], $perPage = null)
     {
         try {
-            return $this->contract->getMTurkContracts($status, $perPage);
+            return $this->contract->getMTurkContracts($filter, $perPage);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }

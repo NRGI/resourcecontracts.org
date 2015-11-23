@@ -321,23 +321,30 @@ class ContractRepository implements ContractRepositoryInterface
     /**
      * Get Contracts having MTurk Tasks
      *
-     * @param int $status
-     * @param int $perPage
+     * @param array $filter
+     * @param int   $perPage
      * @return Collection
      */
-    public function getMTurkContracts($status = null, $perPage = null)
+    public function getMTurkContracts(array $filter = [], $perPage = null)
     {
         $query = $this->contract->with('tasks');
 
-        if (!is_null($status)) {
-            $query->where('mturk_status', $status);
+        if (isset($filter['status']) && !is_null($filter['status'])) {
+            $query->where('mturk_status', $filter['status']);
+        }
+
+        $cat_list = array_keys(config('metadata.category'));
+        if (isset($filter['category']) && in_array($filter['category'], $cat_list)) {
+            $query->whereRaw("metadata->'category'->>0 ='" . $filter['category']."'");
         }
 
         $query->orderBy('created_datetime', 'DESC');
 
+
         if (!is_null($perPage)) {
             return $query->paginate($perPage);
         }
+
 
         return $query->get();
     }
