@@ -13,6 +13,7 @@ use App\Nrgi\Services\Contract\CountryService;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Input;
 
 /**
  * Class ContractController

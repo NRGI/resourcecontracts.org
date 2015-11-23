@@ -68,6 +68,7 @@ $groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
 
 </div>
 
+
 <div class="form-group">
     {!! Form::label('contract_identifier', trans('contract.contract_identifier'), ['class'=>'col-sm-2
     control-label'])!!}
@@ -618,12 +619,39 @@ if (isset($contract->metadata->resource)) {
         $old_category = isset($contract->metadata->category) ? $contract->metadata->category : old('category');
         ?>
         @foreach(config('metadata.category') as $key => $category)
+
             <label class="checkbox-inline">
-                <input name="category[]" {{(is_array($old_category) && in_array($key, $old_category)) ? "checked='checked'" : ''}} type="radio" value="{{$key}}" class="required"> {{$category}}
+                <input name="category[]" {{(is_array($old_category) && in_array($key, $old_category)) ? "checked='checked'" : ''}} type="radio" value="{{$key}}" class="required" id="category-{{$key}}"> {{$category}}
             </label>
         @endforeach
             <br>
             <label id="category[]-error" class="error" for="category[]"></label>
+    </div>
+</div>
+
+<div class="landmatrix-page-wrap">
+    <div class="form-group">
+        {!! Form::label('deal_number' , trans('contract.deal_no') , ['class' => 'col-sm-2 control-label']) !!}
+        <div class="col-sm-7">
+            {!! Form::text('deal_number',  isset($contract->metadata->deal_number)?$contract->metadata->deal_number:null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('matrix_page' , trans('contract.matrix_page') , ['class' => 'col-sm-2 control-label']) !!}
+        <div class="col-sm-7">
+            {!! Form::text('matrix_page',  isset($contract->metadata->matrix_page)?$contract->metadata->matrix_page:null, ['class' => 'form-control' , 'rows' => '2']) !!}
+        </div>
+    </div>
+</div>
+
+
+
+<hr>
+<div class="form-group">
+    {!! Form::label('contract_note' , trans('contract.note') , ['class' => 'col-sm-2 control-label']) !!}
+    <div class="col-sm-7">
+        {!! Form::textarea('contract_note',  isset($contract->metadata->contract_note)?$contract->metadata->contract_note:null, ['class' => 'form-control' , 'rows' => '2',  'placeholder' => 'Note','style' =>'resize: none' ]) !!}
     </div>
 </div>
 <h3>@lang('contract.associated_contracts')</h3>
