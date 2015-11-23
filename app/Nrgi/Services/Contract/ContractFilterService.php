@@ -64,7 +64,6 @@ class ContractFilterService
         }
 
         $contracts = $this->contract->getAll($filters, $limit);
-
         return $contracts;
     }
 

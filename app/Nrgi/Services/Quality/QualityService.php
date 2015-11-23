@@ -34,15 +34,19 @@ class QualityService
     {
         $metadata       = [];
         $metadataSchema = config('metadata.schema.metadata');
-        unset($metadataSchema['file_size'], $metadataSchema['company'], $metadataSchema['concession']);
+        unset($metadataSchema['file_size'], $metadataSchema['company'], $metadataSchema['concession'], $metadataSchema['government_entity']);
         foreach ($metadataSchema as $key => $value) {
-            $count          = $this->contract->getMetadataQuality($key);
+            $count = $this->contract->getMetadataQuality($key);
+            if (is_array($value) && $key != "country") {
+                $count = $this->contract->getResourceAndCategoryIssue($key);
+            }
+
             $metadata[$key] = $count;
         }
-        $multipleMetadata                    = $this->contract->getQualityCountOfMultipleMeta();
-        $multipleMetadata                    = $multipleMetadata[0]->get_quality_issue;
-        $data                                = str_replace(['(', ')'], ['', ''], $multipleMetadata);
-        $data                                = explode(',', $data);
+        $multipleMetadata              = $this->contract->getQualityCountOfMultipleMeta();
+        $multipleMetadata              = $multipleMetadata[0]->get_quality_issue;
+        $data                          = str_replace(['(', ')'], ['', ''], $multipleMetadata);
+        $data                          = explode(',', $data);
         $metadata["Government Entity"] = $data[2];
         $metadata["Company"]           = $data[0];
         $metadata["Concession"]        = $data[1];
