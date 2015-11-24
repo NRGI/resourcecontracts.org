@@ -100,13 +100,12 @@ Annotator.Plugin.Categories = (function(superClass) {
 
   Categories.prototype.saveCategory = function(event, annotation) {
     // debugger;
-    annotation.category_key = $(this.field).find('select option:selected').val();
-    annotation.category = $(this.field).find('select option:selected').text();
+    annotation.category = $(this.field).find('select option:selected').val();
     // annotation.category = $(this.field).find('.' + this.options.classForSelectedCategory).html();
     if ((annotation.text != null) && annotation.text.length > 0 && (annotation.category == null)) {
       window.alert('You did not choose a category, so the default has been chosen.');
       // annotation.category = this.options.category[0];
-      annotation.category_key = this.options.category[0];
+      annotation.category = this.options.category[0];
     }
     if (annotation.category == null) {
       annotation.category = this.options.emptyCategory;
@@ -116,8 +115,8 @@ Annotator.Plugin.Categories = (function(superClass) {
 
   Categories.prototype.highlightSelectedCategory = function(event, annotation) {
     var category, categoryHTML, j, len, ref, totalWidth;
-    if (annotation.category_key == null) {
-      annotation.category_key = this.options.emptyCategory;
+    if (annotation.category == null) {
+      annotation.category = this.options.emptyCategory;
     }
     // categoryHTML = "";
     // ref = this.options.category;
@@ -165,7 +164,7 @@ Annotator.Plugin.Categories = (function(superClass) {
       });
       $(".annotator-editor .annotator-widget").width(totalWidth);
     }
-    return this.setSelectedCategory(annotation.category_key);
+    return this.setSelectedCategory(annotation.category);
   };
 
   return Categories;

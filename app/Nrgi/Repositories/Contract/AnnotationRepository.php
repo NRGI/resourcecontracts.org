@@ -54,7 +54,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      */
     public function search(array $params)
     {
-        if ($params['page']) {
+        if (isset($params['page'])) {
             return $this->annotation
                 ->where('contract_id', $params['contract'])
                 ->where('document_page_no', $params['page'])
