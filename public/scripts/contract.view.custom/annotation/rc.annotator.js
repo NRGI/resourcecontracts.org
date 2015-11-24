@@ -24,7 +24,7 @@ var AnnotatorjsView = Backbone.View.extend({
         // this.content.data('annotator').plugins.AnnotatorEvents.currentPage = this.currentPage;
         // this.annotationCategories = options.annotationCategories;
         this.populateCategories();
-        this.setupStore();
+        this.setupStore(options.enablePdfAnnotation || false);
         return this;
     },
 
@@ -43,21 +43,38 @@ var AnnotatorjsView = Backbone.View.extend({
             category: annotationCategories.invoke("pick", ["key","name"])
         });
     },
-    setupStore: function() {
+    setupStore: function(enablePdfAnnotation) {
         var self = this;
         var page_no = this.contractApp.getCurrentPage(),
             contract_id = this.contractApp.getContractId();
-        this.content.annotator('addPlugin', 'Store', {
-            // The endpoint of the store on your server.
-            prefix: '/api',
-            // Attach the uri of the current page to all annotations to allow search.
-            loadFromSearch: {
-                'contract': contract_id,
-            },
-            annotationData: {
-                'contract': contract_id,
-            }
-        });
+        if(enablePdfAnnotation) {
+            this.content.annotator('addPlugin', 'Store', {
+                // The endpoint of the store on your server.
+                prefix: '/api',
+                // Attach the uri of the current page to all annotations to allow search.
+                loadFromSearch: {
+                    'contract': contract_id,
+                    'page': page_no
+                },
+                annotationData: {
+                    'contract': contract_id,
+                    'page': page_no
+                }
+            });
+        } else {
+            this.content.annotator('addPlugin', 'Store', {
+                // The endpoint of the store on your server.
+                prefix: '/api',
+                // Attach the uri of the current page to all annotations to allow search.
+                loadFromSearch: {
+                    'contract': contract_id,
+                },
+                annotationData: {
+                    'contract': contract_id,
+                }
+            });
+        }
+
         return this;
     },
     reload: function() {
