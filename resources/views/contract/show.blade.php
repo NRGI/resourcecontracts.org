@@ -34,7 +34,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                         modal.removeData('bs.modal');
                     });
 
-                    $('body').on('show.bs.modal', '.modal', function (event) {
+                    $('body').on('show.bs.modal', '.modal-comment', function (event) {
                         var modal = $(this);
                         modal.find('.modal-content').html('<div style="padding: 40px;"> Loading...</div>');
                     });
@@ -571,7 +571,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
         @endif
     </div>
 
-    <div class="modal fade" id="commentModel" tabindex="-1" role="dialog" aria-labelledby="commentModelLabel">
+    <div class="modal fade modal-comment" id="commentModel" tabindex="-1" role="dialog" aria-labelledby="commentModelLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                        <div style="padding: 40px;"> Loading... </div>
