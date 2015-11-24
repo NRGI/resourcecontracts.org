@@ -34,7 +34,7 @@ return [
                     'identifier' => '',
                 ]
             ],
-            'type_of_contract'       => '',
+            'type_of_contract'       => [],
             'signature_date'         => '',
             'document_type'          => '',
             'company'                => [
@@ -62,7 +62,7 @@ return [
             'source_url'             => '',
             'disclosure_mode'        => '',
             'date_retrieval'         => '',
-            'category'               => '',
+            'category'               => [],
             'signature_year'         => '',
             'file_size'              => '',
             'open_contracting_id'    => '',

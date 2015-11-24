@@ -58,10 +58,11 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getAll(array $filters, $limit)
     {
-        $query    = $this->contract->select('*');
-        $from     = "contracts ";
-        $operator = "";
-        $filters  = array_map('trim', $filters);
+        $query         = $this->contract->select('*');
+        $from          = "contracts ";
+        $multipleField = ["resource", "category","type_of_contract"];
+        $operator      = "";
+        $filters       = array_map('trim', $filters);
         extract($filters);
         $operator = (!empty($issue) && $issue == "present") ? "!=" : "=";
 
@@ -100,8 +101,11 @@ class ContractRepository implements ContractRepositoryInterface
             $from .= ",json_array_elements(contracts.metadata->'category') cat";
             $query->whereRaw("trim(both '\"' from cat::text) = '" . $category . "'");
         }
-        if ($type == "metadata" && $word != '' && $issue != '') {
+        if ($type == "metadata" && $word != '' && $issue != '' && !in_array($word, $multipleField)) {
             $query->whereRaw(sprintf("contracts.metadata->>'%s' %s''", $word, $operator));
+        }
+        if ($type == "metadata" && $word != '' && $issue != '' && in_array($word, $multipleField)) {
+            $query->whereRaw(sprintf(" json_array_length(metadata->'%s') %s 0", $word, $operator));
         }
         if ($type == 'annotations' && $status != '') {
             $query->whereRaw("contracts.metadata_status=?", [$status]);
@@ -547,4 +551,19 @@ class ContractRepository implements ContractRepositoryInterface
     }
 
 
+    /**
+     * Get Quality control for resource and category
+     * @param $key
+     * @return int
+     */
+    public function getResourceAndCategoryIssue($key)
+    {
+
+        $from   = "contracts ";
+        $result = $this->contract->whereRaw(sprintf("json_array_length(metadata->'%s')!=0", $key))
+                                 ->from($this->db->raw($from))
+                                 ->count();
+
+        return $result;
+    }
 }

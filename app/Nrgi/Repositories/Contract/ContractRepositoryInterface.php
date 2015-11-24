@@ -228,4 +228,11 @@ interface ContractRepositoryInterface
      * @return array
      */
     public function getParentContracts();
+
+    /**
+     * Get Quality control for resource and category
+     * @param $key
+     * @return int
+     */
+    public function getResourceAndCategoryIssue($key);
 }
