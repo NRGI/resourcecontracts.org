@@ -24,13 +24,17 @@ return [
     'translation_parent'                   => "Translation Parent",
     'company'                              => "Company",
     'company_name'                         => "Company Name",
+    'name'                                 => "Company Name",
     'jurisdiction_of_incorporation'        => "Jurisdiction of Incorporation",
     'registry_agency'                      => "Registration Agency",
+    'registration_agency'                  => "Registration Agency",
     'incorporation_date'                   => "Incorporation Date",
+    'company_founding_date'                => "Incorporation Date",
     'company_address'                      => "Company Address",
     'company_number'                       => "Company Number",
     'corporate_grouping'                   => "Corporate Grouping",
     'open_corporate'                       => "OpenCorporates Link",
+    'open_corporate_id'                    => "OpenCorporates Link",
     'license_and_project'                  => "Concession / License and Project",
     'license_name'                         => "Concession / License Name",
     'license_identifier'                   => "Concession / License Identifier",
@@ -39,6 +43,7 @@ return [
     'source'                               => "Source",
     'source_url'                           => "Source URL",
     'date_of_retrieval'                    => "Date of Retrieval",
+    'date_retrieval'                       => "Date of Retrieval",
     'category'                             => "Category",
     'open_land_contracts'                  => "OpenLandContracts",
     'resource_contract_org'                => "ResourceContracts.org",
@@ -81,9 +86,9 @@ return [
     'processing'                           => "Processing",
     'annotation_list'                      => "Annotation List",
     'users'                                => 'Users',
-    'deal_no'                              => 'Deal Number',
+    'deal_number'                          => 'Deal Number',
     'matrix_page'                          => 'Matrix Page',
-    'note'                                 => 'Note',
+    'contract_note'                        => 'Note',
     /*ContractController*/
     'save_success'                         => 'Contract successfully uploaded. You will receive an email notification once the contract processing is complete allowing for the text review',
     'save_fail'                            => 'Contract could not be saved.',
@@ -132,6 +137,9 @@ return [
         'status'    => 'Contract :type status updated from :old_status to :new_status',
         'save_page' => 'Page no :page updated',
         'unpublish' => 'Unpublished',
+        'discussion' => [
+            'save' => 'Comment added for :key on :type'
+        ]
     ],
     'page'                                 => [
         'save'      => 'Your corrections / changes have been saved',

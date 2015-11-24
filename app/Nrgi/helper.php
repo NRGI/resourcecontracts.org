@@ -132,3 +132,32 @@ function trimArray($value)
 
     return array_map('trimArray', $value);
 }
+
+/**
+ * Show discussion count and link
+ *
+ * @param        $discussions
+ * @param        $discussion_status
+ * @param        $contract_id
+ * @param        $key
+ * @param string $type
+ * @return string
+ */
+function discussion($discussions, $discussion_status, $contract_id, $key, $type = 'metadata')
+{
+    $count             = isset($discussions[$key]) ? $discussions[$key] : 0;
+    $discussion_status = (isset($discussion_status[$key]) && $discussion_status[$key] == 1) ? true : false;
+
+    if ($discussion_status == 1) {
+        $status = '<span class="label label-success">(' . $count . ') Resolved</span>';
+    } else {
+        $status = '<span class="label label-red pull-right">(' . $count . ') Open</span>';
+    }
+
+    return sprintf(
+        '<a href="%s" data-toggle="modal"  data-target="#commentModel" class="key-%s pull-right">%s</a>',
+        route('contract.discussion', ['id' => $contract_id, 'type' => $type, 'key' => $key]),
+        $key,
+        $status
+    );
+}

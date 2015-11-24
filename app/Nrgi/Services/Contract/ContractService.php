@@ -3,6 +3,7 @@
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Services\Contract\Comment\CommentService;
+use App\Nrgi\Services\Contract\Discussion\DiscussionService;
 use App\Nrgi\Services\Contract\Pages\PagesService;
 use Exception;
 use Illuminate\Auth\Guard;
@@ -65,6 +66,10 @@ class ContractService
      * @var WordGenerator
      */
     protected $word;
+    /**
+     * @var DiscussionService
+     */
+    protected $discussion;
 
     /**
      * @param ContractRepositoryInterface $contract
@@ -75,6 +80,7 @@ class ContractService
      * @param CountryService              $countryService
      * @param Queue                       $queue
      * @param CommentService              $comment
+     * @param DiscussionService           $discussion
      * @param DatabaseManager             $database
      * @param Log                         $logger
      * @param PagesService                $pages
@@ -88,6 +94,7 @@ class ContractService
         CountryService $countryService,
         Queue $queue,
         CommentService $comment,
+        DiscussionService $discussion,
         DatabaseManager $database,
         Log $logger,
         PagesService $pages,
@@ -104,6 +111,7 @@ class ContractService
         $this->logger         = $logger;
         $this->pages          = $pages;
         $this->word           = $word;
+        $this->discussion = $discussion;
     }
 
     /**
@@ -416,10 +424,13 @@ class ContractService
         $contract->updated_by            = $this->auth->id();
         $contract->metadata_status       = Contract::STATUS_DRAFT;
 
+
         try {
             if (!$contract->save()) {
-                return false;
-            }
+                  return false;
+              }
+
+            $this->discussion->deleteContractDiscussion($contract->id, $formData['delete']);
 
             if(isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '1'  && isset($formData['translated_from'])){
                 $contract->syncSupportingContracts($formData['translated_from']);

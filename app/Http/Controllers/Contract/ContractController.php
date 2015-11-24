@@ -10,6 +10,7 @@ use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\ContractFilterService;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\CountryService;
+use App\Nrgi\Services\Contract\Discussion\DiscussionService;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -125,10 +126,11 @@ class ContractController extends Controller
     /**
      * Display specified contract
      *
-     * @param $id
+     * @param                   $id
+     * @param DiscussionService $discussion
      * @return Response
      */
-    public function show($id)
+    public function show($id, DiscussionService $discussion)
     {
         $contract = $this->contract->findWithAnnotations($id);
 
@@ -147,26 +149,32 @@ class ContractController extends Controller
         $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
         $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
 
+        $discussions = $discussion->getCount($id);
+        $discussion_status = $discussion->getResolved($id);
+
         return view(
             'contract.show',
-            compact('contract', 'status', 'annotations', 'annotationStatus', 'parentContract', 'supportingDocument')
+            compact('contract', 'status', 'annotations', 'annotationStatus', 'parentContract', 'supportingDocument', 'discussions', 'discussion_status')
         );
     }
 
     /**
      * Display contract edit form.
      *
-     * @param $id
+     * @param                   $id
+     * @param DiscussionService $discussion
      * @return Response
      */
-    public function edit($id)
+    public function edit($id, DiscussionService $discussion)
     {
         $contract           = $this->contract->find($id);
         $country            = $this->countries->all();
         $supportingDocument = $this->contract->getSupportingDocuments($id);
         $contracts          = $this->contract->getList();
 
-        return view('contract.edit', compact('contract', 'country', 'supportingDocument', 'contracts'));
+        $discussions = $discussion->getCount($id);
+        $discussion_status = $discussion->getResolved($id);
+        return view('contract.edit', compact('contract', 'country', 'supportingDocument', 'contracts','discussions', 'discussion_status'));
     }
 
     /**

@@ -28,6 +28,12 @@ $(function () {
 
     $(document).on('click', '.company .item .delete', function (e) {
         $(this).parent().remove();
+        var key = $(this).data('key');
+        if (typeof key != 'undefined') {
+            var input = $('.delete_company');
+            key = input.val() == '' ? key : input.val() + ',' + key;
+            input.val(key);
+        }
     });
     $('.new-company').on('click', function (e) {
         e.preventDefault();
@@ -59,9 +65,14 @@ $(function () {
     });
 
 
-
     $(document).on('click', '.concession .con-item .delete', function (e) {
         $(this).parent().remove();
+        var key = $(this).data('key');
+        if (typeof key != 'undefined') {
+            var input = $('.delete_concession');
+            key = input.val() == '' ? key : input.val() + ',' + key;
+            input.val(key);
+        }
     });
 
     $('.new-concession').on('click', function (e) {
@@ -75,10 +86,15 @@ $(function () {
 
     $(document).on('click', '.government_entity .government-item .delete', function (e) {
         $(this).parent().remove();
+        var key = $(this).data('key');
+        if (typeof key != 'undefined') {
+            var input = $('.delete_government_entity');
+            key = input.val() == '' ? key : input.val() + ',' + key;
+            input.val(key);
+        }
     });
 
     $('.new-government-entity').on('click', function (e) {
-
         e.preventDefault();
         g += 1;
         var template = $('#government-entity').html();

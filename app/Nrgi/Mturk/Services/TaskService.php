@@ -1,6 +1,5 @@
 <?php namespace App\Nrgi\Mturk\Services;
 
-use App\Nrgi\Entities\ActivityLog\ActivityLog;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Mturk\Entities\Task;
 use App\Nrgi\Mturk\Repositories\TaskRepositoryInterface;
@@ -264,10 +263,11 @@ class TaskService
                     $task->save();
                 }
             }
-        }catch (MTurkException $e) {
-            $this->logger->error('Update Assignment failed:' . $e->getMessage(), ['Task' => $task->toArray(), 'Errors' => $e->getErrors()]);
+
+        } catch (MTurkException $e){
+            $this->logger->error('Assignment update failed. '.$e->getMessage(), [ 'Contract id' => $task->contract_id,  'Task' => $task->id, 'Page no'=>$task->page_no, 'Errors'=> $e->getErrors()]);
         }catch (Exception $e) {
-            $this->logger->error('Update Assignment failed:'. $e->getMessage(), ['Task' => $task->toArray()]);
+             $this->logger->error('Assignment update failed. '.$e->getMessage());
         }
 
         return $task;
@@ -372,7 +372,6 @@ class TaskService
             return $this->updateAssignment($task);
         }catch (Exception $e){
             $this->logger->info('Get Task:'.$e->getMessage() , ['Task' => $task_id]);
-
             return null;
         }
     }
@@ -401,9 +400,9 @@ class TaskService
            }
             $this->logger->info('HIT successfully deleted', [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
         }catch (MTurkException $e){
-            $this->logger->error('Delete Task:'. $e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task->toArray(), 'Errors'=> $e->getErrors()]);
+            $this->logger->error('HIT delete failed. '.$e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id, 'Errors'=> $e->getErrors()]);
         }catch (Exception $e){
-            $this->logger->error('Delete Task:'. $e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task->toArray()]);
+            $this->logger->error('HIT delete failed. '.$e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
             return false;
         }
 
@@ -412,12 +411,12 @@ class TaskService
         $description = config('mturk.defaults.production.Description');
 
         try{
-            $ret    = $this->turk->createHIT($title, $description, $url);
-        }catch (MTurkException $e) {
-            $this->logger->error('createHIT: '. $e->getMessage(), ['Contract id' => $contract->id, 'Task' => $task->toArray(), 'Errors' => $e->getErrors()]);
+            $ret = $this->turk->createHIT($title, $description, $url);
+        } catch (MTurkException $e){
+            $this->logger->error('HIT create failed. '.$e->getMessage(), [ 'Contract id' => $contract_id,  'Task' => $task_id, 'Page no'=>$task->page_no, 'Errors'=> $e->getErrors()]);
             return false;
-        }catch (Exception $e){
-            $this->logger->error('createHIT: '. $e->getMessage(), ['Contract_id' => $contract->id, 'Task' => $task->toArray()]);
+        } catch (Exception $e){
+            $this->logger->error('HIT create failed. '.$e->getMessage(), [ 'Contract id' => $contract_id,  'Task' => $task_id, 'Page no'=>$task->page_no]);
             return false;
         }
 
