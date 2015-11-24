@@ -50,9 +50,12 @@ class MTurkController extends Controller
      */
     public function index(Request $request)
     {
-        $status = $request->get('status', Contract::MTURK_SENT);
+        $filter = [
+            'status'   => $request->get('status', Contract::MTURK_SENT),
+            'category' => $request->get('category', 'all')
+        ];
 
-        $contracts = $this->task->getContracts($status);
+        $contracts = $this->task->getContracts($filter);
 
         return view('mturk.index', compact('contracts'));
     }
@@ -119,6 +122,22 @@ class MTurkController extends Controller
     public function approve($contract_id, $task_id)
     {
         if ($this->task->approveTask($contract_id, $task_id)) {
+            return redirect()->back()->withSuccess(trans('mturk.action.approve'));
+        }
+
+        return redirect()->back()->withError(trans('mturk.action.approve_fail'));
+    }
+
+    /**
+     * Approve All Assignments
+     *
+     * @param $contract_id
+     * @param $task_id
+     * @return Redirect
+     */
+    public function approveAll($contract_id)
+    {
+        if ($this->task->approveAllTasks($contract_id)) {
             return redirect()->back()->withSuccess(trans('mturk.action.approve'));
         }
 

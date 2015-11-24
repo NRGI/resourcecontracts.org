@@ -41,7 +41,7 @@ class TaskService
     /**
      * @var String
      */
-    protected $task_url = 'https://task-manish707.rhcloud.com/?pdf=';
+    protected $task_url;
     /**
      * @var Queue
      */
@@ -80,25 +80,28 @@ class TaskService
         $this->page     = $page;
         $this->queue    = $queue;
         $this->logService = $logService;
+        $this->task_url = env('MTURK_TASK_URL');
     }
 
     /**
      * Get Contracts having MTurk Tasks
      *
-     * @param null $status
+     * @param array $filter
      * @return Collection|null
      */
-    public function getContracts($status = null)
+    public function getContracts(array $filter = [])
     {
+        $status = isset($filter['status']) ? $filter['status'] : null;
+
         if(!is_null($status) && !in_array($status, [Contract::MTURK_SENT, Contract::MTURK_COMPLETE])){
-            $status = Contract::MTURK_SENT;
+            $filter['status'] = Contract::MTURK_SENT;
         }
 
         if($status == Contract::MTURK_SENT){
             $this->perPage = null;
         }
 
-        $contracts = $this->contract->getMTurkContracts($status, $this->perPage);
+        $contracts = $this->contract->getMTurkContracts($filter, $this->perPage);
 
         if(!is_null($contracts)){
             foreach ($contracts as &$contract) {
@@ -568,5 +571,31 @@ class TaskService
     public function allTasks($filter)
     {
        return  $this->task->allTasks($filter, 50);
+    }
+
+    /**
+     * Approve all assignment
+     *
+     * @param $contract_id
+     * @return bool
+     */
+    public function approveAllTasks($contract_id)
+    {
+        try{
+            $contracts = $this->contract->findWithTasks($contract_id,Task::COMPLETED, Task::APPROVAL_PENDING);
+            $tasks = $contracts->tasks;
+        } catch (Exception $e) {
+            $this->logger->error('Tasks not found for approval : '.$e->getMessage(), [ 'Contract id' => $contract_id]);
+            return false;
+        }
+
+        $status = true;
+        foreach ($tasks as $task) {
+            if (!$this->approveTask($task->contract_id, $task->id)) {
+                $status = false;
+            }
+        }
+
+        return $status;
     }
 }

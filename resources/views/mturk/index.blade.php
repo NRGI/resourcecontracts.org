@@ -1,6 +1,7 @@
 @extends('layout.app')
 <?php
-$status = \Input::get('status',1)
+$status = \Input::get('status',1);
+$category = \Input::get('category','all');
 ?>
 @section('content')
     <div class="panel panel-default">
@@ -8,12 +9,25 @@ $status = \Input::get('status',1)
         <a class="btn btn-primary pull-right" href="{{route('mturk.activity')}}">@lang('mturk.activity')</a>
     </div>
         <div class="panel-body">
-            <div class="btn-group" role="group">
-                <a class="btn @if($status == 1) btn-primary @else btn-default @endif" href="{{route('mturk.index')}}?status=1">Pending Contracts</a>
-                <a class="btn @if($status == 2) btn-primary @else btn-default @endif" href="{{route('mturk.index')}}?status=2">Completed Contracts</a>
-            </div>
+            <div class="row">
+                <div class="col-lg-11">
+                    {!! Form::open(['route' => 'mturk.index', 'method' => 'get','class' => 'form-inline']) !!}
 
-            <a class="btn btn-primary pull-right" href="{{route('mturk.allTasks')}}">All Tasks</a>
+                    {!! Form::label('status', 'Status: ', ['class' => 'control-label']) !!}
+                    {!! Form::select('status', [1=>'Pending',2=>'Completed'] , $status , ['class' => 'form-control']) !!}
+
+                    {!! Form::label('category', 'Category: ', ['class' => 'control-label']) !!}
+                    {!! Form::select('category', ['all'=>'All','rc'=>'RC','olc'=>'OLC'] , $category , ['class' => 'form-control']) !!}
+
+                    {!! Form::submit('Search', ['class' => 'form-control btn btn-primary']) !!}
+                    {!! Form::close() !!}
+                </div>
+
+                <div class="col-md-1">
+                    <a class="btn btn-primary pull-right" href="{{route('mturk.allTasks')}}">All Tasks</a>
+                </div>
+
+            </div>
 
             @if($status == 2)
                 @include('mturk.status.completed')
