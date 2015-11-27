@@ -8,6 +8,7 @@
 
 return [
     'add'                                  => "Add Contract",
+    'download'                             => 'Download CSV',
     'whoops'                               => "Whoops!",
     'problem'                              => "There were some problems with your input.",
     'select_pdf'                           => "Select PDF",
@@ -130,13 +131,13 @@ return [
     'cancel'                               => 'Cancel',
     /*Logs*/
     'log'                                  => [
-        'save'      => 'Contract created',
-        'update'    => 'Contract updated',
-        'pdfupdate' => 'Contract document changed',
-        'delete'    => 'Contract ":contract" deleted',
-        'status'    => 'Contract :type status updated from :old_status to :new_status',
-        'save_page' => 'Page no :page updated',
-        'unpublish' => 'Unpublished',
+        'save'       => 'Contract created',
+        'update'     => 'Contract updated',
+        'pdfupdate'  => 'Contract document changed',
+        'delete'     => 'Contract ":contract" deleted',
+        'status'     => 'Contract :type status updated from :old_status to :new_status',
+        'save_page'  => 'Page no :page updated',
+        'unpublish'  => 'Unpublished',
         'discussion' => [
             'save' => 'Comment added for :key on :type'
         ]
