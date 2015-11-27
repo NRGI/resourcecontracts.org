@@ -19,12 +19,20 @@
         <div class="panel-heading">@lang('contract.all_contract')
 
             <div class="btn-group pull-right" role="group" aria-label="...">
-                <a href="{{route('contract.import')}}" class="btn btn-default">@lang('contract.import.name')</a>
+                <?php
+                    $url=Request::all();
+                    $url['download']=1;
+                  ?>
+
+
+                <a href="{{route("contract.index",$url)}}" class="btn btn-info" style="margin-right: 20px">@lang('contract.download')</a>
+                 <a href="{{route('contract.import')}}" class="btn btn-default">@lang('contract.import.name')</a>
                 <a href="{{route('contract.select.type')}}" class="btn btn-primary btn-import">@lang('contract.add')</a>
             </div>
         </div>
+
         <div class="panel-body">
-            {!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
+             {!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
             {!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' =>
             'form-control']) !!}
 

@@ -256,7 +256,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             </div>
         @elseif($status== $contract_processing_running)
             <div class="status">@lang('contract.status'): @lang('Processing')</div>
-        @else($status == $contract_processing_pipline)
+        @elseif($status == $contract_processing_pipline)
             <div class="status">@lang('contract.status'): @lang('Pipeline')</div>
         @endif
 

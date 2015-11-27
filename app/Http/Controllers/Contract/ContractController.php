@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contract\ContractRequest;
+use App\Http\Services\DownloadService;
 use App\Nrgi\Entities\Contract\Comment\Comment;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\AnnotationService;
@@ -49,20 +50,23 @@ class ContractController extends Controller
      * @param CountryService        $countries
      * @param CommentService        $comment
      * @param AnnotationService     $annotation
+     * @param DownloadService       $downloadService
      */
     public function __construct(
         ContractService $contract,
         ContractFilterService $contractFilter,
         CountryService $countries,
         CommentService $comment,
-        AnnotationService $annotation
+        AnnotationService $annotation,
+        DownloadService $downloadService
     ) {
         $this->middleware('auth');
-        $this->contract       = $contract;
-        $this->countries      = $countries;
-        $this->contractFilter = $contractFilter;
-        $this->comment        = $comment;
-        $this->annotation     = $annotation;
+        $this->contract        = $contract;
+        $this->countries       = $countries;
+        $this->contractFilter  = $contractFilter;
+        $this->comment         = $comment;
+        $this->annotation      = $annotation;
+        $this->downloadService = $downloadService;
     }
 
     /**
@@ -83,6 +87,7 @@ class ContractController extends Controller
             'word',
             'issue',
             'status',
+            'download',
             'q'
         );
         $contracts = $this->contractFilter->getAll($filters);
@@ -149,7 +154,7 @@ class ContractController extends Controller
         $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
         $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
 
-        $discussions = $discussion->getCount($id);
+        $discussions       = $discussion->getCount($id);
         $discussion_status = $discussion->getResolved($id);
 
         return view(
@@ -172,9 +177,10 @@ class ContractController extends Controller
         $supportingDocument = $this->contract->getSupportingDocuments($id);
         $contracts          = $this->contract->getList();
 
-        $discussions = $discussion->getCount($id);
+        $discussions       = $discussion->getCount($id);
         $discussion_status = $discussion->getResolved($id);
-        return view('contract.edit', compact('contract', 'country', 'supportingDocument', 'contracts','discussions', 'discussion_status'));
+
+        return view('contract.edit', compact('contract', 'country', 'supportingDocument', 'contracts', 'discussions', 'discussion_status'));
     }
 
     /**
@@ -390,4 +396,5 @@ class ContractController extends Controller
 
         return view('contract.type_selection', compact('parentContracts'));
     }
+
 }
