@@ -69,7 +69,7 @@ return [
             'show_pdf_text'          => '',
             'is_supporting_document' => '',
             'contract_note'          => '',
-            'deal_no'                => '',
+            'deal_number'            => '',
             'matrix_page'            => ''
         ],
     ]
