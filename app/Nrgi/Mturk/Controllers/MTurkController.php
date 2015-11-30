@@ -69,9 +69,14 @@ class MTurkController extends Controller
      */
     public function tasksList(Request $request, $contract_id)
     {
-        $status      = $request->get('status', null);
-        $approved    = $request->get('approved', null);
-        $contract    = $this->contract->findWithTasks($contract_id, $status, $approved);
+        $status   = $request->get('status', null);
+        $approved = $request->get('approved', null);
+        $contract = $this->contract->findWithTasks($contract_id, $status, $approved);
+
+        if (!$contract) {
+            return abort(404);
+        }
+
         $contractAll = $this->contract->findWithTasks($contract_id);
 
         $contract->tasks = $this->task->appendAssignment($contract->tasks);
@@ -108,6 +113,10 @@ class MTurkController extends Controller
     {
         $contract = $this->contract->findWithTasks($contract_id);
         $task     = $this->task->get($contract_id, $task_id);
+
+        if (!$contract || !$task) {
+            return abort(404);
+        }
 
         return view('mturk.detail', compact('contract', 'task'));
     }

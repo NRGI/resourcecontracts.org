@@ -20,7 +20,7 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $e
+     * @param  \Exception $e
      * @return void
      */
     public function report(Exception $e)
@@ -31,12 +31,40 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception               $e
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $e)
     {
+        if ($e instanceof HttpException) {
+            return parent::render($request, $e);
+        }
+
+        if ($e instanceof \ErrorException) {
+            if (env('APP_ENV') === 'production') {
+               $this->sendMail($e);
+            }
+        }
+
         return parent::render($request, $e);
+    }
+
+    /**
+     * Sends email
+     * @param $exception
+     */
+    protected function sendMail($exception)
+    {
+        $error = $exception->getMessage();
+        \Mail::raw(
+            (string) $exception,
+            function ($msg) use ($error) {
+                $recipients = [env('NOTIFY_MAIL')];
+                $msg->subject("ResourceContract Admin site has error. Please check and resolve." . $error);
+                $msg->to($recipients);
+                $msg->from(['nrgi@yipl.com.np']);
+            }
+        );
     }
 }
