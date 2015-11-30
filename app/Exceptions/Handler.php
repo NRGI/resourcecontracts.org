@@ -41,9 +41,9 @@ class Handler extends ExceptionHandler
             return parent::render($request, $e);
         }
 
-        if ($e instanceof \ErrorException) {
-            if (env('APP_ENV') === 'production') {
-               $this->sendMail($e);
+        if (env('APP_ENV') === 'production') {
+            if (env('NOTIFY_ERROR_EMAIL')) {
+                $this->sendMail($e);
             }
         }
 
@@ -61,7 +61,7 @@ class Handler extends ExceptionHandler
             (string) $exception,
             function ($msg) use ($error) {
                 $recipients = [env('NOTIFY_MAIL')];
-                $msg->subject("ResourceContract Admin site has error. Please check and resolve." . $error);
+                $msg->subject("ResourceContract Admin site has error.Please check and resolve." . $error);
                 $msg->to($recipients);
                 $msg->from(['nrgi@yipl.com.np']);
             }
