@@ -29,7 +29,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
     <script src="{{asset('js/bootstrap-editable.min.js')}}"></script>
     <script>
         $(function () {
-                    $('body').on('hidden.bs.modal', '.modal', function (event) {
+                    $('body').on('hidden.bs.modal', '.modal-comment', function (event) {
                         var modal = $(this);
                         modal.removeData('bs.modal');
                     });
@@ -50,7 +50,6 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                 if (!confirm("{{_l("annotation.delete_confirm")}}")) {
                                     return;
                                 }
-                                console.log($(this).data('pk'));
                                 $(this).parent().fadeOut('slow');
                                 var id = $(this).data('pk');
                                 var url = app_url + "/api/annotation/" + id + "/delete";
@@ -257,7 +256,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             </div>
         @elseif($status== $contract_processing_running)
             <div class="status">@lang('contract.status'): @lang('Processing')</div>
-        @else($status== $contract_processing_pipline)
+        @else($status == $contract_processing_pipline)
             <div class="status">@lang('contract.status'): @lang('Pipeline')</div>
         @endif
 
@@ -379,12 +378,12 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
                                 <p>
                                     <strong>@lang('contract.registry_agency'):</strong> {{$v->registration_agency}}
-                                    {!! discussion($discussions,$discussion_status, $contract->id,'registry_agency-'.$k,'metadata') !!}
+                                    {!! discussion($discussions,$discussion_status, $contract->id,'registration_agency-'.$k,'metadata') !!}
                                 </p>
 
                                 <p>
                                     <strong>@lang('contract.incorporation_date'):</strong> {{$v->company_founding_date}}
-                                    {!! discussion($discussions,$discussion_status, $contract->id,'incorporation_date-'.$k,'metadata') !!}
+                                    {!! discussion($discussions,$discussion_status, $contract->id,'company_founding_date-'.$k,'metadata') !!}
                                 </p>
 
                                 <p>
@@ -408,7 +407,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                 @if(isset($v->operator))
                                 <p>
                                    <strong>@lang('contract.operator'):</strong>@if($v->operator==1)Yes @elseif($v->operator==0) No @elseif($v->operator==-1) Not Available @endif
-                                    {!! discussion($discussions,$discussion_status, $contract->id,'operator-'.$k,'operatoretadata') !!}
+                                    {!! discussion($discussions,$discussion_status, $contract->id,'operator-'.$k,'metadata') !!}
                                 </p>
                                 @endif
                             </div>
@@ -458,7 +457,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             </li>
             <li>
                 <strong>@lang('contract.date_of_retrieval'):</strong> {{$contract->metadata->date_retrieval}}
-                {!! discussion($discussions,$discussion_status, $contract->id,'date_of_retrieval','metadata') !!}
+                {!! discussion($discussions,$discussion_status, $contract->id,'date_retrieval','metadata') !!}
             </li>
             <li>
                 <strong>@lang('contract.category'):</strong>
