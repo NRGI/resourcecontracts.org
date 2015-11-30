@@ -199,7 +199,7 @@ class TaskService
     {
         foreach ($contract->pages as $key => $page) {
             $title       = sprintf("Transcription of Contract '%s' - Pg: %s Lang: %s",  str_limit($contract->title, 70), $page->page_no, $contract->metadata->language);
-            $url         = $this->task_url . $page->pdf_url;
+            $url         = $this->getMTurkUrl($page->pdf_url, $contract->metadata->language);
             $description = config('mturk.defaults.production.Description');
 
             try{
@@ -407,7 +407,7 @@ class TaskService
         }
 
         $title       = sprintf("Transcription of Contract '%s' - Pg: %s Lang: %s",  str_limit($contract->title, 70), $task->page_no, $contract->metadata->language);
-        $url         = $this->task_url . $task->pdf_url;
+        $url         = $this->getMTurkUrl($task->pdf_url, $contract->metadata->language);
         $description = config('mturk.defaults.production.Description');
 
         try{
@@ -596,5 +596,17 @@ class TaskService
         }
 
         return $status;
+    }
+
+    /**
+     * Get MTurk Url
+     *
+     * @param $pdf
+     * @param $lang
+     * @return string
+     */
+    public function getMTurkUrl($pdf, $lang)
+    {
+        return sprintf('%s?pdf=%s&amp;lang=%s', $this->task_url, $pdf, $lang);
     }
 }
