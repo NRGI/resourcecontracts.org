@@ -802,13 +802,11 @@ if (isset($contract->metadata->resource)) {
     </div>
 </div>
 
-
-
 <hr>
 <div class="form-group">
     {!! Form::label('contract_note' , trans('contract.contract_note') , ['class' => 'col-sm-2 control-label']) !!}
     <div class="col-sm-7">
-        {!! Form::textarea('contract_note',  isset($contract->metadata->contract_note)?$contract->metadata->contract_note:null, ['class' => 'form-control' , 'rows' => '2',  'placeholder' => 'Note','style' =>'resize: none' ]) !!}
+        {!! Form::textarea('contract_note',  isset($contract->metadata->contract_note)?$contract->metadata->contract_note:null, ['class' => 'form-control' , 'rows' => '6' ]) !!}
     </div>
     @if($action == 'edit')
         <div class="col-sm-3">
@@ -918,98 +916,19 @@ if (isset($contract->metadata->resource)) {
 
 @endif
 
-@section('script')
-    <script src="{{asset('js/jquery.validate.min.js')}}"></script>
-    <script src="{{asset('js/select2.min.js')}}"></script>
-    <script src="{{asset('js/jquery.datetimepicker.js')}}"></script>
-    <script src="{{asset('js/mustache.min.js')}}"></script>
-    <script src="{{asset('js/lib/underscore.js')}}"></script>
-    <script src="{{asset('js/lib/backbone.js')}}"></script>
-
-    @include('contract.company_template')
-    <script>
-        $(function () {
-            $('body').on('hidden.bs.modal', '.modal', function (event) {
-                var modal = $(this);
-                modal.removeData('bs.modal');
-            });
-
-            $('body').on('show.bs.modal', '.modal', function (event) {
-                var modal = $(this);
-                modal.find('.modal-content').html('<div style="padding: 40px;"> Loading...</div>');
-            });
-
-            var input = '<input class="form-control other_toc" name="type_of_contract[]" type="text">';
-
-
-            $(document).on('change', '#type_of_contract', function () {
-                if (($(this).val() == 'Other')) {
-                    $(this).parent().append(input)
-                } else {
-                    if ($('.other_toc').length) {
-                        input = $('.other_toc');
-                    }
-                    $('.other_toc').remove();
-                }
-            });
-
-            var input_dt = '<input class="form-control dt" name="document_type" type="text">';
-
-            $(document).on('change', '#document_type', function () {
-                if (($(this).val() == 'Others')) {
-                    $(this).parent().append(input_dt)
-                } else {
-                    if ($('.dt').length) {
-                        input_dt = $('.dt');
-                    }
-                    $('.dt').remove();
-                }
-            });
-
-            $(document).on('click', '.is-supporting-document', function () {
-                if (($(this).val() == '1')) {
-                    $('.parent-document').show();
-                } else {
-                    $('.parent-document').hide();
-                    $("#translated_from").val(null).trigger("change");
-                }
-            });
-
-            var input_disclosure_mode = '<input class="form-control disclosure_mode_other" name="disclosure_mode" type="text">';
-
-            $(document).on('change', '#disclosure_mode', function () {
-                if (($(this).val() == 'Other')) {
-                    $(this).parent().append(input_disclosure_mode)
-                } else {
-                    if ($('.disclosure_mode_other').length) {
-                        input_disclosure_mode = $('.disclosure_mode_other');
-                    }
-                    $('.disclosure_mode_other').remove();
-                }
-            });
-            var i = {{$i or 0}};
-            var j = {{$j or 0}};
-            var g = {{$g or 0}};
-            var country_list = {!!json_encode($country_list)!!};
-            var contracts = {!!json_encode($contracts)!!};
-            var docId = {!!json_encode($docId)!!};
-        });
-    </script>
-    <script src="{{asset('js/contract.js')}}"></script>
-@stop
-
-
 <div class="form-action">
-    <div class="col-sm-7 col-lg-offset-2">
-        {!! Form::submit(trans('contract.submit'),['class'=>'btn btn-lg pull-right btn-primary' , 'id' => 'Submit']) !!}
-        <a style="margin-right: 50px;" class="btn btn-lg pull-right btn-danger pull-right back" href="{{route('contract.select.type')}}">@lang('contract.cancel')</a>
+    <div class="col-sm-7 col-lg-offset-3">
+        {!! Form::submit(trans('contract.submit'),['class'=>'btn btn-lg btn-primary' , 'id' => 'Submit']) !!}
+        <a style="margin-left: 10px;" class="btn btn-lg  btn-danger back" href="{{route('contract.select.type')}}">@lang('contract.cancel')</a>
     </div>
 </div>
 
-<div class="modal fade" id="commentModel" tabindex="-1" role="dialog" aria-labelledby="commentModelLabel">
+<div class="modal fade modal-comment" id="commentModel" tabindex="-1" role="dialog" aria-labelledby="commentModelLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div style="padding: 40px;"> Loading...</div>
         </div>
     </div>
 </div>
+
+@include('contract.partials.form.contract_scripts')

@@ -33,55 +33,63 @@
         padding: 10px 10px 0px;
     }
 
-    .comment-key {margin-bottom: 10px;}
+    .comment-key {
+        margin-bottom: 10px;
+    }
 </style>
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title" id="myModalLabel">{{$contract->title}}</h4>
 </div>
 <div class="modal-body">
-
     @if($type == 'metadata')
         <div class="comment-key">
-        <?php  $key_text = explode('-', $key);?>
-        @if(count($key_text) > 1)
-            <?php
-            $i = $key_text[1];
-            $key_text = $key_text[0];
-            ?>
-            @if(in_array($key_text, ['entity','identifier']))
-                <p>
-                    <strong>@lang('contract.government_'.$key_text):</strong>
-                    {{$contract->metadata->government_entity[$i]->$key_text}}
-                </p>
-            @elseif(in_array($key_text, ['license_name','license_identifier']))
-                <strong>@lang('contract.'.$key_text):</strong>
-                {{$contract->metadata->concession[$i]->$key_text}}
-            @elseif($key_text == 'operator')
-                <strong>@lang('contract.'.$key_text):</strong>
-                <?php $operator = $contract->metadata->company[$i]->$key_text;?>
-                @if($operator==1)Yes @elseif($operator==0) No @elseif($operator==-1) Not Available @endif
-            @else
-                <strong>@lang('contract.'.$key_text):</strong>
-                {{$contract->metadata->company[$i]->$key_text}}
-            @endif
-
-        @else
-            <?php $key_text = $key_text[0];?>
-            <p>
-                <strong>@lang('contract.'.$key_text):</strong>
-                @if($key_text == 'resource')
-                    {{join(', ',$contract->metadata->$key_text)}}
-                @elseif($key_text == 'country')
-                    {{$contract->metadata->$key_text->name}}
-                @elseif($key_text == 'category')
-                    <?php $category = $contract->metadata->$key_text;?>
-                    {{config('metadata.category.'.$category[0])}}
+            <?php  $key_text = explode('-', $key);?>
+            @if(count($key_text) > 1)
+                <?php
+                $i = $key_text[1];
+                $key_text = $key_text[0];
+                ?>
+                @if(in_array($key_text, ['entity','identifier']))
+                    <p>
+                        <strong>@lang('contract.government_'.$key_text):</strong>
+                        {{$contract->metadata->government_entity[$i]->$key_text}}
+                    </p>
+                @elseif(in_array($key_text, ['license_name','license_identifier']))
+                    <strong>@lang('contract.'.$key_text):</strong>
+                    {{$contract->metadata->concession[$i]->$key_text}}
+                @elseif($key_text == 'operator')
+                    <strong>@lang('contract.'.$key_text):</strong>
+                    <?php $operator = $contract->metadata->company[$i]->$key_text;?>
+                    @if($operator==1)Yes @elseif($operator==0) No @elseif($operator==-1) Not Available @endif
+                @elseif($key_text == 'jurisdiction_of_incorporation')
+                    <strong>@lang('contract.'.$key_text):</strong>
+                    <?php $country_code = $contract->metadata->company[$i]->$key_text;?>
+                    @lang('codelist/country.'.$country_code)
                 @else
-                    {{$contract->metadata->$key_text}}
+                    <strong>@lang('contract.'.$key_text):</strong>
+                    {{$contract->metadata->company[$i]->$key_text}}
                 @endif
-            </p>
-        @endif
+
+            @else
+                <?php $key_text = $key_text[0];?>
+                <p>
+                    <strong>@lang('contract.'.$key_text):</strong>
+                    @if(in_array($key_text, ['resource','type_of_contract']))
+                        {{join(', ',$contract->metadata->$key_text)}}
+                    @elseif($key_text == 'country')
+                        {{$contract->metadata->$key_text->name}}
+                    @elseif($key_text == 'language')
+                        <?php $lang = trans('codelist/language.major') + trans('codelist/language.minor');?>
+                        {{$lang[$contract->metadata->$key_text]}}
+                    @elseif($key_text == 'category')
+                        <?php $category = $contract->metadata->$key_text;?>
+                        {{config('metadata.category.'.$category[0])}}
+                    @else
+                        {{$contract->metadata->$key_text}}
+                    @endif
+                </p>
+            @endif
         </div>
     @endif
 

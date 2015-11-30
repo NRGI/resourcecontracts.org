@@ -10,6 +10,65 @@ $(function () {
         scrollInput: false
     });
 
+    $('body').on('hidden.bs.modal', '.modal-comment', function (event) {
+        var modal = $(this);
+        modal.removeData('bs.modal');
+    });
+
+    $('body').on('show.bs.modal', '.modal-comment', function (event) {
+        var modal = $(this);
+        modal.find('.modal-content').html('<div style="padding: 40px;"> Loading...</div>');
+    });
+
+    var input = '<input class="form-control other_toc" name="type_of_contract[]" type="text">';
+
+
+    $(document).on('change', '#type_of_contract', function () {
+        if (($(this).val() == 'Other')) {
+            $(this).parent().append(input)
+        } else {
+            if ($('.other_toc').length) {
+                input = $('.other_toc');
+            }
+            $('.other_toc').remove();
+        }
+    });
+
+    var input_dt = '<input class="form-control dt" name="document_type" type="text">';
+
+    $(document).on('change', '#document_type', function () {
+        if (($(this).val() == 'Others')) {
+            $(this).parent().append(input_dt)
+        } else {
+            if ($('.dt').length) {
+                input_dt = $('.dt');
+            }
+            $('.dt').remove();
+        }
+    });
+
+    $(document).on('click', '.is-supporting-document', function () {
+        if (($(this).val() == '1')) {
+            $('.parent-document').show();
+        } else {
+            $('.parent-document').hide();
+            $("#translated_from").val(null).trigger("change");
+        }
+    });
+
+    var input_disclosure_mode = '<input class="form-control disclosure_mode_other" name="disclosure_mode" type="text">';
+
+    $(document).on('change', '#disclosure_mode', function () {
+        if (($(this).val() == 'Other')) {
+            $(this).parent().append(input_disclosure_mode)
+        } else {
+            if ($('.disclosure_mode_other').length) {
+                input_disclosure_mode = $('.disclosure_mode_other');
+            }
+            $('.disclosure_mode_other').remove();
+        }
+    });
+
     translation();
 
     function translation() {
@@ -101,7 +160,6 @@ $(function () {
         Mustache.parse(template);
         var rendered = Mustache.render(template, {item: g});
         $('.government_entity .government-item:last-child').after(rendered);
-        console.log(g);
     })
 
 
