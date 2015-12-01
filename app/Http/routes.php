@@ -12,3 +12,4 @@ $router->controllers(
 $router->get('/site/login', 'Auth\AuthController@siteLogin');
 
 $router->get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
