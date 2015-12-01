@@ -2,10 +2,10 @@
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Request;
 
 class Handler extends ExceptionHandler
 {
-
     /**
      * A list of the exception types that should not be reported.
      *
@@ -13,6 +13,15 @@ class Handler extends ExceptionHandler
      */
     protected $dontReport = [
         'Symfony\Component\HttpKernel\Exception\HttpException'
+    ];
+
+    /**
+     * A list of the exception types that should not send email.
+     *
+     * @var array
+     */
+    protected $dontSendEmailMessage = [
+        'Symfony\Component\HttpKernel\Exception\NotFoundHttpException'
     ];
 
     /**
@@ -42,12 +51,29 @@ class Handler extends ExceptionHandler
         }
 
         if (env('APP_ENV') === 'production') {
-            if (env('NOTIFY_ERROR_EMAIL')) {
-                $this->sendMail($e);
-            }
+            $this->sendErrorMessage($e);
         }
 
         return parent::render($request, $e);
+    }
+
+    /**
+     * Send Error message in email
+     *
+     * @param $e
+     * @return bool
+     */
+    public function sendErrorMessage($e)
+    {
+        foreach ($this->dontSendEmailMessage as $type) {
+            if ($e instanceof $type) {
+                return true;
+            }
+        }
+
+        if (env('NOTIFY_ERROR_EMAIL')) {
+            $this->sendMail($e);
+        }
     }
 
     /**
@@ -57,11 +83,16 @@ class Handler extends ExceptionHandler
     protected function sendMail($exception)
     {
         $error = $exception->getMessage();
+
+        $current_url = Request::fullUrl();
+
+        $message = sprintf("Url: %s \n\rError: %s \n\rLog: %s",  $current_url, $error, (string) $exception);
+
         \Mail::raw(
-            (string) $exception,
-            function ($msg) use ($error) {
-                $recipients = [env('NOTIFY_MAIL')];
-                $msg->subject("ResourceContract Admin site has error.Please check and resolve." . $error);
+              $message  ,
+            function ($msg) use ($current_url) {
+                $recipients = [env('NOTIFY_ERROR_EMAIL')];
+                $msg->subject("ResourceContract Admin site has error - " . $current_url);
                 $msg->to($recipients);
                 $msg->from(['nrgi@yipl.com.np']);
             }
