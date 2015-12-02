@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Task
+ * @property integer id
  * @property string   status
  * @property string   approved
  * @property object   assignments
@@ -58,9 +59,9 @@ class Task extends Model
     /**
      * Get tasks approval status
      *
-     * @return string/null
+     * @return string
      */
-    function approved()
+    public function approved()
     {
         $text = ['-', 'Approved', 'Rejected'];
 
