@@ -10,6 +10,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 /**
  * @property Collection roles
+ * @property role
  */
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {

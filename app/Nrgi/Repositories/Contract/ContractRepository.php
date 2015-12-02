@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * Class ContractRepository
+ *
+ * @method void where()
+ * @method void findOrFail()
+ * @method void distinct()
  * @package App\Nrgi\Repositories\Contract
  */
 class ContractRepository implements ContractRepositoryInterface

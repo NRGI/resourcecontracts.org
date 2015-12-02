@@ -5,6 +5,8 @@ use App\Nrgi\Scope\CountryScope;
 
 /**
  * Class ActivityLog
+ * @property date created_at
+ * @property string user
  * @package App\Nrgi\Entities\Contract
  */
 class ActivityLog extends Model

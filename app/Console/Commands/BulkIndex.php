@@ -11,6 +11,7 @@ use Symfony\Component\Console\Input\InputOption;
  *  Command for Bulk index of data into elasticsearch
  *
  * Class BulkIndex
+ * @method Illuminate\Database\Query\Builder  select
  * @package App\Console\Commands
  */
 class BulkIndex extends Command
@@ -199,7 +200,7 @@ class BulkIndex extends Command
 
     /**
      * get contracts based on option category
-     * @return Collection
+     * @return Illuminate\Database\Eloquent\Collection
      */
     protected function getContracts()
     {

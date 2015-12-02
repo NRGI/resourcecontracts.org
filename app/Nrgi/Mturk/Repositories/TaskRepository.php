@@ -87,7 +87,7 @@ class TaskRepository implements TaskRepositoryInterface
      * @param $contact_id
      * @return int
      */
-    function getTotalHits($contact_id)
+    public function getTotalHits($contact_id)
     {
         return $this->task->where('contract_id', $contact_id)
                           ->where('hit_id', '!=', '')
