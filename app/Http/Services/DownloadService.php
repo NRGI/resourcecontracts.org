@@ -87,7 +87,7 @@ class DownloadService
 
 
         $filename = "export" . date('Y-m-d');
-        header('Content-type: text/csv');
+        header('Content-type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename="' . $filename . '.csv"');
         $file = fopen('php://output', 'w');
         fputcsv($file, $heading);
@@ -129,7 +129,7 @@ class DownloadService
         return [
             $contract->id,
             $contract->metadata->open_contracting_id,
-            $contract->metadata->category[0],
+            join(';', $contract->metadata->category),
             $contract->metadata->contract_name,
             $contract->metadata->contract_identifier,
             $contract->metadata->language,
