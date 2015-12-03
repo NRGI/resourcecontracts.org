@@ -7,7 +7,12 @@ use Illuminate\Database\DatabaseManager;
 /**
  * Contract Annotation Repository
  * Class AnnotationRepository
+ *
+ * @method Illuminate\Database\Query\Builder where()
+ * @method void findOrFail()
+ * @method void distinct()
  * @package Nrgi\Repositories\Contract
+ *
  */
 class AnnotationRepository implements AnnotationRepositoryInterface
 {

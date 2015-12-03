@@ -117,7 +117,7 @@ class ContractController extends Controller
     public function store(ContractRequest $request)
     {
         if ($contract = $this->contract->saveContract($request->all())) {
-            return redirect()->route('contract.show', $contract->id)->withSuccess(trans('contract.save_success'));
+            return redirect()->route('contract.show', ['id'=>$contract->id])->with('success', trans('contract.save_success'));
         }
 
         return redirect()->route('contract.index')->withError(trans('contract.save_fail'));

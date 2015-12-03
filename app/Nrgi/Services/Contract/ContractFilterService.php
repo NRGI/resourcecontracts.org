@@ -22,7 +22,7 @@ class ContractFilterService
     /**
      * @var AnnotationRepositoryInterface
      */
-    private $annotations;
+    protected $annotation;
 
     /**
      * @param ContractRepositoryInterface   $contract

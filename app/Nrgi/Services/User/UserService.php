@@ -7,6 +7,12 @@ use Illuminate\Contracts\Hashing\Hasher;
 use Psr\Log\LoggerInterface;
 use App\Nrgi\Entities\User\Role\Role;
 
+/**
+ * Class UserService
+ *
+ * @method void where()
+ * @package App\Nrgi\Services\User
+ */
 class UserService
 {
     /**

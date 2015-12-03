@@ -5,6 +5,7 @@ use App\Nrgi\Scope\CountryScope;
 
 /**
  * Class Contract
+ * @property int                       id
  * @property int                       status
  * @package App\Nrgi\Entities\Contract
  */

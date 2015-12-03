@@ -34,10 +34,9 @@ class DashboardController extends Controller
      * Dashboard Home
      *
      * @param MTurkService             $mTurk
-     * @param MTurkNotificationService $com
      * @return Response
      */
-    public function index(MTurkService $mTurk, MTurkNotificationService $com)
+    public function index(MTurkService $mTurk)
     {
         $stats = [
             'balance'    => $mTurk->getBalance(),

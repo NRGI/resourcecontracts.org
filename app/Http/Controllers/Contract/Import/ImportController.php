@@ -55,7 +55,7 @@ class ImportController extends Controller
     {
         try {
             if ($key = $this->contractImport->import($request)) {
-                return redirect()->route('contract.import.confirm', $key);
+                return redirect()->route('contract.import.confirm', ['key' => $key]);
             }
             $this->contractImport->deleteImportFolder($key);
 

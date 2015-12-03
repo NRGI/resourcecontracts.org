@@ -5,6 +5,15 @@ use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class TaskRepository
+ *
+ * @method void where()
+ * @method void whereRaw()
+ * @method void select()
+ * @method void orderByRaw()
+ * @method void count()
+ * @method void whereIn()
+ * @method void selectRaw()
+ *
  * @package App\Nrgi\Mturk\Repositories
  */
 class TaskRepository implements TaskRepositoryInterface

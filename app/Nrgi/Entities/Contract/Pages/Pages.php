@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Pages
+ * @property int     id
  * @property string  pdf_url
  * @property string  text
  * @property int     contract_id

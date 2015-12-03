@@ -25,6 +25,8 @@ class AnnotationController extends Controller
     /**S
      * Constructor
      * Create a new ContractAnnotationController instance.
+     * @param AnnotationService $annotation
+     * @param ContractService   $contract
      */
     public function __construct(AnnotationService $annotation, ContractService $contract)
     {

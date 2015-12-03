@@ -24,6 +24,12 @@ use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
  * @property string                                                                       metadata_status
  * @property string                                                                       text_status
  * @property int                                                                          created_user
+ * @property string                                                                       file_url
+ * @property string                                                                       slug
+ * @property int                                                                          user_id
+ * @property string                                                                       updated_user
+ * @property string                                                                       created_datetime
+ * @property string                                                                       last_updated_datetime
  * @package App\Nrgi\Entities\Contract
  */
 class Contract extends Model
@@ -129,7 +135,8 @@ class Contract extends Model
     public function getWordFileAttribute()
     {
         if ($this->pdf_process_status == static::PROCESSING_COMPLETE) {
-            list($filename, $ext) = explode('.', $this->file);
+            $filename     = explode('.', $this->file);
+            $filename     = $filename[0];
             $wordFileName = $filename . '.txt';
 
             return getS3FileURL($this->id . '/' . $wordFileName);
