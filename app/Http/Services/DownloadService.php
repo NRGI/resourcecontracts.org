@@ -129,7 +129,7 @@ class DownloadService
         return [
             $contract->id,
             $contract->metadata->open_contracting_id,
-            $contract->metadata->category[0],
+            join(';',$contract->metadata->category),
             $contract->metadata->contract_name,
             $contract->metadata->contract_identifier,
             $contract->metadata->language,
