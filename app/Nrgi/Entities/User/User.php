@@ -10,7 +10,8 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 /**
  * @property Collection roles
- * @property role
+ * @property string     role
+ * @property string     password
  */
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -118,7 +119,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * Check if user is admin.
-     * 
+     *
      * @return bool
      */
     public function isAdmin()

@@ -53,7 +53,7 @@ class AnnotationService
      * @param AnnotationRepositoryInterface $annotation
      * @param Guard                         $auth
      * @param DatabaseManager               $database
-     * @param Comment|CommentService        $comment
+     * @param CommentService                $comment
      * @param LoggerInterface|Log           $logger
      * @param ContractService               $contract
      * @param Queue                         $queue

@@ -222,7 +222,7 @@ class ElasticSearchService
      * @param $contract
      * @return string
      */
-    function formatPdfTextPages($contract)
+    public function formatPdfTextPages($contract)
     {
         if (isset($contract->metadata->show_pdf_text) && $contract->metadata->show_pdf_text == 1) {
             return $contract->pages->toJson();

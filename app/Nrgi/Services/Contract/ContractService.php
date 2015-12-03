@@ -561,7 +561,7 @@ class ContractService
     {
         $contract = $this->contract->findContract($contractID);
 
-        if ($contract->pdf_process_status == Contract::PROCESSING_COMPLETE and !$this->pages->exists($contractID)) {
+        if ($contract->pdf_process_status == Contract::PROCESSING_COMPLETE && !$this->pages->exists($contractID)) {
             return Contract::PROCESSING_FAILED;
         }
 
@@ -588,7 +588,7 @@ class ContractService
      *
      * @param $contractID
      * @param $textType
-     * @return Contract/bool
+     * @return Contract|bool
      */
     public function saveTextType($contractID, $textType)
     {
@@ -614,7 +614,7 @@ class ContractService
     {
         $this->database->beginTransaction();
 
-        if ($this->updateStatus($contract_id, $status, $type) and $this->comment->save(
+        if ($this->updateStatus($contract_id, $status, $type) && $this->comment->save(
                 $contract_id,
                 $message,
                 $type,
@@ -758,7 +758,8 @@ class ContractService
             }
         }
 
-        list($filename, $ext) = explode('.', $contract->file);
+        $filename = explode('.', $contract->file);
+        $filename = $filename[0];
         $wordFileName = $filename . '.txt';
 
         try {
@@ -857,7 +858,8 @@ class ContractService
      */
     public function getTextFromS3($contract_id, $file)
     {
-        list($filename, $ext) = explode('.', $file);
+        $filename = explode('.', $file);
+        $filename = $filename[0];
 
         try {
             return $this->storage->disk('s3')->get($contract_id . '/' . $filename . '.txt');

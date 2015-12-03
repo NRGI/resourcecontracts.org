@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string   hit_id
  * @property int      page_no
  * @property int      contract_id
+ * @method Illuminate\Database\Query\Builder where()
  * @package App\Nrgi\Mturk\Entities
  */
 class Task extends Model

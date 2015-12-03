@@ -233,9 +233,6 @@ class PageController extends Controller
         try {
             $back        = \Request::server('HTTP_REFERER');
             $page        = $this->pages->getText($contractId, $request->input('page', '1'));
-            $action      = $request->input('action', '');
-            $canEdit     = true;
-            $canAnnotate = false;
             $contract    = $this->contract->findWithPages($contractId);
             $pages       = $contract->pages;
         } catch (\Exception $e) {

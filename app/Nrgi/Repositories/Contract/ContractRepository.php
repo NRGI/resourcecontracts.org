@@ -65,7 +65,6 @@ class ContractRepository implements ContractRepositoryInterface
         $query         = $this->contract->select('*');
         $from          = "contracts ";
         $multipleField = ["resource", "category","type_of_contract"];
-        $operator      = "";
         $filters       = array_map('trim', $filters);
         extract($filters);
         $operator = (!empty($issue) && $issue == "present") ? "!=" : "=";
@@ -490,7 +489,6 @@ class ContractRepository implements ContractRepositoryInterface
     {
         $query    = $this->contract->select('*');
         $from     = "contracts ";
-        $operator = "";
         $filters  = array_map('trim', $filters);
         extract($filters);
 

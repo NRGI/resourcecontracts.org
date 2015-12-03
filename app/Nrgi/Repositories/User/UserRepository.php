@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class UserRepository
+ *
+ * @method void orderby()
+ * @method void lists()
+ * @method void whereIn()
+ * @method void select()
  * @package App\Nrgi\Repositories\User
  */
 class UserRepository implements UserRepositoryInterface
@@ -46,7 +51,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * Get all users
      *
-     * @return Collection/null
+     * @return Collection|null
      */
     public function all()
     {
@@ -108,7 +113,7 @@ class UserRepository implements UserRepositoryInterface
     /**
      * Get country all users
      *
-     * @return Collection/null
+     * @return Collection|null
      */
     public function getCountryUsers()
     {

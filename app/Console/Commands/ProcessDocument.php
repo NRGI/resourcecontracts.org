@@ -12,8 +12,9 @@ use App\Nrgi\Services\Contract\Page\ProcessService;
 
 /**
  * Command to process documents
- *
  * Class ProcessDocument
+ *
+ * @method bool moveS3File()
  * @package app\Console\Commands
  */
 class ProcessDocument extends Command
@@ -54,7 +55,10 @@ class ProcessDocument extends Command
 
     /**
      * Create a new command instance.
-     *
+     * @param ContractService $contract
+     * @param Storage         $storage
+     * @param File            $file
+     * @param ProcessService  $process
      */
     public function __construct(ContractService $contract, Storage $storage, File $file, ProcessService $process)
     {

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class PagesRepository
+ * @method void where()
+ * @method void select()
  * @package App\Nrgi\Repositories\Pages
  */
 class PagesRepository implements PagesRepositoryInterface

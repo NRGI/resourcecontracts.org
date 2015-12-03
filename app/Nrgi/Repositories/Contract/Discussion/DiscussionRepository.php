@@ -5,6 +5,13 @@ use Illuminate\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * Class DiscussionRepository
+ *
+ * @method void where()
+ * @method void selectRaw()
+ * @package App\Nrgi\Repositories\Contract\Discussion
+ */
 class DiscussionRepository implements DiscussionRepositoryInterface
 {
     /**

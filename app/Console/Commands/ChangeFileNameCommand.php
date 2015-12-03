@@ -112,7 +112,8 @@ class ChangeFileNameCommand extends Command
         if (!$this->storage->disk('s3')->move($from, $to)) {
             return false;
         }
-        list($filename, $ext) = explode('.', $contract->file);
+        $filename     = explode('.', $contract->file);
+        $filename     = $filename[0];
         $wordFileName = sprintf('%s.docx', $filename);
         $wordFileFrom = sprintf("%s/%s", $contractDir, $wordFileName);
         $wordFileTo   = sprintf("%s/%s.docx", $contractDir, $newFileName);
