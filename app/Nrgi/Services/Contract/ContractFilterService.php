@@ -67,6 +67,9 @@ class ContractFilterService
 
             return $contracts;
         }
+        if ($filters['download'] == 1) {
+            $limit = 100000;
+        }
         $contracts = $this->contract->getAll($filters, $limit);
 
         if ($filters['download'] == 1) {
