@@ -4,6 +4,7 @@ use App\Nrgi\Entities\Contract\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
+use App\Http\Services\DownloadService;
 
 /**
  * Class ContractFilterService
@@ -28,15 +29,21 @@ class ContractFilterService
      * @param ContractRepositoryInterface   $contract
      * @param CountryService                $countryService
      * @param AnnotationRepositoryInterface $annotations
+     * @param DownloadService               $downloadCSV
+     * @internal param DownloadService $download
+     * @internal param DownloadService $downloadService
+     * @internal param APIService $api
      */
     public function __construct(
         ContractRepositoryInterface $contract,
         CountryService $countryService,
-        AnnotationRepositoryInterface $annotations
+        AnnotationRepositoryInterface $annotations,
+        DownloadService $downloadCSV
     ) {
         $this->contract       = $contract;
         $this->countryService = $countryService;
         $this->annotation     = $annotations;
+        $this->downloadCSV    = $downloadCSV;
     }
 
     /**
@@ -48,7 +55,6 @@ class ContractFilterService
      */
     public function getAll(array $filters, $limit = 25)
     {
-
         if ($filters['type'] == "annotations" && $filters['status'] != '') {
             $annotations = $this->getContractByAnnotationStatus();
             $status      = isset($annotations[$filters['status']]) ? $annotations[$filters['status']] : [];
@@ -56,14 +62,17 @@ class ContractFilterService
 
             return $contracts;
         }
-
         if ($filters['type'] == "metadata" && ($filters['word'] == "Concession" || $filters['word'] == "Government Entity" || $filters['word'] == "Company")) {
             $contracts = $this->getMultipleMetadataContracts($filters, $limit);
 
             return $contracts;
         }
-
         $contracts = $this->contract->getAll($filters, $limit);
+
+        if ($filters['download'] == 1) {
+            $this->downloadCSV->downloadData($contracts);
+        }
+
         return $contracts;
     }
 
@@ -168,7 +177,7 @@ class ContractFilterService
 
         if (strpos($meta, '=') == true) {
             $contractId = explode("=", $meta);
-            $meta = $contractId[1];
+            $meta       = $contractId[1];
         }
 
         $contractId = str_replace(['{', '}'], ['', ''], $meta);
@@ -178,12 +187,8 @@ class ContractFilterService
                 unset($contractId[$key]);
             }
         }
-
         $contracts = $this->contract->getContractFilterByMetadata($filters, $limit, $contractId);
 
         return $contracts;
-
     }
-
-
 }
