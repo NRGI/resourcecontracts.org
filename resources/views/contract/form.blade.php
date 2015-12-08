@@ -24,7 +24,7 @@ $groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
                     class="red">*</span></label>
 
         <div class="col-sm-7">
-            {!! Form::file('file', ['class'=>'required'])!!}
+            {!! Form::file('file', ['class'=>'required' , 'id' => 'file'])!!}
             <p class="help-block">@lang('contract.pdf_only').</p>
         </div>
     </div>
@@ -201,7 +201,7 @@ if (isset($contract->metadata->resource)) {
 
                 <div class="col-sm-7">
                     {!! Form::text("government_entity[0][entity]",null,
-                    ["class"=>"form-control"])!!}
+                    ["class"=>"form-control" , "id" => "government_0_entity"])!!}
                 </div>
             </div>
 
@@ -210,7 +210,7 @@ if (isset($contract->metadata->resource)) {
                 control-label'])!!}
                 <div class="col-sm-7">
                     {!! Form::text("government_entity[0][identifier]",null,
-                    ["class"=>"form-control"])!!}
+                    ["class"=>"form-control" , "id" => "government_0_identifier"])!!}
 
                 </div>
             </div>
@@ -219,7 +219,7 @@ if (isset($contract->metadata->resource)) {
 
 </div>
 
-<button type="button" class="btn btn-default new-government-entity add-new-btn">Add new Government Entity</button>
+<button type="button" class="btn btn-default new-government-entity add-new-btn" id="addGov">Add new Government Entity</button>
 
 
 <div class="form-group">
@@ -230,14 +230,13 @@ if (isset($contract->metadata->resource)) {
         $toc = isset($contract->metadata->type_of_contract) ? $contract->metadata->type_of_contract : old('type_of_contract');
 
 
-        if(!empty($toc))
-            {
-                $intersect=array_intersect($toc,trans('codelist/contract_type'));
-                $tocDiff=array_diff($toc,$intersect);
-                if (!empty($tocDiff) AND !empty($toc)) {
-                    $toc = 'Other';
-                }
+        if (!empty($toc)) {
+            $intersect = array_intersect($toc, trans('codelist/contract_type'));
+            $tocDiff   = array_diff($toc, $intersect);
+            if (!empty($tocDiff) AND !empty($toc)) {
+                $toc = 'Other';
             }
+        }
         ?>
         {!! Form::select('type_of_contract[]', trans('codelist/contract_type'),
         $toc,
@@ -320,7 +319,7 @@ if (isset($contract->metadata->resource)) {
                         <div class="col-sm-7">
                             {!! Form::text("company[$i][name]",
                             isset($v->name)?$v->name:null,
-                            ["class"=>"required form-control"])!!}
+                            ["class"=>"required form-control"] )!!}
                         </div>
                         @if($action == 'edit')
                             <div class="col-sm-3">
@@ -430,7 +429,7 @@ if (isset($contract->metadata->resource)) {
                                 $v->parent_company = 'Other';
                             }
                             ?>
-                            <select name="<?php echo 'company[' . $i . '][parent_company]'; ?>" class="form-control parent_company" id="corporate_grouping">
+                            <select name="<?php echo 'company[' . $i . '][parent_company]'; ?>" class="form-control parent_company" id="corporate_grouping_0">
                                 @foreach($groups as $key=>$value)
                                     <option value="{{$key}}" @if($key==$parentCompany) selected @endif>{{$value}}</option>
                                 @endforeach
@@ -496,14 +495,14 @@ if (isset($contract->metadata->resource)) {
                 <label for="company_name" class="col-sm-2 control-label">@lang('contract.company_name') <span class="red">*</span></label>
 
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][name]",null,["class"=>"form-control required"])!!}
+                    {!! Form::text("company[0][name]",null,["class"=>"form-control required"  , "id"=> "company_0_name"])!!}
                 </div>
             </div>
             <div class="form-group">
                 {!! Form::label('participation_share', trans('contract.participation_share'), ['class'=>'col-sm-2
                 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::input('text',"company[0][participation_share]",null ,["class"=>"form-control","step"=>"any","min"=>0,"max"=>1])!!}
+                    {!! Form::input('text',"company[0][participation_share]",null ,["class"=>"form-control","step"=>"any","min"=>0,"max"=>1 , "id"=> "company_0_participation_share"])!!}
                 </div>
             </div>
 
@@ -513,7 +512,7 @@ if (isset($contract->metadata->resource)) {
                 <div class="col-sm-7">
                     {!! Form::select('company[0][jurisdiction_of_incorporation]', ['' => 'select'] + $country ,
                     isset($contract->metadata->country->code)?$contract->metadata->country->code:null,
-                    ["class"=>"form-control"])!!}
+                    ["class"=>"form-control" , "id"=> "company_0_jurisdiction"])!!}
                 </div>
             </div>
 
@@ -521,7 +520,7 @@ if (isset($contract->metadata->resource)) {
                 {!! Form::label('registration_agency', trans('contract.registry_agency'), ['class'=>'col-sm-2
                 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][registration_agency]",null,["class"=>"form-control"])!!}
+                    {!! Form::text("company[0][registration_agency]",null,["class"=>"form-control" , "id"=> "company_0_registration_agency"])!!}
                 </div>
             </div>
 
@@ -531,7 +530,7 @@ if (isset($contract->metadata->resource)) {
                 <div class="col-sm-7">
                     {!! Form::text("company[0][company_founding_date]",null,["class"=>"datepicker form-control",
                     'placeholder'
-                    => 'YYYY-MM-DD'])!!}
+                    => 'YYYY-MM-DD' , "id" => "company_0_founding_date"])!!}
                 </div>
             </div>
 
@@ -539,7 +538,7 @@ if (isset($contract->metadata->resource)) {
                 {!! Form::label('company_address', trans('contract.company_address'), ['class'=>'col-sm-2
                 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][company_address]",null,["class"=>"form-control"])!!}
+                    {!! Form::text("company[0][company_address]",null,["class"=>"form-control" , "id" => "company_0_address"])!!}
                 </div>
             </div>
 
@@ -547,7 +546,7 @@ if (isset($contract->metadata->resource)) {
                 {!! Form::label('company_number', trans('contract.company_number'), ['class'=>'col-sm-2
                 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][company_number]",null,["class"=>"form-control"])!!}
+                    {!! Form::text("company[0][company_number]",null,["class"=>"form-control" ,  "id" => "company_0_number"])!!}
                 </div>
             </div>
 
@@ -555,7 +554,7 @@ if (isset($contract->metadata->resource)) {
                 {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2
                 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::select('company[0][parent_company]', $groups , null , ['class' => 'form-control parent_company','id'=>'corporate_grouping'])
+                    {!! Form::select('company[0][parent_company]', $groups , null , ['class' => 'form-control parent_company','id'=>'corporate_grouping_0'])
                     !!}
                 </div>
             </div>
@@ -566,15 +565,15 @@ if (isset($contract->metadata->resource)) {
                     control-label'])!!}</a>
 
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][open_corporate_id]",null,["class"=>"url form-control"])!!}
+                    {!! Form::text("company[0][open_corporate_id]",null,["class"=>"url form-control" , "id" => "company_0_open_corporate_id"])!!}
                 </div>
             </div>
 
             <div class="form-group">
                 {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
                 <div class="col-sm-7">
-                    {!! Form::radio('company[0][operator]', 1, false, ['class' => 'field']) !!} Yes
-                    {!! Form::radio('company[0][operator]', 0, false, ['class' => 'field']) !!} No
+                    {!! Form::radio('company[0][operator]', 1, false, ['class' => 'field' , 'id' => 'company_0_operator_yes']) !!} Yes
+                    {!! Form::radio('company[0][operator]', 0, false, ['class' => 'field' , 'id' => 'company_0_operator_no']) !!} No
                     {!! Form::radio('company[0][operator]', -1, true, ['class' => 'field']) !!} Not Available
                 </div>
             </div>
@@ -585,7 +584,7 @@ if (isset($contract->metadata->resource)) {
 </div>
 
 
-<div type="button" class="btn btn-default new-company add-new-btn">Add new company</div>
+<div type="button" id="add_new_company" class="btn btn-default new-company add-new-btn">Add new company</div>
 
 <h3>@lang('contract.license_and_project')</h3>
 <hr/>
@@ -670,7 +669,7 @@ if (isset($contract->metadata->resource)) {
                 {!! Form::label('license_name', trans('contract.license_name'), ['class'=>'col-sm-2 control-label'])!!}
                 <div class="col-sm-7">
                     {!! Form::text("concession[0][license_name]",null,
-                    ["class"=>"form-control"])!!}
+                    ["class"=>"form-control" , "id" => "license_name_0"])!!}
                 </div>
             </div>
 
@@ -679,7 +678,7 @@ if (isset($contract->metadata->resource)) {
                 control-label'])!!}
                 <div class="col-sm-7">
                     {!! Form::text("concession[0][license_identifier]",null,
-                    ["class"=>"form-control"])!!}
+                    ["class"=>"form-control" , "id" => "license_identifier_0"])!!}
                 </div>
             </div>
         </div>
@@ -763,7 +762,8 @@ if (isset($contract->metadata->resource)) {
         @foreach(config('metadata.category') as $key => $category)
 
             <label class="checkbox-inline">
-                <input name="category[]" {{(is_array($old_category) && in_array($key, $old_category)) ? "checked='checked'" : ''}} type="radio" value="{{$key}}" class="required" id="category-{{$key}}"> {{$category}}
+                <input name="category[]" {{(is_array($old_category) && in_array($key, $old_category)) ? "checked='checked'" : ''}} type="radio" value="{{$key}}" class="required"
+                       id="category-{{$key}}"> {{$category}}
             </label>
         @endforeach
         <br>
