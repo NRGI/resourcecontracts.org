@@ -282,7 +282,7 @@ if (isset($contract->metadata->resource)) {
     ?>
     {!! Form::label('document_type', trans('contract.document_type'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
-        {!! Form::select('document_type', trans('codelist/documentType'),
+        {!! Form::select('document_type',[''=>'Select']+ trans('codelist/documentType'),
         $dt, ["class"=>"form-control"])!!}
         @if($dt == 'Others')
             {!! Form::text('document_type',
