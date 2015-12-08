@@ -301,12 +301,6 @@ class ContractService
      */
     protected function processMetadata($formData)
     {
-        $formData['signature_year'] = (!empty($formData['signature_date'])) ? date(
-            'Y',
-            strtotime(
-                $formData['signature_date']
-            )
-        ) : '';
         if(in_array('Other',$formData['type_of_contract']))
         {
             unset($formData['type_of_contract'][array_search('Other',$formData['type_of_contract'])]);
@@ -909,6 +903,23 @@ class ContractService
         $contracts = $this->contract->getParentContracts();
 
         return $contracts;
+    }
+
+
+    /**
+     * Return years from 1900 to now
+     * @return array
+     */
+    public function getYears()
+    {
+        $now = date('Y');
+        $years=[];
+        for($i=$now;$i>=1900;$i--)
+        {
+            $years[$i]=$i;
+        }
+
+       return $years;
     }
 
 }

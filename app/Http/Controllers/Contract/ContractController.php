@@ -109,8 +109,9 @@ class ContractController extends Controller
         $country   = $this->countries->all();
         $contracts = $this->contract->parentContracts();
         $contract  = $this->contract->find($request->get('parent'));
+        $years     = $this->contract->getYears();
 
-        return view('contract.create', compact('country', 'contracts', 'contract'));
+        return view('contract.create', compact('country', 'contracts', 'contract', 'years'));
     }
 
     /**
@@ -122,7 +123,7 @@ class ContractController extends Controller
     public function store(ContractRequest $request)
     {
         if ($contract = $this->contract->saveContract($request->all())) {
-            return redirect()->route('contract.show', ['id'=>$contract->id])->with('success', trans('contract.save_success'));
+            return redirect()->route('contract.show', ['id' => $contract->id])->with('success', trans('contract.save_success'));
         }
 
         return redirect()->route('contract.index')->withError(trans('contract.save_fail'));
@@ -179,8 +180,9 @@ class ContractController extends Controller
 
         $discussions       = $discussion->getCount($id);
         $discussion_status = $discussion->getResolved($id);
+        $years             = $this->contract->getYears();
 
-        return view('contract.edit', compact('contract', 'country', 'supportingDocument', 'contracts', 'discussions', 'discussion_status'));
+        return view('contract.edit', compact('contract', 'country', 'supportingDocument', 'contracts', 'discussions', 'discussion_status','years'));
     }
 
     /**

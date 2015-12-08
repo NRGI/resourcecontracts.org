@@ -20,6 +20,7 @@ return [
     'government_identifier'                => "Government Identifier",
     'type_of_contract'                     => "Type of Contract",
     'signature_date'                       => "Signature Date",
+    'signature_year'                       => "Signature Year",
     'document_type'                        => "Document Type",
     'translation_from_original'            => "Translation from Original",
     'translation_parent'                   => "Translation Parent",

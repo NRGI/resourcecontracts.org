@@ -10,6 +10,8 @@ $(function () {
         scrollInput: false
     });
 
+    
+
     $('body').on('hidden.bs.modal', '.modal-comment', function (event) {
         var modal = $(this);
         modal.removeData('bs.modal');

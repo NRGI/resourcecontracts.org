@@ -241,13 +241,30 @@ if (isset($contract->metadata->resource)) {
     @endif
 </div>
 
+
 <div class="form-group">
-    <label for="signature_date" class="col-sm-2 control-label">@lang('contract.signature_date') <span class="red">*</span></label>
+    <label for="signature_year" class="col-sm-2 control-label">@lang('contract.signature_year') <span class="red">*</span></label>
+
+    <div class="col-sm-7">
+        {!! Form::select("signature_year", ['' => 'select'] + $years ,
+        isset($contract->metadata->signature_year)?$contract->metadata->signature_year:null,
+        ["class"=>"required form-control",'placeholder' => 'YYYY' , 'id' => 'signature_year'])!!}
+    </div>
+
+    @if($action == 'edit')
+        <div class="col-sm-3">
+            {!! discussion($discussions,$discussion_status, $contract->id,'signature_year','metadata') !!}
+        </div>
+    @endif
+</div>
+
+<div class="form-group">
+    <label for="signature_date" class="col-sm-2 control-label">@lang('contract.signature_date') </label>
 
     <div class="col-sm-7">
         {!! Form::text('signature_date',
         isset($contract->metadata->signature_date)?$contract->metadata->signature_date:null,
-        ["class"=>"required datepicker form-control", 'placeholder' => 'YYYY-MM-DD' , 'id' => 'signature_date'])!!}
+        ["class"=>"datepicker form-control", 'placeholder' => 'YYYY-MM-DD' , 'id' => 'signature_date'])!!}
     </div>
 
     @if($action == 'edit')
