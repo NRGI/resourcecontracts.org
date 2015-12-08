@@ -88,8 +88,7 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        $this->updateAdditionalMetadata($metadata);
-        $this->multipleContractType($metadata);
+        $this->updateDocumentType($metadata);
 
         return $metadata;
     }
@@ -375,6 +374,22 @@ class UpdateMetadata extends Command
         }
         else{
             $metadata['type_of_contract']=[];
+        }
+
+        return $metadata;
+    }
+
+    /**
+     * Update document type as Contract if null
+     * @param $metadata
+     * @return mixed
+     */
+    private function updateDocumentType(&$metadata)
+    {
+
+        if(!isset($metadata['document_type']) || (isset($metadata['document_type']) && $metadata['document_type']==''))
+        {
+            $metadata['document_type']="Contract";
         }
 
         return $metadata;
