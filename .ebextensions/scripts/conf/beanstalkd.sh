@@ -32,6 +32,7 @@ prog=$(basename $exec)
 BEANSTALKD_ADDR=0.0.0.0
 BEANSTALKD_PORT=11300
 BEANSTALKD_USER=beanstalkd
+BEANSTALKD_BINLOG_DIR=/var/lib/beanstalkd
 
 [ -e /etc/sysconfig/beanstalkd ] && . /etc/sysconfig/beanstalkd
 
