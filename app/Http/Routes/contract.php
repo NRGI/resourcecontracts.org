@@ -20,7 +20,9 @@ $router->group(
         $router->get('contract/{id1}/{id2}/compare', ['as' => 'contract.page.compare', 'uses' => 'Page\PageController@compare']);
         $router->get('contract/{id}/allpage', ['as' => 'contract.allpage.get', 'uses' => 'Page\PageController@getAllText']);
         $router->post('contract/{id}/unpublish', ['as' => 'contract.unpublish', 'uses' => 'ContractController@unPublish']);
-        $router->get('contract/{id}/annotate', ['as' => 'contract.annotate', 'uses' => 'Page\PageController@annotatenew']);
+        $router->get('contract/{id}/annotateold', ['as' => 'contract.annotate', 'uses' => 'Page\PageController@annotatenew']);
+        $router->get('contract/{id}/annotate', ['as' => 'contract.annotate', 'uses' => 'Page\PageController@rewriteAnnotate']);
+
         $router->get('contract/{id}/review', ['as' => 'contract.review', 'uses' => 'Page\PageController@reviewnew']);
         $router->get('contract/select/type', ['as' => 'contract.select.type', 'uses' => 'ContractController@contractType']);
     }

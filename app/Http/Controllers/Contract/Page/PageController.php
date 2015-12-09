@@ -258,4 +258,10 @@ class PageController extends Controller
         );
     }
 
+
+    public function rewriteAnnotate()
+    {
+        return view('contract.page.rewrite_annotate_final');
+    }
+
 }
