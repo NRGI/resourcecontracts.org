@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "metadata": "{\"contract_name\":\"First One\",\"contract_identifier\":\"iddddddddddd\",\"language\":\"en\",\"country\":{\"code\":\"DZ\",\"name\":\"Algeria\"},\"resource\":[\"6PGM+Au\",\"Alumina\"],\"government_entity\":[{\"entity\":\"ddd\",\"identifier\":\"dddd\"},{\"entity\":\"22\",\"identifier\":\"ssssssss\"}],\"type_of_contract\":\"Joint Venture\",\"signature_date\":\"2015-09-17\",\"document_type\":\"Environmental Impact\",\"company\":[{\"name\":\"ssssss\",\"participation_share\":\"0.8\",\"jurisdiction_of_incorporation\":\"AL\",\"registration_agency\":\"dddddddddd\",\"company_founding_date\":\"2015-09-14\",\"company_address\":\"commmmmmm asdaddddddddddddddd\",\"company_number\":\"comm nnnnnnnnnnnuuuuuuuu\",\"parent_company\":\"888 holdings\",\"open_corporate_id\":\"12312sdsfsdf\",\"operator\":\"0\"}],\"project_title\":\"porrrrrrrrrrr tileeeeeeeee\",\"project_identifier\":\"pro idddddddddddd\",\"concession\":[{\"license_name\":\"con nalin\",\"license_identifier\":\"con lie didddddddddd\"}],\"source_url\":\"dddddddd------dddddddddddd\",\"disclosure_mode\":\"Corporate\",\"date_retrieval\":\"2015-09-16\",\"category\":[\"rc\"],\"translated_from\":[{\"id\":679,\"contract_name\":\"Mauritania Contrat de Partage de Production Entre La Republique Islamique de Mauritanie et International Petroleum Grouping (Block 11)\"}],\"show_pdf_text\":\"1\",\"signature_year\":\"2015\",\"file_size\":7945,\"open_contracting_id\":\"ocds-591adf-DZ5195797355RCC\",\"amla_url\":\"http:\\/\\/a-mla.org\\/index.php\\/countries\\/1\",\"file_url\":\"https:\\/\\/rc-demo.s3-us-west-2.amazonaws.com\\/679\\/679-my-contract-name.pdf\",\"word_file\":\"https:\\/\\/rc-demo.s3-us-west-2.amazonaws.com\\/679\\/679-my-contract-name.txt\"}",
+    "total_pages": 1,
+    "created_by": "{\"name\":\"Admin Name\",\"email\":\"admin@nrgi.app\"}",
+    "supporting_contracts": [],
+    "updated_by": "{\"name\":\"ramramram\",\"email\":\"bijaya@gmail.com\"}",
+    "created_at": "2015-09-01 08:43:07",
+    "updated_at": "2015-09-09 11:49:18"
+  },
+  {
+    "id": 2,
+    "metadata": "{\"contract_name\":\"Second One\",\"contract_identifier\":\"iddddddddddd\",\"language\":\"en\",\"country\":{\"code\":\"DZ\",\"name\":\"Algeria\"},\"resource\":[\"6PGM+Au\",\"Alumina\"],\"government_entity\":[{\"entity\":\"ddd\",\"identifier\":\"dddd\"},{\"entity\":\"22\",\"identifier\":\"ssssssss\"}],\"type_of_contract\":\"Joint Venture\",\"signature_date\":\"2015-09-17\",\"document_type\":\"Environmental Impact\",\"company\":[{\"name\":\"ssssss\",\"participation_share\":\"0.8\",\"jurisdiction_of_incorporation\":\"AL\",\"registration_agency\":\"dddddddddd\",\"company_founding_date\":\"2015-09-14\",\"company_address\":\"commmmmmm asdaddddddddddddddd\",\"company_number\":\"comm nnnnnnnnnnnuuuuuuuu\",\"parent_company\":\"888 holdings\",\"open_corporate_id\":\"12312sdsfsdf\",\"operator\":\"0\"}],\"project_title\":\"porrrrrrrrrrr tileeeeeeeee\",\"project_identifier\":\"pro idddddddddddd\",\"concession\":[{\"license_name\":\"con nalin\",\"license_identifier\":\"con lie didddddddddd\"}],\"source_url\":\"dddddddd------dddddddddddd\",\"disclosure_mode\":\"Corporate\",\"date_retrieval\":\"2015-09-16\",\"category\":[\"rc\"],\"translated_from\":[{\"id\":679,\"contract_name\":\"Mauritania Contrat de Partage de Production Entre La Republique Islamique de Mauritanie et International Petroleum Grouping (Block 11)\"}],\"show_pdf_text\":\"1\",\"signature_year\":\"2015\",\"file_size\":7945,\"open_contracting_id\":\"ocds-591adf-DZ5195797355RCC\",\"amla_url\":\"http:\\/\\/a-mla.org\\/index.php\\/countries\\/1\",\"file_url\":\"https:\\/\\/rc-demo.s3-us-west-2.amazonaws.com\\/679\\/679-my-contract-name.pdf\",\"word_file\":\"https:\\/\\/rc-demo.s3-us-west-2.amazonaws.com\\/679\\/679-my-contract-name.txt\"}",
+    "total_pages": 1,
+    "created_by": "{\"name\":\"Admin Name\",\"email\":\"admin@nrgi.app\"}",
+    "supporting_contracts": [],
+    "updated_by": "{\"name\":\"ramramram\",\"email\":\"bijaya@gmail.com\"}",
+    "created_at": "2015-09-01 08:43:07",
+    "updated_at": "2015-09-09 11:49:18"
+  },
+  {
+    "id": 3,
+    "metadata": "{\"contract_name\":\"Third One\",\"contract_identifier\":\"iddddddddddd\",\"language\":\"en\",\"country\":{\"code\":\"DZ\",\"name\":\"Algeria\"},\"resource\":[\"6PGM+Au\",\"Alumina\"],\"government_entity\":[{\"entity\":\"ddd\",\"identifier\":\"dddd\"},{\"entity\":\"22\",\"identifier\":\"ssssssss\"}],\"type_of_contract\":\"Joint Venture\",\"signature_date\":\"2015-09-17\",\"document_type\":\"Environmental Impact\",\"company\":[{\"name\":\"ssssss\",\"participation_share\":\"0.8\",\"jurisdiction_of_incorporation\":\"AL\",\"registration_agency\":\"dddddddddd\",\"company_founding_date\":\"2015-09-14\",\"company_address\":\"commmmmmm asdaddddddddddddddd\",\"company_number\":\"comm nnnnnnnnnnnuuuuuuuu\",\"parent_company\":\"888 holdings\",\"open_corporate_id\":\"12312sdsfsdf\",\"operator\":\"0\"}],\"project_title\":\"porrrrrrrrrrr tileeeeeeeee\",\"project_identifier\":\"pro idddddddddddd\",\"concession\":[{\"license_name\":\"con nalin\",\"license_identifier\":\"con lie didddddddddd\"}],\"source_url\":\"dddddddd------dddddddddddd\",\"disclosure_mode\":\"Corporate\",\"date_retrieval\":\"2015-09-16\",\"category\":[\"rc\"],\"translated_from\":[{\"id\":679,\"contract_name\":\"Mauritania Contrat de Partage de Production Entre La Republique Islamique de Mauritanie et International Petroleum Grouping (Block 11)\"}],\"show_pdf_text\":\"1\",\"signature_year\":\"2015\",\"file_size\":7945,\"open_contracting_id\":\"ocds-591adf-DZ5195797355RCC\",\"amla_url\":\"http:\\/\\/a-mla.org\\/index.php\\/countries\\/1\",\"file_url\":\"https:\\/\\/rc-demo.s3-us-west-2.amazonaws.com\\/679\\/679-my-contract-name.pdf\",\"word_file\":\"https:\\/\\/rc-demo.s3-us-west-2.amazonaws.com\\/679\\/679-my-contract-name.txt\"}",
+    "total_pages": 1,
+    "created_by": "{\"name\":\"Admin Name\",\"email\":\"admin@nrgi.app\"}",
+    "supporting_contracts": [],
+    "updated_by": "{\"name\":\"ramramram\",\"email\":\"bijaya@gmail.com\"}",
+    "created_at": "2015-09-01 08:43:07",
+    "updated_at": "2015-09-09 11:49:18"
+  },
+
+  {
+    "id": 4,
+    "metadata": "{\"contract_name\":\"FOrth One\",\"contract_identifier\":\"iddddddddddd\",\"language\":\"en\",\"country\":{\"code\":\"DZ\",\"name\":\"Algeria\"},\"resource\":[\"6PGM+Au\",\"Alumina\"],\"government_entity\":[{\"entity\":\"ddd\",\"identifier\":\"dddd\"},{\"entity\":\"22\",\"identifier\":\"ssssssss\"}],\"type_of_contract\":\"Joint Venture\",\"signature_date\":\"2015-09-17\",\"document_type\":\"Environmental Impact\",\"company\":[{\"name\":\"ssssss\",\"participation_share\":\"0.8\",\"jurisdiction_of_incorporation\":\"AL\",\"registration_agency\":\"dddddddddd\",\"company_founding_date\":\"2015-09-14\",\"company_address\":\"commmmmmm asdaddddddddddddddd\",\"company_number\":\"comm nnnnnnnnnnnuuuuuuuu\",\"parent_company\":\"888 holdings\",\"open_corporate_id\":\"12312sdsfsdf\",\"operator\":\"0\"}],\"project_title\":\"porrrrrrrrrrr tileeeeeeeee\",\"project_identifier\":\"pro idddddddddddd\",\"concession\":[{\"license_name\":\"con nalin\",\"license_identifier\":\"con lie didddddddddd\"}],\"source_url\":\"dddddddd------dddddddddddd\",\"disclosure_mode\":\"Corporate\",\"date_retrieval\":\"2015-09-16\",\"category\":[\"rc\"],\"translated_from\":[{\"id\":679,\"contract_name\":\"Mauritania Contrat de Partage de Production Entre La Republique Islamique de Mauritanie et International Petroleum Grouping (Block 11)\"}],\"show_pdf_text\":\"1\",\"signature_year\":\"2015\",\"file_size\":7945,\"open_contracting_id\":\"ocds-591adf-DZ5195797355RCC\",\"amla_url\":\"http:\\/\\/a-mla.org\\/index.php\\/countries\\/1\",\"file_url\":\"https:\\/\\/rc-demo.s3-us-west-2.amazonaws.com\\/679\\/679-my-contract-name.pdf\",\"word_file\":\"https:\\/\\/rc-demo.s3-us-west-2.amazonaws.com\\/679\\/679-my-contract-name.txt\"}",
+    "total_pages": 1,
+    "created_by": "{\"name\":\"Admin Name\",\"email\":\"admin@nrgi.app\"}",
+    "supporting_contracts": [],
+    "updated_by": "{\"name\":\"ramramram\",\"email\":\"bijaya@gmail.com\"}",
+    "created_at": "2015-09-01 08:43:07",
+    "updated_at": "2015-09-09 11:49:18"
+  }
+
+
+
+
+]

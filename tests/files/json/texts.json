@@ -1,0 +1,22 @@
+[
+  {
+    "pages": "[  {   \"id\":251,       \"page_no\":5,             \"text\": \"Nepal is one of the most beautiful country in the world \",             \"pdf_url\":\"https://rc-demo.s3-us-west-2.amazonaws.com/833/76.pdf\"         }     ] " ,
+    "metadata" : "{\"contract_name\":\"Mittal - Liberia, 2005\",\"country\":{\"code\":\"LR\",\"name\":\"Liberia\"},\"resource\":[\"Iron ore\"],\"signature_date\":\"2006-05-08\",\"category\":[\"rc\"],\"file_size\":66026461,\"file_url\":\"https:\\/\\/rc-demo.s3-us-west-2.amazonaws.com\\/833\\/833-mittal-liberia-2005.pdf\"} ",
+    "contract_id": 1
+  },
+  {
+    "pages": "[  {   \"id\":989,       \"page_no\":1,             \"text\": \"Trying to do some code. Lorem ipsum .... nepal nepal\",             \"pdf_url\":\"https://rc-demo.s3-us-west-2.amazonaws.com/833/76.pdf\"         }     ] " ,
+    "metadata" : "{\"contract_name\":\"Mittal - Liberia, 2005\",\"country\":{\"code\":\"LR\",\"name\":\"Liberia\"},\"resource\":[\"Iron ore\"],\"signature_date\":\"2006-05-08\",\"category\":[\"rc\"],\"file_size\":66026461,\"file_url\":\"https:\\/\\/rc-demo.s3-us-west-2.amazonaws.com\\/833\\/833-mittal-liberia-2005.pdf\"} ",
+    "contract_id": 1
+  },
+  {
+    "pages": "[  {   \"id\":25,       \"page_no\":4,             \"text\": \"Nepal only nepal\",             \"pdf_url\":\"https://rc-demo.s3-us-west-2.amazonaws.com/833/76.pdf\"         }     ] " ,
+    "metadata" : "{\"contract_name\":\"Mittal - Liberia, 2005\",\"country\":{\"code\":\"LR\",\"name\":\"Liberia\"},\"resource\":[\"Iron ore\"],\"signature_date\":\"2006-05-08\",\"category\":[\"rc\"],\"file_size\":66026461,\"file_url\":\"https:\\/\\/rc-demo.s3-us-west-2.amazonaws.com\\/833\\/833-mittal-liberia-2005.pdf\"} ",
+    "contract_id": 2
+  },
+  {
+    "pages": "[  {   \"id\":98,       \"page_no\":1,             \"text\": \"HTML , CSS ,  Javascript < JQuery , angular js , front end development \",             \"pdf_url\":\"https://rc-demo.s3-us-west-2.amazonaws.com/833/76.pdf\"         }     ] " ,
+    "metadata" : "{\"contract_name\":\"Mittal - Liberia, 2005\",\"country\":{\"code\":\"LR\",\"name\":\"Liberia\"},\"resource\":[\"Iron ore\"],\"signature_date\":\"2006-05-08\",\"category\":[\"rc\"],\"file_size\":66026461,\"file_url\":\"https:\\/\\/rc-demo.s3-us-west-2.amazonaws.com\\/833\\/833-mittal-liberia-2005.pdf\"} ",
+    "contract_id": 2
+  }
+]

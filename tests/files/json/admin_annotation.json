@@ -1,0 +1,5 @@
+[
+  {
+    "annotations" : "[   {     \"ranges\":[{\"annotationsstart\":\"\/div[2]\/div[1]\/span[1]\",         \"startOffset\":148,         \"end\":\"\/div[2]\/div[1]\/span[1]\",         \"endOffset\":155}],     \"quote\":\"country\",     \"category\":\"Country\/\/Pays\",     \"text\":\"Finally this works\",     \"tags\":[\"Country\"],     \"url\":\"http:\\resourcecontracts.elasticbeanstalk.com\/contract\/35\/page\",     \"contract\":\"2\",     \"document_page_no\":4,  \"open_contracting_id\": \"OCID\",   \"page\":1,     \"page_id\":\"3790\",     \"id\":10,     \"contract_id\": CONTRACT_ID   }    ]"
+  }
+  ]

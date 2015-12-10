@@ -1,0 +1,96 @@
+[
+  {
+    "file": "./files/pdf/upload.pdf",
+    "contract_name": "Young Innovations Nepal",
+    "contract_identifier": "Nepal Government",
+    "resource": [
+      "Gold",
+      "Coal"
+    ],
+    "country": "NP",
+    "category": [
+      "olc",
+      "rc"
+    ],
+    "government_entity": [
+      {
+        "entity": "Secretary of State for Energy Policy",
+        "identifier": "Ministry of Health"
+      }
+    ],
+    "type_of_contract": "Joint Venture Agreement",
+    "signature_date": "2015-09-02",
+    "document_type": "Contract",
+    "company": [
+      {
+        "name": "KUIKEL Enterprises",
+        "participation_share": "0.5",
+        "jurisdiction_of_incorporation": "DZ",
+        "registration_agency": "Registered to MAC",
+        "company_founding_date": "1993-02-16",
+        "company_address": "Banepa Nepal",
+        "company_number": "222",
+        "parent_company": "7digital",
+        "open_corporate_id": "https://www.google.com.np"
+      }
+    ],
+    "project_title": "Project 1",
+    "project_identifier": "Ram404",
+    "concession": [
+      {
+        "license_name": "New Lisence",
+        "license_identifier": "Lis_no_4040"
+      }
+    ],
+    "source_url": "https://www.google.com.np",
+    "disclosure_mode": "Government",
+    "date_retrieval": "2015-11-22"
+  },
+  {
+    "file": "./files/pdf/upload_2.pdf",
+    "contract_name": "Second Innovations Nepal",
+    "contract_identifier": "Second",
+    "resource": [
+      "Boron",
+      "Coal"
+    ],
+    "country": "BS",
+    "category": [
+      "olc",
+      "rc"
+    ],
+    "government_entity": [
+      {
+        "entity": "Minstry of Finance",
+        "identifier": "Identifer one"
+      }
+    ],
+    "type_of_contract": "Service Contract",
+    "signature_date": "2010-10-01",
+    "document_type": "Contract",
+    "company": [
+      {
+        "name": "ABC Enterprises",
+        "participation_share": "0.3",
+        "jurisdiction_of_incorporation": "DZ",
+        "registration_agency": "Registeration Department of Finance",
+        "company_founding_date": "1995-04-16",
+        "company_address": "Banepa Nepal",
+        "company_number": "222",
+        "parent_company": "7digital",
+        "open_corporate_id": "https://www.google.com.np"
+      }
+    ],
+    "project_title": "Project ii",
+    "project_identifier": "New",
+    "concession": [
+      {
+        "license_name": "New Lisence",
+        "license_identifier": "LIS_10"
+      }
+    ],
+    "source_url": "https://www.google.com.np",
+    "disclosure_mode": "Government",
+    "date_retrieval": "2010-11-22"
+  }
+]
