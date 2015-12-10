@@ -1,558 +1,81 @@
-Host: localhost:8000
-Connection: close
-X-Powered-By: PHP/5.6.14-1+deb.sury.org~trusty+1
-Set-Cookie: lang=en; expires=Thu, 08-Dec-2016 05:25:31 GMT; Max-Age=31622400; path=/
-Set-Cookie: XSRF-TOKEN=eyJpdiI6IjVmWVBZVzFEVnZKbmg2MXF6RUs0MkE9PSIsInZhbHVlIjoid3dzSWJwdDVSWnVSeTJqb3diaHh1Y2dCSnd5a0srYUFrUm5oU1NKb0R3WVlnUm1sVFwvRTk0YUNldkcxdGFXV1g3RGZ6bHZlQjJsbm5DTmNjc3lybGdRPT0iLCJtYWMiOiJiZWRhNzg3ZDY2OGRhNjI0YWVmYjJhZGIwMWY4YzE3ODIxMGFhMDM4MzE2NzM1ZDNjYjE2Mjc0NmVmMTg4Njk2In0%3D; expires=Tue, 08-Dec-2015 07:25:31 GMT; Max-Age=7200; path=/
-Set-Cookie: laravel_session=eyJpdiI6InNtaERJV2U4YitzRUVUajZQZXJ3clE9PSIsInZhbHVlIjoiMXRUQ09QRHlMKzZMeVBpYjBaSnBKRStHbGhwandFTzNaQ1RlVmduK0ZRT05ONHM4MXhKamFISHAzYmpWdE1YXC9HeHZxOGtYVFZNT28zQVNlUVwvWWZ2UT09IiwibWFjIjoiYWM0ZTJhZjEyNmMwZTQ2NGYzZDFkZjE5ODhmMTE5MWU4ZTgxYmFkMDM1ZGM1NGVhOTVjZWIzNDdlOWZiMGNkNCJ9; expires=Tue, 08-Dec-2015 07:25:31 GMT; Max-Age=7200; path=/; httponly
-Cache-Control: no-cache
-Date: Tue, 08 Dec 2015 05:25:31 GMT
+Cache-Control: no-cache, private
 Content-Type: text/html; charset=UTF-8
+Date: Wed, 13 Jan 2016 10:33:36 GMT
+Server: Apache
+Set-Cookie: lang=en; expires=Fri, 13-Jan-2017 10:33:36 GMT; Max-Age=31622400; path=/
+Content-Length: 4519
+Connection: keep-alive
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Resource Contracts</title>
-    <link rel="stylesheet" href="http://localhost:8000/css/app.css"/>
-    <link rel="stylesheet" href="http://localhost:8000/css/sidebar.css"/>
-    <link rel="stylesheet" href="http://localhost:8000/css/style.css"/>
-    <link rel="stylesheet" href="http://localhost:8000/css/datepicker.css"/>
-    <meta name="_token" content="jIrAIuWSJfZlWTFSrJy6kEG7rGMfpy9SmZuvJ2qa"/>
-    <script>
-        var app_url = 'http://localhost:8000';
-    </script>
-        <link href="http://localhost:8000/css/bootstrap-editable.css" rel="stylesheet"/>
-    <link href="http://localhost:8000/css/select2.min.css" rel="stylesheet"/>
-    <style>
-        textarea.form-control.input-large {
-            width: 500px !important;
-        }
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="noindex,nofollow" />
+        <style>
+            /* Copyright (c) 2010, Yahoo! Inc. All rights reserved. Code licensed under the BSD License: http://developer.yahoo.com/yui/license.html */
+            html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
 
-        .input-sm {
-            width: 400px !important;
-        }
-        .editable-click, a.editable-click, a.editable-click:hover {
-            text-decoration: none;
-            border-bottom: none!important;
-        }
-    </style>
-</head>
-<body><div id="wrapper">
-            <header class="main-header">
-            <nav class="navbar navbar-static-top" role="navigation">
-                <div class="navbar-custom-menu">
-                    <a href="#menu-toggle" class="btn btn-default pull-left" id="menu-toggle">Menu</a>
-                    <ul class="nav navbar-nav pull-right">
-                        <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="http://localhost:8000/images/ic_user.png" class="user-image" alt="User Image">
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    admin@nrgi.app
-                                    <span class="role-name">Admin</span>
-                                </li>
-                                <li>
-                                    <a href="http://localhost:8000/profile">Profile</a>
-                                </li>
-                                <li>
-                                    <a href="http://localhost:8000/auth/logout">Logout</a>
-                                </li>
-
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-    
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="/">
-                    Resource Contracts                </a>
-            </li>
-            <li>
-                <a class=active
-                        href="http://localhost:8000/contract">All Contracts</a>
-            </li>
-
-                            <li>
-                    <a 
-                            href="http://localhost:8000/user">Users</a>
-                </li>
-                        <li>
-                <a 
-                        href="http://localhost:8000/activities">Activity logs</a>
-            </li>
-            <li>
-                <a 
-                        href="http://localhost:8000/mturk">Mechanical Turk</a>
-            </li>
-            <li>
-                <a 
-                        href="http://localhost:8000/quality">Contract Quality issues</a>
-            </li>
-        </ul>
-    </div>
-
-    <div id="page-content-wrapper">
-        <div class="container-fluid">
-
-            
-            <div class="row">
-                <div class="col-lg-12">
-                        <div class="panel panel-default">
-        <div class="panel-heading">Young Innovations Nepal - child</div>
-        <div class="action-btn pull-right" style="padding: 20px;">
-            <a href="http://localhost:8000/activities?contract=80"
-               class="btn btn-default">Activity logs</a>
-            <a href="http://localhost:8000/contract/80/edit" class="btn btn-default">Edit</a>
-
-            <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                    Download <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a target="_blank" href="https://rc-demo.s3-us-west-2.amazonaws.com/66416af5bed3e733d42764b66738d3818ee6c073.pdf">PDF</a></li>
-                                    </ul>
-            </div>
-
-                            <form method="POST" action="http://localhost:8000/contract/80" accept-charset="UTF-8" style="display:inline"><input name="_method" type="hidden" value="DELETE"><input name="_token" type="hidden" value="jIrAIuWSJfZlWTFSrJy6kEG7rGMfpy9SmZuvJ2qa">
-                <button type="submit" class="btn btn-danger confirm" data-confirm="Are you sure you want to delete this contract?">Delete</button>
-                </form>
-                    </div>
-
-                    <div class="status">Status: Pipeline</div>
-        
-
-        <div class="state-wrap">
-    <div class="state-wrap-title">
-    <p style="float: left"> Contract State:
-                    <form method="POST" action="http://localhost:8000/contract/80/unpublish" accept-charset="UTF-8" style="float:right;  padding-left: 10px;"><input name="_token" type="hidden" value="jIrAIuWSJfZlWTFSrJy6kEG7rGMfpy9SmZuvJ2qa">
-            <button type="submit" class="btn btn-danger btn-sm confirm" data-confirm="Unpublish this contract ?">Unpublish</button>
-            </form>
-
-            <form method="POST" action="http://localhost:8000/contract/80/publish" accept-charset="UTF-8" style="float:right"><input name="_token" type="hidden" value="jIrAIuWSJfZlWTFSrJy6kEG7rGMfpy9SmZuvJ2qa">
-            <button type="submit" class="btn btn-success btn-sm confirm" data-confirm="Publish All ?">Publish All</button>
-            </form>
-            </p>
-    </div>
-
-    <ul>
-        <li>
-            <strong>Metadata:</strong>
-    <span class="draft">Draft</span>
-
-            <div class="pull-right">
-            <button data-toggle="modal" data-target=".metadata-complete-modal" class="btn btn-primary">Complete            </button>
-            <div class="modal fade metadata-complete-modal" tabindex="-1" role="dialog"
-                 aria-labelledby="myModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form method="POST" action="http://localhost:8000/contract/80/status/comment" accept-charset="UTF-8" class="suggestion-form"><input name="_token" type="hidden" value="jIrAIuWSJfZlWTFSrJy6kEG7rGMfpy9SmZuvJ2qa">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Comment</h4>
-                        </div>
-                        <div class="modal-body">
-                            <textarea id="message" rows="12" style="width:100%" name="message" cols="50"></textarea>
-                            <input name="type" type="hidden" value="metadata">
-                            <input id="status" name="status" type="hidden" value="completed">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default"
-                                    data-dismiss="modal">Cancel</button>
-                            <button type="submit"
-                                    class="btn btn-primary">Ok</button>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    <a href="#" data-toggle="modal" data-target=".metadata-modal"><i
-                class="glyphicon glyphicon-pushpin"></i></a>
-    <div class="modal fade metadata-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">All Comments Metadata</h4>
-                </div>
-                <div class="modal-body">
-                                            no comment                                    </div>
-                <div class="modal-footer">
-                    <a href="http://localhost:8000/contract/80/comment"
-                       class="btn btn-default pull-left">View All</a>
-                    <button type="button" class="btn btn-default"
-                            data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<a style="padding-left: 10px" href="http://localhost:8000/contract/80/edit" >Edit Metadata</a>        </li>
-                    <li><strong>Text:</strong></li>
-            <li><strong>Annotation:</strong></li>
-            </ul>
-</div>
-        <a style="margin-left: 15px;margin-bottom: 25px" class="btn btn-default"
-           href="http://localhost:8000/contract/80/comment">View all comments</a>
-
-        <ul class="contract-info">
-            <li><strong>open Contracting ID:</strong>
-                ocds-591adf-NP3933429202OL-80
-            </li>
-
-            <li><strong>Created By:</strong>
-                admin on Tue Dec 08, 2015 05:25 AM (GMT)
-            </li>
-
-            
-            <li>
-                <strong>Contract Name:</strong> Young Innovations Nepal - child
-                <a href="http://localhost:8000/contract/discussion/80/metadata/contract_name" data-toggle="modal"  data-target="#commentModel" class="key-contract_name pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-            </li>
-
-            <li>
-                <strong>Contract Identifier                    :</strong> Nepal Government
-                <a href="http://localhost:8000/contract/discussion/80/metadata/contract_identifier" data-toggle="modal"  data-target="#commentModel" class="key-contract_identifier pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-            </li>
-
-
-                            <li>
-                    <strong>Language:</strong> English
-                    [en]
-                    <a href="http://localhost:8000/contract/discussion/80/metadata/language" data-toggle="modal"  data-target="#commentModel" class="key-language pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                </li>
-            
-                            <li>
-                    <strong>Country:</strong> Nepal
-                    [NP]
-                                        <a href="http://localhost:8000/contract/discussion/80/metadata/country" data-toggle="modal"  data-target="#commentModel" class="key-country pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                </li>
-            
-            <li>
-                <strong>Resource: </strong>
-                                  Coal, Gold
-                               <a href="http://localhost:8000/contract/discussion/80/metadata/resource" data-toggle="modal"  data-target="#commentModel" class="key-resource pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-            </li>
-
-            
-                <div class="government-entity-wrap license-wrap">
-                                            <li>
-                            <strong>Government Entity:</strong> Secretary of State for Energy Policy
-                            <a href="http://localhost:8000/contract/discussion/80/metadata/entity-0" data-toggle="modal"  data-target="#commentModel" class="key-entity-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                        </li>
-                        <li>
-                            <strong>Government Identifier:</strong> Ministry of Health
-                            <a href="http://localhost:8000/contract/discussion/80/metadata/identifier-0" data-toggle="modal"  data-target="#commentModel" class="key-identifier-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                        </li>
-                                    </div>
-            
-            <li><strong>Type of Contract: </strong>
-                                   Joint Venture Agreement
-                                <a href="http://localhost:8000/contract/discussion/80/metadata/type_of_contract" data-toggle="modal"  data-target="#commentModel" class="key-type_of_contract pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-            </li>
-
-            <li>
-                <strong>Signature Date:</strong> 2015-09-02
-                <a href="http://localhost:8000/contract/discussion/80/metadata/signature_date" data-toggle="modal"  data-target="#commentModel" class="key-signature_date pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-            </li>
-
-            <li>
-                <strong>Document Type:</strong> Contract
-                <a href="http://localhost:8000/contract/discussion/80/metadata/document_type" data-toggle="modal"  data-target="#commentModel" class="key-document_type pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-            </li>
-
-
-                                                                <li><h3>Company</h3>
-                                                    <div style="margin-bottom: 20px; border-bottom:1px solid #ccc; padding-bottom:20px; ">
-                                <p>
-                                    <strong>Company Name:</strong>KUIKEL Enterprises
-                                    <a href="http://localhost:8000/contract/discussion/80/metadata/name-0" data-toggle="modal"  data-target="#commentModel" class="key-name-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                                </p>
-
-                                                                    <p>
-                                        <strong>Participation Share:</strong> 0.5
-                                        <a href="http://localhost:8000/contract/discussion/80/metadata/participation_share-0" data-toggle="modal"  data-target="#commentModel" class="key-participation_share-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                                    </p>
-                                
-                                <p>
-                                    <strong>Jurisdiction of Incorporation:</strong> Algeria
-                                    <a href="http://localhost:8000/contract/discussion/80/metadata/jurisdiction_of_incorporation-0" data-toggle="modal"  data-target="#commentModel" class="key-jurisdiction_of_incorporation-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                                </p>
-
-                                <p>
-                                    <strong>Registration Agency:</strong> Registered to MAC
-                                    <a href="http://localhost:8000/contract/discussion/80/metadata/registration_agency-0" data-toggle="modal"  data-target="#commentModel" class="key-registration_agency-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                                </p>
-
-                                <p>
-                                    <strong>Incorporation Date:</strong> 1993-02-16
-                                    <a href="http://localhost:8000/contract/discussion/80/metadata/company_founding_date-0" data-toggle="modal"  data-target="#commentModel" class="key-company_founding_date-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                                </p>
-
-                                <p>
-                                    <strong>Company Address:</strong> Banepa Nepal
-                                    <a href="http://localhost:8000/contract/discussion/80/metadata/company_address-0" data-toggle="modal"  data-target="#commentModel" class="key-company_address-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                                </p>
-
-                                <p>
-                                    <strong>Company Number:</strong> 222                                    <a href="http://localhost:8000/contract/discussion/80/metadata/company_number-0" data-toggle="modal"  data-target="#commentModel" class="key-company_number-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                                </p>
-
-                                <p>
-                                    <strong>Corporate Grouping:</strong> 7digital                                    <a href="http://localhost:8000/contract/discussion/80/metadata/parent_company-0" data-toggle="modal"  data-target="#commentModel" class="key-parent_company-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                                </p>
-                                <p>
-                                    <strong>OpenCorporates Link:</strong>  <a target="_blank" href="https://www.google.com.np">https://www.google.com.np</a>                                    <a href="http://localhost:8000/contract/discussion/80/metadata/open_corporate_id-0" data-toggle="modal"  data-target="#commentModel" class="key-open_corporate_id-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                                </p>
-                                                                <p>
-                                   <strong>Operator:</strong> Not Available                                     <a href="http://localhost:8000/contract/discussion/80/metadata/operator-0" data-toggle="modal"  data-target="#commentModel" class="key-operator-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                                </p>
-                                                            </div>
-                                            </li>
-                            
-            <li><h3>Concession / License and Project</h3></li>
-                            <div class="license-wrap">
-                                                                        <li>
-                                <strong>License Name:</strong>
-                                New Lisence
-                                <a href="http://localhost:8000/contract/discussion/80/metadata/license_name-0" data-toggle="modal"  data-target="#commentModel" class="key-license_name-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                            </li>
-                                                                            <li>
-                                <strong>License Identifier:</strong>
-                                Lis_no_4040
-                                <a href="http://localhost:8000/contract/discussion/80/metadata/license_identifier-0" data-toggle="modal"  data-target="#commentModel" class="key-license_identifier-0 pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                            </li>
-                        
-                                    </div>
-                        <li>
-                <strong>Project Title:</strong> Project 1
-                <a href="http://localhost:8000/contract/discussion/80/metadata/project_title" data-toggle="modal"  data-target="#commentModel" class="key-project_title pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-            </li>
-            <li>
-                <strong>Project Identifier:</strong> Ram404
-                <a href="http://localhost:8000/contract/discussion/80/metadata/project_identifier" data-toggle="modal"  data-target="#commentModel" class="key-project_identifier pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-            </li>
-            <li><h3>Source</h3></li>
-            <li>
-                <strong>Source URL</strong> <a href="https://www.google.com.np">https://www.google.com.np</a>
-                <a href="http://localhost:8000/contract/discussion/80/metadata/source_url" data-toggle="modal"  data-target="#commentModel" class="key-source_url pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-            </li>
-            <li>
-                <strong>Disclosure Mode:</strong> Government
-                <a href="http://localhost:8000/contract/discussion/80/metadata/disclosure_mode" data-toggle="modal"  data-target="#commentModel" class="key-disclosure_mode pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-            </li>
-            <li>
-                <strong>Date of Retrieval:</strong> 2015-11-22
-                <a href="http://localhost:8000/contract/discussion/80/metadata/date_retrieval" data-toggle="modal"  data-target="#commentModel" class="key-date_retrieval pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-            </li>
-            <li>
-                <strong>Category:</strong>
+            html { background: #eee; padding: 10px }
+            img { border: 0; }
+            #sf-resetcontent { width:970px; margin:0 auto; }
+                        .sf-reset { font: 11px Verdana, Arial, sans-serif; color: #333 }
+            .sf-reset .clear { clear:both; height:0; font-size:0; line-height:0; }
+            .sf-reset .clear_fix:after { display:block; height:0; clear:both; visibility:hidden; }
+            .sf-reset .clear_fix { display:inline-block; }
+            .sf-reset * html .clear_fix { height:1%; }
+            .sf-reset .clear_fix { display:block; }
+            .sf-reset, .sf-reset .block { margin: auto }
+            .sf-reset abbr { border-bottom: 1px dotted #000; cursor: help; }
+            .sf-reset p { font-size:14px; line-height:20px; color:#868686; padding-bottom:20px }
+            .sf-reset strong { font-weight:bold; }
+            .sf-reset a { color:#6c6159; cursor: default; }
+            .sf-reset a img { border:none; }
+            .sf-reset a:hover { text-decoration:underline; }
+            .sf-reset em { font-style:italic; }
+            .sf-reset h1, .sf-reset h2 { font: 20px Georgia, "Times New Roman", Times, serif }
+            .sf-reset .exception_counter { background-color: #fff; color: #333; padding: 6px; float: left; margin-right: 10px; float: left; display: block; }
+            .sf-reset .exception_title { margin-left: 3em; margin-bottom: 0.7em; display: block; }
+            .sf-reset .exception_message { margin-left: 3em; display: block; }
+            .sf-reset .traces li { font-size:12px; padding: 2px 4px; list-style-type:decimal; margin-left:20px; }
+            .sf-reset .block { background-color:#FFFFFF; padding:10px 28px; margin-bottom:20px;
+                -webkit-border-bottom-right-radius: 16px;
+                -webkit-border-bottom-left-radius: 16px;
+                -moz-border-radius-bottomright: 16px;
+                -moz-border-radius-bottomleft: 16px;
+                border-bottom-right-radius: 16px;
+                border-bottom-left-radius: 16px;
+                border-bottom:1px solid #ccc;
+                border-right:1px solid #ccc;
+                border-left:1px solid #ccc;
+            }
+            .sf-reset .block_exception { background-color:#ddd; color: #333; padding:20px;
+                -webkit-border-top-left-radius: 16px;
+                -webkit-border-top-right-radius: 16px;
+                -moz-border-radius-topleft: 16px;
+                -moz-border-radius-topright: 16px;
+                border-top-left-radius: 16px;
+                border-top-right-radius: 16px;
+                border-top:1px solid #ccc;
+                border-right:1px solid #ccc;
+                border-left:1px solid #ccc;
+                overflow: hidden;
+                word-wrap: break-word;
+            }
+            .sf-reset a { background:none; color:#868686; text-decoration:none; }
+            .sf-reset a:hover { background:none; color:#313131; text-decoration:underline; }
+            .sf-reset ol { padding: 10px 0; }
+            .sf-reset h1 { background-color:#FFFFFF; padding: 15px 28px; margin-bottom: 20px;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+                border: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+                    <div id="sf-resetcontent" class="sf-reset">
+                <h1>Whoops, looks like something went wrong.</h1>
                 
-                                                        OpenLandContracts, ResourceContracts
-                                <a href="http://localhost:8000/contract/discussion/80/metadata/category" data-toggle="modal"  data-target="#commentModel" class="key-category pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-            </li>
-
-               
-                   <li>
-                       <strong>Deal Number:</strong>
-                                                   
-                                              <a href="http://localhost:8000/contract/discussion/80/metadata/deal_number" data-toggle="modal"  data-target="#commentModel" class="key-deal_number pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                   </li>
-                   <li>
-                     <strong>Matrix Page:</strong>
-                                                  <a href="" target="_blank"></a>
-                                              <a href="http://localhost:8000/contract/discussion/80/metadata/matrix_page" data-toggle="modal"  data-target="#commentModel" class="key-matrix_page pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-                   </li>
-                   
-            <li>
-                <strong>Note:</strong>
-                                        
-                                <a href="http://localhost:8000/contract/discussion/80/metadata/contract_note" data-toggle="modal"  data-target="#commentModel" class="key-contract_note pull-right"><span class="label label-red pull-right">(0) Open</span></a>
-            </li>
-
-            <li><h3>Associated Documents</h3></li>
-                            <li><strong>Parent Document:</strong>
-                    <a href="http://localhost:8000/contract/78">Young Innovations Nepal</a>
-                </li>
-            
-                    </ul>
             </div>
-
-    <div class="modal fade modal-comment" id="commentModel" tabindex="-1" role="dialog" aria-labelledby="commentModelLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                       <div style="padding: 40px;"> Loading... </div>
-            </div>
-        </div>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="http://localhost:8000/js/jquery.js"></script>
-<script src="http://localhost:8000/js/bootstrap.min.js"></script>
-<script src="http://localhost:8000/js/script.js"></script>
-    <script src="http://localhost:8000/js/select2.min.js"></script>
-    <script src="http://localhost:8000/js/bootstrap-editable.min.js"></script>
-    <script>
-        $(function () {
-                    $('body').on('hidden.bs.modal', '.modal-comment', function (event) {
-                        var modal = $(this);
-                        modal.removeData('bs.modal');
-                    });
-
-                    $('body').on('show.bs.modal', '.modal-comment', function (event) {
-                        var modal = $(this);
-                        modal.find('.modal-content').html('<div style="padding: 40px;"> Loading...</div>');
-                    });
-
-                    $.fn.editable.defaults.mode = 'inline';
-                    $('.edit-annotation-text').on('click', function () {
-                                $(this).editable();
-                            }
-                    );
-
-                    $('.annotation-delete-btn').on('click', function (e) {
-                                e.preventDefault();
-                                if (!confirm("Are you sure want to delete this annotation ?")) {
-                                    return;
-                                }
-                                $(this).parent().fadeOut('slow');
-                                var id = $(this).data('pk');
-                                var url = app_url + "/api/annotation/" + id + "/delete";
-                                $.ajax({
-                                    url: url,
-                                    type: "POST",
-                                    data:{'id':id},
-                                    success: function (data) {
-                                        $(this).parent().remove();
-                                    },
-                                    error: function(){
-                                        $(this).parent().fadeIn('slow');
-                                    }
-                                });
-                            }
-                    );
-
-                    $('.edit-annotation-category').on('click', function () {
-                            var categories = {"i-general-information":"I. General information\/\/I. Information g\u00e9n\u00e9rale sur le projet","country":"Country\/\/Pays","name-of-company-executing-document":"Name of company executing document\/\/Nom de la soci\u00e9t\u00e9 signataire","legal-enterprise-identifier":"Legal Enterprise Identifier\/\/Num\u00e9ro d'entreprise l\u00e9gal","corporate-headquarters":"Corporate headquarters \/\/Si\u00e8ge social","company-structure":"Company structure\/\/Structure du Capital","parent-company-or-affiliates-outside-of-country":"Parent company or affiliates outside of country\/\/Soci\u00e9t\u00e9(s) m\u00e8re(s) ou affili\u00e9e(s) hors du pays","company-website":"Company website\/\/Site web de l\u2019entreprise","type-of-contract":"Type of contract\/\/Type de contrat","project-title":"Project title\/\/Nom du projet","name-of-field-block-deposit-or-site":"Name of field, block, deposit or site\/\/Nom du terrain, quartier, gisement ou lieu","location":"Location\/\/Emplacement","closest-community":"Closest community\/\/Lieu-dit habit\u00e9 le plus proche","date-of-issue-of-titlepermit":"Date of issue of title\/permit\/\/Date de l'octroi du droit ou du permis","year-of-issue-of-titlepermit":"Year of issue of title\/permit\/\/Ann\u00e9e d'octroi du permis d'exploitation ou concession","date-of-ratification":"Date of ratification\/\/Date de ratification","other-general":"Other - general\/\/Autre - g\u00e9n\u00e9ral","ii-summary-of-terms":"II. Summary of terms\/\/II. R\u00e9sum\u00e9 des dispositions du contrat","1-fundamental-provisions":"1. Fundamental provisions\/\/1. Dispositions du base","signatories-company":"Signatories, company\/\/Signataire(s), soci\u00e9t\u00e9","state-agency-national-company-or-ministry-executing-the-document":"State agency, national company or ministry executing the document\/\/Agence de l'Etat, soci\u00e9t\u00e9 nationale ou minist\u00e8re signataire du contrat","signatories-state":"Signatories, State\/\/Signataire(s), Etat","name-andor-composition-of-the-company-created":"Name and\/or composition of the company created\/\/Nom et\/ou composition de la soci\u00e9t\u00e9 du projet cr\u00e9e","date-contract-signature":"Date - contract signature\/\/Date de la signature du contrat","year-of-contract-signature":"Year of contract signature\/\/Ann\u00e9e de signature du contrat","term":"Term\/\/Dur\u00e9e","renewal-or-extension-of-term":"Renewal or extension of term\/\/Renouvellement ou prolongation de la dur\u00e9e de la concession","resources":"Resource(s)\/\/Ressource(s)","size-of-concession-area":"Size of concession area\/\/Superficie de la concession","2-community-and-social-obligations":"2. Community and social obligations\/\/2. Obligations \u00e0 l'\u00e9gard des communaut\u00e9s, la protection sociale et l\u2019\u00e9conomie locale\/r\u00e9gionale","local-development-agreement":"Local development agreement\/\/Convention de d\u00e9veloppement local","sacred-cultural-or-historical-sites":"Sacred, cultural, or historical sites\/\/Sites sacr\u00e9s, culturels ou historiques","community-consultation":"Community consultation \/\/Consultations communautaires","training":"Training\/\/Formation","local-employment":"Local employment\/\/Emploi du personnel local","local-procurement":"Local procurement\/\/Approvisionnement en biens et services locaux","resettlement":"Resettlement\/\/R\u00e9installation des habitants","outgrowers-program":"Outgrowers Program\/\/Programme de sous-traitance  avec les petits planteurs","protections-or-benefits-for-employees-dependents-or-others":"Protections or benefits for employees, dependents, or others\/\/Protections ou avantages pour les employ\u00e9s, les personnes \u00e0 charge ou pour des tiers","physical-security-or-protection-of-property":"Physical security or protection of property\/\/La s\u00e9curit\u00e9 physique ou la protection de la propri\u00e9t\u00e9","grievance-mechanisms":"Grievance mechanisms\/\/M\u00e9canismes de r\u00e9clamation","right-to-access-concession-area-non-contracting-parties":"Right to access concession area (non-contracting parties)\/\/Droits d'acc\u00e8s \u00e0 la zone de concession (pour des parties non contractantes)","3-developers-financial-obligations":"3. Developers financial obligations\/\/3. Obligations financi\u00e8res du d\u00e9tenteur du titre","royalties":"Royalties\/\/Redevances","income-tax-rate":"Income tax: rate\/\/Imp\u00f4t sur les b\u00e9n\u00e9fices: taux","income-tax-exemptions":"Income tax: exemptions\/\/Imp\u00f4t sur les b\u00e9n\u00e9fices: exon\u00e9ration","income-tax-other":"Income tax: other\/\/Imp\u00f4t sur le b\u00e9n\u00e9fice: autre","production-share-cost-oil-features-basis-of-calculation-limits-on-cost-recovery-eg-as-of-revenue-or-production-capex-uplift-etc":"Production Share - Cost Oil features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)\/\/Partage de production - El\u00e9ments de \"Cost Oil\" (base de calcul, limites sur le recouvrement des co\u00fbts, e.g. comme % des revenues ou de la production, cr\u00e9dit d'investissement, etc.)","production-share-profit-oil-features-triggers-for-variations-in-split-irr-factor-production-etc":"Production Share - \"Profit Oil features(\n    triggers for variations in split - IRR, factor, production, etc .)\/\/Partage de production - El\u00e9ments de \"Profit Oil\" (crit\u00e8res pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)","service-agreement-fee-to-developer-or-contractor":"Service Agreement - Fee to developer or contractor\/\/Contrat de Service - Frais du d\u00e9tenteur du titre d\u00e9fray\u00e9s","capital-gains-tax":"Capital gains tax\/\/Imp\u00f4t sur les Revenus des Valeurs Mobili\u00e8res (IRVM)","withholding-tax":"Withholding tax\/\/Retenue \u00e0 la source","provisions-for-renewing-reserves":"Provisions for renewing reserves\/\/Provision pour la reconstitution des gisements","investment-credit":"Investment credit\/\/Cr\u00e9dit d'investissement","custom-duties":"Custom duties\/\/Droits de douane","social-security-contributions-by-employer":"Social security contributions by employer\/\/Part patronale des cotisations de s\u00e9curit\u00e9 sociale","surface-fees-or-rent":"Surface fees or rent\/\/Redevances superficiaires","financial-obligations-community-or-commodity-funds":"Financial obligations - community or commodity funds\/\/Obligations financi\u00e8res - fonds communautaires ou de mati\u00e8res premi\u00e8res","carbon-credits":"Carbon credits\/\/Cr\u00e9dits de carbone","bonuses":"Bonuses\/\/Primes","state-participation":"State participation\/\/Participation de l'Etat","audit-mechanisms-financial-obligations":"Audit mechanisms - financial obligations\/\/Modes d'audit","restrictions-on-transactions-with-affiliated-parties":"Restrictions on transactions with affiliated parties\/\/Restrictions sur les transactions avec les parties li\u00e9es","other-financialfiscal":"Other - financial\/fiscal\/\/Autre - financi\u00e8re\/budg\u00e9taire","4-environmental-provisions":"4. Environmental provisions\/\/4. Dispositions environnementales","environmental-impact-assessment-and-management-plan":"Environmental impact assessment and management plan\/\/Etude sur l'impact environnemental et plan de gestion","environmental-monitoring":"Environmental monitoring\/\/Suivi environnemental","socialhuman-rights-impact-assessment-and-management-plan":"Social\/human rights impact assessment and management plan\/\/Etude d'impact sur les incidences sociales\/sur les droits de l'homme et plan de gestion","socialhuman-rights-monitoring":"Social\/human rights monitoring\/\/Suivi social et surveillance du respect des droits de l'homme","water-use":"Water use\/\/Utilisation de l'eau","environmental-protections":"Environmental protections\/\/Protection de l'environnement","5-operational-provisions":"5. Operational provisions\/\/5. Dispositions relatives aux op\u00e9rations et \u00e0 l\u2019infrastructure","work-and-investment-commitments":"Work and investment commitments\/\/Obligations de travaux, d'investissements","transfer-of-risk":"Transfer of risk\/\/R\u00e9trocession","infrastructure":"Infrastructure\/\/L'infrastructure","infrastructure-third-party-use":"Infrastructure - third party use\/\/Infrastructure - utilisation par des tiers","value-addition-or-downstream-activities":"Value addition or downstream activities\/\/Activit\u00e9 de beneficiation ou valeur ajout\u00e9e","land-use-outside-of-concession-area":"Land use outside of concession area\/\/Utilisation des terres (publique ou priv\u00e9es) \u00e0 l'ext\u00e9rieur de la zone de concession","other-operational":"Other - operational\/\/Autre - op\u00e9rationnel","6-miscellaneous-provisions":"6. Miscellaneous provisions\/\/6. Dispositions diverses","governing-law":"Governing law\/\/Loi applicable","arbitration-and-dispute-resolution":"Arbitration and dispute resolution\/\/Arbitrage et r\u00e8glement des diff\u00e9rends","stabilization-clause":"Stabilization clause\/\/Clause de stabilisation","assignment-or-transfer":"Assignment or transfer\/\/Cession ou transfert","cancellation-or-termination":"Cancellation or termination\/\/Annulation ou R\u00e9siliation","confidentiality":"Confidentiality\/\/Confidentialit\u00e9","language":"Language\/\/Langue","reporting-requirements":"Reporting requirements\/\/Exigences de d\u00e9claration","hardship-clause-or-force-majeure":"Hardship clause or force majeure\/\/Clause de hardship ou force majeure","expropriation-or-nationalization":"Expropriation or nationalization\/\/Expropriation","other-miscellaneous":"Other - miscellaneous\/\/Autre - divers","iii-document-notes":"III. Document notes\/\/III. Notes sur le document","pages-missing-from-copy":"Pages missing from  copy\/\/Pages Manquantes de la copie","annexes-missing-from-copy":"Annexes missing from copy\/\/Annexes Manquantes de la copie","other":"Other"};
-                            $(this).editable({
-                                source: categories,
-                                select2: {
-                                    width: 400,
-                                    placeholder: 'Select category',
-                                    allowClear: true
-                                }
-                            });
-                        }
-                     );
-        $('.edit-annotation-page').on('click', function () {
-
-                                     var pages = [];
-                $(this).editable({
-                    source: pages,
-                    select2: {
-                        width: 400,
-                        placeholder: 'Select category',
-                        allowClear: true
-                    }
-                });
-                }
-        );
-            var form = $('.output-type-form');
-
-            $(form).on('submit', function (e) {
-                e.preventDefault();
-                var type = form.find('input[type=radio]:checked').val();
-                if (typeof type != 'undefined') {
-                    $.ajax({
-                        url: form.attr('action'),
-                        data: form.serialize(),
-                        type: 'POST',
-                        dataType: 'json'
-                    }).done(function (response) {
-                        window.location.reload()
-                    })
-                }
-                else {
-                    alert('Please select text type');
-                }
-            });
-
-
-            var suggestion_form = $('.suggestion-form');
-            $(suggestion_form).on('submit', function (e) {
-                var text = $(this).find('#message').val();
-                var status = $(this).find('#status').val();
-                if (text == '' && status == 'rejected') {
-                    e.preventDefault();
-                    alert('Suggestion message is required.');
-                    return false;
-                }
-                else {
-                    $(this).find('input[type=submit]').text('loading...');
-                    $(this).find('input[type=submit]').attr('disabled', 'disabled');
-                    return true;
-                }
-            });
-        })
-    </script>
-<link rel="stylesheet" type="text/css" href="http://localhost:8000/_debugbar/assets/stylesheets?1436453519">
-<script type="text/javascript" src="http://localhost:8000/_debugbar/assets/javascript?1423122680"></script>
-<script type="text/javascript">jQuery.noConflict(true);</script>
-<script type="text/javascript">
-var phpdebugbar = new PhpDebugBar.DebugBar();
-phpdebugbar.addTab("messages", new PhpDebugBar.DebugBar.Tab({"icon":"list-alt","title":"Messages", "widget": new PhpDebugBar.Widgets.MessagesWidget()}));
-phpdebugbar.addIndicator("time", new PhpDebugBar.DebugBar.Indicator({"icon":"clock-o","tooltip":"Request Duration"}), "right");
-phpdebugbar.addTab("timeline", new PhpDebugBar.DebugBar.Tab({"icon":"tasks","title":"Timeline", "widget": new PhpDebugBar.Widgets.TimelineWidget()}));
-phpdebugbar.addIndicator("memory", new PhpDebugBar.DebugBar.Indicator({"icon":"cogs","tooltip":"Memory Usage"}), "right");
-phpdebugbar.addTab("exceptions", new PhpDebugBar.DebugBar.Tab({"icon":"bug","title":"Exceptions", "widget": new PhpDebugBar.Widgets.ExceptionsWidget()}));
-phpdebugbar.addTab("views", new PhpDebugBar.DebugBar.Tab({"icon":"leaf","title":"Views", "widget": new PhpDebugBar.Widgets.TemplatesWidget()}));
-phpdebugbar.addTab("route", new PhpDebugBar.DebugBar.Tab({"icon":"share","title":"Route", "widget": new PhpDebugBar.Widgets.VariableListWidget()}));
-phpdebugbar.addIndicator("currentroute", new PhpDebugBar.DebugBar.Indicator({"icon":"share","tooltip":"Route"}), "right");
-phpdebugbar.addTab("queries", new PhpDebugBar.DebugBar.Tab({"icon":"inbox","title":"Queries", "widget": new PhpDebugBar.Widgets.SQLQueriesWidget()}));
-phpdebugbar.addTab("emails", new PhpDebugBar.DebugBar.Tab({"icon":"inbox","title":"Mails", "widget": new PhpDebugBar.Widgets.MailsWidget()}));
-phpdebugbar.addTab("session", new PhpDebugBar.DebugBar.Tab({"icon":"archive","title":"Session", "widget": new PhpDebugBar.Widgets.VariableListWidget()}));
-phpdebugbar.addTab("request", new PhpDebugBar.DebugBar.Tab({"icon":"tags","title":"Request", "widget": new PhpDebugBar.Widgets.VariableListWidget()}));
-phpdebugbar.setDataMap({
-"messages": ["messages.messages", []],
-"messages:badge": ["messages.count", null],
-"time": ["time.duration_str", '0ms'],
-"timeline": ["time", {}],
-"memory": ["memory.peak_usage_str", '0B'],
-"exceptions": ["exceptions.exceptions", []],
-"exceptions:badge": ["exceptions.count", null],
-"views": ["views", []],
-"views:badge": ["views.nb_templates", 0],
-"route": ["route", {}],
-"currentroute": ["route.uri", ],
-"queries": ["queries", []],
-"queries:badge": ["queries.nb_statements", 0],
-"emails": ["swiftmailer_mails.mails", []],
-"emails:badge": ["swiftmailer_mails.count", null],
-"session": ["session", {}],
-"request": ["request", {}]
-});
-phpdebugbar.restoreState();
-phpdebugbar.ajaxHandler = new PhpDebugBar.AjaxHandler(phpdebugbar);
-phpdebugbar.ajaxHandler.bindToXHR();
-phpdebugbar.setOpenHandler(new PhpDebugBar.OpenHandler({"url":"http:\/\/localhost:8000\/_debugbar\/open"}));
-phpdebugbar.addDataSet({"__meta":{"id":"cde7f8c9722a752b6b89c6cbb9f4378d","datetime":"2015-12-08 05:25:31","utime":1449552331.1232,"method":"GET","uri":"\/contract\/80","ip":"127.0.0.1"},"php":{"version":"5.6.14-1+deb.sury.org~trusty+1"},"messages":{"count":0,"messages":[]},"time":{"start":1449552330.9754,"end":1449552331.1232,"duration":0.14779019355774,"duration_str":"147.79ms","measures":[{"label":"Booting","start":1449552330.9754,"relative_start":0,"end":1449552331.0195,"relative_end":1449552331.0195,"duration":0.044057130813599,"duration_str":"44.06ms","params":[],"collector":null},{"label":"Application","start":1449552331.0229,"relative_start":0.047478199005127,"end":1449552331.1219,"relative_end":1449552331.1219,"duration":0.098976850509644,"duration_str":"98.98ms","params":[],"collector":null},{"label":"After application","start":1449552331.1219,"relative_start":0.1464741230011,"end":1449552331.1232,"relative_end":1.9073486328125e-6,"duration":0.0013179779052734,"duration_str":"1.32ms","params":[],"collector":null}]},"memory":{"peak_usage":9961472,"peak_usage_str":"9.5MB"},"exceptions":{"count":0,"exceptions":[]},"views":{"nb_templates":8,"templates":[{"name":"contract.show (resources\/views\/contract\/show.blade.php)","param_count":9,"params":["contract","status","annotations","annotationStatus","parentContract","supportingDocument","discussions","discussion_status","current_user"],"type":"blade"},{"name":"contract.state (resources\/views\/contract\/state.blade.php)","param_count":19,"params":["obLevel","__env","app","errors","contract","status","annotations","annotationStatus","parentContract","supportingDocument","discussions","discussion_status","current_user","contract_processing_completed","contract_processing_failed","contract_processing_running","contract_processing_pipline","pages","i"],"type":"blade"},{"name":"contract.partials.show.metadata_status (resources\/views\/contract\/partials\/show\/metadata_status.blade.php)","param_count":19,"params":["obLevel","__env","app","errors","contract","status","annotations","annotationStatus","parentContract","supportingDocument","discussions","discussion_status","current_user","contract_processing_completed","contract_processing_failed","contract_processing_running","contract_processing_pipline","pages","i"],"type":"blade"},{"name":"layout.app (resources\/views\/layout\/app.blade.php)","param_count":27,"params":["obLevel","__env","app","errors","contract","status","annotations","annotationStatus","parentContract","supportingDocument","discussions","discussion_status","current_user","contract_processing_completed","contract_processing_failed","contract_processing_running","contract_processing_pipline","pages","i","governmentEntity","key","companies","v","k","concession","catConfig","cat"],"type":"blade"},{"name":"layout.partials.header (resources\/views\/layout\/partials\/header.blade.php)","param_count":27,"params":["obLevel","__env","app","errors","contract","status","annotations","annotationStatus","parentContract","supportingDocument","discussions","discussion_status","current_user","contract_processing_completed","contract_processing_failed","contract_processing_running","contract_processing_pipline","pages","i","governmentEntity","key","companies","v","k","concession","catConfig","cat"],"type":"blade"},{"name":"layout.partials.menu (resources\/views\/layout\/partials\/menu.blade.php)","param_count":27,"params":["obLevel","__env","app","errors","contract","status","annotations","annotationStatus","parentContract","supportingDocument","discussions","discussion_status","current_user","contract_processing_completed","contract_processing_failed","contract_processing_running","contract_processing_pipline","pages","i","governmentEntity","key","companies","v","k","concession","catConfig","cat"],"type":"blade"},{"name":"layout.partials.notification (resources\/views\/layout\/partials\/notification.blade.php)","param_count":27,"params":["obLevel","__env","app","errors","contract","status","annotations","annotationStatus","parentContract","supportingDocument","discussions","discussion_status","current_user","contract_processing_completed","contract_processing_failed","contract_processing_running","contract_processing_pipline","pages","i","governmentEntity","key","companies","v","k","concession","catConfig","cat"],"type":"blade"},{"name":"layout.partials.footer (resources\/views\/layout\/partials\/footer.blade.php)","param_count":27,"params":["obLevel","__env","app","errors","contract","status","annotations","annotationStatus","parentContract","supportingDocument","discussions","discussion_status","current_user","contract_processing_completed","contract_processing_failed","contract_processing_running","contract_processing_pipline","pages","i","governmentEntity","key","companies","v","k","concession","catConfig","cat"],"type":"blade"}]},"route":{"uri":"GET contract\/{contract}","as":"contract.show","controller":"App\\Http\\Controllers\\Contract\\ContractController@show","namespace":"App\\Http\\Controllers\\Contract","prefix":null,"where":[],"file":"app\/Http\/Controllers\/Contract\/ContractController.php:138-164"},"queries":{"nb_statements":22,"nb_failed_statements":0,"accumulated_duration":0.02377,"accumulated_duration_str":"23.77ms","statements":[{"sql":"select * from \"users\" where \"users\".\"id\" = '1' limit 1","params":{"0":"1","hints":"Use <code>SELECT *<\/code> only if you need all columns from table<br \/><code>LIMIT<\/code> without <code>ORDER BY<\/code> causes non-deterministic results, depending on the query execution plan"},"duration":0.00339,"duration_str":"3.39ms","stmt_id":null,"connection":"nrgi"},{"sql":"select \"roles\".*, \"role_user\".\"user_id\" as \"pivot_user_id\", \"role_user\".\"role_id\" as \"pivot_role_id\" from \"roles\" inner join \"role_user\" on \"roles\".\"id\" = \"role_user\".\"role_id\" where \"role_user\".\"user_id\" = '1'","params":{"0":"1"},"duration":0.00269,"duration_str":"2.69ms","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"contracts\" where \"contracts\".\"id\" = '80' limit 1","params":{"0":"80","hints":"Use <code>SELECT *<\/code> only if you need all columns from table<br \/><code>LIMIT<\/code> without <code>ORDER BY<\/code> causes non-deterministic results, depending on the query execution plan"},"duration":0.00163,"duration_str":"1.63ms","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"contract_annotations\" where \"contract_annotations\".\"contract_id\" in ('80') order by annotation->>'category'","params":{"0":"80","hints":"Use <code>SELECT *<\/code> only if you need all columns from table"},"duration":0.00104,"duration_str":"1.04ms","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"users\" where \"users\".\"id\" in ('1')","params":{"0":"1","hints":"Use <code>SELECT *<\/code> only if you need all columns from table"},"duration":0.00051,"duration_str":"510\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"users\" where \"users\".\"id\" in ('0')","params":{"0":"0","hints":"Use <code>SELECT *<\/code> only if you need all columns from table"},"duration":0.00046,"duration_str":"460\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"supporting_contracts\" where \"supporting_contract_id\" = '80' order by \"id\" desc limit 1","params":{"0":"80","hints":"Use <code>SELECT *<\/code> only if you need all columns from table"},"duration":0.00078,"duration_str":"780\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"supporting_contracts\" where \"supporting_contract_id\" = '80' order by \"id\" desc limit 1","params":{"0":"80","hints":"Use <code>SELECT *<\/code> only if you need all columns from table"},"duration":0.00045,"duration_str":"450\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"contracts\" where \"contracts\".\"id\" = '78' limit 1","params":{"0":"78","hints":"Use <code>SELECT *<\/code> only if you need all columns from table<br \/><code>LIMIT<\/code> without <code>ORDER BY<\/code> causes non-deterministic results, depending on the query execution plan"},"duration":0.00054,"duration_str":"540\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"users\" where \"users\".\"id\" in ('1')","params":{"0":"1","hints":"Use <code>SELECT *<\/code> only if you need all columns from table"},"duration":0.00047,"duration_str":"470\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"users\" where \"users\".\"id\" in ('0')","params":{"0":"0","hints":"Use <code>SELECT *<\/code> only if you need all columns from table"},"duration":0.00045,"duration_str":"450\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select \"supporting_contract_id\" from \"supporting_contracts\" where \"contract_id\" = '80'","params":{"0":"80"},"duration":0.00046,"duration_str":"460\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"contracts\" where \"contracts\".\"id\" = '80' limit 1","params":{"0":"80","hints":"Use <code>SELECT *<\/code> only if you need all columns from table<br \/><code>LIMIT<\/code> without <code>ORDER BY<\/code> causes non-deterministic results, depending on the query execution plan"},"duration":0.00053,"duration_str":"530\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"users\" where \"users\".\"id\" in ('1')","params":{"0":"1","hints":"Use <code>SELECT *<\/code> only if you need all columns from table"},"duration":0.00048,"duration_str":"480\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"users\" where \"users\".\"id\" in ('0')","params":{"0":"0","hints":"Use <code>SELECT *<\/code> only if you need all columns from table"},"duration":0.00044,"duration_str":"440\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select distinct \"status\" from \"contract_annotations\" where \"contract_id\" = '80'","params":{"0":"80"},"duration":0.00069,"duration_str":"690\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"contract_comments\" where \"type\" = 'metadata' and \"contract_id\" = '80' order by \"created_at\" desc limit 5","params":{"0":"metadata","1":"80","hints":"Use <code>SELECT *<\/code> only if you need all columns from table"},"duration":0.00134,"duration_str":"1.34ms","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"contract_comments\" where \"type\" = 'text' and \"contract_id\" = '80' order by \"created_at\" desc limit 5","params":{"0":"text","1":"80","hints":"Use <code>SELECT *<\/code> only if you need all columns from table"},"duration":0.00062,"duration_str":"620\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select * from \"contract_comments\" where \"type\" = 'annotation' and \"contract_id\" = '80' order by \"created_at\" desc limit 5","params":{"0":"annotation","1":"80","hints":"Use <code>SELECT *<\/code> only if you need all columns from table"},"duration":0.00063,"duration_str":"630\u03bcs","stmt_id":null,"connection":"nrgi"},{"sql":"select count(*), key from \"contract_discussions\" where \"contract_id\" = '80' group by \"key\"","params":{"0":"80"},"duration":0.0012,"duration_str":"1.2ms","stmt_id":null,"connection":"nrgi"},{"sql":"SELECT t1.key, t1.status, t1.created_at FROM contract_discussions t1\nJOIN\n(\nSELECT key, MAX(created_at) AS MAXDATE\nFROM contract_discussions\nwhere contract_id = 80\nGROUP BY key\n) t2\nON t1.key = t2.key\nAND t1.created_at = t2.MAXDATE","params":{},"duration":0.00329,"duration_str":"3.29ms","stmt_id":null,"connection":"nrgi"},{"sql":"select count(*) as aggregate from \"contract_pages\" where \"contract_pages\".\"contract_id\" = '80' and \"contract_pages\".\"contract_id\" is not null","params":{"0":"80"},"duration":0.00168,"duration_str":"1.68ms","stmt_id":null,"connection":"nrgi"}]},"swiftmailer_mails":{"count":0,"mails":[]},"session":{"_token":"jIrAIuWSJfZlWTFSrJy6kEG7rGMfpy9SmZuvJ2qa","_previous":"array:1 [\n  \"url\" => \"http:\/\/localhost:8000\/contract\/80\"\n]","flash":"array:2 [\n  \"old\" => []\n  \"new\" => []\n]","login_82e5d2c56bdd0811318f0cf078b78bfc":"1","PHPDEBUGBAR_STACK_DATA":"[]"},"request":{"format":"html","content_type":"text\/html; charset=UTF-8","status_text":"OK","status_code":"200","request_query":"[]","request_request":"[]","request_headers":"array:4 [\n  \"host\" => array:1 [\n    0 => \"localhost:8000\"\n  ]\n  \"user-agent\" => array:1 [\n    0 => \"Symfony2 BrowserKit\"\n  ]\n  \"referer\" => array:1 [\n    0 => \"http:\/\/localhost:8000\/contract\"\n  ]\n  \"cookie\" => array:1 [\n    0 => \"lang=en; XSRF-TOKEN=eyJpdiI6ImxGaUphQ3BWV1RReWwyN044QWh2S0E9PSIsInZhbHVlIjoiVnNFcTM2KzFjV1JWWUZXWGJDZlRxZ2M1WkEwWDc0MWV5N2NmSkFDcFJaYjlKSU9Jd3NSY3NHcHNrNHdyT2Q5TGpQcVZnU21YXC9nb2UyYU84N0tjYmNBPT0iLCJtYWMiOiJmZjRiYzkzNzc3NmJhNjJmNWI4Y2M1MjVkNTM1YTYyOThiZWFkNmQ0MWZkYTkwZjA4OTA3Y2VhZTlkODE0YjcxIn0%3D; laravel_session=eyJpdiI6InpBNmVpQVdIaTNRZDcxSWRwazNHXC9RPT0iLCJ2YWx1ZSI6ImNvZVN2b3JuU01Ibk81VHY3OGhcL3htdmpQblZcL0VJSDhOOFE5SzJESU9lM2Fqa0xNYXRBdkprd1l3VUNvbGdZakRnUFUwVmpDcmkzcktiTW1lXC9BS2t3PT0iLCJtYWMiOiJlZGY1MTk1ZmQwNzhiNDUwMjAwYjcyZjQ3ZGZhYmJkN2VkNWU3NmQ4NTc5YTZiOGJmZDVmMmE1NjIxYmU5MGNlIn0%3D\"\n  ]\n]","request_server":"array:19 [\n  \"DOCUMENT_ROOT\" => \"\/home\/bijayakuikel\/nrgi\/admin\/public\"\n  \"REMOTE_ADDR\" => \"127.0.0.1\"\n  \"REMOTE_PORT\" => \"50128\"\n  \"SERVER_SOFTWARE\" => \"PHP 5.6.14-1+deb.sury.org~trusty+1 Development Server\"\n  \"SERVER_PROTOCOL\" => \"HTTP\/1.1\"\n  \"SERVER_NAME\" => \"localhost\"\n  \"SERVER_PORT\" => \"8000\"\n  \"REQUEST_URI\" => \"\/contract\/80\"\n  \"REQUEST_METHOD\" => \"GET\"\n  \"SCRIPT_NAME\" => \"\/index.php\"\n  \"SCRIPT_FILENAME\" => \"\/home\/bijayakuikel\/nrgi\/admin\/public\/index.php\"\n  \"PATH_INFO\" => \"\/contract\/80\"\n  \"PHP_SELF\" => \"\/index.php\/contract\/80\"\n  \"HTTP_HOST\" => \"localhost:8000\"\n  \"HTTP_USER_AGENT\" => \"Symfony2 BrowserKit\"\n  \"HTTP_REFERER\" => \"http:\/\/localhost:8000\/contract\"\n  \"HTTP_COOKIE\" => \"lang=en; XSRF-TOKEN=eyJpdiI6ImxGaUphQ3BWV1RReWwyN044QWh2S0E9PSIsInZhbHVlIjoiVnNFcTM2KzFjV1JWWUZXWGJDZlRxZ2M1WkEwWDc0MWV5N2NmSkFDcFJaYjlKSU9Jd3NSY3NHcHNrNHdyT2Q5TGpQcVZnU21YXC9nb2UyYU84N0tjYmNBPT0iLCJtYWMiOiJmZjRiYzkzNzc3NmJhNjJmNWI4Y2M1MjVkNTM1YTYyOThiZWFkNmQ0MWZkYTkwZjA4OTA3Y2VhZTlkODE0YjcxIn0%3D; laravel_session=eyJpdiI6InpBNmVpQVdIaTNRZDcxSWRwazNHXC9RPT0iLCJ2YWx1ZSI6ImNvZVN2b3JuU01Ibk81VHY3OGhcL3htdmpQblZcL0VJSDhOOFE5SzJESU9lM2Fqa0xNYXRBdkprd1l3VUNvbGdZakRnUFUwVmpDcmkzcktiTW1lXC9BS2t3PT0iLCJtYWMiOiJlZGY1MTk1ZmQwNzhiNDUwMjAwYjcyZjQ3ZGZhYmJkN2VkNWU3NmQ4NTc5YTZiOGJmZDVmMmE1NjIxYmU5MGNlIn0%3D\"\n  \"REQUEST_TIME_FLOAT\" => 1449552330.9754\n  \"REQUEST_TIME\" => 1449552330\n]","request_cookies":"array:3 [\n  \"lang\" => null\n  \"XSRF-TOKEN\" => \"jIrAIuWSJfZlWTFSrJy6kEG7rGMfpy9SmZuvJ2qa\"\n  \"laravel_session\" => \"49850e0ed88248d922b3b68c39ba5fcb58ffeb5d\"\n]","response_headers":"array:4 [\n  \"cache-control\" => array:1 [\n    0 => \"no-cache\"\n  ]\n  \"date\" => array:1 [\n    0 => \"Tue, 08 Dec 2015 05:25:31 GMT\"\n  ]\n  \"content-type\" => array:1 [\n    0 => \"text\/html; charset=UTF-8\"\n  ]\n  \"Set-Cookie\" => array:2 [\n    0 => \"XSRF-TOKEN=eyJpdiI6IjVmWVBZVzFEVnZKbmg2MXF6RUs0MkE9PSIsInZhbHVlIjoid3dzSWJwdDVSWnVSeTJqb3diaHh1Y2dCSnd5a0srYUFrUm5oU1NKb0R3WVlnUm1sVFwvRTk0YUNldkcxdGFXV1g3RGZ6bHZlQjJsbm5DTmNjc3lybGdRPT0iLCJtYWMiOiJiZWRhNzg3ZDY2OGRhNjI0YWVmYjJhZGIwMWY4YzE3ODIxMGFhMDM4MzE2NzM1ZDNjYjE2Mjc0NmVmMTg4Njk2In0%3D; expires=Tue, 08-Dec-2015 07:25:31 GMT; path=\/\"\n    1 => \"laravel_session=eyJpdiI6InNtaERJV2U4YitzRUVUajZQZXJ3clE9PSIsInZhbHVlIjoiMXRUQ09QRHlMKzZMeVBpYjBaSnBKRStHbGhwandFTzNaQ1RlVmduK0ZRT05ONHM4MXhKamFISHAzYmpWdE1YXC9HeHZxOGtYVFZNT28zQVNlUVwvWWZ2UT09IiwibWFjIjoiYWM0ZTJhZjEyNmMwZTQ2NGYzZDFkZjE5ODhmMTE5MWU4ZTgxYmFkMDM1ZGM1NGVhOTVjZWIzNDdlOWZiMGNkNCJ9; expires=Tue, 08-Dec-2015 07:25:31 GMT; path=\/; httponly\"\n  ]\n]","path_info":"\/contract\/80","session_attributes":"array:5 [\n  \"_token\" => \"jIrAIuWSJfZlWTFSrJy6kEG7rGMfpy9SmZuvJ2qa\"\n  \"_previous\" => array:1 [\n    \"url\" => \"http:\/\/localhost:8000\/contract\/80\"\n  ]\n  \"flash\" => array:2 [\n    \"old\" => []\n    \"new\" => []\n  ]\n  \"login_82e5d2c56bdd0811318f0cf078b78bfc\" => 1\n  \"PHPDEBUGBAR_STACK_DATA\" => []\n]"}}, "cde7f8c9722a752b6b89c6cbb9f4378d");
-
-</script>
-</body>
+    </body>
 </html>

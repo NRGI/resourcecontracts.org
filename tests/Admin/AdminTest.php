@@ -7,10 +7,10 @@ use Laracasts\Integrated\Extensions\Goutte as IntegrationTest;
  */
 class AdminTest extends IntegrationTest
 {
-    public $baseUrl = 'http://192.168.1.63:8000';
-    public $apiUrl = 'http://192.168.1.63:8002';
-    public $elastic_search_url = 'http://192.168.1.63:8005';
-    public $sub_site_url = 'http://localhost:8020';
+    public $baseUrl = 'http://resourcecontracts-demo1.elasticbeanstalk.com';
+    public $apiUrl = 'http://rc-elasticsearch-demo.elasticbeanstalk.com/api';
+    public $elastic_search_url = 'http://rc-elasticsearch-demo.elasticbeanstalk.com/index';
+    public $sub_site_url = 'http://rc-site-demo.elasticbeanstalk.com/olc/public';
     public $api;
 
     /**
@@ -22,6 +22,7 @@ class AdminTest extends IntegrationTest
         $this->api = new ApiTester();
 
         return $this->api->get($this->apiUrl . '/contracts')->getJson()->total;
+
     }
 
 
@@ -31,13 +32,12 @@ class AdminTest extends IntegrationTest
      */
     public function getInputFileContents()
     {
-        return json_decode(file_get_contents(__DIR__ . '/../../files/input/input.json'), true);
+        return json_decode(file_get_contents(__DIR__ . '/../files/input/input.json'), true);
     }
 
 
     public function testItVisitsHomePage()
     {
-
         $this->login()
              ->andSee('Total Contract')
              ->onPage('/home');
@@ -61,15 +61,15 @@ class AdminTest extends IntegrationTest
         $this->cliPrint("Action: Making new contract");
 
         $inputs = $this->getInputFileContents();
-
         $this->login();
-        foreach ($inputs as $input) {
+        foreach ($inputs as $key => $input) {
 
-            $this->visit('contract')
-                 ->andClick('Add Contract')
-                 ->visit('contract/create')
-                 ->submitForm('Submit', $input);
-            sleep(2);
+            $this->cliPrint($input['file']);
+            $this->visit('contract/create');
+            sleep(10);
+            $this->submitForm('Submit', $input)->andSee('Successfully');
+
+            sleep(10);
 
         }
 
@@ -89,7 +89,7 @@ class AdminTest extends IntegrationTest
 
         $this->visit('contract/create?parent=' . $contractId)
              ->andType('Child of the contract Young Nepal', 'contract_name')
-             ->attachFile('file', __DIR__ . '/../../files/pdf/laravel_1.pdf')
+             ->attachFile('file', __DIR__ . '/../files/pdf/laravel_1.pdf')
              ->andPress('Submit');
 
     }
@@ -123,7 +123,7 @@ class AdminTest extends IntegrationTest
              ->visit('contract/create')
              ->andType('Next Upload check', 'contract_name')
              ->select('country', 'NP')
-             ->attachFile('file', __DIR__ . '/../../files/pdf/reupload.pdf')
+             ->attachFile('file', __DIR__ . '/../files/pdf/reupload.pdf')
              ->andPress('Submit')
              ->andSee('Whoops!');
 
@@ -163,89 +163,101 @@ class AdminTest extends IntegrationTest
         $inputs = $this->getInputFileContents();
         $input  = $inputs[0];
 
-        $id   = $our->results[0]->contract_id;
+        $id   = $our->results[0]->id;
         $ocid = $our->results[0]->open_contracting_id;
 
+
         $keys_details = [
-            'contract_id',
-            'created_at',
-            'total_pages',
-            'resource_raw',
-            'country',
-            'file_url',
-            'concession',
-            'date_retrieval',
-            'language',
-            'contract_note',
-            'source_url',
-            'type_of_contract',
-            'matrix_page',
-            'signature_year',
-            'word_file',
-            'company',
-            'document_type',
-            'resource',
-            'contract_name',
-            'project_title',
-            'project_identifier',
-            'file_size',
+            'id',
             'open_contracting_id',
+            'name',
+            'identifier',
+            'number_of_pages',
+            'language',
+            'country',
+            'resource',
             'government_entity',
-            'disclosure_mode',
-            'signature_date',
-            'show_pdf_text',
-            'deal_number',
+            'contract_type',
+            'date_signed',
+            'year_signed',
+            'type',
+            'participation',
+            'project',
+            'concession',
+            'source_url',
             'amla_url',
-            'contract_identifier',
+            'publisher_type',
+            'retrieved_at',
+            'created_at',
             'category',
-            'is_supporting_document',
-            'parent_document',
-            'supporting_contracts',
+            'note',
+            'is_associated_document',
+            'deal_number',
+            'matrix_page',
+            'is_ocr_reviewed',
+            'file',
+            'parent',
+            'associated'
+
+
         ];
 
 
         $this->cliPrint("We are checking the metadata for contract id " . $id);
-
         $metadata = $api->get($this->apiUrl . '/contract/' . $id . '/metadata')
                         ->seeKeys($keys_details)
                         ->getJson();
 
-
-        $this->assertEquals(sort($input['resource']), sort($metadata->resource_raw));
-        $this->assertEquals($input['disclosure_mode'], $metadata->disclosure_mode);
-        $this->assertEquals($input['type_of_contract'], $metadata->type_of_contract);
+        $this->assertEquals($input['disclosure_mode'], $metadata->publisher_type);
+        $this->assertEquals(sort($input['type_of_contract']), sort($metadata->contract_type));
 
         $concession = json_decode(json_encode($metadata->concession), true);
-        $this->assertEquals($input['concession'], $concession);
 
-        $this->assertEquals($input['contract_name'], $metadata->contract_name);
+        $this->assertEquals($input['concession'][0]['license_name'], $concession[0]['name']);
+        $this->assertEquals($input['concession'][0]['license_identifier'], $concession[0]['identifier']);
+
+        $this->assertEquals($input['contract_name'], $metadata->name);
         $this->assertEquals($input['source_url'], $metadata->source_url);
         $this->assertEquals(sort($input['resource']), sort($metadata->resource));
-        $this->assertEquals('Nepal Government', $metadata->contract_identifier);
+        $this->assertEquals('Nepal Government', $metadata->identifier);
 
         $govt_entity = json_decode(json_encode($metadata->government_entity), true);
-        $this->assertEquals($input['government_entity'], $govt_entity);
 
-        $this->assertEquals($input['document_type'], $metadata->document_type);
-        $this->assertEquals($input['project_identifier'], $metadata->project_identifier);
+        $this->assertEquals($input['government_entity'][0]['entity'], $govt_entity[0]['name']);
+        $this->assertEquals($input['government_entity'][0]['identifier'], $govt_entity[0]['identifier']);
+
+        $this->assertEquals($input['document_type'], $metadata->type);
+
+        $this->assertEquals($input['project_identifier'], $metadata->project->identifier);
+        $this->assertEquals($input['project_title'], $metadata->project->name);
 
         $country = [
-            "name" => "Nepal",
             "code" => "NP",
+            "name" => "Nepal"
         ];
 
         $this->assertEquals(json_encode($country), json_encode($metadata->country));
 
         $this->assertEquals($input['category'], $metadata->category);
-        $this->assertEquals($input['date_retrieval'], $metadata->date_retrieval);
-        $this->assertEquals($input['project_title'], $metadata->project_title);
+        $this->assertEquals($input['date_retrieval'], $metadata->retrieved_at);
 
-        $company_input = $input['company'];
-        $this->assertEquals(json_encode(asort($company_input)), json_encode(asort($metadata->company)));
+        $company_input = $input['company'][0];
+        $company       = $metadata->participation[0]->company;
 
-        $this->assertEquals('2015', $metadata->signature_year);
+        $this->assertEquals($company_input['name'], $company->name);
+        $this->assertEquals($company_input['company_address'], $company->address);
+        $this->assertEquals($company_input['company_founding_date'], $company->founding_date);
+        $this->assertEquals($company_input['parent_company'], $company->corporate_grouping);
+        $this->assertEquals($company_input['open_corporate_id'], $company->opencorporates_url);
+        $this->assertEquals($company_input['company_number'], $company->identifier->id);
+        $this->assertEquals($company_input['registration_agency'], $company->identifier->creator->name);
+        $this->assertEquals($company_input['jurisdiction_of_incorporation'], $company->identifier->creator->spatial);
+        $this->assertEquals($company_input['participation_share'], $metadata->participation[0]->share);
+
+
+        $this->assertEquals('2015', $metadata->year_signed);
         $this->assertEquals('en', $metadata->language);
-        $this->assertEquals($input['signature_date'], $metadata->signature_date);
+        $this->assertEquals($input['signature_date'], $metadata->date_signed);
 
         $this->cliPrint("Test for Metadata Completed");
 
@@ -263,7 +275,7 @@ class AdminTest extends IntegrationTest
 
         $this->cliPrint("Action: Indexing the annotations");
 
-        $annotations = file_get_contents(__DIR__ . '/../../files/json/admin_annotation.json');
+        $annotations = file_get_contents(__DIR__ . '/../files/json/admin_annotation.json');
         $annotations = str_replace(['CONTRACT_ID'], $id, $annotations);
         $annotations = str_replace(['OCID'], $ocid, $annotations);
         $annotations = json_decode($annotations, true);
@@ -295,35 +307,14 @@ class AdminTest extends IntegrationTest
     {
         $this->cliPrint("Checking the sub site home page");
 
-        $this->visit($this->sub_site_url . '/')
-             ->andSee('2</span> Countries')
-             ->andSee('3</span> Resources')
-             ->andClick('View all countries')
-             ->seePageIs($this->sub_site_url . '/countries')
+        $this->visit($this->sub_site_url . '/countries')
              ->andSee('Nepal')
              ->andSee('Bahamas')
-             ->visit($this->sub_site_url . '/')
-             ->andClick('View all resources')
-             ->seePageIs($this->sub_site_url . '/resources')
-             ->andSee('6PGM+Au')
-             ->andSee('Boron')
+             ->visit($this->sub_site_url . '/resources')
+             ->andSee('Gold')
              ->andSee('Coal');
 
         $this->cliPrint('Completed');
-
-    }
-
-    /** @test */
-    public function testItShouldVisitContractsPageOnSubSite()
-    {
-        $this->cliPrint("Checking the subsite and seeing the contracts");
-
-        $this->visit($this->sub_site_url . '/contracts')
-             ->andSee('2</span>  Contracts')
-             ->andSee('Young Innovations Nepal')
-             ->andSee('Second Innovations Nepal');
-
-        $this->cliPrint('Completed.');
 
     }
 
@@ -350,10 +341,7 @@ class AdminTest extends IntegrationTest
         $this->cliPrint("searching for the contracts where resource=coal");
 
         $this->visit($this->sub_site_url . '/search?q=&resource%5B%5D=Coal')
-             ->andSee('2</span>  Contracts')
              ->visit($this->sub_site_url . '/search?q=young&country%5B%5D=np&resource%5B%5D=Coal&contract_type%5B%5D=Joint+Venture+Agreement')
-             ->andSee('Search results for  <span>young</span>')
-             ->andSee('1')
              ->andSee('Young Innovations Nepal')
              ->andSee('Download search results as csv');
 
@@ -377,6 +365,11 @@ class AdminTest extends IntegrationTest
 
             sleep(5);
         }
+
+        $this->visit('contract')
+             ->andClick('Child of the contract Young Nepal')
+             ->andPress('Delete')
+             ->andSee('Contract successfully deleted.');
 
         sleep(5);
 

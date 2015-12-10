@@ -1,6 +1,6 @@
 [
   {
-    "file": "./files/pdf/upload.pdf",
+    "file": "./tests/files/pdf/upload.pdf",
     "contract_name": "Young Innovations Nepal",
     "contract_identifier": "Nepal Government",
     "resource": [
@@ -9,8 +9,7 @@
     ],
     "country": "NP",
     "category": [
-      "olc",
-      "rc"
+      "olc"
     ],
     "government_entity": [
       {
@@ -18,7 +17,10 @@
         "identifier": "Ministry of Health"
       }
     ],
-    "type_of_contract": "Joint Venture Agreement",
+    "type_of_contract": [
+      "Service Contract",
+      "Joint Venture Agreement"
+    ],
     "signature_date": "2015-09-02",
     "document_type": "Contract",
     "company": [
@@ -47,50 +49,51 @@
     "date_retrieval": "2015-11-22"
   },
   {
-    "file": "./files/pdf/upload_2.pdf",
+    "file": "./tests/files/pdf/upload_2.pdf",
     "contract_name": "Second Innovations Nepal",
-    "contract_identifier": "Second",
+    "contract_identifier": "Government",
     "resource": [
-      "Boron",
+      "Gold",
       "Coal"
     ],
     "country": "BS",
     "category": [
-      "olc",
-      "rc"
+      "olc"
     ],
     "government_entity": [
       {
-        "entity": "Minstry of Finance",
-        "identifier": "Identifer one"
+        "entity": "Secretary of State for Energy Policy",
+        "identifier": "Ministry of Health"
       }
     ],
-    "type_of_contract": "Service Contract",
-    "signature_date": "2010-10-01",
+    "type_of_contract": [
+      "Joint Venture Agreement"
+    ],
+    "signature_date": "2015-09-02",
     "document_type": "Contract",
     "company": [
       {
-        "name": "ABC Enterprises",
-        "participation_share": "0.3",
+        "name": "KUIKEL Enterprises",
+        "participation_share": "0.5",
         "jurisdiction_of_incorporation": "DZ",
-        "registration_agency": "Registeration Department of Finance",
-        "company_founding_date": "1995-04-16",
+        "registration_agency": "Registered to MAC",
+        "company_founding_date": "1993-02-16",
         "company_address": "Banepa Nepal",
         "company_number": "222",
         "parent_company": "7digital",
         "open_corporate_id": "https://www.google.com.np"
       }
     ],
-    "project_title": "Project ii",
-    "project_identifier": "New",
+    "project_title": "Project 1",
+    "project_identifier": "Ram404",
     "concession": [
       {
         "license_name": "New Lisence",
-        "license_identifier": "LIS_10"
+        "license_identifier": "Lis_no_4040"
       }
     ],
     "source_url": "https://www.google.com.np",
     "disclosure_mode": "Government",
-    "date_retrieval": "2010-11-22"
+    "date_retrieval": "2015-11-22"
   }
 ]
