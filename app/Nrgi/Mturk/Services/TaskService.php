@@ -255,17 +255,30 @@ class TaskService
         try{
             if (empty($task->assignments)) {
                 $assignment = $this->turk->assignment($task->hit_id);
-
                 if (!is_null($assignment) && $assignment['TotalNumResults'] > 0) {
                     $task->status      = Task::COMPLETED;
-                    $task->assignments = $this->getFormattedAssignment($assignment);
+                    $updatedAssignment = $this->getFormattedAssignment($assignment);
+                    $task->assignments = $updatedAssignment;
+
+                    if ($updatedAssignment['assignment']['status'] == 'Approved') {
+                        $task->approved = Task::APPROVED;
+                    }
+
                     $this->logger->info(sprintf('Update Assignment for page no.%s', $task->page_no) , ['task' => $task->toArray()]);
                     $task->save();
                 }
             }
 
         } catch (MTurkException $e){
-            $this->logger->error('Assignment update failed. '.$e->getMessage(), [ 'Contract id' => $task->contract_id,  'Task' => $task->id, 'Page no'=>$task->page_no, 'Errors'=> $e->getErrors()]);
+            $errors = $e->getErrors();
+
+            if ($errors['Error']['Code'] == 'AWS.MechanicalTurk.HITDoesNotExist') {
+                $task->hit_id = null;
+                $task->hit_type_id = null;
+                $task->save();
+            }
+
+            $this->logger->error('Assignment update failed. '.$e->getMessage(), [ 'Contract id' => $task->contract_id,  'Task' => $task->id, 'Page no'=>$task->page_no, 'Errors'=> $errors]);
         }catch (Exception $e) {
              $this->logger->error('Assignment update failed. '.$e->getMessage());
         }
@@ -405,7 +418,6 @@ class TaskService
             $this->logger->error('HIT delete failed. '.$e->getMessage(), [ 'Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
             return false;
         }
-
         $title       = sprintf("Transcription of Contract '%s' - Pg: %s Lang: %s",  str_limit($contract->title, 70), $task->page_no, $contract->metadata->language);
         $url         = $this->getMTurkUrl($task->pdf_url, $contract->metadata->language);
         $description = config('mturk.defaults.production.Description');

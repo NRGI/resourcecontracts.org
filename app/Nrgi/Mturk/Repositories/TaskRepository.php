@@ -141,7 +141,7 @@ class TaskRepository implements TaskRepositoryInterface
      */
     public function getExpired()
     {
-        return $this->task->expired()->pending()->get();
+        return $this->task->where('hit_id', '!=', '')->expired()->pending()->get();
     }
 
     /**
