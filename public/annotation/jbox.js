@@ -2,7 +2,7 @@
 $.widget("ui.boxer", $.extend({}, $.ui.mouse, {
 
 
-    start:function(){
+    start: function () {
         console.log('restart');
         this._init();
 
@@ -22,10 +22,10 @@ $.widget("ui.boxer", $.extend({}, $.ui.mouse, {
     },
 
     destroy: function () {
-      /*  this.element
-            .removeClass("ui-boxer ui-boxer-disabled")
-            .removeData("boxer")
-            .unbind(".boxer");*/
+        /*  this.element
+         .removeClass("ui-boxer ui-boxer-disabled")
+         .removeData("boxer")
+         .unbind(".boxer");*/
         this._mouseDestroy();
         console.log('destroy');
         return this;
@@ -55,7 +55,7 @@ $.widget("ui.boxer", $.extend({}, $.ui.mouse, {
             "top": event.clientY,
             "width": 0,
             "height": 0
-        });
+        }).addClass('boxer-hl');
         console.log('start')
 
     },
@@ -80,7 +80,7 @@ $.widget("ui.boxer", $.extend({}, $.ui.mouse, {
             y2 = y1;
             y1 = tmp;
         }
-        this.helper.css({left: x1-365, top: y1, width: x2 - x1, height: y2 - y1});
+        this.helper.css({left: x1 - 380, top: y1 - 90, width: x2 - x1, height: y2 - y1});
 
         this._trigger("drag", event);
 
@@ -116,25 +116,46 @@ $.extend($.ui.boxer, {
 });
 
 
-
 $(document).ready(function () {
-    canvas_width_multiplier = window.innerHeight / window.innerWidth;
-    $('#canvas').height($('#canvas').width() * canvas_width_multiplier);
+    // canvas_width_multiplier = window.innerHeight / window.innerWidth;
+    // $('#canvas').height($('#canvas').width() * canvas_width_multiplier);
     function show_pop(offset, ui) {
         var html = $(document.createElement('div'))
             .addClass("box-pop")
-            .css({top:ui.height()+10, left:-ui.width()/2})
+            .css({top: ui.height() + 10, left: 0, textAlign: 'center'})
             .html('<a href="#" class="btn-yes btn btn-primary">Yes</a> <a href="#" class="btn-no btn btn-danger">No</a');
-            ui.append(html);
-           $('#canvas').boxer('destroy');
+        ui.append(html);
+        $('#canvas').boxer('destroy');
     }
 
-    $(document).on( 'click', '.btn-yes', function(){
+    $(document).on('click', '.btn-yes', function () {
         $('#canvas').boxer('start');
+        var page = pageNum;
+
+        var code_arr = {
+            width: $(this).parent().parent().width(),
+            height: $(this).parent().parent().height(),
+            top: 10,
+            left: 100
+        };
         $(this).parent().remove();
+        var code = JSON.stringify(code_arr);
+        var key = '';
+        var id = '';
+
+        var html = '<li><p> Page: #' + page + '<br/></p>' +
+            '<input type="hidden" name="annotation[' + key_interval + '][type]" value="pdf"/>' +
+            '<input type="hidden" name="annotation[' + key_interval + '][text]" value=""/>' +
+            "<input type='hidden' name='annotation[" + key_interval + "][position]' value='" + code + "'/>" +
+            '<input type="hidden" name="annotation[' + key_interval + '][page]" value="' + page + '"/>' +
+            '<a href="#" class="remove-hl btn btn-danger" data-key="' + key + '" data-hlid="' + id + '">-</a>' +
+            '</li>';
+        $('.annotated-text-list').append(html);
+        key_interval++;
+
     });
 
-    $(document).on('click','.btn-no', function(){
+    $(document).on('click', '.btn-no', function () {
         $('#canvas').boxer('start');
         $(this).parent().parent().remove();
     });

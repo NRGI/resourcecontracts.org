@@ -16,7 +16,9 @@ class Annotation extends Model
      *
      * @var string
      */
-    protected $table = 'contract_annotations';
+    protected $table = 'contract_annotation';
+
+    protected $fillable = ['text', 'annotation', 'user_id', 'contract_id'];
 
     /**
      * annotation status published

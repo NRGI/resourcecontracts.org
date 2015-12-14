@@ -1,4 +1,7 @@
-$(function(){
+var pageNum = 1;
+var key_interval =0;
+
+    $(function(){
 
     //
     // If absolute URL from the remote server is provided, configure the CORS
@@ -22,7 +25,6 @@ $(function(){
     // PDFJS.workerSrc = '../../build/pdf.worker.js';
 
     var pdfDoc = null,
-        pageNum = 1,
         pageRendering = false,
         pageNumPending = null,
         scale =1,
@@ -117,7 +119,10 @@ $(function(){
     $('.zoom').on('click',function()
     {
         scale = $(this).data('scale');
-        renderPage(2)
+        renderPage(pageNum);
+        $( ".boxer-hl" ).each(function( index ) {
+            $(this).css({width:$(this).width()*scale, height:$(this).height()*scale})
+        });
     });
 
 

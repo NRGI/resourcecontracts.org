@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Nrgi\Entities\Contract\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Entities\Contract\Pages\Pages;
 use App\Nrgi\Services\Contract\ContractService;
@@ -9,6 +10,7 @@ use App\Nrgi\Services\Contract\AnnotationService;
 use App\Nrgi\Services\Contract\Pages\PagesService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class PageController
@@ -151,10 +153,11 @@ class PageController extends Controller
     {
         $page_no = $request->input('page');
         $page    = $this->pages->getText($contractID, $page_no);
+
         return response()->json(
             [
                 'result'  => 'success',
-                'id'     => $page->id,
+                'id'      => $page->id,
                 'pdf'     => $page->pdf_url,
                 'message' => $page->text
             ]
@@ -163,10 +166,11 @@ class PageController extends Controller
 
     public function getAllText($contractID)
     {
-        $pages    = $this->pages->getAllText($contractID);
+        $pages = $this->pages->getAllText($contractID);
+
         return response()->json(
             [
-                'result'  => $pages
+                'result' => $pages
             ]
         );
     }
@@ -196,11 +200,11 @@ class PageController extends Controller
     public function review(Request $request, $contractId)
     {
         try {
-            $page        = $this->pages->getText($contractId, $request->input('page', '1'));
-            $action      = $request->input('action', '');
-            $canEdit     = $action == "edit" ? 'true' : 'false';
-            $contract    = $this->contract->findWithPages($contractId);
-            $pages       = $contract->pages;
+            $page     = $this->pages->getText($contractId, $request->input('page', '1'));
+            $action   = $request->input('action', '');
+            $canEdit  = $action == "edit" ? 'true' : 'false';
+            $contract = $this->contract->findWithPages($contractId);
+            $pages    = $contract->pages;
         } catch (\Exception $e) {
 
             return abort(404);
@@ -231,17 +235,17 @@ class PageController extends Controller
     public function reviewnew(Request $request, $contractId)
     {
         try {
-            $back        = \Request::server('HTTP_REFERER');
-            $page        = $this->pages->getText($contractId, $request->input('page', '1'));
-            $contract    = $this->contract->findWithPages($contractId);
-            $pages       = $contract->pages;
+            $back     = \Request::server('HTTP_REFERER');
+            $page     = $this->pages->getText($contractId, $request->input('page', '1'));
+            $contract = $this->contract->findWithPages($contractId);
+            $pages    = $contract->pages;
         } catch (\Exception $e) {
 
             return abort(404);
         }
 
         return view('contract.page.reviewnew', compact('contract', 'pages', 'page', 'back'));
-    }    
+    }
 
     /**
      * Full text search
@@ -253,15 +257,38 @@ class PageController extends Controller
     {
         return response()->json(
             [
-                'results'  => $this->pages->fullTextSearch($contract_id, $request->input('q'))
+                'results' => $this->pages->fullTextSearch($contract_id, $request->input('q'))
             ]
         );
     }
 
 
-    public function rewriteAnnotate()
+    public function rewriteAnnotate($id)
     {
-        return view('contract.page.rewrite_annotate_final');
+        $contract = Contract::with('annotations')->where('id', $id)->first();
+
+        return view('contract.page.rewrite_annotate_final', compact('contract'));
+    }
+
+    /**
+     * write brief description
+     * @param         $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postAnnotation($id, Request $request)
+    {
+        $data = [
+            'text'        => $request->input('text'),
+            'user_id'     => Auth::id(),
+            'contract_id' => $id,
+            'category'    => $request->input('category'),
+            'annotation'  => json_encode($request->input('annotation')),
+        ];
+
+        Annotation::create($data);
+
+        return redirect()->route('contract.annotate.new', $id);
     }
 
 }
