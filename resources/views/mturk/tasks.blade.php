@@ -118,13 +118,13 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
 
                                     @endif
 
-                            </div>
                             @endif
                             @if($task->approved == \App\Nrgi\Mturk\Entities\Task::REJECTED || $task->status == \App\Nrgi\Mturk\Entities\Task::PENDING)
                                 {!! Form::open(['url' =>route('mturk.task.reset',['contract_id'=>$contract->id, 'task_id'=>$task->id]), 'method' => 'post']) !!}
                                 {!! Form::button(trans('Reset'), ['type' =>'submit', 'class' => 'btn btn-primary confirm', 'data-confirm'=>'Reseting this HIT will delete this task and re-creates a new one for this page. Any worker who might be working but hasn\'t submitted the assignment for this task will be rejected. Select Ok to continue.'])!!}
                                 {!! Form::close() !!}
                             @endif
+                            </div>
                         </td>
                     </tr>
                 @empty

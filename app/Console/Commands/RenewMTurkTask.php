@@ -46,7 +46,7 @@ class RenewMTurkTask extends Command
 
             $page = $task->updateAssignment($page);
 
-            if ($page->status == Task::COMPLETED) {
+            if ($page->status == Task::COMPLETED || $page->assignments['assignment']['status'] == 'Approved') {
                 continue;
             }
 
