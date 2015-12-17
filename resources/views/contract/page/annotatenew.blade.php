@@ -45,7 +45,9 @@
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.categories.js') }}"></script>
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.viewer.js') }}"></script>    
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.event.js') }}"></script>
+
     <script type="text/jsx">
+
       var debug = function() {
         var DEBUG = false;
         if(DEBUG) {
@@ -99,7 +101,7 @@
         },
         text: function(page_no, annotation_id) {
           contractApp.setView("text");
-          contractApp.setCurrentPage(1);
+          contractApp.setCurrentPage(contractApp.getCurrentPage());
           contractApp.resetSelectedAnnotation();
           if(page_no) {
             contractApp.setCurrentPage(page_no);
@@ -107,11 +109,14 @@
           if(annotation_id) {
             contractApp.setSelectedAnnotation(annotation_id);
           }
+          contractApp.trigger("update-text-pagination-page", contractApp.getCurrentPage());
           this.forceUpdate();
+         contractApp.trigger('scroll-to-text-page');
+
         },
         pdf: function(page_no, annotation_id) {
           contractApp.setView("pdf");
-          this.forceUpdate();
+          contractApp.trigger("update-pdf-pagination-page", contractApp.getCurrentPage());
           if(page_no) {
             contractApp.setCurrentPage(page_no);
           }
@@ -120,6 +125,7 @@
           } else {
             contractApp.resetSelectedAnnotation();
           }
+          this.forceUpdate();
         },
         search: function(query) {
           contractApp.setView("search");
@@ -136,7 +142,7 @@
         componentDidUpdate: function() {
           // viewerCurrentPage.set({"page_no": 8});
         },
-        componentDidMount: function() {
+       componentWillMount: function() {
           var router = Router({
             '/text': this.text,
             '/text/page/:page_no': this.text,
@@ -207,7 +213,7 @@
       React.render(
         <MainApp />,
         document.getElementById('content')
-      );        
+      );
     </script>
 @stop
 

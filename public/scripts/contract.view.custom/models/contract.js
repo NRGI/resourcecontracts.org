@@ -8,7 +8,8 @@
       selected_annotation_id: 0,
       pdfscale: 1,
       showMeta: true,
-      canrender: true
+      canrender: true,
+      annotator:[]
     },
     initialize: function(options) {
       var self = this;
@@ -16,6 +17,12 @@
       _.each(options.categories_codelist, function(category, key) {
           self.annotationCategories.add({key:key,name: category});
       });
+    },
+    setAnnotatorInstance:function(annotator){
+      return this.set({"annotator":annotator});
+    },
+    getAnnotatorInstance:function(annotator){
+      return this.get("annotator");
     },
     loadMetadata: function() {
       var self = this;
@@ -136,6 +143,50 @@
       if(this.get("view") === "pdf") {
         this.trigger("update-pdf-pagination-page", page_no);
       }
+    },
+    getBoxPosition: function(geo)
+    {
+      var canvas = $('.pdf-annotator').find('canvas').first();
+      geo.width = geo.width * canvas.width();
+      geo.height = geo.height * canvas.height();
+      geo.x = geo.x * canvas.width();
+      geo.y = geo.y * canvas.height();
+      return geo;
+    },
+    showPdfAnnotationPopup:function(id)
+    {
+        var wrapperEl = $('.pdf-annotator');
+        wrapperEl.find('.annotator-viewer').addClass('annotator-hide');
+        var annotators = this.getAnnotatorInstance().content.data('annotator').dumpAnnotations();
+        var self = this;
+        annotators.map(function (annotation, i) {
+            if (annotation.id == id) {
+                var geo = self.getBoxPosition(annotation.shapes[0].geometry);
+                var position = {top: (geo.y + geo.height / 2), left: (geo.x + geo.width / 2)};
+                setTimeout(wrapperEl.animate({
+                    scrollTop: position.top - 200
+                }, 'fast'), 3000);
+                wrapperEl.annotator().annotator('showViewer', [annotation], position);
+            }
+        });
+    },
+    showTextAnnotationPopup: function(id){
+      var wrapperEl = $('.text-annotator');
+      wrapperEl.find('.annotator-viewer').addClass('annotator-hide');
+      wrapperEl.find('.annotator-hl').each(function (i, a) {
+        var a = $(a);
+        var annotation = a.data('annotation');
+        if (annotation.id == id) {
+          var position = a.position();
+          setTimeout(wrapperEl.animate({
+            scrollTop: position.top-200
+          }, 'fast'), 3000);
+
+          position.top = position.top + 15;
+          position.left = position.left + a.width() / 2;
+          wrapperEl.annotator().annotator('showViewer', [annotation], position);
+        }
+      })
     },
     isViewVisible: function(viewName) {
       switch(viewName) {

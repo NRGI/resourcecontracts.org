@@ -34,11 +34,11 @@ var PdfPaginationView = React.createClass({
   },
   componentDidMount: function() {
     var self = this;
-    self.setState({totalPages: self.props.contractApp.getTotalPages()});    
+    self.setState({totalPages: self.props.contractApp.getTotalPages()});
     this.props.contractApp.on("update-pdf-pagination-page", function(page_no) {
       self.refs.userInput.getDOMNode().value = page_no;
       self.setState({visiblePage: page_no});
-    });    
+    });
     this.refs.userInput.getDOMNode().value = this.state.visiblePage;
   },
   render: function() {
