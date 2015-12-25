@@ -76,38 +76,42 @@ $(function () {
             return;
         }
         var $this = $(this);
-        $.ajax({
-            url: $(this).prop('href')
-        }).success(function (data) {
-            $this.parent().append(data);
-        });
+        if ($this.data('loading') == false) {
+            $this.data('loading', true);
+            $.ajax({
+                url: $(this).data('url')
+            }).success(function (data) {
+                $this.parent().append(data);
+            }).complete(function () {
+                $this.data('loading', 'false');
+            });
+        }
     });
 
 
     $(document).on('click', 'div.discussion-wrapper .btn-close', function(){
-            
-
+        $(this).parent().parent().parent('div.discussion-wrapper').slideUp();
     });
 
-    $(document).on('submit', '#commentForm', function (e) {
+    $(document).on('click', '.btn-comment-submit', function (e) {
         e.preventDefault();
-        var $this = $(this);
-        $this.find('div.error').remove();
+        var parent = $(this).parent().parent();
+        parent.find('div.error').remove();
 
-        if ($this.find('#commentField').val() == '') {
-            $('#commentField').after('<div class="error"> Comment is required.</div>');
+        if (parent.find('.commentField').val() == '') {
+            parent.find('.commentField').after('<div class="error"> Comment is required.</div>');
             return false;
         }
 
-        var action = $this.prop('action');
+        var action = $(this).data('url');
         var array = action.split('/');
         var key = '.key-' + array[array.length - 1];
 
-        $this.find('.btn-primary').attr('disabled', 'disabled')
+        parent.find('.btn-primary').attr('disabled', 'disabled')
         $.ajax({
             url: action,
-            type: $this.prop('method'),
-            data: $this.serialize(),
+            type: 'Post',
+            data: {status: parent.find('.status:checked').val() , comment: parent.find('.commentField').val()},
             dataType: "JSON",
             success: function (response) {
                 if (response.result == true) {
@@ -123,11 +127,11 @@ $(function () {
                             '<div class="panel-body">' + nl2br(dis.message) + '</div>' +
                             '</div>';
                     });
-                    $('.comment-list').html(html).animate({
+                    parent.find('.comment-list').html(html).animate({
                         scrollTop: 0
                     });
 
-                    $this.find('#commentField').val('');
+                    parent.find('.commentField').val('');
                     var key_html = '';
                     if (response.message[0].status == 1) {
                         key_html = '<span class="label label-success">(' + response.message.length + ') Resolved</span>';
@@ -138,14 +142,14 @@ $(function () {
 
 
                 } else {
-                    $this.find('#commentField').after('<div class="error">' + response.message + '</div>')
+                    parent.find('.commentField').after('<div class="error">' + response.message + '</div>')
                 }
             },
             error: function (e) {
                 alert('Connection error');
             },
             complete: function () {
-                $this.find('.btn-primary').removeAttr('disabled');
+                parent.find('.btn-primary').removeAttr('disabled');
             }
         });
 
