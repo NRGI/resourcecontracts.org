@@ -155,7 +155,7 @@ function discussion($discussions, $discussion_status, $contract_id, $key, $type 
     }
 
     return sprintf(
-        '<a href="%s" data-toggle="modal"  data-target="#commentModel" class="key-%s pull-right">%s</a>',
+        '<a href="%s" class="key-%s contract-discussion pull-right">%s</a>',
         route('contract.discussion', ['id' => $contract_id, 'type' => $type, 'key' => $key]),
         $key,
         $status
