@@ -690,3 +690,58 @@ header {
     cursor: pointer;
 }
 
+.discussion-wrapper {
+    background: #FBFBFB;
+    padding: 10px;
+    margin-top: 15px;
+    border: 1px solid #D4D4D4;
+    clear: both;
+}
+
+.discussion-wrapper div.error {
+    text-align: left;
+    color: #AC0202;
+    font-size: 13px;
+}
+
+.discussion-wrapper .comment-list {
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.discussion-wrapper .comment-list .panel-default {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.discussion-wrapper .comment-list .panel-default p {
+    font-size: 12px;
+}
+
+.discussion-wrapper .comment-list .panel-default .label {
+    font-size: 11px;
+    color: #fff !important;
+}
+
+.discussion-wrapper .comment-list .panel-default p.comment-user {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.discussion-wrapper .comment-list .panel-default .panel-heading {
+    padding: 10px 10px 0px;
+}
+
+.discussion-wrapper textarea {
+    padding: 10px;
+}
+
+.form-group .discussion-wrapper
+{
+     margin: 50px 50px 0px;
+}
+
+.form-group .pull-right
+{
+    margin-right: 10px;
+}

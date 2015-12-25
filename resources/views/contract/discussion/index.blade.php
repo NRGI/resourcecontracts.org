@@ -1,46 +1,3 @@
-<style>
-    div.error {
-        text-align: left;
-        color: #AC0202;
-        font-size: 13px;
-    }
-
-    .comment-list {
-        max-height: 320px;
-        overflow-y: auto;
-    }
-
-    .comment-list .panel-default {
-        margin-right: 10px;
-        margin-bottom: 10px;
-    }
-
-    .comment-list .panel-default p {
-        font-size: 12px;
-    }
-
-    .comment-list .panel-default .label {
-        font-size: 11px;
-        color: #fff !important;
-    }
-
-    .comment-list .panel-default p.comment-user {
-        font-size: 13px;
-        font-weight: bold;
-    }
-
-    .comment-list .panel-default .panel-heading {
-        padding: 10px 10px 0px;
-    }
-
-    .discussion-wrapper {
-        background: #FBFBFB;
-        padding: 10px;
-        margin-top: 15px;
-        border: 1px solid #D4D4D4;
-    }
-
-</style>
 <div class="discussion-wrapper">
     <div class="discussion-body">
         <div class="comment-list">
@@ -61,15 +18,14 @@
         </div>
     </div>
     <div class="discussion-footer">
-        {!! Form::open(['url' => route('contract.discussion.create', ['id'=>$contract->id, 'type'=>$type, 'key'=>$key]), 'method' => 'post', 'id'=>'commentForm']) !!}
-        <textarea placeholder="Write comment..." id="commentField" name="comment" style="width: 100%; height: 70px;"></textarea>
+        <textarea placeholder="Write comment..." class="commentField" style="width: 100%; height: 70px;"></textarea>
         <label>
-            {!! Form::checkbox('status', '1', (isset($discussions[0]) && $discussions[0]->status == '1'), ['id' => 'name']) !!}
+            <input class="status" name="status" type="checkbox" value="1" @if(isset($discussions[0]) && $discussions[0]->status == '1') checked="checked" @endif />
             Mark as resolved
         </label>
         <br/>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" data-url="{{route('contract.discussion.create', ['id'=>$contract->id, 'type'=>$type, 'key'=>$key])}}" class="btn btn-comment-submit btn-primary">Save</button>
         <button type="button" class="btn btn-default btn-close">Close</button>
-        {!! Form::close() !!}
     </div>
 </div>
+
