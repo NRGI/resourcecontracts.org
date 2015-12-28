@@ -90,7 +90,8 @@ $(function () {
 
 
     $(document).on('click', 'div.discussion-wrapper .btn-close', function(){
-        $(this).parent().parent().parent('div.discussion-wrapper').slideUp();
+       console.log( $(this).parent().parent());
+        $(this).parent().parent().parent().slideUp();
     });
 
     $(document).on('click', '.btn-comment-submit', function (e) {
