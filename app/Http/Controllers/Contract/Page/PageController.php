@@ -211,7 +211,6 @@ class PageController extends Controller
 
     public function annotatenew(Request $request, $contractId)
     {
-
         try {
             $back        = \Request::server('HTTP_REFERER');
             $page        = $this->pages->getText($contractId, $request->input('page', '1'));

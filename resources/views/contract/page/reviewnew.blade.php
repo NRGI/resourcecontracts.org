@@ -14,7 +14,7 @@
     <script src="{{ url('scripts/lib/backbone.js') }}"></script>
 
     <script src="{{ url('scripts/lib/director.min.js') }}"></script>
-    
+
     <script src="{{ url('scripts/lib/react/react-with-addons.js') }}"></script>
     <script src="{{ url('scripts/lib/react/JSXTransformer.js') }}"></script>
 
@@ -28,7 +28,7 @@
     <script type="text/jsx" src="{{ url('scripts/contract.view.custom/views/text.view.js') }}"></script>
     <script type="text/jsx" src="{{ url('scripts/contract.view.custom/views/text.edit.js') }}"></script>
     <script type="text/jsx" src="{{ url('scripts/contract.view.custom/views/text.search.js') }}"></script>
-    
+
     <script src="{{ url('scripts/contract.view.custom/rc.utils.js') }}"></script>
     <script src="{{ url('scripts/contract.view.custom/models/pages.js') }}"></script>
     <script src="{{ url('scripts/contract.view.custom/models/annotations.js') }}"></script>
@@ -65,7 +65,7 @@
       var pdfPage = new PdfPage({
         contractApp: contractApp
       });
-      
+
       /**
       * @jsx React.DOM
       */
@@ -111,7 +111,7 @@
           });
           router.init();
           contractApp.trigger("change:page_no");
-        },    
+        },
         getStyle: function(showFlag) {
           var style = { display: "none" };
           if(showFlag) style.display = "block";
@@ -126,7 +126,7 @@
               </div>
               <div className="head-wrap">
                 <TextSearchForm />
-                <TextPaginationView 
+                <TextPaginationView
                   contractApp={contractApp} />
                 <PdfZoom
                   contractApp={contractApp} />
@@ -142,9 +142,9 @@
                   showAnnotations="false"
                   saveApi="{{route('contract.page.store', ['id'=>$contract->id])}}"
                   loadApi="{{route('contract.page.get', ['id'=>$contract->id])}}" />
-                <PdfViewer 
+                <PdfViewer
                   pdfPage={pdfPage}
-                  style={this.getStyle(true)} 
+                  style={this.getStyle(true)}
                   contractApp={contractApp}
                   showAnnotations="false" />
               </div>
@@ -152,11 +152,11 @@
           );
         }
       });
-      
+
       React.render(
         <MainApp />,
         document.getElementById('content')
-      );        
+      );
     </script>
 @stop
 

@@ -161,6 +161,7 @@ var TextPageView = React.createClass({
         );
     }
 });
+
 var TextViewer = React.createClass({
     getInitialState: function () {
         return {}
@@ -180,6 +181,7 @@ var TextViewer = React.createClass({
                 enablePdfAnnotation: false,
                 contractApp: this.props.contractApp
             });
+            this.props.contractApp.setAnnotatorInstance(this.annotator);
         }
     },
     scrollToPage: function (page) {

@@ -36,13 +36,12 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function(_super) {
         textDiv.innerHTML = '<div class="annotation-viewer-text">' + 
                             text + '</div>' + 
                             '<span>Page ' + annotation.page + '</span>' +
-                            '<a href="#' +"" + '" class="annotation-viewer-more"> >> </a>' + 
-                            '<span class="annotator-controls"><button title="Edit" class="annotator-edit">Edit</button><button title="Delete" class="annotator-delete">Delete</button></span>';
+                            '<a href="#' +"" + '" class="annotation-viewer-more"> >> </a>';
         $(textDiv).on("click", "a", function(e) {
             e.preventDefault();
             contractApp.trigger("annotations:highlight", annotation);
         });
-        $(textDiv).on("click", "button.annotator-delete", function(e) {
+        $('.annotator-controls').on("click", "button.annotator-delete", function(e) {
             var deleteThis = confirm("You sure to delete this annotation?");
             if(deleteThis === true) {
                 return;
