@@ -88,10 +88,8 @@ $(function () {
         }
     });
 
-
     $(document).on('click', 'div.discussion-wrapper .btn-close', function(){
-       console.log( $(this).parent().parent());
-        $(this).parent().parent().parent().slideUp();
+        $(this).parent().parent('div.discussion-wrapper').slideUp();
     });
 
     $(document).on('click', '.btn-comment-submit', function (e) {
