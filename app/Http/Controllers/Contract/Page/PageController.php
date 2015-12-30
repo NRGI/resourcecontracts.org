@@ -3,10 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Nrgi\Entities\Contract\Contract;
-use App\Nrgi\Entities\Contract\Pages\Pages;
+use App\Nrgi\Services\Contract\Annotation\AnnotationService;
 use App\Nrgi\Services\Contract\ContractService;
-use App\Nrgi\Services\Contract\AnnotationService;
-use App\Nrgi\Services\Contract\Pages\PagesService;
+use App\Nrgi\Services\Contract\Page\PageService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -25,20 +24,20 @@ class PageController extends Controller
      */
     protected $contract;
     /**
-     * @var PagesService
+     * @var PageService
      */
-    protected $pages;
+    protected $page;
 
     /**
      * @param ContractService   $contract
-     * @param PagesService      $pages
+     * @param PageService       $page
      * @param AnnotationService $annotation
      */
-    public function __construct(ContractService $contract, PagesService $pages, AnnotationService $annotation)
+    public function __construct(ContractService $contract, PageService $page, AnnotationService $annotation)
     {
         $this->middleware('auth');
         $this->contract   = $contract;
-        $this->pages      = $pages;
+        $this->page       = $page;
         $this->annotation = $annotation;
     }
 
@@ -50,7 +49,7 @@ class PageController extends Controller
     public function index(Request $request, $contractId)
     {
         try {
-            $page        = $this->pages->getText($contractId, $request->input('page', '1'));
+            $page        = $this->page->getText($contractId, $request->input('page', '1'));
             $action      = $request->input('action', '');
             $canEdit     = $action == "edit" ? 'true' : 'false';
             $canAnnotate = $action == "annotate" ? 'true' : 'false';
@@ -66,7 +65,7 @@ class PageController extends Controller
 
     public function compare(Request $request, $contractId1, $contractId2)
     {
-        $page        = $this->pages->getText($contractId1, $request->input('page', '1'));
+        $page        = $this->page->getText($contractId1, $request->input('page', '1'));
         $action      = $request->input('action', '');
         $canEdit     = $action == "edit" ? 'true' : 'false';
         $canAnnotate = $action == "annotate" ? 'true' : 'false';
@@ -130,7 +129,7 @@ class PageController extends Controller
      */
     public function store($id, Request $request, ContractService $contract)
     {
-        if ($this->pages->saveText($id, $request->input('page'), $request->input('text'))) {
+        if ($this->page->saveText($id, $request->input('page'), $request->input('text'))) {
             $contract              = $contract->find($id);
             $contract->text_status = Contract::STATUS_DRAFT;
             $contract->save();
@@ -150,11 +149,12 @@ class PageController extends Controller
     public function getText($contractID, Request $request)
     {
         $page_no = $request->input('page');
-        $page    = $this->pages->getText($contractID, $page_no);
+        $page    = $this->page->getText($contractID, $page_no);
+
         return response()->json(
             [
                 'result'  => 'success',
-                'id'     => $page->id,
+                'id'      => $page->id,
                 'pdf'     => $page->pdf_url,
                 'message' => $page->text
             ]
@@ -163,10 +163,11 @@ class PageController extends Controller
 
     public function getAllText($contractID)
     {
-        $pages    = $this->pages->getAllText($contractID);
+        $pages = $this->page->getAllText($contractID);
+
         return response()->json(
             [
-                'result'  => $pages
+                'result' => $pages
             ]
         );
     }
@@ -179,7 +180,7 @@ class PageController extends Controller
     public function annotate(Request $request, $contractId)
     {
         try {
-            $page        = $this->pages->getText($contractId, $request->input('page', '1'));
+            $page        = $this->page->getText($contractId, $request->input('page', '1'));
             $action      = $request->input('action', '');
             $canEdit     = $action == "edit" ? 'true' : 'false';
             $canAnnotate = $action == "annotate" ? 'true' : 'false';
@@ -196,11 +197,11 @@ class PageController extends Controller
     public function review(Request $request, $contractId)
     {
         try {
-            $page        = $this->pages->getText($contractId, $request->input('page', '1'));
-            $action      = $request->input('action', '');
-            $canEdit     = $action == "edit" ? 'true' : 'false';
-            $contract    = $this->contract->findWithPages($contractId);
-            $pages       = $contract->pages;
+            $page     = $this->page->getText($contractId, $request->input('page', '1'));
+            $action   = $request->input('action', '');
+            $canEdit  = $action == "edit" ? 'true' : 'false';
+            $contract = $this->contract->findWithPages($contractId);
+            $pages    = $contract->pages;
         } catch (\Exception $e) {
 
             return abort(404);
@@ -213,7 +214,7 @@ class PageController extends Controller
     {
         try {
             $back        = \Request::server('HTTP_REFERER');
-            $page        = $this->pages->getText($contractId, $request->input('page', '1'));
+            $page        = $this->page->getText($contractId, $request->input('page', '1'));
             $action      = $request->input('action', '');
             $canEdit     = $action == "edit" ? 'true' : 'false';
             $canAnnotate = $action == "annotate" ? 'true' : 'false';
@@ -230,17 +231,17 @@ class PageController extends Controller
     public function reviewnew(Request $request, $contractId)
     {
         try {
-            $back        = \Request::server('HTTP_REFERER');
-            $page        = $this->pages->getText($contractId, $request->input('page', '1'));
-            $contract    = $this->contract->findWithPages($contractId);
-            $pages       = $contract->pages;
+            $back     = \Request::server('HTTP_REFERER');
+            $page     = $this->page->getText($contractId, $request->input('page', '1'));
+            $contract = $this->contract->findWithPages($contractId);
+            $pages    = $contract->pages;
         } catch (\Exception $e) {
 
             return abort(404);
         }
 
         return view('contract.page.reviewnew', compact('contract', 'pages', 'page', 'back'));
-    }    
+    }
 
     /**
      * Full text search
@@ -252,7 +253,7 @@ class PageController extends Controller
     {
         return response()->json(
             [
-                'results'  => $this->pages->fullTextSearch($contract_id, $request->input('q'))
+                'results' => $this->page->fullTextSearch($contract_id, $request->input('q'))
             ]
         );
     }

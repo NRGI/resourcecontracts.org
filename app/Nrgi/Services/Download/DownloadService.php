@@ -1,8 +1,8 @@
 <?php namespace App\Nrgi\Services\Download;
 
+use App\Nrgi\Services\Contract\Annotation\AnnotationService;
 use GuzzleHttp\Client;
 use App\Nrgi\Services\Contract\ContractService;
-use App\Nrgi\Services\Contract\AnnotationService;
 use Maatwebsite\Excel\Excel;
 
 /**
@@ -43,17 +43,23 @@ class DownloadService
     {
         $data = [];
         foreach ($contracts as $contract) {
-            $data[]   = $this->getCSVData($contract);
+            $data[] = $this->getCSVData($contract);
 
         }
 
         $filename = "export" . date('Y-m-d');
 
-        $this->excel->create($filename, function ($csv) use(&$data) {
-            $csv->sheet('sheetname', function ($sheet) use(&$data){
-                $sheet->fromArray($data);
-            });
-        })->download('xls');
+        $this->excel->create(
+            $filename,
+            function ($csv) use (&$data) {
+                $csv->sheet(
+                    'sheetname',
+                    function ($sheet) use (&$data) {
+                        $sheet->fromArray($data);
+                    }
+                );
+            }
+        )->download('xls');
     }
 
     /**

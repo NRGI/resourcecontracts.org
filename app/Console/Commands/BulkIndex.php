@@ -1,8 +1,8 @@
 <?php namespace App\Console\Commands;
 
-use App\Nrgi\Entities\Contract\Annotation;
+use App\Nrgi\Entities\Contract\Annotation\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
-use App\Nrgi\Services\Contract\AnnotationService;
+use App\Nrgi\Services\Contract\Annotation\AnnotationService;
 use App\Nrgi\Services\ElasticSearch\ElasticSearchService;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -45,7 +45,7 @@ class BulkIndex extends Command
     protected $contract;
 
     /**
-     * @var contractCount
+     * @var string
      */
     protected $contractCount;
 

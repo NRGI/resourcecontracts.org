@@ -7590,12 +7590,11 @@ input.error {
 }
 
 .annotation-wrap h3 {
-    border-bottom: 1px solid #bbb;
-    margin-bottom: 12px;
+    margin-bottom: 2px;
     padding-bottom: 10px;
 }
 
-.annotation-wrap h3 span{
+.annotation-wrap h3 span.annotation-help{
     display: block;
     font-size: 12px;
     margin-top: 5px;
@@ -7612,20 +7611,20 @@ input.error {
 .annotation-list li span {
     font-size: 13px;
     margin-bottom: 6px;
-    display: block;
 }
 
 .annotation-type-icon {
     float: left;
     width: 22px;
     height: 22px;
+    margin-right: 5px;
+    margin-top: -3px;
 }
 
-.annotation-type-icon+span {
-    margin: 5px 0 0 4px;
-    float: left;
+.annotation-list .row{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
-
 .annotation-text-icon {
     background: url(../images/ic-sprite-new.png) no-repeat -401px 4px;
 }
@@ -7638,6 +7637,7 @@ input.error {
     color: #8b8b8b;
     margin-right: 6px;
     margin-bottom: 4px;
+    margin-top: 10px;
     clear: both;
 }
 

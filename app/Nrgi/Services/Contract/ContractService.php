@@ -4,7 +4,7 @@ use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\Discussion\DiscussionService;
-use App\Nrgi\Services\Contract\Pages\PagesService;
+use App\Nrgi\Services\Contract\Page\PageService;
 use Exception;
 use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
@@ -59,7 +59,7 @@ class ContractService
     protected $logger;
 
     /**
-     * @var PagesService
+     * @var PageService
      */
     protected $pages;
     /**
@@ -83,7 +83,7 @@ class ContractService
      * @param DiscussionService           $discussion
      * @param DatabaseManager             $database
      * @param Log                         $logger
-     * @param PagesService                $pages
+     * @param PageService                 $pages
      * @param WordGenerator               $word
      */
     public function __construct(
@@ -97,7 +97,7 @@ class ContractService
         DiscussionService $discussion,
         DatabaseManager $database,
         Log $logger,
-        PagesService $pages,
+        PageService $pages,
         WordGenerator $word
     ) {
         $this->contract       = $contract;
@@ -194,13 +194,16 @@ class ContractService
     /**
      * Get Contract With Annotations by ID
      *
-     * @param $id
+     * @param      $id
+     * @param bool $withRelation
      * @return Contract
      */
-    public function findWithAnnotations($id)
+    public function findWithAnnotations($id, $withRelation = false)
     {
         try {
-            return $this->contract->findContractWithAnnotations($id);
+            $contract = $this->contract->findContractWithAnnotations($id);
+
+            return $contract;
         } catch (ModelNotFoundException $e) {
             $this->logger->error('Contract not found.', ['Contract ID' => $id]);
         } catch (Exception $e) {
@@ -208,6 +211,28 @@ class ContractService
         }
 
         return null;
+    }
+
+    /**
+     * Re-arrange annotation with parent-child relation
+     *
+     * @param Collection $annotations
+     * @return mixed
+     */
+    public function manageAnnotationRelation(Collection $annotations)
+    {
+        foreach ($annotations as $key => &$annotation) {
+            $child = [];
+            foreach ($annotations as $k => $anno) {
+                if (isset($anno->annotation->parent) && $anno->annotation->parent == $annotation->id) {
+                    $child[] = $anno;
+                    unset($annotations[$k]);
+                }
+            }
+            $annotation->childs = $child;
+        }
+
+        return $annotations;
     }
 
     /**

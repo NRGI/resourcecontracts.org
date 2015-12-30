@@ -4,7 +4,7 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         'annotationCreated': 'onAnnotationCreated',
         'annotationDeleted': 'onAnnotationDeleted',
         'annotationUpdated': 'onAnnotationUpdated',
-        'annotationsLoaded' : 'annotationsLoaded',
+        'annotationsLoaded': 'annotationsLoaded',
         'annotorious:annotation-clicked': 'onAnnotationClicked',
         'annotorious:mouse-over-annotation': 'onMouseOverAnnotation'
     };
@@ -43,12 +43,17 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         annotation.page = this.contractApp.getCurrentPage();
         annotation.category = annotation.category.trim();
         var self = this;
+        document.location.href = '#'+self.contractApp.getView();
         setTimeout(function (event) {
             self.contractApp.trigger('annotationCreated', annotation);
         }, 500);
     };
     AnnotatorEvents.prototype.onAnnotationUpdated = function (annotation) {
-        this.contractApp.trigger('annotationUpdated', annotation);
+        var self = this;
+        document.location.href = '#'+self.contractApp.getView();
+        setTimeout(function () {
+            self.contractApp.trigger('annotationUpdated', annotation);
+        }, 500);
     };
     AnnotatorEvents.prototype.onAnnotationDeleted = function (annotation) {
         this.contractApp.trigger('annotationDeleted', annotation);
@@ -57,7 +62,7 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         onViewShownHandler(viewer.mouseEvent)
     };
     AnnotatorEvents.prototype.annotationsLoaded = function (obj) {
-        var annotation_id =  contractApp.getSelectedAnnotation();
+        var annotation_id = contractApp.getSelectedAnnotation();
         var hash = window.location.hash;
 
         if (annotation_id === 0 && hash != '') {
@@ -67,7 +72,9 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         }
 
         if (contractApp.getView() == 'pdf') {
-            setTimeout( function(){contractApp.showPdfAnnotationPopup(annotation_id)}, 600);
+            setTimeout(function () {
+                contractApp.showPdfAnnotationPopup(annotation_id)
+            }, 600);
         }
 
         if (contractApp.getView() == 'text') {
@@ -81,9 +88,14 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
                 e.preventDefault();
             }
         });
-
-        var viewPort = contractApp.getView();
+        var viewPort = contractApp.getView() == 'pdf' ? 'pdf' : 'text';
         var viewerEl = $(viewer.element);
+
+        //move comment input to last in order
+        var commentEl = viewerEl.find('.annotator-listing li textarea');
+        commentEl.attr('placeholder', 'Annotation');
+        commentEl.parent().appendTo(viewerEl.find('.annotator-listing'));
+
         var position = viewerEl.position();
         var wrapperEl = $('.' + viewPort + '-annotator');
         var widgetEl = wrapperEl.find('form.annotator-widget');
@@ -112,9 +124,9 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
 
     function onViewShownHandler(viewer, annotations) {
         var viewerEl = $(viewer.element);
-        var viewPort = contractApp.getView();
+        var viewPort = contractApp.getView() == 'pdf' ? 'pdf' : 'text';
         var position = viewerEl.position();
-        var wrapperEl = $('.'+viewPort+'-annotator');
+        var wrapperEl = $('.' + viewPort + '-annotator');
         var widgetEl = wrapperEl.find('ul.annotator-widget');
         var widgetHeight = widgetEl.height() + 25;
 

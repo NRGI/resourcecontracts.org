@@ -8,11 +8,9 @@ use App\Nrgi\Entities\Contract\Annotation;
     <link rel="stylesheet" href="{{ asset('js/lib/annotator/annotator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
-
 @stop
 
 @section('content')
-
     <div class="panel panel-default">
         <div class="panel-heading"> @lang('contract.annotation_list') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
 
