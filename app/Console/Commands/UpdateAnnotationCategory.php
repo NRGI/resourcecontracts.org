@@ -1,8 +1,8 @@
 <?php namespace App\Console\Commands;
 
 
-use App\Nrgi\Entities\Contract\Annotation;
-use App\Nrgi\Repositories\Contract\AnnotationRepository;
+use App\Nrgi\Entities\Contract\Annotation\Annotation;
+use App\Nrgi\Repositories\Contract\Annotation\AnnotationRepository;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 

@@ -52,29 +52,41 @@ var PdfPaginationView = React.createClass({
   }
 });
 
+
 var PdfZoom = React.createClass({
-  getInitialState: function() {
-      return {
-          scale: '1'
-      }
+  getInitialState: function () {
+    return {
+      scale: 1
+    }
   },
-  handleClick: function(e) {
-    var scale = event.target.innerHTML
-    this.setState({scale: scale.replace(".","")});
-    this.props.contractApp.setPdfScale(e.target.innerHTML);
+  handleClick: function (e, ev) {
+    var type = e.target.getAttribute('data-ref');
+    var int = this.state.scale;
+
+    if (int < 2 && type == 'increase') {
+      int = int + 0.25;
+    }
+
+    if (int > 0.5 && type == 'decrease') {
+      int = int - 0.25;
+    }
+    this.setState({scale: int});
+    this.props.contractApp.setPdfScale(int);
   },
-  render: function() {
+  render: function () {
     var selectedClass = "scale-" + this.state.scale;
     $('.pdf-zoom-options span').removeClass('scale-selected');
     $('.pdf-zoom-options .' + selectedClass).addClass('scale-selected');
+    var zoom = this.state.scale * 100;
     return (
-      <div className="pdf-zoom-options" style={this.props.style}> Zoom 
         <div>
-          <span onClick={this.handleClick} className="scale-1 scale-selected">1</span>
-          <span onClick={this.handleClick} className="scale-125">1.25</span>
-          <span onClick={this.handleClick} className="scale-15">1.5</span>
+          <div className="pdf-zoom-options" style={this.props.style}>
+            <span>Zoom</span>
+            <a className="btn btn-default" data-ref="decrease" href="#" onClick={this.handleClick}>-</a>
+            <p>{zoom}%</p>
+            <a className="btn btn-default" data-ref="increase" href="#" onClick={this.handleClick}>+</a>
+          </div>
         </div>
-      </div>
     );
   }
 });

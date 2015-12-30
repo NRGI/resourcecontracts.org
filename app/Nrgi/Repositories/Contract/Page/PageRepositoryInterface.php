@@ -1,19 +1,19 @@
-<?php namespace App\Nrgi\Repositories\Contract\Pages;
+<?php namespace App\Nrgi\Repositories\Contract\Page;
 
-use App\Nrgi\Entities\Contract\Pages\Pages;
+use App\Nrgi\Entities\Contract\Page\Page;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
- * Interface PagesRepositoryInterface
- * @package App\Nrgi\Repositories\Pages
+ * Interface PageRepositoryInterface
+ * @package App\Nrgi\Repositories\Page
  */
-interface PagesRepositoryInterface
+interface PageRepositoryInterface
 {
     /**
      * Get page Text
      * @param $contractID
      * @param $page_no
-     * @return Pages
+     * @return Page
      */
     public function getText($contractID, $page_no);
 
@@ -26,11 +26,11 @@ interface PagesRepositoryInterface
     public function fullTextSearch($contract_id, $query);
 
     /**
-     * Get Total Pages
+     * Get Total Page
      * @param $contractID
      * @return Int
      */
-    public function getTotalPages($conractID);
+    public function getTotalPage($contractID);
 
     /**
      * Update or create page
@@ -39,5 +39,13 @@ interface PagesRepositoryInterface
      * @return mixed
      */
     public function updateOrCreate(array $pageDetail);
+
+    /**
+     * Get all text by contract id
+     *
+     * @param $contractID
+     * @return Collection
+     */
+    public function getAllText($contractID);
 
 }

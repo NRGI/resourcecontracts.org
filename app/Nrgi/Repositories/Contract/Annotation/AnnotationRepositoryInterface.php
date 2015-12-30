@@ -1,5 +1,9 @@
 <?php
-namespace App\Nrgi\Repositories\Contract;
+namespace App\Nrgi\Repositories\Contract\Annotation;
+
+use App\Nrgi\Entities\Contract\Annotation\Annotation;
+use App\Nrgi\Entities\Contract\Contract;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Interface ContractAnnotationRepositoryInterface
@@ -8,11 +12,12 @@ namespace App\Nrgi\Repositories\Contract;
 interface AnnotationRepositoryInterface
 {
     /**
-     * Save or update contract annotation
+     * Create contract annotation
+     *
      * @param  $contractAnnotationData
      * @return bool
      */
-    public function save($contractAnnotationData);
+    public function create($contractAnnotationData);
 
     /**
      * Delete a annotation.
@@ -23,22 +28,23 @@ interface AnnotationRepositoryInterface
     public function delete($id);
 
     /**
-     * Search
+     * Search Annotations
      * @param $params
-     * @return Annotation
+     * @return Collection
      */
     public function search(array $params);
 
     /**
-     * contract with pages and pages with annotations
+     * Contract with pages and pages with annotations
      *
      * @param $contractId
-     * @return contract
+     * @return Contract
      */
     public function getContractPagesWithAnnotations($contractId);
 
     /**
-     * updates contract annotation status
+     * Update contract annotation status
+     *
      * @param $status
      * @param $contractId
      * @return bool
@@ -46,7 +52,7 @@ interface AnnotationRepositoryInterface
     public function updateStatus($status, $contractId);
 
     /**
-     * annotation status by contract id
+     * Annotation status by contract id
      *
      * @param $contractId
      * @return string
@@ -55,30 +61,42 @@ interface AnnotationRepositoryInterface
 
     /**
      * Get Total Annotation status by type
+     *
      * @param $statusType
      * @return array
      */
     public function getStatusCountByType($statusType);
 
     /**
-     * update annotation category or text
+     * Update annotation category or text
      * @param       $id
      * @param array $data
-     * @return bool
+     * @return Annotation
      */
-    public function updateAnnotationField($id, array $data);
+    public function updateField($id, array $data);
 
     /**
-     * find annotation by id
+     * Find annotation by id
+     *
      * @param $id
      * @return Annotation
      */
-    public function getById($id);
+    public function find($id);
 
     /**
-     * Count By User
-     * @param $user_id
-     * @return int
+     * Delete Annotation If child Not found
+     *
+     * @param $annotation_id
+     * @return boolean
      */
-    public function countByUser($user_id);
+    public function deleteIfChildNotFound($annotation_id);
+
+    /**
+     * Check if category of annotations exist or not.
+     *
+     * @param $key
+     * @return array
+     */
+    public function getAnnotationsQuality($key);
+
 }

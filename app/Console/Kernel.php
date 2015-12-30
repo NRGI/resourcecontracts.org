@@ -27,7 +27,9 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\MTurkBalanceNotification',
         'App\Console\Commands\UpdateGovernmentEntities',
         'App\Console\Commands\UpdateAnnotationCategory',
-        'App\Console\Commands\UpdateMTurkAssignment'
+        'App\Console\Commands\UpdateMTurkAssignment',
+        'App\Console\Commands\UpdateAnnotationSection',
+        'App\Console\Commands\AnnotationHarmonization',
     ];
 
     /**

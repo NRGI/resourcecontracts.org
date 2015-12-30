@@ -86,6 +86,7 @@ input:focus, button:focus, textarea:focus {
 
 .select2-container {
     width: 100% !important;
+    z-index: 121212121121212 !important;
 }
 
 .btn-lg, .btn-group-lg > .btn {
@@ -666,7 +667,7 @@ header {
     right: 14px;
     position: relative;
     background: url(../images/ic-delete.png) no-repeat right;
-    font-size: 0px!important;
+    font-size: 0px !important;
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -718,13 +719,11 @@ header {
     padding: 10px;
 }
 
-.form-group .discussion-wrapper
-{
-     margin: 50px 50px 0px;
+.form-group .discussion-wrapper {
+    margin: 50px 50px 0px;
 }
 
-.form-group .pull-right
-{
+.form-group .pull-right {
     margin-right: 10px;
 }
 
@@ -752,4 +751,8 @@ header {
     background: #3875d7!important;
     font-weight: normal!important;
     color: #fff!important;
+}
+
+.xdsoft_datetimepicker, .ui-autocomplete {
+    z-index: 999999999999999999 !important;
 }

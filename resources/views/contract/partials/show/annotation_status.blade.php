@@ -1,6 +1,5 @@
 <?php
-use App\Nrgi\Entities\Contract\Annotation;
-
+use App\Nrgi\Entities\Contract\Annotation\Annotation;
 ?>
 @if($annotationStatus == Annotation::PUBLISHED)
     <span class="published">@lang('Published')</span>

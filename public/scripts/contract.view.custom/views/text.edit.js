@@ -1,21 +1,19 @@
 var TextEditorContainer = React.createClass({
-    getInitialState: function() {
+    getInitialState: function () {
         return {
-            text: "", 
+            text: "",
             page_no: 0,
             message: "",
-            stateChange : false
+            stateChange: false
         }
     },
-    setStateChange:function(state)
-    {
-      this.stateChange=state;
+    setStateChange: function (state) {
+        this.stateChange = state;
     },
-    getStateChange:function()
-    {
+    getStateChange: function () {
         return this.stateChange;
     },
-    loadText: function() {
+    loadText: function () {
         var self = this;
         self.setState({
             text: "",
@@ -25,7 +23,7 @@ var TextEditorContainer = React.createClass({
         if (this.xhr && this.xhr.readystate != 4) {
             //if the users clicks pagination quickly, abort previous ajax calls.
             this.xhr.abort();
-        }        
+        }
         this.xhr = $.ajax({
             url: this.props.loadApi,
             dataType: "json",
@@ -33,7 +31,7 @@ var TextEditorContainer = React.createClass({
             data: {
                 page: this.props.contractApp.getCurrentPage()
             }
-        }).done(function(response) {
+        }).done(function (response) {
             self.props.contractApp.set({
                 pdf_url: response.pdf
             });
@@ -44,29 +42,28 @@ var TextEditorContainer = React.createClass({
             });
         })
     },
-    componentDidMount: function() {
+    componentDidMount: function () {
         var self = this;
-        this.props.contractApp.on("change:page_no", function() {
+        this.props.contractApp.on("change:page_no", function () {
             self.loadText();
         });
 
-            window.addEventListener("beforeunload", function (e) {
-                var confirmationMessage = "Please save your edits before exiting the page.";
-                if(self.getStateChange())
-                {
-                    (e || window.event).returnValue = confirmationMessage;
-                    return confirmationMessage;
-                }
+        window.addEventListener("beforeunload", function (e) {
+            var confirmationMessage = "Please save your edits before exiting the page.";
+            if (self.getStateChange()) {
+                (e || window.event).returnValue = confirmationMessage;
+                return confirmationMessage;
+            }
 
-            });
+        });
 
 
     },
-    onChange: function(evt) {
+    onChange: function (evt) {
         this.html = evt.target.value;
         this.setStateChange(true);
     },
-    saveClicked: function() {
+    saveClicked: function () {
         var self = this;
         self.setStateChange(false);
         $.ajax({
@@ -77,39 +74,43 @@ var TextEditorContainer = React.createClass({
             },
             type: 'POST'
         }).done(function (response) {
-            self.setState({message: "successfully saved."});
-            $('.text-editor').animate({ scrollTop: $('.text-editor').offset().top - $('.text-editor').scrollTop()},'slow');            
+            self.setState({message: "Successfully saved."});
+            $('.text-editor').animate({scrollTop: $('.text-editor').offset().top - $('.text-editor').scrollTop()}, 'slow');
         });
     },
-    sanitizeTxt: function(text) {
+    sanitizeTxt: function (text) {
         //replace the <  and > with &lt;%gt if they are not one of the tags below
-        text = text.replace(/(<)(\/?)(?=span|div|p|br)([^>]*)(>)/g,"----lt----$2$3----gt----");
-        text = text.replace(/</g,"&lt;");
-        text = text.replace(/>/g,"&gt;");
-        text = text.replace(/----lt----/g,"<");
-        text = text.replace(/----gt----/g,">");
+        text = text.replace(/(<)(\/?)(?=span|div|p|br)([^>]*)(>)/g, "----lt----$2$3----gt----");
+        text = text.replace(/</g, "&lt;");
+        text = text.replace(/>/g, "&gt;");
+        text = text.replace(/----lt----/g, "<");
+        text = text.replace(/----gt----/g, ">");
         return text;
-    },    
-    render: function() {
+    },
+    render: function () {
         var text = this.sanitizeTxt(this.state.text);
+        var message = '';
+        if (this.state.message != '') {
+            message = (<div className="alert alert-info">{this.state.message}</div>)
+        }
         return (
             <div className="text-panel">
-                <span><b>{this.state.message}</b></span>
-                <TextEditor 
+                {message}
+                <TextEditor
                     onChange={this.onChange}
-                    html={text} />
-                <button onClick={this.saveClicked}>Save</button>
+                    html={text}/>
+                <button className="btn btn-primary" onClick={this.saveClicked}>Save</button>
             </div>
         );
     }
 });
 var TextEditor = React.createClass({
-    componentDidMount: function() {
-        if ( this.props.html !== React.findDOMNode(this).innerHTML ) {
+    componentDidMount: function () {
+        if (this.props.html !== React.findDOMNode(this).innerHTML) {
             React.findDOMNode(this).innerHTML = this.props.html;
         }
     },
-    render: function() {
+    render: function () {
         return (
             <div
                 className="text-annotator"
@@ -120,10 +121,10 @@ var TextEditor = React.createClass({
             </div>
         );
     },
-    emitChange: function(evt) {
+    emitChange: function (evt) {
         var html = React.findDOMNode(this).innerHTML;
-        if(this.props.onChange && html != this.lastHtml) {
-            evt.target = { value: html};
+        if (this.props.onChange && html != this.lastHtml) {
+            evt.target = {value: html};
             this.props.onChange(evt);
         }
         this.lastHtml = html;

@@ -15,7 +15,7 @@ var NavigationView = React.createClass({
         );
     }
 });
-//<a href="#/both">Both</a>
+
 var TextPaginationView = React.createClass({
     getInitialState: function () {
         return {
@@ -36,10 +36,16 @@ var TextPaginationView = React.createClass({
         e.preventDefault();
         if (this.state.visiblePage > 1) {
             this.changePage(this.state.visiblePage - 1);
+            if (this.props.contractApp.getView() == 'pdf') {
+                this.props.contractApp.setPrevClick(false);
+            } else {
+                this.props.contractApp.setPrevClick(true);
+            }
         }
     },
     clickNext: function (e) {
         e.preventDefault();
+
         if (this.state.visiblePage < this.state.totalPages) {
             this.changePage(this.state.visiblePage + 1);
         }
@@ -57,10 +63,12 @@ var TextPaginationView = React.createClass({
     componentDidMount: function () {
         var self = this;
         self.setState({totalPages: self.props.contractApp.getTotalPages()});
+
         this.props.contractApp.on("update-text-pagination-page", function (page_no) {
             self.refs.userInputText.getDOMNode().value = page_no;
             self.setState({visiblePage: page_no});
         });
+
         // this.props.currentPage.on("update-pagination-page", function(page_no) {
         //   self.refs.userInputText.getDOMNode().value = page_no;
         //   self.setState({visiblePage: page_no});
@@ -74,7 +82,7 @@ var TextPaginationView = React.createClass({
         return (
             <div className="text-pagination pagination" style={this.props.style}>
                 <a href="#" className="previous" onClick={this.clickPrevious}>Previous</a>
-                <input type="text" className="goto" ref="userInputText" onKeyDown={this.handleKeyDown} />
+                <input type="text" className="goto" ref="userInputText" onKeyDown={this.handleKeyDown}/>
                 <a href="#" className="next" onClick={this.clickNext}>Next</a>
                 of {this.state.totalPages}
             </div>
@@ -90,12 +98,17 @@ var TextPageView = React.createClass({
         };
     },
     _onEnter: function (msg, e) {
-        this.props.contractApp.triggerUpdateTextPaginationPage(this.props.page.get("page_no"));
-        // this.props.contractApp.setCurrentPage(this.props.page.get("page_no"));
+
+        if (!this.props.contractApp.isPrevClick()) {
+            this.props.contractApp.triggerUpdateTextPaginationPage(this.props.page.get("page_no"));
+        }
+
+        this.props.contractApp.setPrevClick(false);
     },
     _onLeave: function (e) {
+
     },
-    handleClick: function(event) {
+    handleClick: function (event) {
         this.props.contractApp.setCurrentPage(this.props.page.get("page_no"));
     },
     sanitizeTxt: function (text) {
@@ -149,14 +162,15 @@ var TextPageView = React.createClass({
             }
         }
         var page_no = this.props.page.get('page_no');
+        var threshold = page_no == 1 ? 0 : -0.4;
         return (
             <span className={page_no} onClick={this.handleClick}>
                 <span>{page_no}</span>
-                <span ref="text_content" dangerouslySetInnerHTML={{__html: text}} />
+                <span ref="text_content" dangerouslySetInnerHTML={{__html: text}}/>
                 <Waypoint
                     onEnter={this._onEnter.bind(this, "enter" + page_no)}
                     onLeave={this._onLeave}
-                    threshold={-0.4}/>
+                    threshold={threshold}/>
             </span>
         );
     }
@@ -170,7 +184,7 @@ var TextViewer = React.createClass({
         e.preventDefault();
         $(e.target).parent().hide(500);
     },
-    loadAnnotations: function () {
+    loadAnnotations: function (force) {
         if (!this.annotator) {
             this.annotator = new AnnotatorjsView({
                 el: ".text-annotator",
@@ -194,16 +208,43 @@ var TextViewer = React.createClass({
     },
     componentDidMount: function () {
         var self = this;
+
+        this.props.contractApp.on("annotationUpdated", function () {
+            if (self.annotator) {
+                var that = self;
+                setTimeout(function () {
+                    that.annotator.reload()
+                }, 300);
+            }
+        });
+
+
+        this.props.contractApp.on("annotationCreated", function () {
+            if (self.annotator) {
+                var that = self;
+                setTimeout(function () {
+                    that.annotator.reload()
+                }, 300);
+            }
+        });
+
         this.props.contractApp.on("searchresults:ready", function () {
             if (self.annotator) {
-                setTimeout(self.annotator.reload(), 1000);
+                var that = self;
+                setTimeout(function () {
+                    that.annotator.reload()
+                }, 300);
             }
         });
         this.props.contractApp.on("searchresults:close", function () {
             if (self.annotator) {
-                setTimeout(self.annotator.reload(), 1000);
+                var that = self;
+                setTimeout(function () {
+                    that.annotator.reload()
+                }, 300);
             }
         });
+
         this.props.pagesCollection.on("reset", function () {
             self.message = "";
             if (self.props.pagesCollection.models.length === 0) {
@@ -221,7 +262,7 @@ var TextViewer = React.createClass({
     },
     render: function () {
         var self = this;
-        var show_pdf_text = (this.props.metadata)?this.props.metadata.get('show_pdf_text'):undefined;
+        var show_pdf_text = (this.props.metadata) ? this.props.metadata.get('show_pdf_text') : undefined;
 
         var warningText = (this.message) ? "" : (<div className="text-viewer-warning">
             <span className="pull-right link close" onClick={this.handleClickWarning}>x</span>
@@ -236,9 +277,9 @@ var TextViewer = React.createClass({
             for (var i = 0; i < this.props.pagesCollection.models.length; i++) {
                 var model = this.props.pagesCollection.models[i];
                 pagesView.push(<TextPageView
-                        key={i}
-                        contractApp={self.props.contractApp}
-                        page={model} />
+                    key={i}
+                    contractApp={self.props.contractApp}
+                    page={model}/>
                 );
             }
         }
@@ -254,11 +295,11 @@ var TextViewer = React.createClass({
 
         return (
             <div className="text-panel" style={this.props.style}>
-        {warningText}
+                {warningText}
                 <div className="text-annotator">
                     <div></div>
                     <div className="text-viewer">
-          {pagesView}
+                        {pagesView}
                     </div>
                 </div>
             </div>
