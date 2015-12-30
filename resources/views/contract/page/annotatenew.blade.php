@@ -45,6 +45,8 @@
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.categories.js') }}"></script>
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.viewer.js') }}"></script>    
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.event.js') }}"></script>
+    <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.section.js') }}"></script>
+    <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.parentannotation.js') }}"></script>
 
     <script type="text/jsx">
 

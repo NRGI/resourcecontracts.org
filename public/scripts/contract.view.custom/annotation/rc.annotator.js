@@ -18,6 +18,9 @@ var AnnotatorjsView = Backbone.View.extend({
         // this.content.annotator('addPlugin', 'MyTags');
         this.content.annotator('addPlugin', 'AnnotatorEvents');
         this.content.annotator('addPlugin', 'AnnotatorNRGIViewer');
+        this.content.annotator('addPlugin', 'Section');
+        this.content.annotator('addPlugin', 'ParentAnnotation');
+
         // this.content.data('annotator').plugins.MyTags.availableTags = options.availableTags
         this.content.data('annotator').plugins.AnnotatorEvents.contractApp = options.contractApp;
         this.content.data('annotator').plugins.AnnotatorNRGIViewer.contractApp = options.contractApp;

@@ -86,6 +86,7 @@ input:focus, button:focus, textarea:focus {
 
 .select2-container {
     width: 100% !important;
+    z-index: 1212121212 !important;
 }
 
 .btn-lg, .btn-group-lg > .btn {
