@@ -6,6 +6,7 @@ use App\Nrgi\Services\Contract\ContractService;
 use Aws\S3\S3Client;
 use Carbon\Carbon;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
+use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Logging\Log;
 use Symfony\Component\Process\Process;
@@ -47,12 +48,17 @@ class ProcessService
     protected $mailer;
 
     protected $contract_id;
+    /**
+     * @var Queue
+     */
+    protected $queue;
 
     /**
      * @param Filesystem      $fileSystem
      * @param ContractService $contract
      * @param PageService     $page
      * @param Storage         $storage
+     * @param Queue           $queue
      * @param Log             $logger
      * @param MailQueue       $mailer
      */
@@ -61,6 +67,7 @@ class ProcessService
         ContractService $contract,
         PageService $page,
         Storage $storage,
+        Queue $queue,
         Log $logger,
         MailQueue $mailer
     ) {
@@ -70,6 +77,7 @@ class ProcessService
         $this->storage    = $storage;
         $this->logger     = $logger;
         $this->mailer     = $mailer;
+        $this->queue      = $queue;
     }
 
     /**
@@ -88,10 +96,6 @@ class ProcessService
             if ($this->process($writeFolderPath, $readFilePath)) {
                 $pages = $this->page->buildPages($writeFolderPath);
                 $this->page->savePages($contractId, $pages);
-                $this->updateContractPdfStructure($contract, $writeFolderPath);
-                $contract->text_status = Contract::STATUS_DRAFT;
-                $contract->save();
-                $this->logger->info("processing contract completed.", ['contractId' => $contractId]);
                 $this->mailer->send(
                     [
                         'email' => $contract->created_user->email,
@@ -112,16 +116,34 @@ class ProcessService
                     $contract->file,
                     sprintf('%s/%s', $contract->id, $contract->getS3PdfName())
                 );
-                $this->contract->updateFileName($contract);
+
+                $this->updateContractPdfStructure($contract, $writeFolderPath);
+
                 $this->uploadPdfsToS3($contract->id);
                 $this->deleteContractFolder($contract->id);
                 $this->contract->updateWordFile($contract->id);
                 $this->fileSystem->delete($readFilePath);
 
+                $this->contract->updateFileName($contract);
+
+                $contract->text_status = Contract::STATUS_DRAFT;
+                $contract->save();
+
+                $contract = $this->contract->find($contract->id);
+
+                if ($contract->metadata_status == Contract::STATUS_PUBLISHED) {
+                    $this->queue->push(
+                        'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                        ['contract_id' => $contractId, 'type' => 'Metadata'],
+                        'elastic_search'
+                    );
+                }
+
+                $this->processStatus(Contract::PROCESSING_COMPLETE);
+                $this->logger->info("processing contract completed.", ['contractId' => $contractId]);
                 return true;
             }
         } catch (\Exception $e) {
-            $this->fileSystem->delete($readFilePath);
             $this->processStatus(Contract::PROCESSING_FAILED);
             $this->mailer->send(
                 [
@@ -133,7 +155,7 @@ class ProcessService
                 [
                     'contract_title'      => $contract->title,
                     'contract_id'         => $contract->id,
-                    'contract_detail_url' => route('contract.show',["id"=>$contract->id]),
+                    'contract_detail_url' => route('contract.show', ["id" => $contract->id]),
                     'start_time'          => $startTime->toDayDateTimeString(),
                     'error'               => $e->getMessage()
                 ]
@@ -172,7 +194,6 @@ class ProcessService
             $this->processStatus(Contract::PROCESSING_RUNNING);
             $this->logger->info("processing contract running");
             $this->processContractDocument($writeFolderPath, $readFilePath);
-            $this->processStatus(Contract::PROCESSING_COMPLETE);
             $this->logger->info("processing contract completed");
 
             return true;

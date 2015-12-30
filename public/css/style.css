@@ -86,6 +86,7 @@ input:focus, button:focus, textarea:focus {
 
 .select2-container {
     width: 100% !important;
+    z-index: 121212121121212 !important;
 }
 
 .btn-lg, .btn-group-lg > .btn {
@@ -197,7 +198,7 @@ header {
     margin: 0 !important;
 }
 
-.annotation-list li > div {
+.annotation-list li  div.round {
     background: #ddd;
     border-radius: 50px;
     padding: 3px 6px;
@@ -206,7 +207,7 @@ header {
     font-size: 12px;
 }
 
-.annotation-list li > div:hover {
+.annotation-list li div.round:hover {
     text-decoration: none;
     background: #ccc;
 }
@@ -684,7 +685,7 @@ header {
     right: 14px;
     position: relative;
     background: url(../images/ic-delete.png) no-repeat right;
-    font-size: 0px!important;
+    font-size: 0px !important;
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -736,13 +737,11 @@ header {
     padding: 10px;
 }
 
-.form-group .discussion-wrapper
-{
-     margin: 50px 50px 0px;
+.form-group .discussion-wrapper {
+    margin: 50px 50px 0px;
 }
 
-.form-group .pull-right
-{
+.form-group .pull-right {
     margin-right: 10px;
 }
 
@@ -770,4 +769,8 @@ header {
     background: #3875d7!important;
     font-weight: normal!important;
     color: #fff!important;
+}
+
+.xdsoft_datetimepicker, .ui-autocomplete {
+    z-index: 999999999999999999 !important;
 }

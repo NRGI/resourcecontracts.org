@@ -1,4 +1,4 @@
-<?php namespace App\Nrgi\Entities\Contract\Pages;
+<?php namespace App\Nrgi\Entities\Contract\Page;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int     page_no
  * @package App\Nrgi\Entities\Contract\Pages
  */
-class Pages extends Model
+class Page extends Model
 {
     /**
      * The database table used by the model.
@@ -34,7 +34,7 @@ class Pages extends Model
      */
     public function annotations()
     {
-        return $this->hasMany('App\Nrgi\Entities\Contract\Annotation', 'document_page_no');
+        return $this->hasMany('App\Nrgi\Entities\Contract\Annotation\Page\Page', 'page_no');
     }
 
     /**

@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ asset('css/contract-viewer.css') }}">
 @stop
 
-
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading panel-heading-fixed">

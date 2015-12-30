@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Repositories\Contract;
 
+use App\Nrgi\Entities\Contract\Annotation\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Entities\SupportingContract\SupportingContract;
 use Illuminate\Database\DatabaseManager;
@@ -64,7 +65,7 @@ class ContractRepository implements ContractRepositoryInterface
     {
         $query         = $this->contract->select('*');
         $from          = "contracts ";
-        $multipleField = ["resource", "category","type_of_contract"];
+        $multipleField = ["resource", "category", "type_of_contract"];
         $filters       = array_map('trim', $filters);
         extract($filters);
         $operator = (!empty($issue) && $issue == "present") ? "!=" : "=";
@@ -237,13 +238,9 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function findContractWithAnnotations($contractId)
     {
-        return $this->contract->with(
-            [
-                'annotations' => function ($query) {
-                    $query->orderByRaw("annotation->>'category'");
-                }
-            ]
-        )->with('created_user', 'updated_user')->findOrFail($contractId);
+        $contract = $this->contract->with('annotations.child', 'created_user', 'updated_user')->findOrFail($contractId);
+
+        return $contract;
     }
 
     /**
@@ -338,7 +335,7 @@ class ContractRepository implements ContractRepositoryInterface
 
         $cat_list = array_keys(config('metadata.category'));
         if (isset($filter['category']) && in_array($filter['category'], $cat_list)) {
-            $query->whereRaw("metadata->'category'->>0 ='" . $filter['category']."'");
+            $query->whereRaw("metadata->'category'->>0 ='" . $filter['category'] . "'");
         }
 
         $query->orderBy('created_datetime', 'DESC');
@@ -487,9 +484,9 @@ class ContractRepository implements ContractRepositoryInterface
 
     public function getContractFilterByMetadata($filters, $limit, $contractId)
     {
-        $query    = $this->contract->select('*');
-        $from     = "contracts ";
-        $filters  = array_map('trim', $filters);
+        $query   = $this->contract->select('*');
+        $from    = "contracts ";
+        $filters = array_map('trim', $filters);
         extract($filters);
 
         if ($issue == "present") {
