@@ -87,7 +87,7 @@ var Pdf = React.createClass({
             }
           };
         }
-      });
+      },100);
       return (React.createElement("canvas", {ref: "pdfCanvas"}));
     }
     if(this.state.message) {

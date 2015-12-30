@@ -7,12 +7,15 @@ var TextSearchForm = React.createClass({
     }
     document.location.hash = '#/search/' + encodeURI(searchQuery);
   },
+  componentDidMount:function(){
+      React.findDOMNode(this.refs.searchInput).value =this.props.contractApp.getSearchQuery();
+  },
   render: function() {
     return (
       <div className="text-search">
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" className="" ref="searchInput" placeholder="Search in this document" />
-      </form>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" ref="searchInput" placeholder="Search in this document" />
+          </form>
       </div>
     );
   }
@@ -28,7 +31,7 @@ var TextSearchResultRow = React.createClass({
     highlightword = decodeURI(highlightword);
     var re = new RegExp(highlightword, "gi");
     return text.replace(re,"<span class='search-highlight-word'>" + highlightword + "</span>");
-  },  
+  },
   render: function() {
     var text = this.highlightSearchQuery(this.props.resultRow.get("text"), this.props.contractApp.getSearchQuery());
     text = "Pg " + this.props.resultRow.get("page_no") + "&nbsp;" + text;
@@ -60,11 +63,11 @@ var TextSearchResultsList = React.createClass({
         return (
           <TextSearchResultRow
             key={i}
-            contractApp={self.props.contractApp} 
+            contractApp={self.props.contractApp}
             resultRow={model} />
         );
       });
-    } 
+    }
     else if(this.props.searchResultsCollection.searchCompleted === true || this.props.searchResultsCollection.length == 0) {
       resultsView = "No results found";
     }

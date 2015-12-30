@@ -125,7 +125,7 @@
                 <span>{htmlDecode(contractTitle)}</span>
               </div>
               <div className="head-wrap">
-                <TextSearchForm />
+                <TextSearchForm contractApp={contractApp} />
                 <TextPaginationView
                   contractApp={contractApp} />
                 <PdfZoom

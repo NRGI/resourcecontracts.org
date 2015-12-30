@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Nrgi\Mturk\Services\MTurkNotificationService;
 use App\Nrgi\Mturk\Services\MTurkService;
 use App\Nrgi\Services\Dashboard\DashboardService;
 use Illuminate\Http\Response;
@@ -33,7 +32,7 @@ class DashboardController extends Controller
     /**
      * Dashboard Home
      *
-     * @param MTurkService             $mTurk
+     * @param MTurkService $mTurk
      * @return Response
      */
     public function index(MTurkService $mTurk)
@@ -57,4 +56,5 @@ class DashboardController extends Controller
 
         return view('dashboard.index', compact('stats', 'recent_contracts', 'status', 'ocrStatusCount'));
     }
+
 }

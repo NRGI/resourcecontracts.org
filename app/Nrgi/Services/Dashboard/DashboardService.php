@@ -1,8 +1,8 @@
 <?php namespace App\Nrgi\Services\Dashboard;
 
-use App\Nrgi\Entities\Contract\Annotation;
+use App\Nrgi\Entities\Contract\Annotation\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
-use App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface;
+use App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use Carbon\Carbon;
 

@@ -14,17 +14,17 @@ var AnnotatorjsView = Backbone.View.extend({
         };
         this.contractApp = options.contractApp;
 
-
-        // this.content.annotator('addPlugin', 'MyTags');
-        this.content.annotator('addPlugin', 'AnnotatorEvents');
         this.content.annotator('addPlugin', 'AnnotatorNRGIViewer');
-        // this.content.data('annotator').plugins.MyTags.availableTags = options.availableTags
+        this.populateCategories();
+        this.content.annotator('addPlugin', 'ParentAnnotation');
+        this.content.annotator('addPlugin', 'ArticleReference');
+        this.content.annotator('addPlugin', 'AnnotatorEvents');
+
         this.content.data('annotator').plugins.AnnotatorEvents.contractApp = options.contractApp;
         this.content.data('annotator').plugins.AnnotatorNRGIViewer.contractApp = options.contractApp;
 
         // this.content.data('annotator').plugins.AnnotatorEvents.currentPage = this.currentPage;
         // this.annotationCategories = options.annotationCategories;
-        this.populateCategories();
         this.setupStore(options.enablePdfAnnotation || false);
         return this;
     },
@@ -80,10 +80,13 @@ var AnnotatorjsView = Backbone.View.extend({
     },
     reload: function () {
         var self = this;
+        $('.text-annotator').find('span.annotator-hl').removeClass('annotator-hl');
+
         var page_no = this.contractApp.getCurrentPage(),
             contract_id = this.contractApp.getContractId();
         var store = this.content.data('annotator').plugins.Store;
-        if (store.annotations) store.annotations = [];
+        store.annotations = [];
+
         store.options.loadFromSearch = {
             'contract': contract_id,
         };

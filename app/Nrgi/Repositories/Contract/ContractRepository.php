@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Repositories\Contract;
 
+use App\Nrgi\Entities\Contract\Annotation\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Entities\SupportingContract\SupportingContract;
 use Illuminate\Database\DatabaseManager;
@@ -237,13 +238,9 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function findContractWithAnnotations($contractId)
     {
-        return $this->contract->with(
-            [
-                'annotations' => function ($query) {
-                    $query->orderByRaw("annotation->>'category'");
-                }
-            ]
-        )->with('created_user', 'updated_user')->findOrFail($contractId);
+        $contract = $this->contract->with('annotations.child', 'created_user', 'updated_user')->findOrFail($contractId);
+
+        return $contract;
     }
 
     /**

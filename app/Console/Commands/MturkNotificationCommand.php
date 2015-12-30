@@ -4,8 +4,6 @@ use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Mturk\Services\MTurkNotificationService;
 use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 
 /**
  * Class MturkNotificationCommand

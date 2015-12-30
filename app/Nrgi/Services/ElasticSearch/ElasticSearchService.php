@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Services\ElasticSearch;
 
+use App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface;
 use App\Nrgi\Services\Contract\ContractService;
 use Exception;
 use Guzzle\Http\Client;
@@ -23,17 +24,23 @@ class ElasticSearchService
      * @var ContractService
      */
     protected $contract;
+    /**
+     * @var AnnotationRepositoryInterface
+     */
+    protected $annotation;
 
     /**
-     * @param Client          $http
-     * @param ContractService $contract
-     * @param LoggerInterface $logger
+     * @param Client                        $http
+     * @param AnnotationRepositoryInterface $annotation
+     * @param ContractService               $contract
+     * @param LoggerInterface               $logger
      */
-    public function __construct(Client $http, ContractService $contract, LoggerInterface $logger)
+    public function __construct(Client $http, AnnotationRepositoryInterface $annotation, ContractService $contract, LoggerInterface $logger)
     {
-        $this->http     = $http;
-        $this->logger   = $logger;
-        $this->contract = $contract;
+        $this->http       = $http;
+        $this->logger     = $logger;
+        $this->contract   = $contract;
+        $this->annotation = $annotation;
     }
 
     /**
@@ -46,7 +53,6 @@ class ElasticSearchService
     {
         return trim(env('ELASTIC_SEARCH_URL'), '/') . '/' . $request;
     }
-
 
     /**
      * Post data to Elastic Search
@@ -135,29 +141,39 @@ class ElasticSearchService
     /**
      * Post contract annotations
      *
-     * @param $id
+     * @param $contractId
+     * @internal param $id
      */
-    public function postAnnotation($id)
+    public function postAnnotation($contractId)
     {
-        $contract       = $this->contract->findWithAnnotations($id);
-        $annotationData = [];
         $data           = [];
-        $annotations    = $contract->annotations;
-        foreach ($annotations as $annotation) {
-            $json                      = $annotation->annotation;
-            $json->category_key        = $json->category;
-            $json->category            = _l("codelist/annotation.annotation_category.{$json->category}");
-            $json->id                  = $annotation->id;
-            $json->page                = $annotation->document_page_no;
-            $json->contract_id         = $contract->id;
-            $json->open_contracting_id = $contract->metadata->open_contracting_id;
-            $annotationData[]          = $json;
+        $annotationData = [];
+        $contract       = $this->annotation->getContractPagesWithAnnotations($contractId);
+        foreach ($contract->annotations as $annotation) {
+            foreach ($annotation->child as $child) {
+                $json                    = $child->annotation;
+                $json->id                = $child->id;
+                $json->page              = $child->page_no;
+                $json->article_reference = $child->article_reference;
+
+                $json->contract_id         = $contract->id;
+                $json->open_contracting_id = $contract->metadata->open_contracting_id;
+
+                $json->annotation_id = $annotation->id;
+                $json->text          = $annotation->text;
+                $json->category_key  = $annotation->category;
+                $json->category      = (isset($annotation->category)) ? _l("codelist/annotation.annotation_category.{$annotation->category}") : "";
+                $json->cluster       = (isset($annotation->category)) ? _l("codelist/annotation.cluster.{$annotation->category}") : "";
+
+                $annotationData[] = $json;
+            }
         }
+
         $data['annotations'] = json_encode($annotationData);
 
         try {
-            $annotationDelete  = $this->http->post($this->apiURL('contract/delete/annotation'), null, ["contract_id"=>$id])->send();
-            $this->logger->info('Annotations deleted');
+            $response = $this->http->post($this->apiURL('contract/delete/annotation'), null, ["contract_id" => $contractId])->send();
+            $this->logger->info('Annotations deleted', [$response->json()]);
             $request  = $this->http->post($this->apiURL('contract/annotations'), null, $data);
             $response = $request->send();
             $this->logger->info('Annotation successfully submitted to Elastic Search.', $response->json());

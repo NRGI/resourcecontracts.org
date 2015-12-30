@@ -5,7 +5,7 @@ use App\Nrgi\Mturk\Entities\Task;
 use App\Nrgi\Mturk\Repositories\TaskRepositoryInterface;
 use App\Nrgi\Services\ActivityLog\ActivityLogService;
 use App\Nrgi\Services\Contract\ContractService;
-use App\Nrgi\Services\Contract\Pages\PagesService;
+use App\Nrgi\Services\Contract\Page\PageService;
 use Exception;
 use Illuminate\Contracts\Logging\Log;
 use Illuminate\Contracts\Queue\Queue;
@@ -34,7 +34,7 @@ class TaskService
      */
     protected $turk;
     /**
-     * @var PagesService
+     * @var PageService
      */
     protected $page;
     /**
@@ -59,7 +59,7 @@ class TaskService
      * @param ContractService         $contract
      * @param Log                     $logger
      * @param MTurkService            $turk
-     * @param PagesService            $page
+     * @param PageService            $page
      * @param Queue                   $queue
      * @param ActivityLogService      $logService
      */
@@ -68,7 +68,7 @@ class TaskService
         ContractService $contract,
         Log $logger,
         MTurkService $turk,
-        PagesService $page,
+        PageService $page,
         Queue $queue,
         ActivityLogService $logService
     ) {
