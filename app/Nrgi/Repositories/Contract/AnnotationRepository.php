@@ -217,12 +217,41 @@ class AnnotationRepository implements AnnotationRepositoryInterface
         if (array_key_exists('text', $data)) {
             $annotationArray['text'] = $data['text'];
         }
+        if (array_key_exists('section', $data)) {
+            $annotationArray['section'] = $data['section'];
+        }
+
         if (array_key_exists('category', $data)) {
             $annotationArray['category'] = $data['category'];
             $annotationArray['cluster']  = _l(config("annotation_category.cluster.{$annotationArray['category']}"));
+
+            $childs = $this->getChildAnnotations($id);
+
+            if ($childs) {
+                foreach ($childs as $child) {
+                    $annArr             = json_encode($child->annotation);
+                    $annArr             = json_decode($annArr, true);
+                    $annArr['category'] = $data['category'];
+                    $annArr['cluster']  = _l(config("annotation_category.cluster.{$annArr['category']}"));
+                    $child->annotation  = $annArr;
+                    $child->save();
+                }
+            }
+
         }
         $annotationObj->annotation = $annotationArray;
 
         return $annotationObj->save();
+    }
+
+    /**
+     * Get Child Annotations
+     *
+     * @param $annotation_id
+     * @return mixed
+     */
+    public function getChildAnnotations($annotation_id)
+    {
+        return $this->annotation->whereRaw("annotation->>'parent'='$annotation_id'")->get();
     }
 }

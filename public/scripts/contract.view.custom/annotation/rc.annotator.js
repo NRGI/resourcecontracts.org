@@ -19,6 +19,7 @@ var AnnotatorjsView = Backbone.View.extend({
         this.content.annotator('addPlugin', 'AnnotatorEvents');
         this.content.annotator('addPlugin', 'AnnotatorNRGIViewer');
         this.content.annotator('addPlugin', 'Section');
+        this.populateCategories();
         this.content.annotator('addPlugin', 'ParentAnnotation');
 
         // this.content.data('annotator').plugins.MyTags.availableTags = options.availableTags
@@ -27,7 +28,6 @@ var AnnotatorjsView = Backbone.View.extend({
 
         // this.content.data('annotator').plugins.AnnotatorEvents.currentPage = this.currentPage;
         // this.annotationCategories = options.annotationCategories;
-        this.populateCategories();
         this.setupStore(options.enablePdfAnnotation || false);
         return this;
     },

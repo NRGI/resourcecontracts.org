@@ -114,7 +114,6 @@
           contractApp.trigger("update-text-pagination-page", contractApp.getCurrentPage());
           this.forceUpdate();
          contractApp.trigger('scroll-to-text-page');
-
         },
         pdf: function(page_no, annotation_id) {
           contractApp.setView("pdf");

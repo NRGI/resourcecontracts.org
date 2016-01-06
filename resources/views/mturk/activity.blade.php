@@ -54,6 +54,7 @@
                         <td>{{ $activity->page_no or ''}}</td>
 
                         <td>
+                            <?php
                             {{ trans($activity->message,$activity->message_params) }} <br>
                             @lang('by') {{$activity->user->name}} @lang('on') {{$activity->created_at->format('D F d, Y h:i a')}}
                         </td>

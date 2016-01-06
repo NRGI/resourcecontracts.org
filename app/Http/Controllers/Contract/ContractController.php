@@ -137,7 +137,7 @@ class ContractController extends Controller
      */
     public function show($id, DiscussionService $discussion)
     {
-        $contract = $this->contract->findWithAnnotations($id);
+        $contract = $this->contract->findWithAnnotations($id, $withRelation = true);
 
         if (!$contract) {
             abort('404');
@@ -146,10 +146,11 @@ class ContractController extends Controller
         if ($parent = $contract->getParentContract()) {
             $parentContract = $this->contract->find($parent);
         }
-        $supportingDocument           = $this->contract->getSupportingDocuments($contract->id);
-        $status                       = $this->contract->getStatus($id);
-        $annotationStatus             = $this->annotation->getStatus($id);
-        $annotations                  = $contract->annotations;
+        $supportingDocument = $this->contract->getSupportingDocuments($contract->id);
+        $status             = $this->contract->getStatus($id);
+        $annotationStatus   = $this->annotation->getStatus($id);
+        $annotations        = $contract->annotations;
+
         $contract->metadata_comment   = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
         $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
         $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);

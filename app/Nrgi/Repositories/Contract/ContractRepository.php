@@ -241,6 +241,7 @@ class ContractRepository implements ContractRepositoryInterface
             [
                 'annotations' => function ($query) {
                     $query->orderByRaw("annotation->>'category'");
+                    $query->orderBy("document_page_no");
                 }
             ]
         )->with('created_user', 'updated_user')->findOrFail($contractId);

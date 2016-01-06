@@ -14,12 +14,15 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             width: 500px !important;
         }
 
+        span.pull-left {margin-right: 5px;}
+
         .input-sm {
             width: 400px !important;
         }
+
         .editable-click, a.editable-click, a.editable-click:hover {
             text-decoration: none;
-            border-bottom: none!important;
+            border-bottom: none !important;
         }
     </style>
 @endsection
@@ -29,73 +32,62 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
     <script src="{{asset('js/bootstrap-editable.min.js')}}"></script>
     <script>
         $(function () {
-                    $('body').on('hidden.bs.modal', '.modal-comment', function (event) {
-                        var modal = $(this);
-                        modal.removeData('bs.modal');
-                    });
+            $.fn.editable.defaults.mode = 'inline';
+            $('.edit-annotation-text, .edit-annotation-section').on('click', function () {
+                        $(this).editable();
+             });
 
-                    $('body').on('show.bs.modal', '.modal-comment', function (event) {
-                        var modal = $(this);
-                        modal.find('.modal-content').html('<div style="padding: 40px;"> Loading...</div>');
-                    });
-
-                    $.fn.editable.defaults.mode = 'inline';
-                    $('.edit-annotation-text').on('click', function () {
-                                $(this).editable();
-                            }
-                    );
-
-                    $('.annotation-delete-btn').on('click', function (e) {
-                                e.preventDefault();
-                                if (!confirm("{{_l("annotation.delete_confirm")}}")) {
-                                    return;
-                                }
-                                $(this).parent().fadeOut('slow');
-                                var id = $(this).data('pk');
-                                var url = app_url + "/api/annotation/" + id + "/delete";
-                                $.ajax({
-                                    url: url,
-                                    type: "POST",
-                                    data:{'id':id},
-                                    success: function (data) {
-                                        $(this).parent().remove();
-                                    },
-                                    error: function(){
-                                        $(this).parent().fadeIn('slow');
-                                    }
-                                });
-                            }
-                    );
-
-                    $('.edit-annotation-category').on('click', function () {
-                            var categories = {!!json_encode(trans("codelist/annotation.annotation_category"))!!};
-                            $(this).editable({
-                                source: categories,
-                                select2: {
-                                    width: 400,
-                                    placeholder: 'Select category',
-                                    allowClear: true
-                                }
-                            });
+            $('.annotation-delete-btn').on('click', function (e) {
+                        e.preventDefault();
+                        if (!confirm("{{_l("annotation.delete_confirm")}}")) {
+                            return;
                         }
-                     );
-        $('.edit-annotation-page').on('click', function () {
-
-            <?php $pages = [];?>
-            @for ($i = 1; $i <= $contract->pages()->count(); $i++)
-               <?php $pages[$i] = $i; ?>
-            @endfor
-             var pages = {!!json_encode($pages)!!};
-                $(this).editable({
-                    source: pages,
-                    select2: {
-                        width: 400,
-                        placeholder: 'Select category',
-                        allowClear: true
+                        $(this).parent().fadeOut('slow');
+                        var id = $(this).data('pk');
+                        var url = app_url + "/api/annotation/" + id + "/delete";
+                        $.ajax({
+                            url: url,
+                            type: "POST",
+                            data: {'id': id},
+                            success: function (data) {
+                                $(this).parent().remove();
+                            },
+                            error: function () {
+                                $(this).parent().fadeIn('slow');
+                            }
+                        });
                     }
-                });
-                }
-        );
+            );
+
+            $('.edit-annotation-category').on('click', function () {
+                        var categories = {!!json_encode(trans("codelist/annotation.annotation_category"))!!};
+                        $(this).editable({
+                            source: categories,
+                            select2: {
+                                width: 400,
+                                placeholder: 'Select category',
+                                allowClear: true
+                            }
+                        });
+                    }
+            );
+            $('.edit-annotation-page').on('click', function () {
+
+                        <?php $pages = [];?>
+                        @for ($i = 1; $i <= $contract->pages()->count(); $i++)
+                        <?php $pages[$i] = $i; ?>
+                        @endfor
+                        var pages = {!!json_encode($pages)!!};
+                        $(this).editable({
+                            source: pages,
+                            select2: {
+                                width: 400,
+                                placeholder: 'Select category',
+                                allowClear: true
+                            }
+                        });
+                    }
+            );
             var form = $('.output-type-form');
 
             $(form).on('submit', function (e) {
@@ -314,9 +306,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             <li>
                 <strong>@lang('contract.resource'): </strong>
                 @if(is_array($contract->metadata->resource) && count($contract->metadata->resource)>0)
-                  {{join(', ', $contract->metadata->resource)}}
+                    {{join(', ', $contract->metadata->resource)}}
                 @endif
-               {!! discussion($discussions,$discussion_status, $contract->id,'resource','metadata') !!}
+                {!! discussion($discussions,$discussion_status, $contract->id,'resource','metadata') !!}
             </li>
 
             @if(isset($contract->metadata->government_entity))
@@ -337,7 +329,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
             <li><strong>@lang('contract.type_of_contract'): </strong>
                 @if(is_array($contract->metadata->type_of_contract) && count($contract->metadata->type_of_contract)>0)
-                   {{join(', ', $contract->metadata->type_of_contract)}}
+                    {{join(', ', $contract->metadata->type_of_contract)}}
                 @endif
                 {!! discussion($discussions,$discussion_status, $contract->id,'type_of_contract','metadata') !!}
             </li>
@@ -401,14 +393,15 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                     {!! discussion($discussions,$discussion_status, $contract->id,'parent_company-'.$k,'metadata') !!}
                                 </p>
                                 <p>
-                                    <strong>@lang('contract.open_corporate'):</strong> @if(!empty($v->open_corporate_id)) <a target="_blank" href="{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
+                                    <strong>@lang('contract.open_corporate'):</strong> @if(!empty($v->open_corporate_id)) <a target="_blank"
+                                                                                                                             href="{{$v->open_corporate_id}}">{{$v->open_corporate_id}}</a>@endif
                                     {!! discussion($discussions,$discussion_status, $contract->id,'open_corporate_id-'.$k,'metadata') !!}
                                 </p>
                                 @if(isset($v->operator))
-                                <p>
-                                   <strong>@lang('contract.operator'):</strong>@if($v->operator==1)Yes @elseif($v->operator==0) No @elseif($v->operator==-1) Not Available @endif
-                                    {!! discussion($discussions,$discussion_status, $contract->id,'operator-'.$k,'metadata') !!}
-                                </p>
+                                    <p>
+                                        <strong>@lang('contract.operator'):</strong>@if($v->operator==1)Yes @elseif($v->operator==0) No @elseif($v->operator==-1) Not Available @endif
+                                        {!! discussion($discussions,$discussion_status, $contract->id,'operator-'.$k,'metadata') !!}
+                                    </p>
                                 @endif
                             </div>
                         @endforeach
@@ -474,28 +467,28 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 {!! discussion($discussions,$discussion_status, $contract->id,'category','metadata') !!}
             </li>
 
-               @if(in_array('olc' , $contract->metadata->category))
+            @if(in_array('olc' , $contract->metadata->category))
 
-                   <li>
-                       <strong>{{ trans('contract.deal_number') }}:</strong>
-                       @if(isset($contract->metadata->deal_number))
-                            {{ $contract->metadata->deal_number }}
-                       @endif
-                       {!! discussion($discussions,$discussion_status, $contract->id,'deal_number','metadata') !!}
-                   </li>
-                   <li>
-                     <strong>{{ trans('contract.matrix_page') }}:</strong>
-                       @if(isset( $contract->metadata->matrix_page))
-                           <a href="{{ $contract->metadata->matrix_page }}" target="_blank">{{$contract->metadata->matrix_page}}</a>
-                       @endif
-                       {!! discussion($discussions,$discussion_status, $contract->id,'matrix_page','metadata') !!}
-                   </li>
-                   @endif
+                <li>
+                    <strong>{{ trans('contract.deal_number') }}:</strong>
+                    @if(isset($contract->metadata->deal_number))
+                        {{ $contract->metadata->deal_number }}
+                    @endif
+                    {!! discussion($discussions,$discussion_status, $contract->id,'deal_number','metadata') !!}
+                </li>
+                <li>
+                    <strong>{{ trans('contract.matrix_page') }}:</strong>
+                    @if(isset( $contract->metadata->matrix_page))
+                        <a href="{{ $contract->metadata->matrix_page }}" target="_blank">{{$contract->metadata->matrix_page}}</a>
+                    @endif
+                    {!! discussion($discussions,$discussion_status, $contract->id,'matrix_page','metadata') !!}
+                </li>
+            @endif
 
             <li>
                 <strong>{{trans('contract.contract_note')}}:</strong>
                 @if(isset($contract->metadata->contract_note))
-                        {{$contract->metadata->contract_note}}
+                    {{$contract->metadata->contract_note}}
                 @endif
                 {!! discussion($discussions,$discussion_status, $contract->id,'contract_note','metadata') !!}
             </li>
@@ -524,8 +517,8 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
                 <div class="annotation-list">
                     <ul>
-                        @forelse($annotations as $annotation)
-                            <li>
+                        @forelse($annotations as $key => $annotation)
+                                <li>
                                 <a href="javascript:void(0)" data-pk="{{$annotation->id}}"
                                    class="annotation-delete-btn">delete</a>
                                 <span data-pk="{{$annotation->id}}" data-name="category"
@@ -536,27 +529,59 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                 <p data-pk="{{$annotation->id}}" data-name="text"
                                    data-url="{{route('annotation.update')}}" data-type="textarea"
                                    class="edit-annotation-text">{{$annotation->annotation->text}}</p>
+                                    <span class="pull-left">- </span>
+                                    <p data-pk="{{$annotation->id}}" data-name="section"
+                                       data-url="{{route('annotation.update')}}" data-type="text"
+                                       class="edit-annotation-section"> {{$annotation->annotation->section or ''}}</p>
 
                                 <p class="annotation-footer" style="margin-bottom: 10px;">
                                     @if(property_exists($annotation->annotation, "shapes"))
                                         <span style="clear: both; display: inline">
-                                            <a  href="{{route('contract.annotate', ['id'=>$contract->id])}}#/pdf/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>
+                                            <a href="{{route('contract.annotate', ['id'=>$contract->id])}}#/pdf/page/{{$annotation->document_page_no}}/annotation/{{$annotation->id}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>
                                             [Page {{$annotation->document_page_no}}]
                                         </span>
                                     @else
                                         <span style="clear: both;  display: inline">
-                                            <a href="{{route('contract.annotate', ['id'=>$contract->id])}}#/text/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'text annotation'}} </a>
+                                            <a href="{{route('contract.annotate', ['id'=>$contract->id])}}#/text/page/{{$annotation->document_page_no}}/annotation/{{$annotation->id}}">{{$annotation->annotation->quote or 'text annotation'}} </a>
                                             [Page {{$annotation->document_page_no}}]
                                         </span>
                                     @endif
 
-                                    @if(property_exists($annotation->annotation, 'tags'))
-                                        @foreach($annotation->annotation->tags as $tag)
-                                            <div>{{$tag}}</div>
-                                        @endforeach
-                                    @endif
-                                   {!! discussion($discussions,$discussion_status, $contract->id,$annotation->id,'annotation') !!}
+
+                                    {!! discussion($discussions,$discussion_status, $contract->id,$annotation->id,'annotation') !!}
                                 </p>
+
+                                    @foreach($annotation->childs as $annotation)
+
+                                        <a href="javascript:void(0)" data-pk="{{$annotation->id}}"
+                                           class="annotation-delete-btn">delete</a>
+
+                                        <p data-pk="{{$annotation->id}}" data-name="text"
+                                           data-url="{{route('annotation.update')}}" data-type="textarea"
+                                           class="edit-annotation-text">{{$annotation->annotation->text}}</p>
+                                        <span class="pull-left">- </span>
+                                        <p data-pk="{{$annotation->id}}" data-name="section"
+                                           data-url="{{route('annotation.update')}}" data-type="text"
+                                           class="edit-annotation-section">{{$annotation->annotation->section or ''}}</p>
+
+                                        <p class="annotation-footer" style="margin-bottom: 10px;">
+                                            @if(property_exists($annotation->annotation, "shapes"))
+                                                <span style="clear: both; display: inline">
+                                            <a href="{{route('contract.annotate', ['id'=>$contract->id])}}#/pdf/page/{{$annotation->document_page_no}}/annotation/{{$annotation->id}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>
+                                            [Page {{$annotation->document_page_no}}]
+                                        </span>
+                                            @else
+                                                <span style="clear: both;  display: inline">
+                                            <a href="{{route('contract.annotate', ['id'=>$contract->id])}}#/text/page/{{$annotation->document_page_no}}/annotation/{{$annotation->id}}">{{$annotation->annotation->quote or 'text annotation'}} </a>
+                                            [Page {{$annotation->document_page_no}}]
+                                        </span>
+                                            @endif
+
+
+                                            {!! discussion($discussions,$discussion_status, $contract->id,$annotation->id,'annotation') !!}
+                                        </p>
+                                    @endforeach
+
                             </li>
                         @empty
                             <li>
@@ -569,13 +594,4 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             </div>
         @endif
     </div>
-
-    <div class="modal fade modal-comment" id="commentModel" tabindex="-1" role="dialog" aria-labelledby="commentModelLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                       <div style="padding: 40px;"> Loading... </div>
-            </div>
-        </div>
-    </div>
-
 @stop
