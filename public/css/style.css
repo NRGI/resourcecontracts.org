@@ -746,3 +746,7 @@ header {
 {
     margin-right: 10px;
 }
+
+.xdsoft_datetimepicker {
+    z-index: 999999999999999999 !important;
+}

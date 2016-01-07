@@ -6,6 +6,7 @@ use App\Nrgi\Services\Contract\ContractService;
 use Aws\S3\S3Client;
 use Carbon\Carbon;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
+use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Logging\Log;
 use Symfony\Component\Process\Process;
@@ -47,12 +48,17 @@ class ProcessService
     protected $mailer;
 
     protected $contract_id;
+    /**
+     * @var Queue
+     */
+    protected $queue;
 
     /**
      * @param Filesystem      $fileSystem
      * @param ContractService $contract
      * @param PageService     $page
      * @param Storage         $storage
+     * @param Queue           $queue
      * @param Log             $logger
      * @param MailQueue       $mailer
      */
@@ -61,6 +67,7 @@ class ProcessService
         ContractService $contract,
         PageService $page,
         Storage $storage,
+        Queue $queue,
         Log $logger,
         MailQueue $mailer
     ) {
@@ -70,6 +77,7 @@ class ProcessService
         $this->storage    = $storage;
         $this->logger     = $logger;
         $this->mailer     = $mailer;
+        $this->queue      = $queue;
     }
 
     /**
@@ -118,6 +126,16 @@ class ProcessService
                 $this->contract->updateWordFile($contract->id);
                 $this->fileSystem->delete($readFilePath);
 
+                $contract = $this->contract->find($contract->id);
+
+                if ($contract->metadata_status == Contract::STATUS_PUBLISHED) {
+                    $this->queue->push(
+                        'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                        ['contract_id' => $contractId, 'type' => 'Metadata'],
+                        'elastic_search'
+                    );
+                }
+
                 return true;
             }
         } catch (\Exception $e) {
@@ -133,7 +151,7 @@ class ProcessService
                 [
                     'contract_title'      => $contract->title,
                     'contract_id'         => $contract->id,
-                    'contract_detail_url' => route('contract.show',["id"=>$contract->id]),
+                    'contract_detail_url' => route('contract.show', ["id" => $contract->id]),
                     'start_time'          => $startTime->toDayDateTimeString(),
                     'error'               => $e->getMessage()
                 ]
