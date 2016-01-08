@@ -163,9 +163,9 @@
             if (annotation.id == id) {
                 var geo = self.getBoxPosition(annotation.shapes[0].geometry);
                 var position = {top: (geo.y + geo.height / 2), left: (geo.x + geo.width / 2)};
-                setTimeout(wrapperEl.animate({
+                setTimeout(function(){wrapperEl.animate({
                     scrollTop: position.top - 200
-                }, 'fast'), 3000);
+                }, 'fast')}, 300);
                 wrapperEl.annotator().annotator('showViewer', [annotation], position);
             }
         });
@@ -178,10 +178,9 @@
         var annotation = a.data('annotation');
         if (annotation.id == id) {
           var position = a.position();
-          setTimeout(wrapperEl.animate({
-            scrollTop: position.top-200
-          }, 'fast'), 3000);
-
+             setTimeout(function() { wrapperEl.animate({
+             scrollTop: position.top-200
+             }, 'fast')}, 300);
           position.top = position.top + 15;
           position.left = position.left + a.width() / 2;
           wrapperEl.annotator().annotator('showViewer', [annotation], position);

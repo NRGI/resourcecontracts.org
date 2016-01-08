@@ -96,9 +96,6 @@ class ProcessService
             if ($this->process($writeFolderPath, $readFilePath)) {
                 $pages = $this->page->buildPages($writeFolderPath);
                 $this->page->savePages($contractId, $pages);
-                $this->updateContractPdfStructure($contract, $writeFolderPath);
-                $contract->text_status = Contract::STATUS_DRAFT;
-                $contract->save();
                 $this->logger->info("processing contract completed.", ['contractId' => $contractId]);
                 $this->mailer->send(
                     [
@@ -120,11 +117,18 @@ class ProcessService
                     $contract->file,
                     sprintf('%s/%s', $contract->id, $contract->getS3PdfName())
                 );
-                $this->contract->updateFileName($contract);
+
+                $this->updateContractPdfStructure($contract, $writeFolderPath);
+
                 $this->uploadPdfsToS3($contract->id);
                 $this->deleteContractFolder($contract->id);
                 $this->contract->updateWordFile($contract->id);
                 $this->fileSystem->delete($readFilePath);
+
+                $this->contract->updateFileName($contract);
+
+                $contract->text_status = Contract::STATUS_DRAFT;
+                $contract->save();
 
                 $contract = $this->contract->find($contract->id);
 
@@ -135,6 +139,8 @@ class ProcessService
                         'elastic_search'
                     );
                 }
+
+                $this->processStatus(Contract::PROCESSING_COMPLETE);
 
                 return true;
             }
@@ -190,7 +196,6 @@ class ProcessService
             $this->processStatus(Contract::PROCESSING_RUNNING);
             $this->logger->info("processing contract running");
             $this->processContractDocument($writeFolderPath, $readFilePath);
-            $this->processStatus(Contract::PROCESSING_COMPLETE);
             $this->logger->info("processing contract completed");
 
             return true;

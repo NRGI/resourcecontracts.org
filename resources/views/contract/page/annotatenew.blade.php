@@ -1,12 +1,43 @@
 @extends('layout.app-full')
 @section('css')
-    <link rel="stylesheet" href="{{ url('scripts/lib/annotator/annotator.css') }}">
-    <link rel="stylesheet" href="{{ url('css/contract-view.css') }}">
-    <link rel="stylesheet" href="{{ url('css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ url('scripts/lib/annotator/annotator.css') }}" />
+    <link rel="stylesheet" href="{{ url('css/contract-view.css') }}" />
+    <link rel="stylesheet" href="{{ url('css/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ url('css/jquery-ui.css') }}" />
+    <style>
+        .ui-slider-horizontal .ui-slider-range-min {
+            background: none;
+        }
+        .pdf-zoom-options > div{
+            padding: 0px !important;
+            border: none;
+            background-position: 0 3px;
+            height: 30px;
+        }
+        .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default
+        {
+            border-radius: 50%;
+            background: #333333;
+            outline: none;
+        }
+
+        .ui-slider-horizontal .ui-slider-handle
+        {
+            margin-left: -0.4em;
+            height: 15px;
+            width: 15px;
+            margin-top: 1px;
+        }
+
+        .ui-widget-content .ui-state-focus {
+            background-color: #4797DF !important;
+        }
+
+    </style>
 @stop
 @section('content')
     <div id="content"></div>
-@endsection
+@stop
 @section('script')
     <script src="{{ url('scripts/lib/jquery.js') }}"></script>
     <script src="{{ url('js/select2.full.js') }}"></script>
@@ -47,6 +78,7 @@
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.event.js') }}"></script>
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.section.js') }}"></script>
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.parentannotation.js') }}"></script>
+    <script src="{{url('scripts/lib/jquery-ui.js')}}"></script>
 
     <script type="text/jsx">
 
@@ -216,6 +248,7 @@
         document.getElementById('content')
       );
     </script>
+
 @stop
 
 

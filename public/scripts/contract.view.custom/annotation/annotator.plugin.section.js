@@ -6,13 +6,16 @@ Annotator.Plugin.Section = (function (_super) {
             return;
         }
 
-        this.annotator.editor.addField({
+       var field =  this.annotator.editor.addField({
             label: 'Section',
             type: 'input',
+            id:'section',
+           spellcheck :'true',
             load: this.updateSection,
             submit: this.saveSection
         });
 
+        $('input, textarea').attr('spellcheck', 'true');
     };
 
     function Section() {
