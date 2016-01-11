@@ -32,7 +32,7 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
             }
 
             var section = '';
-            if (typeof annotation.section !== 'undefined') {
+            if (typeof annotation.section !== 'undefined' && annotation.section != '') {
                 section = ' - ' + annotation.section;
             }
 
@@ -42,7 +42,7 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
                 '<a href="#' + "" + '" class="annotation-viewer-more"> >> </a>' +
                 '</p>';
 
-            $(textDiv).find('.annotation-viewer-text').data('annotation',annotation);
+            $(textDiv).find('.annotation-viewer-text').data('annotation', annotation);
 
             $(textDiv).on("click", "a", function (e) {
                 e.preventDefault();

@@ -32,11 +32,13 @@
         .ui-widget-content .ui-state-focus {
             background-color: #4797DF !important;
         }
-
+        .loading {margin-top:250px; text-align: center}
     </style>
 @stop
 @section('content')
-    <div id="content"></div>
+    <div id="content">
+        <div id="content"> <div class="loading"><img src="{{url('images/loading.gif')}}"/> Loading ... </div></div>
+    </div>
 @stop
 @section('script')
     <script src="{{ url('scripts/lib/jquery.js') }}"></script>
@@ -81,7 +83,6 @@
     <script src="{{url('scripts/lib/jquery-ui.js')}}"></script>
 
     <script type="text/jsx">
-
       var debug = function() {
         var DEBUG = false;
         if(DEBUG) {
@@ -149,7 +150,6 @@
         },
         pdf: function(page_no, annotation_id) {
           contractApp.setView("pdf");
-          contractApp.trigger("update-pdf-pagination-page", contractApp.getCurrentPage());
           if(page_no) {
             contractApp.setCurrentPage(page_no);
           }
@@ -158,7 +158,9 @@
           } else {
             contractApp.resetSelectedAnnotation();
           }
-          this.forceUpdate();
+           contractApp.trigger("update-pdf-pagination-page", contractApp.getCurrentPage());
+
+            this.forceUpdate();
         },
         search: function(query) {
           contractApp.setView("search");

@@ -10,12 +10,11 @@ Annotator.Plugin.Section = (function (_super) {
             label: 'Section',
             type: 'input',
             id:'section',
-           spellcheck :'true',
             load: this.updateSection,
             submit: this.saveSection
         });
 
-        $('input, textarea').attr('spellcheck', 'true');
+        $('.annotator-wrapper').find('input, textarea').attr('spellcheck', 'true');
     };
 
     function Section() {

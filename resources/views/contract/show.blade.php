@@ -529,10 +529,13 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                 <p data-pk="{{$annotation->id}}" data-name="text"
                                    data-url="{{route('annotation.update')}}" data-type="textarea"
                                    class="edit-annotation-text">{{$annotation->annotation->text}}</p>
-                                    <span class="pull-left">- </span>
+
+                                   @if(isset($annotation->annotation->section) && $annotation->annotation->section !='')
+                                     <span class="pull-left">- </span>
                                     <p data-pk="{{$annotation->id}}" data-name="section"
                                        data-url="{{route('annotation.update')}}" data-type="text"
-                                       class="edit-annotation-section"> {{$annotation->annotation->section or ''}}</p>
+                                       class="edit-annotation-section"> {{$annotation->annotation->section}}</p>
+                                    @endif
 
                                 <p class="annotation-footer" style="margin-bottom: 10px;">
                                     @if(property_exists($annotation->annotation, "shapes"))
@@ -559,11 +562,12 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                         <p data-pk="{{$annotation->id}}" data-name="text"
                                            data-url="{{route('annotation.update')}}" data-type="textarea"
                                            class="edit-annotation-text">{{$annotation->annotation->text}}</p>
-                                        <span class="pull-left">- </span>
-                                        <p data-pk="{{$annotation->id}}" data-name="section"
-                                           data-url="{{route('annotation.update')}}" data-type="text"
-                                           class="edit-annotation-section">{{$annotation->annotation->section or ''}}</p>
-
+                                            @if(isset($annotation->annotation->section) && $annotation->annotation->section !='')
+                                                <span class="pull-left">- </span>
+                                                <p data-pk="{{$annotation->id}}" data-name="section"
+                                                   data-url="{{route('annotation.update')}}" data-type="text"
+                                                   class="edit-annotation-section"> {{$annotation->annotation->section}}</p>
+                                            @endif
                                         <p class="annotation-footer" style="margin-bottom: 10px;">
                                             @if(property_exists($annotation->annotation, "shapes"))
                                                 <span style="clear: both; display: inline">

@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\CreateMTurkTasks',
         'App\Console\Commands\Updatemturk',
         'App\Console\Commands\MTurkBalanceNotification',
+        'App\Console\Commands\UpdateAnnotationSection'
     ];
 
     /**
