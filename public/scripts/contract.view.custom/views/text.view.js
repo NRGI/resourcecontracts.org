@@ -15,7 +15,7 @@ var NavigationView = React.createClass({
         );
     }
 });
-//<a href="#/both">Both</a>
+
 var TextPaginationView = React.createClass({
     getInitialState: function () {
         return {
@@ -36,11 +36,16 @@ var TextPaginationView = React.createClass({
         e.preventDefault();
         if (this.state.visiblePage > 1) {
             this.changePage(this.state.visiblePage - 1);
-            this.props.contractApp.setPrevClick(true);
+            if (this.props.contractApp.getView() == 'pdf') {
+                this.props.contractApp.setPrevClick(false);
+            } else {
+                this.props.contractApp.setPrevClick(true);
+            }
         }
     },
     clickNext: function (e) {
         e.preventDefault();
+
         if (this.state.visiblePage < this.state.totalPages) {
             this.changePage(this.state.visiblePage + 1);
         }
@@ -101,6 +106,7 @@ var TextPageView = React.createClass({
         this.props.contractApp.setPrevClick(false);
     },
     _onLeave: function (e) {
+
     },
     handleClick: function (event) {
         this.props.contractApp.setCurrentPage(this.props.page.get("page_no"));
@@ -156,6 +162,7 @@ var TextPageView = React.createClass({
             }
         }
         var page_no = this.props.page.get('page_no');
+        var threshold = page_no == 1 ? 0 : -0.4;
         return (
             <span className={page_no} onClick={this.handleClick}>
                 <span>{page_no}</span>
@@ -163,7 +170,7 @@ var TextPageView = React.createClass({
                 <Waypoint
                     onEnter={this._onEnter.bind(this, "enter" + page_no)}
                     onLeave={this._onLeave}
-                    threshold={-0.4}/>
+                    threshold={threshold}/>
             </span>
         );
     }

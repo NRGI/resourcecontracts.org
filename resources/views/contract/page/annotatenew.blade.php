@@ -31,6 +31,8 @@
 
         .ui-widget-content .ui-state-focus {
             background-color: #4797DF !important;
+            margin-left:-0.4em !important;
+            margin-top: 1px !important;
         }
         .loading {margin-top:250px; text-align: center}
     </style>

@@ -15,6 +15,7 @@ var PdfPaginationView = React.createClass({
         e.preventDefault();
         if (this.state.visiblePage > 1) {
             this.changePage(this.state.visiblePage - 1);
+            this.props.contractApp.setPrevClick(true);
         }
     },
     clickNext: function (e) {
