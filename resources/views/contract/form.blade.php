@@ -549,7 +549,7 @@ if (isset($contract->metadata->resource)) {
 <h3>@lang('contract.license_and_project')</h3>
 <hr/>
 <div class="form-group">
-    {!! Form::label('project_title', trans('contract.project_title'), ['class'=>'col-sm-2 control-label'])!!}
+    {!! Form::label('project_title', trans('contract.project_name'), ['class'=>'col-sm-2 control-label'])!!}
     <div class="col-sm-7">
         {!! Form::text('project_title',
         isset($contract->metadata->project_title)?$contract->metadata->project_title:null,

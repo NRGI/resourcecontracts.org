@@ -1,5 +1,4 @@
-<?php
-namespace App\Http\Services;
+<?php namespace App\Nrgi\Services\Download;
 
 use App\Nrgi\Entities\Contract\Contract;
 use GuzzleHttp\Client;

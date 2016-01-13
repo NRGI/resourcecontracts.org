@@ -3,7 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contract\ContractRequest;
-use App\Http\Services\DownloadService;
+use App\Nrgi\Services\Download\DownloadService;
 use App\Nrgi\Entities\Contract\Comment\Comment;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\AnnotationService;

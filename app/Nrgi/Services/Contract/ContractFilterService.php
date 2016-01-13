@@ -4,7 +4,7 @@ use App\Nrgi\Entities\Contract\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
-use App\Http\Services\DownloadService;
+use App\Nrgi\Services\Download\DownloadService;
 
 /**
  * Class ContractFilterService

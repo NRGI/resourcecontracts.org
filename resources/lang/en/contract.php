@@ -39,7 +39,7 @@ return [
     'license_and_project'                  => "Concession / License and Project",
     'license_name'                         => "Concession / License Name",
     'license_identifier'                   => "Concession / License Identifier",
-    'project_title'                        => "Project Title",
+    'project_name'                        => "Project Name",
     'project_identifier'                   => "Project Identifier",
     'source'                               => "Source",
     'source_url'                           => "Source URL",
