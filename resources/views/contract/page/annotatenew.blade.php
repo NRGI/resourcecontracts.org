@@ -8,6 +8,7 @@
         .ui-slider-horizontal .ui-slider-range-min {
             background: none;
         }
+        .text-viewer>span:first-child {padding:38px 10px}
         .pdf-zoom-options > div{
             padding: 0px !important;
             border: none;

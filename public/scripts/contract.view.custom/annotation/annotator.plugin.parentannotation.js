@@ -51,15 +51,16 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
     function getAnnotationSelect(annotation) {
         var select = '<option value="">Select parent annotation</option>';
         var selected = "";
-        annotationsCollection.models.map(function (a) {
-            if (a.get('category_key') == annotation.category && a.get('parent') == '' && a.get('id') != annotation.id) {
-                selected = (a.get('id') == annotation.parent) ? 'selected="selected"' : '';
-                select += '<option value="' + a.get('id') + '"' + selected + '>' + a.get('text') + '</option>';
-            }
+
+        var parents = annotationsCollection.parentAnnotations(annotation);
+
+        parents.map(function (a) {
+            selected = (a.get('id') == annotation.parent) ? 'selected="selected"' : '';
+            select += '<option value="' + a.get('id') + '"' + selected + '>' + a.get('text') + '</option>';
         });
 
         return select;
-    };
+    }
 
     function isParent(annotation_id) {
         var is = false;
@@ -80,6 +81,7 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
 
         if (isParent(annotation.id)) {
             $(el).find('select').hide();
+            $(el).find('select').siblings('.select2').remove();
             return true;
         }
 
@@ -92,16 +94,27 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
                 $(el).find('select').html(select);
                 $(el).find('select').select2({placeholder: 'Select parent annotation', allowClear: true, theme: "classic"});
             }, 100);
+        } else {
+            $(el).find('select').html(select);
+            $(el).find('select').select2({placeholder: 'Select parent annotation', allowClear: true, theme: "classic"});
         }
-
-        $(el).find('select').html(select);
-        $(el).find('select').select2({placeholder: 'Select parent annotation', allowClear: true, theme: "classic"});
     };
 
     ParentAnnotation.prototype.updateViewer = function (el, annotation) {
-        if (annotation.parent) {
-            var html = '<p><strong>Parent Annotation:</strong></p>';
-            annotationsCollection.models.map(function (a) {
+        var html = '';
+        var annotations = '';
+
+        if (annotation.parent != '') {
+            annotations = annotationsCollection.relatedAnnotations(annotation);
+        }
+        else {
+            annotations = annotationsCollection.childAnnotations(annotation);
+        }
+
+        if (annotations.length > 0) {
+            html += '<p><strong>Related Annotation:</strong></p>';
+
+            annotations.map(function (a) {
                 var link = "";
                 var view = "";
                 if (a.get('shapes')) {
@@ -111,10 +124,13 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
                     view = 'text';
                     link = "#/" + view + "/page/" + a.get('page') + "/annotation/" + a.get('id');
                 }
-                html += (a.get('id') == annotation.parent) ? '<a data-view="' + view + '" data-annotation="' + a.get('id') + '" class="parent_annotation_link" href="' + link + '">' + a.get('text') + '</a>' : '';
+                html += '<p style="padding: 5px 0px;"><a data-view="' + view + '" data-annotation="' + a.get('id') + '" class="parent_annotation_link" href="' + link + '">' + a.get('text') + '</a></p>';
             });
+
             $(el).html(html);
         }
+
+
     };
 
     return ParentAnnotation;

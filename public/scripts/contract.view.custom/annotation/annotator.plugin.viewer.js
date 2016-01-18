@@ -26,9 +26,14 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
                 link = "#/text/page/" + annotation.page_no + "/annotation/" + annotation.id;
             }
             var textDiv = $(field.parentNode).find('div:first-of-type')[0];
-            var text = annotation.text.split(" ").splice(0, 10).join(" ");
-            if (annotation.text.split(" ").length > 10) {
-                text = text + " ...";
+
+            var text = '';
+
+            if (annotation.text) {
+                text = annotation.text.split(" ").splice(0, 10).join(" ");
+                if (annotation.text.split(" ").length > 10) {
+                    text = text + " ...";
+                }
             }
 
             var section = '';
