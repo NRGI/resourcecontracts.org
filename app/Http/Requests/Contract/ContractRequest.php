@@ -18,7 +18,7 @@ class ContractRequest extends Request
         $rules = [
             'contract_name'       => 'required',
             'country'             => 'required',
-            'signature_year'      => 'required',
+            'signature_year'      => 'required|integer|digits:4',
             'file'                => 'required|mimes:pdf|max:1048576',
             'participation_share' => 'numeric|min:0|max:1',
             'language'            => 'required',

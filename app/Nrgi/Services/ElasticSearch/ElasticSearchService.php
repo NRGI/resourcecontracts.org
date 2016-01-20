@@ -156,6 +156,8 @@ class ElasticSearchService
         $data['annotations'] = json_encode($annotationData);
 
         try {
+            $annotationDelete  = $this->http->post($this->apiURL('contract/delete/annotation'), null, ["contract_id"=>$id])->send();
+            $this->logger->info('Annotations deleted');
             $request  = $this->http->post($this->apiURL('contract/annotations'), null, $data);
             $response = $request->send();
             $this->logger->info('Annotation successfully submitted to Elastic Search.', $response->json());

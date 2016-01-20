@@ -906,20 +906,4 @@ class ContractService
     }
 
 
-    /**
-     * Return years from 1900 to now
-     * @return array
-     */
-    public function getYears()
-    {
-        $now = date('Y');
-        $years=[];
-        for($i=$now;$i>=1900;$i--)
-        {
-            $years[$i]=$i;
-        }
-
-       return $years;
-    }
-
 }

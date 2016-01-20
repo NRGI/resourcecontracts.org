@@ -448,7 +448,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             </li>
             <li><h3>@lang('contract.source')</h3></li>
             <li>
-                <strong>@lang('contract.source_url')</strong> <a href="{{$contract->metadata->source_url}}">{{$contract->metadata->source_url}}</a>
+                <strong>@lang('contract.source_url'):</strong> <a href="{{$contract->metadata->source_url}}">{{$contract->metadata->source_url}}</a>
                 {!! discussion($discussions,$discussion_status, $contract->id,'source_url','metadata') !!}
             </li>
             <li>

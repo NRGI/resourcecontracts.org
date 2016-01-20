@@ -109,9 +109,8 @@ class ContractController extends Controller
         $country   = $this->countries->all();
         $contracts = $this->contract->parentContracts();
         $contract  = $this->contract->find($request->get('parent'));
-        $years     = $this->contract->getYears();
 
-        return view('contract.create', compact('country', 'contracts', 'contract', 'years'));
+        return view('contract.create', compact('country', 'contracts', 'contract'));
     }
 
     /**
@@ -180,9 +179,8 @@ class ContractController extends Controller
 
         $discussions       = $discussion->getCount($id);
         $discussion_status = $discussion->getResolved($id);
-        $years             = $this->contract->getYears();
 
-        return view('contract.edit', compact('contract', 'country', 'supportingDocument', 'contracts', 'discussions', 'discussion_status','years'));
+        return view('contract.edit', compact('contract', 'country', 'supportingDocument', 'contracts', 'discussions', 'discussion_status'));
     }
 
     /**
