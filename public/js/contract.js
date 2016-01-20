@@ -10,6 +10,8 @@ $(function () {
         scrollInput: false
     });
 
+    
+
     $('body').on('hidden.bs.modal', '.modal-comment', function (event) {
         var modal = $(this);
         modal.removeData('bs.modal');
@@ -185,6 +187,19 @@ $(function () {
         });
 
     });
+
+
+    $(document).on('change','.signature_date',function(e){
+        var date = $(".signature_date").val();
+        date = date.split("-");
+        $(".signature_year").val(date[0]);
+        if(date[0]!=""){
+            $(".signature_year").attr("readonly",true);
+        }else{
+            $(".signature_year").removeAttr("readonly");
+        }
+
+    })
 
 });
 
