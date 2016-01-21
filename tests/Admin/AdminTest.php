@@ -282,10 +282,8 @@ class AdminTest extends IntegrationTest
 
         foreach ($annotations as $annotate) {
             $save_annotations = new ApiTester();
-            print_r(
-                $save_annotations->post($this->elastic_search_url . '/contract/annotations', $annotate)
-                                 ->matchValue('_type', 'master')->getJson()
-            );
+            $save_annotations->post($this->elastic_search_url . '/contract/annotations', $annotate)
+                                 ->matchValue('_type', 'master')->getJson();
         }
 
         $this->cliPrint("Indexing of annotations complete");
