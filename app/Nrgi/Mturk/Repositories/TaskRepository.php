@@ -155,6 +155,7 @@ class TaskRepository implements TaskRepositoryInterface
     {
         $status   = $filter['status'];
         $approved = $filter['approved'];
+        $hitid    = $filter['hitid'];
 
         $query = $this->task->join('contracts', 'mturk_tasks.contract_id', '=', 'contracts.id')
                             ->select('contracts.*', 'mturk_tasks.*')
@@ -167,6 +168,11 @@ class TaskRepository implements TaskRepositoryInterface
         if (!is_null($approved)) {
             $query->where('mturk_tasks.approved', $approved);
         }
+
+        if (!is_null($hitid)) {
+            $query->where('mturk_tasks.hit_id', $hitid);
+        }
+
 
         if (!is_null($perPage)) {
             return $query->paginate($perPage);

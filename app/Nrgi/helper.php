@@ -119,6 +119,19 @@ function str_random_number($length)
 }
 
 /**
+ * This function returns hit url based upon env variable Mturk Sandbox.
+ *
+ * @param $hitID
+ * @return string
+ */
+function hit_url($hitID)
+{
+    $subDomain = env('MTURK_SANDBOX') ? 'requestersandbox' : 'requester';
+
+    return sprintf("https://%s.mturk.com/mturk/manageHIT?HITId=%s", $subDomain, $hitID);
+}
+
+/**
  * Trim array values
  *
  * @param $value

@@ -58,8 +58,9 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
             <table class="table table-striped table-responsive">
                 <thead>
                 <tr>
-                    <th>HIT ID</th>
-                    <th>Page no.</th>
+                    <th width="30%">HIT ID</th>
+                    <th width="5%"></th>
+                    <th style="text-align: center;">Page no.</th>
                     <th>Status</th>
                     <th>Approved?</th>
                     <th width="15%">Created on</th>
@@ -76,7 +77,10 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                                 {{$task->hit_id}}
                             @endif
                         </td>
-                        <td>{{$task->page_no}}</td>
+                        <td>
+                                <a href="{{ hit_url($task->hit_id) }}" target="_blank" title="View On Amazon" data-toggle="tooltip"> <span class="glyphicon glyphicon-eye-open"></span></a>
+                        </td>
+                        <td style="text-align:center;">{{$task->page_no}}</td>
                         <td>{{$task->status()}}</td>
                         <td>{{$task->approved()}}</td>
                         <td>{{$task->created_at->format('Y-m-d h:i:s A')}}</td>

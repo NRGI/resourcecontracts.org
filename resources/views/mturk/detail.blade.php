@@ -3,7 +3,7 @@
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">{{$contract->title}}
-            <a class="btn btn-default pull-right" href="{{route('mturk.tasks', $contract->id)}}">@lang('Back')</a>
+            <a class="btn btn-default pull-right" href="{{route('mturk.allTasks', $contract->id)}}">@lang('Back')</a>
         </div>
 
         <div class="panel-body">
