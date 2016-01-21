@@ -439,7 +439,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 </div>
             @endif
             <li>
-                <strong>@lang('contract.project_title'):</strong> {{$contract->metadata->project_title or ''}}
+                <strong>@lang('contract.project_name'):</strong> {{$contract->metadata->project_title or ''}}
                 {!! discussion($discussions,$discussion_status, $contract->id,'project_title','metadata') !!}
             </li>
             <li>
