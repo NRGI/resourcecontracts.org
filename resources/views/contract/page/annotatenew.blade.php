@@ -4,39 +4,6 @@
     <link rel="stylesheet" href="{{ url('css/contract-view.css') }}" />
     <link rel="stylesheet" href="{{ url('css/select2.min.css') }}" />
     <link rel="stylesheet" href="{{ url('css/jquery-ui.css') }}" />
-    <style>
-        .ui-slider-horizontal .ui-slider-range-min {
-            background: none;
-        }
-        .text-viewer>span:first-child {padding:38px 10px}
-        .pdf-zoom-options > div{
-            padding: 0px !important;
-            border: none;
-            background-position: 0 3px;
-            height: 30px;
-        }
-        .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default
-        {
-            border-radius: 50%;
-            background: #333333;
-            outline: none;
-        }
-
-        .ui-slider-horizontal .ui-slider-handle
-        {
-            margin-left: -0.4em;
-            height: 15px;
-            width: 15px;
-            margin-top: 1px;
-        }
-
-        .ui-widget-content .ui-state-focus {
-            background-color: #4797DF !important;
-            margin-left:-0.4em !important;
-            margin-top: 1px !important;
-        }
-        .loading {margin-top:250px; text-align: center}
-    </style>
 @stop
 @section('content')
     <div id="content">

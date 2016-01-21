@@ -628,3 +628,76 @@
 .unused-categories > span:not(:first-of-type)+div {
     margin: 20px 0 3px;
 }
+
+.ui-slider-horizontal .ui-slider-range-min {
+    background: none;
+}
+.text-viewer>span:first-child {padding:38px 10px}
+.pdf-zoom-options > div{
+    padding: 0px !important;
+    border: none;
+    background-position: 0 3px;
+    height: 30px;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default
+{
+    border-radius: 50%;
+    background: #333333;
+    outline: none;
+}
+
+.ui-slider-horizontal .ui-slider-handle
+{
+    margin-left: -0.4em;
+    height: 15px;
+    width: 15px;
+    margin-top: 1px;
+}
+
+.ui-widget-content .ui-state-focus {
+    background-color: #4797DF !important;
+    margin-left:-0.4em !important;
+    margin-top: 1px !important;
+}
+.loading {margin-top:250px; text-align: center}
+
+.head-wrap > div {
+    float: left;
+}
+
+.pdf-zoom-options > .btn-default  a {
+    line-height: 20px;
+    display: block;
+}
+
+.pdf-zoom-options {
+    padding: 7px 0;
+    border-left: 1px solid #DCDFE2  ;
+    float: left;
+    margin: 0;
+}
+
+.pdf-zoom-options > span {
+    font-size: 14px;
+    margin-left: 11px;
+    margin-top: 6px;
+}
+
+.pdf-zoom-options > .btn-default  {
+    width: 24px;
+    height: 22px;
+    background: #fff;
+    border: 1px solid #ccc;
+    text-align: center;
+    margin: 5px 10px;
+    padding: 0;
+}
+.pdf-zoom-options > .btn-default  a {
+    line-height: 20px;
+    display: block;
+}
+
+.pdf-zoom-options > * {
+    float: left;
+    margin: 6px 0;
+}

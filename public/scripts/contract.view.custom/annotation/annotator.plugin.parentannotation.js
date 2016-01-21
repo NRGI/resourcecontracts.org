@@ -56,7 +56,13 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
 
         parents.map(function (a) {
             selected = (a.get('id') == annotation.parent) ? 'selected="selected"' : '';
-            select += '<option value="' + a.get('id') + '"' + selected + '>' + a.get('text') + '</option>';
+            var text = a.get('text');
+            var textArr = text.split(" ");
+            text = textArr.splice(0, 10).join(" ");
+            if (textArr.length > 10) {
+                text += '...';
+            }
+            select += '<option value="' + a.get('id') + '"' + selected + '>' + text + '</option>';
         });
 
         return select;
@@ -124,7 +130,15 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
                     view = 'text';
                     link = "#/" + view + "/page/" + a.get('page') + "/annotation/" + a.get('id');
                 }
-                html += '<p style="padding: 5px 0px;"><a data-view="' + view + '" data-annotation="' + a.get('id') + '" class="parent_annotation_link" href="' + link + '">' + a.get('text') + '</a></p>';
+
+                var text = a.get('text');
+                var textArr = text.split(" ");
+                text = textArr.splice(0, 10).join(" ");
+                if (textArr.length > 10) {
+                    text += '...';
+                }
+
+                html += '<p style="padding: 5px 0px;"><a data-view="' + view + '" data-annotation="' + a.get('id') + '" class="parent_annotation_link" href="' + link + '">' + text + '</a></p>';
             });
 
             $(el).html(html);
