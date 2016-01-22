@@ -10,6 +10,10 @@ var PdfPaginationView = React.createClass({
         this.refs.userInput.getDOMNode().value = page_no;
         this.setState({visiblePage: page_no});
         this.props.contractApp.setCurrentPage(page_no);
+        var wrapperEl = $('.pdf-annotator');
+        wrapperEl.animate({
+            scrollTop: 0
+        }, 'fast')
     },
     clickPrevious: function (e) {
         e.preventDefault();

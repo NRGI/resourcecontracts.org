@@ -34,7 +34,7 @@ var AnnotationItem = React.createClass({
         }
         function shallShowEllipse(text) {
             var words = (text + "").split(' ');
-            if(words.length > self.state.maxWords) {
+            if(words.length >= self.state.maxWords) {
                 return true;
             }
             return false;
@@ -129,14 +129,17 @@ var AnnotationItem = React.createClass({
                 this.props.contractApp.setView("pdf");
                 this.props.contractApp.setSelectedAnnotation(self.state.id);
                 if (self.props.contractApp.getCurrentPage() == self.state.pageNo) {
-                    self.props.contractApp.showPdfAnnotationPopup(self.state.id);
+                    var self = this;
+                    setTimeout(function () {
+                        self.props.contractApp.showPdfAnnotationPopup(self.state.id)
+                    }, 300);
                 }
                 this.props.contractApp.setCurrentPage(self.state.pageNo);
                 this.props.contractApp.triggerUpdatePdfPaginationPage(self.state.pageNo);
                 break;
             case "text":
                 this.props.contractApp.trigger("annotations:highlight", {id: self.state.id});
-                self = this;
+                var self = this;
                 setTimeout(function () {
                     self.props.contractApp.showTextAnnotationPopup(self.state.id)
                 }, 300);
@@ -156,15 +159,17 @@ var AnnotationItem = React.createClass({
         var ellipsistext = "";
         var showText = this.state.text;
         if(this.state.showEllipse) {
-            showText = this.state.text;
-            ellipsistext = " ... less";
+            showText = this.state.text + '...';
+            ellipsistext = " less";
             if(!this.state.showMoreFlag) {
-                ellipsistext = " ... more";
+                ellipsistext = " more";
                 showText = this.state.shortText;
             }
         }
 
         if (this.state.text != '') {
+            var section = this.props.annotation.get('section');
+            showText = (section !='') ? showText +' - '+ section +' ' : showText;
             showText = (<span className="annotation-item-content">{showText}<nobr><a className="annotation-item-ellipsis" href="#" onClick={this.handleEllipsis} dangerouslySetInnerHTML={{__html: ellipsistext}}></a></nobr></span>);
         }
         else {
@@ -278,7 +283,10 @@ var AnnotationsList = React.createClass({
             self.forceUpdate();
         });
         this.props.contractApp.on("annotations:highlight", function(annotation) {
-            setTimeout(self.scrollToAnnotation(annotation.id), 1000);
+            var that = self
+            setTimeout(function(){
+                that.scrollToAnnotation(annotation.id);
+            }, 100);
         });
         this.props.contractApp.on("annotations:scroll-to-selected-annotation", function() {
             self.scrollToAnnotation(self.props.contractApp.getSelectedAnnotation());
