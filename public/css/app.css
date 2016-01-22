@@ -7675,3 +7675,12 @@ input.error {
 .landmatrix-page-wrap {
     display: none;
 }
+
+table td > a {
+    color: #333;
+}
+
+table td > a .glyphicon-eye-open {
+    top: 2px;
+    left: 6px;
+}

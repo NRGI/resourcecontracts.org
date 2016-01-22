@@ -52,7 +52,7 @@ class MTurkController extends Controller
     {
         $filter = [
             'status'   => $request->get('status', Contract::MTURK_SENT),
-            'category' => $request->get('category', 'all')
+            'category' => $request->get('category', 'all'),
         ];
 
         $contracts = $this->task->getContracts($filter);
@@ -230,14 +230,15 @@ class MTurkController extends Controller
      */
     public function allTasks(Request $request)
     {
-        $filter = [
+        $filter       = [
             'status'   => $request->get('status', null),
-            'approved' => $request->get('approved', null)
+            'approved' => $request->get('approved', null),
+            'hitid'    => $request->get('hitid', null)
         ];
+        $tasks        = $this->task->allTasks($filter);
+        $show_options = is_null($filter['hitid']) ? true : false;
 
-        $tasks = $this->task->allTasks($filter);
-
-        return view('mturk.allTasks', compact('tasks'));
+        return view('mturk.allTasks', compact('tasks', 'show_options'));
     }
 
 }
