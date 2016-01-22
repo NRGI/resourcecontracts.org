@@ -83,10 +83,12 @@ var AnnotatorjsView = Backbone.View.extend({
     },
     reload: function () {
         var self = this;
+        $('.text-annotator').find('span').removeClass('annotator-hl');
         var page_no = this.contractApp.getCurrentPage(),
             contract_id = this.contractApp.getContractId();
         var store = this.content.data('annotator').plugins.Store;
-        if (store.annotations) store.annotations = [];
+        store.annotations = [];
+
         store.options.loadFromSearch = {
             'contract': contract_id,
         };

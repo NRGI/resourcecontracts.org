@@ -210,12 +210,18 @@ var TextViewer = React.createClass({
         var self = this;
         this.props.contractApp.on("searchresults:ready", function () {
             if (self.annotator) {
-                setTimeout(self.annotator.reload(), 1000);
+                var that = self;
+                setTimeout(function(){
+                    that.annotator.reload()
+                }, 300);
             }
         });
         this.props.contractApp.on("searchresults:close", function () {
             if (self.annotator) {
-                setTimeout(self.annotator.reload(), 1000);
+                var that = self;
+                setTimeout(function(){
+                    that.annotator.reload()
+                }, 300);
             }
         });
         this.props.pagesCollection.on("reset", function () {

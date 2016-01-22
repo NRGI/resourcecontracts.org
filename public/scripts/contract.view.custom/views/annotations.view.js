@@ -145,7 +145,6 @@ var AnnotationItem = React.createClass({
                 }, 300);
                 this.props.contractApp.setView("text");
                 this.props.contractApp.setCurrentPage(self.state.pageNo);
-              //  this.props.contractApp.triggerScrollToTextPage();
                 break;
         }
     },
