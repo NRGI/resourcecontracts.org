@@ -418,7 +418,6 @@ class ContractService
         $contract->updated_by            = $this->auth->id();
         $contract->metadata_status       = Contract::STATUS_DRAFT;
 
-
         try {
             if (!$contract->save()) {
                   return false;
@@ -432,7 +431,6 @@ class ContractService
             if(isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '0'){
                 $this->contract->removeAsSupportingContract($contract->id);
             }
-            $this->contract->updateOCID($contract);
             $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
 
             $this->logger->activity('contract.log.update', ['contract' => $contract->title], $contract->id);
