@@ -158,11 +158,11 @@ var AnnotationItem = React.createClass({
         var ellipsistext = "";
         var showText = this.state.text;
         if(this.state.showEllipse) {
-            showText = this.state.text + '...';
+            showText = this.state.text;
             ellipsistext = " less";
             if(!this.state.showMoreFlag) {
                 ellipsistext = " more";
-                showText = this.state.shortText;
+                showText = this.state.shortText + '...';
             }
         }
 
