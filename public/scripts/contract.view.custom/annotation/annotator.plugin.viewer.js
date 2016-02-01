@@ -47,8 +47,6 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
                 '<a href="#' + "" + '" class="annotation-viewer-more"> >> </a>' +
                 '</p>';
 
-            $(textDiv).find('.annotation-viewer-text').data('annotation', annotation);
-
             $(textDiv).on("click", "a", function (e) {
                 e.preventDefault();
                 contractApp.trigger("annotations:highlight", annotation);

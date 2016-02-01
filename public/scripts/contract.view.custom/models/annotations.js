@@ -21,14 +21,17 @@ var AnnotationsCollection = Backbone.Collection.extend({
         return response.result;
     },
     parentAnnotations: function (annotation) {
-
         var parents = [];
         this.models.map(function (a) {
-            if (a.get('category_key') == annotation.category && a.get('parent') == '' && a.get('id') != annotation.id) {
-                parents.push(a);
+            if (a.get('category_key') == annotation.category && a.get('parent') == '') {
+                if (annotation.id == null) {
+                    parents.push(a);
+                }
+                else if (a.get('id') != annotation.id) {
+                    parents.push(a);
+                }
             }
         });
-
         return parents;
     },
     childAnnotations: function (annotation) {

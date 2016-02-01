@@ -20,7 +20,10 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
 
         var self = this;
         $(document).on('change', '#annotation-plugin-select-category', function () {
-            var annotation = $('.annotation-viewer-text').data('annotation');
+            var annotation = $(this).parent().parent().find('#annotation-parent-dropdown').data('annotation');
+            if (annotation == null) {
+                annotation = [];
+            }
             annotation.category = $(this).val();
             var select = getAnnotationSelect(annotation);
             $(self.field).find('.select2-selection__rendered').html('<span class="select2-selection__placeholder">Select parent annotation</span>');
@@ -51,7 +54,6 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
     function getAnnotationSelect(annotation) {
         var select = '<option value="">Select parent annotation</option>';
         var selected = "";
-
         var parents = annotationsCollection.parentAnnotations(annotation);
 
         parents.map(function (a) {
@@ -84,7 +86,6 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
 
     ParentAnnotation.prototype.updateParentAnnotation = function (el, annotation) {
         var select = getAnnotationSelect(annotation);
-
         if (isParent(annotation.id)) {
             $(el).find('select').hide();
             $(el).find('select').siblings('.select2').remove();
@@ -104,6 +105,8 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
             $(el).find('select').html(select);
             $(el).find('select').select2({placeholder: 'Select parent annotation', allowClear: true, theme: "classic"});
         }
+
+        $(el).find('select').data('annotation', annotation);
     };
 
     ParentAnnotation.prototype.updateViewer = function (el, annotation) {
