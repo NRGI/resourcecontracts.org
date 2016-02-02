@@ -123,7 +123,7 @@ Annotator.Plugin.Categories = (function (superClass) {
         if (annotation.category == null) {
             annotation.category = this.options.emptyCategory;
         }
-        categoryHTML = "";
+        categoryHTML = "<option value=''>Select Category</option>";
         ref = this.options.category;
 
         var subHeaderPattern = new RegExp("^[0-9]+(-[a-zA-Z0-9-]+)");

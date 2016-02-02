@@ -685,7 +685,7 @@ header {
     right: 14px;
     position: relative;
     background: url(../images/ic-delete.png) no-repeat right;
-    font-size: 0px!important;
+    font-size: 0px !important;
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -737,13 +737,11 @@ header {
     padding: 10px;
 }
 
-.form-group .discussion-wrapper
-{
-     margin: 50px 50px 0px;
+.form-group .discussion-wrapper {
+    margin: 50px 50px 0px;
 }
 
-.form-group .pull-right
-{
+.form-group .pull-right {
     margin-right: 10px;
 }
 

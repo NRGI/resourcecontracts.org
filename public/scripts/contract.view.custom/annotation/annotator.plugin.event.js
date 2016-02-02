@@ -80,6 +80,11 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
     function onEditorShownHandler(viewer) {
         var viewPort = contractApp.getView() == 'pdf' ? 'pdf' : 'text';
         var viewerEl = $(viewer.element);
+
+        //move comment input to last in order
+        var commentEl = viewerEl.find('.annotator-listing li textarea');
+        commentEl.parent().appendTo(viewerEl.find('.annotator-listing'));
+
         var position = viewerEl.position();
         var wrapperEl = $('.' + viewPort + '-annotator');
         var widgetEl = wrapperEl.find('form.annotator-widget');

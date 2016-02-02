@@ -14,7 +14,7 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
     function AnnotatorNRGIViewer(element, options) {
         AnnotatorNRGIViewer.__super__.constructor.apply(this, arguments);
     };
-    AnnotatorNRGIViewer.prototype.onClickAnnotionMore = function (e, annotation) {
+    AnnotatorNRGIViewer.prototype.onClickAnnotionMore = function d(e, annotation) {
         e.preventDefault();
         AnnotatorNRGIViewer.contractApp.trigger("annotations:highlight", obj.annotation);
     },
@@ -28,10 +28,18 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
             var textDiv = $(field.parentNode).find('div:first-of-type')[0];
 
             var text = '';
+            var annotatedText = annotation.text;
 
-            if (annotation.text) {
-                text = annotation.text.split(" ").splice(0, 10).join(" ");
-                if (annotation.text.split(" ").length > 10) {
+            if (parseInt(annotation.parent) > 0) {
+                var parentAnnotation = annotationsCollection.get(annotation.parent);
+                if (parentAnnotation) {
+                    annotatedText = parentAnnotation.get('text');
+                }
+            }
+
+            if (annotatedText != '') {
+                text = annotatedText.split(" ").splice(0, 10).join(" ");
+                if (annotatedText.split(" ").length > 10) {
                     text = text + " ...";
                 }
             }

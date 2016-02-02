@@ -701,3 +701,7 @@
     float: left;
     margin: 6px 0;
 }
+
+.annotator-editor .annotator-item {
+    padding: 7px 5px;
+}
