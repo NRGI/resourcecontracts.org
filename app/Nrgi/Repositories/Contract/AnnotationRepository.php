@@ -211,8 +211,8 @@ class AnnotationRepository implements AnnotationRepositoryInterface
         $annotationObj   = $this->annotation->find($id);
         $annotationArray = json_encode($annotationObj->annotation);
         $annotationArray = json_decode($annotationArray, true);
-        if (array_key_exists('page', $data)) {
-            $annotationObj->document_page_no = $data['page'];
+        if (array_key_exists('document_page_no', $data)) {
+            $annotationObj->document_page_no = $data['document_page_no'];
         }
         if (array_key_exists('text', $data)) {
             $annotationArray['text'] = $data['text'];

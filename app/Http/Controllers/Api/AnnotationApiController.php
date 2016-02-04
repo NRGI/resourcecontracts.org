@@ -81,7 +81,7 @@ class AnnotationApiController extends Controller
     {
         $id   = $request->get('pk');
         $data = [];
-        if (!in_array($request->get('name'), ['text', 'category','page'])) {
+        if (!in_array($request->get('name'), ['text', 'category', 'document_page_no'])) {
             return response()->json(['status' => 'error']);
         }
         $data[$request->get('name')] = $request->get('value');
