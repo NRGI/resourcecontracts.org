@@ -6,7 +6,6 @@ use App\Nrgi\Entities\Contract\Annotation;
 <div class="state-wrap">
     <div class="state-wrap-title">
     <p style="float: left"> @lang('Contract State'):
-        @if($current_user->isAdmin())
             {!!Form::open(['route'=>['contract.unpublish', $contract->id], 'style'=>"float:right;  padding-left: 10px;",
             'method'=>'post'])!!}
             {!!Form::button(trans('contract.unpublish.all'), ['type'=>'submit','class'=>'btn btn-danger btn-sm confirm',
@@ -18,7 +17,6 @@ use App\Nrgi\Entities\Contract\Annotation;
             {!!Form::button(trans('contract.publish.all'), ['type'=>'submit','class'=>'btn btn-success btn-sm confirm',
             'data-confirm'=>trans('contract.publish.confirm')])!!}
             {!!Form::close()!!}
-        @endif
     </p>
     </div>
 
