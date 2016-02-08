@@ -130,6 +130,10 @@ return [
     'is_supporting_document'               => 'Is Associated Document',
     'add_supporting_document'              => 'Add Associated Document',
     'cancel'                               => 'Cancel',
+    'annexes'                              => 'Is annexes missing from copy',
+    'pages'                                => 'Is pages missing from copy',
+    'annexes_display'                      => 'Annexes missing from copy',
+    'pages_display'                        => 'Pages missing from copy',
     /*Logs*/
     'log'                                  => [
         'save'       => 'Contract created',

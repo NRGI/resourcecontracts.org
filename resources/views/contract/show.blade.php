@@ -265,9 +265,11 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
            href="{{route('contract.comment.list',$contract->id)}}">View all comments</a>
 
         <ul class="contract-info">
-            <li><strong>@lang('open Contracting ID'):</strong>
+            <li><strong>@lang('Open Contracting ID'):</strong>
                 {{$contract->metadata->open_contracting_id or ''}}
             </li>
+
+
 
             <li><strong>@lang('contract.created_by'):</strong>
                 {{$contract->created_user->name}} on {{$contract->created_datetime->format('D M d, Y h:i A')}} (GMT)
@@ -289,7 +291,23 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     :</strong> {{$contract->metadata->contract_identifier or ''}}
                 {!! discussion($discussions,$discussion_status, $contract->id,'contract_identifier','metadata') !!}
             </li>
+            <li>
+                <strong>@lang('contract.annexes_display'):</strong>
+                @if($contract->metadata->annexes_missing == 1)Yes
+                @elseif($contract->metadata->annexes_missing == 0)No
+                @else Not Available
+                @endif
+                {!! discussion($discussions,$discussion_status, $contract->id,'annexes_missing','metadata') !!}
+            </li>
 
+            <li>
+                <strong>@lang('contract.pages_display'):</strong>
+                @if( $contract->metadata->pages_missing == 1)Yes
+                @elseif($contract->metadata->pages_missing == 0)No
+                @else Not Available
+                @endif
+                {!! discussion($discussions,$discussion_status, $contract->id,'pages_missing','metadata') !!}
+            </li>
 
             @if(isset($contract->metadata->language))
                 <li>
