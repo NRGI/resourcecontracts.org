@@ -295,7 +295,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <strong>@lang('contract.annexes_display'):</strong>
                 @if($contract->metadata->annexes_missing == 1)Yes
                 @elseif($contract->metadata->annexes_missing == 0)No
-                @else Not Available
+                @elseif ($contract->metadata->annexes_missing == -1)Not Available
                 @endif
                 {!! discussion($discussions,$discussion_status, $contract->id,'annexes_missing','metadata') !!}
             </li>
@@ -304,7 +304,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <strong>@lang('contract.pages_display'):</strong>
                 @if( $contract->metadata->pages_missing == 1)Yes
                 @elseif($contract->metadata->pages_missing == 0)No
-                @else Not Available
+                @elseif($contract->metadata->pages_missing == -1)Not Available
                 @endif
                 {!! discussion($discussions,$discussion_status, $contract->id,'pages_missing','metadata') !!}
             </li>
