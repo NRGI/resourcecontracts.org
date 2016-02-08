@@ -5,8 +5,7 @@ use App\Nrgi\Entities\Contract\Contract; ?>
     <span class="published">@lang('Published')</span>
 @elseif($contract->metadata_status == Contract::STATUS_COMPLETED)
     <span class="completed">@lang('Completed')</span>
-    @if($current_user->can('publish-metadata') )
-        <div class="pull-right">
+    <div class="pull-right">
             <button data-toggle="modal" data-target=".metadata-publish-modal" class="btn btn-success">@lang("Publish")
             </button>
             <button data-toggle="modal" data-target=".metadata-reject-modal" class="btn btn-danger">@lang("Reject")
@@ -68,13 +67,10 @@ use App\Nrgi\Entities\Contract\Contract; ?>
                 </div>
             </div>
         </div>
-    @endif
 @elseif($contract->metadata_status == Contract::STATUS_REJECTED)
     <span class="rejected">@lang('Rejected')</span>
 @else
     <span class="draft">@lang('Draft')</span>
-
-    @if($current_user->can('complete-metadata') )
         <div class="pull-right">
             <button data-toggle="modal" data-target=".metadata-complete-modal" class="btn btn-primary">@lang('Complete')
             </button>
@@ -107,7 +103,6 @@ use App\Nrgi\Entities\Contract\Contract; ?>
                 </div>
             </div>
         </div>
-    @endif
 @endif
 
 @if($contract->metadata_comment)
