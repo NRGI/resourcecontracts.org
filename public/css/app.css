@@ -7605,6 +7605,7 @@ input.error {
     margin-bottom: 20px;
     overflow: hidden;
     border-bottom: solid 1px #ccc;
+    list-style: none;
 }
 
 .annotation-list li span {
@@ -7613,10 +7614,30 @@ input.error {
     display: block;
 }
 
+.annotation-type-icon {
+    float: left;
+    width: 22px;
+    height: 22px;
+}
+
+.annotation-type-icon+span {
+    margin: 5px 0 0 4px;
+    float: left;
+}
+
+.annotation-text-icon {
+    background: url(../images/ic-sprite-new.png) no-repeat -401px 4px;
+}
+
+.annotation-pdf-icon {
+    background: url(../images/ic-sprite-new.png) no-repeat -487px 4px;
+}
+
 .annotation-list li p {
     color: #8b8b8b;
     margin-right: 6px;
     margin-bottom: 4px;
+    clear: both;
 }
 
 .annotation-list li > a {
