@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Input;
 
 /**
  * Class ContractController
+ * @property DownloadService downloadService
  * @package App\Http\Controllers\Contract
  */
 class ContractController extends Controller
@@ -391,5 +392,6 @@ class ContractController extends Controller
 
         return view('contract.type_selection', compact('parentContracts'));
     }
+
 
 }

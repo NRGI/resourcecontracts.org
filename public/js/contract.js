@@ -2,6 +2,10 @@ $(function () {
     $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
     $('.parent_company').select2({placeholder: "Select", allowClear: true, tags: true, theme: "classic"});
     $('.resource-list').select2({placeholder: "Select", allowClear: true, tags: true, theme: "classic"});
+    $('.el_government_entity').select2({
+        placeholder: "Select", allowClear: true, tags: true, theme: "classic"
+    });
+
     $('.contract-form').validate();
 
     $('.datepicker').datetimepicker({
@@ -10,7 +14,6 @@ $(function () {
         scrollInput: false
     });
 
-    
 
     $('body').on('hidden.bs.modal', '.modal-comment', function (event) {
         var modal = $(this);
@@ -162,7 +165,9 @@ $(function () {
         Mustache.parse(template);
         var rendered = Mustache.render(template, {item: g});
         $('.government_entity .government-item:last-child').after(rendered);
-    })
+        var elementId = "government_" + g + "_entity";
+        $("#country").trigger("change", [{id: elementId}]);
+    });
 
 
     $(document).on('click', '.selected-document .document .delete', function (e) {
@@ -189,17 +194,65 @@ $(function () {
     });
 
 
-    $(document).on('change','.signature_date',function(e){
+    $(document).on('change', '.signature_date', function (e) {
         var date = $(".signature_date").val();
         date = date.split("-");
         $(".signature_year").val(date[0]);
-        if(date[0]!=""){
-            $(".signature_year").attr("readonly",true);
-        }else{
+        if (date[0] != "") {
+            $(".signature_year").attr("readonly", true);
+        } else {
             $(".signature_year").removeAttr("readonly");
         }
 
-    })
+    });
+
+    $('.el_government_entity').select2({
+        tags: true
+    });
+    if(country_code)
+    {
+        loadGovernmentEntities(country_code);
+    }
+    $(document).on('change', '#country', function (e) {
+        var country = $(this).val();
+        loadGovernmentEntities(country);
+
+    });
+
+
+    function loadGovernmentEntities(country)
+    {
+        var entities = govEntity[country];
+        options='';
+        if(entities)
+        {
+            options +="<option value=''>Select</option>";
+            for (i = 0; i < entities.length; i++) {
+                options += "<option value ='" + entities[i]['entity'] + "'>" + entities[i]['entity'] + "</option>";
+            }
+        }
+
+        $('.el_government_entity').select2({
+            placeholder: "Select", allowClear: true, tags: true, theme: "classic"
+        });
+        $('.el_government_entity').empty();
+        $('.el_government_entity').append(options);
+        $(document).on('change', '.el_government_entity', function (e) {
+            var entity = $(this).val();
+            if(entities)
+            {
+                identifier ="";
+                for (i = 0; i < entities.length; i++) {
+                    if(entities[i]['entity']==entity)
+                    {
+                        identifier=entities[i]['identifier'];
+                    }
+                }
+                $(this).parent().parent().parent().find('.el_government_identifier').val(identifier)
+            }
+        });
+    }
+
 
 });
 

@@ -3,8 +3,17 @@ var TextEditorContainer = React.createClass({
         return {
             text: "", 
             page_no: 0,
-            message: ""
+            message: "",
+            stateChange : false
         }
+    },
+    setStateChange:function(state)
+    {
+      this.stateChange=state;
+    },
+    getStateChange:function()
+    {
+        return this.stateChange;
     },
     loadText: function() {
         var self = this;
@@ -40,12 +49,26 @@ var TextEditorContainer = React.createClass({
         this.props.contractApp.on("change:page_no", function() {
             self.loadText();
         });
+
+            window.addEventListener("beforeunload", function (e) {
+                var confirmationMessage = "Save your changes.";
+                if(self.getStateChange())
+                {
+                    (e || window.event).returnValue = confirmationMessage;
+                    return confirmationMessage;
+                }
+
+            });
+
+
     },
     onChange: function(evt) {
         this.html = evt.target.value;
+        this.setStateChange(true);
     },
     saveClicked: function() {
         var self = this;
+        self.setStateChange(false);
         $.ajax({
             url: this.props.saveApi,
             data: {
