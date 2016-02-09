@@ -66,7 +66,7 @@ $groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
     </div>
 
     @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'contract_name','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'contract_name','metadata') !!}
     @endif
 </div>
 
@@ -80,7 +80,7 @@ $groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
         ["class"=>"form-control"])!!}
     </div>
     @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'contract_identifier','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'contract_identifier','metadata') !!}
     @endif
 </div>
 
@@ -93,7 +93,7 @@ $groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
         isset($contract->metadata->language)?$contract->metadata->language:null, ["class"=>"required form-control"])!!}
     </div>
     @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'language','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'language','metadata') !!}
     @endif
 </div>
 
@@ -108,7 +108,7 @@ $groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
         <label id="country-error" class="error" for="country"></label>
     </div>
     @if($action == 'edit')
-     {!! discussion($discussions,$discussion_status, $contract->id,'country','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'country','metadata') !!}
     @endif
 </div>
 <?php
@@ -129,7 +129,7 @@ if (isset($contract->metadata->resource)) {
         "class"=>"required form-control resource-list"])!!}
     </div>
     @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'resource','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'resource','metadata') !!}
     @endif
 </div>
 
@@ -155,7 +155,7 @@ if (isset($contract->metadata->resource)) {
                             ["class"=>"form-control"])!!}
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'entity-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'entity-'.$k,'metadata') !!}
                         @endif
 
                     </div>
@@ -169,7 +169,7 @@ if (isset($contract->metadata->resource)) {
                             ["class"=>"form-control"])!!}
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'identifier-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'identifier-'.$k,'metadata') !!}
                         @endif
                     </div>
                     @if($k>0)
@@ -237,11 +237,9 @@ if (isset($contract->metadata->resource)) {
     </div>
 
     @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'type_of_contract','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'type_of_contract','metadata') !!}
     @endif
 </div>
-
-
 
 
 <div class="form-group">
@@ -296,7 +294,7 @@ if (isset($contract->metadata->resource)) {
         @endif
     </div>
     @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'document_type','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'document_type','metadata') !!}
     @endif
 </div>
 
@@ -325,7 +323,7 @@ if (isset($contract->metadata->resource)) {
                             ["class"=>"required form-control"] )!!}
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'name-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'name-'.$k,'metadata') !!}
                         @endif
                     </div>
 
@@ -338,7 +336,7 @@ if (isset($contract->metadata->resource)) {
                             ,["class"=>"form-control","step"=>"any","min"=>0,"max"=>1])!!}
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'participation_share-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'participation_share-'.$k,'metadata') !!}
                         @endif
                     </div>
 
@@ -352,7 +350,7 @@ if (isset($contract->metadata->resource)) {
                             ["class"=>"form-control"])!!}
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'jurisdiction_of_incorporation-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'jurisdiction_of_incorporation-'.$k,'metadata') !!}
                         @endif
                     </div>
 
@@ -365,7 +363,7 @@ if (isset($contract->metadata->resource)) {
                             ["class"=>"form-control"])!!}
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'registration_agency-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'registration_agency-'.$k,'metadata') !!}
                         @endif
                     </div>
 
@@ -378,7 +376,7 @@ if (isset($contract->metadata->resource)) {
                             ["class"=>"datepicker form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'company_founding_date-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'company_founding_date-'.$k,'metadata') !!}
                         @endif
                     </div>
 
@@ -391,7 +389,7 @@ if (isset($contract->metadata->resource)) {
                             ["class"=>"form-control"])!!}
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'company_address-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'company_address-'.$k,'metadata') !!}
                         @endif
                     </div>
 
@@ -404,7 +402,7 @@ if (isset($contract->metadata->resource)) {
                             ["class"=>"form-control"])!!}
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'company_number-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'company_number-'.$k,'metadata') !!}
                         @endif
                     </div>
 
@@ -432,7 +430,7 @@ if (isset($contract->metadata->resource)) {
 
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'parent_company-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'parent_company-'.$k,'metadata') !!}
                         @endif
                     </div>
 
@@ -447,7 +445,7 @@ if (isset($contract->metadata->resource)) {
                             ["class"=>"digit form-control"])!!}
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'open_corporate_id-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'open_corporate_id-'.$k,'metadata') !!}
                         @endif
                     </div>
 
@@ -460,7 +458,7 @@ if (isset($contract->metadata->resource)) {
                             {!! Form::radio("company[$i][operator]", -1, (isset($v->operator) && $v->operator==-1)?true:false, ['class' => 'field']) !!} Not Available
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'operator-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'operator-'.$k,'metadata') !!}
                         @endif
                     </div>
                     @if($k > 0)
@@ -579,7 +577,7 @@ if (isset($contract->metadata->resource)) {
         ["class"=>"form-control"])!!}
     </div>
     @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'project_title','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'project_title','metadata') !!}
     @endif
 </div>
 
@@ -591,7 +589,7 @@ if (isset($contract->metadata->resource)) {
         ["class"=>"form-control"])!!}
     </div>
     @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'project_identifier','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'project_identifier','metadata') !!}
     @endif
 </div>
 
@@ -614,7 +612,7 @@ if (isset($contract->metadata->resource)) {
                             ["class"=>"form-control"])!!}
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'license_name-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'license_name-'.$k,'metadata') !!}
                         @endif
                     </div>
 
@@ -627,7 +625,7 @@ if (isset($contract->metadata->resource)) {
                             ["class"=>"form-control"])!!}
                         </div>
                         @if($action == 'edit')
-                                {!! discussion($discussions,$discussion_status, $contract->id,'license_identifier-'.$k,'metadata') !!}
+                            {!! discussion($discussions,$discussion_status, $contract->id,'license_identifier-'.$k,'metadata') !!}
                         @endif
                     </div>
                     @if($k>0)
@@ -674,7 +672,7 @@ if (isset($contract->metadata->resource)) {
         ["class"=>"form-control"])!!}
     </div>
     @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'source_url','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'source_url','metadata') !!}
     @endif
 </div>
 
@@ -704,7 +702,7 @@ if (isset($contract->metadata->resource)) {
         @endif
     </div>
     @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'disclosure_mode','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'disclosure_mode','metadata') !!}
     @endif
 </div>
 
@@ -717,7 +715,7 @@ if (isset($contract->metadata->resource)) {
         ["class"=>"datepicker form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
     </div>
     @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'date_retrieval','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'date_retrieval','metadata') !!}
     @endif
 </div>
 
@@ -739,7 +737,7 @@ if (isset($contract->metadata->resource)) {
         <label id="category[]-error" class="error" for="category[]"></label>
     </div>
     @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'category','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'category','metadata') !!}
     @endif
 </div>
 
@@ -776,7 +774,7 @@ if (isset($contract->metadata->resource)) {
         {!! Form::textarea('contract_note',  isset($contract->metadata->contract_note)?$contract->metadata->contract_note:null, ['class' => 'form-control' , 'rows' => '6' ]) !!}
     </div>
     @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'contract_note','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'contract_note','metadata') !!}
     @endif
 </div>
 <h3>@lang('contract.associated_contracts')</h3>
@@ -821,9 +819,27 @@ if (isset($contract->metadata->resource)) {
         <label class="checkbox-inline">
             {!! Form::radio("is_supporting_document", 0, $is_parent_document_value, ['class' => 'field is-supporting-document',$disable_parent]) !!} No
         </label>
+    </div>
 
+</div>
+<hr>
+<div class="form-group">
+    {!! Form::label('pages_missing',trans('contract.pages'),['class'=>'col-sm-2 control-label']) !!}
+    <div class="col-sm-7">
+        {!! Form::radio('pages_missing', 1, false, ['class' => 'field' ]) !!} Yes
+        {!! Form::radio('pages_missing', 0, false, ['class' => 'field' ]) !!} No
+        {!! Form::radio('pages_missing', -1, true, ['class' => 'field']) !!} Not Available
     </div>
 </div>
+<div class="form-group">
+    {!! Form::label('annexes_missing',trans('contract.annexes'),['class'=>'col-sm-2 control-label']) !!}
+    <div class="col-sm-7">
+        {!! Form::radio('annexes_missing', 1, false, ['class' => 'field' ]) !!} Yes
+        {!! Form::radio('annexes_missing', 0, false, ['class' => 'field' ]) !!} No
+        {!! Form::radio('annexes_missing', -1, true, ['class' => 'field']) !!} Not Available
+    </div>
+</div>
+
 <div class="form-group parent-document"
      style="display: @if($action == 'edit' && isset($contract->metadata->is_supporting_document) &&  $contract->metadata->is_supporting_document==1 or ($is_supporting))block @else none @endif">
     {!! Form::label('translated_from', trans('contract.parent_document'), ['class'=>'col-sm-2 control-label parent-document-select'])!!}

@@ -47,10 +47,10 @@ class UpdateMetadata extends Command
      */
     public function fire()
     {
-        $contract_id  = $this->input->getOption('id');
+        $contract_id = $this->input->getOption('id');
 
         if (is_null($contract_id)) {
-            $contracts    = $this->contract->getList();
+            $contracts = $this->contract->getList();
             foreach ($contracts as $contract) {
                 $this->updateMetadata($contract);
             }
@@ -88,7 +88,7 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        $this->updateDocumentType($metadata);
+        $this->updateAdditionalMetadata($metadata);
 
         return $metadata;
     }
@@ -322,23 +322,21 @@ class UpdateMetadata extends Command
     }
 
     /**
-     * Update Additional Metadata. Add contract note , matrix page link and deal number.
+     * Update Additional Metadata. Add pages missing and annexes missing.
      *
      * @param $metadata
      */
     private function updateAdditionalMetadata(&$metadata)
     {
-        if (!isset($metadata['contract_note'])) {
-            $metadata['contract_note'] = "";
+
+        if (!isset($metadata['pages_missing'])) {
+            $metadata['pages_missing'] = "";
         }
 
-        if (!isset($metadata['matrix_page'])) {
-            $metadata['matrix_page'] = "";
+        if (!isset($metadata['annexes_missing'])) {
+            $metadata['annexes_missing'] = "";
         }
 
-        if (!isset($metadata['deal_number'])) {
-            $metadata['deal_number'] = "";
-        }
 
     }
 
@@ -367,13 +365,11 @@ class UpdateMetadata extends Command
      */
     private function multipleContractType(&$metadata)
     {
-        $contractType= $metadata['type_of_contract'];
-        if(!empty($contractType) && !is_array($contractType))
-        {
-            $metadata['type_of_contract']=[$contractType];
-        }
-        else{
-            $metadata['type_of_contract']=[];
+        $contractType = $metadata['type_of_contract'];
+        if (!empty($contractType) && !is_array($contractType)) {
+            $metadata['type_of_contract'] = [$contractType];
+        } else {
+            $metadata['type_of_contract'] = [];
         }
 
         return $metadata;
@@ -387,9 +383,8 @@ class UpdateMetadata extends Command
     private function updateDocumentType(&$metadata)
     {
 
-        if(!isset($metadata['document_type']) || (isset($metadata['document_type']) && $metadata['document_type']==''))
-        {
-            $metadata['document_type']="Contract";
+        if (!isset($metadata['document_type']) || (isset($metadata['document_type']) && $metadata['document_type'] == '')) {
+            $metadata['document_type'] = "Contract";
         }
 
         return $metadata;
