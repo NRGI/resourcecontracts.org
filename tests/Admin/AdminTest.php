@@ -19,7 +19,9 @@ class AdminTest extends IntegrationTest
      */
     public function getTotalNumberOfContracts()
     {
-        print_r($_ENV);
+        print_r(getenv('PROJECT'));
+        echo "getenv";
+
         $this->api = new ApiTester();
 
         return $this->api->get($this->apiUrl . '/contracts')->getJson()->total;
