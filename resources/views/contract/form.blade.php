@@ -207,9 +207,30 @@ if (isset($contract->metadata->resource)) {
 
 <button type="button" class="btn btn-default new-government-entity add-new-btn" id="addGov">Add new Government Entity</button>
 
+<div class="form-group">
+    <?php
+    $dt = isset($contract->metadata->document_type) ? $contract->metadata->document_type : old('document_type');
+    if (!in_array($dt, trans('codelist/documentType')) AND $dt != '') {
+        $dt = 'Others';
+    }
+    ?>
+    {!! Form::label('document_type', trans('contract.document_type'), ['class'=>'col-sm-2 control-label'])!!}  <span class="red">*</span>
+    <div class="col-sm-7">
+        {!! Form::select('document_type',[''=>'Select']+ trans('codelist/documentType'),
+        $dt, ["class"=>"form-control"])!!}
+        @if($dt == 'Others')
+            {!! Form::text('document_type',
+            isset($contract->metadata->document_type)?$contract->metadata->document_type:null,
+            ["id" =>'', "class"=>"form-control dt"])!!}
+        @endif
+    </div>
+    @if($action == 'edit')
+        {!! discussion($discussions,$discussion_status, $contract->id,'document_type','metadata') !!}
+    @endif
+</div>
 
 <div class="form-group">
-    <label for="type_of_contract" class="col-sm-2 control-label">@lang('contract.type_of_contract') <span class="red">*</span></label>
+    <label for="type_of_contract" class="col-sm-2 control-label">@lang('contract.type_of_contract')</label>
 
     <div class="col-sm-7">
         <?php
@@ -278,27 +299,6 @@ if (isset($contract->metadata->resource)) {
     @endif
 </div>
 
-<div class="form-group">
-    <?php
-    $dt = isset($contract->metadata->document_type) ? $contract->metadata->document_type : old('document_type');
-    if (!in_array($dt, trans('codelist/documentType')) AND $dt != '') {
-        $dt = 'Others';
-    }
-    ?>
-    {!! Form::label('document_type', trans('contract.document_type'), ['class'=>'col-sm-2 control-label'])!!}
-    <div class="col-sm-7">
-        {!! Form::select('document_type',[''=>'Select']+ trans('codelist/documentType'),
-        $dt, ["class"=>"form-control"])!!}
-        @if($dt == 'Others')
-            {!! Form::text('document_type',
-            isset($contract->metadata->document_type)?$contract->metadata->document_type:null,
-            ["id" =>'', "class"=>"form-control dt"])!!}
-        @endif
-    </div>
-    @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'document_type','metadata') !!}
-    @endif
-</div>
 
 <h3>@lang('contract.company')</h3>
 <hr/>
