@@ -79,18 +79,17 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                             });
                         }
                      );
-        $('.edit-annotation-page').on('click', function () {
-
-            <?php $pages = [];?>
-            @for ($i = 1; $i <= $contract->pages()->count(); $i++)
-               <?php $pages[$i] = $i; ?>
-            @endfor
+        <?php $pages = [];?>
+        @for ($i = 1; $i <= $contract->pages()->count(); $i++)
+        <?php $pages[$i] = $i; ?>
+        @endfor
+    $('.edit-annotation-page').on('click', function () {
              var pages = {!!json_encode($pages)!!};
                 $(this).editable({
                     source: pages,
                     select2: {
                         width: 400,
-                        placeholder: 'Select category',
+                        placeholder: 'Select pages',
                         allowClear: true
                     }
                 });
@@ -528,6 +527,11 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                             <li>
                                 <a href="javascript:void(0)" data-pk="{{$annotation->id}}"
                                    class="annotation-delete-btn">delete</a>
+                                @if(property_exists($annotation->annotation, "shapes"))
+                                    <span class="annotation-type-icon annotation-pdf-icon"></span>
+                                @else
+                                    <span class="annotation-type-icon annotation-text-icon"></span>
+                                @endif
                                 <span data-pk="{{$annotation->id}}" data-name="category"
                                       data-url="{{route('annotation.update')}}"
                                       data-value="{{$annotation->annotation->category}}" data-type="select"
@@ -536,12 +540,13 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                 <p data-pk="{{$annotation->id}}" data-name="text"
                                    data-url="{{route('annotation.update')}}" data-type="textarea"
                                    class="edit-annotation-text">{{$annotation->annotation->text}}</p>
-
                                 <p class="annotation-footer" style="margin-bottom: 10px;">
                                     @if(property_exists($annotation->annotation, "shapes"))
                                         <span style="clear: both; display: inline">
                                             <a  href="{{route('contract.annotate', ['id'=>$contract->id])}}#/pdf/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>
-                                            [Page {{$annotation->document_page_no}}]
+                                            <p data-pk="{{$annotation->id}}" data-name="document_page_no"
+                                               data-url="{{route('annotation.update')}}"
+                                               data-value={{$annotation->document_page_no}} data-type="select" class="edit-annotation-page"> [Page {{$annotation->document_page_no}}]</p>
                                         </span>
                                     @else
                                         <span style="clear: both;  display: inline">
