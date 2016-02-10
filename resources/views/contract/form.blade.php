@@ -823,22 +823,31 @@ if (isset($contract->metadata->resource)) {
 
 </div>
 <hr>
+    <div class="form-group">
+        {!! Form::label('annexes_missing',trans('contract.annexes'),['class'=>'col-sm-2 control-label']) !!}
+        <div class="col-sm-7">
+            <?php
+            $annexes_missing = isset($contract->metadata->annexes_missing) ? $contract->metadata->annexes_missing : -1;
+            ?>
+            {!! Form::radio('annexes_missing', 1 ,($annexes_missing=='1') ? true : null , ['class' => 'field']) !!} Yes
+            {!! Form::radio('annexes_missing', 0 ,($annexes_missing=='0') ? true : null , ['class' => 'field']) !!} No
+            {!! Form::radio('annexes_missing', -1,($annexes_missing=='-1') ? true : null, ['class' => 'field']) !!} Not Available
+        </div>
+    </div>
+
 <div class="form-group">
     {!! Form::label('pages_missing',trans('contract.pages'),['class'=>'col-sm-2 control-label']) !!}
     <div class="col-sm-7">
-        {!! Form::radio('pages_missing', 1, false, ['class' => 'field' ]) !!} Yes
-        {!! Form::radio('pages_missing', 0, false, ['class' => 'field' ]) !!} No
-        {!! Form::radio('pages_missing', -1, true, ['class' => 'field']) !!} Not Available
+        <?php
+        $pages_missing = isset($contract->metadata->pages_missing) ? $contract->metadata->pages_missing : -1;
+        ?>
+        {!! Form::radio('pages_missing', 1 ,($pages_missing=='1') ? true : null , ['class' => 'field']) !!} Yes
+        {!! Form::radio('pages_missing', 0 ,($pages_missing=='0') ? true : null , ['class' => 'field']) !!} No
+        {!! Form::radio('pages_missing', -1,($pages_missing=='-1') ? true : null , ['class' => 'field']) !!} Not Available
     </div>
+
 </div>
-<div class="form-group">
-    {!! Form::label('annexes_missing',trans('contract.annexes'),['class'=>'col-sm-2 control-label']) !!}
-    <div class="col-sm-7">
-        {!! Form::radio('annexes_missing', 1, false, ['class' => 'field' ]) !!} Yes
-        {!! Form::radio('annexes_missing', 0, false, ['class' => 'field' ]) !!} No
-        {!! Form::radio('annexes_missing', -1, true, ['class' => 'field']) !!} Not Available
-    </div>
-</div>
+
 
 <div class="form-group parent-document"
      style="display: @if($action == 'edit' && isset($contract->metadata->is_supporting_document) &&  $contract->metadata->is_supporting_document==1 or ($is_supporting))block @else none @endif">
