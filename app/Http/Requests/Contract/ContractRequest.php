@@ -23,8 +23,8 @@ class ContractRequest extends Request
             'participation_share' => 'numeric|min:0|max:1',
             'language'            => 'required',
             'resource'            => 'required',
-            'type_of_contract'    => 'required',
-            'category'            => 'required'
+            'category'            => 'required',
+            'document_type'       => 'required'
         ];
         foreach ($this->request->get('company') as $key => $val) {
             $rules['company.' . $key . '.name'] = 'required';
@@ -32,7 +32,7 @@ class ContractRequest extends Request
 
         if($this->request->get('document_type') == "Contract")
         {
-            $rules= [ 'document_type' => 'required' ];
+            $rules= [ 'type_of_contract' => 'required' ];
         }
 
         if ($this->isMethod('PATCH')) {
