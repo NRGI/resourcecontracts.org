@@ -78,3 +78,8 @@ We use Elastic Beanstalk CLI.
 ## Support
 
 For any queries and support, you may either [create a github issue](https://github.com/NRGI/resourcecontracts.org/issues/new) or send us an email at resourcecontracts@yipl.com.np
+
+## Copyright and license
+
+Code copyright Natural Resource Governance Institute. Code released under the [ MIT license ](LICENSE.md)
+
