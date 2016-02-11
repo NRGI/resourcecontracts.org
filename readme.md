@@ -81,5 +81,5 @@ For any queries and support, you may either [create a github issue](https://gith
 
 ## Copyright and license
 
-Code copyright Natural Resource Governance Institute. Code released under the [ MIT license ](admin/LICENSE.md)
+Code copyright Natural Resource Governance Institute. Code released under the [ MIT license ](LICENSE.md)
 
