@@ -30,6 +30,10 @@ class ContractRequest extends Request
             $rules['company.' . $key . '.name'] = 'required';
         }
 
+        if($this->request->get('document_type') == "Contract")
+        {
+            $rules= [ 'document_type' => 'required' ];
+        }
 
         if ($this->isMethod('PATCH')) {
             unset($rules['file']);
