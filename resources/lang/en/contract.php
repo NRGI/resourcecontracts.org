@@ -134,6 +134,7 @@ return [
     'pages'                                => 'Is pages missing from copy',
     'annexes_display'                      => 'Annexes missing from copy',
     'pages_display'                        => 'Pages missing from copy',
+
     /*Logs*/
     'log'                                  => [
         'save'       => 'Contract created',
