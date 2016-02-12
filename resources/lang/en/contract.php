@@ -130,10 +130,10 @@ return [
     'is_supporting_document'               => 'Is Associated Document',
     'add_supporting_document'              => 'Add Associated Document',
     'cancel'                               => 'Cancel',
-    'annexes'                              => 'Is annexes missing from copy',
-    'pages'                                => 'Is pages missing from copy',
-    'annexes_display'                      => 'Annexes missing from copy',
-    'pages_display'                        => 'Pages missing from copy',
+    'annexes'                              => 'Is annex(es) missing from document',
+    'pages'                                => 'Is page(s) missing from document',
+    'annexes_display'                      => 'Annex(es) missing from document',
+    'pages_display'                        => 'Page(s) missing from document',
 
     /*Logs*/
     'log'                                  => [
