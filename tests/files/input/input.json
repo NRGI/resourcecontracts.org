@@ -13,8 +13,6 @@
     ],
     "government_entity": [
       {
-        "entity": "Secretary of State for Energy Policy",
-        "identifier": "Ministry of Health"
       }
     ],
     "type_of_contract": [
@@ -57,14 +55,13 @@
       "Gold",
       "Coal"
     ],
-    "country": "BS",
+    "country": "AF",
     "category": [
       "olc"
     ],
     "government_entity": [
       {
-        "entity": "Secretary of State for Energy Policy",
-        "identifier": "Ministry of Health"
+
       }
     ],
     "type_of_contract": [

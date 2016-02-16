@@ -144,11 +144,8 @@ class ContractController extends Controller
         if (!$contract) {
             abort('404');
         }
-        $parentContract = [];
-        if ($parent = $contract->getParentContract()) {
-            $parentContract = $this->contract->find($parent);
-        }
-        $supportingDocument           = $this->contract->getSupportingDocuments($contract->id);
+
+        $associatedContracts          = $this->contract->getAssociatedContracts($contract);
         $status                       = $this->contract->getStatus($id);
         $annotationStatus             = $this->annotation->getStatus($id);
         $annotations                  = $contract->annotations;
@@ -161,7 +158,7 @@ class ContractController extends Controller
 
         return view(
             'contract.show',
-            compact('contract', 'status', 'annotations', 'annotationStatus', 'parentContract', 'supportingDocument', 'discussions', 'discussion_status')
+            compact('contract', 'status', 'annotations', 'annotationStatus', 'associatedContracts', 'discussions', 'discussion_status')
         );
     }
 
