@@ -40,7 +40,7 @@ return [
     'license_and_project'                  => "Concession / License and Project",
     'license_name'                         => "Concession / License Name",
     'license_identifier'                   => "Concession / License Identifier",
-    'project_name'                        => "Project Name",
+    'project_name'                         => "Project Name",
     'project_identifier'                   => "Project Identifier",
     'source'                               => "Source",
     'source_url'                           => "Source URL",
@@ -134,6 +134,7 @@ return [
     'pages'                                => 'Is Page(s) missing from copy',
     'annexes_display'                      => 'Annex(es) missing from document',
     'pages_display'                        => 'Page(s) missing from document',
+
 
     /*Logs*/
     'log'                                  => [
