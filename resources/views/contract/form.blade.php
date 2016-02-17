@@ -822,6 +822,23 @@ if (isset($contract->metadata->resource)) {
     </div>
 
 </div>
+<div class="form-group parent-document"
+     style="display: @if($action == 'edit' && isset($contract->metadata->is_supporting_document) &&  $contract->metadata->is_supporting_document==1 or ($is_supporting))block @else none @endif">
+    {!! Form::label('translated_from', trans('contract.parent_document'), ['class'=>'col-sm-2 control-label parent-document-select'])!!}
+    <?php
+    $parent_contract = null;
+    if ($action == 'edit' && $contract->getParentContract()) {
+        $parent_contract = $contract->getParentContract();
+    }
+    if (isset($is_supporting) && $is_supporting) {
+        $parent_contract = Request::get('parent');
+    }
+    ?>
+    <div class="col-sm-7">
+        {!! Form::select('translated_from',['' => 'select']+$contracts, $parent_contract, ["class"=>"form-control"])!!}
+    </div>
+</div>
+
 <hr>
     <div class="form-group">
         {!! Form::label('annexes_missing',trans('contract.annexes'),['class'=>'col-sm-2 control-label']) !!}
@@ -846,24 +863,6 @@ if (isset($contract->metadata->resource)) {
         {!! Form::radio('pages_missing', -1,($pages_missing=='-1') ? true : null , ['class' => 'field']) !!} Not Available
     </div>
 
-</div>
-
-
-<div class="form-group parent-document"
-     style="display: @if($action == 'edit' && isset($contract->metadata->is_supporting_document) &&  $contract->metadata->is_supporting_document==1 or ($is_supporting))block @else none @endif">
-    {!! Form::label('translated_from', trans('contract.parent_document'), ['class'=>'col-sm-2 control-label parent-document-select'])!!}
-    <?php
-    $parent_contract = null;
-    if ($action == 'edit' && $contract->getParentContract()) {
-        $parent_contract = $contract->getParentContract();
-    }
-    if (isset($is_supporting) && $is_supporting) {
-        $parent_contract = Request::get('parent');
-    }
-    ?>
-    <div class="col-sm-7">
-        {!! Form::select('translated_from',['' => 'select']+$contracts, $parent_contract, ["class"=>"form-control"])!!}
-    </div>
 </div>
 
 <?php $docId = []; ?>
