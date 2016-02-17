@@ -252,9 +252,7 @@ if (isset($contract->metadata->resource)) {
     </div>
 
     @if($action == 'edit')
-        <div class="col-sm-3">
-            {!! discussion($discussions,$discussion_status, $contract->id,'signature_date','metadata') !!}
-        </div>
+        {!! discussion($discussions,$discussion_status, $contract->id,'signature_date','metadata') !!}
     @endif
 </div>
 
@@ -270,9 +268,7 @@ if (isset($contract->metadata->resource)) {
     </div>
 
     @if($action == 'edit')
-        <div class="col-sm-3">
-            {!! discussion($discussions,$discussion_status, $contract->id,'signature_year','metadata') !!}
-        </div>
+        {!! discussion($discussions,$discussion_status, $contract->id,'signature_year','metadata') !!}
     @endif
 </div>
 
@@ -837,6 +833,21 @@ if (isset($contract->metadata->resource)) {
     <div class="col-sm-7">
         {!! Form::select('translated_from',['' => 'select']+$contracts, $parent_contract, ["class"=>"form-control"])!!}
     </div>
+    <?php $docId = []; ?>
+    <div id="selected-document" class=" col-sm-7 selected-document">
+        @if(!empty($supportingDocument))
+            @foreach($supportingDocument as $doc)
+                <div class="document">
+                    <a href="{{route('contract.edit',$doc['id'])}}">{{$doc['contract_name']}}</a><br>
+                    <input type="hidden" name="supporting_document[]" value="{{$doc['id']}}">
+                    <?php
+                    array_push($docId, $doc['id']);
+                    ?>
+
+                </div>
+            @endforeach
+        @endif
+    </div>
 </div>
 
 <hr>
@@ -865,21 +876,7 @@ if (isset($contract->metadata->resource)) {
 
 </div>
 
-<?php $docId = []; ?>
-<div id="selected-document" class="selected-document">
-    @if(!empty($supportingDocument))
-        @foreach($supportingDocument as $doc)
-            <div class="document">
-                <a href="{{route('contract.edit',$doc['id'])}}">{{$doc['contract_name']}}</a><br>
-                <input type="hidden" name="supporting_document[]" value="{{$doc['id']}}">
-                <?php
-                array_push($docId, $doc['id']);
-                ?>
 
-            </div>
-        @endforeach
-    @endif
-</div>
 
 @if($action == 'edit')
     <div class="form-group" style="clear:both">

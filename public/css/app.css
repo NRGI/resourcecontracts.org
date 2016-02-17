@@ -7705,3 +7705,9 @@ table td > a .glyphicon-eye-open {
     top: 2px;
     left: 6px;
 }
+.contract-info li a:not(:last-child){
+    word-break: break-word;
+    width: 70%;
+    display: inline-block;
+    vertical-align: top;
+}

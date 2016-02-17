@@ -246,6 +246,7 @@ header {
 
 .contract-info li p {
     padding-bottom: 2px;
+    clear:both;
 }
 
 .types label {
