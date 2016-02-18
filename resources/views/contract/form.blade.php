@@ -16,6 +16,14 @@ foreach ($corporate_groups as $group) {
 asort($groups);
 $groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
 
+$govt_entity = [];
+$govEntity = config('governmentEntities');
+$country_code = "";
+if (isset($contract->metadata->country->code)) {
+    $country_code = $contract->metadata->country->code;
+}
+
+
 ?>
 
 @if($action == 'add')
@@ -104,7 +112,7 @@ $groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
         <?php $country_list = ['' => 'select'] + $country;?>
         {!! Form::select('country', $country_list ,
         isset($contract->metadata->country->code)?$contract->metadata->country->code:null, ["class"=>"required
-        form-control"])!!}
+        form-control" , "id" => "country"])!!}
         <label id="country-error" class="error" for="country"></label>
     </div>
     @if($action == 'edit')
@@ -150,9 +158,9 @@ if (isset($contract->metadata->resource)) {
                         <label for="entity" class="col-sm-2 control-label">@lang('contract.government_entity')</label>
 
                         <div class="col-sm-7">
-                            {!! Form::text("government_entity[$g][entity]",
+                            {!! Form::select("government_entity[$g][entity]", [''=>'Select'] + $govt_entity,
                             isset($v->entity)?$v->entity:null,
-                            ["class"=>"form-control"])!!}
+                            ["class"=>"form-control el_government_entity"])!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'entity-'.$k,'metadata') !!}
@@ -166,7 +174,7 @@ if (isset($contract->metadata->resource)) {
                         <div class="col-sm-7">
                             {!! Form::text("government_entity[$g][identifier]",
                             isset($v->identifier)?$v->identifier:null,
-                            ["class"=>"form-control"])!!}
+                            ["class"=>"form-control el_government_identifier" ,"readonly" => "true"])!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'identifier-'.$k,'metadata') !!}
@@ -186,8 +194,8 @@ if (isset($contract->metadata->resource)) {
                 <label for="entity" class="col-sm-2 control-label">@lang('contract.government_entity') <span class="red">*</span></label>
 
                 <div class="col-sm-7">
-                    {!! Form::text("government_entity[0][entity]",null,
-                    ["class"=>"form-control" , "id" => "government_0_entity"])!!}
+                    {!! Form::select("government_entity[0][entity]",[''=>'Select'] + $govt_entity,null,
+                    ["class"=>"form-control el_government_entity" , "id" => "government_0_entity"])!!}
                 </div>
             </div>
 
@@ -196,7 +204,7 @@ if (isset($contract->metadata->resource)) {
                 control-label'])!!}
                 <div class="col-sm-7">
                     {!! Form::text("government_entity[0][identifier]",null,
-                    ["class"=>"form-control" , "id" => "government_0_identifier"])!!}
+                    ["class"=>"form-control el_government_identifier" , "id" => "government_0_identifier", "readonly" => "true"])!!}
 
                 </div>
             </div>
@@ -476,7 +484,7 @@ if (isset($contract->metadata->resource)) {
                 <label for="company_name" class="col-sm-2 control-label">@lang('contract.company_name') <span class="red">*</span></label>
 
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][name]",null,["class"=>"form-control required"  , "id"=> "company_0_name"])!!}
+                    {!! Form::text("company[0][name]",null,["class"=>"form-control required" , "id"=> "company_0_name"])!!}
                 </div>
             </div>
             <div class="form-group">
@@ -527,7 +535,7 @@ if (isset($contract->metadata->resource)) {
                 {!! Form::label('company_number', trans('contract.company_number'), ['class'=>'col-sm-2
                 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][company_number]",null,["class"=>"form-control" ,  "id" => "company_0_number"])!!}
+                    {!! Form::text("company[0][company_number]",null,["class"=>"form-control" , "id" => "company_0_number"])!!}
                 </div>
             </div>
 
@@ -745,7 +753,7 @@ if (isset($contract->metadata->resource)) {
     <div class="form-group">
         {!! Form::label('deal_number' , trans('contract.deal_number') , ['class' => 'col-sm-2 control-label']) !!}
         <div class="col-sm-7">
-            {!! Form::text('deal_number',  isset($contract->metadata->deal_number)?$contract->metadata->deal_number:null, ['class' => 'form-control']) !!}
+            {!! Form::text('deal_number', isset($contract->metadata->deal_number)?$contract->metadata->deal_number:null, ['class' => 'form-control']) !!}
         </div>
         @if($action == 'edit')
             <div class="col-sm-3">
@@ -757,7 +765,7 @@ if (isset($contract->metadata->resource)) {
     <div class="form-group">
         {!! Form::label('matrix_page' , trans('contract.matrix_page') , ['class' => 'col-sm-2 control-label']) !!}
         <div class="col-sm-7">
-            {!! Form::text('matrix_page',  isset($contract->metadata->matrix_page)?$contract->metadata->matrix_page:null, ['class' => 'form-control' , 'rows' => '2']) !!}
+            {!! Form::text('matrix_page', isset($contract->metadata->matrix_page)?$contract->metadata->matrix_page:null, ['class' => 'form-control' , 'rows' => '2']) !!}
         </div>
         @if($action == 'edit')
             <div class="col-sm-3">
@@ -771,7 +779,7 @@ if (isset($contract->metadata->resource)) {
 <div class="form-group">
     {!! Form::label('contract_note' , trans('contract.contract_note') , ['class' => 'col-sm-2 control-label']) !!}
     <div class="col-sm-7">
-        {!! Form::textarea('contract_note',  isset($contract->metadata->contract_note)?$contract->metadata->contract_note:null, ['class' => 'form-control' , 'rows' => '6' ]) !!}
+        {!! Form::textarea('contract_note', isset($contract->metadata->contract_note)?$contract->metadata->contract_note:null, ['class' => 'form-control' , 'rows' => '6' ]) !!}
     </div>
     @if($action == 'edit')
         {!! discussion($discussions,$discussion_status, $contract->id,'contract_note','metadata') !!}
@@ -840,23 +848,23 @@ if (isset($contract->metadata->resource)) {
 </div>
 
 <hr>
-    <div class="form-group">
-        {!! Form::label('annexes_missing',trans('contract.annexes'),['class'=>'col-sm-2 control-label']) !!}
-        <div class="col-sm-7">
-            <?php
-            $annexes_missing = isset($contract->metadata->annexes_missing) ? $contract->metadata->annexes_missing : -1;
-            ?>
-            {!! Form::radio('annexes_missing', 1 ,($annexes_missing=='1') ? true : null , ['class' => 'field']) !!} Yes
-            {!! Form::radio('annexes_missing', 0 ,($annexes_missing=='0') ? true : null , ['class' => 'field']) !!} No
-            {!! Form::radio('annexes_missing', -1,($annexes_missing=='-1') ? true : null, ['class' => 'field']) !!} Not Available
-        </div>
+<div class="form-group">
+    {!! Form::label('annexes_missing',trans('contract.annexes'),['class'=>'col-sm-2 control-label']) !!}
+    <div class="col-sm-7">
+        <?php
+        $annexes_missing = isset($contract->metadata->annexes_missing) ? $contract->metadata->annexes_missing : - 1;
+        ?>
+        {!! Form::radio('annexes_missing', 1 ,($annexes_missing=='1') ? true : null , ['class' => 'field']) !!} Yes
+        {!! Form::radio('annexes_missing', 0 ,($annexes_missing=='0') ? true : null , ['class' => 'field']) !!} No
+        {!! Form::radio('annexes_missing', -1,($annexes_missing=='-1') ? true : null, ['class' => 'field']) !!} Not Available
     </div>
+</div>
 
 <div class="form-group">
     {!! Form::label('pages_missing',trans('contract.pages'),['class'=>'col-sm-2 control-label']) !!}
     <div class="col-sm-7">
         <?php
-        $pages_missing = isset($contract->metadata->pages_missing) ? $contract->metadata->pages_missing : -1;
+        $pages_missing = isset($contract->metadata->pages_missing) ? $contract->metadata->pages_missing : - 1;
         ?>
         {!! Form::radio('pages_missing', 1 ,($pages_missing=='1') ? true : null , ['class' => 'field']) !!} Yes
         {!! Form::radio('pages_missing', 0 ,($pages_missing=='0') ? true : null , ['class' => 'field']) !!} No

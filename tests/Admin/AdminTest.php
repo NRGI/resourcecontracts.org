@@ -467,7 +467,7 @@ class AdminTest extends IntegrationTest
     {
         $this->visit('/')
              ->andType('admin@nrgi.app', 'email')
-             ->andType('admin123', 'password')
+             ->andType('thisisnewpassword', 'password')
              ->press('Login');
 
         return $this;

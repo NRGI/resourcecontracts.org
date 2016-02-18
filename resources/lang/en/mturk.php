@@ -1,4 +1,4 @@
-    <?php
+<?php
  return [
      'mturk'         => 'Mechanical Turk',
      'activity'      => 'Activity',

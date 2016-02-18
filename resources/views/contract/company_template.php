@@ -18,9 +18,9 @@
         <label for="jurisdiction_of_incorporation" class="col-sm-2 control-label">Jurisdiction of Incorporation</label>
         <div class="col-sm-7">
            <select class="form-control" name="company[{{item}}][jurisdiction_of_incorporation]" id = "company_{{item}}_jurisdiction">
-           <?php foreach($country_list as $code => $name):?>
-               <option value="<?php echo $code;?>"><?php echo $name;?></option>
-           <?php endforeach;?>
+           <?php foreach ($country_list as $code => $name): ?>
+               <option value="<?php echo $code; ?>"><?php echo $name; ?></option>
+           <?php endforeach; ?>
            </select>
         </div>
     </div>
@@ -58,12 +58,12 @@
     </div>
 
      <div class="form-group">
-        <label for="parent_company" class="col-sm-2 control-label"><?php echo trans('contract.corporate_grouping');?></label>
+        <label for="parent_company" class="col-sm-2 control-label"><?php echo trans('contract.corporate_grouping'); ?></label>
             <div class="col-sm-7">
                 <select name="company[{{item}}][parent_company]" class="form-control parent_company" id="corporate_grouping_{{item}}">
-                <?php foreach($groups as $key=>$g):?>
-                    <option value="<?php echo $key;?>"><?php echo $g;?></option>
-                <?php endforeach;?>
+                <?php foreach ($groups as $key => $g): ?>
+                    <option value="<?php echo $key; ?>"><?php echo $g; ?></option>
+                <?php endforeach; ?>
                 </select>
             </div>
      </div>
@@ -87,6 +87,7 @@
     </div>
     <div class="delete">delete</div>
 </div>
+
 
 </script>
 
@@ -112,6 +113,7 @@
     <div class="delete">delete</div>
   </div>
 
+
 </script>
 
 <script id="government-entity" type="x-tmpl-mustache">
@@ -121,7 +123,8 @@
             <div class="form-group">
                 <label for="government_entity" class="col-sm-2 control-label">Government Entity</label>
                 <div class="col-sm-7">
-                    <input class="form-control" name="government_entity[{{item}}][entity]" type="text" id="government_{{item}}_entity">
+
+                    <select class="form-control el_government_entity" name="government_entity[{{item}}][entity]" type="select" id="government_{{item}}_entity">  </select>
                 </div>
             </div>
 
@@ -129,11 +132,12 @@
                 <label for="government_identifier" class="col-sm-2
                 control-label">Government Identifier</label>
                 <div class="col-sm-7">
-                    <input class="form-control" name="government_entity[{{item}}][identifier]" type="text" id="government_{{item}}_identifier">
+                    <input class="form-control el_government_identifier" name="government_entity[{{item}}][identifier]" type="text" id="government_{{item}}_identifier" readonly="true">
                 </div>
             </div>
         <div class="delete">delete</div>
     </div>
+
 </script>
 
 <script type="text/template" id="document">

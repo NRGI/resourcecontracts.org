@@ -13,6 +13,8 @@
         var country_list = {!!json_encode($country_list)!!};
         var contracts = {!!json_encode($contracts)!!};
         var docId = {!!json_encode($docId)!!};
+        var govEntity = {!!json_encode($govEntity)!!};
+        var country_code = {!!json_encode($country_code)!!};
     </script>
     <script src="{{asset('js/contract.js')}}"></script>
 @stop
