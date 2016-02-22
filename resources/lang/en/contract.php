@@ -8,7 +8,7 @@
 
 return [
     'add'                                  => "Add Contract",
-    'download'                             => 'Download CSV',
+    'download'                             => 'Download Contracts',
     'whoops'                               => "Whoops!",
     'problem'                              => "There were some problems with your input.",
     'select_pdf'                           => "Select PDF",
