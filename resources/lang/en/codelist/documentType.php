@@ -6,15 +6,17 @@
 |
 */
 return [
-    "Contract"             => "Contract",
-    "Model Contract"       => "Model Contract",
-    "Translated Contract"  => "Translated Contract",
-    "Environmental Impact" => "Environmental Impact",
-    "Contract Annexe"      => "Contract Annexe",
-    "Contract Guarantees"  => "Contract Guarantees",
-    "Sub Contract"         => "Sub Contract",
-    "Needs Assessment"     => "Needs Assessment",
-    "Feasiblity Study"     => "Feasiblity Study",
-    "Project Plan"         => "Project Plan",
-    "Others"               => "Others"
+    "Contract"                        => "Contract",
+    "Model Contract"                  => "Model Contract",
+    "Environmental Impact Assessment" => "Environmental Impact Assessment",
+    "Feasiblity Study"                => "Feasiblity Study",
+    "Project Plan"                    => "Project Plan",
+    "Other"                           => "Other",
+    "Social Impact Assessment"        => "Social Impact Assessment",
+    "Forest Management Plan"          => "Forest Management Plan",
+    "Social Agreement"                => "Social Agreement",
+    "Financial information"           => "Financial information",
+    "Complaints and decisions"        => "Complaints and decisions",
+    "Notice"                          => "Notice",
+    "Stabilization Agreement"         => "Stabilization Agreement"
 ];

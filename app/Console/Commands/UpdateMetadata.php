@@ -88,7 +88,8 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        $this->updateAdditionalMetadata($metadata);
+        $this->updateAdditionalContractType($metadata);
+        $this->updateAdditionalDocumentType($metadata);
 
         return $metadata;
     }
@@ -388,6 +389,49 @@ class UpdateMetadata extends Command
         }
 
         return $metadata;
+    }
+
+    /**
+     * Updates the contract type
+     * @param $metadata
+     */
+    private function updateAdditionalContractType(&$metadata)
+    {
+        $contractLists = [
+            'Investment Promotion Agreements' => 'Investment Promotion Agreement',
+            'Other//Autre'                    => 'Other',
+            'Service Agreement'               => 'Service Contract'
+        ];
+
+
+        foreach ($contractLists as $oldValue => $contractList) {
+
+            $contractTypeExists = in_array($oldValue, $metadata['type_of_contract']);
+            if ($contractTypeExists) {
+                $index                                = array_search($oldValue, $metadata['type_of_contract']);
+                $metadata['type_of_contract'][$index] = $contractList;
+            }
+        }
+
+    }
+
+    /**
+     * Update Document type
+     * @param $metadata
+     */
+    private function updateAdditionalDocumentType(& $metadata)
+    {
+        $documentLists = [
+            'Environmental Impact' => 'Environmental Impact Assessment',
+            'Others'               => 'Other',
+        ];
+
+        foreach ($documentLists as $oldValue => $documentList) {
+            if ($metadata['document_type'] == $oldValue) {
+                $metadata['document_type'] = $documentList;
+            }
+        }
+
     }
 
 }
