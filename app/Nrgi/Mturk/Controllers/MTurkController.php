@@ -130,8 +130,13 @@ class MTurkController extends Controller
      */
     public function approve($contract_id, $task_id)
     {
-        if ($this->task->approveTask($contract_id, $task_id)) {
-            return redirect()->back()->withSuccess(trans('mturk.action.approve'));
+        $status = $this->task->approveTask($contract_id, $task_id);
+        $result = is_bool($status) ? $status : $status['result'];
+
+        if ($result) {
+            $message = isset($status['message']) ? $status['message'] : trans('mturk.action.approve');
+
+            return redirect()->back()->withSuccess($message);
         }
 
         return redirect()->back()->withError(trans('mturk.action.approve_fail'));
@@ -169,8 +174,13 @@ class MTurkController extends Controller
             return redirect()->back()->withError(trans('mturk.action.reject_reason'));
         }
 
-        if ($this->task->rejectTask($contract_id, $task_id, $message)) {
-            return redirect()->back()->withSuccess(trans('mturk.action.reject'));
+        $status = $this->task->rejectTask($contract_id, $task_id, $message);
+        $result = is_bool($status) ? $status : $status['result'];
+
+        if ($result) {
+            $message = isset($status['message']) ? $status['message'] : trans('mturk.action.reject');
+
+            return redirect()->back()->withSuccess($message);
         }
 
         return redirect()->back()->withError(trans('mturk.action.reject_fail'));
