@@ -1,10 +1,9 @@
 <?php namespace App\Nrgi\Services\Download;
 
-use App\Nrgi\Entities\Contract\Contract;
 use GuzzleHttp\Client;
-
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\AnnotationService;
+use Maatwebsite\Excel\Excel;
 
 /**
  * Class APIService
@@ -15,95 +14,51 @@ class DownloadService
     /**
      * @var Client
      */
-    public $client;
+    protected $client;
+    /**
+     * @var Excel
+     */
+    protected $excel;
 
     /**
      * @param Client            $client
      * @param ContractService   $contractService
      * @param AnnotationService $annotationService
+     * @param Excel             $excel
      */
-    public function __construct(Client $client, ContractService $contractService, AnnotationService $annotationService)
+    public function __construct(Client $client, ContractService $contractService, AnnotationService $annotationService, Excel $excel)
     {
         $this->client            = $client;
         $this->contractService   = $contractService;
         $this->annotationService = $annotationService;
+        $this->excel             = $excel;
     }
 
     /**
      * Download as CSV
+     *
      * @param $contracts
      */
     public function downloadData($contracts)
     {
         $data = [];
         foreach ($contracts as $contract) {
-            $metadata = $contract->metadata;
             $data[]   = $this->getCSVData($contract);
 
         }
-        $heading = [
-            'Contract ID',
-            'OCID',
-            'Category',
-            'Contract Name',
-            'Contract Identifier',
-            'Language',
-            'Country Name',
-            'Resource',
-            'Contract Type',
-            'Signature Date',
-            'Document Type',
-            'Government Entity',
-            'Government Identifier',
-            'Company Name',
-            'Jurisdiction of Incorporation',
-            'Registration Agency',
-            'Company Number',
-            'Company Address',
-            'Participation Share',
-            'Corporate Grouping',
-            'Open Corporates Link',
-            'Incorporation Date',
-            'Operator',
-            'Project Title',
-            'Project Identifier',
-            'License Name',
-            'License Identifier',
-            'Source Url',
-            'Disclosure Mode',
-            'Retrieval Date',
-            'Pdf Url',
-            'Associated Documents',
-            'Pdf Type',
-            'Show Pdf Text',
-            'Text Type',
-            'Metadata Status',
-            'Annotation Status',
-            'Pdf Text Status',
-            'Created by',
-            'Created on'
-        ];
-
 
         $filename = "export" . date('Y-m-d');
-        header('Content-type: text/csv; charset=utf-8');
-        header('Content-Disposition: attachment; filename="' . $filename . '.csv"');
-        $file = fopen('php://output', 'w');
-        fputcsv($file, $heading);
 
-
-        foreach ($data as $row) {
-            fputcsv($file, $row);
-        }
-
-        fclose($file);
-        die;
-
-
+        $this->excel->create($filename, function ($csv) use(&$data) {
+            $csv->sheet('sheetname', function ($sheet) use(&$data){
+                $sheet->fromArray($data);
+            });
+        })->download('xls');
     }
 
     /**
      * Format all the contracts data
+     *
      * @param $contracts
      * @return array
      */
@@ -119,6 +74,7 @@ class DownloadService
 
     /**
      * Return the format of csv
+     *
      * @param       $contract
      * @return array
      *
@@ -126,51 +82,52 @@ class DownloadService
     private function getCSVData($contract)
     {
         return [
-            $contract->id,
-            $contract->metadata->open_contracting_id,
-            join(';', $contract->metadata->category),
-            $contract->metadata->contract_name,
-            $contract->metadata->contract_identifier,
-            $contract->metadata->language,
-            $contract->metadata->country->name,
-            implode(';', $contract->metadata->resource),
-            implode(';', $contract->metadata->type_of_contract),
-            $contract->metadata->signature_date,
-            $contract->metadata->document_type,
-            implode(';', $this->makeSemicolonSeparated($contract->metadata->government_entity, 'entity')),
-            implode(';', $this->makeSemicolonSeparated($contract->metadata->government_entity, 'identifier')),
-            implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'name')),
-            implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'jurisdiction_of_incorporation')),
-            implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'registration_agency')),
-            implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'company_number')),
-            implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'company_address')),
-            implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'participation_share')),
-            implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'parent_company')),
-            implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'open_corporate_id')),
-            implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'company_founding_date')),
-            implode(';', $this->getOperator($contract->metadata->company, 'operator')),
-            $contract->metadata->project_title,
-            $contract->metadata->project_identifier,
-            implode(';', $this->makeSemicolonSeparated($contract->metadata->concession, 'license_name')),
-            implode(';', $this->makeSemicolonSeparated($contract->metadata->concession, 'license_identifier')),
-            $contract->metadata->source_url,
-            $contract->metadata->disclosure_mode,
-            $contract->metadata->date_retrieval,
-            $contract->metadata->file_url,
-            implode(';', $this->getSupportingDoc($contract->id)),
-            $contract->pdf_structure,
-            $this->getShowPDFText($contract->metadata->show_pdf_text),
-            $this->getTextType($contract->textType),
-            $contract->metadata_status,
-            $this->annotationService->getStatus($contract->id),
-            $contract->text_status,
-            $contract->created_user()->first()->name,
-            $contract->created_datetime,
+            'Contract ID'                   => $contract->id,
+            'OCID'                          => $contract->metadata->open_contracting_id,
+            'Category'                      => join(';', $contract->metadata->category),
+            'Contract Name'                 => $contract->metadata->contract_name,
+            'Contract Identifier'           => $contract->metadata->contract_identifier,
+            'Language'                      => $contract->metadata->language,
+            'Country Name'                  => $contract->metadata->country->name,
+            'Resource'                      => implode(';', $contract->metadata->resource),
+            'Contract Type'                 => implode(';', $contract->metadata->type_of_contract),
+            'Signature Date'                => $contract->metadata->signature_date,
+            'Document Type'                 => $contract->metadata->document_type,
+            'Government Entity'             => implode(';', $this->makeSemicolonSeparated($contract->metadata->government_entity, 'entity')),
+            'Government Identifier'         => implode(';', $this->makeSemicolonSeparated($contract->metadata->government_entity, 'identifier')),
+            'Company Name'                  => implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'name')),
+            'Jurisdiction of Incorporation' => implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'jurisdiction_of_incorporation')),
+            'Registration Agency'           => implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'registration_agency')),
+            'Company Number'                => implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'company_number')),
+            'Company Address'               => implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'company_address')),
+            'Participation Share'           => implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'participation_share')),
+            'Corporate Grouping'            => implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'parent_company')),
+            'Open Corporates Link'          => implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'open_corporate_id')),
+            'Incorporation Date'            => implode(';', $this->makeSemicolonSeparated($contract->metadata->company, 'company_founding_date')),
+            'Operator'                      => implode(';', $this->getOperator($contract->metadata->company, 'operator')),
+            'Project Title'                 => $contract->metadata->project_title,
+            'Project Identifier'            => $contract->metadata->project_identifier,
+            'License Name'                  => implode(';', $this->makeSemicolonSeparated($contract->metadata->concession, 'license_name')),
+            'License Identifier'            => implode(';', $this->makeSemicolonSeparated($contract->metadata->concession, 'license_identifier')),
+            'Source Url'                    => $contract->metadata->source_url,
+            'Disclosure Mode'               => $contract->metadata->disclosure_mode,
+            'Retrieval Date'                => $contract->metadata->date_retrieval,
+            'Pdf Url'                       => $contract->metadata->file_url,
+            'Associated Documents'          => implode(';', $this->getSupportingDoc($contract->id)),
+            'Pdf Type'                      => $contract->pdf_structure,
+            'Show Pdf Text'                 => $this->getShowPDFText($contract->metadata->show_pdf_text),
+            'Text Type'                     => $this->getTextType($contract->textType),
+            'Metadata Status'               => $contract->metadata_status,
+            'Annotation Status'             => $this->annotationService->getStatus($contract->id),
+            'Pdf Text Status'               => $contract->text_status,
+            'Created by'                    => $contract->created_user()->first()->name,
+            'Created on'                    => $contract->created_datetime,
         ];
     }
 
     /**
      * Make the array semicolon separated for multiple data
+     *
      * @param $arrays
      * @param $key
      * @return array
@@ -195,6 +152,7 @@ class DownloadService
 
     /**
      * Return the operator
+     *
      * @param $company
      * @return array
      */
@@ -214,6 +172,7 @@ class DownloadService
 
     /**
      * Return the Text Type for each contract
+     *
      * @param $id
      * @return string
      */
@@ -234,6 +193,7 @@ class DownloadService
 
     /**
      * Get Supporting Documents for each contract.
+     *
      * @param $id
      * @return array
      */
@@ -250,6 +210,7 @@ class DownloadService
 
     /**
      * Get Show PDF Text Status
+     *
      * @param $status
      * @return string
      */
