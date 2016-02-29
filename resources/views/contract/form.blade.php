@@ -17,21 +17,18 @@ asort($groups);
 $groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
 
 $govt_entity = [];
-$selectedGovEntity=[];
+$govEntityOnly = [];
 $govEntity = config('governmentEntities');
-$country_code = "";
-if (isset($contract->metadata->country->code)) {
-    $country_code = $contract->metadata->country->code;
+$country_code = old('country',isset($contract->metadata->country->code)? $contract->metadata->country->code:'');
+$govEntityOnly = isset($govEntity->$country_code) ? $govEntity->$country_code : [];
+
+
+
+if (!empty($govEntityOnly)) {
+    foreach ($govEntityOnly as $entity) {
+        $govt_entity[$entity->entity] = $entity->entity;
+    }
 }
-
-if(isset($contract->metadata->government_entity))
-        {
-            foreach($contract->metadata->government_entity as $entity)
-                {
-                    array_push($selectedGovEntity,$entity->entity);
-                }
-        }
-
 ?>
 
 @if($action == 'add')

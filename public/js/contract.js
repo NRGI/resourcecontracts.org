@@ -52,8 +52,8 @@ $(function () {
         }
     });
 
-    $(document).on('change','#document_type', function(){
-        if($(this).val() == 'Contract') {
+    $(document).on('change', '#document_type', function () {
+        if ($(this).val() == 'Contract') {
             $('#type_of_contract').addClass("required");
             $('label[for="type_of_contract"] span.red').removeClass("hidden");
         } else {
@@ -176,8 +176,14 @@ $(function () {
         Mustache.parse(template);
         var rendered = Mustache.render(template, {item: g});
         $('.government_entity .government-item:last-child').after(rendered);
-        var elementId = "government_" + g + "_entity";
-        $("#country").trigger("change", [{id: elementId}]);
+        var elementId = $("#government_" + g + "_entity");
+        var options = getEntitiesOptions($('#country').val());
+        elementId.empty();
+        elementId.append(options).trigger('change');
+        $('.el_government_entity').select2({
+            placeholder: "Select", allowClear: true, tags: true, theme: "classic"
+        });
+
     });
 
 
@@ -218,60 +224,50 @@ $(function () {
     });
 
     $('.el_government_entity').select2({
-        tags: true
+        placeholder: "Select", allowClear: true, tags: true, theme: "classic"
     });
-    if(country_code)
-    {
-        loadGovernmentEntities(country_code);
-    }
+
     $(document).on('change', '#country', function (e) {
         var country = $(this).val();
         loadGovernmentEntities(country);
-
     });
 
 
-    function loadGovernmentEntities(country)
-    {
+    function getEntitiesOptions(country) {
         var entities = govEntity[country];
-        options='';
-        options +="<option value=''>Select</option>";
-        if(entities)
-        {
-
+        options = '';
+        options += "<option value=''>Select</option>";
+        if (entities) {
             for (i = 0; i < entities.length; i++) {
-                var index = selectedGovEntity.indexOf(entities[i]['entity']);
-                if(index > -1)
-                {
-                    options += "<option value ='" + entities[i]['entity'] + "' selected='selected'>" + entities[i]['entity'] + "</option>";
-                }
-                else{
-                    options += "<option value ='" + entities[i]['entity'] + "'>" + entities[i]['entity'] + "</option>";
-                }
-
+                options += "<option value ='" + entities[i]['entity'] + "'>" + entities[i]['entity'] + "</option>";
             }
         }
 
-        $('.el_government_entity').select2({
-            placeholder: "Select", allowClear: true, tags: true, theme: "classic"
-        });
+        return options;
+    }
+
+    function loadGovernmentEntities(country) {
+        var options = getEntitiesOptions(country);
         $('.el_government_entity').empty();
         $('.el_government_entity').append(options).trigger('change');
-        $(document).on('change', '.el_government_entity', function (e) {
-            var entity = $(this).val();
-            if(entities)
-            {
-                identifier ="";
-                for (i = 0; i < entities.length; i++) {
-                    if(entities[i]['entity']==entity)
-                    {
-                        identifier=entities[i]['identifier'];
-                    }
-                }
-                $(this).parent().parent().parent().find('.el_government_identifier').val(identifier)
-            }
-        });
     }
+
+    $(document).on('change', '.el_government_entity', function (e) {
+        var country = $('#country').val();
+        var entities = govEntity[country];
+        var entity = $(this).val();
+        if (entities) {
+            identifier = "";
+            for (i = 0; i < entities.length; i++) {
+                if (entities[i]['entity'] == entity) {
+                    identifier = entities[i]['identifier'];
+                }
+            }
+            console.log('gov change', country, entity, identifier, $(this).parent().parent().parent().html());
+
+            $(this).parent().parent().parent().find('.el_government_identifier').val(identifier)
+        }
+    });
 
 
 });
