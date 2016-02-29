@@ -231,14 +231,14 @@ if (isset($contract->metadata->resource)) {
     <?php
     $dt = isset($contract->metadata->document_type) ? $contract->metadata->document_type : old('document_type');
     if (!in_array($dt, trans('codelist/documentType')) AND $dt != '') {
-        $dt = 'Others';
+        $dt = 'Other';
     }
     ?>
     <label for="document_type" class="col-sm-2 control-label">@lang('contract.document_type') <span class="red">*</span></label>
     <div class="col-sm-7">
         {!! Form::select('document_type',[''=>'Select']+ trans('codelist/documentType'),
         $dt, ["class"=>"required form-control", "id"=>"document_type"])!!}
-        @if($dt == 'Others')
+        @if($dt == 'Other')
             {!! Form::text('document_type',
             isset($contract->metadata->document_type)?$contract->metadata->document_type:null,
             ["id" =>'', "class"=>"form-control dt"])!!}

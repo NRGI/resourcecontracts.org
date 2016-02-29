@@ -42,7 +42,7 @@ $(function () {
     var input_dt = '<input class="form-control dt" name="document_type" type="text">';
 
     $(document).on('change', '#document_type', function () {
-        if (($(this).val() == 'Others')) {
+        if (($(this).val() == 'Other')) {
             $(this).parent().append(input_dt)
         } else {
             if ($('.dt').length) {
@@ -235,9 +235,10 @@ $(function () {
     {
         var entities = govEntity[country];
         options='';
+        options +="<option value=''>Select</option>";
         if(entities)
         {
-            options +="<option value=''>Select</option>";
+
             for (i = 0; i < entities.length; i++) {
                 var index = selectedGovEntity.indexOf(entities[i]['entity']);
                 if(index > -1)
