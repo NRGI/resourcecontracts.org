@@ -32,7 +32,7 @@ class ContractRequest extends Request
 
         if($this->request->get('document_type') == "Contract")
         {
-            $rules [ 'type_of_contract'] = 'required';
+            $rules ['type_of_contract'] = 'required';
         }
 
         if ($this->isMethod('PATCH')) {
