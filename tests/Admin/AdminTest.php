@@ -64,7 +64,6 @@ class AdminTest extends IntegrationTest
         $this->login();
         foreach ($inputs as $key => $input) {
 
-            $this->cliPrint($input['file']);
             $this->visit('contract/create');
             sleep(10);
             $this->submitForm('Submit', $input)->andSee('Successfully');
@@ -106,7 +105,6 @@ class AdminTest extends IntegrationTest
              ->andSee('Edit')
              ->andClick('Edit')
              ->andSee('Editing')
-             ->andType('Nepal Government', 'contract_identifier')
              ->andPress('Submit')
              ->andSee('Contract successfully updated');
 
@@ -189,17 +187,16 @@ class AdminTest extends IntegrationTest
             'publisher_type',
             'retrieved_at',
             'created_at',
-            'category',
             'note',
             'is_associated_document',
             'deal_number',
             'matrix_page',
             'is_ocr_reviewed',
+            'is_pages_missing',
+            'is_annexes_missing',
             'file',
             'parent',
             'associated'
-
-
         ];
 
 
@@ -221,13 +218,7 @@ class AdminTest extends IntegrationTest
         $this->assertEquals(sort($input['resource']), sort($metadata->resource));
         $this->assertEquals('Nepal Government', $metadata->identifier);
 
-        $govt_entity = json_decode(json_encode($metadata->government_entity), true);
-
-        $this->assertEquals($input['government_entity'][0]['entity'], $govt_entity[0]['name']);
-        $this->assertEquals($input['government_entity'][0]['identifier'], $govt_entity[0]['identifier']);
-
         $this->assertEquals($input['document_type'], $metadata->type);
-
         $this->assertEquals($input['project_identifier'], $metadata->project->identifier);
         $this->assertEquals($input['project_title'], $metadata->project->name);
 
@@ -238,7 +229,6 @@ class AdminTest extends IntegrationTest
 
         $this->assertEquals(json_encode($country), json_encode($metadata->country));
 
-        $this->assertEquals($input['category'], $metadata->category);
         $this->assertEquals($input['date_retrieval'], $metadata->retrieved_at);
 
         $company_input = $input['company'][0];
@@ -283,7 +273,7 @@ class AdminTest extends IntegrationTest
         foreach ($annotations as $annotate) {
             $save_annotations = new ApiTester();
             $save_annotations->post($this->elastic_search_url . '/contract/annotations', $annotate)
-                                 ->matchValue('_type', 'master')->getJson();
+                             ->matchValue('_type', 'master')->getJson();
         }
 
         $this->cliPrint("Indexing of annotations complete");
@@ -307,7 +297,7 @@ class AdminTest extends IntegrationTest
 
         $this->visit($this->sub_site_url . '/countries')
              ->andSee('Nepal')
-             ->andSee('Bahamas')
+             ->andSee('Afghanistan')
              ->visit($this->sub_site_url . '/resources')
              ->andSee('Gold')
              ->andSee('Coal');
