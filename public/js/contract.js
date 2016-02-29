@@ -228,7 +228,15 @@ $(function () {
         {
             options +="<option value=''>Select</option>";
             for (i = 0; i < entities.length; i++) {
-                options += "<option value ='" + entities[i]['entity'] + "'>" + entities[i]['entity'] + "</option>";
+                var index = selectedGovEntity.indexOf(entities[i]['entity']);
+                if(index > -1)
+                {
+                    options += "<option value ='" + entities[i]['entity'] + "' selected='selected'>" + entities[i]['entity'] + "</option>";
+                }
+                else{
+                    options += "<option value ='" + entities[i]['entity'] + "'>" + entities[i]['entity'] + "</option>";
+                }
+
             }
         }
 
@@ -236,7 +244,7 @@ $(function () {
             placeholder: "Select", allowClear: true, tags: true, theme: "classic"
         });
         $('.el_government_entity').empty();
-        $('.el_government_entity').append(options);
+        $('.el_government_entity').append(options).trigger('change');
         $(document).on('change', '.el_government_entity', function (e) {
             var entity = $(this).val();
             if(entities)

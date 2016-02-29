@@ -15,6 +15,7 @@
         var docId = {!!json_encode($docId)!!};
         var govEntity = {!!json_encode($govEntity)!!};
         var country_code = {!!json_encode($country_code)!!};
+        var selectedGovEntity = {!!json_encode($selectedGovEntity)!!};
     </script>
     <script src="{{asset('js/contract.js')}}"></script>
 @stop

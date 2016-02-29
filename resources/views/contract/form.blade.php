@@ -17,12 +17,20 @@ asort($groups);
 $groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
 
 $govt_entity = [];
+$selectedGovEntity=[];
 $govEntity = config('governmentEntities');
 $country_code = "";
 if (isset($contract->metadata->country->code)) {
     $country_code = $contract->metadata->country->code;
 }
 
+if(isset($contract->metadata->government_entity))
+        {
+            foreach($contract->metadata->government_entity as $entity)
+                {
+                    array_push($selectedGovEntity,$entity->entity);
+                }
+        }
 
 ?>
 
