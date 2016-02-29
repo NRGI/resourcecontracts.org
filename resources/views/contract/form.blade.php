@@ -227,7 +227,7 @@ if (isset($contract->metadata->resource)) {
 
 <button type="button" class="btn btn-default new-government-entity add-new-btn" id="addGov">Add new Government Entity</button>
 
-<div class="form-group">
+<div class="form-group el_document_type">
     <?php
     $dt = isset($contract->metadata->document_type) ? $contract->metadata->document_type : old('document_type');
     if (!in_array($dt, trans('codelist/documentType')) AND $dt != '') {

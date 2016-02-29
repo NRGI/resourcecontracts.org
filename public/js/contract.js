@@ -42,33 +42,25 @@ $(function () {
     var input_dt = '<input class="form-control dt" name="document_type" type="text">';
 
     $(document).on('change', '#document_type', function () {
+
+
         if (($(this).val() == 'Other')) {
-            $(this).parent().append(input_dt)
-        } else {
+            var dt = $('.el_document_type .dt');
             if ($('.dt').length) {
-                input_dt = $('.dt');
+                $('.dt').show();
+            } else {
+                $(this).parent().append(input_dt)
             }
+        } else {
             $('.dt').remove();
         }
-    });
 
-    $(document).on('change','#document_type', function(){
-        if($(this).val() == 'Contract') {
+        if ($(this).val() == 'Contract') {
             $('#type_of_contract').addClass("required");
             $('label[for="type_of_contract"] span.red').removeClass("hidden");
         } else {
             $('#type_of_contract').removeClass("required");
             $('label[for="type_of_contract"] span.red').addClass("hidden");
-        }
-    });
-    $('#document_type').trigger('change');
-
-    $(document).on('click', '.is-supporting-document', function () {
-        if (($(this).val() == '1')) {
-            $('.parent-document').show();
-        } else {
-            $('.parent-document').hide();
-            $("#translated_from").val(null).trigger("change");
         }
     });
 
