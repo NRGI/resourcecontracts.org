@@ -1,9 +1,15 @@
 <?php
 return [
+    "Asset Sale and Purchase Agreement"      => "Asset Sale and Purchase Agreement",
+    "Cahier des Charges"                     => "Cahier des Charges",
+    "Forest Management Plan"                 => "Forest Management Plan",
+    "Contract Amendment"                     => "Contract Amendment",
+    "Contract Annex"                         => "Contract Annex",
+    "Sub Contract"                           => "Sub Contract",
+    "Autre"                                  => "Autre",
     "Exploitation Permit/License"            => "Exploitation Permit/License",
     "Exploration Permit/License"             => "Exploration Permit/License",
-    "Investment Promotion Agreements"        => "Investment Promotion Agreements",
-    "Investor - State Agreement"             => "Investor - State Agreement",
+    "Investment Promotion Agreement"        => "Investment Promotion Agreement",
     "Joint Venture Agreement"                => "Joint Venture Agreement",
     "Production or Profit Sharing Agreement" => "Production or Profit Sharing Agreement",
     "Service Contract"                       => "Service Contract",
@@ -21,7 +27,7 @@ return [
     "Land Lease Agreement"                   => "Land Lease Agreement",
     "Memorandum of Understanding"            => "Memorandum of Understanding",
     "Sub-lease"                              => "Sub-lease",
-    "Other"                                  => "Other//Autre",
+    "Other"                                  => "Other",
 ];
 
 
