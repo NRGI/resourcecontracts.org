@@ -9,7 +9,7 @@ return [
     "Autre"                                  => "Autre",
     "Exploitation Permit/License"            => "Exploitation Permit/License",
     "Exploration Permit/License"             => "Exploration Permit/License",
-    "Investment Promotion Agreement"        => "Investment Promotion Agreement",
+    "Investment Promotion Agreement"         => "Investment Promotion Agreement",
     "Joint Venture Agreement"                => "Joint Venture Agreement",
     "Production or Profit Sharing Agreement" => "Production or Profit Sharing Agreement",
     "Service Contract"                       => "Service Contract",
@@ -27,6 +27,7 @@ return [
     "Land Lease Agreement"                   => "Land Lease Agreement",
     "Memorandum of Understanding"            => "Memorandum of Understanding",
     "Sub-lease"                              => "Sub-lease",
+    "Translated Contract"                    => "Translated Contract",
     "Other"                                  => "Other",
 ];
 
