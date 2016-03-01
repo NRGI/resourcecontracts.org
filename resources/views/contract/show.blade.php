@@ -530,6 +530,8 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                             <a href="{{route('contract.show',$associatedContract['contract']['id'])}}">{{$associatedContract['contract']['contract_name']}} @if($associatedContract['parent'])(Main)@endif </a>
                         </li>
                     @endforeach
+                @else
+                    <li>There is no associated documents.</li>
                 @endif
         </ul>
         @if($status == $contract_processing_completed)
