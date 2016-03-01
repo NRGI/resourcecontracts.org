@@ -200,6 +200,7 @@ legend {
 
 textarea {
     overflow: auto;
+    margin: 10px;
 }
 
 optgroup {
