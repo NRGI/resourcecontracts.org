@@ -51,7 +51,7 @@ var TextEditorContainer = React.createClass({
         });
 
             window.addEventListener("beforeunload", function (e) {
-                var confirmationMessage = "Save your changes.";
+                var confirmationMessage = "Please save your edits before exiting the page.";
                 if(self.getStateChange())
                 {
                     (e || window.event).returnValue = confirmationMessage;
