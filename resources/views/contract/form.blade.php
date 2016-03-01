@@ -302,9 +302,7 @@ if (isset($contract->metadata->resource)) {
     </div>
 
     @if($action == 'edit')
-        <div class="col-sm-3">
-            {!! discussion($discussions,$discussion_status, $contract->id,'signature_date','metadata') !!}
-        </div>
+        {!! discussion($discussions,$discussion_status, $contract->id,'signature_date','metadata') !!}
     @endif
 </div>
 
@@ -320,9 +318,7 @@ if (isset($contract->metadata->resource)) {
     </div>
 
     @if($action == 'edit')
-        <div class="col-sm-3">
-            {!! discussion($discussions,$discussion_status, $contract->id,'signature_year','metadata') !!}
-        </div>
+        {!! discussion($discussions,$discussion_status, $contract->id,'signature_year','metadata') !!}
     @endif
 </div>
 
@@ -806,6 +802,7 @@ if (isset($contract->metadata->resource)) {
         {!! discussion($discussions,$discussion_status, $contract->id,'contract_note','metadata') !!}
     @endif
 </div>
+
 <h3>@lang('contract.associated_contracts')</h3>
 <hr>
 <div class="form-group">
