@@ -32,7 +32,7 @@ if(!empty($contract->metadata->government_entity))
  {
      foreach($contract->metadata->government_entity as $gov)
      {
-         if(!in_array($gov->entity,$govt_entity))
+         if(isset($gov->entity) && !in_array($gov->entity,$govt_entity))
          {
              $govt_entity[$gov->entity] = $gov->entity;
          }
