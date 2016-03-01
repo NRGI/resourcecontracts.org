@@ -18,6 +18,5 @@ return [
     "Financial information"           => "Financial information",
     "Complaints and decisions"        => "Complaints and decisions",
     "Notice"                          => "Notice",
-    "Stabilization Agreement"         => "Stabilization Agreement",
-    "Translated Contract"             => "Translated Contract"
+    "Stabilization Agreement"         => "Stabilization Agreement"
 ];
