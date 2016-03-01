@@ -254,7 +254,6 @@ $(function () {
                     identifier = entities[i]['identifier'];
                 }
             }
-            console.log('gov change', country, entity, identifier, $(this).parent().parent().parent().html());
 
             $(this).parent().parent().parent().find('.el_government_identifier').val(identifier)
         }

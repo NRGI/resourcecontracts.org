@@ -22,13 +22,23 @@ $govEntity = config('governmentEntities');
 $country_code = old('country',isset($contract->metadata->country->code)? $contract->metadata->country->code:'');
 $govEntityOnly = isset($govEntity->$country_code) ? $govEntity->$country_code : [];
 
-
-
 if (!empty($govEntityOnly)) {
     foreach ($govEntityOnly as $entity) {
         $govt_entity[$entity->entity] = $entity->entity;
     }
 }
+
+if(!empty($contract->metadata->government_entity))
+ {
+     foreach($contract->metadata->government_entity as $gov)
+     {
+         if(!in_array($gov->entity,$govt_entity))
+         {
+             $govt_entity[$gov->entity] = $gov->entity;
+         }
+     }
+ }
+
 ?>
 
 @if($action == 'add')
