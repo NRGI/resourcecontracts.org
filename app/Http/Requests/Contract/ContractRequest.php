@@ -38,7 +38,7 @@ class ContractRequest extends Request
         if ($this->isMethod('PATCH')) {
             unset($rules['file']);
         }
-
+        dd($rules);
         return $rules;
     }
 
