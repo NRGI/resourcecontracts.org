@@ -61,7 +61,7 @@ $(function () {
             $('#type_of_contract').removeClass("required");
             $('label[for="type_of_contract"] span.red').addClass("hidden");
         }
-    });
+    });$('#document_type').trigger('change');
 
     var input_disclosure_mode = '<input class="form-control disclosure_mode_other" name="disclosure_mode" type="text">';
 
