@@ -4,7 +4,7 @@
             <span aria-hidden="true">&times;</span>
             <span class="sr-only">Close</span>
         </button>
-        {{ Session::get('error') }}
+        {!! Session::get('error') !!}
     </div>
 @endif
 
@@ -14,6 +14,6 @@
             <span aria-hidden="true">&times;</span>
             <span class="sr-only">Close</span>
         </button>
-        {{ Session::get('success') }}
+        {!! Session::get('success') !!}
     </div>
 @endif

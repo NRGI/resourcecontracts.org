@@ -25,14 +25,16 @@
      'action'        => [
          'sent_to_mturk'      => 'Contract successfully sent to Manual Transcription tasks',
          'sent_fail_to_mturk' => 'Contract could not send to Manual Transcription tasks',
-         'approve'           => 'Assignment successfully approved.',
+         'approve'            => 'Assignment successfully approved.',
          'approve_fail'       => 'Assignment could not be approve.',
-         'reject'           => 'Assignment successfully rejected.',
+         'reject'             => 'Assignment successfully rejected.',
          'reject_fail'        => 'Assignment could not be reject.',
          'reset'              => 'HIT successfully reset.',
          'reset_fail'         => 'HIT could not be reset.',
          'sent_to_rc'         => 'Text successfully sent to RC.',
          'sent_fail_to_rc'    => 'Text could not be send to RC.',
-         'reject_reason'      => 'Please enter reject reason for the assignment'
+         'reject_reason'      => 'Please enter reject reason for the assignment',
+         'already_approved'   => 'HIT already approved on Mechanical Turk since no action was taken for 30 days after assignment submission.',
+         'already_approved_and_reset'   => 'HIT already approved on Mechanical Turk since no action was taken for 30 days after assignment submission. :reset to reset HIT'
      ]
  ];
