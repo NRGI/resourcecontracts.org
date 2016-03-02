@@ -259,7 +259,7 @@ if (isset($contract->metadata->resource)) {
 </div>
 
 <div class="form-group">
-    <label for="type_of_contract" class="col-sm-2 control-label">@lang('contract.type_of_contract') <span class="red">*</span></label>
+    <label for="type_of_contract" class="col-sm-2 control-label">@lang('contract.type_of_contract')<span class="red">*</span></label>
 
     <div class="col-sm-7">
         <?php
