@@ -14,6 +14,10 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function(_super) {
     function AnnotatorNRGIViewer(element, options) {
         AnnotatorNRGIViewer.__super__.constructor.apply(this, arguments);
     };
+    function nl2br (str, is_xhtml) {
+        var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+        return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+    };
     AnnotatorNRGIViewer.prototype.onClickAnnotionMore = function(e, annotation) {
         e.preventDefault();
         AnnotatorNRGIViewer.contractApp.trigger("annotations:highlight", obj.annotation);
@@ -27,6 +31,7 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function(_super) {
         }
         var textDiv = $(field.parentNode).find('div:first-of-type')[0];
         var text = annotation.text.split(" ").splice(0, 10).join(" ");
+        text = nl2br(text);
         if(annotation.text.split(" ").length > 10) {
             text = text + " ...";
         }

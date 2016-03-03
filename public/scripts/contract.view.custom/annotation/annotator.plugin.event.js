@@ -76,6 +76,12 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
     };
 
     function onEditorShownHandler(viewer) {
+        $('.annotator-widget input').keypress(function (e) {
+            if (e.which == 13) {
+                e.preventDefault();
+            }
+        });
+
         var viewPort = contractApp.getView();
         var viewerEl = $(viewer.element);
         var position = viewerEl.position();

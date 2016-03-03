@@ -166,6 +166,10 @@ function discussion($discussions, $discussion_status, $contract_id, $key, $type 
     } else {
         $status = '<span class="label label-red pull-right">(' . $count . ') Open</span>';
     }
+    if($count == 0)
+    {
+        $status = '<span class="label pull-right" style="background-color: darkgray">(' . $count . ') Open</span>';
+    }
 
     return sprintf(
         '<a href="#" data-url="%s" data-loading="false" class="key-%s contract-discussion pull-right">%s</a>',
