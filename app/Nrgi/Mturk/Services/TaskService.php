@@ -329,7 +329,7 @@ class TaskService
             }
 
             if ($response['ApproveAssignmentResult']['Request']['IsValid'] == 'True') {
-                $this->updateApproveTask($task);
+                return $this->updateApproveTask($task);
             }
         }
 
@@ -392,6 +392,8 @@ class TaskService
                 return $task->save();
             }
         }
+
+        return false;
 
     }
 
