@@ -179,7 +179,7 @@ header {
 }
 
 .ui-widget-content {
-    padding-top: 40px !important;
+    padding-top: 10px !important;
 }
 
 .ui-menu .ui-menu-item {
@@ -746,3 +746,28 @@ header {
     margin-right: 10px;
 }
 
+.ui-widget-content {
+    background: #fff!important;
+}
+
+.ui-widget-content li {
+    border-bottom:0!important;
+    font-size: 14px!important;
+}
+
+.ui-menu .ui-state-focus,
+.ui-menu .ui-state-active {
+    margin: 0!important;
+}
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+    border:none!important;
+    background: #3875d7!important;
+    font-weight: normal!important;
+    color: #fff!important;
+}

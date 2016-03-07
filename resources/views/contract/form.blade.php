@@ -1,12 +1,12 @@
 @section('css')
     <link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
+    <link href="{{asset('css/jquery-ui.css')}}" rel="stylesheet"/>
     <style>
-        .other_toc, .dt, .disclosure_mode_other, .corporate_grouping_other {
+        .other_toc, .dt, .disclosure_mode_other,.corporate_grouping_other {
             margin-top: 10px;
         }
     </style>
 @stop
-
 <?php
 $corporate_groups = config('groups');
 $groups = array();
@@ -345,7 +345,7 @@ if (isset($contract->metadata->resource)) {
                         <div class="col-sm-7">
                             {!! Form::text("company[$i][name]",
                             isset($v->name)?$v->name:null,
-                            ["class"=>"required form-control"] )!!}
+                            ["class"=>"required form-control company_name"] )!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'name-'.$k,'metadata') !!}
@@ -501,7 +501,7 @@ if (isset($contract->metadata->resource)) {
                 <label for="company_name" class="col-sm-2 control-label">@lang('contract.company_name') <span class="red">*</span></label>
 
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][name]",null,["class"=>"form-control required" , "id"=> "company_0_name"])!!}
+                    {!! Form::text("company[0][name]",null,["class"=>"form-control required company_name" , "id"=> "company_0_name"])!!}
                 </div>
             </div>
             <div class="form-group">

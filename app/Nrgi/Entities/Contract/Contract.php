@@ -370,4 +370,5 @@ class Contract extends Model
         )->where('supporting_contract_id', $this->id)->orderBy('id', 'DESC')->first()->contract_id : null;
 
     }
+
 }

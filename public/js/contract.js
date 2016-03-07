@@ -117,6 +117,7 @@ $(function () {
             format: 'Y-m-d',
             scrollInput: false
         });
+        init_autocomplete();
     })
 
     $(document).on('change', '#corporate_grouping', function () {
@@ -261,7 +262,20 @@ $(function () {
     });
 
 
+    function init_autocomplete()
+    {
+        $( ".company_name" ).autocomplete({
+            source: function( request, response){
+                var results= $.ui.autocomplete.filter(companyName, request.term);
+                response(results.slice(0,10));
+            }
+        });
+
+    }
+    init_autocomplete();
+
 });
+
 
 
 

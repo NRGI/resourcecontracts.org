@@ -3,7 +3,7 @@
     <div class="form-group">
         <label for="company_name" class="col-sm-2 control-label">Company Name <span class="red">*</span></label>
         <div class="col-sm-7">
-            <input class="required form-control" name="company[{{item}}][name]" type="text" id="company_{{item}}_name">
+            <input class="required form-control company_name" name="company[{{item}}][name]" type="text" id="company_{{item}}_name">
         </div>
     </div>
     <div class="form-group">

@@ -933,4 +933,17 @@ class ContractService
     }
 
 
+    public function getCompanyNames()
+    {
+        $companyName = [];
+        $company_name= $this->contract->getCompanyName();
+        foreach($company_name as $name=>$val)
+        {
+            $companyName[] = $val['company_name'];
+        }
+        return ($companyName);
+    }
+
+
+
 }

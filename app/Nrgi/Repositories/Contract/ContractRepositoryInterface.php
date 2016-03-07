@@ -205,6 +205,10 @@ interface ContractRepositoryInterface
      */
     public function getContract($ids, $limit);
 
+    /**
+     * write brief description
+     * @return mixed
+     */
     public function getQualityCountOfMultipleMeta();
 
     public function getMultipleMetadataContract($string);
@@ -237,4 +241,6 @@ interface ContractRepositoryInterface
      * @return int
      */
     public function getResourceAndCategoryIssue($key);
+
+    public function getCompanyName();
 }
