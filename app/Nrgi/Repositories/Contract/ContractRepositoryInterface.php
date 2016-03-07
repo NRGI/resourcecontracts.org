@@ -237,10 +237,16 @@ interface ContractRepositoryInterface
 
     /**
      * Get Quality control for resource and category
+     *
      * @param $key
      * @return int
      */
     public function getResourceAndCategoryIssue($key);
 
+    /**
+     * Get Company name
+     *
+     * @return array
+     */
     public function getCompanyName();
 }

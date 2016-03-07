@@ -575,15 +575,12 @@ class ContractRepository implements ContractRepositoryInterface
 
         return $result;
     }
-    public function getSupportingContracs($id)
-    {
-        return $this->contract->select(DB::raw("id, metadata->>'contract_name' as contract_name"))
-                              ->whereIn('id', $id)
-                              ->orderByRaw("metadata->>'contract_name' ASC")
-                              ->get()
-                              ->toArray();
 
-    }
+    /**
+     * get Company Name
+     *
+     * @return array
+     */
     public function getCompanyName()
     {
         $query         = $this->contract->selectRaw("distinct(company->>'name') as company_name");
