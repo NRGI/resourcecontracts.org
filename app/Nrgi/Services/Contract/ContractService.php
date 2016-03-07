@@ -913,16 +913,17 @@ class ContractService
         $associatedContracts = [];
         $parent              = $contract->getParentContract();
         $contract_id         = '';
-
         if ($parent) {
             $parent                = $this->find($parent);
-            $associatedContracts[] = ['parent' => true, 'contract' => ['id'=>$parent->id, 'contract_name' => $parent->title]];
-            $contract_id           = $parent->id;
+            if($parent)
+            {
+                $associatedContracts[] = ['parent' => true, 'contract' => ['id'=>$parent->id, 'contract_name' => $parent->title]];
+                $contract_id           = $parent->id;
+            }
         } else {
             $contract_id = $contract->id;
         }
-
-        $aContracts = $this->getSupportingDocuments($contract_id);
+        $aContracts =!empty($contract_id)? $this->getSupportingDocuments($contract_id):[];
         foreach ($aContracts as $key => $aContract) {
             if ($contract->id != $aContract['id']) {
                 $associatedContracts[] = ['parent' => false, 'contract' => $aContract];
