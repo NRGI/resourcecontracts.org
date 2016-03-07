@@ -929,8 +929,29 @@ class ContractService
                 $associatedContracts[] = ['parent' => false, 'contract' => $aContract];
             }
         }
+
         return $associatedContracts;
     }
+
+
+    /**
+     * Get Company Name
+     *
+     * @return array
+     */
+    public function getCompanyNames()
+    {
+        $companyName = [];
+        $company_name= $this->contract->getCompanyName();
+
+        foreach($company_name as $name=>$val)
+        {
+            $companyName[] = $val['company_name'];
+        }
+
+        return ($companyName);
+    }
+
 
 
 }

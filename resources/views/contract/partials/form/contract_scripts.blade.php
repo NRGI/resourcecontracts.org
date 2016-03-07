@@ -1,5 +1,6 @@
 @section('script')
     <script src="{{asset('js/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('js/jquery-ui.js')}}"></script>
     <script src="{{asset('js/select2.min.js')}}"></script>
     <script src="{{asset('js/jquery.datetimepicker.js')}}"></script>
     <script src="{{asset('js/mustache.min.js')}}"></script>
@@ -14,6 +15,7 @@
         var contracts = {!!json_encode($contracts)!!};
         var docId = {!!json_encode($docId)!!};
         var govEntity = {!!json_encode($govEntity)!!};
+        var companyName= {!! json_encode($companyName) !!};
     </script>
     <script src="{{asset('js/contract.js')}}"></script>
 @stop

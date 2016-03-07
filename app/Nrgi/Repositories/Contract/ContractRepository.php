@@ -575,4 +575,20 @@ class ContractRepository implements ContractRepositoryInterface
 
         return $result;
     }
+
+    /**
+     * get Company Name
+     *
+     * @return array
+     */
+    public function getCompanyName()
+    {
+        $query         = $this->contract->selectRaw("distinct(company->>'name') as company_name");
+        $from          = "contracts, json_array_elements(metadata->'company') as company";
+
+        return $query->from($this->db->raw($from))
+                     ->get()
+                     ->toArray();
+    }
 }
+
