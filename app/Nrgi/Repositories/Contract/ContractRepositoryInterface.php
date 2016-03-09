@@ -249,4 +249,25 @@ interface ContractRepositoryInterface
      * @return array
      */
     public function getCompanyName();
+
+    /**
+     * Return all supporting Contract
+     * @return array
+     */
+    public function getAllSupportingContracts();
+
+    /**
+     * Return all the contracts without supporting
+     * @param $supportingContract
+     * @return mixed
+     */
+    public function getContractsWithoutSupporting($supportingContract);
+
+    /**
+     * Delete the parent contract from supporting contract if exist
+     * @param $id
+     * @return mixed
+     */
+    public function deleteSupportingContract($id);
+
 }
