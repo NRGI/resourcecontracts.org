@@ -69,6 +69,6 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
      */
     public function mturk($contract_id, $log)
     {
-       return ActivityLog::with('user')->where('contract_id', $contract_id)->where('message', 'mturk.log.'.$log)->first();
+       return $this->activityLog->with('user')->where('contract_id', $contract_id)->where('message', 'mturk.log.'.$log)->first();
     }
 }

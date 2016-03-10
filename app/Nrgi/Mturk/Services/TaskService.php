@@ -150,8 +150,9 @@ class TaskService
         try {
             $this->task->createTasks($contract->pages);
             $this->logger->info('Tasks added in database', ['Contract_id' => $contract_id]);
+            $this->logger->mTurkActivity('mturk.log.create', ['contract' => $contract->title], $contract->id);
         } catch (Exception $e) {
-            $this->logger->error('createTasks:' . $e->getMessage(), ['Contract_id' => $contract_id]);
+            $this->logger->error('Create Task:' . $e->getMessage(), ['Contract_id' => $contract_id]);
 
             return false;
         }
@@ -160,12 +161,10 @@ class TaskService
             $contract->mturk_status = Contract::MTURK_SENT;
             $contract->save();
         } catch (Exception $e) {
-            $this->logger->error('save:' . $e->getMessage(), ['Contract_id' => $contract->id]);
+            $this->logger->error('Update Task Status:' . $e->getMessage(), ['Contract_id' => $contract->id]);
 
             return false;
         }
-
-        $this->logger->activity('mturk.log.create', ['contract' => $contract->title], $contract->id);
 
         $this->queue->push('App\Nrgi\Mturk\Services\Queue\MTurkQueue', ['contract_id' => $contract->id], 'mturk');
 
@@ -258,11 +257,14 @@ class TaskService
                 $assignment = $this->turk->assignment($task->hit_id);
                 if (!is_null($assignment) && $assignment['TotalNumResults'] > 0) {
                     $task->status      = Task::COMPLETED;
+                    $this->logger->mTurkActivity('mturk.log.submitted', null, $task->contract_id, $task->page_no);
+
                     $updatedAssignment = $this->getFormattedAssignment($assignment);
                     $task->assignments = $updatedAssignment;
 
                     if ($updatedAssignment['assignment']['status'] == 'Approved') {
                         $task->approved = Task::APPROVED;
+                        $this->logger->mTurkActivity('mturk.log.approve', null, $task->contract_id, $task->page_no);
                     }
 
                     $this->logger->info(sprintf('Update Assignment for page no.%s', $task->page_no), ['task' => $task->toArray()]);
@@ -363,7 +365,7 @@ class TaskService
                         if ($d['Key'] == 'CurrentState' && $d['Value'] == 'Approved') {
                             $this->updateApproveTask($task);
 
-                            $reset = \Form::open(['url' => route('mturk.task.reset', ['contract_id' => $task->contract_id, 'task_id' => $task->id]), 'method' => 'post', 'style'=>'display: inline']);
+                            $reset = \Form::open(['url' => route('mturk.task.reset', ['contract_id' => $task->contract_id, 'task_id' => $task->id]), 'method' => 'post', 'style' => 'display: inline']);
                             $reset .= \Form::button('Click here', ['type' => 'submit', 'class' => 'btn btn-primary']);
                             $reset .= \Form::close();
 
@@ -532,6 +534,8 @@ class TaskService
 
         $this->logger->info('Contract text updated from MTurk', ['Contract id' => $contract_id]);
         $this->logger->activity('mturk.log.sent_to_rc', null, $contract_id);
+        $this->logger->mTurkActivity('mturk.log.sent_to_rc', null, $contract_id);
+
 
         return $contract->save();
     }
@@ -599,8 +603,8 @@ class TaskService
         $sent   = $this->logService->mturk($id, 'sent_to_rc');
 
         return [
-            'created_at' => $create->created_at->format('Y-m-d'),
-            'created_by' => $create->user->name,
+            'created_at' => isset($create->created_at) ? $create->created_at->format('Y-m-d') : '',
+            'created_by' => isset($create->user->name) ? $create->user->name : '',
             'sent_at'    => isset($sent->created_at) ? $sent->created_at->format('Y-m-d') : '',
             'sent_by'    => isset($sent->user->name) ? $sent->user->name : ''
         ];
@@ -669,8 +673,8 @@ class TaskService
         $task->assignments               = $assignments;
         $task->approved                  = Task::APPROVED;
 
-        $this->logger->info(sprintf('Assignment approved for page no.%s', $task->page_no), ['Task' => $task->toArray()]);
-        $this->logger->mTurkActivity('mturk.log.approve', null, $task->ontract_id, $task->page_no);
+        $this->logger->info(sprintf('Assignment approved for page no. %s', $task->page_no), ['Task' => $task->toArray()]);
+        $this->logger->mTurkActivity('mturk.log.approve', null, $task->contract_id, $task->page_no);
 
         return $task->save();
 
