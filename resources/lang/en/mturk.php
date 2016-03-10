@@ -20,7 +20,8 @@
          'reject'     => 'HIT rejected',
          'approve'    => 'HIT approved',
          'reset'      => 'HIT reset',
-         'sent_to_rc' => 'Text Sent to RC'
+         'sent_to_rc' => 'Text Sent to RC',
+         'submitted'  => 'Assignment submitted'
      ],
      'action'        => [
          'sent_to_mturk'      => 'Contract successfully sent to Manual Transcription tasks',
