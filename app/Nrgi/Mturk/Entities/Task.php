@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Task
  * @property integer id
- * @property string   status
- * @property string   approved
- * @property object   assignments
- * @property string   hit_id
- * @property int      page_no
- * @property int      contract_id
+ * @property string  status
+ * @property string  approved
+ * @property object  assignments
+ * @property string  hit_id
+ * @property int     page_no
+ * @property int     contract_id
  * @method Illuminate\Database\Query\Builder where()
  * @package App\Nrgi\Mturk\Entities
  */
@@ -50,7 +50,7 @@ class Task extends Model
      *
      * @return string|null
      */
-    public function status()
+    public function status ()
     {
         $text = ['Pending', 'Completed'];
 
@@ -62,7 +62,7 @@ class Task extends Model
      *
      * @return string
      */
-    public function approved()
+    public function approved ()
     {
         $text = ['-', 'Approved', 'Rejected'];
 
@@ -75,7 +75,7 @@ class Task extends Model
      * @param $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeCompleted($query)
+    public function scopeCompleted ($query)
     {
         return $query->where('status', '=', static::COMPLETED);
     }
@@ -86,7 +86,7 @@ class Task extends Model
      * @param $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeApprove($query)
+    public function scopeApprove ($query)
     {
         return $query->where('approved', '=', static::APPROVED);
     }
@@ -97,7 +97,7 @@ class Task extends Model
      * @param $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeRejected($query)
+    public function scopeRejected ($query)
     {
         return $query->where('approved', '=', static::REJECTED);
     }
@@ -108,7 +108,7 @@ class Task extends Model
      * @param $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeApprovalPending($query)
+    public function scopeApprovalPending ($query)
     {
         return $query->where('approved', '=', static::APPROVAL_PENDING);
     }
@@ -118,7 +118,7 @@ class Task extends Model
      *
      * @return object
      */
-    public function getAssignmentsAttribute($assignments)
+    public function getAssignmentsAttribute ($assignments)
     {
         if (!empty($assignments)) {
             return json_decode($assignments);
@@ -133,7 +133,7 @@ class Task extends Model
      * @param $assignments
      * @return void
      */
-    public function setAssignmentsAttribute($assignments)
+    public function setAssignmentsAttribute ($assignments)
     {
         $this->attributes['assignments'] = empty($assignments) ? '' : json_encode($assignments);
     }
@@ -144,12 +144,11 @@ class Task extends Model
      * @param $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeExpired($query)
+    public function scopeExpired ($query)
     {
-        $expire_in_sec = config('mturk.defaults.production.AssignmentDurationInSeconds');
-        $date          = Carbon::now()->subSeconds($expire_in_sec);
+        $days = 32;
 
-        return $query->where('created_at', '<=', $date->format('Y-m-d H:i:s'));
+        return $query->whereRaw("date(now()) >= date(created_at + interval '".$days."' day)");
     }
 
     /**
@@ -158,7 +157,7 @@ class Task extends Model
      * @param $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopePending($query)
+    public function scopePending ($query)
     {
         return $query->where('status', '=', static::PENDING);
     }
