@@ -6,17 +6,18 @@
 |
 */
 return [
+
     "Contract"                        => "Contract",
-    "Model Contract"                  => "Model Contract",
     "Environmental Impact Assessment" => "Environmental Impact Assessment",
     "Feasiblity Study"                => "Feasiblity Study",
-    "Project Plan"                    => "Project Plan",
-    "Other"                           => "Other",
-    "Social Impact Assessment"        => "Social Impact Assessment",
-    "Forest Management Plan"          => "Forest Management Plan",
-    "Social Agreement"                => "Social Agreement",
     "Financial information"           => "Financial information",
-    "Complaints and decisions"        => "Complaints and decisions",
+    "Forest Management Plan"          => "Forest Management Plan",
+    "Model Contract"                  => "Model Contract",
     "Notice"                          => "Notice",
+    "Other"                           => "Other",
+    "Project Plan"                    => "Project Plan",
+    "Social Agreement"                => "Social Agreement",
+    "Social Impact Assessment"        => "Social Impact Assessment",
     "Stabilization Agreement"         => "Stabilization Agreement"
+
 ];

@@ -2,7 +2,7 @@
     <link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
     <link href="{{asset('css/jquery-ui.css')}}" rel="stylesheet"/>
     <style>
-        .other_toc, .dt, .disclosure_mode_other,.corporate_grouping_other {
+        .other_toc, .dt, .disclosure_mode_other, .corporate_grouping_other {
             margin-top: 10px;
         }
     </style>
@@ -19,7 +19,7 @@ $groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
 $govt_entity = [];
 $govEntityOnly = [];
 $govEntity = config('governmentEntities');
-$country_code = old('country',isset($contract->metadata->country->code)? $contract->metadata->country->code:'');
+$country_code = old('country', isset($contract->metadata->country->code) ? $contract->metadata->country->code : '');
 $govEntityOnly = isset($govEntity->$country_code) ? $govEntity->$country_code : [];
 
 if (!empty($govEntityOnly)) {
@@ -28,16 +28,13 @@ if (!empty($govEntityOnly)) {
     }
 }
 
-if(!empty($contract->metadata->government_entity))
- {
-     foreach($contract->metadata->government_entity as $gov)
-     {
-         if(isset($gov->entity) && !in_array($gov->entity,$govt_entity))
-         {
-             $govt_entity[$gov->entity] = $gov->entity;
-         }
-     }
- }
+if (!empty($contract->metadata->government_entity)) {
+    foreach ($contract->metadata->government_entity as $gov) {
+        if (isset($gov->entity) && !in_array($gov->entity, $govt_entity)) {
+            $govt_entity[$gov->entity] = $gov->entity;
+        }
+    }
+}
 
 ?>
 
@@ -236,10 +233,12 @@ if (isset($contract->metadata->resource)) {
 
 <div class="form-group el_document_type">
     <?php
+
     $dt = isset($contract->metadata->document_type) ? $contract->metadata->document_type : old('document_type');
     if (!in_array($dt, trans('codelist/documentType')) AND $dt != '') {
         $dt = 'Other';
     }
+
     ?>
     <label for="document_type" class="col-sm-2 control-label">@lang('contract.document_type') <span class="red">*</span></label>
     <div class="col-sm-7">
@@ -273,6 +272,7 @@ if (isset($contract->metadata->resource)) {
                 $toc = 'Other';
             }
         }
+
         ?>
         {!! Form::select('type_of_contract[]', trans('codelist/contract_type'),
         $toc,
