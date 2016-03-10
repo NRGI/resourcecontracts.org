@@ -28,7 +28,7 @@ class RenewMTurkTask extends Command
     /**
      * Create a new command instance.
      */
-    public function __construct()
+    public function __construct ()
     {
         parent::__construct();
     }
@@ -38,10 +38,12 @@ class RenewMTurkTask extends Command
      *
      * @param TaskService $task
      */
-    public function fire(TaskService $task)
+    public function fire (TaskService $task)
     {
         $pages = $task->getExpired();
 
+        $current_balance = $task->getMturkBalance();
+        dd($current_balance);
         foreach ($pages as $key => $page) {
 
             $page = $task->updateAssignment($page);
@@ -50,11 +52,15 @@ class RenewMTurkTask extends Command
                 continue;
             }
 
+            if ($current_balance <= 0.50) {
+                continue;
+            }
+
             $contract_id = $page->contract_id;
             $hit_id      = $page->hit_id;
             $page_no     = $page->page_no;
-
             if ($task->resetHIT($contract_id, $page->id)) {
+                $current_balance = $current_balance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
                 $this->info(sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contract_id, $hit_id, $page_no));
             } else {
                 $this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contract_id, $hit_id, $page_no));

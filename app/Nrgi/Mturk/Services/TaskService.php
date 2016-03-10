@@ -680,4 +680,16 @@ class TaskService
         return $task->save();
 
     }
+
+    /**
+     * Get Mturk Balance
+     *
+     * @return object
+     */
+    public function getMturkBalance()
+    {
+        return $this->turk->getBalance();
+
+    }
+
 }
