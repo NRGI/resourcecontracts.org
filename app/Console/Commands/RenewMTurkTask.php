@@ -40,12 +40,15 @@ class RenewMTurkTask extends Command
      */
     public function fire (TaskService $task)
     {
+        //id expired ids
         $pages = $task->getExpired();
 
-        $current_balance = $task->getMturkBalance();
-        dd($current_balance);
-        foreach ($pages as $key => $page) {
+        $pages = $this->setPriority($pages);
 
+        $current_balance = $task->getMturkBalance();
+
+        foreach ($pages as $key => $page)
+        {
             $page = $task->updateAssignment($page);
 
             if ($page->status == Task::COMPLETED || $page->assignments['assignment']['status'] == 'Approved') {
@@ -56,17 +59,48 @@ class RenewMTurkTask extends Command
                 continue;
             }
 
-            $contract_id = $page->contract_id;
-            $hit_id      = $page->hit_id;
-            $page_no     = $page->page_no;
+                $contract_id = $page->contract_id;
+                $hit_id      = $page->hit_id;
+                $page_no     = $page->page_no;
+
             if ($task->resetHIT($contract_id, $page->id)) {
-                $current_balance = $current_balance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
-                $this->info(sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contract_id, $hit_id, $page_no));
-            } else {
-                $this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contract_id, $hit_id, $page_no));
-            }
+                    $current_balance = $current_balance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
+                    $this->info(sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contract_id, $hit_id, $page_no));
+                } else {
+                    $this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contract_id, $hit_id, $page_no));
+                }
+
         }
 
         $this->info('Process Completed');
+    }
+
+    private function setPriority ($pages)
+    {
+        $contracts=[];
+        foreach($pages  as $page)
+        {
+            $contracts[$page->contract_id][] = $page;
+        }
+
+        $count = [];
+        foreach($contracts as $id => $contract)
+        {
+            $count[$id] =  count($contract);
+        }
+
+        asort($count);
+
+        $pages = [];
+
+        foreach($count as $id => $v)
+        {
+            $cons = $contracts[$id];
+            foreach($cons as $page)
+            {
+                $pages[] = $page;
+            }
+        }
+        return $pages;
     }
 }
