@@ -86,6 +86,13 @@ class Contract extends Model
     const SHOW_PDF_TEXT  = 1;
 
     /**
+     * Metadata Status
+     */
+    const ACCEPTABLE  = 1;
+    const NEEDS_EDITING = 2;
+    const NEEDS_FULL_TRANSCRIPTION = 3;
+
+    /**
      * Convert json metadata to array
      *
      * @param $metaData
