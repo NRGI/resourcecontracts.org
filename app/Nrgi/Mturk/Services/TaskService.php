@@ -529,6 +529,7 @@ class TaskService
         $this->contract->updateWordFile($contract_id);
         $contract               = $this->contract->find($contract_id);
         $contract->mturk_status = Contract::MTURK_COMPLETE;
+        $contract->textType     = Contract::ACCEPTABLE;
 
         $this->logger->info('Contract text updated from MTurk', ['Contract id' => $contract_id]);
         $this->logger->activity('mturk.log.sent_to_rc', null, $contract_id);

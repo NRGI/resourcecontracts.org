@@ -4,7 +4,7 @@ $router->get('/mturk/tasks', ['as' => 'mturk.allTasks', 'uses' => 'MTurkControll
 $router->post('/mturk/add/{contract_id}/tasks', ['as' => 'mturk.add', 'uses' => 'MTurkController@createTasks']);
 $router->get('/mturk/activity/', ['as' => 'mturk.activity', 'uses' => 'MTurkController@activity']);
 $router->get('/mturk/{contract_id}', ['as' => 'mturk.tasks', 'uses' => 'MTurkController@tasksList']);
-$router->post('/mturk/{contract_id}/copy', ['as' => 'mturk.contract.copy', 'uses' => 'MTurkController@sendToRC']);
+$router->post('/mturk/{contract_id}/copy', ['as' => 'mturk.contract.copy', 'uses' => 'MTurkControPller@sendToRC']);
 $router->post('/mturk/{contract_id}/all/approve', ['as' => 'mturk.task.approveAll', 'uses' => 'MTurkController@approveAll']);
 $router->get('/mturk/{contract_id}/{task_id}', ['as' => 'mturk.task.detail', 'uses' => 'MTurkController@taskDetail']);
 $router->post('/mturk/{contract_id}/{task_id}/approve', ['as' => 'mturk.task.approve', 'uses' => 'MTurkController@approve']);
