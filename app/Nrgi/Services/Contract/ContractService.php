@@ -1,7 +1,6 @@
 <?php namespace App\Nrgi\Services\Contract;
 
 use App\Nrgi\Entities\Contract\Contract;
-use App\Nrgi\Mturk\Repositories\TaskRepositoryInterface;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\Discussion\DiscussionService;
@@ -71,10 +70,6 @@ class ContractService
      * @var DiscussionService
      */
     protected $discussion;
-    /**
-     * @var TaskService
-     */
-    protected $taskService;
 
     /**
      * @param ContractRepositoryInterface $contract
@@ -90,7 +85,6 @@ class ContractService
      * @param Log                         $logger
      * @param PagesService                $pages
      * @param WordGenerator               $word
-     * @param TaskRepositoryInterface     $taskService
      */
     public function __construct (
         ContractRepositoryInterface $contract,
@@ -104,8 +98,7 @@ class ContractService
         DatabaseManager $database,
         Log $logger,
         PagesService $pages,
-        WordGenerator $word,
-        TaskRepositoryInterface $taskService
+        WordGenerator $word
     ) {
         $this->contract       = $contract;
         $this->auth           = $auth;
@@ -119,7 +112,6 @@ class ContractService
         $this->pages          = $pages;
         $this->word           = $word;
         $this->discussion     = $discussion;
-        $this->taskService    = $taskService;
     }
 
     /**

@@ -152,8 +152,7 @@ class ContractController extends Controller
         $contract->metadata_comment   = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
         $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
         $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
-        $taskStatus                   = $this->contract->getTotalStatus($contract->id);
-        dd($taskStatus);
+        
         $discussions       = $discussion->getCount($id);
         $discussion_status = $discussion->getResolved($id);
 
