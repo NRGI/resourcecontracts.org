@@ -8,15 +8,17 @@
         <div class="panel-body">
             <table class="table table-striped table-responsive">
                 <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Organization</th>
-                        <th>Status</th>
-                        <th>Created on</th>
-                        <th></th>
-                    </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Organization</th>
+                    <th>Country</th>
+                    <th>Status</th>
+                    <th>Created on</th>
+                    <th></th>
+                </tr>
                 </thead>
 
                 @forelse($users as $key => $user)
@@ -24,13 +26,13 @@
                         <td>{{$user->id}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
+                        <td>{{$user->roleName()}}</td>
                         <td>{{$user->organization}}</td>
+                        <td>{{!empty($user->country[0]) ? trans('codelist/country.'.$user->country[0]):null}}</td>
                         <td>{{$user->status == 'true' ? 'Active' : 'Inactive'}}</td>
                         <td>{{$user->created_at->format('D M d, Y h:i A')}}</td>
                         <td>
                             <a href="{{route('user.edit', $user->id)}}" id="user_edit_{{$key}}" class="btn btn-primary">Edit</a>
-                            <a href="{{route('user.delete', $user->id)}}" id="user_delete_{{$key}}" class="btn btn-danger confirm"
-                               data-confirm="Are you sure you want to delete this user?">Delete</a>
                         </td>
 
                     </tr>

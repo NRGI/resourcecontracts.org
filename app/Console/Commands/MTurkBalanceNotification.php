@@ -38,7 +38,7 @@ class MTurkBalanceNotification extends Command {
 	 */
 	public function fire(MTurkNotificationService $mturk)
 	{
-		$mturk->checkBalance();
+		return $mturk->checkBalance();
 	}
 
 }
