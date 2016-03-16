@@ -15,6 +15,7 @@ use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -70,6 +71,10 @@ class ContractService
      * @var DiscussionService
      */
     protected $discussion;
+    /**
+     * @var DatabaseManager
+     */
+    protected $db;
 
     /**
      * @param ContractRepositoryInterface $contract
@@ -85,6 +90,7 @@ class ContractService
      * @param Log                         $logger
      * @param PagesService                $pages
      * @param WordGenerator               $word
+     * @param DatabaseManager             $db
      */
     public function __construct(
         ContractRepositoryInterface $contract,
@@ -98,7 +104,8 @@ class ContractService
         DatabaseManager $database,
         Log $logger,
         PagesService $pages,
-        WordGenerator $word
+        WordGenerator $word,
+        DatabaseManager $db
     ) {
         $this->contract       = $contract;
         $this->auth           = $auth;
@@ -112,6 +119,7 @@ class ContractService
         $this->pages          = $pages;
         $this->word           = $word;
         $this->discussion     = $discussion;
+        $this->db             = $db;
     }
 
     /**
@@ -311,7 +319,7 @@ class ContractService
         $formData['company']           = $this->removeKeys($formData['company']);
         $formData['type_of_contract']  = (isset($formData['type_of_contract'])) ? $this->removeKeys($formData['type_of_contract']) : [];
         $formData['concession']        = $this->removeKeys($formData['concession']);
-        $formData['a'] = $this->removeKeys($formData['government_entity']);
+        $formData['government_entity'] = $this->removeKeys($formData['government_entity']);
         $formData['show_pdf_text']     = isset($formData['show_pdf_text']) ? $formData['show_pdf_text'] : Contract::SHOW_PDF_TEXT;;
 
         $data = array_only(
@@ -432,6 +440,7 @@ class ContractService
             if (isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '0') {
                 $this->contract->removeAsSupportingContract($contract->id);
             }
+            $this->contract->updateOCID($contract);
             $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
 
             $this->logger->activity('contract.log.update', ['contract' => $contract->title], $contract->id);
@@ -493,6 +502,7 @@ class ContractService
      */
     public function deleteContract($id)
     {
+
         try {
             $contract = $this->contract->findContract($id);
         } catch (Exception $e) {
@@ -509,6 +519,20 @@ class ContractService
                 ['contract_id' => $id],
                 'elastic_search'
             );
+            $this->db->beginTransaction();
+            try {
+                if ($this->updateOCIDOfSupportingContracts($id)) {
+                    $this->logger->info('OCID updated for associated contracts.', ['Contract Id' => $id]);
+                }
+                if ($this->contract->deleteSupportingContract($id)) {
+                    $this->logger->info('Parent deleted.', ['Contract Id' => $id]);
+                }
+            } catch (Exception $e) {
+                $this->db->rollback();
+                $this->logger->error($e->getMessage(), ['Contract Id' => $id]);
+            }
+            $this->db->commit();
+
             try {
                 $this->deleteContractFileAndFolder($contract);
                 $this->logger->info(
@@ -522,6 +546,7 @@ class ContractService
 
                 return false;
             }
+
         }
 
         $this->logger->error('Contract could not be deleted', ['Contract Id' => $id]);
@@ -699,9 +724,15 @@ class ContractService
      *
      * @return array
      */
-    public function getList()
+    public function getList($id=null)
     {
-        $contracts = $this->contract->getList()->toArray();
+        $supportingContract = $this->getSupportingContractsId();
+        if($id!=null)
+        {
+            array_push($supportingContract, $id);
+        }
+
+        $contracts = $this->contract->getContractsWithoutSupporting($supportingContract);
         $data      = [];
         foreach ($contracts as $k => $v) {
             $data[$v['id']] = $v['metadata']->contract_name;
@@ -795,14 +826,9 @@ class ContractService
      */
     public function getSupportingDocuments($id)
     {
-        $supportingContracts = $this->contract->getSupportingDocument($id);
-
-        if (empty($supportingContracts)) {
+        $contractsId = $this->getAssociatedContractsId($id);
+        if (empty($contractsId)) {
             return [];
-        }
-        $contractsId = [];
-        foreach ($supportingContracts as $contractId) {
-            array_push($contractsId, $contractId['supporting_contract_id']);
         }
         $contracts = $this->getcontracts($contractsId);
 
@@ -914,16 +940,15 @@ class ContractService
         $parent              = $contract->getParentContract();
         $contract_id         = '';
         if ($parent) {
-            $parent                = $this->find($parent);
-            if($parent)
-            {
-                $associatedContracts[] = ['parent' => true, 'contract' => ['id'=>$parent->id, 'contract_name' => $parent->title]];
+            $parent = $this->find($parent);
+            if ($parent) {
+                $associatedContracts[] = ['parent' => true, 'contract' => ['id' => $parent->id, 'contract_name' => $parent->title]];
                 $contract_id           = $parent->id;
             }
         } else {
             $contract_id = $contract->id;
         }
-        $aContracts =!empty($contract_id)? $this->getSupportingDocuments($contract_id):[];
+        $aContracts = !empty($contract_id) ? $this->getSupportingDocuments($contract_id) : [];
         foreach ($aContracts as $key => $aContract) {
             if ($contract->id != $aContract['id']) {
                 $associatedContracts[] = ['parent' => false, 'contract' => $aContract];
@@ -941,17 +966,86 @@ class ContractService
      */
     public function getCompanyNames()
     {
-        $companyName = [];
-        $company_name= $this->contract->getCompanyName();
+        $companyName  = [];
+        $company_name = $this->contract->getCompanyName();
 
-        foreach($company_name as $name=>$val)
-        {
+        foreach ($company_name as $name => $val) {
             $companyName[] = $val['company_name'];
         }
 
         return ($companyName);
     }
 
+    /**
+     * Return array of supporting documents
+     *
+     * @return array
+     */
+    private function getSupportingContractsId()
+    {
+        $contractsId = [];
+        $supportings = $this->contract->getAllSupportingContracts();
+
+        foreach ($supportings as $supporting) {
+            array_push($contractsId, $supporting["supporting"]);
+        }
+
+        return $contractsId;
+    }
+
+    /**
+     * Update OCID of Associated on delete of parent contract
+     * @param $id
+     * @return bool
+     */
+    private function updateOCIDOfSupportingContracts($id)
+    {
+        $contracts = $this->getAssociatedContractsId($id);
+        if (empty($contracts)) {
+            return false;
+        }
+        foreach ($contracts as $associatedId) {
+            $contract = $this->contract->findContract($associatedId);
+            try {
+                $ocid                               = getContractIdentifier(
+                    $contract->metadata->category[0],
+                    $contract->metadata->country->code
+                );
+                $metadata                           = json_decode(json_encode($contract->metadata), true);
+                $metadata['open_contracting_id']    = $ocid;
+                $metadata['is_supporting_document'] = 0;
+                $contract->metadata                 = $metadata;
+                $contract->save();
+            } catch (Exception $e) {
+                $this->logger->error(
+                    sprintf('Associated contract OCID could not be updated. %s', $e->getMessage()),
+                    ['Contract ID' => $associatedId]
+                );
+            }
+
+        }
+
+        return true;
+    }
+
+    /**
+     * Get associated contracts id
+     * @param $id
+     * @return array
+     */
+    private function getAssociatedContractsId($id)
+    {
+        $supportingContracts = $this->contract->getSupportingDocument($id);
+        if (empty($supportingContracts)) {
+            return [];
+        }
+        $contractsId = [];
+        foreach ($supportingContracts as $contractId) {
+            array_push($contractsId, $contractId['supporting_contract_id']);
+        }
+
+        return $contractsId;
+    }
 
 
 }

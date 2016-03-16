@@ -274,6 +274,17 @@ $(function () {
     }
     init_autocomplete();
 
+
+    $('input:radio[name="is_supporting_document"]').change(
+        function(){
+            if ($(this).is(':checked') && $(this).val() == 1) {
+                $(".parent-document").css('display', 'block');
+            }
+            else{
+                $(".parent-document").css('display', 'none');
+            }
+        });
+
 });
 
 

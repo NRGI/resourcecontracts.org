@@ -64,7 +64,7 @@ class ContractRepository implements ContractRepositoryInterface
     {
         $query         = $this->contract->select('*');
         $from          = "contracts ";
-        $multipleField = ["resource", "category","type_of_contract"];
+        $multipleField = ["resource", "category", "type_of_contract"];
         $filters       = array_map('trim', $filters);
         extract($filters);
         $operator = (!empty($issue) && $issue == "present") ? "!=" : "=";
@@ -338,7 +338,7 @@ class ContractRepository implements ContractRepositoryInterface
 
         $cat_list = array_keys(config('metadata.category'));
         if (isset($filter['category']) && in_array($filter['category'], $cat_list)) {
-            $query->whereRaw("metadata->'category'->>0 ='" . $filter['category']."'");
+            $query->whereRaw("metadata->'category'->>0 ='" . $filter['category'] . "'");
         }
 
         $query->orderBy('created_datetime', 'DESC');
@@ -487,9 +487,9 @@ class ContractRepository implements ContractRepositoryInterface
 
     public function getContractFilterByMetadata($filters, $limit, $contractId)
     {
-        $query    = $this->contract->select('*');
-        $from     = "contracts ";
-        $filters  = array_map('trim', $filters);
+        $query   = $this->contract->select('*');
+        $from    = "contracts ";
+        $filters = array_map('trim', $filters);
         extract($filters);
 
         if ($issue == "present") {
@@ -583,12 +583,54 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getCompanyName()
     {
-        $query         = $this->contract->selectRaw("distinct(company->>'name') as company_name");
-        $from          = "contracts, json_array_elements(metadata->'company') as company";
+        $query = $this->contract->selectRaw("distinct(company->>'name') as company_name");
+        $from  = "contracts, json_array_elements(metadata->'company') as company";
 
         return $query->from($this->db->raw($from))
                      ->get()
                      ->toArray();
+    }
+
+    /**
+     * Return all supporting Contract
+     * @return array
+     */
+    public function getAllSupportingContracts()
+    {
+        $query = $this->document->selectRaw("distinct(supporting_contract_id) as supporting");
+
+        return $query->get()->toArray();
+    }
+
+
+    /**
+     * Return all the contracts without supporting
+     * @param $supportingContract
+     * @return array
+     */
+    public function getContractsWithoutSupporting($supportingContract)
+    {
+
+        $query = $this->contract->selectRaw('*')->whereNotIn('id', $supportingContract);
+
+        return $query->get()->toArray();
+    }
+
+    /**
+     * Delete the parent contract from supporting contract if exist
+     * @param $id
+     * @return mixed
+     */
+    public function deleteSupportingContract($id)
+    {
+        $supporting = $this->document->where('contract_id', '=', $id)->get()->toArray();
+        if (!empty($supporting)) {
+            $t = $this->document->where('contract_id', '=', $id)->delete();
+
+            return true;
+        }
+
+        return false;
     }
 }
 

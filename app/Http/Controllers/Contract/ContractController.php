@@ -174,7 +174,7 @@ class ContractController extends Controller
         $contract           = $this->contract->find($id);
         $country            = $this->countries->all();
         $supportingDocument = $this->contract->getSupportingDocuments($id);
-        $contracts          = $this->contract->getList();
+        $contracts          = $this->contract->getList($id);
 
         $discussions       = $discussion->getCount($id);
         $discussion_status = $discussion->getResolved($id);
