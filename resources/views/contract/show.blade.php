@@ -272,7 +272,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
 
             <li><strong>@lang('contract.created_by'):</strong>
+                @if(isset($contract->created_user->name))
                 {{$contract->created_user->name}} on {{$contract->created_datetime->format('D M d, Y h:i A')}} (GMT)
+                @endif
             </li>
 
             @if(!is_null($contract->updated_user))
