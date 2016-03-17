@@ -26,7 +26,6 @@ class AnnotationHarmonization extends Command
     /**
      * Create a new command instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -40,10 +39,45 @@ class AnnotationHarmonization extends Command
      */
     public function fire()
     {
-        $contracts = $this->getContractId();
-        $arrayUnique = array_unique($contracts);
-        foreach ($arrayUnique as $contract) {
-            $data = $this->getAnnotationData($contract = 14);
+        $contracts      = $this->getContractId();
+        $uniqueContract = array_unique($contracts);
+        foreach ($uniqueContract as $contract) {
+            $data = $this->getAnnotationData($contract);
+
+            if (!empty($data)) {
+                $collection = collect($data);
+                $collection = $collection->sortBy('id')->groupBy('category')->all();
+
+
+                foreach ($collection as $key => $collect) {
+                    $id     = [];
+                    $text   = [];
+                    $remove = [];
+
+                    foreach ($collect as $c) {
+                        $id[]   = $c->id;
+                        $text[] = $c->text;
+
+                    }
+
+                    $idToRemove   = array_slice($id, 1);
+                    $uniqueText   = array_unique($text);
+                    $textToRemove = array_slice($uniqueText, 1);
+
+                    dd($textToRemove);
+
+
+                    foreach ($idToRemove as $id) {
+                        dump($id);
+                        DB::table('contract_annotations')
+                          ->where('id', $id)
+                          ->delete();
+                    }
+
+                }
+
+            }
+
         }
     }
 
@@ -77,6 +111,23 @@ class AnnotationHarmonization extends Command
 
         return $data;
 
+    }
+
+    /**
+     * write brief description
+     * @param $data
+     * @return array
+     */
+    private function getUniqueCategory($data)
+    {
+        $category = [];
+        foreach ($data as $categories) {
+            $category[] = $categories->category;
+        }
+
+        $uniqueCategory = array_unique($category);
+
+        return $uniqueCategory;
     }
 
 
