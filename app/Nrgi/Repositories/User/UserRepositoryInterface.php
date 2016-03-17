@@ -52,4 +52,6 @@ interface UserRepositoryInterface
      * @return Array
      */
     public function getCountryUsers();
+
 }
+
