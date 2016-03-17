@@ -50,29 +50,38 @@ class AnnotationHarmonization extends Command
 
 
                 foreach ($collection as $key => $collect) {
-                    $id     = [];
-                    $text   = [];
-                    $remove = [];
+                    $id   = [];
+                    $text = [];
 
                     foreach ($collect as $c) {
                         $id[]   = $c->id;
                         $text[] = $c->text;
 
                     }
+                    $firstId    = $id[0];
+                    $idToRemove = array_slice($id, 1);
+                    $uniqueText = array_unique($text);
 
-                    $idToRemove   = array_slice($id, 1);
-                    $uniqueText   = array_unique($text);
-                    $textToRemove = array_slice($uniqueText, 1);
+                    $textToRemove = implode(' | ', $uniqueText);
 
-                    dd($textToRemove);
+                    DB::table('contract_annotations')
+                      ->where('id', $firstId)
+                      ->update(['text' => $textToRemove]);
 
 
                     foreach ($idToRemove as $id) {
-                        dump($id);
+
+                        $idToGet = DB::table('contract_annotation_pages')
+                                     ->select('id')
+                                     ->where('annotation_id', $id)
+                                     ->update(['annotation_id' => $firstId]);
+
                         DB::table('contract_annotations')
                           ->where('id', $id)
                           ->delete();
+
                     }
+
 
                 }
 
@@ -111,23 +120,6 @@ class AnnotationHarmonization extends Command
 
         return $data;
 
-    }
-
-    /**
-     * write brief description
-     * @param $data
-     * @return array
-     */
-    private function getUniqueCategory($data)
-    {
-        $category = [];
-        foreach ($data as $categories) {
-            $category[] = $categories->category;
-        }
-
-        $uniqueCategory = array_unique($category);
-
-        return $uniqueCategory;
     }
 
 
