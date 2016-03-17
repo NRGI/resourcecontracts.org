@@ -49,12 +49,13 @@ class UserService
         Hasher $hash,
         Role $role,
         Guard $auth
+
     ) {
-        $this->user   = $user;
-        $this->logger = $logger;
-        $this->hash   = $hash;
-        $this->role   = $role;
-        $this->auth   = $auth;
+        $this->user     = $user;
+        $this->logger   = $logger;
+        $this->hash     = $hash;
+        $this->role     = $role;
+        $this->auth     = $auth;
     }
 
     /**
@@ -64,9 +65,9 @@ class UserService
     public function all()
     {
         if ($this->auth->user()->hasRole(config('nrgi.country_role'))) {
-            return $this->user->getCountryUsers();
-        }
 
+          return $this->user->getCountryUsers();
+        }
         return $this->user->all();
     }
 
