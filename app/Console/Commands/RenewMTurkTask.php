@@ -40,7 +40,6 @@ class RenewMTurkTask extends Command
      */
     public function fire (TaskService $task)
     {
-        //id expired ids
         $expired_pages = $task->getExpired();
 
         $pages = $this->setPriority($expired_pages);
@@ -75,6 +74,12 @@ class RenewMTurkTask extends Command
         $this->info('Process Completed');
     }
 
+    /**
+     * Set Priority for pages
+     *
+     * @param $expired_pages
+     * @return array
+     */
     private function setPriority ($expired_pages)
     {
         $contracts=[];
