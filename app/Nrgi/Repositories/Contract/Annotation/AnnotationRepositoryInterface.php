@@ -91,4 +91,12 @@ interface AnnotationRepositoryInterface
      */
     public function deleteIfChildNotFound($annotation_id);
 
+    /**
+     * Check if category of annotations exist or not.
+     *
+     * @param $key
+     * @return array
+     */
+    public function getAnnotationsQuality($key);
+
 }
