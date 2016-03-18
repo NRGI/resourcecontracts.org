@@ -116,7 +116,7 @@ class ContractRepository implements ContractRepositoryInterface
         }
         if ($type == "annotations" && $word != '' && $issue != '') {
             $contractsId = DB::table('contract_annotations')->select(DB::raw('contract_id'))->whereRaw(
-                "contract_annotations.annotation->>'category' = ?",
+                "category = ?",
                 [$word]
             )->distinct('contract_id')->get();
             $contracts   = [];
