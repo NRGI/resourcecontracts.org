@@ -101,7 +101,7 @@ class Contract extends Model
     public function getMetadataAttribute($metaData)
     {
         $metaData            = json_decode($metaData);
-        $metaData->amla_url  = $this->getAmlaUrl($metaData->country->code);
+        $metaData->amla_url  = $this->getAmlaUrl($metaData->country->code, $metaData->resource);
         $metaData->file_url  = $this->file_url;
         $metaData->word_file = $this->word_file;
 
@@ -315,9 +315,11 @@ class Contract extends Model
      * @param $code
      * @return string
      */
-    public function getAmlaUrl($code)
+    public function getAmlaUrl($code,$resource)
     {
-        return isset(config('amla')[$code]) ? config('amla')[$code] : '';
+        $except_resource = ["Hydrocarbons","Oil","Gas"];
+        $filter = array_intersect($resource,$except_resource);
+        return (isset(config('amla')[$code]) && (!empty($filter)) ) ? config('amla')[$code] : '';
     }
 
     /**
