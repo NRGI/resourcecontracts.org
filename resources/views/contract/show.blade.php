@@ -411,5 +411,4 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
     </div>
 @stop
 
-
 @include('contract.partials.show.script')

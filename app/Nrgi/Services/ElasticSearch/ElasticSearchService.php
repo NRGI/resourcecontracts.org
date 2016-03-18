@@ -95,7 +95,7 @@ class ElasticSearchService
             'metadata'             => collect($contract->metadata)->toJson(),
             'total_pages'          => $contract->pages->count(),
             'created_by'           => json_encode(
-                ['name' => $contract->created_user->name, 'email' => $contract->created_user->email]
+                ['name' => isset($contract->created_user->name)?$contract->created_user->name:'', 'email' => isset($contract->created_user->email)?$contract->created_user->email:'']
             ),
             'supporting_contracts' => $this->contract->getSupportingDocuments($contract->id),
             'updated_by'           => json_encode($updated_by),

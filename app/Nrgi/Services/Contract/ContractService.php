@@ -15,7 +15,6 @@ use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -104,9 +103,7 @@ class ContractService
         DatabaseManager $database,
         Log $logger,
         WordGenerator $word,
-        DatabaseManager $db,
-        PageService $pages,
-        WordGenerator $word
+        PageService $pages
     ) {
         $this->contract       = $contract;
         $this->auth           = $auth;
@@ -120,7 +117,6 @@ class ContractService
         $this->pages          = $pages;
         $this->word           = $word;
         $this->discussion     = $discussion;
-        $this->db             = $db;
     }
 
     /**
@@ -545,7 +541,7 @@ class ContractService
                 ['contract_id' => $id],
                 'elastic_search'
             );
-            $this->db->beginTransaction();
+            $this->database->beginTransaction();
             try {
                 if ($this->updateOCIDOfSupportingContracts($id)) {
                     $this->logger->info('OCID updated for associated contracts.', ['Contract Id' => $id]);
@@ -554,10 +550,10 @@ class ContractService
                     $this->logger->info('Parent deleted.', ['Contract Id' => $id]);
                 }
             } catch (Exception $e) {
-                $this->db->rollback();
+                $this->database->rollback();
                 $this->logger->error($e->getMessage(), ['Contract Id' => $id]);
             }
-            $this->db->commit();
+            $this->database->commit();
 
             try {
                 $this->deleteContractFileAndFolder($contract);
