@@ -250,4 +250,16 @@ class AnnotationRepository implements AnnotationRepositoryInterface
 
         return true;
     }
+
+    /**
+     * Check if category of annotations exist or not.
+     *
+     * @param $key
+     * @return array
+     */
+    public function getAnnotationsQuality($key)
+    {
+        $result = $this->annotation->select('contract_id')->where("category",$key)->distinct('contract_id')->get();
+        return $result->toArray();
+    }
 }
