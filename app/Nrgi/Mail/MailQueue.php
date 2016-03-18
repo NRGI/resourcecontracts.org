@@ -18,7 +18,7 @@ class MailQueue
     /**
      * @param Mailer $mailer
      */
-    public function __construct(Mailer $mailer)
+    public function __construct (Mailer $mailer)
     {
         $this->mailer = $mailer;
     }
@@ -30,7 +30,7 @@ class MailQueue
      * @param array $data
      * @return int
      */
-    public function send(array $to, $subject, $view, $data = [])
+    public function send (array $to, $subject, $view, $data = [])
     {
         return $this->mailer->queueOn(
             'queue-mail',
@@ -53,19 +53,30 @@ class MailQueue
      * @param array $data
      * @return int
      */
-    public function sendMultiple(array $recipients, $subject, $view, $data = [])
+    public function sendMultiple (array $recipients, $subject, $view, $data = [])
     {
+        $bcc = $this->getMailAddress();
+
         return $this->mailer->queueOn(
             'queue-mail',
             $view,
             $data,
-            function ($message) use ($recipients, $subject) {
+            function ($message) use ($recipients, $subject, $bcc) {
                 $message->to($recipients)->subject($subject);
-                if (env('NOTIFY_MAIL')) {
-                    $message->bcc(env('NOTIFY_MAIL'));
-                }
+                $message->bcc($bcc);
             }
         );
     }
 
+    /**
+     * Get multiple mail address
+     *
+     * @return array
+     */
+    public function getMailAddress ()
+    {
+        $multipleMail = explode(',', env('NOTIFY_MAIL'));
+
+        return array_unique(array_filter($multipleMail));
+    }
 }
