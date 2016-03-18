@@ -225,4 +225,23 @@ class AnnotationRepository implements AnnotationRepositoryInterface
 
         return $annotationObj->save();
     }
+
+    /**
+     * Get the count of presence of annotation's category
+     *
+     * @param $key
+     * @return array
+     */
+    public function getAnnotationsQuality($key)
+    {
+        $from   = "contract_annotations";
+        $result = $this->annotation->select('contract_id')->whereRaw(
+            "'category'= ? ",
+            [$key]
+        )
+
+                                 ->distinct('contract_id')
+                                 ->get();
+        return $result->toArray();
+    }
 }

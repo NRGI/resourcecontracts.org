@@ -74,4 +74,12 @@ interface AnnotationRepositoryInterface
      * @return Annotation
      */
     public function getById($id);
+
+    /**
+     * Get the count of presence of annotation's category
+     *
+     * @param $key
+     * @return array
+     */
+    public function getAnnotationsQuality($key);
 }

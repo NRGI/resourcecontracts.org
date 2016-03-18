@@ -2,6 +2,7 @@
 
 namespace App\Nrgi\Services\Quality;
 
+use App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 
 /**
@@ -16,13 +17,19 @@ class QualityService
      * @var ContractRepositoryInterface
      */
     protected $contract;
+    /**
+     * @var AnnotationRepositoryInterface
+     */
+    private $annotation;
 
     /**
-     * @param ContractRepositoryInterface $contract
+     * @param ContractRepositoryInterface   $contract
+     * @param AnnotationRepositoryInterface $annotation
      */
-    public function __construct(ContractRepositoryInterface $contract)
+    public function __construct(ContractRepositoryInterface $contract,AnnotationRepositoryInterface $annotation)
     {
         $this->contract = $contract;
+        $this->annotation = $annotation;
     }
 
     /**
@@ -64,7 +71,7 @@ class QualityService
         $annotations         = [];
         $annotationsCategory = trans('codelist/annotation.annotation_category');
         foreach ($annotationsCategory as $key => $value) {
-            $response          = $this->contract->getAnnotationsQuality($key);
+            $response          = $this->annotation->getAnnotationsQuality($key);
             $count             = !empty($response) ? count($response) : 0;
             $annotations[$key] = $count;
         }
