@@ -441,7 +441,7 @@ if (isset($contract->metadata->resource)) {
                                 $v->parent_company = 'Other';
                             }
                             ?>
-                            <select name="<?php echo 'company[' . $i . '][parent_company]'; ?>" class="form-control parent_company" id="corporate_grouping_0">
+                            <select name="<?php echo 'company[' . $i . '][parent_company]'; ?>" class="form-control corporate_grouping parent_company" id="corporate_grouping_0">
                                 @foreach($groups as $key=>$value)
                                     <option value="{{$key}}" @if($key==$parentCompany) selected @endif>{{$value}}</option>
                                 @endforeach
@@ -560,7 +560,7 @@ if (isset($contract->metadata->resource)) {
                 {!! Form::label('parent_company', trans('contract.corporate_grouping'), ['class'=>'col-sm-2
                 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::select('company[0][parent_company]', $groups , null , ['class' => 'form-control parent_company','id'=>'corporate_grouping_0'])
+                    {!! Form::select('company[0][parent_company]', $groups , null , ['class' => 'form-control corporate_grouping parent_company','id'=>'corporate_grouping_0'])
                     !!}
                 </div>
             </div>
