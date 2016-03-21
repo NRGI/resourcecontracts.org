@@ -7573,7 +7573,8 @@ button.close {
 }
 
 label.error {
-    color: #d44950
+    color: #d44950;
+    display: block;
 }
 
 input.error {
@@ -7705,4 +7706,10 @@ table td > a {
 table td > a .glyphicon-eye-open {
     top: 2px;
     left: 6px;
+}
+
+.input-required {
+    float: right;
+    margin-right: -13px;
+    margin-top: 16px;
 }

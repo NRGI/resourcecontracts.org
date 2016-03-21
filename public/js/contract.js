@@ -25,7 +25,7 @@ $(function () {
         modal.find('.modal-content').html('<div style="padding: 40px;"> Loading...</div>');
     });
 
-    var input = '<input class="form-control other_toc" name="type_of_contract[]" type="text">';
+    var input = '<span class="red input-required">*</span><input class="form-control required other_toc" name="type_of_contract[]" type="text">';
 
 
     $(document).on('change', '#type_of_contract', function () {
@@ -39,7 +39,7 @@ $(function () {
         }
     });
 
-    var input_dt = '<input class="form-control dt" name="document_type" type="text">';
+    var input_dt = '<span class="red input-required">*</span><input class="form-control required dt" name="document_type" type="text">';
 
     $(document).on('change', '#document_type', function () {
 
@@ -64,8 +64,7 @@ $(function () {
     });
     $('#document_type').trigger('change');
 
-    var input_disclosure_mode = '<input class="form-control disclosure_mode_other" name="disclosure_mode" type="text">';
-
+    var input_disclosure_mode = '<span class="red input-required">*</span><input class="form-control required disclosure_mode_other" name="disclosure_mode" type="text" />';
     $(document).on('change', '#disclosure_mode', function () {
         if (($(this).val() == 'Other')) {
             $(this).parent().append(input_disclosure_mode)
@@ -120,8 +119,8 @@ $(function () {
         init_autocomplete();
     })
 
-    $(document).on('change', '#corporate_grouping', function () {
-        var corporate_grouping_mode = '<input class="form-control corporate_grouping_other" name="company[' + i + '][parent_company]" type="text">';
+    $(document).on('change', '.corporate_grouping', function () {
+        var corporate_grouping_mode = '<span class="red input-required">*</span><input class="form-control required corporate_grouping_other" name="company[' + i + '][parent_company]" type="text">';
         if (($(this).val() == 'Other')) {
             $(this).parent().append(corporate_grouping_mode)
         } else {

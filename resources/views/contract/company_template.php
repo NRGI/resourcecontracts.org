@@ -60,7 +60,7 @@
      <div class="form-group">
         <label for="parent_company" class="col-sm-2 control-label"><?php echo trans('contract.corporate_grouping'); ?></label>
             <div class="col-sm-7">
-                <select name="company[{{item}}][parent_company]" class="form-control parent_company" id="corporate_grouping_{{item}}">
+                <select name="company[{{item}}][parent_company]" class="form-control corporate_grouping parent_company " id="corporate_grouping_{{item}}">
                 <?php foreach ($groups as $key => $g): ?>
                     <option value="<?php echo $key; ?>"><?php echo $g; ?></option>
                 <?php endforeach; ?>
