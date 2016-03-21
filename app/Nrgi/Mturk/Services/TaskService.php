@@ -432,7 +432,7 @@ class TaskService
 
         try {
             $task = $this->task->getTask($contract_id, $task_id);
-            //dd($task);
+            
         } catch (Exception $e) {
             $this->logger->error('Task does not exit' . $e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task_id]);
 
