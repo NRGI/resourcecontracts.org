@@ -37,7 +37,6 @@
                 - {{$contract->metadata->country->name}}
             </td>
             <td>{{strtoupper($contract->metadata->category[0])}}</td>
-            {{ dd($contract) }}
             <td>{{$contract->mturk_created_at}} <br/>
                 By {{$contract->mturk_created_by}}  </td>
             <td class="number_center">{{$contract->tasks->count()}}</td>

@@ -40,12 +40,12 @@ class RenewMTurkTask extends Command
      */
     public function fire(TaskService $task)
     {
-        $expired_pages = $task->getExpired();
+        $expiredPages = $task->getExpired();
 
-        $pages = $this->setPriority($expired_pages);
+        $pages = $this->setPriority($expiredPages);
 
-        $current_balance   = $task->getMturkBalance();
-        $available_balance = $current_balance['Amount'];
+        $currentBalance   = $task->getMturkBalance();
+        $availableBalance = $currentBalance['Amount'];
 
         foreach ($pages as $key => $page) {
             $page = $task->updateAssignment($page);
@@ -54,21 +54,20 @@ class RenewMTurkTask extends Command
                 continue;
             }
 
-            if ($available_balance <= 0.50) {
+            if ($availableBalance <= 0.50) {
                 continue;
             }
 
-            $contract_id = $page->contract_id;
-            $hit_id      = $page->hit_id;
-            $page_no     = $page->page_no;
-            $page_id     = $page->id;
+            $contractId = $page->contract_id;
+            $hitId      = $page->hit_id;
+            $pageNumber = $page->page_no;
+            $pageId     = $page->id;
 
-            if ($task->resetHIT($contract_id, $page_id)) {
-                $available_balance = $available_balance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
-                echo $available_balance;
-                $this->info(sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contract_id, $hit_id, $page_no));
+            if ($task->resetHIT($contractId, $pageId)) {
+                $availableBalance = $availableBalance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
+                $this->info(sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contractId, $hitId, $pageNumber));
             } else {
-                $this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contract_id, $hit_id, $page_no));
+                $this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contractId, $hitId, $pageNumber));
             }
 
 
@@ -80,13 +79,13 @@ class RenewMTurkTask extends Command
     /**
      * Set Priority for pages
      *
-     * @param $expired_pages
+     * @param $expiredPages
      * @return array
      */
-    private function setPriority($expired_pages)
+    private function setPriority($expiredPages)
     {
         $contracts = [];
-        foreach ($expired_pages as $page) {
+        foreach ($expiredPages as $page) {
             $contracts[$page->contract_id][] = $page;
         }
 
