@@ -45,7 +45,8 @@ class RenewMTurkTask extends Command
         $pages = $this->setPriority($expired_pages);
 
         $current_balance = $task->getMturkBalance();
-        
+        $available_balance =  $current_balance['Amount'];
+
         foreach ($pages as $key => $page)
         {
             $page = $task->updateAssignment($page);
@@ -61,13 +62,15 @@ class RenewMTurkTask extends Command
                 $contract_id = $page->contract_id;
                 $hit_id      = $page->hit_id;
                 $page_no     = $page->page_no;
-
-            if ($task->resetHIT($contract_id, $page->id)) {
-                    $current_balance = $current_balance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
+                $page_id =  $page->id;
+            if ($task->resetHIT($contract_id, $page_id)) {
+                    $current_balance = $available_balance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
                     $this->info(sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contract_id, $hit_id, $page_no));
                 } else {
                     $this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contract_id, $hit_id, $page_no));
                 }
+
+
 
         }
 
