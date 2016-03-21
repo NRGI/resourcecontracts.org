@@ -106,6 +106,8 @@ class MTurkNotificationService
      */
     public function checkBalance()
     {
+        $b = explode(',', env('NOTIFY_MAIL'));
+        dd($b);
         $minimum_balance = config('mturk.minimum_balance');
         $balance         = $this->mturk->getBalance();
         if ($balance['Amount'] < $minimum_balance) {

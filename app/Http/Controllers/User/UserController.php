@@ -39,7 +39,7 @@ class UserController extends Controller
 
         if (!$this->auth->user()->hasRole(['superadmin', 'admin', 'country-admin'])) {
             return redirect('/home')->withError(trans('contract.permission_denied'))->send();
-        }
+         }
 
         $this->countries = $countries;
     }
