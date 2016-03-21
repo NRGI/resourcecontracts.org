@@ -6,7 +6,11 @@
             text-align: center;
             vertical-align: middle !important;
         }
-        .number_center {text-align: center; vertical-align: middle !important;}
+
+        .number_center {
+            text-align: center;
+            vertical-align: middle !important;
+        }
     </style>
 @stop
 
@@ -20,7 +24,7 @@
         <th>@lang('mturk.tasks')</th>
         <th>@lang('mturk.completed')</th>
         <th>@lang('mturk.approved')</th>
-        <th >@lang('mturk.requiring_action')</th>
+        <th>@lang('mturk.requiring_action')</th>
         <th>@lang('mturk.rejected')</th>
         <th>@lang('mturk.action_name')</th>
     </tr>
@@ -33,6 +37,7 @@
                 - {{$contract->metadata->country->name}}
             </td>
             <td>{{strtoupper($contract->metadata->category[0])}}</td>
+            {{ dd($contract) }}
             <td>{{$contract->mturk_created_at}} <br/>
                 By {{$contract->mturk_created_by}}  </td>
             <td class="number_center">{{$contract->tasks->count()}}</td>
