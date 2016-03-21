@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Repositories\ActivityLog;
 
 use App\Nrgi\Entities\ActivityLog\ActivityLog;
+use App\Nrgi\Mturk\Entities\Activity;
 use Illuminate\Auth\Guard;
 
 /**
@@ -18,14 +19,22 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
      * @var Guard
      */
     protected $auth;
+    /**
+     * @var Activity
+     */
+    protected $mTurkActivities;
 
     /**
      * @param ActivityLog $activityLog
+     * @param Activity    $mTurkActivities
+     * @param Guard       $auth
+     * @internal param Activity $mTurkActivities
      */
-    public function __construct(ActivityLog $activityLog, Guard $auth)
+    public function __construct(ActivityLog $activityLog, Activity $mTurkActivities, Guard $auth)
     {
         $this->activityLog = $activityLog;
         $this->auth        = $auth;
+        $this->mTurkActivities = $mTurkActivities;
     }
 
     /**
@@ -69,6 +78,6 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
      */
     public function mturk($contract_id, $log)
     {
-       return $this->activityLog->with('user')->where('contract_id', $contract_id)->where('message', 'mturk.log.'.$log)->first();
+       return $this->mTurkActivities->with('user')->where('contract_id', $contract_id)->where('message', 'mturk.log.'.$log)->first();
     }
 }
