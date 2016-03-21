@@ -26,9 +26,9 @@ class QualityService
      * @param ContractRepositoryInterface   $contract
      * @param AnnotationRepositoryInterface $annotation
      */
-    public function __construct(ContractRepositoryInterface $contract,AnnotationRepositoryInterface $annotation)
+    public function __construct(ContractRepositoryInterface $contract, AnnotationRepositoryInterface $annotation)
     {
-        $this->contract = $contract;
+        $this->contract   = $contract;
         $this->annotation = $annotation;
     }
 
@@ -50,13 +50,9 @@ class QualityService
 
             $metadata[$key] = $count;
         }
-        $multipleMetadata              = $this->contract->getQualityCountOfMultipleMeta();
-        $multipleMetadata              = $multipleMetadata[0]->get_quality_issue;
-        $data                          = str_replace(['(', ')'], ['', ''], $multipleMetadata);
-        $data                          = explode(',', $data);
-        $metadata["Government Entity"] = $data[2];
-        $metadata["Company"]           = $data[0];
-        $metadata["Concession"]        = $data[1];
+        $metadata["Government Entity"] = $this->contract->getGovernmentEntityCount();
+        $metadata["Company"]           = $this->contract->getCompanyCount();
+        $metadata["Concession"]        = $this->contract->getConcessionCount();
 
         return $metadata;
     }

@@ -131,7 +131,7 @@ interface ContractRepositoryInterface
      * @param       $perPage
      * @return Collection
      */
-    public function getMTurkContracts(array $filter = [] , $perPage);
+    public function getMTurkContracts(array $filter = [], $perPage);
 
     /**
      * Get Contract with pdf process status
@@ -269,5 +269,23 @@ interface ContractRepositoryInterface
      * @return mixed
      */
     public function deleteSupportingContract($id);
+
+    /**
+     * Return count of government entity which are not empty
+     * @return integer
+     */
+    public function getGovernmentEntityCount();
+
+    /**
+     * Return company count if company name is not empty
+     * @return integer
+     */
+    public function getCompanyCount();
+    
+    /**
+     * Return all the count of concessio if license name is not empty
+     * @return integer
+     */
+    public function getConcessionCount();
 
 }

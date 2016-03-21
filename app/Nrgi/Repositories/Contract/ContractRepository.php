@@ -629,5 +629,51 @@ class ContractRepository implements ContractRepositoryInterface
 
         return false;
     }
+
+    /**
+     * Return count of government entity which are not empty
+     * @return integer
+     */
+    public function getGovernmentEntityCount()
+    {
+        $query = $this->contract->selectRaw("count(distinct(id))");
+        $from  = "contracts, json_array_elements(metadata->'government_entity') as ge";
+
+        $result = $query->from($this->db->raw($from))->whereRaw("ge->>'entity' != ''")
+                     ->get();
+
+        return $result[0]->count;
+    }
+
+    /**
+     * Return company count if company name is not empty
+     * @return integer
+     */
+    public function getCompanyCount()
+    {
+        $query = $this->contract->selectRaw("count(distinct(id))");
+        $from  = "contracts, json_array_elements(metadata->'company') as company";
+
+        $result =$query->from($this->db->raw($from))->whereRaw("company->>'name' != ''")
+                     ->get();
+        return $result[0]->count;
+
+    }
+
+    /**
+     * Return all the count of concessio if license name is not empty
+     * @return integer
+     */
+    public function getConcessionCount()
+    {
+        $query = $this->contract->selectRaw("count(distinct(id))");
+        $from  = "contracts, json_array_elements(metadata->'concession') as concession";
+
+        $result = $query->from($this->db->raw($from))->whereRaw("concession->>'license_name' != ''")
+                     ->get();
+
+        return $result[0]->count;
+
+    }
 }
 
