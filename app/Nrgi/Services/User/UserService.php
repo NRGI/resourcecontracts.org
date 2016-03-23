@@ -196,6 +196,12 @@ class UserService
         return $this->user->getList();
     }
 
+    /**
+     * Get user activity
+     *
+     * @param $id
+     * @return bool|mixed
+     */
     public function hasNoActivity($id)
     {
         $userDetail = $this->find($id);
