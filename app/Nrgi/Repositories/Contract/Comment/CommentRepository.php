@@ -83,4 +83,15 @@ class CommentRepository implements CommentRepositoryInterface
                              ->orderBy('created_at', 'DESC')
                              ->paginate($perPage);
     }
+
+    /**
+     * Count comments By User
+     *
+     * @param $user_id
+     * @return int
+     */
+    public function countByUser($user_id)
+    {
+        return $this->comment->where('user_id',$user_id)->count();
+    }
 }

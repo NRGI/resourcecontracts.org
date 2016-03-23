@@ -225,4 +225,14 @@ class AnnotationRepository implements AnnotationRepositoryInterface
 
         return $annotationObj->save();
     }
+/**
+* Count Contracts By user
+*
+* @param $user_id
+* @return int
+*/
+    public function countByUser($user_id)
+    {
+        return $this->annotation->where('user_id', $user_id)->count();
+    }
 }

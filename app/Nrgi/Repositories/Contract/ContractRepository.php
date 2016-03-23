@@ -25,9 +25,9 @@ class ContractRepository implements ContractRepositoryInterface
      */
     protected $db;
     /**
-     * @var SupportingDocument
+     * @var SupportingContract
      */
-    private $document;
+    protected $document;
 
     /**
      * @param Contract           $contract
@@ -624,13 +624,22 @@ class ContractRepository implements ContractRepositoryInterface
     public function deleteSupportingContract($id)
     {
         $supporting = $this->document->where('contract_id', '=', $id)->get()->toArray();
-        if (!empty($supporting)) {
-            $t = $this->document->where('contract_id', '=', $id)->delete();
 
-            return true;
+        if (!empty($supporting)) {
+            return $this->document->where('contract_id', '=', $id)->delete();
         }
 
         return false;
     }
-}
 
+    /**
+    * Count Contracts By user
+    *
+    * @param $user_id
+    * @return int
+    */
+    public function countByUser($user_id)
+    {
+       return $this->contract->where('user_id', $user_id)->orWhere('updated_by', $user_id)->count();
+    }
+}

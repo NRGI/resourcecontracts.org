@@ -30,4 +30,12 @@ interface ActivityLogRepositoryInterface
      * @return ActivityLog
      */
     public function mturk($contract_id, $log);
+
+    /**
+     * Count Activities by User
+     *
+     * @param $user_id
+     * @return int
+     */
+    public function countByUser($user_id);
 }

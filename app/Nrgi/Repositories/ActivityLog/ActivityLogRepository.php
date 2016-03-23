@@ -80,4 +80,15 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
     {
        return $this->mTurkActivities->with('user')->where('contract_id', $contract_id)->where('message', 'mturk.log.'.$log)->first();
     }
+
+    /**
+     * Count Activities by User
+     *
+     * @param $user_id
+     * @return int
+     */
+    public function countByUser($user_id)
+    {
+       return $this->activityLog->where('user_id',$user_id)->count();
+    }
 }
