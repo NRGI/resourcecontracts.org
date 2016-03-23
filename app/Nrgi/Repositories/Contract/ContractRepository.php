@@ -632,5 +632,24 @@ class ContractRepository implements ContractRepositoryInterface
 
         return false;
     }
+
+    /**
+     * Get user detail
+     *
+     * @param $userId
+     * @return mixed
+     */
+    public function findUserId($userId)
+    {
+        $d = $this->contract->selectRaw("id,metadata->>'contract_name' as name")
+                            ->where('user_id','=',$userId)
+                            ->lists('name', 'id');
+        if(!empty($d)){
+
+            return false;
+        }
+        else return true;
+
+    }
 }
 

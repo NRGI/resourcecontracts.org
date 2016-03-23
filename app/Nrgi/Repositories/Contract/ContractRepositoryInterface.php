@@ -270,4 +270,11 @@ interface ContractRepositoryInterface
      */
     public function deleteSupportingContract($id);
 
+    /**
+     * Get User D
+     *
+     * @param $userId
+     * @return mixed
+     */
+    public function findUserId($userId);
 }

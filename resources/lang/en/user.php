@@ -12,7 +12,7 @@ return [
     'update_success' => 'User successfully updated.',
     'update_fail'    => 'User could not be updated.',
     'delete_success' => 'User successfully deleted.',
-    'delete_fail'    => 'User could not be deleted.',
+    'delete_fail'    => 'User could not be deleted, deactivate it instead.',
     'saved'          => 'Changes Saved.',
     'not_updated'    => 'Could not be updated.',
     /*Logs*/

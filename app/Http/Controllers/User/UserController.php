@@ -130,11 +130,18 @@ class UserController extends Controller
      */
     public function delete($id)
     {
-        if ($this->user->delete($id)) {
-            return redirect()->route('user.list')->withSuccess(trans('user.delete_success'));
+        if ($this->user->hasNoActivity($id)){
+
+            if ($this->user->delete($id)) {
+                return redirect()->route('user.list')->withSuccess(trans('user.delete_success'));
+            }
         }
 
+        else
+
         return redirect()->route('user.list')->withError(trans('user.delete_fail'));
+
+
     }
 
 }

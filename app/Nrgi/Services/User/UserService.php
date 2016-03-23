@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Services\User;
 
 use App\Nrgi\Entities\User\User;
+use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Repositories\User\UserRepositoryInterface;
 use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Hashing\Hasher;
@@ -36,19 +37,28 @@ class UserService
      */
     public $auth;
 
+
+    /**
+     * @var ContractRepositoryInterface
+     */
+    protected $contract;
+
     /**
      * @param UserRepositoryInterface $user
      * @param LoggerInterface         $logger
      * @param Hasher                  $hash
      * @param Role                    $role
      * @param Guard                   $auth
+     * @param ContractRepositoryInterface $contract
+
      */
     public function __construct(
         UserRepositoryInterface $user,
         LoggerInterface $logger,
         Hasher $hash,
         Role $role,
-        Guard $auth
+        Guard $auth,
+        ContractRepositoryInterface $contract
 
     ) {
         $this->user     = $user;
@@ -56,6 +66,7 @@ class UserService
         $this->hash     = $hash;
         $this->role     = $role;
         $this->auth     = $auth;
+        $this->contract = $contract;
     }
 
     /**
@@ -183,6 +194,21 @@ class UserService
         }
 
         return $this->user->getList();
+    }
+
+    public function hasNoActivity($id)
+    {
+        $userDetail = $this->find($id);
+
+        if($userDetail['status']=='true')
+        {
+            return $this->contract->findUserId($userDetail['id']);
+
+        }
+        else
+            return true;
+
+
     }
 
 }
