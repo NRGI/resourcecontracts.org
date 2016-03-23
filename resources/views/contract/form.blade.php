@@ -19,7 +19,7 @@ $groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
 $govt_entity = [];
 $govEntityOnly = [];
 $govEntity = config('governmentEntities');
-$country_code = old('country', isset($contract->metadata->country->code) ? $contract->metadata->country->code : '');
+$country_code = old('country', isset($contract->metadata->country->code) ? $contract->metadata->country->code :'');
 $govEntityOnly = isset($govEntity->$country_code) ? $govEntity->$country_code : [];
 
 if (!empty($govEntityOnly)) {
@@ -123,9 +123,9 @@ if (!empty($contract->metadata->government_entity)) {
     <label for="country" class="col-sm-2 control-label">@lang('contract.country') <span class="red">*</span></label>
 
     <div class="col-sm-7">
-        <?php $country_list = ['' => 'select'] + $country;?>
+        <?php $country_list = $country;?>
         {!! Form::select('country', $country_list ,
-        isset($contract->metadata->country->code)?$contract->metadata->country->code:null, ["class"=>"required
+        isset($contract->metadata->country->code)?$contract->metadata->country->code:null, [ 'multiple'=>'multiple',"class"=>"required
         form-control" , "id" => "country"])!!}
         <label id="country-error" class="error" for="country"></label>
     </div>

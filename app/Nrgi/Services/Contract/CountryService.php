@@ -46,6 +46,14 @@ class CountryService
     {
         $countries = $this->countries;
 
+//        $country = ['code' => '' , 'name' => ''];
+//        foreach($countries as $codes=>$name)
+//        if(isset($countries[$code[0]]))
+//        {
+//                $country['code'] = $code;
+//                $country['name'] = $name;
+//        }
+//        return $country;
         return isset($countries[$code]) ? ['code' => $code, 'name' => $countries[$code]] : '';
     }
 
