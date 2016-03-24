@@ -35,4 +35,12 @@ interface CommentRepositoryInterface
      * @return collection
      */
     public function paginate($contract_id, $perPage);
+
+    /**
+     * Count comments By User
+     *
+     * @param $user_id
+     * @return int
+     */
+    public function countByUser($user_id);
 }

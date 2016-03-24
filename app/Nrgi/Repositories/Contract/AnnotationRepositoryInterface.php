@@ -74,4 +74,11 @@ interface AnnotationRepositoryInterface
      * @return Annotation
      */
     public function getById($id);
+
+    /**
+     * Count By User
+     * @param $user_id
+     * @return int
+     */
+    public function countByUser($user_id);
 }

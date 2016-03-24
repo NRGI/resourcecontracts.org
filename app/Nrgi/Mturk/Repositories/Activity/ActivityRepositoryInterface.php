@@ -20,4 +20,12 @@ interface ActivityRepositoryInterface
      * @return Activity
      */
     public function paginate($filter, $limit);
+
+    /**
+     * Count Activity by user
+     *
+     * @param $user_id
+     * @return int
+     */
+    public function countByUser($user_id);
 }

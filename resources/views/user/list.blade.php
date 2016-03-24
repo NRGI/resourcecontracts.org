@@ -11,10 +11,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Email</th>
                     <th>Role</th>
                     <th>Organization</th>
-                    <th>Country</th>
                     <th>Status</th>
                     <th>Created on</th>
                     <th></th>
@@ -24,16 +22,29 @@
                 @forelse($users as $key => $user)
                     <tr>
                         <td>{{$user->id}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
-                        <td>{{$user->roleName()}}</td>
+                        <td>{{$user->name}}<br/>{{$user->email}}</td>
+                        <td>
+                            {{$user->roleName()}}<br/>
+                            {{!empty($user->country[0]) ? '('.trans('codelist/country.'.$user->country[0]).')':null}}
+
+                        </td>
                         <td>{{$user->organization}}</td>
-                        <td>{{!empty($user->country[0]) ? trans('codelist/country.'.$user->country[0]):null}}</td>
                         <td>{{$user->status == 'true' ? 'Active' : 'Inactive'}}</td>
-                        <td>{{$user->created_at->format('D M d, Y h:i A')}}</td>
+                        <td>{{$user->created_at->format('D M d')}}<br/> {{$user->created_at->format('Y h:i A')}}</td>
                         <td>
                             <a href="{{route('user.edit', $user->id)}}" id="user_edit_{{$key}}" class="btn btn-primary">Edit</a>
+
+                            {!!Form::open(['route'=>['user.destroy', $user->id], 'style'=>"display:inline",
+              'method'=>'delete'])!!}
+                            {!!Form::button('Delete', ['type'=>'submit','id'=>"user_delete_{{$key}}", 'class'=>'btn btn-danger confirm',
+                            'data-confirm'=>'Are you sure you want to delete this user?'])!!}
+                            {!!Form::close()!!}
+
                         </td>
+
+                    </tr>
+
+                    </td>
 
                     </tr>
                 @empty

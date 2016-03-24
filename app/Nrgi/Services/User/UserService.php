@@ -1,6 +1,12 @@
 <?php namespace App\Nrgi\Services\User;
 
 use App\Nrgi\Entities\User\User;
+use App\Nrgi\Mturk\Repositories\Activity\ActivityRepositoryInterface as MTurkActivities;
+use App\Nrgi\Repositories\ActivityLog\ActivityLogRepositoryInterface;
+use App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface;
+use App\Nrgi\Repositories\Contract\Comment\CommentRepositoryInterface;
+use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
+use App\Nrgi\Repositories\Contract\Discussion\DiscussionRepositoryInterface;
 use App\Nrgi\Repositories\User\UserRepositoryInterface;
 use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Hashing\Hasher;
@@ -34,28 +40,72 @@ class UserService
     /**
      * @var Guard
      */
-    public $auth;
+    protected $auth;
+    /**
+     * @var ContractRepositoryInterface
+     */
+    protected $contract;
+    /**
+     * @var AnnotationRepositoryInterface
+     */
+    private $annotation;
+    /**
+     * @var ActivityLogRepositoryInterface
+     */
+    private $activity;
+    /**
+     * @var MTurkActivities
+     */
+    private $mTurkActivity;
+    /**
+     * @var DiscussionRepositoryInterface
+     */
+    private $discussion;
+    /**
+     * @var CommentRepositoryInterface
+     */
+    private $comment;
 
     /**
-     * @param UserRepositoryInterface $user
-     * @param LoggerInterface         $logger
-     * @param Hasher                  $hash
-     * @param Role                    $role
-     * @param Guard                   $auth
+     * @param UserRepositoryInterface        $user
+     * @param ContractRepositoryInterface    $contract
+     * @param AnnotationRepositoryInterface  $annotation
+     * @param ActivityLogRepositoryInterface $activity
+     * @param MTurkActivities                $mTurkActivity
+     * @param DiscussionRepositoryInterface  $discussion
+     * @param CommentRepositoryInterface     $comment
+     * @param LoggerInterface                $logger
+     * @param Hasher                         $hash
+     * @param Role                           $role
+     * @param Guard                          $auth
+     * @param ContractRepositoryInterface    $contract
      */
     public function __construct(
         UserRepositoryInterface $user,
+        ContractRepositoryInterface $contract,
+        AnnotationRepositoryInterface $annotation,
+        ActivityLogRepositoryInterface $activity,
+        MTurkActivities $mTurkActivity,
+        DiscussionRepositoryInterface $discussion,
+        CommentRepositoryInterface $comment,
         LoggerInterface $logger,
         Hasher $hash,
         Role $role,
-        Guard $auth
+        Guard $auth,
+        ContractRepositoryInterface $contract
 
     ) {
-        $this->user     = $user;
-        $this->logger   = $logger;
-        $this->hash     = $hash;
-        $this->role     = $role;
-        $this->auth     = $auth;
+        $this->user          = $user;
+        $this->logger        = $logger;
+        $this->hash          = $hash;
+        $this->role          = $role;
+        $this->auth          = $auth;
+        $this->contract      = $contract;
+        $this->annotation    = $annotation;
+        $this->activity      = $activity;
+        $this->mTurkActivity = $mTurkActivity;
+        $this->discussion    = $discussion;
+        $this->comment       = $comment;
     }
 
     /**
@@ -66,8 +116,9 @@ class UserService
     {
         if ($this->auth->user()->hasRole(config('nrgi.country_role'))) {
 
-          return $this->user->getCountryUsers();
+            return $this->user->getCountryUsers();
         }
+
         return $this->user->all();
     }
 
@@ -183,6 +234,27 @@ class UserService
         }
 
         return $this->user->getList();
+    }
+
+    /**
+     * Has user activity
+     *
+     * @param $user_id
+     * @return bool
+     */
+    public function hasNoActivity($user_id)
+    {
+        $models = ['contract', 'annotation', 'comment', 'discussion', 'activity', 'mTurkActivity'];
+
+        foreach ($models as $model) {
+            $contract = $this->$model->countByUser($user_id);
+
+            if ($contract > 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }

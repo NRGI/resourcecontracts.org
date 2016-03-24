@@ -66,4 +66,15 @@ class ActivityRepository implements ActivityRepositoryInterface
 
         return $query->paginate($limit);
     }
+
+    /**
+     * Count Activity by user
+     *
+     * @param $user_id
+     * @return int
+     */
+    public function countByUser($user_id)
+    {
+       return $this->activity->where('user_id',$user_id)->count();
+    }
 }

@@ -62,4 +62,12 @@ interface DiscussionRepositoryInterface
      */
     public function update($contract_id, $key, array $data);
 
+    /**
+     * Count Discussion By User
+     *
+     * @param $user_id
+     * @return mixed
+     */
+    public function countByUser($user_id);
+
 }

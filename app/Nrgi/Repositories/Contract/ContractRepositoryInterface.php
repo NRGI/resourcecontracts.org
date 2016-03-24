@@ -270,4 +270,11 @@ interface ContractRepositoryInterface
      */
     public function deleteSupportingContract($id);
 
+    /**
+     * Count Contracts by user
+     *
+     * @param $user_id
+     * @return int
+     */
+    public function countByUser($user_id);
 }

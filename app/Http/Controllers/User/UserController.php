@@ -39,7 +39,7 @@ class UserController extends Controller
 
         if (!$this->auth->user()->hasRole(['superadmin', 'admin', 'country-admin'])) {
             return redirect('/home')->withError(trans('contract.permission_denied'))->send();
-         }
+        }
 
         $this->countries = $countries;
     }
@@ -130,11 +130,32 @@ class UserController extends Controller
      */
     public function delete($id)
     {
-        if ($this->user->delete($id)) {
-            return redirect()->route('user.list')->withSuccess(trans('user.delete_success'));
+        if ($this->user->hasNoActivity($id)) {
+
+            if ($this->user->delete($id)) {
+                return redirect()->route('user.list')->withSuccess(trans('user.delete_success'));
+            }
+
+            return redirect()->route('user.list')->withError(trans('user.delete_fail'));
         }
 
-        return redirect()->route('user.list')->withError(trans('user.delete_fail'));
+        $user = $this->user->find($id);
+
+        return view('user.delete_confirm', compact('user'));
+    }
+
+    /**
+     * Deactivate User
+     *
+     * @return \Illuminate\Routing\Redirector
+     */
+    public function deactivate($id)
+    {
+        if ($this->user->update($id, ['status' => 'false'], null)) {
+            return redirect()->route('user.list')->withSuccess(trans('user.deactivate_success'));
+        }
+
+        return redirect()->route('user.list')->withError(trans('user.deactivate_fail'));
     }
 
 }

@@ -127,4 +127,15 @@ class DiscussionRepository implements DiscussionRepositoryInterface
     {
         return $this->discussion->where('contract_id', $contract_id)->where('key', $key)->update($data);
     }
+
+    /**
+     * Count Discussion By User
+     *
+     * @param $user_id
+     * @return mixed
+     */
+    public function countByUser($user_id)
+    {
+        return $this->discussion->where('user_id',$user_id)->count();
+    }
 }
