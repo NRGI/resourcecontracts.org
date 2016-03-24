@@ -95,19 +95,15 @@ class RenewMTurkTask extends Command
         foreach ($expiredPages as $page) {
             $contracts[$page->contract_id][] = $page;
         }
-
         $count = [];
 
         foreach ($contracts as $id => $contract) {
             $count[$id] = count($contract);
 
         }
-
         asort($count);
-
         $pages = [];
-
-
+        
         foreach($count as $id => $v)
         {
             $cons = $contracts[$id];
