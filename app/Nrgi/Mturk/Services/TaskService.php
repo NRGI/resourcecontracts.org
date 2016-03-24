@@ -256,7 +256,7 @@ class TaskService
             if (empty($task->assignments)) {
                 $assignment = $this->turk->assignment($task->hit_id);
                 if (!is_null($assignment) && $assignment['TotalNumResults'] > 0) {
-                    $task->status      = Task::COMPLETED;
+                    $task->status = Task::COMPLETED;
                     $this->logger->mTurkActivity('mturk.log.submitted', null, $task->contract_id, $task->page_no);
 
                     $updatedAssignment = $this->getFormattedAssignment($assignment);
@@ -423,7 +423,7 @@ class TaskService
      * Reset HIT
      *
      * @param $contract_id
-     * @param $id
+     * @param $task_id
      * @return bool
      */
     public function resetHIT($contract_id, $task_id)
@@ -432,25 +432,28 @@ class TaskService
 
         try {
             $task = $this->task->getTask($contract_id, $task_id);
-            
         } catch (Exception $e) {
             $this->logger->error('Task does not exit' . $e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task_id]);
 
             return false;
         }
 
-        try {
-            if (!$this->turk->deleteHIT($task->hit_id)) {
+        if($task->hit_id !='')
+        {
+            try {
+                if (!$this->turk->deleteHIT($task->hit_id)) {
+                    return false;
+                }
+                $this->logger->info('HIT successfully deleted', ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
+            } catch (MTurkException $e) {
+                $this->logger->error('HIT delete failed. ' . $e->getMessage(), ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id, 'Errors' => $e->getErrors()]);
+            } catch (Exception $e) {
+                $this->logger->error('HIT delete failed. ' . $e->getMessage(), ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
+
                 return false;
             }
-            $this->logger->info('HIT successfully deleted', ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
-        } catch (MTurkException $e) {
-            $this->logger->error('HIT delete failed. ' . $e->getMessage(), ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id, 'Errors' => $e->getErrors()]);
-        } catch (Exception $e) {
-            $this->logger->error('HIT delete failed. ' . $e->getMessage(), ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
-
-            return false;
         }
+
         $title       = sprintf("Transcription of Contract '%s' - Pg: %s Lang: %s", str_limit($contract->title, 70), $task->page_no, $contract->metadata->language);
         $url         = $this->getMTurkUrl($task->pdf_url, $contract->metadata->language);
         $description = config('mturk.defaults.production.Description');

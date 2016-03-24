@@ -40,66 +40,73 @@ class RenewMTurkTask extends Command
      */
     public function fire (TaskService $task)
     {
+
         $expired_pages = $task->getExpired();
 
         $pages = $this->setPriority($expired_pages);
 
-        $current_balance = $task->getMturkBalance();
-        $available_balance =  $current_balance['Amount'];
+        foreach ($pages as $key => $page) {
 
-        foreach ($pages as $key => $page)
-        {
-            $page = $task->updateAssignment($page);
+            $expiredPages = $task->getExpired();
 
-            if ($page->status == Task::COMPLETED || $page->assignments['assignment']['status'] == 'Approved') {
-                continue;
-            }
+            $pages = $this->setPriority($expiredPages);
 
-            if ($current_balance <= 0.50) {
-                continue;
-            }
+            $currentBalance   = $task->getMturkBalance();
+            $availableBalance = $currentBalance['Amount'];
 
-                $contract_id = $page->contract_id;
-                $hit_id      = $page->hit_id;
-                $page_no     = $page->page_no;
-                $page_id =  $page->id;
-            if ($task->resetHIT($contract_id, $page_id)) {
-                    $current_balance = $available_balance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
-                    $this->info(sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contract_id, $hit_id, $page_no));
+            foreach ($pages as $key => $page) {
+
+                $page = $task->updateAssignment($page);
+
+                if ($page->status == Task::COMPLETED || $page->assignments['assignment']['status'] == 'Approved') {
+                    continue;
+                }
+
+                if ($availableBalance <= 0.50) {
+                    continue;
+                }
+
+                $contractId = $page->contract_id;
+                $hitId      = $page->hit_id;
+                $pageNumber = $page->page_no;
+                $pageId     = $page->id;
+
+                if ($task->resetHIT($contractId, $pageId)) {
+                    $availableBalance = $availableBalance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
+                    $this->info(sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contractId, $hitId, $pageNumber));
                 } else {
-                    $this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contract_id, $hit_id, $page_no));
+                    $this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contractId, $hitId, $pageNumber));
                 }
 
 
+            }
 
+            $this->info('Process Completed');
         }
-
-        $this->info('Process Completed');
     }
 
     /**
-     * Set Priority for pages
-     *
-     * @param $expired_pages
+     * @param $expiredPages
      * @return array
      */
-    private function setPriority ($expired_pages)
+    private function setPriority($expiredPages)
     {
-        $contracts=[];
-        foreach($expired_pages  as $page)
-        {
+        $contracts = [];
+        foreach ($expiredPages as $page) {
             $contracts[$page->contract_id][] = $page;
         }
 
         $count = [];
-        foreach($contracts as $id => $contract)
-        {
-            $count[$id] =  count($contract);
+
+        foreach ($contracts as $id => $contract) {
+            $count[$id] = count($contract);
+
         }
 
         asort($count);
 
         $pages = [];
+
 
         foreach($count as $id => $v)
         {
@@ -109,6 +116,15 @@ class RenewMTurkTask extends Command
                 $pages[] = $page;
             }
         }
+
+        foreach ($count as $id => $v) {
+            $cons = $contracts[$id];
+            foreach ($cons as $page) {
+                $pages[] = $page;
+            }
+        }
+
+
         return $pages;
     }
 }
