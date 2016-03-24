@@ -112,7 +112,7 @@ class MTurkNotificationService
         $balance         = $this->mturk->getBalance();
         if ($balance['Amount'] < $minimum_balance) {
             $this->mailer->sendMultiple(
-                explode(',', env('NOTIFY_MAIL')),
+               $this->mailer->getMailAddress(),
                 "MTurk balance is getting low.",
                 'mturk.email.balance',
                 [
