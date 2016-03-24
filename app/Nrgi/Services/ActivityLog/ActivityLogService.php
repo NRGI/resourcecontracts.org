@@ -60,6 +60,10 @@ class ActivityLogService
      */
     public function mturk($contract_id, $log)
     {
-        return $this->activityLog->mturk($contract_id, $log);
+        $log = $this->activityLog->mturk($contract_id, $log);
+        if (empty($log)) {
+            $log = ActivityLog::with('user')->where('message', 'mturk.log.create')->where('contract_id', $contract_id)->first();
+        }
+        return $log;
     }
 }
