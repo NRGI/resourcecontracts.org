@@ -19,9 +19,6 @@ class AdminTest extends IntegrationTest
      */
     public function getTotalNumberOfContracts()
     {
-        print_r(getenv('PROJECT'));
-        echo "getenv";
-
         $this->api = new ApiTester();
 
         return $this->api->get($this->apiUrl . '/contracts')->getJson()->total;
@@ -334,7 +331,7 @@ class AdminTest extends IntegrationTest
         $this->visit($this->sub_site_url . '/search?q=&resource%5B%5D=Coal')
              ->visit($this->sub_site_url . '/search?q=young&country%5B%5D=np&resource%5B%5D=Coal&contract_type%5B%5D=Joint+Venture+Agreement')
              ->andSee('Young Innovations Nepal')
-             ->andSee('Download search results as csv');
+             ->andSee('Download search results');
 
         $this->cliPrint('Completed');
 
