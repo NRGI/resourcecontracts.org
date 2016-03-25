@@ -559,7 +559,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                 <p data-pk="{{$annotation->id}}" data-name="text"
                                    data-url="{{route('annotation.update')}}" data-type="textarea"
                                    class="edit-annotation-text">{{$annotation->annotation->text}}</p>
-                                <p class="annotation-footer" style="margin-bottom: 10px;">
+                                <div class="annotation-footer" style="margin-bottom: 10px;">
                                     @if(property_exists($annotation->annotation, "shapes"))
                                         <span style="clear: both; display: inline">
                                             <a href="{{route('contract.annotate', ['id'=>$contract->id])}}#/pdf/page/{{$annotation->document_page_no}}">{{$annotation->annotation->quote or 'pdf annotation'}} </a>
@@ -574,13 +574,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                         </span>
                                 @endif
 
-                                @if(property_exists($annotation->annotation, 'tags'))
-                                    @foreach($annotation->annotation->tags as $tag)
-                                        <div>{{$tag}}</div>
-                                        @endforeach
-                                        @endif
+
                                         {!! discussion($discussions,$discussion_status, $contract->id,$annotation->id,'annotation') !!}
-                                        </p>
+                                        </div>
                             </li>
                         @empty
                             <li>
