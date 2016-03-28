@@ -328,8 +328,8 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <li>
                     <strong>@lang('contract.country'):</strong> {{$contract->metadata->country->name or ''}}
                     [{{$contract->metadata->country->code or ''}}]
-                    @if(isset(config('amla')[$contract->metadata->country->code]))
-                        <a href="{{config('amla')[$contract->metadata->country->code]}}">@lang('contract.amla')</a>
+                    @if(isset($contract->metadata->amla_url) && !empty($contract->metadata->amla_url))
+                        <a href="{{$contract->metadata->amla_url}}">@lang('contract.amla')</a>
                     @endif
                     {!! discussion($discussions,$discussion_status, $contract->id,'country','metadata') !!}
                 </li>
