@@ -225,14 +225,34 @@ class AnnotationRepository implements AnnotationRepositoryInterface
 
         return $annotationObj->save();
     }
-/**
-* Count Contracts By user
-*
-* @param $user_id
-* @return int
-*/
+
+    /**
+     * Count Contracts By user
+     *
+     * @param $user_id
+     * @return int
+     */
     public function countByUser($user_id)
     {
         return $this->annotation->where('user_id', $user_id)->count();
+    }
+
+    /**
+     * Return all the annotations order by contract_id
+     * @return array
+     */
+    public function getAllAnnotations()
+    {
+        return $this->annotation->orderBy('contract_id')->get();
+    }
+
+    /**
+     * Return all the annotations of a specific contract
+     * @param $contract_id
+     * @return object
+     */
+    public function getAnnotationByContractId($contract_id)
+    {
+        return $this->annotation->where('contract_id', $contract_id)->get();
     }
 }
