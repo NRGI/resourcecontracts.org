@@ -319,7 +319,7 @@ class Contract extends Model
     {
         $except_resource = ["Hydrocarbons","Oil","Gas"];
         $filter = array_intersect($resource,$except_resource);
-        return (isset(config('amla')[$code]) && (!empty($filter)) ) ? config('amla')[$code] : '';
+        return (isset(config('amla')[$code]) && (empty($filter)) ) ? config('amla')[$code] : '';
     }
 
     /**
