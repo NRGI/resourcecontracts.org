@@ -26,7 +26,7 @@ class TaskRepository implements TaskRepositoryInterface
     /**
      * @param Task $task
      */
-    public function __construct(Task $task)
+    public function __construct (Task $task)
     {
         $this->task = $task;
     }
@@ -37,7 +37,7 @@ class TaskRepository implements TaskRepositoryInterface
      * @param array $tasks
      * @return bool
      */
-    public function createTasks($tasks)
+    public function createTasks ($tasks)
     {
         $tasks_collection = $tasks->toArray();
 
@@ -60,7 +60,7 @@ class TaskRepository implements TaskRepositoryInterface
      * @param $update
      * @return mixed
      */
-    public function update($contract_id, $page_no, $update)
+    public function update ($contract_id, $page_no, $update)
     {
         return $this->task->where('contract_id', $contract_id)
                           ->where('page_no', $page_no)
@@ -73,7 +73,7 @@ class TaskRepository implements TaskRepositoryInterface
      *
      * @return Collection
      */
-    public function getAll($contract_id)
+    public function getAll ($contract_id)
     {
         return $this->task->where('contract_id', $contract_id)->get();
     }
@@ -85,7 +85,7 @@ class TaskRepository implements TaskRepositoryInterface
      * @param $task_id
      * @return task
      */
-    public function getTask($contract_id, $task_id)
+    public function getTask ($contract_id, $task_id)
     {
         return $this->task->where('contract_id', $contract_id)->where('id', $task_id)->first();
     }
@@ -96,7 +96,7 @@ class TaskRepository implements TaskRepositoryInterface
      * @param $contact_id
      * @return int
      */
-    public function getTotalHits($contact_id)
+    public function getTotalHits ($contact_id)
     {
         return $this->task->where('contract_id', $contact_id)
                           ->where('hit_id', '!=', '')
@@ -110,7 +110,7 @@ class TaskRepository implements TaskRepositoryInterface
      * @param $contract_id
      * @return array
      */
-    public function getTotalByStatus($contract_id)
+    public function getTotalByStatus ($contract_id)
     {
         return [
             'total_completed'        => $this->task->completed()->where('contract_id', $contract_id)->count(),
@@ -129,7 +129,7 @@ class TaskRepository implements TaskRepositoryInterface
      *
      * @return Collection
      */
-    public function getApprovalPendingTask($contract_id)
+    public function getApprovalPendingTask ($contract_id)
     {
         return $this->task->completed()->approvalPending()->where('contract_id', $contract_id)->get();
     }
@@ -139,9 +139,10 @@ class TaskRepository implements TaskRepositoryInterface
      *
      * @return Collection
      */
-    public function getExpired()
+    public function getExpired ()
     {
-        return $this->task->where('hit_id', '!=', '')->expired()->pending()->get();
+        return $this->task->whereRaw("status='0' AND (hit_id is null OR date(now()) >= date(created_at + interval '32' day))")
+                          ->get();
     }
 
     /**
@@ -151,7 +152,7 @@ class TaskRepository implements TaskRepositoryInterface
      * @param $null
      * @return Collection
      */
-    public function allTasks($filter, $perPage = null)
+    public function allTasks ($filter, $perPage = null)
     {
         $status   = $filter['status'];
         $approved = $filter['approved'];
@@ -179,5 +180,16 @@ class TaskRepository implements TaskRepositoryInterface
         }
 
         return $query->get();
+    }
+
+    /**
+     * Get Page Count
+     *
+     * @return mixed
+     */
+    public function getPageCount ()
+    {
+        return $this->task->select('page_no')->orderBy('page_no', 'ASC')->get()->toArray();
+
     }
 }
