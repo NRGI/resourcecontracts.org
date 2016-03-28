@@ -197,24 +197,6 @@ header {
     margin: 0 !important;
 }
 
-.annotation-list li > div {
-    background: #ddd;
-    border-radius: 50px;
-    padding: 3px 6px;
-    float: left;
-    margin-right: 4px;
-    font-size: 12px;
-}
-
-.annotation-list li > div:hover {
-    text-decoration: none;
-    background: #ccc;
-}
-
-.annotation-list li > div:empty, .annotation-list li > p:empty {
-    display: none;
-}
-
 .text-type-block:hover {
     text-decoration: none;
 }
