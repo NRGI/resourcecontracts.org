@@ -146,10 +146,8 @@ class Task extends Model
      */
     public function scopeExpired($query)
     {
-        $expire_in_sec = config('mturk.defaults.production.AssignmentDurationInSeconds');
-        $date          = Carbon::now()->subSeconds($expire_in_sec);
-
-        return $query->where('created_at', '<=', $date->format('Y-m-d H:i:s'));
+        $days          = 32;
+        return $query->whereRaw("date(now()) >= date(created_at + interval '".$days."' day)");
     }
 
     /**

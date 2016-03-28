@@ -423,7 +423,7 @@ class TaskService
      * Reset HIT
      *
      * @param $contract_id
-     * @param $id
+     * @param $task_id
      * @return bool
      */
     public function resetHIT($contract_id, $task_id)
@@ -438,18 +438,22 @@ class TaskService
             return false;
         }
 
-        try {
-            if (!$this->turk->deleteHIT($task->hit_id)) {
+        if($task->hit_id !='')
+        {
+            try {
+                if (!$this->turk->deleteHIT($task->hit_id)) {
+                    return false;
+                }
+                $this->logger->info('HIT successfully deleted', ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
+            } catch (MTurkException $e) {
+                $this->logger->error('HIT delete failed. ' . $e->getMessage(), ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id, 'Errors' => $e->getErrors()]);
+            } catch (Exception $e) {
+                $this->logger->error('HIT delete failed. ' . $e->getMessage(), ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
+
                 return false;
             }
-            $this->logger->info('HIT successfully deleted', ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
-        } catch (MTurkException $e) {
-            $this->logger->error('HIT delete failed. ' . $e->getMessage(), ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id, 'Errors' => $e->getErrors()]);
-        } catch (Exception $e) {
-            $this->logger->error('HIT delete failed. ' . $e->getMessage(), ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
-
-            return false;
         }
+
         $title       = sprintf("Transcription of Contract '%s' - Pg: %s Lang: %s", str_limit($contract->title, 70), $task->page_no, $contract->metadata->language);
         $url         = $this->getMTurkUrl($task->pdf_url, $contract->metadata->language);
         $description = config('mturk.defaults.production.Description');
@@ -524,9 +528,7 @@ class TaskService
         $tasks = $this->task->getAll($contract_id);
 
         foreach ($tasks as $task) {
-            $text     = $task->assignments->assignment->answer;
-            $text     = is_string($text) ? $text : ''; 
-            $pdf_text = nl2br($text);
+            $pdf_text = nl2br($task->assignments->assignment->answer);
             $this->page->saveText($contract_id, $task->page_no, $pdf_text, false);
         }
 
@@ -682,4 +684,16 @@ class TaskService
         return $task->save();
 
     }
+
+    /**
+     * Get Mturk Balance
+     *
+     * @return object
+     */
+    public function getMturkBalance()
+    {
+        return $this->turk->getBalance();
+
+    }
+
 }
