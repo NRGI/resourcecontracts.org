@@ -1071,5 +1071,4 @@ class ContractService
         return true;
     }
 
-
 }

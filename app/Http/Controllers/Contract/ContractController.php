@@ -347,6 +347,9 @@ class ContractController extends Controller
      */
     public function publish($contract_id, Guard $auth)
     {
+        if ($auth->user()->isCountryResearch()) {
+            return back()->withError(trans('contract.permission_denied'));
+        }
         $status = "published";
         $types  = ["metadata", "text"];
         foreach ($types as $type) {
@@ -369,6 +372,9 @@ class ContractController extends Controller
      */
     public function unpublish($contract_id, Guard $auth)
     {
+        if($auth->user()->isCountryResearch()){
+            return back()->withError(trans('contract.permission_denied'));
+        }
         if ($this->contract->unPublishContract($contract_id)) {
             $this->annotation->updateStatus("draft", $contract_id);
 

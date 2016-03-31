@@ -5,12 +5,15 @@ use App\Nrgi\Entities\Contract\Contract; ?>
     <span class="published">@lang('Published')</span>
 @elseif($contract->metadata_status == Contract::STATUS_COMPLETED)
     <span class="completed">@lang('Completed')</span>
-    <div class="pull-right">
+    @if(null==($current_user->isCountryResearch()) || ($current_user->isCountryResearch()==false))
+       <div class="pull-right">
             <button data-toggle="modal" data-target=".metadata-publish-modal" class="btn btn-success">@lang("Publish")
             </button>
             <button data-toggle="modal" data-target=".metadata-reject-modal" class="btn btn-danger">@lang("Reject")
             </button>
         </div>
+    @endif
+
         <div class="modal fade metadata-reject-modal" tabindex="-1" role="dialog"
              aria-labelledby="myModalLabel"
              aria-hidden="true">
@@ -23,6 +26,7 @@ use App\Nrgi\Entities\Contract\Contract; ?>
                                     aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">@lang('Suggest changes for Metadata')</h4>
                     </div>
+
                     <div class="modal-body">
                         {!! Form::textarea('message', null, ['id'=>"message", 'rows'=>12,
                         'style'=>'width:100%'])!!}
