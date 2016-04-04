@@ -113,14 +113,6 @@ class RenewMTurkTask extends Command
             }
         }
 
-        foreach ($count as $id => $v) {
-            $cons = $contracts[$id];
-            foreach ($cons as $page) {
-                $pages[] = $page;
-            }
-        }
-
-
         return $pages;
     }
 }
