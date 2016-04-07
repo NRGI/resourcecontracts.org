@@ -32,8 +32,8 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
      */
     public function __construct(ActivityLog $activityLog, Activity $mTurkActivities, Guard $auth)
     {
-        $this->activityLog = $activityLog;
-        $this->auth        = $auth;
+        $this->activityLog     = $activityLog;
+        $this->auth            = $auth;
         $this->mTurkActivities = $mTurkActivities;
     }
 
@@ -44,7 +44,15 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
      */
     public function save($activityLog, $user_id = null)
     {
-        $activityLog['user_id'] = is_null($user_id) ? $this->auth->id() : $user_id;
+        if (is_null($user_id)) {
+            $user_id = $this->auth->id();
+        }
+
+        if (empty($user_id)) {
+            $user_id = 1;
+        }
+
+        $activityLog['user_id'] = $user_id;
 
         return ($this->activityLog->create($activityLog) ? true : false);
     }
@@ -78,7 +86,7 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
      */
     public function mturk($contract_id, $log)
     {
-       return $this->mTurkActivities->with('user')->where('contract_id', $contract_id)->where('message', 'mturk.log.'.$log)->first();
+        return $this->mTurkActivities->with('user')->where('contract_id', $contract_id)->where('message', 'mturk.log.' . $log)->first();
     }
 
     /**
@@ -89,6 +97,6 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
      */
     public function countByUser($user_id)
     {
-       return $this->activityLog->where('user_id',$user_id)->count();
+        return $this->activityLog->where('user_id', $user_id)->count();
     }
 }

@@ -23,10 +23,11 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\UpdateMetadata',
         'App\Console\Commands\RenewMTurkTask',
         'App\Console\Commands\CreateMTurkTasks',
-        'App\Console\Commands\Updatemturk',
+        'App\Console\Commands\ResetMTurkTasks',
         'App\Console\Commands\MTurkBalanceNotification',
         'App\Console\Commands\UpdateGovernmentEntities',
         'App\Console\Commands\UpdateAnnotationCategory',
+        'App\Console\Commands\UpdateMTurkAssignment'
     ];
 
     /**
@@ -38,9 +39,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('nrgi:mturk')->dailyAt('01:00');
+        $schedule->command('nrgi:mturkbalance')->dailyAt('01:30');
+        $schedule->command('nrgi:updatemturktasks')->dailyAt('06:00');
         $schedule->command('nrgi:renewmturktask')->dailyAt('02:00');
         $schedule->command('nrgi:updategroup')->dailyAt('10:00');
-        $schedule->command('nrgi:mturkbalance')->twiceDaily();
         $schedule->command('nrgi:updategovernmententities')->dailyAt('02:00');
     }
 }

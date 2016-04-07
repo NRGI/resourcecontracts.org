@@ -5,21 +5,21 @@ use App\Nrgi\Mturk\Services\TaskService;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 
-class Updatemturk extends Command {
+class ResetMTurkTasks extends Command {
 
 	/**
 	 * The console command name.
 	 *
 	 * @var string
 	 */
-	protected $name = 'nrgi:updatemturk';
+	protected $name = 'nrgi:resetmturk';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Update Mturk Tasks';
+	protected $description = 'Reset MTurk Tasks';
 
 	/**
 	 * Create a new command instance.
