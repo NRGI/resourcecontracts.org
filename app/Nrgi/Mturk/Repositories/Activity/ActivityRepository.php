@@ -37,12 +37,13 @@ class ActivityRepository implements ActivityRepositoryInterface
      */
     public function save($activity)
     {
-        $activity['user_id'] = null;
-        $user                = $this->auth->user();
+        $user_id = $this->auth->id();
 
-        if (isset($user->id)) {
-            $activity['user_id'] = $user->id;
+        if (empty($user_id)) {
+            $user_id = 1;
         }
+
+        $activity['user_id'] = $user_id;
 
         return ($this->activity->create($activity) ? true : false);
     }
@@ -75,6 +76,6 @@ class ActivityRepository implements ActivityRepositoryInterface
      */
     public function countByUser($user_id)
     {
-       return $this->activity->where('user_id',$user_id)->count();
+        return $this->activity->where('user_id', $user_id)->count();
     }
 }

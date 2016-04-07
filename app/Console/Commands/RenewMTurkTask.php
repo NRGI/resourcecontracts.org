@@ -23,7 +23,7 @@ class RenewMTurkTask extends Command
      *
      * @var string
      */
-    protected $description = 'Renew MTurk Task after 10 days';
+    protected $description = 'Renew MTurk Task after 30 days';
 
     /**
      * Create a new command instance.
@@ -63,7 +63,7 @@ class RenewMTurkTask extends Command
                 }
 
                 if ($availableBalance <= 0.50) {
-                    continue;
+                    break;
                 }
 
                 $contractId = $page->contract_id;
