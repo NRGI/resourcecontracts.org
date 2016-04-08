@@ -17,7 +17,6 @@ return [
     "Other"                           => "Other",
     "Project Plan"                    => "Project Plan",
     "Social Agreement"                => "Social Agreement",
-    "Social Impact Assessment"        => "Social Impact Assessment",
-    "Stabilization Agreement"         => "Stabilization Agreement"
+    "Social Impact Assessment"        => "Social Impact Assessment"
 
 ];
