@@ -224,6 +224,10 @@ $(function () {
         loadGovernmentEntities(country);
     });
 
+    $(document).on('change','#country',function(){
+       $('.el_government_identifier').val('');
+    });
+
 
     function getEntitiesOptions(country) {
         var entities = govEntity[country];

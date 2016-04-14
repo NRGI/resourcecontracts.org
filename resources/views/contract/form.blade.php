@@ -233,16 +233,17 @@ if (isset($contract->metadata->resource)) {
 
 <div class="form-group el_document_type">
     <?php
-
-    $dt = isset($contract->metadata->document_type) ? $contract->metadata->document_type : old('document_type');
-    if (!in_array($dt, trans('codelist/documentType')) AND $dt != '') {
-        $dt = 'Other';
+    if(!isset($contract->file)){
+        $dt = isset($contract->metadata->document_type) ? $contract->metadata->document_type : old('document_type');
+        if (!in_array($dt, trans('codelist/documentType')) AND $dt != '') {
+            $dt = 'Other';
+        }
     }
-
+    else $dt = '';
     ?>
     <label for="document_type" class="col-sm-2 control-label">@lang('contract.document_type') <span class="red">*</span></label>
     <div class="col-sm-7">
-        {!! Form::select('document_type',[''=>'Select']+ trans('codelist/documentType'),
+         {!! Form::select('document_type',[''=>'Select']+ trans('codelist/documentType'),
         $dt, ["class"=>"required form-control", "id"=>"document_type"])!!}
         @if($dt == 'Other')
             {!! Form::text('document_type',
