@@ -28,7 +28,7 @@ class RenewMTurkTask extends Command
     /**
      * Create a new command instance.
      */
-    public function __construct ()
+    public function __construct()
     {
         parent::__construct();
     }
@@ -38,9 +38,8 @@ class RenewMTurkTask extends Command
      *
      * @param TaskService $task
      */
-    public function fire (TaskService $task)
+    public function fire(TaskService $task)
     {
-
         $expired_pages = $task->getExpired();
 
         $pages = $this->setPriority($expired_pages);
@@ -77,8 +76,6 @@ class RenewMTurkTask extends Command
                 } else {
                     $this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contractId, $hitId, $pageNumber));
                 }
-
-
             }
 
             $this->info('Process Completed');
@@ -104,11 +101,9 @@ class RenewMTurkTask extends Command
         asort($count);
         $pages = [];
 
-        foreach($count as $id => $v)
-        {
+        foreach ($count as $id => $v) {
             $cons = $contracts[$id];
-            foreach($cons as $page)
-            {
+            foreach ($cons as $page) {
                 $pages[] = $page;
             }
         }

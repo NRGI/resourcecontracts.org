@@ -1,8 +1,9 @@
-<?php namespace App\Nrgi\Repositories\Contract;
+<?php namespace App\Nrgi\Repositories\Contract\Annotation;
 
-use App\Nrgi\Entities\Contract\Annotation;
+use App\Nrgi\Entities\Contract\Annotation\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
 use Illuminate\Database\DatabaseManager;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Contract Annotation Repository
@@ -11,16 +12,15 @@ use Illuminate\Database\DatabaseManager;
  * @method Illuminate\Database\Query\Builder where()
  * @method void findOrFail()
  * @method void distinct()
- * @package Nrgi\Repositories\Contract
+ * @package Nrgi\Repositories\Contract\Annotation
  *
  */
 class AnnotationRepository implements AnnotationRepositoryInterface
 {
     /**
-     * @var Annotation annotation
+     * @var Annotation
      */
     protected $annotation;
-
     /**
      * @var Contract
      */
@@ -45,30 +45,34 @@ class AnnotationRepository implements AnnotationRepositoryInterface
     /**
      * Save Annotation
      *
-     * @param array $contractAnnotation
-     * @return annotation
+     * @param array $annotationData
+     * @return Annotation
      */
-    public function save($contractAnnotation)
+    public function create($annotationData)
     {
-        return $contractAnnotation->save();
+        return $this->annotation->create($annotationData);
     }
 
     /**
+     *
+     *
      * @param array $params
      * @return Collection
      */
     public function search(array $params)
     {
         if (isset($params['page'])) {
-            return $this->annotation
-                ->where('contract_id', $params['contract'])
-                ->where('document_page_no', $params['page'])
-                ->get();
+            return $this->contract->with(
+                [
+                    'annotations.child' => function ($query) use ($params) {
+                        return $query->where('page_no', $params['page']);
+                    }
+                ]
+            )->findOrFail($params['contract']);
+
         }
 
-        return $this->annotation
-            ->where('contract_id', $params['contract'])
-            ->get();
+        return $this->contract->with(['pages', 'annotations.child'])->findOrFail($params['contract']);
     }
 
     /**
@@ -89,18 +93,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      */
     public function delete($id)
     {
-        return $this->getById($id)->delete();
-    }
-
-    /**
-     * Get Model by id.
-     *
-     * @param  int $id
-     * @return Annotation
-     */
-    public function getById($id)
-    {
-        return $this->annotation->findOrFail($id);
+        return $this->annotation->destroy($id);
     }
 
     /**
@@ -122,7 +115,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      */
     public function getContractPagesWithAnnotations($contractId)
     {
-        return $this->contract->with('pages.annotations')->findOrFail($contractId);
+        return $this->contract->with(['pages', 'annotations.child'])->findOrFail($contractId);
     }
 
     /**
@@ -204,26 +197,56 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      *
      * @param       $id
      * @param array $data
-     * @return bool
+     * @return Annotation
      */
-    public function updateAnnotationField($id, array $data)
+    public function updateField($id, array $data)
     {
-        $annotationObj   = $this->annotation->find($id);
-        $annotationArray = json_encode($annotationObj->annotation);
-        $annotationArray = json_decode($annotationArray, true);
-        if (array_key_exists('document_page_no', $data)) {
-            $annotationObj->document_page_no = $data['document_page_no'];
-        }
-        if (array_key_exists('text', $data)) {
-            $annotationArray['text'] = $data['text'];
-        }
-        if (array_key_exists('category', $data)) {
-            $annotationArray['category'] = $data['category'];
-            $annotationArray['cluster']  = _l(config("annotation_category.cluster.{$annotationArray['category']}"));
-        }
-        $annotationObj->annotation = $annotationArray;
+        $annotation = $this->annotation->find($id);
 
-        return $annotationObj->save();
+        if (array_key_exists('text', $data)) {
+            $annotation->text = $data['text'];
+        }
+
+        if (array_key_exists('category', $data)) {
+            $annotation->category = $data['category'];
+        }
+
+        $annotation->save();
+
+        return $annotation;
+    }
+
+    /**
+     * Find annotation by id
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function find($id)
+    {
+        return $this->annotation->find($id);
+    }
+
+    /**
+     * Delete Annotation If child Not found
+     *
+     * @param $annotation_id
+     * @return boolean
+     */
+    public function deleteIfChildNotFound($annotation_id)
+    {
+        if (is_null($annotation_id)) {
+            return false;
+        }
+
+        $annotation = $this->annotation->with('child')->find($annotation_id);
+
+        $count = $annotation->child->count();
+        if ($count < 1) {
+            return $annotation->delete();
+        }
+
+        return true;
     }
 
     /**
@@ -239,6 +262,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
 
     /**
      * Return all the annotations order by contract_id
+     *
      * @return array
      */
     public function getAllAnnotations()
@@ -254,5 +278,18 @@ class AnnotationRepository implements AnnotationRepositoryInterface
     public function getAnnotationByContractId($contract_id)
     {
         return $this->annotation->where('contract_id', $contract_id)->get();
+    }
+
+    /*
+     * Check if category of annotations exist or not.
+     *
+     * @param $key
+     * @return array
+     */
+    public function getAnnotationsQuality($key)
+    {
+        $result = $this->annotation->select('contract_id')->where("category", $key)->distinct('contract_id')->get();
+
+        return $result->toArray();
     }
 }

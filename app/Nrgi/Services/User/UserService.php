@@ -3,7 +3,7 @@
 use App\Nrgi\Entities\User\User;
 use App\Nrgi\Mturk\Repositories\Activity\ActivityRepositoryInterface as MTurkActivities;
 use App\Nrgi\Repositories\ActivityLog\ActivityLogRepositoryInterface;
-use App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface;
+use App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface;
 use App\Nrgi\Repositories\Contract\Comment\CommentRepositoryInterface;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Repositories\Contract\Discussion\DiscussionRepositoryInterface;

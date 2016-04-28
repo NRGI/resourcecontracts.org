@@ -19919,8 +19919,10 @@ annotorious.okfn.ImagePlugin = function(image, okfnAnnotator) {
     annotator.addAnnotation(annotation);
     // annotator.stopSelection();
       annotator._currentSelector.stopSelection();
-      if(annotation.id !== undefined) 
-        okfnAnnotator.publish('annotationUpdated',[annotation]);
+      if(annotation.id !== undefined)
+      {
+       // okfnAnnotator.publish('annotationUpdated',[annotation]);
+      }
       else {
         okfnAnnotator.publish('annotationCreated',[annotation]);
       }

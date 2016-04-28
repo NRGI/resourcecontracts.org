@@ -4,7 +4,8 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         'annotationCreated': 'onAnnotationCreated',
         'annotationDeleted': 'onAnnotationDeleted',
         'annotationUpdated': 'onAnnotationUpdated',
-        'annotationsLoaded' : 'annotationsLoaded',
+        'annotationsLoaded': 'annotationsLoaded',
+        'annotationEditorSubmit': 'onAnnotationEditorSubmit',
         'annotorious:annotation-clicked': 'onAnnotationClicked',
         'annotorious:mouse-over-annotation': 'onMouseOverAnnotation'
     };
@@ -33,6 +34,7 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         this.onAnnotationDeleted = __bind(this.onAnnotationDeleted, this);
         this.annotationsLoaded = __bind(this.annotationsLoaded, this);
         this.onMouseOverAnnotation = __bind(this.onMouseOverAnnotation, this);
+        this.onAnnotationEditorSubmit = __bind(this.onAnnotationEditorSubmit, this);
         AnnotatorEvents.__super__.constructor.apply(this, arguments);
     }
 
@@ -45,29 +47,39 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         var self = this;
         setTimeout(function (event) {
             self.contractApp.trigger('annotationCreated', annotation);
-        }, 500);
+        }, 2000);
     };
     AnnotatorEvents.prototype.onAnnotationUpdated = function (annotation) {
-        this.contractApp.trigger('annotationUpdated', annotation);
+        var self = this;
+        setTimeout(function (event) {
+            self.contractApp.setPdfLoaded(false);
+            self.contractApp.trigger('annotationUpdated', annotation);
+        }, 2000);
     };
     AnnotatorEvents.prototype.onAnnotationDeleted = function (annotation) {
-        this.contractApp.trigger('annotationDeleted', annotation);
+        var self = this;
+        setTimeout(function (event) {
+            self.contractApp.trigger('annotationDeleted', annotation);
+        }, 2000);
     };
+
+    AnnotatorEvents.prototype.onAnnotationEditorSubmit = function (editor,annotation) {
+    };
+
     AnnotatorEvents.prototype.onMouseOverAnnotation = function (viewer) {
         onViewShownHandler(viewer.mouseEvent)
     };
     AnnotatorEvents.prototype.annotationsLoaded = function (obj) {
-        var annotation_id =  contractApp.getSelectedAnnotation();
+        var annotation_id = contractApp.getSelectedAnnotation();
         var hash = window.location.hash;
 
+        debug('annotation loaded');
         if (annotation_id === 0 && hash != '') {
-            if (typeof hash.split('annotation/')[1] !== 'undefined') {
-                annotation_id = hash.split('annotation/')[1];
-            }
+            annotation_id = getAnnotationIdFromHash();
         }
 
         if (contractApp.getView() == 'pdf') {
-            setTimeout( function(){contractApp.showPdfAnnotationPopup(annotation_id)}, 600);
+            contractApp.showPdfAnnotationPopup(annotation_id);
         }
 
         if (contractApp.getView() == 'text') {
@@ -75,15 +87,31 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         }
     };
 
+    function getAnnotationIdFromHash() {
+        var annotation_id = '';
+        var hash = window.location.hash;
+
+        if (typeof hash.split('annotation/')[1] !== 'undefined') {
+            annotation_id = hash.split('annotation/')[1];
+        }
+
+        return annotation_id;
+    }
+
     function onEditorShownHandler(viewer) {
         $('.annotator-widget input').keypress(function (e) {
             if (e.which == 13) {
                 e.preventDefault();
             }
         });
-
-        var viewPort = contractApp.getView();
+        var viewPort = contractApp.getView() == 'pdf' ? 'pdf' : 'text';
         var viewerEl = $(viewer.element);
+
+        //move comment input to last in order
+        var commentEl = viewerEl.find('.annotator-listing li textarea');
+        commentEl.attr('placeholder', 'Annotation');
+        commentEl.parent().appendTo(viewerEl.find('.annotator-listing'));
+
         var position = viewerEl.position();
         var wrapperEl = $('.' + viewPort + '-annotator');
         var widgetEl = wrapperEl.find('form.annotator-widget');
@@ -112,9 +140,9 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
 
     function onViewShownHandler(viewer, annotations) {
         var viewerEl = $(viewer.element);
-        var viewPort = contractApp.getView();
+        var viewPort = contractApp.getView() == 'pdf' ? 'pdf' : 'text';
         var position = viewerEl.position();
-        var wrapperEl = $('.'+viewPort+'-annotator');
+        var wrapperEl = $('.' + viewPort + '-annotator');
         var widgetEl = wrapperEl.find('ul.annotator-widget');
         var widgetHeight = widgetEl.height() + 25;
 

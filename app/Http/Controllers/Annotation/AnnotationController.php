@@ -1,7 +1,8 @@
-<?php namespace app\Http\Controllers\Annotation;
+<?php namespace App\Http\Controllers\Annotation;
 
 use App\Http\Controllers\Controller;
-use App\Nrgi\Services\Contract\AnnotationService;
+use App\Nrgi\Entities\Contract\Contract;
+use App\Nrgi\Services\Contract\Annotation\AnnotationService;
 use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Auth\Guard;
 use Illuminate\Http\Request;
@@ -22,9 +23,7 @@ class AnnotationController extends Controller
      */
     protected $contract;
 
-    /**S
-     * Constructor
-     * Create a new ContractAnnotationController instance.
+    /**
      * @param AnnotationService $annotation
      * @param ContractService   $contract
      */
@@ -36,8 +35,11 @@ class AnnotationController extends Controller
     }
 
     /**
+     * Show Annotations
+     *
      * @param Request $request
      * @param         $contractId
+     * @return \Illuminate\View\View
      */
     public function show(Request $request, $contractId)
     {
@@ -47,30 +49,30 @@ class AnnotationController extends Controller
             $status   = $this->annotation->getStatus($contractId);
             $pages    = $contract->pages;
         } catch (\Exception $e) {
-            return back()->withError($e->getMessage());
+            return redirect()->back()->withError($e->getMessage());
         }
 
         return view('annotations.show', compact('contract', 'pages', 'page', 'status'));
     }
 
     /**
+     * Update Annotation Status
+     *
      * @param Guard   $auth
      * @param Request $request
      * @param         $contractId
-     * @return Response
      */
     public function updateStatus(Guard $auth, Request $request, $contractId)
     {
         $status = trim(strtolower($request->input('status')));
         if (!$auth->user()->can(sprintf('%s-annotation', config('nrgi.permission')[$status]))) {
-            return back()->withError('Permission denied.');
+            return redirect()->back()->withError('Permission denied.');
         }
 
         if ($this->annotation->comment($contractId, $request->input('message'), $request->input('status'))) {
-            return back()->withSuccess(trans('annotation.comment_created_successfully'));
+            return redirect()->back()->withSuccess(trans('annotation.comment_created_successfully'));
         }
 
-        return back()->withError(trans('annotation.invalid_status'));
-
+        return redirect()->back()->withError(trans('annotation.invalid_status'));
     }
 }

@@ -1,15 +1,18 @@
-<?php namespace app\Http\Controllers\Api;
+<?php namespace App\Http\Controllers\Annotation\Api;
 
 use App\Http\Controllers\Controller;
-use App\Nrgi\Services\Contract\AnnotationService;
+use App\Nrgi\Services\Contract\Annotation\AnnotationService;
 use Illuminate\Http\Request;
 
 /**
  * Class AnnotationApiController
- * @package app\Http\Controllers\Api
+ * @package app\Http\Controllers\Annotation\Api
  */
-class AnnotationApiController extends Controller
+class ApiController extends Controller
 {
+    /**
+     * @var AnnotationService
+     */
     protected $annotationService;
 
     /**
@@ -22,14 +25,15 @@ class AnnotationApiController extends Controller
     }
 
     /**
-     * save annotations
+     * Save annotation
+     *
      * @param Request $request
      * @return string
      */
     public function save(Request $request)
     {
-        $content    = $request->getContent();
-        $annotation = $this->annotationService->save($content, $request->all());
+        $annotation = $this->annotationService->save($request->all());
+
         if ($annotation) {
             return response()->json(['status' => 'success', "id" => $annotation->id]);
         }
@@ -37,11 +41,12 @@ class AnnotationApiController extends Controller
         return response()->json(['status' => 'error']);
     }
 
-
     /**
-     * @param $id
-     * @return json string
+     * Delete an annotation
      *
+     * @param $id
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function delete($id)
     {
@@ -51,8 +56,10 @@ class AnnotationApiController extends Controller
     }
 
     /**
+     * Search Annotation
+     *
      * @param Request $request
-     * @return json
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function search(Request $request)
     {
@@ -62,6 +69,8 @@ class AnnotationApiController extends Controller
     }
 
     /**
+     * Get All annotation by contract id
+     *
      * @param $contractId
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -73,19 +82,20 @@ class AnnotationApiController extends Controller
     }
 
     /**
-     * update annotations
+     * Update annotation
+     *
      * @param Request $request
-     * @return string
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function update(Request $request)
     {
-        $id   = $request->get('pk');
-        $data = [];
-        if (!in_array($request->get('name'), ['text', 'category', 'document_page_no'])) {
+        $data  = [];
+        $field = $request->get('name');
+        if (!in_array($field, ['text', 'category', 'page_no', 'article_reference'])) {
             return response()->json(['status' => 'error']);
         }
-        $data[$request->get('name')] = $request->get('value');
-        $annotation                  = $this->annotationService->update($id, $data);
+        $data[$field] = $request->get('value');
+        $annotation   = $this->annotationService->update($request->get('pk'), $data);
         if ($annotation) {
             return response()->json(['status' => 'success']);
         }

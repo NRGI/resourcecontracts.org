@@ -3,10 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contract\ContractRequest;
+use App\Nrgi\Services\Contract\Annotation\AnnotationService;
 use App\Nrgi\Services\Download\DownloadService;
 use App\Nrgi\Entities\Contract\Comment\Comment;
-use App\Nrgi\Entities\Contract\Contract;
-use App\Nrgi\Services\Contract\AnnotationService;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\ContractFilterService;
 use App\Nrgi\Services\Contract\ContractService;
@@ -15,7 +14,6 @@ use App\Nrgi\Services\Contract\Discussion\DiscussionService;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Input;
 
 /**
  * Class ContractController
@@ -139,7 +137,7 @@ class ContractController extends Controller
      */
     public function show($id, DiscussionService $discussion)
     {
-        $contract = $this->contract->findWithAnnotations($id);
+        $contract = $this->contract->findWithAnnotations($id, $withRelation = true);
 
         if (!$contract) {
             abort('404');

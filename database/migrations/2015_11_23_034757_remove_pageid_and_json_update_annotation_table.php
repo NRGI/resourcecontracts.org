@@ -1,8 +1,8 @@
 <?php
 
+use App\Nrgi\Entities\Contract\Annotation\Annotation;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use App\Nrgi\Entities\Contract\Annotation;
 
 /**
  * Class RemovePageidAndJsonUpdateAnnotationTable

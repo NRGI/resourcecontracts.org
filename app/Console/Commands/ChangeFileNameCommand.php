@@ -4,8 +4,6 @@ use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 
 /**
  * updates file name of s3 storage

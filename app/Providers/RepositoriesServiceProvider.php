@@ -30,12 +30,12 @@ class RepositoriesServiceProvider extends ServiceProvider
             'App\Nrgi\Repositories\Contract\ContractRepository'
         );
         $this->app->bind(
-            'App\Nrgi\Repositories\Contract\Pages\PagesRepositoryInterface',
-            'App\Nrgi\Repositories\Contract\Pages\PagesRepository'
+            'App\Nrgi\Repositories\Contract\Page\PageRepositoryInterface',
+            'App\Nrgi\Repositories\Contract\Page\PageRepository'
         );
         $this->app->bind(
-            'App\Nrgi\Repositories\Contract\AnnotationRepositoryInterface',
-            'App\Nrgi\Repositories\Contract\AnnotationRepository'
+            'App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface',
+            'App\Nrgi\Repositories\Contract\Annotation\AnnotationRepository'
         );
         $this->app->bind(
             'App\Nrgi\Repositories\ActivityLog\ActivityLogRepositoryInterface',

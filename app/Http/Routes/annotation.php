@@ -1,42 +1,41 @@
 <?php
 $router->group(
-    ['namespace' => 'Api', 'prefix' => 'api'],
+    ['namespace' => 'Annotation\Api', 'prefix' => 'api'],
     function ($router) {
         $router->get(
             'annotations/{contractId}',
             [
                 'as'   => 'contract.annotations',
-                'uses' => 'AnnotationApiController@getContractAnnotations'
+                'uses' => 'ApiController@getContractAnnotations'
             ]
         );
-        $router->put('annotations/{id}', 'AnnotationApiController@save');
-        $router->post('annotations', 'AnnotationApiController@save');
-        $router->put('annotations', 'AnnotationApiController@save');
-        $router->get('search', 'AnnotationApiController@search');
+        $router->put('annotations/{id}', 'ApiController@save');
+        $router->put('annotations', 'ApiController@save');
+        $router->post('annotations', 'ApiController@save');
+        $router->get('search', 'ApiController@search');
         $router->post(
             'annotations/{id}',
             [
                 'as'   => 'annotation.delete',
-                'uses' => 'AnnotationApiController@delete'
+                'uses' => 'ApiController@delete'
             ]
         );
         $router->post(
             '/annotation/update',
             [
                 'as'   => 'annotation.update',
-                'uses' => 'AnnotationApiController@update'
+                'uses' => 'ApiController@update'
             ]
         );
         $router->post(
             'annotation/{id}/delete',
             [
                 'as'   => 'annotation.delete',
-                'uses' => 'AnnotationApiController@delete'
+                'uses' => 'ApiController@delete'
             ]
         );
     }
 );
-$router->resource('contract.annotations', 'Annotation\AnnotationController');
 $router->get(
     '/contract/{id}/annotations/list',
     [

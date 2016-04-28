@@ -167,7 +167,7 @@ class Contract extends Model
      */
     public function pages()
     {
-        return $this->hasMany('App\Nrgi\Entities\Contract\Pages\Pages');
+        return $this->hasMany('App\Nrgi\Entities\Contract\Page\Page');
     }
 
     /**
@@ -175,7 +175,7 @@ class Contract extends Model
      */
     public function annotations()
     {
-        return $this->hasMany('App\Nrgi\Entities\Contract\Annotation');
+        return $this->hasMany('App\Nrgi\Entities\Contract\Annotation\Annotation');
     }
 
     /**
