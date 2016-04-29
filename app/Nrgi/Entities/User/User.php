@@ -169,4 +169,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
         return false;
     }
+
+    /**
+     * Check if user has country researcher role
+     *
+     * @return bool
+     */
+    public function isCountryResearch()
+    {
+        if ($this->hasRole(['country-researcher'])){
+            return true;
+        }
+        return false;
+    }
 }

@@ -25,7 +25,9 @@
         <th>@lang('mturk.approved')</th>
         <th>@lang('mturk.requiring_action')</th>
         <th>@lang('mturk.rejected')</th>
-        <th>@lang('mturk.action_name')</th>
+        @if(!$current_user->isCountryResearch())
+            <th>@lang('mturk.action_name')</th>
+        @endif
     </tr>
     </thead>
     <tbody>
@@ -51,8 +53,8 @@
                     {{$total_ra}}
                 </td>
             @endif
-
             <td class="number_center">{{$contract->count_status['total_rejected']}}</td>
+            @if(!$current_user->isCountryResearch())
             <td>
                 @if($contract->tasks->count() == $contract->count_status['total_approved'])
                     @if($contract->mturk_status == 2)
@@ -64,6 +66,7 @@
                     @endif
                 @endif
             </td>
+            @endif
         </tr>
     @empty
         <tr>
