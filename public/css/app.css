@@ -7717,3 +7717,9 @@ table td > a .glyphicon-eye-open {
 .selected-document+.form-group {
     clear: both;
 }
+
+.alert-info {
+    background-color: white; !important;
+    border-color: darkgray; !important;
+    color: #333; !important;
+}

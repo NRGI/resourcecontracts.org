@@ -14,45 +14,45 @@
         <div class="panel-heading panel-heading-fixed">
             <div class="word-wrapper">
                 <div class="wordwrap pull-left">
-                    <a href="{{route('contract.show', $contract->id)}}" class="back pull-left">Go back</a>
+                    <a href="{{route('contract.show', $contract->id)}}" class="back pull-left">@lang('annotation.go_back')</a>
                     <span class="pull-left">{{str_limit($contract->title, 80)}}</span>
                 </div>
                 <div class="pull-right">
                     <div class="view-metadata">
-                        <a class="btn-metadata pull-right" href="#">View Metadata</a>
+                        <a class="btn-metadata pull-right" href="#">@lang('annotation.view_metadata')</a>
                     </div>
                     <div id="metadata" class="metadata" style="display:none"></div>
                 </div>
             </div>
             <div class="document-wrap-head">
             <div class="navigation">
-                <a href="#" id="text-view">text</a>
-                <a href='#' id="pdf-view">pdf</a>
-                <a href='#' id="pdf-text-view">both</a>
+                <a href="#" id="text-view">@lang('global.text')</a>
+                <a href='#' id="pdf-view">@lang('global.pdf')</a>
+                <a href='#' id="pdf-text-view">@lang('global.both')</a>
                 <div class="column-text column-common">
                     <div id="search-form">
                         <form method="POST" action="{{route('contract.page.search', ["id"=>$contract['contract_id']])}}" accept-charset="UTF-8" class="form-inline page-search pull-right">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input id="textfield" class="form-control" placeholder="Search in this document.." name="q" type="text">
+                                    <input id="textfield" class="form-control" placeholder="trans('global.search_document')" name="q" type="text">
                                 </div>
                             </div>
                             <input class="btn btn-primary pull-left" type="submit" value="Search">
-                            <a href='#' id="search-results-cache" style="display:none;" class="pull-right">Results</a>
+                            <a href='#' id="search-results-cache" style="display:none;" class="pull-right">@lang('global.results')</a>
                         </form>
                     </div>
                 </div>
                 <div class="column-pdf column-common" style="display:none">
                     <div id="pdf-pagination" class="view-text-pagination pull-right">
                         <a href="#" class="previous">&laquo;</a>
-                        <input id="goto_pdfpage" placeholder="Goto Page" type="number" class="small-input" title="Go to page">
+                        <input id="goto_pdfpage" placeholder="trans('annotation_goto_page')" type="number" class="small-input" title="Go to page">
                         <a href="#" class="next">&raquo;</a>
                     </div>
                 </div>
                 <div class="column-text column-common">
                     <div id="pagination" class="view-text-pagination pull-right">
                         <a href="#" class="previous">&laquo;</a>
-                        <input id="goto_page" placeholder="Goto Page" type="number" class="small-input" title="Go to page">
+                        <input id="goto_page" placeholder="trans('annotation_goto_page')" type="number" class="small-input" title="Go to page">
                         <a href="#" class="next">&raquo;</a>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                             -->
                             <div></div>
                             <div class="text-viewer-wrapper">
-                                <div id="text-viewer-overflow-scroll" class="text-viewer" >Loading ...</div>
+                                <div id="text-viewer-overflow-scroll" class="text-viewer" >@lang('annotation.loading')</div>
                             </div>
 
                         </div>
@@ -131,16 +131,16 @@
         </span>
     </script>
     <script type="text/template" id="annotation-list-title-template">
-        <div class="annotation-title">Annotations</div>
+        <div class="annotation-title">@lang('annotation.annotations')</div>
         <div>
-            <button id='all'>All - <%= total %></button>
-            <button id='done-annotated'>Done - <%= done %></button>
-            <button id='not-annotated'>Remainings - <%= remaining %></button>
+            <button id='all'>@lang('annotation.all') - <%= total %></button>
+            <button id='done-annotated'>@lang('annotation.done') - <%= done %></button>
+            <button id='not-annotated'>@lang('annotation.remaining') - <%= remaining %></button>
         </div>
     </script>
     <script type="text/template" id="annotation-category-no-items-template">
         <div class="annotation-category-not-done">
-            <%= categoryName %> <small>Not annotated yet</small>
+            <%= categoryName %> <small>@lang('annotation.not_annotated')</small>
         </div>
     </script>
     <script type="text/template" id="annotation-category-with-items-template">
@@ -170,10 +170,10 @@
     </script>
     <script type="text/template" id="metadata-view-template">
         <div class="popup-metadata">
-        <p><strong>Contract Title:</strong><%= contract_name %></p>
-        <p><strong>Country:</strong> <%= country.name %></p>
-        <p><strong>Date of signature:</strong> <%= signature_date %></p>
-        <p><strong>Resource:</strong>
+        <p><strong>@lang('contract.import.contract_title'):</strong><%= contract_name %></p>
+        <p><strong>@lang('contract.country'):</strong> <%= country.name %></p>
+        <p><strong>@lang('contract.date_of_signture'):</strong> <%= signature_date %></p>
+        <p><strong>@lang('contract.resource'):</strong>
             <%=resource%>
         </p></div>
     </script>

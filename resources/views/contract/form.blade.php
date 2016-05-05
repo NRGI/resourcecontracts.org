@@ -64,8 +64,8 @@ if (!empty($contract->metadata->government_entity)) {
         <label for="Select PDF" class="col-sm-2 control-label"></label>
 
         <div class="col-sm-7">
-            <a target="_blank" href="{{$contract->file_url}}">View document</a> | <a id="show-new-document"
-                                                                                     href="javascript:void();">Change</a>
+            <a target="_blank" href="{{$contract->file_url}}">@lang('contract.view_document')</a> | <a id="show-new-document"
+                                                                                     href="javascript:void();">@lang('contract.change')</a>
         </div>
     </div>
 
@@ -479,9 +479,9 @@ if (isset($contract->metadata->resource)) {
                         {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label'])
                         !!}
                         <div class="col-sm-7">
-                            {!! Form::radio("company[$i][operator]", 1, (isset($v->operator) && $v->operator==1)?true:false , ['class' => 'field']) !!} Yes
-                            {!! Form::radio("company[$i][operator]", 0, (isset($v->operator) && $v->operator==0)?true:false, ['class' => 'field']) !!} No
-                            {!! Form::radio("company[$i][operator]", -1, (isset($v->operator) && $v->operator==-1)?true:false, ['class' => 'field']) !!} Not Available
+                            {!! Form::radio("company[$i][operator]", 1, (isset($v->operator) && $v->operator==1)?true:false , ['class' => 'field']) !!} @lang('global.yes')
+                            {!! Form::radio("company[$i][operator]", 0, (isset($v->operator) && $v->operator==0)?true:false, ['class' => 'field']) !!} @lang('global.no')
+                            {!! Form::radio("company[$i][operator]", -1, (isset($v->operator) && $v->operator==-1)?true:false, ['class' => 'field']) !!} @lang('global.not_available')
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'operator-'.$k,'metadata') !!}
@@ -579,9 +579,9 @@ if (isset($contract->metadata->resource)) {
             <div class="form-group">
                 {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
                 <div class="col-sm-7">
-                    {!! Form::radio('company[0][operator]', 1, false, ['class' => 'field' , 'id' => 'company_0_operator_yes']) !!} Yes
-                    {!! Form::radio('company[0][operator]', 0, false, ['class' => 'field' , 'id' => 'company_0_operator_no']) !!} No
-                    {!! Form::radio('company[0][operator]', -1, true, ['class' => 'field']) !!} Not Available
+                    {!! Form::radio('company[0][operator]', 1, false, ['class' => 'field' , 'id' => 'company_0_operator_yes']) !!} @lang('global.yes')
+                    {!! Form::radio('company[0][operator]', 0, false, ['class' => 'field' , 'id' => 'company_0_operator_no']) !!} @lang('global.no')
+                    {!! Form::radio('company[0][operator]', -1, true, ['class' => 'field']) !!} @lang('global.not_available')
                 </div>
             </div>
         </div>
@@ -746,7 +746,7 @@ if (isset($contract->metadata->resource)) {
 </div>
 
 <div class="form-group">
-    <label for="category" class="col-sm-2 control-label">Category <span class="red">*</span></label>
+    <label for="category" class="col-sm-2 control-label">@lang('contract.category') <span class="red">*</span></label>
 
     <div class="col-sm-7">
         <?php
@@ -841,10 +841,10 @@ if (isset($contract->metadata->resource)) {
 
         ?>
         <label class="checkbox-inline">
-            {!! Form::radio("is_supporting_document", 1, $is_supporting_document_value , ['class' => 'field is-supporting-document',$disable_supporting]) !!} Yes
+            {!! Form::radio("is_supporting_document", 1, $is_supporting_document_value , ['class' => 'field is-supporting-document',$disable_supporting]) !!} @lang('global.yes')
         </label>
         <label class="checkbox-inline">
-            {!! Form::radio("is_supporting_document", 0, $is_parent_document_value, ['class' => 'field is-supporting-document',$disable_parent]) !!} No
+            {!! Form::radio("is_supporting_document", 0, $is_parent_document_value, ['class' => 'field is-supporting-document',$disable_parent]) !!} @lang('global.no')
         </label>
     </div>
 
@@ -889,9 +889,9 @@ if (isset($contract->metadata->resource)) {
         <?php
         $annexes_missing = isset($contract->metadata->annexes_missing) ? $contract->metadata->annexes_missing : - 1;
         ?>
-        {!! Form::radio('annexes_missing', 1 ,($annexes_missing=='1') ? true : null , ['class' => 'field']) !!} Yes
-        {!! Form::radio('annexes_missing', 0 ,($annexes_missing=='0') ? true : null , ['class' => 'field']) !!} No
-        {!! Form::radio('annexes_missing', -1,($annexes_missing=='-1') ? true : null, ['class' => 'field']) !!} Not Available
+        {!! Form::radio('annexes_missing', 1 ,($annexes_missing=='1') ? true : null , ['class' => 'field']) !!} @lang('global.yes')
+        {!! Form::radio('annexes_missing', 0 ,($annexes_missing=='0') ? true : null , ['class' => 'field']) !!} @lang('global.no')
+        {!! Form::radio('annexes_missing', -1,($annexes_missing=='-1') ? true : null, ['class' => 'field']) !!} @lang('global.not_available')
     </div>
 </div>
 
@@ -901,9 +901,9 @@ if (isset($contract->metadata->resource)) {
         <?php
         $pages_missing = isset($contract->metadata->pages_missing) ? $contract->metadata->pages_missing : - 1;
         ?>
-        {!! Form::radio('pages_missing', 1 ,($pages_missing=='1') ? true : null , ['class' => 'field']) !!} Yes
-        {!! Form::radio('pages_missing', 0 ,($pages_missing=='0') ? true : null , ['class' => 'field']) !!} No
-        {!! Form::radio('pages_missing', -1,($pages_missing=='-1') ? true : null , ['class' => 'field']) !!} Not Available
+        {!! Form::radio('pages_missing', 1 ,($pages_missing=='1') ? true : null , ['class' => 'field']) !!} @lang('global.yes')
+        {!! Form::radio('pages_missing', 0 ,($pages_missing=='0') ? true : null , ['class' => 'field']) !!} @lang('global.no')
+        {!! Form::radio('pages_missing', -1,($pages_missing=='-1') ? true : null , ['class' => 'field']) !!}@lang('global.not_available')
     </div>
 
 </div>

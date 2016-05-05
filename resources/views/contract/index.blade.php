@@ -46,7 +46,7 @@
             {!! Form::select('resource', ['all'=>trans('contract.resource')] + $resources , Input::get('resource') ,
             ['class' =>'form-control']) !!}
 
-            {!! Form::text('q', Input::get('q') , ['class' =>'form-control','placeholder'=>'Search by contract title']) !!}
+            {!! Form::text('q', Input::get('q') , ['class' =>'form-control','placeholder'=>trans('contract.search_contract')]) !!}
 
             {!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
@@ -72,7 +72,7 @@
             </table>
             @if ($contracts->lastPage()>1)
                 <div class="text-center">{!! $contracts->appends($app->request->all())->render() !!}
-                    <div class="pagination-text">Showing {{($contracts->currentPage()==1)?"1":($contracts->currentPage()-1)*$contracts->perPage()}} to {{($contracts->currentPage()== $contracts->lastPage())?$contracts->total():($contracts->currentPage())*$contracts->perPage()}} of {{$contracts->total()}} contracts</div>
+                    <div class="pagination-text">@lang('contract.showing') {{($contracts->currentPage()==1)?"1":($contracts->currentPage()-1)*$contracts->perPage()}} @lang('contract.to') {{($contracts->currentPage()== $contracts->lastPage())?$contracts->total():($contracts->currentPage())*$contracts->perPage()}} @lang('contract.of') {{$contracts->total()}} @lang('contract.contract')</div>
                 </div>
             @endif
         </div>

@@ -29,27 +29,27 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
             <div class="row">
             <div class="col-md-6">
                 <ul>
-                    <li>Total Pages: {{$total_pages or '0'}}</li>
-                    <li>Total HIT: {{$total_hit or '0'}}</li>
-                    <li>Completed: {{$status['total_completed'] or '0'}}</li>
-                    <li>Approved: {{$status['total_approved'] or '0'}}</li>
-                    <li>Rejected: {{$status['total_rejected'] or '0'}}</li>
-                    <li>Requiring Action: {{$requiring_action}}</li>
+                    <li>{{ trans('mturk.total_pages') }}: {{$total_pages or '0'}}</li>
+                    <li>{{ trans('mturk.total_hit') }}: {{$total_hit or '0'}}</li>
+                    <li>{{ trans('mturk.completed') }}: {{$status['total_completed'] or '0'}}</li>
+                    <li>{{ trans('mturk.approved') }}: {{$status['total_approved'] or '0'}}</li>
+                    <li>{{ trans('mturk.rejected') }}: {{$status['total_rejected'] or '0'}}</li>
+                    <li>{{ trans('mturk.requiring_action') }}: {{$requiring_action}}</li>
                 </ul>
                 @if($requiring_action > 1)
                     {!! Form::open(['url' =>route('mturk.task.approveAll',['contract_id'=>$contract->id]), 'method' => 'post']) !!}
-                    {!! Form::button(trans('Approve All'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>'Are you sure you want to approve all assignments?'])!!}
+                    {!! Form::button(trans('mturk.approve_all'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>'Are you sure you want to approve all assignments?'])!!}
                     {!! Form::close() !!}
                 @endif
 
             </div>
 
                 <div class="btn-group col-md-6" style="margin-top: 50px;" role="group">
-                    <a class="btn @if($get_status == null AND $approved == null) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}">All HIT</a>
-                    <a class="btn @if($get_status == 1 AND $approved == 0) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}?status=1&approved=0">Requiring Action</a>
-                    <a class="btn @if($get_status == 1 AND $approved == 1) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}?status=1&approved=1">Approved</a>
-                    <a class="btn @if($get_status == 1 AND $approved == 2) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}?status=1&approved=2">Rejected</a>
-                    <a class="btn @if($get_status == '0' AND $approved == '0') btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}?status=0&approved=0">Pending</a>
+                    <a class="btn @if($get_status == null AND $approved == null) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}">{{ trans('mturk.all_hit') }}</a>
+                    <a class="btn @if($get_status == 1 AND $approved == 0) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}?status=1&approved=0">{{ trans('mturk.requiring_action') }}</a>
+                    <a class="btn @if($get_status == 1 AND $approved == 1) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}?status=1&approved=1">{{ trans('mturk.accepted') }}</a>
+                    <a class="btn @if($get_status == 1 AND $approved == 2) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}?status=1&approved=2">{{ trans('mturk.rejected') }}</a>
+                    <a class="btn @if($get_status == '0' AND $approved == '0') btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}?status=0&approved=0">{{ trans('mturk.pending') }}</a>
                 </div>
 
             </div>
@@ -58,13 +58,13 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
             <table class="table table-striped table-responsive">
                 <thead>
                 <tr>
-                    <th width="30%">HIT ID</th>
+                    <th width="30%">{{ trans('mturk.hit_id') }}</th>
                     <th width="5%"></th>
-                    <th style="text-align: center;">Page no.</th>
-                    <th>Status</th>
-                    <th>Approved?</th>
-                    <th width="15%">Created on</th>
-                    <th>Action</th>
+                    <th style="text-align: center;">{{ trans('mturk.page_no') }}</th>
+                    <th>{{ trans('mturk.status') }}</th>
+                    <th>{{ trans('mturk.approved') }}?</th>
+                    <th width="15%">{{ trans('user.created_on') }}</th>
+                    <th>{{ trans('user.action') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -91,9 +91,9 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                                        class="btn btn-default">Review</a>
                                     @if(empty($task->approved))
                                         {!! Form::open(['url' =>route('mturk.task.approve',['contract_id'=>$contract->id, 'task_id'=>$task->id]), 'method' => 'post']) !!}
-                                        {!! Form::button(trans('Approve'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>'Are you sure you want to approve this assignment?'])!!}
+                                        {!! Form::button(trans('mturk.approve'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>'Are you sure you want to approve this assignment?'])!!}
                                         {!! Form::close() !!}
-                                        {!! Form::button(trans('Reject'), ['type' =>'submit', 'class' => 'btn btn-danger', 'data-toggle'=>'modal', 'data-target'=>'.reject-modal-'.$task->id])!!}
+                                        {!! Form::button(trans('mturk.reject'), ['type' =>'submit', 'class' => 'btn btn-danger', 'data-toggle'=>'modal', 'data-target'=>'.reject-modal-'.$task->id])!!}
 
                                         <div class="modal fade reject-modal-{{$task->id}}" tabindex="-1" role="dialog"
                                              aria-labelledby="myModalLabel-{{$task->id}}"
@@ -113,7 +113,7 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default"
                                                                 data-dismiss="modal">@lang('global.form.cancel')</button>
-                                                        {!! Form::button(trans('Reject'), ['type' =>'submit', 'class' => 'btn btn-danger'])!!}
+                                                        {!! Form::button(trans('mturk.reject'), ['type' =>'submit', 'class' => 'btn btn-danger'])!!}
                                                     </div>
                                                     {!! Form::close() !!}
                                                 </div>
@@ -125,7 +125,7 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                             @endif
                             @if($task->approved == \App\Nrgi\Mturk\Entities\Task::REJECTED || $task->status == \App\Nrgi\Mturk\Entities\Task::PENDING)
                                 {!! Form::open(['url' =>route('mturk.task.reset',['contract_id'=>$contract->id, 'task_id'=>$task->id]), 'method' => 'post']) !!}
-                                {!! Form::button(trans('Reset'), ['type' =>'submit', 'class' => 'btn btn-primary confirm', 'data-confirm'=>'Reseting this HIT will delete this task and re-creates a new one for this page. Any worker who might be working but hasn\'t submitted the assignment for this task will be rejected. Select Ok to continue.'])!!}
+                                {!! Form::button(trans('mturk.reset'), ['type' =>'submit', 'class' => 'btn btn-primary confirm', 'data-confirm'=>'Reseting this HIT will delete this task and re-creates a new one for this page. Any worker who might be working but hasn\'t submitted the assignment for this task will be rejected. Select Ok to continue.'])!!}
                                 {!! Form::close() !!}
                             @endif
                             </div>
@@ -133,7 +133,7 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="2">Task not found.</td>
+                        <td colspan="2">{{ trans('mturk.task_not_found') }}</td>
                     </tr>
                 @endforelse
                 </tbody>

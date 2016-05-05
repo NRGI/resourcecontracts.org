@@ -18,11 +18,11 @@
         <div class="panel-body">
         <table class="table">
             <thead>
-            <th class="col-md-6">Metadata</th><th class="col-md-2">Present</th><th class="col-md-2">Missing</th>
+            <th class="col-md-6">{{ trans('quality.metadata') }}</th><th class="col-md-2">{{ trans('quality.present') }}</th><th class="col-md-2">{{ trans('quality.missing') }}</th>
             </thead>
             @foreach($data['metadata'] as $key=>$value)
                 <tr>
-                    <td>{{ucwords(join(' ', explode('_', $key)))}}</td><td> <a href="{{route('contract.index',["type"=>"metadata","word"=>$key,"issue"=>"present"])}}">{{$value}}</a></td><td><a href="{{route('contract.index',["type"=>"metadata","word"=>$key,"issue"=>"missing"])}}">{{$data['total']-$value}}</td></a>
+                    <td>{{trans('contract.'.$key)}}</td><td> <a href="{{route('contract.index',["type"=>"metadata","word"=>$key,"issue"=>"present"])}}">{{$value}}</a></td><td><a href="{{route('contract.index',["type"=>"metadata","word"=>$key,"issue"=>"missing"])}}">{{$data['total']-$value}}</td></a>
                 </tr>
             @endforeach
         </table>
@@ -37,7 +37,7 @@
             <div class="panel-body">
                 <table class="table">
                     <thead>
-                    <th class="col-md-6">Annotations Category</th><th class="col-md-2">Present</th><th class="col-md-2">Missing</th>
+                    <th class="col-md-6">{{ trans('quality.anotations_category') }}</th><th class="col-md-2">{{ trans('quality.present') }}</th><th class="col-md-2">{{ trans('quality.missing') }}</th>
                     </thead>
                     <tbody>
                     @foreach($data['annotations'] as $key=>$value)

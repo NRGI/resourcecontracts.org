@@ -164,5 +164,11 @@ $(function () {
     {
         $('[data-toggle="tooltip"]').tooltip();
     }
+
+    $('.translate').on('click',function(){
+        var lang = $(this).data('lang');
+        var url = window.location.href;
+
+    });
 });
 
