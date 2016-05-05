@@ -1,0 +1,33 @@
+<?php
+return [
+    "Agricultural Development Agreement"     => "es Agricultural Development Agreement",
+    "Asset Sale and Purchase Agreement"      => "es Asset Sale and Purchase Agreement",
+    "Autre"                                  => "es Autre",
+    "Bail Foncier"                           => "es Bail Foncier",
+    "Cahier des Charges"                     => "es Cahier des Charges",
+    "Concession Agreement"                   => "es Concession Agreement",
+    "Contract Amendment"                     => "es Contract Amendment",
+    "Contract Annex"                         => "es Contract Annex",
+    "Contrat de Concession Agricole"         => "es Contrat de Concession Agricole",
+    "Contrat de Concession Forestière"       => "es Contrat de Concession Forestière",
+    "Establishment Convention"               => "es Establishment Convention",
+    "Exploitation Permit/License"            => "es Exploitation Permit/License",
+    "Exploration Permit/License"             => "es Exploration Permit/License",
+    "Forest Management Contract"             => "es Forest Management Contract",
+    "Forest Management Plan"                 => "es Forest Management Plan",
+    "Investment Incentive Contract"          => "es Investment Incentive Contract",
+    "Investment Promotion Agreement"         => "es Investment Promotion Agreement",
+    "Joint Venture Agreement"                => "es Joint Venture Agreement",
+    "Land Lease Agreement"                   => "es Land Lease Agreement",
+    "Memorandum of Understanding"            => "es Memorandum of Understanding",
+    "Other"                                  => "es Other",
+    "Production or Profit Sharing Agreement" => "es Production or Profit Sharing Agreement",
+    "Protocole d'Accord"                     => "es Protocole d'Accord",
+    "Service Contract"                       => "es Service Contract",
+    "Stabilization Agreements"               => "es Stabilization Agreements",
+    "Sub Contract"                           => "es Sub Contract",
+    "Sub-lease"                              => "es Sub-lease",
+    "Timber Sale Contract"                   => "es Timber Sale Contract",
+    "Translated Contract"                    => "es Translated Contract"
+];
+

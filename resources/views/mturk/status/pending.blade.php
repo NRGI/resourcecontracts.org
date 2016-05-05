@@ -61,7 +61,7 @@
                         <button class="btn btn-default" disabled="disabled">Sent to RC</button>
                     @else
                         {!! Form::open(['url' =>route('mturk.contract.copy',$contract->id), 'method' => 'post']) !!}
-                        {!! Form::button(trans('Send to RC'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>'Are you sure you want to send text to RC?'])!!}
+                        {!! Form::button(trans('mturk.send_to_rc'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>'Are you sure you want to send text to RC?'])!!}
                         {!! Form::close() !!}
                     @endif
                 @endif

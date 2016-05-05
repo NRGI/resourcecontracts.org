@@ -1,8 +1,10 @@
 <?php namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\Localization;
 use App\Nrgi\Mturk\Services\MTurkService;
 use App\Nrgi\Services\Dashboard\DashboardService;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 /**
@@ -19,14 +21,17 @@ class DashboardController extends Controller
      */
     protected $dashboard;
 
+    protected $localization;
     /**
      * Create a new controller instance.
      * @param DashboardService $dashboard
+     * @param Localization     $localization
      */
-    public function __construct(DashboardService $dashboard)
+    public function __construct(DashboardService $dashboard, Localization $localization)
     {
         $this->middleware('auth');
         $this->dashboard = $dashboard;
+        $this->localization = $localization;
     }
 
     /**
@@ -57,4 +62,11 @@ class DashboardController extends Controller
         return view('dashboard.index', compact('stats', 'recent_contracts', 'status', 'ocrStatusCount'));
     }
 
+    public function setLanguage(Request $request)
+    {
+        $languageType = $request->get('language');
+        $a = $this->localization->handle($request,$languageType);
+        dd($a);
+
+    }
 }

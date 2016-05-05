@@ -5,7 +5,7 @@ use App\Nrgi\Entities\Contract\Annotation;
 ?>
 <div class="state-wrap">
     <div class="state-wrap-title">
-    <p style="float: left"> @lang('Contract State'):
+    <p style="float: left"> @lang('contract.contract_state'):
         @if(!$current_user->isCountryResearch())
             {!!Form::open(['route'=>['contract.unpublish', $contract->id], 'style'=>"float:right;  padding-left: 10px;",
             'method'=>'post'])!!}
@@ -31,7 +31,7 @@ use App\Nrgi\Entities\Contract\Annotation;
                 @include('contract.partials.show.text_status')
             </li>
             <li>
-                <strong>@lang('Annotations'):</strong>
+                <strong>@lang('annotation.annotations'):</strong>
                 @if (count($annotations) > 0)
                     @include('contract.partials.show.annotation_status')
                 @endif
@@ -40,8 +40,8 @@ use App\Nrgi\Entities\Contract\Annotation;
             </li>
 
         @else
-            <li><strong>@lang('Text'):</strong></li>
-            <li><strong>@lang('Annotation'):</strong></li>
+            <li><strong>@lang('global.text'):</strong></li>
+            <li><strong>@lang('annotation.annotation'):</strong></li>
         @endif
     </ul>
 </div>

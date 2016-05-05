@@ -13,19 +13,19 @@
         <div class="panel-heading panel-heading-fixed">
             <div class="word-wrapper">
                 <div class="wordwrap pull-left"> 
-                    <a href="{{route('contract.show', $contract->id)}}" class="back pull-left">Go back</a>
+                    <a href="{{route('contract.show', $contract->id)}}" class="back pull-left">@lang('global.back')</a>
                     <span class="pull-left">{{str_limit($contract->title, 80)}}</span>
                 </div>
                 <div class="pull-right">
                     <div class="view-metadata">
-                        <a class="btn-metadata pull-right" href="#">View Metadata</a>
+                        <a class="btn-metadata pull-right" href="#">@lang('global.view_metadata')</a>
                     </div>
                     <div id="metadata" class="metadata" style="display:none"></div>
                 </div>
             </div>
             <div class="document-wrap-head">
             <div class="navigation">
-                <a href='#' id="pdf-text-view">Text Pdf View</a>
+                <a href='#' id="pdf-text-view">@lang('global.view_pdf_text')</a>
                 <div class="column-text column-common">
                     <div id="search-form">
                         <form method="POST" action="{{route('contract.page.search', ["id"=>$contract['contract_id']])}}" accept-charset="UTF-8" class="form-inline page-search pull-right">
@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                             <input class="btn btn-primary pull-left" type="submit" value="Search">
-                            <a href='#' id="search-results-cache" style="display:none;" class="pull-right">Results</a>
+                            <a href='#' id="search-results-cache" style="display:none;" class="pull-right">@lang('global.results')</a>
                         </form>
                     </div>
                 </div>
@@ -62,8 +62,8 @@
                             -->
                             <div></div>
                             <div class="text-viewer-wrapper">
-                                <div id="text-viewer-overflow-scroll" class="text-viewer">Loading ...</div>    
-                                <button id="saveButton" value="Save">Save</button>
+                                <div id="text-viewer-overflow-scroll" class="text-viewer">@lang('annotation.loading')</div>    
+                                <button id="saveButton" value="Save">@lang('global.save')</button>
                             </div>
                         </div>
                     </span>                            
@@ -111,10 +111,10 @@
     </script>
     <script type="text/template" id="metadata-view-template">
         <div class="popup-metadata">
-        <p><strong>Contract Title:</strong><%= contract_name %></p>
-        <p><strong>Country:</strong> <%= country.name %></p>
-        <p><strong>Date of signature:</strong> <%= signature_date %></p>
-        <p><strong>Resource:</strong>
+        <p><strong>@lang('contract.import.contract_title'):</strong><%= contract_name %></p>
+        <p><strong>@lang('contract.country'):</strong> <%= country.name %></p>
+        <p><strong>@lang('contract.date_of_signture'):</strong> <%= signature_date %></p>
+        <p><strong>@lang('contract.resource'):</strong>
             <%=resource%>
         </p></div>
     </script>    

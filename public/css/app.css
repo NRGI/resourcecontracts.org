@@ -7713,3 +7713,9 @@ table td > a .glyphicon-eye-open {
     margin-right: -13px;
     margin-top: 16px;
 }
+
+.alert-info {
+    background-color: white; !important;
+    border-color: darkgray; !important;
+    color: #333; !important;
+}

@@ -8,7 +8,7 @@
 @section('content')
     <div id="content">
         <div id="content">
-            <div class="loading"><img src="{{url('images/loading.gif')}}"/> Loading ...</div>
+            <div class="loading"><img src="{{url('images/loading.gif')}}"/>@lang('annotation.loading')</div>
         </div>
     </div>
 @stop

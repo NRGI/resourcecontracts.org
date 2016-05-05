@@ -2,16 +2,16 @@
 use App\Nrgi\Entities\Contract\Annotation\Annotation;
 ?>
 @if($annotationStatus == Annotation::PUBLISHED)
-    <span class="published">@lang('Published')</span>
+    <span class="published">@lang('global.published')</span>
 @elseif($annotationStatus == Annotation::COMPLETED)
-    <span class="completed">@lang('Completed')</span>
+    <span class="completed">@lang('global.completed')</span>
     @if($current_user->can('publish-annotation') )
         <div class="pull-right">
             <button data-toggle="modal" data-target=".annotation-publish-modal" class="btn btn-success">
-                @lang('Publish')
+                @lang('global.publish')
             </button>
             <button data-toggle="modal" data-target=".annotation-reject-modal" class="btn btn-danger">
-                @lang('Reject')
+                @lang('global.reject')
             </button>
         </div>
 
@@ -25,7 +25,7 @@ use App\Nrgi\Entities\Contract\Annotation\Annotation;
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">@lang('Suggest changes for Annotation')</h4>
+                        <h4 class="modal-title" id="myModalLabel">@lang('annotation.suggest_changes')</h4>
                     </div>
                     <div class="modal-body">
                             {!! Form::textarea('message', null, ['id'=>"message", 'rows'=>12,
@@ -53,7 +53,7 @@ use App\Nrgi\Entities\Contract\Annotation\Annotation;
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">@lang('Suggest changes for Annotation')</h4>
+                        <h4 class="modal-title" id="myModalLabel">@lang('annotation.suggest_changes')</h4>
                     </div>
                     <div class="modal-body">
                         {!! Form::textarea('message', null, ['id'=>"message", 'rows'=>12,
@@ -74,13 +74,13 @@ use App\Nrgi\Entities\Contract\Annotation\Annotation;
 
     @endif
 @elseif($annotationStatus == Annotation::REJECTED)
-    <span class="rejected"> @lang('Rejected')</span>
+    <span class="rejected"> @lang('mturk.rejected')</span>
 @else
-    <span class="draft"> @lang('Draft')</span>
+    <span class="draft"> @lang('global.draft')</span>
     @if($current_user->can('complete-annotation') )
         <div class="pull-right">
             <button data-toggle="modal" data-target=".annotation-complete-modal" class="btn btn-primary">
-                @lang('Complete')
+                @lang('global.complete')
             </button>
         </div>
         <div class="modal fade annotation-complete-modal" tabindex="-1" role="dialog"
@@ -93,7 +93,7 @@ use App\Nrgi\Entities\Contract\Annotation\Annotation;
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">@lang('Remarks')</h4>
+                        <h4 class="modal-title" id="myModalLabel">@lang('global.remarks')</h4>
                     </div>
                     <div class="modal-body">
                         {!! Form::textarea('message', null, ['id'=>"message", 'rows'=>12,
@@ -126,7 +126,7 @@ use App\Nrgi\Entities\Contract\Annotation\Annotation;
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">@lang('All Comments Annotations')</h4>
+                <h4 class="modal-title" id="myModalLabel">@lang('annotation.all_comments')</h4>
             </div>
             <div class="modal-body">
                 @forelse($contract->annotation_comment as $annotation_comment)
@@ -137,8 +137,8 @@ use App\Nrgi\Entities\Contract\Annotation\Annotation;
                         </div>
                         <div class="comment-info">
                             <span class="{{$annotation_comment->action}}">{{ucfirst($annotation_comment->action)}}</span>
-                            @lang('by') <strong>{{$annotation_comment->user->name}}</strong>
-                            @lang('on') {{$annotation_comment->created_at->format('D F d, Y h:i a')}}
+                            @lang('global.by') <strong>{{$annotation_comment->user->name}}</strong>
+                            @lang('global.on') {{$annotation_comment->created_at->format('D F d, Y h:i a')}}
                         </div>
                     </div>
                 @empty
@@ -147,7 +147,7 @@ use App\Nrgi\Entities\Contract\Annotation\Annotation;
             </div>
             <div class="modal-footer">
                 <a href="{{route('contract.comment.list',$contract->id)}}"
-                   class="btn btn-default pull-left">@lang('View All')</a>
+                   class="btn btn-default pull-left">@lang('global.view_all')</a>
                 <button type="button" class="btn btn-default"
                         data-dismiss="modal">@lang('contract.close')</button>
             </div>

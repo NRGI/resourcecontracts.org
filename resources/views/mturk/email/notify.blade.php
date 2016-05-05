@@ -4,12 +4,12 @@
 
     <div class="panel-body">
         <ul>
-            <li>Total tasks: {{$task['total_pages']}}</li>
-            <li>Tasks completed: {{$task['total_completed']}}</li>
-            <li>Tasks approved: {{$task['total_approved']}}</li>
-            <li>Tasks requiring your action: {{$task['total_pending_approval']}} </li>
+            <li>{{ trans('mturk.total_tasks') }}: {{$task['total_pages']}}</li>
+            <li>{{ trans('mturk.tasks_completed') }}: {{$task['total_completed']}}</li>
+            <li>{{ trans('mturk.tasks_approved') }}: {{$task['total_approved']}}</li>
+            <li>{{ trans('mturk.tasks_requiring_action') }}: {{$task['total_pending_approval']}} </li>
         </ul>
-        Please review the completed tasks before approval.
+        {{ trans('mturk.review_task') }}
     </div>
 </div>
 

@@ -5,4 +5,8 @@ return [
     "metadata_description"    => "The following numbers shows how many contracts have given metadata. Click on the numbers to see the contracts.",
     "annotations_heading"     => "Contract Annotations Quality Issues",
     "annotations_description" => "The following numbers shows how many contracts have the given annotation's category. Click on the numbers to see the contracts.",
+    "metadata"                => "Metadata",
+    "present"                 => "Present",
+    "missing"                 => "Missing",
+    "anotations_category"     => "Annotations Category"
 ];
