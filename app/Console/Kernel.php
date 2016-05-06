@@ -30,6 +30,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\UpdateMTurkAssignment',
         'App\Console\Commands\UpdateAnnotationSection',
         'App\Console\Commands\AnnotationHarmonization',
+        'App\Console\Commands\MigrateFailedAnnotations'
     ];
 
     /**

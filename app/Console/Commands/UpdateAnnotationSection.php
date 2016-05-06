@@ -107,7 +107,7 @@ class UpdateAnnotationSection extends Command
             $annotationArray['parent']  = '';
             //$annotation->annotation     = $annotationArray;
 
-            \DB::table('contract_annotations')
+            DB::table('contract_annotations')
               ->where('id', $annotation->id)
               ->update(['annotation' => json_encode($annotationArray)]);
 
