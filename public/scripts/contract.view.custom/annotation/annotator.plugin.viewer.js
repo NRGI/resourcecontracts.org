@@ -7,6 +7,29 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
         if (!Annotator.supported()) {
             return;
         }
+
+        $('.annotator-controls').on("click", "a.annotator-save", function (e) {
+            var wrapperEl = $('.' + contractApp.getView() + '-annotator');
+            var category = wrapperEl.find('#annotation-plugin-select-category');
+            var text = wrapperEl.find('textarea.annotation-text');
+            wrapperEl.find('.error').remove();
+            if (category.val() == '') {
+                category.focus();
+                category.parent().append('<span class="error">Category is required.</span>');
+                e.stopPropagation();
+                return;
+            }
+
+            if (text.val() == '') {
+                text.focus();
+                text.after('<span class="error">Annotation text is required.</span>');
+                e.stopPropagation();
+                return;
+            }
+
+        });
+
+
         annotator.viewer.addField({
             load: this.updateViewer,
         });
@@ -41,7 +64,7 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
             if (annotatedText != '') {
                 text = annotatedText.split(" ").splice(0, 10).join(" ");
                 text = nl2br(text);
-            if (annotatedText.split(" ").length > 10) {
+                if (annotatedText.split(" ").length > 10) {
                     text = text + " ...";
                 }
             }
@@ -52,7 +75,7 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
             }
 
             textDiv.innerHTML = '<div class="annotation-viewer-text">' +
-            text + article_reference + '</div>';
+                text + article_reference + '</div>';
 
             $(textDiv).on("click", "a", function (e) {
                 e.preventDefault();
@@ -66,6 +89,7 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
                 }
                 e.stopPropagation();
             });
+
             $(field).remove();
         }
 

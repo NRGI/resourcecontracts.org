@@ -23,7 +23,6 @@ Annotator.Plugin.ArticleReference = (function (_super) {
 
     ArticleReference.prototype.saveArticleReference = function (el, annotation) {
         annotation.article_reference = $(el).find('input').val();
-        console.log('annotation updated');
     }
 
     ArticleReference.prototype.updateArticleReference = function (el, annotation) {

@@ -734,3 +734,5 @@ v.title-wrap {
 .annotator-annotation  a {
     color: #337ab7;
 }
+
+span.error{color:red; margin-top: 5px; display: inline-block}
