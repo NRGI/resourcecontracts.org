@@ -67,15 +67,10 @@ var TextPaginationView = React.createClass({
         this.props.contractApp.on("update-text-pagination-page", function (page_no) {
             self.refs.userInputText.getDOMNode().value = page_no;
             self.setState({visiblePage: page_no});
+            self.props.contractApp.setCurrentPage(page_no);
+            self.setState({visiblePage: page_no});
         });
 
-        // this.props.currentPage.on("update-pagination-page", function(page_no) {
-        //   self.refs.userInputText.getDOMNode().value = page_no;
-        //   self.setState({visiblePage: page_no});
-        // });
-        // this.props.pagesCollection.on("reset", function() {
-        //   self.setState({totalPages: self.props.pagesCollection.length});
-        // });
         this.refs.userInputText.getDOMNode().value = this.state.visiblePage;
     },
     render: function () {
@@ -248,9 +243,11 @@ var TextViewer = React.createClass({
         this.props.pagesCollection.on("reset", function () {
             self.message = "";
             if (self.props.pagesCollection.models.length === 0) {
-                self.message = <div className="no-contract-error">We're sorry, there is a problem loading the contract. Please contact
-                    <a mailto="info@openlandcontracts.org">info@openlandcontracts.org</a>
-                    to let us know, or check back later.</div>;//'
+                self.message =
+                    <div className="no-contract-error">We're sorry, there is a problem loading the contract. Please
+                        contact
+                        <a mailto="info@openlandcontracts.org">info@openlandcontracts.org</a>
+                        to let us know, or check back later.</div>;//'
             }
             self.forceUpdate();
             self.loadAnnotations();
@@ -266,7 +263,8 @@ var TextViewer = React.createClass({
 
         var warningText = (this.message) ? "" : (<div className="text-viewer-warning">
             <span className="pull-right link close" onClick={this.handleClickWarning}>x</span>
-            The text below was created automatically and may contain errors and differences from the contract`s original PDF file.&nbsp;
+            The text below was created automatically and may contain errors and differences from the contract`s original
+            PDF file.&nbsp;
             <a href={app_url + "/faqs"}>Learn more</a>
         </div>);
 
@@ -289,7 +287,9 @@ var TextViewer = React.createClass({
         }
 
         if (show_pdf_text == 0) {
-            warningText = (<div className="text-viewer-warning">We are currently processing the contract's PDF file, and a text version is not yet available.</div>);
+            warningText = (
+                <div className="text-viewer-warning">We are currently processing the contract's PDF file, and a text
+                    version is not yet available.</div>);
             pagesView = "";
         }
 
