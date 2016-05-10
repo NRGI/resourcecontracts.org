@@ -7713,3 +7713,7 @@ table td > a .glyphicon-eye-open {
     margin-right: -13px;
     margin-top: 16px;
 }
+
+.selected-document+.form-group {
+    clear: both;
+}
