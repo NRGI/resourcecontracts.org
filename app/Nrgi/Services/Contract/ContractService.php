@@ -426,6 +426,8 @@ class ContractService
     {
         try {
             $contract = $this->contract->findContract($contractID);
+            $oldIsSupport = $contract->metadata->is_supporting_document;
+            $newIsSupport = $formData['is_supporting_document'];
         } catch (Exception $e) {
             $this->logger->error('Contract not found', ['Contract ID' => $contractID]);
 
@@ -465,7 +467,11 @@ class ContractService
             if (isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '0') {
                 $this->contract->removeAsSupportingContract($contract->id);
             }
-            $this->contract->updateOCID($contract);
+            if($oldIsSupport != $newIsSupport)
+            {
+                $this->contract->updateOCID($contract);
+            }
+
             $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
             $associatedContracts = (isset($formData['supporting_document']) && !empty($formData['supporting_document'])) ? $formData['supporting_document'] : [];
             if (!empty($associatedContracts)) {
