@@ -233,7 +233,7 @@ if (isset($contract->metadata->resource)) {
 
 <div class="form-group el_document_type">
     <?php
-    if(!isset($contract->file)){
+    if(isset($contract->file)){
         $dt = isset($contract->metadata->document_type) ? $contract->metadata->document_type : old('document_type');
         if (!in_array($dt, trans('codelist/documentType')) AND $dt != '') {
             $dt = 'Other';
