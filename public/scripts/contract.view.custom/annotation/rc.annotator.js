@@ -109,7 +109,7 @@ var PdfAnnotatorjsView = AnnotatorjsView.extend({
         _.extend(this, AnnotatorjsView);
 
         if (options.enablePdfAnnotation) {
-            this.content.annotator('addPlugin', 'AnnotoriousImagePlugin');
+            this.content.annotator('addPlugin', 'PdfAnnotator');
         }
     },
     pageUpdated: function () {

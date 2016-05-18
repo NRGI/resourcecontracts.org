@@ -23,6 +23,9 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         this.annotator
             .subscribe("annotationEditorShown", onEditorShownHandler)
             .subscribe("annotationViewerShown", onViewShownHandler);
+
+       this.notification = new Annotator.Notification;
+
     };
     AnnotatorEvents.prototype.options = {
         AnnotatorEvents: {}
@@ -47,20 +50,23 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         var self = this;
         setTimeout(function (event) {
             self.contractApp.trigger('annotationCreated', annotation);
-        }, 2000);
+            self.notification.show('Annotation successfully created', 'success');
+        }, 1000);
     };
     AnnotatorEvents.prototype.onAnnotationUpdated = function (annotation) {
         var self = this;
         setTimeout(function (event) {
             self.contractApp.setPdfLoaded(false);
             self.contractApp.trigger('annotationUpdated', annotation);
-        }, 2000);
+            self.notification.show('Annotation successfully updated', 'success');
+        }, 1000);
     };
     AnnotatorEvents.prototype.onAnnotationDeleted = function (annotation) {
         var self = this;
         setTimeout(function (event) {
             self.contractApp.trigger('annotationDeleted', annotation);
-        }, 2000);
+            self.notification.show('Annotation successfully deleted', 'success');
+        }, 1000);
     };
 
     AnnotatorEvents.prototype.onAnnotationEditorSubmit = function (editor,annotation) {

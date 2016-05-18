@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{ url('css/contract-view.css') }}"/>
     <link rel="stylesheet" href="{{ url('css/select2.min.css') }}"/>
     <link rel="stylesheet" href="{{ url('css/jquery-ui.css') }}"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 @stop
 @section('content')
     <div id="content">
@@ -17,15 +18,11 @@
     <script src="{{ url('js/select2.full.js') }}"></script>
     <script src="{{ url('scripts/lib/underscore.js') }}"></script>
     <script src="{{ url('scripts/lib/backbone.js') }}"></script>
-
     <script src="{{ url('scripts/lib/director.min.js') }}"></script>
-
     <script src="{{ url('scripts/lib/react/react-with-addons.js') }}"></script>
     <script src="{{ url('scripts/lib/react/JSXTransformer.js') }}"></script>
-
     <script src="{{ url('scripts/lib/pdfjs/pdf.js') }}"></script>
     <script src="{{ url('scripts/lib/pdfjs/pdf.worker.js') }}"></script>
-
     <script type="text/jsx" src="{{ url('scripts/contract.view.custom/views/react.pdf.js') }}"></script>
     <script type="text/jsx" src="{{ url('scripts/contract.view.custom/views/react.waypoint.js') }}"></script>
     <script type="text/jsx" src="{{ url('scripts/contract.view.custom/views/pdf.view.js') }}"></script>
@@ -41,10 +38,7 @@
     <script src="{{ url('scripts/contract.view.custom/models/metadata.js') }}"></script>
     <script src="{{ url('scripts/contract.view.custom/models/contract.js') }}"></script>
     <script src="{{ url('scripts/contract.view.custom/models/pdf.js') }}"></script>
-
     <script src="{{ url('scripts/lib/annotator/annotator-full.min.js') }}"></script>
-    <script src="{{ url('scripts/lib/annotator.plugin.annotorious.js') }}"></script>
-
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.utils.js') }}"></script>
     <script src="{{ url('scripts/contract.view.custom/annotation/rc.annotator.js') }}"></script>
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.categories.js') }}"></script>
@@ -52,7 +46,10 @@
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.event.js') }}"></script>
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.article_reference.js') }}"></script>
     <script src="{{ url('scripts/contract.view.custom/annotation/annotator.plugin.parentannotation.js') }}"></script>
-    <script src="{{url('scripts/lib/jquery-ui.js')}}"></script>
+    <script src="{{ url('scripts/lib/jquery-ui.min.js')}}"></script>
+    <script src="{{ url('scripts/lib/jbox.js') }}"></script>
+    <script src="{{ url('scripts/lib/pdf-annotator.js') }}"></script>
+
     <script type="text/jsx">
         function nl2br(str, is_xhtml) {
             var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
@@ -230,5 +227,3 @@
     </script>
 
 @stop
-
-

@@ -736,3 +736,27 @@ v.title-wrap {
 }
 
 span.error{color:red; margin-top: 5px; display: inline-block}
+
+
+.pdf-annotator .annotator-hl{
+  border :  2px solid #E7D530;
+  background: transparent !important
+}
+
+.ui-resizable-helper {
+  border: 2px dotted #00F;
+}
+
+.annotator-notice{
+  width: 300px;
+    margin: 0px;
+    left: 50%;
+    margin-left: -150px;
+    padding: 0px;
+    height: 50px;
+}
+
+.annotator-notice-success
+{
+  border-color: #18AE23;
+}
