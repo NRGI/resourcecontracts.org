@@ -179,9 +179,7 @@ var PdfViewer = React.createClass({
         }
     },
     _onPageRendered: function () {
-
         if (this.props.contractApp.getView() === "pdf" && this.loadAnnotationsFlag) {
-
             if (this.annotator) {
                 this.annotator.pageUpdated();
                 this.loadAnnotationsFlag = false;

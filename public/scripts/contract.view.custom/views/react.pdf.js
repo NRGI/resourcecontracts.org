@@ -54,7 +54,6 @@ var Pdf = React.createClass({
     },
     render: function () {
         var self = this;
-        this.removeAnnotationFromCanvas();
         if (!!this.state.page) {
             setTimeout(function () {
                 if (self.isMounted()) {
@@ -98,21 +97,15 @@ var Pdf = React.createClass({
         } else {
             var page_no = this.props.contractApp.getCurrentPage();
             debug("react.pdf showing page loader", page_no);
+            this.removeAnnotations();
             return (this.props.loading || React.createElement("div", null, "Loading pdf page " + page_no));
         }
     },
-    removeAnnotationFromCanvas : function(){
+    removeAnnotations : function(){
         $('.annotator-viewer').addClass('annotator-hide');
-        var canvas = $('.annotorious-item');
-        canvas.each(function() {
-            c = $( this ).get(0);
-            var context = c.getContext('2d');
-            context.clearRect(0, 0, c.width, c.height);
-            context.fill();
-        });
+        $('.annotator-pdf-hl').remove();
     },
     _onDocumentComplete: function (pdf) {
-        // this.setState({ pdf: pdf })
         if (!!this.props.onDocumentComplete && typeof this.props.onDocumentComplete === 'function') {
             this.props.onDocumentComplete(pdf.numPages);
         }
