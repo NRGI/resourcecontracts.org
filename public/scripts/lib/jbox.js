@@ -9,10 +9,9 @@
         this.dragged = true;
 
         this._mouseInit();
-
         this.helper = $(document.createElement('div'))
-            .css({border: '1px dotted black'})
-            .addClass("ui-boxer-helper");
+            .addClass("ui-boxer-helper")
+            .css({border: '1px dotted black'});
     },
     destroy: function () {
           this.element

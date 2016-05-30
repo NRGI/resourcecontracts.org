@@ -68,8 +68,9 @@ Annotator.Plugin.PdfAnnotator = (function (_super) {
             shape.width = el.width();
 
             boxEl.boxer({disabled: true});
-            $(e.target).find('button').remove();
-            $(e.target).append('<button class="cancel btn btn-danger" style="position:absolute; top:-40px; left:60px">Cancel</button> <button class="save btn btn-primary" style="position:absolute; top:-40px">Save</button>');
+            $(e.target).find('div.annotator-resize-action').remove();
+            $(e.target).addClass('resizable-active');
+            $(e.target).append('<div class="btn-group annotator-resize-action" role="group"><button class="save btn btn-primary">'+LANG.save+'</button> <button class="cancel btn btn-danger" >'+LANG.cancel+'</button></div>');
             var hl = el.find('div.annotator-hl').draggable( "option", "disabled", true );
             boxEl.find('div.annotator-hl').draggable({disabled: true});
             boxEl.find(e.target).draggable({disabled: false});
@@ -78,8 +79,8 @@ Annotator.Plugin.PdfAnnotator = (function (_super) {
             boxEl.find(e.target).resizable({disabled: false});
         };
 
-        $(document).on('click', '.cancel', function () {
-            var el = $(this).parent();
+        $(document).on('click', '.annotator-resize-action button.cancel', function () {
+            var el = $(this).parent().parent();
             var annotator = el.data('annotator');
             var shape = annotator.shapes[0].geometry;
             shape = self.getShape(shape);
@@ -94,8 +95,8 @@ Annotator.Plugin.PdfAnnotator = (function (_super) {
 
         });
 
-        $(document).on('click', '.save', function () {
-            var el = $(this).parent();
+        $(document).on('click', '.annotator-resize-action button.save', function () {
+            var el = $(this).parent().parent();
             var annotator = el.data('annotator');
             var geometry = [];
             geometry.y = parseInt(el.css('top'));

@@ -11,9 +11,9 @@ return [
         'rc'  => 'ResourceContracts'
     ],
     'text_type' => [
-        1 => ['name' => 'Acceptable', 'color' => 'green'],
-        2 => ['name' => 'Needs editing', 'color' => 'yellow'],
-        3 => ['name' => 'Needs full transcription', 'color' => 'red']
+        1 => ['name' => 'acceptable', 'color' => 'green'],
+        2 => ['name' => 'needs_editing', 'color' => 'yellow'],
+        3 => ['name' => 'needs_full_transcription', 'color' => 'red']
     ],
     'schema'    => [
         'file'     => '',

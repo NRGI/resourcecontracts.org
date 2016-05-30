@@ -45,6 +45,12 @@ class LanguageService
      */
     public function defaultLang()
     {
+        $code = $this->browserLang();
+
+        if ($this->isValidLang($code)) {
+            return $code;
+        }
+
         return config('lang.default');
     }
 
@@ -88,11 +94,23 @@ class LanguageService
     public function getValidLang($lang)
     {
         $lang = trim(strtolower($lang));
+
         if ($this->isValidLang($lang)) {
             return $lang;
         }
 
         return $this->defaultLang();
+    }
+
+    /**
+     * write brief description
+     * @return array
+     */
+    public function current()
+    {
+        $code = app()->getLocale();
+
+        return (object) $this->getLangInfo($code);
     }
 
     /**
@@ -116,10 +134,9 @@ class LanguageService
      */
     public function dir()
     {
-        $code = app()->getLocale();
-        $info = $this->getLangInfo($code);
+        $info = $this->current();
 
-        return isset($info['dir']) ? $info['dir'] : 'ltr';
+        return isset($info->dir) ? $info->dir : 'ltr';
     }
 
     /**
@@ -140,5 +157,13 @@ class LanguageService
         return [];
     }
 
-
+    /**
+     * Get Browser Language
+     *
+     * @return string
+     */
+    protected function browserLang()
+    {
+        return substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    }
 }

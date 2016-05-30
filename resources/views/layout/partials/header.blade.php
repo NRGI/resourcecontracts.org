@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{$lang->current()->code}}">
 <head>
     <meta charset="UTF-8"/>
     <title>@lang('global.contracts')</title>
@@ -13,4 +13,4 @@
     </script>
     @yield('css')
 </head>
-<body dir="{{$lang->dir()}}">
+<body class="lang-{{$lang->current()->code}}" dir="{{$lang->dir()}}">

@@ -64,8 +64,9 @@
                     console.log(arguments[i]);
                 }
             }
-        }
+        };
 
+        var LANG = {!! json_encode(trans('annotation'))!!};
         var back_url = '{!!$back!!}';
         var app_url = '{{url()}}';
         var contractTitle = "{{$contract->title}}";

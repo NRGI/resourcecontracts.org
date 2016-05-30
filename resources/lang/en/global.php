@@ -7,6 +7,7 @@
 */
 
 return [
+    'contracts'               => 'Admin - Resource Contracts',
     'yes'                     => "Yes",
     'no'                      => "No",
     'not_available'           => 'Not Available',
@@ -56,11 +57,12 @@ return [
     'view'                    => 'View',
     'mturk_sent'              => 'Sent to MTurk',
     'mturk_completed'         => 'MTurk task Completed',
+    'select'                  => 'Select',
 
     'form' => [
         'close'  => 'Close',
         'save'   => 'Save',
         'cancel' => 'Cancel',
-        'ok'     => 'Ok'
-    ]
+        'ok'     => 'Ok',
+    ],
 ];

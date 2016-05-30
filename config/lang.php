@@ -7,9 +7,9 @@ return [
             'name' => 'English',
         ],
         [
-            'dir'  => 'rtl',
-            'code' => 'es',
-            'name' => 'Spanish',
+            'dir'  => 'ltr',
+            'code' => 'fr',
+            'name' => 'French',
         ],
     ],
     'default' => 'en',

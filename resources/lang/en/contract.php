@@ -61,6 +61,7 @@ return [
     'view_pages'                           => "Review Contract Text",
     'pdf_type'                             => "Pdf Type:",
     'choose'                               => "Choose",
+    'choose_file'                          => "Choose File",
     'acceptable'                           => "Acceptable",
     'needs_editing'                        => "Needs Editing",
     'needs_full_transcription'             => "Needs Full Transcription",
@@ -93,7 +94,7 @@ return [
     'contract_note'                        => 'Note',
     'contract_state'                       => 'Contract State',
     'contract_detail'                      => 'Go back to Contract detail',
-    'pdx_text'                             => 'PDF Text',
+    'pdf_text'                             => 'PDF Text',
     'date_of_signture'                     => 'Date of signature',
     'choose_text_type'                     => 'Choose type of output Text',
     'view_all'                             => 'View all comments',
@@ -155,7 +156,8 @@ return [
     'pages'                                => 'Is Page(s) missing from copy',
     'annexes_display'                      => 'Annex(es) missing from document',
     'pages_display'                        => 'Page(s) missing from document',
-
+    'scanned'                              => 'Scanned',
+    'structured'                           => 'Structured',
 
     /*Logs*/
     'log'                                  => [
@@ -167,8 +169,8 @@ return [
         'save_page'  => 'Page no :page updated',
         'unpublish'  => 'Unpublished',
         'discussion' => [
-            'save' => 'Comment added for :key on :type'
-        ]
+            'save' => 'Comment added for :key on :type',
+        ],
     ],
     'page'                                 => [
         'save'      => 'Your corrections / changes have been saved',
@@ -176,13 +178,13 @@ return [
     ],
     'publish'                              => [
         'all'     => 'Publish All',
-        'confirm' => 'Publish All ?'
+        'confirm' => 'Publish All ?',
     ],
     'unpublish'                            => [
         'all'     => 'Unpublish',
         'success' => 'Contract has been successfully unpublish.',
         'fail'    => 'Error unpublishing this contract.',
-        'confirm' => 'Unpublish this contract ?'
+        'confirm' => 'Unpublish this contract ?',
     ],
     'import'                               => [
         'name'           => "Import Contract",
@@ -204,6 +206,6 @@ return [
         'upload_another' => 'Upload another file',
         'btn_import'     => 'Import',
         'btn_cancel'     => 'Cancel and upload another file',
-        'fail'           => 'Could not found any contract to import.'
-    ]
+        'fail'           => 'Could not found any contract to import.',
+    ],
 ];

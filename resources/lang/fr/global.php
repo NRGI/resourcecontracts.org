@@ -7,8 +7,9 @@
 */
 
 return [
+    'contracts'               => 'Admin - Resource Contracts',
     'yes'                     => "Oui",
-    'no'                      => "Non ",
+    'no'                      => "Non",
     'not_available'           => "Indisponible",
     'menu'                    => "Menu",
     'contracts_uploaded'      => "Contrats téléversés",
@@ -21,7 +22,7 @@ return [
     'metadata_status'         => "État des métadonnées",
     'annotations_status'      => "État des annotations",
     'pdf_text_status'         => "État du texte PDF",
-    'ocr'                     => "Reconnaissance optique de caractères (ROC)",
+    'ocr'                     => "Reconnaissance optique de caractères",
     'most_recent_contracts'   => "Les contrats les plus récemment ajoutés",
     'no_contracts_created'    => "Contrat pas encore créé",
     'completed'               => "Accompli",
@@ -56,13 +57,12 @@ return [
     'view'                    => "Afficher",
     'mturk_sent'              => "Envoyer à Mturk",
     'mturk_completed'         => "Tâche Mturk accomplie",
+    'select'                  => 'Sélectionner',
 
-
-
-    'form' =>[
+    'form' => [
         'close'  => "Fermer",
         'save'   => "Sauvegarder",
         'cancel' => "Annuler",
-        'ok'     => "Ok"
-    ]
+        'ok'     => "Ok",
+    ],
 ];

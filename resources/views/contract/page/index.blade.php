@@ -95,7 +95,6 @@
     <script src="{{ asset('js/custom/rc.annotator.js') }}"></script>
     <script src="{{ asset('js/custom/rc.metadata.js') }}"></script>
     <script src="{{ asset('js/custom/rc.scroll.js') }}"></script>
-
     <script>
     var contractEvents = {};
     _.extend(contractEvents, Backbone.Events);
@@ -169,11 +168,6 @@
         searchOverlayLayer: '#pdfcanvas',
         eventsPipe: contractEvents
     });
-
-    // $('#saveButton').click(function (el) {
-    //     pageView.saveClicked();
-    // });
-
     </script>
 
 <script type="text/template" id="metadata-view-template">

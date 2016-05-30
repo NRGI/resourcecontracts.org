@@ -14,7 +14,7 @@ var TextSearchForm = React.createClass({
     return (
       <div className="text-search">
           <form onSubmit={this.handleSubmit}>
-            <input type="text" ref="searchInput" placeholder="Search in this document" />
+            <input type="text" ref="searchInput" placeholder={LANG.search_in_document} />
           </form>
       </div>
     );
@@ -69,7 +69,7 @@ var TextSearchResultsList = React.createClass({
       });
     }
     else if(this.props.searchResultsCollection.searchCompleted === true || this.props.searchResultsCollection.length == 0) {
-      resultsView = "No results found";
+      resultsView = LANG.search_no_result;
     }
 
     return (

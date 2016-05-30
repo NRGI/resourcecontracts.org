@@ -4,26 +4,28 @@ use Illuminate\Support\Facades\Lang;
 
 /**
  * Get formatted file size
+ *
  * @param $bytes
+ *
  * @return string
  */
 function getFileSize($bytes)
 {
     switch ($bytes):
         case ($bytes >= 1073741824):
-            $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+            $bytes = number_format($bytes / 1073741824, 2).' GB';
             break;
         case ($bytes >= 1048576):
-            $bytes = number_format($bytes / 1048576, 2) . ' MB';
+            $bytes = number_format($bytes / 1048576, 2).' MB';
             break;
         case ($bytes >= 1024):
-            $bytes = number_format($bytes / 1024, 2) . ' KB';
+            $bytes = number_format($bytes / 1024, 2).' KB';
             break;
         case ($bytes > 1):
-            $bytes = $bytes . ' bytes';
+            $bytes = $bytes.' bytes';
             break;
         case ($bytes == 1):
-            $bytes = $bytes . ' byte';
+            $bytes = $bytes.' byte';
             break;
     endswitch;
 
@@ -34,6 +36,7 @@ function getFileSize($bytes)
  * Get md5 file hash value
  *
  * @param $file
+ *
  * @return string
  */
 function getFileHash($file)
@@ -61,6 +64,7 @@ function _l($key)
  * Get S3 file url
  *
  * @param string $fileName
+ *
  * @return mixed
  */
 function getS3FileURL($fileName = '')
@@ -76,6 +80,7 @@ function getS3FileURL($fileName = '')
  * Get Language Name by code
  *
  * @param $code
+ *
  * @return null
  */
 function getLanguageName($code)
@@ -92,6 +97,7 @@ function getLanguageName($code)
  *
  * @param $identifier
  * @param $iso_code
+ *
  * @return \App\Nrgi\Services\Contract\Identifier\ContractIdentifier
  */
 function getContractIdentifier($identifier, $iso_code)
@@ -105,13 +111,14 @@ function getContractIdentifier($identifier, $iso_code)
  * Generate random number
  *
  * @param $length
+ *
  * @return string
  */
 function str_random_number($length)
 {
     $number = '';
 
-    for ($i = 0; $i < $length; $i ++) {
+    for ($i = 0; $i < $length; $i++) {
         $number .= mt_rand(0, 9);
     }
 
@@ -122,6 +129,7 @@ function str_random_number($length)
  * This function returns hit url based upon env variable Mturk Sandbox.
  *
  * @param $hitID
+ *
  * @return string
  */
 function hit_url($hitID)
@@ -135,6 +143,7 @@ function hit_url($hitID)
  * Trim array values
  *
  * @param $value
+ *
  * @return array|string
  */
 function trimArray($value)
@@ -154,6 +163,7 @@ function trimArray($value)
  * @param        $contract_id
  * @param        $key
  * @param string $type
+ *
  * @return string
  */
 function discussion($discussions, $discussion_status, $contract_id, $key, $type = 'metadata')
@@ -162,13 +172,14 @@ function discussion($discussions, $discussion_status, $contract_id, $key, $type 
     $discussion_status = (isset($discussion_status[$key]) && $discussion_status[$key] == 1) ? true : false;
 
     if ($discussion_status == 1) {
-        $status = '<span class="label label-success">(' . $count . ')'.trans('contract.resolved') .'</span>';
+        $status = '<span class="label label-success">('.$count.')'.trans('contract.resolved').'</span>';
     } else {
-        $status = '<span class="label label-red pull-right">(' . $count . ')'.trans('contract.open').'</span>';
+        $status = '<span class="label label-red pull-right">('.$count.')'.trans('contract.open').'</span>';
     }
-    if($count == 0)
-    {
-        $status = '<span class="label pull-right" style="background-color: darkgray">(' . $count . ')'.trans('contract.open').'</span>';
+    if ($count == 0) {
+        $status = '<span class="label pull-right" style="background-color: darkgray">('.$count.')'.trans(
+                'contract.open'
+            ).'</span>';
     }
 
     return sprintf(
@@ -179,5 +190,35 @@ function discussion($discussions, $discussion_status, $contract_id, $key, $type 
     );
 }
 
+/**
+ * Get Language Url
+ *
+ * @param $code
+ *
+ * @return string
+ */
+function lang_url($code)
+{
+    $query = ['lang' => $code];
 
+    return count(\Request::query()) > 0
+        ? \Request::url().'/?'.http_build_query(array_merge(\Request::query(), $query))
+        : \Request::fullUrl().'?'.http_build_query($query);
+}
 
+/**
+ * Trans Array List
+ *
+ * @param array $codeList
+ * @param       $path
+ *
+ * @return array
+ */
+function trans_array(array $codeList, $path)
+{
+    foreach ($codeList as $key => $code) {
+        $codeList[$key] = _l($path.'.'.$code);
+    }
+
+    return $codeList;
+}

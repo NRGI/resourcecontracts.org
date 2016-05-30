@@ -760,3 +760,20 @@ span.error{color:red; margin-top: 5px; display: inline-block}
 {
   border-color: #18AE23;
 }
+
+.annotator-resize-action
+{
+    position:absolute; top:-30px;
+}
+
+.annotator-resize-action button {
+    font-size: 12px;
+    padding: 3px 10px;
+    z-index: 1000;
+}
+
+.resizable-active
+{
+    z-index: 1000;
+}
+

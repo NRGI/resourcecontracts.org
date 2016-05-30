@@ -73,7 +73,7 @@ Annotator.Plugin.Categories = (function (superClass) {
     Categories.prototype.setSelectedCategory = function (currentCategory) {
         $(this.field).find('.annotator-category').removeClass(this.options.classForSelectedCategory);
         if (currentCategory) $(this.field).find('select').val(currentCategory);
-        $(this.field).find('select').select2({placeholder: 'Select Category', allowClear: true, theme: "classic"});
+        $(this.field).find('select').select2({placeholder: LANG.select_category, allowClear: true, theme: "classic"});
         return $(this.field).find('.annotator-category:contains(' + currentCategory + ')').addClass(this.options.classForSelectedCategory);
     };
 
@@ -108,7 +108,7 @@ Annotator.Plugin.Categories = (function (superClass) {
         annotation.category = $(this.field).find('select option:selected').val();
         // annotation.category = $(this.field).find('.' + this.options.classForSelectedCategory).html();
         if ((annotation.text != null) && annotation.text.length > 0 && (annotation.category == null)) {
-            window.alert('You did not choose a category, so the default has been chosen.');
+           // window.alert('You did not choose a category, so the default has been chosen.');
             // annotation.category = this.options.category[0];
             annotation.category = this.options.category[0];
         }
@@ -121,7 +121,7 @@ Annotator.Plugin.Categories = (function (superClass) {
     Categories.prototype.highlightSelectedCategory = function (event, annotation) {
         var category, categoryHTML, j, len, ref, totalWidth;
 
-        categoryHTML = "<option value=''>Select Category</option>";
+        categoryHTML = "<option value=''>"+LANG.select_category+"</option>";
         ref = this.options.category;
 
         var subHeaderPattern = new RegExp("^[0-9]+(-[a-zA-Z0-9-]+)");

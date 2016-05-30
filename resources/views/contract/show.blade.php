@@ -53,7 +53,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
                 @if($contract->pdf_structure != null)
                     <p>
-                        <strong>@lang('contract.pdf_type')</strong> {{ucfirst($contract->pdf_structure)}}
+                        <strong>@lang('contract.pdf_type')</strong> @lang('contract.'.$contract->pdf_structure)
                     </p>
                 @endif
                 <p><strong>@lang('contract.text_type'):</strong>
@@ -62,10 +62,10 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                        data-target=".text-type-modal">
                         @if($contract->textType =='')
                             @lang('contract.choose')
-
                         @else
                             <?php $label = $contract->getTextType();?>
-                            <span class="label label-{{$label->color}}"> {{$label->name}}</span>
+                            <span class="label label-{{$label->color}}"> @lang('contract.'.$label->name)
+                            </span>
                         @endif
                     </a>
 
@@ -144,13 +144,13 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
             <li><strong>@lang('contract.created_by'):</strong>
                 @if(isset($contract->created_user->name))
-                {{$contract->created_user->name}} on {{$contract->created_datetime->format('D M d, Y h:i A')}} (GMT)
+                {{$contract->created_user->name}}  @lang('global.on') {{$contract->created_datetime->format('D M d, Y h:i A')}} (GMT)
                 @endif
             </li>
 
             @if(!is_null($contract->updated_user))
                 <li><strong>@lang('contract.last_modified_by'):</strong> {{$contract->updated_user->name}}
-                    on {{$contract->last_updated_datetime->format('D M d, Y h:i A')}} (GMT)
+                    @lang('global.on') {{$contract->last_updated_datetime->format('D M d, Y h:i A')}} (GMT)
                 </li>
             @endif
 
@@ -209,7 +209,8 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             <li>
                 <strong>@lang('contract.resource'): </strong>
                 @if(is_array($contract->metadata->resource) && count($contract->metadata->resource)>0)
-                    {{join(', ', $contract->metadata->resource)}}
+                    {{join(', ', array_map(function($v){return _l('codelist/resource.'.$v);},
+                    $contract->metadata->resource))}}
                 @endif
                 {!! discussion($discussions,$discussion_status, $contract->id,'resource','metadata') !!}
             </li>

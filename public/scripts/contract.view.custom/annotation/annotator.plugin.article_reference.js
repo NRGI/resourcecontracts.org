@@ -7,7 +7,7 @@ Annotator.Plugin.ArticleReference = (function (_super) {
         }
 
        var field =  this.annotator.editor.addField({
-            label: 'Article Reference',
+            label: LANG.article_reference,
             type: 'input',
             id:'article_reference',
             load: this.updateArticleReference,

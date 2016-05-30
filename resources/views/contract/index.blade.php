@@ -3,7 +3,7 @@
 @section('css')
     <style>
         .select2 {
-            width: 16% !important;
+            width: 14% !important;
             float: left;
             margin-right: 20px !important;
             margin-top: 4px !important;
@@ -43,7 +43,10 @@
             Input::get('category') ,
             ['class' =>'form-control']) !!}
 
-            {!! Form::select('resource', ['all'=>trans('contract.resource')] + $resources , Input::get('resource') ,
+            {!! Form::select('resource', ['all'=>trans('contract.resource')] + trans_array($resources,
+            'codelist/resource') ,
+            Input::get
+            ('resource') ,
             ['class' =>'form-control']) !!}
 
             {!! Form::text('q', Input::get('q') , ['class' =>'form-control','placeholder'=>trans('contract.search_contract')]) !!}
@@ -71,8 +74,9 @@
 
             </table>
             @if ($contracts->lastPage()>1)
-                <div class="text-center">{!! $contracts->appends($app->request->all())->render() !!}
+                <div class="text-center paginate-wrapper">
                     <div class="pagination-text">@lang('contract.showing') {{($contracts->currentPage()==1)?"1":($contracts->currentPage()-1)*$contracts->perPage()}} @lang('contract.to') {{($contracts->currentPage()== $contracts->lastPage())?$contracts->total():($contracts->currentPage())*$contracts->perPage()}} @lang('contract.of') {{$contracts->total()}} @lang('contract.contract')</div>
+                    {!! $contracts->appends($app->request->all())->render() !!}
                 </div>
             @endif
         </div>

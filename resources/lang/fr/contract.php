@@ -42,8 +42,8 @@ return [
     'license_identifier'                   => "Identifiant de concession/licence",
     'project_name'                         => "Nom du projet",
     'project_identifier'                   => "Identifiant du projet",
-    'source'                               => "Source",
-    'source_url'                           => "Source URL",
+    'source'                               => "La source",
+    'source_url'                           => "La source URL",
     'date_of_retrieval'                    => "Date de récupération",
     'date_retrieval'                       => "Date de récupération",
     'category'                             => "Catégorie",
@@ -61,6 +61,7 @@ return [
     'view_pages'                           => "Réviser le texte du contrat",
     'pdf_type'                             => "Type PDF:",
     'choose'                               => "Choisir",
+    'choose_file'                          => "Choisir le fichier",
     'acceptable'                           => "Acceptable",
     'needs_editing'                        => "Besoin de réviser",
     'needs_full_transcription'             => "Besoin de transcription complète",
@@ -126,7 +127,7 @@ return [
     'invalid_status'                       => "État invalide",
     'permission_denied'                    => "Permission refusée",
     'status_updated'                       => "Mise à jour réussie de l'état du contrat",
-    'disclosure_mode'                      => "mode divulgation",
+    'disclosure_mode'                      => "Mode divulgation",
     'participation_share'                  => "Part du capital",
     'amla'                                 => "Législation d'exploitation actuelle chez AMLA",
     'review_text'                          => "Réviser le texte",
@@ -156,10 +157,11 @@ return [
     'pages'                                => "Y a-t-il une(des) page(s) qui manque(nt) de la copie?",
     'annexes_display'                      => "Annexe(s) manquant au document",
     'pages_display'                        => "Page(s) manquant au document",
-
+    'scanned'                              => 'Numérisée',
+    'structured'                           => 'Structuré',
 
     /*Logs*/
-    'log'  =>[
+    'log'                                  => [
         'save'       => "Contrat créé",
         'update'     => "Contrat mis à jour",
         'pdfupdate'  => "Document du contrat modifié",
@@ -168,8 +170,8 @@ return [
         'save_page'  => "Page numéro: page mise à jour",
         'unpublish'  => "Non publié",
         'discussion' => [
-            'save' => 'Commentaire ajouté pour: touche activée: type'
-        ]
+            'save' => 'Commentaire ajouté pour: touche activée: type',
+        ],
     ],
     'page'                                 => [
         'save'      => "Vos corrections/modifications ont été sauvegardées",
@@ -177,13 +179,13 @@ return [
     ],
     'publish'                              => [
         'all'     => "Tout publier",
-        'confirm' => "Tout publier?"
+        'confirm' => "Tout publier?",
     ],
     'unpublish'                            => [
         'all'     => "Non publié",
         'success' => "Le contrat n'a pas été publié comme souhaité",
         'fail'    => "Erreur dans la publication de ce contrat",
-        'confirm' => "Ne pas publier ce contrat?"
+        'confirm' => "Ne pas publier ce contrat?",
     ],
     'import'                               => [
         'name'           => "Importer contrat",
@@ -205,6 +207,6 @@ return [
         'upload_another' => "Téléverser un autre fichier?",
         'btn_import'     => "Importer",
         'btn_cancel'     => "Annuler et téléverser un autre fichier",
-        'fail'           => "Aucun contrat trouvé pour être importé"
-    ]
+        'fail'           => "Aucun contrat trouvé pour être importé",
+    ],
 ];

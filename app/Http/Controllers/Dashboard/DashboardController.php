@@ -61,12 +61,4 @@ class DashboardController extends Controller
 
         return view('dashboard.index', compact('stats', 'recent_contracts', 'status', 'ocrStatusCount'));
     }
-
-    public function setLanguage(Request $request)
-    {
-        $languageType = $request->get('language');
-        $a = $this->localization->handle($request,$languageType);
-        dd($a);
-
-    }
 }

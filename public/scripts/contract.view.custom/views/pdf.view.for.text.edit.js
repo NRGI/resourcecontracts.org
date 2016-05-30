@@ -44,9 +44,9 @@ var PdfPaginationView = React.createClass({
   render: function() {
     return (
       <div className="pdf-pagination pagination" style={this.props.style}>
-        <a href="#" className="previous" onClick={this.clickPrevious}>Previous</a>
+        <a href="#" className="previous" onClick={this.clickPrevious}>{LANG.previous}</a>
         <input type="text" className="goto" ref="userInput" onKeyDown={this.handleKeyDown} />
-        <a href="#" className="next" onClick={this.clickNext}>Next</a> of {this.state.totalPages}
+        <a href="#" className="next" onClick={this.clickNext}>{LANG.next}</a> {LANG.of} {this.state.totalPages}
       </div>
     );
   }
@@ -81,7 +81,7 @@ var PdfZoom = React.createClass({
     return (
         <div>
           <div className="pdf-zoom-options" style={this.props.style}>
-            <span>Zoom</span>
+            <span>{LANG.zoom}</span>
             <a className="btn btn-default" data-ref="decrease" href="#" onClick={this.handleClick}>-</a>
             <p>{zoom}%</p>
             <a className="btn btn-default" data-ref="increase" href="#" onClick={this.handleClick}>+</a>
