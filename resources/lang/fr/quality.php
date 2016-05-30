@@ -1,0 +1,12 @@
+<?php
+return [
+    "quality_contract_issues" => "Problèmes de qualité concernant le contrat",
+    "metadata_heading"        => "Problèmes de qualité concernant les métadonnées du contrat",
+    "metadata_description"    => "Les chiffres suivants montrent le nombre de contrats auxquels des métadonnées ont été attribuées. Cliquez sur les chiffres pour voir les contrats.",
+    "annotations_heading"     => "Problèmes de qualité concernant l'annotation des contrats",
+    "annotations_description" => "Les chiffres suivants montrent le nombre de contrats auxquels des catégories d'annotations ont été attribuées. Cliquez sur les chiffres pour voir les contrats.",
+    "metadata"                => "Métadonnées",
+    "present"                 => "Présent",
+    "missing"                 => "Manquant",
+    "anotations_category"     => "Catégorie d'annotations"
+];

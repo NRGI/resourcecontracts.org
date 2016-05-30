@@ -69,6 +69,7 @@ var PdfZoom = React.createClass({
         }
     },
     handleClick: function (e, ev) {
+        e.preventDefault();
         var type = e.target.getAttribute('data-ref');
         var int = this.state.scale;
 
@@ -178,9 +179,7 @@ var PdfViewer = React.createClass({
         }
     },
     _onPageRendered: function () {
-
         if (this.props.contractApp.getView() === "pdf" && this.loadAnnotationsFlag) {
-
             if (this.annotator) {
                 this.annotator.pageUpdated();
                 this.loadAnnotationsFlag = false;

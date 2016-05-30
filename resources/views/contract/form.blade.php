@@ -233,7 +233,7 @@ if (isset($contract->metadata->resource)) {
 
 <div class="form-group el_document_type">
     <?php
-    if(!isset($contract->file)){
+    if(isset($contract->file)){
         $dt = isset($contract->metadata->document_type) ? $contract->metadata->document_type : old('document_type');
         if (!in_array($dt, trans('codelist/documentType')) AND $dt != '') {
             $dt = 'Other';
@@ -866,7 +866,23 @@ if (isset($contract->metadata->resource)) {
     </div>
 </div>
 
-<hr>
+<?php $docId = []; ?>
+<div id="selected-document" class="selected-document">
+    @if(!empty($supportingDocument))
+        @foreach($supportingDocument as $doc)
+            <div class="document">
+                <a href="{{route('contract.edit',$doc['id'])}}">{{$doc['contract_name']}}</a><br>
+                <input type="hidden" name="supporting_document[]" value="{{$doc['id']}}">
+                <?php
+                array_push($docId, $doc['id']);
+                ?>
+
+            </div>
+        @endforeach
+    @endif
+</div>
+
+
 <div class="form-group">
     {!! Form::label('annexes_missing',trans('contract.annexes'),['class'=>'col-sm-2 control-label']) !!}
     <div class="col-sm-7">
@@ -892,21 +908,7 @@ if (isset($contract->metadata->resource)) {
 
 </div>
 
-<?php $docId = []; ?>
-<div id="selected-document" class="selected-document">
-    @if(!empty($supportingDocument))
-        @foreach($supportingDocument as $doc)
-            <div class="document">
-                <a href="{{route('contract.edit',$doc['id'])}}">{{$doc['contract_name']}}</a><br>
-                <input type="hidden" name="supporting_document[]" value="{{$doc['id']}}">
-                <?php
-                array_push($docId, $doc['id']);
-                ?>
 
-            </div>
-        @endforeach
-    @endif
-</div>
 
 @if($action == 'edit')
     <div class="form-group" style="clear:both">

@@ -6,10 +6,18 @@
             <ul>
                 @forelse($annotations as $key => $annotation)
                     <li>
-    <p>{{_l("codelist/annotation.annotation_category.{$annotation->category}")}}</p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>{{_l("codelist/annotation.annotation_category.{$annotation->category}")}}</p>
                         <span data-pk="{{$annotation->id}}" data-name="text"
-                           data-url="{{route('annotation.update')}}" data-type="textarea"
-                           class="edit-annotation-text">{!!nl2br($annotation->text)!!}</span>
+                              data-url="{{route('annotation.update')}}" data-type="textarea"
+                              class="edit-annotation-text">{!!nl2br($annotation->text)!!}</span>
+                            </div>
+                                <div style="padding: 25px 25px 25px 15px;">
+                                {!! discussion($discussions,$discussion_status, $contract->id,$annotation->id,'annotation') !!}
+                                </div>
+
+                        </div>
 
                         <?php
                             $childs = $annotation->child->sortBy('page_no');
@@ -37,9 +45,11 @@
                                               data-url="{{route('annotation.update')}}" data-type="text"
                                               class="edit-annotation-section"> {{$child->article_reference or ''}}</span>
                                     @endif
+
+
                                 </div>
-                                <div class="col-md-2"><a href="javascript:void(0)" data-pk="{{$child->id}}"
-                                                         class="annotation-delete-btn">@lang('annotation.delete')</a></div>
+                                <div class="col-md-2">
+                                    <a href="javascript:void(0)" data-pk="{{$child->id}}" class="annotation-delete-btn">@lang('annotation.delete')</a></div>
                             </div>
                         @endforeach
                     </li>

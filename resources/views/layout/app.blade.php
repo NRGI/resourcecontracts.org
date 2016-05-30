@@ -4,7 +4,6 @@
         <header class="main-header">
             <nav class="navbar navbar-static-top" role="navigation">
                 <div class="navbar-custom-menu">
-                    <div class="navbar-custom-menu">
                     <a href="#menu-toggle" class="btn btn-default pull-left" id="menu-toggle">@lang('global.menu')</a>
                     <ul class="nav navbar-nav pull-right">
                         <li>
@@ -39,7 +38,6 @@
                         </li>
                     </ul>
                 </div>
-            </div>
             </nav>
         </header>
     @endif
@@ -60,3 +58,6 @@
     </div>
 </div>
 @include('layout.partials.footer')
+
+
+
