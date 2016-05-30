@@ -106,7 +106,7 @@ class MTurkNotificationService
      */
     public function checkBalance()
     {
-        $minimum_balance = config('mturk.minimum_balance');
+        $minimum_balance = config('mturk.minimumBalance');
         $balance         = $this->mturk->getBalance();
         if ($balance['Amount'] < $minimum_balance) {
             $this->mailer->sendMultiple(

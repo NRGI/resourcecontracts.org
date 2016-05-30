@@ -46,6 +46,7 @@ class MTurkController extends Controller
      * Display all the contracts sent for MTurk
      *
      * @param Request $request
+     *
      * @return \Illuminate\View\View
      */
     public function index(Request $request)
@@ -65,6 +66,7 @@ class MTurkController extends Controller
      *
      * @param Request $request
      * @param         $contract_id
+     *
      * @return string
      */
     public function tasksList(Request $request, $contract_id)
@@ -72,7 +74,6 @@ class MTurkController extends Controller
         $status   = $request->get('status', null);
         $approved = $request->get('approved', null);
         $contract = $this->contract->findWithTasks($contract_id, $status, $approved);
-
         if (!$contract) {
             return abort(404);
         }
@@ -91,6 +92,7 @@ class MTurkController extends Controller
      * Create tasks
      *
      * @param $id
+     *
      * @return Redirect
      */
     public function createTasks($id)
@@ -107,6 +109,7 @@ class MTurkController extends Controller
      *
      * @param $contract_id
      * @param $task_id
+     *
      * @return \Illuminate\View\View
      */
     public function taskDetail($contract_id, $task_id)
@@ -126,6 +129,7 @@ class MTurkController extends Controller
      *
      * @param $contract_id
      * @param $task_id
+     *
      * @return Redirect
      */
     public function approve($contract_id, $task_id)
@@ -147,6 +151,7 @@ class MTurkController extends Controller
      *
      * @param $contract_id
      * @param $task_id
+     *
      * @return Redirect
      */
     public function approveAll($contract_id)
@@ -164,6 +169,7 @@ class MTurkController extends Controller
      * @param         $contract_id
      * @param         $task_id
      * @param Request $request
+     *
      * @return Redirect
      */
     public function reject($contract_id, $task_id, Request $request)
@@ -191,11 +197,22 @@ class MTurkController extends Controller
      *
      * @param $contract_id
      * @param $task_id
+     *
      * @return Redirect
      */
     public function resetHit($contract_id, $task_id)
     {
-        if ($this->task->resetHIT($contract_id, $task_id)) {
+        if (!$this->task->isBalanceToCreateHIT()) {
+            return redirect()->back()->withError(trans('mturk.action.reset_balance_low'));
+        }
+
+        $resetStatus = $this->task->resetHIT($contract_id, $task_id);
+
+        if (is_array($resetStatus)) {
+            return redirect()->back()->withError($resetStatus['message']);
+        }
+
+        if ($resetStatus === true) {
             return redirect()->back()->withSuccess(trans('mturk.action.reset'));
         }
 
@@ -206,6 +223,7 @@ class MTurkController extends Controller
      * Sent text to RC
      *
      * @param $contract_id
+     *
      * @return Redirect
      */
     public function sendToRC($contract_id)
@@ -220,6 +238,7 @@ class MTurkController extends Controller
     /**
      * @param Request     $request
      * @param UserService $user
+     *
      * @return View
      */
     public function activity(Request $request, UserService $user)
@@ -236,6 +255,7 @@ class MTurkController extends Controller
      * Display all tasks
      *
      * @param Request $request
+     *
      * @return View
      */
     public function allTasks(Request $request)
@@ -243,7 +263,7 @@ class MTurkController extends Controller
         $filter       = [
             'status'   => $request->get('status', null),
             'approved' => $request->get('approved', null),
-            'hitid'    => $request->get('hitid', null)
+            'hitid'    => $request->get('hitid', null),
         ];
         $tasks        = $this->task->allTasks($filter);
         $show_options = is_null($filter['hitid']) ? true : false;

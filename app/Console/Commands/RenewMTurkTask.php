@@ -23,7 +23,7 @@ class RenewMTurkTask extends Command
      *
      * @var string
      */
-    protected $description = 'Renew MTurk Task after 30 days';
+    protected $description = 'Renew MTurk Task after 20 days';
 
     /**
      * Create a new command instance.
@@ -37,6 +37,8 @@ class RenewMTurkTask extends Command
      * Execute the console command.
      *
      * @param TaskService $task
+     *
+     * @return bool
      */
     public function fire(TaskService $task)
     {
@@ -44,46 +46,61 @@ class RenewMTurkTask extends Command
 
         $pages = $this->setPriority($expired_pages);
 
+        $currentBalance   = $task->getMturkBalance();
+        $availableBalance = (int) $currentBalance['Amount'];
+
+        if (!$this->isSufficientBalance($availableBalance)) {
+            return false;
+        }
+
         foreach ($pages as $key => $page) {
 
-            $expiredPages = $task->getExpired();
+            $page = $task->updateAssignment($page);
 
-            $pages = $this->setPriority($expiredPages);
-
-            $currentBalance   = $task->getMturkBalance();
-            $availableBalance = $currentBalance['Amount'];
-
-            foreach ($pages as $key => $page) {
-
-                $page = $task->updateAssignment($page);
-
-                if ($page->status == Task::COMPLETED || $page->assignments['assignment']['status'] == 'Approved') {
-                    continue;
-                }
-
-                if ($availableBalance <= 0.50) {
-                    break;
-                }
-
-                $contractId = $page->contract_id;
-                $hitId      = $page->hit_id;
-                $pageNumber = $page->page_no;
-                $pageId     = $page->id;
-
-                if ($task->resetHIT($contractId, $pageId)) {
-                    $availableBalance = $availableBalance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
-                    $this->info(sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contractId, $hitId, $pageNumber));
-                } else {
-                    $this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contractId, $hitId, $pageNumber));
-                }
+            if ($page->status == Task::COMPLETED || $page->assignments['assignment']['status'] == 'Approved' ||
+                $page->assignments['assignment']['status'] == 'Rejected') {
+                continue;
             }
 
-            $this->info('Process Completed');
+            if (!$this->isSufficientBalance($availableBalance)) {
+                break;
+            }
+
+            $contractId = $page->contract_id;
+            $hitId      = $page->hit_id;
+            $pageNumber = $page->page_no;
+            $pageId     = $page->id;
+
+            if ($task->resetHIT($contractId, $pageId)) {
+                $availableBalance = $availableBalance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
+                $this->info(
+                    sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contractId, $hitId, $pageNumber)
+                );
+            } else {
+                $this->error(
+                    sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contractId, $hitId, $pageNumber)
+                );
+            }
         }
+
+        $this->info('Process Completed');
+    }
+
+    /**
+     * Check for sufficient Balance
+     *
+     * @param $balance
+     *
+     * @return bool
+     */
+    protected function isSufficientBalance($balance)
+    {
+        return ($balance >= 0.50);
     }
 
     /**
      * @param $expiredPages
+     *
      * @return array
      */
     private function setPriority($expiredPages)
