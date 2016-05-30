@@ -178,3 +178,6 @@ function discussion($discussions, $discussion_status, $contract_id, $key, $type 
         $status
     );
 }
+
+
+

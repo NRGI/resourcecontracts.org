@@ -13,4 +13,4 @@
     </script>
     @yield('css')
 </head>
-<body>
+<body dir="{{$lang->dir()}}">

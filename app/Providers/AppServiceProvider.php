@@ -1,11 +1,11 @@
 <?php namespace App\Providers;
 
+use App\Nrgi\Services\Language\LanguageService;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap any application services.
      *
@@ -14,7 +14,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            $view->with('current_user', auth()->user());
+
+           $data = [
+                'current_user' => auth()->user(),
+                'lang' => app(LanguageService::class)
+           ];
+
+            $view->with($data);
         });
     }
 

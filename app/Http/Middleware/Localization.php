@@ -1,6 +1,6 @@
 <?php namespace App\Http\Middleware;
 
-use Carbon\Carbon;
+use App\Nrgi\Services\Language\LanguageService;
 use Closure;
 
 /**
@@ -10,9 +10,19 @@ use Closure;
 class Localization
 {
     /**
-     * @var string
+     * @var LanguageService
      */
-    protected $key = 'lang';
+    protected $lang;
+
+    /**
+     * Localization constructor.
+     *
+     * @param LanguageService $lang
+     */
+    public function __construct(LanguageService $lang)
+    {
+        $this->lang = $lang;
+    }
 
     /**
      * Handle an incoming request.
@@ -23,37 +33,9 @@ class Localization
      */
     public function handle($request, Closure $next)
     {
-        $lang = $this->getLanguage($request->input('lang'));
-        $this->setLanguage($lang);
+        $lang = $this->lang->getSiteLang($request->input('lang'));
+        $this->lang->setSiteLang($lang);
 
         return $next($request);
-    }
-
-    /**
-     * Get Language code
-     *
-     * @param null $lang
-     * @return string
-     */
-    public function getLanguage($lang = null)
-    {
-        if (is_null($lang)) {
-            $lang = isset($_COOKIE[$this->key])?$_COOKIE[$this->key]:'en';
-        }
-
-        return $lang;
-    }
-
-    /**
-     * Set Language code
-     *
-     * @param $lang
-     * @return Void
-     */
-    public function setLanguage($lang)
-    {
-        $lang = trim(strtolower($lang));
-        app()->setLocale($lang);
-        setcookie($this->key, $lang, Carbon::now()->addYear(1)->timestamp, '/');
     }
 }
