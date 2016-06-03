@@ -141,8 +141,7 @@ class TaskRepository implements TaskRepositoryInterface
      */
     public function getExpired ()
     {
-        return $this->task->whereRaw("status='0' AND (hit_id is null OR date(now()) >= date(created_at + interval '32' day))")
-                          ->get();
+        return $this->task->whereRaw("status='0' AND (hit_id is null OR date(now()) >= date(created_at + interval '".config('mturk.hitRenewDay')."' day))")->get();
     }
 
     /**

@@ -70,6 +70,7 @@
          'reset_fail'         => 'HIT could not be reset.',
          'sent_to_rc'         => 'Text successfully sent to RC.',
          'sent_fail_to_rc'    => 'Text could not be send to RC.',
+         'reset_balance_low'  => 'Could not reset HIT deu to low balance in Mechnical Turk.',
          'reject_reason'      => 'Please enter reject reason for the assignment',
          'already_approved'   => 'HIT already approved on Mechanical Turk since no action was taken for 30 days after assignment submission.',
          'already_approved_and_reset'   => 'HIT already approved on Mechanical Turk since no action was taken for 30 days after assignment submission. :reset to reset HIT',

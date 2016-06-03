@@ -64,6 +64,6 @@ return [
         ],
 
     ],
-
-    'minimum_balance' => '50'
+    'minimumBalance' => '25',
+    'hitRenewDay' => 21
 ];

@@ -59,7 +59,7 @@ class TaskService
      * @param ContractService         $contract
      * @param Log                     $logger
      * @param MTurkService            $turk
-     * @param PageService            $page
+     * @param PageService             $page
      * @param Queue                   $queue
      * @param ActivityLogService      $logService
      */
@@ -86,6 +86,7 @@ class TaskService
      * Get Contracts having MTurk Tasks
      *
      * @param array $filter
+     *
      * @return Collection|null
      */
     public function getContracts(array $filter = [])
@@ -141,6 +142,7 @@ class TaskService
      * Create new task
      *
      * @param $contract_id
+     *
      * @return bool
      */
     public function create($contract_id)
@@ -152,7 +154,7 @@ class TaskService
             $this->logger->info('Tasks added in database', ['Contract_id' => $contract_id]);
             $this->logger->mTurkActivity('mturk.log.create', ['contract' => $contract->title], $contract->id);
         } catch (Exception $e) {
-            $this->logger->error('Create Task:' . $e->getMessage(), ['Contract_id' => $contract_id]);
+            $this->logger->error('Create Task:'.$e->getMessage(), ['Contract_id' => $contract_id]);
 
             return false;
         }
@@ -161,7 +163,7 @@ class TaskService
             $contract->mturk_status = Contract::MTURK_SENT;
             $contract->save();
         } catch (Exception $e) {
-            $this->logger->error('Update Task Status:' . $e->getMessage(), ['Contract_id' => $contract->id]);
+            $this->logger->error('Update Task Status:'.$e->getMessage(), ['Contract_id' => $contract->id]);
 
             return false;
         }
@@ -175,6 +177,7 @@ class TaskService
      * Mechanical turk process
      *
      * @param $contract_id
+     *
      * @return bool
      */
     public function mTurkProcess($contract_id)
@@ -192,23 +195,39 @@ class TaskService
      * Send Tasks to MTurk
      *
      * @param $contract
+     *
      * @return bool
      * @throws Exception
      */
     public function sendToMTurk($contract)
     {
         foreach ($contract->pages as $key => $page) {
-            $title       = sprintf("Transcription of Contract '%s' - Pg: %s Lang: %s", str_limit($contract->title, 70), $page->page_no, $contract->metadata->language);
+            $title       = sprintf(
+                "Transcription of Contract '%s' - Pg: %s Lang: %s",
+                str_limit($contract->title, 70),
+                $page->page_no,
+                $contract->metadata->language
+            );
             $url         = $this->getMTurkUrl($page->pdf_url, $contract->metadata->language);
             $description = config('mturk.defaults.production.Description');
 
             try {
                 $ret = $this->turk->createHIT($title, $description, $url);
             } catch (MTurkException $e) {
-                $this->logger->error('createHIT: ' . $e->getMessage(), ['Contract id' => $contract->id, 'Page' => $page->page_no, 'Errors' => $e->getErrors()]);
+                $this->logger->error(
+                    'createHIT: '.$e->getMessage(),
+                    [
+                        'Contract id' => $contract->id,
+                        'Page'        => $page->page_no,
+                        'Errors'      => $e->getErrors(),
+                    ]
+                );
                 continue;
             } catch (Exception $e) {
-                $this->logger->error('createHIT: ' . $e->getMessage(), ['Contract_id' => $contract->id, 'Page' => $page->page_no]);
+                $this->logger->error(
+                    'createHIT: '.$e->getMessage(),
+                    ['Contract_id' => $contract->id, 'Page' => $page->page_no]
+                );
                 continue;
             }
 
@@ -216,7 +235,10 @@ class TaskService
 
             if ($ret) {
                 $this->task->update($page->contract_id, $page->page_no, $update);
-                $this->logger->info('createHIT:' . sprintf('HIT created for page no.%s', $page->page_no), ['Contract_id' => $contract->id, 'hit_id' => $ret->hit_id]);
+                $this->logger->info(
+                    'createHIT:'.sprintf('HIT created for page no.%s', $page->page_no),
+                    ['Contract_id' => $contract->id, 'hit_id' => $ret->hit_id]
+                );
                 continue;
             }
 
@@ -233,6 +255,7 @@ class TaskService
      * Update assignment to tasks collection
      *
      * @param $tasks
+     *
      * @return mixed
      */
     public function appendAssignment($tasks)
@@ -248,6 +271,7 @@ class TaskService
      * Save Assignment
      *
      * @param Task $task
+     *
      * @return Task
      */
     public function updateAssignment(Task $task)
@@ -267,7 +291,10 @@ class TaskService
                         $this->logger->mTurkActivity('mturk.log.approve', null, $task->contract_id, $task->page_no);
                     }
 
-                    $this->logger->info(sprintf('Update Assignment for page no.%s', $task->page_no), ['task' => $task->toArray()]);
+                    $this->logger->info(
+                        sprintf('Update Assignment for page no.%s', $task->page_no),
+                        ['task' => $task->toArray()]
+                    );
                     $task->save();
                 }
             }
@@ -281,9 +308,17 @@ class TaskService
                 $task->save();
             }
 
-            $this->logger->error('Assignment update failed. ' . $e->getMessage(), ['Contract id' => $task->contract_id, 'Task' => $task->id, 'Page no' => $task->page_no, 'Errors' => $errors]);
+            $this->logger->error(
+                'Assignment update failed. '.$e->getMessage(),
+                [
+                    'Contract id' => $task->contract_id,
+                    'Task'        => $task->id,
+                    'Page no'     => $task->page_no,
+                    'Errors'      => $errors,
+                ]
+            );
         } catch (Exception $e) {
-            $this->logger->error('Assignment update failed. ' . $e->getMessage());
+            $this->logger->error('Assignment update failed. '.$e->getMessage());
         }
 
         return $task;
@@ -294,6 +329,7 @@ class TaskService
      *
      * @param $contract_id
      * @param $task_id
+     *
      * @return bool
      */
     public function approveTask($contract_id, $task_id)
@@ -301,7 +337,10 @@ class TaskService
         try {
             $task = $this->task->getTask($contract_id, $task_id);
         } catch (Exception $e) {
-            $this->logger->error('Task does not exit:' . $e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task_id]);
+            $this->logger->error(
+                'Task does not exit:'.$e->getMessage(),
+                ['Contract id' => $contract_id, 'Task' => $task_id]
+            );
 
             return false;
         }
@@ -321,11 +360,21 @@ class TaskService
                     }
                 }
 
-                $this->logger->error('Approve Task failed:' . $e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task->toArray(), 'Errors' => $e->getErrors()]);
+                $this->logger->error(
+                    'Approve Task failed:'.$e->getMessage(),
+                    [
+                        'Contract id' => $contract_id,
+                        'Task'        => $task->toArray(),
+                        'Errors'      => $e->getErrors(),
+                    ]
+                );
 
                 return false;
             } catch (Exception $e) {
-                $this->logger->error('Approve Task failed:' . $e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task->toArray()]);
+                $this->logger->error(
+                    'Approve Task failed:'.$e->getMessage(),
+                    ['Contract id' => $contract_id, 'Task' => $task->toArray()]
+                );
 
                 return false;
             }
@@ -343,6 +392,7 @@ class TaskService
      *
      * @param $contract_id
      * @param $task_id
+     *
      * @return bool
      */
     public function rejectTask($contract_id, $task_id, $message)
@@ -350,7 +400,10 @@ class TaskService
         try {
             $task = $this->task->getTask($contract_id, $task_id);
         } catch (Exception $e) {
-            $this->logger->error('Task does not exist ' . $e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task_id]);
+            $this->logger->error(
+                'Task does not exist '.$e->getMessage(),
+                ['Contract id' => $contract_id, 'Task' => $task_id]
+            );
 
             return false;
         }
@@ -365,20 +418,42 @@ class TaskService
                         if ($d['Key'] == 'CurrentState' && $d['Value'] == 'Approved') {
                             $this->updateApproveTask($task);
 
-                            $reset = \Form::open(['url' => route('mturk.task.reset', ['contract_id' => $task->contract_id, 'task_id' => $task->id]), 'method' => 'post', 'style' => 'display: inline']);
+                            $reset = \Form::open(
+                                [
+                                    'url'    => route(
+                                        'mturk.task.reset',
+                                        ['contract_id' => $task->contract_id, 'task_id' => $task->id]
+                                    ),
+                                    'method' => 'post',
+                                    'style'  => 'display: inline',
+                                ]
+                            );
                             $reset .= \Form::button('Click here', ['type' => 'submit', 'class' => 'btn btn-primary']);
                             $reset .= \Form::close();
 
-                            return ['result' => true, 'message' => trans('mturk.action.already_approved_and_reset', ['reset' => $reset])];
+                            return [
+                                'result'  => true,
+                                'message' => trans('mturk.action.already_approved_and_reset', ['reset' => $reset]),
+                            ];
                         }
                     }
                 }
 
-                $this->logger->error('Reject Task failed:' . $e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task->toArray(), 'Errors' => $e->getErrors()]);
+                $this->logger->error(
+                    'Reject Task failed:'.$e->getMessage(),
+                    [
+                        'Contract id' => $contract_id,
+                        'Task'        => $task->toArray(),
+                        'Errors'      => $e->getErrors(),
+                    ]
+                );
 
                 return false;
             } catch (Exception $e) {
-                $this->logger->error('Reject Task failed:' . $e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task->toArray()]);
+                $this->logger->error(
+                    'Reject Task failed:'.$e->getMessage(),
+                    ['Contract id' => $contract_id, 'Task' => $task->toArray()]
+                );
 
                 return false;
             }
@@ -388,7 +463,10 @@ class TaskService
                 $assignments->assignment->status = 'Rejected';
                 $task->assignments               = $assignments;
                 $task->approved                  = Task::REJECTED;
-                $this->logger->info(sprintf('Assignment rejected for page no.%s', $task->page_no), ['Task' => $task->toArray()]);
+                $this->logger->info(
+                    sprintf('Assignment rejected for page no.%s', $task->page_no),
+                    ['Task' => $task->toArray()]
+                );
                 $this->logger->mTurkActivity('mturk.log.reject', null, $contract_id, $task->page_no);
 
                 return $task->save();
@@ -404,6 +482,7 @@ class TaskService
      *
      * @param $contract_id
      * @param $task_id
+     *
      * @return Task|null
      */
     public function get($contract_id, $task_id)
@@ -413,7 +492,7 @@ class TaskService
 
             return $this->updateAssignment($task);
         } catch (Exception $e) {
-            $this->logger->info('Get Task:' . $e->getMessage(), ['Task' => $task_id]);
+            $this->logger->info('Get Task:'.$e->getMessage(), ['Task' => $task_id]);
 
             return null;
         }
@@ -424,6 +503,7 @@ class TaskService
      *
      * @param $contract_id
      * @param $task_id
+     *
      * @return bool
      */
     public function resetHIT($contract_id, $task_id)
@@ -432,40 +512,84 @@ class TaskService
 
         try {
             $task = $this->task->getTask($contract_id, $task_id);
+            $task = $this->updateAssignment($task);
+
         } catch (Exception $e) {
-            $this->logger->error('Task does not exit' . $e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task_id]);
+            $this->logger->error(
+                'Task does not exit'.$e->getMessage(),
+                ['Contract id' => $contract_id, 'Task' => $task_id]
+            );
 
             return false;
         }
 
-        if($task->hit_id !='')
-        {
+        if ($task->hit_id != '') {
             try {
-                if (!$this->turk->deleteHIT($task->hit_id)) {
-                    return false;
+                if (!$this->turk->removeHIT($task)) {
+                    return [
+                        'result'  => false,
+                        'message' => trans('HIT is in Reviewable state so can not be reset.'),
+                    ];
                 }
-                $this->logger->info('HIT successfully deleted', ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
+                $this->logger->info(
+                    'HIT successfully deleted',
+                    ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]
+                );
             } catch (MTurkException $e) {
-                $this->logger->error('HIT delete failed. ' . $e->getMessage(), ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id, 'Errors' => $e->getErrors()]);
+                if ($e->getErrors()['Error']['Code'] != 'AWS.MechanicalTurk.HITDoesNotExist') {
+                    return [
+                        'result'  => false,
+                        'message' => $e->getErrors()['Error']['Message'],
+                    ];
+                }
+
+                $this->logger->error(
+                    'HIT delete failed MTurk Error. '.$e->getMessage(),
+                    [
+                        'Contract id' => $contract_id,
+                        'hit id'      => $task->hit_id,
+                        'Task'        => $task_id,
+                        'Errors'      => $e->getErrors(),
+                    ]
+                );
             } catch (Exception $e) {
-                $this->logger->error('HIT delete failed. ' . $e->getMessage(), ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]);
+                $this->logger->error(
+                    'HIT delete failed. '.$e->getMessage(),
+                    ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]
+                );
 
                 return false;
             }
         }
 
-        $title       = sprintf("Transcription of Contract '%s' - Pg: %s Lang: %s", str_limit($contract->title, 70), $task->page_no, $contract->metadata->language);
+        $title       = sprintf(
+            "Transcription of Contract '%s' - Pg: %s Lang: %s",
+            str_limit($contract->title, 70),
+            $task->page_no,
+            $contract->metadata->language
+        );
         $url         = $this->getMTurkUrl($task->pdf_url, $contract->metadata->language);
         $description = config('mturk.defaults.production.Description');
 
         try {
             $ret = $this->turk->createHIT($title, $description, $url);
         } catch (MTurkException $e) {
-            $this->logger->error('HIT create failed. ' . $e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task_id, 'Page no' => $task->page_no, 'Errors' => $e->getErrors()]);
+            $this->logger->error(
+                'HIT create failed. '.$e->getMessage(),
+                [
+                    'Contract id' => $contract_id,
+                    'Task'        => $task_id,
+                    'Page no'     => $task->page_no,
+                    'Errors'      => $e->getErrors(),
+                ]
+            );
 
-            return false;
+            return ['result' => false, 'message' => $e->getErrors()];
         } catch (Exception $e) {
-            $this->logger->error('HIT create failed. ' . $e->getMessage(), ['Contract id' => $contract_id, 'Task' => $task_id, 'Page no' => $task->page_no]);
+            $this->logger->error(
+                'HIT create failed. '.$e->getMessage(),
+                ['Contract id' => $contract_id, 'Task' => $task_id, 'Page no' => $task->page_no]
+            );
 
             return false;
         }
@@ -476,16 +600,13 @@ class TaskService
             'status'      => 0,
             'approved'    => 0,
             'hit_type_id' => $ret->hit_type_id,
-            'created_at'  => date('Y-m-d H:i:s')
+            'created_at'  => date('Y-m-d H:i:s'),
         ];
 
         if ($ret) {
             $this->task->update($task->contract_id, $task->page_no, $update);
             $this->logger->info('HIT successfully reset', ['Contract id' => $contract_id, 'Task' => $task->toArray()]);
-
-            if (php_sapi_name() != 'cli') {
-                $this->logger->mTurkActivity('mturk.log.reset', null, $task->contract_id, $task->page_no);
-            }
+            $this->logger->mTurkActivity('mturk.log.reset', null, $task->contract_id, $task->page_no);
 
             return true;
         }
@@ -499,6 +620,7 @@ class TaskService
      * Get Total Hits
      *
      * @param $contract_id
+     *
      * @return mixed
      */
     public function getTotalHits($contract_id)
@@ -509,7 +631,8 @@ class TaskService
     /**
      * Get total By status
      *
-     * @param $status
+     * @param $contract_id
+     *
      * @return array
      */
     public function getTotalByStatus($contract_id)
@@ -521,6 +644,7 @@ class TaskService
      * Text send to RC
      *
      * @param $contract_id
+     *
      * @return bool
      */
     public function copyTextToRC($contract_id)
@@ -548,9 +672,33 @@ class TaskService
     }
 
     /**
+     * Is balance sufficient for new HIT
+     *
+     * @return bool
+     */
+    public function isBalanceToCreateHIT()
+    {
+        $availableBalance = $this->getMturkBalance();
+        $availableBalance = (int) $availableBalance['Amount'];
+
+        return $availableBalance > $this->costPerHIT();
+    }
+
+    /**
+     * Cost per HIT
+     *
+     * @return string
+     */
+    public function costPerHIT()
+    {
+        return (config('mturk.defaults.production.Reward.Amount') * 1.20);
+    }
+
+    /**
      * Get Formatted Assignments
      *
      * @param $assignment
+     *
      * @return array
      */
     protected function getFormattedAssignment($assignment)
@@ -571,7 +719,7 @@ class TaskService
             'accept_time'   => $assignment['Assignment']['AcceptTime'],
             'submit_time'   => $assignment['Assignment']['SubmitTime'],
             'status'        => $assignment['Assignment']['AssignmentStatus'],
-            'answer'        => $answer
+            'answer'        => $answer,
         ];
 
         return $data;
@@ -581,6 +729,7 @@ class TaskService
      * Get Approval Pending tasks
      *
      * @param $contract_id
+     *
      * @return mixed
      */
     public function getApprovalPendingTask($contract_id)
@@ -602,6 +751,7 @@ class TaskService
      * Get MTurk Information
      *
      * @param $id
+     *
      * @return array
      */
     public function getMTurkInfo($id)
@@ -613,7 +763,7 @@ class TaskService
             'created_at' => isset($create->created_at) ? $create->created_at->format('Y-m-d') : '',
             'created_by' => isset($create->user->name) ? $create->user->name : '',
             'sent_at'    => isset($sent->created_at) ? $sent->created_at->format('Y-m-d') : '',
-            'sent_by'    => isset($sent->user->name) ? $sent->user->name : ''
+            'sent_by'    => isset($sent->user->name) ? $sent->user->name : '',
         ];
     }
 
@@ -621,6 +771,7 @@ class TaskService
      * Get all Tasks
      *
      * @param $filter
+     *
      * @return Collection
      */
     public function allTasks($filter)
@@ -632,6 +783,7 @@ class TaskService
      * Approve all assignment
      *
      * @param $contract_id
+     *
      * @return bool
      */
     public function approveAllTasks($contract_id)
@@ -640,7 +792,7 @@ class TaskService
             $contracts = $this->contract->findWithTasks($contract_id, Task::COMPLETED, Task::APPROVAL_PENDING);
             $tasks     = $contracts->tasks;
         } catch (Exception $e) {
-            $this->logger->error('Tasks not found for approval : ' . $e->getMessage(), ['Contract id' => $contract_id]);
+            $this->logger->error('Tasks not found for approval : '.$e->getMessage(), ['Contract id' => $contract_id]);
 
             return false;
         }
@@ -660,6 +812,7 @@ class TaskService
      *
      * @param $pdf
      * @param $lang
+     *
      * @return string
      */
     public function getMTurkUrl($pdf, $lang)
@@ -671,6 +824,7 @@ class TaskService
      * Update Approve Task
      *
      * @param $task
+     *
      * @return mixed
      */
     private function updateApproveTask($task)
@@ -680,7 +834,10 @@ class TaskService
         $task->assignments               = $assignments;
         $task->approved                  = Task::APPROVED;
 
-        $this->logger->info(sprintf('Assignment approved for page no. %s', $task->page_no), ['Task' => $task->toArray()]);
+        $this->logger->info(
+            sprintf('Assignment approved for page no. %s', $task->page_no),
+            ['Task' => $task->toArray()]
+        );
         $this->logger->mTurkActivity('mturk.log.approve', null, $task->contract_id, $task->page_no);
 
         return $task->save();
@@ -694,8 +851,12 @@ class TaskService
      */
     public function getMturkBalance()
     {
-        return $this->turk->getBalance();
+        try {
+            return $this->turk->getBalance();
+        } catch (Exception $e) {
+            $this->logger->error('Get Mturk Balance : '.$e->getMessage());
 
+            return 0;
+        }
     }
-
 }
