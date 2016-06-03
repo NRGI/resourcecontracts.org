@@ -1,6 +1,6 @@
 @if($status == $contract_processing_completed)
     <div class="annotation-wrap" id="annotations">
-        <h3>@if($annotations->count() > 1) <span class="annotation-count">{{$annotations->count()}}</span> @endif @lang('contract.annotations')<span class="annotation-help">Double click to edit.</span></h3>
+        <h3>@if($annotations->count() > 1) <span class="annotation-count">{{$annotations->count()}}</span> @endif @lang('contract.annotations')<span class="annotation-help">@lang('annotation.edit')</span></h3>
 
         <div class="annotation-list">
             <ul>
@@ -32,11 +32,11 @@
                                         <span class="annotation-type-icon annotation-text-icon"></span>
                                     @endif
                                     @if(property_exists($child->annotation, "shapes"))
-                                           <a href="{{route('contract.annotate',$contract->id)}}#/pdf/page/{{$child->page_no}}/annotation/{{$child->id}}"> Page </a><span data-pk="{{$child->id}}" data-name="page_no"
+                                           <a href="{{route('contract.annotate',$contract->id)}}#/pdf/page/{{$child->page_no}}/annotation/{{$child->id}}"> @lang('annotation.page') </a><span data-pk="{{$child->id}}" data-name="page_no"
                                               data-url="{{route('annotation.update')}}"
                                               data-value={{$child->page_no}} data-type="select" class="edit-annotation-page">{{$child->page_no}}</span>
                                     @else
-                                            <a href="{{route('contract.annotate',$contract->id)}}#/text/page/{{$child->page_no}}/annotation/{{$child->id}}">  Page </a> <span>{{$child->page_no}}</span>
+                                            <a href="{{route('contract.annotate',$contract->id)}}#/text/page/{{$child->page_no}}/annotation/{{$child->id}}">  @lang('annotation.page') </a> <span>{{$child->page_no}}</span>
                                     @endif
 
                                     @if(!empty($child->article_reference))
@@ -48,16 +48,15 @@
 
 
                                 </div>
-                                <div class="col-md-2"><a href="javascript:void(0)" data-pk="{{$child->id}}"
-                                                         class="annotation-delete-btn">delete</a> </div>
-
+                                <div class="col-md-2">
+                                    <a href="javascript:void(0)" data-pk="{{$child->id}}" class="annotation-delete-btn">@lang('annotation.delete')</a></div>
                             </div>
                         @endforeach
                     </li>
                 @empty
                     <li>
-                        @lang('Annotation not created. Please create')
-                        <a style="font-size: 14px" href="{{route('contract.annotate', ['id'=>$contract->id])}}">here</a>
+                        @lang('annotation.not_created')
+                        <a style="font-size: 14px" href="{{route('contract.annotate', ['id'=>$contract->id])}}">@lang('annotation.here')</a>
                     </li>
                 @endforelse
             </ul>

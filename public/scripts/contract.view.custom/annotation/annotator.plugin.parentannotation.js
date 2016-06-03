@@ -125,9 +125,9 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
             html += '<p style="padding: 5px 0px">';
 
             if (annotationGroupByPage.length > 1) {
-                html += 'Pages: ';
+                html += LANG.pages+ ': ';
             } else {
-                html += 'Page: ';
+                html += LANG.page+': ';
             }
 
             html += page.join(', ');

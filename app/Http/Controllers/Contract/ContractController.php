@@ -72,6 +72,7 @@ class ContractController extends Controller
      * Display a listing of the Contracts.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function index(Request $request)
@@ -101,28 +102,33 @@ class ContractController extends Controller
      * Display contract create form.
      *
      * @param Request $request
+     *
      * @return Response
      */
     public function create(Request $request)
     {
-        $country   = $this->countries->all();
-        $contracts = $this->contract->parentContracts();
-        $contract  = $this->contract->find($request->get('parent'));
-        $companyName  = $this->contract->getCompanyNames();
-        return view('contract.create', compact('country', 'contracts', 'contract','companyName'));
+        $country     = $this->countries->all();
+        $contracts   = $this->contract->parentContracts();
+        $contract    = $this->contract->find($request->get('parent'));
+        $companyName = $this->contract->getCompanyNames();
+
+        return view('contract.create', compact('country', 'contracts', 'contract', 'companyName'));
     }
 
     /**
      * Store a newly created contract.
      *
      * @param ContractRequest $request
+     *
      * @return Response
      */
     public function store(ContractRequest $request)
     {
-
         if ($contract = $this->contract->saveContract($request->all())) {
-            return redirect()->route('contract.show', ['id' => $contract->id])->with('success', trans('contract.save_success'));
+            return redirect()->route('contract.show', ['id' => $contract->id])->with(
+                'success',
+                trans('contract.save_success')
+            );
         }
 
         return redirect()->route('contract.index')->withError(trans('contract.save_fail'));
@@ -133,6 +139,7 @@ class ContractController extends Controller
      *
      * @param                   $id
      * @param DiscussionService $discussion
+     *
      * @return Response
      */
     public function show($id, DiscussionService $discussion)
@@ -150,13 +157,21 @@ class ContractController extends Controller
         $contract->metadata_comment   = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
         $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
         $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
-        
+
         $discussions       = $discussion->getCount($id);
         $discussion_status = $discussion->getResolved($id);
 
         return view(
             'contract.show',
-            compact('contract', 'status', 'annotations', 'annotationStatus', 'associatedContracts', 'discussions', 'discussion_status')
+            compact(
+                'contract',
+                'status',
+                'annotations',
+                'annotationStatus',
+                'associatedContracts',
+                'discussions',
+                'discussion_status'
+            )
         );
     }
 
@@ -165,6 +180,7 @@ class ContractController extends Controller
      *
      * @param                   $id
      * @param DiscussionService $discussion
+     *
      * @return Response
      */
     public function edit($id, DiscussionService $discussion)
@@ -176,8 +192,20 @@ class ContractController extends Controller
 
         $discussions       = $discussion->getCount($id);
         $discussion_status = $discussion->getResolved($id);
-        $companyName      = $this->contract->getCompanyNames();
-        return view('contract.edit', compact('contract', 'country', 'supportingDocument', 'contracts', 'discussions', 'discussion_status','companyName'));
+        $companyName       = $this->contract->getCompanyNames();
+
+        return view(
+            'contract.edit',
+            compact(
+                'contract',
+                'country',
+                'supportingDocument',
+                'contracts',
+                'discussions',
+                'discussion_status',
+                'companyName'
+            )
+        );
     }
 
     /**
@@ -185,6 +213,7 @@ class ContractController extends Controller
      *
      * @param ContractRequest $request
      * @param                 $contractID
+     *
      * @return Response
      */
     public function update(ContractRequest $request, $contractID)
@@ -200,6 +229,7 @@ class ContractController extends Controller
      * Remove the specified contract
      *
      * @param  int $id
+     *
      * @return Response
      */
     public function destroy($id)
@@ -216,6 +246,7 @@ class ContractController extends Controller
      *
      * @param         $id
      * @param Request $request
+     *
      * @return Response
      */
     public function saveOutputType($id, Request $request)
@@ -234,9 +265,11 @@ class ContractController extends Controller
 
     /**
      * Update contract status
+     *
      * @param         $contract_id
      * @param Request $request
      * @param Guard   $auth
+     *
      * @return Response
      */
     public function updateStatus($contract_id, Request $request, Guard $auth)
@@ -245,7 +278,7 @@ class ContractController extends Controller
         $permission = [
             'completed' => 'complete',
             'rejected'  => 'reject',
-            'published' => 'publish'
+            'published' => 'publish',
         ];
 
         if (!($auth->user()->can(sprintf('%s-metadata', $permission[$status])))) {
@@ -261,9 +294,11 @@ class ContractController extends Controller
 
     /**
      * Save Contract Comment
+     *
      * @param         $contract_id
      * @param Request $request
      * @param Guard   $auth
+     *
      * @return Response
      */
     public function contractComment($contract_id, Request $request, Guard $auth)
@@ -291,6 +326,7 @@ class ContractController extends Controller
      * Get Metadata by contract ID
      *
      * @param $contract_id
+     *
      * @return Response
      */
     public function getMetadata($contract_id)
@@ -338,9 +374,11 @@ class ContractController extends Controller
 
     /**
      * Save Contract Comment
+     *
      * @param         $contract_id
      * @param Request $request
      * @param Guard   $auth
+     *
      * @return Response
      */
     public function publish($contract_id, Guard $auth)
@@ -364,13 +402,15 @@ class ContractController extends Controller
 
     /**
      * Unpublish Contract
+     *
      * @param         $contract_id
      * @param Guard   $auth
+     *
      * @return Response
      */
     public function unpublish($contract_id, Guard $auth)
     {
-        if($auth->user()->isCountryResearch()){
+        if ($auth->user()->isCountryResearch()) {
             return back()->withError(trans('contract.permission_denied'));
         }
         if ($this->contract->unPublishContract($contract_id)) {

@@ -16,13 +16,12 @@
             <div class="wordwrap pull-left"> @lang('contract.editing')
                 <span>{{str_limit($contract->title, 100)}}</span>
 
-            <a href="{{route('contract.show', $contract->id)}}" class="go-back">Go back to
-                        Contract detail</a>
+            <a href="{{route('contract.show', $contract->id)}}" class="go-back">@lang('contract.contract_detail')</a>
             </div>
             <div class="pull-right">
-                <a class="btn btn-default btn-annotation pull-right" href='#'>Annotations</a>
+                <a class="btn btn-default btn-annotation pull-right" href='#'>@lang('annotation.annotations')</a>
                 <div id="annotations-list-view" class="annotation-list-view" style="display:none"></div>
-                <a class="btn btn-default btn-metadata pull-right" href="#">Metadata</a>
+                <a class="btn btn-default btn-metadata pull-right" href="#">@lang('global.metadata')</a>
                 <div id="metadata" class="metadata" style="display:none"></div>
             </div>
         </div>
@@ -44,7 +43,7 @@
                         </div>
                     </div>
                     <input class="btn btn-primary" type="submit" value="Search">
-                    <a href='#' id="search-results-cache" style="display:none;" class="pull-right">Results</a>
+                    <a href='#' id="search-results-cache" style="display:none;" class="pull-right">@lang('global.results')</a>
                 </form>
             </div>
             <div class="document-wrap">
@@ -57,7 +56,7 @@
                         </div>
                         <div id="editor" style="height: 750px" class="editor ql-container ql-snow">
                         </div>
-                        <button name="submit" value="submit" id="saveButton" class="btn">Save</button>
+                        <button name="submit" value="submit" id="saveButton" class="btn">@lang('global.save')</button>
                     </div>
                 </div>
                 <div class="right-document-wrap search" id="annotator-pdf">
@@ -96,7 +95,6 @@
     <script src="{{ asset('js/custom/rc.annotator.js') }}"></script>
     <script src="{{ asset('js/custom/rc.metadata.js') }}"></script>
     <script src="{{ asset('js/custom/rc.scroll.js') }}"></script>
-
     <script>
     var contractEvents = {};
     _.extend(contractEvents, Backbone.Events);
@@ -170,11 +168,6 @@
         searchOverlayLayer: '#pdfcanvas',
         eventsPipe: contractEvents
     });
-
-    // $('#saveButton').click(function (el) {
-    //     pageView.saveClicked();
-    // });
-
     </script>
 
 <script type="text/template" id="metadata-view-template">

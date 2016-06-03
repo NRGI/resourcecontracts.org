@@ -13,3 +13,7 @@ $router->get('/site/login', 'Auth\AuthController@siteLogin');
 
 $router->get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
+$router->post('set-language',[
+    'as' => 'set-language',
+    'uses' => 'Dashboard\DashboardController@setLanguage'
+]);

@@ -1,9 +1,9 @@
 $(function () {
-    $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
-    $('.parent_company').select2({placeholder: "Select", allowClear: true, tags: true, theme: "classic"});
-    $('.resource-list').select2({placeholder: "Select", allowClear: true, tags: true, theme: "classic"});
+    $('select').select2({placeholder: lang_select, allowClear: true, theme: "classic"});
+    $('.parent_company').select2({placeholder: lang_select, allowClear: true, tags: true, theme: "classic"});
+    $('.resource-list').select2({placeholder: lang_select, allowClear: true, tags: true, theme: "classic"});
     $('.el_government_entity').select2({
-        placeholder: "Select", allowClear: true, tags: true, theme: "classic"
+        placeholder: lang_select, allowClear: true, tags: true, theme: "classic"
     });
 
     $('.contract-form').validate();
@@ -108,8 +108,8 @@ $(function () {
         Mustache.parse(template);
         var rendered = Mustache.render(template, {item: i});
         $('.company .item:last-child').after(rendered);
-        $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
-        $('.parent_company').select2({placeholder: "Select", allowClear: true, tags: true, theme: "classic"});
+        $('select').select2({placeholder: lang_select, allowClear: true, theme: "classic"});
+        $('.parent_company').select2({placeholder: lang_select, allowClear: true, tags: true, theme: "classic"});
 
         $('.datepicker').datetimepicker({
             timepicker: false,
@@ -173,7 +173,7 @@ $(function () {
         elementId.empty();
         elementId.append(options).trigger('change');
         $('.el_government_entity').select2({
-            placeholder: "Select", allowClear: true, tags: true, theme: "classic"
+            placeholder: lang_select, allowClear: true, tags: true, theme: "classic"
         });
 
     });
@@ -216,7 +216,7 @@ $(function () {
     });
 
     $('.el_government_entity').select2({
-        placeholder: "Select", allowClear: true, tags: true, theme: "classic"
+        placeholder: lang_select, allowClear: true, tags: true, theme: "classic"
     });
 
     $(document).on('change', '#country', function (e) {
@@ -231,8 +231,8 @@ $(function () {
 
     function getEntitiesOptions(country) {
         var entities = govEntity[country];
-        options = '';
-        options += "<option value=''>Select</option>";
+       var options = '';
+        options += "<option value=''>"+lang_select+"</option>";
         if (entities) {
             for (i = 0; i < entities.length; i++) {
                 options += "<option value ='" + entities[i]['entity'] + "'>" + entities[i]['entity'] + "</option>";
@@ -264,6 +264,10 @@ $(function () {
         }
     });
 
+    $("#show-new-document").click(function (e) {
+        e.preventDefault();
+        $("#new-document").toggle();
+    });
 
     function init_autocomplete()
     {

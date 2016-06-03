@@ -15,14 +15,14 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
             wrapperEl.find('.error').remove();
             if (category.val() == '') {
                 category.focus();
-                category.parent().append('<span class="error">Category is required.</span>');
+                category.parent().append('<span class="error">'+LANG.category_required+'</span>');
                 e.stopPropagation();
                 return;
             }
 
             if (text.val() == '') {
                 text.focus();
-                text.after('<span class="error">Annotation text is required.</span>');
+                text.after('<span class="error">'+LANG.annotation_required+'</span>');
                 e.stopPropagation();
                 return;
             }
@@ -83,7 +83,7 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
             });
 
             $('.annotator-controls').on("click", "button.annotator-delete", function (e) {
-                var deleteThis = confirm("You sure to delete this annotation?");
+                var deleteThis = confirm(LANG.confirm_annotation_delete);
                 if (deleteThis === true) {
                     return;
                 }

@@ -8,7 +8,7 @@ var AnnotationHeader = React.createClass({
     render: function () {
         var count = this.props.annotationsCollection.totalAnnotations();
         return (
-            <div className="annotation-title">{count} Annotations</div>
+            <div className="annotation-title">{count} {LANG.annotations}</div>
         );
     }
 });
@@ -115,10 +115,7 @@ var AnnotationItem = React.createClass({
         }
     },
     getCategory: function () {
-        var category = this.state.annotationList[0].get('category');
-        var en = category.split("//")[0];
-        var fr = (category.split("//")[1]) ? category.split("//")[1] : "";
-        return {'en': en, 'fr': fr};
+        return this.state.annotationList[0].get('category');
     },
     shallShowEllipse: function (text) {
         var words = (text + "").split(' ');
@@ -187,7 +184,7 @@ var AnnotationItem = React.createClass({
 
             return (
                  <span>
-                   Page {page} ({ref}){last? ', ': ''}
+                   {LANG.page} {page} ({ref}){last? ', ': ''}
                  </span>
             );
         });
@@ -232,9 +229,9 @@ var AnnotationItem = React.createClass({
         var showText = firstAnnotation.get('text') ? firstAnnotation.get('text').trim() : '';
         if (this.state.showEllipse) {
             showText = this.state.text + ' ';
-            ellipsistext = "less";
+            ellipsistext = LANG.less;
             if (!this.state.showMoreFlag) {
-                ellipsistext = "more";
+                ellipsistext = LANG.more;
                 showText = this.state.shortText + '... ';
             }
         }
@@ -264,8 +261,7 @@ var AnnotationItem = React.createClass({
         var category = this.getCategory();
         return (
             <div className={currentAnnotationClass + this.getPageClasses()} id={this.state.annotation_id}>
-                <p>{category.en}</p>
-                <p>{category.fr}</p>
+                <p>{category}</p>
                 <p>{this.getShowText()}</p>
                 <div className="annotation-page">{this.getPages()}</div>
             </div>
@@ -313,8 +309,8 @@ var AnnotationsSort = React.createClass({
         if (this.state.show) {
             return (
                 <div className="annotation-sort">
-                    <span className={pageClassName} onClick={this.onClickPage}>By Page</span>
-                    <span className={topicClassName} onClick={this.onClickTopic}>By Category</span>
+                    <span className={pageClassName} onClick={this.onClickPage}>{LANG.by_page}</span>
+                    <span className={topicClassName} onClick={this.onClickTopic}>{LANG.by_category}</span>
                 </div>
             );
         } else {
@@ -326,7 +322,7 @@ var AnnotationsSort = React.createClass({
 var AnnotationsList = React.createClass({
     getInitialState: function () {
         return {
-            message: "Loading annotations..."
+            message: LANG.annotation_loading
         }
     },
     componentDidMount: function () {
@@ -335,7 +331,7 @@ var AnnotationsList = React.createClass({
             if (self.props.annotationsCollection.totalAnnotations() > 0) {
                 self.setState({message: ""});
             } else {
-                self.setState({message: "There are no annotations associated with this contract."});
+                self.setState({message: LANG.annotation_not_found});
             }
             if (self.props.contractApp.getSelectedAnnotation()) {
                 self.props.contractApp.trigger("annotations:scroll-to-selected-annotation");
@@ -473,7 +469,7 @@ var AnnotationsCategoryList = React.createClass({
         return false;
     },
     getCategoryName: function (categoryModel) {
-        return categoryModel.get("name").substr(0, categoryModel.get("name").indexOf("//"))
+        return categoryModel.get("name");
     },
     render: function () {
         var allCategories = this.props.contractApp.getAnnotationCategories().models;
@@ -489,7 +485,7 @@ var AnnotationsCategoryList = React.createClass({
         }
         return (
             <div className="unused-categories">
-                <span className="unused-categories-desc">The following categories are not annotated yet.</span>
+                <span className="unused-categories-desc">{LANG.unsed_category_desc}</span>
                 {unusedCategoriesDom}
             </div>
         );

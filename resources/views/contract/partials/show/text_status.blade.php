@@ -1,17 +1,17 @@
 <?php
 use App\Nrgi\Entities\Contract\Contract; ?>
-<strong>@lang('PDF Text'):</strong>
+<strong>@lang('contract.pdf_text'):</strong>
 @if($contract->text_status == Contract::STATUS_PUBLISHED)
-    <span class="published">   @lang('Published')</span>
+    <span class="published">   @lang('global.published')</span>
 @elseif($contract->text_status == Contract::STATUS_COMPLETED)
-    <span class="completed"> @lang('Completed')</span>
+    <span class="completed"> @lang('global.completed')</span>
     @if($current_user->can('publish-text') )
         <div class="pull-right">
             <button data-toggle="modal" data-target=".text-publish-modal" class="btn btn-success">
-                @lang('Publish')
+                @lang('global.publish')
             </button>
             <button data-toggle="modal" data-target=".text-reject-modal" class="btn btn-danger">
-                @lang('Reject')
+                @lang('global.reject')
             </button>
         </div>
         <div class="modal fade text-publish-modal" tabindex="-1" role="dialog"
@@ -26,7 +26,7 @@ use App\Nrgi\Entities\Contract\Contract; ?>
                                 aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
 
-                        <h4 class="modal-title" id="myModalLabel">@lang('Remarks')</h4>
+                        <h4 class="modal-title" id="myModalLabel">@lang('global.remarks')</h4>
 
                     </div>
                     <div class="modal-body">
@@ -57,7 +57,7 @@ use App\Nrgi\Entities\Contract\Contract; ?>
                                 aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
 
-                        <h4 class="modal-title" id="myModalLabel">@lang('Suggest changes for Text')</h4>
+                        <h4 class="modal-title" id="myModalLabel">@lang('global.suggest')</h4>
 
                     </div>
                     <div class="modal-body">
@@ -78,13 +78,13 @@ use App\Nrgi\Entities\Contract\Contract; ?>
         </div>
     @endif
 @elseif($contract->text_status == Contract::STATUS_REJECTED)
-    <span class="rejected">@lang('Rejected')</span>
+    <span class="rejected">@lang('mturk.rejected')</span>
 @else
-    <span class="draft"> @lang('Draft')</span>
+    <span class="draft"> @lang('global.draft')</span>
     @if($current_user->can('complete-text') )
         <div class="pull-right">
             <button data-toggle="modal" data-target=".text-complete-modal" class="btn btn-primary">
-                @lang('Complete')
+                @lang('global.complete')
             </button>
         </div>
         <div class="modal fade text-complete-modal" tabindex="-1" role="dialog"
@@ -99,7 +99,7 @@ use App\Nrgi\Entities\Contract\Contract; ?>
                                 aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
 
-                        <h4 class="modal-title" id="myModalLabel">@lang('Remarks')</h4>
+                        <h4 class="modal-title" id="myModalLabel">@lang('global.remarks')</h4>
 
                     </div>
                     <div class="modal-body">
@@ -132,7 +132,7 @@ use App\Nrgi\Entities\Contract\Contract; ?>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">@lang('All Comments Pdf Text')</h4>
+                    <h4 class="modal-title" id="myModalLabel">@lang('global.all_comments_pdf')</h4>
                 </div>
                 <div class="modal-body">
                     @forelse($contract->text_comment as $text_comment)
@@ -143,17 +143,17 @@ use App\Nrgi\Entities\Contract\Contract; ?>
                             </div>
                             <div class="comment-info">
                                 <span class="{{$text_comment->action}}">{{ucfirst($text_comment->action)}}</span>
-                                @lang('by') <strong>{{$text_comment->user->name}}</strong>
-                                @lang('on') {{$text_comment->created_at->format('D F d, Y h:i a')}}
+                                @lang('global.by') <strong>{{$text_comment->user->name}}</strong>
+                                @lang('global.on') {{$text_comment->created_at->format('D F d, Y h:i a')}}
                             </div>
                         </div>
                     @empty
-                       <p> @lang("no comment")</p>
+                       <p> @lang('global.no_comment')</p>
                     @endforelse
                 </div>
                 <div class="modal-footer">
                     <a href="{{route('contract.comment.list',$contract->id)}}"
-                       class="btn btn-default pull-left">@lang('View All')</a>
+                       class="btn btn-default pull-left">@lang('global.view_all')</a>
                     <button type="button" class="btn btn-default"
                             data-dismiss="modal">@lang('contract.close')</button>
                 </div>

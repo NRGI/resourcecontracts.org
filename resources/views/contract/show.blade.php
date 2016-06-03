@@ -18,12 +18,12 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                    @lang('Download') <span class="caret"></span>
+                    @lang('global.download') <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a target="_blank" href="{{$contract->file_url}}">@lang('PDF')</a></li>
+                    <li><a target="_blank" href="{{$contract->file_url}}">@lang('global.pdf')</a></li>
                     @if($contract->word_file !='')
-                        <li><a href="{{route('contract.download', $contract->id)}}">@lang('Word')</a></li>
+                        <li><a href="{{route('contract.download', $contract->id)}}">@lang('global.word')</a></li>
                     @endif
                 </ul>
             </div>
@@ -53,7 +53,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
                 @if($contract->pdf_structure != null)
                     <p>
-                        <strong>@lang('contract.pdf_type')</strong> {{ucfirst($contract->pdf_structure)}}
+                        <strong>@lang('contract.pdf_type')</strong> @lang('contract.'.$contract->pdf_structure)
                     </p>
                 @endif
                 <p><strong>@lang('contract.text_type'):</strong>
@@ -62,10 +62,10 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                        data-target=".text-type-modal">
                         @if($contract->textType =='')
                             @lang('contract.choose')
-
                         @else
                             <?php $label = $contract->getTextType();?>
-                            <span class="label label-{{$label->color}}"> {{$label->name}}</span>
+                            <span class="label label-{{$label->color}}"> @lang('contract.'.$label->name)
+                            </span>
                         @endif
                     </a>
 
@@ -77,12 +77,12 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     @endif
 
                     @if($contract->mturk_status  == \App\Nrgi\Entities\Contract\Contract::MTURK_SENT)
-                        @lang('Sent to MTurk') <a class="btn btn-default"
-                                                  href="{{route('mturk.tasks', $contract->id)}}">@lang('View')</a>
+                        @lang('global.mturk_sent') <a class="btn btn-default"
+                                                  href="{{route('mturk.tasks', $contract->id)}}">@lang('global.view')</a>
                     @endif
 
                     @if($contract->mturk_status  == \App\Nrgi\Entities\Contract\Contract::MTURK_COMPLETE)
-                        @lang('MTurk task Completed')
+                        @lang('global.mturk_completed')
                     @endif
                 </p>
 
@@ -96,7 +96,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                             aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Choose type of output Text</h4>
+                                <h4 class="modal-title" id="myModalLabel">@lang('contract.choose_text_type')</h4>
                             </div>
                             <div class="modal-body">
                                 <ul class="types">
@@ -126,31 +126,31 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 (@lang('contract.fail_status', ['status'=>$contract->pdf_structure]))
             </div>
         @elseif($status== $contract_processing_running)
-            <div class="status">@lang('contract.status'): @lang('Processing')</div>
+            <div class="status">@lang('contract.status'): @lang('contract.processing')</div>
         @elseif($status == $contract_processing_pipline)
-            <div class="status">@lang('contract.status'): @lang('Pipeline')</div>
+            <div class="status">@lang('contract.status'): @lang('contract.pipeline')</div>
         @endif
 
 
         @include('contract.state')
         <a style="margin-left: 15px;margin-bottom: 25px" class="btn btn-default"
-           href="{{route('contract.comment.list',$contract->id)}}">View all comments</a>
+           href="{{route('contract.comment.list',$contract->id)}}">@lang('contract.view_all')</a>
 
         <ul class="contract-info">
-            <li><strong>@lang('Open Contracting ID'):</strong>
+            <li><strong>@lang('contract.contracting_id'):</strong>
                 {{$contract->metadata->open_contracting_id or ''}}
             </li>
 
 
             <li><strong>@lang('contract.created_by'):</strong>
                 @if(isset($contract->created_user->name))
-                {{$contract->created_user->name}} on {{$contract->created_datetime->format('D M d, Y h:i A')}} (GMT)
+                {{$contract->created_user->name}}  @lang('global.on') {{$contract->created_datetime->format('D M d, Y h:i A')}} (GMT)
                 @endif
             </li>
 
             @if(!is_null($contract->updated_user))
                 <li><strong>@lang('contract.last_modified_by'):</strong> {{$contract->updated_user->name}}
-                    on {{$contract->last_updated_datetime->format('D M d, Y h:i A')}} (GMT)
+                    @lang('global.on') {{$contract->last_updated_datetime->format('D M d, Y h:i A')}} (GMT)
                 </li>
             @endif
 
@@ -209,7 +209,8 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             <li>
                 <strong>@lang('contract.resource'): </strong>
                 @if(is_array($contract->metadata->resource) && count($contract->metadata->resource)>0)
-                    {{join(', ', $contract->metadata->resource)}}
+                    {{join(', ', array_map(function($v){return _l('codelist/resource.'.$v);},
+                    $contract->metadata->resource))}}
                 @endif
                 {!! discussion($discussions,$discussion_status, $contract->id,'resource','metadata') !!}
             </li>
@@ -404,7 +405,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                         </li>
                     @endforeach
                 @else
-                    <li>There is no associated documents.</li>
+                    <li>@lang('contract.no_documents')</li>
                 @endif
         </ul>
        @include('contract.partials.show.annotation_list')

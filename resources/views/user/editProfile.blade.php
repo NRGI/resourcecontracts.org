@@ -22,28 +22,28 @@
 
 
             <div class="form-group">
-                {!! Form::label('name', 'Name:' , ['class' => 'col-sm-2 control-label']) !!}
+                {!! Form::label('name', trans('user.name') , ['class' => 'col-sm-2 control-label']) !!}
                 <div class="col-sm-7">
                 {!! Form::text('name', NULL , ['class' => 'form-control']) !!}
                     </div>
             </div>
 
             <div class="form-group">
-                {!! Form::label('organization', 'Organization:' , ['class' => 'col-sm-2 control-label'])  !!}
+                {!! Form::label('organization', trans('user.organization') , ['class' => 'col-sm-2 control-label'])  !!}
                 <div class="col-sm-7">
                 {!! Form::text('organization', NULL , ['class' => 'form-control']) !!}
                     </div>
             </div>
 
                 <div class="form-group">
-                    {!! Form::label('password', 'New Password:' , ['class' => 'col-sm-2 control-label'] ) !!}
+                    {!! Form::label('password', trans('user.new_password') , ['class' => 'col-sm-2 control-label'] ) !!}
                     <div class="col-sm-7">
                     {!! Form::password('password',['class' => 'form-control' , 'autocomplete' => 'off']) !!}
                         </div>
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('password_confirmation', 'Confirm Password:' , ['class' => 'col-sm-2 control-label']) !!}
+                    {!! Form::label('password_confirmation', trans('user.confirm_password') , ['class' => 'col-sm-2 control-label']) !!}
                     <div class="col-sm-7">
                     {!! Form::password('password_confirmation',['class' => 'form-control' , 'autocomplete' => 'off']) !!}
                         </div>
@@ -51,7 +51,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-7 col-lg-offset-2">
-                {!! Form::submit('Update Your Profile' , ['class' => 'btn btn-lg pull-right btn-primary']) !!}
+                {!! Form::submit(trans('user.update_your_profile') , ['class' => 'btn btn-lg pull-right btn-primary']) !!}
                         <div>
             </div>
 

@@ -756,3 +756,14 @@ header {
 .xdsoft_datetimepicker, .ui-autocomplete {
     z-index: 999999999999999999 !important;
 }
+.paginate-wrapper {
+    margin-top: 50px;
+}
+.paginate-wrapper .pagination-text {
+    display: block;
+}
+.paginate-wrapper ul.pagination {
+    text-align: center;
+    float: none;
+    display: inline-block;
+}

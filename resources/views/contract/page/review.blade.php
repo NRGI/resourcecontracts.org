@@ -12,20 +12,20 @@
     <div class="panel panel-default">
         <div class="panel-heading panel-heading-fixed">
             <div class="word-wrapper">
-                <div class="wordwrap pull-left"> 
-                    <a href="{{route('contract.show', $contract->id)}}" class="back pull-left">Go back</a>
+                <div class="wordwrap pull-left">
+                    <a href="{{route('contract.show', $contract->id)}}" class="back pull-left">@lang('global.back')</a>
                     <span class="pull-left">{{str_limit($contract->title, 80)}}</span>
                 </div>
                 <div class="pull-right">
                     <div class="view-metadata">
-                        <a class="btn-metadata pull-right" href="#">View Metadata</a>
+                        <a class="btn-metadata pull-right" href="#">@lang('global.view_metadata')</a>
                     </div>
                     <div id="metadata" class="metadata" style="display:none"></div>
                 </div>
             </div>
             <div class="document-wrap-head">
             <div class="navigation">
-                <a href='#' id="pdf-text-view">Text Pdf View</a>
+                <a href='#' id="pdf-text-view">@lang('global.view_pdf_text')</a>
                 <div class="column-text column-common">
                     <div id="search-form">
                         <form method="POST" action="{{route('contract.page.search', ["id"=>$contract['contract_id']])}}" accept-charset="UTF-8" class="form-inline page-search pull-right">
@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                             <input class="btn btn-primary pull-left" type="submit" value="Search">
-                            <a href='#' id="search-results-cache" style="display:none;" class="pull-right">Results</a>
+                            <a href='#' id="search-results-cache" style="display:none;" class="pull-right">@lang('global.results')</a>
                         </form>
                     </div>
                 </div>
@@ -56,17 +56,17 @@
                     <span class="text-view-block" >
 
                         <div id="text-viewer-wrapper-overflow-scroll" class="_ annotator-text view-wrap">
-                            <!-- 
-                            don't understand why class="annotator-text" doesn't work, putting any dummy class makes the popup appear 
+                            <!--
+                            don't understand why class="annotator-text" doesn't work, putting any dummy class makes the popup appear
                             similarly one extra <div> is required after <div class="annotator-text">, otherwise the annotation also doesn't appear
                             -->
                             <div></div>
                             <div class="text-viewer-wrapper">
-                                <div id="text-viewer-overflow-scroll" class="text-viewer">Loading ...</div>    
-                                <button id="saveButton" value="Save">Save</button>
+                                <div id="text-viewer-overflow-scroll" class="text-viewer">@lang('annotation.loading')</div>
+                                <button id="saveButton" value="Save">@lang('global.save')</button>
                             </div>
                         </div>
-                    </span>                            
+                    </span>
                 </div>
                 <div class="column-pdf">
                     <span class="pdf-view-block">
@@ -87,12 +87,12 @@
 @section('script')
     <script src="{{ asset('js/lib/pdfjs/pdf.js') }}"></script>
 
-    <script src="{{ asset('js/lib/underscore.js') }}"></script>    
+    <script src="{{ asset('js/lib/underscore.js') }}"></script>
     <script src="{{ asset('js/lib/backbone.js') }}"></script>
-    <script src="{{ asset('js/lib/jquery.xpath.js') }}"></script> 
-    <script src="{{ asset('js/lib/jquery.waypoints.js') }}"></script>    
+    <script src="{{ asset('js/lib/jquery.xpath.js') }}"></script>
+    <script src="{{ asset('js/lib/jquery.waypoints.js') }}"></script>
 
-    <script src="{{ asset('js/custom/rc.pages.collection.js') }}"></script> 
+    <script src="{{ asset('js/custom/rc.pages.collection.js') }}"></script>
     <script src="{{ asset('js/custom/rc.text.editor.js') }}"></script>
 
     <script src="{{ asset('js/custom/rc.utils.js') }}"></script>
@@ -101,7 +101,7 @@
     <script src="{{ asset('js/custom/rc.pdf.js') }}"></script>
 
     <script src="{{ asset('js/custom/rc.metadata.js') }}"></script>
-    <script src="{{ asset('js/custom/rc.search.js') }}"></script>    
+    <script src="{{ asset('js/custom/rc.search.js') }}"></script>
 
     <script type="text/template" id="text-page-partial-view">
         <span id="<%= page_no %>">
@@ -111,19 +111,19 @@
     </script>
     <script type="text/template" id="metadata-view-template">
         <div class="popup-metadata">
-        <p><strong>Contract Title:</strong><%= contract_name %></p>
-        <p><strong>Country:</strong> <%= country.name %></p>
-        <p><strong>Date of signature:</strong> <%= signature_date %></p>
-        <p><strong>Resource:</strong>
+        <p><strong>@lang('contract.import.contract_title'):</strong><%= contract_name %></p>
+        <p><strong>@lang('contract.country'):</strong> <%= country.name %></p>
+        <p><strong>@lang('contract.date_of_signture'):</strong> <%= signature_date %></p>
+        <p><strong>@lang('contract.resource'):</strong>
             <%=resource%>
         </p></div>
-    </script>    
+    </script>
     <script>
     var contract = new Contract({
         id: '{{$contract->id}}',
         metadata: {!!json_encode($contract['metadata'])!!},
         canEdit: {{$canEdit}},
-        totalPages: '{{$contract->pages->count()}}',        
+        totalPages: '{{$contract->pages->count()}}',
         canAnnotate: false
     });
     var rcEvents = {};
@@ -139,7 +139,7 @@
             "click a#search-results-cache": "searchView"
         },
         initialize: function() {
-            this.textTabEl = $('.text-view-block');           
+            this.textTabEl = $('.text-view-block');
             this.pdfTabEl = $('.pdf-view-block');
             this.currentPage = null;
             this.viewerPage = null;
@@ -159,7 +159,7 @@
             $('.column-text').show();
             $('.column-text').removeClass('column-common');
             $('.column-pdf').hide();
-            $('.column-search-results').hide();  
+            $('.column-search-results').hide();
         },
         pdfView: function(e) {
             if(e) e.preventDefault();
@@ -170,7 +170,7 @@
             $('.column-pdf').show();
             $('.column-pdf').removeClass('column-common');
             $('.column-annotations').show();
-            $('.column-search-results').hide();  
+            $('.column-search-results').hide();
         },
         textPdfView: function(e) {
             if(e) e.preventDefault();
@@ -181,14 +181,14 @@
             $('.column-text').addClass('column-common');
             $('.column-pdf').show();
             $('.column-pdf').addClass('column-common');
-            $('.column-search-results').hide();  
+            $('.column-search-results').hide();
         },
         searchView: function(e) {
             if(e) e.preventDefault();
             $('.column-text').show();
             $('.column-text').removeClass('column-common');
             $('.column-pdf').hide();
-            $('.column-search-results').show();               
+            $('.column-search-results').show();
         },
         initTextView: function() {
             // this.viewerPages = new ViewerPagesCollection([], {
@@ -216,7 +216,7 @@
                 el: '#pagination',
                 currentPage: this.editorPage,
                 rcEvents: rcEvents,
-            });  
+            });
         },
         initPdfView: function() {
             //pdf view module
@@ -228,9 +228,9 @@
         initSearch: function() {
             var searchResultCollection = new SearchResultCollection({
                 eventsPipe: rcEvents
-            }); 
+            });
             this.listenTo(searchResultCollection, 'dataCollected', this.searchView);
-            this.bind('dataCollected', this.searchView, this);                               
+            this.bind('dataCollected', this.searchView, this);
             var searchFormView = new SearchFormView({
                 el: '#search-form',
                 collection: searchResultCollection,

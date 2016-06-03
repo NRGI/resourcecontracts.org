@@ -14,7 +14,7 @@ foreach ($corporate_groups as $group) {
     $groups[$group['name']] = $group['name'];
 }
 asort($groups);
-$groups = ['' => 'Select'] + $groups + ['Other' => 'Other'];
+$groups = ['' => trans('Select')] + $groups + ['Other' => 'Other'];
 
 $govt_entity = [];
 $govEntityOnly = [];
@@ -45,7 +45,6 @@ if (!empty($contract->metadata->government_entity)) {
 
         <div class="col-sm-7">
             {!! Form::file('file', ['class'=>'required' , 'id' => 'file'])!!}
-            <p class="help-block">@lang('contract.pdf_only').</p>
         </div>
     </div>
 @endif
@@ -56,16 +55,15 @@ if (!empty($contract->metadata->government_entity)) {
         <label for="Select PDF" class="col-sm-2 control-label">@lang('contract.contract_file')</label>
 
         <div class="col-sm-7">
-            {!! Form::file('file')!!}
-            <p class="help-block">@lang('contract.pdf_only').</p>
+            {!! Form::file('file', [ 'id' => 'file'])!!}
         </div>
     </div>
     <div class="form-group">
         <label for="Select PDF" class="col-sm-2 control-label"></label>
 
         <div class="col-sm-7">
-            <a target="_blank" href="{{$contract->file_url}}">View document</a> | <a id="show-new-document"
-                                                                                     href="javascript:void();">Change</a>
+            <a target="_blank" href="{{$contract->file_url}}">@lang('contract.view_document')</a> | <a id="show-new-document"
+                                                                                     href="javascript:void();">@lang('contract.change')</a>
         </div>
     </div>
 
@@ -123,7 +121,7 @@ if (!empty($contract->metadata->government_entity)) {
     <label for="country" class="col-sm-2 control-label">@lang('contract.country') <span class="red">*</span></label>
 
     <div class="col-sm-7">
-        <?php $country_list = ['' => 'select'] + $country;?>
+        <?php $country_list = ['' => trans('global.select')] + $country;?>
         {!! Form::select('country', $country_list ,
         isset($contract->metadata->country->code)?$contract->metadata->country->code:null, ["class"=>"required
         form-control" , "id" => "country"])!!}
@@ -174,7 +172,7 @@ if (isset($contract->metadata->resource)) {
                         <label for="entity" class="col-sm-2 control-label">@lang('contract.government_entity')</label>
 
                         <div class="col-sm-7">
-                            {!! Form::select("government_entity[$g][entity]", [''=>'Select'] + $govt_entity,
+                            {!! Form::select("government_entity[$g][entity]", [''=>trans('Select')] + $govt_entity,
                             isset($v->entity)?$v->entity:null,
                             ["class"=>"form-control el_government_entity"])!!}
                         </div>
@@ -210,7 +208,7 @@ if (isset($contract->metadata->resource)) {
                 <label for="entity" class="col-sm-2 control-label">@lang('contract.government_entity') <span class="red">*</span></label>
 
                 <div class="col-sm-7">
-                    {!! Form::select("government_entity[0][entity]",[''=>'Select'] + $govt_entity,null,
+                    {!! Form::select("government_entity[0][entity]",[''=>trans('Select')] + $govt_entity,null,
                     ["class"=>"form-control el_government_entity" , "id" => "government_0_entity"])!!}
                 </div>
             </div>
@@ -243,7 +241,7 @@ if (isset($contract->metadata->resource)) {
     ?>
     <label for="document_type" class="col-sm-2 control-label">@lang('contract.document_type') <span class="red">*</span></label>
     <div class="col-sm-7">
-         {!! Form::select('document_type',[''=>'Select']+ trans('codelist/documentType'),
+         {!! Form::select('document_type',[''=>trans('Select')]+ trans('codelist/documentType'),
         $dt, ["class"=>"required form-control", "id"=>"document_type"])!!}
         @if($dt == 'Other')
             {!! Form::text('document_type',
@@ -371,7 +369,9 @@ if (isset($contract->metadata->resource)) {
                         trans('contract.jurisdiction_of_incorporation'),
                         ['class'=>'col-sm-2 control-label'])!!}
                         <div class="col-sm-7">
-                            {!! Form::select("company[$i][jurisdiction_of_incorporation]", ['' => 'select'] + $country ,
+                            {!! Form::select("company[$i][jurisdiction_of_incorporation]", ['' => trans
+                            ('global.select')] +
+                            $country ,
                             isset($v->jurisdiction_of_incorporation)?$v->jurisdiction_of_incorporation:null,
                             ["class"=>"form-control"])!!}
                         </div>
@@ -479,9 +479,9 @@ if (isset($contract->metadata->resource)) {
                         {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label'])
                         !!}
                         <div class="col-sm-7">
-                            {!! Form::radio("company[$i][operator]", 1, (isset($v->operator) && $v->operator==1)?true:false , ['class' => 'field']) !!} Yes
-                            {!! Form::radio("company[$i][operator]", 0, (isset($v->operator) && $v->operator==0)?true:false, ['class' => 'field']) !!} No
-                            {!! Form::radio("company[$i][operator]", -1, (isset($v->operator) && $v->operator==-1)?true:false, ['class' => 'field']) !!} Not Available
+                            {!! Form::radio("company[$i][operator]", 1, (isset($v->operator) && $v->operator==1)?true:false , ['class' => 'field']) !!} @lang('global.yes')
+                            {!! Form::radio("company[$i][operator]", 0, (isset($v->operator) && $v->operator==0)?true:false, ['class' => 'field']) !!} @lang('global.no')
+                            {!! Form::radio("company[$i][operator]", -1, (isset($v->operator) && $v->operator==-1)?true:false, ['class' => 'field']) !!} @lang('global.not_available')
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'operator-'.$k,'metadata') !!}
@@ -517,7 +517,8 @@ if (isset($contract->metadata->resource)) {
                 {!! Form::label('jurisdiction_of_incorporation', trans('contract.jurisdiction_of_incorporation'),
                 ['class'=>'col-sm-2 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::select('company[0][jurisdiction_of_incorporation]', ['' => 'select'] + $country ,
+                    {!! Form::select('company[0][jurisdiction_of_incorporation]', ['' => trans('global.select')] +
+                    $country ,
                     isset($contract->metadata->country->code)?$contract->metadata->country->code:null,
                     ["class"=>"form-control" , "id"=> "company_0_jurisdiction"])!!}
                 </div>
@@ -579,9 +580,9 @@ if (isset($contract->metadata->resource)) {
             <div class="form-group">
                 {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
                 <div class="col-sm-7">
-                    {!! Form::radio('company[0][operator]', 1, false, ['class' => 'field' , 'id' => 'company_0_operator_yes']) !!} Yes
-                    {!! Form::radio('company[0][operator]', 0, false, ['class' => 'field' , 'id' => 'company_0_operator_no']) !!} No
-                    {!! Form::radio('company[0][operator]', -1, true, ['class' => 'field']) !!} Not Available
+                    {!! Form::radio('company[0][operator]', 1, false, ['class' => 'field' , 'id' => 'company_0_operator_yes']) !!} @lang('global.yes')
+                    {!! Form::radio('company[0][operator]', 0, false, ['class' => 'field' , 'id' => 'company_0_operator_no']) !!} @lang('global.no')
+                    {!! Form::radio('company[0][operator]', -1, true, ['class' => 'field']) !!} @lang('global.not_available')
                 </div>
             </div>
         </div>
@@ -746,7 +747,7 @@ if (isset($contract->metadata->resource)) {
 </div>
 
 <div class="form-group">
-    <label for="category" class="col-sm-2 control-label">Category <span class="red">*</span></label>
+    <label for="category" class="col-sm-2 control-label">@lang('contract.category') <span class="red">*</span></label>
 
     <div class="col-sm-7">
         <?php
@@ -841,10 +842,10 @@ if (isset($contract->metadata->resource)) {
 
         ?>
         <label class="checkbox-inline">
-            {!! Form::radio("is_supporting_document", 1, $is_supporting_document_value , ['class' => 'field is-supporting-document',$disable_supporting]) !!} Yes
+            {!! Form::radio("is_supporting_document", 1, $is_supporting_document_value , ['class' => 'field is-supporting-document',$disable_supporting]) !!} @lang('global.yes')
         </label>
         <label class="checkbox-inline">
-            {!! Form::radio("is_supporting_document", 0, $is_parent_document_value, ['class' => 'field is-supporting-document',$disable_parent]) !!} No
+            {!! Form::radio("is_supporting_document", 0, $is_parent_document_value, ['class' => 'field is-supporting-document',$disable_parent]) !!} @lang('global.no')
         </label>
     </div>
 
@@ -862,7 +863,8 @@ if (isset($contract->metadata->resource)) {
     }
     ?>
     <div class="col-sm-7">
-        {!! Form::select('translated_from',['' => 'select']+$contracts, $parent_contract, ["class"=>"form-control"])!!}
+        {!! Form::select('translated_from',['' => trans('global.select')]+$contracts, $parent_contract,
+        ["class"=>"form-control"])!!}
     </div>
 </div>
 
@@ -889,9 +891,9 @@ if (isset($contract->metadata->resource)) {
         <?php
         $annexes_missing = isset($contract->metadata->annexes_missing) ? $contract->metadata->annexes_missing : - 1;
         ?>
-        {!! Form::radio('annexes_missing', 1 ,($annexes_missing=='1') ? true : null , ['class' => 'field']) !!} Yes
-        {!! Form::radio('annexes_missing', 0 ,($annexes_missing=='0') ? true : null , ['class' => 'field']) !!} No
-        {!! Form::radio('annexes_missing', -1,($annexes_missing=='-1') ? true : null, ['class' => 'field']) !!} Not Available
+        {!! Form::radio('annexes_missing', 1 ,($annexes_missing=='1') ? true : null , ['class' => 'field']) !!} @lang('global.yes')
+        {!! Form::radio('annexes_missing', 0 ,($annexes_missing=='0') ? true : null , ['class' => 'field']) !!} @lang('global.no')
+        {!! Form::radio('annexes_missing', -1,($annexes_missing=='-1') ? true : null, ['class' => 'field']) !!} @lang('global.not_available')
     </div>
 </div>
 
@@ -901,9 +903,9 @@ if (isset($contract->metadata->resource)) {
         <?php
         $pages_missing = isset($contract->metadata->pages_missing) ? $contract->metadata->pages_missing : - 1;
         ?>
-        {!! Form::radio('pages_missing', 1 ,($pages_missing=='1') ? true : null , ['class' => 'field']) !!} Yes
-        {!! Form::radio('pages_missing', 0 ,($pages_missing=='0') ? true : null , ['class' => 'field']) !!} No
-        {!! Form::radio('pages_missing', -1,($pages_missing=='-1') ? true : null , ['class' => 'field']) !!} Not Available
+        {!! Form::radio('pages_missing', 1 ,($pages_missing=='1') ? true : null , ['class' => 'field']) !!} @lang('global.yes')
+        {!! Form::radio('pages_missing', 0 ,($pages_missing=='0') ? true : null , ['class' => 'field']) !!} @lang('global.no')
+        {!! Form::radio('pages_missing', -1,($pages_missing=='-1') ? true : null , ['class' => 'field']) !!}@lang('global.not_available')
     </div>
 
 </div>

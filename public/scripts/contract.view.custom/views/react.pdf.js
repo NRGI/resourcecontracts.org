@@ -16,12 +16,15 @@ var Pdf = React.createClass({
     loadFile: function () {
         var self = this;
         var content = this.props.pdfPage.get("content");
+        var email = 'info@openlandcontracts.org';
+        var link = '<a href="mailto:'+email+'">'+email+'</a>';
+        var message = LANG.error_loading_file;
+        message = message.replace(':link',link);
         if (content === "-1" || !content) {
             this.setState({
                 page: "",
                 content: "",
-                message: <div className="no-contract-error">We're sorry, there is a problem loading the contract. Please contact <a
-                    href="mailto:info@openlandcontracts.org">info@openlandcontracts.org</a> to let us know, or check back later</div> //'
+                message: <div className="no-contract-error">{message}</div>
             });
         } else {
             if (content !== "-") {
@@ -98,7 +101,7 @@ var Pdf = React.createClass({
             var page_no = this.props.contractApp.getCurrentPage();
             debug("react.pdf showing page loader", page_no);
             this.removeAnnotations();
-            return (this.props.loading || React.createElement("div", null, "Loading pdf page " + page_no));
+            return (this.props.loading || React.createElement("div", null, LANG.loading_pdf+' '+ page_no));
         }
     },
     removeAnnotations : function(){

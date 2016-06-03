@@ -50,7 +50,7 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         var self = this;
         setTimeout(function (event) {
             self.contractApp.trigger('annotationCreated', annotation);
-            self.notification.show('Annotation successfully created', 'success');
+            self.notification.show(LANG.annotation_successfully_created, 'success');
         }, 1000);
     };
     AnnotatorEvents.prototype.onAnnotationUpdated = function (annotation) {
@@ -58,14 +58,14 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         setTimeout(function (event) {
             self.contractApp.setPdfLoaded(false);
             self.contractApp.trigger('annotationUpdated', annotation);
-            self.notification.show('Annotation successfully updated', 'success');
+            self.notification.show(LANG.annotation_successfully_updated, 'success');
         }, 1000);
     };
     AnnotatorEvents.prototype.onAnnotationDeleted = function (annotation) {
         var self = this;
         setTimeout(function (event) {
             self.contractApp.trigger('annotationDeleted', annotation);
-            self.notification.show('Annotation successfully deleted', 'success');
+            self.notification.show(LANG.annotation_successfully_deleted, 'success');
         }, 1000);
     };
 
@@ -111,6 +111,9 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
             }
         });
 
+        $('.annotator-cancel').text(LANG.cancel);
+        $('.annotator-save').text(LANG.save);
+
         $('.annotator-widget').find('.error').remove();
 
         var viewPort = contractApp.getView() == 'pdf' ? 'pdf' : 'text';
@@ -118,7 +121,7 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
 
         //move comment input to last in order
         var commentEl = viewerEl.find('.annotator-listing li textarea');
-        commentEl.attr('placeholder', 'Annotation');
+        commentEl.attr('placeholder', LANG.annotation);
         commentEl.addClass('annotation-text');
         commentEl.parent().appendTo(viewerEl.find('.annotator-listing'));
 
@@ -155,6 +158,9 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         var wrapperEl = $('.' + viewPort + '-annotator');
         var widgetEl = wrapperEl.find('ul.annotator-widget');
         var widgetHeight = widgetEl.height() + 25;
+
+        $('.annotator-edit').attr('title',LANG.annotator_edit);
+        $('.annotator-delete').attr('title',LANG.delete);
 
         if (wrapperEl.width() / 2 < position.left) {
             viewerEl.addClass('annotator-invert-x');

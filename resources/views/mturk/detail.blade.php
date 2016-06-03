@@ -8,13 +8,13 @@
 
         <div class="panel-body">
             <ul>
-                <li>Page No.: {{$task->page_no}}</li>
-                <li>HIT: {{$task->hit_id}}</li>
-                <li>Status: {{$task->status()}}</li>
-                <li>Approved: {{$task->approved()}} </li>
-                <li>Assignment ID: {{$task->assignments->assignment->assignment_id}}</li>
-                <li>Worker ID: {{$task->assignments->assignment->worker_id}}</li>
-                <li>Submit Time: {{\Carbon\Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $task->assignments->assignment->submit_time)}}</li>
+                <li>@lang('mturk.page_no'): {{$task->page_no}}</li>
+                <li>@lang('mturk.hit'): {{$task->hit_id}}</li>
+                <li>@lang('mturk.status'): {{$task->status()}}</li>
+                <li>@lang('mturk.approved'): {{$task->approved()}} </li>
+                <li>@lang('mturk.assignment_id'): {{$task->assignments->assignment->assignment_id}}</li>
+                <li>@lang('mturk.worker_id'): {{$task->assignments->assignment->worker_id}}</li>
+                <li>@lang('mturk.submit_time'): {{\Carbon\Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $task->assignments->assignment->submit_time)}}</li>
             </ul>
 
             <div class="row">
@@ -42,9 +42,9 @@
             @if(empty($task->approved))
                 <div class="mturk-btn-group">
                     {!! Form::open(['url' =>route('mturk.task.approve',['contract_id'=>$contract->id, 'task_id'=>$task->id]), 'method' => 'post']) !!}
-                    {!! Form::button(trans('Approve'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>'Are you sure you want to approve this assignment?'])!!}
+                    {!! Form::button(trans('mturk.approve'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>'Are you sure you want to approve this assignment?'])!!}
                     {!! Form::close() !!}
-                    {!! Form::button(trans('Reject'), ['type' =>'submit', 'class' => 'btn btn-danger', 'data-toggle'=>'modal', 'data-target'=>'.reject-modal-'.$task->id])!!}
+                    {!! Form::button(trans('mturk.reject'), ['type' =>'submit', 'class' => 'btn btn-danger', 'data-toggle'=>'modal', 'data-target'=>'.reject-modal-'.$task->id])!!}
 
                     <div class="modal fade reject-modal-{{$task->id}}" tabindex="-1" role="dialog"
                          aria-labelledby="myModalLabel-{{$task->id}}"
@@ -55,7 +55,7 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                                 aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">@lang('Write reason for rejection')</h4>
+                                    <h4 class="modal-title" id="myModalLabel">@lang('mturk.rejection_reason')</h4>
                                 </div>
                                 <div class="modal-body">
                                     {!! Form::textarea('message', null, ['id'=>"message", 'rows'=>12,
@@ -64,7 +64,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default"
                                             data-dismiss="modal">@lang('global.form.cancel')</button>
-                                    {!! Form::button(trans('Reject'), ['type' =>'submit', 'class' => 'btn btn-danger'])!!}
+                                    {!! Form::button(trans('mturk.reject'), ['type' =>'submit', 'class' => 'btn btn-danger'])!!}
                                 </div>
                                 {!! Form::close() !!}
                             </div>

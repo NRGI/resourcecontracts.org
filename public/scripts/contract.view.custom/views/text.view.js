@@ -9,8 +9,8 @@ var NavigationView = React.createClass({
         }
         return (
             <div className="navigation">
-                <a href="#/text" className={textClass}>Text</a>
-                <a href="#/pdf" className={pdfClass}>Pdf</a>
+                <a href="#/text" className={textClass}>{LANG.text}</a>
+                <a href="#/pdf" className={pdfClass}>{LANG.pdf}</a>
             </div>
         );
     }
@@ -76,10 +76,10 @@ var TextPaginationView = React.createClass({
     render: function () {
         return (
             <div className="text-pagination pagination" style={this.props.style}>
-                <a href="#" className="previous" onClick={this.clickPrevious}>Previous</a>
+                <a href="#" className="previous" onClick={this.clickPrevious}>{LANG.previous}</a>
                 <input type="text" className="goto" ref="userInputText" onKeyDown={this.handleKeyDown}/>
-                <a href="#" className="next" onClick={this.clickNext}>Next</a>
-                of {this.state.totalPages}
+                <a href="#" className="next" onClick={this.clickNext}>{LANG.next}</a>
+                {LANG.of} {this.state.totalPages}
             </div>
         );
     }
@@ -243,11 +243,11 @@ var TextViewer = React.createClass({
         this.props.pagesCollection.on("reset", function () {
             self.message = "";
             if (self.props.pagesCollection.models.length === 0) {
-                self.message =
-                    <div className="no-contract-error">We're sorry, there is a problem loading the contract. Please
-                        contact
-                        <a mailto="info@openlandcontracts.org">info@openlandcontracts.org</a>
-                        to let us know, or check back later.</div>;//'
+                var email = 'info@openlandcontracts.org';
+                var link = '<a href="mailto:'+email+'">'+email+'</a>';
+                var message = LANG.error_loading_file;
+                message = message.replace(':link',link);
+                self.message = <div className="no-contract-error">{message}</div>;
             }
             self.forceUpdate();
             self.loadAnnotations();
@@ -260,15 +260,13 @@ var TextViewer = React.createClass({
     render: function () {
         var self = this;
         var show_pdf_text = (this.props.metadata) ? this.props.metadata.get('show_pdf_text') : undefined;
-
+         var warning_text_helper = LANG.ocr_text_helper+'<a href={app_url + "/faqs"}>'+LANG.learn_more+'</a>';
         var warningText = (this.message) ? "" : (<div className="text-viewer-warning">
             <span className="pull-right link close" onClick={this.handleClickWarning}>x</span>
-            The text below was created automatically and may contain errors and differences from the contract`s original
-            PDF file.&nbsp;
-            <a href={app_url + "/faqs"}>Learn more</a>
+            {warning_text_helper}
         </div>);
 
-        var pagesView = (this.message) ? this.message : "Please wait while loading ...";
+        var pagesView = (this.message) ? this.message : LANG.loading;
 
         if (this.props.pagesCollection.models.length > 0) {
             pagesView = [];
@@ -287,9 +285,7 @@ var TextViewer = React.createClass({
         }
 
         if (show_pdf_text == 0) {
-            warningText = (
-                <div className="text-viewer-warning">We are currently processing the contract's PDF file, and a text
-                    version is not yet available.</div>);
+            warningText = (<div className="text-viewer-warning">{LANG.warning_text}</div>);
             pagesView = "";
         }
 

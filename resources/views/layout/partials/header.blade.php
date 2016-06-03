@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{$lang->current()->code}}">
 <head>
     <meta charset="UTF-8"/>
-    <title>Resource Contracts</title>
+    <title>@lang('global.contracts')</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}"/>
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}"/>
     <link rel="stylesheet" href="{{asset('css/style.css')}}"/>
@@ -13,4 +13,4 @@
     </script>
     @yield('css')
 </head>
-<body>
+<body class="lang-{{$lang->current()->code}}" dir="{{$lang->dir()}}">

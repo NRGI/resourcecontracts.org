@@ -21,7 +21,7 @@
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">@lang('activitylog.activitylog')
-            <a class="btn btn-default pull-right" href="{{route('mturk.index')}}">@lang('Back')</a>
+            <a class="btn btn-default pull-right" href="{{route('mturk.index')}}">@lang('mturk.back')</a>
         </div>
 
         <div class="panel-body">
@@ -43,7 +43,7 @@
                 <thead>
                     <tr>
                         <th width="40%">@lang('activitylog.contract')</th>
-                        <th>@lang('Page no.')</th>
+                        <th>@lang('mturk.page_no')</th>
                         <th>@lang('activitylog.action')</th>
                     </tr>
                 </thead>
@@ -55,7 +55,7 @@
 
                         <td>
                             {{ trans($activity->message,$activity->message_params) }} <br>
-                            @lang('by') {{$activity->user->name}} @lang('on') {{$activity->created_at->format('D F d, Y h:i a')}}
+                            @lang('by') {{$activity->user->name}} @lang('mturk.on') {{$activity->created_at->format('D F d, Y h:i a')}}
                         </td>
                     </tr>
                 @empty

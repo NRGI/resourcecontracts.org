@@ -29,7 +29,7 @@
              <div id="message" style="padding: 0px 16px"></div>
             <div class="document-wrap">
                 <div class="left-document-wrap" id="annotatorjs_left">
-                    <a id="left" class="btn btn-default pull-right annotation_button" href="#">Annotations</a>
+                    <a id="left" class="btn btn-default pull-right annotation_button" href="#">@lang('annotation.annotations')</a>
                     <div class="quill-wrapper">
                         <div id="pagination_left"></div>
                         <div id="editor_left" class="editor"></div>
@@ -37,7 +37,7 @@
                     <div id="annotations_list_left" class="annotation-list" style="display:none"></div>
                 </div>
                 <div class="right-document-wrap" id="annotatorjs_right">
-                    <a id="right" class="btn btn-default pull-right annotation_button" href="#">Annotations</a>
+                    <a id="right" class="btn btn-default pull-right annotation_button" href="#">@lang('annotation.annotations')</a>
                     <div class="quill-wrapper">
                         <div id="pagination_right"></div>
                         <div id="editor_right" class="editor"></div>

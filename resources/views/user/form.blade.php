@@ -2,7 +2,7 @@
     <link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
 @stop
 <div class="form-group">
-    <label class="col-md-4 control-label">Name <span class="red">*</span></label>
+    <label class="col-md-4 control-label">{{ trans('user.name') }} <span class="red">*</span></label>
 
     <div class="col-md-6">
         {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -10,7 +10,7 @@
 </div>
 
 <div class="form-group">
-    <label class="col-md-4 control-label">E-Mail Address <span class="red">*</span></label>
+    <label class="col-md-4 control-label">{{ trans('user.email') }} <span class="red">*</span></label>
 
     <div class="col-md-6">
         {!! Form::email('email', null, ['class' => 'form-control']) !!}
@@ -18,7 +18,7 @@
 </div>
 
 <div class="form-group">
-    <label class="col-md-4 control-label">Password <span class="red">*</span></label>
+    <label class="col-md-4 control-label">{{ trans('user.password') }} <span class="red">*</span></label>
 
     <div class="col-md-6">
         {!! Form::password('password', ['class' => 'form-control']) !!}
@@ -26,7 +26,7 @@
 </div>
 
 <div class="form-group">
-    <label class="col-md-4 control-label">Confirm Password <span class="red">*</span></label>
+    <label class="col-md-4 control-label">{{ trans('user.confirm_password') }} <span class="red">*</span></label>
 
     <div class="col-md-6">
         {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
@@ -35,7 +35,7 @@
 
 
 <div class="form-group">
-    <label class="col-md-4 control-label">Organization</label>
+    <label class="col-md-4 control-label">{{ trans('user.organization') }}</label>
 
     <div class="col-md-6">
         {!! Form::text('organization', null, ['class' => 'form-control']) !!}
@@ -43,7 +43,7 @@
 </div>
 
 <div class="form-group">
-    <label class="col-md-4 control-label">Role <span class="red">*</span></label>
+    <label class="col-md-4 control-label">{{ trans('user.role') }} <span class="red">*</span></label>
     <?php
     $old = null;
     if ($action == 'update') {
@@ -66,16 +66,16 @@
 
 
 <div class="form-group">
-    <label class="col-md-4 control-label">Status</label>
+    <label class="col-md-4 control-label">{{ trans('user.status') }}</label>
 
     <div class="col-md-6">
         <label>
             {!! Form::radio('status', 'true', null) !!}
-            Active
+            {{ trans('user.active') }}
         </label>
         <label>
             {!! Form::radio('status', 'false', 'null') !!}
-            InActive
+            {{ trans('user.inactive') }}
         </label>
     </div>
 </div>
@@ -83,7 +83,7 @@
 <div class="form-group">
     <div class="col-md-6 col-md-offset-4">
         <button type="submit" class="btn btn-primary">
-            Submit
+            {{ trans('user.submit') }}
         </button>
     </div>
 </div>

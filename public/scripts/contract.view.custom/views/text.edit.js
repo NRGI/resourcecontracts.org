@@ -18,7 +18,7 @@ var TextEditorContainer = React.createClass({
         self.setState({
             text: "",
             page_no: self.props.contractApp.getCurrentPage(),
-            message: "Loading page" + self.props.contractApp.getCurrentPage()
+            message: LANG.loading_pdf + self.props.contractApp.getCurrentPage()
         });
         if (this.xhr && this.xhr.readystate != 4) {
             //if the users clicks pagination quickly, abort previous ajax calls.
@@ -49,7 +49,7 @@ var TextEditorContainer = React.createClass({
         });
 
         window.addEventListener("beforeunload", function (e) {
-            var confirmationMessage = "Please save your edits before exiting the page.";
+            var confirmationMessage = LANG.confirm.save;
             if (self.getStateChange()) {
                 (e || window.event).returnValue = confirmationMessage;
                 return confirmationMessage;
@@ -74,7 +74,7 @@ var TextEditorContainer = React.createClass({
             },
             type: 'POST'
         }).done(function (response) {
-            self.setState({message: "Successfully saved."});
+            self.setState({message: LANG.text_saved});
             $('.text-editor').animate({scrollTop: $('.text-editor').offset().top - $('.text-editor').scrollTop()}, 'slow');
         });
     },
@@ -99,7 +99,7 @@ var TextEditorContainer = React.createClass({
                 <TextEditor
                     onChange={this.onChange}
                     html={text}/>
-                <button className="btn btn-primary" onClick={this.saveClicked}>Save</button>
+                <button className="btn btn-primary" onClick={this.saveClicked}>{LANG.save}</button>
             </div>
         );
     }
