@@ -226,7 +226,7 @@ if (isset($contract->metadata->resource)) {
 
 </div>
 
-<button type="button" class="btn btn-default new-government-entity add-new-btn" id="addGov">Add new Government Entity</button>
+<button type="button" class="btn btn-default new-government-entity add-new-btn" id="addGov">@lang('contract.add_new_government_entity')</button>
 
 <div class="form-group el_document_type">
     <?php
@@ -591,7 +591,7 @@ if (isset($contract->metadata->resource)) {
 </div>
 
 
-<div type="button" id="add_new_company" class="btn btn-default new-company add-new-btn">Add new company</div>
+<div type="button" id="add_new_company" class="btn btn-default new-company add-new-btn">@lang('contract.add_new_company')</div>
 
 <h3>@lang('contract.license_and_project')</h3>
 <hr/>
@@ -685,7 +685,7 @@ if (isset($contract->metadata->resource)) {
 
 </div>
 
-<div class="btn btn-default new-concession add-new-btn">Add new License</div>
+<div class="btn btn-default new-concession add-new-btn">@lang('contract.add_new_license')</div>
 
 <h3>@lang('contract.source')</h3>
 <hr/>

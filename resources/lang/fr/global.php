@@ -58,6 +58,10 @@ return [
     'mturk_sent'              => "Envoyer à Mturk",
     'mturk_completed'         => "Tâche Mturk accomplie",
     'select'                  => 'Sélectionner',
+    'or'                      => 'ou',
+    'no_comments'             => "Pas de commentaires",
+    'be_back'                 => "On revient tout de suite",
+
 
     'form' => [
         'close'  => "Fermer",

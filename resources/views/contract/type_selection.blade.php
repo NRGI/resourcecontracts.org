@@ -29,9 +29,10 @@
             {!! Form::open(['route' => 'contract.create', 'method' => 'get', 'class'=>'supporting-contract-form']) !!}
             <p class="help-block">@lang('contract.select_parent_contract_help_text')</p>
             <div class="parent-contract-field">
-                {!! Form::select('parent',[''=>'Select','0'=>'No Parent']+$parentContracts,null, ["class"=>"form-control parent-contract required"])!!}
+                {!! Form::select('parent',[''=>trans('global.select'),'0'=>trans('contract.no_parent')]+$parentContracts,null, ["class"=>"form-control parent-contract required"])!!}
             </div>
-            {!! Form::submit(trans('contract.next'), ['class' => 'btn btn-primary']) !!} or <a class="btn btn-danger supporting-contract-form-hide" href="javascript:void(0)">@lang('contract.cancel')</a>
+            {!! Form::submit(trans('contract.next'), ['class' => 'btn btn-primary']) !!} @lang('global.or') <a class="btn
+            btn-danger supporting-contract-form-hide" href="javascript:void(0)">@lang('contract.cancel')</a>
             {!! Form::close() !!}
             </div>
 
@@ -44,7 +45,7 @@
     <script src="{{asset('js/jquery.validate.min.js')}}"></script>
     <script>
         $(function () {
-            $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
+            $('select').select2({placeholder: '@lang('global.select')', allowClear: true, theme: "classic"});
             $('.supporting-contract-form').validate();
             $(document).on('click', '#supporting-contract', function (e) {
                 $('.add-supporting-contract').show();

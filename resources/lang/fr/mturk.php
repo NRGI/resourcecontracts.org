@@ -21,6 +21,7 @@
      'tasks_approved'              => "Tâche approuvée",
      'tasks_requiring_action'      => "Tâches requérant une action de votre part",
      'review_task'                 => "Veuillez revoir les tâches accomplies avant leur approbation ",
+     "review"                      => "la revue",
      'all_task'                    => "Toutes les tâches",
      'task'                        => "Tâches",
      'requiring_action'            => "Action requise",
