@@ -1,7 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Lang;
 
-
 /**
  * Get formatted file size
  *
@@ -172,14 +171,12 @@ function discussion($discussions, $discussion_status, $contract_id, $key, $type 
     $discussion_status = (isset($discussion_status[$key]) && $discussion_status[$key] == 1) ? true : false;
 
     if ($discussion_status == 1) {
-        $status = '<span class="label label-success">('.$count.')'.trans('contract.resolved').'</span>';
+        $status = '<span class="label label-success">('.$count.') '.trans('contract.resolved').'</span>';
     } else {
-        $status = '<span class="label label-red pull-right">('.$count.')'.trans('contract.open').'</span>';
+        $status = '<span class="label label-red pull-right">('.$count.') '.trans('contract.open').'</span>';
     }
     if ($count == 0) {
-        $status = '<span class="label pull-right" style="background-color: darkgray">('.$count.')'.trans(
-                'contract.open'
-            ).'</span>';
+        $status = '<span class="label pull-right" style="background-color: darkgray">('.$count.') '.trans('contract.open').'</span>';
     }
 
     return sprintf(

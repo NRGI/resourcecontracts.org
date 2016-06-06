@@ -61,6 +61,7 @@ return [
     'or'                      => 'ou',
     'no_comments'             => "Pas de commentaires",
     'be_back'                 => "On revient tout de suite",
+    'back'                    => 'Arrière',
 
 
     'form' => [
