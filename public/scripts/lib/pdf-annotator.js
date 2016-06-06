@@ -53,6 +53,7 @@ Annotator.Plugin.PdfAnnotator = (function (_super) {
         });
 
         var updateChange = function (e, ele) {
+            console.log('ddd');
             var el = $(e.target);
             $(annotator.viewer.element).addClass('annotator-hide');
 
@@ -70,7 +71,7 @@ Annotator.Plugin.PdfAnnotator = (function (_super) {
             boxEl.boxer({disabled: true});
             $(e.target).find('div.annotator-resize-action').remove();
             $(e.target).addClass('resizable-active');
-            $(e.target).append('<div class="btn-group annotator-resize-action" role="group"><button class="save btn btn-primary">'+LANG.save+'</button> <button class="cancel btn btn-danger" >'+LANG.cancel+'</button></div>');
+            $(e.target).append(self.resizeButtons());
             var hl = el.find('div.annotator-hl').draggable( "option", "disabled", true );
             boxEl.find('div.annotator-hl').draggable({disabled: true});
             boxEl.find(e.target).draggable({disabled: false});
@@ -85,7 +86,9 @@ Annotator.Plugin.PdfAnnotator = (function (_super) {
             var shape = annotator.shapes[0].geometry;
             shape = self.getShape(shape);
             el.css({top: shape.y, left: shape.x, height: shape.height, width: shape.width});
-            el.find('button').remove();
+            el.find('.annotator-resize-action').remove();
+            el.removeClass('resizable-active');
+
             if (boxEl.find('.cancel').length === 0) {
                 boxEl.boxer({disabled: false});
             }
@@ -93,6 +96,13 @@ Annotator.Plugin.PdfAnnotator = (function (_super) {
             boxEl.find('div.annotator-hl').draggable({disabled: false});
             boxEl.find('div.annotator-hl').resizable({disabled: false});
 
+        });
+
+
+        $(document).on('click', '.annotator-resize-action .standardSize', function(){
+            var el = $(this).parent().parent();
+            el.css('height', '50px');
+            el.css('width', '50px');
         });
 
         $(document).on('click', '.annotator-resize-action button.save', function () {
@@ -159,6 +169,19 @@ Annotator.Plugin.PdfAnnotator = (function (_super) {
 
     PdfAnnotator.prototype.getShapeDataFormat = function (offset) {
         return [{type: "rect", geometry: {x: offset.left, y: offset.top, height: offset.height, width: offset.width}}];
+    };
+
+    PdfAnnotator.prototype.resizeButtons = function()
+    {
+        return '<div class="btn-group annotator-resize-action" role="group">' +
+                    '<button title="'+LANG.save+'" class="save btn btn-primary"><span class="glyphicon glyphicon-ok"' +
+            ' aria-hidden="true"></span></button> ' +
+                    '<button title="'+LANG.cancel+'"  class="cancel btn btn-danger" ><span class="glyphicon' +
+            ' glyphicon-remove" aria-hidden="true"></span></button>' +
+                    '<button title="'+LANG.standard_box+'"class="standardSize btn btn-warning" ><span' +
+            ' class="glyphicon' +
+            ' glyphicon-unchecked" aria-hidden="true"></span></button>' +
+                '</div>';
     };
 
     PdfAnnotator.prototype.annotationLoader = function (annotation) {

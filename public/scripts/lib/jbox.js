@@ -1,4 +1,4 @@
-    $.widget("ui.boxer", $.ui.mouse, {
+$.widget("ui.boxer", $.ui.mouse, {
 
     start: function () {
         this._init();
@@ -14,26 +14,31 @@
             .css({border: '1px dotted black'});
     },
     destroy: function () {
-          this.element
-         .removeClass("ui-boxer ui-boxer-disabled")
-         .removeData("boxer")
-         .unbind(".boxer");
+        this.element
+            .removeClass("ui-boxer ui-boxer-disabled")
+            .removeData("boxer")
+            .unbind(".boxer");
         this._mouseDestroy();
         return this;
     },
 
-    getActualPos:function(event)
-    {
-       var posX = $('canvas').offset().left,
-           posY = $('canvas').offset().top;
+    getActualPos: function (event) {
+        if ($('canvas').length < 1) {
+            return event;
+        }
+
+        var posX = $('canvas').offset().left,
+            posY = $('canvas').offset().top;
         event.pageX = event.pageX - posX;
         event.pageY = event.pageY - posY;
 
-       return event;
+        return event;
     },
 
     _mouseStart: function (event) {
-
+        if ($('canvas').length < 1) {
+            return;
+        }
         var self = this
 
         event = this.getActualPos(event);
@@ -62,6 +67,9 @@
     },
 
     _mouseDrag: function (event) {
+        if ($('canvas').length < 1) {
+            return;
+        }
         var self = this;
         this.dragged = true;
 
@@ -100,14 +108,17 @@
     },
 
     _mouseStop: function (event) {
+        if ($('canvas').length < 1) {
+            return;
+        }
         var self = this;
 
         this.dragged = false;
 
         var options = this.options;
 
-        if(options.disabled)
-        return;
+        if (options.disabled)
+            return;
 
         $('.boxer-hl').remove();
         var clone = this.helper.clone()

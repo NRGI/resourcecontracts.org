@@ -14,7 +14,7 @@ Annotator.Plugin.ArticleReference = (function (_super) {
             submit: this.saveArticleReference
         });
 
-        $('.annotator-wrapper').find('input, textarea').attr('spellcheck', 'true');
+        $('.annotator-wrapper').find('input, textarea').attr({'spellcheck': 'true', 'autocomplete':'off'});
     };
 
     function ArticleReference() {
