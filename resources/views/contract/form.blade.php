@@ -35,7 +35,6 @@ if (!empty($contract->metadata->government_entity)) {
         }
     }
 }
-
 ?>
 
 @if($action == 'add')
@@ -232,7 +231,7 @@ if (isset($contract->metadata->resource)) {
 <div class="form-group el_document_type">
     <?php
     if(isset($contract->file)){
-        $dt = isset($contract->metadata->document_type) ? $contract->metadata->document_type : old('document_type');
+        $dt = (isset($contract->metadata->document_type) && !isset($_GET['parent'])) ? $contract->metadata->document_type : old('document_type');
         if (!in_array($dt, trans('codelist/documentType')) AND $dt != '') {
             $dt = 'Other';
         }
@@ -261,7 +260,7 @@ if (isset($contract->metadata->resource)) {
 
     <div class="col-sm-7">
         <?php
-        $toc = isset($contract->metadata->type_of_contract) ? $contract->metadata->type_of_contract : old('type_of_contract');
+        $toc = (isset($contract->metadata->type_of_contract) && !(isset($_GET['parent'])) )? $contract->metadata->type_of_contract : old('type_of_contract');
 
 
         if (!empty($toc)) {
