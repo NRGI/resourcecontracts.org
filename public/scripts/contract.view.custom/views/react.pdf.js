@@ -16,7 +16,7 @@ var Pdf = React.createClass({
     loadFile: function () {
         var self = this;
         var content = this.props.pdfPage.get("content");
-        var email = 'info@openlandcontracts.org';
+        var email = 'nrgi@yipl.com.np';
         var link = '<a href="mailto:'+email+'">'+email+'</a>';
         var message = LANG.error_loading_file;
         message = message.replace(':link',link);
@@ -24,7 +24,7 @@ var Pdf = React.createClass({
             this.setState({
                 page: "",
                 content: "",
-                message: <div className="no-contract-error">{message}</div>
+                message: '<div class="no-contract-error">'+message+'</div>'
             });
         } else {
             if (content !== "-") {
@@ -95,8 +95,8 @@ var Pdf = React.createClass({
         }
 
         if (this.state.message) {
-            debug("react.pdf  showing generic message", this.state.message)
-            return (React.createElement("div", null, this.state.message));
+            debug("react.pdf  showing generic message", this.state.message);
+            return (<div dangerouslySetInnerHTML={{__html: this.state.message}} />);
         } else {
             var page_no = this.props.contractApp.getCurrentPage();
             debug("react.pdf showing page loader", page_no);

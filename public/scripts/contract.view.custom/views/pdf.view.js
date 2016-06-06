@@ -133,8 +133,8 @@ var PdfViewer = React.createClass({
                 var context = canvas.getContext('2d');
                 context.clearRect(0, 0, canvas.width, canvas.height);
                 context.fill();
+                self.annotator.pageUpdated();
             }
-            self.annotator.pageUpdated();
         });
 
         this.props.contractApp.on("annotationCreated", function () {
@@ -145,8 +145,8 @@ var PdfViewer = React.createClass({
                 var context = canvas.getContext('2d');
                 context.clearRect(0, 0, canvas.width, canvas.height);
                 context.fill();
+                self.annotator.pageUpdated();
             }
-            self.annotator.pageUpdated();
         });
 
     },

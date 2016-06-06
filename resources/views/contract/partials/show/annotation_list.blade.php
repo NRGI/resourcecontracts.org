@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <a href="javascript:void(0)" data-pk="{{$child->id}}" class="annotation-delete-btn">@lang('annotation.delete')</a></div>
-                            </div>
+                                </div>
                         @endforeach
                     </li>
                 @empty

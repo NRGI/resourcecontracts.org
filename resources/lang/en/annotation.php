@@ -60,8 +60,7 @@ return [
     'next'                            => 'next',
     'of'                              => 'of',
     'zoom'                            => 'Zoom',
-    'error_loading_file'              => "We're sorry, there is a problem loading the contract. Please contact :link
-    to let us know, or check back later",
+    'error_loading_file'              => "We're sorry, there is a problem loading the contract. Please contact :link to let us know, or check back later",
     'loading_pdf'                     => 'Loading pdf page',
     'confirm_save'                    => 'Please save your edits before exiting the page.',
     'text_saved'                      => 'Successfully saved.',
@@ -72,14 +71,11 @@ return [
     'search_no_result'                => 'No results found',
     'pdf'                             => 'PDF',
     'text'                            => 'Text',
-    'warning_text'                    => 'We are currently processing the contract\'s PDF file, and a text version is
-    not yet available.',
+    'warning_text'                    => 'We are currently processing the contract\'s PDF file, and a text version is not yet available.',
     'learn_more'                      => 'Learn more',
-    'ocr_text_helper'                 => 'The text below was created automatically and may contain errors and differences
-     from the contract`s original file.',
+    'ocr_text_helper'                 => 'The text below was created automatically and may contain errors and differences from the contract`s original file.',
     'annotation_complete'             => 'Are you sure you want to marked complete these annotations ?',
     'annotation_publish'              => 'Are you sure you want to marked publish these annotations ?',
     'suggestion'                      => 'Suggest changes for annotations',
-
-
+    'standard_box'                    => 'Resize to standard box',
 ];

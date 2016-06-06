@@ -24,7 +24,7 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
             .subscribe("annotationEditorShown", onEditorShownHandler)
             .subscribe("annotationViewerShown", onViewShownHandler);
 
-       this.notification = new Annotator.Notification;
+        this.notification = new Annotator.Notification;
 
     };
     AnnotatorEvents.prototype.options = {
@@ -63,13 +63,15 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
     };
     AnnotatorEvents.prototype.onAnnotationDeleted = function (annotation) {
         var self = this;
-        setTimeout(function (event) {
-            self.contractApp.trigger('annotationDeleted', annotation);
-            self.notification.show(LANG.annotation_successfully_deleted, 'success');
+        setTimeout(function () {
+            if (typeof annotation.annotation_id !== 'undefined') {
+                self.contractApp.trigger('annotationDeleted', annotation);
+                self.notification.show(LANG.annotation_successfully_deleted, 'success');
+            }
         }, 1000);
     };
 
-    AnnotatorEvents.prototype.onAnnotationEditorSubmit = function (editor,annotation) {
+    AnnotatorEvents.prototype.onAnnotationEditorSubmit = function (editor, annotation) {
     };
 
     AnnotatorEvents.prototype.onMouseOverAnnotation = function (viewer) {
@@ -159,8 +161,8 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         var widgetEl = wrapperEl.find('ul.annotator-widget');
         var widgetHeight = widgetEl.height() + 25;
 
-        $('.annotator-edit').attr('title',LANG.annotator_edit);
-        $('.annotator-delete').attr('title',LANG.delete);
+        $('.annotator-edit').attr('title', LANG.annotator_edit);
+        $('.annotator-delete').attr('title', LANG.delete);
 
         if (wrapperEl.width() / 2 < position.left) {
             viewerEl.addClass('annotator-invert-x');

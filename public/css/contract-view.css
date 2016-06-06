@@ -763,7 +763,9 @@ span.error{color:red; margin-top: 5px; display: inline-block}
 
 .annotator-resize-action
 {
-    position:absolute; top:-30px;
+    position:absolute;
+    top:-30px;
+    width: 240px;
 }
 
 .annotator-resize-action button {

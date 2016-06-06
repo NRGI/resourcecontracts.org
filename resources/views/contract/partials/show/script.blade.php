@@ -61,7 +61,7 @@ for ($i = 1; $i <= $contract->pages()->count(); $i ++) {
                             type: "POST",
                             data: {'id': id},
                             success: function (data) {
-                                if(parent.parent().find('.row').length == 1)
+                                if(parent.parent().find('.row').length == 2)
                                 {
                                     parent = parent.parent();
                                     $('.annotation-count').html(function(index, count){
