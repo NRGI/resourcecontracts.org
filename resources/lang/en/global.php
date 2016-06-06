@@ -58,6 +58,9 @@ return [
     'mturk_sent'              => 'Sent to MTurk',
     'mturk_completed'         => 'MTurk task Completed',
     'select'                  => 'Select',
+    'or'                      => 'or',
+    'no_comments'             => 'There is no comment.',
+    'be_back'                 => 'Be right back.',
 
     'form' => [
         'close'  => 'Close',

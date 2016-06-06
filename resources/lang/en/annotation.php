@@ -77,4 +77,9 @@ return [
     'learn_more'                      => 'Learn more',
     'ocr_text_helper'                 => 'The text below was created automatically and may contain errors and differences
      from the contract`s original file.',
+    'annotation_complete'             => 'Are you sure you want to marked complete these annotations ?',
+    'annotation_publish'              => 'Are you sure you want to marked publish these annotations ?',
+    'suggestion'                      => 'Suggest changes for annotations',
+
+
 ];

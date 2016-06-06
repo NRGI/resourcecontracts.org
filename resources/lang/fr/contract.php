@@ -112,6 +112,9 @@ return [
     'to'                                   => "à",
     'contract'                             => "contrats",
     'disable'                              => "Désactiver",
+    'no_comment'                           => "Commentaire non encore ajouté",
+    'not_resolved'                         => "Marquer comme résolu",
+    'write_comment'                        => "Ecrire un commentaire...",
 
 
     /*ContractController*/
@@ -159,6 +162,10 @@ return [
     'pages_display'                        => "Page(s) manquant au document",
     'scanned'                              => 'Numérisée',
     'structured'                           => 'Structuré',
+    'add_new_government_entity'            => 'Ajouter nouvelle entité gouvernementale',
+    'add_new_company'                      => 'Ajouter une nouvelle société',
+    'add_new_license'                      => 'Ajouter nouvelle licence',
+    'no_parent'                            => 'Aucun Parent',
 
     /*Logs*/
     'log'                                  => [

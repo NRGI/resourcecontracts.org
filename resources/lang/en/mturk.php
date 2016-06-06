@@ -21,6 +21,7 @@
      'tasks_approved'           => 'Task Approved',
      'tasks_requiring_action'   => 'Tasks requiring your action',
      'review_task'              => 'Please review the completed tasks before approval.',
+     "review"                   => "Review",
      'all_task'                 => 'All Tasks',
      'task'                     => 'Task',
      'requiring_action'         => 'Requiring Action',

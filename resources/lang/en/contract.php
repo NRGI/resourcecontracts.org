@@ -112,6 +112,9 @@ return [
     'to'                                   => 'to',
     'contract'                             => 'contracts',
     'disable'                              => 'Disable',
+    'not_resolved'                         => 'Mark as resolved',
+    'write_comment'                        => 'Write comment...',
+
 
     /*ContractController*/
     'save_success'                         => 'Contract successfully uploaded. You will receive an email notification once the contract processing is complete allowing for the text review',
@@ -158,7 +161,10 @@ return [
     'pages_display'                        => 'Page(s) missing from document',
     'scanned'                              => 'Scanned',
     'structured'                           => 'Structured',
-
+    'add_new_government_entity'            => 'Add new government entity',
+    'add_new_company'                      => 'Add new company',
+    'add_new_license'                      => 'Add new license',
+    'no_parent'                            => 'No Parent',
     /*Logs*/
     'log'                                  => [
         'save'       => 'Contract created',

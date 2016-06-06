@@ -22,7 +22,7 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">{{$contract->title}}
-            <a class="btn btn-default pull-right" href="{{route('mturk.index')}}">@lang('Back')</a>
+            <a class="btn btn-default pull-right" href="{{route('mturk.index')}}">@lang('back')</a>
         </div>
 
         <div class="panel-body">
@@ -88,7 +88,7 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                             <div class="mturk-btn-group" role="group">
                                 @if($task->status != 0)
                                     <a href="{{route('mturk.task.detail',['contract_id'=>$contract->id, 'task_id'=>$task->id])}}"
-                                       class="btn btn-default">Review</a>
+                                       class="btn btn-default">@lang('mturk.review')</a>
                                     @if(empty($task->approved))
                                         {!! Form::open(['url' =>route('mturk.task.approve',['contract_id'=>$contract->id, 'task_id'=>$task->id]), 'method' => 'post']) !!}
                                         {!! Form::button(trans('mturk.approve'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>'Are you sure you want to approve this assignment?'])!!}
