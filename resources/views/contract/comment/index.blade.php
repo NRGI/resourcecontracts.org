@@ -2,14 +2,14 @@
 
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading">@lang("All Comments") - {{$contract->metadata->contract_name}} <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">@lang("Back")</a></div>
+        <div class="panel-heading">@lang("All Comments") - {{$contract->metadata->contract_name}} <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">@lang("global.back")</a></div>
         <div class="panel-body">
             <div class="" id="myTabs">
                 <ul class="nav nav-tabs">
                     <li class="active"><a id="tabAll">All</a></li>
-                    <li><a href="#" id="tabMetadata">@lang('Metadata')</a></li>
-                    <li><a href="#" id="tabText">@lang('Text')</a></li>
-                    <li><a href="#" id="tabAnnotation">@lang('Annotation')</a></li>
+                    <li><a href="#" id="tabMetadata">@lang('global.metadata')</a></li>
+                    <li><a href="#" id="tabText">@lang('global.text')</a></li>
+                    <li><a href="#" id="tabAnnotation">@lang('contract.annotations')</a></li>
                 </ul>
             </div>
 
@@ -28,7 +28,7 @@
                     </div>
                 @empty
                     <div class="no-comment">
-                        {{trans('There is no comment.')}}
+                        {{trans('contract.comment_not_added')}}
                     </div>
             @endforelse
             </div>

@@ -49,7 +49,7 @@ var TextEditorContainer = React.createClass({
         });
 
         window.addEventListener("beforeunload", function (e) {
-            var confirmationMessage = LANG.confirm.save;
+            var confirmationMessage = LANG.confirm_save;
             if (self.getStateChange()) {
                 (e || window.event).returnValue = confirmationMessage;
                 return confirmationMessage;

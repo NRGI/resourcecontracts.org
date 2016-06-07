@@ -61,6 +61,7 @@ return [
     'or'                      => 'or',
     'no_comments'             => 'There is no comment.',
     'be_back'                 => 'Be right back.',
+    'back'                    => 'Back',
 
     'form' => [
         'close'  => 'Close',
