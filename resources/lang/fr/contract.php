@@ -115,6 +115,8 @@ return [
     'no_comment'                           => "Commentaire non encore ajouté",
     'not_resolved'                         => "Marquer comme résolu",
     'write_comment'                        => "Ecrire un commentaire...",
+    'comment_not_added'                    => "Commentaire non encore ajouté",
+    'mark_resolved'                        => "Marquer comme résolu",
 
 
     /*ContractController*/

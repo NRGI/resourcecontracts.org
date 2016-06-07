@@ -114,7 +114,7 @@ return [
     'disable'                              => 'Disable',
     'not_resolved'                         => 'Mark as resolved',
     'write_comment'                        => 'Write comment...',
-
+    'comment_not_added'                    => 'Comment not added yet.',
 
     /*ContractController*/
     'save_success'                         => 'Contract successfully uploaded. You will receive an email notification once the contract processing is complete allowing for the text review',

@@ -22,7 +22,7 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">{{$contract->title}}
-            <a class="btn btn-default pull-right" href="{{route('mturk.index')}}">@lang('back')</a>
+            <a class="btn btn-default pull-right" href="{{route('mturk.index')}}">@lang('mturk.back')</a>
         </div>
 
         <div class="panel-body">
