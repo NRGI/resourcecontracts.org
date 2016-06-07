@@ -48,4 +48,10 @@ interface PageRepositoryInterface
      */
     public function getAllText($contractID);
 
+    /**
+     * Get all the text
+     * @return array
+     */
+    public function contractText();
+
 }
