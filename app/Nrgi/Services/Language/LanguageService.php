@@ -47,7 +47,7 @@ class LanguageService
     {
         $code = $this->browserLang();
 
-        if ($this->isValidLang($code)) {
+        if (!is_null($code) && $this->isValidLang($code)) {
             return $code;
         }
 
@@ -160,10 +160,14 @@ class LanguageService
     /**
      * Get Browser Language
      *
-     * @return string
+     * @return string|null
      */
     protected function browserLang()
     {
-        return substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            return substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        }
+
+        return null;
     }
 }

@@ -5,8 +5,6 @@
     <script src="{{asset('js/select2.min.js')}}"></script>
     <script src="{{asset('js/jquery.datetimepicker.js')}}"></script>
     <script src="{{asset('js/mustache.min.js')}}"></script>
-    <script src="{{asset('js/lib/underscore.js')}}"></script>
-    <script src="{{asset('js/lib/backbone.js')}}"></script>
     @include('contract.company_template')
     <script>
         $('#file').filestyle({
