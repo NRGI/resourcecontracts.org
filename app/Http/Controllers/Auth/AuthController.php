@@ -79,35 +79,4 @@ class AuthController extends Controller
                 ]
             );
     }
-
-    public function siteLogin(Request $request)
-    {
-        $credentials = [
-            'email'    => $request->get('username'),
-            'password' => $request->get('password'),
-        ];
-
-        $response = [
-            'status'  => 'failed',
-            'message' => 'Invalid username or password.'
-        ];
-
-        if ($this->auth->attempt($credentials)) {
-            if ($this->auth->user()->status == 'false') {
-                $response = [
-                    'status'  => 'failed',
-                    'message' => 'Account has not been activated'
-                ];
-            } else {
-                $response = [
-                    'status'  => 'success',
-                    'message' => $this->auth->user()->toArray()
-                ];
-            }
-        }
-
-        return response()->json($response);
-    }
-
-
 }

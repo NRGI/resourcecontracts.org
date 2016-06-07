@@ -11,7 +11,6 @@ $.widget("ui.boxer", $.ui.mouse, {
         this._mouseInit();
         this.helper = $(document.createElement('div'))
             .addClass("ui-boxer-helper")
-            .css({border: '1px dotted black'});
     },
     destroy: function () {
         this.element

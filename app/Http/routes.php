@@ -9,11 +9,11 @@ $router->controllers(
     ]
 );
 
-$router->get('/site/login', 'Auth\AuthController@siteLogin');
+$router->group(
+    ['namespace' => 'Api', 'prefix' => 'api'],
+    function ($router) {
+        $router->post('login',['as' => 'api.login','uses'=>'ApiController@login']);
+    }
+);
 
 $router->get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-
-$router->post('set-language',[
-    'as' => 'set-language',
-    'uses' => 'Dashboard\DashboardController@setLanguage'
-]);

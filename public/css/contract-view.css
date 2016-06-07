@@ -779,3 +779,7 @@ span.error{color:red; margin-top: 5px; display: inline-block}
     z-index: 1000;
 }
 
+.annotator-raw, .boxer-hl {
+    border: 1px dotted black;
+}
+
