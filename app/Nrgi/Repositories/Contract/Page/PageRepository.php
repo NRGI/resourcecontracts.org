@@ -87,4 +87,13 @@ class PageRepository implements PageRepositoryInterface
         return $page->save();
     }
 
+
+    /**
+     * Get all the text
+     * @return array
+     */
+    public function contractText()
+    {
+        return $this->page->select('text')->get()->toArray();
+    }
 }
