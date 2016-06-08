@@ -783,3 +783,11 @@ span.error{color:red; margin-top: 5px; display: inline-block}
     border: 1px dotted black;
 }
 
+.btn-standard-size{
+    padding: 1px 5px;
+    float: left;
+    margin-top: 1px;
+}
+
+
+

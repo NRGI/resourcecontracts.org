@@ -77,5 +77,5 @@ return [
     'annotation_complete'             => 'Are you sure you want to marked complete these annotations ?',
     'annotation_publish'              => 'Are you sure you want to marked publish these annotations ?',
     'suggestion'                      => 'Suggest changes for annotations',
-    'standard_box'                    => 'Resize to standard box',
+    'standard_box'                    => 'Resize to standard box size.',
 ];
