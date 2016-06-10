@@ -115,6 +115,7 @@ return [
     'not_resolved'                         => 'Mark as resolved',
     'write_comment'                        => 'Write comment...',
     'comment_not_added'                    => 'Comment not added yet.',
+    'generate_name'                        => 'Generate Contract name',
 
     /*ContractController*/
     'save_success'                         => 'Contract successfully uploaded. You will receive an email notification once the contract processing is complete allowing for the text review',

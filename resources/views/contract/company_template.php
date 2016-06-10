@@ -97,7 +97,7 @@
         <div class="form-group">
             <label for="license_name" class="col-sm-2 control-label"><?php echo trans('contract.license_name') ?></label>
             <div class="col-sm-7">
-                <input class="form-control" name="concession[{{item}}][license_name]" type="text" id="license_name_{{item}}">
+                <input class="license-name form-control" name="concession[{{item}}][license_name]" type="text" id="license_name_{{item}}">
             </div>
         </div>
 
@@ -105,7 +105,7 @@
             <label for="license_identifier" class="col-sm-2
             control-label"><?php echo trans('contract.license_identifier') ?></label>
             <div class="col-sm-7">
-                <input class="form-control" name="concession[{{item}}][license_identifier]" type="text" id="license_identifier_{{item}}">
+                <input class="license_identifier form-control" name="concession[{{item}}][license_identifier]" type="text" id="license_identifier_{{item}}">
             </div>
 
         </div>

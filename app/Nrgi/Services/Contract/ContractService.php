@@ -346,8 +346,8 @@ class ContractService
         $formData['concession']        = $this->removeKeys($formData['concession']);
         $formData['government_entity'] = $this->removeKeys($formData['government_entity']);
         $formData['show_pdf_text']     = isset($formData['show_pdf_text']) ? $formData['show_pdf_text'] : Contract::SHOW_PDF_TEXT;;
-
-        $data = array_only(
+       // $formData['contract_name'] = $this->contractAutoRename($formData);
+        $data                      = array_only(
             $formData,
             [
                 "contract_name",
@@ -425,7 +425,8 @@ class ContractService
     public function updateContract($contractID, array $formData)
     {
         try {
-            $contract = $this->contract->findContract($contractID);
+
+            $contract     = $this->contract->findContract($contractID);
             $oldIsSupport = $contract->metadata->is_supporting_document;
             $newIsSupport = $formData['is_supporting_document'];
         } catch (Exception $e) {
@@ -433,7 +434,6 @@ class ContractService
 
             return false;
         }
-
         $file_size             = $contract->metadata->file_size;
         $metadata              = $this->processMetadata($formData);
         $metadata['file_size'] = $file_size;
@@ -467,8 +467,7 @@ class ContractService
             if (isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '0') {
                 $this->contract->removeAsSupportingContract($contract->id);
             }
-            if($oldIsSupport != $newIsSupport)
-            {
+            if ($oldIsSupport != $newIsSupport) {
                 $this->contract->updateOCID($contract);
             }
 
@@ -1101,4 +1100,94 @@ class ContractService
 
         return true;
     }
+
+    /**
+     * Auto renaming of contract title
+     * @param $formData
+     * @return string
+     */
+    public function contractAutoRename($formData)
+    {
+
+        $name = "";
+        if ($formData['category'][0] == "olc") {
+            $name = $this->olcTitleRename($formData);
+        }
+
+        if ($formData['category'][0] == "rc") {
+            $name = $this->rcTitleRename($formData);
+        }
+
+        return $name;
+    }
+
+    /**
+     * OLC title rename
+     * @param $formData
+     * @return string
+     */
+    public function olcTitleRename($formData)
+    {
+
+        $name = "";
+        if (isset($formData['country'])) {
+            $country = (gettype($formData['country']))?(array)$formData['country']:$formData['country'];
+            $name .= $country['name'] . ", ";
+        }
+
+        $companies = (gettype($formData['country']=="object"))?(array)$formData['company']:$formData['company'];
+        $companyName = $this->formatCompanyName($companies);
+        if (!empty($companyName)) {
+            $company = implode(' - ', $companyName);
+            $name .= $company . ",";
+        }
+
+        $contractType = implode(' - ', $formData['type_of_contract']);
+        $name .= $contractType . ", ";
+        $name .= $formData['signature_year'];
+
+        return $name;
+
+    }
+
+    /**
+     * Rc title rename
+     * @param $formData
+     * @return string
+     */
+    public function rcTitleRename($formData)
+    {
+
+        $name = "";
+        if (isset($formData['country'])) {
+            $country = (gettype($formData['country']))?(array)$formData['country']:$formData['country'];
+            $name .= $country['name'] . ", ";
+        }
+
+        $companies = (gettype($formData['country']=="object"))?(array)$formData['company']:$formData['company'];
+        $companyName = $this->formatCompanyName($companies);
+        if (!empty($companyName)) {
+            $company = implode(' - ', $companyName);
+            $name .= $company . ",";
+        }
+
+        $contractType = implode(' - ', $formData['type_of_contract']);
+        $name .= $contractType . ", ";
+        $name .= $formData['signature_year'];
+
+        return $name;
+    }
+
+    public function formatCompanyName($companies)
+    {
+        $companyName = [];
+        foreach ($companies as $company) {
+            $company = (array)$company;
+            array_push($companyName, $company['name']);
+        }
+
+        return $companyName;
+    }
+
+
 }

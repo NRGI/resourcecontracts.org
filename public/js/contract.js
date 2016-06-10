@@ -292,6 +292,72 @@ $(function () {
             }
         });
 
+
+    $('#generate-contract-name').on('click', function () {
+        var companies = $('.company_name');
+        var company = [];
+        companies.map(function (index, item) {
+            var c = $(item).val();
+            company.push(c);
+        });
+        company = company.join(" - ");
+
+        var license = [];
+        var count = 0;
+        var licenses =  $('.license-name');
+
+        $(licenses).each(function(index,item){
+            if($(item).val() === '') {
+                count = count+1;
+            }
+        });
+
+        if(count >0){
+            licenses = $('.license_identifier');
+            licenses.map(function (index, item) {
+                var li = $(item).val();
+                license.push(li);
+            });
+            license = license.join(" - ");
+        }
+        else
+        {
+            licenses.map(function (index, item) {
+                var l = $(item).val();
+                license.push(l);
+            });
+            license = license.join(" - ");
+        }
+
+
+        var type_of_contract = null;
+
+        if ($('#type_of_contract').val() === null) {
+            type_of_contract = $('#document_type').val();
+
+            if (type_of_contract == 'Other') {
+                type_of_contract = $('.dt').val();
+            }
+        }
+        else {
+            type_of_contract = $('#type_of_contract').val();
+
+            if (type_of_contract == 'Other') {
+                type_of_contract = $('.other_toc').val();
+            }
+            else
+                type_of_contract = type_of_contract.join(" - ");
+        }
+
+        var signature_year = $('.signature_year').val();
+
+        var contract_name = company +',' +license + ','+type_of_contract + ','+signature_year;
+        if (contract_name !== ',,,') {
+            $('.contract_name').val(contract_name);
+        }
+
+    });
+
 });
 
 

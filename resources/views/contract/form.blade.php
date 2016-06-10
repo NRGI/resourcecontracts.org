@@ -76,10 +76,10 @@ if (!empty($contract->metadata->government_entity)) {
     if ($action == 'edit') {
         $contract_name = isset($contract->metadata->contract_name) ? $contract->metadata->contract_name : null;
     } else $contract_name = null;
-
     ?>
     <div class="col-sm-7">
-        {!! Form::text('contract_name', $contract_name, ["class"=>"required form-control"])!!}
+        {!! Form::text('contract_name', $contract_name, ["class"=>"required form-control contract_name"])!!}
+        <span id="generate-contract-name" class="btn btn-primary"> @lang('contract.generate_name')</span>
     </div>
 
     @if($action == 'edit')
@@ -635,7 +635,7 @@ if (isset($contract->metadata->resource)) {
                         <div class="col-sm-7">
                             {!! Form::text("concession[$j][license_name]",
                             isset($v->license_name)?$v->license_name:null,
-                            ["class"=>"form-control"])!!}
+                            ["class"=>"license-name form-control"])!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'license_name-'.$k,'metadata') !!}
@@ -648,7 +648,7 @@ if (isset($contract->metadata->resource)) {
                         <div class="col-sm-7">
                             {!! Form::text("concession[$j][license_identifier]",
                             isset($v->license_identifier)?$v->license_identifier:null,
-                            ["class"=>"form-control"])!!}
+                            ["class"=>"license_identifier form-control"])!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'license_identifier-'.$k,'metadata') !!}
@@ -668,7 +668,7 @@ if (isset($contract->metadata->resource)) {
                 {!! Form::label('license_name', trans('contract.license_name'), ['class'=>'col-sm-2 control-label'])!!}
                 <div class="col-sm-7">
                     {!! Form::text("concession[0][license_name]",null,
-                    ["class"=>"form-control" , "id" => "license_name_0"])!!}
+                    ["class"=>"form-control license-name" , "id" => "license_name_0"])!!}
                 </div>
             </div>
 
@@ -677,7 +677,7 @@ if (isset($contract->metadata->resource)) {
                 control-label'])!!}
                 <div class="col-sm-7">
                     {!! Form::text("concession[0][license_identifier]",null,
-                    ["class"=>"form-control" , "id" => "license_identifier_0"])!!}
+                    ["class"=>"form-control license_identifier" , "id" => "license_identifier_0"])!!}
                 </div>
             </div>
         </div>
@@ -945,7 +945,7 @@ if (isset($contract->metadata->resource)) {
 <div class="modal fade modal-comment" id="commentModel" tabindex="-1" role="dialog" aria-labelledby="commentModelLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div style="padding: 40px;"> Loading...</div>
+            <div style="padding: 40px;">@lang('annotation.loading') </div>
         </div>
     </div>
 </div>

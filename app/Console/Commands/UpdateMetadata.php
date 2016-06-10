@@ -2,6 +2,7 @@
 
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepository;
+use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -29,16 +30,22 @@ class UpdateMetadata extends Command
      * @var ContractRepository
      */
     protected $contract;
+    /**
+     * @var ContractService
+     */
+    private $contractService;
 
     /**
      * Create a new command instance.
      *
      * @param ContractRepository $contract
+     * @param ContractService    $contractService
      */
-    public function __construct(ContractRepository $contract)
+    public function __construct(ContractRepository $contract, ContractService $contractService)
     {
         parent::__construct();
-        $this->contract = $contract;
+        $this->contract        = $contract;
+        $this->contractService = $contractService;
     }
 
     /**
@@ -47,6 +54,7 @@ class UpdateMetadata extends Command
      */
     public function fire()
     {
+
         $contract_id = $this->input->getOption('id');
 
         if (is_null($contract_id)) {
@@ -88,8 +96,7 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        $this->updateAdditionalContractType($metadata);
-        $this->updateAdditionalDocumentType($metadata);
+        $this->updateContractName($metadata);
 
         return $metadata;
     }
@@ -431,6 +438,21 @@ class UpdateMetadata extends Command
                 $metadata['document_type'] = $documentList;
             }
         }
+
+    }
+
+    /**
+     * Rename contract title except olc and drc country
+     * @param $metadata
+     */
+    private function updateContractName(& $metadata)
+    {
+
+        if ($metadata['country']->code != "CD" && $metadata['category'][0] != "olc") {
+            $metadata['contract_name'] = $this->contractService->contractAutoRename($metadata);
+        }
+
+
 
     }
 

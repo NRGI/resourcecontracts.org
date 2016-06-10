@@ -117,6 +117,7 @@ return [
     'write_comment'                        => "Ecrire un commentaire...",
     'comment_not_added'                    => "Commentaire non encore ajouté",
     'mark_resolved'                        => "Marquer comme résolu",
+    'generate_name'                        => 'Générer nom contrat',
 
 
     /*ContractController*/
