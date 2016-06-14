@@ -133,6 +133,7 @@ return [
     "Nickel"                           => "Nickel",
     "Nickel Pig Iron"                  => "Nickel Pig Iron",
     "Niobium"                          => "Niobium",
+    "Not Specified"                    => "Not Specified",
     "Oil"                              => "Oil",
     "Oil crops"                        => "Oil crops",
     "Oil palm or palm oils"            => "Oil palm or palm oils",
@@ -224,5 +225,5 @@ return [
     "Zinc"                             => "Zinc",
     "Zinc-Lead"                        => "Zinc-Lead",
     "Zircon"                           => "Zircon",
-    "Zirconium"                        => "Zirconium"
+    "Zirconium"                        => "Zirconium",
 ];

@@ -133,6 +133,7 @@ return [
     "Nickel"                           => "Nickel",
     "Nickel Pig Iron"                  => "Nickel ferreux de basse qualité",
     "Niobium"                          => "Niobium",
+    "Not Specified"                    => "Non précisé",
     "Oil"                              => "Huile",
     "Oil crops"                        => "Oléagineux",
     "Oil palm or palm oils"            => "Huile de palme ",
@@ -224,5 +225,6 @@ return [
     "Zinc"                             => "Zinc",
     "Zinc-Lead"                        => "Plomb allié au zinc",
     "Zircon"                           => "Zircon",
-    "Zirconium"                        => "Zirconium"
+    "Zirconium"                        => "Zirconium",
+
 ];
