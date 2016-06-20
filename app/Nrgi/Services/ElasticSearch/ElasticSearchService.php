@@ -47,6 +47,7 @@ class ElasticSearchService
      * Get full qualified ES url
      *
      * @param $request
+     *
      * @return string
      */
     protected function apiURL($request)
@@ -59,6 +60,7 @@ class ElasticSearchService
      *
      * @param $id
      * @param $type
+     *
      * @return mixed
      */
     public function post($id, $type)
@@ -142,7 +144,7 @@ class ElasticSearchService
      * Post contract annotations
      *
      * @param $contractId
-     * @internal param $id
+     *
      */
     public function postAnnotation($contractId)
     {
@@ -162,9 +164,8 @@ class ElasticSearchService
                 $json->annotation_id = $annotation->id;
                 $json->text          = $annotation->text;
                 $json->category_key  = $annotation->category;
-                $json->category      = (isset($annotation->category)) ? _l("codelist/annotation.annotation_category.{$annotation->category}") : "";
+                $json->category      = (isset($annotation->category)) ? getCategoryName($annotation->category) : "";
                 $json->cluster       = (isset($annotation->category)) ? _l("codelist/annotation.cluster.{$annotation->category}") : "";
-
                 $annotationData[] = $json;
             }
         }
@@ -186,6 +187,7 @@ class ElasticSearchService
      * Get Metadata for Elastic Search
      *
      * @param $metadata
+     *
      * @return string
      */
     protected function getMetadataForES($metadata, $array = false)
@@ -237,7 +239,9 @@ class ElasticSearchService
     }
 
     /**
+     * Get Formatted Pdf Text
      * @param $contract
+     *
      * @return string
      */
     public function formatPdfTextPages($contract)
@@ -245,7 +249,9 @@ class ElasticSearchService
         if (isset($contract->metadata->show_pdf_text) && $contract->metadata->show_pdf_text == 1) {
             return $contract->pages->toJson();
         }
+
         $contractPagesArray = [];
+
         foreach ($contract->pages->toArray() as $array) {
             $array['text']        = "";
             $contractPagesArray[] = $array;
