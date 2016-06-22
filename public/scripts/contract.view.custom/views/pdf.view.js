@@ -127,28 +127,13 @@ var PdfViewer = React.createClass({
 
         this.props.contractApp.on("annotationUpdated", function () {
             $('.annotator-viewer').addClass('annotator-hide');
-            var canvas = $('.annotorious-item:first');
-            if (canvas.length > 0) {
-                canvas = canvas[0];
-                var context = canvas.getContext('2d');
-                context.clearRect(0, 0, canvas.width, canvas.height);
-                context.fill();
-                self.annotator.pageUpdated();
-            }
+            self.annotator.pageUpdated();
         });
 
         this.props.contractApp.on("annotationCreated", function () {
             $('.annotator-viewer').addClass('annotator-hide');
-            var canvas = $('.annotorious-item:first');
-            if (canvas.length > 0) {
-                canvas = canvas[0];
-                var context = canvas.getContext('2d');
-                context.clearRect(0, 0, canvas.width, canvas.height);
-                context.fill();
-                self.annotator.pageUpdated();
-            }
+            self.annotator.pageUpdated();
         });
-
     },
     render: function () {
         var page_no = this.props.contractApp.getCurrentPage();
