@@ -176,7 +176,9 @@ function discussion($discussions, $discussion_status, $contract_id, $key, $type 
         $status = '<span class="label label-red pull-right">('.$count.') '.trans('contract.open').'</span>';
     }
     if ($count == 0) {
-        $status = '<span class="label pull-right" style="background-color: darkgray">('.$count.') '.trans('contract.open').'</span>';
+        $status = '<span class="label pull-right" style="background-color: darkgray">('.$count.') '.trans(
+                'contract.open'
+            ).'</span>';
     }
 
     return sprintf(
@@ -218,4 +220,18 @@ function trans_array(array $codeList, $path)
     }
 
     return $codeList;
+}
+
+/**
+ * Get Category name by key
+ *
+ * @param string $key
+ *
+ * @return string
+ */
+function getCategoryName($key = '')
+{
+    $categories = config('category');
+
+    return array_key_exists($key, $categories) ? $categories[$key] : $key;
 }

@@ -59,7 +59,6 @@ Annotator.Plugin.PdfAnnotator = (function (_super) {
                     var box = annotation.box;
                     box.css('height', '25px');
                     box.css('width', '40px');
-
                     var top = parseInt(box.css('top')) + parseInt(box.height());
                     var left = parseInt(box.css('left')) + parseInt(box.width() / 2);
                     boxEl.find('.annotator-editor').css({'top': top, 'left': left});
@@ -247,13 +246,18 @@ Annotator.Plugin.PdfAnnotator = (function (_super) {
         return g;
     };
 
-    PdfAnnotator.prototype.onAnnotationEditorSubmit = function (editor, annotation) {
+    PdfAnnotator.prototype.onAnnotationEditorSubmit = function (editor) {
         if (editor.annotation.box !== undefined) {
             var hl = editor.annotation.box;
+            var box = editor.annotation.box;
             delete editor.annotation.box;
             hl.data('annotator', editor.annotation);
             hl.removeClass('annotator-raw').addClass('annotator-hl').addClass('annotator-pdf-hl');
             var geometry = editor.annotation.shapes[0].geometry;
+            geometry.x = parseInt(box.css('left'));
+            geometry.y = parseInt(box.css('top'));
+            geometry.height = parseInt(box.css('height'));
+            geometry.width = parseInt(box.css('width'));
             editor.annotation.shapes[0].geometry = this.getGeoInPercentage(geometry);
             this.annotator.publish('annotationCreated', editor.annotation);
         }
