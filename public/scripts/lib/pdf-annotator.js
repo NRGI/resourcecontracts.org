@@ -19,6 +19,7 @@ Annotator.Plugin.PdfAnnotator = (function (_super) {
                 helper: "ui-resizable-helper", stop: updateChange
             });
             el.find('div.annotator-hl').draggable({cursor: "move", scroll: true, stop: updateChange});
+            boxEl.boxer({disabled: false});
         };
 
         annotator.subscribe("annotationCreated", enableDragableResizable);
