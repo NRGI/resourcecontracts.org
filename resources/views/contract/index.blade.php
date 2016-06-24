@@ -86,6 +86,7 @@
     <link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
     <script src="{{asset('js/select2.min.js')}}"></script>
     <script type="text/javascript">
-        $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
+        var lang_select = '@lang('global.select')';
+        $('select').select2({placeholder: lang_select, allowClear: true, theme: "classic"});
     </script>
 @stop

@@ -6,7 +6,7 @@
         <div class="panel-body">
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <strong>Whoops!</strong> {{ trans('user.input_error') }}<br><br>
+                    <strong>@lang('user.whoops')</strong> {{ trans('user.input_error') }}<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -21,4 +21,5 @@
         </div>
     </div>
 @endsection
+
 

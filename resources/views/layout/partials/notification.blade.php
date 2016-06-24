@@ -2,7 +2,7 @@
     <div class="alert alert-danger alert-dismissable">
         <button type="button" class="close" data-dismiss="alert">
             <span aria-hidden="true">&times;</span>
-            <span class="sr-only">Close</span>
+            <span class="sr-only">@lang('contract.close')</span>
         </button>
         {!! Session::get('error') !!}
     </div>
@@ -12,7 +12,7 @@
     <div class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert">
             <span aria-hidden="true">&times;</span>
-            <span class="sr-only">Close</span>
+            <span class="sr-only">@lang('contract.close')</span>
         </button>
         {!! Session::get('success') !!}
     </div>

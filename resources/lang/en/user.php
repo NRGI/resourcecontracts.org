@@ -45,6 +45,9 @@ return [
     'delete'                   => 'Delete',
     'edit'                     => 'Edit',
     'confirm_text_user_delete' => 'Are you sure you want to delete this user?',
+    'whoops'                   => "Whoops!",
+    'user_not_found'           => "User not found",
+
 
     /*Logs*/
     'log'                 => [

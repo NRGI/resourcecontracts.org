@@ -90,8 +90,9 @@
 @section('script')
     <script src="{{asset('js/select2.min.js')}}"></script>
     <script>
+        var lang_select = '@lang('global.select')';
         $(function(){
-            $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
+            $('select').select2({placeholder: lang_select, allowClear: true, theme: "classic"});
             $('.role').on("change",function() {
                 var countryRoles ={!! json_encode(config("nrgi.country_role")) !!};
                 var role = $(this).val();

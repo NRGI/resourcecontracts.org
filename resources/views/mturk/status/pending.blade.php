@@ -58,10 +58,10 @@
             <td>
                 @if($contract->tasks->count() == $contract->count_status['total_approved'])
                     @if($contract->mturk_status == 2)
-                        <button class="btn btn-default" disabled="disabled">Sent to RC</button>
+                        <button class="btn btn-default" disabled="disabled">@lang('mturk.sent_to_rc')</button>
                     @else
                         {!! Form::open(['url' =>route('mturk.contract.copy',$contract->id), 'method' => 'post']) !!}
-                        {!! Form::button(trans('mturk.send_to_rc'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>'Are you sure you want to send text to RC?'])!!}
+                        {!! Form::button(trans('mturk.send_to_rc'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>trans('mturk.sure_send_to_rc')])!!}
                         {!! Form::close() !!}
                     @endif
                 @endif

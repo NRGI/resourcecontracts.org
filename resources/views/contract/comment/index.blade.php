@@ -6,7 +6,7 @@
         <div class="panel-body">
             <div class="" id="myTabs">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a id="tabAll">All</a></li>
+                    <li class="active"><a id="tabAll">@lang('mturk.all')</a></li>
                     <li><a href="#" id="tabMetadata">@lang('global.metadata')</a></li>
                     <li><a href="#" id="tabText">@lang('global.text')</a></li>
                     <li><a href="#" id="tabAnnotation">@lang('contract.annotations')</a></li>
@@ -22,8 +22,8 @@
                        </div>
                         <div class="comment-info">
                             <span class="{{$comment->action}}">{{ucfirst($comment->action)}}</span>
-                            @lang('by') <strong>{{$comment->user->name}}</strong>
-                            @lang('on') {{$comment->created_at->format('D F d, Y h:i a')}}
+                            @lang('mturk.by') <strong>{{$comment->user->name}}</strong>
+                            @lang('mturk.on') {{$comment->created_at->format('D F d, Y h:i a')}}
                         </div>
                     </div>
                 @empty

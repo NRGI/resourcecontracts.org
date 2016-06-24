@@ -50,7 +50,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7">@lang('User not found.')</td>
+                        <td colspan="7">@lang("user.user_not_found")</td>
                     </tr>
                 @endforelse
 
