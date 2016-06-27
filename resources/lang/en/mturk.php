@@ -51,6 +51,17 @@
      'rejection_reason'         => 'Write reason for rejection',
      'search'                   => 'Search',
      'all'                      => 'All',
+     'mturk_approve'            => 'Are you sure you want to approve this assignment ?',
+     'index_task'               => 'task',
+     'view_on_amazon'           => 'View On Amazon',
+     'sure_send_to_rc'          => 'Are you sure you want to send text to RC ?',
+     'sent_to_rc'               => 'Sent to RC',
+     'reset_hitid'              => "Reseting this HIT will delete this task and re-creates a new one for this page. Any worker who might be working but hasn\'t submitted the assignment for this task will be rejected. Select Ok to continue.",
+     'mturk_rejection'          => 'Write reason for rejection.',
+     'balance_check'            => 'click here to check',
+     'on'                       => 'on',
+     'by'                       => 'by',
+
 
      'log'           => [
          'create'     => ':contract sent to Mechanical Turk',

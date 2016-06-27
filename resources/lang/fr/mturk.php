@@ -51,6 +51,17 @@
      'rejection_reason'            => "Mentionner la raison du rejet",
      'search'                      => "Rechercher",
      'all'                         => "Tout",
+     'mturk_approve'               => 'Êtes-vous sûr de vouloir approuver cette mission ?',
+     'index_task'                  => 'tâche',
+     'view_on_amazon'              => 'Voir sur Amazon',
+     'sure_send_to_rc'             => 'Êtes-vous sûr de vouloir envoyer du texte au RC ?',
+     'sent_to_rc'                  => 'Envoyé à RC',
+     'reset_hitid'                 => "Reseting cette HIT supprimera cette tâche et re-crée un nouveau pour cette page. Tout travailleur qui pourrait travailler, mais n'a pas présenté l'affectation de cette tâche sera rejetée. Sélectionnez Ok pour continuer.",
+     'mturk_rejection'             => 'Ecrire raison du rejet.',
+     'balance_check'               => 'cliquez ici pour vérifier',
+     'on'                          => 'sur',
+     'by'                          => 'par',
+
 
 
      'log'           =>[

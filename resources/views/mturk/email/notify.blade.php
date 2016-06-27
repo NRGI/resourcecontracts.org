@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">{{$contract['title']}}</div>
-    <a href="{{route('mturk.tasks', $contract['id'])}}">click here to check</a>
+    <a href="{{route('mturk.tasks', $contract['id'])}}">@lang('mturk.balance_check')</a>
 
     <div class="panel-body">
         <ul>

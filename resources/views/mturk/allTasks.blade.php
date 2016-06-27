@@ -66,7 +66,7 @@ $approved = \Input::get('approved', null);
                                     {{$task->hit_id}}
                                 </a>
                             @endif
-                            <a href="{{ hit_url($task->hit_id) }}" target="_blank" title="View On Amazon" data-toggle="tooltip"> <span class="glyphicon glyphicon-eye-open"></span></a>
+                            <a href="{{ hit_url($task->hit_id) }}" target="_blank" title="@lang('mturk.view_on_amazon')" data-toggle="tooltip"> <span class="glyphicon glyphicon-eye-open"></span></a>
                         </td>
                         <td>{{$task->page_no}}</td>
                         <td>{{$task->status()}}</td>
@@ -85,8 +85,8 @@ $approved = \Input::get('approved', null);
             @if ($tasks->lastPage()>1)
                 <div class="text-center">
                     <div class="pagination-text">
-                        Showing {{($tasks->currentPage()==1)?"1":($tasks->currentPage()-1)*$tasks->perPage()}}
-                        to {{($tasks->currentPage()== $tasks->lastPage())?$tasks->total():($tasks->currentPage())*$tasks->perPage()}} of {{$tasks->total()}} tasks
+                        @lang('contract.showing') {{($tasks->currentPage()==1)?"1":($tasks->currentPage()-1)*$tasks->perPage()}}
+                        @lang('contract.to') {{($tasks->currentPage()== $tasks->lastPage())?$tasks->total():($tasks->currentPage())*$tasks->perPage()}} @lang('contract.of') {{$tasks->total()}} @lang('mturk.index_task')
                     </div>
                     {!! $tasks->appends($app->request->all())->render() !!}
                 </div>
