@@ -224,15 +224,15 @@ $(function () {
         loadGovernmentEntities(country);
     });
 
-    $(document).on('change','#country',function(){
-       $('.el_government_identifier').val('');
+    $(document).on('change', '#country', function () {
+        $('.el_government_identifier').val('');
     });
 
 
     function getEntitiesOptions(country) {
         var entities = govEntity[country];
-       var options = '';
-        options += "<option value=''>"+lang_select+"</option>";
+        var options = '';
+        options += "<option value=''>" + lang_select + "</option>";
         if (entities) {
             for (i = 0; i < entities.length; i++) {
                 options += "<option value ='" + entities[i]['entity'] + "'>" + entities[i]['entity'] + "</option>";
@@ -269,70 +269,69 @@ $(function () {
         $("#new-document").toggle();
     });
 
-    function init_autocomplete()
-    {
-        $( ".company_name" ).autocomplete({
-            source: function( request, response){
-                var results= $.ui.autocomplete.filter(companyName, request.term);
-                response(results.slice(0,10));
+    function init_autocomplete() {
+        $(".company_name").autocomplete({
+            source: function (request, response) {
+                var results = $.ui.autocomplete.filter(companyName, request.term);
+                response(results.slice(0, 10));
             }
         });
 
     }
+
     init_autocomplete();
 
 
     $('input:radio[name="is_supporting_document"]').change(
-        function(){
+        function () {
             if ($(this).is(':checked') && $(this).val() == 1) {
                 $(".parent-document").css('display', 'block');
             }
-            else{
+            else {
                 $(".parent-document").css('display', 'none');
             }
         });
 
 
     $('#generate-contract-name').on('click', function () {
-        var companies = $('.company_name');
         var company = [];
-        companies.map(function (index, item) {
+        $('.company_name').map(function (index, item) {
             var c = $(item).val();
-            company.push(c);
+            if (c != '') {
+                company.push(c);
+            }
         });
-        company = company.join(" - ");
+        company = company.join("-");
 
         var license = [];
         var count = 0;
-        var licenses =  $('.license-name');
-
-        $(licenses).each(function(index,item){
-            if($(item).val() === '') {
-                count = count+1;
+        var license_text = '';
+        $('.license-name').each(function (index, item) {
+            if ($(item).val() === '') {
+                count = count + 1;
             }
         });
 
-        if(count >0){
+        if (count > 0) {
             licenses = $('.license_identifier');
             licenses.map(function (index, item) {
                 var li = $(item).val();
                 license.push(li);
             });
-            license = license.join(" - ");
+            license_text = license.join("-");
         }
-        else
-        {
+        else {
             licenses.map(function (index, item) {
                 var l = $(item).val();
                 license.push(l);
             });
-            license = license.join(" - ");
+            license_text = license.join("-");
         }
 
 
-        var type_of_contract = null;
+        var type_of_contract = '';
 
-        if ($('#type_of_contract').val() === null) {
+        if ($('#type_of_contract').val() === '') {
             type_of_contract = $('#document_type').val();
 
             if (type_of_contract == 'Other') {
@@ -346,15 +345,30 @@ $(function () {
                 type_of_contract = $('.other_toc').val();
             }
             else
-                type_of_contract = type_of_contract.join(" - ");
+                type_of_contract = type_of_contract.join("-");
         }
 
         var signature_year = $('.signature_year').val();
 
-        var contract_name = company +',' +license + ','+type_of_contract + ','+signature_year;
-        if (contract_name !== ',,,') {
-            $('.contract_name').val(contract_name);
+        var contract_name = [];
+
+        if(company !=''){
+            contract_name.push(company);
         }
+
+        if(license_text !='') {
+            contract_name.push(license_text);
+        }
+
+        if(type_of_contract !='') {
+            contract_name.push(type_of_contract);
+        }
+
+        if(signature_year !='') {
+            contract_name.push(signature_year);
+        }
+
+        $('.contract_name').val(contract_name.join(','));
 
     });
 
