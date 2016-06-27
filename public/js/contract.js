@@ -305,33 +305,32 @@ $(function () {
 
         var license = [];
         var count = 0;
-        var license_text = '';
-        $('.license-name').each(function (index, item) {
+        var license_text = $('.license-name');
+        $('license_text').each(function (index, item) {
             if ($(item).val() === '') {
                 count = count + 1;
             }
         });
 
         if (count > 0) {
-            licenses = $('.license_identifier');
-            licenses.map(function (index, item) {
+            license_text = $('.license_identifier');
+            license_text.map(function (index, item) {
                 var li = $(item).val();
                 license.push(li);
             });
             license_text = license.join("-");
         }
         else {
-            licenses.map(function (index, item) {
+            license_text.map(function (index, item) {
                 var l = $(item).val();
                 license.push(l);
             });
             license_text = license.join("-");
         }
 
-
         var type_of_contract = '';
 
-        if ($('#type_of_contract').val() === '') {
+        if ($('#type_of_contract').val() == null) {
             type_of_contract = $('#document_type').val();
 
             if (type_of_contract == 'Other') {
