@@ -306,7 +306,7 @@ $(function () {
         var license = [];
         var count = 0;
         var license_text = $('.license-name');
-        $('license_text').each(function (index, item) {
+        $(license_text).each(function (index, item) {
             if ($(item).val() === '') {
                 count = count + 1;
             }
