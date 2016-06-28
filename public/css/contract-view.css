@@ -722,7 +722,7 @@ v.title-wrap {
 }
 
 .selected-annotation {
-    background: #D0D0D0;
+    background: #F1F1F1;
 }
 .annotation-page {
     margin-bottom: 6px;
@@ -789,5 +789,10 @@ span.error{color:red; margin-top: 5px; display: inline-block}
     margin-top: 1px;
 }
 
+p.annotation-category {
+    font-size: 13px;
+    font-weight: bold;
+    color: #6B6B6B;
+}
 
 

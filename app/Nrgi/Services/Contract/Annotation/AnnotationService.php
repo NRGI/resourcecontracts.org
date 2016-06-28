@@ -57,6 +57,7 @@ class AnnotationService
 
     /**
      * Constructor
+     *
      * @param AnnotationRepositoryInterface $annotation
      * @param Guard                         $auth
      * @param DatabaseManager               $database
@@ -94,6 +95,7 @@ class AnnotationService
      * Store/Update a contact annotation.
      *
      * @param $formData
+     *
      * @return Annotation
      */
     public function save($formData)
@@ -105,7 +107,7 @@ class AnnotationService
                 'contract_id' => $formData['contract'],
                 'category'    => $formData['category'],
                 'text'        => $formData['text'],
-                'status'      => Annotation::DRAFT
+                'status'      => Annotation::DRAFT,
             ];
             $annotation     = $this->annotation->create($annotationData);
         } else {
@@ -119,7 +121,7 @@ class AnnotationService
             'annotation_id'     => $annotation->id,
             'page_no'           => $formData['page'],
             'user_id'           => $this->auth->id(),
-            'article_reference' => $formData['article_reference']
+            'article_reference' => $formData['article_reference'],
         ];
 
         if (array_key_exists('shapes', $formData)) {
@@ -150,7 +152,7 @@ class AnnotationService
         $this->annotation->deleteIfChildNotFound($formData['annotation_id']);
 
         $this->logger->activity(
-            'annotation.annotation_' . $action,
+            'annotation.annotation_'.$action,
             ['contract' => $formData['contract'], 'page' => $formData['page']],
             $formData['contract']
         );
@@ -162,6 +164,7 @@ class AnnotationService
      * Delete annotation
      *
      * @param $contactAnnotationPageId
+     *
      * @return bool
      */
     public function delete($contactAnnotationPageId)
@@ -179,7 +182,7 @@ class AnnotationService
                 [
                     'contract' => $annotation->parent->contract_id,
                     'page'     => $annotation->page_no,
-                    'title'    => $annotation->text
+                    'title'    => $annotation->text,
                 ],
                 $annotation->parent->contract_id
             );
@@ -196,6 +199,7 @@ class AnnotationService
      * Search annotation
      *
      * @param array $params
+     *
      * @return array
      */
     public function search(array $params)
@@ -233,6 +237,7 @@ class AnnotationService
      * Get contract with pages and annotations
      *
      * @param $contractId
+     *
      * @return \App\Nrgi\Repositories\Contract\contract
      */
     public function getContractPagesWithAnnotations($contractId)
@@ -244,6 +249,7 @@ class AnnotationService
      * Get status of annotation
      *
      * @param $contractId
+     *
      * @return annotation status
      */
     public function getStatus($contractId)
@@ -256,6 +262,7 @@ class AnnotationService
      *
      * @param $annotationStatus
      * @param $contractId
+     *
      * @return bool
      */
     public function updateStatus($annotationStatus, $contractId)
@@ -289,6 +296,7 @@ class AnnotationService
      * @param $contractId
      * @param $message
      * @param $annotationStatus
+     *
      * @return bool
      */
     public function comment($contractId, $message, $annotationStatus)
@@ -319,6 +327,7 @@ class AnnotationService
      * Get all annotation of contact
      *
      * @param $contractId
+     *
      * @return array
      */
     public function getContractAnnotations($contractId)
@@ -332,7 +341,8 @@ class AnnotationService
                 $json->annotation_id     = $annotation->id;
                 $json->page              = $child->page_no;
                 $json->category_key      = $annotation->category;
-                $json->category          = (isset($annotation->category)) ? _l("codelist/annotation.annotation_category.{$annotation->category}") : "";
+                $json->category          = (isset($annotation->category)) ? getCategoryName($annotation->category, true) : "";
+                $json->cluster           = (isset($annotation->category)) ? getCategoryClusterName($annotation->category, true) : "";
                 $json->text              = $annotation->text;
                 $json->article_reference = $child->article_reference;
                 $annotationData[]        = $json;
@@ -345,8 +355,10 @@ class AnnotationService
     /**
      * Updates text or category of annotation
      *`
+     *
      * @param       $id
      * @param array $data
+     *
      * @return bool
      */
     public function update($id, array $data)
