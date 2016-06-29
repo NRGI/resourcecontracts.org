@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Entities\User;
 
+use App\Nrgi\Services\Traits\DateTrait;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 {
     use Authenticatable, CanResetPassword;
     use EntrustUserTrait;
+    use DateTrait;
 
     /**
      * The database table used by the model.

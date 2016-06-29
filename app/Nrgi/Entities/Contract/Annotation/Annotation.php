@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Entities\Contract\Annotation;
 
+use App\Nrgi\Services\Traits\DateTrait;
 use Illuminate\Database\Eloquent\Model;
 use App\Nrgi\Scope\CountryScope;
 
@@ -11,6 +12,8 @@ use App\Nrgi\Scope\CountryScope;
  */
 class Annotation extends Model
 {
+    use DateTrait;
+
     /**
      * The database table used by the model.
      *

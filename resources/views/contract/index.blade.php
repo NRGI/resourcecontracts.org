@@ -64,7 +64,7 @@
                             <span class="label label-default"><?php echo $contract->metadata->language;?></span>
                         </td>
                         <td align="right">{{getFileSize($contract->metadata->file_size)}}</td>
-                        <td align="right">{{$contract->created_datetime->format('F d, Y')}}</td>
+                        <td align="right"><?php echo $contract->createdDate('M d, Y');?></td>
                     </tr>
                 @empty
                     <tr>

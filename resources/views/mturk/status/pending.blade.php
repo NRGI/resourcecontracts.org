@@ -38,8 +38,12 @@
                 - {{$contract->metadata->country->name}}
             </td>
             <td>{{strtoupper($contract->metadata->category[0])}}</td>
-            <td>{{$contract->mturk_created_at}} <br/>
-                By {{$contract->mturk_created_by}}  </td>
+            <td>
+                @if($contract->mturk_created_at)
+                {{translate_date($contract->mturk_created_at->format('M d, Y'))}}
+                @endif
+                <br/>
+            @lang('mturk.by') {{$contract->mturk_created_by}}  </td>
             <td class="number_center">{{$contract->tasks->count()}}</td>
             <td class="number_center">{{$contract->total_hits}}</td>
             <td class="number_center">{{$contract->count_status['total_completed']}}</td>

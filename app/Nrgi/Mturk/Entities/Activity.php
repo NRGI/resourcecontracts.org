@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Mturk\Entities;
 
+use App\Nrgi\Services\Traits\DateTrait;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -8,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Activity extends Model
 {
+    use DateTrait;
     /**
      * The fields that can be mass assigned
      * @var array

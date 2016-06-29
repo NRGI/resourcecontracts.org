@@ -235,3 +235,18 @@ function getCategoryName($key = '')
 
     return array_key_exists($key, $categories) ? $categories[$key] : $key;
 }
+
+/**
+ * Translate date string
+ *
+ * @param $date
+ *
+ * @return string
+ */
+function translate_date($date)
+{
+    $lang_date = trans('date');
+    $date      = str_replace(array_keys($lang_date), array_values($lang_date), $date);
+
+    return $date;
+}

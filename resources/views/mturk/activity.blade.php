@@ -55,7 +55,8 @@
 
                         <td>
                             {{ trans($activity->message,$activity->message_params) }} <br>
-                            @lang('by') {{$activity->user->name}} @lang('mturk.on') {{$activity->created_at->format('D F d, Y h:i a')}}
+                            @lang('global.by') {{$activity->user->name}} @lang('mturk.on')
+                            <?php echo $activity->createdDate('F d, Y \a\t h:i A');?>
                         </td>
                     </tr>
                 @empty

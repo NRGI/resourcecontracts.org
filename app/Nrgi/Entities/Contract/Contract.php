@@ -8,28 +8,28 @@ use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
 
 /**
  * Class Contract
- * @property Collection                                                                   tasks
- * @property Collection                                                                   pages
- * @property int                                                                          id
- * @property int                                                                          mturk_status
- * @property array                                                                        metadata
- * @property int                                                                          textType
- * @property string                                                                       title
- * @property Collection                                                                   annotations
- * @property string                                                                       file
- * @property string                                                                       filehash
- * @property int                                                                          pdf_process_status
- * @property string                                                                       word_file
- * @property int                                                                          updated_by
- * @property string                                                                       metadata_status
- * @property string                                                                       text_status
- * @property int                                                                          created_user
- * @property string                                                                       file_url
- * @property string                                                                       slug
- * @property int                                                                          user_id
- * @property string                                                                       updated_user
- * @property string                                                                       created_datetime
- * @property string                                                                       last_updated_datetime
+ * @property Collection tasks
+ * @property Collection pages
+ * @property int        id
+ * @property int        mturk_status
+ * @property array      metadata
+ * @property int        textType
+ * @property string     title
+ * @property Collection annotations
+ * @property string     file
+ * @property string     filehash
+ * @property int        pdf_process_status
+ * @property string     word_file
+ * @property int        updated_by
+ * @property string     metadata_status
+ * @property string     text_status
+ * @property int        created_user
+ * @property string     file_url
+ * @property string     slug
+ * @property int        user_id
+ * @property string     updated_user
+ * @property string     created_datetime
+ * @property string     last_updated_datetime
  * @package App\Nrgi\Entities\Contract
  */
 class Contract extends Model
@@ -65,30 +65,30 @@ class Contract extends Model
     /**
      * Contract Status
      */
-    const STATUS_DRAFT     = 'draft';
+    const STATUS_DRAFT = 'draft';
     const STATUS_COMPLETED = 'completed';
     const STATUS_PUBLISHED = 'published';
-    const STATUS_REJECTED  = 'rejected';
+    const STATUS_REJECTED = 'rejected';
 
     /**
      * Contract Processing
      */
     const PROCESSING_PIPELINE = 0;
-    const PROCESSING_RUNNING  = 1;
+    const PROCESSING_RUNNING = 1;
     const PROCESSING_COMPLETE = 2;
-    const PROCESSING_FAILED   = 3;
+    const PROCESSING_FAILED = 3;
 
     /**
      * MTurk Status
      */
-    const MTURK_SENT     = 1;
+    const MTURK_SENT = 1;
     const MTURK_COMPLETE = 2;
-    const SHOW_PDF_TEXT  = 1;
+    const SHOW_PDF_TEXT = 1;
 
     /**
      * Metadata Status
      */
-    const ACCEPTABLE  = 1;
+    const ACCEPTABLE = 1;
     const NEEDS_EDITING = 2;
     const NEEDS_FULL_TRANSCRIPTION = 3;
 
@@ -96,6 +96,7 @@ class Contract extends Model
      * Convert json metadata to array
      *
      * @param $metaData
+     *
      * @return array
      */
     public function getMetadataAttribute($metaData)
@@ -115,7 +116,7 @@ class Contract extends Model
      */
     public function getFileUrlAttribute()
     {
-        $path = $this->id . '/' . $this->file;
+        $path = $this->id.'/'.$this->file;
 
         if ($this->pdf_process_status == self::PROCESSING_PIPELINE || $this->pdf_process_status == self::PROCESSING_RUNNING) {
             $path = $this->file;
@@ -144,9 +145,9 @@ class Contract extends Model
         if ($this->pdf_process_status == static::PROCESSING_COMPLETE) {
             $filename     = explode('.', $this->file);
             $filename     = $filename[0];
-            $wordFileName = $filename . '.txt';
+            $wordFileName = $filename.'.txt';
 
-            return getS3FileURL($this->id . '/' . $wordFileName);
+            return getS3FileURL($this->id.'/'.$wordFileName);
         }
 
         return '';
@@ -154,7 +155,9 @@ class Contract extends Model
 
     /**
      * Convert Array metadata to json
+     *
      * @param $metaData
+     *
      * @return void
      */
     public function setMetadataAttribute($metaData)
@@ -218,6 +221,7 @@ class Contract extends Model
      * Get Text Type by Key
      *
      * @param null $key
+     *
      * @return object
      */
     public function getTextType($key = null)
@@ -249,6 +253,7 @@ class Contract extends Model
      * Check if status is editable
      *
      * @param $status
+     *
      * @return bool
      */
     public function isEditableStatus($status)
@@ -264,6 +269,7 @@ class Contract extends Model
      * Make metadata value null if value is empty
      *
      * @param $metadata
+     *
      * @return object
      */
     public function makeNullField($metadata)
@@ -313,13 +319,15 @@ class Contract extends Model
      * Put AMLA url if the country exist in amla config file.
      *
      * @param $code
+     *
      * @return string
      */
-    public function getAmlaUrl($code,$resource)
+    public function getAmlaUrl($code, $resource)
     {
-        $except_resource = ["Hydrocarbons","Oil","Gas"];
-        $filter = array_intersect($resource,$except_resource);
-        return (isset(config('amla')[$code]) && (empty($filter)) ) ? config('amla')[$code] : '';
+        $except_resource = ["Hydrocarbons", "Oil", "Gas"];
+        $filter          = array_intersect($resource, $except_resource);
+
+        return (isset(config('amla')[$code]) && (empty($filter))) ? config('amla')[$code] : '';
     }
 
     /**
@@ -336,6 +344,7 @@ class Contract extends Model
      * Sync of supporting contracts
      *
      * @param $contract_id
+     *
      * @return bool
      */
     public function syncSupportingContracts($contract_id)
@@ -348,7 +357,7 @@ class Contract extends Model
 
         $insert = [
             'contract_id'            => $contract_id,
-            'supporting_contract_id' => $this->id
+            'supporting_contract_id' => $this->id,
         ];
 
         return DB::table('supporting_contracts')->insert($insert);
@@ -377,7 +386,37 @@ class Contract extends Model
                   ->first()) ? DB::table(
             'supporting_contracts'
         )->where('supporting_contract_id', $this->id)->orderBy('id', 'DESC')->first()->contract_id : null;
-
     }
 
+    /**
+     * Get contract Create Date
+     *
+     * @param string $format
+     *
+     * @return string
+     */
+    public function createdDate($format = '')
+    {
+        if ($format) {
+            return translate_date($this->created_datetime->format($format));
+        }
+
+        return $this->created_datetime;
+    }
+
+    /**
+     * Get contract Updated Date
+     *
+     * @param string $format
+     *
+     * @return string
+     */
+    public function updatedDate($format = '')
+    {
+        if ($format) {
+            return translate_date($this->last_updated_datetime->format($format));
+        }
+
+        return $this->last_updated_datetime;
+    }
 }

@@ -117,7 +117,11 @@ return [
     'write_comment'                        => "Ecrire un commentaire...",
     'comment_not_added'                    => "Commentaire non encore ajouté",
     'mark_resolved'                        => "Marquer comme résolu",
-    'generate_name'                        => 'Générer nom contrat',
+    'generate_name'                        => "Générer nom contrat",
+    'at'                                   => "à",
+    'comment_required'                     => "Commentaire est obligatoire.",
+    'suggestion'                           => "Message suggestion est nécessaire",
+    'text_type'                            => "S'il vous plaît sélectionner le type de texte",
 
 
     /*ContractController*/
