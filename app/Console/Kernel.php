@@ -31,6 +31,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\UpdateAnnotationSection',
         'App\Console\Commands\AnnotationHarmonization',
         'App\Console\Commands\BulkdownloadText',
+        'App\Console\Commands\TrackOCID',
     ];
 
     /**
@@ -47,5 +48,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('nrgi:renewmturktask')->dailyAt('02:00');
         $schedule->command('nrgi:updategroup')->dailyAt('10:00');
         $schedule->command('nrgi:updategovernmententities')->dailyAt('02:00');
+        $schedule->command('nrgi:trackocid')->twiceDaily();
     }
 }
