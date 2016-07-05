@@ -116,6 +116,10 @@ return [
     'write_comment'                        => 'Write comment...',
     'comment_not_added'                    => 'Comment not added yet.',
     'generate_name'                        => 'Generate Contract name',
+    'at'                                   => 'at',
+    'comment_required'                     => 'Comment is required.',
+    'suggestion'                           => 'Suggestion message is required',
+    'text_type'                            => 'Please select text type',
 
     /*ContractController*/
     'save_success'                         => 'Contract successfully uploaded. You will receive an email notification once the contract processing is complete allowing for the text review',

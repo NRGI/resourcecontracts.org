@@ -30,8 +30,8 @@
 
                         </td>
                         <td>{{$user->organization}}</td>
-                        <td>{{$user->status == 'true' ? 'Active' : 'Inactive'}}</td>
-                        <td>{{$user->created_at->format('D M d')}}<br/> {{$user->created_at->format('Y h:i A')}}</td>
+                        <td>{{$user->status == 'true' ? trans('user.active') : trans('user.inactive')}}</td>
+                        <td>{{$user->createdDate('F d Y \a\t h:i A')}}</td>
                         <td>
                             <a href="{{route('user.edit', $user->id)}}" id="user_edit_{{$key}}" class="btn btn-primary">{{ trans('user.edit') }}</a>
 

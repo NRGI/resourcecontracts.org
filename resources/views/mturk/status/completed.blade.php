@@ -14,11 +14,18 @@
             <td><a href="{{route('mturk.tasks', $contract->id)}}">{{$contract->title}}</a></td>
             <td>{{strtoupper($contract->metadata->category[0])}}</td>
             <td>
-                {{$contract->mturk_created_at}}
-               <Br/> By {{$contract->mturk_created_by}}
+                @if($contract->mturk_created_at)
+                    {{translate_date($contract->mturk_created_at->format('M d, Y'))}}
+                @endif
+
+                <Br/> @lang('mturk.by') {{$contract->mturk_created_by}}
+
             </td>
-            <td>{{$contract->mturk_sent_at}}
-                <Br/>   By {{$contract->mturk_sent_by}}
+            <td>
+                @if($contract->mturk_sent_at)
+                    {{translate_date($contract->mturk_sent_at->format('M d, Y'))}}
+                @endif
+                <Br/>   @lang('mturk.by') {{translate_date($contract->mturk_sent_by)}}
             </td>
             <td>{{$contract->tasks->count()}}</td>
         </tr>

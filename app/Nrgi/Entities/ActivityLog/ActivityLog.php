@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Entities\ActivityLog;
 
+use App\Nrgi\Services\Traits\DateTrait;
 use Illuminate\Database\Eloquent\Model;
 use App\Nrgi\Scope\CountryScope;
 
@@ -11,6 +12,8 @@ use App\Nrgi\Scope\CountryScope;
  */
 class ActivityLog extends Model
 {
+    use DateTrait;
+
     /**
      * The fields that can be mass assigned
      * @var array

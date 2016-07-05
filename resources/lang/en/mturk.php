@@ -61,6 +61,13 @@
      'balance_check'            => 'click here to check',
      'on'                       => 'on',
      'by'                       => 'by',
+     'text_approve_all'         => 'Are you sure you want to approve all assignments ?',
+     'reject-reason'            => 'Reason is required',
+     'Completed'                => 'Completed',
+     'Pending'                  => 'Pending',
+     'Approved'                 => 'Approved',
+     'Rejected'                 => 'Rejected',
+
 
 
      'log'           => [

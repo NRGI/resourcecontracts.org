@@ -69,8 +69,8 @@ $approved = \Input::get('approved', null);
                             <a href="{{ hit_url($task->hit_id) }}" target="_blank" title="@lang('mturk.view_on_amazon')" data-toggle="tooltip"> <span class="glyphicon glyphicon-eye-open"></span></a>
                         </td>
                         <td>{{$task->page_no}}</td>
-                        <td>{{$task->status()}}</td>
-                        <td>{{$task->approved()}}</td>
+                        <td>{{_l('mturk.'. $task->status()) }} </td>
+                        <td>{{_l('mturk.'.$task->approved())}} </td>
                         <td>{{$task->created_at->format('Y-m-d h:i:s A')}}</td>
                     </tr>
                 @empty

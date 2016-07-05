@@ -10,8 +10,8 @@
             <ul>
                 <li>@lang('mturk.page_no'): {{$task->page_no}}</li>
                 <li>@lang('mturk.hit'): {{$task->hit_id}}</li>
-                <li>@lang('mturk.status'): {{$task->status()}}</li>
-                <li>@lang('mturk.approved'): {{$task->approved()}} </li>
+                <li>@lang('mturk.status'): {{_l('mturk.'.$task->status())}}</li>
+                <li>@lang('mturk.approved'): {{_l('mturk.'.$task->approved())}} </li>
                 <li>@lang('mturk.assignment_id'): {{$task->assignments->assignment->assignment_id}}</li>
                 <li>@lang('mturk.worker_id'): {{$task->assignments->assignment->worker_id}}</li>
                 <li>@lang('mturk.submit_time'): {{\Carbon\Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $task->assignments->assignment->submit_time)}}</li>

@@ -94,7 +94,7 @@ $(function () {
         parent.find('div.error').remove();
 
         if (parent.find('.commentField').val() == '') {
-            parent.find('.commentField').after('<div class="error"> Comment is required.</div>');
+            parent.find('.commentField').after('<div class="error">'+ lang_comment +'</div>');
             return false;
         }
 
@@ -112,7 +112,7 @@ $(function () {
                 if (response.result == true) {
                     var html = '';
                     $.each(response.message, function (index, dis) {
-                        var status = dis.status == '1' ? ' <span class="label label-success pull-right">Resolved</span>' : '';
+                        var status = dis.status == '1' ? ' <span class="label label-success pull-right">'+resolved+'</span>' : '';
                         html += '<div class="panel panel-default">' +
                             '<div class="panel-heading">' +
                             '<p class="comment-user"><i class="fa fa-user"></i> ' + dis.user.name + '</p>' +
@@ -129,9 +129,9 @@ $(function () {
                     parent.find('.commentField').val('');
                     var key_html = '';
                     if (response.message[0].status == 1) {
-                        key_html = '<span class="label label-success">(' + response.message.length + ') Resolved</span>';
+                        key_html = '<span class="label label-success">(' + response.message.length + ') '+ resolved +'</span>';
                     } else {
-                        key_html = '<span  class="label label-red">(' + response.message.length + ') Open</span>';
+                        key_html = '<span  class="label label-red">(' + response.message.length + ')'+ open +'</span>';
                     }
                     $(key).html(key_html);
 

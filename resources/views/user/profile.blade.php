@@ -13,8 +13,8 @@
          <li><strong>{{ trans('user.profile_created_on') }}:</strong> {{$userDetails->created_at->format('Y-m-d')}}
               ({{$userDetails->created_at->diffForHumans()}})
            </li>
-           <li><strong>{{ trans('organization') }}:</strong> {{$userDetails->organization}}</li>
-         <li><strong>{{ trans('role') }}:</strong>{{$userDetails->roles[0]->name}}</li>
+           <li><strong>{{ trans('user.organization') }}:</strong> {{$userDetails->organization}}</li>
+         <li><strong>{{ trans('user.role') }}:</strong>{{$userDetails->roles[0]->name}}</li>
      </ul>
      </div>
 

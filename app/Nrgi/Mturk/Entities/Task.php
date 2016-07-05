@@ -1,6 +1,6 @@
 <?php namespace App\Nrgi\Mturk\Entities;
 
-use Carbon\Carbon;
+use App\Nrgi\Services\Traits\DateTrait;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Task extends Model
 {
+    use DateTrait;
+
     /**
      * The database table used by the model.
      * @var string

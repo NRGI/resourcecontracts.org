@@ -168,9 +168,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             @if(isset($contract->metadata->annexes_missing))
                 <li>
                     <strong>@lang('contract.annexes_display'):</strong>
-                    @if($contract->metadata->annexes_missing == 1)Yes
-                    @elseif($contract->metadata->annexes_missing == 0)No
-                    @elseif($contract->metadata->annexes_missing == -1)Not Available
+                    @if($contract->metadata->annexes_missing == 1)@lang('global.yes')
+                    @elseif($contract->metadata->annexes_missing == 0)@lang('global.no')
+                    @elseif($contract->metadata->annexes_missing == -1)@lang('global.not_available')
                     @endif
                     {!! discussion($discussions,$discussion_status, $contract->id,'annexes_missing','metadata') !!}
                 </li>
@@ -179,9 +179,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             @if(isset($contract->metadata->pages_missing))
                 <li>
                     <strong>@lang('contract.pages_display'):</strong>
-                    @if( $contract->metadata->pages_missing == 1)Yes
-                    @elseif($contract->metadata->pages_missing == 0)No
-                    @elseif($contract->metadata->annexes_missing == -1)Not Available
+                    @if( $contract->metadata->pages_missing == 1)@lang('global.yes')
+                    @elseif($contract->metadata->pages_missing == 0)@lang('global.no')
+                    @elseif($contract->metadata->annexes_missing == -1)@lang('global.not_available')
                     @endif
                     {!! discussion($discussions,$discussion_status, $contract->id,'pages_missing','metadata') !!}
                 </li>
@@ -197,7 +197,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
             @if(isset($contract->metadata->country->name))
                 <li>
-                    <strong>@lang('contract.country'):</strong> {{$contract->metadata->country->name or ''}}
+                    <strong>@lang('contract.country'):</strong> {{_l('codelist/country.'.$contract->metadata->country->name)}}
                     [{{$contract->metadata->country->code or ''}}]
                     @if(isset($contract->metadata->amla_url) && !empty($contract->metadata->amla_url))
                         <a href="{{$contract->metadata->amla_url}}">@lang('contract.amla')</a>
@@ -233,7 +233,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
             <li><strong>@lang('contract.type_of_contract'): </strong>
                 @if(is_array($contract->metadata->type_of_contract) && count($contract->metadata->type_of_contract)>0)
-                    {{join(', ', $contract->metadata->type_of_contract)}}
+                    {{join(', ', array_map(function($v){return _l('codelist/contract_type.'.$v);},
+                   $contract->metadata->type_of_contract))}}
+
                 @endif
                 {!! discussion($discussions,$discussion_status, $contract->id,'type_of_contract','metadata') !!}
             </li>
@@ -244,7 +246,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             </li>
 
             <li>
-                <strong>@lang('contract.document_type'):</strong> {{$contract->metadata->document_type or ''}}
+                <strong>@lang('contract.document_type'):</strong>{{ _l('codelist/documentType.'.$contract->metadata->document_type) }}
                 {!! discussion($discussions,$discussion_status, $contract->id,'document_type','metadata') !!}
             </li>
 
@@ -303,7 +305,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                 </p>
                                 @if(isset($v->operator))
                                     <p>
-                                        <strong>@lang('contract.operator'):</strong>@if($v->operator==1)Yes @elseif($v->operator==0) No @elseif($v->operator==-1) Not Available @endif
+                                        <strong>@lang('contract.operator'):</strong>@if($v->operator==1)@lang('global.yes') @elseif($v->operator==0) @lang('global.no') @elseif($v->operator==-1) @lang('global.not_available') @endif
                                         {!! discussion($discussions,$discussion_status, $contract->id,'operator-'.$k,'metadata') !!}
                                     </p>
                                 @endif
@@ -349,7 +351,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 {!! discussion($discussions,$discussion_status, $contract->id,'source_url','metadata') !!}
             </li>
             <li>
-                <strong>@lang('contract.disclosure_mode'):</strong> {{$contract->metadata->disclosure_mode or ''}}
+                <strong>@lang('contract.disclosure_mode'):</strong> {{_l('codelist/disclosure_mode.'.$contract->metadata->disclosure_mode) }}
                 {!! discussion($discussions,$discussion_status, $contract->id,'disclosure_mode','metadata') !!}
             </li>
             <li>
@@ -414,3 +416,4 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
 
 @include('contract.partials.show.script')
+

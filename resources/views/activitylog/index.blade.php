@@ -53,7 +53,8 @@
                         <td><a href="{{route('contract.show',$activitylog->contract_id)}}">{{ $activitylog->contract->metadata->contract_name or ''}}</a></td>
                         <td>
                             {{ trans($activitylog->message,$activitylog->message_params) }} <br>
-                            @lang('by') {{$activitylog->user->name}} @lang('on') {{$activitylog->created_at->format('D F d, Y h:i a')}}
+                            @lang('global.by') {{$activitylog->user->name}} @lang('global.on')
+                            <?php echo $activitylog->createdDate('F d, Y \a\t h:i A');?>
                         </td>
                     </tr>
                 @empty
@@ -71,8 +72,9 @@
 @section('script')
     <script src="{{asset('js/select2.min.js')}}"></script>
     <script>
+        var lang_select = '@lang('global.select')';
         $(function () {
-            $('select').select2({placeholder: "Select", allowClear: true, theme: "classic"});
+            $('select').select2({placeholder: lang_select, allowClear: true, theme: "classic"});
         });
     </script>
 @stop

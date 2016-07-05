@@ -40,6 +40,15 @@ for ($i = 1; $i <= $contract->pages()->count(); $i ++) {
     <script src="{{asset('js/select2.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-editable.min.js')}}"></script>
     <script>
+        var lang_comment = '@lang('contract.comment_required')';
+        var resolved     = '@lang('contract.resolved')';
+        var open         = '@lang('contract.open')';
+    </script>
+    <script>
+        var suggestion = '@lang('contract.suggestion')';
+        var loading    = '@lang('annotation.loading')';
+        var text_type  = '@lang('contract.text_type')';
+
         $(function () {
             $.fn.editable.defaults.mode = 'inline';
             $('.edit-annotation-text, .edit-annotation-section').on('click', function () {
@@ -118,7 +127,7 @@ for ($i = 1; $i <= $contract->pages()->count(); $i ++) {
                     })
                 }
                 else {
-                    alert('Please select text type');
+                    alert(text_type);
                 }
             });
 
@@ -128,11 +137,11 @@ for ($i = 1; $i <= $contract->pages()->count(); $i ++) {
                 var status = $(this).find('#status').val();
                 if (text == '' && status == 'rejected') {
                     e.preventDefault();
-                    alert('Suggestion message is required.');
+                    alert(suggestion);
                     return false;
                 }
                 else {
-                    $(this).find('input[type=submit]').text('loading...');
+                    $(this).find('input[type=submit]').text(loading);
                     $(this).find('input[type=submit]').attr('disabled', 'disabled');
                     return true;
                 }

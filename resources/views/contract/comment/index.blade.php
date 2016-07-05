@@ -23,7 +23,7 @@
                         <div class="comment-info">
                             <span class="{{$comment->action}}">{{ucfirst($comment->action)}}</span>
                             @lang('mturk.by') <strong>{{$comment->user->name}}</strong>
-                            @lang('mturk.on') {{$comment->created_at->format('D F d, Y h:i a')}}
+                            @lang('mturk.on') {{$comment->createdDate->format('F d Y \a\t h:i a')}}
                         </div>
                     </div>
                 @empty

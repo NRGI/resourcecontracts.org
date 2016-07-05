@@ -760,9 +760,9 @@ class TaskService
         $sent   = $this->logService->mturk($id, 'sent_to_rc');
 
         return [
-            'created_at' => isset($create->created_at) ? $create->created_at->format('Y-m-d') : '',
+            'created_at' => isset($create->created_at) ? $create->created_at : '',
             'created_by' => isset($create->user->name) ? $create->user->name : '',
-            'sent_at'    => isset($sent->created_at) ? $sent->created_at->format('Y-m-d') : '',
+            'sent_at'    => isset($sent->created_at) ? $sent->created_at : '',
             'sent_by'    => isset($sent->user->name) ? $sent->user->name : '',
         ];
     }

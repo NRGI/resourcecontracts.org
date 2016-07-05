@@ -176,7 +176,7 @@
 							<span>- {{$contract->created_user->name}}</span>
 						</td>
 						<td style="width: 160px;">
-							<small>{{$contract->created_datetime->format('M d. Y \a\t H:i A')}}</small>
+							<small><?php echo $contract->createdDate('F d, Y \a\t H:i A');?></small>
 						</td>
 					</tr>
 				@empty

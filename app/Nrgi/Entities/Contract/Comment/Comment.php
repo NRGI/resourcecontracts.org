@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Entities\Contract\Comment;
 
+use App\Nrgi\Services\Traits\DateTrait;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -8,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Comment extends Model
 {
+    use DateTrait;
+
     /**
      * The database table used by the model.
      *
