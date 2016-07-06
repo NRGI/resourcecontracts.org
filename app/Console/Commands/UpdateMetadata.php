@@ -96,8 +96,6 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        $this->updateContractName($metadata);
-
         return $metadata;
     }
 
@@ -440,20 +438,4 @@ class UpdateMetadata extends Command
         }
 
     }
-
-    /**
-     * Rename contract title except olc and drc country
-     * @param $metadata
-     */
-    private function updateContractName(& $metadata)
-    {
-
-        if ($metadata['country']->code != "CD" && $metadata['category'][0] != "olc") {
-            $metadata['contract_name'] = $this->contractService->contractAutoRename($metadata);
-        }
-
-
-
-    }
-
 }

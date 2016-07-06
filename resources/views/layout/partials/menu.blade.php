@@ -29,6 +29,9 @@
                 <a {{in_array('quality', Request::segments())? 'class=active' : ''}}
                         href="{{route('quality.index')}}">@lang('quality.quality_contract_issues')</a>
             </li>
+            <li>
+                <a href="{{route('utility.index')}}">@lang('contract.utility')</a>
+            </li>
         </ul>
     </div>
 @endif
