@@ -122,7 +122,8 @@ return [
     'comment_required'                     => "Commentaire est obligatoire.",
     'suggestion'                           => "Message suggestion est nécessaire",
     'text_type'                            => "S'il vous plaît sélectionner le type de texte",
-
+    'utility'                              => "Utilitaire",
+    'utility_autorename'                   => "Générer Nom contrat",
 
     /*ContractController*/
     'save_success'                         => "Téléversement du contrat réussi. Vous serez averti par courrier quand le traitement du courrier aura été complété afin de permettre la révision du texte.",
