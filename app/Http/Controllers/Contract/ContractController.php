@@ -111,8 +111,9 @@ class ContractController extends Controller
         $contracts   = $this->contract->parentContracts();
         $contract    = $this->contract->find($request->get('parent'));
         $companyName = $this->contract->getCompanyNames();
+        $contract_id = $this->contract->getNextId();
 
-        return view('contract.create', compact('country', 'contracts', 'contract', 'companyName'));
+        return view('contract.create', compact('country', 'contracts', 'contract', 'companyName', 'contract_id'));
     }
 
     /**

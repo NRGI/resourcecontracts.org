@@ -120,6 +120,7 @@ return [
     'comment_required'                     => 'Comment is required.',
     'suggestion'                           => 'Suggestion message is required',
     'text_type'                            => 'Please select text type',
+    'mark_resolved'                        => 'Mark as resolved',
 
     /*ContractController*/
     'save_success'                         => 'Contract successfully uploaded. You will receive an email notification once the contract processing is complete allowing for the text review',

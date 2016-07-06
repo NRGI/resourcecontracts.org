@@ -46,6 +46,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Save Contract
      *
      * @param $contractDetail
+     *
      * @return Contract
      */
     public function save($contractDetail)
@@ -59,6 +60,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Get All Contracts
      *
      * @param array $filters
+     *
      * @return Collection|static[]
      */
     public function getAll(array $filters, $limit)
@@ -98,12 +100,12 @@ class ContractRepository implements ContractRepositoryInterface
 
         if ($resource != '' && $resource != 'all') {
             $from .= ",json_array_elements(contracts.metadata->'resource') r";
-            $query->whereRaw("trim(both '\"' from r::text) = '" . $resource . "'");
+            $query->whereRaw("trim(both '\"' from r::text) = '".$resource."'");
         }
 
         if ($category != '' && $category != 'all') {
             $from .= ",json_array_elements(contracts.metadata->'category') cat";
-            $query->whereRaw("trim(both '\"' from cat::text) = '" . $category . "'");
+            $query->whereRaw("trim(both '\"' from cat::text) = '".$category."'");
         }
         if ($type == "metadata" && $word != '' && $issue != '' && !in_array($word, $multipleField)) {
             $query->whereRaw(sprintf("contracts.metadata->>'%s' %s''", $word, $operator));
@@ -130,7 +132,7 @@ class ContractRepository implements ContractRepositoryInterface
             }
         }
         if ($q != '') {
-            $q = '%' . $q . '%';
+            $q = '%'.$q.'%';
             $query->whereRaw("contracts.metadata->>'contract_name' ILIKE ?", [$q]);
         }
         $query->from($this->db->raw($from));
@@ -184,6 +186,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Get Contract
      *
      * @param $contractId
+     *
      * @return Contract
      */
     public function findContract($contractId)
@@ -197,6 +200,7 @@ class ContractRepository implements ContractRepositoryInterface
      * @param      $contractId
      * @param null $status
      * @param null $approved
+     *
      * @return Contract
      */
     public function findContractWithTasks($contractId, $status = null, $approved = null)
@@ -213,7 +217,7 @@ class ContractRepository implements ContractRepositoryInterface
                     }
 
                     $query->orderBy('page_no', 'ASC');
-                }
+                },
             ]
         )->findOrFail($contractId);
     }
@@ -222,6 +226,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Get Contract with pages
      *
      * @param $contractId
+     *
      * @return Contract
      */
     public function findContractWithPages($contractId)
@@ -234,6 +239,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Get Contract with Annotations
      *
      * @param $contractId
+     *
      * @return Contract
      */
     public function findContractWithAnnotations($contractId)
@@ -247,6 +253,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Delete contract
      *
      * @param $contractID
+     *
      * @return bool
      */
     public function delete($contractID)
@@ -258,6 +265,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Get Contract by file hash
      *
      * @param $fileHash
+     *
      * @return Contract
      */
     public function getContractByFileHash($fileHash)
@@ -267,7 +275,9 @@ class ContractRepository implements ContractRepositoryInterface
 
     /**
      * Count total contracts by date
+     *
      * @param string $date
+     *
      * @return Collection
      */
     public function countTotal($date = '')
@@ -289,6 +299,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Get Recent Contracts
      *
      * @param $no
+     *
      * @return collection
      */
     public function recent($no)
@@ -300,6 +311,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Get Contract count by status
      *
      * @param $statusType
+     *
      * @return array
      */
     public function statusCount($statusType)
@@ -323,6 +335,7 @@ class ContractRepository implements ContractRepositoryInterface
      *
      * @param array $filter
      * @param int   $perPage
+     *
      * @return Collection
      */
     public function getMTurkContracts(array $filter = [], $perPage = null)
@@ -335,7 +348,7 @@ class ContractRepository implements ContractRepositoryInterface
 
         $cat_list = array_keys(config('metadata.category'));
         if (isset($filter['category']) && in_array($filter['category'], $cat_list)) {
-            $query->whereRaw("metadata->'category'->>0 ='" . $filter['category'] . "'");
+            $query->whereRaw("metadata->'category'->>0 ='".$filter['category']."'");
         }
 
         $query->orderBy('created_datetime', 'DESC');
@@ -353,6 +366,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Get Contract with pdf process status
      *
      * @param $status
+     *
      * @return Collection
      */
     public function getContractWithPdfProcessingStatus($status)
@@ -364,6 +378,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Get the count of presence of contract's metadatas
      *
      * @param $metadata
+     *
      * @return collection
      */
     public function getMetadataQuality($metadata)
@@ -380,6 +395,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Check if category of annotations exist or not.
      *
      * @param $key
+     *
      * @return array
      */
     public function getAnnotationsQuality($key)
@@ -410,6 +426,7 @@ class ContractRepository implements ContractRepositoryInterface
      * To save the supporting documents of contracts
      *
      * @param $documents
+     *
      * @return mixed
      */
     public function saveSupportingDocument($documents)
@@ -421,6 +438,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Get the contract name and id
      *
      * @param array $id
+     *
      * @return collection
      */
     public function getSupportingContracts($id)
@@ -437,6 +455,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Return the Parent contract id
      *
      * @param $id
+     *
      * @return array
      */
     public function getSupportingDocument($id)
@@ -448,6 +467,7 @@ class ContractRepository implements ContractRepositoryInterface
      * Return the supporting document
      *
      * @param $contractID
+     *
      * @return SupportingDocument
      */
     public function findSupportingContract($contractID)
@@ -461,6 +481,7 @@ class ContractRepository implements ContractRepositoryInterface
      *
      * @param array $ids
      * @param bool  $limit
+     *
      * @return Collection
      */
     public function getContract($ids, $limit)
@@ -526,7 +547,7 @@ class ContractRepository implements ContractRepositoryInterface
 
         if ($contract->metadata->is_supporting_document == 1 && !is_null($parent)) {
             $parent_contract                 = $this->findContract($parent);
-            $ocid                            = $parent_contract->metadata->open_contracting_id . '-' . $contract->id;
+            $ocid                            = $parent_contract->metadata->open_contracting_id.'-'.$contract->id;
             $metadata                        = json_decode(json_encode($contract->metadata), true);
             $metadata['open_contracting_id'] = $ocid;
             $contract->metadata              = $metadata;
@@ -549,6 +570,7 @@ class ContractRepository implements ContractRepositoryInterface
      * remove supporting contracts
      *
      * @param $contractId
+     *
      * @return bool
      */
     public function removeAsSupportingContract($contractId)
@@ -559,7 +581,9 @@ class ContractRepository implements ContractRepositoryInterface
 
     /**
      * Get Quality control for resource and category
+     *
      * @param $key
+     *
      * @return int
      */
     public function getResourceAndCategoryIssue($key)
@@ -602,7 +626,9 @@ class ContractRepository implements ContractRepositoryInterface
 
     /**
      * Return all the contracts without supporting
+     *
      * @param $supportingContract
+     *
      * @return array
      */
     public function getContractsWithoutSupporting($supportingContract)
@@ -615,7 +641,9 @@ class ContractRepository implements ContractRepositoryInterface
 
     /**
      * Delete the parent contract from supporting contract if exist
+     *
      * @param $id
+     *
      * @return mixed
      */
     public function deleteSupportingContract($id)
@@ -630,13 +658,26 @@ class ContractRepository implements ContractRepositoryInterface
     }
 
     /**
-    * Count Contracts By user
-    *
-    * @param $user_id
-    * @return int
-    */
+     * Count Contracts By user
+     *
+     * @param $user_id
+     *
+     * @return int
+     */
     public function countByUser($user_id)
     {
-       return $this->contract->where('user_id', $user_id)->orWhere('updated_by', $user_id)->count();
+        return $this->contract->where('user_id', $user_id)->orWhere('updated_by', $user_id)->count();
+    }
+
+    /**
+     * Get Next auto-incremental id
+     *
+     * @return int
+     */
+    public function getNextId()
+    {
+        $contract = $this->contract->selectRaw("nextval(pg_get_serial_sequence('contracts','id')) as id")->first();
+
+        return $contract->id +1;
     }
 }

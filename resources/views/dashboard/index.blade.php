@@ -175,7 +175,7 @@
 								, {{$contract->metadata->signature_year or ''}}</h5>
 							<span>- {{$contract->created_user->name}}</span>
 						</td>
-						<td style="width: 160px;">
+						<td style="width: 250px;text-align: right;">
 							<small><?php echo $contract->createdDate('F d, Y \a\t H:i A');?></small>
 						</td>
 					</tr>

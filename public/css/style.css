@@ -767,3 +767,14 @@ header {
     float: none;
     display: inline-block;
 }
+
+#generate-contract-name{
+    font-size: 12px;
+    padding: 5px 10px;
+    margin-top: 7px;
+    background-color: #EBEBEB;
+}
+
+#generate-contract-name:hover {
+    background-color: #ddd;
+}

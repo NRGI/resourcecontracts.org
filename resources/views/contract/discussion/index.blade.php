@@ -6,7 +6,7 @@
                     <div class="panel-heading">
                         <p class="comment-user"><i class="fa fa-user"></i> {{$discussion->user->name}}</p>
                         @if($discussion->status == 1) <span class="label label-success pull-right">@lang('contract.resolved')</span> @endif
-                        <p class="comment-time"><i class="fa fa-clock-o"></i> {{$discussion->created_at}}</p>
+                        <p class="comment-time"><i class="fa fa-clock-o"></i> {{$discussion->createdDate('F m, d  \a\t h:i A')}}</p>
                     </div>
                     <div class="panel-body"> {!!nl2br($discussion->message)!!}</div>
                 </div>
@@ -28,4 +28,9 @@
         <button type="button" class="btn btn-default btn-close">@lang('contract.close')</button>
     </div>
 </div>
+
+<script>
+    var LANG = {!! json_encode(trans('contract')) !!};
+    LANG.loading = '@lang('annotation.loading')';
+</script>
 

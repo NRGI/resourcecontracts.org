@@ -84,7 +84,7 @@ return [
     |
     */
 
-    'custom'               => [
+    'custom' => [
         'attribute-name' => [
             'rule-name' => 'message personnalisé',
         ],
@@ -100,6 +100,9 @@ return [
     |
     */
 
-    'attributes'           => [],
-
+    'attributes'          => [],
+    'file_already_exists' => 'Le dossier du contrat est déjà présent dans notre système . S\'il vous plaît vérifier le titre suivant des contrat avec lequel le fichier téléchargé est lié et faire les mises à jour nécessaires',
+    'file_required'       => 'fichier de contrat est nécessaire.',
+    'file_must_be_pdf'    => 'Le fichier doit être un pdf.',
+    'file_upload_limit'   => 'Vous pouvez télécharger le fichier jusqu\'à 1 Go seulement.',
 ];
