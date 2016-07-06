@@ -75,7 +75,7 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
             }
 
             textDiv.innerHTML = '<div class="annotation-viewer-text">' +
-                text + article_reference + '</div>';
+                text + article_reference +'<a href='+link+'> >>'+'</a></div>';
 
             $(textDiv).on("click", "a", function (e) {
                 e.preventDefault();
