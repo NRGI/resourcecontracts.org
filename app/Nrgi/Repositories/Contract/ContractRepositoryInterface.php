@@ -277,12 +277,4 @@ interface ContractRepositoryInterface
      * @return int
      */
     public function countByUser($user_id);
-
-    /**
-     * get next count of table
-     *
-     * @return mixed
-     */
-    public function getNextId();
-
 }
