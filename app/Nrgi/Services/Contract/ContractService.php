@@ -1295,4 +1295,15 @@ class ContractService
 
         return true;
     }
+    /**
+     * Get Next auto-incremental id
+     *
+     * @return int
+     */
+
+    public function getNextId ()
+    {
+        return $this->contract->getNextId();
+    }
 }
+
