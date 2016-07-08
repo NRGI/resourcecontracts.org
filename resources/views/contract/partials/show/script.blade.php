@@ -40,7 +40,7 @@ for ($i = 1; $i <= $contract->pages()->count(); $i ++) {
     <script src="{{asset('js/select2.min.js')}}"></script>
     <script src="{{asset('js/bootstrap-editable.min.js')}}"></script>
     <script>
-        var LANG = {{json_encode(trans('contract'))}};
+        var LANG = {!! json_encode(trans('contract'))!!};
         LANG.loading = '@lang('annotation.loading')';
     </script>
     <script>

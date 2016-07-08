@@ -94,7 +94,7 @@ $(function () {
         parent.find('div.error').remove();
 
         if (parent.find('.commentField').val() == '') {
-            parent.find('.commentField').after('<div class="error">'+ lang_comment +'</div>');
+            parent.find('.commentField').after('<div class="error">'+ LANG.comment_required +'</div>');
             return false;
         }
 
@@ -117,7 +117,7 @@ $(function () {
                             '<div class="panel-heading">' +
                             '<p class="comment-user"><i class="fa fa-user"></i> ' + dis.user.name + '</p>' +
                             status +
-                            '<p class="comment-time"><i class="fa fa-clock-o"></i> ' + dis.created_at + '</p>' +
+                            '<p class="comment-time"><i class="fa fa-clock-o"></i> ' + dis.createdDate + '</p>' +
                             '</div>' +
                             '<div class="panel-body">' + nl2br(dis.message) + '</div>' +
                             '</div>';
