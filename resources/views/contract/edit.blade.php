@@ -3,8 +3,7 @@
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading"> Editing <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span></div>
-
-        <div class="panel-body">
+        <div class="panel-body contract-wrapper" data-id="{{formatIdRorName($contract->id)}}">
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <strong>@lang('contract.whoops')</strong> @lang('contract.problem')<br><br>

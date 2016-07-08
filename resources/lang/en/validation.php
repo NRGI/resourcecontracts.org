@@ -84,7 +84,7 @@ return [
     |
     */
 
-    'custom'               => [
+    'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
@@ -100,6 +100,9 @@ return [
     |
     */
 
-    'attributes'           => [],
-
+    'attributes'          => [],
+    'file_already_exists' => 'The contract file is already present in our system. Please check the following Title of contract with which the uploaded file is linked and make necessary updates.',
+    'file_required'       => 'Contract file is required.',
+    'file_must_be_pdf'    => 'The file must be a pdf.',
+    'file_upload_limit'   => 'You can upload file upto 1GB only.',
 ];

@@ -10,7 +10,9 @@ interface ContractRepositoryInterface
 {
     /**
      * Save Contract
+     *
      * @param $contractDetail
+     *
      * @return Contract
      */
     public function save($contractDetail);
@@ -20,6 +22,7 @@ interface ContractRepositoryInterface
      *
      * @param array $filters
      * @param       $limit
+     *
      * @return Collection|null
      */
     public function getAll(array $filters, $limit);
@@ -28,6 +31,7 @@ interface ContractRepositoryInterface
      * Get Contract
      *
      * @param $contractId
+     *
      * @return Contract
      */
     public function findContract($contractId);
@@ -36,6 +40,7 @@ interface ContractRepositoryInterface
      * Get Contract with pages
      *
      * @param $contractId
+     *
      * @return Contract
      */
     public function findContractWithPages($contractId);
@@ -44,6 +49,7 @@ interface ContractRepositoryInterface
      * Get Contract with tasks
      *
      * @param $contractId
+     *
      * @return Contract
      */
     public function findContractWithTasks($contractId);
@@ -52,6 +58,7 @@ interface ContractRepositoryInterface
      * Get Contract with Annotations
      *
      * @param $contractId
+     *
      * @return Contract
      */
     public function findContractWithAnnotations($contractId);
@@ -60,6 +67,7 @@ interface ContractRepositoryInterface
      * Delete contract
      *
      * @param $contractID
+     *
      * @return bool
      */
     public function delete($contractID);
@@ -79,7 +87,9 @@ interface ContractRepositoryInterface
     /**
      * Updated upstream
      * Get Contract by file hash
+     *
      * @param $fileHash
+     *
      * @return mixed
      */
     public function getContractByFileHash($fileHash);
@@ -96,7 +106,9 @@ interface ContractRepositoryInterface
 
     /**
      * Count total contracts by date
+     *
      * @param string $date
+     *
      * @return int
      */
     public function countTotal($date = '');
@@ -105,6 +117,7 @@ interface ContractRepositoryInterface
      * Get Recent Contracts
      *
      * @param $no
+     *
      * @return collection
      */
     public function recent($no);
@@ -113,13 +126,16 @@ interface ContractRepositoryInterface
      * Get Contract count by status
      *
      * @param $statusType
+     *
      * @return array
      */
     public function statusCount($statusType);
 
     /**
      * Get Contract List
+     *
      * @param $where
+     *
      * @return mixed
      */
     public function getList();
@@ -129,14 +145,16 @@ interface ContractRepositoryInterface
      *
      * @param array $filter
      * @param       $perPage
+     *
      * @return Collection
      */
-    public function getMTurkContracts(array $filter = [] , $perPage);
+    public function getMTurkContracts(array $filter = [], $perPage);
 
     /**
      * Get Contract with pdf process status
      *
      * @param $status
+     *
      * @return Collection
      */
     public function getContractWithPdfProcessingStatus($status);
@@ -145,6 +163,7 @@ interface ContractRepositoryInterface
      * Get the count of presence of contract's metadata
      *
      * @param $metadata
+     *
      * @return collection
      */
     public function getMetadataQuality($metadata);
@@ -153,6 +172,7 @@ interface ContractRepositoryInterface
      * Get the count of presence of annotation's category
      *
      * @param $key
+     *
      * @return collection
      */
     public function getAnnotationsQuality($key);
@@ -168,6 +188,7 @@ interface ContractRepositoryInterface
      * To save the supporting documents of contracts
      *
      * @param $documents
+     *
      * @return mixed
      */
     public function saveSupportingDocument($documents);
@@ -176,6 +197,7 @@ interface ContractRepositoryInterface
      * Get the contract name and id
      *
      * @param array $id
+     *
      * @return array
      */
     public function getSupportingContracts($id);
@@ -184,6 +206,7 @@ interface ContractRepositoryInterface
      * Return the Parent contract id
      *
      * @param $id
+     *
      * @return array
      */
     public function getSupportingDocument($id);
@@ -192,6 +215,7 @@ interface ContractRepositoryInterface
      * Return the supporting document
      *
      * @param $contractID
+     *
      * @return SupportingDocument
      */
     public function findSupportingContract($contractID);
@@ -199,8 +223,10 @@ interface ContractRepositoryInterface
 
     /**
      * Get all the contracts.
+     *
      * @param array $ids
      * @param       $limit
+     *
      * @return Collection
      */
     public function getContract($ids, $limit);
@@ -226,6 +252,7 @@ interface ContractRepositoryInterface
      * remove supporting contracts
      *
      * @param $contractId
+     *
      * @return bool
      */
     public function removeAsSupportingContract($contractId);
@@ -239,6 +266,7 @@ interface ContractRepositoryInterface
      * Get Quality control for resource and category
      *
      * @param $key
+     *
      * @return int
      */
     public function getResourceAndCategoryIssue($key);
@@ -258,14 +286,18 @@ interface ContractRepositoryInterface
 
     /**
      * Return all the contracts without supporting
+     *
      * @param $supportingContract
+     *
      * @return mixed
      */
     public function getContractsWithoutSupporting($supportingContract);
 
     /**
      * Delete the parent contract from supporting contract if exist
+     *
      * @param $id
+     *
      * @return mixed
      */
     public function deleteSupportingContract($id);
@@ -274,7 +306,15 @@ interface ContractRepositoryInterface
      * Count Contracts by user
      *
      * @param $user_id
+     *
      * @return int
      */
     public function countByUser($user_id);
+
+    /**
+     * Get Next auto-incremental id
+     *
+     * @return int
+     */
+    public function getNextId();
 }

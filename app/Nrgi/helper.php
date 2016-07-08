@@ -250,3 +250,15 @@ function translate_date($date)
 
     return $date;
 }
+
+/**
+ * Get Formated id for contract name
+ *
+ * @param $id
+ *
+ * @return string
+ */
+function formatIdRorName($id)
+{
+    return str_pad($id, 4, "0", STR_PAD_LEFT);
+}

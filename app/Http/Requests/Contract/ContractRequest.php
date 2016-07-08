@@ -61,9 +61,7 @@ class ContractRequest extends Request
                     $contractService = app('App\Nrgi\Services\Contract\ContractService');
 
                     if ($contract = $contractService->getContractIfFileHashExist($hash)) {
-                        $message = trans(
-                            "The contract file is already present in our system. Please check the following Title of contract with which the uploaded file is linked and make necessary updates."
-                        );
+                        $message = trans("validation.file_already_exists");
                         $message .= sprintf(
                             "<div><a target='_blank' href='%s'>%s</a></div>",
                             route('contract.show', $contract->id),
@@ -105,9 +103,9 @@ class ContractRequest extends Request
     public function messages()
     {
         return [
-            'file.required' => trans('Contract file is required.'),
-            'file.mimes'    => trans('The file must be a pdf.'),
-            'file.max'      => trans('You can upload file upto 1GB only.')
+            'file.required' => trans('validation.file_required'),
+            'file.mimes'    => trans('validation.file_must_be_pdf'),
+            'file.max'      => trans('validation.file_upload_limit')
         ];
     }
 }

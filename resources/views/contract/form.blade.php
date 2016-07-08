@@ -49,7 +49,6 @@ if (!empty($contract->metadata->government_entity)) {
 @endif
 
 @if($action == 'edit')
-
     <div id="new-document" style="display: none" class="form-group">
         <label for="Select PDF" class="col-sm-2 control-label">@lang('contract.contract_file')</label>
 
@@ -70,23 +69,20 @@ if (!empty($contract->metadata->government_entity)) {
 
 <div class="form-group">
     <label for="contract_name" class="col-sm-2 control-label">@lang('contract.contract_name') <span class="red">*</span></label>
-
     <?php
-
     if ($action == 'edit') {
         $contract_name = isset($contract->metadata->contract_name) ? $contract->metadata->contract_name : null;
     } else $contract_name = null;
     ?>
     <div class="col-sm-7">
         {!! Form::text('contract_name', $contract_name, ["class"=>"required form-control contract_name"])!!}
-        <span id="generate-contract-name" class="btn btn-primary"> @lang('contract.generate_name')</span>
+        <span id="generate-contract-name" class="btn btn-default"> @lang('contract.generate_name')</span>
     </div>
 
     @if($action == 'edit')
         {!! discussion($discussions,$discussion_status, $contract->id,'contract_name','metadata') !!}
     @endif
 </div>
-
 
 <div class="form-group">
     {!! Form::label('contract_identifier', trans('contract.contract_identifier'), ['class'=>'col-sm-2
@@ -261,26 +257,25 @@ if (isset($contract->metadata->resource)) {
     <div class="col-sm-7">
         <?php
         $toc = (isset($contract->metadata->type_of_contract) && !(isset($_GET['parent'])) )? $contract->metadata->type_of_contract : old('type_of_contract');
-
-
-        if (!empty($toc)) {
-            $intersect = array_intersect($toc, trans('codelist/contract_type'));
-            $tocDiff   = array_diff($toc, $intersect);
-            if (!empty($tocDiff) AND !empty($toc)) {
-                $toc = 'Other';
-            }
-        }
-
         ?>
         {!! Form::select('type_of_contract[]', trans('codelist/contract_type'),
         $toc,
         ["multiple"=>"multiple", "class"=>" form-control", "id"=>"type_of_contract"])!!}
+		<?php
+			$isTOCOther = false;
+			if (!empty($toc)) {
+			$intersect = array_intersect($toc, trans('codelist/contract_type'));
+			$tocDiff   = array_diff($toc, $intersect);
+			if (!empty($tocDiff) AND !empty($toc)) {
+				$isTOCOther = true;
+				}
+			}
+		?>
+        @if($isTOCOther)
+			<span class="red input-required">*</span>
+			<input class="form-control required other_toc" value="{{isset($toc[1])?$toc[1]:''}}"  name="type_of_contract[]" type="text">
+		@endif
 
-        @if($toc == 'Other')
-            {!! Form::text('type_of_contract[]',
-            isset($contract->metadata->type_of_contract[0])?$contract->metadata->type_of_contract[0]:null,
-            ["id" =>'', "class"=>"form-control other_toc"])!!}
-        @endif
         <label id="type_of_contract-error" class="error" for="type_of_contract"></label>
     </div>
 

@@ -1189,5 +1189,14 @@ class ContractService
         return $companyName;
     }
 
+    /**
+     * Get Next auto-incremental id
+     *
+     * @return int
+     */
+    public function getNextId()
+    {
+        return $this->contract->getNextId();
+    }
 
 }

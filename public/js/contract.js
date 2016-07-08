@@ -351,26 +351,27 @@ $(function () {
 
         var contract_name = [];
 
-        if(company !=''){
+        if (company != '') {
             contract_name.push(company);
         }
 
-        if(license_text !='') {
+        if (license_text != '') {
             contract_name.push(license_text);
         }
 
-        if(type_of_contract !='') {
+        if (type_of_contract != '') {
             contract_name.push(type_of_contract);
         }
 
-        if(signature_year !='') {
+        if (signature_year != '') {
             contract_name.push(signature_year);
         }
-
-        $('.contract_name').val(contract_name.join(','));
-
+        contract_name = contract_name.join(', ');
+        if (contract_name != '') {
+            contract_name = contract_name + ', ' + $('.contract-wrapper').data('id');
+        }
+        $('.contract_name').val(contract_name);
     });
-
 });
 
 
