@@ -122,7 +122,19 @@ return [
     'comment_required'                     => "Commentaire est obligatoire.",
     'suggestion'                           => "Message suggestion est nécessaire",
     'text_type'                            => "S'il vous plaît sélectionner le type de texte",
-
+    'utility'                              => "Utilitaire",
+    'utility_autorename'                   => "Générer Nom contrat",
+    'select_category'                      => 'Choisir une catégorie',
+    'all'                                  => 'Tout',
+    'select_country'                       => 'Sélectionner le pays',
+    'contract_id'                          => 'Contrat Id',
+    'current_name'                         => 'Contrats Nom actuel',
+    'new_name'                             => 'Nouveaux contrats Nom',
+    'remarks'                              => 'Remarques',
+    'identical'                            => 'Identique, seront ignorés',
+    'rename_confirm'                       => 'Etes-vous sûr que vous voulez renommer ces contrats ?',
+    'rename_contract'                      => 'Renommer contrat',
+    'rename_success_message'               => 'Contrats renommé avec succès',
 
     /*ContractController*/
     'save_success'                         => "Téléversement du contrat réussi. Vous serez averti par courrier quand le traitement du courrier aura été complété afin de permettre la révision du texte.",
