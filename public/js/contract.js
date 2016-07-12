@@ -292,85 +292,22 @@ $(function () {
             }
         });
 
-
+    var xhr;
     $('#generate-contract-name').on('click', function () {
-        var company = [];
-        $('.company_name').map(function (index, item) {
-            var c = $(item).val();
-            if (c != '') {
-                company.push(c);
-            }
-        });
-        company = company.join("-");
-
-        var license = [];
-        var count = 0;
-        var license_text = $('.license-name');
-        $(license_text).each(function (index, item) {
-            if ($(item).val() === '') {
-                count = count + 1;
-            }
+        var contract_details = $('.contract-form').serialize();
+        $(".loading").show();
+        if(xhr && xhr.readyState != 4){
+            xhr.abort();
+        }
+        xhr = $.ajax({
+            type: 'POST',
+            url: '/contract/generate/name',
+            data: contract_details
+        }).success(function (name) {
+            $(".loading").hide();
+            $('.contract_name').val(name);
         });
 
-        if (count > 0) {
-            license_text = $('.license_identifier');
-            license_text.map(function (index, item) {
-                var li = $(item).val();
-                license.push(li);
-            });
-            license_text = license.join("-");
-        }
-        else {
-            license_text.map(function (index, item) {
-                var l = $(item).val();
-                license.push(l);
-            });
-            license_text = license.join("-");
-        }
-
-        var type_of_contract = '';
-
-        if ($('#type_of_contract').val() == null) {
-            type_of_contract = $('#document_type').val();
-
-            if (type_of_contract == 'Other') {
-                type_of_contract = $('.dt').val();
-            }
-        }
-        else {
-            type_of_contract = $('#type_of_contract').val();
-
-            if (type_of_contract == 'Other') {
-                type_of_contract = $('.other_toc').val();
-            }
-            else
-                type_of_contract = type_of_contract.join("-");
-        }
-
-        var signature_year = $('.signature_year').val();
-
-        var contract_name = [];
-
-        if (company != '') {
-            contract_name.push(company);
-        }
-
-        if (license_text != '') {
-            contract_name.push(license_text);
-        }
-
-        if (type_of_contract != '') {
-            contract_name.push(type_of_contract);
-        }
-
-        if (signature_year != '') {
-            contract_name.push(signature_year);
-        }
-        contract_name = contract_name.join(', ');
-        if (contract_name != '') {
-            contract_name = contract_name + ', ' + $('.contract-wrapper').data('id');
-        }
-        $('.contract_name').val(contract_name);
     });
 });
 

@@ -312,9 +312,13 @@ interface ContractRepositoryInterface
     public function countByUser($user_id);
 
     /**
-     * Get Next auto-incremental id
+     * Get Contract Name
      *
-     * @return int
+     * @param      $contractName
+     * @param null $id
+     *
+     * @return collection
      */
-    public function getNextId();
+    public function getContractByName($contractName, $id = null);
+
 }

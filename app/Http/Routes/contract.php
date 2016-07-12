@@ -24,6 +24,6 @@ $router->group(
         $router->get('contract/{id}/annotate', ['as' => 'contract.annotate', 'uses' => 'Page\PageController@annotatenew']);
         $router->get('contract/{id}/review', ['as' => 'contract.review', 'uses' => 'Page\PageController@reviewnew']);
         $router->get('contract/select/type', ['as' => 'contract.select.type', 'uses' => 'ContractController@contractType']);
-
+        $router->any('contract/generate/name',['as' => 'contract.generate.name', 'uses' =>'ContractController@getContractName']);
     }
 );

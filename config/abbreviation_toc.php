@@ -1,0 +1,33 @@
+<?php
+return [
+    "Agricultural Development Agreement"     => "Agricultural Development Agreement",
+    "Asset Sale and Purchase Agreement"      => "Asset Sale and Purchase Agreement",
+    "Autre"                                  => "Autre",
+    "Bail Foncier"                           => "Bail Foncier",
+    "Cahier des Charges"                     => "Cahier des Charges",
+    "Concession Agreement"                   => "Concession",
+    "Contract Amendment"                     => "Amendment",
+    "Contract Annex"                         => "Annex",
+    "Contrat de Concession Agricole"         => "Contrat de Concession Agricole",
+    "Contrat de Concession Forestière"       => "Contrat de Concession Forestière",
+    "Establishment Convention"               => "Establishment Convention",
+    "Exploitation Permit/License"            => "Exploitation License",
+    "Exploration Permit/License"             => "Exploration License",
+    "Forest Management Contract"             => "Forest Management Contract",
+    "Forest Management Plan"                 => "Forest Management Plan",
+    "Investment Incentive Contract"          => "Investment Incentive Contract",
+    "Investment Promotion Agreement"         => "Investment Promotion Agreement",
+    "Joint Venture Agreement"                => "JVA",
+    "Land Lease Agreement"                   => "Lease",
+    "Memorandum of Understanding"            => "MOU",
+    "Other"                                  => "Other",
+    "Production or Profit Sharing Agreement" => "PSA",
+    "Protocole d'Accord"                     => "Protocole d'Accord",
+    "Service Contract"                       => "Service Contract",
+    "Stabilization Agreements"               => "Stabilization Agreements",
+    "Sub Contract"                           => "Sub Contract",
+    "Sub-lease"                              => "Sub-lease",
+    "Timber Sale Contract"                   => "Timber Sale Contract",
+    "Translated Contract"                    => "Translated Contract"
+];
+
