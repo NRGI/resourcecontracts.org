@@ -1,8 +1,9 @@
 <?php namespace App\Console\Commands;
 
-use App\Nrgi\Repositories\Contract\Page\PageRepository;
+use Aws\S3\S3Client;
 use Illuminate\Console\Command;
-use Illuminate\Contracts\Filesystem\Factory as Filesystem;
+use Illuminate\Contracts\Filesystem\Factory as Storage;
+use Illuminate\Filesystem\Filesystem;
 use ZipArchive;
 
 /*
@@ -23,155 +24,78 @@ class BulkdownloadText extends Command
      *
      * @var string
      */
-    protected $description = 'Download the bulk text.';
+    protected $description = 'Download All pdf Text in zip file.';
     /**
-     * @var PageRepository
+     * @var
      */
-    public $page;
+    public $storage;
     /**
-     * @var Filesystem
+     * @var
      */
-    public $file;
-    /*
-     * Folder name
-     */
-    public $fileName = "bulktext.txt";
+    public $filesystem;
 
-    /*
-     * Folder for to store text and zip file
-     */
-    public $folder = "bulktext";
-
-    /*
-     * Zip file name
-     */
-    public $zipFileName;
+    const RAWTEXT     = "rawtext";
+    const REFINEDTEXT = "refinedtext";
+    const S3FOLDER    = "dumptext";
 
     /**
-     * @param PageRepository $page
-     * @param Filesystem     $file
+     * @param Storage    $storage
+     * @param Filesystem $filesystem
      */
-    public function __construct(PageRepository $page, Filesystem $file)
+    public function __construct(Storage $storage, Filesystem $filesystem)
     {
         parent::__construct();
-        $this->page        = $page;
-        $this->file        = $file;
-        $this->zipFileName = $this->getZipFileName();
+        $this->storage    = $storage;
+        $this->filesystem = $filesystem;
     }
 
+
     /**
-     * Execute the console command.
-     *
+     * Execute bash file
      */
     public function fire()
     {
-
-        $this->info(sprintf('Start time %s ', date('H:i:s')));
-        $start = microtime(true);
-        $pages = $this->page->contractText();
-        $text  = $this->concatPages($pages, $start);
-        $this->makeFile($text);
-        $url = $this->upLoadZipFile();
-        $end = microtime(true);
-        $this->info(sprintf('End  time %s ', date('H:i:s')));
-        $this->info(sprintf('Total  time %s ', $end - $start));
-        $this->info(sprintf('Url for bulk file %s ', $url));
-    }
-
-    /**
-     * Concat text
-     * @param $pages
-     */
-    public function concatPages($pages, $start)
-    {
-        $text = '';
-        foreach ($pages as $page) {
-            $sanitizedText = $this->sanitizeText($page['text']);
-            $text .= " " . $sanitizedText;
-        }
-        $this->info("Text sanitized");
-
-        return $text;
-    }
-
-    /**
-     * Make file and zip it
-     * @param $text
-     */
-    public function makeFile($text)
-    {
-        if (!is_dir(public_path() . '/' . $this->folder)) {
-            mkdir(public_path() . '/' . $this->folder, 0777, true);
-        }
-
-        $fileW = fopen(public_path() . '/' . $this->folder . '/' . $this->fileName, "w") or die("Unable to open file!");
-        fwrite($fileW, $text);
-        fclose($fileW);
-        $this->info("Raw file made");
-        $zip = new ZipArchive();
-        $zip->open(public_path() . '/' . $this->folder . '/' . $this->zipFileName, ZipArchive::CREATE);
-        $zip->addFile(public_path() . '/' . $this->folder . '/' . $this->fileName, $this->fileName);
-        $zip->close();
+        $host        = env('DB_HOST');
+        $port        = env('DB_PORT');
+        $user        = env('DB_USERNAME');
+        $database    = env('DB_DATABASE');
+        $storagepath = storage_path();
+        $password    = str_replace("&", "\&", env('DB_PASSWORD'));
+        $path        = __DIR__ . '/BashScript';
+        $date        = date('Y_m_d');
+        $filename    = "contract_text_" . $date . ".zip";
+        $rawText     = self::RAWTEXT;
+        $refinedText = self::REFINEDTEXT;
+        chdir($path);
+        chmod($path . '/extract.sh', 0777);
+        shell_exec("./extract.sh $host $port $user $database $storagepath $password $date $filename $rawText $refinedText");
         $this->info("File zipped");
+        $this->uploadZipFile($storagepath, $filename, $date);
 
     }
 
 
     /**
-     * Upload the zipped file to s3
-     * @return string
+     * Upload file in s3
+     * @param $filename
      */
-    private function upLoadZipFile()
+    public function uploadZipFile($storagepath, $filename, $date)
     {
-        $this->info("Uploading file to s3");
-        $this->file->disk('s3')->put('/bulktext/' . $this->zipFileName, file_get_contents(public_path() . '/' . $this->folder . '/' . $this->zipFileName));
-        $file = 'http://s3-us-west-2.amazonaws.com/' . env('AWS_BUCKET') . '/bulktext/' . $this->zipFileName;
-        $this->rrmdir(public_path() . '/' . $this->folder);
+        $client = S3Client::factory(
+            [
+                'key'    => env('AWS_KEY'),
+                'secret' => env('AWS_SECRET'),
+                'region' => env('AWS_REGION'),
+            ]
+        );
 
-        return $file;
-    }
+        $client->uploadDirectory($storagepath . "/" . $date . "/", env('AWS_BUCKET'), "/" . self::S3FOLDER);
+        $this->info("File uploaded in s3");
+        $this->filesystem->deleteDirectory($storagepath . '/' . self::RAWTEXT);
+        $this->filesystem->deleteDirectory($storagepath . '/' . self::REFINEDTEXT);
+        $this->filesystem->deleteDirectory($storagepath . '/' . $date);
+        $this->info("File deleted from local");
 
-    /**
-     * Remove directory
-     * @param $dir
-     */
-    public function rrmdir($dir)
-    {
-        $this->info("Removing directory");
-        if (is_dir($dir)) {
-            $objects = scandir($dir);
-            foreach ($objects as $object) {
-                if ($object != "." && $object != "..") {
-                    if (is_dir($dir . "/" . $object)) {
-                        rrmdir($dir . "/" . $object);
-                    } else {
-                        unlink($dir . "/" . $object);
-                    }
-                }
-            }
-            rmdir($dir);
-        }
-    }
-
-    /**
-     * Sanitize text
-     * @param $text
-     * @return string
-     */
-    public function sanitizeText($text)
-    {
-        return str_replace(["\r\n", "\r", "\n", "\f"], "", strip_tags($text));
-    }
-
-    /**
-     * Get Zip file name
-     * @return string
-     */
-    public function getZipFileName()
-    {
-        $date = date('Y_m_d_H_i_s');
-
-        return "contract_texts_" . $date . ".zip";
     }
 
 

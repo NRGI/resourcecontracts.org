@@ -136,7 +136,7 @@ class ContractService
         } catch (ModelNotFoundException $e) {
             $this->logger->error('Find : Contract not found.', ['Contract ID' => $id]);
         } catch (Exception $e) {
-            $this->logger->error('Find : '.$e->getMessage());
+            $this->logger->error('Find : ' . $e->getMessage());
         }
 
         return null;
@@ -313,7 +313,7 @@ class ContractService
         if ($file->isValid()) {
             $fileName    = $file->getClientOriginalName();
             $file_type   = $file->getClientOriginalExtension();
-            $newFileName = sprintf("%s.%s", sha1($fileName.time()), $file_type);
+            $newFileName = sprintf("%s.%s", sha1($fileName . time()), $file_type);
             try {
                 $data = $this->storage->disk('s3')->put(
                     $newFileName,
@@ -650,7 +650,7 @@ class ContractService
      */
     public function savePageText($id, $page, $text)
     {
-        $path = public_path(self::UPLOAD_FOLDER.'/'.$id.'/'.$page.'.txt');
+        $path = public_path(self::UPLOAD_FOLDER . '/' . $id . '/' . $page . '.txt');
 
         return $this->filesystem->put($path, $text);
     }
@@ -818,7 +818,7 @@ class ContractService
 
             return true;
         } catch (Exception $e) {
-            $this->logger->error('Could not move pdf file : '.$e->getMessage());
+            $this->logger->error('Could not move pdf file : ' . $e->getMessage());
 
             return false;
         }
@@ -843,7 +843,7 @@ class ContractService
 
         $filename     = explode('.', $contract->file);
         $filename     = $filename[0];
-        $wordFileName = $filename.'.txt';
+        $wordFileName = $filename . '.txt';
 
         try {
             $file_path = $this->word->create($text, $wordFileName);
@@ -857,7 +857,7 @@ class ContractService
             return true;
         } catch (Exception $e) {
             $this->logger->error(
-                'Word file could not  be update : '.$e->getMessage(),
+                'Word file could not  be update : ' . $e->getMessage(),
                 ['Contract id' => $contract_id]
             );
 
@@ -945,9 +945,9 @@ class ContractService
         $filename = $filename[0];
 
         try {
-            return $this->storage->disk('s3')->get($contract_id.'/'.$filename.'.txt');
+            return $this->storage->disk('s3')->get($contract_id . '/' . $filename . '.txt');
         } catch (Exception $e) {
-            $this->logger->error('File not found:'.$e->getMessage());
+            $this->logger->error('File not found:' . $e->getMessage());
 
             return null;
         }
@@ -1175,7 +1175,7 @@ class ContractService
             return $report;
 
         } catch (Exception $e) {
-            $this->logger->error('getContractRenameList :'.$e->getMessage());
+            $this->logger->error('getContractRenameList :' . $e->getMessage());
 
             return [];
         }
@@ -1222,7 +1222,7 @@ class ContractService
         $tocs = array_filter($tocs);
         $tocs = array_map(
             function ($v) {
-                return config('abbreviation_toc.'.$v);
+                return config('abbreviation_toc.' . $v);
             },
             $tocs
         );
@@ -1270,7 +1270,7 @@ class ContractService
                 $contract->metadata        = $metadata;
                 $contract->save();
             } catch (Exception $e) {
-                $this->logger->error('rename contracts : '.$e->getMessage());
+                $this->logger->error('rename contracts : ' . $e->getMessage());
             }
         }
 
@@ -1295,7 +1295,7 @@ class ContractService
     /**
      * Refine Contract name
      *
-     * @param $contract
+     * @param      $contract
      *
      * @param null $id
      *
@@ -1326,11 +1326,39 @@ class ContractService
         $contract_name = join(', ', array_filter($a));
         $count         = $this->getContractNameCount($contract_name, $id);
         if ($count > 0) {
-            return $contract_name = $contract_name.', '.str_pad($count, 3, 0, STR_PAD_LEFT);
+            return $contract_name = $contract_name . ', ' . str_pad($count, 3, 0, STR_PAD_LEFT);
         } else {
             return $contract_name;
         }
     }
+
+
+    /**
+     * Sort the folder with modified date and download
+     */
+    public function bulkTextDownload()
+    {
+        $files      = $this->storage->disk('s3')->allFiles('/dumptext/');
+        $date       = 0;
+        $latestFile = '';
+        foreach ($files as $file) {
+
+            $createdDate = $this->storage->disk('s3')->lastModified($file);
+
+            if ($createdDate > $date) {
+                $latestFile = $file;
+            }
+            $date = $createdDate;
+        }
+        $zipUrl   = "http://" . env("AWS_BUCKET") . ".s3-us-west-2.amazonaws.com/" . $latestFile;
+        $filename = explode('/', $latestFile);
+        $filename = $filename[1];
+        header('Content-type: application/zip');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        readfile($zipUrl);
+        exit;
+    }
+
 
     /**
      * Find if the contract name is unique
@@ -1343,10 +1371,9 @@ class ContractService
      */
     public function getContractNameCount($contractName, $id = null)
     {
-        $count     = 0;
+        $count = 0;
 
-        if(is_null($id))
-        {
+        if (is_null($id)) {
             return $count;
         }
 
@@ -1359,11 +1386,11 @@ class ContractService
                 $lastNum         = end($lastNum);
 
                 if (is_numeric($lastNum) && strlen($lastNum) == 3) {
-                    $contractNamePad = substr($contract->metadata->contract_name, 0, -5);
+                    $contractNamePad = substr($contract->metadata->contract_name, 0, - 5);
                 }
 
                 if ($contractNamePad == $contractName) {
-                    $count++;
+                    $count ++;
                 }
             }
 

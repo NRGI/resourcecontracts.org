@@ -23,9 +23,9 @@
                     $url=Request::all();
                     $url['download']=1;
                   ?>
-
+                <a href="{{route('bulk.text.download')}}" class="btn btn-info" style="margin-right: 20px" download>@lang('global.text_download')</a>
                 <a href="{{route("contract.index",$url)}}" class="btn btn-info" style="margin-right: 20px">@lang('contract.download')</a>
-                 <a href="{{route('contract.import')}}" class="btn btn-default">@lang('contract.import.name')</a>
+                <a href="{{route('contract.import')}}" class="btn btn-default">@lang('contract.import.name')</a>
                 <a href="{{route('contract.select.type')}}" class="btn btn-primary btn-import">@lang('contract.add')</a>
             </div>
         </div>

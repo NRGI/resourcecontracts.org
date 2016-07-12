@@ -62,4 +62,12 @@ class UtilityController extends Controller
 
         return redirect()->route('utility.index')->with('success', trans('contract.rename_success_message'));
     }
+    /**
+     * Bulk text download
+     */
+    public function bulkTextDownload()
+    {
+
+        $this->contractService->bulkTextDownload();
+    }
 }
