@@ -121,10 +121,10 @@ class ProcessService
 
                 $this->uploadPdfsToS3($contract->id);
                 $this->deleteContractFolder($contract->id);
-                $this->contract->updateWordFile($contract->id);
                 $this->fileSystem->delete($readFilePath);
 
                 $this->contract->updateFileName($contract);
+                $this->contract->updateWordFile($contract->id);
 
                 $contract->text_status = Contract::STATUS_DRAFT;
                 $contract->save();
