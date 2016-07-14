@@ -37,6 +37,7 @@ class MTurkNotificationService
      * @param MTurkService    $mturk
      * @param Log             $logger
      * @param MailQueue       $mailer
+     *
      * @internal param MTurkService $turk
      */
     public function __construct(
@@ -55,7 +56,9 @@ class MTurkNotificationService
 
     /**
      * Display all the tasks for a specific contract
+     *
      * @param $contract_id
+     *
      * @return string
      */
     public function process($contract_id)
@@ -67,7 +70,7 @@ class MTurkNotificationService
 
         if ($tasks['total_pending_approval'] > 0) {
             $recipients = $this->getRecipients($contract);
-            $this->mailer->sendMultiple(
+            $this->mailer->send(
                 $recipients,
                 sprintf("Mturk assignments for your action for [%s]", $contract->title),
                 'mturk.email.notify',
@@ -84,17 +87,15 @@ class MTurkNotificationService
      * gets recipients for mturk notification
      *
      * @param $contract
+     *
      * @return array
      */
     public function getRecipients($contract)
     {
-        $recipients   = [];
         $uploader     = $contract->created_user->email;
         $type         = $contract->metadata->category;
         $resourceType = isset($type[0]) ? $type[0] : "";
-        if (env('MTURK_NOTIFY_' . strtoupper($resourceType))) {
-            $recipients = explode(',', env('MTURK_NOTIFY_' . strtoupper($resourceType)));
-        }
+        $recipients   = $this->mailer->getMTurkNotifyEmails($resourceType);
         array_push($recipients, $uploader);
 
         return $recipients;
@@ -109,8 +110,8 @@ class MTurkNotificationService
         $minimum_balance = config('mturk.minimumBalance');
         $balance         = $this->mturk->getBalance();
         if ($balance['Amount'] < $minimum_balance) {
-            $this->mailer->sendMultiple(
-               $this->mailer->getMailAddress(),
+           $this->mailer->send(
+                $this->mailer->getNotifyEmails(),
                 "MTurk balance is getting low.",
                 'mturk.email.balance',
                 [

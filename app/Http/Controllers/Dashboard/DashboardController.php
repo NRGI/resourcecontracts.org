@@ -4,7 +4,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Middleware\Localization;
 use App\Nrgi\Mturk\Services\MTurkService;
 use App\Nrgi\Services\Dashboard\DashboardService;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 /**
@@ -30,7 +29,7 @@ class DashboardController extends Controller
     public function __construct(DashboardService $dashboard, Localization $localization)
     {
         $this->middleware('auth');
-        $this->dashboard = $dashboard;
+        $this->dashboard    = $dashboard;
         $this->localization = $localization;
     }
 
@@ -38,6 +37,7 @@ class DashboardController extends Controller
      * Dashboard Home
      *
      * @param MTurkService $mTurk
+     *
      * @return Response
      */
     public function index(MTurkService $mTurk)
