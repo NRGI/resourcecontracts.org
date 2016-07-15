@@ -1,8 +1,10 @@
 <?php namespace App\Exceptions;
 
+use App\Nrgi\Mail\MailQueue;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Request;
+use Psr\Log\LoggerInterface;
 
 class Handler extends ExceptionHandler
 {
@@ -12,7 +14,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        'Symfony\Component\HttpKernel\Exception\HttpException'
+        'Symfony\Component\HttpKernel\Exception\HttpException',
     ];
 
     /**
@@ -21,8 +23,24 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontSendEmailMessage = [
-        'Symfony\Component\HttpKernel\Exception\NotFoundHttpException'
+        'Symfony\Component\HttpKernel\Exception\NotFoundHttpException',
     ];
+    /**
+     * @var MailQueue
+     */
+    protected $mailer;
+
+    /**
+     * Handler constructor.
+     *
+     * @param LoggerInterface $log
+     * @param MailQueue       $mailer
+     */
+    public function __construct(LoggerInterface $log, MailQueue $mailer)
+    {
+        parent::__construct($log);
+        $this->mailer = $mailer;
+    }
 
     /**
      * Report or log an exception.
@@ -30,6 +48,7 @@ class Handler extends ExceptionHandler
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
      * @param  \Exception $e
+     *
      * @return void
      */
     public function report(Exception $e)
@@ -42,6 +61,7 @@ class Handler extends ExceptionHandler
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Exception               $e
+     *
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $e)
@@ -61,6 +81,7 @@ class Handler extends ExceptionHandler
      * Send Error message in email
      *
      * @param $e
+     *
      * @return bool
      */
     public function sendErrorMessage($e)
@@ -70,32 +91,7 @@ class Handler extends ExceptionHandler
                 return true;
             }
         }
-
-        if (env('NOTIFY_ERROR_EMAIL')) {
-            $this->sendMail($e);
-        }
-    }
-
-    /**
-     * Sends email
-     * @param $exception
-     */
-    protected function sendMail($exception)
-    {
-        $error = $exception->getMessage();
-
-        $current_url = Request::fullUrl();
-
-        $message = sprintf("Url: %s \n\rError: %s \n\rLog: %s",  $current_url, $error, (string) $exception);
-
-        \Mail::raw(
-              $message  ,
-            function ($msg) use ($current_url) {
-                $recipients = [env('NOTIFY_ERROR_EMAIL')];
-                $msg->subject("ResourceContract Admin site has error - " . $current_url);
-                $msg->to($recipients);
-                $msg->from(['nrgi@yipl.com.np']);
-            }
-        );
+        $url = Request::fullUrl();
+        $this->mailer->sendErrorEmail($e, $url);
     }
 }
