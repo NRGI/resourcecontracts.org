@@ -35,8 +35,12 @@ class ElasticSearchService
      * @param ContractService               $contract
      * @param LoggerInterface               $logger
      */
-    public function __construct(Client $http, AnnotationRepositoryInterface $annotation, ContractService $contract, LoggerInterface $logger)
-    {
+    public function __construct(
+        Client $http,
+        AnnotationRepositoryInterface $annotation,
+        ContractService $contract,
+        LoggerInterface $logger
+    ) {
         $this->http       = $http;
         $this->logger     = $logger;
         $this->contract   = $contract;
@@ -52,7 +56,7 @@ class ElasticSearchService
      */
     protected function apiURL($request)
     {
-        return trim(env('ELASTIC_SEARCH_URL'), '/') . '/' . $request;
+        return trim(env('ELASTIC_SEARCH_URL'), '/').'/'.$request;
     }
 
     /**
@@ -90,19 +94,22 @@ class ElasticSearchService
         $metadataAttr                    = $contract->metadata;
         $parent                          = $this->contract->getcontracts((int) $contract->getParentContract());
 
-        $metadataAttr->translated_from = $parent;;
-        $contract->metadata = $metadataAttr;
-        $metadata           = [
+        $metadataAttr->translated_from = $parent;
+        $contract->metadata            = $metadataAttr;
+        $metadata                      = [
             'id'                   => $contract->id,
             'metadata'             => collect($contract->metadata)->toJson(),
             'total_pages'          => $contract->pages->count(),
             'created_by'           => json_encode(
-                ['name' => isset($contract->created_user->name)?$contract->created_user->name:'', 'email' => isset($contract->created_user->email)?$contract->created_user->email:'']
+                [
+                    'name'  => isset($contract->created_user->name) ? $contract->created_user->name : '',
+                    'email' => isset($contract->created_user->email) ? $contract->created_user->email : '',
+                ]
             ),
             'supporting_contracts' => $this->contract->getSupportingDocuments($contract->id),
             'updated_by'           => json_encode($updated_by),
             'created_at'           => $contract->created_datetime->format('Y-m-d H:i:s'),
-            'updated_at'           => $contract->last_updated_datetime->format('Y-m-d H:i:s')
+            'updated_at'           => $contract->last_updated_datetime->format('Y-m-d H:i:s'),
         ];
 
         try {
@@ -127,7 +134,7 @@ class ElasticSearchService
             'open_contracting_id' => $contract->metadata->open_contracting_id,
             'total_pages'         => $contract->pages->count(),
             'pages'               => $this->formatPdfTextPages($contract),
-            'metadata'            => $this->getMetadataForES($contract->metadata)
+            'metadata'            => $this->getMetadataForES($contract->metadata),
         ];
 
         try {
@@ -165,15 +172,19 @@ class ElasticSearchService
                 $json->text          = $annotation->text;
                 $json->category_key  = $annotation->category;
                 $json->category      = (isset($annotation->category)) ? getCategoryName($annotation->category) : "";
-                $json->cluster       = (isset($annotation->category)) ? _l("codelist/annotation.cluster.{$annotation->category}") : "";
-                $annotationData[] = $json;
+                $json->cluster       = (isset($annotation->category)) ? getCategoryClusterName($annotation->category) : "";
+                $annotationData[]    = $json;
             }
         }
 
         $data['annotations'] = json_encode($annotationData);
 
         try {
-            $response = $this->http->post($this->apiURL('contract/delete/annotation'), null, ["contract_id" => $contractId])->send();
+            $response = $this->http->post(
+                $this->apiURL('contract/delete/annotation'),
+                null,
+                ["contract_id" => $contractId]
+            )->send();
             $this->logger->info('Annotations deleted', [$response->json()]);
             $request  = $this->http->post($this->apiURL('contract/annotations'), null, $data);
             $response = $request->send();
@@ -240,6 +251,7 @@ class ElasticSearchService
 
     /**
      * Get Formatted Pdf Text
+     *
      * @param $contract
      *
      * @return string

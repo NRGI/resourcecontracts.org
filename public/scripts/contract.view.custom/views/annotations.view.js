@@ -261,8 +261,8 @@ var AnnotationItem = React.createClass({
         var category = this.getCategory();
         return (
             <div className={currentAnnotationClass + this.getPageClasses()} id={this.state.annotation_id}>
-                <p>{category}</p>
-                <p>{this.getShowText()}</p>
+                <p className="annotation-category">{category}</p>
+                <p className="annotation-text">{this.getShowText()}</p>
                 <div className="annotation-page">{this.getPages()}</div>
             </div>
         )

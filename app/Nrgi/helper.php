@@ -47,6 +47,8 @@ function getFileHash($file)
  * get language
  *
  * @param String
+ *
+ * @return string
  */
 function _l($key)
 {
@@ -226,12 +228,36 @@ function trans_array(array $codeList, $path)
  * Get Category name by key
  *
  * @param string $key
+ * @param bool   $lang
  *
  * @return string
  */
-function getCategoryName($key = '')
+function getCategoryName($key = '', $lang = false)
 {
-    $categories = config('category');
+    if ($lang) {
+        $categories = trans('codelist/annotation.annotation_category');
+    } else {
+        $categories = config('annotation.category');
+    }
+
+    return array_key_exists($key, $categories) ? $categories[$key] : $key;
+}
+
+/**
+ * Get Category name by key
+ *
+ * @param string $key
+ * @param bool   $lang
+ *
+ * @return string
+ */
+function getCategoryClusterName($key = '', $lang = false)
+{
+    if ($lang) {
+        $categories = trans('codelist/annotation.cluster');
+    } else {
+        $categories = config('annotation.cluster');
+    }
 
     return array_key_exists($key, $categories) ? $categories[$key] : $key;
 }

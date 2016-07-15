@@ -1,14 +1,6 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Annotations List
-|--------------------------------------------------------------------------
-|
-*/
-
 return [
-    'cluster'             => [
+    'cluster'  => [
         "i-general-information"                                                                                                           => "Legal Rules",
         "country"                                                                                                                         => "General",
         "name-of-company-executing-document"                                                                                              => "General",
@@ -105,7 +97,7 @@ return [
         "annexes-missing-from-copy"                                                                                                       => "Legal Rules",
         "other"                                                                                                                           => "Legal Rules",
     ],
-    "annotation_category" => [
+    'category' => [
         "i-general-information"                                                                                                           => "I. General information",
         "country"                                                                                                                         => "Country",
         "name-of-company-executing-document"                                                                                              => "Name of company executing document",
@@ -200,6 +192,6 @@ return [
         "iii-document-notes"                                                                                                              => "III. Document notes",
         "pages-missing-from-copy"                                                                                                         => "Pages missing from  copy",
         "annexes-missing-from-copy"                                                                                                       => "Annexes missing from copy",
-        "other"                                                                                                                           => "Other"
-    ]
+        "other"                                                                                                                           => "Other",
+    ],
 ];
