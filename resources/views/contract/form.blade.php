@@ -228,14 +228,17 @@ if (isset($contract->metadata->resource)) {
     <?php
     if(isset($contract->file)){
         $dt = (isset($contract->metadata->document_type) && !isset($_GET['parent'])) ? $contract->metadata->document_type : old('document_type');
-        if (!in_array($dt, trans('codelist/documentType')) AND $dt != '') {
+        if (!array_key_exists($dt, trans('codelist/documentType')) AND $dt != '') {
             $dt = 'Other';
         }
     }
-    else $dt = '';
+    else {
+        $dt = '';
+    }
     ?>
     <label for="document_type" class="col-sm-2 control-label">@lang('contract.document_type') <span class="red">*</span></label>
     <div class="col-sm-7">
+
          {!! Form::select('document_type',[''=>trans('Select')]+ trans('codelist/documentType'),
         $dt, ["class"=>"required form-control", "id"=>"document_type"])!!}
         @if($dt == 'Other')
@@ -262,16 +265,18 @@ if (isset($contract->metadata->resource)) {
         $toc,
         ["multiple"=>"multiple", "class"=>" form-control", "id"=>"type_of_contract"])!!}
 		<?php
-			$isTOCOther = false;
+			$isTocOther= $tocDiff = false;
 			if (!empty($toc)) {
-			$intersect = array_intersect($toc, trans('codelist/contract_type'));
-			$tocDiff   = array_diff($toc, $intersect);
-			if (!empty($tocDiff) AND !empty($toc)) {
-				$isTOCOther = true;
+			    $intersect = array_intersect($toc, trans('codelist/contract_type'));
+                    foreach($intersect as $i ){
+                        $tocDiff   = array_key_exists($i, $intersect);
+                    }
+			if (($tocDiff) AND !empty($toc)) {
+				$isTocOther = true;
 				}
 			}
 		?>
-        @if($isTOCOther)
+        @if($isTocOther)
 			<span class="red input-required">*</span>
 			<input class="form-control required other_toc" value="{{isset($toc[1])?$toc[1]:''}}"  name="type_of_contract[]" type="text">
 		@endif
@@ -841,7 +846,11 @@ if (isset($contract->metadata->resource)) {
         <label class="checkbox-inline">
             {!! Form::radio("is_supporting_document", 0, $is_parent_document_value, ['class' => 'field is-supporting-document',$disable_parent]) !!} @lang('global.no')
         </label>
+
     </div>
+    @if($action == 'edit')
+        {!! discussion($discussions,$discussion_status, $contract->id,'is_supporting_document','metadata') !!}
+    @endif
 
 </div>
 <div class="form-group parent-document"
@@ -889,6 +898,9 @@ if (isset($contract->metadata->resource)) {
         {!! Form::radio('annexes_missing', 0 ,($annexes_missing=='0') ? true : null , ['class' => 'field']) !!} @lang('global.no')
         {!! Form::radio('annexes_missing', -1,($annexes_missing=='-1') ? true : null, ['class' => 'field']) !!} @lang('global.not_available')
     </div>
+    @if($action == 'edit')
+        {!! discussion($discussions,$discussion_status, $contract->id,'annexes_missing','metadata') !!}
+    @endif
 </div>
 
 <div class="form-group">
@@ -901,6 +913,9 @@ if (isset($contract->metadata->resource)) {
         {!! Form::radio('pages_missing', 0 ,($pages_missing=='0') ? true : null , ['class' => 'field']) !!} @lang('global.no')
         {!! Form::radio('pages_missing', -1,($pages_missing=='-1') ? true : null , ['class' => 'field']) !!}@lang('global.not_available')
     </div>
+    @if($action == 'edit')
+        {!! discussion($discussions,$discussion_status, $contract->id,'pages_missing','metadata') !!}
+    @endif
 
 </div>
 
@@ -922,6 +937,9 @@ if (isset($contract->metadata->resource)) {
                 @lang('global.no')
             </label>
         </div>
+        @if($action == 'edit')
+            {!! discussion($discussions,$discussion_status, $contract->id,'show_pdf_text','metadata') !!}
+        @endif
     </div>
 
     <input class="delete_company" type="hidden" name="delete[company]" value=""/>

@@ -18,11 +18,11 @@ class DiscussionService
     /**
      * @var DiscussionRepositoryInterface
      */
-    private $discussion;
+    protected $discussion;
 
     /**
      * @param DiscussionRepositoryInterface $discussion
-     * @param Log               $logger
+     * @param Log                           $logger
      */
     public function __construct(DiscussionRepositoryInterface $discussion, Log $logger)
     {
@@ -35,6 +35,7 @@ class DiscussionService
      *
      * @param        $contract_id
      * @param        $data
+     *
      * @return bool
      */
     public function save($contract_id, array $data)
@@ -43,7 +44,12 @@ class DiscussionService
             $this->discussion->save($contract_id, $data);
             $this->logger->info(
                 'Discussion successfully saved.',
-                ['Contract id' => $contract_id, 'Message' => $data['message'], 'Key' => $data['key'], 'type' => $data['type']]
+                [
+                    'Contract id' => $contract_id,
+                    'Message'     => $data['message'],
+                    'Key'         => $data['key'],
+                    'type'        => $data['type'],
+                ]
             );
 
             $this->logger->activity('contract.log.discussion.save', $data, $contract_id);
@@ -62,17 +68,25 @@ class DiscussionService
      * @param $contract_id
      * @param $key
      * @param $type
+     *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function get($contract_id, $key, $type)
     {
-        return $this->discussion->get($contract_id, $key, $type);
+        $messages = $this->discussion->get($contract_id, $key, $type);
+
+        foreach ($messages as &$msg) {
+            $msg->createdDate = $msg->createdDate('F m, d  \a\t h:i A');
+        }
+
+        return $messages;
     }
 
     /**
      * Get Contract Discussion count
      *
      * @param $contract_id
+     *
      * @return array
      */
     public function getCount($contract_id)
@@ -105,13 +119,13 @@ class DiscussionService
             asort($ks);
 
             foreach ($ks as $i) {
-                $schema = config('metadata.schema.metadata.' . $meta_key);
+                $schema = config('metadata.schema.metadata.'.$meta_key);
                 $meta   = $schema[0];
 
                 foreach ($meta as $k => $v) {
-                    $key = $k . '-' . $i;
+                    $key = $k.'-'.$i;
                     $this->discussion->delete($contract_id, $key);
-                    $this->discussion->update($contract_id, $k . '-' . ($i + 1), ['key' => $key]);
+                    $this->discussion->update($contract_id, $k.'-'.($i + 1), ['key' => $key]);
                 }
             }
         }
@@ -121,6 +135,7 @@ class DiscussionService
      * Get Resolved discussion status
      *
      * @param $contract_id
+     *
      * @return array
      */
     public function getResolved($contract_id)
