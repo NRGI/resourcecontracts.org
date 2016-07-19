@@ -134,9 +134,9 @@ class ContractService
         try {
             return $this->contract->findContract($id);
         } catch (ModelNotFoundException $e) {
-            $this->logger->error('Contract not found.', ['Contract ID' => $id]);
+            $this->logger->error('Find : Contract not found.', ['Contract ID' => $id]);
         } catch (Exception $e) {
-            $this->logger->error($e->getMessage());
+            $this->logger->error('Find : '.$e->getMessage());
         }
 
         return null;
@@ -154,7 +154,7 @@ class ContractService
         try {
             return $this->contract->findContractWithPages($id);
         } catch (ModelNotFoundException $e) {
-            $this->logger->error('Contract not found.', ['Contract ID' => $id]);
+            $this->logger->error('findWithPages : Contract not found.', ['Contract ID' => $id]);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
@@ -176,7 +176,7 @@ class ContractService
         try {
             return $this->contract->findContractWithTasks($id, $status, $approved);
         } catch (ModelNotFoundException $e) {
-            $this->logger->error('Contract not found.', ['Contract ID' => $id]);
+            $this->logger->error('findWithTasks : Contract not found.', ['Contract ID' => $id]);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
@@ -218,7 +218,7 @@ class ContractService
 
             return $contract;
         } catch (ModelNotFoundException $e) {
-            $this->logger->error('Contract not found.', ['Contract ID' => $id]);
+            $this->logger->error('findWithAnnotations : Contract not found.', ['Contract ID' => $id]);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
@@ -441,12 +441,11 @@ class ContractService
     public function updateContract ($contractID, array $formData)
     {
         try {
-
             $contract     = $this->contract->findContract($contractID);
             $oldIsSupport = $contract->metadata->is_supporting_document;
             $newIsSupport = $formData['is_supporting_document'];
         } catch (Exception $e) {
-            $this->logger->error('Contract not found', ['Contract ID' => $contractID]);
+            $this->logger->error('updateContract : Contract not found', ['Contract ID' => $contractID]);
 
             return false;
         }
@@ -561,7 +560,7 @@ class ContractService
         try {
             $contract = $this->contract->findContract($id);
         } catch (Exception $e) {
-            $this->logger->error('Contract not found.', ['Contract ID' => $id]);
+            $this->logger->error('DeleteContract : Contract not found.', ['Contract ID' => $id]);
 
             return false;
         }
@@ -718,7 +717,7 @@ class ContractService
         try {
             $contract = $this->contract->findContract($id);
         } catch (ModelNotFoundException $e) {
-            $this->logger->error('Contract not found', ['contract id' => $id]);
+            $this->logger->error('Update Status : Contract not found', ['contract id' => $id]);
 
             return false;
         } catch (Exception $e) {
@@ -965,7 +964,7 @@ class ContractService
         try {
             $contract = $this->contract->findContract($id);
         } catch (Exception $e) {
-            $this->logger->error('Contract not found.', ['Contract ID' => $id]);
+            $this->logger->error('Unpublish Contract : Contract not found.', ['Contract ID' => $id]);
 
             return false;
         }
