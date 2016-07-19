@@ -112,7 +112,7 @@ return [
     'to'                                   => 'to',
     'contract'                             => 'contracts',
     'disable'                              => 'Disable',
-    'not_resolved'                         => 'Mark as resolved',
+    'not_resolved'                         => 'Mark as not resolved',
     'write_comment'                        => 'Write comment...',
     'comment_not_added'                    => 'Comment not added yet.',
     'generate_name'                        => 'Generate Contract name',
@@ -136,6 +136,12 @@ return [
     'rename_success_message'               => 'Contracts renamed successfully',
     'open_contracting_id'                  => 'Open Contracting Id',
     'concession'                           => 'Concession',
+    'corporate'                            => 'Corporate',
+    'government'                           => 'Government',
+    'unknown'                              => 'Unknown',
+    'corporate_explain'                    => 'Disclosures made on corporate websites or to security and exchange commissions',
+    'government_explain'                   => 'Contracts released by governments',
+
 
     /*ContractController*/
     'save_success'                         => 'Contract successfully uploaded. You will receive an email notification once the contract processing is complete allowing for the text review',

@@ -88,6 +88,7 @@ class ContractController extends Controller
             'issue',
             'status',
             'download',
+            'disclosure',
             'q'
         );
         $contracts = $this->contractFilter->getAll($filters);
@@ -375,11 +376,11 @@ class ContractController extends Controller
     /**
      * Save Contract Comment
      *
-     * @param         $contract_id
-     * @param Request $request
-     * @param Guard   $auth
+     * @param       $contract_id
+     * @param Guard $auth
      *
      * @return Response
+     * @internal param Request $request
      */
     public function publish($contract_id, Guard $auth)
     {

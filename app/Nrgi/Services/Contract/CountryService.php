@@ -67,8 +67,10 @@ class CountryService
     /**
      * Get Country by name
      *
-     * @param $country
+     * @param $countryName
+     *
      * @return array
+     * @internal param $country
      */
     public function getCountryByName($countryName)
     {

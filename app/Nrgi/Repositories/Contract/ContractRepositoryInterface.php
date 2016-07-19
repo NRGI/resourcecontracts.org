@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Repositories\Contract;
 
 use App\Nrgi\Entities\Contract\Contract;
+use App\Nrgi\Entities\SupportingContract\SupportingContract;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -90,7 +91,7 @@ interface ContractRepositoryInterface
      *
      * @param $fileHash
      *
-     * @return mixed
+     * @return contract
      */
     public function getContractByFileHash($fileHash);
 
@@ -134,9 +135,7 @@ interface ContractRepositoryInterface
     /**
      * Get Contract List
      *
-     * @param $where
-     *
-     * @return mixed
+     * @return Collection
      */
     public function getList();
 
@@ -189,7 +188,7 @@ interface ContractRepositoryInterface
      *
      * @param $documents
      *
-     * @return mixed
+     * @return bool
      */
     public function saveSupportingDocument($documents);
 
@@ -216,10 +215,9 @@ interface ContractRepositoryInterface
      *
      * @param $contractID
      *
-     * @return SupportingDocument
+     * @return SupportingContract
      */
     public function findSupportingContract($contractID);
-
 
     /**
      * Get all the contracts.
@@ -232,13 +230,30 @@ interface ContractRepositoryInterface
     public function getContract($ids, $limit);
 
     /**
-     * write brief description
-     * @return mixed
+     * Get Quality count of multiple metadata
+     *
+     * @return array
      */
     public function getQualityCountOfMultipleMeta();
 
+    /**
+     * Get Multiple metadata Contract
+     *
+     * @param $string
+     *
+     * @return collection
+     */
     public function getMultipleMetadataContract($string);
 
+    /**
+     * Get contract filter by metadata
+     *
+     * @param $filters
+     * @param $limit
+     * @param $contractId
+     *
+     * @return collection
+     */
     public function getContractFilterByMetadata($filters, $limit, $contractId);
 
     /**
@@ -289,7 +304,7 @@ interface ContractRepositoryInterface
      *
      * @param $supportingContract
      *
-     * @return mixed
+     * @return array
      */
     public function getContractsWithoutSupporting($supportingContract);
 
@@ -298,7 +313,7 @@ interface ContractRepositoryInterface
      *
      * @param $id
      *
-     * @return mixed
+     * @return bool
      */
     public function deleteSupportingContract($id);
 
@@ -319,6 +334,32 @@ interface ContractRepositoryInterface
      *
      * @return collection
      */
+
     public function getContractByName($contractName, $id = null);
 
+    /**
+     * Get count company disclosure mode
+     *
+     * @param string $type
+     *
+     * @return Collection
+     */
+    public function getDisclosureModeCount($type = '');
+
+    /**
+     * Get count government disclosure mode
+     *
+     * @return collection
+     */
+    public function getUnknownDisclosureModeCount();
+
+    /**
+     * Get multiple disclosure module contract
+     *
+     * @param $country
+     * @param $filters
+     *
+     * @return collection
+     */
+    public function getMultipleDisclosureContract($country, $filters);
 }

@@ -30,9 +30,7 @@ class ContractFilterService
      * @param CountryService                $countryService
      * @param AnnotationRepositoryInterface $annotations
      * @param DownloadService               $downloadCSV
-     * @internal param DownloadService $download
-     * @internal param DownloadService $downloadService
-     * @internal param APIService $api
+     *
      */
     public function __construct(
         ContractRepositoryInterface $contract,
@@ -50,8 +48,12 @@ class ContractFilterService
      * Get all contract
      *
      * @param array $filters
+     *
      * @param int   $limit
+     *
      * @return Contract
+     * @para    mint   $limit
+     *
      */
     public function getAll(array $filters, $limit = 25)
     {
@@ -62,11 +64,21 @@ class ContractFilterService
 
             return $contracts;
         }
-        if ($filters['type'] == "metadata" && ($filters['word'] == "Concession" || $filters['word'] == "Government Entity" || $filters['word'] == "Company")) {
+        $words = ["concession", "government_entity", "company"];
+        if ($filters['type'] == "metadata" && in_array(strtolower($filters['word']), $words)) {
             $contracts = $this->getMultipleMetadataContracts($filters, $limit);
 
             return $contracts;
         }
+
+        $disclosures = ["Government", "Company", "unknown"];
+        if (in_array($filters['disclosure'], $disclosures)) {
+            $country   = isset($filters['country']) ? $filters['country'] : [];
+            $contracts = $this->contract->getMultipleDisclosureContract($country, $filters);
+
+            return $contracts;
+        }
+
         if ($filters['download'] == 1) {
             $limit = 100000;
         }
@@ -131,6 +143,10 @@ class ContractFilterService
         return array_filter($data);
     }
 
+    /**
+     * Get Contract Annotation status
+     * @return array
+     */
     public function getContractByAnnotationStatus()
     {
         $draft     = $this->annotation->getStatusCountByType(Annotation::DRAFT);
@@ -146,7 +162,7 @@ class ContractFilterService
                     $value->status,
                     $statusRaw['completed'][$key]->status,
                     $statusRaw['rejected'][$key]->status,
-                    $statusRaw['published'][$key]->status
+                    $statusRaw['published'][$key]->status,
                 ]
             );
             $status              = empty($status) ? 'processing' : $status;
@@ -163,20 +179,21 @@ class ContractFilterService
         return array_merge($default, $contract);
     }
 
+    /**
+     * Get Multiple Metadata Contract
+     *
+     * @param $filters
+     * @param $limit
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     private function getMultipleMetadataContracts($filters, $limit)
     {
-        $contractId = '';
-        if ($filters['word'] == "Government Entity") {
-            $contractId = $this->contract->getMultipleMetadataContract("government");
+        if ($filters['word'] == "government_entity") {
+            $filters['word'] = "government";
         }
-        if ($filters['word'] == "Company") {
-            $contractId = $this->contract->getMultipleMetadataContract("company");
-        }
-        if ($filters['word'] == "Concession") {
-            $contractId = $this->contract->getMultipleMetadataContract("concession");
-        }
-
-        $meta = $contractId[0]->getmultiplemetadatacontract;
+        $contractId = $this->contract->getMultipleMetadataContract($filters['word']);
+        $meta       = $contractId[0]->getmultiplemetadatacontract;
 
         if (strpos($meta, '=') == true) {
             $contractId = explode("=", $meta);
@@ -194,4 +211,5 @@ class ContractFilterService
 
         return $contracts;
     }
+
 }

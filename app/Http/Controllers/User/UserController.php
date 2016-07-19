@@ -28,8 +28,10 @@ class UserController extends Controller
 
     /**
      * @param UserService    $user
-     * @param CountryService $country
+     * @param CountryService $countries
      * @param Guard          $auth
+     *
+     * @internal param CountryService $country
      */
     public function __construct(UserService $user, CountryService $countries, Guard $auth)
     {

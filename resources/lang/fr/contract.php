@@ -137,6 +137,12 @@ return [
     'rename_success_message'               => 'Contrats renommé avec succès',
     'open_contracting_id'                  => 'Ouvrir contractant Id',
     'concession'                           => 'Concession',
+    'corporate'                            => 'd\'entreprise',
+    'government'                           => 'Gouvernement',
+    'unknown'                              => 'Inconnu',
+    'corporate_explain'                    => 'Les divulgations faites sur les sites Web des entreprises ou à la sécurité et à l\'échange de commission',
+    'government_explain'                   => 'Contrats libérés par les gouvernements',
+
 
 
     /*ContractController*/

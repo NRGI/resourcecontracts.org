@@ -431,7 +431,7 @@ class ContractRepository implements ContractRepositoryInterface
      *
      * @param $documents
      *
-     * @return mixed
+     * @return bool
      */
     public function saveSupportingDocument($documents)
     {
@@ -472,13 +472,12 @@ class ContractRepository implements ContractRepositoryInterface
      *
      * @param $contractID
      *
-     * @return SupportingDocument
+     * @return SupportingContract
      */
     public function findSupportingContract($contractID)
     {
         return $this->document->where('parent_contract_id', $contractID)->first();
     }
-
 
     /**
      * Get all the contracts.
@@ -497,16 +496,37 @@ class ContractRepository implements ContractRepositoryInterface
         return $this->contract->whereIn('id', $ids)->get();
     }
 
+    /**
+     * Get Quality Count of multiple Metadata.
+     *
+     * @return array
+     */
     public function getQualityCountOfMultipleMeta()
     {
         return DB::select('select get_quality_issue()');
     }
 
+    /**
+     * get Multiple Metadata Contract.
+     *
+     * @param $string
+     *
+     * @return array
+     */
     public function getMultipleMetadataContract($string)
     {
         return DB::select(sprintf("select getMultipleMetadataContract('%s')", $string));
     }
 
+    /**
+     * Get Contract filter by Metadata
+     *
+     * @param $filters
+     * @param $limit
+     * @param $contractId
+     *
+     * @return collection
+     */
     public function getContractFilterByMetadata($filters, $limit, $contractId)
     {
         $query   = $this->contract->select('*');
@@ -591,10 +611,8 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getResourceAndCategoryIssue($key)
     {
-
-        $from   = "contracts ";
         $result = $this->contract->whereRaw(sprintf("json_array_length(metadata->'%s')!=0", $key))
-                                 ->from($this->db->raw($from))
+                                 ->from($this->db->raw("contracts "))
                                  ->count();
 
         return $result;
@@ -672,7 +690,6 @@ class ContractRepository implements ContractRepositoryInterface
 
     }
 
-
     /**
      * Get Contract Name
      *
@@ -690,5 +707,73 @@ class ContractRepository implements ContractRepositoryInterface
         }
 
         return $query->orderByRaw("contracts.metadata->>'contract_name' ASC")->get();
+    }
+
+    /**
+     * Get Disclosure Mode Count
+     *
+     * @param string $type | 'Government' | 'Corporate' | ''
+     *
+     * @return array
+     */
+    public function getDisclosureModeCount($type = '')
+    {
+        $counts = $this->contract->selectRaw("metadata->'country'->>'code' code, count(metadata->'country'->>'code')")
+                                 ->whereRaw("metadata->>'disclosure_mode' ='".$type."'")
+                                 ->groupBy($this->db->raw("metadata->'country'->>'code'"))
+                                 ->orderBy($this->db->raw("metadata->'country'->>'code'"), "ASC")
+                                 ->get();
+        $mode   = [];
+        foreach ($counts as $c) {
+            $mode[$c->code] = $c->count;
+        }
+
+        return $mode;
+    }
+
+    /**
+     * Get UnKnown Disclosure mode Count
+     *
+     * @return array
+     */
+    public function getUnknownDisclosureModeCount()
+    {
+        $counts = $this->contract->selectRaw("metadata->'country'->>'code' code,count(metadata->'country'->>'code')")
+                                 ->whereRaw("metadata->>'disclosure_mode' !='".'Government'."'")
+                                 ->whereRaw("metadata->>'disclosure_mode' !='".'Company'."'")
+                                 ->groupBy($this->db->raw("metadata->'country'->>'code'"))
+                                 ->orderBy($this->db->raw("metadata->'country'->>'code'"), "ASC")
+                                 ->get();
+
+        $mode = [];
+        foreach ($counts as $c) {
+            $mode[$c->code] = $c->count;
+        }
+
+        return $mode;
+    }
+
+    /**
+     * Get multiple disclosure module contract
+     *
+     * @param $country
+     * @param $filters
+     *
+     * @return collection
+     */
+    public function getMultipleDisclosureContract($country, $filters)
+    {
+        $limit      = 25;
+        $disclosure = $filters['disclosure'];
+        if ($disclosure == 'unknown') {
+            $query = $this->contract->whereRaw("metadata->>'disclosure_mode' !='".'Government'."'")
+                                    ->whereRaw("metadata->>'disclosure_mode' !='".'Company'."'");
+
+        } else {
+            $query = $this->contract->whereRaw("metadata->>'disclosure_mode' ='".$disclosure."'");
+        }
+
+        return $query->whereRaw("metadata->'country'->>'code' ='".$country."'")
+                     ->paginate($limit);
     }
 }
