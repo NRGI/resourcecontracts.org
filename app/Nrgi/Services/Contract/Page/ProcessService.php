@@ -9,7 +9,6 @@ use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Logging\Log;
-use Symfony\Component\Process\Process;
 
 /**
  * Use for processing pages
@@ -82,6 +81,7 @@ class ProcessService
 
     /**
      * @param $contractId
+     *
      * @return bool
      */
     public function execute($contractId)
@@ -90,7 +90,8 @@ class ProcessService
         $contract          = $this->contract->find($contractId);
         $startTime         = Carbon::now();
         try {
-            $this->logger->info("processing Contract", ['contractId' => $contractId]);
+            $this->processStatus(Contract::PROCESSING_RUNNING);
+            $this->logger->info("Processing Contract", ['contractId' => $contractId]);
             list($writeFolderPath, $readFilePath) = $this->setup($contract);
 
             if ($this->process($writeFolderPath, $readFilePath)) {
@@ -99,7 +100,7 @@ class ProcessService
                 $this->mailer->send(
                     [
                         'email' => $contract->created_user->email,
-                        'name'  => $contract->created_user->name
+                        'name'  => $contract->created_user->name,
                     ],
                     "{$contract->title} processing contract completed.",
                     'emails.process_success',
@@ -108,7 +109,7 @@ class ProcessService
                         'contract_id'         => $contract->id,
                         'contract_detail_url' => route('contract.show', ["id" => $contract->id]),
                         'start_time'          => $startTime->toDayDateTimeString(),
-                        'end_time'            => Carbon::now()->toDayDateTimeString()
+                        'end_time'            => Carbon::now()->toDayDateTimeString(),
                     ]
                 );
 
@@ -140,7 +141,8 @@ class ProcessService
                 }
 
                 $this->processStatus(Contract::PROCESSING_COMPLETE);
-                $this->logger->info("processing contract completed.", ['contractId' => $contractId]);
+                $this->logger->info("Processing contract completed.", ['contractId' => $contractId]);
+
                 return true;
             }
         } catch (\Exception $e) {
@@ -148,7 +150,7 @@ class ProcessService
             $this->mailer->send(
                 [
                     'email' => $contract->created_user->email,
-                    'name'  => $contract->created_user->name
+                    'name'  => $contract->created_user->name,
                 ],
                 "{$contract->title} processing error.",
                 'emails.process_error',
@@ -157,7 +159,7 @@ class ProcessService
                     'contract_id'         => $contract->id,
                     'contract_detail_url' => route('contract.show', ["id" => $contract->id]),
                     'start_time'          => $startTime->toDayDateTimeString(),
-                    'error'               => $e->getMessage()
+                    'error'               => $e->getMessage(),
                 ]
             );
             $this->logger->error("error processing contract.{$e->getMessage()}", ['contractId' => $contractId]);
@@ -171,6 +173,7 @@ class ProcessService
     /**
      * @param $contract
      * @param $writeFolderPath
+     *
      * @return mixed
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
@@ -186,15 +189,16 @@ class ProcessService
     /**
      * @param $writeFolderPath
      * @param $readFilePath
+     *
      * @return bool|null
      */
     public function process($writeFolderPath, $readFilePath)
     {
         try {
             $this->processStatus(Contract::PROCESSING_RUNNING);
-            $this->logger->info("processing contract running");
+            $this->logger->info("Python script running");
             $this->processContractDocument($writeFolderPath, $readFilePath);
-            $this->logger->info("processing contract completed");
+            $this->logger->info("Python script completed");
 
             return true;
         } catch (\Exception $e) {
@@ -202,7 +206,7 @@ class ProcessService
                 sprintf('error.%s', $e->getMessage()),
                 [
                     'write_folder_path' => $writeFolderPath,
-                    'read_file_path'    => $readFilePath
+                    'read_file_path'    => $readFilePath,
                 ]
             );
 
@@ -213,6 +217,7 @@ class ProcessService
     /**
      * @param $writeFolderPath
      * @param $readFilePath
+     *
      * @return bool
      */
     public function processContractDocument($writeFolderPath, $readFilePath)
@@ -220,24 +225,22 @@ class ProcessService
         set_time_limit(0);
         $commandPath = config('nrgi.pdf_process_path');
         $command     = sprintf('python %s/run.py -i %s -o %s', $commandPath, $readFilePath, $writeFolderPath);
-        $this->logger->info("processing command", ['command' => $command]);
-        $process = new Process($command);
-        $process->setTimeout(360 * 10);
-        $process->start();
-        while ($process->isRunning()) {
-            echo $process->getIncrementalOutput();
-        }
-        if (!$process->isSuccessful()) {
-            //todo remove folder
-            $this->logger->error("error while executing command.{$process->getErrorOutput()}", ['command' => $command]);
-            throw new \RuntimeException($process->getErrorOutput());
-        }
+        $this->logger->info("Executing python command", ['command' => $command]);
 
-        return true;
+        try {
+            exec($command, $output);
+
+            return true;
+        } catch (\Exception $e) {
+            $this->logger->error("error while executing command : {$e->getMessage()}", ['command' => $command]);
+
+            return false;
+        }
     }
 
     /**
      * @param $contractId
+     *
      * @return bool
      */
     public function checkIfProcessed($contractId)
@@ -248,11 +251,12 @@ class ProcessService
     /**
      * @param $directory
      * @param $path
+     *
      * @throws \Exception
      */
     public function addDirectory($directory, $path)
     {
-        if (!$this->fileSystem->makeDirectory($path . '/' . $directory, 0777, true)) {
+        if (!$this->fileSystem->makeDirectory($path.'/'.$directory, 0777, true)) {
             $this->logger->error(sprintf("error while creating director.%s/%s", $path, $directory));
             throw new \Exception(sprintf('could not make directory.%s/%s'), $path, $directory);
         }
@@ -260,6 +264,7 @@ class ProcessService
 
     /**
      * @param $contract
+     *
      * @return array
      * @throws \Exception
      */
@@ -271,7 +276,7 @@ class ProcessService
             if ($this->storage->disk('s3')->exists($contract->file)) {
                 $pdfFile = $this->storage->disk('s3')->get($contract->file);
             } else {
-                $pdfFile = $this->storage->disk('s3')->get($contract->id . '/' . $contract->file);
+                $pdfFile = $this->storage->disk('s3')->get($contract->id.'/'.$contract->file);
             }
         } catch (\Exception $e) {
             $this->logger->error($e->getMessage(), ['contract id' => $contract->id, 'file' => $contract->file]);
@@ -293,6 +298,7 @@ class ProcessService
      * Update process status
      *
      * @param $status
+     *
      * @return bool
      * @throws \Exception
      */
@@ -306,6 +312,7 @@ class ProcessService
 
     /**
      * @param $contractId
+     *
      * @return string
      */
     public function getContractDirectory($contractId)
@@ -329,6 +336,7 @@ class ProcessService
      * Upload Pdfs to S3
      *
      * @param $id
+     *
      * @return void
      */
     public function uploadPdfsToS3($id)
