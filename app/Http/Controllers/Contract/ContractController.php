@@ -109,11 +109,10 @@ class ContractController extends Controller
     {
         $country     = $this->countries->all();
         $contracts   = $this->contract->parentContracts();
-        $contract    = $this->contract->find($request->get('parent'));
+        $contract    = !is_null($request->get('parent'))?$this->contract->find($request->get('parent')):[];
         $companyName = $this->contract->getCompanyNames();
-        $contract_id = $this->contract->getNextId();
 
-        return view('contract.create', compact('country', 'contracts', 'contract', 'companyName', 'contract_id'));
+        return view('contract.create', compact('country', 'contracts', 'contract', 'companyName'));
     }
 
     /**
@@ -433,5 +432,22 @@ class ContractController extends Controller
         $parentContracts = $this->contract->parentContracts();
 
         return view('contract.type_selection', compact('parentContracts'));
+    }
+
+    /**
+     * Get name for contract if ajax requst exists
+     *
+     * @param Request $request
+     *
+     * @return object
+     */
+    public function getContractName (Request $request)
+    {
+        if ($request->ajax()) {
+            return $this->contract->getContractName($request->all());
+        }
+        else {
+            return abort(404);
+        }
     }
 }

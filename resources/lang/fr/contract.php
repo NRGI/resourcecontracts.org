@@ -135,6 +135,9 @@ return [
     'rename_confirm'                       => 'Etes-vous sûr que vous voulez renommer ces contrats ?',
     'rename_contract'                      => 'Renommer contrat',
     'rename_success_message'               => 'Contrats renommé avec succès',
+    'open_contracting_id'                  => 'Ouvrir contractant Id',
+    'concession'                           => 'Concession',
+
 
     /*ContractController*/
     'save_success'                         => "Téléversement du contrat réussi. Vous serez averti par courrier quand le traitement du courrier aura été complété afin de permettre la révision du texte.",

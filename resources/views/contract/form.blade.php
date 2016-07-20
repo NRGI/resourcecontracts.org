@@ -75,8 +75,10 @@ if (!empty($contract->metadata->government_entity)) {
     } else $contract_name = null;
     ?>
     <div class="col-sm-7">
-        {!! Form::text('contract_name', $contract_name, ["class"=>"required form-control contract_name"])!!}
-        <span id="generate-contract-name" class="btn btn-default"> @lang('contract.generate_name')</span>
+            {!! Form::text('contract_name', $contract_name, ["class"=>"required form-control contract_name"])!!}
+        <span id="generate-contract-name" class="btn btn-default"> @lang('contract.generate_name')
+        </span>
+        <span class="label loading" style="display:none"><img src="{{asset('/images/loading.gif')}}" style="width:25px" /></span>
     </div>
 
     @if($action == 'edit')

@@ -137,7 +137,6 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw("contracts.metadata->>'contract_name' ILIKE ?", [$q]);
         }
         $query->from($this->db->raw($from))->orderBy('created_datetime', 'DESC');
-
         if (is_null($limit)) {
             return $query->get();
         }
@@ -673,15 +672,23 @@ class ContractRepository implements ContractRepositoryInterface
 
     }
 
-    /**
-     * Get Next auto-incremental id
-     *
-     * @return int
-     */
-    public function getNextId()
-    {
-        $contract = $this->contract->selectRaw("nextval(pg_get_serial_sequence('contracts','id')) as id")->first();
 
-        return $contract->id +1;
+    /**
+     * Get Contract Name
+     *
+     * @param      $contractName
+     * @param null $id
+     *
+     * @return collection
+     */
+    public function getContractByName($contractName, $id = null)
+    {
+        $query = $this->contract->whereRaw("contracts.metadata->>'contract_name' LIKE  ?", [$contractName.'%']);
+
+        if (!is_null($id)) {
+            $query->where('id', '!=', $id);
+        }
+
+        return $query->orderByRaw("contracts.metadata->>'contract_name' ASC")->get();
     }
 }

@@ -54,9 +54,9 @@ class QualityService
         $multipleMetadata              = $multipleMetadata[0]->get_quality_issue;
         $data                          = str_replace(['(', ')'], ['', ''], $multipleMetadata);
         $data                          = explode(',', $data);
-        $metadata["Government Entity"] = $data[2];
-        $metadata["Company"]           = $data[0];
-        $metadata["Concession"]        = $data[1];
+        $metadata["government_entity"] = $data[2];
+        $metadata["company"]           = $data[0];
+        $metadata["concession"]        = $data[1];
 
         return $metadata;
     }

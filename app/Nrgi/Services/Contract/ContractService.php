@@ -91,7 +91,7 @@ class ContractService
      * @param WordGenerator               $word
      * @param DatabaseManager             $db
      */
-    public function __construct (
+    public function __construct(
         ContractRepositoryInterface $contract,
         Guard $auth,
         Storage $storage,
@@ -129,7 +129,7 @@ class ContractService
      *
      * @return Contract
      */
-    public function find ($id)
+    public function find($id)
     {
         try {
             return $this->contract->findContract($id);
@@ -149,7 +149,7 @@ class ContractService
      *
      * @return Contract
      */
-    public function findWithPages ($id)
+    public function findWithPages($id)
     {
         try {
             return $this->contract->findContractWithPages($id);
@@ -171,7 +171,7 @@ class ContractService
      *
      * @return Contract
      */
-    public function findWithTasks ($id, $status = null, $approved = null)
+    public function findWithTasks($id, $status = null, $approved = null)
     {
         try {
             return $this->contract->findContractWithTasks($id, $status, $approved);
@@ -192,7 +192,7 @@ class ContractService
      *
      * @return Collection|null
      */
-    public function getMTurkContracts (array $filter = [], $perPage = null)
+    public function getMTurkContracts(array $filter = [], $perPage = null)
     {
         try {
             return $this->contract->getMTurkContracts($filter, $perPage);
@@ -211,7 +211,7 @@ class ContractService
      *
      * @return Contract
      */
-    public function findWithAnnotations ($id, $withRelation = false)
+    public function findWithAnnotations($id, $withRelation = false)
     {
         try {
             $contract = $this->contract->findContractWithAnnotations($id);
@@ -233,7 +233,7 @@ class ContractService
      *
      * @return mixed
      */
-    public function manageAnnotationRelation (Collection $annotations)
+    public function manageAnnotationRelation(Collection $annotations)
     {
         foreach ($annotations as $key => &$annotation) {
             $child = [];
@@ -256,7 +256,7 @@ class ContractService
      *
      * @return Contract|bool
      */
-    public function saveContract (array $formData)
+    public function saveContract(array $formData)
     {
         if ($file = $this->uploadContract($formData['file'])) {
             $metadata                        = $this->processMetadata($formData);
@@ -308,12 +308,12 @@ class ContractService
      *
      * @return array
      */
-    protected function uploadContract (UploadedFile $file)
+    protected function uploadContract(UploadedFile $file)
     {
         if ($file->isValid()) {
             $fileName    = $file->getClientOriginalName();
             $file_type   = $file->getClientOriginalExtension();
-            $newFileName = sprintf("%s.%s", sha1($fileName . time()), $file_type);
+            $newFileName = sprintf("%s.%s", sha1($fileName.time()), $file_type);
             try {
                 $data = $this->storage->disk('s3')->put(
                     $newFileName,
@@ -344,7 +344,7 @@ class ContractService
      *
      * @return array
      */
-    protected function processMetadata ($formData)
+    protected function processMetadata($formData)
     {
         if (isset($formData['type_of_contract']) && in_array('Other', $formData['type_of_contract'])) {
             unset($formData['type_of_contract'][array_search('Other', $formData['type_of_contract'])]);
@@ -402,7 +402,7 @@ class ContractService
      *
      * @return array
      */
-    protected function removeKeys ($items)
+    protected function removeKeys($items)
     {
         $i = [];
 
@@ -421,7 +421,7 @@ class ContractService
      * @return bool
      * @throws Exception
      */
-    protected function deleteFileFromS3 ($file)
+    protected function deleteFileFromS3($file)
     {
         if (!$this->storage->disk('s3')->exists($file)) {
             throw new FileNotFoundException(sprintf(' % not found', $file));
@@ -438,7 +438,7 @@ class ContractService
      *
      * @return bool
      */
-    public function updateContract ($contractID, array $formData)
+    public function updateContract($contractID, array $formData)
     {
         try {
             $contract     = $this->contract->findContract($contractID);
@@ -511,9 +511,10 @@ class ContractService
      * @param $old_metadata
      * @param $new_metadata
      *
-     * @return mixed
+     * @return collection
+     *
      */
-    protected function getOpenContractingId ($old_metadata, $new_metadata)
+    protected function getOpenContractingId($old_metadata, $new_metadata)
     {
         $category = $old_metadata->category;
 
@@ -554,7 +555,7 @@ class ContractService
      *
      * @return bool
      */
-    public function deleteContract ($id)
+    public function deleteContract($id)
     {
 
         try {
@@ -615,7 +616,7 @@ class ContractService
      *
      * @throws FileNotFoundException
      */
-    protected function deleteContractFileAndFolder ($contract)
+    protected function deleteContractFileAndFolder($contract)
     {
         $this->storage->disk('s3')->deleteDirectory($contract->id);
     }
@@ -627,7 +628,7 @@ class ContractService
      *
      * @return int
      */
-    public function getStatus ($contractID)
+    public function getStatus($contractID)
     {
         $contract = $this->contract->findContract($contractID);
 
@@ -647,9 +648,9 @@ class ContractService
      *
      * @return int
      */
-    public function savePageText ($id, $page, $text)
+    public function savePageText($id, $page, $text)
     {
-        $path = public_path(self::UPLOAD_FOLDER . '/' . $id . '/' . $page . '.txt');
+        $path = public_path(self::UPLOAD_FOLDER.'/'.$id.'/'.$page.'.txt');
 
         return $this->filesystem->put($path, $text);
     }
@@ -662,7 +663,7 @@ class ContractService
      *
      * @return Contract|bool
      */
-    public function saveTextType ($contractID, $textType)
+    public function saveTextType($contractID, $textType)
     {
         $contract           = $this->contract->findContract($contractID);
         $contract->textType = $textType;
@@ -683,7 +684,7 @@ class ContractService
      *
      * @return bool
      */
-    public function updateStatusWithComment ($contract_id, $status, $message, $type)
+    public function updateStatusWithComment($contract_id, $status, $message, $type)
     {
         $this->database->beginTransaction();
 
@@ -712,7 +713,7 @@ class ContractService
      *
      * @return bool
      */
-    public function updateStatus ($id, $status, $type)
+    public function updateStatus($id, $status, $type)
     {
         try {
             $contract = $this->contract->findContract($id);
@@ -767,7 +768,7 @@ class ContractService
      *
      * @return bool|Contract
      */
-    public function getContractIfFileHashExist ($filehash)
+    public function getContractIfFileHashExist($filehash)
     {
         try {
             if ($file = $this->contract->getContractByFileHash($filehash)) {
@@ -785,7 +786,7 @@ class ContractService
      *
      * @return array
      */
-    public function getList ($id = null)
+    public function getList($id = null)
     {
         $supportingContract = $this->getSupportingContractsId();
         if ($id != null) {
@@ -809,7 +810,7 @@ class ContractService
      *
      * @return bool
      */
-    function moveS3File ($file, $moveTo)
+    function moveS3File($file, $moveTo)
     {
         try {
             $this->storage->disk('s3')->move($file, $moveTo);
@@ -817,7 +818,7 @@ class ContractService
 
             return true;
         } catch (Exception $e) {
-            $this->logger->error('Could not move pdf file : ' . $e->getMessage());
+            $this->logger->error('Could not move pdf file : '.$e->getMessage());
 
             return false;
         }
@@ -830,7 +831,7 @@ class ContractService
      *
      * @return string
      */
-    public function updateWordFile ($contract_id)
+    public function updateWordFile($contract_id)
     {
         $text = [];
 
@@ -842,7 +843,7 @@ class ContractService
 
         $filename     = explode('.', $contract->file);
         $filename     = $filename[0];
-        $wordFileName = $filename . '.txt';
+        $wordFileName = $filename.'.txt';
 
         try {
             $file_path = $this->word->create($text, $wordFileName);
@@ -856,7 +857,7 @@ class ContractService
             return true;
         } catch (Exception $e) {
             $this->logger->error(
-                'Word file could not  be update : ' . $e->getMessage(),
+                'Word file could not  be update : '.$e->getMessage(),
                 ['Contract id' => $contract_id]
             );
 
@@ -869,7 +870,7 @@ class ContractService
      *
      * @return Collection|null
      */
-    public function getProcessCompleted ()
+    public function getProcessCompleted()
     {
         try {
             return $this->contract->getContractWithPdfProcessingStatus(Contract::PROCESSING_COMPLETE);
@@ -887,7 +888,7 @@ class ContractService
      *
      * @return array
      */
-    public function getSupportingDocuments ($id)
+    public function getSupportingDocuments($id)
     {
         $contractsId = $this->getAssociatedContractsId($id);
         if (empty($contractsId)) {
@@ -905,7 +906,7 @@ class ContractService
      *
      * @return array
      */
-    public function getcontracts ($id)
+    public function getcontracts($id)
     {
         $contracts = $this->contract->getSupportingContracts((array) $id);
 
@@ -919,7 +920,7 @@ class ContractService
      *
      * @return bool
      */
-    public function updateFileName ($contract)
+    public function updateFileName($contract)
     {
         $newFileName    = sprintf("%s-%s", $contract->id, $contract->Slug);
         $contract->file = "$newFileName.pdf";
@@ -938,15 +939,15 @@ class ContractService
      *
      * @return null|string
      */
-    public function getTextFromS3 ($contract_id, $file)
+    public function getTextFromS3($contract_id, $file)
     {
         $filename = explode('.', $file);
         $filename = $filename[0];
 
         try {
-            return $this->storage->disk('s3')->get($contract_id . '/' . $filename . '.txt');
+            return $this->storage->disk('s3')->get($contract_id.'/'.$filename.'.txt');
         } catch (Exception $e) {
-            $this->logger->error('File not found:' . $e->getMessage());
+            $this->logger->error('File not found:'.$e->getMessage());
 
             return null;
         }
@@ -959,7 +960,7 @@ class ContractService
      *
      * @return bool
      */
-    public function unPublishContract ($id)
+    public function unPublishContract($id)
     {
         try {
             $contract = $this->contract->findContract($id);
@@ -989,7 +990,7 @@ class ContractService
     /**
      * @return array
      */
-    public function parentContracts ()
+    public function parentContracts()
     {
         $contracts = $this->contract->getParentContracts();
 
@@ -1003,7 +1004,7 @@ class ContractService
      *
      * @return array
      */
-    public function getAssociatedContracts ($contract)
+    public function getAssociatedContracts($contract)
     {
         $associatedContracts = [];
         $parent              = $contract->getParentContract();
@@ -1036,7 +1037,7 @@ class ContractService
      *
      * @return array
      */
-    public function getCompanyNames ()
+    public function getCompanyNames()
     {
         $companyName  = [];
         $company_name = $this->contract->getCompanyName();
@@ -1053,7 +1054,7 @@ class ContractService
      *
      * @return array
      */
-    private function getSupportingContractsId ()
+    private function getSupportingContractsId()
     {
         $contractsId = [];
         $supportings = $this->contract->getAllSupportingContracts();
@@ -1072,7 +1073,7 @@ class ContractService
      *
      * @return bool
      */
-    private function updateOCIDOfSupportingContracts ($id)
+    private function updateOCIDOfSupportingContracts($id)
     {
         $contracts = $this->getAssociatedContractsId($id);
         if (empty($contracts)) {
@@ -1109,7 +1110,7 @@ class ContractService
      *
      * @return array
      */
-    private function getAssociatedContractsId ($id)
+    private function getAssociatedContractsId($id)
     {
         $supportingContracts = $this->contract->getSupportingDocument($id);
         if (empty($supportingContracts)) {
@@ -1130,7 +1131,7 @@ class ContractService
      *
      * @return bool
      */
-    private function updateOCIDOnEdit ($associatedContracts)
+    private function updateOCIDOnEdit($associatedContracts)
     {
         foreach ($associatedContracts as $id) {
             try {
@@ -1154,71 +1155,45 @@ class ContractService
      *
      * @return array
      */
-    public function getContractRenameList (array $filter)
+    public function getContractRenameList(array $filter)
     {
         $report    = [];
         $contracts = $this->contract->getAll($filter, $limit = null);
-
         if (empty($contracts)) {
             return [];
         }
 
         try {
-            $cn = $ln = $tc = $sy = $nn = $a = null;
 
             foreach ($contracts as $contract) {
                 $con                          = $contract->metadata;
                 $report[$contract->id]['old'] = $contract->metadata->contract_name;
                 $report[$contract->id]['id']  = $contract->id;
-
-                if (isset($con->company)) {
-                    $cn = $this->getCompany($con->company);
-                }
-
-                if (isset($con->concession)) {
-                    $ln = $this->getLicense($con->concession);
-                }
-
-                if (!empty($con->type_of_contract)) {
-                    $tc = $this->getTypeOfContract($con->type_of_contract);
-                } else {
-                    $tc = trim($con->document_type);
-                }
-                if (!empty($con->signature_year)) {
-                    $sy = trim($con->signature_year);
-                }
-
-                if (!empty($contract->id)) {
-                    $nn = formatIdRorName($contract->id);
-                }
-
-                $a                            = [$cn, $ln, $tc, $sy, $nn];
-                $report[$contract->id]['new'] = join(', ', array_filter($a));
+                $report[$contract->id]['new'] = $this->refineContract($con, $contract->id);
             }
 
             return $report;
 
         } catch (Exception $e) {
-            $this->logger->error($e->getMessage());
+            $this->logger->error('getContractRenameList :'.$e->getMessage());
 
             return [];
         }
     }
 
     /**
-     * get license for contract
+     * Get license for contract
      *
-     * @param $license
+     * @param $licenses
      *
      * @return array
+     *
      */
-    public function getLicense ($licenses)
+    public function getLicense($licenses)
     {
         $license = [];
         foreach ($licenses as $l) {
-
             if (!empty($l->license_name)) {
-
                 array_push($license, trim($l->license_name));
             } else {
                 array_push($license, trim($l->license_identifier));
@@ -1236,7 +1211,7 @@ class ContractService
      *
      * @return array
      */
-    public function getTypeOfContract ($typeOfContract)
+    public function getTypeOfContract($typeOfContract)
     {
         $tocs = [];
         foreach ($typeOfContract as $toc) {
@@ -1244,7 +1219,14 @@ class ContractService
                 array_push($tocs, trim($toc));
             }
         }
-        $tocs = join('-', array_filter($tocs));
+        $tocs = array_filter($tocs);
+        $tocs = array_map(
+            function ($v) {
+                return config('abbreviation_toc.'.$v);
+            },
+            $tocs
+        );
+        $tocs = join(', ', $tocs);
 
         return $tocs;
     }
@@ -1256,7 +1238,7 @@ class ContractService
      *
      * @return array
      */
-    public function getCompany ($companyName)
+    public function getCompany($companyName)
     {
         $cn = [];
         foreach ($companyName as $comp) {
@@ -1266,7 +1248,7 @@ class ContractService
                 array_push($cn, trim($comp->name));
             }
         }
-        $cn = join('-', array_filter($cn));
+        $cn = join(',', array_filter($cn));
 
         return $cn;
     }
@@ -1278,7 +1260,7 @@ class ContractService
      *
      * @return boolean
      */
-    public function renameContracts ($contracts)
+    public function renameContracts($contracts)
     {
         foreach ($contracts as $con) {
             try {
@@ -1288,21 +1270,111 @@ class ContractService
                 $contract->metadata        = $metadata;
                 $contract->save();
             } catch (Exception $e) {
-                $this->logger->error($e->getMessage());
+                $this->logger->error('rename contracts : '.$e->getMessage());
             }
         }
 
         return true;
     }
+
     /**
-     * Get Next auto-incremental id
+     * Get contract name
      *
-     * @return int
+     * @param $contracts
+     *
+     * @return string
      */
-
-    public function getNextId ()
+    public function getContractName($contracts)
     {
-        return $this->contract->getNextId();
-    }
-}
+        $con = json_decode(json_encode($contracts), false);
+        $id  = isset($con->contract_id) ? $con->contract_id : null;
 
+        return $this->refineContract($con, $id);
+    }
+
+    /**
+     * Refine Contract name
+     *
+     * @param $contract
+     *
+     * @param null $id
+     *
+     * @return string
+     */
+    public function refineContract($contract, $id = null)
+    {
+        $cn = $ln = $tc = $sy = $nn = $a = null;
+
+        if (isset($contract->company)) {
+            $cn = $this->getCompany($contract->company);
+        }
+
+        if (isset($contract->concession)) {
+            $ln = $this->getLicense($contract->concession);
+        }
+
+        if (!empty($contract->type_of_contract)) {
+            $tc = $this->getTypeOfContract($contract->type_of_contract);
+        } else {
+            $tc = trim($contract->document_type);
+        }
+        if (!empty($contract->signature_year)) {
+            $sy = trim($contract->signature_year);
+        }
+
+        $a             = [$cn, $ln, $tc, $sy];
+        $contract_name = join(', ', array_filter($a));
+        $count         = $this->getContractNameCount($contract_name, $id);
+        if ($count > 0) {
+            return $contract_name = $contract_name.', '.str_pad($count, 3, 0, STR_PAD_LEFT);
+        } else {
+            return $contract_name;
+        }
+    }
+
+    /**
+     * Find if the contract name is unique
+     *
+     * @param $contractName
+     *
+     * @param $id
+     *
+     * @return bool
+     */
+    public function getContractNameCount($contractName, $id = null)
+    {
+        $count     = 0;
+
+        if(is_null($id))
+        {
+            return $count;
+        }
+
+        $contracts = $this->contract->getContractByName($contractName, $id);
+        if ($contracts) {
+
+            foreach ($contracts as $contract) {
+                $contractNamePad = $contract->metadata->contract_name;
+                $lastNum         = explode(' ', $contract->metadata->contract_name);
+                $lastNum         = end($lastNum);
+
+                if (is_numeric($lastNum) && strlen($lastNum) == 3) {
+                    $contractNamePad = substr($contract->metadata->contract_name, 0, -5);
+                }
+
+                if ($contractNamePad == $contractName) {
+                    $count++;
+                }
+            }
+
+            if ($count > 0) {
+                $lastNum = explode(' ', $contract->metadata->contract_name);
+                $lastNum = end($lastNum);
+                $count   = (is_numeric($lastNum) && strlen($lastNum) == 3) ? $lastNum + 1 : $count;
+            }
+        }
+
+        return $count;
+    }
+
+}
