@@ -62,8 +62,8 @@ return [
     'no_comments'             => 'There is no comment.',
     'be_back'                 => 'Be right back.',
     'back'                    => 'Back',
-
-    'form' => [
+    'text_download'           => "Text Download",
+    'form'                    => [
         'close'  => 'Close',
         'save'   => 'Save',
         'cancel' => 'Cancel',

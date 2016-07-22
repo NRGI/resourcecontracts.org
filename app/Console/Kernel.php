@@ -49,5 +49,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('nrgi:updategroup')->dailyAt('10:00');
         $schedule->command('nrgi:updategovernmententities')->dailyAt('02:00');
         $schedule->command('nrgi:trackocid')->twiceDaily();
+        $schedule->command('nrgi:bulktext')->weekly();
     }
 }

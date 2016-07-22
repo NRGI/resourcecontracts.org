@@ -62,9 +62,8 @@ return [
     'no_comments'             => "Pas de commentaires",
     'be_back'                 => "On revient tout de suite",
     'back'                    => 'Arrière',
-
-
-    'form' => [
+    'text_download'           => "Texte Télécharger",
+    'form'                    => [
         'close'  => "Fermer",
         'save'   => "Sauvegarder",
         'cancel' => "Annuler",
