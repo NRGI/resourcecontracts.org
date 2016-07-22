@@ -141,6 +141,20 @@ for ($i = 1; $i <= $contract->pages()->count(); $i ++) {
                     return true;
                 }
             });
+
+        $(document).on("click", ".metadata-status-comment", function () {
+            var status = $(this).data('status');
+            var elementType = $(this).data('type');
+            $(".status-modal #type").val( elementType );
+            $(".status-modal #status").val( status );
+
+        });
+
+        $(document).on("click", ".annotation-status-comment", function () {
+            var status = $(this).data('status');
+            $(".annotation-comment-modal #status").val( status );
+        });
+
         })
     </script>
 @stop

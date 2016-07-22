@@ -47,6 +47,10 @@ class Annotation extends Model
      *  annotation status draft
      */
     const REJECTED = 'rejected';
+    /*
+     * annotation status unpublished
+     */
+    const UNPUBLISH = 'unpublished';
 
     /**
      * Establish one-to-many relationship with User model

@@ -14,16 +14,19 @@
             </div>
 
             <div class="tab-content">
+
             @forelse($comments as $comment)
                 <div class="comment-section tab-pane-{{$comment->type}} active" id="{{$comment->type}}">
                     <div class="comment">
                        {{$comment->message}}
                             <div class="label label-default label-comment">{{ucfirst($comment->type)}}</div>
                        </div>
-                        <div class="comment-info">
+
+
+                    <div class="comment-info">
                             <span class="{{$comment->action}}">{{ucfirst($comment->action)}}</span>
                             @lang('mturk.by') <strong>{{$comment->user->name}}</strong>
-                            @lang('mturk.on') {{$comment->createdDate->format('F d Y \a\t h:i a')}}
+                            @lang('mturk.on') {{$comment->created_at->format('F d Y \a\t h:i a')}}
                         </div>
                     </div>
                 @empty

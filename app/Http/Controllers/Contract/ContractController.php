@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contract\ContractRequest;
+use App\Nrgi\Mturk\Services\ActivityService;
 use App\Nrgi\Services\Contract\Annotation\AnnotationService;
 use App\Nrgi\Services\Download\DownloadService;
 use App\Nrgi\Entities\Contract\Comment\Comment;
@@ -42,6 +43,10 @@ class ContractController extends Controller
      * @var AnnotationService
      */
     protected $annotation;
+    /**
+     * @var ActivityService
+     */
+    public $activity;
 
     /**
      * @param ContractService       $contract
@@ -50,6 +55,7 @@ class ContractController extends Controller
      * @param CommentService        $comment
      * @param AnnotationService     $annotation
      * @param DownloadService       $downloadService
+     * @param ActivityService       $activity
      */
     public function __construct(
         ContractService $contract,
@@ -57,7 +63,8 @@ class ContractController extends Controller
         CountryService $countries,
         CommentService $comment,
         AnnotationService $annotation,
-        DownloadService $downloadService
+        DownloadService $downloadService,
+        ActivityService $activity
     ) {
         $this->middleware('auth');
         $this->contract        = $contract;
@@ -66,6 +73,7 @@ class ContractController extends Controller
         $this->comment         = $comment;
         $this->annotation      = $annotation;
         $this->downloadService = $downloadService;
+        $this->activity        = $activity;
     }
 
     /**
@@ -110,7 +118,7 @@ class ContractController extends Controller
     {
         $country     = $this->countries->all();
         $contracts   = $this->contract->parentContracts();
-        $contract    = !is_null($request->get('parent'))?$this->contract->find($request->get('parent')):[];
+        $contract    = !is_null($request->get('parent')) ? $this->contract->find($request->get('parent')) : [];
         $companyName = $this->contract->getCompanyNames();
 
         return view('contract.create', compact('country', 'contracts', 'contract', 'companyName'));
@@ -158,9 +166,10 @@ class ContractController extends Controller
         $contract->metadata_comment   = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
         $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
         $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
-
-        $discussions       = $discussion->getCount($id);
-        $discussion_status = $discussion->getResolved($id);
+        $publishedInformation         = $this->contract->getPublishedInformation($id);
+        $discussions                  = $discussion->getCount($id);
+        $discussion_status            = $discussion->getResolved($id);
+        $elementState                 = $this->activity->getElementState($id);
 
         return view(
             'contract.show',
@@ -171,7 +180,9 @@ class ContractController extends Controller
                 'annotationStatus',
                 'associatedContracts',
                 'discussions',
-                'discussion_status'
+                'discussion_status',
+                'publishedInformation',
+                'elementState'
             )
         );
     }
@@ -396,7 +407,7 @@ class ContractController extends Controller
             }
         }
 
-        $this->annotation->updateStatus("published", $contract_id);
+        $this->annotation->updateStatus("published",'', $contract_id);
 
         return back()->withSuccess(trans('contract.status_update'));
     }
@@ -409,13 +420,15 @@ class ContractController extends Controller
      *
      * @return Response
      */
-    public function unpublish($contract_id, Guard $auth)
+    public function unpublish($contract_id, Guard $auth,Request $request)
     {
+        $elementStatus=$request->all();
         if ($auth->user()->isCountryResearch()) {
             return back()->withError(trans('contract.permission_denied'));
         }
-        if ($this->contract->unPublishContract($contract_id)) {
-            $this->annotation->updateStatus("draft", $contract_id);
+
+        if ($this->contract->unPublishContract($contract_id,$elementStatus)) {
+            //$this->annotation->updateStatus("draft",'', $contract_id);
 
             return back()->withSuccess(trans('contract.unpublish.success'));
         }
@@ -442,12 +455,11 @@ class ContractController extends Controller
      *
      * @return object
      */
-    public function getContractName (Request $request)
+    public function getContractName(Request $request)
     {
         if ($request->ajax()) {
             return $this->contract->getContractName($request->all());
-        }
-        else {
+        } else {
             return abort(404);
         }
     }

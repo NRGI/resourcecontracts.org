@@ -96,7 +96,7 @@ return [
     'contract_detail'                      => 'Go back to Contract detail',
     'pdf_text'                             => 'PDF Text',
     'date_of_signture'                     => 'Date of signature',
-    'choose_text_type'                     => 'Choose type of output Text',
+    'choose_text_type'                     => 'Choose text quality',
     'view_all'                             => 'View all comments',
     'contracting_id'                       => 'Open Contracting ID',
     'no_documents'                         => 'There is no associated documents.',
@@ -213,7 +213,7 @@ return [
         'confirm' => 'Publish All ?',
     ],
     'unpublish'                            => [
-        'all'     => 'Unpublish',
+        'all'     => 'Unpublish All',
         'success' => 'Contract has been successfully unpublish.',
         'fail'    => 'Error unpublishing this contract.',
         'confirm' => 'Unpublish this contract ?',
@@ -240,4 +240,5 @@ return [
         'btn_cancel'     => 'Cancel and upload another file',
         'fail'           => 'Could not found any contract to import.',
     ],
+    'text_quality'                         => 'Text Quality',
 ];

@@ -30,7 +30,7 @@ class ActivityService
      * @param null  $contract_id
      * @return bool
      */
-    public function save($message, $params = array(), $contract_id = null, $page_no = null)
+    public function save($message, $params = [], $contract_id = null, $page_no = null)
     {
         $activity            = [];
         $activity['message'] = $message;
@@ -59,5 +59,41 @@ class ActivityService
     public function getAll($filter, $perPage = 25)
     {
         return $this->activity->paginate($filter, $perPage);
+    }
+
+    /**
+     * Get published Information
+     * @param $id
+     * @return array
+     */
+    public function getPublishedInfo($id)
+    {
+        $elements = ["metadata", "text", "annotation"];
+        $data     = [];
+        foreach ($elements as $element) {
+            $data[$element] = $this->activity->getPublishedInfo($id, $element);
+        }
+
+        return $data;
+    }
+
+    /**
+     * Element state to show in subsite
+     * @param $id
+     * @return array
+     */
+    public function getElementState($id)
+    {
+        $elements = ["metadata", "text", "annotation"];
+        $data     = [];
+        foreach ($elements as $element) {
+            $type           = $this->activity->getElementState($id, $element);
+            $data[$element] = 'unpublished';
+            if (isset($type->message_params['new_status']) && $type->message_params['new_status'] == 'published') {
+                $data[$element] = 'published';
+            }
+        }
+
+        return $data;
     }
 }

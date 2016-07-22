@@ -178,7 +178,7 @@ function discussion($discussions, $discussion_status, $contract_id, $key, $type 
         $status = '<span class="label label-red pull-right">('.$count.') '.trans('contract.open').'</span>';
     }
     if ($count == 0) {
-        $status = '<span class="label pull-right" style="background-color: darkgray">('.$count.') '.trans(
+        $status = '<span class="label pull-right" style="background-color: #999">('.$count.') '.trans(
                 'contract.open'
             ).'</span>';
     }

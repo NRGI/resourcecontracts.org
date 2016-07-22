@@ -28,4 +28,20 @@ interface ActivityRepositoryInterface
      * @return int
      */
     public function countByUser($user_id);
+
+    /**
+     * Get the first row where status is published
+     * @param $id
+     * @param $element
+     * @return activityLog
+     */
+    public function getPublishedInfo($id, $element);
+
+    /**
+     * write brief description
+     * @param $id
+     * @param $element
+     * @return activityLog
+     */
+    public function getElementState($id, $element);
 }

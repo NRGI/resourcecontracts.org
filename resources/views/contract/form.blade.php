@@ -924,25 +924,7 @@ if (isset($contract->metadata->resource)) {
 
 
 @if($action == 'edit')
-    <div class="form-group" style="clear:both">
-        {!! Form::label('show_pdf_text', trans('contract.show_pdf_text'), ['class'=>'col-sm-2 control-label'])!!}
-        <div class="col-sm-7">
-            <?php
-            $show_pdf_text = isset($contract->metadata->show_pdf_text) ? $contract->metadata->show_pdf_text : null;
-            ?>
-            <label class="checkbox-inline">
-                {!! Form::radio('show_pdf_text', '1', ($show_pdf_text=='1') ? true : null) !!}
-                @lang('global.yes')
-            </label>
-            <label class="checkbox-inline">
-                {!! Form::radio('show_pdf_text', '0', ($show_pdf_text==0) ? true : null) !!}
-                @lang('global.no')
-            </label>
-        </div>
-        @if($action == 'edit')
-            {!! discussion($discussions,$discussion_status, $contract->id,'show_pdf_text','metadata') !!}
-        @endif
-    </div>
+    
 
     <input class="delete_company" type="hidden" name="delete[company]" value=""/>
     <input class="delete_government_entity" type="hidden" name="delete[government_entity]" value=""/>

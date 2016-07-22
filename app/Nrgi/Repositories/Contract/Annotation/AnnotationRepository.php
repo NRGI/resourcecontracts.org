@@ -311,4 +311,5 @@ class AnnotationRepository implements AnnotationRepositoryInterface
        
         return count($result);
     }
+
 }

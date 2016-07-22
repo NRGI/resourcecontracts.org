@@ -63,10 +63,27 @@ return [
     'be_back'                 => "On revient tout de suite",
     'back'                    => 'Arrière',
     'text_download'           => "Texte Télécharger",
+    'unpublish'               => 'Dépublier',
+    'rejected'                => 'Rejeté',
     'form'                    => [
         'close'  => "Fermer",
         'save'   => "Sauvegarder",
         'cancel' => "Annuler",
         'ok'     => "Ok",
     ],
+    'element'                 => "Élément",
+    'state'                   => 'Etat',
+    'action'                  => 'Action',
+    'last_published_date'     => 'Dernière Date de publication',
+    'published_info'          => 'Publié Infos',
+    'publisher_info'          => 'Publié sur %s par %s.',
+    'availability_in_subsite' => 'Disponibilité en Subsite',
+    'available'               => 'Disponible',
+    'on'                      => "sur",
+    "by"                      => "par",
+    'date_not_captured'       => "Date de publication non capturé.",
+    "check_metadata_in_subsite"   => "Vérifiez les métadonnées dans subsite.",
+    "check_text_in_subsite"       => "Vérifiez le texte dans subsite.",
+    "check_annotation_in_subsite" => "Vérifiez annotation dans subsite."
+
 ];

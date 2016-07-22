@@ -7605,7 +7605,7 @@ input.error {
 .annotation-list li {
     margin-bottom: 20px;
     overflow: hidden;
-    border-bottom: solid 1px #ccc;
+    border-bottom: solid 1px #F2F2F2;
     list-style: none;
 }
 
@@ -7635,7 +7635,7 @@ input.error {
 }
 
 .annotation-list li p {
-    color: #8b8b8b;
+    color: #666;
     margin-right: 6px;
     margin-bottom: 4px;
     margin-top: 10px;
