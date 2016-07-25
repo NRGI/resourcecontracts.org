@@ -76,6 +76,7 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw("contracts.metadata->>'signature_year'=?", [$year]);
         }
         if (isset($type) && $type == 'metadata' && $status != '') {
+
             $query->whereRaw("contracts.metadata_status=?", [$status]);
         }
         if (isset($type) && $type == 'ocr' && $status != '') {
@@ -100,15 +101,24 @@ class ContractRepository implements ContractRepositoryInterface
 
         if (isset($resource) && $resource != '' && $resource != 'all') {
             $from .= ",json_array_elements(contracts.metadata->'resource') r";
-            $query->whereRaw("trim(both '\"' from r::text) = '".$resource."'");
+            $query->whereRaw("trim(both '\"' from r::text) = '" . $resource . "'");
         }
 
         if (isset($category) && $category != '' && $category != 'all') {
             $from .= ",json_array_elements(contracts.metadata->'category') cat";
-            $query->whereRaw("trim(both '\"' from cat::text) = '".$category."'");
+            $query->whereRaw("trim(both '\"' from cat::text) = '" . $category . "'");
         }
         if (isset($type) && $type == "metadata" && $word != '' && $issue != '' && !in_array($word, $multipleField)) {
-            $query->whereRaw(sprintf("contracts.metadata->>'%s' %s''", $word, $operator));
+            if ($word == 'company') {
+                $query = $query->whereRaw(sprintf("contracts.metadata->'company'->0->>'name' %s ''", $operator));
+            } elseif ($word == 'concession') {
+                $query = $query->whereRaw(sprintf("contracts.metadata->'concession'->0->>'license_name' %s ''", $operator));
+            } elseif ($word == 'government_entity') {
+                $query = $query->whereRaw(sprintf("contracts.metadata->'government_entity'->0->>'entity' %s ''", $operator));
+            } else {
+                $query->whereRaw(sprintf("contracts.metadata->>'%s' %s''", $word, $operator));
+            }
+
         }
         if (isset($type) && $type == "metadata" && $word != '' && $issue != '' && in_array($word, $multipleField)) {
             $query->whereRaw(sprintf(" json_array_length(metadata->'%s') %s 0", $word, $operator));
@@ -133,7 +143,7 @@ class ContractRepository implements ContractRepositoryInterface
         }
         if (isset($q) && $q != '') {
 
-            $q = '%'.$q.'%';
+            $q = '%' . $q . '%';
             $query->whereRaw("contracts.metadata->>'contract_name' ILIKE ?", [$q]);
         }
         $query->from($this->db->raw($from))->orderBy('created_datetime', 'DESC');
@@ -352,7 +362,7 @@ class ContractRepository implements ContractRepositoryInterface
 
         $cat_list = array_keys(config('metadata.category'));
         if (isset($filter['category']) && in_array($filter['category'], $cat_list)) {
-            $query->whereRaw("metadata->'category'->>0 ='".$filter['category']."'");
+            $query->whereRaw("metadata->'category'->>0 ='" . $filter['category'] . "'");
         }
 
         $query->orderBy('created_datetime', 'DESC');
@@ -385,12 +395,46 @@ class ContractRepository implements ContractRepositoryInterface
      *
      * @return collection
      */
-    public function getMetadataQuality($metadata)
+    public function getMetadataQuality($metadata = '', $filters)
     {
-        $from   = "contracts ";
-        $result = $this->contract->whereRaw(sprintf("contracts.metadata->>'%s'!=''", $metadata))
-                                 ->from($this->db->raw($from))
-                                 ->count();
+        $from  = "contracts ";
+        $query = $this->contract->select('*');
+
+        if (isset($filters['year']) && $filters['year'] != '' && $filters['year'] != 'all') {
+            $query->whereRaw("contracts.metadata->>'signature_year'=?", [$filters['year']]);
+        }
+        if (isset($filters['resource']) && $filters['resource'] != '' && $filters['resource'] != 'all') {
+            $from .= ",json_array_elements(contracts.metadata->'resource') r";
+            $query->whereRaw("trim(both '\"' from r::text) = '" . $filters['resource'] . "'");
+        }
+        if (isset($filters['country']) && $filters['country'] != '' && $filters['country'] != 'all') {
+            $query->whereRaw("contracts.metadata->'country'->>'code' = ?", [$filters['country']]);
+        }
+        if (isset($filters['category']) && $filters['category'] != '' && $filters['category'] != 'all') {
+            $from .= ",json_array_elements(contracts.metadata->'category') cat";
+            $query->whereRaw("trim(both '\"' from cat::text) = '" . $filters['category'] . "'");
+        }
+        if (!empty($metadata) && in_array($metadata, ['company', 'concession', 'government_entity'])) {
+
+            if ($metadata == 'company') {
+                $query = $query->whereRaw("contracts.metadata->'company'->0->>'name'!=''");
+            }
+            if ($metadata == 'concession') {
+                $query = $query->whereRaw("contracts.metadata->'concession'->0->>'license_name'!=''");
+            }
+            if ($metadata == 'government_entity') {
+                $query = $query->whereRaw("contracts.metadata->'government_entity'->0->>'entity'!=''");
+            }
+
+
+        } else {
+            if (!empty($metadata)) {
+                $query = $query->whereRaw(sprintf("contracts.metadata->>'%s'!=''", $metadata));
+            }
+        }
+
+        $result = $query->from($this->db->raw($from))
+                        ->count();
 
         return $result;
     }
@@ -571,7 +615,7 @@ class ContractRepository implements ContractRepositoryInterface
 
         if ($contract->metadata->is_supporting_document == 1 && !is_null($parent)) {
             $parent_contract                 = $this->findContract($parent);
-            $ocid                            = $parent_contract->metadata->open_contracting_id.'-'.$contract->id;
+            $ocid                            = $parent_contract->metadata->open_contracting_id . '-' . $contract->id;
             $metadata                        = json_decode(json_encode($contract->metadata), true);
             $metadata['open_contracting_id'] = $ocid;
             $contract->metadata              = $metadata;
@@ -609,11 +653,31 @@ class ContractRepository implements ContractRepositoryInterface
      *
      * @return int
      */
-    public function getResourceAndCategoryIssue($key)
+    public function getResourceAndCategoryIssue($key,$filters)
     {
-        $result = $this->contract->whereRaw(sprintf("json_array_length(metadata->'%s')!=0", $key))
-                                 ->from($this->db->raw("contracts "))
-                                 ->count();
+
+
+        $from  = "contracts ";
+        $query = $this->contract->whereRaw(sprintf("json_array_length(metadata->'%s')!=0", $key));
+
+        if (isset($filters['year']) && $filters['year'] != '' && $filters['year'] != 'all') {
+            $query->whereRaw("contracts.metadata->>'signature_year'=?", [$filters['year']]);
+        }
+        if (isset($filters['resource']) && $filters['resource'] != '' && $filters['resource'] != 'all') {
+            $from .= ",json_array_elements(contracts.metadata->'resource') r";
+            $query->whereRaw("trim(both '\"' from r::text) = '" . $filters['resource'] . "'");
+        }
+        if (isset($filters['country']) && $filters['country'] != '' && $filters['country'] != 'all') {
+            $query->whereRaw("contracts.metadata->'country'->>'code' = ?", [$filters['country']]);
+        }
+        if (isset($filters['category']) && $filters['category'] != '' && $filters['category'] != 'all') {
+            $from .= ",json_array_elements(contracts.metadata->'category') cat";
+            $query->whereRaw("trim(both '\"' from cat::text) = '" . $filters['category'] . "'");
+        }
+
+
+        $result = $query->from($this->db->raw($from))
+                        ->count();
 
         return $result;
     }
@@ -700,7 +764,7 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getContractByName($contractName, $id = null)
     {
-        $query = $this->contract->whereRaw("contracts.metadata->>'contract_name' LIKE  ?", [$contractName.'%']);
+        $query = $this->contract->whereRaw("contracts.metadata->>'contract_name' LIKE  ?", [$contractName . '%']);
 
         if (!is_null($id)) {
             $query->where('id', '!=', $id);

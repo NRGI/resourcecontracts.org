@@ -26,9 +26,9 @@ class QualityService
      * @param ContractRepositoryInterface   $contract
      * @param AnnotationRepositoryInterface $annotation
      */
-    public function __construct(ContractRepositoryInterface $contract,AnnotationRepositoryInterface $annotation)
+    public function __construct(ContractRepositoryInterface $contract, AnnotationRepositoryInterface $annotation)
     {
-        $this->contract = $contract;
+        $this->contract   = $contract;
         $this->annotation = $annotation;
     }
 
@@ -37,26 +37,21 @@ class QualityService
      *
      * @return array
      */
-    public function getMetadataQuality()
+    public function getMetadataQuality($filters)
     {
         $metadata       = [];
         $metadataSchema = config('metadata.schema.metadata');
-        unset($metadataSchema['file_size'], $metadataSchema['company'], $metadataSchema['concession'], $metadataSchema['government_entity']);
+        unset($metadataSchema['file_size']);
         foreach ($metadataSchema as $key => $value) {
-            $count = $this->contract->getMetadataQuality($key);
-            if (is_array($value) && $key != "country") {
-                $count = $this->contract->getResourceAndCategoryIssue($key);
+            $count = $this->contract->getMetadataQuality($key, $filters);
+            if (is_array($value) && $key != "country" && !in_array($key, ['company', 'concession', 'government_entity'])) {
+
+                $count = $this->contract->getResourceAndCategoryIssue($key, $filters);
             }
 
             $metadata[$key] = $count;
         }
-        $multipleMetadata              = $this->contract->getQualityCountOfMultipleMeta();
-        $multipleMetadata              = $multipleMetadata[0]->get_quality_issue;
-        $data                          = str_replace(['(', ')'], ['', ''], $multipleMetadata);
-        $data                          = explode(',', $data);
-        $metadata["government_entity"] = $data[2];
-        $metadata["company"]           = $data[0];
-        $metadata["concession"]        = $data[1];
+
 
         return $metadata;
     }
@@ -66,14 +61,14 @@ class QualityService
      *
      * @return array
      */
-    public function getAnnotationsQuality()
+    public function getAnnotationsQuality($filters)
     {
         $annotations         = [];
         $annotationsCategory = trans('codelist/annotation.annotation_category');
 
         foreach ($annotationsCategory as $key => $value) {
-            $response          = $this->annotation->getAnnotationsQuality($key);
-            $count             = !empty($response) ? count($response) : 0;
+            $response          = $this->annotation->getAnnotationsQuality($key, $filters);
+            $count             = !empty($response) ? $response : 0;
             $annotations[$key] = $count;
         }
 
@@ -85,9 +80,9 @@ class QualityService
      *
      * @return int
      */
-    public function getTotalContractCount()
+    public function getTotalContractCount($filters)
     {
-        return $this->contract->getTotalContractCount();
+        return $this->contract->getMetadataQuality('', $filters);
     }
 
 

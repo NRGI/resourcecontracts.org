@@ -165,7 +165,7 @@ interface ContractRepositoryInterface
      *
      * @return collection
      */
-    public function getMetadataQuality($metadata);
+    public function getMetadataQuality($metadata,$filter);
 
     /**
      * Get the count of presence of annotation's category
@@ -284,7 +284,7 @@ interface ContractRepositoryInterface
      *
      * @return int
      */
-    public function getResourceAndCategoryIssue($key);
+    public function getResourceAndCategoryIssue($key,$filters);
 
     /**
      * Get Company name
