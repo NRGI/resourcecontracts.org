@@ -12,7 +12,7 @@
 					{!! Form::select('category', [''=>trans('contract.select_category'),'all' => trans('contract.all'), 'rc'=>'RC','olc'=>'OLC'], \Illuminate\Support\Facades\Request::get('category'), ["class"=>"select2 required form-control"]) !!}
 				</div>
 				<div class="form-group">
-					{!! Form::select('country' , [''=>trans('contract.select_country'),'all' => trans('contract.all') ] + trans('codelist/country'), \Illuminate\Support\Facades\Request::get('country'), ["class"=>"select2 required form-control"]) !!}
+					{!! Form::select('country' , [''=>trans('contract.select_country'),'all' => trans('contract.all') ] + $country, \Illuminate\Support\Facades\Request::get('country'), ["class"=>"select2 required form-control"]) !!}
 				</div>
 				{!! Form::button(trans('contract.submit'), ['type' => 'submit','class' => 'btn btn-primary']) !!}
 				{!! Form::close() !!}

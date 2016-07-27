@@ -17,8 +17,9 @@
                     <th>@lang('contract.unknown')</th>
 
                 </thead>
+
                 @foreach($disclosureMode as $code => $mode)
-                <tr>
+                <tr> @if(!($mode['government']==0 && $mode['company']== 0 && $mode['unknown']== 0))
                     <td>{{ _l('codelist/country.'.$code) }} </td>
                     @if($mode['government'] != '0' )
                        <td>
@@ -35,7 +36,7 @@
                         <td><a href="{{route('contract.index',["country"=>$code,"disclosure"=>"unknown"])}}">{{$mode['unknown']}} </a></td>
                         @else <td> 0 </td>
                     @endif
-
+                @endif
                 </tr>
                 @endforeach
             </table>
