@@ -2,9 +2,15 @@
 
 use App\Http\Controllers\Controller;
 use App\Nrgi\Services\Contract\ContractService;
+use App\Nrgi\Services\Contract\CountryService;
+use Illuminate\Auth\Guard;
 use Illuminate\Http\Request;
 
 
+/**
+ * Class UtilityController
+ * @package App\Http\Controllers\Utility
+ */
 class UtilityController extends Controller
 {
 
@@ -14,11 +20,18 @@ class UtilityController extends Controller
     protected $contractService;
 
     /**
-     * @param ContractService $contractService
+     * @var CountryService
      */
-    public function __construct(ContractService $contractService)
+    protected $countryService;
+
+    /**
+     * @param ContractService $contractService
+     * @param CountryService  $countryService
+     */
+    public function __construct(ContractService $contractService, CountryService $countryService)
     {
         $this->contractService = $contractService;
+        $this->countryService  = $countryService;
     }
 
     /**
@@ -26,11 +39,16 @@ class UtilityController extends Controller
      *
      * @param Request $request
      *
+     * @param Guard   $auth
+     *
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request, Guard $auth)
+    {   if(!($auth->user()->isAdmin())) {
+            return back()->withErrors(trans('contract.permission_denied'));
+        }
         $filters   = $request->only('category', 'country');
+        $country   =  $this->countryService->all();
         $confirm   = false;
         $contracts = [];
 
@@ -39,7 +57,7 @@ class UtilityController extends Controller
             $confirm   = true;
         }
 
-        return view('utility.index', compact('confirm', 'contracts'));
+        return view('utility.index', compact('confirm', 'contracts','country'));
     }
 
     /**
@@ -55,7 +73,7 @@ class UtilityController extends Controller
         $contracts = json_decode($contracts);
 
         if (empty($contracts)) {
-            return redirect()->route('utility.index')->with('error', trans('conract.contract_not_found'));
+            return redirect()->route('utility.index')->with('error', trans('contract.contract_not_found'));
         }
 
         $this->contractService->renameContracts($contracts);

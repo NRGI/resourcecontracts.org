@@ -29,10 +29,12 @@
                 <a {{in_array('quality', Request::segments())? 'class=active' : ''}}
                         href="{{route('quality.index')}}">@lang('quality.quality_contract_issues')</a>
             </li>
+            @if($current_user->hasRole(['superadmin','admin','country-admin']))
             <li>
                 <a {{in_array('utility', Request::segments())? 'class=active' : ''}}
                    href="{{route('utility.index')}}">@lang('contract.utility')</a>
             </li>
+            @endif
             <li>
                 <a {{in_array('disclosure', Request::segments())? 'class=active' : ''}}
                    href="{{route('disclosure.index')}}">@lang('contract.disclosure_mode')</a>
