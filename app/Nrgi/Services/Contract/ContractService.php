@@ -1248,7 +1248,7 @@ class ContractService
                 array_push($cn, trim($comp->name));
             }
         }
-        $cn = join(',', array_filter($cn));
+        $cn = join(', ', array_filter($cn));
 
         return $cn;
     }
