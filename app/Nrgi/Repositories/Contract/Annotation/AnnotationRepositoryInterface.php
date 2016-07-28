@@ -97,6 +97,6 @@ interface AnnotationRepositoryInterface
      * @param $key
      * @return array
      */
-    public function getAnnotationsQuality($key);
+    public function getAnnotationsQuality($key,$filters);
 
 }

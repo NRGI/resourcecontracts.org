@@ -4,12 +4,12 @@ use App\Nrgi\Entities\Contract\Annotation\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Contract Annotation Repository
  * Class AnnotationRepository
  *
- * @method Illuminate\Database\Query\Builder where()
  * @method void findOrFail()
  * @method void distinct()
  * @package Nrgi\Repositories\Contract\Annotation
@@ -286,10 +286,29 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      * @param $key
      * @return array
      */
-    public function getAnnotationsQuality($key)
+    public function getAnnotationsQuality($key, $filters)
     {
-        $result = $this->annotation->select('contract_id')->where("category", $key)->distinct('contract_id')->get();
+        $from  = 'contract_annotations inner join "contracts" on "contract_annotations"."contract_id" = "contracts"."id" , json_array_elements(contracts.metadata->\'resource\') r,json_array_elements(contracts.metadata->\'category\') cat';
+        $query = $this->annotation->where('category', $key);
 
-        return $result->toArray();
+
+        if (isset($filters['year']) && $filters['year'] != '' && $filters['year'] != 'all') {
+            $query->whereRaw("contracts.metadata->>'signature_year'=?", [$filters['year']]);
+        }
+        if (isset($filters['resource']) && $filters['resource'] != '' && $filters['resource'] != 'all') {
+            $query->whereRaw("trim(both '\"' from r::text) = '" . $filters['resource'] . "'");
+        }
+        if (isset($filters['country']) && $filters['country'] != '' && $filters['country'] != 'all') {
+            $query->whereRaw("contracts.metadata->'country'->>'code' = ?", [$filters['country']]);
+        }
+        if (isset($filters['category']) && $filters['category'] != '' && $filters['category'] != 'all') {
+            $query->whereRaw("trim(both '\"' from cat::text) = '" . $filters['category'] . "'");
+        }
+
+        $result = $query->from($this->db->raw($from));
+        $result = $result->select('contract_id')->distinct()->get()->toArray();
+
+       
+        return count($result);
     }
 }

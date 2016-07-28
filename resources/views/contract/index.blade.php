@@ -31,7 +31,7 @@
         </div>
 
         <div class="panel-body">
-             {!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
+           {!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
             {!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' =>
             'form-control']) !!}
 
@@ -47,7 +47,6 @@
             Input::get
             ('resource') ,
             ['class' =>'form-control']) !!}
-
             {!! Form::text('q', Input::get('q') , ['class' =>'form-control','placeholder'=>trans('contract.search_contract')]) !!}
 
             {!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}

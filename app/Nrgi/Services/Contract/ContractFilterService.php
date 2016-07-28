@@ -64,20 +64,6 @@ class ContractFilterService
 
             return $contracts;
         }
-        $words = ["concession", "government_entity", "company"];
-        if ($filters['type'] == "metadata" && in_array(strtolower($filters['word']), $words)) {
-            $contracts = $this->getMultipleMetadataContracts($filters, $limit);
-
-            return $contracts;
-        }
-
-        $disclosures = ["Government", "Company", "unknown"];
-        if (in_array($filters['disclosure'], $disclosures)) {
-            $country   = isset($filters['country']) ? $filters['country'] : [];
-            $contracts = $this->contract->getMultipleDisclosureContract($country, $filters);
-
-            return $contracts;
-        }
 
         if ($filters['download'] == 1) {
             $limit = 100000;
@@ -96,13 +82,17 @@ class ContractFilterService
      *
      * @return array
      */
-    public function getUniqueCountries()
+    public function getUniqueCountries($withcount = true)
     {
         $arr       = $this->contract->getUniqueCountries()->toArray();
         $countries = [];
         foreach ($arr as $key => $value) {
-            $country                        = $this->countryService->getInfoByCode($value['countries']);
-            $countries[$value['countries']] = sprintf('%s (%s)', $country['name'], $value['count']);
+            $country = $this->countryService->getInfoByCode($value['countries']);
+            if ($withcount) {
+                $countries[$value['countries']] = sprintf('%s (%s)', $country['name'], $value['count']);
+            } else {
+                $countries[$value['countries']] = $country['name'];
+            }
         }
         asort($countries);
 
@@ -114,12 +104,17 @@ class ContractFilterService
      *
      * @return array
      */
-    public function getUniqueYears()
+    public function getUniqueYears($withcount = true)
     {
         $arr   = $this->contract->getUniqueYears()->toArray();
         $years = [];
         foreach ($arr as $key => $value) {
-            $years[$value['years']] = sprintf('%s (%s)', $value['years'], $value['count']);
+            if ($withcount) {
+                $years[$value['years']] = sprintf('%s (%s)', $value['years'], $value['count']);
+            } else {
+                $years[$value['years']] = $value['years'];
+            }
+
         }
 
         return $years;
