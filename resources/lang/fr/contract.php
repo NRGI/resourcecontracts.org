@@ -142,9 +142,7 @@ return [
     'unknown'                              => 'Inconnu',
     'corporate_explain'                    => 'Les divulgations faites sur les sites Web des entreprises ou à la sécurité et à l\'échange de commission',
     'government_explain'                   => 'Contrats libérés par les gouvernements',
-
-
-
+    'project_title'                        => "Titre du projet",
     /*ContractController*/
     'save_success'                         => "Téléversement du contrat réussi. Vous serez averti par courrier quand le traitement du courrier aura été complété afin de permettre la révision du texte.",
     'save_fail'                            => "Impossible de sauvegarder le contrat",
@@ -194,7 +192,6 @@ return [
     'add_new_company'                      => 'Ajouter une nouvelle société',
     'add_new_license'                      => 'Ajouter nouvelle licence',
     'no_parent'                            => 'Aucun Parent',
-
     /*Logs*/
     'log'                                  => [
         'save'       => "Contrat créé",

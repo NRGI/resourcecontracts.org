@@ -5,10 +5,60 @@
         {
             background-color: #f0f0f0;
         }
+        .quality-form{
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+
+        .select2 {
+            width: 18% !important;
+            float: left;
+            margin-right: 20px !important;
+            margin-top: 4px !important;
+        }
+
+        @media (min-width: 768px){
+            .form-inline .form-control {
+                margin-right: 10px;
+            }
+
+        }
+        .panel-heading .description{
+            font-size: 15px;
+        }
+
     </style>
 @stop
 @section('content')
     <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>{{trans('quality.contract_quality_issue')}}</h3>
+            <p class="description">{{trans('quality.filter_description')}}</p>
+        </div>
+        <div class="quality-form">
+            {!! Form::open(['route' => 'quality.index', 'method' => 'get', 'class'=>'form-inline']) !!}
+            {!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' =>
+            'form-control','style'=>'width:200px']) !!}
+
+            {!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Input::get('country') ,
+            ['class' =>'form-control','style'=>'width:200px']) !!}
+
+            {!! Form::select('category', ['all'=>trans('contract.category')] + config('metadata.category'),
+            Input::get('category') ,
+            ['class' =>'form-control','style'=>'width:200px']) !!}
+
+            {!! Form::select('resource', ['all'=>trans('contract.resource')] + trans_array($resources,
+            'codelist/resource') ,
+            Input::get
+            ('resource') ,
+            ['class' =>'form-control','style'=>'width:200px']) !!}
+
+
+            {!! Form::submit(trans('quality.filter'), ['class' => 'btn btn-primary','style'=>'width:130px']) !!}
+            {!! Form::close() !!}
+        </div>
+
+        <br>
     <div class="metadata-quality">
         <div class="panel-heading">
 
@@ -16,26 +66,7 @@
             {{trans('quality.metadata_description')}}
         </div>
         <div class="panel-body">
-            {!! Form::open(['route' => 'quality.index', 'method' => 'get', 'class'=>'form-inline']) !!}
-            {!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' =>
-            'form-control']) !!}
 
-            {!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Input::get('country') ,
-            ['class' =>'form-control']) !!}
-
-            {!! Form::select('category', ['all'=>trans('contract.category')] + config('metadata.category'),
-            Input::get('category') ,
-            ['class' =>'form-control']) !!}
-
-            {!! Form::select('resource', ['all'=>trans('contract.resource')] + trans_array($resources,
-            'codelist/resource') ,
-            Input::get
-            ('resource') ,
-            ['class' =>'form-control']) !!}
-
-
-            {!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
-            {!! Form::close() !!}
 
             <table class="table">
             <thead>
@@ -81,4 +112,12 @@
             </div>
         </div>
     </div>
+@stop
+@section('script')
+    <link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
+    <script src="{{asset('js/select2.min.js')}}"></script>
+    <script type="text/javascript">
+        var lang_select = '@lang('global.select')';
+        $('select').select2({placeholder: lang_select, allowClear: true, theme: "classic"});
+    </script>
 @stop

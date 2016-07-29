@@ -8,5 +8,8 @@ return [
     "metadata"                => "Metadata",
     "present"                 => "Present",
     "missing"                 => "Missing",
-    "anotations_category"     => "Annotations Category"
+    "anotations_category"     => "Annotations Category",
+    "contract_quality_issue"  => "Contract Quality Issue",
+    "filter_description"      => "Filter contracts metadata and annotation categories numbers.",
+    "filter"                  => "Filter"
 ];

@@ -138,11 +138,10 @@ return [
     'concession'                           => 'Concession',
     'corporate'                            => 'Corporate',
     'government'                           => 'Government',
+    'project_title'                        => "Project Title",
     'unknown'                              => 'Unknown',
     'corporate_explain'                    => 'Disclosures made on corporate websites or to security and exchange commissions',
     'government_explain'                   => 'Contracts released by governments',
-
-
     /*ContractController*/
     'save_success'                         => 'Contract successfully uploaded. You will receive an email notification once the contract processing is complete allowing for the text review',
     'save_fail'                            => 'Contract could not be saved.',

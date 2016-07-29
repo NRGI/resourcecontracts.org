@@ -8,5 +8,8 @@ return [
     "metadata"                => "Métadonnées",
     "present"                 => "Présent",
     "missing"                 => "Manquant",
-    "anotations_category"     => "Catégorie d'annotations"
+    "anotations_category"     => "Catégorie d'annotations",
+    "contract_quality_issue"  => "Qualité contrat Problème",
+    "filter_description"      => "Filtrer les contrats numéros métadonnées et d'annotation de catégories.",
+    "filter"                  => "Filtre"
 ];
