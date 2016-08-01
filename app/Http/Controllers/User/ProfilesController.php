@@ -30,7 +30,7 @@ class ProfilesController extends Controller
      */
     public function __construct(UserService $user, Auth $auth)
     {
-
+        $this->middleware('auth');
         $this->user = $user;
         $this->auth = $auth;
     }

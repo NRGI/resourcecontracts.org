@@ -29,9 +29,9 @@ class AnnotationController extends Controller
      */
     public function __construct(AnnotationService $annotation, ContractService $contract)
     {
+        $this->middleware('auth');
         $this->contract   = $contract;
         $this->annotation = $annotation;
-        $this->middleware('auth');
     }
 
     /**
