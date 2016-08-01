@@ -20,8 +20,8 @@ class ApiController extends Controller
      */
     public function __construct(AnnotationService $annotationService)
     {
-        $this->annotationService = $annotationService;
         $this->middleware('auth');
+        $this->annotationService = $annotationService;
     }
 
     /**

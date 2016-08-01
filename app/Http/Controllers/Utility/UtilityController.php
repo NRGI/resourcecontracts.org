@@ -30,6 +30,7 @@ class UtilityController extends Controller
      */
     public function __construct(ContractService $contractService, CountryService $countryService)
     {
+        $this->middleware('auth');
         $this->contractService = $contractService;
         $this->countryService  = $countryService;
     }

@@ -29,6 +29,7 @@ class QualityController extends Controller
      */
     public function __construct(QualityService $quality, ContractFilterService $contractFilter)
     {
+        $this->middleware('auth');
         $this->quality        = $quality;
         $this->contractFilter = $contractFilter;
     }

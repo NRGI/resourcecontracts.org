@@ -35,6 +35,7 @@ class DisclosureController extends Controller
      */
     public function __construct(ContractRepositoryInterface $contract, CountryService $country)
     {
+        $this->middleware('auth');
         $this->contract = $contract;
         $this->country  = $country;
     }
