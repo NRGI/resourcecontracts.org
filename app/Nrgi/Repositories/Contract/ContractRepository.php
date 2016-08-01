@@ -808,4 +808,21 @@ class ContractRepository implements ContractRepositoryInterface
         return $query->whereRaw("metadata->'country'->>'code' ='".$country."'")
                      ->paginate($limit);
     }
+    /**
+     * get Company Names
+     *
+     * @return array
+     */
+    public function getAllCompanyNames($contractId='')
+    {
+        $query = $this->contract->selectRaw("id,company->>'name' as company_name");
+        if (!empty($contractId)) {
+            $query->where('id', '=', $contractId);
+        }
+        $from  = "contracts, json_array_elements(metadata->'company') as company";
+
+        return $query->from($this->db->raw($from))
+                     ->get()
+                     ->toArray();
+    }
 }
