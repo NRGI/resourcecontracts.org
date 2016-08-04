@@ -372,7 +372,7 @@ if (isset($contract->metadata->resource)) {
                         <div class="col-sm-7">
                             {!! Form::select("company[$i][jurisdiction_of_incorporation]", ['' => trans
                             ('global.select')] +
-                            $country ,
+                            trans('codelist/country') ,
                             isset($v->jurisdiction_of_incorporation)?$v->jurisdiction_of_incorporation:null,
                             ["class"=>"form-control"])!!}
                         </div>
@@ -519,7 +519,7 @@ if (isset($contract->metadata->resource)) {
                 ['class'=>'col-sm-2 control-label'])!!}
                 <div class="col-sm-7">
                     {!! Form::select('company[0][jurisdiction_of_incorporation]', ['' => trans('global.select')] +
-                    $country ,
+                    trans('codelist/country') ,
                     isset($contract->metadata->country->code)?$contract->metadata->country->code:null,
                     ["class"=>"form-control" , "id"=> "company_0_jurisdiction"])!!}
                 </div>
