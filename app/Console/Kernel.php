@@ -32,6 +32,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\AnnotationHarmonization',
         'App\Console\Commands\BulkdownloadText',
         'App\Console\Commands\TrackOCID',
+        'App\Console\Commands\ImportContracts',
     ];
 
     /**

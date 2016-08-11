@@ -8,12 +8,12 @@
 return [
     'category'  => [
         'olc' => 'OpenLandContracts',
-        'rc'  => 'ResourceContracts'
+        'rc'  => 'ResourceContracts',
     ],
     'text_type' => [
         1 => ['name' => 'acceptable', 'color' => 'green'],
         2 => ['name' => 'needs_editing', 'color' => 'yellow'],
-        3 => ['name' => 'needs_full_transcription', 'color' => 'red']
+        3 => ['name' => 'needs_full_transcription', 'color' => 'red'],
     ],
     'schema'    => [
         'file'     => '',
@@ -32,7 +32,7 @@ return [
                 [
                     'entity'     => '',
                     'identifier' => '',
-                ]
+                ],
             ],
             'type_of_contract'       => [],
             'signature_date'         => '',
@@ -48,16 +48,16 @@ return [
                     'company_number'                => '',
                     'parent_company'                => '',
                     'open_corporate_id'             => '',
-                    'operator'                      => ''
-                ]
+                    'operator'                      => '',
+                ],
             ],
             'project_title'          => '',
             'project_identifier'     => '',
             'concession'             => [
                 [
                     'license_name'       => '',
-                    'license_identifier' => ''
-                ]
+                    'license_identifier' => '',
+                ],
             ],
             'source_url'             => '',
             'disclosure_mode'        => '',
@@ -70,7 +70,9 @@ return [
             'is_supporting_document' => '',
             'contract_note'          => '',
             'deal_number'            => '',
-            'matrix_page'            => ''
+            'matrix_page'            => '',
+            'pages_missing'          => '',
+            'annexes_missing'        => '',
         ],
-    ]
+    ],
 ];
