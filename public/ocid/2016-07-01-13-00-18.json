@@ -1,0 +1,4612 @@
+[
+  {
+    "id": "1802",
+    "name": "Iraqi Kurdistan, Genel- Taq-Taq Block, PSC-Annexes, 2002",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ1873365281RC-1802",
+    "is_published": "published",
+    "last_updated_date": "2016-03-21 00:26:19",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1308",
+    "name": "Explotation exploitation, Harken Energy, Lote 95, April 7, 2004",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE9166118417RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-22 22:56:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1263",
+    "name": "Bolivia - Petrolera Andina and YPFB - Campo Camiri - Operation Contract, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO7250088225RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:19",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1748",
+    "name": "Iraqi Kurdistan, General Exploration Partners- Atrush Block, 1st Amendment Agreement, 2010",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ3953155201RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-19 00:26:42",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1156",
+    "name": "DRC, Industrie de Transformation des Bois, Contrat de concession foresti\u00e8re N. 012, 12 ao\u00fbt 2011",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD2273559398OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:03:51",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1005",
+    "name": "Peru, Chinalco -  Investment Promotion Agreement, 2009",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE9634574802RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:43",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1786",
+    "name": "Iraqi Kurdistan, Sterling- Sangaw North Block, Production Sharing Agreement, 2007",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ2189765450RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-15 16:02:40",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "733",
+    "name": "DNO - Yemen, 2004",
+    "category": "rc",
+    "country": "YE",
+    "ocid": "ocds-591adf-YE3941604679RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 01:32:13",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1508",
+    "name": "Mozambique, ENH, Eni - Rovuma Offshore Area 4 - PSC, 2006",
+    "category": "rc",
+    "country": "MZ",
+    "ocid": "ocds-591adf-MZ7359014115RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-22 21:00:28",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1598",
+    "name": "Peru, Perupetro, Perenco, Perenco Petroleum - Block 67 - Exploration Exploitation License Amend, 2010",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE5211346239RC-1598",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "928",
+    "name": "SBDT Convention",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN5102716414RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-03 00:01:21",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1469",
+    "name": "Peru, Perupetro, Savia - Block Z-33 - Exploration Exploitation License Amend, 2015",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE2059268968RC-1469",
+    "is_published": "published",
+    "last_updated_date": "2016-06-16 14:46:54",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1723",
+    "name": "Peru, Compa\u00f1\u00eda Minera Milpo - Investment Promotion Agreement, 2002",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE6582708307RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-25 03:03:50",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1556",
+    "name": "Peru, Perupetro, Talisman, Hess - Block 64 - Exploration Exploitation License Amend, 2010",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE1651033763RC-1556",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 01:58:02",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "716",
+    "name": "R.V. Investment - Azerbaijan, 1997",
+    "category": "rc",
+    "country": "AZ",
+    "ocid": "ocds-591adf-AZ4652432335RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 14:50:11",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1832",
+    "name": "Sierra Leone, African Minerals - Environmental, Social and Health Impact Assessment, 2010",
+    "category": "rc",
+    "country": "SL",
+    "ocid": "ocds-591adf-SL0498783225RC-1832",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 21:39:49",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1677",
+    "name": "Peru, Minera Barrick Misquichilca - Investment Promotion Agreement, 2004",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE1334822617RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "82",
+    "name": "Cagdianao Mining Corporation - MPSA No. 078-97-XIII (Surigao Mineral Reservation), 1997",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH2629390746RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:19",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1084",
+    "name": "Johson Gold Mining Corporation - Annex of MPSA No. 139-99-V, 1999",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH3030287885RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:22",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "112",
+    "name": "Journal Officiel de la Republique du Congo (Marine IV)",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG0612784301RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-22 16:58:35",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1155",
+    "name": "DRC, Industrie de Transformation de Bois, Contrat de concession foresti\u00e8re N. 006, 4 ao\u00fbt 2011",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD6222845448OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:04:28",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "835",
+    "name": "ZMT - Belize, 2009",
+    "category": "rc",
+    "country": "BZ",
+    "ocid": "ocds-591adf-BZ3590439669RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 14:51:48",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1564",
+    "name": "Venezuela, CVP, PetroVietnam [EMP] - JVA, 2010",
+    "category": "rc",
+    "country": "VE",
+    "ocid": "ocds-591adf-VE0692187926RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 02:02:34",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1803",
+    "name": "Iraqi Kurdistan, Genel- Taq-Taq Block, PSA, 2004",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ0885491240RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-21 01:06:18",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1638",
+    "name": "Peru, Apurimac Ferrum - Exploration Investment Contract, 2006",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE1805215669RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 20:16:21",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "854",
+    "name": "Sierra Rutile Limited - Sierra Leone, 2001",
+    "category": "rc",
+    "country": "SL",
+    "ocid": "ocds-591adf-SL5260114002RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 21:43:30",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1586",
+    "name": "Peru, Petroperu, Cavelcas - Block I - Service Contract Amend, 1993",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE2102555004RC-1586",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 02:06:43",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1206",
+    "name": "Bolivia - Petrolera Andina and YPFB - Campo Rio Grande - Operation Contract, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO2785032793RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:19",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1081",
+    "name": "Platinum Group Metals Corporation - Annex of MPSA No. 007-92-X, 1992",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH3461204639RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "755",
+    "name": "Northern Spirit, Block 74, 77, 78 - Belize, 2010",
+    "category": "rc",
+    "country": "BZ",
+    "ocid": "ocds-591adf-BZ7305625703RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 14:53:09",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "834",
+    "name": "Western Cluster - Liberia, 2011",
+    "category": "rc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR5800077016RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 15:31:31",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1455",
+    "name": "Peru, Perupetro, Petro-Tech Peruana - Block Z-36 - Exploration Exploitation License, 2006",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE1222710588RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 02:08:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1518",
+    "name": "Peru, Perupetro, Upland, East Cameron, Endevco - Block XXIV - Exploration Exploitation License Amend, 2008",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE6562615423RC-1518",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1755",
+    "name": "Iraqi Kurdistan DNO-ASA, Erbil-Block PSA,2004",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ0025841408RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-14 23:58:09",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1804",
+    "name": "Iraqi Kurdistan, Genel Enerjie, Genel Energy International, Addax- Taq-Taq Block, PSA-Amendment, 2006",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ0885491240RC-1804",
+    "is_published": "published",
+    "last_updated_date": "2016-03-22 14:40:37",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1154",
+    "name": "DRC, Industrie de Transformation de Bois, Contrat de concession foresti\u00e8re N. 005, 4 ao\u00fbt 2011",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD0879710900OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:05:03",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1618",
+    "name": "Peru, Peru Minerals - Exploration Investment Contract, 2011",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE9400735376RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "830",
+    "name": "China, CNPC, XCL Cathay - Zhangdong Block - Production Sharing Contract, 1998",
+    "category": "rc",
+    "country": "CN",
+    "ocid": "ocds-591adf-CN2778877273RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-05 04:06:59",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "753",
+    "name": "Blue Creek, Belize, 2007",
+    "category": "rc",
+    "country": "BZ",
+    "ocid": "ocds-591adf-BZ2453485618RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 14:56:06",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1654",
+    "name": "Peru, Frank-or Resources - Exploration Investment Contract, 2008",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE6156018619RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 19:57:32",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1180",
+    "name": "South Sudan, Nile Trading & Development, Lease Agreement, 11 March 2008",
+    "category": "olc",
+    "country": "SS",
+    "ocid": "ocds-591adf-SS5768196941OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 00:53:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "767",
+    "name": "China, Far East Energy (Bermuda) - Shouyang Area - PSC Amendment # 3, 2012",
+    "category": "rc",
+    "country": "CN",
+    "ocid": "ocds-591adf-CN6497885112RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-05 04:16:27",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1490",
+    "name": "Peru, Perupetro, Syntroleum, Nuevo, BPZ - Block Z-1 - Exploration Exploitation License Amend, 2004",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE1996365345RC-1490",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1004",
+    "name": "Peru, Xstrata Tintaya - Altuarca (3-9), Atahurca 97, Atalaya, Aurora Tintaya 4, Huarca (1, 1-A, 2) - Investment Promotion Agreement, 2011",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE8566068466RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 01:10:31",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1007",
+    "name": "Dana, Hardman, Elixir - Mauritania, 1999",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR3587682044RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:16:15",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "38",
+    "name": "Amend Electricity Implementation",
+    "category": "rc",
+    "country": "TZ",
+    "ocid": "ocds-591adf-TZ9270066842RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 02:13:02",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1870",
+    "name": "Sudan, Syria - Special Agricultural Consultancy, 2002",
+    "category": "olc",
+    "country": "SD",
+    "ocid": "ocds-591adf-SD9565765150OL",
+    "is_published": "draft",
+    "last_updated_date": "2016-06-25 19:23:18",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1046",
+    "name": "Liberia, Thunder Bird International, Timber Sale Contract, 1 October 2010",
+    "category": "olc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR0342088869OL",
+    "is_published": "published",
+    "last_updated_date": "2016-05-27 03:40:40",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "752",
+    "name": "PetroBelize - Belize, 2007",
+    "category": "rc",
+    "country": "BZ",
+    "ocid": "ocds-591adf-BZ4063237125RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 14:56:38",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "800",
+    "name": "India, NTPC, GEOPETROL, CRL - Production Sharing Contract, 2005",
+    "category": "rc",
+    "country": "IN",
+    "ocid": "ocds-591adf-IN0962993293RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 19:19:43",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1886",
+    "name": "SICOBOIS, Contrat de concession foresti\u00e8re No. 33\/11 du 24 octobre 2011",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD7106050648OL",
+    "is_published": "published",
+    "last_updated_date": "2016-06-30 15:45:54",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "982",
+    "name": "CNPC BlocTa21 - Mauritania, 2004",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR0029757792RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:16:37",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1593",
+    "name": "Peru, Perupetro, Barrett, KNOC, Advantage, Hanwha, Hyundai - Block 67 - Exploration Exploitation License Amend, 2000",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE5211346239RC-1593",
+    "is_published": "published",
+    "last_updated_date": "2016-06-26 17:45:08",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1731",
+    "name": "Iceland, Kolvetni ehf, Petoro Iceland As, Valiant Petroleum ehf - IS6808\/1, IS6809\/2,3, IS6909\/11,12 - License for exploration and production, 2013",
+    "category": "rc",
+    "country": "IS",
+    "ocid": "ocds-591adf-IS1796417971RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-05 04:28:27",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1472",
+    "name": "testing scale(ignore it)",
+    "category": "rc",
+    "country": "DZ",
+    "ocid": "ocds-591adf-DZ3883486771RC",
+    "is_published": "draft",
+    "last_updated_date": "2016-02-29 11:01:27",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1542",
+    "name": "Peru, Karmin - Exploration Investment Contract, 2012",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE6111054426RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "681",
+    "name": "Liberia, Firestone Liberia, Inc., Concession Agreement, 2008",
+    "category": "olc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR0574998871OL",
+    "is_published": "published",
+    "last_updated_date": "2016-06-09 03:16:05",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1585",
+    "name": "Peru, Petroperu, Cavelcas, Geopet - Block I - Service Contract, 1991",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE7982861044RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-26 17:46:54",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1567",
+    "name": "Liberia, BHP Billiton - Kitoma Range - Exploration License, 2005",
+    "category": "rc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR3433116062RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 00:42:00",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "969",
+    "name": "ZETAH Heritage, Kouakouala - Congo-Brazzaville, 1996",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG1673309006RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-22 23:37:04",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1540",
+    "name": "Peru, Candente Gold - Exploration Investment Contract, 2012",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE4611336774RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:43",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1220",
+    "name": "India - ONGC, GSPC, HOEC - Block CB-ON-2 PSC, 2000",
+    "category": "rc",
+    "country": "IN",
+    "ocid": "ocds-591adf-IN3996249480RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:22",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1170",
+    "name": "Liberia, Geblo Logging Inc., Forest Management Contract, 17 September 2009",
+    "category": "olc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR0895035050OL",
+    "is_published": "published",
+    "last_updated_date": "2016-05-27 04:12:14",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1464",
+    "name": "Peru, Yanac Minera - Exploration Investment Contract, 2014",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE7304040918RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:45",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "764",
+    "name": "China, China National Petroleum Corporation, Pan-China Resources - Kongnan Block, Dagang Oil Field - Production sharing agreement, 1997",
+    "category": "rc",
+    "country": "CN",
+    "ocid": "ocds-591adf-CN4093076693RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-05 04:18:19",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1289",
+    "name": "Exploration license, Hydrocarbon Exploration, Lote 183, September 28, 2011",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE5303368704RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 02:13:30",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1185",
+    "name": "Rapu-Rapu Minerals, Incorporated - MPSA No. 168-2001-V, 2001",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH6493643447RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-15 08:05:26",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1418",
+    "name": "Peru, Perupetro, Petro-Tech Peruana - Block Z-6 - Exploration Exploitation License Amend, 2005",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE2868264417RC-1418",
+    "is_published": "published",
+    "last_updated_date": "2016-06-26 18:38:21",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1233",
+    "name": "Mali, BHP - Morila - Concession, 1992",
+    "category": "rc",
+    "country": "ML",
+    "ocid": "ocds-591adf-ML5191088628RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-04 21:13:20",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1417",
+    "name": "Peru, Perupetro, Petro-Tech Peruana, Petro-Tech International - Block Z-6 - Exploration Exploitation License, 2002",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE2868264417RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-02 18:06:07",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1153",
+    "name": "DRC, Forabola, Contrat de concession foresti\u00e8re N. 064, 10 juillet 2014",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD5391651472OL",
+    "is_published": "published",
+    "last_updated_date": "2016-05-27 02:59:18",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "97",
+    "name": "Carrascal Nickel Corporation - MPSA No. 243-2007-XIII (Surigao Mineral Reservation), 2007",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH0149652678RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:20",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1334",
+    "name": "China, Phillips China - Shouyang Area - Production Sharing Contract, 2002",
+    "category": "rc",
+    "country": "CN",
+    "ocid": "ocds-591adf-CN0254292095RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-26 03:52:02",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "952",
+    "name": "Areva - Niger, 2009",
+    "category": "rc",
+    "country": "NE",
+    "ocid": "ocds-591adf-NE1023685787RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 02:15:39",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "941",
+    "name": "Epsilon Gold Mines - Burkina Faso, 2005",
+    "category": "rc",
+    "country": "BF",
+    "ocid": "ocds-591adf-BF8206855021RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:30:01",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1177",
+    "name": "Liberia, Sun Yeun Corporation, Timber Sale Contract, TSC Area A-16, 21 July 2010",
+    "category": "olc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR4396521997OL",
+    "is_published": "published",
+    "last_updated_date": "2016-06-03 18:01:05",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "964",
+    "name": "Blue Chip, Bloc32 - Mauritania, 2007",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR5710395747RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:31:20",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "942",
+    "name": "SEMAFO - Burkina Faso, 2007",
+    "category": "rc",
+    "country": "BF",
+    "ocid": "ocds-591adf-BF7934331041RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-26 18:41:36",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "763",
+    "name": "China, Primeline Energy China, Primeline Petroleum - Contract Area 33\/07 - Production Sharing Contract, 2012",
+    "category": "rc",
+    "country": "CN",
+    "ocid": "ocds-591adf-CN0811866666RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-05 04:20:03",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "780",
+    "name": "Egypt, Ganoub El-Wadi Holding Petroleum, Centurion Petroleum Corporation - Komombo Area Block 2 - Concession Agreement, 2004",
+    "category": "rc",
+    "country": "EG",
+    "ocid": "ocds-591adf-EG1487754705RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-04 05:33:43",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1343",
+    "name": "Colombia, Morichal - Block VMM-17 - PSC Addendum No. 1, 2012",
+    "category": "rc",
+    "country": "CO",
+    "ocid": "ocds-591adf-CO4868870502RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:20",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "104",
+    "name": "Carmen Copper Corporation - MPSA No. 264-2008-VII, 2008",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH3120497996RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:20",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1011",
+    "name": "Reliance Industries Limited, PSC S0606-K - Timor-Leste, 2006",
+    "category": "rc",
+    "country": "TL",
+    "ocid": "ocds-591adf-TL5335886388RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 21:52:54",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1403",
+    "name": "Bolivia, Repsol YPF, BG Bolivia, PAE and YPFB - Campo Margarita - Operation Contract, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO4098273155RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 15:03:41",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "29",
+    "name": "Tanzania Statoil Exxon Block 2 Addendum PSA",
+    "category": "rc",
+    "country": "TZ",
+    "ocid": "ocds-591adf-TZ0740154131RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 00:47:14",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "86",
+    "name": "Rio Tuba Nickel Mining Corporation - MPSA No. 114-98-IV, 1998",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH3299530882RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "18",
+    "name": "Mongolia, Ivanhoe Mines Mongolia Inc, Ivanhoe Mines, Rio Tinto  - Oyu Tolgoi - Concession, 2009",
+    "category": "rc",
+    "country": "MN",
+    "ocid": "ocds-591adf-MN2079301876RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 00:48:19",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1809",
+    "name": "Iraqi Kurdistan, DNO-Iraq, Genel, Tawke-Block-PSC-6th-Amendment, 2010",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ5468988744RC-1809",
+    "is_published": "published",
+    "last_updated_date": "2016-03-30 22:56:39",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "43",
+    "name": "Republica de Bolivia Contrato de Operacion Entre Yacimientos Petroliferos Fiscales Bolivianos Y Pluspetrol Bolivia Corporation S.A. (BermejoToro, Barredero Tigre, San Telmo)",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO1210850763RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 17:29:35",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "80",
+    "name": "Shuley Mine, Incorporated - MPSA No. 072-97-XIII (Surigao Mineral Reservation), 1997",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH2922969290RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1008",
+    "name": "Eni Timor Leste, PSC S0603-C - Timor-Leste, 2006",
+    "category": "rc",
+    "country": "TL",
+    "ocid": "ocds-591adf-TL0077233259RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 21:54:03",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "722",
+    "name": "Griffiths Energy (DOH) - Chad, 2011",
+    "category": "rc",
+    "country": "TD",
+    "ocid": "ocds-591adf-TD1824304224RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:35:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "137",
+    "name": "Ghana Deed of Assignment (Deepwater Tano)",
+    "category": "rc",
+    "country": "GH",
+    "ocid": "ocds-591adf-GH8882542927RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 00:49:21",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "77",
+    "name": "Leyte Ironsand Corporation - MPSA No. 290-2009-VIII, 2009",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH0482018664RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-15 09:16:18",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "762",
+    "name": "China, Primeline Energy China, Primeline Petroleum Corporation - Contract Area 25\/34, 2005",
+    "category": "rc",
+    "country": "CN",
+    "ocid": "ocds-591adf-CN2401465011RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-05 04:21:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "957",
+    "name": "PC KG Samsung LG, JPDA 6-102 PSC - Timor-Leste, Australia, 2006",
+    "category": "rc",
+    "country": "TL",
+    "ocid": "ocds-591adf-TL6407771271RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 21:54:46",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1555",
+    "name": "Peru, Perupetro, Talisman, Hess - Block 64 - Exploration Exploitation License Amend, 2010",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE1651033763RC-1555",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 02:16:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "954",
+    "name": "Eni Timor Leste, PSC S0601-A - Timor-Leste, 2006",
+    "category": "rc",
+    "country": "TL",
+    "ocid": "ocds-591adf-TL7447125114RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 21:55:32",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1291",
+    "name": "Explotation license, Aguaytia, March 30, 1994",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE2796409055RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-26 18:43:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1396",
+    "name": "Bolivia, Petrobras, Total E&P and YPFB - Campo Rio Hondo - Operation Contract, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO7398321043RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 00:51:43",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1072",
+    "name": "TVI Resource Development Philippines, Incorporated - Annex of MPSA No. 054-96-IX, 1996",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH1860483994RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:27",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1246",
+    "name": "Mali, AGEM - Sadiola - Concession,1990",
+    "category": "rc",
+    "country": "ML",
+    "ocid": "ocds-591adf-ML3275841206RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-05 19:04:24",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "190",
+    "name": "Morocco Kosmos Energy Offshore Morocco HC Boujdour-Offshore MOU",
+    "category": "rc",
+    "country": "MA",
+    "ocid": "ocds-591adf-MA7387440055RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-11 15:20:23",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1760",
+    "name": "Iraqi Kurdistan, Westernzagros- Garmian Block, Production Sharing Agreement, 2011",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ0454789581RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-14 23:55:38",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "993",
+    "name": "Pemex Petro-SPM Dowell Petrofac - Mexico, 2012",
+    "category": "rc",
+    "country": "MX",
+    "ocid": "ocds-591adf-MX4644389914RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-22 22:46:02",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1016",
+    "name": "Liberty Gold and Diamond Mining - Liberia, 2005",
+    "category": "rc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR0516995502RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-06 08:57:20",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1500",
+    "name": "Peru, Perupetro, Pitkin - Block XXVIII - Exploration Exploitation License, 2011",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE9497982032RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1017",
+    "name": "African Aura Resources - Liberia, 2004",
+    "category": "rc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR5081747835RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-26 19:51:02",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "813",
+    "name": "DWM Petroleum, Zuunbayan XIV Area - Mongolia, 2008",
+    "category": "rc",
+    "country": "MN",
+    "ocid": "ocds-591adf-MN7267044248RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-16 21:49:27",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1397",
+    "name": "Bolivia, Petrobras, Petrolera Andina, Total E&P and YPFB - Campo San Alberto - Operation Contract, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO2323589745RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 00:52:17",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1069",
+    "name": "Iraqi Kurdistan DNO-Iraq Erbil-Block PSC",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ5021415206RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-30 23:05:02",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1082",
+    "name": "Cagdianao Mining Corporation - Annex of MPSA No. 078-97-XIII (Surigao Mineral Reservation), 1997",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH2502762270RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:19",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "70",
+    "name": "Johson Gold Mining Corporation - MPSA No. 139-99-V, 1999",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH8329561979RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:22",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "159",
+    "name": "Liberia An Act to Ratify the PSC Between NOCOL and Oranto Petroleum (Block LB-14)",
+    "category": "rc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR0909406468RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-06 08:59:34",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1241",
+    "name": "Mali, Eltin - Yat\u00e9la - Concession, 1994",
+    "category": "rc",
+    "country": "ML",
+    "ocid": "ocds-591adf-ML1076826981RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:23",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1632",
+    "name": "Peru,Minera Pe\u00f1oles - Exploration Investment Contract, 2005",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE2881247933RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 20:05:59",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1715",
+    "name": "Argentina,Arpetrol- CA-11 Faro Virgenes, Amendment Concession Agreement,2011",
+    "category": "rc",
+    "country": "AR",
+    "ocid": "ocds-591adf-AR7148061425RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-15 18:01:48",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1641",
+    "name": "Peru, Rio Tinto - Exploration Investment Contract, 2006",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE2104271857RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 01:00:09",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1752",
+    "name": "Iraqi Kurdistan, Hess, Petroceltic- Dinarta Block, Production Sharing Agreement, 2011",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ6282760359RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-03 00:07:11",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "194",
+    "name": "Nigeria Allied Energy CAMAC International Nigerian AGIP CAMAC Petroleum Oyo Field Novation PSC Agreement",
+    "category": "rc",
+    "country": "NG",
+    "ocid": "ocds-591adf-NG3822801328RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-11 15:23:03",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1807",
+    "name": "Iraqi Kurdistan, DNO Iraq-AS-Tawke-Block_Dohuk-Block_Erbil-Block, PSC-Amendment, 2008",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ9840010885RC-1807",
+    "is_published": "published",
+    "last_updated_date": "2016-03-31 02:19:04",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1806",
+    "name": "Iraqi Kurdistan, DNO-ASA- Tawke Block, Production Sharing Agreement, 2004",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ9144651388RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 01:21:33",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "914",
+    "name": "Euronimba, Ratification - Guin\u00e9e, 2003",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN5801720724RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-11 15:24:30",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1151",
+    "name": "DRC, Bego Congo, Contrat de concession foresti\u00e8re et avenant N. 1, 24 octobre 2011",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD7709406367OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:06:35",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1001",
+    "name": "Perupetro Hydrocarbon-Exploration Sucursal - Peru, 2011",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE6055505304RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-16 22:00:10",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1489",
+    "name": "Peru, Perupetro, Syntroleum, BPZ - Block Z-1 - Exploration Exploitation License Amend, 2003",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE1996365345RC-1489",
+    "is_published": "published",
+    "last_updated_date": "2016-06-28 22:08:08",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1113",
+    "name": "Philsaga Mining Corporation - Annex of MPSA No. 262-2008-XIII, 2008",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH2975349063RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1680",
+    "name": "Zambia, Konkola Copper Mines - Development Agreement, 2000",
+    "category": "rc",
+    "country": "ZM",
+    "ocid": "ocds-591adf-ZM8546596202RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 15:40:28",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "111",
+    "name": "Journal Officiel de la Republique du Congo (Kombi Likalala Libondo )",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG3295472789RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-11 15:31:36",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1369",
+    "name": "DRC, G\u00e9camines, Comin, [SEK] - Kipo\u00ef - JVA Amend 2, 2009",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD0715172686RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-10 10:31:07",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1751",
+    "name": "Iraqi Kurdistan, Forbes & Manhattan, Petoil Petroleum, Genel Energy- Chia-Surkh-Block, 1st Amendment Agreement, 2010",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ2330277046RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-15 17:53:15",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1689",
+    "name": "Brazil, Pr\u00e9\u00adsal Petr\u00f3leo S.A., Petr\u00f3leo Brasileiro S.A. \u00ad Petrobras, Shell Brasil Petroleo, Total E&P do Brasil, CNODC Brasil Petr\u00f3leo e G\u00e1s, CNOOC Petroleum Brasil -  Production and Sharing Contract, 2013",
+    "category": "rc",
+    "country": "BR",
+    "ocid": "ocds-591adf-BR3995799582RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 01:01:16",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1805",
+    "name": "Iraqi Kurdistan, Genel Enerjie, Genel Energy International, Addax- Taq-Taq Block, PSA-Annexes, 2006",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ1282178780RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-21 01:31:31",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "819",
+    "name": "Mohave Oil, Torres Vedras 3 Area - Portugal, 2007",
+    "category": "rc",
+    "country": "PT",
+    "ocid": "ocds-591adf-PT2013656074RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:46:08",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1476",
+    "name": "Peru, Ancocala- Exploration Investment Contract, 2014",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE7848544250RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-04 01:27:29",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "915",
+    "name": "CBG GlobalAlumina - Guin\u00e9e, 2006",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN9478747875RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-11 15:32:15",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "970",
+    "name": "Group ZETAH - Congo-Brazzaville, 1996",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG6903357477RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-26 20:22:47",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1054",
+    "name": "Malaysia Thailand Joint Authority Petronas Triton Block A-18 PSC Supp",
+    "category": "rc",
+    "country": "MY",
+    "ocid": "ocds-591adf-MY4981878719RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 01:03:17",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "817",
+    "name": "Mohave Oil, Rio Maior Area - Portugal, 2007",
+    "category": "rc",
+    "country": "PT",
+    "ocid": "ocds-591adf-PT9235536897RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:46:28",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1503",
+    "name": "Peru, Perupetro, Faulkner - Block XXVII - Exploration Exploitation License Amend, 2011",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE7206382181RC-1503",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1538",
+    "name": "Peru, Aguila American - Exploration Investment Contract, 2012",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE3671466667RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:43",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1003",
+    "name": "Peru, Perupetro, Ecopetrol del Per\u00fa, Ecopetrol - Lote 179 - Exploration Exploitation License, 2011",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE0065433224RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "161",
+    "name": "Mauritania Contrat de Partage de Production Entre La Republique Islamique de Mauritanie et International Petroleum Grouping (Block 11)",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR8254371274RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 02:17:06",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1006",
+    "name": "Peru, Xstrata Las Bambas - Ferrobamba, Chalcobamba, Sulfobamba, Charcas, Bambas (1-35) - Investment Promotion Agreement, 2011",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE6050813076RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 01:11:00",
+    "is_associated_doc": "0"
+  },
+  {
+    "id":"1834",
+    "name": "Sierra Leone, Tonguma Limited - Environmental and Social Impact Assessment, 2014",
+    "category": "rc",
+    "country": "SL",
+    "ocid": "ocds-591adf-SL1526942372RC-1834",
+    "is_published": "published",
+    "last_updated_date": "2016-04-19 17:58:15",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1833",
+    "name": "Sierra Leone, Sierra Minerals Holdings - Environmental and Social Impact Assessment, 2012",
+    "category": "rc",
+    "country": "SL",
+    "ocid": "ocds-591adf-SL6383068961RC-1833",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 21:38:46",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1703",
+    "name": "Peru, Pukara Mining - Exploration Investment Contract, 2010",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE8541868010RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "988",
+    "name": "YPFB Vintage - Bolivia, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO0697496075RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:22:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "894",
+    "name": "COBAD - Guin\u00e9e, 2001",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN4720128828RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-03 00:26:08",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "51",
+    "name": "Petroleum Agreement For the Production, Development and Exploration of Petroleum in Delvina Block",
+    "category": "rc",
+    "country": "AL",
+    "ocid": "ocds-591adf-AL7795672151RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1402",
+    "name": "Bolivia, Total E&P, BG Bolivia and YPFB - Campo Itau - Operation Contract, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO8465622566RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 01:02:03",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "168",
+    "name": "Somalia Canmex Holdings Dharoor-Valley PSA",
+    "category": "rc",
+    "country": "SO",
+    "ocid": "ocds-591adf-SO8315837532RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:27",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "999",
+    "name": "Latin - Peru, 2013",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE2440605115RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 18:10:07",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1702",
+    "name": "Peru, Corongo Exploraciones - Exploration Investment Contract, 2014",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE4286299256RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "896",
+    "name": "Bellzone Holdings, Annex4 - Guin\u00e9e, 2010",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN5103459780RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-03 00:25:21",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1368",
+    "name": "DRC, G\u00e9camines, AMCK - Kinsevere, Nambulwa - Concession Amend 2, 2009",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD2863211224RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-10 21:46:04",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "699",
+    "name": "Koidu Holdings SA , Sierra Leone, 2010",
+    "category": "rc",
+    "country": "SL",
+    "ocid": "ocds-591adf-SL4027857664RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-06 10:04:02",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1824",
+    "name": "Sao Tome, Oranto Petroleum - Production Division Contract, 2011",
+    "category": "rc",
+    "country": "ST",
+    "ocid": "ocds-591adf-ST5125399754RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-04 01:29:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "134",
+    "name": "Iraqi Kurdistan Komet Group Barda-Rash-Block PSC",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ4157963640RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-10 17:14:59",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1883",
+    "name": "Woodside INPEX Talisman, JPDA 6-105 PSC - Timor-Leste, Australia, 2006",
+    "category": "rc",
+    "country": "AU",
+    "ocid": "ocds-591adf-AU5146037991RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-30 09:37:21",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1829",
+    "name": "Sao Tome, PGS Exploration, Aqua Exploration - Amendment Exploration and Production Option Agreement, 2003",
+    "category": "rc",
+    "country": "ST",
+    "ocid": "ocds-591adf-ST0330394770RC-1829",
+    "is_published": "published",
+    "last_updated_date": "2016-05-05 03:49:23",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1325",
+    "name": "Mexico, PEMEX-OPERACIONES PETROLERA SOLEDAD, Soledad, 2013",
+    "category": "rc",
+    "country": "MX",
+    "ocid": "ocds-591adf-MX1586160842RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 04:02:15",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1094",
+    "name": "Citinickel Mines and Development Corporation - Annex of MPSA No. 229-2007-IVB, 2007",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH1354075854RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:20",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "709",
+    "name": "BK Mining - Sokomo - DRC, 2011",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD2406469309RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-24 23:56:31",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1330",
+    "name": "Mexico, PEMEX-PETROFAC, Magallanes, 2011",
+    "category": "rc",
+    "country": "MX",
+    "ocid": "ocds-591adf-MX3960389696RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-13 14:52:04",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "85",
+    "name": "Taganito Mining Corporation - MPSA No. 266-2008-XIII (Surigao Mineral Reservation), 2008",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH2978164147RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:27",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "953",
+    "name": "Total E&P - Congo-Brazzaville, 2004",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG8688888864RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-11 23:50:24",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "74",
+    "name": "Platinum Group Metals Corporation - MPSA No. 007-92-X, 1992",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH0216420606RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1662",
+    "name": "Zambia, Chibuluma Mines - Development Agreement, 1997",
+    "category": "rc",
+    "country": "ZM",
+    "ocid": "ocds-591adf-ZM7369660044RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-13 15:01:30",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "71",
+    "name": "Sinosteel Philippines HY Mining Corporation - MPSA No. 002-90-X (Surigao Mineral Reservation), 1991",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH9630854692RC",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:21:34",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "171",
+    "name": "Somalia Canmex Holdings Nogal Valley PSA",
+    "category": "rc",
+    "country": "SO",
+    "ocid": "ocds-591adf-SO7661275220RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:27",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "102",
+    "name": "SR Metals, Incorporated - MPSA No. 261-2008-XIII, 2008",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH0675774487RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:27",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "90",
+    "name": "Zambales Diversified Metals Corporation - MPSA No. 191-2004-III, 2004",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH9167186836RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 16:20:17",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1395",
+    "name": "DRC, G\u00e9camines, Lundin, TFM - Tenke, Fungurume - Concession Amend, 2005",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD2162779989RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:20",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1335",
+    "name": "China, Far East Energy (Bermuda) - Shouyang Area - PSC Amendment #1, 2007",
+    "category": "rc",
+    "country": "CN",
+    "ocid": "ocds-591adf-CN0955646083RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-26 04:07:15",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "182",
+    "name": "Mauritania, Wintershall - Taoudeni (Block Ta-5) - PSC, 2005",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR2365659847RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-04 18:04:09",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "949",
+    "name": "CNPCIW - Afghanistan, 2011",
+    "category": "rc",
+    "country": "AF",
+    "ocid": "ocds-591adf-AF9041156513RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-22 16:46:21",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "116",
+    "name": "Congo, MWAL - Mer Profonde Sud - PSC Amend - 2012",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG6620825816RC-1209-116",
+    "is_published": "published",
+    "last_updated_date": "2016-04-04 01:45:29",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1104",
+    "name": "CTP Construction and Mining Corporation - Annex of MPSA No. 018-93-XI (Surigao Mineral Reservation), 1993",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH1900566082RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:20",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1101",
+    "name": "CTP Construction and Mining Corporation - Annex of MPSA No. 158-2000-XIII (Surigao Mineral Reservation), 2000",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH6926051448RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:20",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "79",
+    "name": "CTP Construction and  Mining Corporation - MPSA No. 018-93-XI (Surigao Mineral Reservation), 1993",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH4030600508RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:20",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1189",
+    "name": "Iraqi Kurdistan, Kalegran, Gulf Keystone - Akri-Bijeel - PSC Amend, 2010",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ9910419438RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-05 19:09:10",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1350",
+    "name": "DRC, G\u00e9camines, Cobalt Metals [Ruashi-Mining] - JVA Amend, 2001",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD6103948442RC-1350",
+    "is_published": "published",
+    "last_updated_date": "2016-05-10 22:04:49",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1383",
+    "name": "DRC, G\u00e9camines, CMD [KMT] - Kingamyambo - JVA, 2004",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD4947815346RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-04 18:47:24",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1371",
+    "name": "DRC, G\u00e9camines, Cofiparinter, [SMKK] - Kabolela, Kipese - JVA Amend 1, 2009",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD2240193615RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-03 18:24:17",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1265",
+    "name": "DRC, G\u00e9camines WMC [MIKAS] - JVA, 2005",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD2325471033RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-11 02:55:39",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1859",
+    "name": "Colombia, Area de Patilla, Carbocol, 2001",
+    "category": "rc",
+    "country": "CO",
+    "ocid": "ocds-591adf-CO4021358281RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-22 18:34:16",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1865",
+    "name": "Zambia, Blackthorn Resources Limited - Environmental Impact Statement, 2014",
+    "category": "rc",
+    "country": "ZM",
+    "ocid": "ocds-591adf-ZM2329781482RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-17 13:07:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1391",
+    "name": "DRC, G\u00e9camines, ECCH [SMCO] - Shituru - JVA, 2005",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD1634270542RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-04 19:20:19",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1356",
+    "name": "DRC, G\u00e9camines, Exaco [MKM] - JVA, 2011",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD6930669663RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-04 17:15:47",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1388",
+    "name": "DRC, G\u00e9camines, GEC [DCP] - Kov, Kanaga, Tilwezembe - JVA, 2004",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD9467317406RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-04 18:45:55",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1254",
+    "name": "DRC, G\u00e9camines, Kril, [Kico] - Kipushi - JVA Amend 6, 2011",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD4545298927RC-1254",
+    "is_published": "published",
+    "last_updated_date": "2016-04-11 00:52:13",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1204",
+    "name": "Bolivia - Petrolera Andina and YPFB - Campo Palacios - Operation Contract, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO4752435618RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-10 23:06:35",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1416",
+    "name": "DRC, G\u00e9camines, MCK - Kinsevere - Concession Amend, 2005",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD4703045594RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:21",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "63",
+    "name": "Belize Perenco Belize Limited PSA (Blocks 200, 201, 202)",
+    "category": "rc",
+    "country": "BZ",
+    "ocid": "ocds-591adf-BZ6390369290RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-05 19:10:01",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1274",
+    "name": "DRC, G\u00e9camines, OMG BV, GGF [STL] - JVA, 1997",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD2673563077RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-25 13:52:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1364",
+    "name": "DRC, G\u00e9camines, TMIN, [Kalumines] - Kasonta-Lupoto - JVA Amend 2, 2009",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD9773311899RC-1364",
+    "is_published": "published",
+    "last_updated_date": "2016-05-26 18:12:15",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1366",
+    "name": "DRC, Sodimico, LFKY  - Kimpe Nord, Kimpe Sud-Sud - Concession, 2010",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD3320197234RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-10 22:04:15",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "812",
+    "name": "DWM Petroleum, Tsagaan Els XIII Area - Mongolia, 2009",
+    "category": "rc",
+    "country": "MN",
+    "ocid": "ocds-591adf-MN6261060273RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-16 21:49:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1848",
+    "name": "DRC, SODEFOR, Contrat de concession foresti\u00e8re n\u00b045\/11 du 24 Oct 2011",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD6521672173OL",
+    "is_published": "published",
+    "last_updated_date": "2016-05-28 17:28:19",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1182",
+    "name": "PSC Topkhana Block Between Kurdistan and Talisman (Block K39) B.V.",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ7184753441RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-05 19:10:48",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1009",
+    "name": "Eni Timor Leste, PSC S0604-E - Timor-Leste, 2006",
+    "category": "rc",
+    "country": "TL",
+    "ocid": "ocds-591adf-TL1660795557RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 21:53:41",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1544",
+    "name": "Peru, Perupetro, Petromont - Block XV - Exploitation License, 1998",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE1550725657RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-06 01:09:13",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "195",
+    "name": "Senegal PETROSEN TIMIS Corporation KOSMOS ENERGY Cayar-Offshore-Profond, Saint-Louis-Offshore-Profond Deed-of-Transfer",
+    "category": "rc",
+    "country": "SN",
+    "ocid": "ocds-591adf-SN3386743781RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-23 11:25:14",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1427",
+    "name": "EPEP and FMRDP_Eramen Minerals",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH2291505019RC-1427",
+    "is_published": "published",
+    "last_updated_date": "2016-06-07 02:52:50",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "923",
+    "name": "Fria Avenant 1973",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN1491285602RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-03 00:02:47",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1461",
+    "name": "FMRDP_Greenstone Resources",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH5290710888RC-1461",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:21",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1373",
+    "name": "DRC, G\u00e9camines, United Resources, [Kico] - Kipushi - JVA, 2007",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD4545298927RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-06 19:29:18",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "99",
+    "name": "Filminera Resources Corporation- MPSA No. 255-2007-V, 2007",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH7709188161RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-04 02:39:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1249",
+    "name": "Mali, Gounkoto SA - Gounkoto - Concession, 2012",
+    "category": "rc",
+    "country": "ML",
+    "ocid": "ocds-591adf-ML2430255063RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-06 19:29:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "984",
+    "name": "YPFB Andina - Bolivia, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO7125395034RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-06 01:10:15",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1239",
+    "name": "Ireland - Kosmos, Europa - 2\/13, Exploration Licence, 2013",
+    "category": "rc",
+    "country": "IE",
+    "ocid": "ocds-591adf-IE5077979212RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:22",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "856",
+    "name": "GAC-Guin\u00e9e, 2004",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN3202226765RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-03 00:42:30",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1227",
+    "name": "Georgia - NPL - Samgori, Patardzeuli, South Dome and Krtsanisi PSC, 2001",
+    "category": "rc",
+    "country": "GE",
+    "ocid": "ocds-591adf-GE0635630751RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-22 22:15:59",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1236",
+    "name": "Greece - Energean, Trajan - Katakolo PSC, 2014",
+    "category": "rc",
+    "country": "GR",
+    "ocid": "ocds-591adf-GR7349348764RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-26 19:30:50",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "138",
+    "name": "Ghana Unitization and Unit Operating Agreement (Jubilee Field Unit)",
+    "category": "rc",
+    "country": "GH",
+    "ocid": "ocds-591adf-GH3023948231RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-04 02:16:33",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1235",
+    "name": "Greece - Energean, Petra - Ioannina PSC, 2014",
+    "category": "rc",
+    "country": "GR",
+    "ocid": "ocds-591adf-GR5214072660RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-26 20:19:42",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "714",
+    "name": "Heritage Oil and Gas (Part 1) - Uganda, 2007",
+    "category": "rc",
+    "country": "UG",
+    "ocid": "ocds-591adf-UG0236825703RC",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 00:42:14",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1099",
+    "name": "Greenstone Resources Corporation - Annex of MPSA No. 184-2002-XIII, 2002",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH5921556963RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:22",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1732",
+    "name": "Iceland, Eykon Energy ehf, CNOOC Iceland ehf, Petoro Iceland AS - IS6809\/4,5,6,7,8,11,12, IS6708\/4,5,7, and IS6709\/2,3,5,6,8,9 - License for Exploration and Production, 2014",
+    "category": "rc",
+    "country": "IS",
+    "ocid": "ocds-591adf-IS3052290935RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:22",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1453",
+    "name": "Peru, Perupetro, Vamex, Kei - Block Z-38 - Exploration Exploitation License Amend, 2011",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE3555441513RC-1453",
+    "is_published": "published",
+    "last_updated_date": "2016-06-06 01:11:44",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1340",
+    "name": "Guatemala, Pentagon - Area A-3-92 - PSC, 1993",
+    "category": "rc",
+    "country": "GT",
+    "ocid": "ocds-591adf-GT3944277786RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-15 15:51:12",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "129",
+    "name": "Iraqi Kurdistan Akri-Bijeel-Block  Kalegran LTD PSC",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ9151631803RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-14 16:07:35",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1191",
+    "name": "Iraqi Kurdistan, Komet, Beta - Barda Rash Block - PSC Amend, 2011",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ1126096862RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-11 02:01:13",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1208",
+    "name": "Bolivia - Petrolera Andina and YPFB - Sara Boomerang III - Operation Contract, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO0208363414RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-10 23:18:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1059",
+    "name": "Kazakhstan BN Munai LLP Kzyloy Field Production Contract",
+    "category": "rc",
+    "country": "KZ",
+    "ocid": "ocds-591adf-KZ9320324010RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-13 15:29:53",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "843",
+    "name": "Kazakhstan Kozhan LLP Dauletaly Field Atyrau Oblast Exp-Prod Contract",
+    "category": "rc",
+    "country": "KZ",
+    "ocid": "ocds-591adf-KZ3510053319RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:22",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1566",
+    "name": "Liberia, KPO - Concession, 2001",
+    "category": "rc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR6813455131RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-19 15:06:38",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1842",
+    "name": "Ghana, SOCFINAF S.A. - Asset Sale and Purchase Agreement, 2015",
+    "category": "olc",
+    "country": "GH",
+    "ocid": "ocds-591adf-GH7633292274OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 00:52:30",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1087",
+    "name": "Leyte Ironsand Corporation - Annex of MPSA No. 290-2009-VIII, 2009",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH5975904123RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:23",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1573",
+    "name": "Liberia, Craton Development - Exploration License, 2005",
+    "category": "rc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR7073378322RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:23",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "156",
+    "name": "Liberia An Act Ratifying the PSCs with Addendum between NOCOL and Oranto Petroleum (Blocks LB-11 and LB-12)",
+    "category": "rc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR7541508334RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 19:48:56",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1569",
+    "name": "Liberia, Mano River Iron Ore - Putu Range - Exploration License, 2005",
+    "category": "rc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR9102228918RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 00:20:38",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1269",
+    "name": "Mali, Avnel - Kalana - Concession, 2003",
+    "category": "rc",
+    "country": "ML",
+    "ocid": "ocds-591adf-ML9015225201RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:23",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1268",
+    "name": "Mali, Papillon, Soci\u00e9t\u00e9 d'Exploitation - F\u00e9kola - Protocol of Agreement, 2014",
+    "category": "rc",
+    "country": "ML",
+    "ocid": "ocds-591adf-ML5489888884RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:23",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1243",
+    "name": "Mali, Robex - Mininko - Concession, 2011",
+    "category": "rc",
+    "country": "ML",
+    "ocid": "ocds-591adf-ML9058086532RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:23",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1730",
+    "name": "Peru, Minera Bateas - Investment Promotion Agreement, 2006",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE3472871072RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1245",
+    "name": "Mali, SGNC - Tienfala - Concession, 2009",
+    "category": "rc",
+    "country": "ML",
+    "ocid": "ocds-591adf-ML1560475528RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:23",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1242",
+    "name": "Mali, Somilo - Loulo - Concession, 1993",
+    "category": "rc",
+    "country": "ML",
+    "ocid": "ocds-591adf-ML4910572871RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-29 02:53:54",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1319",
+    "name": "Mexico, PEMEX-Cheiron, Altamira, 2012",
+    "category": "rc",
+    "country": "MX",
+    "ocid": "ocds-591adf-MX0318153698RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 02:40:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1234",
+    "name": "Mali, SODINAF - Yanfolila - Concession, 1992",
+    "category": "rc",
+    "country": "ML",
+    "ocid": "ocds-591adf-ML5605197963RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-05 19:08:17",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1874",
+    "name": "Ethiopia, Kehedam Trading PLC, Land Lease Agreement, 7 December 2010",
+    "category": "olc",
+    "country": "ET",
+    "ocid": "ocds-591adf-ET6391091833OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 00:47:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1323",
+    "name": "Mexico, PEMEX-HUMAPA-HALLIBURTON, Humapa, 2013",
+    "category": "rc",
+    "country": "MX",
+    "ocid": "ocds-591adf-MX1398274763RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-14 19:54:53",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1320",
+    "name": "Mexico, Pemex Oleorey Monclova Alfasid, 2012",
+    "category": "rc",
+    "country": "MX",
+    "ocid": "ocds-591adf-MX0722909171RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 03:59:05",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1868",
+    "name": "C\u00f4te d'Ivoire, S.O.G.B. - Bail Emphyth\u00e9otique, 1995",
+    "category": "olc",
+    "country": "CI",
+    "ocid": "ocds-591adf-CI3864984260OL",
+    "is_published": "draft",
+    "last_updated_date": "2016-06-25 19:24:14",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1112",
+    "name": "Mt. Sinai Exploration Mining and Development Corporation - Annex of MPSA No. 351-2011-VIII, 2011",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH7022829305RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:24",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1645",
+    "name": "Peru, Marcobre - Exploration Investment Contract, 2007",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE7135977843RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 20:15:15",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1866",
+    "name": "Zambia, Daled Mining Limited, Environmental Impact Statement, 2014",
+    "category": "rc",
+    "country": "ZM",
+    "ocid": "ocds-591adf-ZM9371360047RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-17 13:03:40",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "811",
+    "name": "Myanmar Oil, Total Myanmar - Myanmar, 1992",
+    "category": "rc",
+    "country": "MM",
+    "ocid": "ocds-591adf-MM2774096611RC",
+    "is_published": "published",
+    "last_updated_date": "2016-04-12 00:23:48",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "193",
+    "name": "Nigeria Allied Energy CAMAC International Nigerian AGIP CAMAC Petroleum Oyo Field Novation PSC Agreement",
+    "category": "rc",
+    "country": "NG",
+    "ocid": "ocds-591adf-NG2298096766RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:24",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1678",
+    "name": "Paraguay, Crescent Global Paraguay SA, Block Pirity- Exploration Exploitation Contract- 2007",
+    "category": "rc",
+    "country": "PY",
+    "ocid": "ocds-591adf-PY7062001164RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:24",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "876",
+    "name": "Kabata - Guin\u00e9e, 2005",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN8473804342RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-03 00:34:18",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "838",
+    "name": "Shenzou Mining Group Corporation - MPSA No. 103-98-XIII (Surigao Mineral Reservation), 1998",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH0910910867RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-14 05:06:13",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1701",
+    "name": "Peru, Apurimac Ferrum - Exploration Investment Contract, 2011",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE6284745070RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-10 16:00:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1706",
+    "name": "Peru, Azulcochamining - Exploration Investment Contract, 2010",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE0080644282RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:43",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1734",
+    "name": "Peru, Berenguela - Exploration Investment Contract, 2010",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE4881807017RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:43",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1261",
+    "name": "Bolivia - Petrolera Andina and YPFB - Amboro Espejos - Operation Contract, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO9274695274RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-10 23:23:57",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1700",
+    "name": "Peru, EREP - Exploration Investment Contract, 2011",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE5919488816RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 16:29:15",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1739",
+    "name": "Peru, Kuri Kullu - Exploration Investment Contract, 2010",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE6921590983RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1528",
+    "name": "Peru, Latin Resources - Second Amendment Exploration Investment Contract, 2015",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE3256312397RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-18 13:23:28",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1534",
+    "name": "Peru, Ferrobamba - Exploration Investment Contract, 2012",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE0888635882RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1653",
+    "name": "Peru, Minera Antares - Exploration Investment Contract, 2008",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE3960492566RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 20:21:29",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1660",
+    "name": "Peru, Minera Strait - Exploration Investment Contract, 2008",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE8252815808RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 20:20:17",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1605",
+    "name": "Peru, Minera Pacacorral - Exploration Investment Contract, 2012",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE8116913102RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1592",
+    "name": "Peru, Perupetro, Advantage, KPDC, Hanwha, Hyundai, Barrett - Block 67 - Exploration Exploitation License Amend, 1998",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE5211346239RC-1592",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "48",
+    "name": "Republica de Bolivia Contrato de Operacion Entre Yacimientos Petroliferos Fiscales Bolivianos, Total E&P Bolivie (Sucursal Bolivia), Y BG Bolivia Corporation (Sucursal Bolivia) (Block XX, Tarija, Oeste)",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO2596075149RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-10 23:25:04",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1492",
+    "name": "Peru, Perupetro, BPZ - Block Z-1 - Exploration Exploitation License Amend, 2006",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE1996365345RC-1492",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1278",
+    "name": "Indonesia, Kerr-McGee, Quintana, Samedan & Wainoco - Bawean Block - PSC, 1981",
+    "category": "rc",
+    "country": "ID",
+    "ocid": "ocds-591adf-ID5828810445RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 04:18:14",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1669",
+    "name": "Peru, Panoro Apurimac - Exploration Investment Contract, 2008",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE7780111783RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 20:14:23",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1595",
+    "name": "Peru, Perupetro, Barrett - Block 67 - Exploration Exploitation License Amend, 2003",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE5211346239RC-1595",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1597",
+    "name": "Peru, Perupetro, Barrett - Block 67 - Exploration Exploitation License Amend, 2007",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE5211346239RC-1597",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1244",
+    "name": "Mali, CMC (WA) - S\u00e9gala - Concession, 1995",
+    "category": "rc",
+    "country": "ML",
+    "ocid": "ocds-591adf-ML7378426157RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-10 23:28:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "705",
+    "name": "Camec - Gecamines - DRC, 2009",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD3880399904RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-19 00:01:53",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1493",
+    "name": "Peru, Perupetro, BPZ - Block Z-1 - Exploration Exploitation License Amend, 2008",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE1996365345RC-1493",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1589",
+    "name": "Peru, Perupetro, GMP - Block I - Service Contract Amend, 2002",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE4882987532RC-1589",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1502",
+    "name": "Peru, Perupetro, Faulkner - Block XXVII - Exploration Exploitation License, 2009",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE7206382181RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-03 01:36:29",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1526",
+    "name": "Peru, Perupetro, Gold - Block XXI - Exploration Exploitation License, 2006",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE2908056326RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1545",
+    "name": "Peru, Perupetro, Petromont - Block XV - Exploitation License Amend, 2000",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE1550725657RC-1545",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1578",
+    "name": "Peru, Perupetro, Maple - Blocks 31-B & 31-D - Exploitation License Amend, 2014",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE8300055736RC-1578",
+    "is_published": "published",
+    "last_updated_date": "2016-05-03 01:28:23",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "978",
+    "name": "ELF AGIP, Madingo Maritime, Procedure Comptable - Congo-Brazzaville. 1995",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG0520728247RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-10 23:30:27",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1546",
+    "name": "Peru, Perupetro, Petromont - Block XV - Exploitation License Amend, 2013",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE2982376415RC-1546",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1547",
+    "name": "Peru, Perupetro, Petromont - Block XV - Exploitation License Amend, 2015",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE1550725657RC-1547",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1532",
+    "name": "Peru, Perupetro, Petromont - Block XX (NW) - Exploitation License, 2006",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE3080428846RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1504",
+    "name": "Peru, Perupetro, Petro-Tech Peruana - Block XXVI - Exploration Exploitation License, 2007",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE3126283838RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1841",
+    "name": "DRC, SIFORCO, Contrat de concession foresti\u00e8re N\u00b0026\/11 et Avenant N\u00b001, secteur Bongandanga, 24 octobre 2011",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD9327574944OL",
+    "is_published": "published",
+    "last_updated_date": "2016-05-06 20:58:29",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1570",
+    "name": "Liberia, AMLIB - Concession, 2002",
+    "category": "rc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR6907290033RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-19 04:33:11",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1450",
+    "name": "Peru, Perupetro, Vamex - Block Z-38 - Exploration Exploitation License, 2007",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE3555441513RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1514",
+    "name": "Peru, Perupetro, Vetra - Block XXV - Exploration Exploitation License, 2007",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE9067094891RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1516",
+    "name": "Peru, Perupetro, Vetra - Block XXV - Exploration Exploitation License Amend, 2012",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE9067094891RC-1516",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1719",
+    "name": "Peru, Compa\u00f1ia Minera Sipan - Investment Promotion Agreement, 1996",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE9747956328RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-06 17:19:55",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "136",
+    "name": "Petroleum Agreement Among the Government of the Republic of Ghana, Ghana National Petroleum Corporation, and Vitol Upstream Ghana Limited (Cape Three Points South)",
+    "category": "rc",
+    "country": "GH",
+    "ocid": "ocds-591adf-GH3748598731RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1735",
+    "name": "Peru, Sienna Minerals - Exploration Investment Contract, 2010",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE5414917365RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-10 18:27:43",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1541",
+    "name": "Peru, Verde Resources - Exploration Investment Contract, 2012",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE6945997524RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-01 04:53:45",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1088",
+    "name": "Philex Mining Corporation - Annex of MPSA No. 276-2009-CAR, 2009",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH5981879984RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "78",
+    "name": "Philex Mining Corporation - MPSA No. 276-2009-CAR, 2009",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH5979139419RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-15 09:20:06",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "128",
+    "name": "Profit Sharing Contract Ain Sifni Block Kurdistan",
+    "category": "rc",
+    "country": "IQ",
+    "ocid": "ocds-591adf-IQ8148958355RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "88",
+    "name": "Rapu-Rapu Minerals, Incorporated - MPSA No. 163-2000-V, 2000",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH4061232253RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "42",
+    "name": "Republica de Bolivia Contrato de Operacion Entre Yacimientos Petroliferos Fiscales Bolivianos, Total E&P Bolivie (Sucursal Bolivia), Y Tecpetrol de Bolivia S.A. (Aquio)",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO4669906762RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "65",
+    "name": "Republica de Bolivia Contrato de Operacion Entre Yacimientos Petroliferos Fiscales Bolivianos, Y Empresa Petrolera Andina S.A. (Boqueron)",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO0523195987RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1102",
+    "name": "Rio Tuba Nickel Mining Corporation - Annex of MPSA No. 114-98-IV, 1998",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH6440950726RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "743",
+    "name": "BCH - Belize, 2009",
+    "category": "rc",
+    "country": "BZ",
+    "ocid": "ocds-591adf-BZ6665365580RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:09:14",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1867",
+    "name": "Tunisia, ETPA, OMV, Convention, 2003",
+    "category": "rc",
+    "country": "TN",
+    "ocid": "ocds-591adf-TN3265676379RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-27 14:51:22",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1523",
+    "name": "Peru, Perupetro, BPZ - Block XXII - Exploration Exploitation License Amend, 2011",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE0583046461RC-1523",
+    "is_published": "published",
+    "last_updated_date": "2016-06-07 03:32:07",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "196",
+    "name": "Senegal Petro-Tim Limited Societe des Petroles Du Senegal Cayar-Offshore-Profond PSC",
+    "category": "rc",
+    "country": "SN",
+    "ocid": "ocds-591adf-SN8936115227RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:26",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "170",
+    "name": "Somalia Canmex Holdings Dharoor-Valley PSA Second Amend",
+    "category": "rc",
+    "country": "SO",
+    "ocid": "ocds-591adf-SO7169719422RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 03:44:22",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "172",
+    "name": "Somalia Canmex Holdings Nugaal Valley PSA Amend",
+    "category": "rc",
+    "country": "SO",
+    "ocid": "ocds-591adf-SO6773663944RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:27",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1090",
+    "name": "SR Metals, Incorporated - Annex of MPSA No. 261-2008-XIII, 2008",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH8664068761RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:27",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1844",
+    "name": "Kosmos Energy - Suriname, Block 42, 2011",
+    "category": "rc",
+    "country": "SR",
+    "ocid": "ocds-591adf-SR6402462464RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-19 04:50:53",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1107",
+    "name": "Taganito Mining Corporation - Annex of MPSA No. 266-2008-XIII (Surigao Mineral Reservation), 2008",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH0237903485RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:27",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "700",
+    "name": "Tullow, Sabre, Kosmos, Ghana, 2006",
+    "category": "rc",
+    "country": "GH",
+    "ocid": "ocds-591adf-GH1577304824RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-23 01:08:38",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "823",
+    "name": "Tunisia, ETAP, APEX, EUROGAS, Sfax,  PSC, 2005",
+    "category": "rc",
+    "country": "TN",
+    "ocid": "ocds-591adf-TN0944275107RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:27",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1683",
+    "name": "Zambia, Mopani Copper Mines Plc - Development Agreement, 2000",
+    "category": "rc",
+    "country": "ZM",
+    "ocid": "ocds-591adf-ZM7619866017RC",
+    "is_published": "published",
+    "last_updated_date": "2016-02-29 11:01:27",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1085",
+    "name": "Zambales Diversified Metals Corporation - Annex of MPSA No. 191-2004-III, 2004",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH7163942494RC",
+    "is_published": "published",
+    "last_updated_date": "2016-03-17 16:19:59",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1162",
+    "name": "Liberia, Alpha Logging & Processing Incorporated, Forest Management Contract, 6 October 2014",
+    "category": "olc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR8570774189OL",
+    "is_published": "published",
+    "last_updated_date": "2016-06-16 12:49:13",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1098",
+    "name": "Eramen Minerals, Incorporated - Annex of MPSA No. 209-2005-III, 2005",
+    "category": "rc",
+    "country": "PH",
+    "ocid": "ocds-591adf-PH2291505019RC-1098",
+    "is_published": "published",
+    "last_updated_date": "2016-06-07 02:52:50",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "863",
+    "name": "CBG GAC, Operations Contract - Guin\u00e9e, 2010",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN8332662940RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-17 05:56:01",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1426",
+    "name": "Peru, Perupetro, Petro-Tech Peruana - Block Z-45 - Exploration Exploitation License, 2007",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE0556850633RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-10 23:47:43",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1522",
+    "name": "Peru, Perupetro, BPZ - Block XXII - Exploration Exploitation License, 2007",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE0583046461RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 02:16:05",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "799",
+    "name": "PERTAMINA, SABA JATILUHUR - Indonesia, 1997",
+    "category": "rc",
+    "country": "ID",
+    "ocid": "ocds-591adf-ID9082463072RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-07 16:38:09",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "760",
+    "name": "Geopark, Pluspetrol, IPR, Manas, Wintershall, Methanex - Chile, 2010",
+    "category": "rc",
+    "country": "CL",
+    "ocid": "ocds-591adf-CL5631800712RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-22 13:24:16",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "990",
+    "name": "YPFB Petrobras 32 - Bolivia, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO2461321376RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:21:17",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "828",
+    "name": "ECOPETROL, Seven Seas (Roseblanca) - Colombia, 1998",
+    "category": "rc",
+    "country": "CO",
+    "ocid": "ocds-591adf-CO4171522170RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:38:36",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "801",
+    "name": "ONGC, ACL, CENTURION, CANARO - India, 1999",
+    "category": "rc",
+    "country": "IN",
+    "ocid": "ocds-591adf-IN1371071935RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 19:19:29",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1419",
+    "name": "Peru, Perupetro, Savia - Block Z-52 - Exploration Exploitation License, 2010",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE3563904740RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-06 01:11:12",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1693",
+    "name": "Peru, Minera Barrick Misquichilca - Investment Promotion Agreement, 1998",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE0747566540RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-10 00:50:23",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "858",
+    "name": "SAG, Amendment 1 - Guin\u00e9e, 2005",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN8892901537RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-16 20:11:05",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1521",
+    "name": "Peru, Perupetro, BPZ - Block XXIII - Exploration Exploitation License Amend, 2011",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE2582432029RC-1521",
+    "is_published": "published",
+    "last_updated_date": "2016-06-27 14:29:38",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "948",
+    "name": "Societe Essakane - Burkina Faso, 2008",
+    "category": "rc",
+    "country": "BF",
+    "ocid": "ocds-591adf-BF8664110564RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-05 19:11:20",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "742",
+    "name": "Northern Spirit, Block 138, 139, 157 - Belize, 2010",
+    "category": "rc",
+    "country": "BZ",
+    "ocid": "ocds-591adf-BZ3447900872RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:09:58",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "740",
+    "name": "Parenco, Block 11, 12, 18 - Belize, 2008",
+    "category": "rc",
+    "country": "BZ",
+    "ocid": "ocds-591adf-BZ7803316458RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:11:33",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1869",
+    "name": "Timor Leste, GTLESTE BIOTECH - Memorandum of Understanding, 2008",
+    "category": "olc",
+    "country": "TL",
+    "ocid": "ocds-591adf-TL2218586152OL",
+    "is_published": "draft",
+    "last_updated_date": "2016-07-01 00:50:11",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "772",
+    "name": "ECOPETROL, Harken - Colombia, 2001",
+    "category": "rc",
+    "country": "CO",
+    "ocid": "ocds-591adf-CO9700202856RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:44:02",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1520",
+    "name": "Peru, Perupetro, BPZ - Block XXIII - Exploration Exploitation License, 2007",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE2582432029RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-29 22:31:14",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1884",
+    "name": "Sonde Resources, Joint Oil Block, PSC Amendment - Libya, Tunisia, 2012",
+    "category": "rc",
+    "country": "LY",
+    "ocid": "ocds-591adf-LY9630705565RC",
+    "is_published": "draft",
+    "last_updated_date": "2016-06-30 09:47:36",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1421",
+    "name": "Peru, Perupetro, Savia - Block Z-51 - Exploration Exploitation License, 2010",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE2085186343RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-11 00:00:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "853",
+    "name": "IMD - Guin\u00e9e, 2010",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN6779439456RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-03 00:43:41",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "765",
+    "name": "China, Far East Energy - Enhong and Laochang Area - CBM PSC Amendment #3, 2011",
+    "category": "rc",
+    "country": "CN",
+    "ocid": "ocds-591adf-CN2401465011RC-1339-1338-765",
+    "is_published": "published",
+    "last_updated_date": "2016-05-19 10:30:07",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1501",
+    "name": "Peru, Perupetro, Pitkin - Block XXVIII - Exploration Exploitation License Amend, 2013",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE9497982032RC-1501",
+    "is_published": "published",
+    "last_updated_date": "2016-05-11 02:19:13",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1422",
+    "name": "Peru, Perupetro, Petro-Tech Peruana - Block Z-49 - Exploration Exploitation License, 2007",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE6245626720RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-29 23:12:56",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "852",
+    "name": "CDM-Chine - Guin\u00e9e",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN2404888268RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-17 05:49:18",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "739",
+    "name": "Spartan - Belize, 2006",
+    "category": "rc",
+    "country": "BZ",
+    "ocid": "ocds-591adf-BZ4223854545RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:12:45",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "965",
+    "name": "CNPC, BlocTa13 - Mauritania, 2004",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR2290938125RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:17:42",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1470",
+    "name": "Peru, Petroperu, Petro-Tech Peruana - Block Z-2B - Service Contract, 1993",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE8780880936RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 02:20:12",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1837",
+    "name": "DRC, TRANS-M, Contrat de concession foresti\u00e8re N\u00b0009\/11, secteur Lomako, 4 ao\u00fbt 2011",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD8532419488OL",
+    "is_published": "published",
+    "last_updated_date": "2016-06-01 14:50:21",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1831",
+    "name": "Sao Tome, ExxonMobil STP - Settlement Agreement, 2003",
+    "category": "rc",
+    "country": "ST",
+    "ocid": "ocds-591adf-ST4125445995RC-1831",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 03:18:03",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1839",
+    "name": "DRC, ETS MOTEMA, Contrat de concession foresti\u00e8re N\u00b0025\/11, secteur Eungu, 24 octobre 2011",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD1004150781OL",
+    "is_published": "published",
+    "last_updated_date": "2016-05-19 00:39:31",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1179",
+    "name": "Sierra Leone, Addax Bioenergy Sierra Leone Ltd, Memorandum of Understanding and Agreement, 9 February 2010",
+    "category": "olc",
+    "country": "SL",
+    "ocid": "ocds-591adf-SL8254868117OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 00:54:21",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1372",
+    "name": "DRC, G\u00e9camines, Simco, CRG, CRRD, SC, SH, CMG, Huayou, [Sicomines] - JVA Amend 2, 2008",
+    "category": "rc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD5446787656RC-1372-1377-1372-1377-1372",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 03:22:23",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "747",
+    "name": "Centam - Belize, 2008",
+    "category": "rc",
+    "country": "BZ",
+    "ocid": "ocds-591adf-BZ6600665750RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:06:31",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "746",
+    "name": "West Bay - Belize, 2003",
+    "category": "rc",
+    "country": "BZ",
+    "ocid": "ocds-591adf-BZ1368338190RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:06:53",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "745",
+    "name": "RSM, Block 1-3 - Belize, 2000",
+    "category": "rc",
+    "country": "BZ",
+    "ocid": "ocds-591adf-BZ4707732359RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:08:04",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "744",
+    "name": "USCapital - Belize, 2001",
+    "category": "rc",
+    "country": "BZ",
+    "ocid": "ocds-591adf-BZ4048254483RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:08:46",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1423",
+    "name": "Peru, Perupetro, Petro-Tech Peruana - Block Z-48 - Exploration Exploitation License, 2007",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE3627547905RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 02:20:40",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "832",
+    "name": "Liberty, Yinka - Benin, 1999",
+    "category": "rc",
+    "country": "BJ",
+    "ocid": "ocds-591adf-BJ8502050235RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:14:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "831",
+    "name": "ADDAX, ABACAN, Deep Offshore Block 4 - Benin, 1997",
+    "category": "rc",
+    "country": "BJ",
+    "ocid": "ocds-591adf-BJ0566897080RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:15:06",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "992",
+    "name": "YPFB Vintage Chaco - Bolivia, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO7202848829RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:19:42",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "991",
+    "name": "YPFB Petrobras 34 - Bolivia, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO2575780280RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:20:16",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "989",
+    "name": "YPFB Canadian Monelco - Bolivia, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO5403171133RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:21:43",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "987",
+    "name": "YPFB Pluspetrol - Bolivia, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO0262708026RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:22:04",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "986",
+    "name": "YPFB Total Tecpetrol - Bolivia",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO0393641706RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:22:50",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "985",
+    "name": "YPFB Repsol - Bolivia, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO4401744607RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:23:08",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "983",
+    "name": "YPFB Chaco Petrolex - Bolivia, 2006",
+    "category": "rc",
+    "country": "BO",
+    "ocid": "ocds-591adf-BO3856205789RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:24:19",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1160",
+    "name": "DRC, Maison NBK Service, Contrat de concession foresti\u00e8re N. 049, 25 avril 2011",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD8238885129OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 00:58:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1871",
+    "name": "Cambodia, Growest Building Trading - Agreement on the investment of plantation for rubber, teak tree and acacia, 2008",
+    "category": "olc",
+    "country": "KH",
+    "ocid": "ocds-591adf-KH1038791322OL",
+    "is_published": "draft",
+    "last_updated_date": "2016-06-29 04:26:33",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "738",
+    "name": "PetroleumBRUNEI, Loon, QAF - Brunei, 2006",
+    "category": "rc",
+    "country": "BN",
+    "ocid": "ocds-591adf-BN3323718329RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:26:27",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "851",
+    "name": "SMD - Guin\u00e9e, 1990",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN3459682908RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-03 00:44:45",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "940",
+    "name": "IMAR-B - Burkina Faso, 1999",
+    "category": "rc",
+    "country": "BF",
+    "ocid": "ocds-591adf-BF2885252330RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:30:29",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "837",
+    "name": "BMM International, Musongati - Burundi (Eng. version), 2014",
+    "category": "rc",
+    "country": "BI",
+    "ocid": "ocds-591adf-BI9549332485RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:31:03",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "829",
+    "name": "ECOPETROL, Seven Seas (Montecristo) - Colombia, 1998",
+    "category": "rc",
+    "country": "CO",
+    "ocid": "ocds-591adf-CO3408384231RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:37:41",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1513",
+    "name": "Sierra Leone, Sierra Minerals Holdings - 28N Gria Zone - Concession, 2012",
+    "category": "rc",
+    "country": "SL",
+    "ocid": "ocds-591adf-SL6383068961RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-23 13:17:32",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1028",
+    "name": "Cambodia, Heng Yue, Contract, 11 August 2011",
+    "category": "olc",
+    "country": "KH",
+    "ocid": "ocds-591adf-KH6984551355OL",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:33:10",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1034",
+    "name": "Cambodia, Koh Kong Sugar Industry Company Limited, Concession Agreement, 2 August 2006",
+    "category": "olc",
+    "country": "KH",
+    "ocid": "ocds-591adf-KH2944292059OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:13:37",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "721",
+    "name": "Petrochad (Mangara) Limited - Chad, 2011",
+    "category": "rc",
+    "country": "TD",
+    "ocid": "ocds-591adf-TD1819362995RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 06:36:29",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1025",
+    "name": "Cambodia, Global Agricultural Development (Cambodia) Co Ltd, Concession Agreement, 15 March 2006",
+    "category": "olc",
+    "country": "KH",
+    "ocid": "ocds-591adf-KH7284507762OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:16:26",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1339",
+    "name": "China, Far East Energy - Enhong and Laochang Area - CBM PSC Amendment #2, 2009",
+    "category": "rc",
+    "country": "CN",
+    "ocid": "ocds-591adf-CN8585698303RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-19 11:09:51",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "758",
+    "name": "SNH, Parenco, Kosmos - Cameroon, 2008",
+    "category": "rc",
+    "country": "CM",
+    "ocid": "ocds-591adf-CM7952518572RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:30:14",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "691",
+    "name": "Cam Iron SA, Cameroon, 2012",
+    "category": "rc",
+    "country": "CM",
+    "ocid": "ocds-591adf-CM2615215580RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:31:40",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "690",
+    "name": "Cam Iron SA, Cameroon, 2012, Annexes",
+    "category": "rc",
+    "country": "CM",
+    "ocid": "ocds-591adf-CM5948439962RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:32:16",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "761",
+    "name": "Geopark - Chile, 2005",
+    "category": "rc",
+    "country": "CL",
+    "ocid": "ocds-591adf-CL3166128782RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:33:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "778",
+    "name": "ECOPETROL, ARGOSY, Rio Magdalena Sector - Colombia, 2001",
+    "category": "rc",
+    "country": "CO",
+    "ocid": "ocds-591adf-CO7601878638RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:39:01",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "777",
+    "name": "ECOPETROL, Harken - Colombia, 1997",
+    "category": "rc",
+    "country": "CO",
+    "ocid": "ocds-591adf-CO3227479121RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:40:12",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "776",
+    "name": "ANH, Harken - Colombia (2), 2005",
+    "category": "rc",
+    "country": "CO",
+    "ocid": "ocds-591adf-CO4334181025RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:40:33",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "775",
+    "name": "HUPECOL, ANH - Colombia, 2008",
+    "category": "rc",
+    "country": "CO",
+    "ocid": "ocds-591adf-CO2124600105RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:40:50",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "774",
+    "name": "ECOPETROL, ARGOSY, Guayuyaco Sector - Colombia, 2002",
+    "category": "rc",
+    "country": "CO",
+    "ocid": "ocds-591adf-CO0132413050RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:43:06",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "773",
+    "name": "ANH, Harken - Colombia, 2005",
+    "category": "rc",
+    "country": "CO",
+    "ocid": "ocds-591adf-CO5202017737RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:43:41",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "771",
+    "name": "ANH, Union Temporal - Colombia, 2009",
+    "category": "rc",
+    "country": "CO",
+    "ocid": "ocds-591adf-CO5208363902RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:44:19",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1159",
+    "name": "DRC, Maison NBK Service, Contrat de concession foresti\u00e8re N. 011, 4 ao\u00fbt 2011",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD2863456436OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 00:59:44",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "980",
+    "name": "AGIP, Procedure Comptable - Congo-Brazzaville, 1997",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG5877656005RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:55:09",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "981",
+    "name": "ELF AGIP, Pointe Noire Grand Fonde, Procedure Comptable - Congo-Brazzaville, 1995",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG9307330359RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-22 13:21:09",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1338",
+    "name": "China, Far East Energy - Enhong and Laochang Area - CBM PSC Amendment #1, 2007",
+    "category": "rc",
+    "country": "CN",
+    "ocid": "ocds-591adf-CN8585698303RC-1338",
+    "is_published": "published",
+    "last_updated_date": "2016-05-19 11:10:00",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "974",
+    "name": "ELF - Congo-Brazzaville, 1997",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG5247171674RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-16 18:35:43",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "975",
+    "name": "ELF AGIP, Pointe Noire Grand Fonde - Congo-Brazzaville, 1995",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG7401127633RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 17:59:56",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "976",
+    "name": "ZETAH Heritage, Kouakouala, Procedure Comptable - Congo-Brazzaville, 1996",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG9918805195RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-22 13:25:12",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "973",
+    "name": "AGIP - Congo-Brazzaville, 1997",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG2910496046RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 18:01:34",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1033",
+    "name": "Ethiopia, Karuturi Agro Products PLC, Land Lease Agreement, 5 November 2010",
+    "category": "olc",
+    "country": "ET",
+    "ocid": "ocds-591adf-ET1692361262OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:13:40",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "971",
+    "name": "ELF AGIP, Madingo Maritime - Congo-Brazzaville, 1995",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG1901003771RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 18:02:25",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1048",
+    "name": "Ethiopia, Verdanta Harvests PLC, Land Lease Agreement, 21 April 2010",
+    "category": "olc",
+    "country": "ET",
+    "ocid": "ocds-591adf-ET4752538422OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:08:10",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1047",
+    "name": "Ethiopia, Toren Agro Industries, Land Lease Agreement, 3 October 2011",
+    "category": "olc",
+    "country": "ET",
+    "ocid": "ocds-591adf-ET4287996857OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:08:23",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "110",
+    "name": "Contrat de Partage de Production (Kombi Likalala Libondo; Tchib\u00e9li Litanzi Loussima)",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG1221029401RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-26 20:58:51",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "113",
+    "name": "Contrat de Partage de Production (Marine VI, Marine VII, Kitina)",
+    "category": "rc",
+    "country": "CG",
+    "ocid": "ocds-591adf-CG3222830701RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-17 05:48:48",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "779",
+    "name": "Empresa, PETROECUADOR - Ecuador, 2008",
+    "category": "rc",
+    "country": "EC",
+    "ocid": "ocds-591adf-EC7426821732RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 18:06:56",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1158",
+    "name": "DRC, La Foresti\u00e8re du Lac, Contrat de concession foresti\u00e8re, 27 avril 2012",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD7949180813OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:00:19",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "795",
+    "name": "Triton, Energy Africa, Block G (1st Amendment to) - Equatorial Guinea, 2000",
+    "category": "rc",
+    "country": "GQ",
+    "ocid": "ocds-591adf-GQ0583099568RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 18:08:21",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "794",
+    "name": "Triton, Energy Africa, Block G - Equatorial Guinea, 2000",
+    "category": "rc",
+    "country": "GQ",
+    "ocid": "ocds-591adf-GQ6043586295RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 18:08:50",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "792",
+    "name": "Triton, Energy Africa, Block F - Equatorial Guinea, 2000",
+    "category": "rc",
+    "country": "GQ",
+    "ocid": "ocds-591adf-GQ9566870079RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 18:09:24",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "793",
+    "name": "Triton, Energy Africa, Block F (1st Amendment to) - Equatorial Guinea, 2000",
+    "category": "rc",
+    "country": "GQ",
+    "ocid": "ocds-591adf-GQ7925269750RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 18:09:43",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1037",
+    "name": "Ethiopia, Omo Valley Farm Cooperation, Land Lease Agreement, 25 June 2012",
+    "category": "olc",
+    "country": "ET",
+    "ocid": "ocds-591adf-ET4517737462OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:12:43",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1042",
+    "name": "Ethiopia, Saudi Star Agricultural Development Plc, Land Lease Agreement, 11 January 2010",
+    "category": "olc",
+    "country": "ET",
+    "ocid": "ocds-591adf-ET9619107988OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:10:20",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1040",
+    "name": "Ethiopia, Saber Farms, Land Lease Agreement, 10 May 2011",
+    "category": "olc",
+    "country": "ET",
+    "ocid": "ocds-591adf-ET5590305796OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:10:45",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1030",
+    "name": "Ethiopia, Hunan Dafengyuan Agriculture Co, Land Lease Agreement, 12 July 2010",
+    "category": "olc",
+    "country": "ET",
+    "ocid": "ocds-591adf-ET2351912552OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:14:40",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1031",
+    "name": "Ethiopia, JVL OVERSEAS, Land Lease Agreement, 25 June 2012",
+    "category": "olc",
+    "country": "ET",
+    "ocid": "ocds-591adf-ET3081396501OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 01:14:28",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1872",
+    "name": "Sierra Leone, Socfin - Memorandum of Understanding, 2012",
+    "category": "olc",
+    "country": "SL",
+    "ocid": "ocds-591adf-SL4600980438OL",
+    "is_published": "published",
+    "last_updated_date": "2016-07-01 00:48:48",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "788",
+    "name": "Total Gabon - Gabon, 2006",
+    "category": "rc",
+    "country": "GA",
+    "ocid": "ocds-591adf-GA9652911252RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 18:14:30",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "695",
+    "name": "Vaalco Gabon (Etame) Inc PSC, Gabon, 2012, Amendment 4",
+    "category": "rc",
+    "country": "GA",
+    "ocid": "ocds-591adf-GA7765664572RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 18:25:50",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "693",
+    "name": "Vaalco Gabon (Etame) Inc, Gabon, 2006, Amendment 2",
+    "category": "rc",
+    "country": "GA",
+    "ocid": "ocds-591adf-GA8744760574RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 18:26:07",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "692",
+    "name": "Vaalco Gabon (Etame) Inc, Gabon, 2001, Amendment 1",
+    "category": "rc",
+    "country": "GA",
+    "ocid": "ocds-591adf-GA7470193203RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 18:26:22",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "789",
+    "name": "Georgian Oil, CanArgo - Georgia, 2000",
+    "category": "rc",
+    "country": "GE",
+    "ocid": "ocds-591adf-GE1101593327RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 18:28:52",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "803",
+    "name": "GeoGlobal - India, 2005",
+    "category": "rc",
+    "country": "IN",
+    "ocid": "ocds-591adf-IN3975968496RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 19:17:32",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "804",
+    "name": "GSPC, GAIL, JCPL, GGR - India, 2005",
+    "category": "rc",
+    "country": "IN",
+    "ocid": "ocds-591adf-IN6430753763RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 19:17:56",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "802",
+    "name": "ONGC, GSPC, HOEC (Amendment) - India, 2007",
+    "category": "rc",
+    "country": "IN",
+    "ocid": "ocds-591adf-IN9151707567RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 19:19:17",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "810",
+    "name": "CAMAC Energy, Block L1B - Kenya, 2012",
+    "category": "rc",
+    "country": "KE",
+    "ocid": "ocds-591adf-KE8788083262RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 19:36:17",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "809",
+    "name": "CAMAC Energy, Block L28 - Kenya, 2012",
+    "category": "rc",
+    "country": "KE",
+    "ocid": "ocds-591adf-KE6586991673RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 19:36:37",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1885",
+    "name": "Canadian Superior, 7th November Block PSC - Libya, Tunisia, 2008",
+    "category": "rc",
+    "country": "TN",
+    "ocid": "ocds-591adf-TN0917250797RC",
+    "is_published": "draft",
+    "last_updated_date": "2016-06-30 09:52:05",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "850",
+    "name": "SMD, Amendment 2 - Guin\u00e9e, 2006",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN9390660980RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-17 05:49:48",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "152",
+    "name": "Kenya, ERHC Kenya and CEPSA Kenya-Block11A-Farmout Agreement, 2013",
+    "category": "rc",
+    "country": "KE",
+    "ocid": "ocds-591adf-KE3957636749RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-13 16:00:04",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1175",
+    "name": "Liberia, Morris American Rubber Company, Investment Incentive Contract, 10 August 2007",
+    "category": "olc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR6527070028OL",
+    "is_published": "published",
+    "last_updated_date": "2016-06-16 17:17:22",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1231",
+    "name": "Liberia PSC Between NOCOL and Repsol Exploracion Block LB-17 Contract and Addendum",
+    "category": "rc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR4506042890RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 19:40:08",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1382",
+    "name": "Liberia, EJ & J Investment Corporation, Forest Management Contract, 6 October 2008",
+    "category": "olc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR8579251623OL",
+    "is_published": "published",
+    "last_updated_date": "2016-06-16 12:34:05",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1230",
+    "name": "Liberia PSC Between NOCOL and Repsol Exploracion Block LB-16 Contract and Addendum",
+    "category": "rc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR1288985318RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-28 02:37:35",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "157",
+    "name": "Liberia An Act to Ratify the Second Addendum to the PSC between NOCOL and Oranto Petroleum and Chevron (Block LB-14)",
+    "category": "rc",
+    "country": "LR",
+    "ocid": "ocds-591adf-LR6667370582RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 19:48:40",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1840",
+    "name": "DRC, SIFORCO, Contrat de concession foresti\u00e8re N\u00b0027\/11, secteur Bongandanga, 24 octobre 2011",
+    "category": "olc",
+    "country": "CD",
+    "ocid": "ocds-591adf-CD0867015247OL",
+    "is_published": "published",
+    "last_updated_date": "2016-05-19 23:27:31",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "186",
+    "name": "Mauritania, Repsol - Taoudeni (Block Ta-9) - PSC, 2005",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR3472797695RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:12:47",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "686",
+    "name": "QIT-Madagascar Minerals SA, Madagascar, 1998, Part 2",
+    "category": "rc",
+    "country": "MG",
+    "ocid": "ocds-591adf-MG6733844630RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-17 05:50:23",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "183",
+    "name": "Mauritania, Wintershall - Taoudeni (Block Ta-6) - PSC, 2005",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR7798553287RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-22 21:36:42",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "181",
+    "name": "Mauritania, Sonatrach, SMH - Taoudeni (Blocks Ta-1-30-31-35) - PSC, 2007",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR7667177672RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:14:16",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "966",
+    "name": "Groupe Ahmed Blocs14,36,37 - Mauritania, 2006",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR1275430048RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:31:02",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "846",
+    "name": "AMC, Convention 2010 Annexes - Guin\u00e9e",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN6900516789RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-03 00:47:23",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "179",
+    "name": "Mauritania, Repsol - Taoudeni (Block Ta-10) - PSC, 2005",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR8397565081RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:14:58",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "178",
+    "name": "Mauritania, Dana, Hardman, Elixir - C\u00f4tier (Block 7) - PSC, 1999",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR2072953180RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:15:13",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "177",
+    "name": "Mauritania, Woodside, Petronas, Hardman, ROC, Planet Oil - C\u00f4tier (Block 6) - PSC, 2006",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR6763295981RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:15:49",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "967",
+    "name": "Groupe Ahmed, Blocs26,61,62,63 - Mauritania, 2006",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR3188748065RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:16:59",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "961",
+    "name": "Baraka, BlocTa11 - Mauritania, 2004",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR0770794972RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:31:54",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "962",
+    "name": "Baraka, BlocTa12 - Mauritania, 2004",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR6050327248RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:32:11",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "728",
+    "name": "AMC, Convention - Guin\u00e9e",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN3499478750RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-03 00:48:12",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "689",
+    "name": "4M Energy S.A., Mauritania, 2006",
+    "category": "rc",
+    "country": "MR",
+    "ocid": "ocds-591adf-MR4486416591RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:32:39",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "995",
+    "name": "Pemex Oleorey Monclova Alfasid - Mexico, 2012",
+    "category": "rc",
+    "country": "MX",
+    "ocid": "ocds-591adf-MX0662122083RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:34:55",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1509",
+    "name": "Mozambique, ENH, Sasol - Onshore Area A - PSC, 2010",
+    "category": "rc",
+    "country": "MZ",
+    "ocid": "ocds-591adf-MZ0676666751RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-27 14:24:03",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "842",
+    "name": "Kosmos, Canamens - Morocco, 2013 (Essaouira)",
+    "category": "rc",
+    "country": "MA",
+    "ocid": "ocds-591adf-MA4132690304RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:37:32",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "841",
+    "name": "Kosmos, PHVL - Morocco, 2011 (Foum Assaka)",
+    "category": "rc",
+    "country": "MA",
+    "ocid": "ocds-591adf-MA4899997941RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:39:11",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1499",
+    "name": "Mozambique, RDMZ - Moatize No 867C - Concession, 2007",
+    "category": "rc",
+    "country": "MZ",
+    "ocid": "ocds-591adf-MZ7879502869RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-26 18:37:38",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "727",
+    "name": "AMC, Convention Annexes a l'Avenant 2010 - Guin\u00e9e",
+    "category": "rc",
+    "country": "GN",
+    "ocid": "ocds-591adf-GN6158772852RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-07 16:36:25",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "720",
+    "name": "President Energy, Pirity - Paraguay, 2012",
+    "category": "rc",
+    "country": "PY",
+    "ocid": "ocds-591adf-PY3648285958RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:45:29",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1506",
+    "name": "Mozambique, ENH, Sasol - Pande, Temane - PSC, 2000",
+    "category": "rc",
+    "country": "MZ",
+    "ocid": "ocds-591adf-MZ4529203778RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-27 14:25:48",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "818",
+    "name": "Mohave Oil, S. Pedro De Muel 2 Area - Portugal, 2007",
+    "category": "rc",
+    "country": "PT",
+    "ocid": "ocds-591adf-PT9737369541RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:46:45",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "815",
+    "name": "Mohave Oil, Cabo Mondego Area - Portugal, 2007",
+    "category": "rc",
+    "country": "PT",
+    "ocid": "ocds-591adf-PT9119436909RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:47:05",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "814",
+    "name": "Mohave Oil, Aljubarrota 3 Area - Portugal, 2007",
+    "category": "rc",
+    "country": "PT",
+    "ocid": "ocds-591adf-PT9978877540RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:47:19",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1052",
+    "name": "Russian Federation PGO Lenaneftegasgeologija OEMV Verchenmurbaisk Area Otradninsk Area JV",
+    "category": "rc",
+    "country": "RU",
+    "ocid": "ocds-591adf-RU8014456756RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-02 20:48:12",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1826",
+    "name": "Sao Tome, PGS Exploration - Seismic Services Agreement, 2001",
+    "category": "rc",
+    "country": "ST",
+    "ocid": "ocds-591adf-ST2117586253RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-29 02:53:22",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1681",
+    "name": "Peru, Minera Yanacocha - Investment Promotion Agreement, 1998",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE4648688667RC",
+    "is_published": "published",
+    "last_updated_date": "2016-06-20 01:30:52",
+    "is_associated_doc": "0"
+  },
+  {
+    "id": "1827",
+    "name": "Sao Tome, ERHC, Procura - Memorandum of Agreement, 1997",
+    "category": "rc",
+    "country": "ST",
+    "ocid": "ocds-591adf-ST2537375937RC-1827",
+    "is_published": "published",
+    "last_updated_date": "2016-05-05 03:58:11",
+    "is_associated_doc": "1"
+  },
+  {
+    "id": "1424",
+    "name": "Peru, Perupetro, SK Energy - Block Z-46 - Exploration Exploitation License, 2007",
+    "category": "rc",
+    "country": "PE",
+    "ocid": "ocds-591adf-PE9421076212RC",
+    "is_published": "published",
+    "last_updated_date": "2016-05-11 00:05:00",
+    "is_associated_doc": "0"
+  }
+]
