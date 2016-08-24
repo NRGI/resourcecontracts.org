@@ -137,14 +137,13 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
            href="{{route('contract.comment.list',$contract->id)}}">@lang('contract.view_all')</a>
 
         <ul class="contract-info">
+            <div class="user-wrapper">
             <li><strong>@lang('contract.contracting_id'):</strong>
                 {{$contract->metadata->open_contracting_id or ''}}
             </li>
-
-
             <li><strong>@lang('contract.created_by'):</strong>
                 @if(isset($contract->created_user->name))
-                {{$contract->created_user->name}}  @lang('global.on') {{$contract->created_datetime->format('D M d, Y h:i A')}} (GMT)
+                    {{$contract->created_user->name}}  @lang('global.on') {{$contract->created_datetime->format('D M d, Y h:i A')}} (GMT)
                 @endif
             </li>
 
@@ -153,6 +152,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     @lang('global.on') {{$contract->last_updated_datetime->format('D M d, Y h:i A')}} (GMT)
                 </li>
             @endif
+            </div>
 
             <li>
                 <strong>@lang('contract.contract_name'):</strong> {{$contract->metadata->contract_name or ''}}
@@ -165,27 +165,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 {!! discussion($discussions,$discussion_status, $contract->id,'contract_identifier','metadata') !!}
             </li>
 
-            @if(isset($contract->metadata->annexes_missing))
-                <li>
-                    <strong>@lang('contract.annexes_display'):</strong>
-                    @if($contract->metadata->annexes_missing == 1)@lang('global.yes')
-                    @elseif($contract->metadata->annexes_missing == 0)@lang('global.no')
-                    @elseif($contract->metadata->annexes_missing == -1)@lang('global.not_available')
-                    @endif
-                    {!! discussion($discussions,$discussion_status, $contract->id,'annexes_missing','metadata') !!}
-                </li>
-            @endif
 
-            @if(isset($contract->metadata->pages_missing))
-                <li>
-                    <strong>@lang('contract.pages_display'):</strong>
-                    @if( $contract->metadata->pages_missing == 1)@lang('global.yes')
-                    @elseif($contract->metadata->pages_missing == 0)@lang('global.no')
-                    @elseif($contract->metadata->annexes_missing == -1)@lang('global.not_available')
-                    @endif
-                    {!! discussion($discussions,$discussion_status, $contract->id,'pages_missing','metadata') !!}
-                </li>
-            @endif
+
+
 
             @if(isset($contract->metadata->language))
                 <li>
@@ -230,6 +212,10 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     @endforeach
                 </div>
             @endif
+            <li>
+                <strong>@lang('contract.document_type'):</strong>{{ _l('codelist/documentType.'.$contract->metadata->document_type) }}
+                {!! discussion($discussions,$discussion_status, $contract->id,'document_type','metadata') !!}
+            </li>
 
             <li><strong>@lang('contract.type_of_contract'): </strong>
                 @if(is_array($contract->metadata->type_of_contract) && count($contract->metadata->type_of_contract)>0)
@@ -244,11 +230,11 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <strong>@lang('contract.signature_date'):</strong> {{$contract->metadata->signature_date or ''}}
                 {!! discussion($discussions,$discussion_status, $contract->id,'signature_date','metadata') !!}
             </li>
-
             <li>
-                <strong>@lang('contract.document_type'):</strong>{{ _l('codelist/documentType.'.$contract->metadata->document_type) }}
-                {!! discussion($discussions,$discussion_status, $contract->id,'document_type','metadata') !!}
+                <strong>@lang('contract.signature_year'):</strong> {{$contract->metadata->signature_year or ''}}
+                {!! discussion($discussions,$discussion_status, $contract->id,'signature_year','metadata') !!}
             </li>
+
 
 
             @if(isset($contract->metadata->company))
@@ -316,6 +302,16 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
             @endif
 
             <li><h3>@lang('contract.license_and_project')</h3></li>
+            <div class="project-wrapper">
+                <li>
+                    <strong>@lang('contract.project_name'):</strong> {{$contract->metadata->project_title or ''}}
+                    {!! discussion($discussions,$discussion_status, $contract->id,'project_title','metadata') !!}
+                </li>
+                <li>
+                    <strong>@lang('contract.project_identifier'):</strong> {{$contract->metadata->project_identifier or ''}}
+                    {!! discussion($discussions,$discussion_status, $contract->id,'project_identifier','metadata') !!}
+                </li>
+            </div>
             @if(isset($contract->metadata->concession))
                 <div class="license-wrap">
                     @foreach($contract->metadata->concession as $key => $concession)
@@ -337,14 +333,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     @endforeach
                 </div>
             @endif
-            <li>
-                <strong>@lang('contract.project_name'):</strong> {{$contract->metadata->project_title or ''}}
-                {!! discussion($discussions,$discussion_status, $contract->id,'project_title','metadata') !!}
-            </li>
-            <li>
-                <strong>@lang('contract.project_identifier'):</strong> {{$contract->metadata->project_identifier or ''}}
-                {!! discussion($discussions,$discussion_status, $contract->id,'project_identifier','metadata') !!}
-            </li>
+
             <li><h3>@lang('contract.source')</h3></li>
             <li>
                 <strong>@lang('contract.source_url'):</strong> <a href="{{$contract->metadata->source_url}}">{{$contract->metadata->source_url}}</a>
@@ -398,7 +387,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 @endif
                 {!! discussion($discussions,$discussion_status, $contract->id,'contract_note','metadata') !!}
             </li>
-
+            <div class="associated-wrapper">
             <li><h3>@lang('contract.associated_contracts')</h3></li>
                 @if(!empty($associatedContracts))
                     @foreach($associatedContracts as $associatedContract)
@@ -409,6 +398,30 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 @else
                     <li>@lang('contract.no_documents')</li>
                 @endif
+            </div>
+            @if(isset($contract->metadata->annexes_missing))
+                <li>
+                    <strong>@lang('contract.annexes_display'):</strong>
+                    @if($contract->metadata->annexes_missing == 1)@lang('global.yes')
+                    @elseif($contract->metadata->annexes_missing == 0)@lang('global.no')
+                    @elseif($contract->metadata->annexes_missing == -1)@lang('global.not_available')
+                    @endif
+                    {!! discussion($discussions,$discussion_status, $contract->id,'annexes_missing','metadata') !!}
+                </li>
+            @endif
+            @if(isset($contract->metadata->pages_missing))
+                <li>
+                    <strong>@lang('contract.pages_display'):</strong>
+                    @if( $contract->metadata->pages_missing == 1)@lang('global.yes')
+                    @elseif($contract->metadata->pages_missing == 0)@lang('global.no')
+                    @elseif($contract->metadata->annexes_missing == -1)@lang('global.not_available')
+                    @endif
+                    {!! discussion($discussions,$discussion_status, $contract->id,'pages_missing','metadata') !!}
+                </li>
+            @endif
+
+
+
         </ul>
        @include('contract.partials.show.annotation_list')
     </div>

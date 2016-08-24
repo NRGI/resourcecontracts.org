@@ -543,7 +543,6 @@ header {
 }
 
 .license-wrap li:nth-child(even) {
-    border-bottom: 1px dashed #ccc;
     padding-bottom: 12px;
     margin-bottom: 8px;
 }
@@ -777,4 +776,15 @@ header {
 
 #generate-contract-name:hover {
     background-color: #ddd;
+}
+.associated-wrapper, .user-wrapper{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+
+}
+.project-wrapper{
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
 }

@@ -37,7 +37,7 @@ return [
     'corporate_grouping'                   => "Corporate Grouping",
     'open_corporate'                       => "OpenCorporates Link",
     'open_corporate_id'                    => "OpenCorporates Link",
-    'license_and_project'                  => "Concession / License and Project",
+    'license_and_project'                  => "Project and Concession / License",
     'license_name'                         => "Concession / License Name",
     'license_identifier'                   => "Concession / License Identifier",
     'project_name'                         => "Project Name",
