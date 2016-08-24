@@ -32,6 +32,8 @@ class ImportContracts extends Command
      * @var array
      */
     protected $fields = [
+        "is_imported",
+        'contract_id',
         "contract_name",
         "document_title",
         "source_url",
@@ -40,7 +42,8 @@ class ImportContracts extends Command
         "language",
         "resource",
         "is_supporting_document",
-        "contract_type",
+        "contract_type_1",
+        "contract_type_2",
         "signature_date",
         "document_type",
         "company_name_1",
@@ -100,10 +103,11 @@ class ImportContracts extends Command
         "disclosure_mode",
         "retrieval_date",
     ];
+
     /**
      * @var int
      */
-    protected $limit = 12;
+    protected $limit = 0;
     /**
      * @var CountryService
      */
@@ -128,6 +132,10 @@ class ImportContracts extends Command
      * @var Queue
      */
     protected $queue;
+    /**
+     * @var bool
+     */
+    protected $test = false;
 
     /**
      * Create a new command instance.
@@ -163,16 +171,30 @@ class ImportContracts extends Command
     public function fire()
     {
         $json = $this->getJson();
-
+        $i    = 1;
         foreach ($json as $data) {
+
+            if (!$this->isImportable($data)) {
+                continue;
+            }
+
             $contract = $this->extractData($data);
-            $file     = $this->downloadPdf($contract['metadata']['source_url']);
+
+            if ($this->test) {
+                $file = md5(microtime()).'.pdf';
+            } else {
+                $file = $this->downloadPdf($contract['metadata']['source_url']);
+            }
 
             if (empty($file)) {
                 continue;
             }
 
-            $fileHash = getFileHash($this->tempPath($file));
+            if ($this->test) {
+                $fileHash = md5(microtime());
+            } else {
+                $fileHash = getFileHash($this->tempPath($file));
+            }
 
             if ($con = $this->contract->getContractByFileHash($fileHash)) {
                 $this->error(
@@ -186,11 +208,13 @@ class ImportContracts extends Command
             }
 
             try {
-                $this->storage->disk('s3')->put(
-                    $file,
-                    $this->filesystem->get($this->tempPath($file))
-                );
-                $this->info('File uploaded to s3 : '.$file);
+                if (!$this->test) {
+                    $this->storage->disk('s3')->put(
+                        $file,
+                        $this->filesystem->get($this->tempPath($file))
+                    );
+                    $this->info('File uploaded to s3 : '.$file);
+                }
 
             } catch (Exception $e) {
                 $this->error(sprintf('File could not be uploaded : %s', $e->getMessage()));
@@ -198,7 +222,7 @@ class ImportContracts extends Command
                 continue;
             }
 
-            $contract['metadata']['file_size'] = filesize($this->tempPath($file));
+            $contract['metadata']['file_size'] = ($this->test) ? '234234' : filesize($this->tempPath($file));
 
             $contract_data = [
                 'file'     => $file,
@@ -218,7 +242,7 @@ class ImportContracts extends Command
                 if ($con) {
                     $this->queue->push('App\Nrgi\Services\Queue\ProcessDocumentQueue', ['contract_id' => $con->id]);
                 }
-                $this->info('Contract successfully created :'.$con->title);
+                $this->info($i++.'- Contract successfully created : '.$con->title);
             } catch (Exception $e) {
                 $this->error($e->getMessage());
                 if ($this->storage->disk('s3')->exists($file)) {
@@ -266,7 +290,7 @@ class ImportContracts extends Command
             while (($data = fgetcsv($handle, 10000, ",")) !== false) {
                 $i++;
 
-                if ($i > $this->getLimit()) {
+                if ($this->isLimitExceeded($i)) {
                     break;
                 }
 
@@ -288,13 +312,19 @@ class ImportContracts extends Command
     }
 
     /**
-     * Get Contract limit
+     * Determine limit exceeded
      *
-     * @return int
+     * @param $i
+     *
+     * @return bool
      */
-    public function getLimit()
+    public function isLimitExceeded($i)
     {
-        return $this->limit + 1;
+        if ($this->limit < 1) {
+            return false;
+        }
+
+        return ($i > ($this->limit + 1));
     }
 
     /**
@@ -320,9 +350,7 @@ class ImportContracts extends Command
             $company_default['participation_share']           = $results['participation_share_'.$i];
             $company_default['jurisdiction_of_incorporation'] = $results['jurisdiction_of_incorporation_'.$i];
             $company_default['registration_agency']           = $results['registration_agency_'.$i];
-            $company_default['company_founding_date']         = $this->dateFormat(
-                $results['incorporation_date_'.$i]
-            );
+            $company_default['company_founding_date']         = $this->dateFormat($results['incorporation_date_'.$i]);
             $company_default['company_address']               = $results['company_address_'.$i];
             $company_default['company_number']                = $results['company_number_'.$i];
             $company_default['parent_company']                = $results['corporate_grouping_'.$i];
@@ -344,7 +372,9 @@ class ImportContracts extends Command
         $contract['metadata']['project_identifier']                  = $results['project_identifier'];
         $contract['metadata']['company']                             = $companies;
         $contract['metadata']['disclosure_mode']                     = $results['disclosure_mode'];
-        $contract['metadata']['type_of_contract']                    = [$results['contract_type']];
+        $contract['metadata']['type_of_contract']                    = array_filter(
+            [$results['contract_type_1'], $results['contract_type_2']]
+        );
         $contract['metadata']['document_type']                       = $results['document_type'];
         $contract['metadata']['date_retrieval']                      = $this->dateFormat($results['retrieval_date']);
         $contract['metadata']['source_url']                          = $results['source_url'];
@@ -368,8 +398,7 @@ class ImportContracts extends Command
             $contract['metadata']['country']['code']
         );
         $contract['metadata']['ckan']                                = 1;
-        $contract['metadata']['is_supporting_document']              = $this->getSupportingDocumentType
-        (
+        $contract['metadata']['is_supporting_document']              = $this->getSupportingDocumentType(
             $results["is_supporting_document"]
         );
         $contract['metadata']['pages_missing']                       = -1;
@@ -486,12 +515,39 @@ class ImportContracts extends Command
     protected function handleAssociatedDocument(Contract $contract, $data)
     {
         if ($data['is_supporting_document'] == 'Associated') {
-            $parent = Contract::whereRaw("metadata->>'ckan' = '1'")
-                              ->whereRaw("metadata->>'contract_name' = '".$data['contract_name']."'")
-                              ->first();
+            if (is_numeric($data['contract_name'])) {
+                $parent = Contract::find($data['contract_name']);
+            } else {
+                $parent = Contract::whereRaw("metadata->>'ckan' = '1'")
+                                  ->whereRaw("metadata->>'contract_name' = '".$data['contract_name']."'")
+                                  ->first();
+            }
+
             if ($parent) {
                 $contract->syncSupportingContracts($parent->id);
+                $this->contract->updateOCID($contract);
             }
         }
     }
+
+    /**
+     * Determine data can import or not
+     *
+     * @param $data
+     *
+     * @return bool
+     */
+    protected function isImportable($data)
+    {
+        if ($data['is_imported'] == 1) {
+            return false;
+        }
+
+        if ($data['contract_name'] == '' && $data['is_supporting_document'] == 'Associated') {
+            return false;
+        }
+
+        return true;
+    }
+
 }
