@@ -143,6 +143,12 @@ Annotator.Plugin.Categories = (function (superClass) {
                     selectable = 'disabled';
                     categoryClass = "category";
                 }
+
+               var tmpDisableCategory = ['annexes-missing-from-copy', 'legal-enterprise-identifier'];
+               if($.inArray(obj.key, tmpDisableCategory) >= 0){
+                   selectable = 'disabled';
+               }
+
                 categoryHTML += '<option ' + selectable + ' class="' + this.options.categoryClass;
                 categoryHTML += ' ' + categoryClass + '"';
                 categoryHTML += ' value="' + obj.key + '">';

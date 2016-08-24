@@ -101,7 +101,6 @@ return [
         "expropriation-or-nationalization"                                                                                                => "Legal Rules",
         "other-miscellaneous"                                                                                                             => "Legal Rules",
         "iii-document-notes"                                                                                                              => "Legal Rules",
-        "pages-missing-from-copy"                                                                                                         => "Legal Rules",
         "annexes-missing-from-copy"                                                                                                       => "Legal Rules",
         "other"                                                                                                                           => "Legal Rules",
     ],
@@ -198,7 +197,6 @@ return [
         "expropriation-or-nationalization"                                                                                                => "Expropriation or nationalization",
         "other-miscellaneous"                                                                                                             => "Other - miscellaneous",
         "iii-document-notes"                                                                                                              => "III. Document notes",
-        "pages-missing-from-copy"                                                                                                         => "Pages missing from  copy",
         "annexes-missing-from-copy"                                                                                                       => "Annexes missing from copy",
         "other"                                                                                                                           => "Other"
     ]
