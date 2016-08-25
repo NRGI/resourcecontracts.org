@@ -56,7 +56,7 @@ class ElasticSearchService
      */
     protected function apiURL($request)
     {
-        return trim(env('ELASTIC_SEARCH_URL'), '/').'/'.$request;
+        return trim(env('ELASTIC_SEARCH_URL'), '/') . '/' . $request;
     }
 
     /**
@@ -173,6 +173,8 @@ class ElasticSearchService
                 $json->category_key  = $annotation->category;
                 $json->category      = (isset($annotation->category)) ? getCategoryName($annotation->category) : "";
                 $json->cluster       = (isset($annotation->category)) ? getCategoryClusterName($annotation->category) : "";
+                $json->created_at    = !empty($annotation->created_at)?$annotation->created_at->format('Y-m-d H:i:s'):null;
+                $json->updated_at    = !empty($annotation->updated_at)?$annotation->updated_at->format('Y-m-d H:i:s'):null;
                 $annotationData[]    = $json;
             }
         }
