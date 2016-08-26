@@ -165,10 +165,6 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 {!! discussion($discussions,$discussion_status, $contract->id,'contract_identifier','metadata') !!}
             </li>
 
-
-
-
-
             @if(isset($contract->metadata->language))
                 <li>
                     <strong>@lang('contract.language'):</strong> {{getLanguageName($contract->metadata->language)}}
@@ -419,9 +415,6 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     {!! discussion($discussions,$discussion_status, $contract->id,'pages_missing','metadata') !!}
                 </li>
             @endif
-
-
-
         </ul>
        @include('contract.partials.show.annotation_list')
     </div>

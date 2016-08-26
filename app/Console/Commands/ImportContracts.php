@@ -136,6 +136,10 @@ class ImportContracts extends Command
      * @var bool
      */
     protected $test = false;
+    /**
+     * @var string
+     */
+    protected $externalPath = '';
 
     /**
      * Create a new command instance.
@@ -178,6 +182,14 @@ class ImportContracts extends Command
                 continue;
             }
 
+            $isContractImported = Contract::whereRaw("metadata->>'ckan' = '1'")
+                                          ->whereRaw("metadata->>'contract_name' = ?", [$data['document_title']])
+                                          ->first();
+            if ($isContractImported) {
+                $this->error($isContractImported->id.' : Contract already Imported : '.$data['document_title']);
+                continue;
+            }
+
             $contract = $this->extractData($data);
 
             if ($this->test) {
@@ -211,7 +223,7 @@ class ImportContracts extends Command
                 if (!$this->test) {
                     $this->storage->disk('s3')->put(
                         $file,
-                        $this->filesystem->get($this->tempPath($file))
+                        fopen($this->tempPath($file), 'r+')
                     );
                     $this->info('File uploaded to s3 : '.$file);
                 }
@@ -263,12 +275,12 @@ class ImportContracts extends Command
      */
     protected function downloadPdf($pdf)
     {
-        $pdf_name  = sha1(str_random().microtime()).'.pdf';
-        $temp_path = $this->tempPath($pdf_name);
+        list($fileName, $pdf) = $this->getFilePath($pdf);
+        $temp_path = $this->tempPath($fileName);
         try {
             copy($pdf, $temp_path);
 
-            return $pdf_name;
+            return $fileName;
         } catch (\Exception $e) {
             $this->error('PDF Download Error: '.$e->getMessage());
 
@@ -348,7 +360,7 @@ class ImportContracts extends Command
             $company_default                                  = $company_template;
             $company_default['name']                          = $results['company_name_'.$i];
             $company_default['participation_share']           = $results['participation_share_'.$i];
-            $company_default['jurisdiction_of_incorporation'] = $results['jurisdiction_of_incorporation_'.$i];
+            $company_default['jurisdiction_of_incorporation'] = $this->getJOI($results['jurisdiction_of_incorporation_'.$i]);
             $company_default['registration_agency']           = $results['registration_agency_'.$i];
             $company_default['company_founding_date']         = $this->dateFormat($results['incorporation_date_'.$i]);
             $company_default['company_address']               = $results['company_address_'.$i];
@@ -550,4 +562,62 @@ class ImportContracts extends Command
         return true;
     }
 
+    /**
+     * Get File Path
+     *
+     * @param $pdf
+     *
+     * @return array
+     */
+    protected function getFilePath($pdf)
+    {
+        if ($this->externalPath != '') {
+            $pdf      = explode('/', $pdf);
+            $fileName = end($pdf);
+
+            return [$fileName, $this->externalPath.$fileName];
+        }
+
+        return [md5(microtime()).'.pdf', $pdf];
+    }
+
+    /**
+     * Get Jurisdiction of incorporation.
+     *
+     * @param $joi
+     *
+     * @return string
+     * @throws Exception
+     */
+    protected function getJOI($joi)
+    {
+        if ($joi == '') {
+            return "";
+        }
+        $countries = trans('codelist/country');
+
+        foreach ($countries as $code => $name) {
+            if (strcasecmp($joi, $name) == 0) {
+                return $code;
+            }
+        }
+
+        throw new Exception($joi.' do not match with codelist');
+    }
+
+    /**
+     * Update Metadata
+     *
+     * @param $contract
+     */
+    protected function updateMetadata($contract, $data)
+    {
+        $edata               = $this->extractData($data);
+        $metadata            = (array) $contract->metadata;
+        $metadata['company'] = $edata['metadata']['company'];
+        unset($metadata['amla_url'], $metadata['file_url'], $metadata['word_file']);
+        $contract->metadata = $metadata;
+        $contract->save();
+        $this->info('Metadata updated');
+    }
 }
