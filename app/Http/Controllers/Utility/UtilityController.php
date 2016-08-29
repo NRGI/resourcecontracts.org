@@ -86,7 +86,6 @@ class UtilityController extends Controller
      */
     public function bulkTextDownload()
     {
-
         $this->contractService->bulkTextDownload();
     }
 }
