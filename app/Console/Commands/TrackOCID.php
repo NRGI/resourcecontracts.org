@@ -183,6 +183,7 @@ class TrackOCID extends Command
             }
         }
         $analysis = [];
+        $changedOCID=[];
         foreach ($mainArray as $id => $ana) {
             $base = [];
             foreach ($ana as $key => $a) {
@@ -195,6 +196,7 @@ class TrackOCID extends Command
                     continue;
                 }
                 if ($base->ocid != $a->ocid) {
+
                     $reason = $a->ocid;
 
                     if ($base->category != $a->category) {
@@ -212,13 +214,20 @@ class TrackOCID extends Command
                     if ($reason == $a->ocid && $a->is_associated_doc) {
                         $reason .= " (Parent doc change)";
                     }
+                    array_push($changedOCID,$id);
+
                 }
                 $analysis[$id][$key] = $reason;
                 $base                = $a;
             }
         }
-
-
+        foreach($analysis as $key=>$value)
+        {
+           if(!in_array($key,$changedOCID))
+           {
+               unset($analysis[$key]);
+           }
+        }
         $data   = [];
         $header = [];
 
