@@ -90,11 +90,14 @@ class ProcessService
         $contract          = $this->contract->find($contractId);
         $startTime         = Carbon::now();
         try {
+
+            $ocr_lang = $this->getOCRLang($contract->metadata->language);
             $this->processStatus(Contract::PROCESSING_RUNNING);
             $this->logger->info("Processing Contract", ['contractId' => $contractId]);
+
             list($writeFolderPath, $readFilePath) = $this->setup($contract);
 
-            if ($this->process($writeFolderPath, $readFilePath)) {
+            if ($this->process($writeFolderPath, $readFilePath,$ocr_lang)) {
                 $pages = $this->page->buildPages($writeFolderPath);
                 $this->page->savePages($contractId, $pages);
                 $this->mailer->send(
@@ -187,17 +190,20 @@ class ProcessService
     }
 
     /**
+     * Process document
+     *
+     * @param $lang
      * @param $writeFolderPath
      * @param $readFilePath
      *
      * @return bool|null
      */
-    public function process($writeFolderPath, $readFilePath)
+    public function process($writeFolderPath, $readFilePath, $lang)
     {
         try {
             $this->processStatus(Contract::PROCESSING_RUNNING);
             $this->logger->info("Python script running");
-            $this->processContractDocument($writeFolderPath, $readFilePath);
+            $this->processContractDocument($writeFolderPath, $readFilePath, $lang);
             $this->logger->info("Python script completed");
 
             return true;
@@ -218,13 +224,15 @@ class ProcessService
      * @param $writeFolderPath
      * @param $readFilePath
      *
+     * @param $lang
+     *
      * @return bool
      */
-    public function processContractDocument($writeFolderPath, $readFilePath)
+    public function processContractDocument($writeFolderPath, $readFilePath, $lang)
     {
         set_time_limit(0);
         $commandPath = config('nrgi.pdf_process_path');
-        $command     = sprintf('python %s/run.py -i %s -o %s', $commandPath, $readFilePath, $writeFolderPath);
+        $command     = sprintf('python %s/run.py -i %s -o %s -l %s', $commandPath, $readFilePath, $writeFolderPath, $lang);
         $this->logger->info("Executing python command", ['command' => $command]);
 
         try {
@@ -361,6 +369,20 @@ class ProcessService
     protected function deleteContractFolder($id)
     {
         $this->fileSystem->deleteDirectory(sprintf('%s/%s', $this->getWriteDirectory(), $id));
+    }
+
+    /**
+     * Get OCR Language
+     *
+     * @param $code
+     *
+     * @return string
+     */
+    private function getOCRLang($code)
+    {
+        $available_lang = ['fr' => 'french', 'es' => 'spanish', 'en' => 'english'];
+
+        return isset($available_lang[$code]) ? $available_lang[$code] : 'english';
     }
 
 }
