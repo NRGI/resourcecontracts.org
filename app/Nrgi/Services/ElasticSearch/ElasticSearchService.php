@@ -113,11 +113,12 @@ class ElasticSearchService
         ];
 
         try {
+            file_put_contents(public_path('metadata.html'), json_encode($contract->metadata));
             $request  = $this->http->post($this->apiURL('contract/metadata'), null, $metadata);
             $response = $request->send();
             $this->logger->info('Metadata successfully submitted to Elastic Search.', $response->json());
         } catch (Exception $e) {
-            $this->logger->error($e->getMessage());
+            $this->logger->error('Index Metadata: '.$e->getMessage().$response->getBody());
         }
     }
 
