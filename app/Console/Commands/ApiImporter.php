@@ -49,6 +49,7 @@ class ApiImporter extends Command
         foreach ($contracts as $contract) {
             $id = $contract['id'];
             foreach ($contract as $method => $param) {
+                echo $method;
                 if (method_exists($this, $method)) {
                     $this->$method($id, $param);
                 }
@@ -65,7 +66,8 @@ class ApiImporter extends Command
      */
     function metadata($id, $param)
     {
-        $apiData                       = (object) $this->api(sprintf('contract/%s/metadata', 1973));
+        return '';
+        $apiData                       = (object) $this->api(sprintf('contract/%s/metadata', $id));
         $metadata                      = new \stdClass();
         $metadata->contract_name       = $apiData->name;
         $metadata->contract_identifier = $apiData->identifier;
@@ -116,7 +118,7 @@ class ApiImporter extends Command
         $metadata->source_url             = $apiData->source_url;
         $metadata->disclosure_mode        = $apiData->publisher_type;
         $metadata->date_retrieval         = $apiData->retrieved_at;
-        $metadata->category               = isset($param['category']) ? [$param['category']] : ['rc'];
+        $metadata->category               = $this->getCategory($param);
         $metadata->deal_number            = $apiData->deal_number;
         $metadata->matrix_page            = $apiData->matrix_page;
         $metadata->contract_note          = $apiData->note;
@@ -178,10 +180,100 @@ class ApiImporter extends Command
             'updated_at'           => $param['updated_at'],
         ];
 
-
-        file_put_contents(public_path('metadata_converted.html'), json_encode($data));
-
         $this->indexToEl('metadata', $data);
+    }
+
+    /**
+     * Index Pdf Text
+     *
+     * @param $id
+     * @param $param
+     */
+    public function pdf_text($id, $param)
+    {
+        return '';
+        $res      = (object) $this->api(sprintf('contract/%s/text', $id));
+        $metadata = (object) $this->api(sprintf('contract/%s/metadata', $id));
+
+        $apiData = $res->result;
+        $data    = [
+            'contract_id'         => $apiData[0]['contract_id'],
+            'open_contracting_id' => $apiData[0]['open_contracting_id'],
+            'total_pages'         => $res->total,
+            'pages'               => $this->formatPdfTextPages($res->result, $param, $metadata),
+        ];
+
+        $this->indexToEl('pdf-text', $data);
+    }
+
+    public function annotations($id, $param)
+    {
+        $res = (object) $this->api(sprintf('contract/%s/annotations', $id));
+    }
+
+    /**
+     * Get Formatted Pdf Text
+     *
+     * @param $pages
+     * @param $param
+     * @param $metadata
+     *
+     * @return array
+     */
+    public function formatPdfTextPages($pages, $param, $metadata)
+    {
+        foreach ($pages as $key => $page) {
+            $pages[$key]['created_at'] = $param['created_at'];
+            $pages[$key]['updated_at'] = $param['updated_at'];
+            if (isset($metadata->is_ocr_reviewed) && $metadata->is_ocr_reviewed == false) {
+                $pages[$key]['text'] = "";
+            }
+        }
+
+        return json_encode($pages);
+    }
+
+    /**
+     * Get Metadata for Text
+     *
+     * @param $metadata
+     * @param $param
+     *
+     * @return array
+     */
+    public function getMetadataForTextIndex($metadata, $param)
+    {
+        $fileSize = '';
+        $fileUrl  = '';
+
+        foreach ($metadata->file as $file) {
+            if ($file['media_type'] == "application/pdf") {
+                $fileSize = $file['byte_size'];
+                $fileUrl  = $file['url'];
+            }
+        }
+
+        return [
+            'category'       => $this->getCategory($param),
+            'contract_name'  => $metadata->name,
+            'signature_date' => $metadata->date_signed,
+            'resource'       => $metadata->resource,
+            'file_size'      => $fileSize,
+            'file_url'       => $fileUrl,
+            'country'        => $metadata->country,
+        ];
+    }
+
+    /**
+     * Get Category
+     *
+     * @param $param
+     *
+     * @return array
+     */
+    public function getCategory($param)
+    {
+        return isset($param['category']) ? [$param['category']] : ['rc'];
     }
 
 
@@ -243,10 +335,31 @@ class ApiImporter extends Command
         }
     }
 
+    /**
+     * Index data to Elastic Search
+     *
+     * @param $type
+     * @param $data
+     */
     protected function indexToEl($type, $data)
     {
         $res = $this->http->post($this->indexUrl('contract/'.$type), null, $data)->send();
-        dd($res->json());
+
+        echo $res->getBody();
+        die;
+        $result = $res->json();
+        if (isset($result['_index'])) {
+            $this->info(
+                sprintf(
+                    'Contract ID - %s,  %s - %s',
+                    $result['_id'],
+                    $type,
+                    isset($result['created']) ? 'created' : 'updated'
+                )
+            );
+        } else {
+            $this->error(sprintf('Error While indexing %s - %s', $type, $res->getBody()));
+        }
     }
 
     /**
