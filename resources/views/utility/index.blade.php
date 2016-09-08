@@ -22,10 +22,12 @@
 				@if($contracts)
 					<table class="table" style="margin: 50px 0px 30px">
 						<thead>
-						<th>@lang('contract.contract_id')</th>
-						<th>@lang('contract.current_name')</th>
-						<th>@lang('contract.new_name')</th>
-						<th>@lang('contract.remarks')</th>
+						<tr>
+							<th>@lang('contract.contract_id')</th>
+							<th>@lang('contract.current_name')</th>
+							<th>@lang('contract.new_name')</th>
+							<th>@lang('contract.remarks')</th>
+						</tr>
 						</thead>
 						<tbody>
 						@foreach($contracts as &$contract)
@@ -45,17 +47,17 @@
 
 						</tbody>
 					</table>
-							@if($contracts)
-								<div style="float: left; margin-right: 10px">
-									{!! Form::open(['route'=>'utility.submit' ,'method' => 'post','class' => 'form-inline' ]) !!}
-									{!! Form::hidden('contracts',json_encode($contracts)) !!}
-									{!! Form::button(trans('contract.rename_contract'), ['type' => 'submit','class' => 'btn btn-success confirm','data-confirm'=>trans('contract.rename_confirm')]) !!}
-									{!! Form::close() !!}
-								</div>
-								<a href="{{route('utility.index')}}" class="btn btn-primary">@lang('contract.cancel')</a>
-							@else
-								<a href="{{route('utility.index')}}" class="btn btn-primary">@lang('contract.cancel')</a>
-							@endif
+					@if($contracts)
+						<div style="float: left; margin-right: 10px">
+							{!! Form::open(['route'=>'utility.submit' ,'method' => 'post','class' => 'form-inline' ]) !!}
+							{!! Form::hidden('contracts',json_encode($contracts)) !!}
+							{!! Form::button(trans('contract.rename_contract'), ['type' => 'submit','class' => 'btn btn-success confirm','data-confirm'=>trans('contract.rename_confirm')]) !!}
+							{!! Form::close() !!}
+						</div>
+						<a href="{{route('utility.index')}}" class="btn btn-primary">@lang('contract.cancel')</a>
+					@else
+						<a href="{{route('utility.index')}}" class="btn btn-primary">@lang('contract.cancel')</a>
+					@endif
 				@endif
 			@endif
 		</div>

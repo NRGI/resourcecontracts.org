@@ -46,7 +46,6 @@ return [
     'both'                    => 'Both',
     'results'                 => 'Results',
     'save'                    => 'Save',
-    'back'                    => 'Go Back',
     'view_metadata'           => 'View Metadata',
     'view_pdf_text'           => 'Text Pdf View',
     'all_comments_pdf'        => 'All Comments Pdf Text',
@@ -68,5 +67,7 @@ return [
         'save'   => 'Save',
         'cancel' => 'Cancel',
         'ok'     => 'Ok',
+        'add'    => 'Add',
+        'delete' => 'Delete',
     ],
 ];

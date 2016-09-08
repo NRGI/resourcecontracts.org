@@ -35,6 +35,13 @@
                    href="{{route('utility.index')}}">@lang('contract.utility')</a>
             </li>
             @endif
+
+            @if($current_user->hasRole(['superadmin','admin','country-admin']))
+                <li>
+                    <a {{in_array('external-api', Request::segments())? 'class=active' : ''}}
+                       href="{{route('external-api.index')}}">@lang('ea.external_api')</a>
+                </li>
+            @endif
             <li>
                 <a {{in_array('disclosure', Request::segments())? 'class=active' : ''}}
                    href="{{route('disclosure.index')}}">@lang('contract.disclosure_mode')</a>

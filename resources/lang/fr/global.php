@@ -46,7 +46,6 @@ return [
     'both'                    => "Tous les deux",
     'results'                 => "Résulats",
     'save'                    => "Sauvegarder",
-    'back'                    => "Revenir en arrière",
     'view_metadata'           => "Afficher les métadonnées",
     'view_pdf_text'           => "Affichage texte PDF",
     'all_comments_pdf'        => "Tous les commentaires en texte PDF",
@@ -68,5 +67,7 @@ return [
         'save'   => "Sauvegarder",
         'cancel' => "Annuler",
         'ok'     => "Ok",
+        'add'    => 'Ajouter',
+        'delete' => 'Effacer',
     ],
 ];
