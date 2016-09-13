@@ -97,14 +97,11 @@ class ProcessService
 
             list($writeFolderPath, $readFilePath) = $this->setup($contract);
 
-            if ($this->process($writeFolderPath, $readFilePath,$ocr_lang)) {
+            if ($this->process($writeFolderPath, $readFilePath, $ocr_lang)) {
                 $pages = $this->page->buildPages($writeFolderPath);
                 $this->page->savePages($contractId, $pages);
                 $this->mailer->send(
-                    [
-                        'email' => $contract->created_user->email,
-                        'name'  => $contract->created_user->name,
-                    ],
+                    $contract->created_user->email,
                     "{$contract->title} processing contract completed.",
                     'emails.process_success',
                     [
@@ -151,10 +148,7 @@ class ProcessService
         } catch (\Exception $e) {
             $this->processStatus(Contract::PROCESSING_FAILED);
             $this->mailer->send(
-                [
-                    'email' => $contract->created_user->email,
-                    'name'  => $contract->created_user->name,
-                ],
+                $contract->created_user->email,
                 "{$contract->title} processing error.",
                 'emails.process_error',
                 [
@@ -232,7 +226,13 @@ class ProcessService
     {
         set_time_limit(0);
         $commandPath = config('nrgi.pdf_process_path');
-        $command     = sprintf('python %s/run.py -i %s -o %s -l %s', $commandPath, $readFilePath, $writeFolderPath, $lang);
+        $command     = sprintf(
+            'python %s/run.py -i %s -o %s -l %s',
+            $commandPath,
+            $readFilePath,
+            $writeFolderPath,
+            $lang
+        );
         $this->logger->info("Executing python command", ['command' => $command]);
 
         try {
