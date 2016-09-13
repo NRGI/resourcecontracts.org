@@ -557,7 +557,6 @@ class ContractService
      */
     public function deleteContract($id)
     {
-
         try {
             $contract = $this->contract->findContract($id);
         } catch (Exception $e) {
@@ -568,7 +567,7 @@ class ContractService
 
         if ($this->contract->delete($contract->id)) {
             $this->logger->info('Contract successfully deleted.', ['Contract Id' => $id]);
-            $this->logger->activity('contract.log.delete', ['contract' => $contract->title], null);
+            $this->logger->activity('contract.log.delete', ['contract' => $contract->title, 'id' => $contract->id], null);
             $this->queue->push(
                 'App\Nrgi\Services\Queue\DeleteToElasticSearchQueue',
                 ['contract_id' => $id],

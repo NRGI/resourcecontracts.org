@@ -97,21 +97,22 @@ class MailQueue
      */
     public function send($recipients, $subject, $view, $data = [])
     {
-        $bcc        = array_diff($this->getNotifyEmails(), $recipients);
-        $recipients = $this->getNotifyEmails();
-        $from       = $this->getFromEmail();
+        if (is_string($recipients)) {
+            $recipients = explode(',', $recipients);
+            $recipients = array_map('trim', $recipients);
+            $recipients = array_unique(array_filter($recipients));
+        }
+
+        $bcc  = array_diff($this->getNotifyEmails(), $recipients);
+        $from = $this->getFromEmail();
+
         try {
             return $this->mailer->queueOn(
                 'queue-mail',
                 $view,
                 $data,
                 function ($message) use ($recipients, $subject, $from, $bcc) {
-                    if (isset($recipients['email'])) {
-                        $message->to($recipients['email'], $recipients['name']);
-                    } else {
-                        $message->to($recipients);
-                    }
-
+                    $message->to($recipients);
                     $message->subject($subject);
                     $message->from($from);
 
@@ -162,7 +163,7 @@ class MailQueue
      */
     protected function getFromEmail()
     {
-        return 'nrgi@yipl.com.np';
+        return env('FROM_EMAIL');
     }
 
 }
