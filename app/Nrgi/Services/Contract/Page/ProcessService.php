@@ -380,7 +380,13 @@ class ProcessService
      */
     private function getOCRLang($code)
     {
-        $available_lang = ['fr' => 'french', 'es' => 'spanish', 'en' => 'english'];
+        $available_lang = [
+            'fr' => 'french',
+            'es' => 'spanish',
+            'en' => 'english',
+            "pt" => "portuguese",
+            "ar" => "arabic",
+        ];
 
         return isset($available_lang[$code]) ? $available_lang[$code] : 'english';
     }
