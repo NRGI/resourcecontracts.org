@@ -191,6 +191,7 @@ return [
     'add_new_company'                      => 'Add new company',
     'add_new_license'                      => 'Add new license',
     'no_parent'                            => 'No Parent',
+    'is_contract_signed'                   => "Is contract signed?",
     /*Logs*/
     'log'                                  => [
         'save'       => 'Contract created',

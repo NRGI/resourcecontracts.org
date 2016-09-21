@@ -309,16 +309,27 @@ if (isset($contract->metadata->resource)) {
 
 <div class="form-group">
     <label for="signature_year" class="col-sm-2 control-label">@lang('contract.signature_year') <span class="red">*</span></label>
-
     <div class="col-sm-7">
         {!! Form::text('signature_year',
         isset($contract->metadata->signature_year)?$contract->metadata->signature_year:null,
         ["class"=>"required form-control signature_year",'placeholder' => 'YYYY' , 'id' => 'signature_year'])!!}
+    </div>
+    @if($action == 'edit')
+        {!! discussion($discussions,$discussion_status, $contract->id,'signature_year','metadata') !!}
+    @endif
+</div>
 
+<div class="form-group">
+    <label for="is_contract_signed" class="col-sm-2 control-label">@lang('contract.is_contract_signed') <span class="red"></span></label>
+      <?php
+        $checked = (isset($contract->metadata->is_contract_signed))?(integer)$contract->metadata->is_contract_signed:1;
+        ?>
+    <div class="col-sm-7">
+        {!! Form::checkbox('is_contract_signed',1,$checked,["class"=>"is_contract_signed",'id' => 'is_contract_signed'])!!}
     </div>
 
     @if($action == 'edit')
-        {!! discussion($discussions,$discussion_status, $contract->id,'signature_year','metadata') !!}
+        {!! discussion($discussions,$discussion_status, $contract->id,'is_contract_signed','metadata') !!}
     @endif
 </div>
 

@@ -73,6 +73,7 @@ return [
             'matrix_page'            => '',
             'pages_missing'          => '',
             'annexes_missing'        => '',
+            'is_contract_signed'     => '',
         ],
     ],
 ];
