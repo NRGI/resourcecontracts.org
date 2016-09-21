@@ -200,19 +200,19 @@ class TrackOCID extends Command
                     $reason = $a->ocid;
 
                     if ($base->category != $a->category) {
-                        $reason .= sprintf('(   category change from %s to %s)', $base->category, $a->category);
+                        $reason .= $key .sprintf('(   category change from %s to %s)', $base->category, $a->category);
                     }
 
                     if ($base->country != $a->country) {
-                        $reason .= sprintf('(   country change from %s to %s)', $base->country, $a->country);
+                        $reason .= $key. sprintf('(   country change from %s to %s)', $base->country, $a->country);
                     }
 
                     if ($base->is_associated_doc != $a->is_associated_doc) {
-                        $reason .= sprintf('(   is_associated_doc change from %s to %s)', $base->is_associated_doc, $a->is_associated_doc);
+                        $reason .= $key. sprintf('(   is_associated_doc change from %s to %s)', $base->is_associated_doc, $a->is_associated_doc);
                     }
 
                     if ($reason == $a->ocid && $a->is_associated_doc) {
-                        $reason .= " (Parent doc change)";
+                        $reason .= $key. " (Parent doc change)";
                     }
                     array_push($changedOCID,$id);
 
@@ -228,6 +228,7 @@ class TrackOCID extends Command
                unset($analysis[$key]);
            }
         }
+
         $data   = [];
         $header = [];
 
@@ -267,7 +268,7 @@ class TrackOCID extends Command
                     }
                 );
             }
-        )->save('xls', public_path());
+        )->save('csv', public_path());
 
 
     }
