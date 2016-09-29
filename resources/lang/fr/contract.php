@@ -193,6 +193,7 @@ return [
     'add_new_license'                      => 'Ajouter nouvelle licence',
     'no_parent'                            => 'Aucun Parent',
     'is_contract_signed'                   => "Est-ce que la signature du contrat?",
+    'disclosure_mode_text'                 => 'Mode de divulgation texte',
     /*Logs*/
     'log'                                  => [
         'save'       => "Contrat créé",

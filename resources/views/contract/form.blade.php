@@ -745,6 +745,18 @@ if (isset($contract->metadata->resource)) {
     @endif
 </div>
 
+<div class="form-group">
+    {!! Form::label('disclosure_mode_text', trans('contract.disclosure_mode_text'), ['class'=>'col-sm-2 control-label'])!!}
+    <div class="col-sm-7">
+        {!! Form::text('disclosure_mode_text',
+        isset($contract->metadata->disclosure_mode_text)?$contract->metadata->disclosure_mode_text:null,
+        ["class"=>"form-control"])!!}
+    </div>
+    @if($action == 'edit')
+        {!! discussion($discussions,$discussion_status, $contract->id,'disclosure_mode_text','metadata') !!}
+    @endif
+</div>
+
 
 <div class="form-group">
     {!! Form::label('date_retrieval', trans('contract.date_of_retrieval'), ['class'=>'col-sm-2 control-label'])!!}

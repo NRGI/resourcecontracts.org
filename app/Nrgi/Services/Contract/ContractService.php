@@ -410,6 +410,7 @@ class ContractService
                 'pages_missing',
                 'annexes_missing',
                 'is_contract_signed',
+                'disclosure_mode_text'
             ]
         );
 

@@ -97,6 +97,8 @@ class UpdateMetadata extends Command
     protected function applyRules(array $metadata)
     {
         $this->addIsContractSigned($metadata);
+        $this->addFreeDisclosureText($metadata);
+
         return $metadata;
     }
 
@@ -446,6 +448,15 @@ class UpdateMetadata extends Command
      */
     public function addIsContractSigned(&$metadata)
     {
-        $metadata['is_contract_signed']=1;
+        $metadata['is_contract_signed'] = 1;
+    }
+
+    /*
+    * Add free disclosure mode text as empty
+    * @param $metadata
+    */
+    public function addFreeDisclosureText(&$metadata)
+    {
+        $metadata['disclosure_mode_text'] = "";
     }
 }
