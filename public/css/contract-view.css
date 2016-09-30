@@ -1,4 +1,4 @@
-v.title-wrap {
+.title-wrap {
     border-bottom: 1px solid rgb(220, 223, 226);
     border-bottom: 1px solid rgba(220, 223, 226, 0.7);
     display: inline-block;
@@ -12,6 +12,11 @@ v.title-wrap {
 .title-wrap > span {
     padding: 10px 13px;
     float: left;
+    font-size: 26px;
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .head-wrap {
@@ -157,7 +162,7 @@ v.title-wrap {
 }
 
 .text-annotator {
-    height: 85vh;
+    height: 80vh;
     position: relative;
     overflow: auto;
 }
@@ -193,7 +198,7 @@ v.title-wrap {
 }
 
 .annotations-viewer, .search-results-list {
-    font-size: 12px;
+    font-size: 13px;
     position: relative;
     width: 25%;
     height: 97vh;

@@ -69,7 +69,7 @@ class AnnotationController extends Controller
             return redirect()->back()->withError('Permission denied.');
         }
 
-        if ($this->annotation->comment($contractId, $request->input('message'), $request->input('status'))) {
+        if ($this->annotation->comment($contractId, $request->input('message'), $request->input('status'),$request->input('current-status'))) {
             return redirect()->back()->withSuccess(trans('annotation.comment_created_successfully'));
         }
 

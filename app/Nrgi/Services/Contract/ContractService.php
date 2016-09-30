@@ -1,6 +1,10 @@
 <?php namespace App\Nrgi\Services\Contract;
 
+use App\Nrgi\Entities\Contract\Annotation\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
+use App\Nrgi\Mturk\Services\ActivityService;
+use App\Nrgi\Repositories\ActivityLog\ActivityLogRepositoryInterface;
+use App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\Discussion\DiscussionService;
@@ -74,22 +78,33 @@ class ContractService
      * @var DatabaseManager
      */
     protected $db;
+    /**
+     * @var ActivityService
+     */
+    public $activityService;
+    /**
+     * @var AnnotationRepositoryInterface
+     */
+    protected $annotation;
 
     /**
-     * @param ContractRepositoryInterface $contract
+     * @param ContractRepositoryInterface   $contract
      *
-     * @param Guard                       $auth
-     * @param Storage                     $storage
-     * @param Filesystem                  $filesystem
-     * @param CountryService              $countryService
-     * @param Queue                       $queue
-     * @param CommentService              $comment
-     * @param DiscussionService           $discussion
-     * @param DatabaseManager             $database
-     * @param Log                         $logger
-     * @param PageService                 $pages
-     * @param WordGenerator               $word
-     * @param DatabaseManager             $db
+     * @param Guard                         $auth
+     * @param Storage                       $storage
+     * @param Filesystem                    $filesystem
+     * @param CountryService                $countryService
+     * @param Queue                         $queue
+     * @param CommentService                $comment
+     * @param DiscussionService             $discussion
+     * @param DatabaseManager               $database
+     * @param Log                           $logger
+     * @param WordGenerator                 $word
+     * @param DatabaseManager               $db
+     * @param PageService                   $pages
+     * @param WordGenerator                 $word
+     * @param ActivityService               $activityService
+     * @param AnnotationRepositoryInterface $annotation
      */
     public function __construct(
         ContractRepositoryInterface $contract,
@@ -105,21 +120,25 @@ class ContractService
         WordGenerator $word,
         DatabaseManager $db,
         PageService $pages,
-        WordGenerator $word
+        WordGenerator $word,
+        ActivityService $activityService,
+        AnnotationRepositoryInterface $annotation
     ) {
-        $this->contract       = $contract;
-        $this->auth           = $auth;
-        $this->storage        = $storage;
-        $this->filesystem     = $filesystem;
-        $this->countryService = $countryService;
-        $this->queue          = $queue;
-        $this->database       = $database;
-        $this->comment        = $comment;
-        $this->logger         = $logger;
-        $this->pages          = $pages;
-        $this->word           = $word;
-        $this->discussion     = $discussion;
-        $this->db             = $db;
+        $this->contract        = $contract;
+        $this->auth            = $auth;
+        $this->storage         = $storage;
+        $this->filesystem      = $filesystem;
+        $this->countryService  = $countryService;
+        $this->queue           = $queue;
+        $this->database        = $database;
+        $this->comment         = $comment;
+        $this->logger          = $logger;
+        $this->pages           = $pages;
+        $this->word            = $word;
+        $this->discussion      = $discussion;
+        $this->db              = $db;
+        $this->activityService = $activityService;
+        $this->annotation      = $annotation;
     }
 
     /**
@@ -716,6 +735,7 @@ class ContractService
     {
         try {
             $contract = $this->contract->findContract($id);
+
         } catch (ModelNotFoundException $e) {
             $this->logger->error('Update Status : Contract not found', ['contract id' => $id]);
 
@@ -730,11 +750,24 @@ class ContractService
             $status_key            = sprintf('%s_status', $type);
             $old_status            = $contract->$status_key;
             $contract->$status_key = $status;
+            if ($status == Contract::STATUS_UNPUBLISHED) {
+                $contract->$status_key = ($old_status == Contract::STATUS_PUBLISHED) ? 'completed' : $old_status;
+            }
+
             $contract->save();
 
             if ($status == Contract::STATUS_PUBLISHED) {
                 $this->queue->push(
                     'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                    ['contract_id' => $id, 'type' => $type],
+                    'elastic_search'
+                );
+            }
+
+            if ($status == Contract::STATUS_UNPUBLISHED) {
+                $this->logger->info("Contract status updated", ['type' => $type]);
+                $this->queue->push(
+                    'App\Nrgi\Services\Queue\DeleteElementQueue',
                     ['contract_id' => $id, 'type' => $type],
                     'elastic_search'
                 );
@@ -959,7 +992,7 @@ class ContractService
      *
      * @return bool
      */
-    public function unPublishContract($id)
+    public function unPublishContract($id, $elementStatus)
     {
         try {
             $contract = $this->contract->findContract($id);
@@ -976,9 +1009,32 @@ class ContractService
         ) {
             $this->logger->info('Contract successfully deleted.', ['Contract Id' => $id]);
             $this->logger->activity('contract.log.unpublish', ['contract' => $contract->title], $id);
-            $contract->metadata_status = Contract::STATUS_DRAFT;
-            $contract->text_status     = Contract::STATUS_DRAFT;
+
+            $this->logger->activity(
+                'contract.log.status',
+                ['type' => 'metadata', 'old_status' => $elementStatus['metadata_status'], 'new_status' => 'unpublished'],
+                $id
+            );
+            $this->logger->activity(
+                'contract.log.status',
+                ['type' => 'text', 'old_status' => $elementStatus['text_status'], 'new_status' => 'unpublished'],
+                $id
+            );
+            $this->logger->activity(
+                'contract.log.status',
+                ['type' => 'annotation', 'old_status' => $elementStatus['annotation_status'], 'new_status' => 'unpublished'],
+                $id
+            );
+
+
+            $contract->metadata_status = ($elementStatus['metadata_status'] == "published") ? Contract::STATUS_COMPLETED : $elementStatus['metadata_status'];
+            $contract->text_status     = ($elementStatus['text_status'] == "published") ? Contract::STATUS_COMPLETED : $elementStatus['text_status'];
             $contract->save();
+
+            $annStatus = ($elementStatus['annotation_status'] == "published") ? Annotation::COMPLETED : $elementStatus['annotation_status'];
+
+            $this->annotation->updateStatus($annStatus, $id);
+
 
             return true;
         }
@@ -1402,5 +1458,26 @@ class ContractService
 
         return $count;
     }
+
+    /**
+     * Get published information of metadata,text and annotation
+     * @param $id
+     * @return array
+     */
+    public function getPublishedInformation($id)
+    {
+        $data        = $this->activityService->getPublishedInfo($id);
+        $information = [];
+        foreach ($data as $element => $info) {
+            $information[$element] = [
+                'created_at' => isset($info->created_at) ? $info->created_at->format('D M d, Y h:i A') : '',
+                'user_name'  => isset($info->user->name) ? $info->user->name : ''
+            ];
+        }
+
+        return $information;
+
+    }
+
 
 }

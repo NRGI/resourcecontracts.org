@@ -9,22 +9,19 @@
             margin-top: 4px !important;
         }
 
-        .btn-import {
-            margin-left: 100px;
-        }
     </style>
 @stop
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">@lang('contract.all_contract')
 
-            <div class="btn-group pull-right" role="group" aria-label="...">
+            <div class="pull-right" role="group" aria-label="...">
                 <?php
                     $url=Request::all();
                     $url['download']=1;
                   ?>
-                <a href="{{route('bulk.text.download')}}" class="btn btn-info" style="margin-right: 20px" download>@lang('global.text_download')</a>
-                <a href="{{route("contract.index",$url)}}" class="btn btn-info" style="margin-right: 20px">@lang('contract.download')</a>
+                <a href="{{route('bulk.text.download')}}" class="btn btn-info">@lang('global.text_download')</a>
+                <a href="{{route("contract.index",$url)}}" class="btn btn-info">@lang('contract.download')</a>
                 <a href="{{route('contract.import')}}" class="btn btn-default">@lang('contract.import.name')</a>
                 <a href="{{route('contract.select.type')}}" class="btn btn-primary btn-import">@lang('contract.add')</a>
             </div>

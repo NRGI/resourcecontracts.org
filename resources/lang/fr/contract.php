@@ -241,4 +241,5 @@ return [
         'btn_cancel'     => "Annuler et téléverser un autre fichier",
         'fail'           => "Aucun contrat trouvé pour être importé",
     ],
+    'text_quality'                         => 'Qualité Texte',
 ];

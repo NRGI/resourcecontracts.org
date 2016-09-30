@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Services\ElasticSearch;
 
+use App\Nrgi\Mturk\Services\ActivityService;
 use App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface;
 use App\Nrgi\Services\Contract\ContractService;
 use Exception;
@@ -28,23 +29,30 @@ class ElasticSearchService
      * @var AnnotationRepositoryInterface
      */
     protected $annotation;
+    /**
+     * @var ActivityService
+     */
+    protected $activity;
 
     /**
      * @param Client                        $http
      * @param AnnotationRepositoryInterface $annotation
      * @param ContractService               $contract
      * @param LoggerInterface               $logger
+     * @param ActivityService               $activity
      */
     public function __construct(
         Client $http,
         AnnotationRepositoryInterface $annotation,
         ContractService $contract,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        ActivityService $activity
     ) {
         $this->http       = $http;
         $this->logger     = $logger;
         $this->contract   = $contract;
         $this->annotation = $annotation;
+        $this->activity   = $activity;
     }
 
     /**
@@ -56,7 +64,7 @@ class ElasticSearchService
      */
     protected function apiURL($request)
     {
-        return trim(env('ELASTIC_SEARCH_URL'), '/').'/'.$request;
+        return trim(env('ELASTIC_SEARCH_URL'), '/') . '/' . $request;
     }
 
     /**
@@ -82,7 +90,10 @@ class ElasticSearchService
      */
     public function postMetadata($id)
     {
-        $contract   = $this->contract->find($id);
+        $contract     = $this->contract->find($id);
+        $showText     = false;
+        $elementState = $this->activity->getElementState($id);
+
         $updated_by = ['name' => '', 'email' => ''];
 
         if (!empty($contract->updated_user)) {
@@ -95,8 +106,13 @@ class ElasticSearchService
         $parent                          = $this->contract->getcontracts((int) $contract->getParentContract());
 
         $metadataAttr->translated_from = $parent;
-        $contract->metadata            = $metadataAttr;
-        $metadata                      = [
+        $metadataAttr->show_pdf_text   = 0;
+        if ($elementState['text'] == 'published') {
+            $showText                    = true;
+            $metadataAttr->show_pdf_text = 1;
+        }
+        $contract->metadata = $metadataAttr;
+        $metadata           = [
             'id'                   => $contract->id,
             'metadata'             => collect($contract->metadata)->toJson(),
             'total_pages'          => $contract->pages->count(),
@@ -116,6 +132,9 @@ class ElasticSearchService
             $request  = $this->http->post($this->apiURL('contract/metadata'), null, $metadata);
             $response = $request->send();
             $this->logger->info('Metadata successfully submitted to Elastic Search.', $response->json());
+            if (!$showText) {
+                $this->postText($id, false);
+            }
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
@@ -124,16 +143,17 @@ class ElasticSearchService
     /**
      * Post pdf text
      *
-     * @param $id
+     * @param      $id
+     * @param bool $showText
      */
-    public function postText($id)
+    public function postText($id, $showText = true)
     {
         $contract = $this->contract->findWithPages($id);
         $pages    = [
             'contract_id'         => $contract->id,
             'open_contracting_id' => $contract->metadata->open_contracting_id,
             'total_pages'         => $contract->pages->count(),
-            'pages'               => $this->formatPdfTextPages($contract),
+            'pages'               => $this->formatPdfTextPages($contract, $showText),
             'metadata'            => $this->getMetadataForES($contract->metadata),
         ];
 
@@ -142,6 +162,10 @@ class ElasticSearchService
             $request  = $this->http->post($this->apiURL('contract/pdf-text'), null, $pages);
             $response = $request->send();
             $this->logger->info('Pdf Text successfully submitted to Elastic Search.', $response->json());
+            if($showText)
+            {
+                $this->postMetadata($id);
+            }
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
@@ -256,9 +280,9 @@ class ElasticSearchService
      *
      * @return string
      */
-    public function formatPdfTextPages($contract)
+    public function formatPdfTextPages($contract, $showText)
     {
-        if (isset($contract->metadata->show_pdf_text) && $contract->metadata->show_pdf_text == 1) {
+        if ($showText) {
             return $contract->pages->toJson();
         }
 
@@ -270,6 +294,70 @@ class ElasticSearchService
         }
 
         return json_encode($contractPagesArray);
+    }
+
+    /**
+     * Call appropriate function to delete element
+     * @param $id
+     * @param $type
+     * @return mixed
+     */
+    public function deleteElement($id, $type)
+    {
+        $method = sprintf('delete%s', ucfirst($type));
+        if (method_exists($this, $method)) {
+            return $this->$method($id);
+        }
+    }
+
+    /**
+     * Delete metadata document from elasticsearch
+     * @param $id
+     */
+    public function deleteMetadata($id)
+    {
+        try {
+            $request  = $this->http->post($this->apiURL('contract/delete/metadata'), null, ['contract_id' => $id]);
+            $response = $request->send();
+            $this->logger->info('Contract\'s Metadata deleted from Elastic Search.', [$response->json()]);
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+    }
+
+    /**
+     * Delete text document from elasticsearch
+     * @param $id
+     */
+    public function deleteText($id)
+    {
+        try {
+            $this->postText($id, false);
+            $this->postMetadata($id);
+            $this->logger->info('Contract\'s Text deleted from Elastic Search.');
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+    }
+
+    /**
+     * Delete annotation document from elasticsearch
+     * @param $id
+     */
+    public function deleteAnnotation($id)
+    {
+        try {
+            $request  = $this->http->post($this->apiURL('contract/delete/annotation'), null, ['contract_id' => $id]);
+            $response = $request->send();
+            $this->logger->info('Contract\'s Annotation deleted from Elastic Search.', $response->json());
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+    }
+
+    private function updateShowTextInMetadata()
+    {
+
     }
 
 }

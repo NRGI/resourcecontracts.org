@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Mturk\Repositories\Activity;
 
+use App\Nrgi\Entities\ActivityLog\ActivityLog;
 use App\Nrgi\Mturk\Entities\Activity;
 use Illuminate\Auth\Guard;
 
@@ -18,15 +19,21 @@ class ActivityRepository implements ActivityRepositoryInterface
      * @var Guard
      */
     protected $auth;
+    /**
+     * @var ActivityLog
+     */
+    public $activityLog;
 
     /**
-     * @param Activity $activity
-     * @param Guard    $auth
+     * @param Activity    $activity
+     * @param Guard       $auth
+     * @param ActivityLog $activityLog
      */
-    public function __construct(Activity $activity, Guard $auth)
+    public function __construct(Activity $activity, Guard $auth, ActivityLog $activityLog)
     {
-        $this->activity = $activity;
-        $this->auth     = $auth;
+        $this->activity    = $activity;
+        $this->auth        = $auth;
+        $this->activityLog = $activityLog;
     }
 
     /**
@@ -77,5 +84,45 @@ class ActivityRepository implements ActivityRepositoryInterface
     public function countByUser($user_id)
     {
         return $this->activity->where('user_id', $user_id)->count();
+    }
+
+    /**
+     * Get the first row where status is published
+     * @param $id
+     * @param $element
+     * @return activityLog
+     */
+    public function getPublishedInfo($id, $element)
+    {
+        $query = $this->activityLog->select('*')->with('user')
+                                   ->where('contract_id', $id)
+                                   ->whereRaw("message_params->>'new_status' = 'published'")
+                                   ->whereRaw(sprintf("message_params->>'type' = '%s'", $element))
+                                   ->orderBy("created_at", "desc");
+
+        $result = $query->first();
+
+        return $result;
+
+    }
+
+    /**
+     * write brief description
+     * @param $id
+     * @param $element
+     * @return activityLog
+     */
+    public function getElementState($id, $element)
+    {
+        $query = $this->activityLog->select('*')
+                                   ->where('contract_id', $id)
+                                   ->whereRaw("(message_params->>'new_status' = 'published' or message_params->>'new_status' = 'unpublished' )")
+                                   ->whereRaw(sprintf("message_params->>'type' = '%s'", $element))
+                                   ->orderBy("created_at", "desc");
+
+
+        $result = $query->first();
+
+        return $result;
     }
 }

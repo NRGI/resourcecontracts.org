@@ -25,7 +25,7 @@
         </label>
         <br/>
         <button type="button" data-url="{{route('contract.discussion.create', ['id'=>$contract->id, 'type'=>$type, 'key'=>$key])}}" class="btn btn-comment-submit btn-primary">@lang('global.save')</button>
-        <button type="button" class="btn btn-default btn-close">@lang('contract.close')</button>
+        <button type="button" class="btn btn-close btn-danger">@lang('contract.close')</button>
     </div>
 </div>
 

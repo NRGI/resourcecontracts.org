@@ -4,17 +4,17 @@ return [
      * Roles for different type of users.
      */
     'roles'            => [
-        'superadmin' => [
+        'superadmin'         => [
             'name'         => 'superadmin',
             'display_name' => 'Admin',
             'description'  => 'NRGI staff, CCSI - Columbia university'
         ],
-        'researcher' => [
+        'researcher'         => [
             'name'         => 'researcher',
             'display_name' => 'Research Associate',
             'description'  => '(graduate student, interns) to upload contract, provide metadata, annotate. Should be able to edit the data entered by others.'
         ],
-        'country-admin' => [
+        'country-admin'      => [
             'name'         => 'country-admin',
             'display_name' => 'Country Admin',
             'description'  => 'Country specific admin'
@@ -110,12 +110,14 @@ return [
     ],
     'pdf_structure'    => ['structured', 'scanned', 'encrypted'],
     'country_role'     => ['country-admin', 'country-researcher'],
-    'annotation_stage' => ['draft', 'completed', 'rejected', 'published'],
+    'annotation_stage' => ['draft', 'completed', 'rejected', 'published','unpublished'],
     'pdf_process_path' => env('PDF_PROCESSOR_PATH'),
     'permission'       => [
-        'completed' => 'complete',
-        'rejected'  => 'reject',
-        'published' => 'publish'
+        'completed'   => 'complete',
+        'rejected'    => 'reject',
+        'published'   => 'publish',
+        'draft'       => 'draft',
+        'unpublished' => 'unpublished'
     ],
-    'pdf_storage_url'         => '/data',
+    'pdf_storage_url'  => '/data',
 ];

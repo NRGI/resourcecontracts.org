@@ -16,7 +16,7 @@
                     <th>{{ trans('user.organization') }}</th>
                     <th>{{ trans('user.status') }}</th>
                     <th>{{ trans('user.created_on') }}</th>
-                    <th>{{ trans('user.action') }}</th>
+                    <th width="140px">{{ trans('user.action') }}</th>
                 </tr>
                 </thead>
 

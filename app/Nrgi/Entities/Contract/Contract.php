@@ -65,31 +65,32 @@ class Contract extends Model
     /**
      * Contract Status
      */
-    const STATUS_DRAFT = 'draft';
-    const STATUS_COMPLETED = 'completed';
-    const STATUS_PUBLISHED = 'published';
-    const STATUS_REJECTED = 'rejected';
+    const STATUS_DRAFT       = 'draft';
+    const STATUS_COMPLETED   = 'completed';
+    const STATUS_PUBLISHED   = 'published';
+    const STATUS_UNPUBLISHED = 'unpublished';
+    const STATUS_REJECTED    = 'rejected';
 
     /**
      * Contract Processing
      */
     const PROCESSING_PIPELINE = 0;
-    const PROCESSING_RUNNING = 1;
+    const PROCESSING_RUNNING  = 1;
     const PROCESSING_COMPLETE = 2;
-    const PROCESSING_FAILED = 3;
+    const PROCESSING_FAILED   = 3;
 
     /**
      * MTurk Status
      */
-    const MTURK_SENT = 1;
+    const MTURK_SENT     = 1;
     const MTURK_COMPLETE = 2;
-    const SHOW_PDF_TEXT = 1;
+    const SHOW_PDF_TEXT  = 1;
 
     /**
      * Metadata Status
      */
-    const ACCEPTABLE = 1;
-    const NEEDS_EDITING = 2;
+    const ACCEPTABLE               = 1;
+    const NEEDS_EDITING            = 2;
     const NEEDS_FULL_TRANSCRIPTION = 3;
 
     /**
@@ -116,7 +117,7 @@ class Contract extends Model
      */
     public function getFileUrlAttribute()
     {
-        $path = $this->id.'/'.$this->file;
+        $path = $this->id . '/' . $this->file;
 
         if ($this->pdf_process_status == self::PROCESSING_PIPELINE || $this->pdf_process_status == self::PROCESSING_RUNNING) {
             $path = $this->file;
@@ -145,9 +146,9 @@ class Contract extends Model
         if ($this->pdf_process_status == static::PROCESSING_COMPLETE) {
             $filename     = explode('.', $this->file);
             $filename     = $filename[0];
-            $wordFileName = $filename.'.txt';
+            $wordFileName = $filename . '.txt';
 
-            return getS3FileURL($this->id.'/'.$wordFileName);
+            return getS3FileURL($this->id . '/' . $wordFileName);
         }
 
         return '';
@@ -258,7 +259,7 @@ class Contract extends Model
      */
     public function isEditableStatus($status)
     {
-        if (in_array($status, [static::STATUS_COMPLETED, static::STATUS_PUBLISHED, static::STATUS_REJECTED])) {
+        if (in_array($status, [static::STATUS_DRAFT, static::STATUS_COMPLETED, static::STATUS_PUBLISHED, static::STATUS_REJECTED,static::STATUS_UNPUBLISHED])) {
             return true;
         }
 

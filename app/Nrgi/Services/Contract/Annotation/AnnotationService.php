@@ -265,9 +265,15 @@ class AnnotationService
      *
      * @return bool
      */
-    public function updateStatus($annotationStatus, $contractId)
+    public function updateStatus($annotationStatus,$currentAnnStatus ,$contractId)
     {
-        $status = $this->annotation->updateStatus($annotationStatus, $contractId);
+        $annStatus=$annotationStatus;
+        if($annotationStatus == Annotation::UNPUBLISH)
+        {
+            $annStatus = ($currentAnnStatus==Annotation::PUBLISHED)?'completed':$currentAnnStatus;
+        }
+
+        $status = $this->annotation->updateStatus($annStatus, $contractId);
         if ($status) {
             if ($annotationStatus == Annotation::PUBLISHED) {
                 $this->queue->push(
@@ -276,11 +282,20 @@ class AnnotationService
                     'elastic_search'
                 );
             }
+
+            if ($annotationStatus == Annotation::UNPUBLISH) {
+                $this->queue->push(
+                    'App\Nrgi\Services\Queue\DeleteElementQueue',
+                    ['contract_id' => $contractId, 'type' => 'annotation'],
+                    'elastic_search'
+                );
+            }
             $this->logger->activity(
-                "annotation.status_update",
-                ['status' => $annotationStatus],
+                "contract.log.status",
+                ['type' => 'annotation','new_status' => $annotationStatus],
                 $contractId
             );
+
             $this->logger->info(
                 'Annotation status updated.',
                 ['Contract id' => $contractId, 'status' => $annotationStatus]
@@ -299,14 +314,15 @@ class AnnotationService
      *
      * @return bool
      */
-    public function comment($contractId, $message, $annotationStatus)
+    public function comment($contractId, $message, $annotationStatus,$currentAnnStatus)
     {
         $this->database->beginTransaction();
-        $status = $this->updateStatus($annotationStatus, $contractId);
+        $status = $this->updateStatus($annotationStatus,$currentAnnStatus ,$contractId);
 
         if ($status) {
             try {
                 $this->comment->save($contractId, $message, "annotation", $annotationStatus);
+
                 $this->logger->info(
                     'Comment successfully added.',
                     ['Contract id' => $contractId, 'type' => 'annotation', 'status' => $status]
