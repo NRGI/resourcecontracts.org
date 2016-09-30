@@ -232,12 +232,12 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     </span>
                 </li>
 
-                <li>
-                    <strong>@lang('contract.is_contract_signed'):</strong>
+                <li class="name-value-wrap">
+                    <span class="name"><strong>@lang('contract.is_contract_signed'):</strong></span>
                     @if(isset($contract->metadata->is_contract_signed) && $contract->metadata->is_contract_signed)
-                        @lang('contract.yes')
+                        <span class="value"> @lang('contract.yes') </span>
                     @else
-                        @lang('contract.no')
+                        <span class="value"> @lang('contract.no') </span>
                     @endif
                     {!! discussion($discussions,$discussion_status, $contract->id,'is_contract_signed','metadata') !!}
                 </li>
