@@ -225,7 +225,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 </li>
 
                 <li class="name-value-wrap">
-                    <span class="name"> <strong>@lang('contract.signature_year'):</strong></span>
+                    <span class="name"> <strong>@lang('contract.<signature_year>'):</strong></span>
                      <span class="value">
                         {{$contract->metadata->signature_year or ''}}
                         {!! discussion($discussions,$discussion_status, $contract->id,'signature_year','metadata') !!}
@@ -408,6 +408,12 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                      <span class="value">
                         {{_l('codelist/disclosure_mode.'.$contract->metadata->disclosure_mode) }}
                         {!! discussion($discussions,$discussion_status, $contract->id,'disclosure_mode','metadata') !!}
+                         @if(isset($contract->metadata->disclosure_mode_text) && !empty($contract->metadata->disclosure_mode_text))
+                             ( {{$contract->metadata->disclosure_mode_text}} )
+                         @endif
+
+
+
                     </span>
                 </li>
                 <li class="name-value-wrap">
@@ -435,6 +441,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 </li>
 
                 @if(in_array('olc' , $contract->metadata->category))
+
 
                     <li class="name-value-wrap">
                         <span class="name"> <strong>{{ trans('contract.deal_number') }}:</strong></span>

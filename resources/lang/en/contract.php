@@ -192,6 +192,7 @@ return [
     'add_new_license'                      => 'Add new license',
     'no_parent'                            => 'No Parent',
     'is_contract_signed'                   => "Is contract signed?",
+    'disclosure_mode_text'                 => 'Disclosure Mode Text',
     /*Logs*/
     'log'                                  => [
         'save'       => 'Contract created',
