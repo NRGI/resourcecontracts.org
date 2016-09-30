@@ -96,6 +96,7 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
+        $this->addIsContractSigned($metadata);
         return $metadata;
     }
 
@@ -437,5 +438,14 @@ class UpdateMetadata extends Command
             }
         }
 
+    }
+
+    /**
+     * Add is_contract_signed field in metadata
+     * @param $metadata
+     */
+    public function addIsContractSigned(&$metadata)
+    {
+        $metadata['is_contract_signed']=1;
     }
 }

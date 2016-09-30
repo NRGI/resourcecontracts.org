@@ -192,6 +192,7 @@ return [
     'add_new_company'                      => 'Ajouter une nouvelle société',
     'add_new_license'                      => 'Ajouter nouvelle licence',
     'no_parent'                            => 'Aucun Parent',
+    'is_contract_signed'                   => "Est-ce que la signature du contrat?",
     /*Logs*/
     'log'                                  => [
         'save'       => "Contrat créé",

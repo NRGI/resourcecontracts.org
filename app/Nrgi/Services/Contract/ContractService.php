@@ -379,6 +379,7 @@ class ContractService
         $formData['concession']        = $this->removeKeys($formData['concession']);
         $formData['government_entity'] = $this->removeKeys($formData['government_entity']);
         $formData['show_pdf_text']     = isset($formData['show_pdf_text']) ? $formData['show_pdf_text'] : Contract::SHOW_PDF_TEXT;;
+        $formData['is_contract_signed'] = isset($formData['is_contract_signed'])?$formData['is_contract_signed']:0;
         $data = array_only(
             $formData,
             [
@@ -408,6 +409,7 @@ class ContractService
                 'show_pdf_text',
                 'pages_missing',
                 'annexes_missing',
+                'is_contract_signed',
             ]
         );
 

@@ -196,6 +196,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     </div>
                 @endif
 
+
                 <li class="name-value-wrap">
                     <span class="name"><strong>@lang('contract.document_type'):</strong></span>
                     <span class="value">{{ _l('codelist/documentType.'.$contract->metadata->document_type) }}
@@ -210,7 +211,6 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     @if(is_array($contract->metadata->type_of_contract) && count($contract->metadata->type_of_contract)>0)
                         {{join(', ', array_map(function($v){return _l('codelist/contract_type.'.$v);},
                        $contract->metadata->type_of_contract))}}
-
                     @endif
                     {!! discussion($discussions,$discussion_status, $contract->id,'type_of_contract','metadata') !!}
                     </span>
@@ -231,6 +231,17 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                         {!! discussion($discussions,$discussion_status, $contract->id,'signature_year','metadata') !!}
                     </span>
                 </li>
+
+                <li>
+                    <strong>@lang('contract.is_contract_signed'):</strong>
+                    @if(isset($contract->metadata->is_contract_signed) && $contract->metadata->is_contract_signed)
+                        @lang('contract.yes')
+                    @else
+                        @lang('contract.no')
+                    @endif
+                    {!! discussion($discussions,$discussion_status, $contract->id,'is_contract_signed','metadata') !!}
+                </li>
+
             </ul>
         </div>
 
