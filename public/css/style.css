@@ -970,7 +970,7 @@ input[type="radio"]{
 }
 
 .error{
-    background-color: #e9545a;
+    /*background-color: #e9545a;*/
 }
 
 .warning{
