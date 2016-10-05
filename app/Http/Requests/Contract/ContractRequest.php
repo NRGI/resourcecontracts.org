@@ -1,6 +1,7 @@
 <?php namespace App\Http\Requests\Contract;
 
 use App\Http\Requests\Request;
+use DateTime;
 use Illuminate\Http\Response;
 
 /**
@@ -15,6 +16,7 @@ class ContractRequest extends Request
      */
     public function rules()
     {
+
         $rules = [
             'contract_name'       => 'required',
             'country'             => 'required',
@@ -24,20 +26,21 @@ class ContractRequest extends Request
             'language'            => 'required',
             'resource'            => 'required',
             'category'            => 'required',
-            'document_type'       => 'required'
+            'document_type'       => 'required',
+
         ];
         foreach ($this->request->get('company') as $key => $val) {
             $rules['company.' . $key . '.name'] = 'required';
         }
 
-        if($this->request->get('document_type') == "Contract")
-        {
+        if ($this->request->get('document_type') == "Contract") {
             $rules ['type_of_contract'] = 'required';
         }
 
         if ($this->isMethod('PATCH')) {
             unset($rules['file']);
         }
+
         return $rules;
     }
 
@@ -52,8 +55,23 @@ class ContractRequest extends Request
         $validator->after(
             function () use ($validator) {
 
+                if ($this->input('signature_date')) {
+                    $date = $this->input('signature_date');
+                    $this->validateDate($date, $validator, trans('validation.valid_signature_date'));
+                }
+                if ($this->input('company')) {
+                    $companies = $this->input('company');
+                    foreach ($companies as $company) {
+                        $this->validateDate($company['company_founding_date'], $validator, trans('validation.valid_incorporation_date'));
+                    }
+                }
+                if ($this->input('date_retrieval')) {
+                    $date = $this->input('date_retrieval');
+                    $this->validateDate($date, $validator, trans('validation.valid_retrieval_date'));
+                }
                 if (!$this->file('file')) {
                     return;
+
                 }
                 if ($this->file('file')->isValid()) {
                     $file            = $this->file('file');
@@ -107,5 +125,25 @@ class ContractRequest extends Request
             'file.mimes'    => trans('validation.file_must_be_pdf'),
             'file.max'      => trans('validation.file_upload_limit')
         ];
+    }
+
+    /**
+     * Validate year between 1990 to 2016
+     * @param $date
+     * @param $validator
+     * @param $message
+     */
+    private function validateDate($date, &$validator, $message)
+    {
+        $date    = DateTime::createFromFormat("Y-m-d", $date);
+        $year    = $date->format("Y");
+        $nowYear = (int) date('Y');
+        $message = sprintf($message, $nowYear);
+
+        if ($year < 1900 || $year > $nowYear) {
+
+            $validator->errors()->add('signature_date', $message);
+        }
+
     }
 }

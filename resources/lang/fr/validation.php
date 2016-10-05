@@ -105,4 +105,7 @@ return [
     'file_required'       => 'fichier de contrat est nécessaire.',
     'file_must_be_pdf'    => 'Le fichier doit être un pdf.',
     'file_upload_limit'   => 'Vous pouvez télécharger le fichier jusqu\'à 1 Go seulement.',
+    'valid_signature_date'     => 'Année Date de signature devrait entre 1900 - %s',
+    'valid_incorporation_date' => 'Année Date de constitution devrait entre 1900 - %s',
+    'valid_retrieval_date'     => 'Année Date de récupération devrait entre 1900 - %s'
 ];
