@@ -33,6 +33,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\BulkdownloadText',
         'App\Console\Commands\TrackOCID',
         'App\Console\Commands\ImportContracts',
+        'App\Console\Commands\UpdateUserPermRoles',
     ];
 
     /**
