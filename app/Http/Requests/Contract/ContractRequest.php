@@ -57,6 +57,7 @@ class ContractRequest extends Request
 
                 if ($this->input('signature_date')) {
                     $date = $this->input('signature_date');
+
                     $this->validateDate($date, $validator, trans('validation.valid_signature_date'));
                 }
                 if ($this->input('company')) {
@@ -135,14 +136,16 @@ class ContractRequest extends Request
      */
     private function validateDate($date, &$validator, $message)
     {
-        $date    = DateTime::createFromFormat("Y-m-d", $date);
-        $year    = $date->format("Y");
-        $nowYear = (int) date('Y');
-        $message = sprintf($message, $nowYear);
+        if ($date != '') {
+            $date    = DateTime::createFromFormat("Y-m-d", $date);
+            $year    = $date->format("Y");
+            $nowYear = (int) date('Y');
+            $message = sprintf($message, $nowYear);
 
-        if ($year < 1900 || $year > $nowYear) {
+            if ($year < 1900 || $year > $nowYear) {
 
-            $validator->errors()->add('signature_date', $message);
+                $validator->errors()->add('signature_date', $message);
+            }
         }
 
     }
