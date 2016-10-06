@@ -27,10 +27,13 @@ class ContractRequest extends Request
             'resource'            => 'required',
             'category'            => 'required',
             'document_type'       => 'required',
+            'signature_date'      => 'date',
+            'date_retrieval'      => 'date',
 
         ];
         foreach ($this->request->get('company') as $key => $val) {
             $rules['company.' . $key . '.name'] = 'required';
+            $rules['company.' . $key . '.company_founding_date'] = 'date';
         }
 
         if ($this->request->get('document_type') == "Contract") {
@@ -146,6 +149,7 @@ class ContractRequest extends Request
 
                 $validator->errors()->add('signature_date', $message);
             }
+
         }
 
     }
