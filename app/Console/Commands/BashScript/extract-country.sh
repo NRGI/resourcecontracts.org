@@ -5,8 +5,9 @@ USERNAME=$3
 DATABASE=$4
 PASSWORD=$5
 STORAGE=$6
-FILENAME='all-'`date +%Y_%m_%d`
 FOLDER=$7
+COUNTRY=$8
+FILENAME=$COUNTRY'-'`date +%Y_%m_%d`
 
 export PGPASSWORD=$PASSWORD
 mkdir -p $STORAGE/$FOLDER
@@ -14,7 +15,7 @@ mkdir -p  $STORAGE/'download'
 
 IFS=$'\n'
 
-for con in $(echo "$(psql -X -d $DATABASE -U $USERNAME -h $HOST -p $PORT -t -c "SELECT id,metadata->>'open_contracting_id' from contracts")"|xargs -n3)
+for con in $(echo "$(psql -X -d $DATABASE -U $USERNAME -h $HOST -p $PORT -t -c "SELECT id,metadata->>'open_contracting_id' from contracts where metadata->'country'->>'code'='${COUNTRY}'")"|xargs -n3)
   do
     contractID=$(echo $con | awk '{print $1}')
     OCID=$(echo $con | awk '{print $3}')

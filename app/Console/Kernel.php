@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\UpdateMTurkAssignment',
         'App\Console\Commands\UpdateAnnotationSection',
         'App\Console\Commands\AnnotationHarmonization',
-        'App\Console\Commands\BulkdownloadText',
+        'App\Console\Commands\BulkDownloadText',
         'App\Console\Commands\TrackOCID',
         'App\Console\Commands\ImportContracts',
         'App\Console\Commands\UpdateUserPermRoles',
