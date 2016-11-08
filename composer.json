@@ -10,7 +10,7 @@
   "require": {
     "laravel/framework": "5.0.*",
     "illuminate/html": "5.0",
-    "zizaco/entrust": "dev-laravel-5",
+    "zizaco/entrust": "1.4.1",
     "rap2hpoutre/laravel-log-viewer": "0.1.*",
     "league/flysystem-aws-s3-v2": "^1.0",
     "symfony/process": "^2.6",

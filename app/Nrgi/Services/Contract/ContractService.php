@@ -759,11 +759,24 @@ class ContractService
 
             $contract->save();
 
+            $dataToCkan = array(
+                "id"            => $contract->id,
+                "contract_name" => $contract->metadata->contract_name,
+                "file_url"      => $contract->metadata->file_url,
+                "license"       => $contract->metadata->concession[0]->license_name
+            );
+
             if ($status == Contract::STATUS_PUBLISHED) {
                 $this->queue->push(
                     'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
                     ['contract_id' => $id, 'type' => $type],
                     'elastic_search'
+                );
+                // Posting to CKAN API
+                $this->queue->push(
+                    'App\Nrgi\Services\Queue\PostToCkanApiQueue',
+                    $dataToCkan,
+                    'rc_to_ckan'
                 );
             }
 
@@ -773,6 +786,12 @@ class ContractService
                     'App\Nrgi\Services\Queue\DeleteElementQueue',
                     ['contract_id' => $id, 'type' => $type],
                     'elastic_search'
+                );
+
+                $this->queue->push(
+                    'App\Nrgi\Services\Queue\DeleteFromCkanApiQueue',
+                    $dataToCkan,
+                    'rc_to_ckan'
                 );
             }
             $this->logger->activity(

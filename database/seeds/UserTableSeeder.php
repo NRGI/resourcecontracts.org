@@ -17,7 +17,7 @@ class UserTableSeeder extends Seeder
     {
         $admin     = User::firstOrCreate(
             [
-                'name'     => "admin",
+                'name'     => 'admin',
                 'email'    => 'admin@nrgi.app',
                 'password' => Hash::make('admin123'),
                 'organization' => '',

@@ -56,6 +56,13 @@ return [
 			'port'   => '11300',
 			'ttr'    => 60,
 		],
+        'rc_to_ckan' => [
+            'driver' => 'beanstalkd',
+            'host'   => 'localhost',
+            'queue'  => 'rc_to_ckan_queue',
+            'port'   => '11300',
+            'ttr'    => 60,
+        ],
 		'queue-mail' => [
 			'driver' => 'beanstalkd',
 			'host'   => 'localhost',
