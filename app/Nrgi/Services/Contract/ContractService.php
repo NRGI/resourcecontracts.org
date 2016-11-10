@@ -760,10 +760,11 @@ class ContractService
             $contract->save();
 
             $dataToCkan = array(
-                "id"            => $contract->id,
+                "contract_id"   => $contract->id,
                 "contract_name" => $contract->metadata->contract_name,
                 "file_url"      => $contract->metadata->file_url,
-                "license"       => $contract->metadata->concession[0]->license_name
+                "license"       => $contract->metadata->concession[0]->license_name,
+                "is_supporting_document" => (integer) $contract->metadata->is_supporting_document
             );
 
             if ($status == Contract::STATUS_PUBLISHED) {
