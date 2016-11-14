@@ -61,6 +61,12 @@ $(document).ready(function () {
         $('.landmatrix-page-wrap').show();
     }
 
+    $('[data-toggle="popover"]').click(function (e) {
+        e.preventDefault();
+    });
+
+    $('[data-toggle="popover"]').popover({html: true});
+
 });
 
 $(function () {
@@ -84,7 +90,7 @@ $(function () {
         }
     });
 
-    $(document).on('click', 'div.discussion-wrapper .btn-close', function(){
+    $(document).on('click', 'div.discussion-wrapper .btn-close', function () {
         $(this).parent().parent('div.discussion-wrapper').slideUp();
     });
 
@@ -94,7 +100,7 @@ $(function () {
         parent.find('div.error').remove();
 
         if (parent.find('.commentField').val() == '') {
-            parent.find('.commentField').after('<div class="error">'+ LANG.comment_required +'</div>');
+            parent.find('.commentField').after('<div class="error">' + LANG.comment_required + '</div>');
             return false;
         }
 
@@ -106,13 +112,13 @@ $(function () {
         $.ajax({
             url: action,
             type: 'Post',
-            data: {status: parent.find('.status:checked').val() , comment: parent.find('.commentField').val()},
+            data: {status: parent.find('.status:checked').val(), comment: parent.find('.commentField').val()},
             dataType: "JSON",
             success: function (response) {
                 if (response.result == true) {
                     var html = '';
                     $.each(response.message, function (index, dis) {
-                        var status = dis.status == '1' ? ' <span class="label label-success pull-right">'+LANG.resolved+'</span>' : '';
+                        var status = dis.status == '1' ? ' <span class="label label-success pull-right">' + LANG.resolved + '</span>' : '';
                         html += '<div class="panel panel-default">' +
                             '<div class="panel-heading">' +
                             '<p class="comment-user"><i class="fa fa-user"></i> ' + dis.user.name + '</p>' +
@@ -129,9 +135,9 @@ $(function () {
                     parent.find('.commentField').val('');
                     var key_html = '';
                     if (response.message[0].status == 1) {
-                        key_html = '<span class="label label-success">(' + response.message.length + ') '+ LANG.resolved+'</span>';
+                        key_html = '<span class="label label-success">(' + response.message.length + ') ' + LANG.resolved + '</span>';
                     } else {
-                        key_html = '<span  class="label label-red">(' + response.message.length + ')'+ LANG.open +'</span>';
+                        key_html = '<span  class="label label-red">(' + response.message.length + ')' + LANG.open + '</span>';
                     }
                     $(key).html(key_html);
 
@@ -156,15 +162,8 @@ $(function () {
 
     });
 
-    if($('[data-toggle="tooltip"]').length > 0)
-    {
+    if ($('[data-toggle="tooltip"]').length > 0) {
         $('[data-toggle="tooltip"]').tooltip();
     }
-
-    $('.translate').on('click',function(){
-        var lang = $(this).data('lang');
-        var url = window.location.href;
-
-    });
 });
 

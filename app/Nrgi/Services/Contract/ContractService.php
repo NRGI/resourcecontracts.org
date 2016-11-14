@@ -8,6 +8,7 @@ use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\Discussion\DiscussionService;
 use App\Nrgi\Services\Contract\Page\PageService;
+use App\Nrgi\Services\Language\LanguageService;
 use Exception;
 use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
@@ -18,6 +19,7 @@ use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Lang;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -82,6 +84,10 @@ class ContractService
      * @var AnnotationRepositoryInterface
      */
     protected $annotation;
+    /**
+     * @var LanguageService
+     */
+    protected $lang;
 
     /**
      * @param ContractRepositoryInterface   $contract
@@ -101,6 +107,7 @@ class ContractService
      * @param WordGenerator                 $word
      * @param ActivityService               $activityService
      * @param AnnotationRepositoryInterface $annotation
+     * @param LanguageService               $lang
      */
     public function __construct(
         ContractRepositoryInterface $contract,
@@ -118,7 +125,8 @@ class ContractService
         PageService $pages,
         WordGenerator $word,
         ActivityService $activityService,
-        AnnotationRepositoryInterface $annotation
+        AnnotationRepositoryInterface $annotation,
+        LanguageService $lang
     ) {
         $this->contract        = $contract;
         $this->auth            = $auth;
@@ -135,6 +143,7 @@ class ContractService
         $this->db              = $db;
         $this->activityService = $activityService;
         $this->annotation      = $annotation;
+        $this->lang            = $lang;
     }
 
     /**
@@ -313,6 +322,44 @@ class ContractService
     }
 
     /**
+     * update translated contract
+     *
+     * @param       $contractID
+     * @param array $formData
+     *
+     * @return bool
+     */
+    public function updateContractTrans($contractID, array $formData)
+    {
+        $data = array_only(
+            $formData,
+            [
+                'contract_name',
+                'company',
+                'project_title',
+                'project_identifier',
+                'concession',
+                'disclosure_mode_text',
+                'contract_note',
+            ]
+        );
+
+        if (isset($formData['disclosure_mode'])) {
+            $data['disclosure_mode'] = $formData['disclosure_mode'];
+        }
+
+        $contract                           = $this->contract->findContract($contractID);
+        $metadata_trans                     = json_decode(json_encode($contract->metadata_trans), true);
+        $metadata_trans[$formData['trans']] = $data;
+        $contract->metadata_trans           = $metadata_trans;
+        $contract->updated_by               = $this->auth->id();
+        $contract->metadata_status          = Contract::STATUS_DRAFT;
+        $contract->save();
+
+        return true;
+    }
+
+    /**
      * Update Contract
      *
      * @param       $contractID
@@ -322,10 +369,16 @@ class ContractService
      */
     public function updateContract($contractID, array $formData)
     {
+        if (isset($formData['trans']) && $formData['trans'] != $this->lang->defaultLang(
+            ) && $this->lang->isValidTranslationLang($formData['trans'])
+        ) {
+            return $this->updateContractTrans($contractID, $formData);
+        }
+
         try {
             $contract = $this->contract->findContract($contractID);
         } catch (Exception $e) {
-            $this->logger->error('updateContract : Contract not found', ['Contract ID' => $contractID]);
+            $this->logger->error('updateContract : '.$e->getMessage(), ['Contract ID' => $contractID]);
 
             return false;
         }
@@ -968,11 +1021,13 @@ class ContractService
     /**
      * get type of contract for given contracts
      *
-     * @param $typeOfContract
+     * @param        $typeOfContract
+     *
+     * @param string $lang
      *
      * @return array
      */
-    public function getTypeOfContract($typeOfContract)
+    public function getTypeOfContract($typeOfContract, $lang = 'en')
     {
         $tocs = [];
         foreach ($typeOfContract as $toc) {
@@ -982,11 +1037,18 @@ class ContractService
         }
         $tocs = array_filter($tocs);
         $tocs = array_map(
-            function ($v) {
-                return config('abbreviation_toc.'.$v);
+            function ($v) use ($lang) {
+                if ($this->lang->defaultLang() == $lang) {
+                    $abb = config('abbreviation_toc.'.$v);
+                } else {
+                    $abb = trans('codelist/contract_type.'.trim($v), [], null, $lang);
+                }
+
+                return $abb;
             },
             $tocs
         );
+
         $tocs = join(', ', $tocs);
 
         return $tocs;
@@ -1047,22 +1109,54 @@ class ContractService
      */
     public function getContractName($contracts)
     {
-        $con = json_decode(json_encode($contracts), false);
-        $id  = isset($con->contract_id) ? $con->contract_id : null;
+        $con  = json_decode(json_encode($contracts), false);
+        $id   = isset($con->contract_id) ? $con->contract_id : null;
+        $lang = 'en';
 
-        return $this->refineContract($con, $id);
+        if (!is_null($id) && isset($con->trans)) {
+            $lang = $con->trans;
+            $con  = $this->getContractForTranslation($con, $id);
+        }
+
+        return $this->refineContract($con, $id, $lang);
+    }
+
+    /**
+     * Get Contract For translation
+     *
+     */
+    public function getContractForTranslation($con, $id)
+    {
+        $data     = array_only(
+            (array) $con,
+            [
+                'contract_name',
+                'company',
+                'project_title',
+                'project_identifier',
+                'concession',
+                'disclosure_mode_text',
+                'contract_note',
+            ]
+        );
+        $contract = $this->find($id);
+        $contract->setLang($this->lang->current_translation());
+        $metadata = json_decode(json_encode($contract->metadata), true);
+
+        return (object) array_replace_recursive($metadata, $data);
     }
 
     /**
      * Refine Contract name
      *
-     * @param      $contract
+     * @param        $contract
      *
-     * @param null $id
+     * @param null   $id
+     * @param string $lang
      *
      * @return string
      */
-    public function refineContract($contract, $id = null)
+    public function refineContract($contract, $id = null, $lang = 'en')
     {
         $cn = $ln = $tc = $sy = $nn = $a = null;
 
@@ -1075,7 +1169,7 @@ class ContractService
         }
 
         if (!empty($contract->type_of_contract)) {
-            $tc = $this->getTypeOfContract($contract->type_of_contract);
+            $tc = $this->getTypeOfContract($contract->type_of_contract, $lang);
         } else {
             $tc = trim($contract->document_type);
         }

@@ -3,10 +3,9 @@ $router->group(
     ['namespace' => 'Contract'],
     function () use ($router) {
         $router->resource('contract', 'ContractController');
-
+        $router->get('contract/{id}/edit/{lang}', ['as' => 'contract.edit.trans', 'uses' => 'ContractController@edit']);
         $router->get('contract/discussion/{id}/{type}/{key}', ['as' => 'contract.discussion', 'uses' => 'Discussion\DiscussionController@index']);
         $router->post('contract/discussion/{id}/{type}/{key}', ['as' => 'contract.discussion.create', 'uses' => 'Discussion\DiscussionController@create']);
-
         $router->get('contract/{id}/download', ['as' => 'contract.download', 'uses' => 'ContractController@download']);
         $router->post('contract/{id}/page', ['as' => 'contract.page.store', 'uses' => 'Page\PageController@store']);
         $router->post('contract/{id}/output', ['as' => 'contract.output.save', 'uses' => 'ContractController@saveOutputType']);
@@ -25,5 +24,6 @@ $router->group(
         $router->get('contract/{id}/review', ['as' => 'contract.review', 'uses' => 'Page\PageController@reviewnew']);
         $router->get('contract/select/type', ['as' => 'contract.select.type', 'uses' => 'ContractController@contractType']);
         $router->any('contract/generate/name',['as' => 'contract.generate.name', 'uses' =>'ContractController@getContractName']);
+        $router->get('contract/{id}/{lang}', ['as' => 'contract.show.trans', 'uses' => 'ContractController@show']);
     }
 );

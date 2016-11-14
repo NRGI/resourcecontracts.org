@@ -48,7 +48,7 @@ if (!empty($contract->metadata->government_entity)) {
     </div>
 @endif
 
-@if($action == 'edit')
+@if($action == 'edit' && !isset($edit_trans))
     <div id="new-document" style="display: none" class="form-group">
         <label for="Select PDF" class="col-sm-2 control-label">@lang('contract.contract_file')</label>
 
@@ -104,7 +104,8 @@ if (!empty($contract->metadata->government_entity)) {
 
     <div class="col-sm-7">
         {!! Form::select('language',
-        [''=>trans('codelist/language')['major'],'Other'=>trans('codelist/language')['minor']],
+        [''=>trans('codelist/language',[],null,$locale)['major'],
+        'Other'=>trans('codelist/language',[],null,$locale)['minor']],
         isset($contract->metadata->language)?$contract->metadata->language:null, ["class"=>"required form-control"])!!}
         <label id="language-error" class="error" for="language"></label>
     </div>
@@ -118,7 +119,13 @@ if (!empty($contract->metadata->government_entity)) {
     <label for="country" class="col-sm-2 control-label">@lang('contract.country') <span class="red">*</span></label>
 
     <div class="col-sm-7">
-        <?php $country_list = ['' => trans('global.select')] + $country;?>
+        <?php
+            foreach($country as $k => $cn)
+                {
+					$country[$k] = trans('codelist/country.'.$k, [],null,$locale);
+                }
+
+        $country_list = ['' => trans('global.select')] + $country;?>
         {!! Form::select('country', $country_list ,
         isset($contract->metadata->country->code)?$contract->metadata->country->code:null, ["class"=>"required
         form-control" , "id" => "country"])!!}
@@ -129,13 +136,7 @@ if (!empty($contract->metadata->government_entity)) {
     @endif
 </div>
 <?php
-$resourceList = trans('codelist/resource');
-if (isset($contract->metadata->resource)) {
-    $diff = array_diff($contract->metadata->resource, $resourceList);
-    foreach ($diff as $resource) {
-        $resourceList[$resource] = $resource;
-    }
-}
+$resourceList = trans('codelist/resource',[],null,$locale);
 ?>
 <div class="form-group">
     <label for="resource" class="col-sm-2 control-label">@lang('contract.resource') <span class="red">*</span></label>
@@ -230,7 +231,7 @@ if (isset($contract->metadata->resource)) {
     <?php
     if(isset($contract->file)){
         $dt = (isset($contract->metadata->document_type) && !isset($_GET['parent'])) ? $contract->metadata->document_type : old('document_type');
-        if (!array_key_exists($dt, trans('codelist/documentType')) AND $dt != '') {
+        if (!array_key_exists($dt, trans('codelist/documentType',[],null,$locale)) AND $dt != '') {
             $dt = 'Other';
         }
     }
@@ -241,7 +242,7 @@ if (isset($contract->metadata->resource)) {
     <label for="document_type" class="col-sm-2 control-label">@lang('contract.document_type') <span class="red">*</span></label>
     <div class="col-sm-7">
 
-         {!! Form::select('document_type',[''=>trans('Select')]+ trans('codelist/documentType'),
+         {!! Form::select('document_type',[''=>trans('Select')]+ trans('codelist/documentType',[],null,$locale),
         $dt, ["class"=>"required form-control", "id"=>"document_type"])!!}
         @if($dt == 'Other')
             {!! Form::text('document_type',
@@ -263,13 +264,13 @@ if (isset($contract->metadata->resource)) {
         <?php
         $toc = (isset($contract->metadata->type_of_contract) && !(isset($_GET['parent'])) )? $contract->metadata->type_of_contract : old('type_of_contract');
         ?>
-        {!! Form::select('type_of_contract[]', trans('codelist/contract_type'),
+        {!! Form::select('type_of_contract[]', trans('codelist/contract_type',[],null,$locale),
         $toc,
         ["multiple"=>"multiple", "class"=>" form-control", "id"=>"type_of_contract"])!!}
 		<?php
 			$isTocOther= $tocDiff = false;
 			if (!empty($toc)) {
-			    $intersect = array_intersect($toc, trans('codelist/contract_type'));
+			    $intersect = array_intersect($toc, trans('codelist/contract_type',[],null,$locale));
                     foreach($intersect as $i ){
                         $tocDiff   = array_key_exists($i, $intersect);
                     }
@@ -345,14 +346,11 @@ if (isset($contract->metadata->resource)) {
         @if(count($companies)>0)
             @foreach($companies as $k => $v)
                 <?php
-
                 $v = (object) $v;
-
                 ?>
                 <div class="item" {{$k ==0 ? 'id=template' : ''}}>
                     <div class="form-group">
                         <label for="company_name" class="col-sm-2 control-label">@lang('contract.company_name') <span class="red">*</span></label>
-
                         <div class="col-sm-7">
                             {!! Form::text("company[$i][name]",
                             isset($v->name)?$v->name:null,
@@ -369,7 +367,7 @@ if (isset($contract->metadata->resource)) {
                         control-label'])!!}
                         <div class="col-sm-7">
                             {!! Form::input('text',"company[$i][participation_share]",isset($v->participation_share)?$v->participation_share:null
-                            ,["class"=>"form-control","step"=>"any","min"=>0,"max"=>1])!!}
+                            ,["class"=>"form-control participation_share","step"=>"any","min"=>0,"max"=>1])!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'participation_share-'.$k,'metadata') !!}
@@ -381,11 +379,10 @@ if (isset($contract->metadata->resource)) {
                         trans('contract.jurisdiction_of_incorporation'),
                         ['class'=>'col-sm-2 control-label'])!!}
                         <div class="col-sm-7">
-                            {!! Form::select("company[$i][jurisdiction_of_incorporation]", ['' => trans
-                            ('global.select')] +
-                            trans('codelist/country') ,
+                            {!! Form::select("company[$i][jurisdiction_of_incorporation]",
+                            ['' => trans('global.select')] + trans('codelist/country',[],null,$locale) ,
                             isset($v->jurisdiction_of_incorporation)?$v->jurisdiction_of_incorporation:null,
-                            ["class"=>"form-control"])!!}
+                            ["class"=>"form-control jurisdiction_of_incorporation"])!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'jurisdiction_of_incorporation-'.$k,'metadata') !!}
@@ -398,7 +395,7 @@ if (isset($contract->metadata->resource)) {
                         <div class="col-sm-7">
                             {!! Form::text("company[$i][registration_agency]",
                             isset($v->registration_agency)?$v->registration_agency:null,
-                            ["class"=>"form-control"])!!}
+                            ["class"=>"form-control registration_agency"])!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'registration_agency-'.$k,'metadata') !!}
@@ -411,7 +408,7 @@ if (isset($contract->metadata->resource)) {
                         <div class="col-sm-7">
                             {!! Form::text("company[$i][company_founding_date]",
                             isset($v->company_founding_date)?$v->company_founding_date:null,
-                            ["class"=>"datepicker form-control", 'placeholder' => 'YYYY-MM-DD'])!!}
+                            ["class"=>"datepicker form-control company_founding_date", 'placeholder' => 'YYYY-MM-DD'])!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'company_founding_date-'.$k,'metadata') !!}
@@ -419,12 +416,11 @@ if (isset($contract->metadata->resource)) {
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('company_address', trans('contract.company_address'), ['class'=>'col-sm-2
-                        control-label'])!!}
+                        {!! Form::label('company_address', trans('contract.company_address'), ['class'=>'col-sm-2 control-label'])!!}
                         <div class="col-sm-7">
                             {!! Form::text("company[$i][company_address]",
                             isset($v->company_address)?$v->company_address:null,
-                            ["class"=>"form-control"])!!}
+                            ["class"=>"form-control company_address"])!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'company_address-'.$k,'metadata') !!}
@@ -437,7 +433,7 @@ if (isset($contract->metadata->resource)) {
                         <div class="col-sm-7">
                             {!! Form::text("company[$i][company_number]",
                             isset($v->company_number)?$v->company_number:null,
-                            ["class"=>"form-control"])!!}
+                            ["class"=>"form-control company_number"])!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'company_number-'.$k,'metadata') !!}
@@ -473,14 +469,14 @@ if (isset($contract->metadata->resource)) {
                     </div>
 
                     <div class="form-group">
-                        <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i> {!!
-                            Form::label('open_corporate_id',trans('contract.open_corporate'), ['class'=>'col-sm-2
-                            control-label'])!!}</a>
+                        <a href="http://opencorporates.com" target="_blank"><i class="glyphicon glyphicon-link"></i>
+                            {!! Form::label('open_corporate_id',trans('contract.open_corporate'), ['class'=>'col-sm-2 control-label'])!!}
+                        </a>
 
                         <div class="col-sm-7">
                             {!! Form::text("company[$i][open_corporate_id]",
                             isset($v->open_corporate_id)?$v->open_corporate_id:null,
-                            ["class"=>"digit form-control"])!!}
+                            ["class"=>"digit form-control open_corporate_id"])!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'open_corporate_id-'.$k,'metadata') !!}
@@ -488,12 +484,14 @@ if (isset($contract->metadata->resource)) {
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label'])
-                        !!}
+                        {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
                         <div class="col-sm-7">
-                            {!! Form::radio("company[$i][operator]", 1, (isset($v->operator) && $v->operator==1)?true:false , ['class' => 'field']) !!} @lang('global.yes')
-                            {!! Form::radio("company[$i][operator]", 0, (isset($v->operator) && $v->operator==0)?true:false, ['class' => 'field']) !!} @lang('global.no')
-                            {!! Form::radio("company[$i][operator]", -1, (isset($v->operator) && $v->operator==-1)?true:false, ['class' => 'field']) !!} @lang('global.not_available')
+                            {!! Form::radio("company[$i][operator]", 1, (isset($v->operator) && $v->operator==1)?true:false , ['class' => 'field']) !!}
+							{{trans('global.yes',[],null,$locale)}}
+                            {!! Form::radio("company[$i][operator]", 0, (isset($v->operator) && $v->operator==0)?true:false, ['class' => 'field']) !!}
+							{{trans('global.no',[],null,$locale)}}
+                            {!! Form::radio("company[$i][operator]", -1, (isset($v->operator) && $v->operator==-1)?true:false, ['class' => 'field']) !!}
+							{{trans('global.not_available',[],null,$locale)}}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'operator-'.$k,'metadata') !!}
@@ -502,17 +500,14 @@ if (isset($contract->metadata->resource)) {
                     @if($k > 0)
                         <div data-key="{{$k}}" class="delete">delete</div>
                     @endif
-
                 </div>
                 <?php $i ++;?>
-
             @endforeach
         @endif
     @else
         <div class="item">
             <div class="form-group">
                 <label for="company_name" class="col-sm-2 control-label">@lang('contract.company_name') <span class="red">*</span></label>
-
                 <div class="col-sm-7">
                     {!! Form::text("company[0][name]",null,["class"=>"form-control required company_name" , "id"=> "company_0_name"])!!}
                 </div>
@@ -529,8 +524,8 @@ if (isset($contract->metadata->resource)) {
                 {!! Form::label('jurisdiction_of_incorporation', trans('contract.jurisdiction_of_incorporation'),
                 ['class'=>'col-sm-2 control-label'])!!}
                 <div class="col-sm-7">
-                    {!! Form::select('company[0][jurisdiction_of_incorporation]', ['' => trans('global.select')] +
-                    trans('codelist/country') ,
+                    {!! Form::select('company[0][jurisdiction_of_incorporation]',
+                    ['' => trans('global.select')] + trans('codelist/country',[],null,$locale) ,
                     isset($contract->metadata->country->code)?$contract->metadata->country->code:null,
                     ["class"=>"form-control" , "id"=> "company_0_jurisdiction"])!!}
                 </div>
@@ -592,9 +587,12 @@ if (isset($contract->metadata->resource)) {
             <div class="form-group">
                 {!! Form::label('operator',trans('contract.is_operator'),['class'=>'col-sm-2 control-label']) !!}
                 <div class="col-sm-7">
-                    {!! Form::radio('company[0][operator]', 1, false, ['class' => 'field' , 'id' => 'company_0_operator_yes']) !!} @lang('global.yes')
-                    {!! Form::radio('company[0][operator]', 0, false, ['class' => 'field' , 'id' => 'company_0_operator_no']) !!} @lang('global.no')
-                    {!! Form::radio('company[0][operator]', -1, true, ['class' => 'field']) !!} @lang('global.not_available')
+                    {!! Form::radio('company[0][operator]', 1, false, ['class' => 'field' , 'id' => 'company_0_operator_yes']) !!}
+					{{trans('global.yes',[],null,$locale)}}
+                    {!! Form::radio('company[0][operator]', 0, false, ['class' => 'field' , 'id' => 'company_0_operator_no']) !!}
+					{{trans('global.no',[],null,$locale)}}
+                    {!! Form::radio('company[0][operator]', -1, true, ['class' => 'field']) !!}
+					{{trans('global.not_available',[],null,$locale)}}
                 </div>
             </div>
         </div>
@@ -668,7 +666,7 @@ if (isset($contract->metadata->resource)) {
                         @endif
                     </div>
                     @if($k>0)
-                        <div data-key="{{$k}}" class="delete">delete</div>
+                        <div data-key="{{$k}}" class="delete">{{trans('global.delete')}}</div>
                     @endif
                 </div>
 
@@ -729,7 +727,7 @@ if (isset($contract->metadata->resource)) {
     <div class="col-sm-7">
         <select class="form-control" name="disclosure_mode" id="disclosure_mode">
             <option value="">Select</option>
-            @foreach(trans('codelist/disclosure_mode') as $key=>$value)
+            @foreach(trans('codelist/disclosure_mode',[],null,$locale) as $key=>$value)
                 <option value="{{$key}}" @if($key==$disclosure_mode) selected @endif>{{$value}}</option>
             @endforeach
         </select>
@@ -866,12 +864,13 @@ if (isset($contract->metadata->resource)) {
 
         ?>
         <label class="checkbox-inline">
-            {!! Form::radio("is_supporting_document", 1, $is_supporting_document_value , ['class' => 'field is-supporting-document',$disable_supporting]) !!} @lang('global.yes')
+            {!! Form::radio("is_supporting_document", 1, $is_supporting_document_value , ['class' => 'field is-supporting-document',$disable_supporting]) !!}
+			{{trans('global.yes',[],null,$locale)}}
         </label>
         <label class="checkbox-inline">
-            {!! Form::radio("is_supporting_document", 0, $is_parent_document_value, ['class' => 'field is-supporting-document',$disable_parent]) !!} @lang('global.no')
+            {!! Form::radio("is_supporting_document", 0, $is_parent_document_value, ['class' => 'field is-supporting-document',$disable_parent]) !!}
+			{{trans('global.no',[],null,$locale)}}
         </label>
-
     </div>
     @if($action == 'edit')
         {!! discussion($discussions,$discussion_status, $contract->id,'is_supporting_document','metadata') !!}
@@ -906,7 +905,6 @@ if (isset($contract->metadata->resource)) {
                 <?php
                 array_push($docId, $doc['id']);
                 ?>
-
             </div>
         @endforeach
     @endif
@@ -919,9 +917,12 @@ if (isset($contract->metadata->resource)) {
         <?php
         $annexes_missing = isset($contract->metadata->annexes_missing) ? $contract->metadata->annexes_missing : - 1;
         ?>
-        {!! Form::radio('annexes_missing', 1 ,($annexes_missing=='1') ? true : null , ['class' => 'field']) !!} @lang('global.yes')
-        {!! Form::radio('annexes_missing', 0 ,($annexes_missing=='0') ? true : null , ['class' => 'field']) !!} @lang('global.no')
-        {!! Form::radio('annexes_missing', -1,($annexes_missing=='-1') ? true : null, ['class' => 'field']) !!} @lang('global.not_available')
+        {!! Form::radio('annexes_missing', 1 ,($annexes_missing=='1') ? true : null , ['class' => 'field']) !!}
+		{{trans('global.yes',[],null,$locale)}}
+        {!! Form::radio('annexes_missing', 0 ,($annexes_missing=='0') ? true : null , ['class' => 'field']) !!}
+		{{trans('global.no',[],null,$locale)}}
+        {!! Form::radio('annexes_missing', -1,($annexes_missing=='-1') ? true : null, ['class' => 'field']) !!}
+		{{trans('global.not_available',[],null,$locale)}}
     </div>
     @if($action == 'edit')
         {!! discussion($discussions,$discussion_status, $contract->id,'annexes_missing','metadata') !!}
@@ -934,9 +935,12 @@ if (isset($contract->metadata->resource)) {
         <?php
         $pages_missing = isset($contract->metadata->pages_missing) ? $contract->metadata->pages_missing : - 1;
         ?>
-        {!! Form::radio('pages_missing', 1 ,($pages_missing=='1') ? true : null , ['class' => 'field']) !!} @lang('global.yes')
-        {!! Form::radio('pages_missing', 0 ,($pages_missing=='0') ? true : null , ['class' => 'field']) !!} @lang('global.no')
-        {!! Form::radio('pages_missing', -1,($pages_missing=='-1') ? true : null , ['class' => 'field']) !!}@lang('global.not_available')
+        {!! Form::radio('pages_missing', 1 ,($pages_missing=='1') ? true : null , ['class' => 'field']) !!}
+		{{trans('global.yes',[],null,$locale)}}
+        {!! Form::radio('pages_missing', 0 ,($pages_missing=='0') ? true : null , ['class' => 'field']) !!}
+		{{trans('global.no',[],null,$locale)}}
+        {!! Form::radio('pages_missing', -1,($pages_missing=='-1') ? true : null , ['class' => 'field']) !!}
+		{{trans('global.not_available',[],null,$locale)}}
     </div>
     @if($action == 'edit')
         {!! discussion($discussions,$discussion_status, $contract->id,'pages_missing','metadata') !!}
@@ -944,15 +948,10 @@ if (isset($contract->metadata->resource)) {
 
 </div>
 
-
-
 @if($action == 'edit')
-    
-
     <input class="delete_company" type="hidden" name="delete[company]" value=""/>
     <input class="delete_government_entity" type="hidden" name="delete[government_entity]" value=""/>
     <input class="delete_concession" type="hidden" name="delete[concession]" value=""/>
-
 @endif
 
 <div class="form-action">

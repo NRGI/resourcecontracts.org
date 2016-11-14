@@ -7595,7 +7595,7 @@ input.error {
     padding-bottom: 10px;
 }
 
-.annotation-wrap h3 span.annotation-help{
+.annotation-wrap h3 span.annotation-help {
     display: block;
     font-size: 12px;
     margin-top: 5px;
@@ -7622,10 +7622,11 @@ input.error {
     margin-top: -3px;
 }
 
-.annotation-list .row{
+.annotation-list .row {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 .annotation-text-icon {
     background: url(../images/ic-sprite-new.png) no-repeat -401px 4px;
 }
@@ -7714,6 +7715,124 @@ table td > a .glyphicon-eye-open {
     margin-top: 16px;
 }
 
-.selected-document+.form-group {
+.selected-document + .form-group {
     clear: both;
+}
+
+table.table-contract tr:hover {
+    background: #f0f0f0;
+}
+
+.table-contract .contract-title {
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #4c4c4c;
+    font-weight: bold;
+}
+
+.table-contract .glyphicon-file {
+    font-size: 14px;
+    color: #4c4c4c;
+}
+
+.contract-info-list {
+    margin: 10px 0;
+    color: #555;
+}
+
+.table-contract .published {
+    position: relative;
+    top: -2px;
+    font-size: 12px;
+    color: #555;
+    height: 18px;
+    line-height: 19px;
+    background: #ddd;
+    padding: 0px 10px;
+    border-radius: 10px;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+.table-contract .published i {
+    font-size: 10px;
+    color: #4caf50;
+}
+
+.contract-info-list .info {
+    margin-right: 20px;
+    font-size: 13px;
+}
+
+.contract-info-list .info i {
+    margin-right: 3px;
+}
+
+.contract-extra-details {
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #555;
+}
+
+.contract-extra-details > span {
+    display: inline-block;
+    width: 48%;
+}
+
+.contract-metadata-lang {
+    font-size: 13px;
+    color: #888;
+    margin-top: 26px;
+}
+
+.contract-metadata-lang .index-lang {
+    float: right;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+.contract-metadata-lang .index-lang .lang-choose-section {
+    padding: 0;
+}
+
+.contract-filter .select2 {
+    width: 14% !important;
+    float: left;
+    margin-right: 20px !important;
+    margin-top: 4px !important;
+}
+
+.index-lang {
+    float: left;
+    margin-left: 20px;
+}
+
+.index-lang .translation-lang-wrapper {
+    padding: 0px !important;
+}
+
+.index-lang .btn-group {
+    width: auto;
+}
+
+.index-lang .btn {
+    padding: 2px 5px;
+    font-size: 12px;
+}
+
+table.contract-table tr:nth-child(odd) {
+    background-color: #F9F9F9;
+}
+
+table.contract-table tr:hover {
+    background-color: #ebebeb;
+}
+
+table.contract-table tr td {
+    padding: 20px 20px 0px !important;
+}
+
+body {
+    overflow-x: hidden;
 }

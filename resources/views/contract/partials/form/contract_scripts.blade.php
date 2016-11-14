@@ -21,6 +21,25 @@
         var docId = {!!json_encode($docId)!!};
         var govEntity = {!!json_encode($govEntity)!!};
         var companyName= {!! json_encode($companyName) !!};
+
+        @if(isset($edit_trans))
+        var arr = ['#contract_identifier', '#signature_date', '#signature_year', '#source_url', '#date_retrieval',
+                    '.el_government_identifier', '#deal_number', '#matrix_page', 'select', 'input:checkbox',
+                    'input:radio', '.open_corporate_id', '.participation_share', '.company_founding_date',
+                    '.company_number'];
+        $('.col-sm-7').click(function () {
+            var inp = $(this).find('input');
+            if (inp.length > 0 && inp.prop('disabled') == true) {
+                console.log('input is disabled');
+            }
+        });
+
+        $('.add-new-btn').hide();
+        $.each(arr, function (index, value) {
+            $(value).parent().parent().addClass("form-group-disabled");
+            $(value).prop('disabled', true);
+        });
+        @endif
     </script>
     <script src="{{asset('js/contract.js')}}"></script>
 @stop

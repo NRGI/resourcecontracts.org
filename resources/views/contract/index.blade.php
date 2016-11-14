@@ -1,16 +1,5 @@
 @extends('layout.app')
 
-@section('css')
-	<style>
-		.select2 {
-			width: 14% !important;
-			float: left;
-			margin-right: 20px !important;
-			margin-top: 4px !important;
-		}
-
-	</style>
-@stop
 @section('content')
 	<div class="panel panel-default">
 		<div class="panel-heading">@lang('contract.all_contract')
@@ -52,7 +41,7 @@
 			</div>
 		</div>
 
-		<div class="panel-body">
+		<div class="panel-body contract-filter">
 			{!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
 			{!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' =>
 			'form-control']) !!}
@@ -75,17 +64,53 @@
 			{!! Form::close() !!}
 			<br/>
 			<br/>
-			<table class="table table-contract table-responsive">
+			<table class="table table-contract table-responsive contract-table">
 				@forelse($contracts as $contract)
 					<tr>
-						<td width="70%">
+						<td width="65%">
 							<i class="glyphicon glyphicon-file"></i>
-							<a href="{{route('contract.show', $contract->id)}}">{{$contract->metadata->contract_name or $contract->metadata->project_title}}</a>
-							<span class="label label-default"><?php echo $contract->metadata->language;?></span>
+							<a href="{{route('contract.show', $contract->id)}}"
+							   class="contract-title">{{$contract->metadata->contract_name or $contract->metadata->project_title}}</a>
+							<span class="label label-default">
+								<?php echo strtoupper(
+										$contract->metadata->language
+								);?>
+							</span>
+							@if($contract->metadata_status == \App\Nrgi\Entities\Contract\Contract::STATUS_PUBLISHED)
+								<span class="published">
+								<i class="glyphicon glyphicon-ok"></i>
+									@lang('contract.published')
+							</span>
+							@endif
+							<div class="contract-info-list">
+								<span class="info">
+									<i class="glyphicon glyphicon-time"></i>
+									{{$contract->metadata->signature_year}}
+								</span>
+								<span class="info">
+									<i class="glyphicon glyphicon glyphicon-map-marker"></i>
+									{{$contract->metadata->country->name}}
+								</span>
+								<span class="info">
+									<i class="glyphicon glyphicon-comment"></i>
+									{{$contract->annotations->count()}}
+								</span>
+							</div>
 						</td>
-						<td align="right">{{getFileSize($contract->metadata->file_size)}}</td>
-						<td align="right"><?php echo $contract->createdDate('M d, Y');?></td>
+						<td align="right">
+							<div class="contract-extra-details">
+								<span>{{getFileSize($contract->metadata->file_size)}}</span>
+								<span><?php echo $contract->createdDate('M d, Y');?></span>
+							</div>
+							<div class="contract-metadata-lang">
+								@lang('contract.translation_available_in')
+								<span class="index-lang">
+									@include('contract.partials.form.language', ['view' => 'show', 'page'=>'index'] )
+								</span>
+							</div>
+						</td>
 					</tr>
+
 				@empty
 					<tr>
 						<td colspan="2">@lang('contract.contract_not_found')</td>

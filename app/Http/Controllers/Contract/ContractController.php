@@ -12,6 +12,7 @@ use App\Nrgi\Services\Contract\ContractFilterService;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\CountryService;
 use App\Nrgi\Services\Contract\Discussion\DiscussionService;
+use App\Nrgi\Services\Language\LanguageService;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -26,7 +27,7 @@ class ContractController extends Controller
     /**
      * @var ActivityService
      */
-    public $activity;
+    protected $activity;
     /**
      * @var ContractService
      */
@@ -111,18 +112,20 @@ class ContractController extends Controller
     /**
      * Display contract create form.
      *
-     * @param Request $request
+     * @param Request         $request
+     * @param LanguageService $lang
      *
      * @return Response
      */
-    public function create(Request $request)
+    public function create(Request $request, LanguageService $lang)
     {
         $country     = $this->countries->all();
         $contracts   = $this->contract->parentContracts();
         $contract    = !is_null($request->get('parent')) ? $this->contract->find($request->get('parent')) : [];
         $companyName = $this->contract->getCompanyNames();
+        $locale      = $lang->defaultLang();
 
-        return view('contract.create', compact('country', 'contracts', 'contract', 'companyName'));
+        return view('contract.create', compact('country', 'contracts', 'contract', 'companyName', 'locale'));
     }
 
     /**
@@ -149,10 +152,12 @@ class ContractController extends Controller
      *
      * @param                   $id
      * @param DiscussionService $discussion
+     * @param LanguageService   $lang
+     * @param Request           $request
      *
      * @return Response
      */
-    public function show($id, DiscussionService $discussion)
+    public function show($id, DiscussionService $discussion, LanguageService $lang, Request $request)
     {
         $contract = $this->contract->findWithAnnotations($id, $withRelation = true);
 
@@ -172,6 +177,15 @@ class ContractController extends Controller
         $discussion_status            = $discussion->getResolved($id);
         $elementState                 = $this->activity->getElementState($id);
 
+        $locale = $request->route()->getParameter('lang');
+
+        if (!is_null($locale)) {
+            if (!$lang->isValidTranslationLang($locale) || $locale == $lang->defaultLang()) {
+                abort(404);
+            }
+            $contract->setLang($locale);
+        }
+
         return view(
             'contract.show',
             compact(
@@ -183,7 +197,8 @@ class ContractController extends Controller
                 'discussions',
                 'discussion_status',
                 'publishedInformation',
-                'elementState'
+                'elementState',
+                'locale'
             )
         );
     }
@@ -194,9 +209,12 @@ class ContractController extends Controller
      * @param                   $id
      * @param DiscussionService $discussion
      *
+     * @param LanguageService   $lang
+     * @param Request           $request
+     *
      * @return Response
      */
-    public function edit($id, DiscussionService $discussion)
+    public function edit($id, DiscussionService $discussion, LanguageService $lang, Request $request)
     {
         $contract           = $this->contract->find($id);
         $country            = $this->countries->all();
@@ -206,9 +224,19 @@ class ContractController extends Controller
         $discussions       = $discussion->getCount($id);
         $discussion_status = $discussion->getResolved($id);
         $companyName       = $this->contract->getCompanyNames();
+        $view              = 'contract.edit';
+        $locale            = $request->route()->getParameter('lang');
+
+        if (!is_null($locale)) {
+            if (!$lang->isValidTranslationLang($locale) || $locale == $lang->defaultLang()) {
+                abort(404);
+            }
+            $contract->setLang($locale);
+            $view = 'contract.edit_trans';
+        }
 
         return view(
-            'contract.edit',
+            $view,
             compact(
                 'contract',
                 'country',
@@ -216,7 +244,8 @@ class ContractController extends Controller
                 'contracts',
                 'discussions',
                 'discussion_status',
-                'companyName'
+                'companyName',
+                'locale'
             )
         );
     }

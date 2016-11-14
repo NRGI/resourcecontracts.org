@@ -47,51 +47,160 @@ class Contract extends Model
      * @var string
      */
     const UPDATED_AT = 'last_updated_datetime';
-
+    /**
+     * Contract update on draft Status
+     */
+    const STATUS_DRAFT = 'draft';
+    /**
+     * Contract update on completed Status
+     */
+    const STATUS_COMPLETED = 'completed';
+    /**
+     * Contract published Status
+     */
+    const STATUS_PUBLISHED = 'published';
+    /**
+     * Contract unpublished Status
+     */
+    const STATUS_UNPUBLISHED = 'unpublished';
+    /**
+     * Contract update on rejected Status
+     */
+    const STATUS_REJECTED = 'rejected';
+    /**
+     * Contract Processing
+     */
+    const PROCESSING_PIPELINE = 0;
+    /**
+     * Contract process running
+     */
+    const PROCESSING_RUNNING = 1;
+    /**
+     * Contract process completed
+     */
+    const PROCESSING_COMPLETE = 2;
+    /**
+     * Contract process failed
+     */
+    const PROCESSING_FAILED = 3;
+    /**
+     * OCR Text send to MTurk
+     */
+    const MTURK_SENT = 1;
+    /**
+     * Mturk Task complete
+     */
+    const MTURK_COMPLETE = 2;
+    /**
+     * Show pdf text on frontend
+     */
+    const SHOW_PDF_TEXT = 1;
+    /**
+     * Pdf Text acceptable
+     */
+    const ACCEPTABLE = 1;
+    /**
+     * Pdf Text needs editing
+     */
+    const NEEDS_EDITING = 2;
+    /**
+     * Pdf text needs full transcription
+     */
+    const NEEDS_FULL_TRANSCRIPTION = 3;
     /**
      * The database table used by the model.
      *
      * @var string
      */
     protected $table = 'contracts';
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['metadata', 'file', 'filehash', 'user_id', 'textType', 'metadata_status', 'text_status'];
+    protected $fillable = [
+        'metadata',
+        'metadata_trans',
+        'file',
+        'filehash',
+        'user_id',
+        'textType',
+        'metadata_status',
+        'text_status',
+    ];
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'metadata_trans' => 'object',
+    ];
 
     /**
-     * Contract Status
+     * Boot the Contact model
+     * Attach event listener to add draft status when creating a contract
+     *
+     * @return void|bool
      */
-    const STATUS_DRAFT       = 'draft';
-    const STATUS_COMPLETED   = 'completed';
-    const STATUS_PUBLISHED   = 'published';
-    const STATUS_UNPUBLISHED = 'unpublished';
-    const STATUS_REJECTED    = 'rejected';
+    public static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope(new CountryScope);
+        static::creating(
+            function ($contract) {
+                $contract->metadata_status    = static::STATUS_DRAFT;
+                $contract->text_status        = null;
+                $contract->pdf_process_status = static::PROCESSING_PIPELINE;
+                $contract->mturk_status       = null;
+
+                return true;
+            }
+        );
+    }
 
     /**
-     * Contract Processing
+     * Set Translation language
+     *
+     * @param $lang
      */
-    const PROCESSING_PIPELINE = 0;
-    const PROCESSING_RUNNING  = 1;
-    const PROCESSING_COMPLETE = 2;
-    const PROCESSING_FAILED   = 3;
+    public function setLang($lang)
+    {
+        if (isset($this->metadata_trans->$lang)) {
+            $metadata_en    = json_decode($this->getOriginal('metadata'), true);
+            $metadata_trans = (array) $this->metadata_trans->$lang;
+            $metadata       = array_replace_recursive($metadata_en, $metadata_trans);
+
+            foreach ($metadata['company'] as $key => $company) {
+                $metadata['company'][$key] = array_replace_recursive(
+                    (array) $metadata_en['company'][$key],
+                    (array) $company
+                );
+            }
+            $this->metadata = $metadata;
+        } else {
+            $this->metadata = json_decode($this->getOriginal('metadata'), true);
+        }
+    }
 
     /**
-     * MTurk Status
+     * Determine if metadata has the translation
+     *
+     * @param $locale
+     *
+     * @return bool
      */
-    const MTURK_SENT     = 1;
-    const MTURK_COMPLETE = 2;
-    const SHOW_PDF_TEXT  = 1;
+    public function hasTranslation($locale)
+    {
+        if (config('lang.default') == $locale) {
+            return true;
+        }
 
-    /**
-     * Metadata Status
-     */
-    const ACCEPTABLE               = 1;
-    const NEEDS_EDITING            = 2;
-    const NEEDS_FULL_TRANSCRIPTION = 3;
+        $metadata = json_decode($this->getOriginal('metadata_trans'), true);
+        if (isset($metadata[$locale])) {
+            return true;
+        }
+
+        return false;
+    }
 
     /**
      * Convert json metadata to array
@@ -117,7 +226,7 @@ class Contract extends Model
      */
     public function getFileUrlAttribute()
     {
-        $path = $this->id . '/' . $this->file;
+        $path = $this->id.'/'.$this->file;
 
         if ($this->pdf_process_status == self::PROCESSING_PIPELINE || $this->pdf_process_status == self::PROCESSING_RUNNING) {
             $path = $this->file;
@@ -146,9 +255,9 @@ class Contract extends Model
         if ($this->pdf_process_status == static::PROCESSING_COMPLETE) {
             $filename     = explode('.', $this->file);
             $filename     = $filename[0];
-            $wordFileName = $filename . '.txt';
+            $wordFileName = $filename.'.txt';
 
-            return getS3FileURL($this->id . '/' . $wordFileName);
+            return getS3FileURL($this->id.'/'.$wordFileName);
         }
 
         return '';
@@ -259,7 +368,16 @@ class Contract extends Model
      */
     public function isEditableStatus($status)
     {
-        if (in_array($status, [static::STATUS_DRAFT, static::STATUS_COMPLETED, static::STATUS_PUBLISHED, static::STATUS_REJECTED,static::STATUS_UNPUBLISHED])) {
+        if (in_array(
+            $status,
+            [
+                static::STATUS_DRAFT,
+                static::STATUS_COMPLETED,
+                static::STATUS_PUBLISHED,
+                static::STATUS_REJECTED,
+                static::STATUS_UNPUBLISHED,
+            ]
+        )) {
             return true;
         }
 
@@ -292,28 +410,6 @@ class Contract extends Model
         }
 
         return $metadata;
-    }
-
-    /**
-     * Boot the Contact model
-     * Attach event listener to add draft status when creating a contract
-     *
-     * @return void|bool
-     */
-    public static function boot()
-    {
-        parent::boot();
-        static::addGlobalScope(new CountryScope);
-        static::creating(
-            function ($contract) {
-                $contract->metadata_status    = static::STATUS_DRAFT;
-                $contract->text_status        = null;
-                $contract->pdf_process_status = static::PROCESSING_PIPELINE;
-                $contract->mturk_status       = null;
-
-                return true;
-            }
-        );
     }
 
     /**

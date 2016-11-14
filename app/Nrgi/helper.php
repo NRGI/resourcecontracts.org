@@ -46,14 +46,16 @@ function getFileHash($file)
 /**
  * get language
  *
- * @param String
+ * @param        $key
+ * @param string $locale
  *
  * @return string
+ *
  */
-function _l($key)
+function _l($key, $locale = 'en')
 {
     if (Lang::has($key)) {
-        return Lang::get($key);
+        return trans($key, [], null, $locale);
     }
     $array = explode('.', $key);
 
@@ -80,13 +82,14 @@ function getS3FileURL($fileName = '')
 /**
  * Get Language Name by code
  *
- * @param $code
+ * @param        $code
+ * @param string $locale
  *
  * @return null
  */
-function getLanguageName($code)
+function getLanguageName($code, $locale = 'en')
 {
-    $lang = trans('codelist/language');
+    $lang = trans('codelist/language', [], null, $locale);
     $lang = $lang['major'] + $lang['minor'];
     $code = strtolower($code);
 

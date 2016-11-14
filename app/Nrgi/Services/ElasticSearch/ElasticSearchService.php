@@ -3,6 +3,7 @@
 use App\Nrgi\Mturk\Services\ActivityService;
 use App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface;
 use App\Nrgi\Services\Contract\ContractService;
+use App\Nrgi\Services\Language\LanguageService;
 use Exception;
 use Guzzle\Http\Client;
 use Psr\Log\LoggerInterface;
@@ -33,6 +34,10 @@ class ElasticSearchService
      * @var ActivityService
      */
     protected $activity;
+    /**
+     * @var LanguageService
+     */
+    protected $lang;
 
     /**
      * @param Client                        $http
@@ -40,31 +45,22 @@ class ElasticSearchService
      * @param ContractService               $contract
      * @param LoggerInterface               $logger
      * @param ActivityService               $activity
+     * @param LanguageService               $lang
      */
     public function __construct(
         Client $http,
         AnnotationRepositoryInterface $annotation,
         ContractService $contract,
         LoggerInterface $logger,
-        ActivityService $activity
+        ActivityService $activity,
+        LanguageService $lang
     ) {
         $this->http       = $http;
         $this->logger     = $logger;
         $this->contract   = $contract;
         $this->annotation = $annotation;
         $this->activity   = $activity;
-    }
-
-    /**
-     * Get full qualified ES url
-     *
-     * @param $request
-     *
-     * @return string
-     */
-    protected function apiURL($request)
-    {
-        return trim(env('ELASTIC_SEARCH_URL'), '/') . '/' . $request;
+        $this->lang       = $lang;
     }
 
     /**
@@ -105,21 +101,30 @@ class ElasticSearchService
         $metadataAttr                    = $contract->metadata;
         $parent                          = $this->contract->getcontracts((int) $contract->getParentContract());
 
-        $metadataAttr->translated_from = $parent;
-        $metadataAttr->show_pdf_text   = 0;
         if ($elementState['text'] == 'published') {
-            $showText                    = true;
-            $metadataAttr->show_pdf_text = 1;
+            $showText = true;
         }
 
-        if(isset($metadataAttr->open_contracting_id_old)){
+        if (isset($metadataAttr->open_contracting_id_old)) {
             unset($metadataAttr->open_contracting_id_old);
         }
 
-        $contract->metadata = $metadataAttr;
-        $metadata           = [
+        $contract->metadata           = $metadataAttr;
+        $trans                        = [];
+        $trans['en']                  = $metadataAttr;
+        $trans['en']->translated_from = $parent;
+        $trans['en']->show_pdf_text   = (int) $showText;
+
+        foreach ($this->lang->translation_lang() as $l) {
+            $contract->setLang($l['code']);
+            $trans[$l['code']]                  = $contract->metadata;
+            $trans[$l['code']]->translated_from = $parent;
+            $trans[$l['code']]->show_pdf_text   = (int) $showText;
+        }
+
+        $metadata = [
             'id'                   => $contract->id,
-            'metadata'             => collect($contract->metadata)->toJson(),
+            'metadata'             => json_encode($trans),
             'total_pages'          => $contract->pages->count(),
             'created_by'           => json_encode(
                 [
@@ -141,7 +146,7 @@ class ElasticSearchService
                 $this->postText($id, false);
             }
         } catch (Exception $e) {
-            $this->logger->error($e->getMessage());
+            $this->logger->error($e->getMessage(), (array) $e);
         }
     }
 
@@ -167,8 +172,7 @@ class ElasticSearchService
             $request  = $this->http->post($this->apiURL('contract/pdf-text'), null, $pages);
             $response = $request->send();
             $this->logger->info('Pdf Text successfully submitted to Elastic Search.', $response->json());
-            if($showText)
-            {
+            if ($showText) {
                 $this->postMetadata($id);
             }
         } catch (Exception $e) {
@@ -201,7 +205,9 @@ class ElasticSearchService
                 $json->text          = $annotation->text;
                 $json->category_key  = $annotation->category;
                 $json->category      = (isset($annotation->category)) ? getCategoryName($annotation->category) : "";
-                $json->cluster       = (isset($annotation->category)) ? getCategoryClusterName($annotation->category) : "";
+                $json->cluster       = (isset($annotation->category)) ? getCategoryClusterName(
+                    $annotation->category
+                ) : "";
                 $annotationData[]    = $json;
             }
         }
@@ -221,25 +227,6 @@ class ElasticSearchService
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
-    }
-
-    /**
-     * Get Metadata for Elastic Search
-     *
-     * @param $metadata
-     *
-     * @return string
-     */
-    protected function getMetadataForES($metadata, $array = false)
-    {
-        $metadata_array = (array) $metadata;
-
-        $meta = array_only(
-            $metadata_array,
-            ['category', 'contract_name', 'signature_date', 'resource', 'file_size', 'file_url', 'country']
-        );
-
-        return $array ? $meta : json_encode($meta);
     }
 
     /**
@@ -303,8 +290,10 @@ class ElasticSearchService
 
     /**
      * Call appropriate function to delete element
+     *
      * @param $id
      * @param $type
+     *
      * @return mixed
      */
     public function deleteElement($id, $type)
@@ -317,6 +306,7 @@ class ElasticSearchService
 
     /**
      * Delete metadata document from elasticsearch
+     *
      * @param $id
      */
     public function deleteMetadata($id)
@@ -332,6 +322,7 @@ class ElasticSearchService
 
     /**
      * Delete text document from elasticsearch
+     *
      * @param $id
      */
     public function deleteText($id)
@@ -347,6 +338,7 @@ class ElasticSearchService
 
     /**
      * Delete annotation document from elasticsearch
+     *
      * @param $id
      */
     public function deleteAnnotation($id)
@@ -360,9 +352,36 @@ class ElasticSearchService
         }
     }
 
-    private function updateShowTextInMetadata()
+    /**
+     * Get full qualified ES url
+     *
+     * @param $request
+     *
+     * @return string
+     */
+    protected function apiURL($request)
     {
-
+        return trim(env('ELASTIC_SEARCH_URL'), '/').'/'.$request;
     }
 
+    /**
+     * Get Metadata for Elastic Search
+     *
+     * @param      $metadata
+     *
+     * @param bool $array
+     *
+     * @return string
+     */
+    protected function getMetadataForES($metadata, $array = false)
+    {
+        $metadata_array = (array) $metadata;
+
+        $meta = array_only(
+            $metadata_array,
+            ['category', 'contract_name', 'signature_date', 'resource', 'file_size', 'file_url', 'country']
+        );
+
+        return $array ? $meta : json_encode($meta);
+    }
 }

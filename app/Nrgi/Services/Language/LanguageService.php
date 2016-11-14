@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Services\Language;
 
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 /**
  * Class LanguageService
@@ -17,15 +18,21 @@ class LanguageService
      * @var string
      */
     protected $key = 'rc_admin_lang';
+    /**
+     * @var Request
+     */
+    protected $request;
 
     /**
      * LanguageService constructor.
      *
-     * @param Carbon $carbon
+     * @param Carbon  $carbon
+     * @param Request $request
      */
-    public function __construct(Carbon $carbon)
+    public function __construct(Carbon $carbon, Request $request)
     {
-        $this->carbon = $carbon;
+        $this->carbon  = $carbon;
+        $this->request = $request;
     }
 
     /**
@@ -114,20 +121,6 @@ class LanguageService
     }
 
     /**
-     * Check for valid Language code
-     *
-     * @param $lang
-     *
-     * @return bool
-     */
-    protected function isValidLang($lang)
-    {
-        $info = $this->getLangInfo($lang);
-
-        return empty($info) ? false : true;
-    }
-
-    /**
      * Get Direction of language
      *
      * @return array
@@ -158,6 +151,64 @@ class LanguageService
     }
 
     /**
+     * Translation languages
+     *
+     * @return array
+     */
+    public function translation_lang()
+    {
+        return config('lang.translation');
+    }
+
+    /**
+     * Get Current Translated lang
+     *
+     * @return string
+     */
+    public function current_translation()
+    {
+        $code = $this->request->route()->getParameter('lang');
+
+        if (!is_null($code) && $this->isValidTranslationLang($code)) {
+            return $code;
+        }
+
+        return $this->defaultLang();
+    }
+
+    /**
+     * Check for valid Translation language
+     *
+     * @param $code
+     *
+     * @return bool
+     */
+    public function isValidTranslationLang($code)
+    {
+        foreach (config('lang.translation') as $lang) {
+            if ($lang['code'] == $code) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Check for valid Language code
+     *
+     * @param $lang
+     *
+     * @return bool
+     */
+    protected function isValidLang($lang)
+    {
+        $info = $this->getLangInfo($lang);
+
+        return empty($info) ? false : true;
+    }
+
+    /**
      * Get Browser Language
      *
      * @return string|null
@@ -170,4 +221,5 @@ class LanguageService
 
         return null;
     }
+
 }
