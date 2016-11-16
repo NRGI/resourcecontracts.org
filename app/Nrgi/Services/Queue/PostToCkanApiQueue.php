@@ -22,6 +22,10 @@ class PostToCkanApiQueue
     }
 
     /**
+     * @var client
+     */
+
+    /**
      * @param $job
      * @param $dataToCkan
      */

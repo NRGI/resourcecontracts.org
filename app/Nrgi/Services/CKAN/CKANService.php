@@ -1,7 +1,8 @@
 <?php namespace App\Nrgi\Services\CKAN;
 
 use App\Nrgi\Services\Contract\ContractService;
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
+use App\Nrgi\Entities\Contract\Contract;
 use Exception;
 
 /**
@@ -18,43 +19,43 @@ class CKANService
      * @var ContractService
      */
     protected $contract;
+
     /**
-     * @param Client                        $http
-     * @param ContractService               $contract
+     * @param Client          $http
+     * @param ContractService $contractService
+     * @param Contract        $contract
      */
-    public function __construct(Client $http, ContractService $contract)
+    public function __construct(Client $http, Contract $contract, ContractService $contractService)
     {
-        $this->http       = $http;
-        $this->contract   = $contract;
+        $this->http            = $http;
+        $this->contract        = $contract;
+        $this->contractSerivce = $contractService;
     }
 
     public function callCkanApi($data)
     {
         $dataToCkan = $data;
 
-        if ($dataToCkan["is_supporting_document"])
-        {
-            //$parentContractId = null;
-        } else
-        {
+        if ($dataToCkan["is_supporting_document"]) {
+            //echo "inside support";
+            $parentContractId = $this->contract->getParentContract();
+            //var_dump($parentContractId);
+            //echo "down";
+        } else {
+            // this runs for parent document i.e if contract is not a supporting document
+            echo "outside";
             $datasetName = (string) $dataToCkan["contract_id"];
-            //ok
-            if($this->datasetExists($datasetName))
-            {
+            if ($this->datasetExists($datasetName)) {
                 $data = $this->prepareResourceDataForCkan($datasetName, $dataToCkan);
-                //ok
-                $res = $this->createResourceInCkan($data);
-                dd($res);
-            } else
-            {
-                try
-                {
+                $res  = $this->createResourceInCkan($data);
+            } else {
+                try {
+                    //working
                     $this->createDatasetInCkan($datasetName);
                     $data = $this->prepareResourceDataForCkan($datasetName, $dataToCkan);
                     $this->createResourceInCkan($data);
-                } catch (Exception $e)
-                {
-                    echo 'Error occurred during dataset creation: ',  $e->getMessage(), "\n";
+                } catch (Exception $e) {
+                    echo 'Error occurred during dataset creation: ', $e->getMessage(), "\n";
                 }
             }
         }
@@ -62,54 +63,68 @@ class CKANService
 
     public function datasetExists($name)
     {
-        return 1;
+        $datasets = null;
+        try {
+            $datasets = $this->http->get('http://demo.ckan.org/api/3/action/package_show?id=nrgi-test-'.$name);
+            $datasets = $datasets->json();
+            $status   = ($datasets['success'] == 1) ? true : false;
+        } catch (Exception $e) {
+            $status = $datasets['success'] == 1 ? true : false;
+        }
+
+        return $status;
     }
 
     public function prepareResourceDataForCkan($datasetName, $dataToCkan)
     {
-        $data = array(
-            "package_id"        => 'nrgi-' . $datasetName,
-            "id"                => (string) $dataToCkan["contract_id"],
-            "name"              => $dataToCkan["contract_name"],
-            "format"            => "PDF",
-            "url"               => $dataToCkan["file_url"],
-            "license"           => $dataToCkan["license"],
-            "description"       => $dataToCkan["contract_name"]
-        );
+        $data = [
+            "package_id"  => 'nrgi-test-'.$datasetName,
+            "id"          => (string) $dataToCkan["contract_id"],
+            "name"        => $dataToCkan["contract_name"],
+            "format"      => "PDF",
+            "url"         => $dataToCkan["file_url"],
+            "license"     => $dataToCkan["license"],
+            "description" => $dataToCkan["contract_name"],
+        ];
+
         return $data;
     }
 
     public function createResourceInCkan($data)
     {
-        //ok
-        $client = new Client();
-        $res = $client->post('http://demo.ckan.org/api/action/resource_create',
-                             [
-                                 'headers'    =>  [
-                                     'Content-Type' => 'application/json',
-                                     'Accept' => 'application/json',
-                                     'Authorization' => '2b89ee7d-44ee-4854-9931-a5276177163f'
-                                 ],
-                                 'body'       => json_encode($data)
-                             ]);
-        return $res;
+        $res = $this->http->post(
+            'http://demo.ckan.org/api/action/resource_create',
+            [
+                'headers' => [
+                    'Content-Type'  => 'application/json',
+                    'Accept'        => 'application/json',
+                    'Authorization' => '2b89ee7d-44ee-4854-9931-a5276177163f',
+                ],
+                'body'    => json_encode($data),
+            ]
+        );
+
+        return $res->json();
     }
 
     public function createDatasetInCkan($datasetName)
     {
-        $data = array(
-            "name"              => 'nrgi-' . $datasetName,
-            "title"             => $datasetName
+        $data = [
+            "name"  => 'nrgi-test-'.$datasetName,
+            "title" => $datasetName,
+        ];
+        $res  = $this->http->post(
+            'http://demo.ckan.org/api/action/package_create',
+            [
+                'headers' => [
+                    'Content-Type'  => 'application/json',
+                    'Accept'        => 'application/json',
+                    'Authorization' => '2b89ee7d-44ee-4854-9931-a5276177163f',
+                ],
+                'body'    => json_encode($data),
+            ]
         );
-        $res = $this->http->post('http://demo.ckan.org/api/action/package_create',
-                                 [
-                                     'headers'    =>  [
-                                         'Content-Type' => 'application/json',
-                                         'Accept' => 'application/json',
-                                         'Authorization' => '2b89ee7d-44ee-4854-9931-a5276177163f'
-                                     ],
-                                     'body'       => json_encode($data)
-                                 ]);
+
         return $res;
     }
 }

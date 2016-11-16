@@ -379,8 +379,8 @@ class ContractService
         $formData['concession']        = $this->removeKeys($formData['concession']);
         $formData['government_entity'] = $this->removeKeys($formData['government_entity']);
         $formData['show_pdf_text']     = isset($formData['show_pdf_text']) ? $formData['show_pdf_text'] : Contract::SHOW_PDF_TEXT;;
-        $formData['is_contract_signed'] = isset($formData['is_contract_signed'])?$formData['is_contract_signed']:0;
-        $data = array_only(
+        $formData['is_contract_signed'] = isset($formData['is_contract_signed']) ? $formData['is_contract_signed'] : 0;
+        $data                           = array_only(
             $formData,
             [
                 "contract_name",
@@ -410,7 +410,7 @@ class ContractService
                 'pages_missing',
                 'annexes_missing',
                 'is_contract_signed',
-                'disclosure_mode_text'
+                'disclosure_mode_text',
             ]
         );
 
@@ -589,7 +589,11 @@ class ContractService
 
         if ($this->contract->delete($contract->id)) {
             $this->logger->info('Contract successfully deleted.', ['Contract Id' => $id]);
-            $this->logger->activity('contract.log.delete', ['contract' => $contract->title, 'id' => $contract->id], null);
+            $this->logger->activity(
+                'contract.log.delete',
+                ['contract' => $contract->title, 'id' => $contract->id],
+                null
+            );
             $this->queue->push(
                 'App\Nrgi\Services\Queue\DeleteToElasticSearchQueue',
                 ['contract_id' => $id],
@@ -759,13 +763,13 @@ class ContractService
 
             $contract->save();
 
-            $dataToCkan = array(
-                "contract_id"   => $contract->id,
-                "contract_name" => $contract->metadata->contract_name,
-                "file_url"      => $contract->metadata->file_url,
-                "license"       => $contract->metadata->concession[0]->license_name,
-                "is_supporting_document" => (integer) $contract->metadata->is_supporting_document
-            );
+            $dataToCkan = [
+                "contract_id"            => $contract->id,
+                "contract_name"          => $contract->metadata->contract_name,
+                "file_url"               => $contract->metadata->file_url,
+                "license"                => $contract->metadata->concession[0]->license_name,
+                "is_supporting_document" => (integer) $contract->metadata->is_supporting_document,
+            ];
 
             if ($status == Contract::STATUS_PUBLISHED) {
                 $this->queue->push(
@@ -1035,7 +1039,11 @@ class ContractService
 
             $this->logger->activity(
                 'contract.log.status',
-                ['type' => 'metadata', 'old_status' => $elementStatus['metadata_status'], 'new_status' => 'unpublished'],
+                [
+                    'type'       => 'metadata',
+                    'old_status' => $elementStatus['metadata_status'],
+                    'new_status' => 'unpublished',
+                ],
                 $id
             );
             $this->logger->activity(
@@ -1045,7 +1053,11 @@ class ContractService
             );
             $this->logger->activity(
                 'contract.log.status',
-                ['type' => 'annotation', 'old_status' => $elementStatus['annotation_status'], 'new_status' => 'unpublished'],
+                [
+                    'type'       => 'annotation',
+                    'old_status' => $elementStatus['annotation_status'],
+                    'new_status' => 'unpublished',
+                ],
                 $id
             );
 
@@ -1484,7 +1496,9 @@ class ContractService
 
     /**
      * Get published information of metadata,text and annotation
+     *
      * @param $id
+     *
      * @return array
      */
     public function getPublishedInformation($id)
@@ -1494,7 +1508,7 @@ class ContractService
         foreach ($data as $element => $info) {
             $information[$element] = [
                 'created_at' => isset($info->created_at) ? $info->created_at->format('D M d, Y h:i A') : '',
-                'user_name'  => isset($info->user->name) ? $info->user->name : ''
+                'user_name'  => isset($info->user->name) ? $info->user->name : '',
             ];
         }
 
