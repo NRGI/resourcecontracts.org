@@ -84,7 +84,7 @@ class PageController extends Controller
                 'page'  => $annotation->document_page_no,
                 'quote' => $annotation->annotation->quote,
                 'text'  => $annotation->annotation->text,
-                'tags'  => $tags
+                'tags'  => $tags,
             ];
         }
 
@@ -100,19 +100,19 @@ class PageController extends Controller
                 'page'  => $annotation->document_page_no,
                 'quote' => $annotation->annotation->quote,
                 'text'  => $annotation->annotation->text,
-                'tags'  => $tags
+                'tags'  => $tags,
             ];
         }
 
         $contract1 = [
             'metadata'    => $contract1Meta,
             'pages'       => $contract1Meta->pages,
-            'annotations' => $contract1Annotations
+            'annotations' => $contract1Annotations,
         ];
         $contract2 = [
             'metadata'    => $contract2Meta,
             'pages'       => $contract2Meta->pages,
-            'annotations' => $contract2Annotations
+            'annotations' => $contract2Annotations,
         ];
 
         return view(
@@ -123,18 +123,24 @@ class PageController extends Controller
 
     /**
      * Save Page text
-     * @param         $id
-     * @param Request $request
+     *
+     * @param                 $id
+     * @param Request         $request
+     * @param ContractService $contract
+     *
      * @return int
      */
     public function store($id, Request $request, ContractService $contract)
     {
-        if ($this->page->saveText($id, $request->input('page'), $request->input('text'))) {
+        $text = preg_replace('/(<[^>]+) style=".*?"/i', '$1', $request->input('text'));
+        $text = strip_tags($text, "<br><br/><p>");
+
+        if ($this->page->saveText($id, $request->input('page'), $text)) {
             $contract              = $contract->find($id);
             $contract->text_status = Contract::STATUS_DRAFT;
             $contract->save();
 
-            return response()->json(['result' => 'success', 'message' => trans('contract.page.save')]);
+            return response()->json(['result' => 'success', 'message' => $text]);
         }
 
         return response()->json(['result' => 'fail', 'message' => trans('contract.page.save_fail')]);
@@ -142,8 +148,10 @@ class PageController extends Controller
 
     /**
      * Get Page Text
+     *
      * @param         $contractID
      * @param Request $request
+     *
      * @return mixed
      */
     public function getText($contractID, Request $request)
@@ -156,7 +164,7 @@ class PageController extends Controller
                 'result'  => 'success',
                 'id'      => $page->id,
                 'pdf'     => $page->pdf_url,
-                'message' => $page->text
+                'message' => $page->text,
             ]
         );
     }
@@ -167,7 +175,7 @@ class PageController extends Controller
 
         return response()->json(
             [
-                'result' => $pages
+                'result' => $pages,
             ]
         );
     }
@@ -225,7 +233,10 @@ class PageController extends Controller
             return abort(404);
         }
 
-        return view('contract.page.annotatenew', compact('contract', 'pages', 'page', 'canEdit', 'canAnnotate', 'back'));
+        return view(
+            'contract.page.annotatenew',
+            compact('contract', 'pages', 'page', 'canEdit', 'canAnnotate', 'back')
+        );
     }
 
     public function reviewnew(Request $request, $contractId)
@@ -245,15 +256,17 @@ class PageController extends Controller
 
     /**
      * Full text search
+     *
      * @param         $contract_id
      * @param Request $request
+     *
      * @return array
      */
     public function search($contract_id, Request $request)
     {
         return response()->json(
             [
-                'results' => $this->page->fullTextSearch($contract_id, $request->input('q'))
+                'results' => $this->page->fullTextSearch($contract_id, $request->input('q')),
             ]
         );
     }

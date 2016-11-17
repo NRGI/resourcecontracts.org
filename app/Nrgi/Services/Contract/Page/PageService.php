@@ -142,7 +142,6 @@ class PageService
             'page_no'     => $page_no,
             'text'        => $text
         ];
-
         try {
             $this->page->updateOrCreate($page_detail);
 
