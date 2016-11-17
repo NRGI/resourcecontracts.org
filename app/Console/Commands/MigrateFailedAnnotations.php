@@ -48,22 +48,23 @@ class MigrateFailedAnnotations extends Command
      */
     public function fire()
     {
-        $contract_id = 1844;
-        $json        = json_decode(file_get_contents(public_path('1844.json')));
-
-        foreach ($json->document->annotations as $annotation) {
-            $content = $this->extractArticleReferenceAndText($annotation->content);
+        $contract_id = 1567;
+        $json        = json_decode(file_get_contents(public_path('34.json')));
+        foreach ($json->annotations as $annotation) {
+            $content  = $this->extractArticleReferenceAndText($annotation->content);
             $category = $this->mapCategory($annotation->title);
 
-            if(empty($category)) continue;
+            if (empty($category)) {
+                continue;
+            }
 
-            $ann     = [
+            $ann      = [
                 'text'        => $content['text'],
                 'category'    => $category,
                 'contract_id' => $contract_id,
                 'status'      => 'draft',
             ];
-            $a = Annotation::create($ann);
+            $a        = Annotation::create($ann);
             $ann_page = [
                 'annotation_id'     => $a->id,
                 'page_no'           => $annotation->page,
@@ -78,7 +79,7 @@ class MigrateFailedAnnotations extends Command
                 ],
                 'article_reference' => $content['article_reference'],
             ];
-             Page::create($ann_page);
+            Page::create($ann_page);
         }
     }
 
@@ -96,7 +97,6 @@ class MigrateFailedAnnotations extends Command
         if (isset($array[0])) {
             $category = $array[0];
         }
-
         $list = [
             "Nom du gisement/ champ de pétrole/ gas//Name and/or number of field, block or deposit"                                                                                                                                                                                                                                                                                                                                                                                                               => "name-of-field-block-deposit-or-site",
             "Type du titre associé au contrat (concession, bail, contrat de partage, contrat de service…)//Type of document / right (Concession, Lease, Production Sharing Agreement, Service Agreement, etc.)"                                                                                                                                                                                                                                                                                                   => "service-agreement-fee-to-developer-or-contractor",
@@ -132,8 +132,8 @@ class MigrateFailedAnnotations extends Command
             "Durée//Term"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         => 'term',
             "Participation de l'Etat//State participation"                                                                                                                                                                                                                                                                                                                                                                                                                                                        => 'state-participation',
             "Taxe minière / redevance//Mining tax / royalty tax"                                                                                                                                                                                                                                                                                                                                                                                                                                                  => 'Royalties',
-            "Partage de production - Eléments de \"Profit Oil\" (critères pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)"                                                                                                                                                                                                                                => 'production-share-cost-oil-features-basis-of-calculation-limits-on-cost-recovery-eg-as-of-revenue-or-production-capex-uplift-etc',
-            "Partage de production - Eléments de \"Cost Oil\" (base de calcul, limites sur le recouvrement des coûts, e.g. comme % des revenues ou de la production, crédit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)"                                                                                                                                                                                                                          => 'production-share-profit-oil-features-triggers-for-variations-in-split-irr-factor-production-etc',
+            "Partage de production - Eléments de \"Profit Oil\" (critères pour la modification du partage, - TRI, facteur \"r\", niveau de production, etc.)//Production Share - \"Profit Oil\" features  (triggers for variations in split - IRR, \"r\" factor, production, etc.)"                                                                                                                                                                                                                               => 'production-share-cost-oil-features-basis-of-calculation-limits-on-cost-recovery-eg-as-of-revenue-or-production-capex-uplift-etc',
+            "Partage de production - Eléments de \"Cost Oil\" (base de calcul, limites sur le recouvrement des coûts, e.g. comme % des revenues ou de la production, crédit d'investissement, etc.)//Production Share - \"Cost Oil\" features  (basis of calculation, limits on cost recovery - e.g. as % of revenue or production, capex uplift, etc.)"                                                                                                                                                          => 'production-share-profit-oil-features-triggers-for-variations-in-split-irr-factor-production-etc',
             "Restrictions sur les transactions avec les parties liées//Restrictions on transactions with affiliated parties"                                                                                                                                                                                                                                                                                                                                                                                      => 'restrictions-on-transactions-with-affiliated-parties',
             "Impôt sur les bénéfices: taux//Income tax: rate"                                                                                                                                                                                                                                                                                                                                                                                                                                                     => 'income-tax-rate',
             "Clause de stabilisation//Stabilization clause"                                                                                                                                                                                                                                                                                                                                                                                                                                                       => 'stabilization-clause',
@@ -152,8 +152,13 @@ class MigrateFailedAnnotations extends Command
             "Arbitrage et règlement des différends//Arbitration and dispute resolution"                                                                                                                                                                                                                                                                                                                                                                                                                           => 'arbitration-and-dispute-resolution',
             "Etude d'impact social, environnemental ou des droits humains, et les plans de gestion des risques//Social, environmental and/or human rights impact assessments, as well as related management plans"                                                                                                                                                                                                                                                                                                => 'socialhuman-rights-impact-assessment-and-management-plan',
             "Droit de prendre ou d'utiliser l'eau dans la zone de concession (ou e cote) (y compris les tarifs, licences, et permis)//Right to take and/or use water within/near contract concession area (including fees, licenses, and permits required)"                                                                                                                                                                                                                                                       => 'Infrastructure - third party use',
+            "Consultations communautaires requises//Requirements for community consultation "
+            => "community-consultation",
+            "Nom et/ou composition de la société du projet crée ou envisagée//Name and/or composition of the company created or anticipated"                                                                                                                                                                                                                                                                                                                                                                      => "name-andor-composition-of-the-company-created",
+            "Autre aspects de l'impôt sur les bénéfices: (l’amortissement, déductibilité des frais financiers, report des pertes, cloisonnement)//Other income tax features (amortization, deductibility of expenses, loss carry forward, ring-fencing)"                                                                                                                                                                                                                                                          => "income-tax-other",
+            "Autre - [Sites historiques ou archéologiques]//Other - [Archaeological and historical sites]"                                                                                                                                                                                                                                                                                                                                                                                                        => "sacred-cultural-or-historical-sites",
+            "Année d'octroi du permis d'exploitation ou concession//Year of issue of title/permit"                                                                                                                                                                                                                                                                                                                                                                                                                => "year-of-issue-of-titlepermit",
         ];
-
         if (array_key_exists($category, $list)) {
             return $list[$category];
         }
