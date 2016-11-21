@@ -45903,13 +45903,14 @@ var TextEditorContainer = React.createClass({
         $.ajax({
             url: this.props.saveApi,
             data: {
-                text: this.html,
+                text: $('.text-annotator').html(),
                 page: this.state.page_no
             },
             type: 'POST'
-        }).done(function (response) {
+        }).success(function (response) {
             self.setState({ message: LANG.text_saved });
-            $('.text-editor').animate({ scrollTop: $('.text-editor').offset().top - $('.text-editor').scrollTop() }, 'slow');
+            $('.text-annotator').html(response.message);
+            $('.text-annotator').animate({ scrollTop: $('.text-annotator').offset().top - $('.text-annotator').scrollTop() }, 'slow');
         });
     },
     sanitizeTxt: function sanitizeTxt(text) {
@@ -45953,6 +45954,32 @@ var TextEditor = React.createClass({
         if (this.props.html !== React.findDOMNode(this).innerHTML) {
             React.findDOMNode(this).innerHTML = this.props.html;
         }
+        $('div[contenteditable="true"]').keypress(function (event) {
+
+            if (event.which != 13) return true;
+
+            var docFragment = document.createDocumentFragment();
+
+            var newEle = document.createTextNode('\n');
+            docFragment.appendChild(newEle);
+
+            newEle = document.createElement('br');
+            docFragment.appendChild(newEle);
+
+            var range = window.getSelection().getRangeAt(0);
+            range.deleteContents();
+            range.insertNode(docFragment);
+
+            range = document.createRange();
+            range.setStartAfter(newEle);
+            range.collapse(true);
+
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+
+            return false;
+        });
     },
     render: function render() {
         return React.createElement("div", {
