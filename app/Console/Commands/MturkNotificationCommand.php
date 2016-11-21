@@ -24,7 +24,7 @@ class MturkNotificationCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Send  mturk contracts status email to user.';
+    protected $description = 'Send mturk contracts status email to user.';
     /**
      * @var ContractService
      */

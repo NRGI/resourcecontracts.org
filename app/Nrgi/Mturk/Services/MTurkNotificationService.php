@@ -92,11 +92,9 @@ class MTurkNotificationService
      */
     public function getRecipients($contract)
     {
-        $uploader     = $contract->created_user->email;
         $type         = $contract->metadata->category;
         $resourceType = isset($type[0]) ? $type[0] : "";
         $recipients   = $this->mailer->getMTurkNotifyEmails($resourceType);
-        array_push($recipients, $uploader);
 
         return $recipients;
     }
@@ -110,7 +108,7 @@ class MTurkNotificationService
         $minimum_balance = config('mturk.minimumBalance');
         $balance         = $this->mturk->getBalance();
         if ($balance['Amount'] < $minimum_balance) {
-           $this->mailer->send(
+            $this->mailer->send(
                 $this->mailer->getNotifyEmails(),
                 "MTurk balance is getting low.",
                 'mturk.email.balance',
