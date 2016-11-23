@@ -7,6 +7,7 @@ use Illuminate\Filesystem\Filesystem;
 
 /**
  * Bulk download of pdf text
+ *
  * Class BulkDownloadText
  * @package App\Console\Commands
  */
@@ -72,7 +73,6 @@ class BulkDownloadText extends Command
      */
     public function fire()
     {
-        $this->updateFilesInS3();
         $this->extractText();
         $this->extractText('rc');
         $this->extractText('olc');

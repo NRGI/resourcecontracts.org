@@ -257,13 +257,6 @@ interface ContractRepositoryInterface
     public function getContractFilterByMetadata($filters, $limit, $contractId);
 
     /**
-     * Update OCID
-     *
-     * @param Contract $contract
-     */
-    public function updateOCID(Contract $contract);
-
-    /**
      * remove supporting contracts
      *
      * @param $contractId

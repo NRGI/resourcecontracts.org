@@ -31,7 +31,6 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\UpdateAnnotationSection',
         'App\Console\Commands\AnnotationHarmonization',
         'App\Console\Commands\BulkDownloadText',
-        'App\Console\Commands\TrackOCID',
         'App\Console\Commands\ImportContracts',
         'App\Console\Commands\UpdateUserPermRoles',
     ];
@@ -40,6 +39,7 @@ class Kernel extends ConsoleKernel
      * Define the application's command schedule.
      *
      * @param  \Illuminate\Console\Scheduling\Schedule $schedule
+     *
      * @return void
      */
     protected function schedule(Schedule $schedule)
@@ -50,7 +50,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('nrgi:renewmturktask')->dailyAt('02:00');
         $schedule->command('nrgi:updategroup')->dailyAt('10:00');
         $schedule->command('nrgi:updategovernmententities')->dailyAt('02:00');
-        $schedule->command('nrgi:trackocid')->twiceDaily();
         $schedule->command('nrgi:bulktext')->weekly();
     }
 }

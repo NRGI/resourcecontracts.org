@@ -24,6 +24,10 @@ use Illuminate\Http\Response;
 class ContractController extends Controller
 {
     /**
+     * @var ActivityService
+     */
+    public $activity;
+    /**
      * @var ContractService
      */
     protected $contract;
@@ -43,10 +47,6 @@ class ContractController extends Controller
      * @var AnnotationService
      */
     protected $annotation;
-    /**
-     * @var ActivityService
-     */
-    public $activity;
 
     /**
      * @param ContractService       $contract
@@ -85,7 +85,7 @@ class ContractController extends Controller
      */
     public function index(Request $request)
     {
-        $filters   = $request->only(
+        $filters        = $request->only(
             'resource',
             'year',
             'country',
@@ -99,12 +99,13 @@ class ContractController extends Controller
             'disclosure',
             'q'
         );
-        $contracts = $this->contractFilter->getAll($filters);
-        $years     = $this->contractFilter->getUniqueYears();
-        $countries = $this->contractFilter->getUniqueCountries();
-        $resources = $this->contractFilter->getUniqueResources();
+        $contracts      = $this->contractFilter->getAll($filters);
+        $years          = $this->contractFilter->getUniqueYears();
+        $countries      = $this->contractFilter->getUniqueCountries();
+        $resources      = $this->contractFilter->getUniqueResources();
+        $download_files = $this->contract->getDownloadTextFiles();
 
-        return view('contract.index', compact('contracts', 'years', 'countries', 'resources'));
+        return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files'));
     }
 
     /**
@@ -407,7 +408,7 @@ class ContractController extends Controller
             }
         }
 
-        $this->annotation->updateStatus("published",'', $contract_id);
+        $this->annotation->updateStatus("published", '', $contract_id);
 
         return back()->withSuccess(trans('contract.status_update'));
     }
@@ -420,14 +421,14 @@ class ContractController extends Controller
      *
      * @return Response
      */
-    public function unpublish($contract_id, Guard $auth,Request $request)
+    public function unpublish($contract_id, Guard $auth, Request $request)
     {
-        $elementStatus=$request->all();
+        $elementStatus = $request->all();
         if ($auth->user()->isCountryResearch()) {
             return back()->withError(trans('contract.permission_denied'));
         }
 
-        if ($this->contract->unPublishContract($contract_id,$elementStatus)) {
+        if ($this->contract->unPublishContract($contract_id, $elementStatus)) {
             //$this->annotation->updateStatus("draft",'', $contract_id);
 
             return back()->withSuccess(trans('contract.unpublish.success'));

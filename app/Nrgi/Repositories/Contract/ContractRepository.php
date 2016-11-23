@@ -605,36 +605,6 @@ class ContractRepository implements ContractRepositoryInterface
     }
 
     /**
-     * Update OCID
-     *
-     * @param Contract $contract
-     */
-    public function updateOCID(Contract $contract)
-    {
-        $parent = $contract->getParentContract();
-
-        if ($contract->metadata->is_supporting_document == 1 && !is_null($parent)) {
-            $parent_contract                 = $this->findContract($parent);
-            $ocid                            = $parent_contract->metadata->open_contracting_id . '-' . $contract->id;
-            $metadata                        = json_decode(json_encode($contract->metadata), true);
-            $metadata['open_contracting_id'] = $ocid;
-            $contract->metadata              = $metadata;
-            $contract->save();
-        }
-
-        if ($contract->metadata->is_supporting_document == 0) {
-            $ocid                            = getContractIdentifier(
-                $contract->metadata->category[0],
-                $contract->metadata->country->code
-            );
-            $metadata                        = json_decode(json_encode($contract->metadata), true);
-            $metadata['open_contracting_id'] = $ocid;
-            $contract->metadata              = $metadata;
-            $contract->save();
-        }
-    }
-
-    /**
      * remove supporting contracts
      *
      * @param $contractId
@@ -655,8 +625,6 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getResourceAndCategoryIssue($key,$filters)
     {
-
-
         $from  = "contracts ";
         $query = $this->contract->whereRaw(sprintf("json_array_length(metadata->'%s')!=0", $key));
 

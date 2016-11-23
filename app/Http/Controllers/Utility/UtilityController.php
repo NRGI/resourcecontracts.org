@@ -45,11 +45,12 @@ class UtilityController extends Controller
      * @return \Illuminate\View\View
      */
     public function index(Request $request, Guard $auth)
-    {   if(!($auth->user()->isAdmin())) {
+    {
+        if (!($auth->user()->isAdmin())) {
             return back()->withErrors(trans('contract.permission_denied'));
         }
         $filters   = $request->only('category', 'country');
-        $country   =  $this->countryService->all();
+        $country   = $this->countryService->all();
         $confirm   = false;
         $contracts = [];
 
@@ -58,7 +59,7 @@ class UtilityController extends Controller
             $confirm   = true;
         }
 
-        return view('utility.index', compact('confirm', 'contracts','country'));
+        return view('utility.index', compact('confirm', 'contracts', 'country'));
     }
 
     /**
@@ -81,12 +82,12 @@ class UtilityController extends Controller
 
         return redirect()->route('utility.index')->with('success', trans('contract.rename_success_message'));
     }
+
     /**
      * Bulk text download
      */
-    public function bulkTextDownload()
+    public function bulkTextDownload($file)
     {
-
-        $this->contractService->bulkTextDownload();
+        $this->contractService->bulkTextDownload($file);
     }
 }
