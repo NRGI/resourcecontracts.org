@@ -60,7 +60,6 @@ a{
 
 .panel-default > .panel-heading {
     font-size: 26px;
-    overflow: hidden;
     background: #dadada;
 }
 
@@ -1205,3 +1204,7 @@ input[type="radio"]{
 }
 
 
+.panel-body{
+    position: relative;
+    z-index: 1;
+}

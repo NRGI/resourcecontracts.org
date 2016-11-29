@@ -111,6 +111,11 @@ class ElasticSearchService
             $showText                    = true;
             $metadataAttr->show_pdf_text = 1;
         }
+
+        if(isset($metadataAttr->open_contracting_id_old)){
+            unset($metadataAttr->open_contracting_id_old);
+        }
+
         $contract->metadata = $metadataAttr;
         $metadata           = [
             'id'                   => $contract->id,
