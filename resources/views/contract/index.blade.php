@@ -19,31 +19,33 @@
 				$url = Request::all();
 				$url['download'] = 1;
 				?>
-				<div class="btn-group">
-					<a href="#" class="btn btn-default
+				@if(!empty($download_files))
+					<div class="btn-group">
+						<a href="#" class="btn btn-default
                         dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						@lang('global.text_download') <span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						@foreach($download_files as $key => $file)
+							@lang('global.text_download') <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							@foreach($download_files as $key => $file)
+								<li>
+									<a href="{{route('bulk.text.download', $file['path'])}}">
+										{{$key}}
+										<div>
+											<small>({{$file['size']}})</small>
+										</div>
+									</a>
+								</li>
+								@if(in_array($key,['OLC', 'All']))
+									<li role="separator" class="divider"></li>
+								@endif
+							@endforeach
+							<li role="separator" class="divider"></li>
 							<li>
-								<a href="{{route('bulk.text.download', $file['path'])}}">
-									{{$key}}
-									<div>
-										<small>({{$file['size']}})</small>
-									</div>
-								</a>
+								<small style="padding: 10px;">Updated on {{$file['date']}}</small>
 							</li>
-							@if(in_array($key,['OLC', 'All']))
-								<li role="separator" class="divider"></li>
-							@endif
-						@endforeach
-						<li role="separator" class="divider"></li>
-						<li>
-							<small style="padding: 10px;">Updated on {{$file['date']}}</small>
-						</li>
-					</ul>
-				</div>
+						</ul>
+					</div>
+				@endif
 				<a href="{{route("contract.index",$url)}}" class="btn btn-info">@lang('contract.download')</a>
 				<a href="{{route('contract.import')}}" class="btn btn-default">@lang('contract.import.name')</a>
 				<a href="{{route('contract.select.type')}}" class="btn btn-primary btn-import">@lang('contract.add')</a>
