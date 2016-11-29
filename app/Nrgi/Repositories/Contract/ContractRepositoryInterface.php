@@ -355,4 +355,13 @@ interface ContractRepositoryInterface
      * @return collection
      */
     public function getMultipleDisclosureContract($country, $filters);
+
+    /**
+     * Updates contract
+     *
+     * @param $contractId
+     *
+     * @return mixed
+     */
+    public function updateContract($contractId);
 }

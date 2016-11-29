@@ -16,20 +16,21 @@ use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
  * @property int        textType
  * @property string     title
  * @property Collection annotations
- * @property string     file
- * @property string     filehash
- * @property int        pdf_process_status
- * @property string     word_file
- * @property int        updated_by
- * @property string     metadata_status
- * @property string     text_status
- * @property int        created_user
- * @property string     file_url
- * @property string     slug
- * @property int        user_id
- * @property string     updated_user
- * @property string     created_datetime
- * @property string     last_updated_datetime
+ * @property string file
+ * @property string filehash
+ * @property int    pdf_process_status
+ * @property string word_file
+ * @property int    updated_by
+ * @property string metadata_status
+ * @property string text_status
+ * @property int    created_user
+ * @property string file_url
+ * @property string slug
+ * @property int    user_id
+ * @property string updated_user
+ * @property string created_datetime
+ * @property string last_updated_datetime
+ * @property mixed  published_to_newsletter
  * @package App\Nrgi\Entities\Contract
  */
 class Contract extends Model
@@ -118,16 +119,9 @@ class Contract extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'metadata',
-        'metadata_trans',
-        'file',
-        'filehash',
-        'user_id',
-        'textType',
-        'metadata_status',
-        'text_status',
-    ];
+
+    protected $fillable = ['metadata', 'file', 'filehash', 'user_id', 'textType', 'metadata_status', 'text_status',
+                           'published_date', 'published_to_newsletter'];
     /**
      * @var array
      */

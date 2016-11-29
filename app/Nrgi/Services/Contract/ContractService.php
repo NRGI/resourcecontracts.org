@@ -607,11 +607,21 @@ class ContractService
 
             $contract->save();
 
+            $dataToNewsletter = [
+                "contract_id"            => $contract->id,
+                "metadata"               => $contract->metadata
+            ];
+
             if ($status == Contract::STATUS_PUBLISHED) {
                 $this->queue->push(
                     'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
                     ['contract_id' => $id, 'type' => $type],
                     'elastic_search'
+                );
+                $this->queue->push(
+                    'App\Nrgi\Services\Queue\PostToNewsletterApiQueue',
+                    $dataToNewsletter,
+                    'rc_to_newsletter'
                 );
             }
 
@@ -622,6 +632,7 @@ class ContractService
                     ['contract_id' => $id, 'type' => $type],
                     'elastic_search'
                 );
+                $this->updateContractsTable($contract->id);
             }
             $this->logger->activity(
                 'contract.log.status',
@@ -1506,4 +1517,15 @@ class ContractService
         return $contractsId;
     }
 
+    /**
+     * Updates Contract
+     *
+     * @param $contract
+     *
+     * @return int
+     */
+    public function updateContractsTable($contract)
+    {
+        return $this->contract->updateContract($contract);
+    }
 }
