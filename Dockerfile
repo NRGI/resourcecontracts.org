@@ -55,7 +55,7 @@ RUN mkdir /shared_path \
 
 WORKDIR /var/www/html/rc
 RUN curl -s http://getcomposer.org/installer | php \
- && php composer.phar install --prefer-source \
+ && php composer.phar install --prefer-dist \
  && php composer.phar dump-autoload --optimize \
  && php artisan clear-compiled
 
