@@ -2,11 +2,8 @@
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Entities\Contract\Annotation;
 
-
 $annotationArray = $annotations->toArray();
 $annotLastPublished   = isset($annotationArray[0]['last_published']) ? $annotationArray[0]['last_published'] : '';
-
-
 ?>
 <div class="section-wrap">
     <div class="col-md-12">
@@ -128,7 +125,6 @@ $annotLastPublished   = isset($annotationArray[0]['last_published']) ? $annotati
         </tr>
 
         <tr>
-
             <td>
                 <strong>@lang('annotation.annotation'):</strong>
             </td>

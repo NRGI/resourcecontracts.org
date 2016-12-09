@@ -15,6 +15,7 @@ interface AnnotationRepositoryInterface
      * Create contract annotation
      *
      * @param  $contractAnnotationData
+     *
      * @return bool
      */
     public function create($contractAnnotationData);
@@ -23,13 +24,16 @@ interface AnnotationRepositoryInterface
      * Delete a annotation.
      *
      * @param  int $id
+     *
      * @return bool|null
      */
     public function delete($id);
 
     /**
      * Search Annotations
+     *
      * @param $params
+     *
      * @return Collection
      */
     public function search(array $params);
@@ -38,6 +42,7 @@ interface AnnotationRepositoryInterface
      * Contract with pages and pages with annotations
      *
      * @param $contractId
+     *
      * @return Contract
      */
     public function getContractPagesWithAnnotations($contractId);
@@ -47,6 +52,7 @@ interface AnnotationRepositoryInterface
      *
      * @param $status
      * @param $contractId
+     *
      * @return bool
      */
     public function updateStatus($status, $contractId);
@@ -55,6 +61,7 @@ interface AnnotationRepositoryInterface
      * Annotation status by contract id
      *
      * @param $contractId
+     *
      * @return string
      */
     public function getStatus($contractId);
@@ -63,14 +70,17 @@ interface AnnotationRepositoryInterface
      * Get Total Annotation status by type
      *
      * @param $statusType
+     *
      * @return array
      */
     public function getStatusCountByType($statusType);
 
     /**
      * Update annotation category or text
+     *
      * @param       $id
      * @param array $data
+     *
      * @return Annotation
      */
     public function updateField($id, array $data);
@@ -79,6 +89,7 @@ interface AnnotationRepositoryInterface
      * Find annotation by id
      *
      * @param $id
+     *
      * @return Annotation
      */
     public function find($id);
@@ -87,6 +98,7 @@ interface AnnotationRepositoryInterface
      * Delete Annotation If child Not found
      *
      * @param $annotation_id
+     *
      * @return boolean
      */
     public function deleteIfChildNotFound($annotation_id);
@@ -95,9 +107,18 @@ interface AnnotationRepositoryInterface
      * Check if category of annotations exist or not.
      *
      * @param $key
+     *
      * @return array
      */
-    public function getAnnotationsQuality($key,$filters);
+    public function getAnnotationsQuality($key, $filters);
 
-
+    /**
+     * Get all annotations by contract id
+     *
+     * @param $contract_id
+     *
+     * @return Collection
+     */
+    public function getAllByContractId($contract_id);
+    
 }
