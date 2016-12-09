@@ -32,28 +32,30 @@ RUN ln -s /etc/apache2/sites-available/rc-admin.conf /etc/apache2/sites-enabled/
 
 COPY conf/supervisord.conf /etc/supervisord.conf
 
-WORKDIR /var/www/html/
+WORKDIR /var/www/
 
-COPY . rc
 RUN git clone https://github.com/anjesh/pdf-processor.git
 
+COPY . rc-admin
+
 RUN mkdir /shared_path \
- && mkdir -p /shared_path/rc/data \
- && mkdir -p /shared_path/rc/storage/logs \
- && mkdir -p /shared_path/rc/storage/app \
- && mkdir -p /shared_path/rc/storage/framework/cache \
- && mkdir -p /shared_path/rc/storage/framework/sessions \
- && mkdir -p /shared_path/rc/storage/framework/views \
+ && mkdir -p /shared_path/rc-admin/data \
+ && mkdir -p /shared_path/rc-admin/storage/logs \
+ && mkdir -p /shared_path/rc-admin/storage/app \
+ && mkdir -p /shared_path/rc-admin/storage/framework/cache \
+ && mkdir -p /shared_path/rc-admin/storage/framework/sessions \
+ && mkdir -p /shared_path/rc-admin/storage/framework/views \
  && mkdir -p /shared_path/pdf-processor/logs \
  && chmod -R 777 /shared_path \
+ && rm -rf /var/www/html \
+ && rm -rf /var/www/rc-admin/storage \
+ && ln -s /shared_path/rc-admin/storage/ /var/www/rc-admin/storage \
+ && ln -s /shared_path/rc-admin/data/ /var/www/rc-admin/public/data \
+ && rm -rf /var/www/pdfprocessor/logs \
+ && ln -s /shared_path/pdfprocessor/logs/ /var/www/pdf-processor/logs
 
- && rm -rf /var/www/html/rc/storage \
- && ln -s /shared_path/rc/storage/ /var/www/html/rc/storage \
- && ln -s /shared_path/rc/data/ /var/www/html/rc/public/data \
- && rm -rf /var/www/html/pdfprocessor/logs \
- && ln -s /shared_path/pdfprocessor/logs/ /var/www/html/pdf-processor/logs
+WORKDIR /var/www/rc-admin
 
-WORKDIR /var/www/html/rc
 RUN curl -s http://getcomposer.org/installer | php \
  && php composer.phar install --prefer-dist \
  && php composer.phar dump-autoload --optimize \
