@@ -59,7 +59,5 @@ RUN curl -s http://getcomposer.org/installer | php \
  && php composer.phar dump-autoload --optimize \
  && php artisan clear-compiled
 
-COPY conf/.env /var/www/html/rc/.env
-
 EXPOSE 80
 CMD /etc/init.d/beanstalkd start && supervisord -c /etc/supervisord.conf && /usr/sbin/apache2ctl -D FOREGROUND
