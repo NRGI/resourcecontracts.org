@@ -1,11 +1,8 @@
 <?php
 use App\Nrgi\Entities\Contract\Annotation\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
-
 ?>
 @if($status == $contract_processing_completed)
-
-
     <td>
         @if(count($annotations) > 0)
             @if($annotationStatus == Annotation::PUBLISHED)
@@ -82,8 +79,6 @@ use App\Nrgi\Entities\Contract\Contract;
                 </button>
                 {!! Form::close() !!}
 
-
-
                 <button data-toggle="modal" data-status="rejected" data-target=".annotation-comment-modal" class="btn btn-danger annotation-status-comment">@lang("global.reject")
                 </button>
             @endif
@@ -116,7 +111,8 @@ use App\Nrgi\Entities\Contract\Contract;
             @endif
             <a href="{{$link}}" target="_blank"><span class="glyphicon glyphicon-link" title="@lang('global.check_annotation_in_subsite')"></span></a>
 
-            <button data-toggle="modal" data-status="unpublished" data-target=".annotation-comment-modal" class="btn btn-danger annotation-status-comment re">@lang("global.unpublish")
+            <button data-toggle="modal" data-status="unpublished" data-target=".annotation-comment-modal"
+                         class="btn btn-danger annotation-status-comment re">@lang("global.unpublish")
             </button>
         @else
             -

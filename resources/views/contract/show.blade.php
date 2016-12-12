@@ -83,9 +83,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                 <a class="btn btn-default"  href="{{route('contract.comment.list',$contract->id)}}">
                     @lang('contract.view_all')
                 </a>
-
             </div>
-
 
             <div class="user-wrapper block block__user">
                 <ul>

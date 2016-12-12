@@ -44,6 +44,9 @@ class PageController extends Controller
     /**
      * Display Contact Pages
      *
+     * @param Request $request
+     * @param         $contractId
+     *
      * @return Response
      */
     public function index(Request $request, $contractId)
@@ -63,6 +66,15 @@ class PageController extends Controller
         return view('contract.page.index', compact('contract', 'pages', 'page', 'canEdit', 'canAnnotate'));
     }
 
+    /**
+     * Compare
+     *
+     * @param Request $request
+     * @param         $contractId1
+     * @param         $contractId2
+     *
+     * @return \Illuminate\View\View
+     */
     public function compare(Request $request, $contractId1, $contractId2)
     {
         $page        = $this->page->getText($contractId1, $request->input('page', '1'));
@@ -183,6 +195,9 @@ class PageController extends Controller
     /**
      * Display Contact Pages
      *
+     * @param Request $request
+     * @param         $contractId
+     *
      * @return Response
      */
     public function annotate(Request $request, $contractId)
@@ -202,6 +217,14 @@ class PageController extends Controller
         return view('contract.page.annotate', compact('contract', 'pages', 'page', 'canEdit', 'canAnnotate'));
     }
 
+    /**
+     * Pdf Text review
+     *
+     * @param Request $request
+     * @param         $contractId
+     *
+     * @return \Illuminate\View\View|void
+     */
     public function review(Request $request, $contractId)
     {
         try {

@@ -5,7 +5,6 @@ use App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface;
 use App\Nrgi\Services\Contract\Annotation\Page\PageService;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\ContractService;
-use App\Nrgi\Services\ElasticSearch\ElasticSearchService;
 use Exception;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
@@ -18,6 +17,10 @@ use Illuminate\Contracts\Queue\Queue;
  */
 class AnnotationService
 {
+    /**
+     * @var Queue
+     */
+    public $queue;
     /**
      * @var AnnotationRepositoryInterface
      */
@@ -43,14 +46,6 @@ class AnnotationService
      */
     protected $contract;
     /**
-     * @var Queue
-     */
-    public $queue;
-    /**
-     * @var ElasticSearchService
-     */
-    protected $elasticSearch;
-    /**
      * @var PageService
      */
     protected $annotation_child;
@@ -65,7 +60,6 @@ class AnnotationService
      * @param Log                           $logger
      * @param ContractService               $contract
      * @param Queue                         $queue
-     * @param ElasticSearchService          $elasticSearch
      * @param PageService                   $annotation_child
      */
 
@@ -77,7 +71,6 @@ class AnnotationService
         Log $logger,
         ContractService $contract,
         Queue $queue,
-        ElasticSearchService $elasticSearch,
         PageService $annotation_child
     ) {
         $this->annotation       = $annotation;
@@ -87,7 +80,6 @@ class AnnotationService
         $this->logger           = $logger;
         $this->contract         = $contract;
         $this->queue            = $queue;
-        $this->elasticSearch    = $elasticSearch;
         $this->annotation_child = $annotation_child;
     }
 
@@ -177,6 +169,8 @@ class AnnotationService
                 $this->annotation->delete($annotation->parent->id);
             }
 
+            $this->updateStatusOrPublish($annotation->parent->contract_id);
+
             $this->logger->activity(
                 'annotation.annotation_deleted',
                 [
@@ -226,7 +220,8 @@ class AnnotationService
      * Get all annotation by contract id
      *
      * @param $contractId
-     * return Collection
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getAllByContractId($contractId)
     {
@@ -265,12 +260,11 @@ class AnnotationService
      *
      * @return bool
      */
-    public function updateStatus($annotationStatus,$currentAnnStatus ,$contractId)
+    public function updateStatus($annotationStatus, $currentAnnStatus, $contractId)
     {
-        $annStatus=$annotationStatus;
-        if($annotationStatus == Annotation::UNPUBLISH)
-        {
-            $annStatus = ($currentAnnStatus==Annotation::PUBLISHED)?'completed':$currentAnnStatus;
+        $annStatus = $annotationStatus;
+        if ($annotationStatus == Annotation::UNPUBLISH) {
+            $annStatus = ($currentAnnStatus == Annotation::PUBLISHED) ? 'completed' : $currentAnnStatus;
         }
 
         $status = $this->annotation->updateStatus($annStatus, $contractId);
@@ -292,7 +286,7 @@ class AnnotationService
             }
             $this->logger->activity(
                 "contract.log.status",
-                ['type' => 'annotation','new_status' => $annotationStatus],
+                ['type' => 'annotation', 'new_status' => $annotationStatus],
                 $contractId
             );
 
@@ -314,10 +308,10 @@ class AnnotationService
      *
      * @return bool
      */
-    public function comment($contractId, $message, $annotationStatus,$currentAnnStatus)
+    public function comment($contractId, $message, $annotationStatus, $currentAnnStatus)
     {
         $this->database->beginTransaction();
-        $status = $this->updateStatus($annotationStatus,$currentAnnStatus ,$contractId);
+        $status = $this->updateStatus($annotationStatus, $currentAnnStatus, $contractId);
 
         if ($status) {
             try {
@@ -357,8 +351,14 @@ class AnnotationService
                 $json->annotation_id     = $annotation->id;
                 $json->page              = $child->page_no;
                 $json->category_key      = $annotation->category;
-                $json->category          = (isset($annotation->category)) ? getCategoryName($annotation->category, true) : "";
-                $json->cluster           = (isset($annotation->category)) ? getCategoryClusterName($annotation->category, true) : "";
+                $json->category          = (isset($annotation->category)) ? getCategoryName(
+                    $annotation->category,
+                    true
+                ) : "";
+                $json->cluster           = (isset($annotation->category)) ? getCategoryClusterName(
+                    $annotation->category,
+                    true
+                ) : "";
                 $json->text              = $annotation->text;
                 $json->article_reference = $child->article_reference;
                 $annotationData[]        = $json;
@@ -396,6 +396,7 @@ class AnnotationService
                 $parent      = $this->annotation->find($page->annotation_id);
                 $contract_id = $parent->contract_id;
                 $page_no     = $page->page_no;
+                $this->annotation->updateStatus($id, Annotation::DRAFT);
             }
 
             $this->logger->activity(
@@ -416,5 +417,31 @@ class AnnotationService
         }
 
         return false;
+    }
+
+    /**
+     * Update Annotation status or publish
+     *
+     * @param $id
+     */
+    public function updateStatusOrPublish($id)
+    {
+        try {
+            $collection = $this->annotation->getAllByContractId($id);
+            if ($collection->count() > 0) {
+                $this->updateStatus(Annotation::UNPUBLISH, Annotation::PUBLISHED, $id);
+            }
+        } catch (\Exception $e) {
+            $this->logger->activity(
+                "contract.log.status",
+                ['type' => 'annotation', 'new_status' => Annotation::UNPUBLISH],
+                $id
+            );
+            $this->queue->push(
+                'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                ['contract_id' => $id, 'type' => 'annotation'],
+                'elastic_search'
+            );
+        }
     }
 }

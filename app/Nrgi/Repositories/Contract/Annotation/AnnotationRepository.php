@@ -46,6 +46,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      * Save Annotation
      *
      * @param array $annotationData
+     *
      * @return Annotation
      */
     public function create($annotationData)
@@ -57,6 +58,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      *
      *
      * @param array $params
+     *
      * @return Collection
      */
     public function search(array $params)
@@ -66,7 +68,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
                 [
                     'annotations.child' => function ($query) use ($params) {
                         return $query->where('page_no', $params['page']);
-                    }
+                    },
                 ]
             )->findOrFail($params['contract']);
 
@@ -77,7 +79,9 @@ class AnnotationRepository implements AnnotationRepositoryInterface
 
     /**
      * finds or create annotation
+     *
      * @param $id
+     *
      * @return Annotation
      */
     public function findOrCreate($id)
@@ -89,6 +93,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      * Delete a annotation.
      *
      * @param  int $id
+     *
      * @return bool|null
      */
     public function delete($id)
@@ -98,6 +103,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
 
     /**
      * @param $contractId
+     *
      * @return mixed
      */
     public function getAllByContractId($contractId)
@@ -111,6 +117,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      * contract with pages and annotations
      *
      * @param $contractId
+     *
      * @return Contract
      */
     public function getContractPagesWithAnnotations($contractId)
@@ -123,6 +130,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      *
      * @param $status
      * @param $contractId
+     *
      * @return bool
      */
     public function updateStatus($status, $contractId)
@@ -136,6 +144,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      * contract annotation status
      *
      * @param $contractId
+     *
      * @return String
      */
     public function getStatus($contractId)
@@ -154,6 +163,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      * Check annotation status in array
      *
      * @param $status
+     *
      * @return string
      */
     public function checkStatus($status)
@@ -174,7 +184,9 @@ class AnnotationRepository implements AnnotationRepositoryInterface
 
     /**
      * Get Total Annotation status by type
+     *
      * @param $statusType
+     *
      * @return mixed
      */
     public function getStatusCountByType($statusType)
@@ -197,6 +209,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      *
      * @param       $id
      * @param array $data
+     *
      * @return Annotation
      */
     public function updateField($id, array $data)
@@ -211,6 +224,8 @@ class AnnotationRepository implements AnnotationRepositoryInterface
             $annotation->category = $data['category'];
         }
 
+        $annotation->status = Annotation::DRAFT;
+
         $annotation->save();
 
         return $annotation;
@@ -220,6 +235,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      * Find annotation by id
      *
      * @param $id
+     *
      * @return mixed
      */
     public function find($id)
@@ -231,6 +247,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      * Delete Annotation If child Not found
      *
      * @param $annotation_id
+     *
      * @return boolean
      */
     public function deleteIfChildNotFound($annotation_id)
@@ -253,6 +270,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      * Count Contracts By user
      *
      * @param $user_id
+     *
      * @return int
      */
     public function countByUser($user_id)
@@ -272,7 +290,9 @@ class AnnotationRepository implements AnnotationRepositoryInterface
 
     /**
      * Return all the annotations of a specific contract
+     *
      * @param $contract_id
+     *
      * @return object
      */
     public function getAnnotationByContractId($contract_id)
@@ -296,19 +316,19 @@ class AnnotationRepository implements AnnotationRepositoryInterface
             $query->whereRaw("contracts.metadata->>'signature_year'=?", [$filters['year']]);
         }
         if (isset($filters['resource']) && $filters['resource'] != '' && $filters['resource'] != 'all') {
-            $query->whereRaw("trim(both '\"' from r::text) = '" . $filters['resource'] . "'");
+            $query->whereRaw("trim(both '\"' from r::text) = '".$filters['resource']."'");
         }
         if (isset($filters['country']) && $filters['country'] != '' && $filters['country'] != 'all') {
             $query->whereRaw("contracts.metadata->'country'->>'code' = ?", [$filters['country']]);
         }
         if (isset($filters['category']) && $filters['category'] != '' && $filters['category'] != 'all') {
-            $query->whereRaw("trim(both '\"' from cat::text) = '" . $filters['category'] . "'");
+            $query->whereRaw("trim(both '\"' from cat::text) = '".$filters['category']."'");
         }
 
         $result = $query->from($this->db->raw($from));
         $result = $result->select('contract_id')->distinct()->get()->toArray();
 
-       
+
         return count($result);
     }
 
