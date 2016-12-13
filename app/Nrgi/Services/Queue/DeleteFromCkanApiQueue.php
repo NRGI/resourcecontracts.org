@@ -1,6 +1,7 @@
 <?php
 namespace App\Nrgi\Services\Queue;
 
+use App\Nrgi\Services\CKAN\CKANService;
 use GuzzleHttp\Client;
 /**
  * Queue for posting to  CKAN API
@@ -9,8 +10,9 @@ use GuzzleHttp\Client;
 class DeleteFromCkanApiQueue
 {
 
-    public function __construct()
+    public function __construct(CKANService $ckanApi)
     {
+        $this->ckanApi = $ckanApi;
     }
 
     /**
@@ -23,20 +25,7 @@ class DeleteFromCkanApiQueue
      */
     public function fire($job, $dataToCkan)
     {
-        $client = new Client();
-        $data = array(
-            "package_id"  => "dataset-3",
-            "id"          => (string) $dataToCkan["id"]
-        );
-        $res = $client->post('http://demo.ckan.org/api/action/resource_delete',
-                             [
-                                 'headers'    =>  [
-                                     'Content-Type' => 'application/json',
-                                     'Accept' => 'application/json',
-                                     'Authorization' => '2b89ee7d-44ee-4854-9931-a5276177163f'
-                                 ],
-                                 'body'       => json_encode($data)
-                             ]);
+        $this->ckanApi->callCkanApiDelete($dataToCkan);
         $job->delete();
     }
 }

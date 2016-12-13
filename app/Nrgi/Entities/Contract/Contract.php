@@ -381,12 +381,17 @@ class Contract extends Model
      */
     public function getParentContract()
     {
-        return (DB::table('supporting_contracts')
-                  ->where('supporting_contract_id', $this->id)
-                  ->orderBy('id', 'DESC')
-                  ->first()) ? DB::table(
-            'supporting_contracts'
-        )->where('supporting_contract_id', $this->id)->orderBy('id', 'DESC')->first()->contract_id : null;
+        $contract = DB::table('supporting_contracts')
+                       ->where('supporting_contract_id', $this->id)
+                       ->orderBy('id', 'DESC')
+                       ->first();
+
+        if(empty($contract))
+        {
+            return null;
+        }
+
+        return $contract->contract_id;
     }
 
     /**

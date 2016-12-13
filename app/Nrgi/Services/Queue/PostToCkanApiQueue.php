@@ -31,8 +31,7 @@ class PostToCkanApiQueue
      */
     public function fire($job, $dataToCkan)
     {
-        //data ok till now
-        $this->ckanApi->callCkanApi($dataToCkan);
+        $this->ckanApi->callCkanApiPost($dataToCkan);
         $job->delete();
     }
 }
