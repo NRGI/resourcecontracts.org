@@ -38,34 +38,26 @@ class CKANService
             $parentContractId = $contract->getParentContract();
             $datasetName      = (string) $parentContractId;
 
-            if ($this->datasetExists($datasetName)) {
-                $data = $this->prepareResourceDataForCkan($datasetName, $dataToCkan);
-                $res  = $this->createResourceInCkan($data);
-            } else {
-                try {
-                    //working
-                    $this->createDatasetInCkan($datasetName);
-                    $data = $this->prepareResourceDataForCkan($datasetName, $dataToCkan);
-                    $this->createResourceInCkan($data);
-                } catch (Exception $e) {
-                    echo 'Error occurred during dataset creation: ', $e->getMessage(), "\n";
-                }
-            }
+            $this->postResourceToCkan($datasetName, $dataToCkan);
         } else {
             // this runs for parent document i.e if contract is not a supporting document
             $datasetName = (string) $dataToCkan["contract_id"];
-            if ($this->datasetExists($datasetName)) {
+            $this->postResourceToCkan($datasetName, $dataToCkan);
+        }
+    }
+
+    public function postResourceToCkan($datasetName, $dataToCkan)
+    {
+        if ($this->datasetExists($datasetName)) {
+            $data = $this->prepareResourceDataForCkan($datasetName, $dataToCkan);
+            $this->createResourceInCkan($data);
+        } else {
+            try {
+                $this->createDatasetInCkan($datasetName);
                 $data = $this->prepareResourceDataForCkan($datasetName, $dataToCkan);
-                $res  = $this->createResourceInCkan($data);
-            } else {
-                try {
-                    //working
-                    $this->createDatasetInCkan($datasetName);
-                    $data = $this->prepareResourceDataForCkan($datasetName, $dataToCkan);
-                    $this->createResourceInCkan($data);
-                } catch (Exception $e) {
-                    echo 'Error occurred during dataset creation: ', $e->getMessage(), "\n";
-                }
+                $this->createResourceInCkan($data);
+            } catch (Exception $e) {
+                echo 'Error occurred during dataset creation: ', $e->getMessage(), "\n";
             }
         }
     }
