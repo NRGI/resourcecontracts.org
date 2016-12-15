@@ -39,6 +39,7 @@ var jsFiles = {
         'resources/scripts/contract.view/annotation/annotator.plugin.event.js',
         'resources/scripts/contract.view/annotation/annotator.plugin.article_reference.js',
         'resources/scripts/contract.view/annotation/annotator.plugin.parentannotation.js',
+        'resources/scripts/contract.view/annotation/annotator.plugin.language.js',
         'resources/scripts/lib/pdf-annotator.js'
     ],
     main: [

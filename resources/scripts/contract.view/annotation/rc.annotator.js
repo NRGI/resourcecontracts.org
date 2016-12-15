@@ -13,7 +13,7 @@ var AnnotatorjsView = Backbone.View.extend({
             }
         };
         this.contractApp = options.contractApp;
-
+        this.content.annotator('addPlugin', 'Language');
         this.content.annotator('addPlugin', 'AnnotatorNRGIViewer');
         this.populateCategories();
         this.content.annotator('addPlugin', 'ParentAnnotation');

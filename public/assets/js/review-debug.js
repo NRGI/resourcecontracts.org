@@ -44654,7 +44654,7 @@ var AnnotatorjsView = Backbone.View.extend({
             }
         };
         this.contractApp = options.contractApp;
-
+        this.content.annotator('addPlugin', 'Language');
         this.content.annotator('addPlugin', 'AnnotatorNRGIViewer');
         this.populateCategories();
         this.content.annotator('addPlugin', 'ParentAnnotation');
@@ -45407,6 +45407,37 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
 
     return ParentAnnotation;
 
+})(Annotator.Plugin);
+
+Annotator.Plugin.Language = (function (_super) {
+    __extends(Language, _super);
+
+    Language.prototype.pluginInit = function (options) {
+        if (!Annotator.supported()) {
+            return;
+        }
+        this.field = this.annotator.editor.addField({
+            label: 'Language',
+            type: 'select',
+            id: 'language',
+            load: this.updateLanguage,
+            submit: this.saveLanguage
+        });
+    };
+
+    function Language() {
+        Language.__super__.constructor.call(this, arguments);
+    }
+
+    Language.prototype.saveLanguage = function (el, annotation) {
+        annotation.language = $(el).find('input').val();
+    };
+
+    Language.prototype.updateLanguage = function (el, annotation) {
+        $('#language').html('....');
+    };
+
+    return Language;
 })(Annotator.Plugin);
 
 Annotator.Plugin.PdfAnnotator = (function (_super) {
