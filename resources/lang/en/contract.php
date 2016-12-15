@@ -242,5 +242,7 @@ return [
         'btn_cancel'     => 'Cancel and upload another file',
         'fail'           => 'Could not found any contract to import.',
     ],
-    'text_quality'                         => 'Text Quality',
+    'text_quality'       => 'Text Quality',
+    'published'          => 'Published',
+    'translation_available_in'      => 'Translation available in:',
 ];

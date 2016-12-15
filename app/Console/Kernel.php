@@ -44,12 +44,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('nrgi:mturk')->dailyAt('01:00');
-        $schedule->command('nrgi:mturkbalance')->dailyAt('01:30');
-        $schedule->command('nrgi:updatemturktasks')->dailyAt('06:00');
-        $schedule->command('nrgi:renewmturktask')->dailyAt('02:00');
-        $schedule->command('nrgi:updategroup')->dailyAt('10:00');
-        $schedule->command('nrgi:updategovernmententities')->dailyAt('02:00');
-        $schedule->command('nrgi:bulktext')->weekly();
+        if (strtolower(env('APP_ENV')) == 'production') {
+            $schedule->command('nrgi:mturk')->dailyAt('01:00');
+            $schedule->command('nrgi:mturkbalance')->dailyAt('01:30');
+            $schedule->command('nrgi:updatemturktasks')->dailyAt('06:00');
+            $schedule->command('nrgi:renewmturktask')->dailyAt('02:00');
+            $schedule->command('nrgi:updategroup')->dailyAt('10:00');
+            $schedule->command('nrgi:updategovernmententities')->dailyAt('02:00');
+            $schedule->command('nrgi:bulktext')->weekly();
+        }
     }
 }

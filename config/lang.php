@@ -1,6 +1,6 @@
 <?php
 return [
-    'list'    => [
+    'list'        => [
         [
             'dir'  => 'ltr',
             'code' => 'en',
@@ -12,5 +12,20 @@ return [
             'name' => 'French',
         ],
     ],
+    'translation' => [
+        [
+            'code' => 'en',
+            'name' => 'English',
+        ],
+        [
+            'code' => 'fr',
+            'name' => 'French',
+        ],
+        [
+            'code' => 'ar',
+            'name' => 'Arabic',
+        ],
+    ],
+
     'default' => 'en',
 ];

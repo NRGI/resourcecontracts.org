@@ -95,8 +95,6 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        $this->updateOCID($metadata);
-
         return $metadata;
     }
 
@@ -111,18 +109,4 @@ class UpdateMetadata extends Command
             ['id', null, InputOption::VALUE_OPTIONAL, 'Contract ID.', null],
         ];
     }
-
-    /**
-     * Update open contracting id
-     *
-     * @param $metadata
-     */
-    protected function updateOCID(&$metadata)
-    {
-        if (!isset($metadata['open_contracting_id_old']) || $metadata['open_contracting_id_old'] == '') {
-            $metadata['open_contracting_id_old'] = $metadata['open_contracting_id'];
-        }
-        $metadata['open_contracting_id'] = $this->contractService->generateOCID();
-    }
-
 }
