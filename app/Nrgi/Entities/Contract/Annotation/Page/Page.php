@@ -2,30 +2,35 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Page
+ * @package App\Nrgi\Entities\Contract\Annotation\Page
+ */
 class Page extends Model
 {
     /**
      * @var string
      */
     protected $table = 'contract_annotation_pages';
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['annotation_id', 'user_id', 'page_no', 'annotation', 'article_reference'];
-
+    protected $fillable = [
+        'annotation_id',
+        'user_id',
+        'page_no',
+        'annotation',
+        'article_reference',
+        'article_reference_trans',
+    ];
     /**
-     * Convert json annotation to array
+     * The attributes that should be casted to native types.
      *
-     * @param $annotation
-     * @return array
+     * @var array
      */
-    public function getAnnotationAttribute($annotation)
-    {
-        return json_decode($annotation);
-    }
+    protected $casts = ['article_reference_trans' => 'json'];
 
     /**
      * Save annotation as json
@@ -35,6 +40,51 @@ class Page extends Model
     public function setAnnotationAttribute($annotation)
     {
         $this->attributes['annotation'] = json_encode($annotation);
+    }
+
+    /**
+     * Get Article Reference
+     *
+     * @param $article_reference
+     *
+     * @return array
+     */
+    public function getArticleReferenceTransAttribute($article_reference)
+    {
+        $lang              = app('App\Nrgi\Services\Language\LanguageService');
+        $data              = [];
+        $article_reference = json_decode($article_reference);
+
+        foreach ($lang->translation_lang() as $l) {
+            if ($l['code'] != $lang->defaultLang()) {
+                $data[$l['code']] = isset($article_reference->$l['code']) ? $article_reference->$l['code'] : $this->article_reference;
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * get annotation json
+     *
+     */
+    public function getAnnotationAttribute($annotation)
+    {
+        return json_decode($annotation);
+    }
+
+    /**
+     * Set Translation language
+     *
+     * @param $lang
+     */
+    public function setLang($lang)
+    {
+        if (isset($this->article_reference_trans[$lang])) {
+            $this->article_reference = $this->article_reference_trans[$lang];
+        } else {
+            $this->article_reference = $this->getOriginal('article_reference');
+        }
     }
 
     /**

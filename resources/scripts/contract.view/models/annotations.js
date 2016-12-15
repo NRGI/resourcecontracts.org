@@ -1,10 +1,4 @@
-var Annotation = Backbone.Model.extend({
-    default: {
-        text: "",
-        cluster: "Other12"
-
-    }
-});
+var Annotation = Backbone.Model.extend({});
 var AnnotationsCollection = Backbone.Collection.extend({
     model: Annotation,
     sort_key: "category",
@@ -21,7 +15,7 @@ var AnnotationsCollection = Backbone.Collection.extend({
         var parents = [];
         this.models.map(function (a) {
             if (a.get('category_key') == category) {
-                parents[a.get('annotation_id')] = a.get('text');
+                parents[a.get('annotation_id')] = a
             }
         });
         return parents;

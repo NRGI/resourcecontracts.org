@@ -1387,8 +1387,12 @@ a.edit-section{
 .annotator-editor .annotator-widget.ui-resizable{
     position: absolute!important;
     display: block;
-    min-height: 225px!important;
-    min-width: 265px!important;
+    min-height: 300px!important;
+    min-width: 300px !important;
+}
+
+.annotation-plugin-select-category{
+    max-width: 400px;
 }
 
 .annotator-widget .ui-wrapper{
@@ -1404,7 +1408,7 @@ a.edit-section{
 
 .annotator-editor .annotator-item textarea{
     display: block;
-    min-height: 75px!important;
+    min-height: 100px!important;
     min-width: 100%;
 }
 

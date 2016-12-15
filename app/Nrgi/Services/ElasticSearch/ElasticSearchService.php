@@ -220,22 +220,26 @@ class ElasticSearchService
         $contract       = $this->annotation->getContractPagesWithAnnotations($contractId);
         foreach ($contract->annotations as $annotation) {
             foreach ($annotation->child as $child) {
-                $json                    = $child->annotation;
-                $json->id                = $child->id;
-                $json->page              = $child->page_no;
-                $json->article_reference = $child->article_reference;
+                $json                           = $child->annotation;
+                $json->id                       = $child->id;
+                $json->page                     = $child->page_no;
+                $json->article_reference        = $child->article_reference;
+                $json->article_reference_locale = $child->article_reference_trans;
 
                 $json->contract_id         = $contract->id;
                 $json->open_contracting_id = $contract->metadata->open_contracting_id;
 
                 $json->annotation_id = $annotation->id;
-                $json->text          = $annotation->text;
-                $json->category_key  = $annotation->category;
-                $json->category      = (isset($annotation->category)) ? getCategoryName($annotation->category) : "";
-                $json->cluster       = (isset($annotation->category)) ? getCategoryClusterName(
+
+                $json->text        = $annotation->text;
+                $json->text_locale = $annotation->text_trans;
+
+                $json->category_key = $annotation->category;
+                $json->category     = (isset($annotation->category)) ? getCategoryName($annotation->category) : "";
+                $json->cluster      = (isset($annotation->category)) ? getCategoryClusterName(
                     $annotation->category
                 ) : "";
-                $annotationData[]    = $json;
+                $annotationData[]   = $json;
             }
         }
 
@@ -245,7 +249,7 @@ class ElasticSearchService
             $this->deleteAnnotation($contractId);
             $request  = $this->http->post($this->apiURL('contract/annotations'), null, $data);
             $response = $request->send();
-            $this->logger->info('Annotation submitted to Elastic Search.', $response->json());
+            $this->logger->info('Annotation submitted to Elastic Search.', [$response->json()]);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }

@@ -28,6 +28,7 @@ class ApiController extends Controller
      * Save annotation
      *
      * @param Request $request
+     *
      * @return string
      */
     public function save(Request $request)
@@ -59,6 +60,7 @@ class ApiController extends Controller
      * Search Annotation
      *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function search(Request $request)
@@ -72,6 +74,7 @@ class ApiController extends Controller
      * Get All annotation by contract id
      *
      * @param $contractId
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getContractAnnotations($contractId)
@@ -85,17 +88,21 @@ class ApiController extends Controller
      * Update annotation
      *
      * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function update(Request $request)
     {
         $data  = [];
         $field = $request->get('name');
-        if (!in_array($field, ['text', 'category', 'page_no', 'article_reference'])) {
+        if (!in_array($field, ['text', 'page_no', 'article_reference'])) {
             return response()->json(['status' => 'error']);
         }
+
         $data[$field] = $request->get('value');
-        $annotation   = $this->annotationService->update($request->get('pk'), $data);
+
+        $annotation = $this->annotationService->update($request->get('pk'), $data, $request->get('lang'));
+
         if ($annotation) {
             return response()->json(['status' => 'success']);
         }

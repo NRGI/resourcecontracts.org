@@ -16,6 +16,7 @@ class PageService
 
     /**
      * PageService constructor.
+     *
      * @param Page $page
      */
     public function __construct(Page $page)
@@ -27,6 +28,7 @@ class PageService
      * Get annotation
      *
      * @param $page_id
+     *
      * @return \Illuminate\Database\Eloquent\Model|null|static
      */
     public function getWithAnnotation($page_id)
@@ -38,6 +40,7 @@ class PageService
      * Delete Annotation
      *
      * @param $contactAnnotationPageId
+     *
      * @return int
      */
     public function delete($contactAnnotationPageId)
@@ -49,6 +52,7 @@ class PageService
      * Create new annotation
      *
      * @param $annotationPageData
+     *
      * @return static
      */
     public function save($annotationPageData)
@@ -62,6 +66,7 @@ class PageService
      *
      * @param $id
      * @param $annotationPageData
+     *
      * @return static|boolean
      */
     public function update($id, $annotationPageData)
@@ -79,6 +84,7 @@ class PageService
      * Find annotation by id
      *
      * @param $id
+     *
      * @return \Illuminate\Support\Collection|null|static
      */
     public function find($id)
@@ -91,6 +97,7 @@ class PageService
      *
      * @param       $id
      * @param array $data
+     *
      * @return Page
      */
     public function updateChildField($id, array $data)
@@ -103,6 +110,10 @@ class PageService
 
         if (array_key_exists('article_reference', $data)) {
             $page->article_reference = $data['article_reference'];
+        }
+
+        if (array_key_exists('article_reference_trans', $data)) {
+            $page->article_reference_trans = $data['article_reference_trans'];
         }
 
         $page->save();

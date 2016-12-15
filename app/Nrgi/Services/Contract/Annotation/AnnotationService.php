@@ -5,6 +5,7 @@ use App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface;
 use App\Nrgi\Services\Contract\Annotation\Page\PageService;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\ContractService;
+use App\Nrgi\Services\Language\LanguageService;
 use Exception;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
@@ -49,6 +50,10 @@ class AnnotationService
      * @var PageService
      */
     protected $annotation_child;
+    /**
+     * @var LanguageService
+     */
+    protected $lang;
 
     /**
      * Constructor
@@ -61,6 +66,7 @@ class AnnotationService
      * @param ContractService               $contract
      * @param Queue                         $queue
      * @param PageService                   $annotation_child
+     * @param LanguageService               $lang
      */
 
     public function __construct(
@@ -71,7 +77,8 @@ class AnnotationService
         Log $logger,
         ContractService $contract,
         Queue $queue,
-        PageService $annotation_child
+        PageService $annotation_child,
+        LanguageService $lang
     ) {
         $this->annotation       = $annotation;
         $this->auth             = $auth;
@@ -81,6 +88,7 @@ class AnnotationService
         $this->contract         = $contract;
         $this->queue            = $queue;
         $this->annotation_child = $annotation_child;
+        $this->lang             = $lang;
     }
 
     /**
@@ -92,6 +100,7 @@ class AnnotationService
      */
     public function save($formData)
     {
+        $formData = $this->updateFormData($formData);
         $this->database->beginTransaction();
 
         if (is_null($formData['annotation_id'])) {
@@ -99,21 +108,24 @@ class AnnotationService
                 'contract_id' => $formData['contract'],
                 'category'    => $formData['category'],
                 'text'        => $formData['text'],
+                'text_trans'  => $formData['text_trans'],
                 'status'      => Annotation::DRAFT,
             ];
             $annotation     = $this->annotation->create($annotationData);
         } else {
-            $annotation         = $this->annotation->find($formData['annotation_id']);
-            $annotation->text   = $formData['text'];
-            $annotation->status = Annotation::DRAFT;
+            $annotation             = $this->annotation->find($formData['annotation_id']);
+            $annotation->text       = $formData['text'];
+            $annotation->text_trans = $formData['text_trans'];
+            $annotation->status     = Annotation::DRAFT;
             $annotation->save();
         }
 
         $annotationPageData = [
-            'annotation_id'     => $annotation->id,
-            'page_no'           => $formData['page'],
-            'user_id'           => $this->auth->id(),
-            'article_reference' => $formData['article_reference'],
+            'annotation_id'           => $annotation->id,
+            'page_no'                 => $formData['page'],
+            'user_id'                 => $this->auth->id(),
+            'article_reference'       => $formData['article_reference'],
+            'article_reference_trans' => $formData['article_reference_trans'],
         ];
 
         if (array_key_exists('shapes', $formData)) {
@@ -202,14 +214,16 @@ class AnnotationService
         $contract       = $this->annotation->search($params);
         foreach ($contract->annotations as $annotation) {
             foreach ($annotation->child as $child) {
-                $json                    = $child->annotation;
-                $json->id                = $child->id;
-                $json->annotation_id     = $annotation->id;
-                $json->page              = $child->page_no;
-                $json->category          = $annotation->category;
-                $json->text              = $annotation->text;
-                $json->article_reference = $child->article_reference;
-                $annotationData[]        = $json;
+                $json                           = $child->annotation;
+                $json->id                       = $child->id;
+                $json->annotation_id            = $annotation->id;
+                $json->page                     = $child->page_no;
+                $json->category                 = $annotation->category;
+                $json->text                     = $annotation->text;
+                $json->text_locale              = $annotation->text_trans;
+                $json->article_reference        = $child->article_reference;
+                $json->article_reference_locale = $child->article_reference_trans;
+                $annotationData[]               = $json;
             }
         }
 
@@ -291,7 +305,7 @@ class AnnotationService
             }
             $this->logger->activity(
                 "contract.log.status",
-                ['type' => 'annotation', 'old_status'=> $currentAnnStatus, 'new_status' => $annotationStatus],
+                ['type' => 'annotation', 'old_status' => $currentAnnStatus, 'new_status' => $annotationStatus],
                 $contractId
             );
 
@@ -350,22 +364,24 @@ class AnnotationService
         $contract       = $this->annotation->getContractPagesWithAnnotations($contractId);
         foreach ($contract->annotations as $annotation) {
             foreach ($annotation->child as $child) {
-                $json                    = $child->annotation;
-                $json->id                = $child->id;
-                $json->annotation_id     = $annotation->id;
-                $json->page              = $child->page_no;
-                $json->category_key      = $annotation->category;
-                $json->category          = (isset($annotation->category)) ? getCategoryName(
+                $json                           = $child->annotation;
+                $json->id                       = $child->id;
+                $json->annotation_id            = $annotation->id;
+                $json->page                     = $child->page_no;
+                $json->category_key             = $annotation->category;
+                $json->category                 = (isset($annotation->category)) ? getCategoryName(
                     $annotation->category,
                     true
                 ) : "";
-                $json->cluster           = (isset($annotation->category)) ? getCategoryClusterName(
+                $json->cluster                  = (isset($annotation->category)) ? getCategoryClusterName(
                     $annotation->category,
                     true
                 ) : "";
-                $json->text              = $annotation->text;
-                $json->article_reference = $child->article_reference;
-                $annotationData[]        = $json;
+                $json->text                     = $annotation->text;
+                $json->text_locale              = $annotation->text_trans;
+                $json->article_reference        = $child->article_reference;
+                $json->article_reference_locale = $child->article_reference_trans;
+                $annotationData[]               = $json;
             }
         }
 
@@ -374,28 +390,38 @@ class AnnotationService
 
     /**
      * Updates text or category of annotation
-     *`
      *
-     * @param       $id
-     * @param array $data
+     * @param        $id
+     * @param array  $data
+     * @param string $lang
      *
      * @return bool
      */
-    public function update($id, array $data)
+    public function update($id, array $data, $lang = 'en')
     {
-        $annotation       = ['text', 'category'];
+        $annotationField  = ['text'];
         $annotation_child = ['page_no', 'article_reference'];
-
-        $key = key($data);
+        $key              = key($data);
+        $annotation       = $this->annotation->find($id);
         try {
-
-            if (in_array($key, $annotation)) {
-                $annotation  = $this->annotation->updateField($id, $data);
+            if (in_array($key, $annotationField)) {
+                if ($key == 'text' && $this->lang->defaultLang() != $lang) {
+                    $data['text_trans']        = $annotation->text_trans;
+                    $data['text_trans'][$lang] = $data['text'];
+                    unset($data['text']);
+                }
+                $this->annotation->updateField($id, $data);
                 $contract_id = $annotation->contract_id;
                 $page_no     = null;
             }
 
             if (in_array($key, $annotation_child)) {
+                if ($key == 'article_reference' && $this->lang->defaultLang() != $lang) {
+                    $page                                   = $this->annotation_child->find($id);
+                    $data['article_reference_trans']        = $page->article_reference_trans;
+                    $data['article_reference_trans'][$lang] = $data['article_reference'];
+                    unset($data['article_reference']);
+                }
                 $page        = $this->annotation_child->updateChildField($id, $data);
                 $parent      = $this->annotation->find($page->annotation_id);
                 $contract_id = $parent->contract_id;
@@ -447,5 +473,30 @@ class AnnotationService
                 'elastic_search'
             );
         }
+    }
+
+    /**
+     * Update Form data
+     *
+     * @param $formData
+     *
+     * @return array
+     */
+    protected function updateFormData(array $formData)
+    {
+        $langs   = $this->lang->translation_lang();
+        $default = $this->lang->defaultLang();
+
+        foreach ($langs as $lang) {
+            if ($lang['code'] == $default) {
+                $formData['article_reference'] = $formData['article_reference_en'];
+                $formData['text']              = $formData['text_en'];
+            } else {
+                $formData['article_reference_trans'][$lang['code']] = $formData['article_reference_'.$lang['code']];
+                $formData['text_trans'][$lang['code']]              = $formData['text_'.$lang['code']];
+            }
+        }
+
+        return $formData;
     }
 }

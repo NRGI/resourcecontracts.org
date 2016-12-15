@@ -39,6 +39,7 @@ var jsFiles = {
         'resources/scripts/contract.view/annotation/annotator.plugin.event.js',
         'resources/scripts/contract.view/annotation/annotator.plugin.article_reference.js',
         'resources/scripts/contract.view/annotation/annotator.plugin.parentannotation.js',
+        'resources/scripts/contract.view/annotation/annotator.plugin.language.js',
         'resources/scripts/lib/pdf-annotator.js'
     ],
     main: [
@@ -82,7 +83,8 @@ gulp.task('js-main', function () {
                 min: '.js'
             }
         }))
-        .pipe(gulp.dest('public/assets/js'));
+        .pipe(gulp.dest('public/assets/js'))
+        .pipe(notify("JS-main build complete."));
 });
 
 gulp.task('js-review', function () {
@@ -108,7 +110,7 @@ gulp.task('js-review', function () {
 gulp.task('concat', ['eslint', 'js-main', 'js-review']);
 
 gulp.task('watch', function () {
-    gulp.watch('resources/scripts/contract.view/**/*.{js,jsx}', ['concat']);
+    gulp.watch('resources/scripts/contract.view/**/*.{js,jsx}', ['js-main']);
 });
 
 gulp.task('build', ['concat']);

@@ -12,8 +12,8 @@ var AnnotatorjsView = Backbone.View.extend({
             }
         };
         this.contractApp = options.contractApp;
-
         this.content.annotator('addPlugin', 'AnnotatorNRGIViewer');
+        this.content.annotator('addPlugin', 'Language');
         this.populateCategories();
         this.content.annotator('addPlugin', 'ParentAnnotation');
         this.content.annotator('addPlugin', 'ArticleReference');
@@ -40,7 +40,7 @@ var AnnotatorjsView = Backbone.View.extend({
     populateCategories: function () {
         var annotationCategories = this.contractApp.getAnnotationCategories();
         this.content.annotator('addPlugin', 'Categories', {
-            category: annotationCategories.invoke("pick", ["key", "name"])
+            categories: annotationCategories
         });
     },
     setupStore: function (enablePdfAnnotation) {
