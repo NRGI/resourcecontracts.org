@@ -1,0 +1,25 @@
+# Mac OS files
+.DS_STORE
+
+# Temp files
+*.swp
+
+# Git
+.git
+
+# IntelliJ project files
+.idea
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# App runtime folders
+vendor
+node_modules
+public/uploads
+public/data
+storage/debugbar
+log
+.env
