@@ -27,17 +27,28 @@ RUN a2enmod rewrite \
  && ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/apache2/conf.d/20-mcrypt.ini \
  && ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini
 
+WORKDIR /var/www/
+RUN git clone https://github.com/anjesh/pdf-processor.git
+
+
+RUN mkdir /var/www/rc-admin
+WORKDIR /var/www/rc-admin
+COPY composer.json /var/www/rc-admin
+COPY composer.lock /var/www/rc-admin
+RUN curl -s http://getcomposer.org/installer | php \
+ && php composer.phar install --prefer-dist --no-scripts --no-autoloader
+ 
 COPY conf/rc-admin.conf /etc/apache2/sites-available/rc-admin.conf
 RUN ln -s /etc/apache2/sites-available/rc-admin.conf /etc/apache2/sites-enabled/rc-admin.conf \
  && rm -f /etc/apache2/sites-enabled/000-default.conf
 
 COPY conf/supervisord.conf /etc/supervisord.conf
 
-WORKDIR /var/www/
+RUN mkdir -p /var/container_init
+COPY conf/init.sh /var/container_init/init.sh
+COPY conf/env.template /var/container_init/env.template
 
-RUN git clone https://github.com/anjesh/pdf-processor.git
-
-COPY . rc-admin
+COPY . /var/www/rc-admin
 
 RUN mkdir /shared_path \
  && mkdir -p /shared_path/rc-admin/data \
@@ -54,17 +65,9 @@ RUN mkdir /shared_path \
  && ln -s /shared_path/rc-admin/data/ /var/www/rc-admin/public/data \
  && rm -rf /var/www/pdfprocessor/logs \
  && ln -s /shared_path/pdfprocessor/logs/ /var/www/pdf-processor/logs \
- && chown -R www-data: /var/www/rc-admin \
- && mkdir -p /var/container_init
+ && chown -R www-data: /var/www/rc-admin
 
-COPY conf/init.sh /var/container_init/init.sh
-COPY conf/env.template /var/container_init/env.template
-
-WORKDIR /var/www/rc-admin
-
-RUN curl -s http://getcomposer.org/installer | php \
- && php composer.phar install --prefer-dist \
- && php composer.phar dump-autoload --optimize \
+RUN php composer.phar dump-autoload --optimize \
  && php artisan clear-compiled
 
 EXPOSE 80
