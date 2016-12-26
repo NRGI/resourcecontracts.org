@@ -8,10 +8,16 @@ branches:
     - staging
     - master
 
+env:
+  global:
+    # Shippable API token used to trigger deploy
+    - secure: PR0qw0iuULoz1V8C8aBfXYmCQAcvMsDlKQO1ObWXzlDmjBxUzmO8197NUHUtWzT6MOBYP8WapuYbJsmc+5dTV2yuB7ameIvQIFiI2Jb9MFT+Z7v2qzvX6r9wG8ThpgdihQqW4fgZkhQO7N5EhzyFiZG38nWdJxoi0Sc7zi8M5oPBElZgxcTUEnQAxd1+DRTQCPSDTDE8WcLuKmVrpPDD4AMWAuHCR4RRAErFoCGOJqdBdBhQHUJEnXGC0IT5txQjnOAQUVxGOXuK3z5GKSPwb2mO/vuMQsC2HaS1UP3PrJnI2QRGsd92OvdDae2E3WVK4Wgx1EOcQ28LA72Ri/vV6w==
+
 build:
   ci:
     # Get the latest image to reuse its cache. Will not work with Docker 1.10 . Docker 1.13 adds support with --cache-from flag
-    - docker pull nrgi/rc-admin:$BRANCH
+    # Prevent build failure in case there is no latest image for the current branch with a conditional `echo`.
+    - docker pull nrgi/rc-admin:$BRANCH || echo 'Cache not available'
     
     - docker build -t nrgi/rc-admin:$BRANCH.$COMMIT .
     # Create the `latest` tag and force it in case the tag is already there from a previous build
@@ -19,6 +25,8 @@ build:
   
     - docker push nrgi/rc-admin:$BRANCH
     - docker push nrgi/rc-admin:$BRANCH.$COMMIT
+
+    - ./shippable-deploy.sh
 
 integrations:
   hub:
