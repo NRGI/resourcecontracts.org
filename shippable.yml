@@ -15,6 +15,9 @@ env:
 
 build:
   ci:
+    # Create the version file
+    - ./create_version.sh
+    
     # Get the latest image to reuse its cache. Will not work with Docker 1.10 . Docker 1.13 adds support with --cache-from flag
     # Prevent build failure in case there is no latest image for the current branch with a conditional `echo`.
     - docker pull nrgi/rc-admin:$BRANCH || echo 'Cache not available'
