@@ -155,8 +155,9 @@ class ElasticSearchService
      *
      * @param      $id
      * @param bool $showText
+     * @param bool $generateWord
      */
-    public function postText($id, $showText = true)
+    public function postText($id, $showText = true, $generateWord = true)
     {
         $contract = $this->contract->findWithPages($id);
         $pages    = [
@@ -168,7 +169,9 @@ class ElasticSearchService
         ];
 
         try {
-            $this->contract->updateWordFile($contract->id);
+            if ($generateWord) {
+                $this->contract->updateWordFile($contract->id);
+            }
             $request  = $this->http->post($this->apiURL('contract/pdf-text'), null, $pages);
             $response = $request->send();
             $this->logger->info('Pdf Text successfully submitted to Elastic Search.', $response->json());

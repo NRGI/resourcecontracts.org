@@ -147,8 +147,9 @@ class TaskRepository implements TaskRepositoryInterface
     /**
      * Get all Tasks
      *
-     * @param $filter
-     * @param $null
+     * @param      $filter
+     * @param null $perPage
+     *
      * @return Collection
      */
     public function allTasks ($filter, $perPage = null)

@@ -99,9 +99,9 @@ use App\Nrgi\Entities\Contract\Contract;
 
     <td>
         <?php
-        $link = "http://www.".env('RC_LINK')."/contract/".$contract->metadata->open_contracting_id."#annotations";
+        $link = "http://".env('RC_LINK')."/contract/".$contract->metadata->open_contracting_id."#annotations";
         if (in_array('olc', $contract->metadata->category)) {
-            $link = "http://www.".env('OLC_LINK')."/contract/".$contract->metadata->open_contracting_id."#annotations";
+            $link = "http://".env('OLC_LINK')."/contract/".$contract->metadata->open_contracting_id."#annotations";
         }
         ?>
 
