@@ -28,8 +28,7 @@
                 <div class="col-md-6">
                     <a href="{{$task->pdf_url}}" id="pdf_url"></a>
                     @section('script')
-                        <script type="text/javascript"
-                                src="http://www.jawish.org/blog/uploads/jquery.gdocsviewer.min.js"></script>
+                        <script src="{{asset('js/jquery.gdocsviewer.min.js')}}"></script>
                         <script type="text/javascript">
                             $(document).ready(function () {
                                 $('#pdf_url').gdocsViewer({width: 450, height: 580});
