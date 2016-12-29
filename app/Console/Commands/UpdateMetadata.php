@@ -56,7 +56,7 @@ class UpdateMetadata extends Command
 
         if (is_null($contract_id)) {
             $contracts = $this->contract->getList();
-            $contracts->orderBy('id', 'ASC');
+            $contracts->sortBy('id');
             foreach ($contracts as $contract) {
                 $this->updateMetadata($contract);
             }
@@ -76,14 +76,29 @@ class UpdateMetadata extends Command
         $default  = config('metadata.schema.metadata');
         $metadata = (array) $contract->metadata;
         $metadata = array_merge($default, $metadata);
-
         unset($metadata['amla_url'], $metadata['file_url'], $metadata['word_file']);
-
         $contract->metadata = $this->applyRules($metadata);
-
         $contract->save();
+    }
 
-        $this->info(sprintf('Contract ID %s : UPDATED', $contract->id));
+    /**
+     * Harmonize company name
+     *
+     * @param $metadata
+     */
+    public function harmonizeCompanyName(&$metadata)
+    {
+        $companyList = $new = config('company_name');
+        foreach ($metadata['company'] as $index => $company) {
+            $oldName = $company->name;
+            if (isset($companyList[$oldName]) && $companyList[$oldName] != '') {
+                $newName = $companyList[$oldName];
+                if ($oldName != $newName) {
+                    $metadata['company'][$index]->name = $newName;
+                    $this->info(sprintf('Company name changed from %s to %s : UPDATED', $oldName, $newName));
+                }
+            }
+        }
     }
 
     /**
@@ -95,6 +110,8 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
+        $this->harmonizeCompanyName($metadata);
+
         return $metadata;
     }
 
