@@ -256,6 +256,7 @@ class AnnotationService
      * Updates status of annotations of contract
      *
      * @param $annotationStatus
+     * @param $currentAnnStatus
      * @param $contractId
      *
      * @return bool
@@ -396,7 +397,7 @@ class AnnotationService
                 $parent      = $this->annotation->find($page->annotation_id);
                 $contract_id = $parent->contract_id;
                 $page_no     = $page->page_no;
-                $this->annotation->updateStatus($id, Annotation::DRAFT);
+                $this->annotation->updateStatus(Annotation::DRAFT, $contract_id);
             }
 
             $this->logger->activity(

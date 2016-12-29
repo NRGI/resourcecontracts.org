@@ -1,23 +1,20 @@
 <?php namespace App\Console\Commands;
 
-use App\Nrgi\Entities\Contract\Annotation\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
+use App\Nrgi\Mturk\Services\ActivityService;
 use App\Nrgi\Services\Contract\Annotation\AnnotationService;
 use App\Nrgi\Services\ElasticSearch\ElasticSearchService;
 use Illuminate\Console\Command;
+use Illuminate\Database\Eloquent\Collection;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
- *  Command for Bulk index of data into elasticsearch
- *
+ * Command for Bulk index of data into elasticsearch
  * Class BulkIndex
- *
- * @method Illuminate\Database\Query\Builder  select()
  * @package App\Console\Commands
  */
 class BulkIndex extends Command
 {
-
     /**
      * The console command name.
      *
@@ -48,6 +45,14 @@ class BulkIndex extends Command
      * @var string
      */
     protected $contractCount;
+    /**
+     * @var ActivityService
+     */
+    protected $activity;
+    /**
+     * @var int
+     */
+    protected $remaining;
 
     /**
      * Create a new command instance.
@@ -55,13 +60,19 @@ class BulkIndex extends Command
      * @param ElasticSearchService $elastic
      * @param AnnotationService    $annotations
      * @param Contract             $contract
+     * @param ActivityService      $activity
      */
-    public function __construct(ElasticSearchService $elastic, AnnotationService $annotations, Contract $contract)
-    {
+    public function __construct(
+        ElasticSearchService $elastic,
+        AnnotationService $annotations,
+        Contract $contract,
+        ActivityService $activity
+    ) {
         parent::__construct();
         $this->elastic     = $elastic;
         $this->annotations = $annotations;
         $this->contract    = $contract;
+        $this->activity    = $activity;
     }
 
     /**
@@ -69,16 +80,9 @@ class BulkIndex extends Command
      */
     public function fire()
     {
-        $this->info("getting contracts");
         $contracts           = $this->getContracts();
-        $this->contractCount = $contracts->count();
-        $this->info("no of contract to publish =>{$this->contractCount}");
-        $this->info("publishing...");
-        if ($this->input->getOption('annotation')) {
-            $this->publishAnnotations($contracts);
-
-            return;
-        }
+        $this->contractCount = $this->remaining = $contracts->count();
+        $this->info("Total Contracts-".$this->contractCount);
 
         if ($this->input->getOption('metadata')) {
             $this->publishAllMetadata($contracts);
@@ -92,135 +96,235 @@ class BulkIndex extends Command
             return;
         }
 
+        if ($this->input->getOption('annotation')) {
+            $this->publishAnnotations($contracts);
+
+            return;
+        }
+
+
         $this->publishContracts($contracts);
     }
 
     /**
      * Publish all contract annotations
+     *
      * @param $contracts
      */
     public function publishAnnotations($contracts)
     {
         $index = 0;
         foreach ($contracts as $contract) {
-            $this->publishAnnotation($contract);
-            $this->status($index ++);
+            $this->info(
+                sprintf(
+                    '%s) Contract id-%s %s',
+                    $this->remaining,
+                    $contract->id,
+                    $this->publishAnnotation($contract)
+                )
+            );
+            $index += 1;
+            $this->status($index);
         }
-
     }
 
     /**
      * Publish all contract Metadata
+     *
      * @param $contracts
      */
     public function publishAllMetadata($contracts)
     {
         $index = 0;
         foreach ($contracts as $contract) {
-            $this->publishMetadata($contract);
-            $this->status($index ++);
+            $this->info(
+                sprintf(
+                    '%s) Contract id-%s %s',
+                    $this->remaining,
+                    $contract->id,
+                    $this->publishMetadata($contract)
+                )
+            );
+            $index += 1;
+            $this->status($index);
         }
 
     }
 
     /**
      * Publish all contract Text
+     *
      * @param $contracts
      */
     public function publishAllText($contracts)
     {
         $index = 0;
         foreach ($contracts as $contract) {
-            $this->publishText($contract);
-            $this->status($index ++);
+            $this->info(
+                sprintf(
+                    '%s) Contract id-%s %s',
+                    $this->remaining,
+                    $contract->id,
+                    $this->publishText($contract)
+                )
+            );
+            $index += 1;
+            $this->status($index);
         }
 
     }
 
     /**
      * publish individual contract annotation
+     *
      * @param Contract $contract
+     *
+     * @return bool
      */
     protected function publishAnnotation(Contract $contract)
     {
-        if ($this->annotations->getStatus($contract->id) == Annotation::PUBLISHED) {
+        if ($contract->activity['annotation'] == Contract::STATUS_PUBLISHED) {
             $this->elastic->deleteAnnotations($contract->id);
             $this->elastic->postAnnotation($contract->id);
-            $this->info(sprintf('Contract %s : Annotations Indexed.', $contract->id));
         }
+
+        return $contract->activity['annotation'];
     }
 
     /**
      * publish individual contract text only
+     *
      * @param Contract $contract
+     *
+     * @return bool
      */
     protected function publishText(Contract $contract)
     {
-        if ($contract->text_status == Contract::STATUS_PUBLISHED) {
-            $this->elastic->postText($contract->id);
-            $this->info(sprintf('Contract %s : Text Indexed.', $contract->id));
+        if ($contract->activity['text'] == Contract::STATUS_PUBLISHED) {
+            $this->elastic->postText($contract->id, true, false);
         }
+
+        return $contract->activity['text'];
     }
 
     /**
-     * publish individual contract metadata only
+     * Publish individual contract metadata only
+     *
      * @param Contract $contract
+     *
+     * @return string
      */
     protected function publishMetadata(Contract $contract)
     {
-        if ($contract->metadata_status == Contract::STATUS_PUBLISHED) {
+        if ($contract->activity['metadata'] == Contract::STATUS_PUBLISHED) {
             $this->elastic->postMetadata($contract->id);
-            $this->info(sprintf('Contract %s : Metadata Indexed.', $contract->id));
         }
+
+        return $contract->activity['metadata'];
     }
 
     /**
      * Publish text,metadata,annotation of all contracts
+     *
      * @param $contracts
      */
     protected function publishContracts($contracts)
     {
         $index = 0;
         foreach ($contracts as $contract) {
-            $this->publishMetadata($contract);
-            $this->publishText($contract);
-            $this->publishAnnotation($contract);
-            $this->status($index ++);
+            $this->info(
+                sprintf(
+                    '%s) Contract id-%s',
+                    $this->remaining,
+                    $contract->id
+                )
+            );
+
+            $status = [
+                $this->publishMetadata($contract),
+                $this->publishText($contract),
+                $this->publishAnnotation($contract),
+            ];
+            $index += 1;
+            $this->table(['Metadata', 'Text', 'Annotation'], [$status]);
+            $this->status($index);
         }
     }
 
     /**
-     * @param $contracts
+     * Log status
+     *
      * @param $index
      */
     protected function status($index)
     {
         $remaining = $this->contractCount - $index;
-        $this->info("remaining contracts to be indexed =>{$remaining}");
+
+        if ($remaining == 0) {
+            $this->info("Process completed");
+        }
+        $this->remaining = $remaining;
     }
 
     /**
-     * get contracts based on option category
-     * @return Illuminate\Database\Eloquent\Collection
+     * Get contracts based on options
+     *
+     * @return Collection
      */
     protected function getContracts()
     {
         $category = $this->input->getOption('category');
-        if (is_null($category)) {
-            $contracts = $this->contract->all();
+        $query    = $this->contract;
 
-            return $contracts;
+        if ($category != 'all') {
+            $from = "contracts ";
+            $from .= ",json_array_elements(contracts.metadata->'category') cat";
+            $query = $query->whereRaw("trim(both '\"' from cat::text) = '".$category."'");
+            $query = $query->from(\DB::raw($from));
         }
 
-        $query = $this->contract->select('*');
-        $from  = "contracts ";
-        $from .= ",json_array_elements(contracts.metadata->'category') cat";
+        $query = $query->orderBy('id', 'ASC');
+        $skip  = $this->input->getOption('skip');
+        $take  = $this->input->getOption('take');
+        $id    = $this->input->getOption('id');
 
-        $query->whereRaw("trim(both '\"' from cat::text) = '" . $category . "'");
-        $query->from(\DB::raw($from));
+        if ($id) {
+            $query = $query->where('id', $id);
+        }
+
+        if ($skip) {
+            $query = $query->skip($skip);
+        }
+
+        if ($take != 'all') {
+            $query = $query->take($take);
+        }
+
+        $this->info(sprintf("Getting contracts category:%s skip:%s take:%s", $category, $skip, $take));
         $contracts = $query->get();
+        $logs      = [];
+        foreach ($contracts as &$contract) {
+            try {
+                $activity = $this->activity->getElementState($contract->id);
+            } catch (\Exception $e) {
+                $activity = ['metadata' => 'published', 'text' => 'published', 'annotation' => 'published'];
+            }
+            $contract->activity = $activity;
+            $logs[]             = ['id' => $contract->id] + $activity;
+        }
+        $this->writeLog($logs);
 
         return $contracts;
+    }
+
+    /**
+     * write contract publish log in file
+     *
+     * @param $contracts
+     */
+    protected function writeLog($contracts)
+    {
+        file_put_contents(storage_path('app/index.json'), json_encode($contracts));
     }
 
     /**
@@ -241,10 +345,13 @@ class BulkIndex extends Command
     protected function getOptions()
     {
         return [
-            ['annotation', null, InputOption::VALUE_NONE, 'publish annotation all contracts', null],
-            ['metadata', null, InputOption::VALUE_NONE, 'publish metadata all contracts', null],
-            ['text', null, InputOption::VALUE_NONE, 'publish text all contracts', null],
-            ['category', null, InputOption::VALUE_OPTIONAL, 'publish contract based on contract type', null]
+            ['metadata', null, InputOption::VALUE_NONE, 'Publish only metadata', null],
+            ['text', null, InputOption::VALUE_NONE, 'Publish only text', null],
+            ['annotation', null, InputOption::VALUE_NONE, 'Publish only annotations', null],
+            ['category', null, InputOption::VALUE_OPTIONAL, 'Publish contract based on contract type', 'all'],
+            ['skip', null, InputOption::VALUE_OPTIONAL, 'Start contract from (Default is 0)', 0],
+            ['take', null, InputOption::VALUE_OPTIONAL, 'Limit number of contracts', 'all'],
+            ['id', null, InputOption::VALUE_OPTIONAL, 'Id of contract', null],
         ];
     }
 }

@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Mturk\Services;
 
 use App\Nrgi\Mturk\Repositories\Activity\ActivityRepositoryInterface;
+use App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -15,11 +16,13 @@ class ActivityService
     protected $activity;
 
     /**
-     * @param ActivityRepositoryInterface $activity
+     * @param ActivityRepositoryInterface   $activity
+     * @param AnnotationRepositoryInterface $annotation
      */
-    public function __construct(ActivityRepositoryInterface $activity)
+    public function __construct(ActivityRepositoryInterface $activity, AnnotationRepositoryInterface $annotation)
     {
-        $this->activity = $activity;
+        $this->activity   = $activity;
+        $this->annotation = $annotation;
     }
 
     /**
@@ -28,6 +31,9 @@ class ActivityService
      * @param       $message
      * @param array $params
      * @param null  $contract_id
+     *
+     * @param null  $page_no
+     *
      * @return bool
      */
     public function save($message, $params = [], $contract_id = null, $page_no = null)
@@ -53,7 +59,9 @@ class ActivityService
     /**
      * Activities pagination
      *
+     * @param     $filter
      * @param int $perPage
+     *
      * @return Collection
      */
     public function getAll($filter, $perPage = 25)
@@ -63,7 +71,9 @@ class ActivityService
 
     /**
      * Get published Information
+     *
      * @param $id
+     *
      * @return array
      */
     public function getPublishedInfo($id)
@@ -79,7 +89,9 @@ class ActivityService
 
     /**
      * Element state to show in subsite
+     *
      * @param $id
+     *
      * @return array
      */
     public function getElementState($id)
@@ -91,6 +103,8 @@ class ActivityService
             $data[$element] = 'unpublished';
             if (isset($type->message_params['new_status']) && $type->message_params['new_status'] == 'published') {
                 $data[$element] = 'published';
+            } else {
+                $data[$element] = $this->annotation->getStatus($id);
             }
         }
 

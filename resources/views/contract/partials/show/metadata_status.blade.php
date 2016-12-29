@@ -87,14 +87,11 @@ use App\Nrgi\Entities\Contract\Contract; ?>
 <td>
 
     <?php
-    $link = "http://www.".env('RC_LINK')."/contract/".$contract->metadata->open_contracting_id;
-    if(in_array('olc',$contract->metadata->category))
-    {
-        $link = "http://www.".env('OLC_LINK')."/contract/".$contract->metadata->open_contracting_id;
+    $link = "http://".env('RC_LINK')."/contract/".$contract->metadata->open_contracting_id;
+    if(in_array('olc',$contract->metadata->category)){
+        $link = "http://".env('OLC_LINK')."/contract/".$contract->metadata->open_contracting_id;
     }
     ?>
-
-
         @if($elementState['metadata']=='published')
         @if(!empty($publishedInformation['metadata']['created_at']))
                 {{$publishedInformation['metadata']['created_at']}} @lang('global.by') {{$publishedInformation['metadata']['user_name']}} .
