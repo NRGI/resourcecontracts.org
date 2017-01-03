@@ -349,7 +349,7 @@ class ElasticSearchService
         try {
             $request  = $this->http->post($this->apiURL('contract/delete/annotation'), null, ['contract_id' => $id]);
             $response = $request->send();
-            $this->logger->info('Contract\'s Annotation deleted from Elastic Search.', $response->json());
+            $this->logger->info('Contract\'s Annotation deleted from Elastic Search.', (array) $response);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }

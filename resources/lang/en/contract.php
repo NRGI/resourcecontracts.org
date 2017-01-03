@@ -99,7 +99,7 @@ return [
     'choose_text_type'                     => 'Choose text quality',
     'view_all'                             => 'View all comments',
     'contracting_id'                       => 'Open Contracting ID',
-    'no_documents'                         => 'There is no associated documents.',
+    'no_documents'                         => 'There are no associated documents.',
     'contracts'                            => 'Resource Contracts',
     'open'                                 => 'Open',
     'resolved'                             => 'Resolved',
