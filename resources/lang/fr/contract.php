@@ -99,7 +99,7 @@ return [
     'choose_text_type'                     => "Choisir le type de texte de sortie",
     'view_all'                             => "Afficher tous les commentaires",
     'contracting_id'                       => "Ouvrir l'identificateur de la partie contractante",
-    'no_documents'                         => "Pas de document relatif",
+    'no_documents'                         => "Il n'y a pas de documents associés.",
     'contracts'                            => "Contrats de ressources naturelles",
     'open'                                 => "Ouvrir",
     'resolved'                             => "Réglé",
