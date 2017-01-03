@@ -79,7 +79,7 @@ class TaskService
         $this->page       = $page;
         $this->queue      = $queue;
         $this->logService = $logService;
-        $this->task_url   = env('MTURK_TASK_URL');
+        $this->task_url   = $this->getMTurkPageUrl();
     }
 
     /**
@@ -695,37 +695,6 @@ class TaskService
     }
 
     /**
-     * Get Formatted Assignments
-     *
-     * @param $assignment
-     *
-     * @return array
-     */
-    protected function getFormattedAssignment($assignment)
-    {
-        $answerObj = json_decode(json_encode(new \SimpleXMLElement($assignment['Assignment']['Answer']), true));
-        $data      = [];
-        $answer    = '';
-        foreach ($answerObj->Answer as $key => $ans) {
-            if ($ans->QuestionIdentifier == 'feedback') {
-                $answer = $ans->FreeText;
-                break;
-            }
-        }
-        $data['total']      = $assignment['TotalNumResults'];
-        $data['assignment'] = [
-            'assignment_id' => $assignment['Assignment']['AssignmentId'],
-            'worker_id'     => $assignment['Assignment']['WorkerId'],
-            'accept_time'   => $assignment['Assignment']['AcceptTime'],
-            'submit_time'   => $assignment['Assignment']['SubmitTime'],
-            'status'        => $assignment['Assignment']['AssignmentStatus'],
-            'answer'        => $answer,
-        ];
-
-        return $data;
-    }
-
-    /**
      * Get Approval Pending tasks
      *
      * @param $contract_id
@@ -821,6 +790,63 @@ class TaskService
     }
 
     /**
+     * Get Mturk Balance
+     *
+     * @return object
+     */
+    public function getMturkBalance()
+    {
+        try {
+            return $this->turk->getBalance();
+        } catch (Exception $e) {
+            $this->logger->error('Get Mturk Balance : '.$e->getMessage());
+
+            return 0;
+        }
+    }
+
+    /**
+     * Get Formatted Assignments
+     *
+     * @param $assignment
+     *
+     * @return array
+     */
+    protected function getFormattedAssignment($assignment)
+    {
+        $answerObj = json_decode(json_encode(new \SimpleXMLElement($assignment['Assignment']['Answer']), true));
+        $data      = [];
+        $answer    = '';
+        foreach ($answerObj->Answer as $key => $ans) {
+            if ($ans->QuestionIdentifier == 'feedback') {
+                $answer = $ans->FreeText;
+                break;
+            }
+        }
+        $data['total']      = $assignment['TotalNumResults'];
+        $data['assignment'] = [
+            'assignment_id' => $assignment['Assignment']['AssignmentId'],
+            'worker_id'     => $assignment['Assignment']['WorkerId'],
+            'accept_time'   => $assignment['Assignment']['AcceptTime'],
+            'submit_time'   => $assignment['Assignment']['SubmitTime'],
+            'status'        => $assignment['Assignment']['AssignmentStatus'],
+            'answer'        => $answer,
+        ];
+
+        return $data;
+    }
+
+    /**
+     * Get MTurk Page Url
+     *
+     * @return string
+     */
+    protected function getMTurkPageUrl()
+    {
+        return env('MTURK_TASK_URL');
+    }
+
+    /**
      * Update Approve Task
      *
      * @param $task
@@ -841,22 +867,5 @@ class TaskService
         $this->logger->mTurkActivity('mturk.log.approve', null, $task->contract_id, $task->page_no);
 
         return $task->save();
-
-    }
-
-    /**
-     * Get Mturk Balance
-     *
-     * @return object
-     */
-    public function getMturkBalance()
-    {
-        try {
-            return $this->turk->getBalance();
-        } catch (Exception $e) {
-            $this->logger->error('Get Mturk Balance : '.$e->getMessage());
-
-            return 0;
-        }
     }
 }

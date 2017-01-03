@@ -266,7 +266,7 @@ function translate_date($date)
 }
 
 /**
- * Get Formated id for contract name
+ * Get Formatted id for contract name
  *
  * @param $id
  *
@@ -275,4 +275,98 @@ function translate_date($date)
 function formatIdRorName($id)
 {
     return str_pad($id, 4, "0", STR_PAD_LEFT);
+}
+
+/**
+ * MTurk Helper functions
+ */
+
+/**
+ * Get Lang Text for mTurk page
+ *
+ * @param $lang_text
+ * @param $lang
+ *
+ * @return string
+ */
+function get_lang_text($lang_text, $lang)
+{
+    $lang_key = array_keys($lang_text);
+    if (in_array($lang, $lang_key)) {
+        return $lang_text[$lang];
+    }
+
+    return $lang_text['en'];
+}
+
+/**
+ * Get disclaimer page for a language
+ *
+ * @param string $lang
+ *
+ * @return string
+ */
+function disclaimer($lang = 'en')
+{
+    $lang_text = [
+        'en' => '<strong>DISCLAIMER</strong> - IF YOU ARE NOT A FRENCH SPEAKER PLEASE DO NOT COMPLETE TASKS FOR FRENCH LANGUAGE DOCUMENTS. DUE TO ERRORS BY PREVIOUS TRANSCRIBERS, WE ARE NOT IN A POSITION TO PAY FOR TRANSCRIPTIONS OF FRENCH LANGUAGE DOCUMENTS BY NON-FRENCH SPEAKERS.',
+        'fr' => '<strong>AVERTISSEMENT</strong> - SI VOUS N’ETES PAS FRANCOPHONE, NOUS VOUS PRIONS DE PAS TRAVAILLER SUR DES DOCUMENTS EN LANGUE FRANCAISE. EN RAISON D’ERREURS COMMISES PAR  DE PRECEDENTS TRANSCRIPTEURS, NOUS NE SOMMES PAS EN MESURE DE PAYER POUR DES TRANSCRIPTS DE DOCUMENTS EN LANGUE FRANCAISE PAR DES NON FRANCOPHONES.',
+    ];
+
+    return get_lang_text($lang_text, $lang);
+}
+
+/**
+ * Get instructions text
+ *
+ * @param string $lang
+ *
+ * @return string
+ */
+function other_instructions($lang = 'en')
+{
+    $lang_text = [
+        'en' => '<h4>Other instructions for transcribers: </h4>
+		            <ol>
+						<li>Original letters and accents should be preserved (for example for French language contracts, the letters / symbols “œ” and “æ” and the following accents should be transcribed: à ç è é ê ö).</li>
+						<li>Original symbols should be transcribed where possible (for example: ° as used in “N°”, or in coordinates like “53°14’477’’).</li>
+						<li>For non-transcribed objects such as maps, photos or illegible signatures, please provide a bracketed entry (for example: [map], [photo] or [signature]).</li>
+						<li>If you can read the handwritten signature, or any other handwriting, please transcribe it</li>
+						<li>Tables should be transcribed with pipes ( | ) as separators (for example: “Royalties | 10% | 12% | 15%”).</li>
+						<li>Please include any typed page numbers or other document references that appear on the page.</li>
+						<li>Please include a single space only between each Article of the contract.</li>
+		            </ol>',
+        'fr' => '<h4>Autres instructions pour les transcripteurs:</h4>
+					<ol>
+						<li>Les lettres et accents originaux doivent être présevrés (par exemple pour les contrats en langue française, les lettres / symboles “œ” et “æ” ainsi que les accents suivants doivent être retranscrits: à ç è é ê ö).</li>
+						<li>Les symboles originaux doivent, dans la mesure du possible, être retranscrits (par exemple: ° utilisé dans “N°”, ou dans des coordonnées comme “53°14’477”).</li>
+						<li>Pour les objets non retranscrits tels les cartes, photos ou des signatures illisibles, nous vous prions de bien vouloir utiliser des crochets (par exemple: [carte], [photo], [signature])</li>
+						<li>Si vous pouvez lire la signature manuscrite, ou toute autre écriture, nous vous prions de la/les retranscrire.</li>
+						<li>Les tableaux doivent être retranscrits avec des tubes ( | ) comme séparateurs (par exemple: “Redevances  | 10%  | 12%  | 15 % “).</li>
+						<li>Nous vous prions d’inclure tout numéro de pages dactylographiés ou autres références à des documents qui apparaissent sur la page</li>
+						<li>Nous vous prions d’utiliser un interligne simple seulement entre les articles du contrat.
+					</ol>',
+    ];
+
+    return get_lang_text($lang_text, $lang);
+}
+
+/**
+ * Show transcript language
+ *
+ * @param string $lang
+ *
+ * @return string
+ */
+function show_language($lang = 'en')
+{
+    $langConfig = trans('codelist/language', [], null, 'en');
+    $lang_list  = $langConfig['major'] + $langConfig['minor'];
+    $language   = 'English';
+
+    if (array_key_exists($lang, $lang_list)) {
+        $language = $lang_list[$lang];
+    }
+
+    return sprintf(" in <strong>%s</strong>", $language);
 }

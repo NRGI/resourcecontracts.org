@@ -15,4 +15,6 @@ $router->group(
     }
 );
 
-$router->get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+$router->group(['middleware' => 'auth'],function($router){
+    $router->get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+});

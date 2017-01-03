@@ -44,6 +44,7 @@ $providers = [
     'App\Providers\EventServiceProvider',
     'App\Providers\RouteServiceProvider',
     'App\Providers\RepositoriesServiceProvider',
+    'App\Providers\ProxyServiceProvider',
 ];
 
 $localProviders = [
@@ -71,7 +72,7 @@ return [
     |
     */
 
-    'debug'           => env('APP_DEBUG'),
+    'debug' => env('APP_DEBUG'),
     /*
     |--------------------------------------------------------------------------
     | Application URL
@@ -83,7 +84,7 @@ return [
     |
     */
 
-    'url'             => env('APP_DOMAIN', 'http://localhost'),
+    'url' => env('APP_DOMAIN', 'http://localhost'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -95,7 +96,7 @@ return [
     |
     */
 
-    'timezone'        => 'UTC',
+    'timezone' => 'UTC',
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
@@ -107,7 +108,7 @@ return [
     |
     */
 
-    'locale'          => 'en',
+    'locale' => 'en',
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -131,8 +132,8 @@ return [
     |
     */
 
-    'key'             => env('APP_KEY', 'SomeRandomString'),
-    'cipher'          => MCRYPT_RIJNDAEL_128,
+    'key'    => env('APP_KEY', 'SomeRandomString'),
+    'cipher' => MCRYPT_RIJNDAEL_128,
     /*
     |--------------------------------------------------------------------------
     | Logging Configuration
@@ -146,7 +147,7 @@ return [
     |
     */
 
-    'log'             => 'custom',
+    'log' => 'custom',
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -158,7 +159,7 @@ return [
     |
     */
 
-    'providers'       => $providers,
+    'providers' => $providers,
     /*
     |--------------------------------------------------------------------------
     | Class Aliases
@@ -170,7 +171,7 @@ return [
     |
     */
 
-    'aliases'         => [
+    'aliases' => [
 
         'App'       => 'Illuminate\Support\Facades\App',
         'Artisan'   => 'Illuminate\Support\Facades\Artisan',
