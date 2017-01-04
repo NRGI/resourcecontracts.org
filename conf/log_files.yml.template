@@ -1,0 +1,26 @@
+files:
+  - path: /var/log/apache2/access.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-apache2-access.log
+  - path: /var/log/apache2/error.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-apache2-error.log
+  - path: /var/log/apache2/other_vhosts_access.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-apache2-other_vhosts_access.log
+  - path: /var/log/supervisor/supervisord.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-supervisor-supervisord.log  
+  - path: /var/log/supervisor/remote-syslog.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-supervisor-remote-syslog.log
+  - path: /var/log/supervisor/supervisor_elasticsearch.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-supervisor-supervisor_elasticsearch.log
+  - path: /var/log/supervisor/supervisor_email.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-supervisor-supervisor_email.log
+  - path: /var/log/supervisor/supervisor_nrgi.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-supervisor-supervisor_nrgi.log          
+  - path: /shared_path/rc-admin/storage/logs/*
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-rc-admin-storage-logs         
+  - path: /shared_path/pdf-processor/logs/*
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-pdf-processor-logs
+destination:
+  host: logs2.papertrailapp.com
+  port: 39824
+  protocol: tls
+exclude_patterns:
