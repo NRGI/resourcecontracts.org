@@ -53,6 +53,7 @@ RUN mkdir -p /var/container_init
 COPY conf/init.sh /var/container_init/init.sh
 COPY conf/env.template /var/container_init/env.template
 COPY conf/log_files.yml.template /var/container_init/log_files.yml.template
+COPY conf/settings.config.template /var/container_init/settings.config.template
 
 COPY . /var/www/rc-admin
 
@@ -71,7 +72,6 @@ RUN mkdir /shared_path \
  && ln -s /shared_path/rc-admin/storage/ /var/www/rc-admin/storage \
  && ln -s /shared_path/rc-admin/data/ /var/www/rc-admin/public/data \
  && rm -rf /var/www/pdfprocessor/logs \
- && ln -s /shared_path/pdfprocessor/logs/ /var/www/pdf-processor/logs \
  && chown -R www-data: /var/www/rc-admin
 
 RUN php composer.phar dump-autoload --optimize \

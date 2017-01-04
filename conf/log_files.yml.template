@@ -1,24 +1,40 @@
 files:
   - path: /var/log/apache2/access.log
     tag: ecs-rc-admin-$DEPLOYMENT_TYPE-apache2-access.log
+
   - path: /var/log/apache2/error.log
     tag: ecs-rc-admin-$DEPLOYMENT_TYPE-apache2-error.log
-  - path: /var/log/apache2/other_vhosts_access.log
-    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-apache2-other_vhosts_access.log
+
   - path: /var/log/supervisor/supervisord.log
-    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-supervisor-supervisord.log  
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-supervisord.log
+
   - path: /var/log/supervisor/remote-syslog.log
-    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-supervisor-remote-syslog.log
-  - path: /var/log/supervisor/supervisor_elasticsearch.log
-    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-supervisor-supervisor_elasticsearch.log
-  - path: /var/log/supervisor/supervisor_email.log
-    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-supervisor-supervisor_email.log
-  - path: /var/log/supervisor/supervisor_nrgi.log
-    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-supervisor-supervisor_nrgi.log          
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-remote-syslog.log
+
+  - path: /var/log/supervisor/nrgi_queue.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-nrgi-queue.log
+
+  - path: /var/log/supervisor/elasticsearch_queue.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-elasticsearch-queue.log
+
+  - path: /var/log/supervisor/mail_queue.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-mail-queue.log
+
+  - path: /var/log/supervisor/mturk_queue.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-mturk-queue.log
+
+  - path: /var/log/supervisor/contract_bulk_create_queue.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-contract-bulk-create-queue.log
+
+  - path: /var/log/supervisor/contract_download_queue.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-contract-download-queue.log
+
   - path: /shared_path/rc-admin/storage/logs/*
-    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-rc-admin-storage-logs         
-  - path: /shared_path/pdf-processor/logs/*
-    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-pdf-processor-logs
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-rc-admin-laravel.log
+
+  - path: /var/www/pdf-processor/logs/*.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-pdf-processor.log
+
 destination:
   host: logs2.papertrailapp.com
   port: 39824
