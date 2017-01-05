@@ -1,0 +1,3 @@
+[abbyy]
+appid       = ${ABBYY_APP_ID}
+password    = ${ABBYY_PASSWORD}

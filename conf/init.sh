@@ -7,3 +7,6 @@ envsubst < ./env.template > /var/www/rc-admin/.env
 
 #log_files
 envsubst '${DEPLOYMENT_TYPE}' < ./log_files.yml.template > /etc/log_files.yml
+
+#pdf-processor
+envsubst < ./settings.config.template > /var/www/pdf-processor/settings.config
