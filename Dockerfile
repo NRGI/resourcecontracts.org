@@ -32,17 +32,15 @@ RUN a2enmod rewrite \
  && ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/apache2/conf.d/20-mcrypt.ini \
  && ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini
 
-WORKDIR /var/www/
-RUN git clone https://github.com/anjesh/pdf-processor.git
-
-
+# Fetch composer packages before copying project code to leverage Docker caching
 RUN mkdir /var/www/rc-admin
-WORKDIR /var/www/rc-admin
 COPY composer.json /var/www/rc-admin
 COPY composer.lock /var/www/rc-admin
+
+WORKDIR /var/www/rc-admin
 RUN curl -s http://getcomposer.org/installer | php \
  && php composer.phar install --prefer-dist --no-scripts --no-autoloader
- 
+
 COPY conf/rc-admin.conf /etc/apache2/sites-available/rc-admin.conf
 RUN ln -s /etc/apache2/sites-available/rc-admin.conf /etc/apache2/sites-enabled/rc-admin.conf \
  && rm -f /etc/apache2/sites-enabled/000-default.conf
@@ -57,6 +55,10 @@ COPY conf/settings.config.template /var/container_init/settings.config.template
 
 COPY . /var/www/rc-admin
 
+WORKDIR /var/www/
+# Clone pdf-processor after copying project files to make sure we defeat the cache to get latest code
+RUN git clone https://github.com/anjesh/pdf-processor.git
+
 RUN mkdir /shared_path \
  && mkdir -p /shared_path/rc-admin/data \
  && mkdir -p /shared_path/rc-admin/storage/logs \
@@ -64,7 +66,6 @@ RUN mkdir /shared_path \
  && mkdir -p /shared_path/rc-admin/storage/framework/cache \
  && mkdir -p /shared_path/rc-admin/storage/framework/sessions \
  && mkdir -p /shared_path/rc-admin/storage/framework/views \
- && mkdir -p /shared_path/pdf-processor/logs \
  && mkdir -p /var/log/supervisor \
  && chmod -R 777 /shared_path \
  && rm -rf /var/www/html \
@@ -74,6 +75,7 @@ RUN mkdir /shared_path \
  && rm -rf /var/www/pdfprocessor/logs \
  && chown -R www-data: /var/www/rc-admin
 
+WORKDIR /var/www/rc-admin
 RUN php composer.phar dump-autoload --optimize \
  && php artisan clear-compiled
 
