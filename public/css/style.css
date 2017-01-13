@@ -1372,3 +1372,8 @@ a.edit-section{
     position: relative;
     z-index: 1;
 }
+
+textarea.annotation-text {
+    max-width: 253px;
+    max-height: 225px;
+}

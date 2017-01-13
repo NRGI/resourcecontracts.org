@@ -808,8 +808,11 @@ class ContractRepository implements ContractRepositoryInterface
         return $query->whereRaw("metadata->'country'->>'code' ='".$country."'")
                      ->paginate($limit);
     }
+
     /**
      * get Company Names
+     *
+     * @param string $contractId
      *
      * @return array
      */
@@ -824,25 +827,5 @@ class ContractRepository implements ContractRepositoryInterface
         return $query->from($this->db->raw($from))
                      ->get()
                      ->toArray();
-    }
-
-    /**
-     * Updates contracts table field
-     *
-     * @param $contractId
-     *
-     * @return int|mixed
-     */
-    public function updateContract($contractId)
-    {
-        $contract = Contract::whereRaw("id = ?", [$contractId])->first();
-
-        if ($contract->published_date == date('Y-m-d')) {
-            $data['published_date'] = null;
-            $data['published_to_newsletter'] = 0;//need to change to 1 when everything is done
-            $contract->update($data);
-        }
-
-        return 1;
     }
 }
