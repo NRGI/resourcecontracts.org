@@ -36,7 +36,7 @@ class MTurkController extends Controller
      */
     public function __construct(TaskService $task, ContractService $contract, ActivityService $activity)
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'publicPage']);
         $this->task     = $task;
         $this->contract = $contract;
         $this->activity = $activity;
@@ -150,7 +150,6 @@ class MTurkController extends Controller
      * Approve All Assignments
      *
      * @param $contract_id
-     * @param $task_id
      *
      * @return Redirect
      */
@@ -269,6 +268,23 @@ class MTurkController extends Controller
         $show_options = is_null($filter['hitid']) ? true : false;
 
         return view('mturk.allTasks', compact('tasks', 'show_options'));
+    }
+
+    /**
+     * Task SubmitPage
+     *
+     * @param Request $request
+     *
+     * @return View
+     */
+    public function publicPage(Request $request)
+    {
+        $assignmentId = $request->get('assignmentId');
+        $workerId     = $request->get('workerId');
+        $langCode     = strtolower($request->get('lang', 'en'));
+        $pdf          = $request->get('pdf');
+
+        return view('mturk.public', compact('assignmentId', 'workerId', 'langCode', 'pdf'));
     }
 
 }
