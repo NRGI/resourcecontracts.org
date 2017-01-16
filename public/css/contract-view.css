@@ -118,6 +118,10 @@
     padding: 0 !important;
 }
 
+.pagination .previous:focus, .pagination .next:focus {
+    outline: none;
+}
+
 .pagination .next {
     background-position: -268px -562px !important;
 }
