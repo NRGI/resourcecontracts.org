@@ -237,6 +237,15 @@ class UserService
     }
 
     /**
+     * Gets list of all users
+     * @return array
+     */
+    public function getAllUsersList()
+    {
+        return $this->user->getList();
+    }
+
+    /**
      * Has user activity
      *
      * @param $user_id
