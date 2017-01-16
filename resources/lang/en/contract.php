@@ -185,6 +185,8 @@ return [
     'pages'                                => 'Is Page(s) missing from copy',
     'annexes_display'                      => 'Annex(es) missing from document',
     'pages_display'                        => 'Page(s) missing from document',
+    'annexes_missing'                      => 'Annex(es) missing from document',
+    'pages_missing'                        => 'Page(s) missing from document',
     'scanned'                              => 'Scanned',
     'structured'                           => 'Structured',
     'add_new_government_entity'            => 'Add new government entity',

@@ -1,16 +1,17 @@
 <?php namespace app\Http\Controllers\ActivityLog;
 
 use App\Http\Controllers\Controller;
-use App\Nrgi\Entities\Contract\Contract;
-use App\Nrgi\Entities\User\User;
 use App\Nrgi\Services\ActivityLog\ActivityLogService;
 use App\Nrgi\Services\Contract\ContractService;
+use App\Nrgi\Services\Contract\CountryService;
 use App\Nrgi\Services\User\UserService;
-use Illuminate\Auth\Guard;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Guard;
 
 /**
  * Class ActivityController
+ * @property CountryService country
+ * @property Guard          auth
  * @package app\Http\Controllers\ActivityLog
  */
 class ActivityLogController extends Controller
@@ -22,26 +23,51 @@ class ActivityLogController extends Controller
 
     /**
      * @param ActivityLogService $activity
+     * @param CountryService     $country
+     * @param Guard              $auth
      */
-    public function __construct(ActivityLogService $activity)
-    {
+    public function __construct(
+        ActivityLogService $activity,
+        CountryService $country,
+        Guard $auth
+    ) {
         $this->middleware('auth');
         $this->activity = $activity;
+        $this->country  = $country;
+        $this->auth     = $auth;
     }
 
     /**
      * @param Request         $request
-     * @param UserService     $user
+     * @param UserService     $userService
      * @param ContractService $contract
+     *
      * @return \Illuminate\View\View
      */
-    public function index(Request $request, UserService $user, ContractService $contract)
-    {
-        $filter       = $request->only('contract', 'user');
+    public function index(
+        Request $request,
+        UserService $userService,
+        ContractService $contract
+    ) {
+        $user         = $this->auth->user();
+        $filter       = $request->only('contract', 'user', 'category', 'country', 'status');
         $activityLogs = $this->activity->getAll($filter);
-        $users        = $user->getList();
+        $users        = (!$user->isCountryUser()) ? $userService->getList() : $userService->getAllUsersList();
         $contracts    = $contract->getList();
+        $categories   = trans('category');
+        $countries    = (!$user->isCountryUser()) ? $this->country->all() : null;
+        $status       = trans('status');
 
-        return view('activitylog.index', compact('activityLogs', 'users', 'contracts'));
+        return view(
+            'activitylog.index',
+            compact(
+                'activityLogs',
+                'users',
+                'contracts',
+                'categories',
+                'countries',
+                'status'
+            )
+        );
     }
 }

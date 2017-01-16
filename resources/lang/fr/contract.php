@@ -186,6 +186,8 @@ return [
     'pages'                                => "Y a-t-il une(des) page(s) qui manque(nt) de la copie?",
     'annexes_display'                      => "Annexe(s) manquant au document",
     'pages_display'                        => "Page(s) manquant au document",
+    'annexes_missing'                      => 'Annexe(s) manquante(s) dans le document',
+    'pages_missing'                        => 'Page(s) manquante(s) dans le document',
     'scanned'                              => 'Numérisée',
     'structured'                           => 'Structuré',
     'add_new_government_entity'            => 'Ajouter nouvelle entité gouvernementale',

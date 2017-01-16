@@ -4,7 +4,7 @@
     <link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
     <style>
         .select2 {
-            width: 20% !important;
+            width: 15% !important;
             float: left;
             margin-right: 20px !important;
             margin-top: 4px !important;
@@ -30,6 +30,19 @@
             ['class' =>'form-control']) !!}
 
             {!! Form::select('user', ['all'=>trans('activitylog.all_user')] + $users , Input::get('user') ,
+            ['class' =>'form-control']) !!}
+
+            {!! Form::select('category', ['all'=>trans('activitylog.all_category')] + $categories , Input::get
+            ('category') ,
+            ['class' =>'form-control']) !!}
+
+            @if(!is_null($countries))
+                {!! Form::select('country', ['all'=>trans('activitylog.all_country')] + $countries , Input::get
+                ('country') , ['class' =>'form-control']) !!}
+            @endif
+
+			{!! Form::select('status', ['all'=>trans('activitylog.all_status')] + $status , Input::get
+            ('status') ,
             ['class' =>'form-control']) !!}
 
             {!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
