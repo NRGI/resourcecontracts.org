@@ -60,7 +60,7 @@ use App\Nrgi\Entities\Contract\Contract;
 </td>
 
 <td>
-    @if($elementState['metadata']=='published' )
+    @if($contract->metadata_status == Contract::STATUS_PUBLISHED && $elementState['metadata']=='published' )
         @if($contract->textType==1)
             @if($contract->text_status == Contract::STATUS_COMPLETED)
                 {!! Form::open(['route' => ['contract.status.comment', $contract->id],
@@ -71,7 +71,8 @@ use App\Nrgi\Entities\Contract\Contract;
                         class="btn btn-success metadata-status-comment">@lang("global.publish")</button>
                 {!! Form::close() !!}
 
-                <button data-toggle="modal" data-type="text" data-status="rejected" data-target=".status-modal" class="btn btn-danger metadata-status-comment">@lang("global.reject")
+                <button data-toggle="modal" data-type="text" data-status="rejected" data-target=".status-modal"
+                        class="btn btn-danger metadata-status-comment">@lang("global.reject")
                 </button>
             @endif
             @if($contract->text_status == Contract::STATUS_DRAFT)
@@ -97,13 +98,15 @@ use App\Nrgi\Entities\Contract\Contract;
         $link = "http://".env('OLC_LINK')."/contract/".$contract->metadata->open_contracting_id."/view#text";
     }
     ?>
-    @if($contract->metadata_status == Contract::STATUS_PUBLISHED || $elementState['text']=='published')
+    @if($contract->metadata_status == Contract::STATUS_PUBLISHED && $contract->text_status ==
+    Contract::STATUS_PUBLISHED && $elementState['text']=='published')
         @if(!empty($publishedInformation['text']['created_at']))
             {{$publishedInformation['text']['created_at']}} @lang('global.by') {{$publishedInformation['text']['user_name']}} .
 
         @endif
         <a href="{{$link}}" target="_blank"><span class="glyphicon glyphicon-link" title="@lang('global.check_text_in_subsite')"></span></a>
-        <button data-toggle="modal" data-type="text" data-status="unpublished" data-target=".status-modal"  class="btn btn-danger metadata-status-comment">@lang("global.unpublish")
+        <button data-toggle="modal" data-type="text" data-status="unpublished" data-target=".status-modal"
+                class="btn btn-danger metadata-status-comment">@lang("global.unpublish")
         </button>
     @else
         -
