@@ -61,6 +61,7 @@ return [
             ],
             'source_url'             => '',
             'disclosure_mode'        => '',
+            'disclosure_mode_text'   => '',
             'date_retrieval'         => '',
             'category'               => [],
             'signature_year'         => '',

@@ -4,7 +4,7 @@ return [
     "Asset Sale and Purchase Agreement"      => "بيع و شراء الأصول ",
     "Autre"                                  => "آخر",
     "Bail Foncier"                           => "ايجار العقارات",
-    "Cahier des Charges"                     => "كراس الشروط",
+    "Cahier des Charges"                     => "كراس شروط",
     "Concession Agreement"                   => "اتفاقية امتياز ",
     "Contract Amendment"                     => "تعديل العقد",
     "Contract Annex"                         => "ملحق العقد",

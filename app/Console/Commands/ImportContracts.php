@@ -2,7 +2,9 @@
 
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
+use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\CountryService;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Logging\Log;
@@ -32,10 +34,8 @@ class ImportContracts extends Command
      * @var array
      */
     protected $fields = [
-        "is_imported",
-        'contract_id',
+        "project_identifier",
         "contract_name",
-        "document_title",
         "source_url",
         "government_entity",
         "country",
@@ -97,7 +97,6 @@ class ImportContracts extends Command
         "incorporation_date_5",
         "operator_5",
         "project_title",
-        "project_identifier",
         "license_name",
         "license_identifier",
         "disclosure_mode",
@@ -107,7 +106,11 @@ class ImportContracts extends Command
     /**
      * @var int
      */
-    protected $limit = 0;
+    protected $skip = 10;
+    /**
+     * @var int
+     */
+    protected $limit = 44;
     /**
      * @var CountryService
      */
@@ -139,12 +142,17 @@ class ImportContracts extends Command
     /**
      * @var string
      */
-    protected $externalPath = '';
+    protected $externalPath = 'https://s3-us-west-2.amazonaws.com/resourcecontracts-dev/pdf2/';
+    /**
+     * @var ContractService
+     */
+    protected $contractService;
 
     /**
      * Create a new command instance.
      *
      * @param ContractRepositoryInterface $contract
+     * @param ContractService             $contractService
      * @param CountryService              $country
      * @param Storage                     $storage
      * @param Filesystem                  $filesystem
@@ -153,6 +161,7 @@ class ImportContracts extends Command
      */
     public function __construct(
         ContractRepositoryInterface $contract,
+        ContractService $contractService,
         CountryService $country,
         Storage $storage,
         Filesystem $filesystem,
@@ -160,12 +169,13 @@ class ImportContracts extends Command
         Queue $queue
     ) {
         parent::__construct();
-        $this->country    = $country;
-        $this->log        = $log;
-        $this->contract   = $contract;
-        $this->filesystem = $filesystem;
-        $this->storage    = $storage;
-        $this->queue      = $queue;
+        $this->country         = $country;
+        $this->log             = $log;
+        $this->contract        = $contract;
+        $this->filesystem      = $filesystem;
+        $this->storage         = $storage;
+        $this->queue           = $queue;
+        $this->contractService = $contractService;
     }
 
     /**
@@ -174,8 +184,9 @@ class ImportContracts extends Command
      */
     public function fire()
     {
-        $json = $this->getJson();
-        $i    = 1;
+        $json       = $this->getJson();
+        $i          = 1;
+        $importFile = [];
         foreach ($json as $data) {
 
             if (!$this->isImportable($data)) {
@@ -183,10 +194,10 @@ class ImportContracts extends Command
             }
 
             $isContractImported = Contract::whereRaw("metadata->>'ckan' = '1'")
-                                          ->whereRaw("metadata->>'contract_name' = ?", [$data['document_title']])
+                                          ->whereRaw("metadata->>'contract_name' = ?", [$data['contract_name']])
                                           ->first();
             if ($isContractImported) {
-                $this->error($isContractImported->id.' : Contract already Imported : '.$data['document_title']);
+                $this->error($isContractImported->id.' : Contract already Imported : '.$data['contract_name']);
                 continue;
             }
 
@@ -195,7 +206,7 @@ class ImportContracts extends Command
             if ($this->test) {
                 $file = md5(microtime()).'.pdf';
             } else {
-                $file = $this->downloadPdf($contract['metadata']['source_url']);
+                $file = $this->downloadPdf(rawurlencode($data['source_url']));
             }
 
             if (empty($file)) {
@@ -243,8 +254,11 @@ class ImportContracts extends Command
                 'metadata' => $contract['metadata'],
             ];
 
+            $importFile[] = $contract_data;
+
             try {
                 $con = $this->contract->save($contract_data);
+                $this->updateTransMetadata($con);
                 $this->log->activity('contract.log.save', ['contract' => $con->id], $con->id, $con->user_id);
 
                 if ($con->metadata->is_supporting_document) {
@@ -264,28 +278,9 @@ class ImportContracts extends Command
 
             $this->deleteFile($file);
         }
-    }
 
-    /**
-     * Download a Pdf File
-     *
-     * @param $pdf
-     *
-     * @return null|string
-     */
-    protected function downloadPdf($pdf)
-    {
-        list($fileName, $pdf) = $this->getFilePath($pdf);
-        $temp_path = $this->tempPath($fileName);
-        try {
-            copy($pdf, $temp_path);
-
-            return $fileName;
-        } catch (\Exception $e) {
-            $this->error('PDF Download Error: '.$e->getMessage());
-
-            return null;
-        }
+        file_put_contents(public_path('import.html'), json_encode($importFile));
+        $this->info('file generated');
     }
 
     /**
@@ -295,19 +290,23 @@ class ImportContracts extends Command
      */
     function getJson()
     {
-        $spreadsheet_url  = 'https://docs.google.com/spreadsheets/d/1EGUDJvvK7rJglreBpeixM_OiM1m40GPb2Y_Hrs5fjco/pub?gid=613556742&single=true&output=csv';
+        $spreadsheet_url  = 'https://docs.google.com/spreadsheets/u/1/d/1EGUDJvvK7rJglreBpeixM_OiM1m40GPb2Y_Hrs5fjco/pub?gid=65475573&single=true&output=csv';
         $spreadsheet_data = [];
         $i                = 0;
         if (($handle = fopen($spreadsheet_url, "r")) !== false) {
             while (($data = fgetcsv($handle, 10000, ",")) !== false) {
                 $i++;
 
-                if ($this->isLimitExceeded($i)) {
-                    break;
-                }
-
                 if ($i == 1) {
                     continue;
+                }
+
+                if ($this->isSkippable($i)) {
+                    continue;
+                }
+
+                if ($this->isLimitExceeded($i)) {
+                    break;
                 }
 
                 $d = [];
@@ -336,7 +335,64 @@ class ImportContracts extends Command
             return false;
         }
 
-        return ($i > ($this->limit + 1));
+        return ($i > ($this->limit + $this->skip + 1));
+    }
+
+    /**
+     * Skip data
+     *
+     * @param $i
+     *
+     * @return bool
+     */
+    public function isSkippable($i)
+    {
+        if ($this->skip < 1) {
+            return false;
+        }
+
+        return ($i <= ($this->skip + 1));
+    }
+
+    /**
+     * Get Formatted date
+     *
+     * @param        $date
+     * @param string $format
+     *
+     * @return string
+     */
+    public function dateFormat($date, $format = 'Y-m-d')
+    {
+        if ($date == '') {
+            return '';
+        }
+
+        $time = Carbon::createFromFormat('d/m/Y', $date);
+
+        return $time->format($format);
+    }
+
+    /**
+     * Download a Pdf File
+     *
+     * @param $pdf
+     *
+     * @return null|string
+     */
+    protected function downloadPdf($pdf)
+    {
+        list($fileName, $pdf) = $this->getFilePath($pdf);
+        $temp_path = $this->tempPath($fileName);
+        try {
+            copy($pdf, $temp_path);
+
+            return $fileName;
+        } catch (\Exception $e) {
+            $this->error('PDF Download Error: '.$e->getMessage());
+
+            return null;
+        }
     }
 
     /**
@@ -353,14 +409,16 @@ class ImportContracts extends Command
         $company_template    = $contract['metadata']['company'][0];
         $contract['user_id'] = 1;
 
-        $contract['metadata']['contract_name'] = $results['document_title'];
+        $contract['metadata']['contract_name'] = $results['contract_name'];
         $companies                             = [];
 
         for ($i = 1; $i <= 5; $i++) {
             $company_default                                  = $company_template;
             $company_default['name']                          = $results['company_name_'.$i];
             $company_default['participation_share']           = $results['participation_share_'.$i];
-            $company_default['jurisdiction_of_incorporation'] = $this->getJOI($results['jurisdiction_of_incorporation_'.$i]);
+            $company_default['jurisdiction_of_incorporation'] = $this->getJOI(
+                $results['jurisdiction_of_incorporation_'.$i]
+            );
             $company_default['registration_agency']           = $results['registration_agency_'.$i];
             $company_default['company_founding_date']         = $this->dateFormat($results['incorporation_date_'.$i]);
             $company_default['company_address']               = $results['company_address_'.$i];
@@ -374,22 +432,21 @@ class ImportContracts extends Command
                     $data_filled = true;
                 }
             }
-            $company_default['operator'] = ($company_default['operator'] == '') ? -1 : $company_default['operator'];
+            $company_default['operator'] = ($company_default['operator'] == '') ? 1 : $company_default['operator'];
             if ($data_filled) {
                 $companies[] = $company_default;
             }
         }
-        $contract['metadata']['resource']                            = [$results['resource']];
+        $contract['metadata']['resource']                            = [$this->getResource($results['resource'])];
         $contract['metadata']['project_title']                       = $results['project_title'];
         $contract['metadata']['project_identifier']                  = $results['project_identifier'];
         $contract['metadata']['company']                             = $companies;
-        $contract['metadata']['disclosure_mode']                     = $results['disclosure_mode'];
+        $contract['metadata']['disclosure_mode']                     = 'Government';
         $contract['metadata']['type_of_contract']                    = array_filter(
             [$results['contract_type_1'], $results['contract_type_2']]
         );
         $contract['metadata']['document_type']                       = $results['document_type'];
         $contract['metadata']['date_retrieval']                      = $this->dateFormat($results['retrieval_date']);
-        $contract['metadata']['source_url']                          = $results['source_url'];
         $contract['metadata']['concession'][0]['license_name']       = $results["license_name"];
         $contract['metadata']['concession'][0]['license_identifier'] = $results["license_identifier"];
         $contract['metadata']['government_entity'][0]['entity']      = $results["government_entity"];
@@ -405,37 +462,16 @@ class ImportContracts extends Command
         );
         $contract['metadata']['category']                            = ['rc'];
         $contract['metadata']['show_pdf_text']                       = Contract::SHOW_PDF_TEXT;
-        $contract['metadata']['open_contracting_id']                 = getContractIdentifier(
-            $contract['metadata']['category'][0],
-            $contract['metadata']['country']['code']
-        );
+        $contract['metadata']['open_contracting_id']                 = $this->contract->generateOCID();
         $contract['metadata']['ckan']                                = 1;
         $contract['metadata']['is_supporting_document']              = $this->getSupportingDocumentType(
             $results["is_supporting_document"]
         );
         $contract['metadata']['pages_missing']                       = -1;
         $contract['metadata']['annexes_missing']                     = -1;
+        $contract['metadata']['is_contract_signed']                  = 1;
 
         return trimArray($contract);
-    }
-
-    /**
-     * Get Formatted date
-     *
-     * @param        $date
-     * @param string $format
-     *
-     * @return string
-     */
-    public function dateFormat($date, $format = 'Y-m-d')
-    {
-        $time = strtotime($date);
-
-        if ($time != '') {
-            return date($format, $time);
-        }
-
-        return '';
     }
 
     /**
@@ -551,10 +587,6 @@ class ImportContracts extends Command
      */
     protected function isImportable($data)
     {
-        if ($data['is_imported'] == 1) {
-            return false;
-        }
-
         if ($data['contract_name'] == '' && $data['is_supporting_document'] == 'Associated') {
             return false;
         }
@@ -594,7 +626,8 @@ class ImportContracts extends Command
         if ($joi == '') {
             return "";
         }
-        $countries = trans('codelist/country');
+
+        $countries = trans('codelist/country', [], null, 'fr');
 
         foreach ($countries as $code => $name) {
             if (strcasecmp($joi, $name) == 0) {
@@ -610,14 +643,50 @@ class ImportContracts extends Command
      *
      * @param $contract
      */
-    protected function updateMetadata($contract, $data)
+    protected function updateTransMetadata($contract)
     {
-        $edata               = $this->extractData($data);
-        $metadata            = (array) $contract->metadata;
-        $metadata['company'] = $edata['metadata']['company'];
-        unset($metadata['amla_url'], $metadata['file_url'], $metadata['word_file']);
-        $contract->metadata = $metadata;
-        $contract->save();
-        $this->info('Metadata updated');
+        foreach (config('lang.translation') as $lang) {
+
+            if ($lang['code'] == 'en') {
+                continue;
+            }
+
+            $transData = [
+                'contract_name'        => $this->contractService->refineContract(
+                    $contract->metadata,
+                    $contract->id,
+                    $lang['code']
+                ),
+                'company'              => $contract->metadata->company,
+                'project_title'        => $contract->metadata->project_title,
+                'project_identifier'   => $contract->metadata->project_identifier,
+                'concession'           => $contract->metadata->concession,
+                'disclosure_mode_text' => $contract->metadata->disclosure_mode_text,
+                'contract_note'        => '',
+                'trans'                => $lang['code'],
+            ];
+            $this->contractService->updateContractTrans($contract->id, $transData);
+        }
     }
+
+    /**
+     * Get Resource name in English
+     *
+     * @param $resourceInFr
+     *
+     * @return string
+     * @throws Exception
+     */
+    protected function getResource($resourceInFr)
+    {
+        $resources = trans('codelist/resource', [], null, 'fr');
+        foreach ($resources as $key => $resource) {
+            if (strtolower($resource) == strtolower($resourceInFr)) {
+                return $key;
+            }
+        }
+
+        throw new Exception('Resource with given name '.$resourceInFr.' not found in codelist');
+    }
+
 }
