@@ -91,7 +91,7 @@ return [
         "6-miscellaneous-provisions"                                                                                                      => "Legal Rules",
         "governing-law"                                                                                                                   => "Legal Rules",
         "arbitration-and-dispute-resolution"                                                                                              => "Legal Rules",
-        "stabilization-clause"                                                                                                            => "Legal Rules",
+        "stabilization"                                                                                                                   => "Legal Rules",
         "assignment-or-transfer"                                                                                                          => "Legal Rules",
         "cancellation-or-termination"                                                                                                     => "Legal Rules",
         "confidentiality"                                                                                                                 => "Legal Rules",
@@ -187,7 +187,7 @@ return [
         "6-miscellaneous-provisions"                                                                                                      => "6. Miscellaneous provisions",
         "governing-law"                                                                                                                   => "Governing law",
         "arbitration-and-dispute-resolution"                                                                                              => "Arbitration and dispute resolution",
-        "stabilization-clause"                                                                                                            => "Stabilization clause",
+        "stabilization"                                                                                                                   => "Stabilization",
         "assignment-or-transfer"                                                                                                          => "Assignment or transfer",
         "cancellation-or-termination"                                                                                                     => "Cancellation or termination",
         "confidentiality"                                                                                                                 => "Confidentiality",
@@ -198,6 +198,6 @@ return [
         "other-miscellaneous"                                                                                                             => "Other - miscellaneous",
         "iii-document-notes"                                                                                                              => "III. Document notes",
         "annexes-missing-from-copy"                                                                                                       => "Annexes missing from copy",
-        "other"                                                                                                                           => "Other"
-    ]
+        "other"                                                                                                                           => "Other",
+    ],
 ];
