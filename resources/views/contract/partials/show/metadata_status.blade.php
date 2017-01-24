@@ -92,7 +92,7 @@ use App\Nrgi\Entities\Contract\Contract; ?>
         $link = "http://".env('OLC_LINK')."/contract/".$contract->metadata->open_contracting_id;
     }
     ?>
-        @if($elementState['metadata']=='published')
+        @if($contract->metadata_status == Contract::STATUS_PUBLISHED && $elementState['metadata']=='published')
         @if(!empty($publishedInformation['metadata']['created_at']))
                 {{$publishedInformation['metadata']['created_at']}} @lang('global.by') {{$publishedInformation['metadata']['user_name']}} .
         @endif
