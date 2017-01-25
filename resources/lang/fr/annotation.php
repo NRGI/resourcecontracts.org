@@ -14,7 +14,7 @@ return [
     'annotation_created'              => "Nouvelle annotation créée pour l'identificateur du :contract numéro de la page du contrat :page",
     'annotation_updated'              => "Annotation mise à jour pour :contract de la page du contrat :page",
     'status_update'                   => "L'état de l'annotation mis à jour pour devenir :status",
-    'annotation_deleted'              => "Annotation supprimée de :page de la page du :contract annotation de la page-:tiele",
+    'annotation_deleted'              => "Annotation supprimée de :page de la page du :contract annotation de la page:title",
     'here'                            => "ici",
     'delete'                          => "Supprimer",
     'page'                            => "Page",

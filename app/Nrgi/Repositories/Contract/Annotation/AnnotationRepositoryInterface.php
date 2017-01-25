@@ -104,9 +104,20 @@ interface AnnotationRepositoryInterface
     public function deleteIfChildNotFound($annotation_id);
 
     /**
+     * Return all the annotations of a specific contract
+     *
+     * @param $contract_id
+     *
+     * @return object
+     */
+    public function getAnnotationByContractId($contract_id);
+
+    /**
      * Check if category of annotations exist or not.
      *
      * @param $key
+     *
+     * @param $filters
      *
      * @return array
      */
@@ -120,5 +131,5 @@ interface AnnotationRepositoryInterface
      * @return Collection
      */
     public function getAllByContractId($contract_id);
-    
+
 }

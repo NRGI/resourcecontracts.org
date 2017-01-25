@@ -268,7 +268,11 @@ class AnnotationService
             $annStatus = ($currentAnnStatus == Annotation::PUBLISHED) ? 'completed' : $currentAnnStatus;
         }
 
-        $status = $this->annotation->updateStatus($annStatus, $contractId);
+        $status = true;
+        if ($this->annotation->getAnnotationByContractId($contractId)->count() > 0) {
+            $status = $this->annotation->updateStatus($annStatus, $contractId);
+        }
+
         if ($status) {
             if ($annotationStatus == Annotation::PUBLISHED) {
                 $this->queue->push(
@@ -287,7 +291,7 @@ class AnnotationService
             }
             $this->logger->activity(
                 "contract.log.status",
-                ['type' => 'annotation', 'new_status' => $annotationStatus],
+                ['type' => 'annotation', 'old_status'=> $currentAnnStatus, 'new_status' => $annotationStatus],
                 $contractId
             );
 
@@ -313,7 +317,6 @@ class AnnotationService
     {
         $this->database->beginTransaction();
         $status = $this->updateStatus($annotationStatus, $currentAnnStatus, $contractId);
-
         if ($status) {
             try {
                 $this->comment->save($contractId, $message, "annotation", $annotationStatus);
