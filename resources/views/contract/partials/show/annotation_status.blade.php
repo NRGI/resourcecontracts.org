@@ -91,7 +91,6 @@ use App\Nrgi\Entities\Contract\Contract;
                     <button type="submit" class="btn btn-info annotation-status-comment">@lang("global.complete")
                     </button>
                     {!! Form::close() !!}
-
             @endif
         @endif
 
@@ -105,7 +104,7 @@ use App\Nrgi\Entities\Contract\Contract;
         }
         ?>
 
-        @if($contract->metadata_status == Contract::STATUS_PUBLISHED &&  $elementState['annotation']=='published')
+        @if( $elementState['metadata']=='published' && $elementState['annotation']=='published')
             @if(!empty($publishedInformation['annotation']['created_at']))
                 {{$publishedInformation['annotation']['created_at']}} @lang('global.by') {{$publishedInformation['annotation']['user_name']}} .
             @endif

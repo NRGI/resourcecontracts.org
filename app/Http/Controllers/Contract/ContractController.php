@@ -167,7 +167,6 @@ class ContractController extends Controller
 
         $associatedContracts          = $this->contract->getAssociatedContracts($contract);
         $status                       = $this->contract->getStatus($id);
-        $annotationStatus             = $this->annotation->getStatus($id);
         $annotations                  = $contract->annotations;
         $contract->metadata_comment   = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
         $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
@@ -176,8 +175,9 @@ class ContractController extends Controller
         $discussions                  = $discussion->getCount($id);
         $discussion_status            = $discussion->getResolved($id);
         $elementState                 = $this->activity->getElementState($id);
-
-        $locale = $request->route()->getParameter('lang');
+        $annotationStatus             = $this->annotation->getStatus($id);
+        $annotationStatus             = $annotationStatus == '' ? $elementState['annotation'] : $annotationStatus;
+        $locale                       = $request->route()->getParameter('lang');
 
         if (!is_null($locale)) {
             if (!$lang->isValidTranslationLang($locale) || $locale == $lang->defaultLang()) {

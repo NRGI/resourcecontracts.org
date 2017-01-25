@@ -141,7 +141,7 @@ class ElasticSearchService
         try {
             $request  = $this->http->post($this->apiURL('contract/metadata'), null, $metadata);
             $response = $request->send();
-            $this->logger->info('Metadata successfully submitted to Elastic Search.', $response->json());
+            $this->logger->info('Metadata submitted to Elastic Search.', $response->json());
             if (!$showText) {
                 $this->postText($id, false);
             }
@@ -174,7 +174,7 @@ class ElasticSearchService
             }
             $request  = $this->http->post($this->apiURL('contract/pdf-text'), null, $pages);
             $response = $request->send();
-            $this->logger->info('Pdf Text successfully submitted to Elastic Search.', $response->json());
+            $this->logger->info('Pdf Text submitted to Elastic Search.', $response->json());
             if ($showText) {
                 $this->postMetadata($id);
             }
@@ -218,15 +218,10 @@ class ElasticSearchService
         $data['annotations'] = json_encode($annotationData);
 
         try {
-            $response = $this->http->post(
-                $this->apiURL('contract/delete/annotation'),
-                null,
-                ["contract_id" => $contractId]
-            )->send();
-            $this->logger->info('Annotations deleted', [$response->json()]);
+            $this->deleteAnnotation($contractId);
             $request  = $this->http->post($this->apiURL('contract/annotations'), null, $data);
             $response = $request->send();
-            $this->logger->info('Annotation successfully submitted to Elastic Search.', $response->json());
+            $this->logger->info('Annotation submitted to Elastic Search.', $response->json());
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
@@ -243,26 +238,6 @@ class ElasticSearchService
             $request  = $this->http->post($this->apiURL('contract/delete'), null, ['id' => $contract_id]);
             $response = $request->send();
             $this->logger->info('Contract deleted from Elastic Search.', $response->json());
-        } catch (Exception $e) {
-            $this->logger->error($e->getMessage());
-        }
-    }
-
-    /**
-     * Delete contract Annotations in elastic search
-     *
-     * @param $contract_id
-     */
-    public function deleteAnnotations($contract_id)
-    {
-        try {
-            $request  = $this->http->post(
-                $this->apiURL('contract/delete/annotation'),
-                null,
-                ['contract_id' => $contract_id]
-            );
-            $response = $request->send();
-            $this->logger->info('Contract Annotations deleted from Elastic Search.', $response->json());
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
@@ -317,7 +292,7 @@ class ElasticSearchService
         try {
             $request  = $this->http->post($this->apiURL('contract/delete/metadata'), null, ['contract_id' => $id]);
             $response = $request->send();
-            $this->logger->info('Contract\'s Metadata deleted from Elastic Search.', [$response->json()]);
+            $this->logger->info('Metadata deleted from Elastic Search.', [$response->json()]);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
@@ -333,23 +308,26 @@ class ElasticSearchService
         try {
             $this->postText($id, false);
             $this->postMetadata($id);
-            $this->logger->info('Contract\'s Text deleted from Elastic Search.');
+            $this->logger->info('Text deleted from Elastic Search.');
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
     }
 
     /**
-     * Delete annotation document from elasticsearch
+     * Delete contract Annotations in elastic search
      *
-     * @param $id
+     * @param $contract_id
      */
-    public function deleteAnnotation($id)
+    public function deleteAnnotation($contract_id)
     {
         try {
-            $request  = $this->http->post($this->apiURL('contract/delete/annotation'), null, ['contract_id' => $id]);
-            $response = $request->send();
-            $this->logger->info('Contract\'s Annotation deleted from Elastic Search.', (array) $response);
+            $response = $this->http->post(
+                $this->apiURL('contract/delete/annotation'),
+                null,
+                ["contract_id" => $contract_id]
+            )->send();
+            $this->logger->info('Annotations deleted', [$response->json()]);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }

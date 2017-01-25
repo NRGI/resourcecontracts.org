@@ -104,7 +104,9 @@ class ActivityService
             if (isset($type->message_params['new_status']) && $type->message_params['new_status'] == 'published') {
                 $data[$element] = 'published';
             } else {
-                $data[$element] = $this->annotation->getStatus($id);
+                if ($element == 'annotation') {
+                    $data[$element] = $this->annotation->getStatus($id);
+                }
             }
         }
 

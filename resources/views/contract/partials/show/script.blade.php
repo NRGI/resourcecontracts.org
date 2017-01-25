@@ -147,7 +147,6 @@ for ($i = 1; $i <= $contract->pages()->count(); $i ++) {
             var elementType = $(this).data('type');
             $(".status-modal #type").val( elementType );
             $(".status-modal #status").val( status );
-
         });
 
         $(document).on("click", ".annotation-status-comment", function () {
