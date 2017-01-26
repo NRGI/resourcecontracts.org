@@ -31,6 +31,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\UpdateAnnotationSection',
         'App\Console\Commands\AnnotationHarmonization',
         'App\Console\Commands\BulkDownloadText',
+        'App\Console\Commands\ImportContracts',
     ];
 
     /**

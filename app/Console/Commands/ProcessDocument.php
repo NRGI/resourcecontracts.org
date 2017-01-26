@@ -95,7 +95,7 @@ class ProcessDocument extends Command
             }
 
         } catch (ModelNotFoundException $exception) {
-            $this->error('could cot find contract.' . $exception->getMessage());
+            $this->error('could not find contract.' . $exception->getMessage());
         } catch (\Exception $exception) {
             $this->error('processing contract document.' . $exception->getMessage());
         }

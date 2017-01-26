@@ -285,7 +285,7 @@ class ContractService
         if ($file = $this->uploadContract($formData['file'])) {
             $metadata                        = $this->processMetadata($formData);
             $metadata['file_size']           = $file['size'];
-            $metadata['open_contracting_id'] = $this->generateOCID();
+            $metadata['open_contracting_id'] = $this->contract->generateOCID();
             $data                            = [
                 'file'     => $file['name'],
                 'filehash' => $file['hash'],
@@ -1124,6 +1124,10 @@ class ContractService
     /**
      * Get Contract For translation
      *
+     * @param $con
+     * @param $id
+     *
+     * @return object
      */
     public function getContractForTranslation($con, $id)
     {
@@ -1251,21 +1255,6 @@ class ContractService
 
         return $information;
 
-    }
-
-    /**
-     * Generate Unique Open Contracting ID
-     *
-     * @return string
-     */
-    public function generateOCID()
-    {
-        do {
-            $ocid = 'ocds-591adf-'.str_random_number(10);
-
-        } while (!empty(Contract::whereRaw("metadata->>'open_contracting_id' = '$ocid' ")->first()));
-
-        return $ocid;
     }
 
     /**
