@@ -9,6 +9,7 @@ use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\Discussion\DiscussionService;
 use App\Nrgi\Services\Contract\Page\PageService;
 use App\Nrgi\Services\Language\LanguageService;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
@@ -88,6 +89,10 @@ class ContractService
      * @var LanguageService
      */
     protected $lang;
+    /**
+     * @var Carbon
+     */
+    protected $carbon;
 
     /**
      * @param ContractRepositoryInterface   $contract
@@ -108,6 +113,7 @@ class ContractService
      * @param ActivityService               $activityService
      * @param AnnotationRepositoryInterface $annotation
      * @param LanguageService               $lang
+     * @param Carbon                        $carbon
      */
     public function __construct(
         ContractRepositoryInterface $contract,
@@ -126,7 +132,8 @@ class ContractService
         WordGenerator $word,
         ActivityService $activityService,
         AnnotationRepositoryInterface $annotation,
-        LanguageService $lang
+        LanguageService $lang,
+        Carbon $carbon
     ) {
         $this->contract        = $contract;
         $this->auth            = $auth;
@@ -144,6 +151,7 @@ class ContractService
         $this->activityService = $activityService;
         $this->annotation      = $annotation;
         $this->lang            = $lang;
+        $this->carbon          = $carbon;
     }
 
     /**
@@ -231,11 +239,11 @@ class ContractService
      * Get Contract With Annotations by ID
      *
      * @param      $id
-     * @param bool $withRelation
      *
      * @return Contract
+     *
      */
-    public function findWithAnnotations($id, $withRelation = false)
+    public function findWithAnnotations($id)
     {
         try {
             $contract = $this->contract->findContractWithAnnotations($id);
@@ -1361,6 +1369,8 @@ class ContractService
         if (isset($formData['type_of_contract']) && in_array('Other', $formData['type_of_contract'])) {
             unset($formData['type_of_contract'][array_search('Other', $formData['type_of_contract'])]);
         }
+        $formData['signature_date']    = $this->carbon->createFromFormat('Y-m-d', $formData['signature_date'])->format('Y-m-d');
+        $formData['date_retrieval']    = $this->carbon->createFromFormat('Y-m-d', $formData['date_retrieval'])->format('Y-m-d');
 
         $formData['country']           = $this->countryService->getInfoByCode($formData['country']);
         $formData['resource']          = (!empty($formData['resource'])) ? $formData['resource'] : [];

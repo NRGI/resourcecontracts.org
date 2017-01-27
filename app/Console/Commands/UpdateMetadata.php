@@ -3,6 +3,7 @@
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepository;
 use App\Nrgi\Services\Contract\ContractService;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -82,22 +83,15 @@ class UpdateMetadata extends Command
     }
 
     /**
-     * Harmonize company name
+     * Update Signature Date
      *
      * @param $metadata
      */
-    public function harmonizeCompanyName(&$metadata)
+    public function updateSignatureDate(&$metadata)
     {
-        $companyList = $new = config('company_name');
-        foreach ($metadata['company'] as $index => $company) {
-            $oldName = $company->name;
-            if (isset($companyList[$oldName]) && $companyList[$oldName] != '') {
-                $newName = $companyList[$oldName];
-                if ($oldName != $newName) {
-                    $metadata['company'][$index]->name = $newName;
-                    $this->info(sprintf('Company name changed from %s to %s : UPDATED', $oldName, $newName));
-                }
-            }
+        if (!empty($metadata['signature_date'])) {
+            $date                       = Carbon::createFromFormat('Y-m-d', $metadata['signature_date']);
+            $metadata['signature_date'] = $date->format('Y-m-d');
         }
     }
 
@@ -110,7 +104,7 @@ class UpdateMetadata extends Command
      */
     protected function applyRules(array $metadata)
     {
-        $this->harmonizeCompanyName($metadata);
+        $this->updateSignatureDate($metadata);
 
         return $metadata;
     }

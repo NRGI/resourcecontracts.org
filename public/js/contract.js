@@ -117,7 +117,7 @@ $(function () {
             scrollInput: false
         });
         init_autocomplete();
-    })
+    });
 
     $(document).on('change', '.corporate_grouping', function () {
         var corporate_grouping_mode = '<span class="red input-required">*</span><input class="form-control required corporate_grouping_other" name="company[' + i + '][parent_company]" type="text">';
@@ -296,7 +296,7 @@ $(function () {
     $('#generate-contract-name').on('click', function () {
         var contract_details = $('.contract-form').serialize();
         $(".loading").show();
-        if(xhr && xhr.readyState != 4){
+        if (xhr && xhr.readyState != 4) {
             xhr.abort();
         }
         xhr = $.ajax({
