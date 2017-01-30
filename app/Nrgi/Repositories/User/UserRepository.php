@@ -153,5 +153,15 @@ class UserRepository implements UserRepositoryInterface
         return $list;
     }
 
-
+    /**
+     * Creates User Defined Role
+     *
+     * @param $roleDetail
+     *
+     * @return Role
+     */
+    public function createRole($roleDetail)
+    {
+        return $this->role->create($roleDetail);
+    }
 }

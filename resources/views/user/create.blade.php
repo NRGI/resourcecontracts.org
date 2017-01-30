@@ -18,8 +18,11 @@
             {!! Form::open(['route' => 'user.store', 'method' => 'post', 'class'=>'form-horizontal']) !!}
                 @include('user.form', ['action' =>'add'])
             {!! Form::close() !!}
+
+			@include('user.role_add_form', ['action' => 'add'])
         </div>
     </div>
 @endsection
+
 
 

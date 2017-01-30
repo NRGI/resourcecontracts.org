@@ -53,5 +53,12 @@ interface UserRepositoryInterface
      */
     public function getCountryUsers();
 
+    /**
+     * Creates User Defined Role
+     *
+     * @param $roleDetail
+     *
+     * @return mixed
+     */
+    public function createRole($roleDetail);
 }
-

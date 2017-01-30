@@ -26,6 +26,7 @@ return [
     'password'                 => 'Password',
     'confirm_password'         => 'Confirm Password',
     'organization'             => 'Organization',
+    'description'              => "Description",
     'role'                     => 'Role',
     'status'                   => 'Status',
     'submit'                   => 'Submit',
@@ -34,6 +35,8 @@ return [
     'id'                       => 'ID',
     'created_on'               => 'Created On',
     'add_user'                 => 'Add User',
+    'add_role'                 => 'Add Role',
+    'permission'               => 'Permissions',
     'user'                     => 'User',
     'action'                   => 'Action',
     'edit_profile'             => 'Edit Profile',
@@ -47,6 +50,9 @@ return [
     'confirm_text_user_delete' => 'Are you sure you want to delete this user?',
     'whoops'                   => "Whoops!",
     'user_not_found'           => "User not found",
+    'cancel'                   => "Cancel",
+    'reset'                    => "Reset",
+    'add'                      => "Add",
 
 
     /*Logs*/
@@ -54,5 +60,5 @@ return [
         'save'   => 'User created',
         'update' => 'User updated',
         'delete' => 'User deleted',
-    ]
+    ],
 ];

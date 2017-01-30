@@ -12,6 +12,7 @@ $router->group(
         $router->get('profile', ['as' => 'user.profile', 'uses' => 'ProfilesController@profile']);
         $router->get('profile/edit', ['as' => 'user.editProfile', 'uses' => 'ProfilesController@editProfile']);
         $router->patch('profile/update', ['as' => 'profile.update', 'uses' => 'ProfilesController@updateUser']);
+        $router->post('role/store', ['as' => 'role.store', 'uses' => 'RoleController@store']);
     }
 );
 

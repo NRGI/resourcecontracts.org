@@ -26,6 +26,7 @@ return [
     'password'                 => "Mot de passe",
     'confirm_password'         => "Confirmez le mot de passe",
     'organization'             => "Organisation",
+    'description'              => "La description",
     'role'                     => "Titre",
     'status'                   => "Position",
     'submit'                   => "Soumettre",
@@ -34,6 +35,8 @@ return [
     'id'                       => "Identifiateur",
     'created_on'               => "Créé le",
     'add_user'                 => "Ajouter utilisateur",
+    'add_role'                 => "Ajouter un rôle",
+    'permission'               => "Autorisations",
     'user'                     => "Utilisateur",
     'action'                   => "Action",
     'edit_profile'             => "Modifier le profil",
@@ -47,7 +50,9 @@ return [
     'confirm_text_user_delete' => "Voulez-vous vraiment supprimer cet utilisateur?",
     'whoops'                   => "Whoops!",
     'user_not_found'           => "Utilisateur non trouvé",
-
+    'cancel'                   => "Annuler",
+    'reset'                    => "Réinitialiser",
+    'add'                      => "Ajouter",
 
 
     /*Logs*/
@@ -55,5 +60,5 @@ return [
         'save'   => "Utilisateur créé",
         'update' => "Utilisateur mis à jour",
         'delete' => "Utilisateur supprimé",
-    ]
+    ],
 ];

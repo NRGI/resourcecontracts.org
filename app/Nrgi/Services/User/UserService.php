@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Services\User;
 
+use App\Nrgi\Entities\User\Permission\Permission;
 use App\Nrgi\Entities\User\User;
 use App\Nrgi\Mturk\Repositories\Activity\ActivityRepositoryInterface as MTurkActivities;
 use App\Nrgi\Repositories\ActivityLog\ActivityLogRepositoryInterface;
@@ -10,6 +11,7 @@ use App\Nrgi\Repositories\Contract\Discussion\DiscussionRepositoryInterface;
 use App\Nrgi\Repositories\User\UserRepositoryInterface;
 use Illuminate\Auth\Guard;
 use Illuminate\Contracts\Hashing\Hasher;
+use Illuminate\Support\Facades\DB;
 use Psr\Log\LoggerInterface;
 use App\Nrgi\Entities\User\Role\Role;
 
@@ -79,6 +81,7 @@ class UserService
      * @param Role                           $role
      * @param Guard                          $auth
      * @param ContractRepositoryInterface    $contract
+     * @param Permission                     $permission
      */
     public function __construct(
         UserRepositoryInterface $user,
@@ -92,7 +95,8 @@ class UserService
         Hasher $hash,
         Role $role,
         Guard $auth,
-        ContractRepositoryInterface $contract
+        ContractRepositoryInterface $contract,
+        Permission $permission
 
     ) {
         $this->user          = $user;
@@ -106,13 +110,15 @@ class UserService
         $this->mTurkActivity = $mTurkActivity;
         $this->discussion    = $discussion;
         $this->comment       = $comment;
+        $this->permission    = $permission;
     }
 
     /**
      * Get all users
      * @return array
      */
-    public function all()
+    public
+    function all()
     {
         if ($this->auth->user()->hasRole(config('nrgi.country_role'))) {
 
@@ -124,21 +130,29 @@ class UserService
 
     /**
      * Find user by ID
+     *
      * @param $id
+     *
      * @return User
      */
-    public function find($id)
-    {
+    public
+    function find(
+        $id
+    ) {
         return $this->user->find($id);
     }
 
     /**
      * Delete user by ID
+     *
      * @param $id
+     *
      * @return User
      */
-    public function delete($id)
-    {
+    public
+    function delete(
+        $id
+    ) {
         $user = $this->user->find($id);
         $user->roles()->sync([]);
 
@@ -149,10 +163,14 @@ class UserService
      * Create new user
      *
      * @param array $formData
+     *
      * @return \App\Nrgi\Entities\User\User
      */
-    public function create(array $formData, $role)
-    {
+    public
+    function create(
+        array $formData,
+        $role
+    ) {
         $formData['password'] = $this->hash->make($formData['password']);
         $role                 = $this->role->where('name', $role)->first();
         try {
@@ -174,10 +192,15 @@ class UserService
      * @param       $user_id
      * @param array $formData
      * @param       $role
+     *
      * @return bool
      */
-    public function update($user_id, array $formData, $role = null)
-    {
+    public
+    function update(
+        $user_id,
+        array $formData,
+        $role = null
+    ) {
         $user = $this->find($user_id);
         $role = $this->role->where('name', $role)->first();
         if (isset($formData['password']) && !empty($formData['password'])) {
@@ -213,7 +236,8 @@ class UserService
      *
      * @return array
      */
-    public function getAllRoles()
+    public
+    function getAllRoles()
     {
         if ($this->auth->user()->hasRole(config('nrgi.country_role'))) {
             return $this->user->getCountryRoles();
@@ -227,7 +251,8 @@ class UserService
      *
      * @return array
      */
-    public function getList()
+    public
+    function getList()
     {
         if ($this->auth->user()->hasRole(config('nrgi.country_role'))) {
             return $this->user->getUsersWithCountryContract();
@@ -237,10 +262,27 @@ class UserService
     }
 
     /**
+     * Gets Permissions
+     */
+    public
+    function getPermissionsList()
+    {
+        $permissions     = json_decode($this->permission->get());
+        $permissionsList = [];
+
+        foreach ($permissions as $permission) {
+            $permissionsList[$permission->id] = $permission->name;
+        }
+
+        return $permissionsList;
+    }
+
+    /**
      * Gets list of all users
      * @return array
      */
-    public function getAllUsersList()
+    public
+    function getAllUsersList()
     {
         return $this->user->getList();
     }
@@ -249,10 +291,13 @@ class UserService
      * Has user activity
      *
      * @param $user_id
+     *
      * @return bool
      */
-    public function hasNoActivity($user_id)
-    {
+    public
+    function hasNoActivity(
+        $user_id
+    ) {
         $models = ['contract', 'annotation', 'comment', 'discussion', 'activity', 'mTurkActivity'];
 
         foreach ($models as $model) {
@@ -266,4 +311,22 @@ class UserService
         return true;
     }
 
+    /**
+     * Creates User Defined Role
+     *
+     * @param       $roleDetail
+     *
+     * @param array $permissions
+     *
+     * @return Role
+     * @internal param array $permission
+     *
+     */
+    public function createRole($roleDetail, array $permissions = [])
+    {
+        DB::transaction(function () use($roleDetail, $permissions) {
+            $role =  $this->user->createRole($roleDetail);
+            $role->perms()->sync($permissions);
+        });
+    }
 }

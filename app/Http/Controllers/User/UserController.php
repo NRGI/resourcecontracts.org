@@ -5,7 +5,6 @@ use App\Http\Requests\User\UserRequest;
 use App\Nrgi\Services\Contract\CountryService;
 use App\Nrgi\Services\User\UserService;
 use Illuminate\Auth\Guard;
-use Illuminate\Http\Request;
 
 /**
  * Class UserController
@@ -66,16 +65,18 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles   = $this->user->getAllRoles();
-        $country = $this->countries->all();
+        $roles       = $this->user->getAllRoles();
+        $country     = $this->countries->all();
+        $permissions = $this->user->getPermissionsList();
 
-        return view('user.create', compact('roles', 'country'));
+        return view('user.create', compact('roles', 'country', 'permissions'));
     }
 
     /**
      * Register user
      *
      * @param UserRequest $request
+     *
      * @return \Illuminate\Routing\Redirector
      */
     public function store(UserRequest $request)
@@ -94,6 +95,7 @@ class UserController extends Controller
      * Edit user view
      *
      * @param $id
+     *
      * @return \Illuminate\View\View
      */
     public function edit($id)
@@ -110,6 +112,7 @@ class UserController extends Controller
      *
      * @param UserRequest $request
      * @param             $id
+     *
      * @return \Illuminate\Routing\Redirector
      */
     public function update(UserRequest $request, $id)
@@ -128,6 +131,7 @@ class UserController extends Controller
      * Delete User
      *
      * @param $id
+     *
      * @return \Illuminate\Routing\Redirector
      */
     public function delete($id)

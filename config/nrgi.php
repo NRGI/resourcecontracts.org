@@ -120,8 +120,37 @@ return [
             'name'         => 'unpublished-annotation',
             'display_name' => 'Unpublish Annotation',
             'description'  => 'Unpublish Annotation'
+        ],
+        'mturk-send' => [
+            'name'         => 'mturk-send',
+            'display_name' => 'Send to MTURK',
+            'description'  => 'Send to MTURK'
+        ],
+        'mturk-send-to-rc' => [
+            'name'         => 'mturk-send-to-rc',
+            'display_name' => 'Send to RC',
+            'description'  => 'Send to RC'
+        ],
+        'mturk-review' => [
+            'name'         => 'mturk-review',
+            'display_name' => 'MTURK Review',
+            'description'  => 'MTURK Review'
+        ],
+        'user-create' => [
+            'name'         => 'user-create',
+            'display_name' => 'Add User',
+            'description'  => 'Add User'
+        ],
+        'user-update' => [
+            'name'         => 'user-update',
+            'display_name' => 'Update User',
+            'description'  => 'Update User'
+        ],
+        'user-delete' => [
+            'name'         => 'user-delete',
+            'display_name' => 'Delete User',
+            'description'  => 'Delete User'
         ]
-
     ],
     'pdf_structure'    => ['structured', 'scanned', 'encrypted'],
     'country_role'     => ['country-admin', 'country-researcher'],
