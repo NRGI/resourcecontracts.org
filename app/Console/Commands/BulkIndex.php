@@ -184,7 +184,7 @@ class BulkIndex extends Command
     protected function publishAnnotation(Contract $contract)
     {
         if ($contract->activity['annotation'] == Contract::STATUS_PUBLISHED) {
-            $this->elastic->deleteAnnotations($contract->id);
+            $this->elastic->deleteAnnotation($contract->id);
             $this->elastic->postAnnotation($contract->id);
         }
 
