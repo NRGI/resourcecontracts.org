@@ -136,15 +136,20 @@ if (!empty($contract->metadata->government_entity)) {
     @endif
 </div>
 <?php
+$resources = isset($contract->metadata->resource)?$contract->metadata->resource :[];
 $resourceList = trans('codelist/resource',[],null,$locale);
+
+foreach ($resources as $item) {
+	if(!isset($resourceList[$item])){
+		$resourceList[$item] = $item;
+	}
+}
 ?>
 <div class="form-group">
     <label for="resource" class="col-sm-2 control-label">@lang('contract.resource') <span class="red">*</span></label>
 
     <div class="col-sm-7">
-        {!! Form::select('resource[]', $resourceList,
-        isset($contract->metadata->resource)?$contract->metadata->resource:null, ['multiple'=>'multiple',
-        "class"=>"required form-control resource-list"])!!}
+        {!! Form::select('resource[]', $resourceList, $resources, ['multiple'=>'multiple', "class"=>"required form-control resource-list"])!!}
         <label id="resource[]-error" class="error" for="resource[]"></label>
     </div>
 
@@ -157,9 +162,7 @@ $resourceList = trans('codelist/resource',[],null,$locale);
 <div class="government_entity">
     @if(isset($contract->metadata->government_entity) || old('government_entity'))
         <?php
-        $governmentEntity = empty(old('government_entity')) ? $contract->metadata->government_entity : old(
-                'government_entity'
-        );
+        $governmentEntity = empty(old('government_entity')) ? $contract->metadata->government_entity : old('government_entity');
         $g = 0;
         ?>
 
