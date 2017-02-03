@@ -19,10 +19,10 @@
                 @include('user.form', ['action' =>'add'])
             {!! Form::close() !!}
 
-			@include('user.role_add_form', ['action' => 'add'])
+            {!! Form::open(['route' => 'role.store', 'data-role' => 'user-form','method' => 'post','class'=>'role-form
+            form-horizontal'])!!}
+                @include('user.role.form', ['action' => 'add'])
+            {!! Form::close() !!}
         </div>
     </div>
 @endsection
-
-
-

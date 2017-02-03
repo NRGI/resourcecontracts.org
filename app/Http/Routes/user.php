@@ -12,7 +12,10 @@ $router->group(
         $router->get('profile', ['as' => 'user.profile', 'uses' => 'ProfilesController@profile']);
         $router->get('profile/edit', ['as' => 'user.editProfile', 'uses' => 'ProfilesController@editProfile']);
         $router->patch('profile/update', ['as' => 'profile.update', 'uses' => 'ProfilesController@updateUser']);
-        $router->post('role/store', ['as' => 'role.store', 'uses' => 'RoleController@store']);
+
+        $router->get('user/role', ['as' => 'role', 'uses' => 'RoleController@index']);
+        $router->post('user/role', ['as' => 'role.store', 'uses' => 'RoleController@store']);
+        $router->patch('user/role', ['as' => 'role.update', 'uses' => 'RoleController@update']);
+        $router->delete('user/role/{id}/delete', ['as' => 'role.destroy', 'uses' => 'RoleController@delete']);
     }
 );
-

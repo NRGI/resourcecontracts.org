@@ -13,8 +13,14 @@
 
             @if($current_user->hasRole(['superadmin','admin','country-admin']))
                 <li>
-                    <a {{in_array('user', Request::segments())? 'class=active' : ''}}
-                            href="{{route('user.list')}}">@lang('contract.users')</a>
+                    <div id="accordion" class="accordion">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" {{in_array('user',
+                        Request::segments())? 'class=active' : ''}}>@lang('contract.users')/Roles</a>
+                        <div id="collapse1" class="{{in_array('user', Request::segments())? 'in':''}} collapse">
+                            <a href="{{route('user.list')}}">@lang('contract.users')</a>
+                            <a href="{{route('role')}}">@lang('contract.role')</a>
+                        </div>
+                    </div>
                 </li>
             @endif
             <li>

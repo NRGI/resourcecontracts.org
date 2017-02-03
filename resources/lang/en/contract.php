@@ -195,6 +195,7 @@ return [
     'no_parent'                            => 'No Parent',
     'is_contract_signed'                   => "Is contract signed?",
     'disclosure_mode_text'                 => 'Disclosure Mode Text',
+    'role'                                 => "Roles",
     /*Logs*/
     'log'                                  => [
         'save'       => 'Contract created',
@@ -244,7 +245,7 @@ return [
         'btn_cancel'     => 'Cancel and upload another file',
         'fail'           => 'Could not found any contract to import.',
     ],
-    'text_quality'       => 'Text Quality',
-    'published'          => 'Published',
-    'translation_available_in'      => 'Translation available in:',
+    'text_quality'                         => 'Text Quality',
+    'published'                            => 'Published',
+    'translation_available_in'             => 'Translation available in:',
 ];

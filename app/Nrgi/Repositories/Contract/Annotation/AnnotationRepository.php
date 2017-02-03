@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Repositories\Contract\Annotation;
 
 use App\Nrgi\Entities\Contract\Annotation\Annotation;
+use App\Nrgi\Entities\Contract\Annotation\Page\Page;
 use App\Nrgi\Entities\Contract\Contract;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
@@ -275,7 +276,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      */
     public function countByUser($user_id)
     {
-        return $this->annotation->where('user_id', $user_id)->count();
+        return Page::where('user_id', $user_id)->count();
     }
 
     /**

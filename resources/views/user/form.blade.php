@@ -57,7 +57,7 @@
 		</div>
 		<div class="col-md-1">
 			<p>
-				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#add-role-form">
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#role-form">
 					{{ trans('user.add_role') }}
 				</button>
 			</p>
@@ -113,31 +113,7 @@
 					$('.country').hide();
 				}
 			});
-
-			$('.role-form').on('submit', function (e) {
-				e.preventDefault();
-				var form = $(this);
-				var url = form.prop('action');
-//				form.find('.btn').attr('disabled', true);
-				var data = form.serialize();
-				form.find('.error').remove();
-				$.ajax({
-					url: url,
-					type: 'POST',
-					data: data,
-					dataType: 'JSON'
-				}).error(function (err) {
-					var errors = JSON.parse(err.responseText);
-					$.each(errors, function(k, v){
-						form.find('.'+k).after('<span class="error">'+v[0]+'</span>');
-					});
-				}).success(function (res) {
-					console.log("Success " + res);
-					$('#add-role-form').modal('hide');
-				}).complete(function () {
-					form.find('.btn').removeAttr('disabled');
-				})
-			});
 		});
 	</script>
+	<script src="{{asset('js/role-ajax.js')}}"></script>
 @stop

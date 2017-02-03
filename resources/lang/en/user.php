@@ -12,7 +12,10 @@ return [
     'update_success'           => 'User successfully updated.',
     'update_fail'              => 'User could not be updated.',
     'delete_success'           => 'User successfully deleted.',
+    'role_delete_success'      => 'Role successfully deleted.',
     'delete_fail'              => 'User could not be deleted.',
+    'role_delete_fail'         => 'Role could not be deleted.',
+    'role_belongs_to_user'     => 'Role belongs to some user.',
     'saved'                    => 'Changes Saved.',
     'not_updated'              => 'Could not be updated.',
     'deactivate_message'       => 'User :user can not be deleted.',
@@ -48,11 +51,15 @@ return [
     'delete'                   => 'Delete',
     'edit'                     => 'Edit',
     'confirm_text_user_delete' => 'Are you sure you want to delete this user?',
+    'confirm_text_role_delete' => 'Are you sure you want to delete this role?',
     'whoops'                   => "Whoops!",
     'user_not_found'           => "User not found",
     'cancel'                   => "Cancel",
     'reset'                    => "Reset",
     'add'                      => "Add",
+    'display_name'             => "Display Name",
+    'role_not_found'           => "Role not found",
+    'save'                     => "Save",
 
 
     /*Logs*/

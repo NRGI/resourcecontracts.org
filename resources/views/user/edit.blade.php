@@ -15,8 +15,7 @@
                 </div>
             @endif
 
-            {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'PATCH',
-            'class'=>'form-horizontal']) !!}
+            {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'PATCH','class'=>'form-horizontal']) !!}
             @include('user.form', ['action' =>'update'])
             {!! Form::close() !!}
         </div>

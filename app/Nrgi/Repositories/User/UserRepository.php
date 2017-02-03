@@ -91,6 +91,27 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
+     * Gets all Roles with Permissions
+     * @return Collection|static[]
+     */
+    public function getAllRolesWithPermissions()
+    {
+        return $this->role->with('perms')->get();
+    }
+
+    /**
+     * Gets single Role
+     *
+     * @param $id
+     *
+     * @return Role|\Illuminate\Support\Collection
+     */
+    public function getRole($id)
+    {
+        return $this->role->find($id);
+    }
+
+    /**
      * Get All User Roles
      *
      * @return array
@@ -163,5 +184,17 @@ class UserRepository implements UserRepositoryInterface
     public function createRole($roleDetail)
     {
         return $this->role->create($roleDetail);
+    }
+
+    /**
+     * Gets Users associated with Role
+     *
+     * @param $id
+     *
+     * @return mixed|void
+     */
+    public function getUsersOfRole($id)
+    {
+        return Role::with('users')->find($id)->users;
     }
 }

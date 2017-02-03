@@ -12,7 +12,10 @@ return [
     'update_success'           => "Mise à jour réussie de l'utilisateur",
     'update_fail'              => "Impossible de mettre à jour l'utilisateur",
     'delete_success'           => "Suppression réussie de l'utilisateur",
+    'role_delete_success'      => "Rôle supprimé.",
     'delete_fail'              => "Impossible de supprimer l'utilisateur",
+    'role_delete_fail'         => "Impossible de supprimer le rôle.",
+    'role_belongs_to_user'     => 'Le rôle appartient à un utilisateur.',
     'saved'                    => "Modifications sauvegardées",
     'not_updated'              => "Mise à jour impossible",
     'deactivate_message'       => "Utilisateur: impossible de supprimer l'utilisateur",
@@ -48,11 +51,15 @@ return [
     'delete'                   => "Supprimer",
     'edit'                     => "Éditer",
     'confirm_text_user_delete' => "Voulez-vous vraiment supprimer cet utilisateur?",
+    'confirm_text_role_delete' => "Voulez-vous vraiment supprimer ce rôle?",
     'whoops'                   => "Whoops!",
     'user_not_found'           => "Utilisateur non trouvé",
     'cancel'                   => "Annuler",
     'reset'                    => "Réinitialiser",
     'add'                      => "Ajouter",
+    'display_name'             => "Afficher un nom",
+    'role_not_found'           => "Rôle introuvable",
+    'save'                     => "sauvegarder",
 
 
     /*Logs*/

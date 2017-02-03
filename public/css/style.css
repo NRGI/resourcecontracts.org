@@ -1372,3 +1372,21 @@ a.edit-section{
     position: relative;
     z-index: 1;
 }
+
+/* Bootstrap accordion style overwrite */
+.sidebar-nav .collapse, .sidebar-nav .collapsing{
+    background: #777;
+}
+.sidebar-nav .collapse > a, .sidebar-nav .collapsing > a{
+    background: #777;
+    padding-left: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.sidebar-nav .collapse > a:hover{
+    background: #707070;;
+}
+
+.sidebar-nav .collapse > a:last-child{
+    border-bottom: none;
+}

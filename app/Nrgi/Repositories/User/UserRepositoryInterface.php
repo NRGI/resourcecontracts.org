@@ -40,6 +40,21 @@ interface UserRepositoryInterface
     public function getAllRoles();
 
     /**
+     * Gets all Roles with Permissions
+     * @return mixed
+     */
+    public function getAllRolesWithPermissions();
+
+    /**
+     * Gets single Role
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function getRole($id);
+
+    /**
      * Get User list
      *
      * @return array
@@ -61,4 +76,13 @@ interface UserRepositoryInterface
      * @return mixed
      */
     public function createRole($roleDetail);
+
+    /**
+     * Gets Users associated with Role
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function getUsersOfRole($id);
 }
