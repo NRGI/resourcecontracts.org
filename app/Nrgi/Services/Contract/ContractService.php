@@ -106,7 +106,6 @@ class ContractService
      * @param DiscussionService             $discussion
      * @param DatabaseManager               $database
      * @param Log                           $logger
-     * @param WordGenerator                 $word
      * @param DatabaseManager               $db
      * @param PageService                   $pages
      * @param WordGenerator                 $word
@@ -126,7 +125,6 @@ class ContractService
         DiscussionService $discussion,
         DatabaseManager $database,
         Log $logger,
-        WordGenerator $word,
         DatabaseManager $db,
         PageService $pages,
         WordGenerator $word,
@@ -291,17 +289,17 @@ class ContractService
     public function saveContract(array $formData)
     {
         if ($file = $this->uploadContract($formData['file'])) {
-            $metadata                        = $this->processMetadata($formData);
-            $metadata['file_size']           = $file['size'];
-            $metadata['open_contracting_id'] = $this->contract->generateOCID();
-            $data                            = [
-                'file'     => $file['name'],
-                'filehash' => $file['hash'],
-                'user_id'  => $this->auth->id(),
-                'metadata' => $metadata,
-            ];
             try {
-                $contract = $this->contract->save($data);
+                $metadata                        = $this->processMetadata($formData);
+                $metadata['file_size']           = $file['size'];
+                $metadata['open_contracting_id'] = $this->contract->generateOCID();
+                $data                            = [
+                    'file'     => $file['name'],
+                    'filehash' => $file['hash'],
+                    'user_id'  => $this->auth->id(),
+                    'metadata' => $metadata,
+                ];
+                $contract                        = $this->contract->save($data);
 
                 if (isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '1' && isset($formData['translated_from'])) {
                     $contract->syncSupportingContracts($formData['translated_from']);
@@ -1369,13 +1367,18 @@ class ContractService
         if (isset($formData['type_of_contract']) && in_array('Other', $formData['type_of_contract'])) {
             unset($formData['type_of_contract'][array_search('Other', $formData['type_of_contract'])]);
         }
-        $formData['signature_date']    = $this->carbon->createFromFormat('Y-m-d', $formData['signature_date'])->format('Y-m-d');
-        $formData['date_retrieval']    = $this->carbon->createFromFormat('Y-m-d', $formData['date_retrieval'])->format('Y-m-d');
 
+        $formData['date_retrieval'] = $this->formatDate($formData['date_retrieval']);
+        $formData['signature_date'] = $this->formatDate($formData['signature_date']);
+
+        foreach ($formData['company'] as &$company) {
+            $company['company_founding_date'] = $this->formatDate($company['company_founding_date']);
+        }
+
+        $formData['company']           = $this->removeKeys($formData['company']);
         $formData['country']           = $this->countryService->getInfoByCode($formData['country']);
         $formData['resource']          = (!empty($formData['resource'])) ? $formData['resource'] : [];
         $formData['category']          = (!empty($formData['category'])) ? $formData['category'] : [];
-        $formData['company']           = $this->removeKeys($formData['company']);
         $formData['type_of_contract']  = (isset($formData['type_of_contract'])) ? $this->removeKeys(
             $formData['type_of_contract']
         ) : [];
@@ -1431,8 +1434,8 @@ class ContractService
     {
         $i = [];
 
-        foreach ($items as $items) {
-            $i[] = $items;
+        foreach ($items as $item) {
+            $i[] = $item;
         }
 
         return $i;
@@ -1503,6 +1506,22 @@ class ContractService
         }
 
         return $contractsId;
+    }
+
+    /**
+     * Format Date
+     *
+     * @param $date
+     *
+     * @return string
+     */
+    private function formatDate($date)
+    {
+        if (empty($date)) {
+            return $date;
+        }
+
+        return $this->carbon->createFromFormat('Y-m-d', $date)->format('Y-m-d');
     }
 
 }
