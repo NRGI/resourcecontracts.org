@@ -13,7 +13,7 @@ envsubst < ./settings.config.template > /var/www/pdf-processor/settings.config
 
 #add mturk/updates cronjob
 if [ "$DEPLOYMENT_TYPE"=="staging" ]; then
-    sudo echo "* * * * * root /usr/bin/php /var/www/rc-admin/artisan schedule:run 1>> /dev/null 2>&1" > /etc/cron.d/mturk_and_updates
+    sudo echo "* * * * * www-data /usr/bin/php /var/www/rc-admin/artisan schedule:run 1>> /dev/null 2>&1" > /etc/cron.d/mturk_and_updates
 fi
 
 cron restart
