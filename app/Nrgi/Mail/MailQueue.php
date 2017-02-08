@@ -144,7 +144,14 @@ class MailQueue
         $recipients = $this->getNotifyErrorEmails();
         $subject    = "ResourceContract Admin site has error - ".$current_url;
         $error      = $exception->getMessage();
-        $body       = sprintf("Url: %s \n\rError: %s \n\rLog: %s", $current_url, $error, (string) $exception);
+        $request    = json_encode(['request' => $_REQUEST, 'server' => $_SERVER]);
+        $body       = sprintf(
+            "Url: %s \n\rRequest: %s \n\rError: %s \n\rLog: %s",
+            $current_url,
+            $request,
+            $error,
+            (string) $exception
+        );
         $from       = $this->getFromEmail();
         $this->mailer->raw(
             $body,
