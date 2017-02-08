@@ -483,7 +483,7 @@ class ImportContracts extends Command
      */
     protected function getCountry($code)
     {
-        $country = $this->country->getInfoByCode(strtoupper($code));
+        $country = $this->country->getInfoByCode(strtoupper($code), 'en');
 
         return is_array($country) ? $country : ['code' => '', 'name' => ''];
     }

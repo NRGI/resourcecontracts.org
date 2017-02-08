@@ -1376,7 +1376,7 @@ class ContractService
         }
 
         $formData['company']           = $this->removeKeys($formData['company']);
-        $formData['country']           = $this->countryService->getInfoByCode($formData['country']);
+        $formData['country']           = $this->countryService->getInfoByCode($formData['country'], 'en');
         $formData['resource']          = (!empty($formData['resource'])) ? $formData['resource'] : [];
         $formData['category']          = (!empty($formData['category'])) ? $formData['category'] : [];
         $formData['type_of_contract']  = (isset($formData['type_of_contract'])) ? $this->removeKeys(

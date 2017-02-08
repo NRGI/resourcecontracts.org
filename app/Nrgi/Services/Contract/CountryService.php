@@ -39,12 +39,20 @@ class CountryService
 
     /**
      * Get Country by information
-     * @param $code
+     *
+     * @param      $code
+     *
+     * @param null $locale
+     *
      * @return string
      */
-    public function getInfoByCode($code)
+    public function getInfoByCode($code, $locale = null)
     {
         $countries = $this->countries;
+
+        if (!is_null($locale)) {
+            $countries = trans('codelist/country', [], null, $locale);
+        }
 
         return isset($countries[$code]) ? ['code' => $code, 'name' => $countries[$code]] : '';
     }
