@@ -55,6 +55,7 @@ class ProcessDocument extends Command
 
     /**
      * Create a new command instance.
+     *
      * @param ContractService $contract
      * @param Storage         $storage
      * @param File            $file
@@ -81,12 +82,17 @@ class ProcessDocument extends Command
         $contractId = $this->input->getArgument('contract_id');
         try {
             $contract = $this->contract->find($contractId);
+
+            if ($contract->pages()->count() > 0) {
+                $contract->pages()->delete();
+            }
+
             if ($this->input->getOption('force')) {
                 $this->contract->moveS3File(sprintf('%s/%s', $contract->id, $contract->file), $contract->file);
-                $contract->pages()->delete();
-                $contract->pdf_process_status = Contract::PROCESSING_PIPELINE;
-                $contract->save();
             }
+
+            $contract->pdf_process_status = Contract::PROCESSING_PIPELINE;
+            $contract->save();
 
             if ($this->process->execute($contractId)) {
                 $this->info('processing completed.');
@@ -95,9 +101,9 @@ class ProcessDocument extends Command
             }
 
         } catch (ModelNotFoundException $exception) {
-            $this->error('could not find contract.' . $exception->getMessage());
+            $this->error('could not find contract.'.$exception->getMessage());
         } catch (\Exception $exception) {
-            $this->error('processing contract document.' . $exception->getMessage());
+            $this->error('processing contract document.'.$exception->getMessage());
         }
     }
 
