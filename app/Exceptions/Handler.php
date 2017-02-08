@@ -3,6 +3,7 @@
 use App\Nrgi\Mail\MailQueue;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Facades\Request;
 use Psr\Log\LoggerInterface;
 
@@ -68,6 +69,10 @@ class Handler extends ExceptionHandler
     {
         if ($e instanceof HttpException) {
             return parent::render($request, $e);
+        }
+
+        if ($e instanceof TokenMismatchException) {
+            return redirect()->back()->withError("Your page session has been expired. Please try again.");
         }
 
         if (env('APP_ENV') === 'production') {
