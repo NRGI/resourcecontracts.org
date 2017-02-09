@@ -1,6 +1,7 @@
 <?php
 $router->get('/', 'Auth\AuthController@getLogin');
-$router->get('home', 'Dashboard\DashboardController@index');
+$router->get('home', ['as' => 'home', 'uses' =>'Dashboard\DashboardController@index']);
+
 $router->controllers(
     [
         'auth' => 'Auth\AuthController',
