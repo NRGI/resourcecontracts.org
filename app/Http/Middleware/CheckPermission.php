@@ -85,22 +85,52 @@ class CheckPermission
     public function getPermissionsForRoute()
     {
         return [
-            'contract.edit.trans'        => ['edit-contract'],
-            'contract.store'             => ['add-contract'],
-            'contract.update'            => ['edit-contract'],
-            'contract.delete'            => ['delete-contract'],
-            'contract.status.comment'    => ['unpublished-metadata'],
-            'contract.show'              => ['add-contract'],
-            'role'                       => ['unpublished-metadata'],
+            'contract.edit.trans'     => ['edit-contract'],
+            'contract.store'          => ['add-contract'],
+            'contract.update'         => ['edit-contract'],
+            'contract.delete'         => ['delete-contract'],
+            'contract.status.comment' => ['unpublished-metadata'],
+            'contract.show'           => ['add-contract'],
+
+            'annotation.save'      => ['add-annotation'],
+            'annotation.save.put'  => ['add-annotation'],
+            'annotation.save.post' => ['add-annotation'],
+            'annotation.delete'    => ['delete-annotation'],
+            'annotation.update'    => ['edit-annotation'],
+
+            'contract.import'              => ['add-contract'],
+            'contract.import.post'         => ['add-contract'],
+            'contract.import.confirm'      => ['add-contract'],
+            'contract.import.confirm.post' => ['add-contract'],
+            'contract.import.status'       => ['add-contract'],
+            'contract.import.delete'       => ['add-contract'],
+            'contract.import.notify'       => ['add-contract'],
+
+            'utility.index'  => ['edit-contract'],
+            'utility.submit' => ['edit-contract'],
+
+            'mturk.index'           => ['mturk-view'],
+            'mturk.allTasks'        => ['mturk-view'],
+            'mturk.add'             => ['mturk-view', 'mturk-send-to-rc'],
+            'mturk.activity'        => ['mturk-view'],
+            'mturk.tasks'           => ['mturk-view'],
+            'mturk.contract.copy'   => ['mturk-view', 'mturk-send-to-rc'],
+            'mturk.task.approveAll' => ['mturk-view', 'mturk-review'],
+            'mturk.task.detail'     => ['mturk-view', 'mturk-review'],
+            'mturk.task.approve'    => ['mturk-view', 'mturk-review'],
+            'mturk.task.reject'     => ['mturk-view', 'mturk-review'],
+            'mturk.task.reset'      => ['mturk-view', 'mturk-review'],
         ];
 
-//        ['add-contract', 'edit-contract', 'delete-contract'];
+//        add, edit, delete - contract
 //
-//        complete, publish, reject, unpublished - text
+//        complete, publish, reject, unpublished - text   --- remove complete
 //
-//        (edit complete publish unpublished reject) - metadata
+//        edit, complete, publish, unpublished, reject - metadata --- remove complete/edit
 //
-//        add, edit, delete, complete, publish, reject, unpublished - annotation
+//        (add, edit, delete,)/create complete, publish, reject, unpublished - annotation -- remove add, edit, delete,
+//  add
+// create
     }
 
     /**

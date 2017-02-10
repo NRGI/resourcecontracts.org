@@ -9,9 +9,9 @@ $router->group(
                 'uses' => 'ApiController@getContractAnnotations'
             ]
         );
-        $router->put('annotations/{id}', 'ApiController@save');
-        $router->put('annotations', 'ApiController@save');
-        $router->post('annotations', 'ApiController@save');
+        $router->put('annotations/{id}', ['as' => 'annotation.save', 'uses' => 'ApiController@save']);
+        $router->put('annotations', ['as' => 'annotation.save.put', 'uses' => 'ApiController@save']);
+        $router->post('annotations', ['as' => 'annotation.save.post', 'uses' => 'ApiController@save']);
         $router->get('search', 'ApiController@search');
         $router->post(
             'annotations/{id}',

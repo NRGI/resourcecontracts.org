@@ -7,150 +7,160 @@ return [
         'superadmin'         => [
             'name'         => 'superadmin',
             'display_name' => 'Admin',
-            'description'  => 'NRGI staff, CCSI - Columbia university'
+            'description'  => 'NRGI staff, CCSI - Columbia university',
         ],
         'researcher'         => [
             'name'         => 'researcher',
             'display_name' => 'Research Associate',
-            'description'  => '(graduate student, interns) to upload contract, provide metadata, annotate. Should be able to edit the data entered by others.'
+            'description'  => '(graduate student, interns) to upload contract, provide metadata, annotate. Should be able to edit the data entered by others.',
         ],
         'country-admin'      => [
             'name'         => 'country-admin',
             'display_name' => 'Country Admin',
-            'description'  => 'Country specific admin'
+            'description'  => 'Country specific admin',
         ],
         'country-researcher' => [
             'name'         => 'country-researcher',
             'display_name' => 'Country Researcher',
-            'description'  => 'Country specific researcher'
+            'description'  => 'Country specific researcher',
         ],
     ],
     'permissions'      => [
         'add-contract'           => [
             'name'         => 'add-contract',
             'display_name' => 'Add Contract',
-            'description'  => 'Add new contract'
+            'description'  => 'Add new contract',
         ],
         'edit-contract'          => [
             'name'         => 'edit-contract',
             'display_name' => 'Edit Contract',
-            'description'  => 'Edit a contract'
+            'description'  => 'Edit a contract',
         ],
         'delete-contract'        => [
             'name'         => 'delete-contract',
             'display_name' => 'Delete Contract',
-            'description'  => 'Delete a contract'
+            'description'  => 'Delete a contract',
         ],
         'complete-metadata'      => [
             'name'         => 'complete-metadata',
             'display_name' => 'Complete metadata',
-            'description'  => 'Complete contract metadata'
+            'description'  => 'Complete contract metadata',
         ],
         'reject-metadata'        => [
             'name'         => 'reject-metadata',
             'display_name' => 'Reject metadata',
-            'description'  => 'Reject contract metadata'
+            'description'  => 'Reject contract metadata',
         ],
         'edit-text'              => [
             'name'         => 'edit-text',
             'display_name' => 'Edit text',
-            'description'  => 'Edit contract text'
+            'description'  => 'Edit contract text',
         ],
         'complete-text'          => [
             'name'         => 'complete-text',
             'display_name' => 'Complete text',
-            'description'  => 'Complete contract text'
+            'description'  => 'Complete contract text',
         ],
         'publish-text'           => [
             'name'         => 'publish-text',
             'display_name' => 'Publish text',
-            'description'  => 'Publish contract text'
+            'description'  => 'Publish contract text',
         ],
         'reject-text'            => [
             'name'         => 'reject-text',
             'display_name' => 'Reject text',
-            'description'  => 'Reject contract text'
+            'description'  => 'Reject contract text',
         ],
         'publish-metadata'       => [
             'name'         => 'publish-metadata',
             'display_name' => 'Publish metadata',
-            'description'  => 'Publish a metadata'
+            'description'  => 'Publish a metadata',
         ],
         'add-annotation'         => [
             'name'         => 'add-annotation',
             'display_name' => 'Add Contract',
-            'description'  => 'Add new annotation'
+            'description'  => 'Add new annotation',
         ],
         'edit-annotation'        => [
             'name'         => 'edit-annotation',
             'display_name' => 'Edit Annotation',
-            'description'  => 'Edit a annotation'
+            'description'  => 'Edit a annotation',
         ],
         'delete-annotation'      => [
             'name'         => 'delete-annotation',
             'display_name' => 'Delete Annotation',
-            'description'  => 'Delete a annotation'
+            'description'  => 'Delete a annotation',
         ],
         'complete-annotation'    => [
             'name'         => 'complete-annotation',
             'display_name' => 'Complete annotation',
-            'description'  => 'Complete contract annotation'
+            'description'  => 'Complete contract annotation',
         ],
         'reject-annotation'      => [
             'name'         => 'reject-annotation',
             'display_name' => 'Reject annotation',
-            'description'  => 'Reject contract annotation'
+            'description'  => 'Reject contract annotation',
         ],
         'publish-annotation'     => [
             'name'         => 'publish-annotation',
             'display_name' => 'Publish annotation',
-            'description'  => 'Publish a annotation'
+            'description'  => 'Publish a annotation',
         ],
-        'unpublished-metadata' => [
+        'unpublished-metadata'   => [
             'name'         => 'unpublished-metadata',
             'display_name' => 'Unpublish Metadata',
-            'description'  => 'Unpublish Metadata'
+            'description'  => 'Unpublish Metadata',
         ],
-        'unpublished-text' => [
+        'unpublished-text'       => [
             'name'         => 'unpublished-text',
             'display_name' => 'Unpublish Text',
-            'description'  => 'Unpublish Text'
+            'description'  => 'Unpublish Text',
         ],
         'unpublished-annotation' => [
             'name'         => 'unpublished-annotation',
             'display_name' => 'Unpublish Annotation',
-            'description'  => 'Unpublish Annotation'
+            'description'  => 'Unpublish Annotation',
         ],
-        'mturk-send' => [
+        'mturk-send'             => [
             'name'         => 'mturk-send',
             'display_name' => 'Send to MTURK',
-            'description'  => 'Send to MTURK'
+            'description'  => 'Send to MTURK',
         ],
-        'mturk-send-to-rc' => [
+        'mturk-send-to-rc'       => [
             'name'         => 'mturk-send-to-rc',
             'display_name' => 'Send to RC',
-            'description'  => 'Send to RC'
+            'description'  => 'Send to RC',
         ],
-        'mturk-review' => [
+        'mturk-review'           => [
             'name'         => 'mturk-review',
             'display_name' => 'MTURK Review',
-            'description'  => 'MTURK Review'
+            'description'  => 'MTURK Review',
         ],
-        'user-create' => [
+        'mturk-view'             => [
+            'name'         => 'mturk-view',
+            'display_name' => 'MTURK View',
+            'description'  => 'MTURK View',
+        ],
+        'user-create'            => [
             'name'         => 'user-create',
             'display_name' => 'Add User',
-            'description'  => 'Add User'
+            'description'  => 'Add User',
         ],
-        'user-update' => [
+        'user-view'              => [
+            'name'         => 'user-view',
+            'display_name' => 'View User',
+            'description'  => 'View User',
+        ],
+        'user-update'            => [
             'name'         => 'user-update',
             'display_name' => 'Update User',
-            'description'  => 'Update User'
+            'description'  => 'Update User',
         ],
-        'user-delete' => [
+        'user-delete'            => [
             'name'         => 'user-delete',
             'display_name' => 'Delete User',
-            'description'  => 'Delete User'
-        ]
+            'description'  => 'Delete User',
+        ],
     ],
     'pdf_structure'    => ['structured', 'scanned', 'encrypted'],
     'country_role'     => ['country-admin', 'country-researcher'],
@@ -161,7 +171,7 @@ return [
         'rejected'    => 'reject',
         'published'   => 'publish',
         'draft'       => 'draft',
-        'unpublished' => 'unpublished'
+        'unpublished' => 'unpublished',
     ],
     'pdf_storage_url'  => '/data',
 ];
