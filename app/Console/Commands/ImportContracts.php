@@ -34,16 +34,18 @@ class ImportContracts extends Command
      * @var array
      */
     protected $fields = [
-        "project_identifier",
+        "parent_ocid",
+        "is_supporting_document",
+        "Company Name",
         "contract_name",
+        "is_new",
         "source_url",
         "government_entity",
         "country",
         "language",
-        "resource",
-        "is_supporting_document",
-        "contract_type_1",
-        "contract_type_2",
+        "resource_1",
+        "resource_2",
+        "contract_type",
         "signature_date",
         "document_type",
         "company_name_1",
@@ -97,6 +99,7 @@ class ImportContracts extends Command
         "incorporation_date_5",
         "operator_5",
         "project_title",
+        "project_identifier",
         "license_name",
         "license_identifier",
         "disclosure_mode",
@@ -106,11 +109,11 @@ class ImportContracts extends Command
     /**
      * @var int
      */
-    protected $skip = 10;
+    protected $skip = 0;
     /**
      * @var int
      */
-    protected $limit = 44;
+    protected $limit = 1000;
     /**
      * @var CountryService
      */
@@ -139,10 +142,6 @@ class ImportContracts extends Command
      * @var bool
      */
     protected $test = false;
-    /**
-     * @var string
-     */
-    protected $externalPath = 'https://s3-us-west-2.amazonaws.com/resourcecontracts-dev/pdf2/';
     /**
      * @var ContractService
      */
@@ -184,7 +183,13 @@ class ImportContracts extends Command
      */
     public function fire()
     {
-        $json       = $this->getJson();
+        if (file_exists(public_path('json.html'))) {
+            $json = json_decode(file_get_contents(public_path('json.html')), true);
+        } else {
+            $json = $this->getJson();
+            file_put_contents(public_path('json.html'), json_encode($json));
+        }
+
         $i          = 1;
         $importFile = [];
         foreach ($json as $data) {
@@ -254,10 +259,9 @@ class ImportContracts extends Command
                 'metadata' => $contract['metadata'],
             ];
 
-            $importFile[] = $contract_data;
-
             try {
                 $con = $this->contract->save($contract_data);
+                $this->updateContractName($con);
                 $this->updateTransMetadata($con);
                 $this->log->activity('contract.log.save', ['contract' => $con->id], $con->id, $con->user_id);
 
@@ -265,10 +269,13 @@ class ImportContracts extends Command
                     $this->handleAssociatedDocument($con, $data);
                 }
 
+                $importFile[] = Contract::find($con->id);
+
                 if ($con) {
                     $this->queue->push('App\Nrgi\Services\Queue\ProcessDocumentQueue', ['contract_id' => $con->id]);
                 }
-                $this->info($i++.'- Contract successfully created : '.$con->title);
+
+                $this->info($i++.'- Created : '.$data['is_supporting_document'].'-'.$con->id.'-'.$con->title);
             } catch (Exception $e) {
                 $this->error($e->getMessage());
                 if ($this->storage->disk('s3')->exists($file)) {
@@ -290,7 +297,7 @@ class ImportContracts extends Command
      */
     function getJson()
     {
-        $spreadsheet_url  = 'https://docs.google.com/spreadsheets/u/1/d/1EGUDJvvK7rJglreBpeixM_OiM1m40GPb2Y_Hrs5fjco/pub?gid=65475573&single=true&output=csv';
+        $spreadsheet_url  = 'https://docs.google.com/spreadsheets/u/1/d/1lYhLhjbZbveWLrzFepOzn1QbaIPlEMOIbyoWbUiM_9I/pub?gid=143366580&single=true&output=csv';
         $spreadsheet_data = [];
         $i                = 0;
         if (($handle = fopen($spreadsheet_url, "r")) !== false) {
@@ -300,6 +307,7 @@ class ImportContracts extends Command
                 if ($i == 1) {
                     continue;
                 }
+
 
                 if ($this->isSkippable($i)) {
                     continue;
@@ -312,6 +320,10 @@ class ImportContracts extends Command
                 $d = [];
                 foreach ($data as $k => $v) {
                     $d[$this->fields[$k]] = $v;
+                }
+
+                if ($d['is_new'] != 'New') {
+                    continue;
                 }
 
                 $spreadsheet_data[] = $d;
@@ -368,9 +380,15 @@ class ImportContracts extends Command
             return '';
         }
 
-        $time = Carbon::createFromFormat('d/m/Y', $date);
+        try {
+            $time = Carbon::createFromFormat('Y-m-d', $date);
 
-        return $time->format($format);
+            return $time->format($format);
+        } catch (Exception $e) {
+            echo $date.' has wrong format';
+
+            return ($format == 'Y' and strlen($date) == 4) ? $date : '';
+        }
     }
 
     /**
@@ -382,10 +400,10 @@ class ImportContracts extends Command
      */
     protected function downloadPdf($pdf)
     {
-        list($fileName, $pdf) = $this->getFilePath($pdf);
-        $temp_path = $this->tempPath($fileName);
+        $fileName = md5(microtime()).'.pdf';
+        $tempPath = $this->tempPath($fileName);
         try {
-            copy($pdf, $temp_path);
+            copy(urldecode($pdf), $tempPath);
 
             return $fileName;
         } catch (\Exception $e) {
@@ -437,14 +455,14 @@ class ImportContracts extends Command
                 $companies[] = $company_default;
             }
         }
-        $contract['metadata']['resource']                            = [$this->getResource($results['resource'])];
+        $contract['metadata']['resource']                            = array_filter(
+            [$results['resource_1'], $results['resource_2']]
+        );
         $contract['metadata']['project_title']                       = $results['project_title'];
         $contract['metadata']['project_identifier']                  = $results['project_identifier'];
-        $contract['metadata']['company']                             = $companies;
-        $contract['metadata']['disclosure_mode']                     = 'Government';
-        $contract['metadata']['type_of_contract']                    = array_filter(
-            [$results['contract_type_1'], $results['contract_type_2']]
-        );
+        $contract['metadata']['company']                             = empty($companies) ? [$company_template] : $companies;
+        $contract['metadata']['disclosure_mode']                     = $results['disclosure_mode'];
+        $contract['metadata']['type_of_contract']                    = [$results['contract_type']];
         $contract['metadata']['document_type']                       = $results['document_type'];
         $contract['metadata']['date_retrieval']                      = $this->dateFormat($results['retrieval_date']);
         $contract['metadata']['concession'][0]['license_name']       = $results["license_name"];
@@ -467,6 +485,7 @@ class ImportContracts extends Command
         $contract['metadata']['is_supporting_document']              = $this->getSupportingDocumentType(
             $results["is_supporting_document"]
         );
+        $contract['metadata']['source_url']                          = $results['source_url'];
         $contract['metadata']['pages_missing']                       = -1;
         $contract['metadata']['annexes_missing']                     = -1;
         $contract['metadata']['is_contract_signed']                  = 1;
@@ -494,6 +513,7 @@ class ImportContracts extends Command
      * @param $lang
      *
      * @return string
+     * @throws Exception
      */
     protected function getLanguage($lang)
     {
@@ -505,7 +525,7 @@ class ImportContracts extends Command
             }
         }
 
-        return '';
+        throw new Exception('Invalid Language code');
     }
 
     /**
@@ -563,17 +583,10 @@ class ImportContracts extends Command
     protected function handleAssociatedDocument(Contract $contract, $data)
     {
         if ($data['is_supporting_document'] == 'Associated') {
-            if (is_numeric($data['contract_name'])) {
-                $parent = Contract::find($data['contract_name']);
-            } else {
-                $parent = Contract::whereRaw("metadata->>'ckan' = '1'")
-                                  ->whereRaw("metadata->>'contract_name' = '".$data['contract_name']."'")
-                                  ->first();
-            }
-
+            $parent = Contract::whereRaw("metadata->>'open_contracting_id' = '".$data['parent_ocid']."'")
+                              ->first();
             if ($parent) {
                 $contract->syncSupportingContracts($parent->id);
-                $this->contract->updateOCID($contract);
             }
         }
     }
@@ -587,30 +600,11 @@ class ImportContracts extends Command
      */
     protected function isImportable($data)
     {
-        if ($data['contract_name'] == '' && $data['is_supporting_document'] == 'Associated') {
+        if ($data['contract_name'] == '') {
             return false;
         }
 
         return true;
-    }
-
-    /**
-     * Get File Path
-     *
-     * @param $pdf
-     *
-     * @return array
-     */
-    protected function getFilePath($pdf)
-    {
-        if ($this->externalPath != '') {
-            $pdf      = explode('/', $pdf);
-            $fileName = end($pdf);
-
-            return [$fileName, $this->externalPath.$fileName];
-        }
-
-        return [md5(microtime()).'.pdf', $pdf];
     }
 
     /**
@@ -651,12 +645,9 @@ class ImportContracts extends Command
                 continue;
             }
 
+            $name      = $this->contractService->refineContract($contract->metadata, $contract->id, $lang['code']);
             $transData = [
-                'contract_name'        => $this->contractService->refineContract(
-                    $contract->metadata,
-                    $contract->id,
-                    $lang['code']
-                ),
+                'contract_name'        => $this->replaceDRC($name),
                 'company'              => $contract->metadata->company,
                 'project_title'        => $contract->metadata->project_title,
                 'project_identifier'   => $contract->metadata->project_identifier,
@@ -670,23 +661,43 @@ class ImportContracts extends Command
     }
 
     /**
-     * Get Resource name in English
+     * Update Contract Name
      *
-     * @param $resourceInFr
-     *
-     * @return string
-     * @throws Exception
+     * @param $con
      */
-    protected function getResource($resourceInFr)
+    protected function updateContractName($con)
     {
-        $resources = trans('codelist/resource', [], null, 'fr');
-        foreach ($resources as $key => $resource) {
-            if (strtolower($resource) == strtolower($resourceInFr)) {
-                return $key;
-            }
-        }
-
-        throw new Exception('Resource with given name '.$resourceInFr.' not found in codelist');
+        $name                      = $this->contractService->refineContract($con->metadata, $con->id);
+        $metadata                  = (array) $con->metadata;
+        $metadata['contract_name'] = $this->replaceDRC($name);
+        $con->metadata             = $metadata;
+        $con->save();
     }
 
+    /**
+     * Replace full DRC name to abbreviation
+     *
+     * @param $name
+     *
+     * @return string
+     */
+    protected function replaceDRC($name)
+    {
+        return str_replace(
+            '  ',
+            ' ',
+            'DRC, '.str_replace(
+                [
+                    'Republique Democratique du Congo,',
+                    'Republique Democratique du Congo/',
+                    'Republique Democratique du Congo',
+                    'République Démocratique du Congo,',
+                    'République Démocratique du Congo/',
+                    'République Démocratique du Congo',
+                ],
+                ['', '', '', '', '', ''],
+                $name
+            )
+        );
+    }
 }
