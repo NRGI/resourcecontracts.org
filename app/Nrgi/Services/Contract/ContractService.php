@@ -1061,6 +1061,20 @@ class ContractService
     }
 
     /**
+     * Translates the document type
+     *
+     * @param $documentType
+     * @param string $lang
+     * @return string
+     */
+    public function getDocumentType($documentType, $lang = 'en')
+    {
+        $tocs = trans('codelist/documentType.'.trim($documentType), [], null, $lang);
+
+        return $tocs;
+    }
+
+    /**
      * get companyName for given contract
      *
      * @param $companyName
@@ -1118,7 +1132,7 @@ class ContractService
         $con  = json_decode(json_encode($contracts), false);
         $id   = isset($con->contract_id) ? $con->contract_id : null;
         $lang = 'en';
-
+        
         if (!is_null($id) && isset($con->trans)) {
             $lang = $con->trans;
             $con  = $this->getContractForTranslation($con, $id);
@@ -1146,7 +1160,7 @@ class ContractService
                 'project_identifier',
                 'concession',
                 'disclosure_mode_text',
-                'contract_note',
+                'contract_note'
             ]
         );
         $contract = $this->find($id);
@@ -1180,9 +1194,11 @@ class ContractService
 
         if (!empty($contract->type_of_contract)) {
             $tc = $this->getTypeOfContract($contract->type_of_contract, $lang);
-        } else {
-            $tc = trim($contract->document_type);
         }
+        else {
+            $tc = $this->getDocumentType($contract->document_type, $lang);
+        }
+
         if (!empty($contract->signature_year)) {
             $sy = trim($contract->signature_year);
         }
@@ -1190,9 +1206,11 @@ class ContractService
         $a             = [$cn, $ln, $tc, $sy];
         $contract_name = join(', ', array_filter($a));
         $count         = $this->getContractNameCount($contract_name, $id);
+
         if ($count > 0) {
             return $contract_name = $contract_name.', '.str_pad($count, 3, 0, STR_PAD_LEFT);
-        } else {
+        }
+        else {
             return $contract_name;
         }
     }
@@ -1252,6 +1270,7 @@ class ContractService
     {
         $data        = $this->activityService->getPublishedInfo($id);
         $information = [];
+
         foreach ($data as $element => $info) {
             $information[$element] = [
                 'created_at' => isset($info->created_at) ? $info->created_at->format('D M d, Y h:i A') : '',
