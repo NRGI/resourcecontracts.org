@@ -171,7 +171,6 @@ return [
         "environmental-protections"                                                                                                       => "Environmental protections",
         "5-operational-provisions"                                                                                                        => "5. Operational provisions",
         "work-and-investment-commitments"                                                                                                 => "Work and investment commitments",
-        "transfer-of-risk"                                                                                                                => "Transfer of risk",
         "infrastructure"                                                                                                                  => "Infrastructure",
         "infrastructure-third-party-use"                                                                                                  => "Infrastructure - third party use",
         "value-addition-or-downstream-activities"                                                                                         => "Value addition or downstream activities",
@@ -191,7 +190,6 @@ return [
         "other-miscellaneous"                                                                                                             => "Other - miscellaneous",
         "iii-document-notes"                                                                                                              => "III. Document notes",
         "pages-missing-from-copy"                                                                                                         => "Pages missing from  copy",
-        "annexes-missing-from-copy"                                                                                                       => "Annexes missing from copy",
         "other"                                                                                                                           => "Other",
     ],
 ];
