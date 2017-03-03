@@ -7,3 +7,4 @@ function htmlDecode(html) {
     a.innerHTML = html;
     return a.textContent;
 }
+
