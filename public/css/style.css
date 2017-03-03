@@ -1372,3 +1372,55 @@ a.edit-section{
     position: relative;
     z-index: 1;
 }
+
+.annotator-outer.annotator-editor .annotator-item input,
+.annotator-outer.annotator-editor .annotator-item textarea{
+    font-size: 13px;
+}
+
+.annotator-editor .annotator-item textarea{
+    line-height: 17px;
+    padding-top: 5px!important;
+    padding-bottom: 12px!important;
+}
+
+.annotator-editor .annotator-widget.ui-resizable{
+    position: absolute!important;
+    display: block;
+    min-height: 225px!important;
+    min-width: 265px!important;
+}
+
+.annotator-widget .ui-wrapper{
+    padding-right: 0!important;
+    margin-right: 0!important;
+}
+
+.annotator-editor .annotator-widget .annotator-listing li.annotator-item:last-child .error{
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+}
+
+.annotator-editor .annotator-item textarea{
+    display: block;
+    min-height: 75px!important;
+    min-width: 100%;
+}
+
+.annotator-editor .annotator-widget .annotator-controls{
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 7px 14px!important;
+    z-index: 10;
+}
+.annotator-resize{
+    display: none;
+    resize: none;
+    pointer-events: none;
+}
+.annotator-widget .annotator-controls *{
+    pointer-events: all;
+}

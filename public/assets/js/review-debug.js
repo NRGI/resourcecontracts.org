@@ -40911,6 +40911,8 @@ function htmlDecode(html) {
     a.innerHTML = html;
     return a.textContent;
 }
+
+
 var ViewerPage = Backbone.Model.extend({
 
 });
@@ -45154,6 +45156,12 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
     }
 
     function onEditorShownHandler(viewer) {
+        var widgetTextarea = $( ".annotator-editor .annotator-widget textarea" );
+        var widget = $( ".annotator-editor .annotator-widget" );
+
+        widget.outerHeight("auto").width("auto");
+        widgetTextarea.outerHeight(75);
+
         $('.annotator-widget input').keypress(function (e) {
             if (e.which == 13) {
                 e.preventDefault();
@@ -45197,7 +45205,13 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
             viewerEl.removeClass('annotator-invert-y');
             editorEl.removeClass('annotator-invert-y');
         }
-
+        widget.resizable({
+            resize: function( event, ui ) {
+                if(ui.size.height > 225){
+                    widgetTextarea.outerHeight(75 + (ui.size.height - 225));
+                }
+            }
+        });
     }
 
     function onViewShownHandler(viewer, annotations) {
