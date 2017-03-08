@@ -86,9 +86,36 @@ class ElasticSearchService
      */
     public function postMetadata($id)
     {
-        $contract     = $this->contract->find($id);
+        $contract            = $this->contract->find($id);
+        $this->indexMetadata($contract);
+        $associatedContracts = $this->contract->getAssociatedContracts($contract);
+
+        foreach ($associatedContracts as $contract) {
+            $contractId   = $contract['contract']['id'];
+            $elementState = $this->activity->getElementState($contractId);
+
+            if ($elementState['metadata'] == 'published') {
+                $contract = $this->contract->find($contractId);
+                $this->indexMetadata($contract);
+            }
+        }
+    }
+
+    /**
+     *Re-updates the metadata of contracts both main and associated
+     *
+     * @param $contract
+     *
+     */
+    public function indexMetadata($contract)
+    {
+        $id           = $contract->id;
         $showText     = false;
         $elementState = $this->activity->getElementState($id);
+
+        if ($elementState['text'] == 'published') {
+            $showText = true;
+        }
 
         $updated_by = ['name' => '', 'email' => ''];
 
@@ -100,10 +127,6 @@ class ElasticSearchService
         $contract->metadata->page_number = $contract->pages()->count();
         $metadataAttr                    = $contract->metadata;
         $parent                          = $this->contract->getcontracts((int) $contract->getParentContract());
-
-        if ($elementState['text'] == 'published') {
-            $showText = true;
-        }
 
         if (isset($metadataAttr->open_contracting_id_old)) {
             unset($metadataAttr->open_contracting_id_old);
@@ -145,6 +168,7 @@ class ElasticSearchService
             if (!$showText) {
                 $this->postText($id, false);
             }
+
         } catch (Exception $e) {
             $this->logger->error($e->getMessage(), (array) $e);
         }
