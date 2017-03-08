@@ -1031,47 +1031,48 @@ class ContractService
      *
      * @param string $lang
      *
-     * @return array
+     * @return string
      */
     public function getTypeOfContract($typeOfContract, $lang = 'en')
     {
-        $tocs = [];
-        foreach ($typeOfContract as $toc) {
-            if (!empty($toc)) {
-                array_push($tocs, trim($toc));
+        $trans_toc = [];
+        foreach ($typeOfContract as $type) {
+            $type = trim($type);
+
+            if (empty($type)) {
+                continue;
             }
+
+            if ($this->lang->defaultLang() == $lang) {
+                $abb_toc = config('abbreviation_toc');
+                $type    = isset($abb_toc[$type]) ? $abb_toc[$type] : $type;
+            } elseif (Lang::has(sprintf('codelist/contract_type.%s', $type), $lang)) {
+                $type = trans('codelist/contract_type.'.$type, [], null, $lang);
+            }
+
+            $trans_toc[] = $type;
         }
-        $tocs = array_filter($tocs);
-        $tocs = array_map(
-            function ($v) use ($lang) {
-                if ($this->lang->defaultLang() == $lang) {
-                    $abb = config('abbreviation_toc.'.$v);
-                } else {
-                    $abb = trans('codelist/contract_type.'.trim($v), [], null, $lang);
-                }
 
-                return $abb;
-            },
-            $tocs
-        );
-
-        $tocs = join(', ', $tocs);
-
-        return $tocs;
+        return join(', ', $trans_toc);
     }
 
     /**
      * Translates the document type
      *
-     * @param $documentType
+     * @param        $documentType
      * @param string $lang
+     *
      * @return string
      */
     public function getDocumentType($documentType, $lang = 'en')
     {
-        $tocs = trans('codelist/documentType.'.trim($documentType), [], null, $lang);
+        $documentType = trim($documentType);
 
-        return $tocs;
+        if (!empty($documentType) && Lang::has(sprintf('codelist/documentType.%s', $documentType), $lang)) {
+            $documentType = trans('codelist/documentType.'.$documentType, [], null, $lang);
+        }
+
+        return $documentType;
     }
 
     /**
@@ -1132,7 +1133,7 @@ class ContractService
         $con  = json_decode(json_encode($contracts), false);
         $id   = isset($con->contract_id) ? $con->contract_id : null;
         $lang = 'en';
-        
+
         if (!is_null($id) && isset($con->trans)) {
             $lang = $con->trans;
             $con  = $this->getContractForTranslation($con, $id);
@@ -1160,7 +1161,7 @@ class ContractService
                 'project_identifier',
                 'concession',
                 'disclosure_mode_text',
-                'contract_note'
+                'contract_note',
             ]
         );
         $contract = $this->find($id);
@@ -1194,8 +1195,7 @@ class ContractService
 
         if (!empty($contract->type_of_contract)) {
             $tc = $this->getTypeOfContract($contract->type_of_contract, $lang);
-        }
-        else {
+        } else {
             $tc = $this->getDocumentType($contract->document_type, $lang);
         }
 
@@ -1209,8 +1209,7 @@ class ContractService
 
         if ($count > 0) {
             return $contract_name = $contract_name.', '.str_pad($count, 3, 0, STR_PAD_LEFT);
-        }
-        else {
+        } else {
             return $contract_name;
         }
     }
