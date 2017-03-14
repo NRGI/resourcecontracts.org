@@ -3,7 +3,6 @@ var AnnotatorjsView = Backbone.View.extend({
         var self = this;
         this.options = options;
         this.api = options.api,
-            // this.listenTo(this.model, 'change:text', this.pageUpdated);
             this.content = $(this.options.el).annotator({
                 readOnly: false
             });

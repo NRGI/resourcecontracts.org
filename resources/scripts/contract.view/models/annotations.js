@@ -8,7 +8,7 @@ var Annotation = Backbone.Model.extend({
 var AnnotationsCollection = Backbone.Collection.extend({
     model: Annotation,
     sort_key: "category",
-     setSortByKey: function (key) {
+    setSortByKey: function (key) {
         this.sort_key = key;
     },
     comparator: function (item) {
@@ -50,11 +50,16 @@ var AnnotationsCollection = Backbone.Collection.extend({
 
         return annotations;
     },
-    totalAnnotations: function(){
+    totalAnnotations: function () {
         return _.keys(this.groupByCategory()).length;
     }
 });
 var AnnotationCategory = Backbone.Model.extend({});
 var AnnotationCategories = Backbone.Collection.extend({
     model: AnnotationCategory
+});
+
+var AnnotationChecklist = Backbone.Model.extend({});
+var AnnotationChecklistCollection = Backbone.Collection.extend({
+    model: AnnotationChecklist
 });

@@ -102,7 +102,7 @@ class ElasticSearchService
     }
 
     /**
-     *Re-updates the metadata of contracts both main and associated
+     * Re-updates the metadata of contracts both main and associated
      *
      * @param $contract
      *

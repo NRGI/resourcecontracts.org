@@ -78,4 +78,5 @@ return [
     'annotation_publish'              => "Etes-vous sûr de vouloir publier cette annotation ?",
     'suggestion'                      => "Suggérer des changements pour les annotations",
     'standard_box'                    => 'Redimensionnement à boîte de taille standard.',
+    'all_categories_annotated'        => 'Toutes les catégories sont annotées.',
 ];
