@@ -29,7 +29,7 @@ Annotator.Plugin.Categories = (function (superClass) {
         this.options.categoryColorClasses[this.options.emptyCategory] = this.options.categoryClass + '-none';
         this.field = this.annotator.editor.addField({
             id: 'annotation-plugin-select-category',
-            type:'select',
+            type: 'select',
             options: this.options
         });
         $(document).delegate(".annotator-category", "tap", {
@@ -108,7 +108,7 @@ Annotator.Plugin.Categories = (function (superClass) {
         annotation.category = $(this.field).find('select option:selected').val();
         // annotation.category = $(this.field).find('.' + this.options.classForSelectedCategory).html();
         if ((annotation.text != null) && annotation.text.length > 0 && (annotation.category == null)) {
-           // window.alert('You did not choose a category, so the default has been chosen.');
+            // window.alert('You did not choose a category, so the default has been chosen.');
             // annotation.category = this.options.category[0];
             annotation.category = this.options.category[0];
         }
@@ -121,7 +121,7 @@ Annotator.Plugin.Categories = (function (superClass) {
     Categories.prototype.highlightSelectedCategory = function (event, annotation) {
         var category, categoryHTML, j, len, ref, totalWidth;
 
-        categoryHTML = "<option value=''>"+LANG.select_category+"</option>";
+        categoryHTML = "<option value=''>" + LANG.select_category + "</option>";
         ref = this.options.category;
 
         var subHeaderPattern = new RegExp("^[0-9]+(-[a-zA-Z0-9-]+)");
@@ -144,10 +144,10 @@ Annotator.Plugin.Categories = (function (superClass) {
                     categoryClass = "category";
                 }
 
-               var tmpDisableCategory = ['legal-enterprise-identifier'];
-               if($.inArray(obj.key, tmpDisableCategory) >= 0){
-                   selectable = 'disabled';
-               }
+                var tmpDisableCategory = ['legal-enterprise-identifier'];
+                if ($.inArray(obj.key, tmpDisableCategory) >= 0) {
+                    selectable = 'disabled';
+                }
 
                 categoryHTML += '<option ' + selectable + ' class="' + this.options.categoryClass;
                 categoryHTML += ' ' + categoryClass + '"';

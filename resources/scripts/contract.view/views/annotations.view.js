@@ -179,7 +179,8 @@ var AnnotationItem = React.createClass({
                     l = true;
                 }
                 var article_reference = (annotation.get('article_reference') != '') ? annotation.get('article_reference') : '';
-                return (<PageLink key={index} contractApp={self.props.contractApp} annotation={annotation} last={l} page={page}
+                return (<PageLink key={index} contractApp={self.props.contractApp} annotation={annotation} last={l}
+                                  page={page}
                                   article_reference={article_reference}/>)
             });
 
@@ -324,14 +325,16 @@ var AnnotationsSort = React.createClass({
 var AnnotationsList = React.createClass({
     getInitialState: function () {
         return {
-            message: LANG.annotation_loading
+            message: LANG.annotation_loading,
+            annotations: []
         }
     },
     componentDidMount: function () {
         var self = this;
-        this.props.annotationsCollection.on("reset", function () {
-            if (self.props.annotationsCollection.totalAnnotations() > 0) {
-                self.setState({message: ""});
+        this.setState({message: "", annotations: this.props.annotationsCollection});
+        this.props.annotationsCollection.on("reset", function (annotationsCollection) {
+            if (annotationsCollection.totalAnnotations() > 0) {
+                self.setState({message: "", annotations: annotationsCollection});
             } else {
                 self.setState({message: LANG.annotation_not_found});
             }
@@ -345,13 +348,13 @@ var AnnotationsList = React.createClass({
         });
         this.props.contractApp.on("annotations:highlight", function (annotation) {
             var that = self;
-            var annotation_model = self.props.annotationsCollection.get(annotation.id);
+            var annotation_model = self.state.annotations.get(annotation.id);
             setTimeout(function () {
                 that.scrollToAnnotation(annotation_model.get('id'));
             }, 100);
         });
         this.props.contractApp.on("annotations:scroll-to-selected-annotation", function () {
-            var annotation = self.props.annotationsCollection.get(self.props.contractApp.getSelectedAnnotation());
+            var annotation = self.state.annotations.get(self.props.contractApp.getSelectedAnnotation());
             if (annotation) {
                 self.scrollToAnnotation(annotation.get('id'));
             }
@@ -387,13 +390,13 @@ var AnnotationsList = React.createClass({
     getAnnotationItemsComponent: function (annotationsCollectionForList, showClusterAnyway) {
         var annotationsList = [];
         if (_.size(annotationsCollectionForList) > 0) {
-            var i = 0;
+            var i = 1;
             for (var annotation_id in annotationsCollectionForList) {
                 annotationsList.push((<AnnotationItem
                     showClusterAnyway={showClusterAnyway}
                     key={i}
                     contractApp={this.props.contractApp}
-                    annotationsCollection={this.props.annotationsCollection}
+                    annotationsCollection={this.state.annotations}
                     annotation={annotationsCollectionForList[annotation_id]}/>));
                 i++;
             }
@@ -410,7 +413,7 @@ var AnnotationsList = React.createClass({
                         showClusterAnyway={showClusterAnyway}
                         key={i}
                         contractApp={this.props.contractApp}
-                        annotationsCollection={this.props.annotationsCollection}
+                        annotationsCollection={this.state.annotations}
                         annotation={[annotationsCollectionForList[page][key]]}/>));
                     i++;
                 }
@@ -421,32 +424,32 @@ var AnnotationsList = React.createClass({
 
     },
     sortByPage: function () {
-        if (this.props.annotationsCollection.models.length > 0) {
-            this.props.annotationsCollection.sort();
+        if (this.state.annotations.models.length > 0) {
+            this.state.annotations.sort();
             return (
                 <div className="annotations-list" id="id-annotations-list">
-                    {this.getAnnotationItemsComponentByPage(this.props.annotationsCollection.groupByPage(), true)}
+                    {this.getAnnotationItemsComponentByPage(this.state.annotations.groupByPage(), true)}
                 </div>
             );
         }
         return [];
     },
     sortByCategory: function () {
-        if (this.props.annotationsCollection.models.length > 0) {
-            this.props.annotationsCollection.sort();
+        if (this.state.annotations.models.length > 0) {
+            this.state.annotations.sort();
             return (
                 <div className="annotations-list" id="id-annotations-list">
-                    {this.getAnnotationItemsComponent(this.props.annotationsCollection.groupByCategory(), true)}
+                    {this.getAnnotationItemsComponent(this.state.annotations.groupByCategory(), true)}
                     <AnnotationsCategoryList
                         contractApp={this.props.contractApp}
-                        annotationsCollection={this.props.annotationsCollection}/>
+                        annotationsCollection={this.state.annotations}/>
                 </div>
             );
         }
     },
     render: function () {
-        if (this.props.annotationsCollection.models.length > 0) {
-            if (this.props.annotationsCollection.sort_key === "category") {
+        if (this.state.annotations.length) {
+            if (this.state.annotations.sort_key === "category") {
                 return this.sortByCategory();
             }
             return this.sortByPage();
@@ -463,7 +466,7 @@ var AnnotationsList = React.createClass({
 var AnnotationsCategoryList = React.createClass({
     isHeaderCategory: function (categoryKey) {
         var headerNumber = categoryKey.substr(0, categoryKey.indexOf("-"));
-        if (["i", "ii", "iii", "1", "2", "3", "4", "5", "6"].indexOf(headerNumber) !== -1) {
+        if (["i", "ii", "iii", "iv", "v", "vi", "1", "2", "3", "4", "5", "6"].indexOf(headerNumber) !== -1) {
             return true;
         }
         return false;
@@ -477,13 +480,22 @@ var AnnotationsCategoryList = React.createClass({
     getCategoryName: function (categoryModel) {
         return categoryModel.get("name");
     },
+    componentDidMount: function () {
+        $(".categoryTitle").each(function () {
+            if ($(this).next().hasClass("categoryTitle")) {
+                $(this).append("<sapn class='allAnnotated'>" + LANG.all_categories_annotated + "</sapn>");
+            }
+        });
+
+    },
     render: function () {
-        var allCategories = this.props.contractApp.getAnnotationCategories().models;
+        var allCategories = this.props.contractApp.getCategoryChecklist().models;
         this.usedCategories = this.props.annotationsCollection.pluck("category_key");
         var unusedCategoriesDom = [];
         for (var i = 0; i < allCategories.length; i++) {
             if (this.isHeaderCategory(allCategories[i].get("key"))) {
-                unusedCategoriesDom.push(<div key={i}><b>{this.getCategoryName(allCategories[i])}</b></div>);
+                unusedCategoriesDom.push(<div key={i} className="categoryTitle">
+                    <b>{this.getCategoryName(allCategories[i])}</b></div>);
             }
             else if (this.isUnusedCategory(allCategories[i].get("key")) && this.getCategoryName(allCategories[i])) {
                 unusedCategoriesDom.push(<span key={i}>{this.getCategoryName(allCategories[i])}</span>);
@@ -503,11 +515,11 @@ var AnnotationsViewer = React.createClass({
 
         this.props.contractApp.on("annotationCreated", function (annotation) {
             self.props.annotationsCollection.fetch({reset: true});
-            self.forceUpdate();
+            //self.forceUpdate();
         });
         this.props.contractApp.on("annotationUpdated", function (annotation) {
             self.props.annotationsCollection.fetch({reset: true});
-            self.forceUpdate();
+            //self.forceUpdate();
         });
         this.props.contractApp.on("annotationDeleted", function (annotation) {
             self.props.annotationsCollection.remove(annotation);

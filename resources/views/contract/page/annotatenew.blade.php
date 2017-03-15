@@ -41,6 +41,7 @@
 			annotation_url: "{{route('contract.annotations', ['id'=>$contract->id])}}",
 			search_url: "{{route('contract.page.search', ['id'=>$contract->id])}}",
 			categories_codelist: {!! json_encode(trans("codelist/annotation.annotation_category")) !!},
+			categories_checkList: {!! json_encode(trans("codelist/annotation.checklist.".$contract->metadata->category[0])) !!},
 			page_no: 1
 		};
 	</script>

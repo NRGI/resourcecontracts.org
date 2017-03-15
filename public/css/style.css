@@ -1424,3 +1424,11 @@ a.edit-section{
 .annotator-widget .annotator-controls *{
     pointer-events: all;
 }
+
+.allAnnotated{
+    display: block;
+    font-style: italic;
+    opacity: 0.75;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}

@@ -40034,7 +40034,8 @@ var AnnotationItem = React.createClass({
                     l = true;
                 }
                 var article_reference = annotation.get('article_reference') != '' ? annotation.get('article_reference') : '';
-                return React.createElement(PageLink, { key: index, contractApp: self.props.contractApp, annotation: annotation, last: l, page: page,
+                return React.createElement(PageLink, { key: index, contractApp: self.props.contractApp, annotation: annotation, last: l,
+                    page: page,
                     article_reference: article_reference });
             });
 
@@ -40216,14 +40217,16 @@ var AnnotationsList = React.createClass({
 
     getInitialState: function getInitialState() {
         return {
-            message: LANG.annotation_loading
+            message: LANG.annotation_loading,
+            annotations: []
         };
     },
     componentDidMount: function componentDidMount() {
         var self = this;
-        this.props.annotationsCollection.on("reset", function () {
-            if (self.props.annotationsCollection.totalAnnotations() > 0) {
-                self.setState({ message: "" });
+        this.setState({ message: "", annotations: this.props.annotationsCollection });
+        this.props.annotationsCollection.on("reset", function (annotationsCollection) {
+            if (annotationsCollection.totalAnnotations() > 0) {
+                self.setState({ message: "", annotations: annotationsCollection });
             } else {
                 self.setState({ message: LANG.annotation_not_found });
             }
@@ -40237,13 +40240,13 @@ var AnnotationsList = React.createClass({
         });
         this.props.contractApp.on("annotations:highlight", function (annotation) {
             var that = self;
-            var annotation_model = self.props.annotationsCollection.get(annotation.id);
+            var annotation_model = self.state.annotations.get(annotation.id);
             setTimeout(function () {
                 that.scrollToAnnotation(annotation_model.get('id'));
             }, 100);
         });
         this.props.contractApp.on("annotations:scroll-to-selected-annotation", function () {
-            var annotation = self.props.annotationsCollection.get(self.props.contractApp.getSelectedAnnotation());
+            var annotation = self.state.annotations.get(self.props.contractApp.getSelectedAnnotation());
             if (annotation) {
                 self.scrollToAnnotation(annotation.get('id'));
             }
@@ -40279,13 +40282,13 @@ var AnnotationsList = React.createClass({
     getAnnotationItemsComponent: function getAnnotationItemsComponent(annotationsCollectionForList, showClusterAnyway) {
         var annotationsList = [];
         if (_.size(annotationsCollectionForList) > 0) {
-            var i = 0;
+            var i = 1;
             for (var annotation_id in annotationsCollectionForList) {
                 annotationsList.push(React.createElement(AnnotationItem, {
                     showClusterAnyway: showClusterAnyway,
                     key: i,
                     contractApp: this.props.contractApp,
-                    annotationsCollection: this.props.annotationsCollection,
+                    annotationsCollection: this.state.annotations,
                     annotation: annotationsCollectionForList[annotation_id] }));
                 i++;
             }
@@ -40302,7 +40305,7 @@ var AnnotationsList = React.createClass({
                         showClusterAnyway: showClusterAnyway,
                         key: i,
                         contractApp: this.props.contractApp,
-                        annotationsCollection: this.props.annotationsCollection,
+                        annotationsCollection: this.state.annotations,
                         annotation: [annotationsCollectionForList[page][key]] }));
                     i++;
                 }
@@ -40311,32 +40314,32 @@ var AnnotationsList = React.createClass({
         return annotationsList;
     },
     sortByPage: function sortByPage() {
-        if (this.props.annotationsCollection.models.length > 0) {
-            this.props.annotationsCollection.sort();
+        if (this.state.annotations.models.length > 0) {
+            this.state.annotations.sort();
             return React.createElement(
                 "div",
                 { className: "annotations-list", id: "id-annotations-list" },
-                this.getAnnotationItemsComponentByPage(this.props.annotationsCollection.groupByPage(), true)
+                this.getAnnotationItemsComponentByPage(this.state.annotations.groupByPage(), true)
             );
         }
         return [];
     },
     sortByCategory: function sortByCategory() {
-        if (this.props.annotationsCollection.models.length > 0) {
-            this.props.annotationsCollection.sort();
+        if (this.state.annotations.models.length > 0) {
+            this.state.annotations.sort();
             return React.createElement(
                 "div",
                 { className: "annotations-list", id: "id-annotations-list" },
-                this.getAnnotationItemsComponent(this.props.annotationsCollection.groupByCategory(), true),
+                this.getAnnotationItemsComponent(this.state.annotations.groupByCategory(), true),
                 React.createElement(AnnotationsCategoryList, {
                     contractApp: this.props.contractApp,
-                    annotationsCollection: this.props.annotationsCollection })
+                    annotationsCollection: this.state.annotations })
             );
         }
     },
     render: function render() {
-        if (this.props.annotationsCollection.models.length > 0) {
-            if (this.props.annotationsCollection.sort_key === "category") {
+        if (this.state.annotations.length) {
+            if (this.state.annotations.sort_key === "category") {
                 return this.sortByCategory();
             }
             return this.sortByPage();
@@ -40359,7 +40362,7 @@ var AnnotationsCategoryList = React.createClass({
 
     isHeaderCategory: function isHeaderCategory(categoryKey) {
         var headerNumber = categoryKey.substr(0, categoryKey.indexOf("-"));
-        if (["i", "ii", "iii", "1", "2", "3", "4", "5", "6"].indexOf(headerNumber) !== -1) {
+        if (["i", "ii", "iii", "iv", "v", "vi", "1", "2", "3", "4", "5", "6"].indexOf(headerNumber) !== -1) {
             return true;
         }
         return false;
@@ -40373,15 +40376,22 @@ var AnnotationsCategoryList = React.createClass({
     getCategoryName: function getCategoryName(categoryModel) {
         return categoryModel.get("name");
     },
+    componentDidMount: function componentDidMount() {
+        $(".categoryTitle").each(function () {
+            if ($(this).next().hasClass("categoryTitle")) {
+                $(this).append("<sapn class='allAnnotated'>" + LANG.all_categories_annotated + "</sapn>");
+            }
+        });
+    },
     render: function render() {
-        var allCategories = this.props.contractApp.getAnnotationCategories().models;
+        var allCategories = this.props.contractApp.getCategoryChecklist().models;
         this.usedCategories = this.props.annotationsCollection.pluck("category_key");
         var unusedCategoriesDom = [];
         for (var i = 0; i < allCategories.length; i++) {
             if (this.isHeaderCategory(allCategories[i].get("key"))) {
                 unusedCategoriesDom.push(React.createElement(
                     "div",
-                    { key: i },
+                    { key: i, className: "categoryTitle" },
                     React.createElement(
                         "b",
                         null,
@@ -40416,11 +40426,11 @@ var AnnotationsViewer = React.createClass({
 
         this.props.contractApp.on("annotationCreated", function (annotation) {
             self.props.annotationsCollection.fetch({ reset: true });
-            self.forceUpdate();
+            //self.forceUpdate();
         });
         this.props.contractApp.on("annotationUpdated", function (annotation) {
             self.props.annotationsCollection.fetch({ reset: true });
-            self.forceUpdate();
+            //self.forceUpdate();
         });
         this.props.contractApp.on("annotationDeleted", function (annotation) {
             self.props.annotationsCollection.remove(annotation);
@@ -40937,7 +40947,7 @@ var Annotation = Backbone.Model.extend({
 var AnnotationsCollection = Backbone.Collection.extend({
     model: Annotation,
     sort_key: "category",
-     setSortByKey: function (key) {
+    setSortByKey: function (key) {
         this.sort_key = key;
     },
     comparator: function (item) {
@@ -40979,13 +40989,18 @@ var AnnotationsCollection = Backbone.Collection.extend({
 
         return annotations;
     },
-    totalAnnotations: function(){
+    totalAnnotations: function () {
         return _.keys(this.groupByCategory()).length;
     }
 });
 var AnnotationCategory = Backbone.Model.extend({});
 var AnnotationCategories = Backbone.Collection.extend({
     model: AnnotationCategory
+});
+
+var AnnotationChecklist = Backbone.Model.extend({});
+var AnnotationChecklistCollection = Backbone.Collection.extend({
+    model: AnnotationChecklist
 });
 
 var SearchResultRow = Backbone.Model.extend({});
@@ -41055,6 +41070,11 @@ var ContractApp = Backbone.Model.extend({
         _.each(options.categories_codelist, function (category, key) {
             self.annotationCategories.add({key: key, name: category});
         });
+
+        this.annotationChecklist = new AnnotationChecklistCollection();
+        _.each(options.categories_checkList, function (category, key) {
+            self.annotationChecklist.add({key: key, name: category});
+        });
     },
     setAnnotatorInstance: function (annotator) {
         return this.set({"annotator": annotator});
@@ -41122,6 +41142,9 @@ var ContractApp = Backbone.Model.extend({
     },
     getAnnotationCategories: function () {
         return this.annotationCategories;
+    },
+    getCategoryChecklist: function () {
+        return this.annotationChecklist;
     },
     getAnnotationsListAnchor: function () {
         return app_url + "/contract/" + this.getContractId() + "#annotations";
@@ -44646,7 +44669,6 @@ var AnnotatorjsView = Backbone.View.extend({
         var self = this;
         this.options = options;
         this.api = options.api,
-            // this.listenTo(this.model, 'change:text', this.pageUpdated);
             this.content = $(this.options.el).annotator({
                 readOnly: false
             });
@@ -44808,7 +44830,7 @@ Annotator.Plugin.Categories = (function (superClass) {
         this.options.categoryColorClasses[this.options.emptyCategory] = this.options.categoryClass + '-none';
         this.field = this.annotator.editor.addField({
             id: 'annotation-plugin-select-category',
-            type:'select',
+            type: 'select',
             options: this.options
         });
         $(document).delegate(".annotator-category", "tap", {
@@ -44887,7 +44909,7 @@ Annotator.Plugin.Categories = (function (superClass) {
         annotation.category = $(this.field).find('select option:selected').val();
         // annotation.category = $(this.field).find('.' + this.options.classForSelectedCategory).html();
         if ((annotation.text != null) && annotation.text.length > 0 && (annotation.category == null)) {
-           // window.alert('You did not choose a category, so the default has been chosen.');
+            // window.alert('You did not choose a category, so the default has been chosen.');
             // annotation.category = this.options.category[0];
             annotation.category = this.options.category[0];
         }
@@ -44900,7 +44922,7 @@ Annotator.Plugin.Categories = (function (superClass) {
     Categories.prototype.highlightSelectedCategory = function (event, annotation) {
         var category, categoryHTML, j, len, ref, totalWidth;
 
-        categoryHTML = "<option value=''>"+LANG.select_category+"</option>";
+        categoryHTML = "<option value=''>" + LANG.select_category + "</option>";
         ref = this.options.category;
 
         var subHeaderPattern = new RegExp("^[0-9]+(-[a-zA-Z0-9-]+)");
@@ -44923,10 +44945,10 @@ Annotator.Plugin.Categories = (function (superClass) {
                     categoryClass = "category";
                 }
 
-               var tmpDisableCategory = ['legal-enterprise-identifier'];
-               if($.inArray(obj.key, tmpDisableCategory) >= 0){
-                   selectable = 'disabled';
-               }
+                var tmpDisableCategory = ['legal-enterprise-identifier'];
+                if ($.inArray(obj.key, tmpDisableCategory) >= 0) {
+                    selectable = 'disabled';
+                }
 
                 categoryHTML += '<option ' + selectable + ' class="' + this.options.categoryClass;
                 categoryHTML += ' ' + categoryClass + '"';

@@ -78,4 +78,5 @@ return [
     'annotation_publish'              => 'Are you sure you want to marked publish these annotations ?',
     'suggestion'                      => 'Suggest changes for annotations',
     'standard_box'                    => 'Resize to standard box size.',
+    'all_categories_annotated'        => 'All categories are annotated.',
 ];
