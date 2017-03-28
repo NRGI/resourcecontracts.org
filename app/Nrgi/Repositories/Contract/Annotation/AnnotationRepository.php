@@ -220,6 +220,10 @@ class AnnotationRepository implements AnnotationRepositoryInterface
             $annotation->text = $data['text'];
         }
 
+        if (array_key_exists('text_trans', $data)) {
+            $annotation->text_trans = $data['text_trans'];
+        }
+
         if (array_key_exists('category', $data)) {
             $annotation->category = $data['category'];
         }

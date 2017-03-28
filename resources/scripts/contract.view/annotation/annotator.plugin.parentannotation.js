@@ -25,11 +25,22 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
             var dropdown = $(self.field);
             dropdown.find('.select2-selection__rendered').html('<span class="select2-selection__placeholder">Select parent annotation</span>');
             dropdown.find('select').html(select);
-            dropdown.find('select').select2({placeholder: 'Select parent annotation', allowClear: true, theme: "classic"});
+            dropdown.find('select').select2({
+                placeholder: 'Select parent annotation',
+                allowClear: true,
+                theme: "classic"
+            });
             var parents = annotationsCollection.parentAnnotations(category);
             dropdown.parent().find('textarea').val('');
-            parents.map(function (text, id) {
-                dropdown.parent().find('textarea').val(text);
+            parents.map(function (a, id) {
+                $.each(TRANSLATION_LANG, function (i, lang) {
+                    var text = a.get('text');
+
+                    if (lang.code != 'en') {
+                        text = a.get('text_locale')[lang.code]
+                    }
+                    dropdown.parent().find('#text_' + lang.code).val(text);
+                });
             })
         });
 
@@ -54,7 +65,8 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
         var selected = "";
         var parents = annotationsCollection.parentAnnotations(category);
 
-        parents.map(function (text, id) {
+        parents.map(function (a, id) {
+            var text = a.get('text');
             selected = (id == annotation_id || !annotation_id ) ? 'selected="selected"' : '';
             var textArr = text.split(" ");
             text = textArr.splice(0, 10).join(" ");
@@ -114,20 +126,20 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
                         link = "#/" + view + "/page/" + a.get('page') + "/annotation/" + a.get('id');
                     }
 
-                    var article_reference = (a.get('article_reference') != '') ?  a.get('article_reference') : a.get('page');
+                    var article_reference = (a.get('article_reference') != '') ? a.get('article_reference') : a.get('page');
                     ref.push('<a style="margin: 0px 3px" data-view="' + view + '" data-annotation="' + a.get('id') + '" class="parent_annotation_link" href="' + link + '">' + article_reference + '</a>');
                 });
 
                 var text = a.get('page');
-                    text += ' ('+ref.join(', ')+')';
-                    page.push(text);
+                text += ' (' + ref.join(', ') + ')';
+                page.push(text);
             });
             html += '<p style="padding: 5px 0px">';
 
             if (annotationGroupByPage.length > 1) {
-                html += LANG.pages+ ': ';
+                html += LANG.pages + ': ';
             } else {
-                html += LANG.page+': ';
+                html += LANG.page + ': ';
             }
 
             html += page.join(', ');

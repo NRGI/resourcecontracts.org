@@ -15,11 +15,7 @@ var ContractApp = Backbone.Model.extend({
     },
     initialize: function (options) {
         var self = this;
-        this.annotationCategories = new AnnotationCategories();
-        _.each(options.categories_codelist, function (category, key) {
-            self.annotationCategories.add({key: key, name: category});
-        });
-
+        this.annotationCategories = options.categories_codelist;
         this.annotationChecklist = new AnnotationChecklistCollection();
         _.each(options.categories_checkList, function (category, key) {
             self.annotationChecklist.add({key: key, name: category});

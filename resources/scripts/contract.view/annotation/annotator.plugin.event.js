@@ -107,8 +107,8 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
     }
 
     function onEditorShownHandler(viewer) {
-        var widgetTextarea = $( ".annotator-editor .annotator-widget textarea" );
-        var widget = $( ".annotator-editor .annotator-widget" );
+        var widgetTextarea = $(".annotator-editor .annotator-widget textarea");
+        var widget = $(".annotator-editor .annotator-widget");
 
         widget.outerHeight("auto").width("auto");
         widgetTextarea.outerHeight(75);
@@ -126,12 +126,6 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
 
         var viewPort = contractApp.getView() == 'pdf' ? 'pdf' : 'text';
         var viewerEl = $(viewer.element);
-
-        //move comment input to last in order
-        var commentEl = viewerEl.find('.annotator-listing li textarea');
-        commentEl.attr('placeholder', LANG.annotation);
-        commentEl.addClass('annotation-text');
-        commentEl.parent().appendTo(viewerEl.find('.annotator-listing'));
 
         var position = viewerEl.position();
         var wrapperEl = $('.' + viewPort + '-annotator');
@@ -157,8 +151,8 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
             editorEl.removeClass('annotator-invert-y');
         }
         widget.resizable({
-            resize: function( event, ui ) {
-                if(ui.size.height > 225){
+            resize: function (event, ui) {
+                if (ui.size.height > 225) {
                     widgetTextarea.outerHeight(75 + (ui.size.height - 225));
                 }
             }

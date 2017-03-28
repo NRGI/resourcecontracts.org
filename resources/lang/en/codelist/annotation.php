@@ -101,7 +101,6 @@ return [
         "expropriation-or-nationalization"                                                                                                => "Legal Rules",
         "other-miscellaneous"                                                                                                             => "Legal Rules",
         "iii-document-notes"                                                                                                              => "Legal Rules",
-        "annexes-missing-from-copy"                                                                                                       => "Legal Rules",
         "other"                                                                                                                           => "Legal Rules",
     ],
     "annotation_category" => [

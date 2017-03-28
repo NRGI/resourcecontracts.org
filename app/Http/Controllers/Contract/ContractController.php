@@ -177,13 +177,17 @@ class ContractController extends Controller
         $elementState                 = $this->activity->getElementState($id);
         $annotationStatus             = $this->annotation->getStatus($id);
         $annotationStatus             = $annotationStatus == '' ? $elementState['annotation'] : $annotationStatus;
-        $locale                       = $request->route()->getParameter('lang');
+        $locale                       = $request->route()->getParameter('lang', $lang->defaultLang());
 
         if (!is_null($locale)) {
-            if (!$lang->isValidTranslationLang($locale) || $locale == $lang->defaultLang()) {
+            if (!$lang->isValidTranslationLang($locale)) {
                 abort(404);
             }
-            $contract->setLang($locale);
+
+            if ($locale != $lang->defaultLang()) {
+                $contract->setLang($locale);
+            }
+
         }
 
         return view(
@@ -448,6 +452,8 @@ class ContractController extends Controller
      * @param         $contract_id
      * @param Guard   $auth
      *
+     * @param Request $request
+     *
      * @return Response
      */
     public function unpublish($contract_id, Guard $auth, Request $request)
@@ -458,7 +464,6 @@ class ContractController extends Controller
         }
 
         if ($this->contract->unPublishContract($contract_id, $elementStatus)) {
-            //$this->annotation->updateStatus("draft",'', $contract_id);
 
             return back()->withSuccess(trans('contract.unpublish.success'));
         }
@@ -479,7 +484,7 @@ class ContractController extends Controller
     }
 
     /**
-     * Get name for contract if ajax requst exists
+     * Get name for contract if ajax request exists
      *
      * @param Request $request
      *
@@ -493,5 +498,4 @@ class ContractController extends Controller
             return abort(404);
         }
     }
-
 }

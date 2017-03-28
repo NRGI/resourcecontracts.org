@@ -202,7 +202,6 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 						</div>
 					@endif
 
-
 					<li class="name-value-wrap">
 						<span class="name"><strong>@lang('contract.document_type'):</strong></span>
                     <span class="value">{{ _l('codelist/documentType.'.$contract->metadata->document_type, $locale) }}
@@ -252,7 +251,6 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                         </span>
 						@endif
 					</li>
-
 				</ul>
 			</div>
 
@@ -429,9 +427,6 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 						 @if(isset($contract->metadata->disclosure_mode_text) && !empty($contract->metadata->disclosure_mode_text))
 							 ( {{$contract->metadata->disclosure_mode_text}} )
 						 @endif
-
-
-
                     </span>
 					</li>
 					<li class="name-value-wrap">
@@ -445,7 +440,6 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 						<span class="name""><strong>@lang('contract.category'):</strong></span>
                      <span class="value">
                     <?php $catConfig = config('metadata.category');?>
-
 						 @if(isset($contract->metadata->category) && is_array($contract->metadata->category) && count($contract->metadata->category)>0)
 							 <?php $cat = [];
 							 foreach ($contract->metadata->category as $key):
@@ -459,8 +453,6 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 					</li>
 
 					@if(in_array('olc' , $contract->metadata->category))
-
-
 						<li class="name-value-wrap">
 							<span class="name"> <strong>{{ trans('contract.deal_number') }}:</strong></span>
                          <span class="value">
@@ -535,7 +527,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 				@if(isset($contract->metadata->pages_missing))
 					<ul>
 						<li class="name-value-wrap">
-							<span class="name""><strong>@lang('contract.pages_display'):</strong></span>
+							<span class="name"><strong>@lang('contract.pages_display'):</strong></span>
                          <span class="value">
                             @if( $contract->metadata->pages_missing == 1)@lang('global.yes')
 							 @elseif($contract->metadata->pages_missing == 0)@lang('global.no')
@@ -546,13 +538,11 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 						</li>
 					</ul>
 				@endif
-
 			</div>
 		</div>
 		@include('contract.partials.show.annotation_list')
 	</div>
 @stop
-
 
 @include('contract.partials.show.script')
 

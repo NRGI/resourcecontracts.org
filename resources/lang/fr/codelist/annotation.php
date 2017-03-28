@@ -101,7 +101,6 @@ return [
         "expropriation-or-nationalization"                                                                                                => "Règles juridiques",
         "other-miscellaneous"                                                                                                             => "Règles juridiques",
         "iii-document-notes"                                                                                                              => "Règles juridiques",
-        "annexes-missing-from-copy"                                                                                                       => "Règles juridiques",
         "other"                                                                                                                           => "Règles juridiques",
     ],
     "annotation_category" => [

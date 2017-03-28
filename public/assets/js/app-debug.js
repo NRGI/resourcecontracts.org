@@ -40937,13 +40937,7 @@ var ViewerPageCollection = Backbone.Collection.extend({
         return response.result;
     }
 });
-var Annotation = Backbone.Model.extend({
-    default: {
-        text: "",
-        cluster: "Other12"
-
-    }
-});
+var Annotation = Backbone.Model.extend({});
 var AnnotationsCollection = Backbone.Collection.extend({
     model: Annotation,
     sort_key: "category",
@@ -40960,7 +40954,7 @@ var AnnotationsCollection = Backbone.Collection.extend({
         var parents = [];
         this.models.map(function (a) {
             if (a.get('category_key') == category) {
-                parents[a.get('annotation_id')] = a.get('text');
+                parents[a.get('annotation_id')] = a
             }
         });
         return parents;
@@ -41066,11 +41060,7 @@ var ContractApp = Backbone.Model.extend({
     },
     initialize: function (options) {
         var self = this;
-        this.annotationCategories = new AnnotationCategories();
-        _.each(options.categories_codelist, function (category, key) {
-            self.annotationCategories.add({key: key, name: category});
-        });
-
+        this.annotationCategories = options.categories_codelist;
         this.annotationChecklist = new AnnotationChecklistCollection();
         _.each(options.categories_checkList, function (category, key) {
             self.annotationChecklist.add({key: key, name: category});
@@ -44678,8 +44668,8 @@ var AnnotatorjsView = Backbone.View.extend({
             }
         };
         this.contractApp = options.contractApp;
-
         this.content.annotator('addPlugin', 'AnnotatorNRGIViewer');
+        this.content.annotator('addPlugin', 'Language');
         this.populateCategories();
         this.content.annotator('addPlugin', 'ParentAnnotation');
         this.content.annotator('addPlugin', 'ArticleReference');
@@ -44706,7 +44696,7 @@ var AnnotatorjsView = Backbone.View.extend({
     populateCategories: function () {
         var annotationCategories = this.contractApp.getAnnotationCategories();
         this.content.annotator('addPlugin', 'Categories', {
-            category: annotationCategories.invoke("pick", ["key", "name"])
+            categories: annotationCategories
         });
     },
     setupStore: function (enablePdfAnnotation) {
@@ -44803,127 +44793,72 @@ Annotator.Plugin.Categories = (function (superClass) {
     __extends(Categories, superClass);
 
     Categories.prototype.options = {
-        categories: [],
-        categoryColorClasses: {},
-        categoryClass: "annotator-category",
-        classForSelectedCategory: "annotator-category-selected",
-        emptyCategory: "Highlight",
-        annotatorHighlight: 'span.annotator-hl'
+        categories: []
     };
-
-    Categories.prototype.events = {
-        '.annotator-category click': "changeSelectedCategory",
-        'annotationEditorSubmit': "saveCategory",
-        'annotationEditorShown': "highlightSelectedCategory"
-    };
-
-    Categories.prototype.field = null;
-
-    Categories.prototype.input = null;
-
-    Categories.prototype.widthSet = false;
 
     Categories.prototype.pluginInit = function () {
         if (!Annotator.supported()) {
             return;
         }
-        this.options.categoryColorClasses[this.options.emptyCategory] = this.options.categoryClass + '-none';
+
+        this.annotator.viewer.addField({
+            load: this.updateViewer
+        });
+
         this.field = this.annotator.editor.addField({
             id: 'annotation-plugin-select-category',
             type: 'select',
-            options: this.options
+            options: this.options,
+            load: this.updateCategory,
+            submit: this.saveCategory
         });
-        $(document).delegate(".annotator-category", "tap", {
-            preventDefault: false
-        }, this.changeSelectedCategory);
-        this.annotator.viewer.addField({
-            load: this.updateViewer,
-            options: this.options
+
+        var self = this;
+        $('.annotator-editor #annotation-language').on('change', function () {
+            self.loadCategory($(this).val(), $(self.field).find('select').val());
         });
-        return this.input = $(this.field).find(':input');
     };
 
     function Categories(element, options) {
         this.changeSelectedCategory = __bind(this.changeSelectedCategory, this);
+        this.updateCategory = __bind(this.updateCategory, this);
+        this.saveCategory = __bind(this.saveCategory, this);
+        this.updateViewer = __bind(this.updateViewer, this);
+        this.loadCategory = __bind(this.loadCategory, this);
+
         Categories.__super__.constructor.call(this, element, options);
         this.element = element;
     }
 
-    Categories.prototype.changeHighlightColors = function (annotations) {
-        var annotation, category, cssClass, highlight, i, j, k, len, len1, ref, results;
-        i = 0;
-        // debugger;
-        ref = this.options.category;
-        for (j = 0, len = ref.length; j < len; j++) {
-            category = ref[j];
-            cssClass = this.options.categoryClass + '-' + i;
-            this.options.categoryColorClasses[category] = cssClass;
-            i++;
-        }
-        results = [];
-        for (k = 0, len1 = annotations.length; k < len1; k++) {
-            annotation = annotations[k];
-            if ((annotation.category == null) || !annotation.category.length) {
-                annotation.category = this.options.emptyCategory;
-            }
-            results.push(annotation);
-        }
-        return results;
-    };
-
-    Categories.prototype.setSelectedCategory = function (currentCategory) {
-        $(this.field).find('.annotator-category').removeClass(this.options.classForSelectedCategory);
-        if (currentCategory) $(this.field).find('select').val(currentCategory);
-        $(this.field).find('select').select2({placeholder: LANG.select_category, allowClear: true, theme: "classic"});
-        return $(this.field).find('.annotator-category:contains(' + currentCategory + ')').addClass(this.options.classForSelectedCategory);
+    Categories.prototype.getCategories = function (lang) {
+        var collection = new AnnotationCategories();
+        _.each(this.options.categories[lang], function (category, key) {
+            collection.add({key: key, name: category});
+        });
+        return collection.invoke("pick", ["key", "name"])
     };
 
     Categories.prototype.updateViewer = function (field, annotation) {
-        var ref;
-        field = $(field);
-        // debugger;
-        field.addClass(this.options.categoryClass).html(this.options.emptyCategory);
-        if ((annotation.category != null) && annotation.category.length > 0) {
-            var self = this;
-            this.options.category.map(function (cat) {
-                if (cat.key == annotation.category) {
-                    field.addClass(self.options.categoryClass).html(cat.name);
-                }
-            });
-
-            if (ref = annotation.category, indexOf.call(this.options.category, ref) >= 0) {
-                // $(this.field).find('select option:selected').val()
-                // return field.addClass(this.options.categoryColorClasses[annotation.category]);
+        this.getCategories(CURRENT_LANG).map(function (cat) {
+            if (cat.key == annotation.category) {
+                $(field).addClass('annotator-category').html(cat.name);
             }
-        }
+        });
     };
 
-    Categories.prototype.changeSelectedCategory = function (event) {
-        var category;
-        category = $(event.target).html();
-        return this.setSelectedCategory(category);
-    };
-
-    Categories.prototype.saveCategory = function (event, annotation) {
-        // debugger;
+    Categories.prototype.saveCategory = function (el, annotation) {
         annotation.category = $(this.field).find('select option:selected').val();
-        // annotation.category = $(this.field).find('.' + this.options.classForSelectedCategory).html();
-        if ((annotation.text != null) && annotation.text.length > 0 && (annotation.category == null)) {
-            // window.alert('You did not choose a category, so the default has been chosen.');
-            // annotation.category = this.options.category[0];
-            annotation.category = this.options.category[0];
-        }
-        if (annotation.category == null) {
-            annotation.category = this.options.emptyCategory;
-        }
-        return this.changeHighlightColors([annotation]);
     };
 
-    Categories.prototype.highlightSelectedCategory = function (event, annotation) {
+    Categories.prototype.updateCategory = function (event, annotation) {
+        this.loadCategory('en', annotation.category);
+    };
+
+    Categories.prototype.loadCategory = function (lang, AnnotationCategory) {
         var category, categoryHTML, j, len, ref, totalWidth;
 
         categoryHTML = "<option value=''>" + LANG.select_category + "</option>";
-        ref = this.options.category;
+        ref = this.getCategories(lang);
 
         var subHeaderPattern = new RegExp("^[0-9]+(-[a-zA-Z0-9-]+)");
         var headerPattern = new RegExp("^[i*]+(-[a-zA-Z0-9-]+)");
@@ -44966,7 +44901,14 @@ Annotator.Plugin.Categories = (function (superClass) {
             });
             $(".annotator-editor .annotator-widget").width(totalWidth);
         }
-        return this.setSelectedCategory(annotation.category);
+        return this.setSelectedCategory(AnnotationCategory);
+    };
+
+    Categories.prototype.setSelectedCategory = function (currentCategory) {
+        $(this.field).find('.annotator-category').removeClass(this.options.classForSelectedCategory);
+        if (currentCategory) $(this.field).find('select').val(currentCategory);
+        $(this.field).find('select').select2({placeholder: LANG.select_category, allowClear: true, theme: "classic"});
+        return $(this.field).find('.annotator-category:contains(' + currentCategory + ')').addClass(this.options.classForSelectedCategory);
     };
 
     return Categories;
@@ -44985,24 +44927,23 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
         $('.annotator-controls').on("click", "a.annotator-save", function (e) {
             var wrapperEl = $('.' + contractApp.getView() + '-annotator');
             var category = wrapperEl.find('#annotation-plugin-select-category');
-            var text = wrapperEl.find('textarea.annotation-text');
+            var text = wrapperEl.find('#text_en');
             wrapperEl.find('.error').remove();
             if (category.val() == '') {
                 category.focus();
-                category.parent().append('<span class="error">'+LANG.category_required+'</span>');
+                category.parent().append('<span class="error">' + LANG.category_required + '</span>');
                 e.stopPropagation();
                 return;
             }
 
             if (text.val() == '') {
                 text.focus();
-                text.after('<span class="error">'+LANG.annotation_required+'</span>');
+                text.parent().after('<span class="error error-text">' + LANG.annotation_required + 'in English</span>');
                 e.stopPropagation();
                 return;
             }
 
         });
-
 
         annotator.viewer.addField({
             load: this.updateViewer,
@@ -45014,58 +44955,58 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
     AnnotatorNRGIViewer.prototype.onClickAnnotionMore = function d(e, annotation) {
         e.preventDefault();
         AnnotatorNRGIViewer.contractApp.trigger("annotations:highlight", obj.annotation);
-    },
-        AnnotatorNRGIViewer.prototype.updateViewer = function (field, annotation) {
-            var link = "";
-            if (annotation.shapes) {
-                link = "#/pdf/page/" + annotation.page_no + "/annotation/" + annotation.id;
-            } else {
-                link = "#/text/page/" + annotation.page_no + "/annotation/" + annotation.id;
-            }
-            var textDiv = $(field.parentNode).find('div:first-of-type')[0];
-            var text = '';
-            var annotatedText = annotation.text;
-            if (parseInt(annotation.parent) > 0) {
-                var parentAnnotation = annotationsCollection.get(annotation.parent);
-                if (parentAnnotation) {
-                    annotatedText = parentAnnotation.get('text');
-                }
-            }
-
-            if (typeof annotatedText == 'undefined') {
-                return false;
-            }
-            if (annotatedText != '') {
-                text = annotatedText.split(" ").splice(0, 10).join(" ");
-                text = nl2br(text);
-                if (annotatedText.split(" ").length > 10) {
-                    text = text + " ...";
-                }
-            }
-
-            var article_reference = '';
-            if (typeof annotation.article_reference !== 'undefined' && annotation.article_reference != '') {
-                article_reference = ' - ' + annotation.article_reference;
-            }
-
-            textDiv.innerHTML = '<div class="annotation-viewer-text">' +
-                text + article_reference +'<a href='+link+'> >>'+'</a></div>';
-
-            $(textDiv).on("click", "a", function (e) {
-                e.preventDefault();
-                contractApp.trigger("annotations:highlight", annotation);
-            });
-
-            $('.annotator-controls').on("click", "button.annotator-delete", function (e) {
-                var deleteThis = confirm(LANG.confirm_annotation_delete);
-                if (deleteThis === true) {
-                    return;
-                }
-                e.stopPropagation();
-            });
-
-            $(field).remove();
+    };
+    AnnotatorNRGIViewer.prototype.updateViewer = function (field, annotation) {
+        var link = "";
+        if (annotation.shapes) {
+            link = "#/pdf/page/" + annotation.page_no + "/annotation/" + annotation.id;
+        } else {
+            link = "#/text/page/" + annotation.page_no + "/annotation/" + annotation.id;
         }
+        var textDiv = $(field.parentNode).find('div:first-of-type')[0];
+        var text = '';
+        var annotatedText = annotation.text;
+        if (parseInt(annotation.parent) > 0) {
+            var parentAnnotation = annotationsCollection.get(annotation.parent);
+            if (parentAnnotation) {
+                annotatedText = parentAnnotation.get('text');
+            }
+        }
+
+        if (typeof annotatedText == 'undefined') {
+            return false;
+        }
+        if (annotatedText != '') {
+            text = annotatedText.split(" ").splice(0, 10).join(" ");
+            text = nl2br(text);
+            if (annotatedText.split(" ").length > 10) {
+                text = text + " ...";
+            }
+        }
+
+        var article_reference = '';
+        if (typeof annotation.article_reference !== 'undefined' && annotation.article_reference != '') {
+            article_reference = ' - ' + annotation.article_reference;
+        }
+
+        textDiv.innerHTML = '<div class="annotation-viewer-text">' +
+            text + article_reference + '<a href=' + link + '> >>' + '</a></div>';
+
+        $(textDiv).on("click", "a", function (e) {
+            e.preventDefault();
+            contractApp.trigger("annotations:highlight", annotation);
+        });
+
+        $('.annotator-controls').on("click", "button.annotator-delete", function (e) {
+            var deleteThis = confirm(LANG.confirm_annotation_delete);
+            if (deleteThis === true) {
+                return;
+            }
+            e.stopPropagation();
+        });
+
+        $(field).remove();
+    };
 
     return AnnotatorNRGIViewer;
 })(Annotator.Plugin);
@@ -45178,8 +45119,8 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
     }
 
     function onEditorShownHandler(viewer) {
-        var widgetTextarea = $( ".annotator-editor .annotator-widget textarea" );
-        var widget = $( ".annotator-editor .annotator-widget" );
+        var widgetTextarea = $(".annotator-editor .annotator-widget textarea");
+        var widget = $(".annotator-editor .annotator-widget");
 
         widget.outerHeight("auto").width("auto");
         widgetTextarea.outerHeight(75);
@@ -45197,12 +45138,6 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
 
         var viewPort = contractApp.getView() == 'pdf' ? 'pdf' : 'text';
         var viewerEl = $(viewer.element);
-
-        //move comment input to last in order
-        var commentEl = viewerEl.find('.annotator-listing li textarea');
-        commentEl.attr('placeholder', LANG.annotation);
-        commentEl.addClass('annotation-text');
-        commentEl.parent().appendTo(viewerEl.find('.annotator-listing'));
 
         var position = viewerEl.position();
         var wrapperEl = $('.' + viewPort + '-annotator');
@@ -45228,8 +45163,8 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
             editorEl.removeClass('annotator-invert-y');
         }
         widget.resizable({
-            resize: function( event, ui ) {
-                if(ui.size.height > 225){
+            resize: function (event, ui) {
+                if (ui.size.height > 225) {
                     widgetTextarea.outerHeight(75 + (ui.size.height - 225));
                 }
             }
@@ -45272,33 +45207,98 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
 Annotator.Plugin.ArticleReference = (function (_super) {
     __extends(ArticleReference, _super);
 
+    ArticleReference.prototype.options = {
+        lang: TRANSLATION_LANG
+    };
+
     ArticleReference.prototype.pluginInit = function (options) {
         if (!Annotator.supported()) {
             return;
         }
+        var lang = this.options.lang;
+        var self = this;
 
-       var field =  this.annotator.editor.addField({
-            label: LANG.article_reference,
-            type: 'input',
-            id:'article_reference',
-            load: this.updateArticleReference,
-            submit: this.saveArticleReference
+        $.each(lang, function (i, l) {
+            self.annotator.editor.addField({
+                label: LANG.article_reference + ' in ' + l.name,
+                type: 'input',
+                id: 'article_reference_' + l.code,
+                load: function (el, annotation) {
+                    self.updateArticleReference(l.code, el, annotation);
+                },
+                submit: function (el, annotation) {
+                    self.saveArticleReference(l.code, el, annotation)
+                }
+            });
         });
 
-        $('.annotator-wrapper').find('input, textarea').attr({'spellcheck': 'true', 'autocomplete':'off'});
+
+        $.each(lang, function (i, l) {
+            self.annotator.editor.addField({
+                label: 'Annotation in ' + l.name,
+                type: 'textarea',
+                id: 'text_' + l.code,
+                load: function (el, annotation) {
+                    self.updateText(l.code, el, annotation);
+                },
+                submit: function (el, annotation) {
+                    self.saveText(l.code, el, annotation)
+                }
+            });
+        });
+
+        $('.annotator-wrapper').find('input, textarea').attr({'spellcheck': 'true', 'autocomplete': 'off'});
+        this.annotator.subscribe("annotationEditorShown", onEditorShownHandler)
     };
 
     function ArticleReference() {
         ArticleReference.__super__.constructor.call(this, arguments);
     }
 
-    ArticleReference.prototype.saveArticleReference = function (el, annotation) {
-        annotation.article_reference = $(el).find('input').val();
-    }
-
-    ArticleReference.prototype.updateArticleReference = function (el, annotation) {
-        $(el).find('input').val(annotation.article_reference);
+    ArticleReference.prototype.saveArticleReference = function (code, el, annotation) {
+        annotation['article_reference_' + code] = $(el).find('input').val();
     };
+
+    ArticleReference.prototype.updateArticleReference = function (code, el, annotation) {
+        var value = annotation.article_reference;
+        if (code != 'en') {
+            value = (annotation.article_reference_locale && typeof annotation.article_reference_locale[code] != 'undefined') ? annotation.article_reference_locale[code] : '';
+        }
+
+        $(el).find('input').addClass('article_reference').val(value);
+
+        if (code != 'en') {
+            $(el).hide();
+        } else {
+            $(el).show();
+        }
+
+    };
+
+    ArticleReference.prototype.saveText = function (code, el, annotation) {
+        annotation['text_' + code] = $(el).find('textarea').val();
+    };
+
+    ArticleReference.prototype.updateText = function (code, el, annotation) {
+        var value = annotation.text;
+
+        if (code != 'en') {
+            value = (annotation.text_locale && typeof annotation.text_locale[code] != 'undefined') ? annotation.text_locale[code] : '';
+        }
+
+        $(el).find('textarea').addClass('text').val(value);
+
+        if (code != 'en') {
+            $(el).hide();
+        } else {
+            $(el).show();
+        }
+    };
+
+    function onEditorShownHandler(el) {
+        var viewerEl = $(el.element);
+        viewerEl.find('.annotator-listing li textarea#annotator-field-10').parent().remove();
+    }
 
     return ArticleReference;
 })(Annotator.Plugin);
@@ -45330,11 +45330,22 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
             var dropdown = $(self.field);
             dropdown.find('.select2-selection__rendered').html('<span class="select2-selection__placeholder">Select parent annotation</span>');
             dropdown.find('select').html(select);
-            dropdown.find('select').select2({placeholder: 'Select parent annotation', allowClear: true, theme: "classic"});
+            dropdown.find('select').select2({
+                placeholder: 'Select parent annotation',
+                allowClear: true,
+                theme: "classic"
+            });
             var parents = annotationsCollection.parentAnnotations(category);
             dropdown.parent().find('textarea').val('');
-            parents.map(function (text, id) {
-                dropdown.parent().find('textarea').val(text);
+            parents.map(function (a, id) {
+                $.each(TRANSLATION_LANG, function (i, lang) {
+                    var text = a.get('text');
+
+                    if (lang.code != 'en') {
+                        text = a.get('text_locale')[lang.code]
+                    }
+                    dropdown.parent().find('#text_' + lang.code).val(text);
+                });
             })
         });
 
@@ -45359,7 +45370,8 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
         var selected = "";
         var parents = annotationsCollection.parentAnnotations(category);
 
-        parents.map(function (text, id) {
+        parents.map(function (a, id) {
+            var text = a.get('text');
             selected = (id == annotation_id || !annotation_id ) ? 'selected="selected"' : '';
             var textArr = text.split(" ");
             text = textArr.splice(0, 10).join(" ");
@@ -45419,20 +45431,20 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
                         link = "#/" + view + "/page/" + a.get('page') + "/annotation/" + a.get('id');
                     }
 
-                    var article_reference = (a.get('article_reference') != '') ?  a.get('article_reference') : a.get('page');
+                    var article_reference = (a.get('article_reference') != '') ? a.get('article_reference') : a.get('page');
                     ref.push('<a style="margin: 0px 3px" data-view="' + view + '" data-annotation="' + a.get('id') + '" class="parent_annotation_link" href="' + link + '">' + article_reference + '</a>');
                 });
 
                 var text = a.get('page');
-                    text += ' ('+ref.join(', ')+')';
-                    page.push(text);
+                text += ' (' + ref.join(', ') + ')';
+                page.push(text);
             });
             html += '<p style="padding: 5px 0px">';
 
             if (annotationGroupByPage.length > 1) {
-                html += LANG.pages+ ': ';
+                html += LANG.pages + ': ';
             } else {
-                html += LANG.page+': ';
+                html += LANG.page + ': ';
             }
 
             html += page.join(', ');
@@ -45443,6 +45455,58 @@ Annotator.Plugin.ParentAnnotation = (function (_super) {
 
     return ParentAnnotation;
 
+})(Annotator.Plugin);
+
+Annotator.Plugin.Language = (function (_super) {
+    __extends(Language, _super);
+
+    Language.prototype.pluginInit = function (options) {
+        if (!Annotator.supported()) {
+            return;
+        }
+
+        this.field = this.annotator.editor.addField({
+            label: 'Language',
+            type: 'select',
+            id: 'annotation-language',
+            load: this.updateLanguage
+        });
+    };
+
+    function Language(element, options) {
+        Language.__super__.constructor.call(this, element, options);
+    }
+
+    Language.prototype.updateLanguage = function (el, annotation) {
+        var options = '';
+        var lang = getLang();
+
+        $.each(lang, function (k, l) {
+            options += '<option value="' + l.code + '">' + l.name + '</option>';
+        });
+
+        $(el).find('select').html(options).select2();
+
+        $(el).find('select').on('change', function () {
+            $('.annotator-widget .article_reference').each(function () {
+                $(this).parent().hide();
+            });
+
+            $('.annotator-widget #article_reference_' + $(this).val()).parent().show();
+
+            $('.annotator-widget .text').each(function () {
+                $(this).parent().hide();
+            });
+
+            $('.annotator-widget #text_' + $(this).val()).parent().show();
+        });
+    };
+
+    function getLang() {
+        return TRANSLATION_LANG;
+    }
+
+    return Language;
 })(Annotator.Plugin);
 
 Annotator.Plugin.PdfAnnotator = (function (_super) {
