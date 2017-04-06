@@ -230,12 +230,14 @@ class PageController extends Controller
     /**
      * Display Review Page
      *
-     * @param Request $request
-     * @param         $contractId
+     * @param Request         $request
+     * @param                 $contractId
+     *
+     * @param LanguageService $lang
      *
      * @return \Illuminate\View\View|void
      */
-    public function review(Request $request, $contractId)
+    public function review(Request $request, $contractId, LanguageService $lang)
     {
         try {
             $back     = $request->server('HTTP_REFERER');
@@ -247,7 +249,9 @@ class PageController extends Controller
             return abort(404);
         }
 
-        return view('contract.page.review', compact('contract', 'pages', 'page', 'back'));
+        $translationLang =  $lang->translation_lang();
+
+        return view('contract.page.review', compact('contract', 'pages', 'page', 'back','translationLang'));
     }
 
     /**

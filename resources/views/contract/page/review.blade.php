@@ -30,6 +30,7 @@
 			search_url: "{{route('contract.page.search', ['id'=>$contract->id])}}",
 			page_no: 1
 		};
+		var TRANSLATION_LANG = {!!json_encode($translationLang)!!};
 		var saveApi = "{{route('contract.page.store', ['id'=>$contract->id])}}";
 		var loadApi = "{{route('contract.page.get', ['id'=>$contract->id])}}";
 	</script>
