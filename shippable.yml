@@ -23,8 +23,8 @@ build:
     - docker pull nrgi/rc-admin:$BRANCH || echo 'Cache not available'
     
     - docker build -t nrgi/rc-admin:$BRANCH.$COMMIT .
-    # Create the `latest` tag and force it in case the tag is already there from a previous build
-    - docker tag -f nrgi/rc-admin:$BRANCH.$COMMIT nrgi/rc-admin:$BRANCH
+    # Create the `latest` tag
+    - docker tag nrgi/rc-admin:$BRANCH.$COMMIT nrgi/rc-admin:$BRANCH
   
     - docker push nrgi/rc-admin:$BRANCH
     - docker push nrgi/rc-admin:$BRANCH.$COMMIT
