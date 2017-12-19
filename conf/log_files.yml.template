@@ -29,7 +29,7 @@ files:
   - path: /var/log/supervisor/contract_download_queue.log
     tag: ecs-rc-admin-$DEPLOYMENT_TYPE-contract-download-queue.log
 
-  - path: /shared_path/rc-admin/storage/logs/*
+  - path: /shared_path/rc-admin/storage/logs/*.log
     tag: ecs-rc-admin-$DEPLOYMENT_TYPE-rc-admin-laravel.log
 
   - path: /var/www/pdf-processor/logs/*.log
