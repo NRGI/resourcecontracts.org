@@ -46,11 +46,6 @@ class ConfigureLogging extends BaseConfigureLogging
             $handler = $this->logglyHandler();
             $log->getMonolog()->pushHandler($handler);
         }
-
-        $log->useDailyFiles(
-            $app->storagePath() . '/logs/laravel.log',
-            $app->make('config')->get('app.log_max_files', 5)
-        );
     }
 
     /**

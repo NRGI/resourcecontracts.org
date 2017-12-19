@@ -51,6 +51,7 @@ RUN mkdir -p /var/container_init
 COPY conf/init.sh /var/container_init/init.sh
 COPY conf/env.template /var/container_init/env.template
 COPY conf/log_files.yml.template /var/container_init/log_files.yml.template
+COPY conf/logrotate.conf /etc/logrotate.d/rc-admin
 COPY conf/settings.config.template /var/container_init/settings.config.template
 
 # Configure PHP
