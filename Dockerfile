@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
                     supervisor \
 		    gettext \
  && rm -rf /var/lib/apt/lists/* \
- && curl -O -L https://github.com/papertrail/remote_syslog2/releases/download/v0.19/remote_syslog_linux_amd64.tar.gz \
+ && curl -O -L https://github.com/papertrail/remote_syslog2/releases/download/v0.20/remote_syslog_linux_amd64.tar.gz \
  && tar -zxf remote_syslog_linux_amd64.tar.gz \
  && cp remote_syslog/remote_syslog /usr/local/bin \
  && rm -r remote_syslog_linux_amd64.tar.gz \
