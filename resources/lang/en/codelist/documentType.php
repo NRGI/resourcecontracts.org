@@ -6,10 +6,13 @@
 |
 */
 return [
+    "Company-Company Contract"        => "Company-Company Contract",
+    "Company-State Contract"          => "Company-State Contract",
+    "Company-State Model Contract"    => "Company-State Model Contract",
     "Contract"                        => "Contract",
     "Document Summary"                => "Document Summary",
-    "Environmental Impact Assessment" => "Environmental Impact Assessment",
-    "Feasibility Study"                => "Feasiblity Study",
+    "Environmental and Social Document"=> "Environmental and Social Document",
+    "Feasibility Study"               => "Feasiblity Study",
     "Financial information"           => "Financial information",
     "Forest Management Plan"          => "Forest Management Plan",
     "Model Contract"                  => "Model Contract",

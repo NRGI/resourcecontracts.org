@@ -6,9 +6,12 @@
 |
 */
 return [
+    "Company-Company Contract"        => "عقد خاص",
+    "Company-State Contract"          => "عقد عام",
+    "Company-State Model Contract"    => "عقد عام نموذج عقد",
     "Contract"                        => "عقد",
-    "Document Summary"                => "Document Summary AR",
-    "Environmental Impact Assessment" => "تقييم الأثر البيئي",
+    "Document Summary"                => "ملخص",
+    "Environmental and Social Document"=> "وثيقة ذات طابع بيئي و اجتماعي",
     "Feasibility Study"               => "دراسة الجدوى",
     "Financial information"           => "معلومات مالية",
     "Forest Management Plan"          => "خطة إدارة الغابات",
