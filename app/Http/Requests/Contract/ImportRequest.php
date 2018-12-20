@@ -52,15 +52,15 @@ class ImportRequest extends Request
                         'text/comma-separated-values',
                         'application/excel',
                         'application/vnd.ms-excel',
+                        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                         'application/vnd.msexcel',
                         'text/anytext',
                         'application/octet-stream',
                         'application/txt',
                     ];
 
-                    if (!in_array($file->getMimeType(), $csv_mime_types)) {
+                    if (!in_array($file->getClientMimeType(), $csv_mime_types)) {
                         $validator->errors()->add('file', 'The file must be a CSV or Excel.');
-
                     }
                 }
             }

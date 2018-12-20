@@ -362,4 +362,14 @@ interface ContractRepositoryInterface
      * @return string
      */
     public function generateOCID();
+
+    /**
+     * Get contract by open contracting id
+     *
+     * @param $openContractingId
+     *
+     * @return mixed
+     */
+    public function findContractByOpenContractingId($openContractingId);
+
 }
