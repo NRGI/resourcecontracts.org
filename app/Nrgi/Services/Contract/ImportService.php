@@ -317,8 +317,7 @@ class ImportService
         if (empty($contract['metadata']['contract_name'])) {
             $contract['metadata']['contract_name'] = $this->contractService->getContractName($contract['metadata']);
         }
-
-        $contract['metadata']['open_contracting_id'] = getContractIdentifier($contract['metadata']['category'][0], $contract['metadata']['country']['code']);
+        $contract['metadata']['open_contracting_id'] = $this->contract->generateOCID();
 
         return trimArray($contract);
     }
