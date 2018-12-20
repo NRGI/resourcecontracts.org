@@ -44935,7 +44935,6 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
                 e.stopPropagation();
                 return;
             }
-gi
         });
 
         annotator.viewer.addField({

@@ -226,7 +226,7 @@ return [
         'name'           => "Import Contract",
         'title'          => "Contract Import",
         'file'           => 'CSV or Excel file',
-        'help'           => 'Please make sure that the csv file follows the following :format. Also ensure that the multi-value fields are separated by || ( <link to http://kb.mailchimp.com/merge-tags/using/where-to-find-the-pipe-key> douple pipe<link> ), for example if the contract has two resources - Coal and Oil, resource column should be "Coal||Oil"',
+        'help'           => 'Please make sure that the Excel file follows the following :format. Also note that the file contains a Readme tab that outlines standard capturing details.',
         'exist'          => 'The contract file is already present in our system :link',
         'status'         => 'Contract Import Status',
         'sn'             => 'SN',
