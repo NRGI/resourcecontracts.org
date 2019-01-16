@@ -53,7 +53,7 @@
                             class="red">*</span></label>
                 <div class="col-sm-7">
                     {!! Form::file('file', ['class'=>'required'])!!}
-                    <p class="help-block">@lang('contract.import.help', ['format' => sprintf('<a target="_blank" href="%s">format</a>', url('sample.xls') )]).</p>
+                    <p class="help-block">@lang('contract.import.help', ['format' => sprintf('<a target="_blank" href="%s">format</a>', url('backend_import_template.xls') )]).</p>
                 </div>
             </div>
             <div class="form-action">

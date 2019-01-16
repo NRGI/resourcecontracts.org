@@ -72,12 +72,10 @@ class ImportService
     protected $keys = [
         "document_url",
         "contract_name",
-        "contract_identifier",
         "language",
         "country_code",
         "resource",
         "government_entity",
-        "government_identifier",
         "contract_type",
         "signature_date",
         "document_type",
@@ -95,7 +93,6 @@ class ImportService
         "project_identifier",
         "license_name",
         "license_identifier",
-        "source_url",
         "disclosure_mode",
         "retrieval_date",
         "category",
@@ -146,6 +143,7 @@ class ImportService
     public function import(Request $request)
     {
         $import_key = md5(microtime());
+
         try {
             $originalFileName = $request->file('file')->getClientOriginalName();
             $fileName         = $originalFileName;
@@ -155,10 +153,9 @@ class ImportService
             throw new Exception('File could not be uploaded.');
         }
 
-
         try {
-
-            $contracts = $this->extractRecords($this->getFilePath($import_key, $fileName));
+            $excelData = $this->extractRecords($this->getFilePath($import_key, $fileName));
+            $contracts = $excelData[1];
         } catch (Exception $e) {
             $this->logger->error('Import Error :' . $e->getMessage());
             $this->deleteImportFolder($import_key);
@@ -231,8 +228,6 @@ class ImportService
         $company_template                      = $contract['metadata']['company'][0];
         $contract['metadata']['contract_name'] = $results['contract_name'];
 
-        $contract['metadata']['contract_identifier'] = $results['contract_identifier'];
-
         $contract['metadata']['is_supporting_document']     = $results['main_associated'];
         $contract['metadata']['parent_open_contracting_id'] = $results['main_document_ocid_if_already_published'];
         $contract['metadata']['is_contract_signed']         = $results['contract_signed'];
@@ -282,7 +277,6 @@ class ImportService
         $contract['metadata']['disclosure_mode']  = $results['disclosure_mode'];
         $contract['metadata']['type_of_contract'] = [$results['contract_type']];
         $contract['metadata']['date_retrieval']   = $results['retrieval_date'];
-        $contract['metadata']['source_url']       = $results['source_url'];
 
         $license_name       = explode($this->separator, $results["license_name"]);
         $license_identifier = explode($this->separator, $results["license_identifier"]);
@@ -292,27 +286,21 @@ class ImportService
             $contract['metadata']['concession'][$i]['license_name']       = isset($license_name[$i]) ? $license_name[$i] : '';
             $contract['metadata']['concession'][$i]['license_identifier'] = isset($license_identifier[$i]) ? $license_identifier[$i] : '';
         }
-
-        $government_entity = explode($this->separator, $results["government_entity"]);
-
-        $government_identifier = [];
-        if (isset($results["government_identifier"])) {
-            $government_identifier = explode($this->separator, $results["government_identifier"]);
-        }
-
-        $count = (count($government_entity) > count($government_identifier)) ? count($government_entity) : count($government_identifier);
-
-        for ($i = 0; $i < $count; $i++) {
-            $contract['metadata']['government_entity'][$i]['entity']     = isset($government_entity[$i]) ? $government_entity[$i] : '';
-            $contract['metadata']['government_entity'][$i]['identifier'] = isset($government_identifier[$i]) ? $government_identifier[$i] : '';
-        }
-
-        $contract['metadata']['country']        = $this->getCountry($results['country_code']);
+        $countryCode                            = $this->getCountry($results['country_code']);
+        $contract['metadata']['country']        = $countryCode;
         $contract['metadata']['signature_date'] = $results['signature_date'];
         $contract['metadata']['signature_year'] = $this->dateFormat($results['signature_date'], 'Y');
         $contract['metadata']['language']       = $this->getLanguage(strtolower($results['language']));
         $contract['metadata']['category']       = [strtolower($results['category'])];
         $contract['metadata']['show_pdf_text']  = Contract::SHOW_PDF_TEXT;
+
+        $government_entity = explode($this->separator, $results["government_entity"]);
+        $count             = count($government_entity);
+        for ($i = 0; $i < $count; $i++) {
+            $govEntity                                                   = isset($government_entity[$i]) ? $government_entity[$i] : '';
+            $contract['metadata']['government_entity'][$i]['entity']     = $govEntity;
+            $contract['metadata']['government_entity'][$i]['identifier'] = $this->getGovernmentIdentifier($govEntity, $countryCode);
+        }
 
         if (empty($contract['metadata']['contract_name'])) {
             $contract['metadata']['contract_name'] = $this->contractService->getContractName($contract['metadata']);
@@ -792,8 +780,7 @@ class ImportService
             "language",
             "country",
             "document_type",
-            "government_entity",
-            "resource",
+            "resource"
         ];
         $message  = '';
 
@@ -802,79 +789,63 @@ class ImportService
                 $message .= '<p>' . ucwords(str_replace('_', ' ', $key)) . ' is required.</p>';
             }
         }
-
         $countryCode = $contract->metadata->country->code;
         $countries   = trans('codelist/country');
+
+        if (empty($contract->document_url)) {
+            $message .= '<p>Document file url is required.</p>';
+        }
 
         if ($countryCode == '' && !array_key_exists($countryCode, $countries)) {
             $message .= '<p>Country Code is invalid.</p>';
         }
-        $govEntities            = config('governmentEntities');
-        $governmentEntities     = $contract->metadata->government_entity;
-        $govEntitiesCountryWise = isset($govEntities->{$countryCode}) ? $govEntities->{$countryCode} : [];
-        $validGovernmentEntity  = false;
-
-        foreach ($governmentEntities as $entity) {
-            $governmentIdentifier = $entity->identifier;
-            $governmentEntity     = $entity->entity;
-
-            foreach ($govEntitiesCountryWise as $row) {
-                if ($row->identifier == $governmentIdentifier && $row->entity == $governmentEntity) {
-                    $validGovernmentEntity = true;
-                    break;
-                }
-            }
-        }
         $companies = $contract->metadata->company;
 
         foreach ($companies as $company) {
-            if (!array_key_exists($company->jurisdiction_of_incorporation, $countries)) {
+            if (
+                !empty($company->jurisdiction_of_incorporation) &&
+                !array_key_exists($company->jurisdiction_of_incorporation, $countries
+                )
+            ) {
                 $message .= '<p> Jurisdiction of Incorporation is invalid.</p>';
                 break;
             }
         }
-
-        if (!$validGovernmentEntity) {
-            $message .= '<p>Government entity is invalid.</p>';
-        }
-
         $languages = trans('codelist/language');
         $languages = array_merge($languages['major'], $languages['minor']);
 
         if (!array_key_exists($contract->metadata->language, $languages)) {
             $message .= '<p>Language is invalid.</p>';
         }
-
-        if (empty($contract->document_url)) {
-            $message .= '<p>Document file url is required</p>';
-        }
-
         $resources     = trans('codelist/resource');
         $metaResources = !empty($contract->metadata->resource) ? $contract->metadata->resource : [];
 
         foreach ($metaResources as $metaResource) {
             if (!array_key_exists($metaResource, $resources)) {
-                $message .= '<p>Invalid resource</p>';
+                $message .= '<p>Resource is invalid.</p>';
                 break;
             }
         }
-
         $meta_contract_types = !empty($contract->metadata->type_of_contract) ? $contract->metadata->type_of_contract : [];
         $contract_types      = trans('codelist/contract_type');
+
         foreach ($meta_contract_types as $meta_contract_type) {
-            if (!array_key_exists($meta_contract_type, $contract_types)) {
-                $message .= '<p>Invalid Contract Type</p>';
+            if (!empty($meta_contract_type) &&
+                !array_key_exists($meta_contract_type, $contract_types
+                )
+            ) {
+                $message .= '<p>Contract Type is Invalid.</p>';
                 break;
             }
         }
-
         $document_type  = $contract->metadata->document_type;
         $document_types = trans('codelist/documentType');
-        if (!array_key_exists($document_type, $document_types)) {
+
+        if (!empty($document_type) && !array_key_exists($document_type, $document_types)) {
             $message .= "<p>Document Type is invalid.</p>";
         }
-
         $category = strtolower($contract->metadata->category[0]);
+
         if ($category != 'rc' && $category != 'olc') {
             $message .= "<p>Category is empty or invalid ['rc' or 'olc'].</p>";
         }
@@ -883,16 +854,16 @@ class ImportService
             $open_contracting_id = $contract->metadata->parent_open_contracting_id;
 
             if (!empty($open_contracting_id) && !$this->contract->findContractByOpenContractingId($open_contracting_id)) {
-                $message .= "<p>Invalid open contracting id .</p>";
+                $message .= "<p>Open contracting id is invalid.</p>";
             }
         }
 
         if (!empty($contract->metadata->signature_date) && !$this->validateDate($contract->metadata->signature_date)) {
-            $message .= "<p>Invalid Signature date format.</p>";
+            $message .= "<p>Signature date is invalid.</p>";
         }
 
         if (!empty($contract->metadata->date_retrieval) && !$this->validateDate($contract->metadata->date_retrieval)) {
-            $message .= "<p>Invalid Retrieval date format.</p>";
+            $message .= "<p>Retrieval date is invalid.</p>";
         }
 
         return [($message == ''), $message];
@@ -950,5 +921,30 @@ class ImportService
         }
 
         return "";
+    }
+
+    /**
+     * Get government identifier by government entity
+     *
+     * @param $govEntity
+     * @param $country
+     *
+     * @return string
+     */
+    private function getGovernmentIdentifier($govEntity, $country)
+    {
+        $countryCode            = $country['code'];
+        $govEntities            = config('governmentEntities');
+        $identifier             = '';
+        $govEntitiesCountryWise = isset($govEntities->{$countryCode}) ? $govEntities->{$countryCode} : [];
+
+        foreach ($govEntitiesCountryWise as $row) {
+            if ($row->entity == $govEntity) {
+                $identifier = isset($row->identifier) ? $row->identifier : '';
+                break;
+            }
+        }
+
+        return $identifier;
     }
 }
