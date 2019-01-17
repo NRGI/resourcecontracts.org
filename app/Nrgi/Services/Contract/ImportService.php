@@ -223,10 +223,11 @@ class ImportService
      */
     protected function getFormattedJsonData(array $results)
     {
-        $results                               = trimArray($results);
-        $contract                              = config('metadata.schema');
-        $company_template                      = $contract['metadata']['company'][0];
-        $contract['metadata']['contract_name'] = $results['contract_name'];
+        $results                                     = trimArray($results);
+        $contract                                    = config('metadata.schema');
+        $company_template                            = $contract['metadata']['company'][0];
+        $contract['metadata']['contract_name']       = $results['contract_name'];
+        $contract['metadata']['contract_identifier'] = $results['contract_identifier'];
 
         $contract['metadata']['is_supporting_document']     = $results['main_associated'];
         $contract['metadata']['parent_open_contracting_id'] = $results['main_document_ocid_if_already_published'];
@@ -260,13 +261,11 @@ class ImportService
             $companies[]                                      = $company_default;
         }
 
-        $contract['document_url'] = $results['document_url'];
-
+        $contract['document_url']     = $results['document_url'];
         $contract['download_status']  = static::PIPELINE;
         $contract['download_remarks'] = '';
-
-        $contract['create_status']  = '';
-        $contract['create_remarks'] = '';
+        $contract['create_status']    = '';
+        $contract['create_remarks']   = '';
 
         $contract['user_id']                        = $this->auth->id();
         $contract['metadata']['resource']           = array_filter(explode($this->separator, $results['resource']));
@@ -296,6 +295,7 @@ class ImportService
 
         $government_entity = explode($this->separator, $results["government_entity"]);
         $count             = count($government_entity);
+
         for ($i = 0; $i < $count; $i++) {
             $govEntity                                                   = isset($government_entity[$i]) ? $government_entity[$i] : '';
             $contract['metadata']['government_entity'][$i]['entity']     = $govEntity;
@@ -814,7 +814,7 @@ class ImportService
         $languages = trans('codelist/language');
         $languages = array_merge($languages['major'], $languages['minor']);
 
-        if (!array_key_exists($contract->metadata->language, $languages)) {
+        if (!empty($contract->metadata->language) && !array_key_exists($contract->metadata->language, $languages)) {
             $message .= '<p>Language is invalid.</p>';
         }
         $resources     = trans('codelist/resource');
