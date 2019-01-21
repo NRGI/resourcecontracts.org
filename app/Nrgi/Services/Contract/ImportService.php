@@ -223,11 +223,10 @@ class ImportService
      */
     protected function getFormattedJsonData(array $results)
     {
-        $results                                     = trimArray($results);
-        $contract                                    = config('metadata.schema');
-        $company_template                            = $contract['metadata']['company'][0];
-        $contract['metadata']['contract_name']       = $results['contract_name'];
-        $contract['metadata']['contract_identifier'] = $results['contract_identifier'];
+        $results                               = trimArray($results);
+        $contract                              = config('metadata.schema');
+        $company_template                      = $contract['metadata']['company'][0];
+        $contract['metadata']['contract_name'] = $results['contract_name'];
 
         $contract['metadata']['is_supporting_document']     = $results['main_associated'];
         $contract['metadata']['parent_open_contracting_id'] = $results['main_document_ocid_if_already_published'];
@@ -275,7 +274,7 @@ class ImportService
         $contract['metadata']['company']          = $companies;
         $contract['metadata']['disclosure_mode']  = $results['disclosure_mode'];
         $contract['metadata']['type_of_contract'] = [$results['contract_type']];
-        $contract['metadata']['date_retrieval']   = $results['retrieval_date'];
+        $contract['metadata']['date_retrieval']   = $this->dateFormat($results['retrieval_date'], 'Y-m-d');
 
         $license_name       = explode($this->separator, $results["license_name"]);
         $license_identifier = explode($this->separator, $results["license_identifier"]);
@@ -287,7 +286,7 @@ class ImportService
         }
         $countryCode                            = $this->getCountry($results['country_code']);
         $contract['metadata']['country']        = $countryCode;
-        $contract['metadata']['signature_date'] = $results['signature_date'];
+        $contract['metadata']['signature_date'] = $this->dateFormat($results['signature_date'], 'Y-m-d');
         $contract['metadata']['signature_year'] = $this->dateFormat($results['signature_date'], 'Y');
         $contract['metadata']['language']       = $this->getLanguage(strtolower($results['language']));
         $contract['metadata']['category']       = [strtolower($results['category'])];
@@ -780,7 +779,9 @@ class ImportService
             "language",
             "country",
             "document_type",
-            "resource"
+            "resource",
+            "government_entity",
+            "company"
         ];
         $message  = '';
 
