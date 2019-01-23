@@ -14,7 +14,6 @@
                     </ul>
                 </div>
             @endif
-
             @forelse($jobs as $job)
                 <table class="table">
                     <thead>

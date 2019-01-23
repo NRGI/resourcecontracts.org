@@ -44935,14 +44935,6 @@ Annotator.Plugin.AnnotatorNRGIViewer = (function (_super) {
                 e.stopPropagation();
                 return;
             }
-
-            if (text.val() == '') {
-                text.focus();
-                text.parent().after('<span class="error error-text">' + LANG.annotation_required + 'in English</span>');
-                e.stopPropagation();
-                return;
-            }
-
         });
 
         annotator.viewer.addField({
