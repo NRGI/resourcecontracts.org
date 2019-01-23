@@ -800,7 +800,15 @@ class ImportService
         if ($countryCode == '' && !array_key_exists($countryCode, $countries)) {
             $message .= '<p>Country Code is invalid.</p>';
         }
-        $companies = $contract->metadata->company;
+        $companies           = $contract->metadata->company;
+        $government_entities = $contract->metadata->government_entity;
+
+        foreach ($government_entities as $government_entity) {
+            if (empty($government_entity->entity)) {
+                $message .= '<p>Government Entity is invalid.</p>';
+                break;
+            }
+        }
 
         foreach ($companies as $company) {
             if (
@@ -808,10 +816,18 @@ class ImportService
                 !array_key_exists($company->jurisdiction_of_incorporation, $countries
                 )
             ) {
-                $message .= '<p> Jurisdiction of Incorporation is invalid.</p>';
+                $message .= '<p>Jurisdiction of Incorporation is invalid.</p>';
                 break;
             }
         }
+
+        foreach ($companies as $company) {
+            if (empty($company->name)) {
+                $message .= '<p>Company name is invalid.</p>';
+                break;
+            }
+        }
+
         $languages = trans('codelist/language');
         $languages = array_merge($languages['major'], $languages['minor']);
 
