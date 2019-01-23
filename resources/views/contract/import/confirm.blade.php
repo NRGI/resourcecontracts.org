@@ -1,9 +1,11 @@
 @extends('layout.app')
 
 @section('css')
-<style>
-    .remarks {width: 280px;}
-</style>
+    <style>
+        .remarks {
+            width: 280px;
+        }
+    </style>
 @stop
 
 @section('content')
@@ -27,12 +29,12 @@
                     <tr class="contract-{{$contract->id}}">
                         <td>
                             <input type="checkbox" name="id[]"
-                            @if($contract->download_status == \App\Nrgi\Services\Contract\ImportService::COMPLETED)
-                              checked="checked"
-                            @else
-                              disabled="disabled"
-                            @endif
-                              value="{{$contract->id}}">
+                                   @if($contract->download_status == \App\Nrgi\Services\Contract\ImportService::COMPLETED)
+                                   checked="checked"
+                                   @else
+                                   disabled="disabled"
+                                   @endif
+                                   value="{{$contract->id}}">
                         </td>
                         <td>{{$contract->id}}</td>
                         <td>{{$contract->metadata->contract_name}}</td>
@@ -56,12 +58,10 @@
                 </tbody>
             </table>
 
-
             <div class="form-action">
                 <div class="col-sm-12">
                     {!! Form::submit(trans('contract.submit'),[ 'disabled'=>'disabled', 'class'=>'btn btn-confirm-submit btn-lg btn-primary']) !!}
                     {!! Form::close() !!}
-
                     {!!Form::open(['route'=>['contract.import.delete', $import_key], 'style'=>"display:inline",
                     'method'=>'delete'])!!}
                     {!!Form::button(trans('contract.import.upload_another'), ['type'=>'submit', 'class'=>'btn btn-delete btn-primary'])!!}
@@ -77,47 +77,42 @@
 
     <script>
         var import_json = '{{$import_json or ''}}';
-        $(function(){
+        $(function () {
 
             var tracker = true;
             import_tracker();
-
             setInterval(import_tracker, 2000);
 
-            function import_tracker()
-            {
-                if(!tracker) return false;
+            function import_tracker() {
+                if (!tracker) return false;
 
-                $.getJSON(import_json, function(data){
-                    $.each( data.contracts, function( key, val ) {
-                        var el_id = 'tr.contract-'+ val.id;
+                $.getJSON(import_json, function (data) {
+                    $.each(data.contracts, function (key, val) {
+                        var el_id = 'tr.contract-' + val.id;
                         $(el_id).find('.status').html(getStatusText(val.download_status));
                         $(el_id).find('.remarks').html(val.download_remarks);
-                        if(val.download_status == 2)
-                        {
-                            $(el_id).find("input").removeAttr('disabled').attr('checked','checked');
+                        if (val.download_status == 2) {
+                            $(el_id).find("input").removeAttr('disabled').attr('checked', 'checked');
                         }
                     });
 
-                    if(isAllProcessCompleted(data.contracts))
-                    {
+                    if (isAllProcessCompleted(data.contracts)) {
                         tracker = false;
-                        $('.btn-confirm-submit').removeAttr('disabled');
-                    }
-                    else
-                    {
+
+                        if (isReadyToImport(data.contracts)) {
+                            $('.btn-confirm-submit').removeAttr('disabled');
+                        }
+                    } else {
                         $('.btn-confirm-submit').attr('disabled', 'disabled');
                     }
                 });
             }
 
-            function isAllProcessCompleted(data)
-            {
+            function isAllProcessCompleted(data) {
                 var total = data.length;
                 var process_completed = 0;
-                $.each( data, function( key, val ) {
-                    if(val.download_status > 1)
-                    {
+                $.each(data, function (key, val) {
+                    if (val.download_status > 1) {
                         process_completed++;
                     }
                 });
@@ -125,22 +120,29 @@
                 return total == process_completed;
             }
 
-            function getStatusText(status)
-            {
-                if(status == 0)
-                {
+            function isReadyToImport(data) {
+                var total = data.length;
+                var process_completed = 0;
+                $.each(data, function (key, val) {
+                    if (val.download_status == 2) {
+                        process_completed++;
+                    }
+                });
+
+                return total == process_completed;
+            }
+
+            function getStatusText(status) {
+                if (status == 0) {
                     return 'Pipeline';
                 }
-                if(status == 1)
-                {
+                if (status == 1) {
                     return 'Processing';
                 }
-                if(status == 2)
-                {
+                if (status == 2) {
                     return 'Ready to import';
                 }
-                if(status == 3)
-                {
+                if (status == 3) {
                     return 'Failed';
                 }
             }

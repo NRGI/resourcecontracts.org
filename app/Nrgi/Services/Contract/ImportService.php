@@ -155,7 +155,7 @@ class ImportService
 
         try {
             $excelData = $this->extractRecords($this->getFilePath($import_key, $fileName));
-            $contracts = $excelData[1];
+            $contracts = $this->filterContracts($excelData[1]);
         } catch (Exception $e) {
             $this->logger->error('Import Error :' . $e->getMessage());
             $this->deleteImportFolder($import_key);
@@ -947,5 +947,30 @@ class ImportService
         }
 
         return $identifier;
+    }
+
+    /**
+     * Removes empty contracts
+     *
+     * @param $contracts
+     *
+     * @return mixed
+     */
+    private function filterContracts($contracts)
+    {
+        foreach ($contracts as $key => $row) {
+            $is_empty = true;
+            foreach ($row as $field) {
+                if (isset($field)) {
+                    $is_empty = false;
+                    break;
+                }
+            }
+            if ($is_empty) {
+                unset($contracts[$key]);
+            }
+        }
+
+        return $contracts;
     }
 }
