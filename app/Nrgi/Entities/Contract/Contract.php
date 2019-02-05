@@ -10,26 +10,26 @@ use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
  * Class Contract
  * @property Collection tasks
  * @property Collection pages
- * @property int        id
- * @property int        mturk_status
- * @property array      metadata
- * @property int        textType
- * @property string     title
+ * @property int id
+ * @property int mturk_status
+ * @property array metadata
+ * @property int textType
+ * @property string title
  * @property Collection annotations
- * @property string     file
- * @property string     filehash
- * @property int        pdf_process_status
- * @property string     word_file
- * @property int        updated_by
- * @property string     metadata_status
- * @property string     text_status
- * @property int        created_user
- * @property string     file_url
- * @property string     slug
- * @property int        user_id
- * @property string     updated_user
- * @property string     created_datetime
- * @property string     last_updated_datetime
+ * @property string file
+ * @property string filehash
+ * @property int pdf_process_status
+ * @property string word_file
+ * @property int updated_by
+ * @property string metadata_status
+ * @property string text_status
+ * @property int created_user
+ * @property string file_url
+ * @property string slug
+ * @property int user_id
+ * @property string updated_user
+ * @property string created_datetime
+ * @property string last_updated_datetime
  * @package App\Nrgi\Entities\Contract
  */
 class Contract extends Model
@@ -166,13 +166,13 @@ class Contract extends Model
     {
         if (isset($this->metadata_trans->$lang)) {
             $metadata_en    = json_decode($this->getOriginal('metadata'), true);
-            $metadata_trans = (array) $this->metadata_trans->$lang;
+            $metadata_trans = (array)$this->metadata_trans->$lang;
             $metadata       = array_replace_recursive($metadata_en, $metadata_trans);
 
             foreach ($metadata['company'] as $key => $company) {
                 $metadata['company'][$key] = array_replace_recursive(
-                    (array) $metadata_en['company'][$key],
-                    (array) $company
+                    (array)$metadata_en['company'][$key],
+                    (array)$company
                 );
             }
             $this->metadata = $metadata;
@@ -226,7 +226,7 @@ class Contract extends Model
      */
     public function getFileUrlAttribute()
     {
-        $path = $this->id.'/'.$this->file;
+        $path = $this->id . '/' . $this->file;
 
         if ($this->pdf_process_status == self::PROCESSING_PIPELINE || $this->pdf_process_status == self::PROCESSING_RUNNING) {
             $path = $this->file;
@@ -255,9 +255,9 @@ class Contract extends Model
         if ($this->pdf_process_status == static::PROCESSING_COMPLETE) {
             $filename     = explode('.', $this->file);
             $filename     = $filename[0];
-            $wordFileName = $filename.'.txt';
+            $wordFileName = $filename . '.txt';
 
-            return getS3FileURL($this->id.'/'.$wordFileName);
+            return getS3FileURL($this->id . '/' . $wordFileName);
         }
 
         return '';
@@ -343,7 +343,7 @@ class Contract extends Model
         $type = config('metadata.text_type');
 
         if (array_key_exists($key, $type)) {
-            return (object) $type[$key];
+            return (object)$type[$key];
         }
 
         throw new InvalidArgumentException;
@@ -397,7 +397,7 @@ class Contract extends Model
 
         foreach ($metadata as $key => &$value) {
             if (is_object($value)) {
-                $value = (object) $this->makeNullField((array) $value);
+                $value = (object)$this->makeNullField((array)$value);
             }
 
             if (is_array($value)) {
@@ -478,9 +478,9 @@ class Contract extends Model
     public function getParentContract()
     {
         return (DB::table('supporting_contracts')
-                  ->where('supporting_contract_id', $this->id)
-                  ->orderBy('id', 'DESC')
-                  ->first()) ? DB::table(
+            ->where('supporting_contract_id', $this->id)
+            ->orderBy('id', 'DESC')
+            ->first()) ? DB::table(
             'supporting_contracts'
         )->where('supporting_contract_id', $this->id)->orderBy('id', 'DESC')->first()->contract_id : null;
     }
@@ -516,4 +516,19 @@ class Contract extends Model
 
         return $this->last_updated_datetime;
     }
+
+    /**
+     * Find contract by open_contracting_id
+     *
+     * @param $openContractingId
+     *
+     * @return mixed
+     */
+    public function findContractByOpenContractingId($openContractingId)
+    {
+        return DB::table('contracts')
+            ->whereRaw("metadata->>'open_contracting_id'='$openContractingId'")
+            ->first();
+    }
+
 }
