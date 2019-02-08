@@ -517,6 +517,13 @@ class Contract extends Model
         return $this->last_updated_datetime;
     }
 
+    /**
+     * Find contract by open_contracting_id
+     *
+     * @param $openContractingId
+     *
+     * @return mixed
+     */
     public function findContractByOpenContractingId($openContractingId)
     {
         return DB::table('contracts')

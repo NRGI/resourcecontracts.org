@@ -46,21 +46,16 @@ class ImportRequest extends Request
                 if (!is_null($this->file('file')) && $this->file('file')->isValid()) {
                     $file           = $this->file('file');
                     $csv_mime_types = [
-                        'text/csv',
-                        'text/plain',
-                        'application/csv',
-                        'text/comma-separated-values',
                         'application/excel',
                         'application/vnd.ms-excel',
                         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                         'application/vnd.msexcel',
-                        'text/anytext',
                         'application/octet-stream',
                         'application/txt',
                     ];
 
                     if (!in_array($file->getClientMimeType(), $csv_mime_types)) {
-                        $validator->errors()->add('file', 'The file must be a CSV or Excel.');
+                        $validator->errors()->add('file', 'The file must be a Excel.');
                     }
                 }
             }
