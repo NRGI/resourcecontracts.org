@@ -64,7 +64,7 @@
 	</div>
 
 		<div class="col-md-12">
-	<div class="balance">@lang('global.mturk_available_balance'): {{$stats['balance']['FormattedPrice'] or '-'}}</div>
+	<div class="balance">@lang('global.mturk_available_balance'): {{$stats['balance'] or '-'}}</div>
 		</div>
 	<div class="clearfix row-dashboard">
 		<div class="col-md-3 col-sm-6 col-xs-12">
