@@ -46,8 +46,7 @@ class RenewMTurkTask extends Command
 
         $pages = $this->setPriority($expired_pages);
 
-        $currentBalance   = $task->getMturkBalance();
-        $availableBalance = (int) $currentBalance['Amount'];
+        $availableBalance = (int) $task->getMturkBalance();
 
         if (!$this->isSufficientBalance($availableBalance)) {
             return false;

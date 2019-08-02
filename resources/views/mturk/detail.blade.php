@@ -14,7 +14,8 @@
                 <li>@lang('mturk.approved'): {{_l('mturk.'.$task->approved())}} </li>
                 <li>@lang('mturk.assignment_id'): {{$task->assignments->assignment->assignment_id}}</li>
                 <li>@lang('mturk.worker_id'): {{$task->assignments->assignment->worker_id}}</li>
-                <li>@lang('mturk.submit_time'): {{\Carbon\Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $task->assignments->assignment->submit_time)}}</li>
+                <li>@lang('mturk.submit_time'): {{\Carbon\Carbon::createFromFormat('Y-m-d\TH:i:s\Z',
+                date('Y-m-d\TH:i:s\Z', $task->assignments->assignment->submit_time))}}</li>
             </ul>
 
             <div class="row">
