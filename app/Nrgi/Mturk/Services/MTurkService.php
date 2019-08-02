@@ -8,7 +8,7 @@ use Illuminate\Contracts\Logging\Log;
  * Class MTurkService
  * @package App\Nrgi\Mturk\Services
  */
-class MTurkService extends MechanicalTurk
+class MTurkService extends MechanicalTurkV2
 {
     /**
      * @var Carbon
@@ -31,9 +31,6 @@ class MTurkService extends MechanicalTurk
     {
         parent::__construct();
 
-        if ($this->isSandbox()) {
-            $this->setSandboxMode();
-        }
         $this->carbon = $carbon;
         $this->logger = $logger;
     }
@@ -48,7 +45,7 @@ class MTurkService extends MechanicalTurk
         try {
             $balance = $this->getAccountBalance();
 
-            return $balance['GetAccountBalanceResult']['AvailableBalance'];
+            return $balance['AvailableBalance'];
         } catch (\Exception $e) {
             $dt = Carbon::now();
             $this->logger->error($e->getMessage());
@@ -73,17 +70,18 @@ class MTurkService extends MechanicalTurk
     public function createHIT($title, $description, $question_url)
     {
         $params = [
-            'Description'           => $description,
-            'Question'              => $this->getQuestionXML($question_url),
-            'SignatureVersion'      => '1',
-            'Title'                 => str_limit($title, 128),
-            "Reward.1.Amount"       => config('mturk.defaults.production.Reward.Amount'),
-            "Reward.1.CurrencyCode" => config('mturk.defaults.production.Reward.CurrencyCode'),
+            'Title'                       => str_limit($title, 128),
+            'Description'                 => $description,
+            "Reward"                      => config('mturk.defaults.production.Reward'),
+            'AssignmentDurationInSeconds' => config('mturk.defaults.production.AssignmentDurationInSeconds'),
+            'LifetimeInSeconds'           => config('mturk.defaults.production.LifetimeInSeconds'),
+            'Question'                    => $this->getQuestionXML($question_url),
+            'MaxAssignments'              => config('mturk.defaults.production.MaxAssignments'),
         ];
 
         $result = $this->createHITByExternalQuestion($params);
 
-        if ($result['HIT']['Request']['IsValid'] == 'True') {
+        if (isset($result['HIT'])) {
             return (object) ['hit_id' => $result['HIT']['HITId'], 'hit_type_id' => $result['HIT']['HITTypeId']];
         }
 
@@ -107,17 +105,18 @@ class MTurkService extends MechanicalTurk
          * */
 
         $hit_id      = $task->hit_id;
-        $hit         = $this->getHIT(['HITId' => $hit_id]);
+        $hit         = $this->getHIT($hit_id);
         $status      = $hit['HIT']['HITStatus'];
         $expiry_date = $this->carbon->createFromTimestamp(strtotime($hit['HIT']['Expiration']));
         $isExpired   = $expiry_date->diffInSeconds(null, false) > 1;
         $isRejected  = (isset($task->assignments->assignment->status) && $task->assignments->assignment->status == 'Rejected');
 
         if ($status == 'Assignable' || $isExpired || $isRejected) {
-            $this->forceExpireHIT(['HITId' => $hit_id]);
-            $dispose = $this->disposeHIT(['HITId' => $hit_id]);
+            $this->updateExpirationForHIT($hit_id, 0);
+            $this->deleteHIT($hit_id);
+            $hit = $this->getHit($hit_id);
 
-            return ($dispose['DisposeHITResult']['Request']['IsValid'] == "True");
+            return ($hit['HIT']['HITStatus'] == "Disposed");
         }
 
         return false;
@@ -136,27 +135,19 @@ class MTurkService extends MechanicalTurk
             return null;
         }
 
-        $result = $this->GetAssignmentsForHIT(['HITId' => $hit_id]);
-
-        return $result['GetAssignmentsForHITResult'];
+        return $this->listAssignmentsForHIT($hit_id);
     }
 
     /**
      * Approve assignment
      *
      * @param        $assignment_id
-     * @param string $feedback
      *
      * @return array
      */
-    public function approve($assignment_id, $feedback = '')
+    public function approve($assignment_id)
     {
-        $params = [
-            'AssignmentId'      => $assignment_id,
-            'RequesterFeedback' => $feedback,
-        ];
-
-        return $this->approveAssignment($params);
+        return $this->approveAssignment($assignment_id);
     }
 
     /**
@@ -169,12 +160,7 @@ class MTurkService extends MechanicalTurk
      */
     public function reject($assignment_id, $feedback = '')
     {
-        $params = [
-            'AssignmentId'      => $assignment_id,
-            'RequesterFeedback' => $feedback,
-        ];
-
-        return $this->rejectAssignment($params);
+        return $this->rejectAssignment($assignment_id, $feedback);
     }
 
     /**
@@ -187,15 +173,5 @@ class MTurkService extends MechanicalTurk
     protected function getQuestionXML($url)
     {
         return '<ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd"><ExternalURL>'.$url.'</ExternalURL><FrameHeight>800</FrameHeight></ExternalQuestion>';
-    }
-
-    /**
-     * Sandbox or Production
-     *
-     * @return bool
-     */
-    protected function isSandbox()
-    {
-        return config('mturk.sandbox_mode');
     }
 }
