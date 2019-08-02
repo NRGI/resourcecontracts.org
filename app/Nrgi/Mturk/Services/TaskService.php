@@ -279,7 +279,7 @@ class TaskService
         try {
             if (empty($task->assignments)) {
                 $assignment = $this->turk->assignment($task->hit_id);
-                if (!is_null($assignment) && $assignment['TotalNumResults'] > 0) {
+                if (!is_null($assignment) && $assignment['NumResults'] > 0) {
                     $task->status = Task::COMPLETED;
                     $this->logger->mTurkActivity('mturk.log.submitted', null, $task->contract_id, $task->page_no);
 
@@ -379,7 +379,7 @@ class TaskService
                 return false;
             }
 
-            if ($response['ApproveAssignmentResult']['Request']['IsValid'] == 'True') {
+            if ($response['http_code'] == 200) {
                 return $this->updateApproveTask($task);
             }
         }
@@ -392,6 +392,7 @@ class TaskService
      *
      * @param $contract_id
      * @param $task_id
+     * @param $message
      *
      * @return bool
      */
@@ -458,7 +459,7 @@ class TaskService
                 return false;
             }
 
-            if ($response['RejectAssignmentResult']['Request']['IsValid'] == 'True') {
+            if ($response['http_code'] == 200) {
                 $assignments                     = $task->assignments;
                 $assignments->assignment->status = 'Rejected';
                 $task->assignments               = $assignments;
@@ -678,8 +679,7 @@ class TaskService
      */
     public function isBalanceToCreateHIT()
     {
-        $availableBalance = $this->getMturkBalance();
-        $availableBalance = (int) $availableBalance['Amount'];
+        $availableBalance = (int) $this->getMturkBalance();
 
         return $availableBalance > $this->costPerHIT();
     }
@@ -814,24 +814,28 @@ class TaskService
      */
     protected function getFormattedAssignment($assignment)
     {
-        $answerObj = json_decode(json_encode(new \SimpleXMLElement($assignment['Assignment']['Answer']), true));
-        $data      = [];
+        $task_assignment = $assignment['Assignments'][0];
+        $data             = [];
+
+        $answerObj = json_decode(json_encode(new \SimpleXMLElement($task_assignment['Answer']), true));
         $answer    = '';
+
         foreach ($answerObj->Answer as $key => $ans) {
-            if ($ans->QuestionIdentifier == 'feedback') {
-                $answer = $ans->FreeText;
+            if ($key == 'feedback') {
+                $answer = $ans;
                 break;
             }
         }
-        $data['total']      = $assignment['TotalNumResults'];
         $data['assignment'] = [
-            'assignment_id' => $assignment['Assignment']['AssignmentId'],
-            'worker_id'     => $assignment['Assignment']['WorkerId'],
-            'accept_time'   => $assignment['Assignment']['AcceptTime'],
-            'submit_time'   => $assignment['Assignment']['SubmitTime'],
-            'status'        => $assignment['Assignment']['AssignmentStatus'],
+            'assignment_id' => $task_assignment['AssignmentId'],
+            'worker_id'     => $task_assignment['WorkerId'],
+            'accept_time'   => $task_assignment['AcceptTime'],
+            'submit_time'   => $task_assignment['SubmitTime'],
+            'status'        => $task_assignment['AssignmentStatus'],
             'answer'        => $answer,
         ];
+
+        $data['total'] = $assignment['NumResults'];
 
         return $data;
     }

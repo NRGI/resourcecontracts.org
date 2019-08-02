@@ -42,8 +42,9 @@ class DashboardController extends Controller
      */
     public function index(MTurkService $mTurk)
     {
+
         $stats = [
-            'balance'    => $mTurk->getBalance(),
+            'balance'    => config('mturk.currencyCode').$mTurk->getBalance(),
             'total'      => $this->dashboard->countContractTotal(),
             'last_month' => $this->dashboard->countContractTotal('last_month'),
             'this_month' => $this->dashboard->countContractTotal('this_month'),
