@@ -52,13 +52,11 @@ return [
         'sandbox'    => [],
 
         'production' => [
+            'Title'                       => 'Production Mturk Title',
             'Description'                 => 'Transcription of the scanned contract pdf',
             'MaxAssignments'              => 1,
-            'Keywords'                    => ['transcription', 'pdf', 'language'],
-            'Reward'                      => [
-                'Amount'       => '0.30',
-                'CurrencyCode' => 'USD'
-            ],
+            //'Keywords'                    => ['transcription', 'pdf', 'language'],
+            'Reward'                      => '0.30',
             'LifetimeInSeconds'           => 10*24*60*60,
             'AssignmentDurationInSeconds' => 10*24*60*60,
         ],
