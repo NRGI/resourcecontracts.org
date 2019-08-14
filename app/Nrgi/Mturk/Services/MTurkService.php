@@ -2,6 +2,7 @@
 
 use App\Nrgi\Mturk\Entities\Task;
 use Carbon\Carbon;
+use Illuminate\Contracts\Logging\Log;
 
 /**
  * Class MTurkService
@@ -13,13 +14,20 @@ class MTurkService extends MechanicalTurk
      * @var Carbon
      */
     protected $carbon;
+    /**
+     * @var Log
+     */
+    private $logger;
 
     /**
      * MTurkService constructor.
      *
      * @param Carbon $carbon
+     * @param Log    $logger
+     *
+     * @throws MTurkException
      */
-    public function __construct(Carbon $carbon)
+    public function __construct(Carbon $carbon, Log $logger)
     {
         parent::__construct();
 
@@ -27,6 +35,7 @@ class MTurkService extends MechanicalTurk
             $this->setSandboxMode();
         }
         $this->carbon = $carbon;
+        $this->logger = $logger;
     }
 
     /**
@@ -36,9 +45,20 @@ class MTurkService extends MechanicalTurk
      */
     public function getBalance()
     {
-        $balance = $this->getAccountBalance();
+        try {
+            $balance = $this->getAccountBalance();
 
-        return $balance['GetAccountBalanceResult']['AvailableBalance'];
+            return $balance['GetAccountBalanceResult']['AvailableBalance'];
+        } catch (\Exception $e) {
+            $dt = Carbon::now();
+            $this->logger->error($e->getMessage());
+            $log  = new \Illuminate\Support\Facades\Log();
+            $file = storage_path().'/logs/'.'mturk-'.$dt->format("Y-m-d").'.log';
+            $log::useFiles($file);
+            $log::info($e->getMessage());
+
+            return 0;
+        }
     }
 
     /**
