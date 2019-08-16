@@ -73,15 +73,28 @@ class MechanicalTurkV2
         }
         $this->aws_access_key_id     = config('mturk.credentials.AWS_ROOT_ACCESS_KEY_ID');
         $this->aws_secret_access_key = config('mturk.credentials.AWS_ROOT_SECRET_ACCESS_KEY');
-
-        $this->host_name        = 'mturk-requester-sandbox.us-east-1.amazonaws.com';
-        $this->end_point        = 'https://'.$this->host_name;
-        $this->aws_region       = 'us-east-1';
-        $this->aws_service_name = 'mturk-requester';
+        $this->host_name             = 'mechanicalturk.amazonaws.com';
+        $this->end_point             = 'https://'.$this->host_name;
+        $this->aws_region            = 'us-east-1';
+        $this->aws_service_name      = $this->metadata['endpointPrefix'];
 
         // UTC timestamp and date
         $this->timestamp = gmdate('Ymd\THis\Z');
         $this->date      = gmdate('Ymd');
+
+        if ($this->isSandbox()) {
+            $this->setSandboxMode();
+        }
+    }
+
+    /**
+     * Sandbox or Production
+     *
+     * @return bool
+     */
+    protected function isSandbox()
+    {
+        return config('mturk.sandbox_mode');
     }
 
     /**

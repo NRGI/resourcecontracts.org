@@ -31,9 +31,6 @@ class MTurkService extends MechanicalTurkV2
     {
         parent::__construct();
 
-        if ($this->isSandbox()) {
-            $this->setSandboxMode();
-        }
         $this->carbon = $carbon;
         $this->logger = $logger;
     }

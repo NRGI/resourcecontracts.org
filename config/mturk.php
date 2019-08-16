@@ -63,5 +63,6 @@ return [
 
     ],
     'minimumBalance' => '25',
-    'hitRenewDay' => 21
+    'hitRenewDay' => 21,
+    'currencyCode' => '$'
 ];
