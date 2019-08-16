@@ -269,7 +269,7 @@ class MechanicalTurkV2
         print("\n\nResponse:\n");
         print_r($response);*/
 
-        $resp = [
+        $resp =  [
             'response'  => json_decode($response, true),
             'http_code' => $http_code,
             'error'     => $err,
@@ -277,6 +277,7 @@ class MechanicalTurkV2
         ];
 
         $dt   = Carbon::now();
+
         $log  = new \Illuminate\Support\Facades\Log();
         $file = storage_path().'/logs/'.'mturk-api-response'.$dt->format("Y-m-d").'.log';
         $log::useFiles($file);

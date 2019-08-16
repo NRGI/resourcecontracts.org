@@ -36,6 +36,16 @@ class MTurkService extends MechanicalTurkV2
     }
 
     /**
+     * Sandbox or Production
+     *
+     * @return bool
+     */
+    protected function isSandbox()
+    {
+        return config('mturk.sandbox_mode');
+    }
+
+    /**
      * Get MTurk Balance
      *
      * @return object
