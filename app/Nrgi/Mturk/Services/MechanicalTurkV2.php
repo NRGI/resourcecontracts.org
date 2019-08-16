@@ -77,8 +77,13 @@ class MechanicalTurkV2
         $this->aws_secret_access_key = config('mturk.credentials.AWS_ROOT_SECRET_ACCESS_KEY');
         $this->host_name             = 'mechanicalturk.amazonaws.com';
         $this->end_point             = 'https://'.$this->host_name;
-        $this->aws_region            = env('AWS_REGION');
-        $this->aws_service_name      = $this->metadata['endpointPrefix'];
+        $this->aws_region            = 'us-west-2';
+
+        if (!empty(env('AWS_REGION'))) {
+            $this->aws_region = env('AWS_REGION');
+        }
+
+        $this->aws_service_name = $this->metadata['endpointPrefix'];
 
         // UTC timestamp and date
         $this->timestamp = gmdate('Ymd\THis\Z');
@@ -107,7 +112,7 @@ class MechanicalTurkV2
      */
     public function setSandboxMode()
     {
-        $this->host_name = 'mturk-requester-sandbox.us-east-1.amazonaws.com';
+        $this->host_name = 'mturk-requester-sandbox.'.$this->aws_region.'.amazonaws.com';
         $this->end_point = 'https://'.$this->host_name;
         $this->defaults  = array_merge(config('mturk.defaults.production'), config('mturk.defaults.sandbox'));
     }
@@ -265,14 +270,14 @@ class MechanicalTurkV2
         print_r($response);*/
 
         $resp =  [
-
             'response'  => json_decode($response, true),
             'http_code' => $http_code,
             'error'     => $err,
             'headers'   => $headers,
         ];
 
-        $dt = Carbon::now();
+        $dt   = Carbon::now();
+
         $log  = new \Illuminate\Support\Facades\Log();
         $file = storage_path().'/logs/'.'mturk-api-response'.$dt->format("Y-m-d").'.log';
         $log::useFiles($file);
