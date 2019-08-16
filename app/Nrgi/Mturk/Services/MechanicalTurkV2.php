@@ -2,6 +2,8 @@
 
 namespace App\Nrgi\Mturk\Services;
 
+use Carbon\Carbon;
+
 class MechanicalTurkV2
 {
     protected $headerBlacklist = [
@@ -75,7 +77,7 @@ class MechanicalTurkV2
         $this->aws_secret_access_key = config('mturk.credentials.AWS_ROOT_SECRET_ACCESS_KEY');
         $this->host_name             = 'mechanicalturk.amazonaws.com';
         $this->end_point             = 'https://'.$this->host_name;
-        $this->aws_region            = 'us-east-1';
+        $this->aws_region            = env('AWS_REGION');
         $this->aws_service_name      = $this->metadata['endpointPrefix'];
 
         // UTC timestamp and date
@@ -262,12 +264,21 @@ class MechanicalTurkV2
         print("\n\nResponse:\n");
         print_r($response);*/
 
-        return [
+        $resp =  [
+
             'response'  => json_decode($response, true),
             'http_code' => $http_code,
             'error'     => $err,
             'headers'   => $headers,
         ];
+
+        $dt = Carbon::now();
+        $log  = new \Illuminate\Support\Facades\Log();
+        $file = storage_path().'/logs/'.'mturk-api-response'.$dt->format("Y-m-d").'.log';
+        $log::useFiles($file);
+        $log::info($resp);
+
+        return $resp;
     }
 
     public function getAccountBalance()
