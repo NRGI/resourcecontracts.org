@@ -75,9 +75,9 @@ class MechanicalTurkV2
         }
         $this->aws_access_key_id     = config('mturk.credentials.AWS_ROOT_ACCESS_KEY_ID');
         $this->aws_secret_access_key = config('mturk.credentials.AWS_ROOT_SECRET_ACCESS_KEY');
-        $this->host_name             = 'mechanicalturk.amazonaws.com';
+        $this->host_name             = 'mturk-requester.us-east-1.amazonaws.com';
         $this->end_point             = 'https://'.$this->host_name;
-        $this->aws_region            = 'us-west-2';
+        $this->aws_region            = 'us-east-1';
 
         if (!empty(env('AWS_REGION'))) {
             $this->aws_region = env('AWS_REGION');
