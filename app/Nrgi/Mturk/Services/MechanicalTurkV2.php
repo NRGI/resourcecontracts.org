@@ -46,14 +46,14 @@ class MechanicalTurkV2
     ];
 
     /// AWS API keys
-    protected $aws_access_key_id;
-    protected $aws_secret_access_key;
+    protected $mturk_access_key_id;
+    protected $mturk_secret_access_key;
 
     // AWS region and Host Name (Host names are different for each AWS region)
     // As an example these are set to us-east-1 (US Standard)
     protected $host_name;
     protected $end_point;
-    protected $aws_region;
+    protected $mturk_region;
     protected $aws_service_name;
 
     // UTC timestamp and date
@@ -73,14 +73,14 @@ class MechanicalTurkV2
         ) {
             throw new MTurkException('AWS Root account keys must be set as environment variables.');
         }
-        $this->aws_access_key_id     = config('mturk.credentials.AWS_ROOT_ACCESS_KEY_ID');
-        $this->aws_secret_access_key = config('mturk.credentials.AWS_ROOT_SECRET_ACCESS_KEY');
-        $this->host_name             = 'mturk-requester.us-east-1.amazonaws.com';
-        $this->end_point             = 'https://'.$this->host_name;
-        $this->aws_region            = 'us-east-1';
+        $this->mturk_access_key_id     = config('mturk.credentials.MTURK_ROOT_ACCESS_KEY_ID');
+        $this->mturk_secret_access_key = config('mturk.credentials.MTURK_ROOT_SECRET_ACCESS_KEY');
+        $this->host_name                   = 'mturk-requester.us-east-1.amazonaws.com';
+        $this->end_point                   = 'https://'.$this->host_name;
+        $this->mturk_region                = 'us-east-1';
 
-        if (!empty(env('AWS_REGION'))) {
-            $this->aws_region = env('AWS_REGION');
+        if (!empty(env('MTURK_REGION'))) {
+            $this->mturk_region = env('MTURK_REGION');
         }
 
         $this->aws_service_name = $this->metadata['endpointPrefix'];
@@ -112,7 +112,7 @@ class MechanicalTurkV2
      */
     public function setSandboxMode()
     {
-        $this->host_name = 'mturk-requester-sandbox.'.$this->aws_region.'.amazonaws.com';
+        $this->host_name = 'mturk-requester-sandbox.'.$this->mturk_region.'.amazonaws.com';
         $this->end_point = 'https://'.$this->host_name;
         $this->defaults  = array_merge(config('mturk.defaults.production'), config('mturk.defaults.sandbox'));
     }
@@ -178,7 +178,7 @@ class MechanicalTurkV2
         // AWS Scope
         $scope   = [];
         $scope[] = $this->date;
-        $scope[] = $this->aws_region;
+        $scope[] = $this->mturk_region;
         $scope[] = $this->aws_service_name;
         $scope[] = "aws4_request";
 
@@ -200,9 +200,9 @@ class MechanicalTurkV2
     public function generateSignature($string_to_sign)
     {
         // Signing key
-        $kSecret  = 'AWS4'.$this->aws_secret_access_key;
+        $kSecret  = 'AWS4'.$this->mturk_secret_access_key;
         $kDate    = hash_hmac('sha256', $this->date, $kSecret, true);
-        $kRegion  = hash_hmac('sha256', $this->aws_region, $kDate, true);
+        $kRegion  = hash_hmac('sha256', $this->mturk_region, $kDate, true);
         $kService = hash_hmac('sha256', $this->aws_service_name, $kRegion, true);
         $kSigning = hash_hmac('sha256', 'aws4_request', $kService, true);
 
@@ -214,7 +214,7 @@ class MechanicalTurkV2
     {
         // Authorization
         $authorization = [
-            'Credential='.$this->aws_access_key_id.'/'.implode('/', $scope),
+            'Credential='.$this->mturk_access_key_id.'/'.implode('/', $scope),
             'SignedHeaders='.$signed_headers,
             'Signature='.$signature,
         ];

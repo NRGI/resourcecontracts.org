@@ -15,8 +15,8 @@ return [
      |
      */
     'credentials'  => [
-        'AWS_ROOT_ACCESS_KEY_ID'     => env('MTURK_KEY'),
-        'AWS_ROOT_SECRET_ACCESS_KEY' => env('MTURK_SECRET'),
+        'MTURK_ROOT_ACCESS_KEY_ID'     => env('MTURK_KEY'),
+        'MTURK_ROOT_SECRET_ACCESS_KEY' => env('MTURK_SECRET'),
     ],
     /*
     |--------------------------------------------------------------------------
