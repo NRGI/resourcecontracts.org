@@ -139,6 +139,37 @@ class MTurkService extends MechanicalTurkV2
     }
 
     /**
+     * Returns answer for specific hit
+     * 
+     * @param $hit_id
+     *
+     * @return string
+     */
+    public function getAns($hit_id)
+    {
+        $feedback   = '';
+        $assignment = $this->listAssignmentsForHIT($hit_id);
+
+        if(array_key_exists('Assignments', $assignment) && is_array($assignment['Assignments'])) {
+            $assignment = $assignment['Assignments'][0];
+            $answer     = $assignment['Answer'];
+            $xml        = simplexml_load_string($answer);
+            $json       = json_encode($xml);
+            $answers    = json_decode($json, true);
+            $answers    = $answers['Answer'];
+
+            foreach ($answers as $ans) {
+                if ($ans['QuestionIdentifier'] == 'feedback') {
+                    $feedback = $ans['FreeText'];
+                    break;
+                }
+            }
+        }
+
+        return $feedback;
+    }
+
+    /**
      * Approve assignment
      *
      * @param        $assignment_id

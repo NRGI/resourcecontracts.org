@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Mturk\Services\ActivityService;
+use App\Nrgi\Mturk\Services\MTurkService;
 use App\Nrgi\Mturk\Services\TaskService;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\User\UserService;
@@ -28,18 +29,28 @@ class MTurkController extends Controller
      * @var ActivityService
      */
     protected $activity;
+    /**
+     * @var MTurkService
+     */
+    private $mturk;
 
     /**
      * @param TaskService     $task
      * @param ContractService $contract
      * @param ActivityService $activity
+     * @param MTurkService    $mturk
      */
-    public function __construct(TaskService $task, ContractService $contract, ActivityService $activity)
-    {
+    public function __construct(
+        TaskService $task,
+        ContractService $contract,
+        ActivityService $activity,
+        MTurkService $mturk
+    ) {
         $this->middleware('auth', ['except' => 'publicPage']);
         $this->task     = $task;
         $this->contract = $contract;
         $this->activity = $activity;
+        $this->mturk    = $mturk;
     }
 
     /**
@@ -121,7 +132,9 @@ class MTurkController extends Controller
             return abort(404);
         }
 
-        return view('mturk.detail', compact('contract', 'task'));
+        $feedback = ($task->status == '1') ? $this->mturk->getAns($task->hit_id) : '';
+
+        return view('mturk.detail', compact('contract', 'task', 'feedback'));
     }
 
     /**

@@ -21,11 +21,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="textarea" style="border: 1px solid #ccc; overflow: scroll; padding: 15px; height:580px">
-                        @if(is_string($task->assignments->assignment->answer->FreeText) &&
-                        $task->assignments->assignment->answer->FreeText)
-
-                            {!! nl2br($task->assignments->assignment->answer->FreeText) !!}
-                        @endif
+                        {!! nl2br($feedback) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
