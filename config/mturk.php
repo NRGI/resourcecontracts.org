@@ -15,8 +15,8 @@ return [
      |
      */
     'credentials'  => [
-        'AWS_ROOT_ACCESS_KEY_ID'     => env('MTURK_KEY'),
-        'AWS_ROOT_SECRET_ACCESS_KEY' => env('MTURK_SECRET'),
+        'MTURK_ROOT_ACCESS_KEY_ID'     => env('MTURK_KEY'),
+        'MTURK_ROOT_SECRET_ACCESS_KEY' => env('MTURK_SECRET'),
     ],
     /*
     |--------------------------------------------------------------------------
@@ -52,18 +52,17 @@ return [
         'sandbox'    => [],
 
         'production' => [
+            'Title'                       => 'Production Mturk Title',
             'Description'                 => 'Transcription of the scanned contract pdf',
             'MaxAssignments'              => 1,
-            'Keywords'                    => ['transcription', 'pdf', 'language'],
-            'Reward'                      => [
-                'Amount'       => '0.30',
-                'CurrencyCode' => 'USD'
-            ],
+            //'Keywords'                    => ['transcription', 'pdf', 'language'],
+            'Reward'                      => '0.30',
             'LifetimeInSeconds'           => 10*24*60*60,
             'AssignmentDurationInSeconds' => 10*24*60*60,
         ],
 
     ],
     'minimumBalance' => '25',
-    'hitRenewDay' => 21
+    'hitRenewDay' => 21,
+    'currencyCode' => '$'
 ];

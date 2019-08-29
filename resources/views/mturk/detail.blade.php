@@ -14,15 +14,14 @@
                 <li>@lang('mturk.approved'): {{_l('mturk.'.$task->approved())}} </li>
                 <li>@lang('mturk.assignment_id'): {{$task->assignments->assignment->assignment_id}}</li>
                 <li>@lang('mturk.worker_id'): {{$task->assignments->assignment->worker_id}}</li>
-                <li>@lang('mturk.submit_time'): {{\Carbon\Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $task->assignments->assignment->submit_time)}}</li>
+                <li>@lang('mturk.submit_time'): {{\Carbon\Carbon::createFromFormat('Y-m-d\TH:i:s\Z',
+                date('Y-m-d\TH:i:s\Z', $task->assignments->assignment->submit_time))}}</li>
             </ul>
 
             <div class="row">
                 <div class="col-md-6">
                     <div class="textarea" style="border: 1px solid #ccc; overflow: scroll; padding: 15px; height:580px">
-                        @if(is_string($task->assignments->assignment->answer) && $task->assignments->assignment->answer !='')
-                        {!! nl2br($task->assignments->assignment->answer) !!}
-                        @endif
+                        {!! nl2br($feedback) !!}
                     </div>
                 </div>
                 <div class="col-md-6">
