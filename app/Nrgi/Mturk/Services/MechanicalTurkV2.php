@@ -4,8 +4,14 @@ namespace App\Nrgi\Mturk\Services;
 
 use Carbon\Carbon;
 
+/**
+ * Class MechanicalTurkV2
+ */
 class MechanicalTurkV2
 {
+    /**
+     * @var HeaderBlackList
+     */
     protected $headerBlacklist = [
         'cache-control'         => true,
         'content-type'          => true,
@@ -66,6 +72,12 @@ class MechanicalTurkV2
     protected $content = '';
     protected $defaults;
 
+    /**
+     * Sets AWS keys, endpoint, and sandbox mode.
+     *
+     * MechanicalTurkV2 constructor.
+     * @throws MTurkException
+     */
     public function __construct()
     {
         if (config('mturk.credentials.AWS_ROOT_ACCESS_KEY_ID') === false ||
@@ -118,6 +130,11 @@ class MechanicalTurkV2
     }
 
 
+    /**
+     * Sets request headers
+     *
+     * @return array
+     */
     public function setRequestHeaders()
     {
         // HTTP request headers as key & value
@@ -130,6 +147,13 @@ class MechanicalTurkV2
         return $this->request_headers;
     }
 
+    /**
+     * Sets canonical headers
+     *
+     * @param $request_headers
+     *
+     * @return string
+     */
     public function setCanonicalHeader($request_headers)
     {
         // Canonical headers
@@ -144,6 +168,13 @@ class MechanicalTurkV2
         return implode("\n", $canonical_headers);
     }
 
+    /**
+     * Sets signed headers
+     *
+     * @param $request_headers
+     *
+     * @return string
+     */
     public function setSignedHeaders($request_headers)
     {
         // Signed headers
@@ -157,6 +188,14 @@ class MechanicalTurkV2
         return implode(";", $signed_headers);
     }
 
+    /**
+     * Sets canonical request
+     *
+     * @param $canonical_headers
+     * @param $signed_headers
+     *
+     * @return string
+     */
     public function setCanonicalRequest($canonical_headers, $signed_headers)
     {
         // Cannonical request
@@ -173,6 +212,11 @@ class MechanicalTurkV2
         return hash('sha256', $canonical_request);
     }
 
+    /**
+     * Sets scope
+     *
+     * @return array
+     */
     public function setScope()
     {
         // AWS Scope
@@ -185,6 +229,14 @@ class MechanicalTurkV2
         return $scope;
     }
 
+    /**
+     * Changes array to string to generate signed value
+     *
+     * @param $scope
+     * @param $hashed_canonical_request
+     *
+     * @return string
+     */
     public function setStringToSign($scope, $hashed_canonical_request)
     {
         // String to sign
@@ -197,6 +249,13 @@ class MechanicalTurkV2
         return implode("\n", $string_to_sign);
     }
 
+    /**
+     * Generates signature
+     *
+     * @param $string_to_sign
+     *
+     * @return string
+     */
     public function generateSignature($string_to_sign)
     {
         // Signing key
@@ -210,6 +269,15 @@ class MechanicalTurkV2
         return hash_hmac('sha256', $string_to_sign, $kSigning);
     }
 
+    /**
+     * Sets authorization headers
+     *
+     * @param $signed_headers
+     * @param $scope
+     * @param $signature
+     *
+     * @return string
+     */
     public function setAuthorization($signed_headers, $scope, $signature)
     {
         // Authorization
@@ -222,6 +290,11 @@ class MechanicalTurkV2
         return 'AWS4-HMAC-SHA256'.' '.implode(',', $authorization);
     }
 
+    /**
+     * Curls the request
+     *
+     * @return array
+     */
     public function curlRequest()
     {
         $request_headers          = $this->setRequestHeaders();
@@ -285,6 +358,11 @@ class MechanicalTurkV2
         return $resp;
     }
 
+    /**
+     * Returns account balance
+     *
+     * @return mixed
+     */
     public function getAccountBalance()
     {
         $this->content                         = '{}';
@@ -295,6 +373,13 @@ class MechanicalTurkV2
         return $resp['response'];
     }
 
+    /**
+     * Creates new HIT
+     *
+     * @param $params
+     *
+     * @return mixed
+     */
     public function createHITByExternalQuestion($params)
     {
         $this->content                         = json_encode($params);
@@ -305,6 +390,13 @@ class MechanicalTurkV2
         return $resp['response'];
     }
 
+    /**
+     * Returns new HIT
+     *
+     * @param $hit_id
+     *
+     * @return mixed
+     */
     public function getHit($hit_id)
     {
         $this->content                         = json_encode(array('HITId' => $hit_id));
@@ -315,6 +407,14 @@ class MechanicalTurkV2
         return $resp['response'];
     }
 
+    /**
+     * Updates expiration for specific HIT
+     *
+     * @param $hit_id
+     * @param $expire_at
+     *
+     * @return mixed
+     */
     public function updateExpirationForHIT($hit_id, $expire_at)
     {
         $this->content                         = json_encode(array('HITId' => $hit_id, 'ExpireAt' => $expire_at));
@@ -325,6 +425,13 @@ class MechanicalTurkV2
         return $resp['response'];
     }
 
+    /**
+     * Deletes specific HIT
+     *
+     * @param $hit_id
+     *
+     * @return mixed
+     */
     public function deleteHIT($hit_id)
     {
         $this->content                         = json_encode(array('HITId' => $hit_id));
@@ -335,6 +442,13 @@ class MechanicalTurkV2
         return $resp['response'];
     }
 
+    /**
+     * List assignment for specific HIT
+     *
+     * @param $hit_id
+     *
+     * @return mixed
+     */
     public function listAssignmentsForHIT($hit_id)
     {
         $this->content                         = json_encode(array('HITId' => $hit_id));
@@ -345,6 +459,13 @@ class MechanicalTurkV2
         return $resp['response'];
     }
 
+    /**
+     * Approve the HIT
+     *
+     * @param $assignment_id
+     *
+     * @return array
+     */
     public function approveAssignment($assignment_id)
     {
         $this->content                         = json_encode(array('AssignmentId' => $assignment_id));
@@ -355,6 +476,14 @@ class MechanicalTurkV2
         return $resp;
     }
 
+    /**
+     * Rejects the hit
+     *
+     * @param        $assignment_id
+     * @param string $feedback
+     *
+     * @return array
+     */
     public function rejectAssignment($assignment_id, $feedback = '')
     {
         $param = array('AssignmentId' => $assignment_id, 'RequesterFeedback' => $feedback);
