@@ -349,11 +349,11 @@ class MechanicalTurkV2
             'headers'   => $headers,
         ];
 
-        $dt   = Carbon::now();
+        /*$dt   = Carbon::now();
         $log  = new \Illuminate\Support\Facades\Log();
         $file = storage_path().'/logs/'.'mturk-api-response'.$dt->format("Y-m-d").'.log';
         $log::useFiles($file);
-        $log::info(json_encode($resp));
+        $log::info(json_encode($resp));*/
 
         return $resp;
     }
