@@ -231,9 +231,8 @@ class TaskService
                 continue;
             }
 
-            $update = ['hit_id' => $ret->hit_id, 'hit_type_id' => $ret->hit_type_id];
-
             if ($ret) {
+                $update = ['hit_id' => $ret->hit_id, 'hit_type_id' => $ret->hit_type_id];
                 $this->task->update($page->contract_id, $page->page_no, $update);
                 $this->logger->info(
                     'createHIT:'.sprintf('HIT created for page no.%s', $page->page_no),
@@ -595,16 +594,16 @@ class TaskService
             return false;
         }
 
-        $update = [
-            'hit_id'      => $ret->hit_id,
-            'assignments' => null,
-            'status'      => 0,
-            'approved'    => 0,
-            'hit_type_id' => $ret->hit_type_id,
-            'created_at'  => date('Y-m-d H:i:s'),
-        ];
-
         if ($ret) {
+            $update = [
+                'hit_id'      => $ret->hit_id,
+                'assignments' => null,
+                'status'      => 0,
+                'approved'    => 0,
+                'hit_type_id' => $ret->hit_type_id,
+                'created_at'  => date('Y-m-d H:i:s'),
+            ];
+
             $this->task->update($task->contract_id, $task->page_no, $update);
             $this->logger->info('HIT successfully reset', ['Contract id' => $contract_id, 'Task' => $task->toArray()]);
             $this->logger->mTurkActivity('mturk.log.reset', null, $task->contract_id, $task->page_no);
