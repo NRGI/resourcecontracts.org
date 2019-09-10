@@ -352,7 +352,7 @@ class MechanicalTurkV2
         if($http_code!=200) {
             $dt   = Carbon::now();
             $log  = new \Illuminate\Support\Facades\Log();
-            $file = storage_path().'/logs/'.'mturk-api-response'.$dt->format("Y-m-d").'.log';
+            $file = storage_path().'/logs/'.'api-response'.$dt->format("Y-m-d").'mturk.log';
             $log::useFiles($file);
             $log::error(json_encode($resp));
         }

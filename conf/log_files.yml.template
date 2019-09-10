@@ -32,6 +32,9 @@ files:
   - path: /shared_path/rc-admin/storage/logs/*laravel.log
     tag: ecs-rc-admin-$DEPLOYMENT_TYPE-rc-admin-laravel.log
 
+  - path: /shared_path/rc-admin/storage/logs/*mturk.log
+    tag: ecs-rc-admin-$DEPLOYMENT_TYPE-rc-admin-mturk.log
+
   - path: /var/www/pdf-processor/logs/*.log
     tag: ecs-rc-admin-$DEPLOYMENT_TYPE-pdf-processor.log
 
