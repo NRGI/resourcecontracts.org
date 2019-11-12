@@ -652,7 +652,7 @@ class TaskService
         $tasks = $this->task->getAll($contract_id);
 
         foreach ($tasks as $task) {
-            $text     = $this->turk->getAns($task->hit_id);
+            $text     = $this->turk->getAns($task);
             $text     = is_string($text) ? $text : '';
             $pdf_text = nl2br($text);
             $this->page->saveText($contract_id, $task->page_no, $pdf_text, false);

@@ -141,17 +141,24 @@ class MTurkService extends MechanicalTurkV2
     /**
      * Returns answer for specific hit
      *
-     * @param $hit_id
+     * @param $task
      *
      * @return string
      */
-    public function getAns($hit_id)
+    public function getAns($task)
     {
-        $feedback   = '';
-        $assignment = $this->listAssignmentsForHIT($hit_id);
+        $feedback = '';
+        $api_assignment = $this->listAssignmentsForHIT($task->hit_id);
+        $db_assignment = json_decode(json_encode($task->assignments),true);
 
-        if (array_key_exists('Assignments', $assignment) && is_array($assignment['Assignments']) && !empty($assignment['Assignments'])) {
-            $assign = $assignment['Assignments'][0];
+        if(isset($db_assignment['assignment']) && isset($db_assignment['assignment']['answer'])) {
+            if(!is_array($db_assignment['assignment']['answer'])) {
+                $feedback = $db_assignment['assignment']['answer'];
+            }
+        }
+
+        if (array_key_exists('Assignments', $api_assignment) && is_array($api_assignment['Assignments']) && !empty($api_assignment['Assignments'])) {
+            $assign = $api_assignment['Assignments'][0];
 
             if (array_key_exists('Answer', $assign)) {
                 $answer  = $assign['Answer'];
@@ -163,9 +170,15 @@ class MTurkService extends MechanicalTurkV2
                 foreach ($answers as $ans) {
                     if ($ans['QuestionIdentifier'] == 'feedback') {
                         $feedback = $ans['FreeText'];
+
+                        if(is_array($feedback)) {
+                            $feedback = $feedback[0];
+                        }
                         break;
                     }
                 }
+            }else {
+
             }
         }
 
