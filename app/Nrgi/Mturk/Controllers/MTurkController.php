@@ -132,7 +132,7 @@ class MTurkController extends Controller
             return abort(404);
         }
 
-        $feedback = ($task->status == '1') ? $this->mturk->getAns($task->hit_id) : '';
+        $feedback = ($task->status == '1') ? $this->mturk->getAns($task) : '';
 
         return view('mturk.detail', compact('contract', 'task', 'feedback'));
     }
