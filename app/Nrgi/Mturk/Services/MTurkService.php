@@ -210,10 +210,14 @@ class MTurkService extends MechanicalTurkV2
                         if (is_array($feedback)) {
                             $feedback = $feedback[0];
                         }
+                        
                         /* The assignment json is updated with answer for safety */
-                        $db_assignment['assignment']['answer']['answer'] = $feedback;
-                        $update_ans                                      = true;
+                        if(is_array($db_assignment['assignment']['answer'])) {
+                            $db_assignment['assignment']['answer']['answer'] = $feedback;
+                            $update_ans                                      = true;
+                        }
                         break;
+
                     }
                 }
             }
