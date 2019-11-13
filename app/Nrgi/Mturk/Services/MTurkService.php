@@ -148,10 +148,40 @@ class MTurkService extends MechanicalTurkV2
     public function getAns($task)
     {
         $feedback       = '';
-        $api_assignment = $this->listAssignmentsForHIT($task->hit_id);
         $db_assignment  = json_decode(json_encode($task->assignments), true);
         $update_ans     = false;
 
+        /*
+         * Checks if task assignment have answer in assignment json column
+         * The old api saved assignment in assignment json column with format
+            {
+              "total": "1",
+              "assignment": {
+                "assignment_id": "3LEIZ60CDKNNV3H5QVA58V0CQBU9ZY",
+                "worker_id": "AX2EWYWZM19AZ",
+                "accept_time": "2019-03-30T01:13:17Z",
+                "submit_time": "2019-04-03T17:57:25Z",
+                "status": "Approved",
+                "answer": "feedback from worker"
+              }
+            }
+         * The new api saved assignment in assignment json column with format
+             {
+              "assignment": {
+                "assignment_id": "38JBBYETQPYON2KXDD016DOFB1X4EQ",
+                "worker_id": "A234QKV52N964W",
+                "accept_time": 1567703209,
+                "submit_time": 1567847643,
+                "status": "Approved",
+                "answer": {
+                  "QuestionIdentifier": "workerId",
+                  "FreeText": "A234QKV52N964W",
+                }
+              },
+              "total": 1
+            }
+         * If api call returns answer then update the json column with answer for safety
+        */
         if (isset($db_assignment['assignment']) && isset($db_assignment['assignment']['answer'])) {
             if (!is_array($db_assignment['assignment']['answer'])) {
                 $feedback = $db_assignment['assignment']['answer'];
@@ -159,6 +189,9 @@ class MTurkService extends MechanicalTurkV2
                 $feedback = $db_assignment['assignment']['answer']['answer'];
             }
         }
+
+        /*API CALL*/
+        $api_assignment = $this->listAssignmentsForHIT($task->hit_id);
 
         if (array_key_exists('Assignments', $api_assignment) && is_array($api_assignment['Assignments']) && !empty($api_assignment['Assignments'])) {
             $assign = $api_assignment['Assignments'][0];
@@ -177,6 +210,7 @@ class MTurkService extends MechanicalTurkV2
                         if (is_array($feedback)) {
                             $feedback = $feedback[0];
                         }
+                        /* The assignment json is updated with answer for safety */
                         $db_assignment['assignment']['answer']['answer'] = $feedback;
                         $update_ans                                      = true;
                         break;
@@ -184,7 +218,6 @@ class MTurkService extends MechanicalTurkV2
                 }
             }
         }
-
 
         /*updates assignment json column with answer if api returns answer*/
         if ($update_ans) {
