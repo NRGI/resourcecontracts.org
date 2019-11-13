@@ -147,13 +147,16 @@ class MTurkService extends MechanicalTurkV2
      */
     public function getAns($task)
     {
-        $feedback = '';
+        $feedback       = '';
         $api_assignment = $this->listAssignmentsForHIT($task->hit_id);
-        $db_assignment = json_decode(json_encode($task->assignments),true);
+        $db_assignment  = json_decode(json_encode($task->assignments), true);
+        $update_ans     = false;
 
-        if(isset($db_assignment['assignment']) && isset($db_assignment['assignment']['answer'])) {
-            if(!is_array($db_assignment['assignment']['answer'])) {
+        if (isset($db_assignment['assignment']) && isset($db_assignment['assignment']['answer'])) {
+            if (!is_array($db_assignment['assignment']['answer'])) {
                 $feedback = $db_assignment['assignment']['answer'];
+            } elseif (is_array($db_assignment['assignment']['answer']) && isset($db_assignment['assignment']['answer']['answer'])) {
+                $feedback = $db_assignment['assignment']['answer']['answer'];
             }
         }
 
@@ -171,15 +174,22 @@ class MTurkService extends MechanicalTurkV2
                     if ($ans['QuestionIdentifier'] == 'feedback') {
                         $feedback = $ans['FreeText'];
 
-                        if(is_array($feedback)) {
+                        if (is_array($feedback)) {
                             $feedback = $feedback[0];
                         }
+                        $db_assignment['assignment']['answer']['answer'] = $feedback;
+                        $update_ans                                      = true;
                         break;
                     }
                 }
-            }else {
-
             }
+        }
+
+
+        /*updates assignment json column with answer if api returns answer*/
+        if ($update_ans) {
+            $task->assignments = json_decode(json_encode($db_assignment));
+            $task->save();
         }
 
         return $feedback;
