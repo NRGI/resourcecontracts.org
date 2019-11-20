@@ -10,6 +10,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
+use Throwable;
 
 /**
  * Class ImportService
@@ -64,6 +65,10 @@ class ImportService
     protected $country;
 
     protected $contractService;
+
+    protected $ocid;
+
+    protected $json_ocid = [];
 
     /*
      * Valid Keys
@@ -148,7 +153,7 @@ class ImportService
             $originalFileName = $request->file('file')->getClientOriginalName();
             $fileName         = $originalFileName;
             $request->file('file')->move($this->getFilePath($import_key), $fileName);
-        } catch (\Exception $d) {
+        } catch (Throwable $d) {
             $this->logger->error('File could not be uploaded');
             throw new Exception('File could not be uploaded.');
         }
@@ -229,7 +234,13 @@ class ImportService
         $contract['metadata']['contract_name'] = $results['contract_name'];
 
         $contract['metadata']['is_supporting_document']     = $results['main_associated'];
-        $contract['metadata']['parent_open_contracting_id'] = $results['main_document_ocid_if_already_published'];
+        if($contract['metadata']['is_supporting_document'] == '1'){
+            //for supporting document
+            $contract['metadata']['parent_open_contracting_id'] = $results['main_document_ocid_if_already_published'];
+        }else{
+            //for main document
+            $contract['metadata']['parent_open_contracting_id'] = '';
+        }
         $contract['metadata']['is_contract_signed']         = $results['contract_signed'];
         $contract['metadata']['document_type']              = $results['document_type'];
 
@@ -287,7 +298,11 @@ class ImportService
         $countryCode                            = $this->getCountry($results['country_code']);
         $contract['metadata']['country']        = $countryCode;
         $contract['metadata']['signature_date'] = $this->dateFormat($results['signature_date'], 'Y-m-d');
-        $contract['metadata']['signature_year'] = $this->dateFormat($results['signature_date'], 'Y');
+        if(isset($results['signature_date'])){
+            $contract['metadata']['signature_year'] = $this->dateFormat($results['signature_date'], 'Y');
+        }else{
+            $contract['metadata']['signature_year'] = $results['signature_year'];
+        }
         $contract['metadata']['language']       = $this->getLanguage(strtolower($results['language']));
         $contract['metadata']['category']       = [strtolower($results['category'])];
         $contract['metadata']['show_pdf_text']  = Contract::SHOW_PDF_TEXT;
@@ -306,6 +321,17 @@ class ImportService
         }
         $contract['metadata']['open_contracting_id'] = $this->contract->generateOCID();
 
+        if($contract['metadata']['is_supporting_document'] == '0'){
+            //save ocid of main contract 
+            $this->ocid = $contract['metadata']['open_contracting_id'];
+        }
+
+        if(empty($contract['metadata']['parent_open_contracting_id']) && $contract['metadata']['is_supporting_document'] == 1){
+            //stores parent ocid for associated document
+            $contract['metadata']['parent_open_contracting_id'] = $this->ocid;
+        }
+        
+
         return trimArray($contract);
     }
 
@@ -321,6 +347,9 @@ class ImportService
         if (is_array($contracts)) {
             foreach ($contracts as $contract) {
                 $this->updateContractJsonByID($import_key, $contract->id, ['download_status' => static::PROCESSING]);
+                if($contract->metadata->is_supporting_document == 0){
+                    array_push($this->json_ocid, $contract->metadata->open_contracting_id);
+                }
                 list($status, $message) = $this->validateContract($contract);
 
                 if (!$status) {
@@ -466,6 +495,7 @@ class ImportService
         $contracts = $this->getJsonData($key);
 
         foreach ($contracts as $contract) {
+            $contract->metadata->contract_name = $this->checkContractNameAvailability($key, $contract);
 
             $this->updateContractJsonByID($key, $contract->id, ['create_status' => static::CREATE_PROCESSING], 2);
 
@@ -515,6 +545,32 @@ class ImportService
                 $this->updateContractJsonByID($key, $contract->id, ['create_remarks' => trans('contract.save_fail'), 'create_status' => static::CREATE_FAILED], 2);
             }
             $this->deleteFile($key, $contract->file);
+        }
+    }
+
+    public function checkContractNameAvailability($key, $contract)
+    {
+        $checkName = $this->contract->checkMetaDataContractName($contract->metadata->contract_name);
+
+        $name = $contract->metadata->contract_name;
+
+        if($checkName){
+            $count = 1;
+
+            do{
+                $newName = $name . '-' . $count;
+                $check = $this->contract->checkMetaDataContractName($newName);
+                
+                if($check){
+                    $count++;
+                }else{
+                    $this->updateContractJsonByID($key, $contract->id, ['contract_name' => $newName], 2);  
+                }
+            }while($check);
+
+            return $newName;
+        }else{
+            return $name;
         }
     }
 
@@ -870,7 +926,7 @@ class ImportService
         if ($contract->metadata->is_supporting_document) {
             $open_contracting_id = $contract->metadata->parent_open_contracting_id;
 
-            if (!empty($open_contracting_id) && !$this->contract->findContractByOpenContractingId($open_contracting_id)) {
+            if (!empty($open_contracting_id) && !$this->contract->findContractByOpenContractingId($open_contracting_id) && !in_array($open_contracting_id, $this->json_ocid)) {
                 $message .= "<p>Open contracting id is invalid.</p>";
             }
         }

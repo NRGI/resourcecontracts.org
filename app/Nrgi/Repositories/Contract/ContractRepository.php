@@ -858,4 +858,25 @@ class ContractRepository implements ContractRepositoryInterface
         return $this->contract->findContractByOpenContractingId($openContractingId);
     }
 
+    /**
+     * Checks if contract name already exists in the database
+     * returns false if there is no data matching
+     *
+     * @param [string] $contractName
+     * 
+     * @return Boolean 
+     */
+    public function checkMetaDataContractName($contractName)
+    {
+        $query = $this->contract->selectRaw("metadata -> 'contract_name'")
+            ->whereRaw("metadata->>'contract_name' ='" . $contractName . "'")
+            ->get();
+            
+        if(count($query) == 0){
+            return false;
+        }else{
+            return true;
+        }    
+    }
+
 }
