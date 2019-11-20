@@ -297,11 +297,14 @@ class ImportService
         }
         $countryCode                            = $this->getCountry($results['country_code']);
         $contract['metadata']['country']        = $countryCode;
-        $contract['metadata']['signature_date'] = $this->dateFormat($results['signature_date'], 'Y-m-d');
-        if(isset($results['signature_date'])){
-            $contract['metadata']['signature_year'] = $this->dateFormat($results['signature_date'], 'Y');
+
+        $contract['metadata']['signature_year'] = $results['signature_year'];
+
+        if($results['signature_date'] == ""){
+            $contract['metadata']['signature_date'] = "";
         }else{
-            $contract['metadata']['signature_year'] = $results['signature_year'];
+            $contract['metadata']['signature_date'] = $this->dateFormat($results['signature_date'], 'Y-m-d');
+            $contract['metadata']['signature_year'] = $this->dateFormat($results['signature_date'], 'Y');
         }
         $contract['metadata']['language']       = $this->getLanguage(strtolower($results['language']));
         $contract['metadata']['category']       = [strtolower($results['category'])];
@@ -548,6 +551,14 @@ class ImportService
         }
     }
 
+    /**
+     * Checks if contract name is already present in the database. 
+     * Appends number if contract name is already present in database.
+     *
+     * @param $key
+     * @param $contract
+     * @return void
+     */
     public function checkContractNameAvailability($key, $contract)
     {
         $checkName = $this->contract->checkMetaDataContractName($contract->metadata->contract_name);
@@ -831,7 +842,7 @@ class ImportService
         $required = [
             "category",
             "contract_name",
-            "signature_date",
+            "signature_year",
             "language",
             "country",
             "document_type",
