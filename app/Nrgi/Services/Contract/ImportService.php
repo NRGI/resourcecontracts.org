@@ -271,7 +271,14 @@ class ImportService
             $companies[]                                      = $company_default;
         }
 
-        $contract['document_url']     = $results['document_url'];
+        $pdfArray = explode("/", $results['document_url']);
+        if(in_array("drive.google.com", $pdfArray) && in_array("d", $pdfArray)){
+            //converts the shareable google drive to downloadable link 
+            $newPdf = $this->convertToDownloadableUrl($pdfArray);
+            $contract['document_url']     = $newPdf;
+        }else{
+            $contract['document_url']     = $results['document_url'];
+        }
         $contract['download_status']  = static::PIPELINE;
         $contract['download_remarks'] = '';
         $contract['create_status']    = '';
@@ -451,6 +458,20 @@ class ImportService
 
             return null;
         }
+    }
+
+    /**
+     * Changes the given url into downloadable url if it is google drive link
+     *
+     * @param $pdfArray
+     * @return string
+     */
+    protected function convertToDownloadableUrl($pdfArray)
+    {
+        $array_key = array_search("d", $pdfArray);
+        $doc_id = $pdfArray[$array_key + 1];
+        $newPdf = sprintf("https://drive.google.com/uc?id=%s&export=download",$doc_id);
+        return $newPdf;
     }
 
     /**
