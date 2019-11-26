@@ -272,9 +272,9 @@ class ImportService
         }
 
         $pdfArray = explode("/", $results['document_url']);
-        if(in_array("drive.google.com", $pdfArray) && in_array("d", $pdfArray)){
+        if(in_array("drive.google.com", $pdfArray)){
             //converts the shareable google drive to downloadable link 
-            $newPdf = $this->convertToDownloadableUrl($pdfArray);
+            $newPdf = $this->convertToDownloadableUrl($pdfArray, $results['document_url']);
             $contract['document_url']     = $newPdf;
         }else{
             $contract['document_url']     = $results['document_url'];
@@ -462,15 +462,30 @@ class ImportService
 
     /**
      * Changes the given url into downloadable url if it is google drive link
+     * If variabel $newPdf is returned empty it means the drive link doesnot satisfy any of the conditions 
+     * The shareable link needs to be viewed
      *
      * @param $pdfArray
+     * @param $docUrl
      * @return string
      */
-    protected function convertToDownloadableUrl($pdfArray)
+    protected function convertToDownloadableUrl($pdfArray, $docUrl)
     {
-        $array_key = array_search("d", $pdfArray);
-        $doc_id = $pdfArray[$array_key + 1];
-        $newPdf = sprintf("https://drive.google.com/uc?id=%s&export=download",$doc_id);
+        $newPdf = '';
+        if(in_array("d", $pdfArray)){
+            $array_key = array_search("d", $pdfArray);
+            $doc_id = $pdfArray[$array_key + 1];
+            $newPdf = sprintf("https://drive.google.com/uc?id=%s&export=download",$doc_id);
+        }else{
+            $parsed_url = parse_url($docUrl);
+            if(isset($parsed_url['query'])){
+                parse_str($parsed_url['query'], $params);
+                if(isset($params['id'])){
+                    $doc_id = $params['id'];
+                    $newPdf = sprintf("https://drive.google.com/uc?id=%s&export=download",$doc_id);
+                }
+            }
+        }
         return $newPdf;
     }
 
