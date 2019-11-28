@@ -870,13 +870,13 @@ class ContractRepository implements ContractRepositoryInterface
     {
         $query = $this->contract->selectRaw("metadata -> 'contract_name'")
             ->whereRaw("metadata->>'contract_name' ='" . $contractName . "'")
-            ->get();
+            ->count();
             
-        if(count($query) == 0){
+        if($query == 0){
             return false;
-        }else{
-            return true;
-        }    
+        }
+            
+        return true;
     }
 
 }

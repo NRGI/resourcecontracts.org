@@ -234,13 +234,13 @@ class ImportService
         $contract['metadata']['contract_name'] = $results['contract_name'];
 
         $contract['metadata']['is_supporting_document']     = $results['main_associated'];
-        if($contract['metadata']['is_supporting_document'] == '1'){
-            //for supporting document
-            $contract['metadata']['parent_open_contracting_id'] = $results['main_document_ocid_if_already_published'];
-        }else{
+        $contract['metadata']['parent_open_contracting_id'] = $results['main_document_ocid_if_already_published'];
+
+        if($contract['metadata']['is_supporting_document'] == '0'){
             //for main document
             $contract['metadata']['parent_open_contracting_id'] = '';
         }
+
         $contract['metadata']['is_contract_signed']         = $results['contract_signed'];
         $contract['metadata']['document_type']              = $results['document_type'];
 
@@ -271,14 +271,15 @@ class ImportService
             $companies[]                                      = $company_default;
         }
 
+        $contract['document_url']     = $results['document_url'];
         $pdfArray = explode("/", $results['document_url']);
+
         if(in_array("drive.google.com", $pdfArray)){
-            //converts the shareable google drive to downloadable link 
+            //converts the shareable google drive link to downloadable link 
             $newPdf = $this->convertToDownloadableUrl($pdfArray, $results['document_url']);
-            $contract['document_url']     = $newPdf;
-        }else{
-            $contract['document_url']     = $results['document_url'];
+            $contract['document_url'] = $newPdf;
         }
+
         $contract['download_status']  = static::PIPELINE;
         $contract['download_remarks'] = '';
         $contract['create_status']    = '';
@@ -336,7 +337,7 @@ class ImportService
             $this->ocid = $contract['metadata']['open_contracting_id'];
         }
 
-        if(empty($contract['metadata']['parent_open_contracting_id']) && $contract['metadata']['is_supporting_document'] == 1){
+        if(empty($contract['metadata']['parent_open_contracting_id']) && $contract['metadata']['is_supporting_document'] == '1'){
             //stores parent ocid for associated document
             $contract['metadata']['parent_open_contracting_id'] = $this->ocid;
         }
