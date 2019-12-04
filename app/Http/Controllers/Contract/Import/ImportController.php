@@ -6,6 +6,7 @@ use App\Http\Requests\Contract\ImportRequest;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\ImportService;
 use Illuminate\Http\Request;
+use Throwable;
 
 /**
  * Class ImportController
@@ -60,7 +61,7 @@ class ImportController extends Controller
             $this->contractImport->deleteImportFolder($key);
 
             return redirect()->route('contract.import')->withError(trans('contract.import.fail'));
-        } catch (\Exception $e) {
+        } catch (Throwable $e) {
             return redirect()->route('contract.import')->withError($e->getMessage());
         }
     }

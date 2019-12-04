@@ -10,6 +10,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
+use Throwable;
 
 /**
  * Class ImportService
@@ -64,6 +65,10 @@ class ImportService
     protected $country;
 
     protected $contractService;
+
+    protected $ocid;
+
+    protected $json_ocid = [];
 
     /*
      * Valid Keys
@@ -148,7 +153,7 @@ class ImportService
             $originalFileName = $request->file('file')->getClientOriginalName();
             $fileName         = $originalFileName;
             $request->file('file')->move($this->getFilePath($import_key), $fileName);
-        } catch (\Exception $d) {
+        } catch (Throwable $d) {
             $this->logger->error('File could not be uploaded');
             throw new Exception('File could not be uploaded.');
         }
@@ -230,6 +235,12 @@ class ImportService
 
         $contract['metadata']['is_supporting_document']     = $results['main_associated'];
         $contract['metadata']['parent_open_contracting_id'] = $results['main_document_ocid_if_already_published'];
+
+        if($contract['metadata']['is_supporting_document'] == '0'){
+            //for main document
+            $contract['metadata']['parent_open_contracting_id'] = '';
+        }
+
         $contract['metadata']['is_contract_signed']         = $results['contract_signed'];
         $contract['metadata']['document_type']              = $results['document_type'];
 
@@ -261,6 +272,14 @@ class ImportService
         }
 
         $contract['document_url']     = $results['document_url'];
+        $pdfArray = explode("/", $results['document_url']);
+
+        if(in_array("drive.google.com", $pdfArray)){
+            //converts the shareable google drive link to downloadable link 
+            $newPdf = $this->convertToDownloadableUrl($pdfArray, $results['document_url']);
+            $contract['document_url'] = $newPdf;
+        }
+
         $contract['download_status']  = static::PIPELINE;
         $contract['download_remarks'] = '';
         $contract['create_status']    = '';
@@ -286,8 +305,15 @@ class ImportService
         }
         $countryCode                            = $this->getCountry($results['country_code']);
         $contract['metadata']['country']        = $countryCode;
-        $contract['metadata']['signature_date'] = $this->dateFormat($results['signature_date'], 'Y-m-d');
-        $contract['metadata']['signature_year'] = $this->dateFormat($results['signature_date'], 'Y');
+
+        $contract['metadata']['signature_year'] = $results['signature_year'];
+
+        if($results['signature_date'] == ""){
+            $contract['metadata']['signature_date'] = "";
+        }else{
+            $contract['metadata']['signature_date'] = $this->dateFormat($results['signature_date'], 'Y-m-d');
+            $contract['metadata']['signature_year'] = $this->dateFormat($results['signature_date'], 'Y');
+        }
         $contract['metadata']['language']       = $this->getLanguage(strtolower($results['language']));
         $contract['metadata']['category']       = [strtolower($results['category'])];
         $contract['metadata']['show_pdf_text']  = Contract::SHOW_PDF_TEXT;
@@ -306,6 +332,17 @@ class ImportService
         }
         $contract['metadata']['open_contracting_id'] = $this->contract->generateOCID();
 
+        if($contract['metadata']['is_supporting_document'] == '0'){
+            //save ocid of main contract 
+            $this->ocid = $contract['metadata']['open_contracting_id'];
+        }
+
+        if(empty($contract['metadata']['parent_open_contracting_id']) && $contract['metadata']['is_supporting_document'] == '1'){
+            //stores parent ocid for associated document
+            $contract['metadata']['parent_open_contracting_id'] = $this->ocid;
+        }
+        
+
         return trimArray($contract);
     }
 
@@ -321,6 +358,9 @@ class ImportService
         if (is_array($contracts)) {
             foreach ($contracts as $contract) {
                 $this->updateContractJsonByID($import_key, $contract->id, ['download_status' => static::PROCESSING]);
+                if($contract->metadata->is_supporting_document == 0){
+                    array_push($this->json_ocid, $contract->metadata->open_contracting_id);
+                }
                 list($status, $message) = $this->validateContract($contract);
 
                 if (!$status) {
@@ -422,6 +462,35 @@ class ImportService
     }
 
     /**
+     * Changes the given url into downloadable url if it is google drive link
+     * If variabel $newPdf is returned empty it means the drive link doesnot satisfy any of the conditions 
+     * The shareable link needs to be viewed
+     *
+     * @param $pdfArray
+     * @param $docUrl
+     * @return string
+     */
+    protected function convertToDownloadableUrl($pdfArray, $docUrl)
+    {
+        $newPdf = '';
+        if(in_array("d", $pdfArray)){
+            $array_key = array_search("d", $pdfArray);
+            $doc_id = $pdfArray[$array_key + 1];
+            $newPdf = sprintf("https://drive.google.com/uc?id=%s&export=download",$doc_id);
+        }else{
+            $parsed_url = parse_url($docUrl);
+            if(isset($parsed_url['query'])){
+                parse_str($parsed_url['query'], $params);
+                if(isset($params['id'])){
+                    $doc_id = $params['id'];
+                    $newPdf = sprintf("https://drive.google.com/uc?id=%s&export=download",$doc_id);
+                }
+            }
+        }
+        return $newPdf;
+    }
+
+    /**
      * Save all Contracts
      *
      * @param $key
@@ -466,6 +535,7 @@ class ImportService
         $contracts = $this->getJsonData($key);
 
         foreach ($contracts as $contract) {
+            $contract->metadata->contract_name = $this->checkContractNameAvailability($key, $contract);
 
             $this->updateContractJsonByID($key, $contract->id, ['create_status' => static::CREATE_PROCESSING], 2);
 
@@ -515,6 +585,40 @@ class ImportService
                 $this->updateContractJsonByID($key, $contract->id, ['create_remarks' => trans('contract.save_fail'), 'create_status' => static::CREATE_FAILED], 2);
             }
             $this->deleteFile($key, $contract->file);
+        }
+    }
+
+    /**
+     * Checks if contract name is already present in the database. 
+     * Appends number if contract name is already present in database.
+     *
+     * @param $key
+     * @param $contract
+     * @return void
+     */
+    public function checkContractNameAvailability($key, $contract)
+    {
+        $checkName = $this->contract->checkMetaDataContractName($contract->metadata->contract_name);
+
+        $name = $contract->metadata->contract_name;
+
+        if($checkName){
+            $count = 1;
+
+            do{
+                $newName = $name . '-' . $count;
+                $check = $this->contract->checkMetaDataContractName($newName);
+                
+                if($check){
+                    $count++;
+                }else{
+                    $this->updateContractJsonByID($key, $contract->id, ['contract_name' => $newName], 2);  
+                }
+            }while($check);
+
+            return $newName;
+        }else{
+            return $name;
         }
     }
 
@@ -775,7 +879,7 @@ class ImportService
         $required = [
             "category",
             "contract_name",
-            "signature_date",
+            "signature_year",
             "language",
             "country",
             "document_type",
@@ -870,7 +974,7 @@ class ImportService
         if ($contract->metadata->is_supporting_document) {
             $open_contracting_id = $contract->metadata->parent_open_contracting_id;
 
-            if (!empty($open_contracting_id) && !$this->contract->findContractByOpenContractingId($open_contracting_id)) {
+            if (!empty($open_contracting_id) && !$this->contract->findContractByOpenContractingId($open_contracting_id) && !in_array($open_contracting_id, $this->json_ocid)) {
                 $message .= "<p>Open contracting id is invalid.</p>";
             }
         }
