@@ -3,6 +3,6 @@ return
     [
         'Government'        => "الحكومة",
         'Company'           => "الشركة ",
-        'Security exchange' => 'Security exchange_AR',
+        'Security exchange' => 'تبادل الأمن',
         'Other'             => "طرف اخر ",
     ];

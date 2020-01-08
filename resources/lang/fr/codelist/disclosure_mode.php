@@ -9,6 +9,6 @@ return [
 
     "Government"        => "Gouvernement",
     "Company"           => "Entreprise",
-    "Security exchange" => "Security exchange_FR",
+    "Security exchange" => "Échange de sécurité",
     "Other"             => "Autresr",
 ];
