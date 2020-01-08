@@ -7,8 +7,9 @@
 */
 return [
 
-    "Government" => "Government",
-    "Company"    => "Company",
-    "Other"      => "Other"
+    "Government"        => "Government",
+    "Company"           => "Company",
+    "Security exchange" => "Security exchange",
+    "Other"             => "Other",
 
 ];

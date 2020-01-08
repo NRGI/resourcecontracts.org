@@ -24,5 +24,8 @@ $router->group(
         $router->get('contract/select/type', ['as' => 'contract.select.type', 'uses' => 'ContractController@contractType']);
         $router->any('contract/generate/name',['as' => 'contract.generate.name', 'uses' =>'ContractController@getContractName']);
         $router->get('contract/{id}/{lang}', ['as' => 'contract.show.trans', 'uses' => 'ContractController@show']);
+        $router->get('contract/backup/meta/data', ['as' => 'contract.backup.meta.data', 'uses' => 'ContractController@backupMetadata']);
+        $router->get('contract/update/meta/data', ['as' => 'contract.update.meta.data', 'uses' => 'ContractController@updateMetadata']);
+        $router->get('contract/restore/meta/data', ['as' => 'contract.update.meta.data', 'uses' => 'ContractController@restoreMetadata']);
     }
 );

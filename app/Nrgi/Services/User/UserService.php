@@ -78,7 +78,6 @@ class UserService
      * @param Hasher                         $hash
      * @param Role                           $role
      * @param Guard                          $auth
-     * @param ContractRepositoryInterface    $contract
      */
     public function __construct(
         UserRepositoryInterface $user,
@@ -91,9 +90,7 @@ class UserService
         LoggerInterface $logger,
         Hasher $hash,
         Role $role,
-        Guard $auth,
-        ContractRepositoryInterface $contract
-
+        Guard $auth
     ) {
         $this->user          = $user;
         $this->logger        = $logger;

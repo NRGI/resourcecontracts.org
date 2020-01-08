@@ -1,19 +1,19 @@
 <?php namespace App\Http\Controllers\Contract;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contract\ContractRequest;
+use App\Nrgi\Entities\Contract\Comment\Comment;
 use App\Nrgi\Mturk\Services\ActivityService;
 use App\Nrgi\Services\Contract\Annotation\AnnotationService;
-use App\Nrgi\Services\Download\DownloadService;
-use App\Nrgi\Entities\Contract\Comment\Comment;
 use App\Nrgi\Services\Contract\Comment\CommentService;
 use App\Nrgi\Services\Contract\ContractFilterService;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\CountryService;
 use App\Nrgi\Services\Contract\Discussion\DiscussionService;
+use App\Nrgi\Services\Download\DownloadService;
 use App\Nrgi\Services\Language\LanguageService;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Database\DatabaseManager;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -48,6 +48,10 @@ class ContractController extends Controller
      * @var AnnotationService
      */
     protected $annotation;
+    /**
+     * @var DatabaseManager
+     */
+    private $db;
 
     /**
      * @param ContractService       $contract
@@ -57,6 +61,7 @@ class ContractController extends Controller
      * @param AnnotationService     $annotation
      * @param DownloadService       $downloadService
      * @param ActivityService       $activity
+     * @param DatabaseManager       $db
      */
     public function __construct(
         ContractService $contract,
@@ -65,7 +70,8 @@ class ContractController extends Controller
         CommentService $comment,
         AnnotationService $annotation,
         DownloadService $downloadService,
-        ActivityService $activity
+        ActivityService $activity,
+        DatabaseManager $db
     ) {
         $this->middleware('auth');
         $this->contract        = $contract;
@@ -75,6 +81,7 @@ class ContractController extends Controller
         $this->annotation      = $annotation;
         $this->downloadService = $downloadService;
         $this->activity        = $activity;
+        $this->db              = $db;
     }
 
     /**
@@ -274,7 +281,7 @@ class ContractController extends Controller
     /**
      * Remove the specified contract
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return Response
      */
@@ -497,5 +504,62 @@ class ContractController extends Controller
         } else {
             return abort(404);
         }
+    }
+
+    public function backupMetadata()
+    {
+        if(auth()->user()->isAdmin()) {
+            try {
+                if(file_exists('metadata_bk.json'))
+                {
+                    return redirect()->route('contract.index')->withSuccess('Metadata have be backed up already');
+                }
+                $this->contract->backupMetadata();
+
+                return redirect()->route('contract.index')->withSuccess('Metadata backed up successfully');
+            } catch (\Exception $e) {
+                return redirect()->route('contract.index')->withSuccess('Metadata back up error');
+            }
+        }
+
+        return redirect()->route('contract.index')->withSuccess('Access denied');
+    }
+
+    public function restoreMetaData()
+    {
+        if(auth()->user()->isAdmin()) {
+            try {
+                $this->db->beginTransaction();
+                $this->contract->restoreMetadata();
+                $this->db->commit();
+
+                return redirect()->route('contract.index')->withSuccess('Metadata restored successfully');
+            } catch (\Exception $e) {
+                $this->db->rollBack();
+
+                return redirect()->route('contract.index')->withSuccess('Metadata restore error');
+            }
+        }
+
+        return redirect()->route('contract.index')->withSuccess('Access denied');
+    }
+
+    public function updateMetadata()
+    {
+        if(auth()->user()->isAdmin()) {
+            try {
+                $this->db->beginTransaction();
+                $this->contract->updateMetadata();
+                $this->db->commit();
+
+                return redirect()->route('contract.index')->withSuccess('Metadata updated successfully');
+            } catch (\Exception $e) {
+                $this->db->rollBack();
+
+                return redirect()->route('contract.index')->withSuccess('Metadata update error');
+            }
+        }
+
+        return redirect()->route('contract.index')->withSuccess('Access denied');
     }
 }
