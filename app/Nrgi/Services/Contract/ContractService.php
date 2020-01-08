@@ -3023,8 +3023,9 @@ class ContractService
         $metadata = json_decode(file_get_contents('metadata_bk.json'), true);
 
         foreach ($metadata as $contract_id => $metadatum) {
-            $update_sql = "update contracts set metadata='$metadatum' where id=$contract_id";
-            DB::statement($update_sql);
+            $update_sql = "update contracts set metadata=:metadatum where id=$contract_id";
+
+            DB::statement(DB::raw($update_sql), array('metadatum' => $metadatum));
         }
     }
 
