@@ -86,7 +86,7 @@ class ElasticSearchService
      */
     public function postMetadata($id)
     {
-        $contract            = $this->contract->find($id);
+        $contract = $this->contract->find($id);
         $this->indexMetadata($contract);
         $associatedContracts = $this->contract->getAssociatedContracts($contract);
 
@@ -105,7 +105,6 @@ class ElasticSearchService
      * Re-updates the metadata of contracts both main and associated
      *
      * @param $contract
-     *
      */
     public function indexMetadata($contract)
     {
@@ -159,8 +158,12 @@ class ElasticSearchService
             'updated_by'           => json_encode($updated_by),
             'created_at'           => $contract->created_datetime->format('Y-m-d H:i:s'),
             'updated_at'           => $contract->last_updated_datetime->format('Y-m-d H:i:s'),
+            'published_at'         => '',
         ];
 
+        if ($elementState['metadata'] == 'published' && isset($elementState['metadata_published_at']) && !empty($elementState['metadata_published_at'])) {
+            $metadata['published_at'] = $elementState['metadata_published_at']->format('Y-m-d H:i:s');
+        }
         try {
             $request  = $this->http->post($this->apiURL('contract/metadata'), null, $metadata);
             $response = $request->send();

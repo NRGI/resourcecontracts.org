@@ -102,7 +102,6 @@ class BulkIndex extends Command
             return;
         }
 
-
         $this->publishContracts($contracts);
     }
 
@@ -245,7 +244,7 @@ class BulkIndex extends Command
                 $this->publishText($contract),
                 $this->publishAnnotation($contract),
             ];
-            $index += 1;
+            $index  += 1;
             $this->table(['Metadata', 'Text', 'Annotation'], [$status]);
             $this->status($index);
         }
@@ -277,8 +276,8 @@ class BulkIndex extends Command
         $query    = $this->contract;
 
         if ($category != 'all') {
-            $from = "contracts ";
-            $from .= ",json_array_elements(contracts.metadata->'category') cat";
+            $from  = "contracts ";
+            $from  .= ",json_array_elements(contracts.metadata->'category') cat";
             $query = $query->whereRaw("trim(both '\"' from cat::text) = '".$category."'");
             $query = $query->from(\DB::raw($from));
         }

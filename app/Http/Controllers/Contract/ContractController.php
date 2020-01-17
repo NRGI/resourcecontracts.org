@@ -16,7 +16,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
+use Guzzle\Http\Client;
 /**
  * Class ContractController
  * @property DownloadService downloadService
@@ -52,6 +52,10 @@ class ContractController extends Controller
      * @var DatabaseManager
      */
     private $db;
+    /**
+     * @var Client
+     */
+    private $http;
 
     /**
      * @param ContractService       $contract
@@ -62,6 +66,7 @@ class ContractController extends Controller
      * @param DownloadService       $downloadService
      * @param ActivityService       $activity
      * @param DatabaseManager       $db
+     * @param Client                $http
      */
     public function __construct(
         ContractService $contract,
@@ -71,7 +76,8 @@ class ContractController extends Controller
         AnnotationService $annotation,
         DownloadService $downloadService,
         ActivityService $activity,
-        DatabaseManager $db
+        DatabaseManager $db,
+        Client $http
     ) {
         $this->middleware('auth');
         $this->contract        = $contract;
@@ -82,6 +88,7 @@ class ContractController extends Controller
         $this->downloadService = $downloadService;
         $this->activity        = $activity;
         $this->db              = $db;
+        $this->http            = $http;
     }
 
     /**
@@ -506,57 +513,25 @@ class ContractController extends Controller
         }
     }
 
-    public function backupMetadata()
+    /**
+     * Updates the published_at field in elastic search
+     *
+     * @return mixed
+     */
+    public function updatePublishedAtIndex()
     {
-        if(auth()->user()->isAdmin()) {
+        if (auth()->user()->isAdmin()) {
             try {
-                if(file_exists('metadata_bk.json'))
-                {
-                    return redirect()->route('contract.index')->withSuccess('Metadata have be backed up already');
-                }
-                $this->contract->backupMetadata();
+                $url              = trim(env('ELASTIC_SEARCH_URL'), '/').'/contract/published_at/update';
+                $recent_contracts = json_encode($this->activity->getPublishedContracts(true));
+                $request          = $this->http->post($url, null, ['recent_contracts'=>$recent_contracts]);
+                $request->send();
 
-                return redirect()->route('contract.index')->withSuccess('Metadata backed up successfully');
-            } catch (\Exception $e) {
-                return redirect()->route('contract.index')->withSuccess('Metadata back up error');
-            }
-        }
-
-        return redirect()->route('contract.index')->withSuccess('Access denied');
-    }
-
-    public function restoreMetaData()
-    {
-        if(auth()->user()->isAdmin()) {
-            try {
-                $this->db->beginTransaction();
-                $this->contract->restoreMetadata();
-                $this->db->commit();
-
-                return redirect()->route('contract.index')->withSuccess('Metadata restored successfully');
+                return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
             } catch (\Exception $e) {
                 $this->db->rollBack();
 
-                return redirect()->route('contract.index')->withSuccess('Metadata restore error');
-            }
-        }
-
-        return redirect()->route('contract.index')->withSuccess('Access denied');
-    }
-
-    public function updateMetadata()
-    {
-        if(auth()->user()->isAdmin()) {
-            try {
-                $this->db->beginTransaction();
-                $this->contract->updateMetadata();
-                $this->db->commit();
-
-                return redirect()->route('contract.index')->withSuccess('Metadata updated successfully');
-            } catch (\Exception $e) {
-                $this->db->rollBack();
-
-                return redirect()->route('contract.index')->withSuccess('Metadata update error');
+                return redirect()->route('contract.index')->withSuccess('Elastic update error');
             }
         }
 

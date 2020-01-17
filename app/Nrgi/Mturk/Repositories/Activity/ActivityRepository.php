@@ -40,6 +40,7 @@ class ActivityRepository implements ActivityRepositoryInterface
      * Save activity
      *
      * @param $activity
+     *
      * @return bool
      */
     public function save($activity)
@@ -57,6 +58,7 @@ class ActivityRepository implements ActivityRepositoryInterface
 
     /**
      * @param $limit
+     *
      * @return Activity
      */
     public function paginate($filter, $limit)
@@ -79,6 +81,7 @@ class ActivityRepository implements ActivityRepositoryInterface
      * Count Activity by user
      *
      * @param $user_id
+     *
      * @return int
      */
     public function countByUser($user_id)
@@ -88,8 +91,10 @@ class ActivityRepository implements ActivityRepositoryInterface
 
     /**
      * Get the first row where status is published
+     *
      * @param $id
      * @param $element
+     *
      * @return activityLog
      */
     public function getPublishedInfo($id, $element)
@@ -108,15 +113,19 @@ class ActivityRepository implements ActivityRepositoryInterface
 
     /**
      * write brief description
+     *
      * @param $id
      * @param $element
+     *
      * @return activityLog
      */
     public function getElementState($id, $element)
     {
         $query = $this->activityLog->select('*')
                                    ->where('contract_id', $id)
-                                   ->whereRaw("(message_params->>'new_status' = 'published' or message_params->>'new_status' = 'unpublished' )")
+                                   ->whereRaw(
+                                       "(message_params->>'new_status' = 'published' or message_params->>'new_status' = 'unpublished' )"
+                                   )
                                    ->whereRaw(sprintf("message_params->>'type' = '%s'", $element))
                                    ->orderBy("created_at", "desc");
 
@@ -124,5 +133,26 @@ class ActivityRepository implements ActivityRepositoryInterface
         $result = $query->first();
 
         return $result;
+    }
+
+    /**
+     * Returns published date for contracts
+     *
+     * @param bool $recent
+     *
+     * @return mixed
+     */
+    public function getPublishedContracts($recent = false)
+    {
+        $where_raw = "message_params->>'new_status'='published'";
+
+        if ($recent) {
+            $where_raw .= " and created_at > CURRENT_DATE - INTERVAL '3 months'";
+        }
+
+        return $this->activityLog->selectRaw("contract_id, max(created_at) as published_at")
+                                 ->whereRaw($where_raw)
+                                 ->groupBy("contract_id")
+                                 ->get();
     }
 }
