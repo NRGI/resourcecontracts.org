@@ -17,7 +17,9 @@
     "pda/pheanstalk": "^3.0",
     "guzzlehttp/guzzle": "~5.0",
     "phpoffice/phpword": "dev-master",
-    "maatwebsite/excel": "~2.0"
+    "maatwebsite/excel": "~2.0",
+    "ext-json": "*",
+    "ext-http": "*"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",

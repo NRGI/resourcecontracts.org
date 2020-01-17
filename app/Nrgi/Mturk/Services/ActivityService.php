@@ -103,6 +103,10 @@ class ActivityService
             $data[$element] = 'unpublished';
             if (isset($type->message_params['new_status']) && $type->message_params['new_status'] == 'published') {
                 $data[$element] = 'published';
+
+                if($element=='metadata') {
+                    $data['metadata_published_at'] = $type->created_at;
+                }
             } else {
                 if ($element == 'annotation') {
                     $data[$element] = $this->annotation->getStatus($id);
@@ -111,5 +115,23 @@ class ActivityService
         }
 
         return $data;
+    }
+
+    /**
+     * Returns published date for contracts
+     *
+     * @param bool $recent
+     *
+     * @return array
+     */
+    public function getPublishedContracts($recent = false)
+    {
+        $recent_published_contracts = $this->activity->getPublishedContracts($recent)->toArray();
+
+        return array_reduce($recent_published_contracts, function ($contract, $recent_published_contract) {
+            $contract[$recent_published_contract['contract_id']] = $recent_published_contract['published_at'];
+
+            return $contract;
+        });
     }
 }
