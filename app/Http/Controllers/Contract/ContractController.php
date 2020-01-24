@@ -523,7 +523,7 @@ class ContractController extends Controller
     {
         if (auth()->user()->isAdmin()) {
             try {
-                $uri              = '/contract/published_at/update';
+                $uri              = 'contract/published_at/update';
                 $url              = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $recent_contracts = json_encode($this->activity->getPublishedContracts(true));
                 $request          = $this->http->post($url, null, ['recent_contracts' => $recent_contracts]);
