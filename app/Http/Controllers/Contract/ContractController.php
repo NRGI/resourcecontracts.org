@@ -12,11 +12,12 @@ use App\Nrgi\Services\Contract\CountryService;
 use App\Nrgi\Services\Contract\Discussion\DiscussionService;
 use App\Nrgi\Services\Download\DownloadService;
 use App\Nrgi\Services\Language\LanguageService;
+use Guzzle\Http\Client;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Guzzle\Http\Client;
+
 /**
  * Class ContractController
  * @property DownloadService downloadService
@@ -522,15 +523,15 @@ class ContractController extends Controller
     {
         if (auth()->user()->isAdmin()) {
             try {
-                $uri = '/contract/published_at/update';
-                $url              = sprintf('%s%s',rtrim(env('ELASTIC_SEARCH_URL')),$uri);
+                $uri              = '/contract/published_at/update';
+                $url              = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $recent_contracts = json_encode($this->activity->getPublishedContracts(true));
-                $request          = $this->http->post($url, null, ['recent_contracts'=>$recent_contracts]);
+                $request          = $this->http->post($url, null, ['recent_contracts' => $recent_contracts]);
                 $request->send();
 
                 return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
             } catch (\Exception $e) {
-                $this->db->rollBack();
+                file_put_contents('published_at_error.log', $e->getMessage());
 
                 return redirect()->route('contract.index')->withSuccess('Elastic update error');
             }
