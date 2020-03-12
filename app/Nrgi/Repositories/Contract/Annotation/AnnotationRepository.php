@@ -336,4 +336,22 @@ class AnnotationRepository implements AnnotationRepositoryInterface
         return count($result);
     }
 
+    /**
+     * Return all the annotations
+     * @param category
+     *
+     * @return Collection
+     */
+    public function getAllByAnnotation($category) 
+    {
+        return $this->annotation
+                ->whereRaw($this->db->raw("contract_id in (select contract_id from contract_annotations where category='".$category."')"))
+                ->get(['id', 'contract_id','category'])->map(function($contract) {
+                    $contract->category_key = $contract->category;
+                    $contract->category =  (isset($contract->category)) ? getCategoryName($contract->category) : "";
+                    return $contract;
+                })->groupBy('contract_id');
+    }
+
+
 }
