@@ -539,4 +539,30 @@ class ContractController extends Controller
 
         return redirect()->route('contract.index')->withSuccess('Access denied');
     }
+
+    /**
+     * Updates annotation category name "Community consultation " to 
+     * "Community consultation" in elastic search
+     * @return mixed
+     */
+    public function updateAnnotationCategory()
+    {
+        if (auth()->user()->isAdmin()) {
+            try {
+                $uri              = 'contract/annotation_category/community_consultation/update';
+                $url              = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $annotations        = $this->annotation->getAllByAnnotation('community-consultation');
+                $request          = $this->http->post($url, null, ['annotations' => $annotations]);
+                $request->send();
+
+                return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
+            } catch (\Exception $e) {
+                file_put_contents('annotation_category-community_consultation_error.log', $e->getMessage());
+
+                return redirect()->route('contract.index')->withSuccess('Elastic update error');
+            }
+        }
+
+        return redirect()->route('contract.index')->withSuccess('Access denied');
+    }
 }

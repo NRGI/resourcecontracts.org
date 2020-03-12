@@ -499,4 +499,15 @@ class AnnotationService
 
         return $formData;
     }
+
+    /**
+     * Get all annotation by annotation category
+     * @param $category
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllByAnnotation($category)
+    {
+        return $this->annotation->getAllByAnnotation($category);
+    }
 }
