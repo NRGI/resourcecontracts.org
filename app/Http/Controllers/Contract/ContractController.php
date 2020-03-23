@@ -531,7 +531,7 @@ class ContractController extends Controller
 
                 return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
             } catch (\Exception $e) {
-                file_put_contents('published_at_error.log', $e->getMessage());
+                file_put_contents('published_at_error.log', $e->getMessage(), FILE_APPEND);
 
                 return redirect()->route('contract.index')->withSuccess('Elastic update error');
             }

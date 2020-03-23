@@ -127,7 +127,7 @@ class ActivityRepository implements ActivityRepositoryInterface
                                        "(message_params->>'new_status' = 'published' or message_params->>'new_status' = 'unpublished' )"
                                    )
                                    ->whereRaw(sprintf("message_params->>'type' = '%s'", $element))
-                                   ->orderBy("created_at", "desc");
+                                   ->orderBy("created_at", "asc");
 
 
         $result = $query->first();
@@ -150,7 +150,7 @@ class ActivityRepository implements ActivityRepositoryInterface
             $where_raw .= " and created_at > CURRENT_DATE - INTERVAL '3 months'";
         }
 
-        return $this->activityLog->selectRaw("contract_id, max(created_at) as published_at")
+        return $this->activityLog->selectRaw("contract_id, min(created_at) as published_at")
                                  ->whereRaw($where_raw)
                                  ->groupBy("contract_id")
                                  ->get();
