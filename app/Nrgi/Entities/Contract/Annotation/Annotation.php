@@ -95,7 +95,8 @@ class Annotation extends Model
 
         foreach ($lang->translation_lang() as $l) {
             if ($l['code'] != $lang->defaultLang()) {
-                $data[$l['code']] = isset($text->$l['code']) ? $text->$l['code'] : $this->text;
+                $code = $l['code'];
+                $data[$l['code']] = isset($text->$code) ? $text->$code : $this->text;
             }
         }
 

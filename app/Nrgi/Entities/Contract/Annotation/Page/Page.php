@@ -57,7 +57,8 @@ class Page extends Model
 
         foreach ($lang->translation_lang() as $l) {
             if ($l['code'] != $lang->defaultLang()) {
-                $data[$l['code']] = isset($article_reference->$l['code']) ? $article_reference->$l['code'] : $this->article_reference;
+                $code=$l['code'];
+                $data[$l['code']] = isset($article_reference->$code) ? $article_reference->$code : $this->article_reference;
             }
         }
 

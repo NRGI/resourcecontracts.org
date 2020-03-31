@@ -394,7 +394,7 @@ var AnnotationsList = React.createClass({
             for (var annotation_id in annotationsCollectionForList) {
                 annotationsList.push((<AnnotationItem
                     showClusterAnyway={showClusterAnyway}
-                    key={i}
+                    key={annotationsCollectionForList[annotation_id][0].cid}
                     contractApp={this.props.contractApp}
                     annotationsCollection={this.state.annotations}
                     annotation={annotationsCollectionForList[annotation_id]}/>));
