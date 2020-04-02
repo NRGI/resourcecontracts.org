@@ -325,11 +325,10 @@ class TaskService
 
     /**
      * Approve Task
-     *
      * @param $contract_id
      * @param $task_id
      *
-     * @return bool
+     * @return array|bool|mixed
      */
     public function approveTask($contract_id, $task_id)
     {
@@ -381,6 +380,36 @@ class TaskService
             if ($response['http_code'] == 200) {
                 return $this->updateApproveTask($task);
             }
+
+            if ($response['http_code'] == 400) {
+                if(isset($response['response']) && isset($response['response']['TurkErrorCode'])) {
+                    if($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.InvalidAssignmentState') {
+                        $assignment = $this->turk->getAssignment($task->assignments->assignment->assignment_id);
+
+                        if($assignment['http_code']==200
+                            && isset($assignment['response'])
+                            && isset($assignment['response']['Assignment'])
+                            && isset($assignment['response']['Assignment']['AssignmentStatus'])
+                            && $assignment['response']['Assignment']['AssignmentStatus'] == 'Approved'
+                        ) {
+                            $this->updateApproveTask($task);
+
+                            return ['result' => true, 'message' => trans('mturk.action.has_already_approved')];
+                        }
+                    }
+                    elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.AssignmentDoesNotExist') {
+                        return ['result' => false, 'message' => trans('mturk.action.assignment_does_not_exists')];
+                    }
+                    elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.HITDoesNotExist') {
+                        return ['result' => false, 'message' => trans('mturk.action.hit_does_not_exists')];
+                    }
+
+                    return ['result' => false, 'message' => $response['response']['TurkErrorCode']];
+                }
+
+                return false;
+            }
+
         }
 
         return false;
@@ -766,6 +795,7 @@ class TaskService
         }
 
         $status = true;
+
         foreach ($tasks as $task) {
             if (!$this->approveTask($task->contract_id, $task->id)) {
                 $status = false;

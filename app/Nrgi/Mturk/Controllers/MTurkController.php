@@ -156,7 +156,9 @@ class MTurkController extends Controller
             return redirect()->back()->withSuccess($message);
         }
 
-        return redirect()->back()->withError(trans('mturk.action.approve_fail'));
+        $error_msg = isset($status['message']) ? $status['message'] : trans('mturk.action.approve_fail');
+
+        return redirect()->back()->withError($error_msg);
     }
 
     /**

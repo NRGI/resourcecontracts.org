@@ -93,5 +93,8 @@
          'reject_reason'      => 'Please enter reject reason for the assignment',
          'already_approved'   => 'HIT already approved on Mechanical Turk since no action was taken for 30 days after assignment submission.',
          'already_approved_and_reset'   => 'HIT already approved on Mechanical Turk since no action was taken for 30 days after assignment submission. :reset to reset HIT',
+         'has_already_approved'   => 'HIT has already been approved ',
+         'assignment_does_not_exists'   => 'Assignment does not exists',
+         'hit_does_not_exists' => 'Hit does not exits'
      ]
  ];

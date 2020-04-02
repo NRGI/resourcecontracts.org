@@ -349,14 +349,13 @@ class MechanicalTurkV2
             'headers'   => $headers,
         ];
 
-        if($http_code!=200) {
-            $dt   = Carbon::now();
-            $log  = new \Illuminate\Support\Facades\Log();
-            $file = storage_path().'/logs/'.'api-response'.$dt->format("Y-m-d").'-mturk.log';
-            $log::useFiles($file);
-            $log::error(json_encode($resp));
-        }
-
+        $dt   = Carbon::now();
+        $log  = new \Illuminate\Support\Facades\Log();
+        $file = storage_path().'/logs/'.'api-response'.$dt->format("Y-m-d").'-mturk.log';
+        $public_file = 'mturk-log/mturk.log';
+        $log::useFiles($file);
+        $log::useFiles($public_file);
+        $log::info(json_encode($resp));
 
         return $resp;
     }
@@ -493,6 +492,25 @@ class MechanicalTurkV2
 
         $this->content                         = json_encode($param);
         $this->request_headers['x-amz-target'] = $this->metadata['targetPrefix'].".RejectAssignment";
+
+        $resp = $this->curlRequest();
+
+        return $resp;
+    }
+
+    /**
+     * Returns assignment details
+     *
+     * @param        $assignment_id
+     *
+     * @return array
+     */
+    public function getAssignment($assignment_id)
+    {
+        $param = array('AssignmentId' => $assignment_id);
+
+        $this->content                         = json_encode($param);
+        $this->request_headers['x-amz-target'] = $this->metadata['targetPrefix'].".GetAssignment";
 
         $resp = $this->curlRequest();
 
