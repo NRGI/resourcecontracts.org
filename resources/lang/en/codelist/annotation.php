@@ -136,7 +136,7 @@ return [
         "2-community-and-social-obligations"                                                                                              => "2. Community and social obligations",
         "local-development-agreement"                                                                                                     => "Local development agreement",
         "sacred-cultural-or-historical-sites"                                                                                             => "Sacred, cultural, or historical sites",
-        "community-consultation"                                                                                                          => "Community consultation ",
+        "community-consultation"                                                                                                          => "Community consultation",
         "training"                                                                                                                        => "Training",
         "local-employment"                                                                                                                => "Local employment",
         "local-procurement"                                                                                                               => "Local procurement",

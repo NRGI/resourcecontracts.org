@@ -132,4 +132,12 @@ interface AnnotationRepositoryInterface
      */
     public function getAllByContractId($contract_id);
 
+    /**
+     * Get all annotation by category
+     * @param $category
+     *
+     * @return Collection
+     */
+    public function getAllByAnnotation($category);
+
 }
