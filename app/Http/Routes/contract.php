@@ -29,5 +29,7 @@ $router->group(
         $router->get('contract/restore/meta/data', ['as' => 'contract.update.meta.data', 'uses' => 'ContractController@restoreMetadata']);
         $router->get('contract/elasticsearch/update/published_at', ['as' => 'contract.elasticsearch.update.published_at', 'uses' => 'ContractController@updatePublishedAtIndex']);
         $router->get('contract/elasticsearch/update/annotation_category/community_consultation', ['as' => 'contract.elasticsearch.update.annotation_category', 'uses' => 'ContractController@updateAnnotationCategory']);
+        $router->get('contract/elasticsearch/update/cluster', ['as' => 'contract.elasticsearch.update.size-of-concession-area.cluster', 'uses' => 'ContractController@updateAnnotationCluster']);
+        $router->get('contract/elasticsearch/restore/cluster/{key}', ['as' => 'contract.elasticsearch.update.size-of-concession-area.cluster', 'uses' => 'ContractController@restoreAnnotationCluster']);
     }
 );
