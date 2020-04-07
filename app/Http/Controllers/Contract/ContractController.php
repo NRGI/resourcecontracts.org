@@ -541,7 +541,7 @@ class ContractController extends Controller
     }
 
     /**
-     * Updates annotation category name "Community consultation " to 
+     * Updates annotation category name "Community consultation " to
      * "Community consultation" in elastic search
      * @return mixed
      */
@@ -549,10 +549,10 @@ class ContractController extends Controller
     {
         if (auth()->user()->isAdmin()) {
             try {
-                $uri              = 'contract/annotation_category/community_consultation/update';
-                $url              = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
-                $annotations        = $this->annotation->getAllByAnnotation('community-consultation');
-                $request          = $this->http->post($url, null, ['annotations' => $annotations]);
+                $uri         = 'contract/annotation_category/community_consultation/update';
+                $url         = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $annotations = $this->annotation->getAllByAnnotation('community-consultation');
+                $request     = $this->http->post($url, null, ['annotations' => $annotations]);
                 $request->send();
 
                 return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
@@ -560,6 +560,58 @@ class ContractController extends Controller
                 file_put_contents('annotation_category-community_consultation_error.log', $e->getMessage());
 
                 return redirect()->route('contract.index')->withSuccess('Elastic update error');
+            }
+        }
+
+        return redirect()->route('contract.index')->withSuccess('Access denied');
+    }
+
+    /**
+     * Request elastic server to update annotation cluster
+     *
+     * @return mixed
+     */
+    public function updateAnnotationCluster()
+    {
+        if (auth()->user()->isAdmin()) {
+            try {
+                $uri              = 'contract/cluster/update';
+                $url              = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $request          = $this->http->post($url);
+                $request->send();
+
+                return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
+            } catch (\Exception $e) {
+                file_put_contents('cluster_update_error.log', $e->getMessage(), FILE_APPEND);
+
+                return redirect()->route('contract.index')->withSuccess('Elastic update error');
+            }
+        }
+
+        return redirect()->route('contract.index')->withSuccess('Access denied');
+    }
+
+    /**
+     * Request elastic server to restore annotation cluster
+     *
+     * @param $key
+     *
+     * @return mixed
+     */
+    public function restoreAnnotationCluster($key)
+    {
+        if (auth()->user()->isAdmin()) {
+            try {
+                $uri              = 'contract/cluster/restore';
+                $url              = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $request          = $this->http->post($url, null, ['key'=>$key]);
+                $request->send();
+
+                return redirect()->route('contract.index')->withSuccess('Elastic restored successfully');
+            } catch (\Exception $e) {
+                file_put_contents('cluster_restore_error.log', $e->getMessage(), FILE_APPEND);
+
+                return redirect()->route('contract.index')->withSuccess('Elastic restored error');
             }
         }
 
