@@ -93,6 +93,9 @@
          'sent_fail_to_rc'    => "Impossible d'envoyer le texte au RC",
          'reject_reason'      => "Veuillez mentionner la raison du rejet de la mission",
          'already_approved'   => "HIT déjà approuvée sur le Turc Mécanique vu qu'aucune action n'a été entreprise après 30 jours de l'envoi de la mission.",
-         'already_approved_and_reset'   => "HIT déjà approuvée sur le Turc Mécanique vu qu'aucune action n'a été entreprise après 30 jours de l'envoi de la mission: Réinitialisez pour la réinitialisation des HIT."
+         'already_approved_and_reset'   => "HIT déjà approuvée sur le Turc Mécanique vu qu'aucune action n'a été entreprise après 30 jours de l'envoi de la mission: Réinitialisez pour la réinitialisation des HIT.",
+         'has_already_approved'   => 'HIT a déjà été approuvé',
+         'assignment_does_not_exists'   => "L'affectation n'existe pas",
+         'hit_does_not_exists' => 'Hit ne sort pas'
      ]
  ];
