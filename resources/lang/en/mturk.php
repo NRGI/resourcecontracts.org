@@ -95,6 +95,9 @@
          'already_approved_and_reset'   => 'HIT already approved on Mechanical Turk since no action was taken for 30 days after assignment submission. :reset to reset HIT',
          'has_already_approved'   => 'HIT has already been approved ',
          'assignment_does_not_exists'   => 'Assignment does not exists',
-         'hit_does_not_exists' => 'Hit does not exits'
+         'hit_does_not_exists' => 'Hit does not exits',
+         'hit_approved_cannot_be_rejected' => 'Hit has been approved already and cannot be rejected. Please approve it once again to update in database',
+         'has_already_rejected'   => 'HIT has already been rejected',
+         'hit_rejected_cannot_be_approved' => 'Hit has been rejected and cannot be approved. Please reject it once again to update in database',
      ]
  ];
