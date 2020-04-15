@@ -325,6 +325,7 @@ class TaskService
 
     /**
      * Approve Task
+     *
      * @param $contract_id
      * @param $task_id
      *
@@ -382,25 +383,27 @@ class TaskService
             }
 
             if ($response['http_code'] == 400) {
-                if(isset($response['response']) && isset($response['response']['TurkErrorCode'])) {
-                    if($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.InvalidAssignmentState') {
+                if (isset($response['response']) && isset($response['response']['TurkErrorCode'])) {
+                    if ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.InvalidAssignmentState') {
                         $assignment = $this->turk->getAssignment($task->assignments->assignment->assignment_id);
 
-                        if($assignment['http_code']==200
+                        if ($assignment['http_code'] == 200
                             && isset($assignment['response'])
                             && isset($assignment['response']['Assignment'])
-                            && isset($assignment['response']['Assignment']['AssignmentStatus'])
-                            && $assignment['response']['Assignment']['AssignmentStatus'] == 'Approved'
-                        ) {
-                            $this->updateApproveTask($task);
+                            && isset($assignment['response']['Assignment']['AssignmentStatus'])) {
 
-                            return ['result' => true, 'message' => trans('mturk.action.has_already_approved')];
+                            if($assignment['response']['Assignment']['AssignmentStatus'] == 'Approved') {
+                                $this->updateApproveTask($task);
+
+                                return ['result' => true, 'message' => trans('mturk.action.has_already_approved')];
+                            }elseif ($assignment['response']['Assignment']['AssignmentStatus'] == 'Rejected') {
+                                return ['result' => true, 'message' => trans('mturk.action.hit_rejected_cannot_be_approved')];
+                            }
                         }
                     }
                     elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.AssignmentDoesNotExist') {
                         return ['result' => false, 'message' => trans('mturk.action.assignment_does_not_exists')];
-                    }
-                    elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.HITDoesNotExist') {
+                    } elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.HITDoesNotExist') {
                         return ['result' => false, 'message' => trans('mturk.action.hit_does_not_exists')];
                     }
 
@@ -416,13 +419,36 @@ class TaskService
     }
 
     /**
+     * Update reject status for task in DB
+     * 
+     * @param $task
+     * @param $contract_id
+     *
+     * @return mixed
+     */
+    public function rejectTaskInDb($task, $contract_id)
+    {
+        $assignments                     = $task->assignments;
+        $assignments->assignment->status = 'Rejected';
+        $task->assignments               = $assignments;
+        $task->approved                  = Task::REJECTED;
+        $this->logger->info(
+            sprintf('Assignment rejected for page no.%s', $task->page_no),
+            ['Task' => $task->toArray()]
+        );
+        $this->logger->mTurkActivity('mturk.log.reject', null, $contract_id, $task->page_no);
+
+        return $task->save();
+    }
+
+    /**
      * Reject Task
      *
      * @param $contract_id
      * @param $task_id
      * @param $message
      *
-     * @return bool
+     * @return array|bool
      */
     public function rejectTask($contract_id, $task_id, $message)
     {
@@ -488,17 +514,39 @@ class TaskService
             }
 
             if ($response['http_code'] == 200) {
-                $assignments                     = $task->assignments;
-                $assignments->assignment->status = 'Rejected';
-                $task->assignments               = $assignments;
-                $task->approved                  = Task::REJECTED;
-                $this->logger->info(
-                    sprintf('Assignment rejected for page no.%s', $task->page_no),
-                    ['Task' => $task->toArray()]
-                );
-                $this->logger->mTurkActivity('mturk.log.reject', null, $contract_id, $task->page_no);
+                return $this->rejectTaskInDb($task, $contract_id);
+            }
 
-                return $task->save();
+            if ($response['http_code'] == 400) {
+                if (isset($response['response']) && isset($response['response']['TurkErrorCode'])) {
+                    if ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.InvalidAssignmentState') {
+                        $assignment = $this->turk->getAssignment($task->assignments->assignment->assignment_id);
+
+                        if ($assignment['http_code'] == 200
+                            && isset($assignment['response'])
+                            && isset($assignment['response']['Assignment'])
+                            && isset($assignment['response']['Assignment']['AssignmentStatus'])) {
+
+                            if ($assignment['response']['Assignment']['AssignmentStatus'] == 'Approved') {
+                                return ['result'  => true,
+                                        'message' => trans('mturk.action.hit_approved_cannot_be_rejected'),
+                                ];
+                            } elseif ($assignment['response']['Assignment']['AssignmentStatus'] == 'Rejected') {
+                                $this->rejectTaskInDb($task, $contract_id);
+
+                                return ['result' => true, 'message' => trans('mturk.action.has_already_rejected')];
+                            }
+                        }
+                    } elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.AssignmentDoesNotExist') {
+                        return ['result' => false, 'message' => trans('mturk.action.assignment_does_not_exists')];
+                    } elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.HITDoesNotExist') {
+                        return ['result' => false, 'message' => trans('mturk.action.hit_does_not_exists')];
+                    }
+
+                    return ['result' => false, 'message' => $response['response']['TurkErrorCode']];
+                }
+
+                return false;
             }
         }
 
@@ -844,7 +892,7 @@ class TaskService
     protected function getFormattedAssignment($assignment)
     {
         $task_assignment = $assignment['Assignments'][0];
-        $data             = [];
+        $data            = [];
 
         $answerObj = json_decode(json_encode(new \SimpleXMLElement($task_assignment['Answer']), true));
         $answer    = '';

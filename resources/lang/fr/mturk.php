@@ -96,6 +96,9 @@
          'already_approved_and_reset'   => "HIT déjà approuvée sur le Turc Mécanique vu qu'aucune action n'a été entreprise après 30 jours de l'envoi de la mission: Réinitialisez pour la réinitialisation des HIT.",
          'has_already_approved'   => 'HIT a déjà été approuvé',
          'assignment_does_not_exists'   => "L'affectation n'existe pas",
-         'hit_does_not_exists' => 'Hit ne sort pas'
+         'hit_does_not_exists' => 'Hit ne sort pas',
+         'hit_approved_cannot_be_rejected' => "Le hit a déjà été approuvé et ne peut pas être rejeté. Veuillez l'approuver à nouveau pour mettre à jour dans la base de données",
+         'has_already_rejected'   => 'HIT a déjà été rejeté',
+         'hit_rejected_cannot_be_approved' => "Le hit a été rejeté et ne peut pas être approuvé. Veuillez le rejeter à nouveau pour mettre à jour dans la base de données",
      ]
  ];
