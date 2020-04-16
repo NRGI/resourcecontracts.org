@@ -129,6 +129,28 @@ Annotator.Plugin.PdfAnnotator = (function (_super) {
         $(document).on('click', '.annotator-resize-action button.save', function (e) {
             var el = $(this).parent().parent();
             var annotator = el.data('annotator');
+
+            $.each(TRANSLATION_LANG, function (i, l) {
+                var code = l.code;
+
+                annotator['article_reference_' + code] = annotator.article_reference;
+                annotator['text_' + code] = annotator.text;
+
+                if (code != 'en') {
+                  annotator['article_reference_' + code] =
+                    annotator.article_reference_locale &&
+                    typeof annotator.article_reference_locale[code] != 'undefined'
+                    ? annotator.article_reference_locale[code]
+                    : '';
+                  annotator['text_' + code] =
+                    annotator.text_locale &&
+                    typeof annotator.text_locale[code] != 'undefined'
+                    ? annotator.text_locale[code]
+                    : '';
+                }
+
+            });
+
             var geometry = [];
             geometry.y = parseInt(el.css('top'));
             geometry.x = parseInt(el.css('left'));
