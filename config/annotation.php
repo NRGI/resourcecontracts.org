@@ -29,7 +29,7 @@ return [
         "term"                                                                                                                            => "General",
         "renewal-or-extension-of-term"                                                                                                    => "General",
         "resources"                                                                                                                       => "General",
-        "size-of-concession-area"                                                                                                         => "Legal Rules",
+        "size-of-concession-area"                                                                                                         => "General",
         "2-community-and-social-obligations"                                                                                              => "Legal Rules",
         "local-development-agreement"                                                                                                     => "Social",
         "sacred-cultural-or-historical-sites"                                                                                             => "Social",

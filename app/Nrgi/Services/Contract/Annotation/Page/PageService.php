@@ -120,6 +120,4 @@ class PageService
 
         return $page;
     }
-
-
 }
