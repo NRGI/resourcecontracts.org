@@ -26,7 +26,7 @@ class TaskRepository implements TaskRepositoryInterface
     /**
      * @param Task $task
      */
-    public function __construct (Task $task)
+    public function __construct(Task $task)
     {
         $this->task = $task;
     }
@@ -35,9 +35,10 @@ class TaskRepository implements TaskRepositoryInterface
      * Create Tasks in MTurk
      *
      * @param array $tasks
+     *
      * @return bool
      */
-    public function createTasks ($tasks)
+    public function createTasks($tasks)
     {
         $tasks_collection = $tasks->toArray();
 
@@ -45,7 +46,7 @@ class TaskRepository implements TaskRepositoryInterface
         foreach ($tasks_collection as $key => $value) {
             $tasks[] = array_only($value, ['contract_id', 'page_no', 'pdf_url']) + [
                     'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s')
+                    'updated_at' => date('Y-m-d H:i:s'),
                 ];
         }
 
@@ -58,9 +59,10 @@ class TaskRepository implements TaskRepositoryInterface
      * @param $contract_id
      * @param $page_no
      * @param $update
+     *
      * @return mixed
      */
-    public function update ($contract_id, $page_no, $update)
+    public function update($contract_id, $page_no, $update)
     {
         return $this->task->where('contract_id', $contract_id)
                           ->where('page_no', $page_no)
@@ -69,11 +71,12 @@ class TaskRepository implements TaskRepositoryInterface
 
     /**
      * Get All Task by Contract ID
+     *
      * @param $contract_id
      *
      * @return Collection
      */
-    public function getAll ($contract_id)
+    public function getAll($contract_id)
     {
         return $this->task->where('contract_id', $contract_id)->get();
     }
@@ -83,9 +86,10 @@ class TaskRepository implements TaskRepositoryInterface
      *
      * @param $contract_id
      * @param $task_id
+     *
      * @return task
      */
-    public function getTask ($contract_id, $task_id)
+    public function getTask($contract_id, $task_id)
     {
         return $this->task->where('contract_id', $contract_id)->where('id', $task_id)->first();
     }
@@ -94,9 +98,10 @@ class TaskRepository implements TaskRepositoryInterface
      * Get Total Hits
      *
      * @param $contact_id
+     *
      * @return int
      */
-    public function getTotalHits ($contact_id)
+    public function getTotalHits($contact_id)
     {
         return $this->task->where('contract_id', $contact_id)
                           ->where('hit_id', '!=', '')
@@ -108,9 +113,10 @@ class TaskRepository implements TaskRepositoryInterface
      * Get Total by status
      *
      * @param $contract_id
+     *
      * @return array
      */
-    public function getTotalByStatus ($contract_id)
+    public function getTotalByStatus($contract_id)
     {
         return [
             'total_completed'        => $this->task->completed()->where('contract_id', $contract_id)->count(),
@@ -125,11 +131,12 @@ class TaskRepository implements TaskRepositoryInterface
 
     /**
      * Get All Approval pending Task by Contract ID
+     *
      * @param $contract_id
      *
      * @return Collection
      */
-    public function getApprovalPendingTask ($contract_id)
+    public function getApprovalPendingTask($contract_id)
     {
         return $this->task->completed()->approvalPending()->where('contract_id', $contract_id)->get();
     }
@@ -139,9 +146,13 @@ class TaskRepository implements TaskRepositoryInterface
      *
      * @return Collection
      */
-    public function getExpired ()
+    public function getExpired()
     {
-        return $this->task->whereRaw("status='0' AND (hit_id is null OR date(now()) >= date(created_at + interval '".config('mturk.hitRenewDay')."' day))")->get();
+        return $this->task->whereRaw(
+            "status='0' AND (hit_id is null OR date(now()) >= date(created_at + interval '".config(
+                'mturk.hitRenewDay'
+            )."' day))"
+        )->get();
     }
 
     /**
@@ -152,7 +163,7 @@ class TaskRepository implements TaskRepositoryInterface
      *
      * @return Collection
      */
-    public function allTasks ($filter, $perPage = null)
+    public function allTasks($filter, $perPage = null)
     {
         $status   = $filter['status'];
         $approved = $filter['approved'];
@@ -187,9 +198,52 @@ class TaskRepository implements TaskRepositoryInterface
      *
      * @return mixed
      */
-    public function getPageCount ()
+    public function getPageCount()
     {
         return $this->task->select('page_no')->orderBy('page_no', 'ASC')->get()->toArray();
 
+    }
+
+    /**
+     * Returns mturk tasks which need to be reset. Temporary function. Remove after user
+     *
+     * @param $contract_id
+     * @param $hit_id
+     *
+     * @return mixed
+     */
+    public function getMturkTask($contract_id, $hit_id)
+    {
+        return $this->task->whereRaw("contract_id=$contract_id and hit_id='$hit_id'")->get()->first()->toArray();
+    }
+
+    /**
+     * Resets the hits. Temporary function. Remove after user
+     *
+     * @param $contract_id
+     * @param $hit_id
+     * @param $update
+     *
+     * @return mixed
+     */
+    public function resetHitCmd($contract_id, $hit_id, $update)
+    {
+        return $this->task->where('hit_id', $hit_id)
+                          ->where('contract_id', $contract_id)
+                          ->update($update);
+    }
+
+    /**
+     * Restores the reset hits. Temporary function. Remove after user
+     *
+     * @param $id
+     * @param $update
+     *
+     * @return mixed
+     */
+    public function restoreHitId($id, $update)
+    {
+        return $this->task->where('id', $id)
+                          ->update($update);
     }
 }

@@ -392,16 +392,18 @@ class TaskService
                             && isset($assignment['response']['Assignment'])
                             && isset($assignment['response']['Assignment']['AssignmentStatus'])) {
 
-                            if($assignment['response']['Assignment']['AssignmentStatus'] == 'Approved') {
+                            if ($assignment['response']['Assignment']['AssignmentStatus'] == 'Approved') {
                                 $this->updateApproveTask($task);
 
                                 return ['result' => true, 'message' => trans('mturk.action.has_already_approved')];
-                            }elseif ($assignment['response']['Assignment']['AssignmentStatus'] == 'Rejected') {
-                                return ['result' => true, 'message' => trans('mturk.action.hit_rejected_cannot_be_approved')];
+                            } elseif ($assignment['response']['Assignment']['AssignmentStatus'] == 'Rejected') {
+                                return [
+                                    'result'  => true,
+                                    'message' => trans('mturk.action.hit_rejected_cannot_be_approved'),
+                                ];
                             }
                         }
-                    }
-                    elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.AssignmentDoesNotExist') {
+                    } elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.AssignmentDoesNotExist') {
                         return ['result' => false, 'message' => trans('mturk.action.assignment_does_not_exists')];
                     } elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.HITDoesNotExist') {
                         return ['result' => false, 'message' => trans('mturk.action.hit_does_not_exists')];
@@ -420,7 +422,7 @@ class TaskService
 
     /**
      * Update reject status for task in DB
-     * 
+     *
      * @param $task
      * @param $contract_id
      *
@@ -528,8 +530,9 @@ class TaskService
                             && isset($assignment['response']['Assignment']['AssignmentStatus'])) {
 
                             if ($assignment['response']['Assignment']['AssignmentStatus'] == 'Approved') {
-                                return ['result'  => true,
-                                        'message' => trans('mturk.action.hit_approved_cannot_be_rejected'),
+                                return [
+                                    'result'  => true,
+                                    'message' => trans('mturk.action.hit_approved_cannot_be_rejected'),
                                 ];
                             } elseif ($assignment['response']['Assignment']['AssignmentStatus'] == 'Rejected') {
                                 $this->rejectTaskInDb($task, $contract_id);
@@ -948,5 +951,89 @@ class TaskService
         $this->logger->mTurkActivity('mturk.log.approve', null, $task->contract_id, $task->page_no);
 
         return $task->save();
+    }
+
+    /**
+     * Resets the hit. Temporary function. Remove after user
+     *
+     * @return array
+     */
+    public function resetHitCommand()
+    {
+        $map_ids     = [
+            '3SV8KD29L4G4QF224QWS9KI9Z84ZKA' => 3881,
+            '36U4VBVNQO19RKLNON6HT4P8SIJUR9' => 3880,
+            '3XT3KXP24ZMBWAS32IE5Z6A10I7I6E' => 3870,
+            '3J6BHNX0U9GA9QOJ12LYEXB0NCLKN1' => 3869,
+            '3B623HUYJ4ENU2EN095HNMCFFBZS82' => 3868,
+            '3BFNCI9LYKEFA7OP0PCA1E88DR0735' => 3868,
+            '3VI0PC2ZAY8YBBN21000JGJ7ABAXOK' => 3866,
+            '3HO4MYYR12CG51N3WZ3JI9YCWOQ6UU' => 3865,
+            '3S4TINXCC0BRY8K1W48IUJSFRMIBOD' => 3854,
+            '3A9LA2FRWS2OJU1FXN5AZ7M6X9QHXD' => 3854,
+            '338GLSUI43ZW9HOA8NBNXET13RASF6' => 3848,
+            '35ZRNT9RUIMMVDGOHBTCC0U33C2O3W' => 3845,
+            '3MG8450X2OYOF758BV2SO9PTQUIUPR' => 3845,
+            '30U1YOGZGAKZBXAEHHGX9EQGREUSDV' => 3836,
+            '3NOEP8XAU4QGWBZ3G0DF8GOXKCZPXE' => 3831,
+            '33W1NHWFYH93TYSPYZAKAB55HFIZTQ' => 3831,
+            '3T6SSHJUZFYRPUN44JNUW906AL0IIV' => 3829,
+            '3UAU495MIIG6U7T7WVPDZ9K3FBROUG' => 3829,
+            '3R6RZGK0XF0I10M9788GXMKO7SZYVQ' => 3828,
+            '3SNR5F7R92HF9PLI80X3BU2EISTIEM' => 3827,
+            '3511RHPADV268UYTF9EG2HTPGCHLR4' => 3826,
+            '3VMHWJRYHV445YA92XHAWMATI6CFX1' => 3825,
+            '33J5JKFMK6MPGPT4WOLG15P3HZOQ3H' => 3825,
+            '3BS6ERDL93VUOZCHA4DU89UO95HD6A' => 3821,
+            '3IVKZBIBJ0XGNDFG3DZN0Z5EISRHS4' => 3821,
+            '38G0E1M85MT1KR24X7BRU1EBDFWVUL' => 3820,
+            '3UAU495MIIG6U7T7WVPDZ9K3GPMUOA' => 3818,
+            '362E9TQF2HEDT3H9EVNRBXNQV88IG3' => 3817,
+            '3W0XM68YZPJ7VJHUWFN0HQYXKZC1KI' => 3815,
+            '3WRBLBQ2GRW2M80TA5YL5TNU8IA0GG' => 3793,
+            '3SBX2M1TKDBAYLC8W2QZBAH9S524Q7' => 3692,
+            '374UMBUHN5DQL5HF6LQCZD4K5IVTCN' => 3692,
+            '3AFT28WXLFQ1LGY72E0ZG6WSL26IOC' => 2885,
+            '3Q2T3FD0ONWYVAVC4VEZKW5Y7KU3MI' => 2885,
+            '35NNO802AVKJ3VYV1Z0M1HWNVS1INX' => 2885,
+            '37VE3DA4YU5H6RYESRDSAAVEEQ8BH8' => 2885,
+            '3TTPFEFXCT8B0FHJW0WKZU9M0PX6HI' => 2885,
+            '3J9UN9O9J3GCDAQUIBJO26FA1P00JO' => 2885,
+            '37SOB9Z0SSLEPSDR4JDKKJQ97F43LG' => 2885,
+        ];
+        $update_data = [
+            'hit_id'      => null,
+            'hit_type_id' => null,
+            'status'      => '0',
+            'approved'    => '0',
+            'assignments' => null,
+        ];
+        $backup_data = [];
+
+        foreach ($map_ids as $hit_id => $contract_id) {
+            $backup_data[] = $this->task->getMturkTask($contract_id, $hit_id);
+            $this->task->resetHitCmd($contract_id, $hit_id, $update_data);
+        }
+
+        return $backup_data;
+    }
+
+    /**
+     * Restores the hits. Temporary function. Remove after user
+     *
+     * @param $data
+     */
+    public function restoreHitCommand($data)
+    {
+        foreach ($data as $datum) {
+            $update_data = [
+                'hit_id'      => $datum['hit_id'],
+                'hit_type_id' => $datum['hit_type_id'],
+                'status'      => $datum['status'],
+                'approved'    => $datum['approved'],
+                'assignments' => json_encode($datum['assignments']),
+            ];
+            $this->task->restoreHitId($datum['id'], $update_data);
+        }
     }
 }

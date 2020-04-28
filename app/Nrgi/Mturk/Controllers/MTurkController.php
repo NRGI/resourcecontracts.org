@@ -7,6 +7,8 @@ use App\Nrgi\Mturk\Services\MTurkService;
 use App\Nrgi\Mturk\Services\TaskService;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\User\UserService;
+use Illuminate\Database\DatabaseManager;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -33,24 +35,31 @@ class MTurkController extends Controller
      * @var MTurkService
      */
     private $mturk;
+    /**
+     * @var DatabaseManager
+     */
+    private $db;
 
     /**
      * @param TaskService     $task
      * @param ContractService $contract
      * @param ActivityService $activity
      * @param MTurkService    $mturk
+     * @param DatabaseManager $db
      */
     public function __construct(
         TaskService $task,
         ContractService $contract,
         ActivityService $activity,
-        MTurkService $mturk
+        MTurkService $mturk,
+        DatabaseManager $db
     ) {
         $this->middleware('auth', ['except' => 'publicPage']);
         $this->task     = $task;
         $this->contract = $contract;
         $this->activity = $activity;
         $this->mturk    = $mturk;
+        $this->db    = $db;
     }
 
     /**
@@ -301,6 +310,60 @@ class MTurkController extends Controller
         $pdf          = $request->get('pdf');
 
         return view('mturk.public', compact('assignmentId', 'workerId', 'langCode', 'pdf'));
+    }
+
+    /**
+     * Resets the hit. Temporary function. Remove after user
+     *
+     * @return mixed
+     */
+    public function resetHitCmd()
+    {
+        if (auth()->user()->isAdmin()) {
+            $this->db->beginTransaction();
+
+            try {
+                $backup_tasks = $this->task->resetHitCommand();
+
+                file_put_contents('hit_bk.json', json_encode($backup_tasks), FILE_APPEND);
+                $this->db->commit();
+                return redirect()->route('contract.index')->withSuccess('HIT reset successfully');
+            } catch (\Exception $e) {
+                $this->db->rollBack();
+                file_put_contents('hit_reset_error.log', $e->getMessage(), FILE_APPEND);
+
+                return redirect()->route('contract.index')->withSuccess('HIT reset error');
+            }
+        }
+
+        return redirect()->route('contract.index')->withSuccess('Access denied');
+    }
+
+    /**
+     * Restores the hits. Temporary function. Remove after user
+     *
+     * @return mixed
+     */
+    public function restoreHitCmd()
+    {
+        if (auth()->user()->isAdmin()) {
+            $this->db->beginTransaction();
+            try {
+                $data = json_decode(file_get_contents('hit_bk.json'), true);
+                $this->task->restoreHitCommand($data);
+                $this->db->commit();
+                unlink('hit_bk.json');
+
+                return redirect()->route('contract.index')->withSuccess('HIT restored successfully');
+            } catch (\Exception $e) {
+                $this->db->rollBack();
+                file_put_contents('hit_restore_error.log', $e->getMessage(), FILE_APPEND);
+
+                return redirect()->route('contract.index')->withSuccess('HIT restored error');
+            }
+        }
+
+        return redirect()->route('contract.index')->withSuccess('Access denied');
     }
 
 }
