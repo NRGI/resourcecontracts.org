@@ -5,6 +5,7 @@
 .DS_STORE
 /public/uploads
 /public/data
+/public/mturk-log
 /storage/debugbar
 /log
 # Elastic Beanstalk Files
