@@ -55,6 +55,7 @@ return [
     "Copper"                           => "Copper",
     "Corundum"                         => "Corundum",
     "Cotton"                           => "Cotton",
+    "Coltan"                           => "Coltan",
     "Diamonds"                         => "Diamonds",
     "Diatomite"                        => "Diatomite",
     "Dolomite"                         => "Dolomite",
