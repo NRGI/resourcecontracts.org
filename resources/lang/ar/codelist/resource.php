@@ -55,6 +55,7 @@ return [
     "Copper"                           => "نحاس",
     "Corundum"                         => "كوروند",
     "Cotton"                           => "قطن",
+    "Coltan"                           => "كولتان",
     "Diamonds"                         => "ألماس",
     "Diatomite"                        => "تراب المشطورات",
     "Dolomite"                         => "دولوميت",
