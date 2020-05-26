@@ -502,7 +502,7 @@ class ContractRepository implements ContractRepositoryInterface
     }
 
     /**
-     * Return the Parent contract id
+     * Return the Supporting contract id
      *
      * @param $id
      *
@@ -511,6 +511,18 @@ class ContractRepository implements ContractRepositoryInterface
     public function getSupportingDocument($id)
     {
         return $this->document->select('supporting_contract_id')->where('contract_id', $id)->get()->toArray();
+    }
+
+    /**
+     * Return the parent contract id
+     *
+     * @param $id
+     *
+     * @return array
+     */
+    public function getParentDocument($id)
+    {
+        return $this->document->select('contract_id')->where('supporting_contract_id', $id)->get()->first();
     }
 
     /**
@@ -879,4 +891,65 @@ class ContractRepository implements ContractRepositoryInterface
         return true;
     }
 
+    /**
+     * Returns main contracts
+     * 
+     * @return mixed
+     */
+    public function getMainContracts()
+    {
+        $sql = "select id from contracts 
+                where id not in (select supporting_contract_id from supporting_contracts order by supporting_contract_id)
+                    and metadata_status='published'
+                order by id";
+        return DB::select($sql);
+    }
+
+    /**
+     * Returns child contracts
+     *
+     * @return mixed
+     */
+    public function getChildContracts()
+    {
+        $sql = "select id from contracts 
+            where id in (select supporting_contract_id from supporting_contracts order by supporting_contract_id)
+                and metadata_status='published'
+            order by id";
+
+        return DB::select($sql);
+
+    }
+
+    /**
+     * Returns parent child records
+     *
+     * @return mixed
+     */
+    public function getParentChild()
+    {
+        $sql = "select sc.contract_id as parent_contract_id, sc.supporting_contract_id as child_contract_id, metadata->>'open_contracting_id' as child_open_contracting_id
+                from supporting_contracts sc
+                left join contracts c on c.id=sc.supporting_contract_id
+                where sc.supporting_contract_id in (select id from contracts)
+                order by parent_contract_id
+                ";
+        return DB::select($sql);
+    }
+
+    /**
+     * Returns child parent records
+     *
+     * @return mixed
+     */
+    public function getChildParent()
+    {
+        $sql = "select sc.contract_id as parent_contract_id, sc.supporting_contract_id as child_contract_id, metadata->>'open_contracting_id' as parent_open_contracting_id
+                from supporting_contracts sc
+                left join contracts c on c.id=sc.contract_id
+                where sc.contract_id in (select id from contracts)
+                order by child_contract_id
+                ";
+        return DB::select($sql);
+    }
 }

@@ -575,9 +575,9 @@ class ContractController extends Controller
     {
         if (auth()->user()->isAdmin()) {
             try {
-                $uri              = 'contract/cluster/update';
-                $url              = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
-                $request          = $this->http->post($url);
+                $uri     = 'contract/cluster/update';
+                $url     = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $request = $this->http->post($url);
                 $request->send();
 
                 return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
@@ -602,9 +602,9 @@ class ContractController extends Controller
     {
         if (auth()->user()->isAdmin()) {
             try {
-                $uri              = 'contract/cluster/restore';
-                $url              = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
-                $request          = $this->http->post($url, null, ['key'=>$key]);
+                $uri     = 'contract/cluster/restore';
+                $url     = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $request = $this->http->post($url, null, ['key' => $key]);
                 $request->send();
 
                 return redirect()->route('contract.index')->withSuccess('Elastic restored successfully');
@@ -612,6 +612,158 @@ class ContractController extends Controller
                 file_put_contents('cluster_restore_error.log', $e->getMessage(), FILE_APPEND);
 
                 return redirect()->route('contract.index')->withSuccess('Elastic restored error');
+            }
+        }
+
+        return redirect()->route('contract.index')->withSuccess('Access denied');
+    }
+
+    /**
+     * Renders pages for master docs
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function getPaginatedMasterIndex()
+    {
+        if (auth()->user()->isAdmin()) {
+            try {
+                $uri                    = 'contract/supporting-doc/update';
+                $url                    = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $request_payload        = ['get_master_pages'=>true];
+                $request                = $this->http->post($url, null, $request_payload);
+                $resp                   = $request->send();
+                $resp_json              = $resp->json();
+
+                echo 'The total pages are: '.$resp_json['result'];
+
+                die();
+               
+            } catch (\Exception $e) {
+                file_put_contents('supporting_doc_error.log', $e->getMessage(), FILE_APPEND);
+
+                return redirect()->route('contract.index')->withErrors(
+                    'Elastic update error. View supporting_doc_error.log file'
+                );
+            }
+        }
+
+        return redirect()->route('contract.index')->withSuccess('Access denied');
+    }
+
+
+    /**
+     * Updates master docs page wise
+     *
+     * @param $page
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateMasterIndex($page)
+    {
+        if (auth()->user()->isAdmin()) {
+            try {
+                $uri                    = 'contract/supporting-doc/update';
+                $url                    = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $request_payload        = ['add_to_master'=>$page];
+                $request                = $this->http->post($url, null, $request_payload);
+                $resp                   = $request->send();
+                $resp_json              = $resp->json();
+
+                if (!$resp_json['status']) {
+                    file_put_contents('supporting_doc_error.log', $resp_json['result'], FILE_APPEND);
+
+                    return redirect()->route('contract.index')->withError(
+                        'Elastic update error. View supporting_doc_error.log file'
+                    );
+                }
+
+                return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
+            } catch (\Exception $e) {
+                file_put_contents('supporting_doc_error.log', $e->getMessage(), FILE_APPEND);
+
+                return redirect()->route('contract.index')->withErrors(
+                    'Elastic update error. View supporting_doc_error.log file'
+                );
+            }
+        }
+
+        return redirect()->route('contract.index')->withSuccess('Access denied');
+    }
+
+    /**
+     * Updates parent child relation in master doc
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateParentChildDocIndex()
+    {
+        if (auth()->user()->isAdmin()) {
+            try {
+                $uri                    = 'contract/supporting-doc/update';
+                $url                    = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $parent_child_contracts = json_encode($this->contract->getParentChild());
+                $request_payload        = [
+                    'parent_child_contracts' => $parent_child_contracts,
+                ];
+                $request                = $this->http->post($url, null, $request_payload);
+                $resp                   = $request->send();
+                $resp_json              = $resp->json();
+
+                if (!$resp_json['status']) {
+                    file_put_contents('supporting_doc_error.log', $resp_json['result'], FILE_APPEND);
+
+                    return redirect()->route('contract.index')->withError(
+                        'Elastic update error. View supporting_doc_error.log file'
+                    );
+                }
+
+                return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
+            } catch (\Exception $e) {
+                file_put_contents('supporting_doc_error.log', $e->getMessage(), FILE_APPEND);
+
+                return redirect()->route('contract.index')->withErrors(
+                    'Elastic update error. View supporting_doc_error.log file'
+                );
+            }
+        }
+
+        return redirect()->route('contract.index')->withSuccess('Access denied');
+    }
+
+    /**
+     * Updates child parent relation master doc
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateChildParentDocIndex()
+    {
+        if (auth()->user()->isAdmin()) {
+            try {
+                $uri                    = 'contract/supporting-doc/update';
+                $url                    = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $child_parent_contracts = json_encode($this->contract->getChildParent());
+                $request_payload        = [
+                    'child_parent_contracts' => $child_parent_contracts
+                ];
+                $request                = $this->http->post($url, null, $request_payload);
+                $resp                   = $request->send();
+                $resp_json              = $resp->json();
+
+                if (!$resp_json['status']) {
+                    file_put_contents('supporting_doc_error.log', $resp_json['result'], FILE_APPEND);
+
+                    return redirect()->route('contract.index')->withError(
+                        'Elastic update error. View supporting_doc_error.log file'
+                    );
+                }
+
+                return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
+            } catch (\Exception $e) {
+                file_put_contents('supporting_doc_error.log', $e->getMessage(), FILE_APPEND);
+
+                return redirect()->route('contract.index')->withErrors(
+                    'Elastic update error. View supporting_doc_error.log file'
+                );
             }
         }
 

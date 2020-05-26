@@ -154,7 +154,8 @@ class ElasticSearchService
                     'email' => isset($contract->created_user->email) ? $contract->created_user->email : '',
                 ]
             ),
-            'supporting_contracts' => $this->contract->getSupportingDocuments($contract->id),
+            'supporting_contracts' => json_encode($this->contract->getSupportingDocuments($contract->id)),
+            'parent_contract'      => json_encode($this->contract->getParentDocument($contract->id)),
             'updated_by'           => json_encode($updated_by),
             'created_at'           => $contract->created_datetime->format('Y-m-d H:i:s'),
             'updated_at'           => $contract->last_updated_datetime->format('Y-m-d H:i:s'),

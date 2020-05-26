@@ -202,13 +202,22 @@ interface ContractRepositoryInterface
     public function getSupportingContracts($id);
 
     /**
-     * Return the Parent contract id
+     * Return the Supporting contract id
      *
      * @param $id
      *
      * @return array
      */
     public function getSupportingDocument($id);
+
+    /**
+     * Return the Parent contract id
+     *
+     * @param $id
+     *
+     * @return array
+     */
+    public function getParentDocument($id);
 
     /**
      * Return the supporting document
@@ -381,5 +390,10 @@ interface ContractRepositoryInterface
      * @return Boolean
      */
     public function checkMetaDataContractName($contractName);
+
+    public function getMainContracts();
+    public function getChildContracts();
+    public function getParentChild();
+    public function getChildParent();
 
 }
