@@ -43639,6 +43639,11 @@ var PdfPage = Backbone.Model.extend({
             this.annotations.map(function(ann){
                 if(ann.id == annotation.id)
                 {
+                    $.each(TRANSLATION_LANG, function (i, l) {
+                      var code = l.code;
+                      ann['article_reference_' + code] = annotation['article_reference_' + code]
+                      ann['text_' + code] =  annotation['text_' + code];
+                    });
                     ann.article_reference = annotation.article_reference;
                     ann.category = annotation.category;
                     ann.status= annotation.status;
