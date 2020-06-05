@@ -31,5 +31,9 @@ $router->group(
         $router->get('contract/elasticsearch/update/annotation_category/community_consultation', ['as' => 'contract.elasticsearch.update.annotation_category', 'uses' => 'ContractController@updateAnnotationCategory']);
         $router->get('contract/elasticsearch/update/cluster', ['as' => 'contract.elasticsearch.update.size-of-concession-area.cluster', 'uses' => 'ContractController@updateAnnotationCluster']);
         $router->get('contract/elasticsearch/restore/cluster/{key}', ['as' => 'contract.elasticsearch.update.size-of-concession-area.cluster', 'uses' => 'ContractController@restoreAnnotationCluster']);
+        $router->get('contract/elasticsearch/update/supporting-doc/master/paginated', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@getPaginatedMasterIndex']);
+        $router->get('contract/elasticsearch/update/supporting-doc/master/{page}', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@updateMasterIndex']);
+        $router->get('contract/elasticsearch/update/supporting-doc/parent-child', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@updateParentChildDocIndex']);
+        $router->get('contract/elasticsearch/update/supporting-doc/child-parent', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@updateChildParentDocIndex']);
     }
 );

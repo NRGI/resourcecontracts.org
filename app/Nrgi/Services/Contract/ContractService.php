@@ -20,7 +20,6 @@ use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -791,6 +790,24 @@ class ContractService
         return $contracts;
     }
 
+    public function getParentDocument($child_contract_id)
+    {
+        $parentContract = $this->contract->getParentDocument($child_contract_id);
+
+        if (empty($parentContract)) {
+            return [];
+        }
+
+        $parentContract = $parentContract->toArray();
+        $parentContract = $this->contract->findContract($parentContract['contract_id']);
+
+        if (empty($parentContract)) {
+            return [];
+        }
+
+        return ['id' => $parentContract->id, 'open_contracting_id' => $parentContract->metadata->open_contracting_id];
+    }
+
     /**
      * Get the contract's id and name
      *
@@ -1541,5 +1558,49 @@ class ContractService
         }
 
         return $this->carbon->createFromFormat('Y-m-d', $date)->format('Y-m-d');
+    }
+
+    /**
+     * Returns parent child contracts
+     *
+     * @return array
+     */
+    public function getParentChild()
+    {
+        $parent_child_contracts = $this->contract->getParentChild();
+        $parent_array           = [];
+
+        foreach ($parent_child_contracts as $parent_child_contract) {
+            $parent_child_contract               = (array) $parent_child_contract;
+            $parent_contract_id                  = $parent_child_contract['parent_contract_id'];
+            $parent_array[$parent_contract_id][] = [
+                'id'                  => $parent_child_contract['child_contract_id'],
+                'open_contracting_id' => $parent_child_contract['child_open_contracting_id'],
+            ];
+        }
+
+        return $parent_array;
+    }
+
+    /**
+     * Returns child parent contracts
+     *
+     * @return array
+     */
+    public function getChildParent()
+    {
+        $child_parent_contracts = $this->contract->getChildParent();
+        $child_array            = [];
+
+        foreach ($child_parent_contracts as $child_parent_contract) {
+            $child_parent_contract            = (array) $child_parent_contract;
+            $parent_contract_id               = $child_parent_contract['child_contract_id'];
+            $child_array[$parent_contract_id] = [
+                'id'                  => $child_parent_contract['parent_contract_id'],
+                'open_contracting_id' => $child_parent_contract['parent_open_contracting_id'],
+            ];
+        }
+
+        return $child_array;
     }
 }
