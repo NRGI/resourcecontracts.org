@@ -54,13 +54,15 @@ class ApiController extends Controller
         if ($this->auth->attempt($credentials, false, true)) {
             if ($this->auth->user()->status == 'false') {
                 $response = [
-                    'status'  => 'failed',
-                    'message' => 'Account has not been activated',
+                    'status'   => 'failed',
+                    'message'  => 'Account has not been activated',
+                    'is_admin' => false,
                 ];
             } else {
                 $response = [
-                    'status'  => 'success',
-                    'message' => $this->auth->user()->toArray(),
+                    'status'   => 'success',
+                    'message'  => $this->auth->user()->toArray(),
+                    'is_admin' => $this->auth->user()->isAdmin(),
                 ];
             }
         }
