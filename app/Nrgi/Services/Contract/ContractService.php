@@ -2,6 +2,7 @@
 
 use App\Nrgi\Entities\Contract\Annotation\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
+use App\Nrgi\Entities\SupportingContract\SupportingContract;
 use App\Nrgi\Mturk\Services\ActivityService;
 use App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
@@ -406,12 +407,27 @@ class ContractService
         $contract->updated_by      = $this->auth->id();
         $contract->metadata_status = Contract::STATUS_DRAFT;
 
+        $supporting_contract_model = new SupportingContract();
+        $supporting_contract       = $supporting_contract_model->where('supporting_contract_id', '=', $contractID)->get()->first();
+
+        if (!empty($supporting_contract)
+            && $supporting_contract->supporting_contract_id == $contractID
+            && $supporting_contract->contract_id != (int)$formData['translated_from'])
+        {
+            $this->queue->push(
+                'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                ['contract_id' => $supporting_contract->contract_id, 'type' => 'metadata'],
+                'elastic_search'
+            );
+        }
+
         try {
             if (!$contract->save()) {
                 return false;
             }
 
             $this->discussion->deleteContractDiscussion($contract->id, $formData['delete']);
+
 
             if (isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '1' && isset($formData['translated_from'])) {
                 $contract->syncSupportingContracts($formData['translated_from']);
