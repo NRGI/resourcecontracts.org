@@ -3302,7 +3302,7 @@ select[multiple].form-group-lg .form-control {
 
     .form-inline .form-control {
         display: inline-block;
-        width: auto;
+        width: 260px;
         vertical-align: middle;
     }
 

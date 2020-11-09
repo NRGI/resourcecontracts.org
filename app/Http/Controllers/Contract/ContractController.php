@@ -97,7 +97,7 @@ class ContractController extends Controller
      *
      * @param Request $request
      *
-     * @return Response
+     * @return \Illuminate\Foundation\Application|\Illuminate\View\View
      */
     public function index(Request $request)
     {
