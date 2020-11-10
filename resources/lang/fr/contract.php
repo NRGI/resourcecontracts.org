@@ -106,7 +106,7 @@ return [
     'view_document'                        => "Afficher le document",
     'change'                               => "Modifier",
     'on_process'                           => "En cours de traitement",
-    'search_contract'                      => "Rechercher selon le titre du contrat",
+    'search_contract'                      => "Rechercher selon le titre du contrat or OCID",
     'showing'                              => "En cours de projection",
     'of'                                   => "de",
     'to'                                   => "à",

@@ -106,7 +106,7 @@ return [
     'view_document'                        => 'View document',
     'change'                               => 'Change',
     'on_process'                           => 'On processing',
-    'search_contract'                      => 'Search by contract title',
+    'search_contract'                      => 'Search by contract title or OCID',
     'showing'                              => 'Showing',
     'of'                                   => 'of',
     'to'                                   => 'to',

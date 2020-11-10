@@ -48,21 +48,17 @@ class ContractFilterService
      * Get all contract
      *
      * @param array $filters
-     *
      * @param int   $limit
      *
-     * @return Contract
-     * @para    mint   $limit
-     *
+     * @return \Illuminate\Database\Eloquent\Collection|null
      */
     public function getAll(array $filters, $limit = 25)
     {
         if ($filters['type'] == "annotations" && $filters['status'] != '') {
             $annotations = $this->getContractByAnnotationStatus();
             $status      = isset($annotations[$filters['status']]) ? $annotations[$filters['status']] : [];
-            $contracts   = $this->contract->getContract($status, $limit);
 
-            return $contracts;
+            return $this->contract->getContract($status, $limit);
         }
 
         if ($filters['download'] == 1) {

@@ -149,7 +149,7 @@ class ContractRepository implements ContractRepositoryInterface
 
         if (isset($q) && $q != '') {
             $q = '%' . $q . '%';
-            $query->whereRaw("contracts.metadata->>'contract_name' ILIKE ?", [$q]);
+            $query->whereRaw("contracts.metadata->>'contract_name' ILIKE ? or contracts.metadata->>'open_contracting_id' ILIKE ?", [$q,$q]);
         }
 
         $query->from($this->db->raw($from))->orderBy('created_datetime', 'DESC');
