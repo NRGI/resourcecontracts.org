@@ -341,7 +341,18 @@ class ImportService
             //stores parent ocid for associated document
             $contract['metadata']['parent_open_contracting_id'] = $this->ocid;
         }
+         //for rc and olc addition of source url
+         $contract['metadata']['source_url']=isset($results['source_url']) ? $results['source_url'] : ''; 
         
+         //for addition of matrix_page and deal_number for olc
+         if(strcasecmp($results['category'],'olc')==0)
+         {
+             
+         $contract['metadata']['matrix_page']=isset($results['matrix_page']) ? $results['matrix_page'] : ''; 
+         $contract['metadata']['deal_number']=isset($results['deal_number']) ? $results['deal_number'] : ''; 
+            
+         }
+         
 
         return trimArray($contract);
     }
