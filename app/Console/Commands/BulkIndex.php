@@ -100,7 +100,7 @@ class BulkIndex extends Command
             $skip = 0;
         }
         $this->remaining = Contract::count() - $skip;
-        if ($take && $take < $this->remaining)
+        if ($take && $take != 'all' && $take < $this->remaining)
         {
             $this->remaining = $take;
         }
