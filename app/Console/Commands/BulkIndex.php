@@ -80,10 +80,53 @@ class BulkIndex extends Command
      */
     public function fire()
     {
-        $contracts           = $this->getContracts();
-        $this->contractCount = $this->remaining = $contracts->count();
-        $this->info("Total Contracts-".$this->contractCount);
+        $category = $this->input->getOption('category');
+        $skip = $this->input->getOption('skip');
+        $take = $this->input->getOption('take');
+        $id = $this->input->getOption('id');
+        $batch = $this->input->getOption('batch');
 
+        if (!$batch) {
+            $contracts = $this->getContracts($category, $skip, $take, $id);
+            $this->remaining = $contracts->count();
+            $this->info("Total Contracts-".$this->remaining);
+
+            $this->processContracts($contracts);
+            return;
+        }
+
+        if (!$skip)
+        {
+            $skip = 0;
+        }
+        $this->remaining = Contract::count() - $skip;
+        if ($take && $take != 'all' && $take < $this->remaining)
+        {
+            $this->remaining = $take;
+        }
+        $this->info("Total Contracts-".$this->remaining);
+
+        if ($this->remaining == 0)
+        {
+            return;
+        }
+
+        while($this->remaining > 0)
+        {
+            if ($this->remaining < $batch)
+            {
+                $batch = $this->remaining;
+            }
+
+            $contracts = $this->getContracts($category, $skip, $batch, $id);
+            $this->processContracts($contracts);
+
+            $skip += $batch;
+        }
+    }
+
+    public function processContracts($contracts)
+    {
         if ($this->input->getOption('metadata')) {
             $this->publishAllMetadata($contracts);
 
@@ -112,7 +155,6 @@ class BulkIndex extends Command
      */
     public function publishAnnotations($contracts)
     {
-        $index = 0;
         foreach ($contracts as $contract) {
             $this->info(
                 sprintf(
@@ -122,8 +164,7 @@ class BulkIndex extends Command
                     $this->publishAnnotation($contract)
                 )
             );
-            $index += 1;
-            $this->status($index);
+            $this->status();
         }
     }
 
@@ -134,7 +175,6 @@ class BulkIndex extends Command
      */
     public function publishAllMetadata($contracts)
     {
-        $index = 0;
         foreach ($contracts as $contract) {
             $this->info(
                 sprintf(
@@ -144,8 +184,7 @@ class BulkIndex extends Command
                     $this->publishMetadata($contract)
                 )
             );
-            $index += 1;
-            $this->status($index);
+            $this->status();
         }
 
     }
@@ -157,7 +196,6 @@ class BulkIndex extends Command
      */
     public function publishAllText($contracts)
     {
-        $index = 0;
         foreach ($contracts as $contract) {
             $this->info(
                 sprintf(
@@ -167,8 +205,7 @@ class BulkIndex extends Command
                     $this->publishText($contract)
                 )
             );
-            $index += 1;
-            $this->status($index);
+            $this->status();
         }
 
     }
@@ -229,7 +266,6 @@ class BulkIndex extends Command
      */
     protected function publishContracts($contracts)
     {
-        $index = 0;
         foreach ($contracts as $contract) {
             $this->info(
                 sprintf(
@@ -244,9 +280,8 @@ class BulkIndex extends Command
                 $this->publishText($contract),
                 $this->publishAnnotation($contract),
             ];
-            $index  += 1;
             $this->table(['Metadata', 'Text', 'Annotation'], [$status]);
-            $this->status($index);
+            $this->status();
         }
     }
 
@@ -255,25 +290,18 @@ class BulkIndex extends Command
      *
      * @param $index
      */
-    protected function status($index)
+    protected function status()
     {
-        $remaining = $this->contractCount - $index;
+        $this->remaining -= 1;
 
-        if ($remaining == 0) {
+        if ($this->remaining == 0) {
             $this->info("Process completed");
         }
-        $this->remaining = $remaining;
     }
 
-    /**
-     * Get contracts based on options
-     *
-     * @return Collection
-     */
-    protected function getContracts()
+    protected function getContractsQuery($category, $skip, $take, $id)
     {
-        $category = $this->input->getOption('category');
-        $query    = $this->contract;
+        $query = $this->contract;
 
         if ($category != 'all') {
             $from  = "contracts ";
@@ -283,9 +311,6 @@ class BulkIndex extends Command
         }
 
         $query = $query->orderBy('id', 'ASC');
-        $skip  = $this->input->getOption('skip');
-        $take  = $this->input->getOption('take');
-        $id    = $this->input->getOption('id');
 
         if ($id) {
             $query = $query->where('id', $id);
@@ -299,8 +324,21 @@ class BulkIndex extends Command
             $query = $query->take($take);
         }
 
+        return $query;
+    }
+
+    /**
+     * Get contracts based on options
+     *
+     * @return Collection
+     */
+    protected function getContracts($category, $skip, $take, $id)
+    {
         $this->info(sprintf("Getting contracts category:%s skip:%s take:%s", $category, $skip, $take));
+
+        $query = $this->getContractsQuery($category, $skip, $take, $id);
         $contracts = $query->get();
+
         $logs      = [];
         foreach ($contracts as &$contract) {
             try {
@@ -351,6 +389,7 @@ class BulkIndex extends Command
             ['skip', null, InputOption::VALUE_OPTIONAL, 'Start contract from (Default is 0)', 0],
             ['take', null, InputOption::VALUE_OPTIONAL, 'Limit number of contracts', 'all'],
             ['id', null, InputOption::VALUE_OPTIONAL, 'Id of contract', null],
+            ['batch', null, InputOption::VALUE_OPTIONAL, 'When not 0 retrieve contracts in batches of given size', null],
         ];
     }
 }

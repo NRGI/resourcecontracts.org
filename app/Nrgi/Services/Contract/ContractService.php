@@ -815,7 +815,13 @@ class ContractService
         }
 
         $parentContract = $parentContract->toArray();
-        $parentContract = $this->contract->findContract($parentContract['contract_id']);
+
+        try {
+            $parentContract = $this->contract->findContract($parentContract['contract_id']);
+        } catch (ModelNotFoundException $e) {
+            $this->logger->error('Find : Parent contract not found.', ['Contract ID' => $parentContract['contract_id']]);
+            return [];
+        }
 
         if (empty($parentContract)) {
             return [];
