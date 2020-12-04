@@ -101,6 +101,10 @@ class ImportService
         "disclosure_mode",
         "retrieval_date",
         "category",
+        "source_url",
+        "matrix_page",
+        "deal_number",
+
     ];
 
     /**
@@ -345,14 +349,14 @@ class ImportService
          $contract['metadata']['source_url']=isset($results['source_url']) ? $results['source_url'] : ''; 
         
          //for addition of matrix_page and deal_number for olc
+        
          if(strcasecmp($results['category'],'olc')==0)
          {
-             
          $contract['metadata']['matrix_page']=isset($results['matrix_page']) ? $results['matrix_page'] : ''; 
          $contract['metadata']['deal_number']=isset($results['deal_number']) ? $results['deal_number'] : ''; 
             
-         }
          
+         }
 
         return trimArray($contract);
     }
@@ -896,7 +900,8 @@ class ImportService
             "document_type",
             "resource",
             "government_entity",
-            "company"
+            "company",
+            
         ];
         $message  = '';
 
@@ -997,8 +1002,23 @@ class ImportService
         if (!empty($contract->metadata->date_retrieval) && !$this->validateDate($contract->metadata->date_retrieval)) {
             $message .= "<p>Retrieval date is invalid.</p>";
         }
+       if(!empty($contract->metadata->source_url)&& !($this->validateUrl($contract->metadata->source_url)))
+       {
+           
+        $message .= "<p>Source URL is invalid.</p>";
+
+       }
 
         return [($message == ''), $message];
+    }
+
+    //validate Url
+    protected function validateUrl($url)
+    {
+        if (preg_match("/\b(?:(?:https?):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $url)) {
+            return true;
+          }
+           return false;
     }
 
     /**
