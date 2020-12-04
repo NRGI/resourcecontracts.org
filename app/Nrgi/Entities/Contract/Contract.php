@@ -170,6 +170,11 @@ class Contract extends Model
             $metadata       = array_replace_recursive($metadata_en, $metadata_trans);
 
             foreach ($metadata['company'] as $key => $company) {
+                # Some contracts have inconsistent data and translations have more companies than the original.
+                if (!array_key_exists($key, $metadata_en['company'])) {
+                    continue;
+                }
+
                 $metadata['company'][$key] = array_replace_recursive(
                     (array)$metadata_en['company'][$key],
                     (array)$company
