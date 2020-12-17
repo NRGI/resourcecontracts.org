@@ -550,11 +550,11 @@ class ImportService
         $contracts = $this->getJsonData($key);
 
         foreach ($contracts as $contract) {
-            $contract->metadata->contract_name = $this->checkContractNameAvailability($key, $contract);
-
-            $this->updateContractJsonByID($key, $contract->id, ['create_status' => static::CREATE_PROCESSING], 2);
-
             try {
+                $contract->metadata->contract_name = $this->checkContractNameAvailability($key, $contract);
+
+                $this->updateContractJsonByID($key, $contract->id, ['create_status' => static::CREATE_PROCESSING], 2);
+
                 $this->storage->disk('s3')->put(
                     $contract->file,
                     $this->filesystem->get($this->getFilePath($key, $contract->file))

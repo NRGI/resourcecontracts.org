@@ -880,15 +880,7 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function checkMetaDataContractName($contractName)
     {
-        $query = $this->contract->selectRaw("metadata -> 'contract_name'")
-            ->whereRaw("metadata->>'contract_name' ='" . $contractName . "'")
-            ->count();
-            
-        if($query == 0){
-            return false;
-        }
-            
-        return true;
+        return $this->contract->whereRaw("contracts.metadata->>'contract_name' =  ?", [$contractName])->count();
     }
 
     /**
