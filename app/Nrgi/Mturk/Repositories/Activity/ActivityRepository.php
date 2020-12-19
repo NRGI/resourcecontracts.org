@@ -127,7 +127,7 @@ class ActivityRepository implements ActivityRepositoryInterface
                                        "(message_params->>'new_status' = 'published' or message_params->>'new_status' = 'unpublished' )"
                                    )
                                    ->whereRaw(sprintf("message_params->>'type' = '%s'", $element))
-                                   ->orderBy("created_at", "asc");
+                                   ->orderBy("created_at", "desc");
 
 
         $result = $query->first();
