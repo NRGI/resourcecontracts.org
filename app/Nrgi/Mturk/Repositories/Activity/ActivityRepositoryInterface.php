@@ -30,12 +30,12 @@ interface ActivityRepositoryInterface
     public function countByUser($user_id);
 
     /**
-     * Get the first row where status is published
+     * Get full info on latest published event for the given contract.
      * @param $id
      * @param $element
      * @return activityLog
      */
-    public function getPublishedInfo($id, $element);
+    public function getLatestPublicationEvent($id, $element);
 
     /**
      * write brief description

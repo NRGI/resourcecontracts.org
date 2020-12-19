@@ -70,18 +70,18 @@ class ActivityService
     }
 
     /**
-     * Get published Information
+     * Get latest published information.
      *
      * @param $id
      *
      * @return array
      */
-    public function getPublishedInfo($id)
+    public function getLatestPublishedInfo($id)
     {
         $elements = ["metadata", "text", "annotation"];
         $data     = [];
         foreach ($elements as $element) {
-            $data[$element] = $this->activity->getPublishedInfo($id, $element);
+            $data[$element] = $this->activity->getLatestPublicationEvent($id, $element);
         }
 
         return $data;

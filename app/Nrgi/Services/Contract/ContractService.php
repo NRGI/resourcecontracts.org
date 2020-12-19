@@ -1307,7 +1307,7 @@ class ContractService
      */
     public function getPublishedInformation($id)
     {
-        $data        = $this->activityService->getPublishedInfo($id);
+        $data        = $this->activityService->getLatestPublishedInfo($id);
         $information = [];
 
         foreach ($data as $element => $info) {

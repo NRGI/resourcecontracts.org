@@ -90,14 +90,14 @@ class ActivityRepository implements ActivityRepositoryInterface
     }
 
     /**
-     * Get the first row where status is published
+     * Get full info on latest published event for the given contract.
      *
      * @param $id
      * @param $element
      *
      * @return activityLog
      */
-    public function getPublishedInfo($id, $element)
+    public function getLatestPublicationEvent($id, $element)
     {
         $query = $this->activityLog->select('*')->with('user')
                                    ->where('contract_id', $id)
