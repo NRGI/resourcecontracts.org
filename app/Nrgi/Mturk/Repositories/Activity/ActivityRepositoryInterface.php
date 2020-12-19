@@ -44,4 +44,13 @@ interface ActivityRepositoryInterface
      * @return activityLog
      */
     public function getElementState($id, $element);
+
+    /**
+     * Returns details on the first time the element was published.
+     *
+     * @param $id
+     * @param $element
+     * @return mixed
+     */
+    public function getFirstPublicationEvent($id, $element);
 }

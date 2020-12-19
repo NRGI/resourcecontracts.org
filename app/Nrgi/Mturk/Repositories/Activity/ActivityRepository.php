@@ -112,6 +112,22 @@ class ActivityRepository implements ActivityRepositoryInterface
     }
 
     /**
+     * @param $id
+     * @param $element
+     * @return mixed|void
+     */
+    public function getFirstPublicationEvent($id, $element)
+    {
+        $query = $this->activityLog->select('*')->with('user')
+            ->where('contract_id', $id)
+            ->whereRaw("message_params->>'new_status' = 'published'")
+            ->whereRaw(sprintf("message_params->>'type' = '%s'", $element))
+            ->orderBy("created_at", "asc");
+
+        return $query->first();
+    }
+
+    /**
      * write brief description
      *
      * @param $id

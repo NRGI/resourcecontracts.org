@@ -105,7 +105,10 @@ class ActivityService
                 $data[$element] = 'published';
 
                 if($element=='metadata') {
-                    $data['metadata_published_at'] = $type->created_at;
+                    // This is used by the recent documents feature that requires the first date of publication instead
+                    // of the latest.
+                    $first_publication = $this->activity->getFirstPublicationEvent($id, $element);
+                    $data['metadata_published_at'] = $first_publication->created_at;
                 }
             } else {
                 if ($element == 'annotation') {
