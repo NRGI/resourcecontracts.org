@@ -30,12 +30,12 @@ interface ActivityRepositoryInterface
     public function countByUser($user_id);
 
     /**
-     * Get the first row where status is published
+     * Get full info on latest published event for the given contract.
      * @param $id
      * @param $element
      * @return activityLog
      */
-    public function getPublishedInfo($id, $element);
+    public function getLatestPublicationEvent($id, $element);
 
     /**
      * write brief description
@@ -44,4 +44,13 @@ interface ActivityRepositoryInterface
      * @return activityLog
      */
     public function getElementState($id, $element);
+
+    /**
+     * Returns details on the first time the element was published.
+     *
+     * @param $id
+     * @param $element
+     * @return mixed
+     */
+    public function getFirstPublicationEvent($id, $element);
 }

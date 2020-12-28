@@ -90,14 +90,14 @@ class ActivityRepository implements ActivityRepositoryInterface
     }
 
     /**
-     * Get the first row where status is published
+     * Get full info on latest published event for the given contract.
      *
      * @param $id
      * @param $element
      *
      * @return activityLog
      */
-    public function getPublishedInfo($id, $element)
+    public function getLatestPublicationEvent($id, $element)
     {
         $query = $this->activityLog->select('*')->with('user')
                                    ->where('contract_id', $id)
@@ -109,6 +109,22 @@ class ActivityRepository implements ActivityRepositoryInterface
 
         return $result;
 
+    }
+
+    /**
+     * @param $id
+     * @param $element
+     * @return mixed|void
+     */
+    public function getFirstPublicationEvent($id, $element)
+    {
+        $query = $this->activityLog->select('*')->with('user')
+            ->where('contract_id', $id)
+            ->whereRaw("message_params->>'new_status' = 'published'")
+            ->whereRaw(sprintf("message_params->>'type' = '%s'", $element))
+            ->orderBy("created_at", "asc");
+
+        return $query->first();
     }
 
     /**
@@ -127,7 +143,7 @@ class ActivityRepository implements ActivityRepositoryInterface
                                        "(message_params->>'new_status' = 'published' or message_params->>'new_status' = 'unpublished' )"
                                    )
                                    ->whereRaw(sprintf("message_params->>'type' = '%s'", $element))
-                                   ->orderBy("created_at", "asc");
+                                   ->orderBy("created_at", "desc");
 
 
         $result = $query->first();

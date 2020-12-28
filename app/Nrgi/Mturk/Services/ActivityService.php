@@ -70,18 +70,18 @@ class ActivityService
     }
 
     /**
-     * Get published Information
+     * Get latest published information.
      *
      * @param $id
      *
      * @return array
      */
-    public function getPublishedInfo($id)
+    public function getLatestPublishedInfo($id)
     {
         $elements = ["metadata", "text", "annotation"];
         $data     = [];
         foreach ($elements as $element) {
-            $data[$element] = $this->activity->getPublishedInfo($id, $element);
+            $data[$element] = $this->activity->getLatestPublicationEvent($id, $element);
         }
 
         return $data;
@@ -105,7 +105,10 @@ class ActivityService
                 $data[$element] = 'published';
 
                 if($element=='metadata') {
-                    $data['metadata_published_at'] = $type->created_at;
+                    // This is used by the recent documents feature that requires the first date of publication instead
+                    // of the latest.
+                    $first_publication = $this->activity->getFirstPublicationEvent($id, $element);
+                    $data['metadata_published_at'] = $first_publication->created_at;
                 }
             } else {
                 if ($element == 'annotation') {
