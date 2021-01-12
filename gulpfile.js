@@ -1,4 +1,4 @@
-var gulp = require('gulp');
+const { src, dest, watch, series } = require('gulp');
 var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
@@ -53,25 +53,30 @@ var jsFiles = {
     ]
 };
 
-gulp.task('eslint', function () {
-    return gulp.src(jsFiles.source)
+function eslint_task() {
+    return src(jsFiles.source)
         .pipe(eslint({
             baseConfig: {
-                "ecmaFeatures": {
-                    "jsx": true
+                parserOptions: {
+                    ecmaFeatures: {
+                        jsx: true
+                    }
                 }
             }
         }))
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
-});
+}
 
-gulp.task('js-main', function () {
-    return gulp.src(jsFiles.vendor.concat(jsFiles.source).concat(jsFiles.main))
+function js_main() {
+    return src(jsFiles.vendor.concat(jsFiles.source).concat(jsFiles.main))
         .pipe(sourcemaps.init())
         .pipe(babel({
             only: [
                 'resources/scripts/contract.view/views'
+            ],
+            presets: [
+                '@babel/preset-react'
             ],
             compact: false
         }))
@@ -83,16 +88,19 @@ gulp.task('js-main', function () {
                 min: '.js'
             }
         }))
-        .pipe(gulp.dest('public/assets/js'))
+        .pipe(dest('public/assets/js'))
         .pipe(notify("JS-main build complete."));
-});
+}
 
-gulp.task('js-review', function () {
-    return gulp.src(jsFiles.vendor.concat(jsFiles.source).concat(jsFiles.review))
+function js_review() {
+    return src(jsFiles.vendor.concat(jsFiles.source).concat(jsFiles.review))
         .pipe(sourcemaps.init())
         .pipe(babel({
             only: [
                 'resources/scripts/contract.view/views'
+            ],
+            presets: [
+                '@babel/preset-react'
             ],
             compact: false
         }))
@@ -104,15 +112,15 @@ gulp.task('js-review', function () {
                 min: '.js'
             }
         }))
-        .pipe(gulp.dest('public/assets/js'));
-});
+        .pipe(dest('public/assets/js'));
+}
 
-gulp.task('concat', ['eslint', 'js-main', 'js-review']);
+function file_watch() {
+    watch('resources/scripts/contract.view/**/*.{js,jsx}', series(js_main));
+}
 
-gulp.task('watch', function () {
-    gulp.watch('resources/scripts/contract.view/**/*.{js,jsx}', ['js-main']);
-});
+concat_task = series(eslint_task, js_main, js_review)
+build = series(concat_task)
 
-gulp.task('build', ['concat']);
-
-gulp.task('default', ['build', 'watch']);
+exports.build = build
+exports.default = series(build, file_watch);
