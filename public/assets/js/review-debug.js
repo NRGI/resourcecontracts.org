@@ -39079,149 +39079,157 @@ $.extend($.ui.boxer, {
     })
 });
 
-"use strict";
-
 var Pdf = React.createClass({
-    displayName: 'React-PDF',
-    propTypes: {
-        file: React.PropTypes.string,
-        content: React.PropTypes.string,
-        page: React.PropTypes.number,
-        scale: React.PropTypes.number,
-        onDocumentComplete: React.PropTypes.func,
-        onPageComplete: React.PropTypes.func
-    },
-    getInitialState: function getInitialState() {
-        return {
-            message: ""
-        };
-    },
-    loadFile: function loadFile() {
-        var self = this;
-        var content = this.props.pdfPage.get("content");
-        var email = 'nrgi@yipl.com.np';
-        var link = '<a href="mailto:' + email + '">' + email + '</a>';
-        var message = LANG.error_loading_file;
-        message = message.replace(':link', link);
-        if (content === "-1" || !content) {
-            this.setState({
-                page: "",
-                content: "",
-                message: '<div class="no-contract-error">' + message + '</div>'
-            });
-        } else {
-            if (content !== "-") {
-                debug("react.pdf.js loadFile: getDocument content called");
-                this.setState({
-                    message: "",
-                    content: content
-                });
-                PDFJS.getDocument(content).then(this._onDocumentComplete);
-            } else {
-                this.setState({
-                    page: "",
-                    message: "",
-                    content: ""
-                });
-            }
-        }
-    },
-    componentDidMount: function componentDidMount() {
-        var self = this;
-        PDFJS.verbosity = -1;
-        PDFJS.cMapUrl = './bcmaps/';
-        PDFJS.cMapPacked = true;
+  displayName: 'React-PDF',
+  propTypes: {
+    file: React.PropTypes.string,
+    content: React.PropTypes.string,
+    page: React.PropTypes.number,
+    scale: React.PropTypes.number,
+    onDocumentComplete: React.PropTypes.func,
+    onPageComplete: React.PropTypes.func
+  },
+  getInitialState: function () {
+    return {
+      message: ""
+    };
+  },
+  loadFile: function () {
+    var self = this;
+    var content = this.props.pdfPage.get("content");
+    var email = 'nrgi@yipl.com.np';
+    var link = '<a href="mailto:' + email + '">' + email + '</a>';
+    var message = LANG.error_loading_file;
+    message = message.replace(':link', link);
 
-        this.props.pdfPage.on("change:content", function () {
-            debug("react.pdf.js pdfPage change:content called");
-            self.loadFile();
+    if (content === "-1" || !content) {
+      this.setState({
+        page: "",
+        content: "",
+        message: '<div class="no-contract-error">' + message + '</div>'
+      });
+    } else {
+      if (content !== "-") {
+        debug("react.pdf.js loadFile: getDocument content called");
+        this.setState({
+          message: "",
+          content: content
         });
-        this.props.contractApp.on("change:pdfscale", function () {
-            debug("react.pdf.js pdfPage change:pdfscale called");
-            self.forceUpdate();
-            //self.loadFile();
+        PDFJS.getDocument(content).then(this._onDocumentComplete);
+      } else {
+        this.setState({
+          page: "",
+          message: "",
+          content: ""
         });
-    },
-    render: function render() {
-        var self = this;
-        if (!!this.state.page) {
-            setTimeout(function () {
-                if (self.isMounted()) {
-                    var canvas = self.refs.pdfCanvas.getDOMNode();
-                    var context = canvas.getContext('2d');
-                    var scale = self.props.scale;
-                    var viewport = self.state.page.getViewport(1);
-                    if (viewport.width > 600 && scale === 1) {
-                        scale = 595.0 / viewport.width;
-                    } else if (viewport.width > 600) {
-                        scale = scale * 595.0 / viewport.width;
-                    }
-                    viewport = self.state.page.getViewport(scale);
-                    canvas.width = viewport.width;
-                    canvas.height = viewport.height;
-                    var renderContext = {
-                        canvasContext: context,
-                        viewport: viewport
-                    };
-                    var pageRendering = self.state.page.render(renderContext);
-                    var completeCallback = pageRendering._internalRenderTask.callback;
-                    pageRendering._internalRenderTask.callback = function (error) {
-                        //Step 2: what you want to do before calling the complete method
-                        debug("react.pdf pageRendering callback", error);
-                        completeCallback.call(this, error);
-                        //Step 3: do some more stuff
-                        if (!!self.props.onPageRendered && typeof self.props.onPageRendered === 'function') {
-                            if (!!self.state.content) {
-                                self.props.onPageRendered();
-                            }
-                        }
-                    };
-                }
-            }, 100);
-            return React.createElement("canvas", { ref: "pdfCanvas" });
-        }
-
-        if (this.state.message) {
-            debug("react.pdf  showing generic message", this.state.message);
-            return React.createElement("div", { dangerouslySetInnerHTML: { __html: this.state.message } });
-        } else {
-            var page_no = this.props.contractApp.getCurrentPage();
-            debug("react.pdf showing page loader", page_no);
-            this.removeAnnotations();
-            return this.props.loading || React.createElement("div", null, LANG.loading_pdf + ' ' + page_no);
-        }
-    },
-    removeAnnotations: function removeAnnotations() {
-        $('.annotator-viewer').addClass('annotator-hide');
-        $('.annotator-pdf-hl').remove();
-    },
-    _onDocumentComplete: function _onDocumentComplete(pdf) {
-        if (!!this.props.onDocumentComplete && typeof this.props.onDocumentComplete === 'function') {
-            this.props.onDocumentComplete(pdf.numPages);
-        }
-        pdf.getPage(parseInt(this.props.page)).then(this._onPageComplete);
-    },
-    _onPageComplete: function _onPageComplete(page) {
-        this.setState({ page: page });
-        if (!!this.props.onPageComplete && typeof this.props.onPageComplete === 'function') {
-            this.props.onPageComplete(page.pageIndex + 1);
-        }
+      }
     }
-});
-'use strict';
+  },
+  componentDidMount: function () {
+    var self = this;
+    PDFJS.verbosity = -1;
+    PDFJS.cMapUrl = './bcmaps/';
+    PDFJS.cMapPacked = true;
+    this.props.pdfPage.on("change:content", function () {
+      debug("react.pdf.js pdfPage change:content called");
+      self.loadFile();
+    });
+    this.props.contractApp.on("change:pdfscale", function () {
+      debug("react.pdf.js pdfPage change:pdfscale called");
+      self.forceUpdate(); //self.loadFile();
+    });
+  },
+  render: function () {
+    var self = this;
 
+    if (!!this.state.page) {
+      setTimeout(function () {
+        if (self.isMounted()) {
+          var canvas = self.refs.pdfCanvas.getDOMNode();
+          var context = canvas.getContext('2d');
+          var scale = self.props.scale;
+          var viewport = self.state.page.getViewport(1);
+
+          if (viewport.width > 600 && scale === 1) {
+            scale = 595.0 / viewport.width;
+          } else if (viewport.width > 600) {
+            scale = scale * 595.0 / viewport.width;
+          }
+
+          viewport = self.state.page.getViewport(scale);
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          var pageRendering = self.state.page.render(renderContext);
+          var completeCallback = pageRendering._internalRenderTask.callback;
+
+          pageRendering._internalRenderTask.callback = function (error) {
+            //Step 2: what you want to do before calling the complete method
+            debug("react.pdf pageRendering callback", error);
+            completeCallback.call(this, error); //Step 3: do some more stuff
+
+            if (!!self.props.onPageRendered && typeof self.props.onPageRendered === 'function') {
+              if (!!self.state.content) {
+                self.props.onPageRendered();
+              }
+            }
+          };
+        }
+      }, 100);
+      return React.createElement("canvas", {
+        ref: "pdfCanvas"
+      });
+    }
+
+    if (this.state.message) {
+      debug("react.pdf  showing generic message", this.state.message);
+      return /*#__PURE__*/React.createElement("div", {
+        dangerouslySetInnerHTML: {
+          __html: this.state.message
+        }
+      });
+    } else {
+      var page_no = this.props.contractApp.getCurrentPage();
+      debug("react.pdf showing page loader", page_no);
+      this.removeAnnotations();
+      return this.props.loading || React.createElement("div", null, LANG.loading_pdf + ' ' + page_no);
+    }
+  },
+  removeAnnotations: function () {
+    $('.annotator-viewer').addClass('annotator-hide');
+    $('.annotator-pdf-hl').remove();
+  },
+  _onDocumentComplete: function (pdf) {
+    if (!!this.props.onDocumentComplete && typeof this.props.onDocumentComplete === 'function') {
+      this.props.onDocumentComplete(pdf.numPages);
+    }
+
+    pdf.getPage(parseInt(this.props.page)).then(this._onPageComplete);
+  },
+  _onPageComplete: function (page) {
+    this.setState({
+      page: page
+    });
+
+    if (!!this.props.onPageComplete && typeof this.props.onPageComplete === 'function') {
+      this.props.onPageComplete(page.pageIndex + 1);
+    }
+  }
+});
 var POSITIONS = {
   above: 'above',
   inside: 'inside',
   below: 'below'
 };
-
 /**
  * Calls a function when you scroll to the element.
  */
-var Waypoint = React.createClass({
-  displayName: 'Waypoint',
 
+var Waypoint = React.createClass({
+  displayName: "Waypoint",
   propTypes: {
     onEnter: React.PropTypes.func,
     onLeave: React.PropTypes.func,
@@ -39233,27 +39241,25 @@ var Waypoint = React.createClass({
   /**
    * @return {Object}
    */
-  getDefaultProps: function getDefaultProps() {
+  getDefaultProps: function () {
     return {
       threshold: 0,
-      onEnter: function onEnter() {},
-      onLeave: function onLeave() {}
+      onEnter: function () {},
+      onLeave: function () {}
     };
   },
-
-  componentDidMount: function componentDidMount() {
+  componentDidMount: function () {
     this.scrollableAncestor = this._findScrollableAncestor();
     this.scrollableAncestor.addEventListener('scroll', this._handleScroll);
     window.addEventListener('resize', this._handleScroll);
+
     this._handleScroll();
   },
-
-  componentDidUpdate: function componentDidUpdate() {
+  componentDidUpdate: function () {
     // The element may have moved.
     this._handleScroll();
   },
-
-  componentWillUnmount: function componentWillUnmount() {
+  componentWillUnmount: function () {
     if (this.scrollableAncestor) {
       // At the time of unmounting, the scrollable ancestor might no longer
       // exist. Guarding against this prevents the following error:
@@ -39261,6 +39267,7 @@ var Waypoint = React.createClass({
       //   Cannot read property 'removeEventListener' of undefined
       this.scrollableAncestor.removeEventListener('scroll', this._handleScroll);
     }
+
     window.removeEventListener('resize', this._handleScroll);
   },
 
@@ -39272,7 +39279,7 @@ var Waypoint = React.createClass({
    *   allows for scrolling. If none is found, the `window` object is returned
    *   as a fallback.
    */
-  _findScrollableAncestor: function _findScrollableAncestor() {
+  _findScrollableAncestor: function () {
     var node = React.findDOMNode(this);
 
     while (node.parentNode) {
@@ -39289,10 +39296,10 @@ var Waypoint = React.createClass({
       if (overflowY === 'auto' || overflowY === 'scroll') {
         return node;
       }
-    }
-
-    // A scrollable ancestor element was not found, which means that we need to
+    } // A scrollable ancestor element was not found, which means that we need to
     // do stuff on window.
+
+
     return window;
   },
 
@@ -39301,7 +39308,7 @@ var Waypoint = React.createClass({
    *   ancestor, or resize event coming from the window. Will be undefined if
    *   called by a React lifecyle method
    */
-  _handleScroll: function _handleScroll(event) {
+  _handleScroll: function (event) {
     var currentPosition = this._currentPosition();
 
     if (this._previousPosition === currentPosition) {
@@ -39312,17 +39319,23 @@ var Waypoint = React.createClass({
     if (currentPosition === POSITIONS.inside) {
       this.props.onEnter.call(this, event);
     } else if (this._previousPosition === POSITIONS.inside) {
-      this.props.onLeave.call(this, { event: event, position: currentPosition });
-      // this.props.onLeave.call(this, event);
+      this.props.onLeave.call(this, {
+        event: event,
+        position: currentPosition
+      }); // this.props.onLeave.call(this, event);
     }
 
     var isRapidScrollDown = this._previousPosition === POSITIONS.below && currentPosition === POSITIONS.above;
     var isRapidScrollUp = this._previousPosition === POSITIONS.above && currentPosition === POSITIONS.below;
+
     if (isRapidScrollDown || isRapidScrollUp) {
       // If the scroll event isn't fired often enough to occur while the
       // waypoint was visible, we trigger both callbacks anyway.
       this.props.onEnter.call(this, event);
-      this.props.onLeave.call(this, { event: event, position: currentPosition });
+      this.props.onLeave.call(this, {
+        event: event,
+        position: currentPosition
+      });
     }
 
     this._previousPosition = currentPosition;
@@ -39332,9 +39345,8 @@ var Waypoint = React.createClass({
    * @param {Object} node
    * @return {Number}
    */
-  _distanceToTopOfScrollableAncestor: function _distanceToTopOfScrollableAncestor(node) {
-    if (this.scrollableAncestor !== window && !node.offsetParent) {
-      // throw new Error(
+  _distanceToTopOfScrollableAncestor: function (node) {
+    if (this.scrollableAncestor !== window && !node.offsetParent) {// throw new Error(
       //   'The scrollable ancestor of Waypoint needs to have positioning to ' +
       //   'properly determine position of Waypoint (e.g. `position: relative;`)'
       // );
@@ -39351,8 +39363,9 @@ var Waypoint = React.createClass({
    * @return {boolean} true if scrolled down almost to the end of the scrollable
    *   ancestor element.
    */
-  _currentPosition: function _currentPosition() {
+  _currentPosition: function () {
     var waypointTop = this._distanceToTopOfScrollableAncestor(React.findDOMNode(this));
+
     var contextHeight;
     var contextScrollTop;
 
@@ -39365,14 +39378,15 @@ var Waypoint = React.createClass({
     }
 
     var thresholdPx = contextHeight * this.props.threshold;
-
     var isBelowTop = contextScrollTop <= waypointTop + thresholdPx;
+
     if (!isBelowTop) {
       return POSITIONS.above;
     }
 
     var contextBottom = contextScrollTop + contextHeight;
     var isAboveBottom = contextBottom >= waypointTop - thresholdPx;
+
     if (!isAboveBottom) {
       return POSITIONS.below;
     }
@@ -39383,1534 +39397,1328 @@ var Waypoint = React.createClass({
   /**
    * @return {Object}
    */
-  render: function render() {
+  render: function () {
     // We need an element that we can locate in the DOM to determine where it is
     // rendered relative to the top of its context.
-    return React.createElement('span', { style: { fontSize: 0 } });
+    return /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 0
+      }
+    });
   }
 });
-"use strict";
-
 var NavigationView = React.createClass({
-    displayName: "NavigationView",
-
-    render: function render() {
-        if (this.props.contractApp.getView() === "pdf") {
-            pdfClass = "active";
-            textClass = "";
-        } else {
-            textClass = "active";
-            pdfClass = "";
-        }
-        return React.createElement(
-            "div",
-            { className: "navigation" },
-            React.createElement(
-                "a",
-                { href: "#/text", className: textClass },
-                LANG.text
-            ),
-            React.createElement(
-                "a",
-                { href: "#/pdf", className: pdfClass },
-                LANG.pdf
-            )
-        );
+  displayName: "NavigationView",
+  render: function () {
+    if (this.props.contractApp.getView() === "pdf") {
+      pdfClass = "active";
+      textClass = "";
+    } else {
+      textClass = "active";
+      pdfClass = "";
     }
-});
 
+    return /*#__PURE__*/React.createElement("div", {
+      className: "navigation"
+    }, /*#__PURE__*/React.createElement("a", {
+      href: "#/text",
+      className: textClass
+    }, LANG.text), /*#__PURE__*/React.createElement("a", {
+      href: "#/pdf",
+      className: pdfClass
+    }, LANG.pdf));
+  }
+});
 var TextPaginationView = React.createClass({
-    displayName: "TextPaginationView",
+  displayName: "TextPaginationView",
+  getInitialState: function () {
+    return {
+      visiblePage: 1,
+      totalPages: 0
+    };
+  },
+  changePage: function (page_no) {
+    this.refs.userInputText.getDOMNode().value = page_no;
+    this.props.contractApp.setCurrentPage(page_no);
+    this.setState({
+      visiblePage: page_no
+    });
+    this.props.contractApp.triggerScrollToTextPage(); // this.props.contractApp.trigger("scroll-to-page");
+    // this.props.currentPage.set({"page_no": page_no});
+    // this.props.currentPage.trigger("scroll-to-page");
+  },
+  clickPrevious: function (e) {
+    e.preventDefault();
 
-    getInitialState: function getInitialState() {
-        return {
-            visiblePage: 1,
-            totalPages: 0
-        };
-    },
-    changePage: function changePage(page_no) {
-        this.refs.userInputText.getDOMNode().value = page_no;
-        this.props.contractApp.setCurrentPage(page_no);
-        this.setState({ visiblePage: page_no });
-        this.props.contractApp.triggerScrollToTextPage();
-        // this.props.contractApp.trigger("scroll-to-page");
-        // this.props.currentPage.set({"page_no": page_no});
-        // this.props.currentPage.trigger("scroll-to-page");
-    },
-    clickPrevious: function clickPrevious(e) {
-        e.preventDefault();
-        if (this.state.visiblePage > 1) {
-            this.changePage(this.state.visiblePage - 1);
-            if (this.props.contractApp.getView() == 'pdf') {
-                this.props.contractApp.setPrevClick(false);
-            } else {
-                this.props.contractApp.setPrevClick(true);
-            }
-        }
-    },
-    clickNext: function clickNext(e) {
-        e.preventDefault();
+    if (this.state.visiblePage > 1) {
+      this.changePage(this.state.visiblePage - 1);
 
-        if (this.state.visiblePage < this.state.totalPages) {
-            this.changePage(this.state.visiblePage + 1);
-        }
-    },
-    handleKeyDown: function handleKeyDown(e) {
-        if (e.keyCode == 13) {
-            var inputPage = parseInt(this.refs.userInputText.getDOMNode().value);
-            if (inputPage > 0 && inputPage <= this.state.totalPages) {
-                this.changePage(inputPage);
-            } else {
-                this.changePage(this.state.visiblePage);
-            }
-        }
-    },
-    componentDidMount: function componentDidMount() {
-        var self = this;
-        self.setState({ totalPages: self.props.contractApp.getTotalPages() });
-
-        this.props.contractApp.on("update-text-pagination-page", function (page_no) {
-            self.refs.userInputText.getDOMNode().value = page_no;
-            self.setState({ visiblePage: page_no });
-            self.props.contractApp.setCurrentPage(page_no);
-            self.setState({ visiblePage: page_no });
-        });
-
-        this.refs.userInputText.getDOMNode().value = this.state.visiblePage;
-    },
-    render: function render() {
-        return React.createElement(
-            "div",
-            { className: "text-pagination pagination", style: this.props.style },
-            React.createElement(
-                "a",
-                { href: "#", className: "previous", onClick: this.clickPrevious },
-                LANG.previous
-            ),
-            React.createElement("input", { type: "text", className: "goto", ref: "userInputText", onKeyDown: this.handleKeyDown }),
-            React.createElement(
-                "a",
-                { href: "#", className: "next", onClick: this.clickNext },
-                LANG.next
-            ),
-            LANG.of,
-            " ",
-            this.state.totalPages
-        );
-    }
-});
-
-var TextPageView = React.createClass({
-    displayName: "TextPageView",
-
-    getInitialState: function getInitialState() {
-        return {
-            originalHtml: "",
-            searchresultsHtml: ""
-        };
-    },
-    _onEnter: function _onEnter(msg, e) {
-
-        if (!this.props.contractApp.isPrevClick()) {
-            this.props.contractApp.triggerUpdateTextPaginationPage(this.props.page.get("page_no"));
-        }
-
+      if (this.props.contractApp.getView() == 'pdf') {
         this.props.contractApp.setPrevClick(false);
-    },
-    _onLeave: function _onLeave(e) {},
-    handleClick: function handleClick(event) {
-        this.props.contractApp.setCurrentPage(this.props.page.get("page_no"));
-    },
-    sanitizeTxt: function sanitizeTxt(text) {
-        //replace the <  and > with &lt;%gt if they are not one of the tags below
-        text = text.replace(/(<)(\/?)(?=span|div|br)([^>]*)(>)/g, "----lt----$2$3----gt----");
-        text = text.replace(/</g, "&lt;");
-        text = text.replace(/>/g, "&gt;");
-        text = text.replace(/----lt----/g, "<");
-        text = text.replace(/----gt----/g, ">");
-        return text;
-    },
-    highlightSearchQuery: function highlightSearchQuery(text, highlightword) {
-        highlightword = decodeURI(highlightword);
-        var re = new RegExp("(" + highlightword + ")", "gi");
-        return text.replace(re, "<span class='search-highlight-word'>$1</span>");
-    },
-    componentDidMount: function componentDidMount() {
-        var self = this;
-        this.props.contractApp.on("searchresults:close", function () {
-            self.setState({
-                searchresultsHtml: ""
-            });
-        });
-        this.props.contractApp.on("searchresults:ready", function () {
-            if (self.props.contractApp.getSearchQuery()) {
-                var originalHtml = self.sanitizeTxt(self.props.page.get('text'));
-                // var originalHtml = (self.state.originalHtml !== "")?self.state.originalHtml:React.findDOMNode(self.refs.text_content).innerHTML;;
-                var searchresultsHtml = self.highlightSearchQuery(originalHtml, self.props.contractApp.getSearchQuery());
-                if (!self.state.originalHtml) {
-                    self.setState({
-                        originalHtml: originalHtml,
-                        searchresultsHtml: searchresultsHtml
-                    });
-                } else {
-                    self.setState({
-                        searchresultsHtml: searchresultsHtml
-                    });
-                }
-            }
-        });
-    },
-    render: function render() {
-        var text = "";
-        if (!this.state.originalHtml) {
-            text = this.sanitizeTxt(this.props.page.get('text'));
+      } else {
+        this.props.contractApp.setPrevClick(true);
+      }
+    }
+  },
+  clickNext: function (e) {
+    e.preventDefault();
+
+    if (this.state.visiblePage < this.state.totalPages) {
+      this.changePage(this.state.visiblePage + 1);
+    }
+  },
+  handleKeyDown: function (e) {
+    if (e.keyCode == 13) {
+      var inputPage = parseInt(this.refs.userInputText.getDOMNode().value);
+
+      if (inputPage > 0 && inputPage <= this.state.totalPages) {
+        this.changePage(inputPage);
+      } else {
+        this.changePage(this.state.visiblePage);
+      }
+    }
+  },
+  componentDidMount: function () {
+    var self = this;
+    self.setState({
+      totalPages: self.props.contractApp.getTotalPages()
+    });
+    this.props.contractApp.on("update-text-pagination-page", function (page_no) {
+      self.refs.userInputText.getDOMNode().value = page_no;
+      self.setState({
+        visiblePage: page_no
+      });
+      self.props.contractApp.setCurrentPage(page_no);
+      self.setState({
+        visiblePage: page_no
+      });
+    });
+    this.refs.userInputText.getDOMNode().value = this.state.visiblePage;
+  },
+  render: function () {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "text-pagination pagination",
+      style: this.props.style
+    }, /*#__PURE__*/React.createElement("a", {
+      href: "#",
+      className: "previous",
+      onClick: this.clickPrevious
+    }, LANG.previous), /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      className: "goto",
+      ref: "userInputText",
+      onKeyDown: this.handleKeyDown
+    }), /*#__PURE__*/React.createElement("a", {
+      href: "#",
+      className: "next",
+      onClick: this.clickNext
+    }, LANG.next), LANG.of, " ", this.state.totalPages);
+  }
+});
+var TextPageView = React.createClass({
+  displayName: "TextPageView",
+  getInitialState: function () {
+    return {
+      originalHtml: "",
+      searchresultsHtml: ""
+    };
+  },
+  _onEnter: function (msg, e) {
+    if (!this.props.contractApp.isPrevClick()) {
+      this.props.contractApp.triggerUpdateTextPaginationPage(this.props.page.get("page_no"));
+    }
+
+    this.props.contractApp.setPrevClick(false);
+  },
+  _onLeave: function (e) {},
+  handleClick: function (event) {
+    this.props.contractApp.setCurrentPage(this.props.page.get("page_no"));
+  },
+  sanitizeTxt: function (text) {
+    //replace the <  and > with &lt;%gt if they are not one of the tags below
+    text = text.replace(/(<)(\/?)(?=span|div|br)([^>]*)(>)/g, "----lt----$2$3----gt----");
+    text = text.replace(/</g, "&lt;");
+    text = text.replace(/>/g, "&gt;");
+    text = text.replace(/----lt----/g, "<");
+    text = text.replace(/----gt----/g, ">");
+    return text;
+  },
+  highlightSearchQuery: function (text, highlightword) {
+    highlightword = decodeURI(highlightword);
+    var re = new RegExp("(" + highlightword + ")", "gi");
+    return text.replace(re, "<span class='search-highlight-word'>$1</span>");
+  },
+  componentDidMount: function () {
+    var self = this;
+    this.props.contractApp.on("searchresults:close", function () {
+      self.setState({
+        searchresultsHtml: ""
+      });
+    });
+    this.props.contractApp.on("searchresults:ready", function () {
+      if (self.props.contractApp.getSearchQuery()) {
+        var originalHtml = self.sanitizeTxt(self.props.page.get('text')); // var originalHtml = (self.state.originalHtml !== "")?self.state.originalHtml:React.findDOMNode(self.refs.text_content).innerHTML;;
+
+        var searchresultsHtml = self.highlightSearchQuery(originalHtml, self.props.contractApp.getSearchQuery());
+
+        if (!self.state.originalHtml) {
+          self.setState({
+            originalHtml: originalHtml,
+            searchresultsHtml: searchresultsHtml
+          });
         } else {
-            if (this.state.searchresultsHtml) {
-                text = this.state.searchresultsHtml;
-            } else {
-                text = this.state.originalHtml;
-            }
+          self.setState({
+            searchresultsHtml: searchresultsHtml
+          });
         }
-        var page_no = this.props.page.get('page_no');
-        var threshold = page_no == 1 ? 0 : -0.4;
-        return React.createElement(
-            "span",
-            { className: page_no, onClick: this.handleClick },
-            React.createElement(
-                "span",
-                null,
-                page_no
-            ),
-            React.createElement("span", { ref: "text_content", dangerouslySetInnerHTML: { __html: text } }),
-            React.createElement(Waypoint, {
-                onEnter: this._onEnter.bind(this, "enter" + page_no),
-                onLeave: this._onLeave,
-                threshold: threshold })
-        );
-    }
-});
+      }
+    });
+  },
+  render: function () {
+    var text = "";
 
+    if (!this.state.originalHtml) {
+      text = this.sanitizeTxt(this.props.page.get('text'));
+    } else {
+      if (this.state.searchresultsHtml) {
+        text = this.state.searchresultsHtml;
+      } else {
+        text = this.state.originalHtml;
+      }
+    }
+
+    var page_no = this.props.page.get('page_no');
+    var threshold = page_no == 1 ? 0 : -0.4;
+    return /*#__PURE__*/React.createElement("span", {
+      className: page_no,
+      onClick: this.handleClick
+    }, /*#__PURE__*/React.createElement("span", null, page_no), /*#__PURE__*/React.createElement("span", {
+      ref: "text_content",
+      dangerouslySetInnerHTML: {
+        __html: text
+      }
+    }), /*#__PURE__*/React.createElement(Waypoint, {
+      onEnter: this._onEnter.bind(this, "enter" + page_no),
+      onLeave: this._onLeave,
+      threshold: threshold
+    }));
+  }
+});
 var TextViewer = React.createClass({
-    displayName: "TextViewer",
+  displayName: "TextViewer",
+  getInitialState: function () {
+    return {};
+  },
+  handleClickWarning: function (e) {
+    e.preventDefault();
+    $(e.target).parent().hide(500);
+  },
+  loadAnnotations: function (force) {
+    if (!this.annotator) {
+      this.annotator = new AnnotatorjsView({
+        el: ".text-annotator",
+        api: this.props.contractApp.getLoadAnnotationsUrl(),
+        availableTags: ["Country", "Local-Company-Name"],
+        // collection: annotationCollection,
+        annotationCategories: ["General information", "Country", "Local company name"],
+        enablePdfAnnotation: false,
+        contractApp: this.props.contractApp
+      });
+      this.props.contractApp.setAnnotatorInstance(this.annotator);
+    }
+  },
+  scrollToPage: function (page) {
+    if ($('.' + page).offset()) {
+      var pageOffsetTop = $('.' + page).offset().top;
+      var parentTop = $('.text-annotator ').scrollTop();
+      var parentOffsetTop = $('.text-annotator').offset().top;
+      $('.text-annotator').animate({
+        scrollTop: parentTop - parentOffsetTop + pageOffsetTop
+      }, 100);
+    }
+  },
+  componentDidMount: function () {
+    var self = this;
+    this.props.contractApp.on("annotationUpdated", function () {
+      if (self.annotator) {
+        var that = self;
+        setTimeout(function () {
+          that.annotator.reload();
+        }, 300);
+      }
+    });
+    this.props.contractApp.on("annotationCreated", function () {
+      if (self.annotator) {
+        var that = self;
+        setTimeout(function () {
+          that.annotator.reload();
+        }, 300);
+      }
+    });
+    this.props.contractApp.on("searchresults:ready", function () {
+      if (self.annotator) {
+        var that = self;
+        setTimeout(function () {
+          that.annotator.reload();
+        }, 300);
+      }
+    });
+    this.props.contractApp.on("searchresults:close", function () {
+      if (self.annotator) {
+        var that = self;
+        setTimeout(function () {
+          that.annotator.reload();
+        }, 300);
+      }
+    });
+    this.props.pagesCollection.on("reset", function () {
+      self.message = "";
 
-    getInitialState: function getInitialState() {
-        return {};
-    },
-    handleClickWarning: function handleClickWarning(e) {
-        e.preventDefault();
-        $(e.target).parent().hide(500);
-    },
-    loadAnnotations: function loadAnnotations(force) {
-        if (!this.annotator) {
-            this.annotator = new AnnotatorjsView({
-                el: ".text-annotator",
-                api: this.props.contractApp.getLoadAnnotationsUrl(),
-                availableTags: ["Country", "Local-Company-Name"],
-                // collection: annotationCollection,
-                annotationCategories: ["General information", "Country", "Local company name"],
-                enablePdfAnnotation: false,
-                contractApp: this.props.contractApp
-            });
-            this.props.contractApp.setAnnotatorInstance(this.annotator);
-        }
-    },
-    scrollToPage: function scrollToPage(page) {
-        if ($('.' + page).offset()) {
-            var pageOffsetTop = $('.' + page).offset().top;
-            var parentTop = $('.text-annotator ').scrollTop();
-            var parentOffsetTop = $('.text-annotator').offset().top;
-            $('.text-annotator').animate({ scrollTop: parentTop - parentOffsetTop + pageOffsetTop }, 100);
-        }
-    },
-    componentDidMount: function componentDidMount() {
-        var self = this;
+      if (self.props.pagesCollection.models.length === 0) {
+        var email = 'info@openlandcontracts.org';
+        var link = '<a href="mailto:' + email + '">' + email + '</a>';
+        var message = LANG.error_loading_file;
+        message = message.replace(':link', link);
+        self.message = /*#__PURE__*/React.createElement("div", {
+          className: "no-contract-error"
+        }, message);
+      }
 
-        this.props.contractApp.on("annotationUpdated", function () {
-            if (self.annotator) {
-                var that = self;
-                setTimeout(function () {
-                    that.annotator.reload();
-                }, 300);
-            }
-        });
+      self.forceUpdate();
+      self.loadAnnotations();
+      self.props.contractApp.triggerScrollToTextPage();
+    });
+    this.props.contractApp.on("scroll-to-text-page", function () {
+      self.scrollToPage(self.props.contractApp.getCurrentPage());
+    });
+  },
+  render: function () {
+    var self = this;
+    var show_pdf_text = this.props.metadata ? this.props.metadata.get('show_pdf_text') : undefined;
+    var warning_text_helper = LANG.ocr_text_helper + '<a href={app_url + "/faqs"}>' + LANG.learn_more + '</a>';
+    var warningText = this.message ? "" : /*#__PURE__*/React.createElement("div", {
+      className: "text-viewer-warning"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "pull-right link close",
+      onClick: this.handleClickWarning
+    }, "x"), warning_text_helper);
+    var pagesView = this.message ? this.message : LANG.loading;
 
-        this.props.contractApp.on("annotationCreated", function () {
-            if (self.annotator) {
-                var that = self;
-                setTimeout(function () {
-                    that.annotator.reload();
-                }, 300);
-            }
-        });
+    if (this.props.pagesCollection.models.length > 0) {
+      pagesView = [];
 
-        this.props.contractApp.on("searchresults:ready", function () {
-            if (self.annotator) {
-                var that = self;
-                setTimeout(function () {
-                    that.annotator.reload();
-                }, 300);
-            }
-        });
-        this.props.contractApp.on("searchresults:close", function () {
-            if (self.annotator) {
-                var that = self;
-                setTimeout(function () {
-                    that.annotator.reload();
-                }, 300);
-            }
-        });
-
-        this.props.pagesCollection.on("reset", function () {
-            self.message = "";
-            if (self.props.pagesCollection.models.length === 0) {
-                var email = 'info@openlandcontracts.org';
-                var link = '<a href="mailto:' + email + '">' + email + '</a>';
-                var message = LANG.error_loading_file;
-                message = message.replace(':link', link);
-                self.message = React.createElement(
-                    "div",
-                    { className: "no-contract-error" },
-                    message
-                );
-            }
-            self.forceUpdate();
-            self.loadAnnotations();
-            self.props.contractApp.triggerScrollToTextPage();
-        });
-        this.props.contractApp.on("scroll-to-text-page", function () {
-            self.scrollToPage(self.props.contractApp.getCurrentPage());
-        });
-    },
-    render: function render() {
-        var self = this;
-        var show_pdf_text = this.props.metadata ? this.props.metadata.get('show_pdf_text') : undefined;
-        var warning_text_helper = LANG.ocr_text_helper + '<a href={app_url + "/faqs"}>' + LANG.learn_more + '</a>';
-        var warningText = this.message ? "" : React.createElement(
-            "div",
-            { className: "text-viewer-warning" },
-            React.createElement(
-                "span",
-                { className: "pull-right link close", onClick: this.handleClickWarning },
-                "x"
-            ),
-            warning_text_helper
-        );
-
-        var pagesView = this.message ? this.message : LANG.loading;
-
-        if (this.props.pagesCollection.models.length > 0) {
-            pagesView = [];
-            for (var i = 0; i < this.props.pagesCollection.models.length; i++) {
-                var model = this.props.pagesCollection.models[i];
-                pagesView.push(React.createElement(TextPageView, {
-                    key: i,
-                    contractApp: self.props.contractApp,
-                    page: model }));
-            }
-        }
-
-        if (typeof show_pdf_text === 'undefined') {
-            warningText = '';
-        }
-
-        if (show_pdf_text == 0) {
-            warningText = React.createElement(
-                "div",
-                { className: "text-viewer-warning" },
-                LANG.warning_text
-            );
-            pagesView = "";
-        }
-
-        return React.createElement(
-            "div",
-            { className: "text-panel", style: this.props.style },
-            warningText,
-            React.createElement(
-                "div",
-                { className: "text-annotator" },
-                React.createElement("div", null),
-                React.createElement(
-                    "div",
-                    { className: "text-viewer" },
-                    pagesView
-                )
-            )
-        );
+      for (var i = 0; i < this.props.pagesCollection.models.length; i++) {
+        var model = this.props.pagesCollection.models[i];
+        pagesView.push( /*#__PURE__*/React.createElement(TextPageView, {
+          key: i,
+          contractApp: self.props.contractApp,
+          page: model
+        }));
+      }
     }
 
-});
-"use strict";
+    if (typeof show_pdf_text === 'undefined') {
+      warningText = '';
+    }
 
+    if (show_pdf_text == 0) {
+      warningText = /*#__PURE__*/React.createElement("div", {
+        className: "text-viewer-warning"
+      }, LANG.warning_text);
+      pagesView = "";
+    }
+
+    return /*#__PURE__*/React.createElement("div", {
+      className: "text-panel",
+      style: this.props.style
+    }, warningText, /*#__PURE__*/React.createElement("div", {
+      className: "text-annotator"
+    }, /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", {
+      className: "text-viewer"
+    }, pagesView)));
+  }
+});
 var TextSearchForm = React.createClass({
   displayName: "TextSearchForm",
-
-  handleSubmit: function handleSubmit(e) {
+  handleSubmit: function (e) {
     e.preventDefault();
     var searchQuery = React.findDOMNode(this.refs.searchInput).value.trim();
+
     if (!searchQuery) {
       return;
     }
+
     document.location.hash = '#/search/' + encodeURI(searchQuery);
   },
-  componentDidMount: function componentDidMount() {
+  componentDidMount: function () {
     React.findDOMNode(this.refs.searchInput).value = this.props.contractApp.getSearchQuery();
   },
-  render: function render() {
-    return React.createElement(
-      "div",
-      { className: "text-search" },
-      React.createElement(
-        "form",
-        { onSubmit: this.handleSubmit },
-        React.createElement("input", { type: "text", ref: "searchInput", placeholder: LANG.search_in_document })
-      )
-    );
+  render: function () {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "text-search"
+    }, /*#__PURE__*/React.createElement("form", {
+      onSubmit: this.handleSubmit
+    }, /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      ref: "searchInput",
+      placeholder: LANG.search_in_document
+    })));
   }
 });
 var TextSearchResultRow = React.createClass({
   displayName: "TextSearchResultRow",
-
-  handleClick: function handleClick() {
+  handleClick: function () {
     this.props.contractApp.setCurrentPage(this.props.resultRow.get("page_no"));
-    this.props.contractApp.triggerScrollToTextPage();
-    // this.props.currentPage.set({"page_no": this.props.resultRow.get("page_no")});
+    this.props.contractApp.triggerScrollToTextPage(); // this.props.currentPage.set({"page_no": this.props.resultRow.get("page_no")});
     // this.props.currentPage.trigger("scroll-to-page");
   },
-  highlightSearchQuery: function highlightSearchQuery(text, highlightword) {
+  highlightSearchQuery: function (text, highlightword) {
     highlightword = decodeURI(highlightword);
     var re = new RegExp(highlightword, "gi");
     return text.replace(re, "<span class='search-highlight-word'>" + highlightword + "</span>");
   },
-  render: function render() {
+  render: function () {
     var text = this.highlightSearchQuery(this.props.resultRow.get("text"), this.props.contractApp.getSearchQuery());
     text = "Pg " + this.props.resultRow.get("page_no") + "&nbsp;" + text;
-    return React.createElement(
-      "div",
-      { className: "search-result-row link", onClick: this.handleClick },
-      React.createElement("span", { dangerouslySetInnerHTML: { __html: text } })
-    );
+    return /*#__PURE__*/React.createElement("div", {
+      className: "search-result-row link",
+      onClick: this.handleClick
+    }, /*#__PURE__*/React.createElement("span", {
+      dangerouslySetInnerHTML: {
+        __html: text
+      }
+    }));
   }
 });
 var TextSearchResultsList = React.createClass({
   displayName: "TextSearchResultsList",
-
-  componentDidMount: function componentDidMount() {
+  componentDidMount: function () {
     var self = this;
     this.props.searchResultsCollection.on("reset", function () {
       self.forceUpdate();
       self.props.contractApp.trigger("searchresults:ready");
     });
   },
-  handleCloseSearchResults: function handleCloseSearchResults() {
+  handleCloseSearchResults: function () {
     this.props.contractApp.trigger("searchresults:close");
     document.location.hash = '#/text';
     this.props.contractApp.setView("text");
   },
-  render: function render() {
+  render: function () {
     var self = this;
     var resultsView = "searching ...";
+
     if (this.props.searchResultsCollection.models.length > 0) {
       resultsView = this.props.searchResultsCollection.models.map(function (model, i) {
-        return React.createElement(TextSearchResultRow, {
+        return /*#__PURE__*/React.createElement(TextSearchResultRow, {
           key: i,
           contractApp: self.props.contractApp,
-          resultRow: model });
+          resultRow: model
+        });
       });
     } else if (this.props.searchResultsCollection.searchCompleted === true || this.props.searchResultsCollection.length == 0) {
       resultsView = LANG.search_no_result;
     }
 
-    return React.createElement(
-      "div",
-      { style: this.props.style, className: "search-results-list" },
-      React.createElement(
-        "span",
-        { className: "pull-right link close", onClick: this.handleCloseSearchResults },
-        "x"
-      ),
-      resultsView
-    );
+    return /*#__PURE__*/React.createElement("div", {
+      style: this.props.style,
+      className: "search-results-list"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "pull-right link close",
+      onClick: this.handleCloseSearchResults
+    }, "x"), resultsView);
   }
 });
-"use strict";
-
 var AnnotationHeader = React.createClass({
-    displayName: "AnnotationHeader",
-
-    componentDidMount: function componentDidMount() {
-        var self = this;
-        this.props.annotationsCollection.on("reset", function () {
-            self.forceUpdate();
-        });
-    },
-    render: function render() {
-        var count = this.props.annotationsCollection.totalAnnotations();
-        return React.createElement(
-            "div",
-            { className: "annotation-title" },
-            count,
-            " ",
-            LANG.annotations
-        );
-    }
+  displayName: "AnnotationHeader",
+  componentDidMount: function () {
+    var self = this;
+    this.props.annotationsCollection.on("reset", function () {
+      self.forceUpdate();
+    });
+  },
+  render: function () {
+    var count = this.props.annotationsCollection.totalAnnotations();
+    return /*#__PURE__*/React.createElement("div", {
+      className: "annotation-title"
+    }, count, " ", LANG.annotations);
+  }
 });
-
 var PageLink = React.createClass({
-    displayName: "PageLink",
-
-    getInitialState: function getInitialState() {
-        return {
-            id: '',
-            pageNo: '',
-            annotationType: ''
-        };
-    },
-    componentDidMount: function componentDidMount() {
-        var self = this;
-        this.setPageState();
-        this.props.contractApp.on("annotations:highlight", function (annotation) {
-            if (annotation.id === self.state.id) {
-                if (self.state.annotationType === "pdf") {
-                    location.hash = "#/pdf/page/" + self.state.pageNo + "/annotation/" + self.state.id;
-                } else {
-                    location.hash = "#/text/page/" + self.state.pageNo + "/annotation/" + self.state.id;
-                }
-            }
-        });
-        this.props.contractApp.on("change:selected_annotation_id-1", function () {
-            if (self.props.contractApp.getSelectedAnnotation() === self.state.id) {
-                location.hash = "#/pdf/page/" + self.state.pageNo + "/annotation/" + self.state.id;
-            }
-        });
-    },
-    setPageState: function setPageState() {
-        var id = this.props.annotation.get('id');
-        var pageNo = this.props.annotation.get('page_no') || this.props.annotation.get('page');
-        var annotationType = "text";
-        if (this.props.annotation.get('shapes')) {
-            annotationType = "pdf";
-        }
-
-        this.setState({
-            id: id,
-            pageNo: pageNo,
-            annotationType: annotationType
-        });
-    },
-    handleAnnotationClick: function handleAnnotationClick(e) {
-        var self = this;
-        e.preventDefault();
-        switch (this.state.annotationType) {
-            case "pdf":
-                this.props.contractApp.trigger("annotations:highlight", { id: self.state.id });
-                this.props.contractApp.setView("pdf");
-                this.props.contractApp.setSelectedAnnotation(self.state.id);
-                if (self.props.contractApp.getCurrentPage() == self.state.pageNo) {
-                    var self = this;
-                    setTimeout(function () {
-                        self.props.contractApp.showPdfAnnotationPopup(self.state.id);
-                    }, 300);
-                }
-                this.props.contractApp.setCurrentPage(self.state.pageNo);
-                this.props.contractApp.triggerUpdatePdfPaginationPage(self.state.pageNo);
-                break;
-            case "text":
-                this.props.contractApp.trigger("annotations:highlight", { id: self.state.id });
-                var self = this;
-                setTimeout(function () {
-                    self.props.contractApp.showTextAnnotationPopup(self.state.id);
-                }, 300);
-                this.props.contractApp.setView("text");
-                this.props.contractApp.setCurrentPage(self.state.pageNo);
-                break;
-        }
-    },
-    render: function render() {
-        if (this.props.article_reference != '') {
-            return React.createElement(
-                "span",
-                { className: "page-gap" },
-                React.createElement(
-                    "a",
-                    { href: "#", onClick: this.handleAnnotationClick },
-                    this.props.article_reference
-                ),
-                this.props.last ? ', ' : ''
-            );
+  displayName: "PageLink",
+  getInitialState: function () {
+    return {
+      id: '',
+      pageNo: '',
+      annotationType: ''
+    };
+  },
+  componentDidMount: function () {
+    var self = this;
+    this.setPageState();
+    this.props.contractApp.on("annotations:highlight", function (annotation) {
+      if (annotation.id === self.state.id) {
+        if (self.state.annotationType === "pdf") {
+          location.hash = "#/pdf/page/" + self.state.pageNo + "/annotation/" + self.state.id;
         } else {
-            return React.createElement(
-                "span",
-                { className: "page-gap" },
-                React.createElement(
-                    "a",
-                    { href: "#", onClick: this.handleAnnotationClick },
-                    this.props.page
-                ),
-                this.props.last ? ', ' : ''
-            );
+          location.hash = "#/text/page/" + self.state.pageNo + "/annotation/" + self.state.id;
         }
-    }
-});
+      }
+    });
+    this.props.contractApp.on("change:selected_annotation_id-1", function () {
+      if (self.props.contractApp.getSelectedAnnotation() === self.state.id) {
+        location.hash = "#/pdf/page/" + self.state.pageNo + "/annotation/" + self.state.id;
+      }
+    });
+  },
+  setPageState: function () {
+    var id = this.props.annotation.get('id');
+    var pageNo = this.props.annotation.get('page_no') || this.props.annotation.get('page');
+    var annotationType = "text";
 
+    if (this.props.annotation.get('shapes')) {
+      annotationType = "pdf";
+    }
+
+    this.setState({
+      id: id,
+      pageNo: pageNo,
+      annotationType: annotationType
+    });
+  },
+  handleAnnotationClick: function (e) {
+    var self = this;
+    e.preventDefault();
+
+    switch (this.state.annotationType) {
+      case "pdf":
+        this.props.contractApp.trigger("annotations:highlight", {
+          id: self.state.id
+        });
+        this.props.contractApp.setView("pdf");
+        this.props.contractApp.setSelectedAnnotation(self.state.id);
+
+        if (self.props.contractApp.getCurrentPage() == self.state.pageNo) {
+          var self = this;
+          setTimeout(function () {
+            self.props.contractApp.showPdfAnnotationPopup(self.state.id);
+          }, 300);
+        }
+
+        this.props.contractApp.setCurrentPage(self.state.pageNo);
+        this.props.contractApp.triggerUpdatePdfPaginationPage(self.state.pageNo);
+        break;
+
+      case "text":
+        this.props.contractApp.trigger("annotations:highlight", {
+          id: self.state.id
+        });
+        var self = this;
+        setTimeout(function () {
+          self.props.contractApp.showTextAnnotationPopup(self.state.id);
+        }, 300);
+        this.props.contractApp.setView("text");
+        this.props.contractApp.setCurrentPage(self.state.pageNo);
+        break;
+    }
+  },
+  render: function () {
+    if (this.props.article_reference != '') {
+      return /*#__PURE__*/React.createElement("span", {
+        className: "page-gap"
+      }, /*#__PURE__*/React.createElement("a", {
+        href: "#",
+        onClick: this.handleAnnotationClick
+      }, this.props.article_reference), this.props.last ? ', ' : '');
+    } else {
+      return /*#__PURE__*/React.createElement("span", {
+        className: "page-gap"
+      }, /*#__PURE__*/React.createElement("a", {
+        href: "#",
+        onClick: this.handleAnnotationClick
+      }, this.props.page), this.props.last ? ', ' : '');
+    }
+  }
+});
 var AnnotationItem = React.createClass({
-    displayName: "AnnotationItem",
+  displayName: "AnnotationItem",
+  getInitialState: function () {
+    return {
+      maxWords: 10,
+      id: '',
+      annotation_id: '',
+      text: '',
+      shortText: '',
+      showEllipse: '',
+      showMoreFlag: '',
+      highlight: false,
+      annotationList: []
+    };
+  },
+  getCategory: function () {
+    return this.state.annotationList[0].get('category');
+  },
+  shallShowEllipse: function (text) {
+    var words = (text + "").split(' ');
 
-    getInitialState: function getInitialState() {
-        return {
-            maxWords: 10,
-            id: '',
-            annotation_id: '',
-            text: '',
-            shortText: '',
-            showEllipse: '',
-            showMoreFlag: '',
-            highlight: false,
-            annotationList: []
-        };
-    },
-    getCategory: function getCategory() {
-        return this.state.annotationList[0].get('category');
-    },
-    shallShowEllipse: function shallShowEllipse(text) {
-        var words = (text + "").split(' ');
-        if (words.length >= this.state.maxWords) {
-            return true;
-        }
-        return false;
-    },
-    truncate: function truncate(text) {
-        var words = (text + "").split(" ");
-        words = words.splice(0, this.state.maxWords);
-        return words.join(" ");
-    },
-    setAnnotationState: function setAnnotationState() {
-        var firstAnnotation = this.state.annotationList[0];
-        var text = firstAnnotation.get('text') ? firstAnnotation.get('text').trim() : '';
-        var id = firstAnnotation.get('id');
-        var annotation_id = firstAnnotation.get('annotation_id');
-        var showEllipse = this.shallShowEllipse(text);
-        var shortText = "";
-        if (showEllipse) {
-            shortText = this.truncate(text);
-        }
-        var ann = this.props.annotationsCollection.get(this.props.contractApp.getSelectedAnnotation());
-        var showMoreFlag = ann && ann.get('annotation_id') === annotation_id ? true : false;
-
-        this.setState({
-            id: id,
-            text: text,
-            annotation_id: annotation_id,
-            shortText: shortText.trim(),
-            showEllipse: showEllipse,
-            showMoreFlag: showMoreFlag,
-            highlight: showMoreFlag
-        });
-    },
-    getPages: function getPages() {
-        var self = this;
-        this.props.annotation.sort(function (a, b) {
-            return a.get('page') - b.get('page');
-        });
-
-        var annotationGroupByPage = _.groupBy(this.props.annotation, function (a) {
-            return a.get('page');
-        });
-
-        annotationGroupByPage = _.toArray(annotationGroupByPage);
-
-        var length = annotationGroupByPage.length;
-
-        return annotationGroupByPage.map(function (annotation, index) {
-            var page = annotation[0].get('page');
-            var last = false;
-            if (index < length - 1) {
-                last = true;
-            }
-            var count = annotation.length;
-            var ref = annotation.map(function (annotation, index) {
-                var l = false;
-                if (index < count - 1) {
-                    l = true;
-                }
-                var article_reference = annotation.get('article_reference') != '' ? annotation.get('article_reference') : '';
-                return React.createElement(PageLink, { key: index, contractApp: self.props.contractApp, annotation: annotation, last: l,
-                    page: page,
-                    article_reference: article_reference });
-            });
-
-            return React.createElement(
-                "span",
-                null,
-                LANG.page,
-                " ",
-                page,
-                " (",
-                ref,
-                ")",
-                last ? ', ' : ''
-            );
-        });
-    },
-    componentWillMount: function componentWillMount() {
-        this.setState({ annotationList: this.props.annotation });
-    },
-    componentDidMount: function componentDidMount() {
-        this.setAnnotationState();
-        var self = this;
-        this.props.contractApp.on("annotations:highlight", function (annotation) {
-            debug('annotations:highlight');
-            var current = annotation.id;
-
-            var highlight = false;
-            self.state.annotationList.map(function (annotation, index) {
-                if (current == annotation.get('id')) {
-                    highlight = true;
-                }
-            });
-
-            if (highlight) {
-                self.setState({
-                    showMoreFlag: true,
-                    highlight: true
-                });
-            } else {
-                self.setState({
-                    showMoreFlag: false,
-                    highlight: false
-                });
-            }
-        });
-    },
-    handleEllipsis: function handleEllipsis(e) {
-        e.preventDefault();
-        this.setState({ showMoreFlag: !this.state.showMoreFlag });
-    },
-    getShowText: function getShowText() {
-        var ellipsistext = "";
-        var firstAnnotation = this.props.annotation[0];
-        var showText = firstAnnotation.get('text') ? firstAnnotation.get('text').trim() : '';
-        if (this.state.showEllipse) {
-            showText = this.state.text + ' ';
-            ellipsistext = LANG.less;
-            if (!this.state.showMoreFlag) {
-                ellipsistext = LANG.more;
-                showText = this.state.shortText + '... ';
-            }
-        }
-
-        if (this.state.text != '') {
-            showText = React.createElement(
-                "span",
-                { className: "annotation-item-content" },
-                React.createElement("span", { dangerouslySetInnerHTML: { __html: nl2br(showText) } }),
-                React.createElement(
-                    "nobr",
-                    null,
-                    React.createElement("a", { className: "annotation-item-ellipsis", href: "#", onClick: this.handleEllipsis,
-                        dangerouslySetInnerHTML: { __html: ellipsistext } })
-                )
-            );
-        } else {
-            showText = '';
-        }
-        return showText;
-    },
-    getPageClasses: function getPageClasses() {
-        var className = "";
-
-        this.props.annotation.map(function (annotation, index) {
-            className += ' p-' + annotation.get('id');
-        });
-
-        return className;
-    },
-    render: function render() {
-        var currentAnnotationClass = this.state.highlight ? "annotation-item selected-annotation" : "annotation-item";
-
-        var category = this.getCategory();
-        return React.createElement(
-            "div",
-            { className: currentAnnotationClass + this.getPageClasses(), id: this.state.annotation_id },
-            React.createElement(
-                "p",
-                { className: "annotation-category" },
-                category
-            ),
-            React.createElement(
-                "p",
-                { className: "annotation-text" },
-                this.getShowText()
-            ),
-            React.createElement(
-                "div",
-                { className: "annotation-page" },
-                this.getPages()
-            )
-        );
+    if (words.length >= this.state.maxWords) {
+      return true;
     }
-});
 
+    return false;
+  },
+  truncate: function (text) {
+    var words = (text + "").split(" ");
+    words = words.splice(0, this.state.maxWords);
+    return words.join(" ");
+  },
+  setAnnotationState: function () {
+    var firstAnnotation = this.state.annotationList[0];
+    var text = firstAnnotation.get('text') ? firstAnnotation.get('text').trim() : '';
+    var id = firstAnnotation.get('id');
+    var annotation_id = firstAnnotation.get('annotation_id');
+    var showEllipse = this.shallShowEllipse(text);
+    var shortText = "";
+
+    if (showEllipse) {
+      shortText = this.truncate(text);
+    }
+
+    var ann = this.props.annotationsCollection.get(this.props.contractApp.getSelectedAnnotation());
+    var showMoreFlag = ann && ann.get('annotation_id') === annotation_id ? true : false;
+    this.setState({
+      id: id,
+      text: text,
+      annotation_id: annotation_id,
+      shortText: shortText.trim(),
+      showEllipse: showEllipse,
+      showMoreFlag: showMoreFlag,
+      highlight: showMoreFlag
+    });
+  },
+  getPages: function () {
+    var self = this;
+    this.props.annotation.sort(function (a, b) {
+      return a.get('page') - b.get('page');
+    });
+
+    var annotationGroupByPage = _.groupBy(this.props.annotation, function (a) {
+      return a.get('page');
+    });
+
+    annotationGroupByPage = _.toArray(annotationGroupByPage);
+    var length = annotationGroupByPage.length;
+    return annotationGroupByPage.map(function (annotation, index) {
+      var page = annotation[0].get('page');
+      var last = false;
+
+      if (index < length - 1) {
+        last = true;
+      }
+
+      var count = annotation.length;
+      var ref = annotation.map(function (annotation, index) {
+        var l = false;
+
+        if (index < count - 1) {
+          l = true;
+        }
+
+        var article_reference = annotation.get('article_reference') != '' ? annotation.get('article_reference') : '';
+        return /*#__PURE__*/React.createElement(PageLink, {
+          key: index,
+          contractApp: self.props.contractApp,
+          annotation: annotation,
+          last: l,
+          page: page,
+          article_reference: article_reference
+        });
+      });
+      return /*#__PURE__*/React.createElement("span", null, LANG.page, " ", page, " (", ref, ")", last ? ', ' : '');
+    });
+  },
+  componentWillMount: function () {
+    this.setState({
+      annotationList: this.props.annotation
+    });
+  },
+  componentDidMount: function () {
+    this.setAnnotationState();
+    var self = this;
+    this.props.contractApp.on("annotations:highlight", function (annotation) {
+      debug('annotations:highlight');
+      var current = annotation.id;
+      var highlight = false;
+      self.state.annotationList.map(function (annotation, index) {
+        if (current == annotation.get('id')) {
+          highlight = true;
+        }
+      });
+
+      if (highlight) {
+        self.setState({
+          showMoreFlag: true,
+          highlight: true
+        });
+      } else {
+        self.setState({
+          showMoreFlag: false,
+          highlight: false
+        });
+      }
+    });
+  },
+  handleEllipsis: function (e) {
+    e.preventDefault();
+    this.setState({
+      showMoreFlag: !this.state.showMoreFlag
+    });
+  },
+  getShowText: function () {
+    var ellipsistext = "";
+    var firstAnnotation = this.props.annotation[0];
+    var showText = firstAnnotation.get('text') ? firstAnnotation.get('text').trim() : '';
+
+    if (this.state.showEllipse) {
+      showText = this.state.text + ' ';
+      ellipsistext = LANG.less;
+
+      if (!this.state.showMoreFlag) {
+        ellipsistext = LANG.more;
+        showText = this.state.shortText + '... ';
+      }
+    }
+
+    if (this.state.text != '') {
+      showText = /*#__PURE__*/React.createElement("span", {
+        className: "annotation-item-content"
+      }, /*#__PURE__*/React.createElement("span", {
+        dangerouslySetInnerHTML: {
+          __html: nl2br(showText)
+        }
+      }), /*#__PURE__*/React.createElement("nobr", null, /*#__PURE__*/React.createElement("a", {
+        className: "annotation-item-ellipsis",
+        href: "#",
+        onClick: this.handleEllipsis,
+        dangerouslySetInnerHTML: {
+          __html: ellipsistext
+        }
+      })));
+    } else {
+      showText = '';
+    }
+
+    return showText;
+  },
+  getPageClasses: function () {
+    var className = "";
+    this.props.annotation.map(function (annotation, index) {
+      className += ' p-' + annotation.get('id');
+    });
+    return className;
+  },
+  render: function () {
+    var currentAnnotationClass = this.state.highlight ? "annotation-item selected-annotation" : "annotation-item";
+    var category = this.getCategory();
+    return /*#__PURE__*/React.createElement("div", {
+      className: currentAnnotationClass + this.getPageClasses(),
+      id: this.state.annotation_id
+    }, /*#__PURE__*/React.createElement("p", {
+      className: "annotation-category"
+    }, category), /*#__PURE__*/React.createElement("p", {
+      className: "annotation-text"
+    }, this.getShowText()), /*#__PURE__*/React.createElement("div", {
+      className: "annotation-page"
+    }, this.getPages()));
+  }
+});
 var AnnotationsSort = React.createClass({
-    displayName: "AnnotationsSort",
-
-    getInitialState: function getInitialState() {
-        return {
-            show: false,
-            sortBy: "category"
-        };
-    },
-    componentDidMount: function componentDidMount() {
-        var self = this;
-        this.props.annotationsCollection.on("reset", function () {
-            if (self.props.annotationsCollection.models.length > 0) {
-                self.setState({ show: true });
-            }
+  displayName: "AnnotationsSort",
+  getInitialState: function () {
+    return {
+      show: false,
+      sortBy: "category"
+    };
+  },
+  componentDidMount: function () {
+    var self = this;
+    this.props.annotationsCollection.on("reset", function () {
+      if (self.props.annotationsCollection.models.length > 0) {
+        self.setState({
+          show: true
         });
-        this.setState({ sortBy: "category" });
-    },
-    onClickPage: function onClickPage(e) {
-        e.preventDefault();
-        this.props.annotationsCollection.setSortByKey("page");
-        this.props.contractApp.resetSelectedAnnotation();
-        this.props.contractApp.trigger("annotations:render");
-        this.setState({ sortBy: "page" });
-    },
-    onClickTopic: function onClickTopic(e) {
-        e.preventDefault();
-        this.props.annotationsCollection.setSortByKey("category");
-        this.props.contractApp.resetSelectedAnnotation();
-        this.props.contractApp.trigger("annotations:render");
-        this.setState({ sortBy: "category" });
-    },
-    render: function render() {
-        var pageClassName = "active",
-            topicClassName = "";
-        if (this.state.sortBy == "category") {
-            pageClassName = "";
-            topicClassName = "active";
-        }
-        var activeClass = this.state.sortBy;
-        if (this.state.show) {
-            return React.createElement(
-                "div",
-                { className: "annotation-sort" },
-                React.createElement(
-                    "span",
-                    { className: pageClassName, onClick: this.onClickPage },
-                    LANG.by_page
-                ),
-                React.createElement(
-                    "span",
-                    { className: topicClassName, onClick: this.onClickTopic },
-                    LANG.by_category
-                )
-            );
-        } else {
-            return React.createElement("div", null);
-        }
-    }
-});
+      }
+    });
+    this.setState({
+      sortBy: "category"
+    });
+  },
+  onClickPage: function (e) {
+    e.preventDefault();
+    this.props.annotationsCollection.setSortByKey("page");
+    this.props.contractApp.resetSelectedAnnotation();
+    this.props.contractApp.trigger("annotations:render");
+    this.setState({
+      sortBy: "page"
+    });
+  },
+  onClickTopic: function (e) {
+    e.preventDefault();
+    this.props.annotationsCollection.setSortByKey("category");
+    this.props.contractApp.resetSelectedAnnotation();
+    this.props.contractApp.trigger("annotations:render");
+    this.setState({
+      sortBy: "category"
+    });
+  },
+  render: function () {
+    var pageClassName = "active",
+        topicClassName = "";
 
+    if (this.state.sortBy == "category") {
+      pageClassName = "";
+      topicClassName = "active";
+    }
+
+    var activeClass = this.state.sortBy;
+
+    if (this.state.show) {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "annotation-sort"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: pageClassName,
+        onClick: this.onClickPage
+      }, LANG.by_page), /*#__PURE__*/React.createElement("span", {
+        className: topicClassName,
+        onClick: this.onClickTopic
+      }, LANG.by_category));
+    } else {
+      return /*#__PURE__*/React.createElement("div", null);
+    }
+  }
+});
 var AnnotationsList = React.createClass({
-    displayName: "AnnotationsList",
+  displayName: "AnnotationsList",
+  getInitialState: function () {
+    return {
+      message: LANG.annotation_loading,
+      annotations: []
+    };
+  },
+  componentDidMount: function () {
+    var self = this;
+    this.setState({
+      message: "",
+      annotations: this.props.annotationsCollection
+    });
+    this.props.annotationsCollection.on("reset", function (annotationsCollection) {
+      if (annotationsCollection.totalAnnotations() > 0) {
+        self.setState({
+          message: "",
+          annotations: annotationsCollection
+        });
+      } else {
+        self.setState({
+          message: LANG.annotation_not_found
+        });
+      }
 
-    getInitialState: function getInitialState() {
-        return {
-            message: LANG.annotation_loading,
-            annotations: []
-        };
-    },
-    componentDidMount: function componentDidMount() {
-        var self = this;
-        this.setState({ message: "", annotations: this.props.annotationsCollection });
-        this.props.annotationsCollection.on("reset", function (annotationsCollection) {
-            if (annotationsCollection.totalAnnotations() > 0) {
-                self.setState({ message: "", annotations: annotationsCollection });
-            } else {
-                self.setState({ message: LANG.annotation_not_found });
-            }
-            if (self.props.contractApp.getSelectedAnnotation()) {
-                self.props.contractApp.trigger("annotations:scroll-to-selected-annotation");
-            }
-        });
+      if (self.props.contractApp.getSelectedAnnotation()) {
+        self.props.contractApp.trigger("annotations:scroll-to-selected-annotation");
+      }
+    });
+    this.props.contractApp.on("annotations:render", function (sortBy) {
+      self.forceUpdate();
+    });
+    this.props.contractApp.on("annotations:highlight", function (annotation) {
+      var that = self;
+      var annotation_model = self.state.annotations.get(annotation.id);
+      setTimeout(function () {
+        that.scrollToAnnotation(annotation_model.get('id'));
+      }, 100);
+    });
+    this.props.contractApp.on("annotations:scroll-to-selected-annotation", function () {
+      var annotation = self.state.annotations.get(self.props.contractApp.getSelectedAnnotation());
 
-        this.props.contractApp.on("annotations:render", function (sortBy) {
-            self.forceUpdate();
-        });
-        this.props.contractApp.on("annotations:highlight", function (annotation) {
-            var that = self;
-            var annotation_model = self.state.annotations.get(annotation.id);
-            setTimeout(function () {
-                that.scrollToAnnotation(annotation_model.get('id'));
-            }, 100);
-        });
-        this.props.contractApp.on("annotations:scroll-to-selected-annotation", function () {
-            var annotation = self.state.annotations.get(self.props.contractApp.getSelectedAnnotation());
-            if (annotation) {
-                self.scrollToAnnotation(annotation.get('id'));
-            }
-        });
-        this.props.contractApp.on("annotations:scroll-to-top", function () {
-            self.scrollToTop();
-        });
-        this.props.contractApp.on("annotations:scroll-to-cluster", function (cluster) {
-            self.scrollToCluster(cluster);
-        });
-    },
-    scrollToCluster: function scrollToCluster(cluster) {
-        if ($('#' + cluster).offset()) {
-            var pageOffsetTop = $('#' + cluster).offset().top;
-            var parentTop = $('.annotations-viewer').scrollTop();
-            var parentOffsetTop = $('.annotations-viewer').offset().top;
-            $('.annotations-viewer').animate({ scrollTop: parentTop - parentOffsetTop + pageOffsetTop }, 200);
-        }
-    },
-    scrollToAnnotation: function scrollToAnnotation(annotation_id) {
-        if (annotation_id) {
-            var pageOffsetTop = $('.p-' + annotation_id).offset().top;
-            var parentTop = $('.annotations-viewer').scrollTop();
-            var parentOffsetTop = $('.annotations-viewer').offset().top;
-            $('.annotations-viewer').animate({ scrollTop: parentTop - parentOffsetTop + pageOffsetTop }, 200);
-            this.props.contractApp.resetSelectedAnnotation();
-        }
-    },
-    scrollToTop: function scrollToTop(e) {
-        e.preventDefault();
-        $('.annotations-viewer').animate({ scrollTop: 0 }, 500);
-    },
-    getAnnotationItemsComponent: function getAnnotationItemsComponent(annotationsCollectionForList, showClusterAnyway) {
-        var annotationsList = [];
-        if (_.size(annotationsCollectionForList) > 0) {
-            var i = 1;
-            for (var annotation_id in annotationsCollectionForList) {
-                annotationsList.push(React.createElement(AnnotationItem, {
-                    showClusterAnyway: showClusterAnyway,
-                    key: annotationsCollectionForList[annotation_id][0].cid,
-                    contractApp: this.props.contractApp,
-                    annotationsCollection: this.state.annotations,
-                    annotation: annotationsCollectionForList[annotation_id] }));
-                i++;
-            }
-        }
-        return annotationsList;
-    },
-    getAnnotationItemsComponentByPage: function getAnnotationItemsComponentByPage(annotationsCollectionForList, showClusterAnyway) {
-        var annotationsList = [];
-        if (_.size(annotationsCollectionForList) > 0) {
-            var i = 0;
-            for (var page in annotationsCollectionForList) {
-                for (var key in annotationsCollectionForList[page]) {
-                    annotationsList.push(React.createElement(AnnotationItem, {
-                        showClusterAnyway: showClusterAnyway,
-                        key: i,
-                        contractApp: this.props.contractApp,
-                        annotationsCollection: this.state.annotations,
-                        annotation: [annotationsCollectionForList[page][key]] }));
-                    i++;
-                }
-            }
-        }
-        return annotationsList;
-    },
-    sortByPage: function sortByPage() {
-        if (this.state.annotations.models.length > 0) {
-            this.state.annotations.sort();
-            return React.createElement(
-                "div",
-                { className: "annotations-list", id: "id-annotations-list" },
-                this.getAnnotationItemsComponentByPage(this.state.annotations.groupByPage(), true)
-            );
-        }
-        return [];
-    },
-    sortByCategory: function sortByCategory() {
-        if (this.state.annotations.models.length > 0) {
-            this.state.annotations.sort();
-            return React.createElement(
-                "div",
-                { className: "annotations-list", id: "id-annotations-list" },
-                this.getAnnotationItemsComponent(this.state.annotations.groupByCategory(), true),
-                React.createElement(AnnotationsCategoryList, {
-                    contractApp: this.props.contractApp,
-                    annotationsCollection: this.state.annotations })
-            );
-        }
-    },
-    render: function render() {
-        if (this.state.annotations.length) {
-            if (this.state.annotations.sort_key === "category") {
-                return this.sortByCategory();
-            }
-            return this.sortByPage();
-        } else {
-            return React.createElement(
-                "div",
-                { className: "annotations-list", id: "id-annotations-list" },
-                React.createElement(
-                    "p",
-                    { className: "annotation-loading" },
-                    this.state.message
-                )
-            );
-        }
+      if (annotation) {
+        self.scrollToAnnotation(annotation.get('id'));
+      }
+    });
+    this.props.contractApp.on("annotations:scroll-to-top", function () {
+      self.scrollToTop();
+    });
+    this.props.contractApp.on("annotations:scroll-to-cluster", function (cluster) {
+      self.scrollToCluster(cluster);
+    });
+  },
+  scrollToCluster: function (cluster) {
+    if ($('#' + cluster).offset()) {
+      var pageOffsetTop = $('#' + cluster).offset().top;
+      var parentTop = $('.annotations-viewer').scrollTop();
+      var parentOffsetTop = $('.annotations-viewer').offset().top;
+      $('.annotations-viewer').animate({
+        scrollTop: parentTop - parentOffsetTop + pageOffsetTop
+      }, 200);
     }
+  },
+  scrollToAnnotation: function (annotation_id) {
+    if (annotation_id) {
+      var pageOffsetTop = $('.p-' + annotation_id).offset().top;
+      var parentTop = $('.annotations-viewer').scrollTop();
+      var parentOffsetTop = $('.annotations-viewer').offset().top;
+      $('.annotations-viewer').animate({
+        scrollTop: parentTop - parentOffsetTop + pageOffsetTop
+      }, 200);
+      this.props.contractApp.resetSelectedAnnotation();
+    }
+  },
+  scrollToTop: function (e) {
+    e.preventDefault();
+    $('.annotations-viewer').animate({
+      scrollTop: 0
+    }, 500);
+  },
+  getAnnotationItemsComponent: function (annotationsCollectionForList, showClusterAnyway) {
+    var annotationsList = [];
+
+    if (_.size(annotationsCollectionForList) > 0) {
+      var i = 1;
+
+      for (var annotation_id in annotationsCollectionForList) {
+        annotationsList.push( /*#__PURE__*/React.createElement(AnnotationItem, {
+          showClusterAnyway: showClusterAnyway,
+          key: annotationsCollectionForList[annotation_id][0].cid,
+          contractApp: this.props.contractApp,
+          annotationsCollection: this.state.annotations,
+          annotation: annotationsCollectionForList[annotation_id]
+        }));
+        i++;
+      }
+    }
+
+    return annotationsList;
+  },
+  getAnnotationItemsComponentByPage: function (annotationsCollectionForList, showClusterAnyway) {
+    var annotationsList = [];
+
+    if (_.size(annotationsCollectionForList) > 0) {
+      var i = 0;
+
+      for (var page in annotationsCollectionForList) {
+        for (var key in annotationsCollectionForList[page]) {
+          annotationsList.push( /*#__PURE__*/React.createElement(AnnotationItem, {
+            showClusterAnyway: showClusterAnyway,
+            key: i,
+            contractApp: this.props.contractApp,
+            annotationsCollection: this.state.annotations,
+            annotation: [annotationsCollectionForList[page][key]]
+          }));
+          i++;
+        }
+      }
+    }
+
+    return annotationsList;
+  },
+  sortByPage: function () {
+    if (this.state.annotations.models.length > 0) {
+      this.state.annotations.sort();
+      return /*#__PURE__*/React.createElement("div", {
+        className: "annotations-list",
+        id: "id-annotations-list"
+      }, this.getAnnotationItemsComponentByPage(this.state.annotations.groupByPage(), true));
+    }
+
+    return [];
+  },
+  sortByCategory: function () {
+    if (this.state.annotations.models.length > 0) {
+      this.state.annotations.sort();
+      return /*#__PURE__*/React.createElement("div", {
+        className: "annotations-list",
+        id: "id-annotations-list"
+      }, this.getAnnotationItemsComponent(this.state.annotations.groupByCategory(), true), /*#__PURE__*/React.createElement(AnnotationsCategoryList, {
+        contractApp: this.props.contractApp,
+        annotationsCollection: this.state.annotations
+      }));
+    }
+  },
+  render: function () {
+    if (this.state.annotations.length) {
+      if (this.state.annotations.sort_key === "category") {
+        return this.sortByCategory();
+      }
+
+      return this.sortByPage();
+    } else {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "annotations-list",
+        id: "id-annotations-list"
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "annotation-loading"
+      }, this.state.message));
+    }
+  }
 });
-
 var AnnotationsCategoryList = React.createClass({
-    displayName: "AnnotationsCategoryList",
+  displayName: "AnnotationsCategoryList",
+  isHeaderCategory: function (categoryKey) {
+    var headerNumber = categoryKey.substr(0, categoryKey.indexOf("-"));
 
-    isHeaderCategory: function isHeaderCategory(categoryKey) {
-        var headerNumber = categoryKey.substr(0, categoryKey.indexOf("-"));
-        if (["i", "ii", "iii", "iv", "v", "vi", "1", "2", "3", "4", "5", "6"].indexOf(headerNumber) !== -1) {
-            return true;
-        }
-        return false;
-    },
-    isUnusedCategory: function isUnusedCategory(categoryKey) {
-        if (this.usedCategories.indexOf(categoryKey) === -1) {
-            return true;
-        }
-        return false;
-    },
-    getCategoryName: function getCategoryName(categoryModel) {
-        return categoryModel.get("name");
-    },
-    componentDidMount: function componentDidMount() {
-        $(".categoryTitle").each(function () {
-            if ($(this).next().hasClass("categoryTitle")) {
-                $(this).append("<sapn class='allAnnotated'>" + LANG.all_categories_annotated + "</sapn>");
-            }
-        });
-    },
-    render: function render() {
-        var allCategories = this.props.contractApp.getCategoryChecklist().models;
-        this.usedCategories = this.props.annotationsCollection.pluck("category_key");
-        var unusedCategoriesDom = [];
-        for (var i = 0; i < allCategories.length; i++) {
-            if (this.isHeaderCategory(allCategories[i].get("key"))) {
-                unusedCategoriesDom.push(React.createElement(
-                    "div",
-                    { key: i, className: "categoryTitle" },
-                    React.createElement(
-                        "b",
-                        null,
-                        this.getCategoryName(allCategories[i])
-                    )
-                ));
-            } else if (this.isUnusedCategory(allCategories[i].get("key")) && this.getCategoryName(allCategories[i])) {
-                unusedCategoriesDom.push(React.createElement(
-                    "span",
-                    { key: i },
-                    this.getCategoryName(allCategories[i])
-                ));
-            }
-        }
-        return React.createElement(
-            "div",
-            { className: "unused-categories" },
-            React.createElement(
-                "span",
-                { className: "unused-categories-desc" },
-                LANG.unsed_category_desc
-            ),
-            unusedCategoriesDom
-        );
+    if (["i", "ii", "iii", "iv", "v", "vi", "1", "2", "3", "4", "5", "6"].indexOf(headerNumber) !== -1) {
+      return true;
     }
+
+    return false;
+  },
+  isUnusedCategory: function (categoryKey) {
+    if (this.usedCategories.indexOf(categoryKey) === -1) {
+      return true;
+    }
+
+    return false;
+  },
+  getCategoryName: function (categoryModel) {
+    return categoryModel.get("name");
+  },
+  componentDidMount: function () {
+    $(".categoryTitle").each(function () {
+      if ($(this).next().hasClass("categoryTitle")) {
+        $(this).append("<sapn class='allAnnotated'>" + LANG.all_categories_annotated + "</sapn>");
+      }
+    });
+  },
+  render: function () {
+    var allCategories = this.props.contractApp.getCategoryChecklist().models;
+    this.usedCategories = this.props.annotationsCollection.pluck("category_key");
+    var unusedCategoriesDom = [];
+
+    for (var i = 0; i < allCategories.length; i++) {
+      if (this.isHeaderCategory(allCategories[i].get("key"))) {
+        unusedCategoriesDom.push( /*#__PURE__*/React.createElement("div", {
+          key: i,
+          className: "categoryTitle"
+        }, /*#__PURE__*/React.createElement("b", null, this.getCategoryName(allCategories[i]))));
+      } else if (this.isUnusedCategory(allCategories[i].get("key")) && this.getCategoryName(allCategories[i])) {
+        unusedCategoriesDom.push( /*#__PURE__*/React.createElement("span", {
+          key: i
+        }, this.getCategoryName(allCategories[i])));
+      }
+    }
+
+    return /*#__PURE__*/React.createElement("div", {
+      className: "unused-categories"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "unused-categories-desc"
+    }, LANG.unsed_category_desc), unusedCategoriesDom);
+  }
 });
 var AnnotationsViewer = React.createClass({
-    displayName: "AnnotationsViewer",
-
-    componentDidMount: function componentDidMount() {
-        var self = this;
-
-        this.props.contractApp.on("annotationCreated", function (annotation) {
-            self.props.annotationsCollection.fetch({ reset: true });
-            //self.forceUpdate();
-        });
-        this.props.contractApp.on("annotationUpdated", function (annotation) {
-            self.props.annotationsCollection.fetch({ reset: true });
-            //self.forceUpdate();
-        });
-        this.props.contractApp.on("annotationDeleted", function (annotation) {
-            self.props.annotationsCollection.remove(annotation);
-            self.forceUpdate();
-        });
-    },
-    render: function render() {
-        return React.createElement(
-            "div",
-            { className: "annotations-viewer", style: this.props.style },
-            React.createElement(AnnotationHeader, { contractApp: this.props.contractApp,
-                annotationsCollection: this.props.annotationsCollection }),
-            React.createElement(AnnotationsSort, {
-                contractApp: this.props.contractApp,
-                annotationsCollection: this.props.annotationsCollection }),
-            React.createElement(AnnotationsList, {
-                contractApp: this.props.contractApp,
-                annotationsCollection: this.props.annotationsCollection })
-        );
-    }
+  displayName: "AnnotationsViewer",
+  componentDidMount: function () {
+    var self = this;
+    this.props.contractApp.on("annotationCreated", function (annotation) {
+      self.props.annotationsCollection.fetch({
+        reset: true
+      }); //self.forceUpdate();
+    });
+    this.props.contractApp.on("annotationUpdated", function (annotation) {
+      self.props.annotationsCollection.fetch({
+        reset: true
+      }); //self.forceUpdate();
+    });
+    this.props.contractApp.on("annotationDeleted", function (annotation) {
+      self.props.annotationsCollection.remove(annotation);
+      self.forceUpdate();
+    });
+  },
+  render: function () {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "annotations-viewer",
+      style: this.props.style
+    }, /*#__PURE__*/React.createElement(AnnotationHeader, {
+      contractApp: this.props.contractApp,
+      annotationsCollection: this.props.annotationsCollection
+    }), /*#__PURE__*/React.createElement(AnnotationsSort, {
+      contractApp: this.props.contractApp,
+      annotationsCollection: this.props.annotationsCollection
+    }), /*#__PURE__*/React.createElement(AnnotationsList, {
+      contractApp: this.props.contractApp,
+      annotationsCollection: this.props.annotationsCollection
+    }));
+  }
 });
-'use strict';
-
 var MetadataToggleButton = React.createClass({
-    displayName: 'MetadataToggleButton',
-
-    getInitialState: function getInitialState() {
-        return {
-            showMeta: true
-        };
-    },
-    handleClick: function handleClick() {
-        if (this.state.showMeta) {
-            this.setState({ showMeta: false });
-            $('.right-column-view').hide();
-            $('.metadata-toggle-button').removeClass("metadata-shown");
-            $('.pdf-viewer').css("width", "70%");
-            $(".text-panel").css("width", "70%");
-        } else {
-            this.setState({ showMeta: true });
-            $('.metadata-toggle-button').addClass("metadata-shown");
-            $('.right-column-view').show();
-            $('.pdf-viewer').css("width", "50%");
-            $(".text-panel").css("width", "50%");
-        }
-    },
-    render: function render() {
-        return React.createElement(
-            'div',
-            { className: 'metadata-toggle-button pull-right metadata-shown' },
-            React.createElement(
-                'span',
-                { onClick: this.handleClick },
-                LANG.meta
-            )
-        );
+  displayName: "MetadataToggleButton",
+  getInitialState: function () {
+    return {
+      showMeta: true
+    };
+  },
+  handleClick: function () {
+    if (this.state.showMeta) {
+      this.setState({
+        showMeta: false
+      });
+      $('.right-column-view').hide();
+      $('.metadata-toggle-button').removeClass("metadata-shown");
+      $('.pdf-viewer').css("width", "70%");
+      $(".text-panel").css("width", "70%");
+    } else {
+      this.setState({
+        showMeta: true
+      });
+      $('.metadata-toggle-button').addClass("metadata-shown");
+      $('.right-column-view').show();
+      $('.pdf-viewer').css("width", "50%");
+      $(".text-panel").css("width", "50%");
     }
+  },
+  render: function () {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "metadata-toggle-button pull-right metadata-shown"
+    }, /*#__PURE__*/React.createElement("span", {
+      onClick: this.handleClick
+    }, LANG.meta));
+  }
 });
-
 var MetadataView = React.createClass({
-    displayName: 'MetadataView',
+  displayName: "MetadataView",
+  getInitialState: function () {
+    return {
+      showMoreMetadata: false
+    };
+  },
+  componentDidMount: function () {
+    var self = this;
+    this.props.metadata.on("sync", function () {
+      self.forceUpdate();
+    });
+  },
+  clickShowMoreMetadata: function (e) {
+    e.preventDefault();
+    this.setState({
+      showMoreMetadata: !this.state.showMoreMetadata
+    });
 
-    getInitialState: function getInitialState() {
-        return {
-            showMoreMetadata: false
-        };
-    },
-    componentDidMount: function componentDidMount() {
-        var self = this;
-        this.props.metadata.on("sync", function () {
-            self.forceUpdate();
-        });
-    },
-    clickShowMoreMetadata: function clickShowMoreMetadata(e) {
-        e.preventDefault();
-        this.setState({ showMoreMetadata: !this.state.showMoreMetadata });
-        if (!this.state.showMoreMetadata) {
-            $(".metadata-view .show-more-meta").show(500);
-        } else {
-            $(".metadata-view .show-more-meta").hide(500);
-        }
-    },
-    render: function render() {
-        var showLabel = LANG.more;
-        if (this.state.showMoreMetadata) {
-            showLabel = LANG.less;
-        }
-        if (this.props.metadata.get("country")) {
-            var countryCode = this.props.metadata.get("country").code.toLowerCase();
-            var countryLink = app_url + "/countries/" + countryCode;
-
-            var sigYear = this.props.metadata.get("signature_year");
-            var sigYearLink = app_url + "/contracts?year=" + sigYear;
-
-            var re = new RegExp(' ', 'g');
-            var contractType = this.props.metadata.get("type_of_contract");
-            var contractTypeLink = app_url + "/search?q=&contract_type%5B%5D=" + contractType.replace(re, '+');
-
-            var resourceLinkBase = app_url + "/resources/";
-            var resourceLength = this.props.metadata.get("resource").length;
-            var resources = this.props.metadata.get("resource").map(function (resource, i) {
-                if (i != resourceLength - 1) {
-                    return React.createElement('a', { href: app_url + "/resource/" + resource, key: i }, resource + ' | ');
-                } else {
-                    return React.createElement('a', { href: app_url + "/resource/" + resource, key: i }, resource);
-                }
-            });
-
-            return React.createElement(
-                'div',
-                { className: 'metadata-view' },
-                React.createElement(
-                    'div',
-                    null,
-                    LANG.metadata,
-                    React.createElement(
-                        'div',
-                        { className: 'metadata-view-footer pull-right' },
-                        React.createElement(
-                            'a',
-                            { href: this.props.contractApp.getMetadataSummaryLink() },
-                            LANG.see_summary
-                        )
-                    )
-                ),
-                React.createElement(
-                    'div',
-                    { className: 'metadata-country' },
-                    React.createElement(
-                        'span',
-                        null,
-                        LANG.country
-                    ),
-                    React.createElement(
-                        'span',
-                        null,
-                        React.createElement(
-                            'a',
-                            { href: countryLink },
-                            this.props.metadata.get("country").name
-                        )
-                    )
-                ),
-                React.createElement(
-                    'div',
-                    { className: 'metadata-signature-year' },
-                    React.createElement(
-                        'span',
-                        null,
-                        LANG.signature_year
-                    ),
-                    React.createElement(
-                        'span',
-                        null,
-                        React.createElement(
-                            'a',
-                            { href: sigYearLink },
-                            this.props.metadata.get("signature_year") || "-"
-                        )
-                    )
-                ),
-                React.createElement(
-                    'div',
-                    { className: 'metadata-resource' },
-                    React.createElement(
-                        'span',
-                        null,
-                        LANG.resources
-                    ),
-                    React.createElement(
-                        'span',
-                        null,
-                        resources
-                    )
-                ),
-                React.createElement(
-                    'div',
-                    { className: 'metadata-type-contract' },
-                    React.createElement(
-                        'span',
-                        null,
-                        LANG.type_of_contract
-                    ),
-                    React.createElement(
-                        'span',
-                        null,
-                        React.createElement(
-                            'a',
-                            { href: contractTypeLink },
-                            this.props.metadata.get("type_of_contract") || "-"
-                        )
-                    )
-                ),
-                React.createElement(
-                    'div',
-                    { className: 'metadata-ocid' },
-                    React.createElement(
-                        'span',
-                        null,
-                        LANGE_ocid
-                    ),
-                    React.createElement(
-                        'span',
-                        null,
-                        this.props.metadata.get("open_contracting_id")
-                    )
-                )
-            );
-        } else {
-            return React.createElement(
-                'div',
-                { className: 'metadata-view' },
-                React.createElement(
-                    'div',
-                    null,
-                    LANG.metadata
-                ),
-                React.createElement(
-                    'span',
-                    null,
-                    LANGE.loading,
-                    ' '
-                ),
-                React.createElement(
-                    'div',
-                    { className: 'metadata-view-footer' },
-                    React.createElement(
-                        'a',
-                        { href: this.props.contractApp.getMetadataSummaryLink() },
-                        LANG.see_summary
-                    )
-                )
-            );
-        }
+    if (!this.state.showMoreMetadata) {
+      $(".metadata-view .show-more-meta").show(500);
+    } else {
+      $(".metadata-view .show-more-meta").hide(500);
     }
+  },
+  render: function () {
+    var showLabel = LANG.more;
+
+    if (this.state.showMoreMetadata) {
+      showLabel = LANG.less;
+    }
+
+    if (this.props.metadata.get("country")) {
+      var countryCode = this.props.metadata.get("country").code.toLowerCase();
+      var countryLink = app_url + "/countries/" + countryCode;
+      var sigYear = this.props.metadata.get("signature_year");
+      var sigYearLink = app_url + "/contracts?year=" + sigYear;
+      var re = new RegExp(' ', 'g');
+      var contractType = this.props.metadata.get("type_of_contract");
+      var contractTypeLink = app_url + "/search?q=&contract_type%5B%5D=" + contractType.replace(re, '+');
+      var resourceLinkBase = app_url + "/resources/";
+      var resourceLength = this.props.metadata.get("resource").length;
+      var resources = this.props.metadata.get("resource").map(function (resource, i) {
+        if (i != resourceLength - 1) {
+          return React.createElement('a', {
+            href: app_url + "/resource/" + resource,
+            key: i
+          }, resource + ' | ');
+        } else {
+          return React.createElement('a', {
+            href: app_url + "/resource/" + resource,
+            key: i
+          }, resource);
+        }
+      });
+      return /*#__PURE__*/React.createElement("div", {
+        className: "metadata-view"
+      }, /*#__PURE__*/React.createElement("div", null, LANG.metadata, /*#__PURE__*/React.createElement("div", {
+        className: "metadata-view-footer pull-right"
+      }, /*#__PURE__*/React.createElement("a", {
+        href: this.props.contractApp.getMetadataSummaryLink()
+      }, LANG.see_summary))), /*#__PURE__*/React.createElement("div", {
+        className: "metadata-country"
+      }, /*#__PURE__*/React.createElement("span", null, LANG.country), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("a", {
+        href: countryLink
+      }, this.props.metadata.get("country").name))), /*#__PURE__*/React.createElement("div", {
+        className: "metadata-signature-year"
+      }, /*#__PURE__*/React.createElement("span", null, LANG.signature_year), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("a", {
+        href: sigYearLink
+      }, this.props.metadata.get("signature_year") || "-"))), /*#__PURE__*/React.createElement("div", {
+        className: "metadata-resource"
+      }, /*#__PURE__*/React.createElement("span", null, LANG.resources), /*#__PURE__*/React.createElement("span", null, resources)), /*#__PURE__*/React.createElement("div", {
+        className: "metadata-type-contract"
+      }, /*#__PURE__*/React.createElement("span", null, LANG.type_of_contract), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("a", {
+        href: contractTypeLink
+      }, this.props.metadata.get("type_of_contract") || "-"))), /*#__PURE__*/React.createElement("div", {
+        className: "metadata-ocid"
+      }, /*#__PURE__*/React.createElement("span", null, LANGE_ocid), /*#__PURE__*/React.createElement("span", null, this.props.metadata.get("open_contracting_id"))));
+    } else {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "metadata-view"
+      }, /*#__PURE__*/React.createElement("div", null, LANG.metadata), /*#__PURE__*/React.createElement("span", null, LANGE.loading, " "), /*#__PURE__*/React.createElement("div", {
+        className: "metadata-view-footer"
+      }, /*#__PURE__*/React.createElement("a", {
+        href: this.props.contractApp.getMetadataSummaryLink()
+      }, LANG.see_summary)));
+    }
+  }
 });
-
 var RelatedDocumentsView = React.createClass({
-    displayName: 'RelatedDocumentsView',
+  displayName: "RelatedDocumentsView",
+  componentDidMount: function () {
+    var self = this;
+    this.props.metadata.on("sync", function () {
+      self.forceUpdate();
+    });
+  },
+  render: function () {
+    function truncate(text) {
+      var words = (text + "").split(" ");
+      var ellipsis = "";
 
-    componentDidMount: function componentDidMount() {
-        var self = this;
-        this.props.metadata.on("sync", function () {
-            self.forceUpdate();
-        });
-    },
-    render: function render() {
-        function truncate(text) {
-            var words = (text + "").split(" ");
-            var ellipsis = "";
-            if (words.length > 10) {
-                ellipsis = " ...";
-            }
-            words = words.splice(0, 10);
-            return words.join(" ") + ellipsis;
-        }
-        var parentContracts = "",
-            supportingContracts = [];
-        moreContracts = "";
-        if (this.props.metadata.get("parent_document")) {
-            parentContracts = this.props.metadata.get("parent_document").map(function (doc) {
-                var docUrl = app_url + "/contract/" + doc.id;
-                if (doc.status === "published") {
-                    return React.createElement(
-                        'span',
-                        null,
-                        React.createElement(
-                            'a',
-                            { href: docUrl },
-                            doc.contract_name
-                        )
-                    );
-                } else {
-                    return React.createElement(
-                        'span',
-                        null,
-                        doc.contract_name
-                    );
-                }
-            });
-            var MaxAllowed = 2;
-            var maxDocs = this.props.metadata.get("supporting_contracts").length < MaxAllowed ? this.props.metadata.get("supporting_contracts").length : MaxAllowed;
-            for (var i = 0; i < maxDocs; i++) {
-                var doc = this.props.metadata.get("supporting_contracts")[i];
-                if (doc.status === "published") {
-                    var docUrl = app_url + "/contract/" + doc.id;
-                    supportingContracts.push(React.createElement(
-                        'span',
-                        { id: i },
-                        React.createElement(
-                            'a',
-                            { href: docUrl },
-                            truncate(doc.contract_name)
-                        )
-                    ));
-                } else {
-                    supportingContracts.push(React.createElement(
-                        'span',
-                        { id: i },
-                        truncate(doc.contract_name)
-                    ));
-                }
-            }
-            if (this.props.metadata.get("supporting_contracts").length > MaxAllowed) {
-                moreContracts = React.createElement(
-                    'span',
-                    null,
-                    React.createElement(
-                        'a',
-                        { href: this.props.contractApp.getMetadataSummaryLink() + "#relateddocs" },
-                        'All related ...'
-                    )
-                );
-            }
-            if (parentContracts.length || supportingContracts.length) {
-                return React.createElement(
-                    'div',
-                    { className: 'relateddocument-view' },
-                    React.createElement(
-                        'div',
-                        null,
-                        'Related docs'
-                    ),
-                    parentContracts,
-                    supportingContracts,
-                    moreContracts
-                );
-            } else {
-                return React.createElement('div', null);
-            }
-        } else {
-            return React.createElement(
-                'div',
-                { className: 'relateddocument-view' },
-                React.createElement(
-                    'div',
-                    null,
-                    'Related docs'
-                ),
-                'Loading...'
-            );
-        }
+      if (words.length > 10) {
+        ellipsis = " ...";
+      }
+
+      words = words.splice(0, 10);
+      return words.join(" ") + ellipsis;
     }
+
+    var parentContracts = "",
+        supportingContracts = [];
+    moreContracts = "";
+
+    if (this.props.metadata.get("parent_document")) {
+      parentContracts = this.props.metadata.get("parent_document").map(function (doc) {
+        var docUrl = app_url + "/contract/" + doc.id;
+
+        if (doc.status === "published") {
+          return /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("a", {
+            href: docUrl
+          }, doc.contract_name));
+        } else {
+          return /*#__PURE__*/React.createElement("span", null, doc.contract_name);
+        }
+      });
+      var MaxAllowed = 2;
+      var maxDocs = this.props.metadata.get("supporting_contracts").length < MaxAllowed ? this.props.metadata.get("supporting_contracts").length : MaxAllowed;
+
+      for (var i = 0; i < maxDocs; i++) {
+        var doc = this.props.metadata.get("supporting_contracts")[i];
+
+        if (doc.status === "published") {
+          var docUrl = app_url + "/contract/" + doc.id;
+          supportingContracts.push( /*#__PURE__*/React.createElement("span", {
+            id: i
+          }, /*#__PURE__*/React.createElement("a", {
+            href: docUrl
+          }, truncate(doc.contract_name))));
+        } else {
+          supportingContracts.push( /*#__PURE__*/React.createElement("span", {
+            id: i
+          }, truncate(doc.contract_name)));
+        }
+      }
+
+      if (this.props.metadata.get("supporting_contracts").length > MaxAllowed) {
+        moreContracts = /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("a", {
+          href: this.props.contractApp.getMetadataSummaryLink() + "#relateddocs"
+        }, "All related ..."));
+      }
+
+      if (parentContracts.length || supportingContracts.length) {
+        return /*#__PURE__*/React.createElement("div", {
+          className: "relateddocument-view"
+        }, /*#__PURE__*/React.createElement("div", null, "Related docs"), parentContracts, supportingContracts, moreContracts);
+      } else {
+        return /*#__PURE__*/React.createElement("div", null);
+      }
+    } else {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "relateddocument-view"
+      }, /*#__PURE__*/React.createElement("div", null, "Related docs"), "Loading...");
+    }
+  }
 });
 var RelatedDocumentsMoreView = React.createClass({
-    displayName: 'RelatedDocumentsMoreView',
-
-    componentDidMount: function componentDidMount() {
-        var self = this;
-        this.props.metadata.on("sync", function () {
-            self.forceUpdate();
-        });
-    },
-    render: function render() {
-        if (this.props.metadata.get("country")) {
-            var countryCode = this.props.metadata.get("country").code.toLowerCase();
-            var countryLink = app_url + "/countries/" + countryCode;
-            var country = React.createElement('a', { href: countryLink }, this.props.metadata.get("country").name);
-            var resourceLinkBase = app_url + "/resources/";
-            var resources = this.props.metadata.get("resource").map(function (resource, i) {
-                return React.createElement('a', { href: app_url + "/resource/" + resource, key: i }, resource);
-            });
-            return React.createElement(
-                'div',
-                { className: 'relateddocument-more-view' },
-                React.createElement(
-                    'div',
-                    null,
-                    'More'
-                ),
-                React.createElement(
-                    'div',
-                    null,
-                    React.createElement(
-                        'div',
-                        null,
-                        'From ',
-                        country
-                    ),
-                    React.createElement(
-                        'div',
-                        null,
-                        'For ',
-                        resources
-                    )
-                )
-            );
-        } else {
-            return React.createElement(
-                'div',
-                { className: 'relateddocument-more-view' },
-                React.createElement(
-                    'div',
-                    null,
-                    'More'
-                ),
-                React.createElement(
-                    'span',
-                    null,
-                    'Loading...'
-                )
-            );
-        }
+  displayName: "RelatedDocumentsMoreView",
+  componentDidMount: function () {
+    var self = this;
+    this.props.metadata.on("sync", function () {
+      self.forceUpdate();
+    });
+  },
+  render: function () {
+    if (this.props.metadata.get("country")) {
+      var countryCode = this.props.metadata.get("country").code.toLowerCase();
+      var countryLink = app_url + "/countries/" + countryCode;
+      var country = React.createElement('a', {
+        href: countryLink
+      }, this.props.metadata.get("country").name);
+      var resourceLinkBase = app_url + "/resources/";
+      var resources = this.props.metadata.get("resource").map(function (resource, i) {
+        return React.createElement('a', {
+          href: app_url + "/resource/" + resource,
+          key: i
+        }, resource);
+      });
+      return /*#__PURE__*/React.createElement("div", {
+        className: "relateddocument-more-view"
+      }, /*#__PURE__*/React.createElement("div", null, "More"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", null, "From ", country), /*#__PURE__*/React.createElement("div", null, "For ", resources)));
+    } else {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "relateddocument-more-view"
+      }, /*#__PURE__*/React.createElement("div", null, "More"), /*#__PURE__*/React.createElement("span", null, "Loading..."));
     }
+  }
 });
 var OtherSourcesView = React.createClass({
-    displayName: 'OtherSourcesView',
+  displayName: "OtherSourcesView",
+  componentDidMount: function () {
+    var self = this;
+    this.props.metadata.on("sync", function () {
+      self.forceUpdate();
+    });
+  },
+  render: function () {
+    if (this.props.metadata.get("company")) {
+      var amla_url = this.props.metadata.get("amla_url");
+      var amlaUrlLink = /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("a", {
+        href: amla_url
+      }, this.props.metadata.get("country").name), " Legislation");
 
-    componentDidMount: function componentDidMount() {
-        var self = this;
-        this.props.metadata.on("sync", function () {
-            self.forceUpdate();
-        });
-    },
-    render: function render() {
-        if (this.props.metadata.get("company")) {
-            var amla_url = this.props.metadata.get("amla_url");
-            var amlaUrlLink = React.createElement(
-                'span',
-                null,
-                React.createElement(
-                    'a',
-                    { href: amla_url },
-                    this.props.metadata.get("country").name
-                ),
-                ' Legislation'
-            );
-
-            if (amla_url) {
-                return React.createElement(
-                    'div',
-                    { className: 'other-sources-view' },
-                    React.createElement(
-                        'div',
-                        null,
-                        'Other Sources'
-                    ),
-                    React.createElement(
-                        'div',
-                        null,
-                        React.createElement(
-                            'div',
-                            null,
-                            amlaUrlLink
-                        )
-                    )
-                );
-            } else {
-                return React.createElement('div', null);
-            }
-        } else {
-            return React.createElement(
-                'div',
-                { className: 'other-sources-view' },
-                React.createElement(
-                    'div',
-                    null,
-                    'Other Sources'
-                ),
-                React.createElement(
-                    'span',
-                    null,
-                    'Loading...'
-                )
-            );
-        }
+      if (amla_url) {
+        return /*#__PURE__*/React.createElement("div", {
+          className: "other-sources-view"
+        }, /*#__PURE__*/React.createElement("div", null, "Other Sources"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", null, amlaUrlLink)));
+      } else {
+        return /*#__PURE__*/React.createElement("div", null);
+      }
+    } else {
+      return /*#__PURE__*/React.createElement("div", {
+        className: "other-sources-view"
+      }, /*#__PURE__*/React.createElement("div", null, "Other Sources"), /*#__PURE__*/React.createElement("span", null, "Loading..."));
     }
+  }
 });
 var RightColumnView = React.createClass({
-    displayName: 'RightColumnView',
-
-    render: function render() {
-        return React.createElement(
-            'div',
-            { className: 'right-column-view' },
-            React.createElement(MetadataView, {
-                contractApp: this.props.contractApp,
-                metadata: this.props.metadata })
-        );
-    }
+  displayName: "RightColumnView",
+  render: function () {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "right-column-view"
+    }, /*#__PURE__*/React.createElement(MetadataView, {
+      contractApp: this.props.contractApp,
+      metadata: this.props.metadata
+    }));
+  }
 });
 function htmlEncode(html) {
     return document.createElement('a').appendChild(document.createTextNode(html)).parentNode.innerHTML;
@@ -45796,37 +45604,39 @@ Annotator.Plugin.PdfAnnotator = (function (_super) {
     return PdfAnnotator;
 })(Annotator.Plugin);
 
-"use strict";
-
 var PdfPaginationView = React.createClass({
   displayName: "PdfPaginationView",
-
-  getInitialState: function getInitialState() {
+  getInitialState: function () {
     return {
       visiblePage: 1,
       totalPages: 0
     };
   },
-  changePage: function changePage(page_no) {
+  changePage: function (page_no) {
     this.refs.userInput.getDOMNode().value = page_no;
-    this.setState({ visiblePage: page_no });
+    this.setState({
+      visiblePage: page_no
+    });
     this.props.contractApp.setCurrentPage(page_no);
   },
-  clickPrevious: function clickPrevious(e) {
+  clickPrevious: function (e) {
     e.preventDefault();
+
     if (this.state.visiblePage > 1) {
       this.changePage(this.state.visiblePage - 1);
     }
   },
-  clickNext: function clickNext(e) {
+  clickNext: function (e) {
     e.preventDefault();
+
     if (this.state.visiblePage < this.state.totalPages) {
       this.changePage(this.state.visiblePage + 1);
     }
   },
-  handleKeyDown: function handleKeyDown(e) {
+  handleKeyDown: function (e) {
     if (e.keyCode == 13) {
       var inputPage = parseInt(this.refs.userInput.getDOMNode().value);
+
       if (inputPage > 0 && inputPage <= this.state.totalPages) {
         this.changePage(inputPage);
       } else {
@@ -45834,47 +45644,47 @@ var PdfPaginationView = React.createClass({
       }
     }
   },
-  componentDidMount: function componentDidMount() {
+  componentDidMount: function () {
     var self = this;
-    self.setState({ totalPages: self.props.contractApp.getTotalPages() });
+    self.setState({
+      totalPages: self.props.contractApp.getTotalPages()
+    });
     this.props.contractApp.on("update-pdf-pagination-page", function (page_no) {
       self.refs.userInput.getDOMNode().value = page_no;
-      self.setState({ visiblePage: page_no });
+      self.setState({
+        visiblePage: page_no
+      });
     });
     this.refs.userInput.getDOMNode().value = this.state.visiblePage;
   },
-  render: function render() {
-    return React.createElement(
-      "div",
-      { className: "pdf-pagination pagination", style: this.props.style },
-      React.createElement(
-        "a",
-        { href: "#", className: "previous", onClick: this.clickPrevious },
-        LANG.previous
-      ),
-      React.createElement("input", { type: "text", className: "goto", ref: "userInput", onKeyDown: this.handleKeyDown }),
-      React.createElement(
-        "a",
-        { href: "#", className: "next", onClick: this.clickNext },
-        LANG.next
-      ),
-      " ",
-      LANG.of,
-      " ",
-      this.state.totalPages
-    );
+  render: function () {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "pdf-pagination pagination",
+      style: this.props.style
+    }, /*#__PURE__*/React.createElement("a", {
+      href: "#",
+      className: "previous",
+      onClick: this.clickPrevious
+    }, LANG.previous), /*#__PURE__*/React.createElement("input", {
+      type: "text",
+      className: "goto",
+      ref: "userInput",
+      onKeyDown: this.handleKeyDown
+    }), /*#__PURE__*/React.createElement("a", {
+      href: "#",
+      className: "next",
+      onClick: this.clickNext
+    }, LANG.next), " ", LANG.of, " ", this.state.totalPages);
   }
 });
-
 var PdfZoom = React.createClass({
   displayName: "PdfZoom",
-
-  getInitialState: function getInitialState() {
+  getInitialState: function () {
     return {
       scale: 1
     };
   },
-  handleClick: function handleClick(e, ev) {
+  handleClick: function (e, ev) {
     var type = e.target.getAttribute('data-ref');
     var int = this.state.scale;
 
@@ -45885,350 +45695,320 @@ var PdfZoom = React.createClass({
     if (int > 0.5 && type == 'decrease') {
       int = int - 0.25;
     }
-    this.setState({ scale: int });
+
+    this.setState({
+      scale: int
+    });
     this.props.contractApp.setPdfScale(int);
   },
-  render: function render() {
+  render: function () {
     var selectedClass = "scale-" + this.state.scale;
     $('.pdf-zoom-options span').removeClass('scale-selected');
     $('.pdf-zoom-options .' + selectedClass).addClass('scale-selected');
     var zoom = this.state.scale * 100;
-    return React.createElement(
-      "div",
-      null,
-      React.createElement(
-        "div",
-        { className: "pdf-zoom-options", style: this.props.style },
-        React.createElement(
-          "span",
-          null,
-          LANG.zoom
-        ),
-        React.createElement(
-          "a",
-          { className: "btn btn-default", "data-ref": "decrease", href: "#", onClick: this.handleClick },
-          "-"
-        ),
-        React.createElement(
-          "p",
-          null,
-          zoom,
-          "%"
-        ),
-        React.createElement(
-          "a",
-          { className: "btn btn-default", "data-ref": "increase", href: "#", onClick: this.handleClick },
-          "+"
-        )
-      )
-    );
+    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "pdf-zoom-options",
+      style: this.props.style
+    }, /*#__PURE__*/React.createElement("span", null, LANG.zoom), /*#__PURE__*/React.createElement("a", {
+      className: "btn btn-default",
+      "data-ref": "decrease",
+      href: "#",
+      onClick: this.handleClick
+    }, "-"), /*#__PURE__*/React.createElement("p", null, zoom, "%"), /*#__PURE__*/React.createElement("a", {
+      className: "btn btn-default",
+      "data-ref": "increase",
+      href: "#",
+      onClick: this.handleClick
+    }, "+")));
   }
 });
-
 var PdfViewer = React.createClass({
   displayName: "PdfViewer",
-
-  componentDidMount: function componentDidMount() {
+  componentDidMount: function () {
     var self = this;
     this.props.contractApp.on("change:pdfscale", function () {
       self.forceUpdate();
     });
   },
-  render: function render() {
+  render: function () {
     var page_no = this.props.contractApp.getCurrentPage();
     var pdfUrl = this.props.contractApp.getPdfUrl();
-    return React.createElement(
-      "div",
-      { className: "pdf-viewer pdf-annotator", style: this.props.style },
-      React.createElement(Pdf, {
-        content: this.props.pdfPage.get("content"),
-        contractApp: this.props.contractApp,
-        pdfPage: this.props.pdfPage,
-        page: 1,
-        scale: parseFloat(this.props.contractApp.getPdfScale()) || 1,
-        onPageRendered: this._onPageRendered })
-    );
+    return /*#__PURE__*/React.createElement("div", {
+      className: "pdf-viewer pdf-annotator",
+      style: this.props.style
+    }, /*#__PURE__*/React.createElement(Pdf, {
+      content: this.props.pdfPage.get("content"),
+      contractApp: this.props.contractApp,
+      pdfPage: this.props.pdfPage,
+      page: 1,
+      scale: parseFloat(this.props.contractApp.getPdfScale()) || 1,
+      onPageRendered: this._onPageRendered
+    }));
   }
 });
-"use strict";
-
 var TextEditorContainer = React.createClass({
-    displayName: "TextEditorContainer",
+  displayName: "TextEditorContainer",
+  getInitialState: function () {
+    return {
+      text: "",
+      page_no: 0,
+      message: "",
+      stateChange: false
+    };
+  },
+  setStateChange: function (state) {
+    this.stateChange = state;
+  },
+  getStateChange: function () {
+    return this.stateChange;
+  },
+  loadText: function () {
+    var self = this;
+    self.setState({
+      text: "",
+      page_no: self.props.contractApp.getCurrentPage(),
+      message: LANG.loading_pdf + self.props.contractApp.getCurrentPage()
+    });
 
-    getInitialState: function getInitialState() {
-        return {
-            text: "",
-            page_no: 0,
-            message: "",
-            stateChange: false
-        };
-    },
-    setStateChange: function setStateChange(state) {
-        this.stateChange = state;
-    },
-    getStateChange: function getStateChange() {
-        return this.stateChange;
-    },
-    loadText: function loadText() {
-        var self = this;
-        self.setState({
-            text: "",
-            page_no: self.props.contractApp.getCurrentPage(),
-            message: LANG.loading_pdf + self.props.contractApp.getCurrentPage()
-        });
-        if (this.xhr && this.xhr.readystate != 4) {
-            //if the users clicks pagination quickly, abort previous ajax calls.
-            this.xhr.abort();
-        }
-        this.xhr = $.ajax({
-            url: this.props.loadApi,
-            dataType: "json",
-            type: "GET",
-            data: {
-                page: this.props.contractApp.getCurrentPage()
-            }
-        }).done(function (response) {
-            self.props.contractApp.set({
-                pdf_url: response.pdf
-            });
-            self.setState({
-                text: response.message,
-                page_no: self.props.contractApp.getCurrentPage(),
-                message: ""
-            });
-        });
-    },
-    componentDidMount: function componentDidMount() {
-        var self = this;
-        this.props.contractApp.on("change:page_no", function () {
-            self.loadText();
-        });
-
-        window.addEventListener("beforeunload", function (e) {
-            var confirmationMessage = LANG.confirm_save;
-            if (self.getStateChange()) {
-                (e || window.event).returnValue = confirmationMessage;
-                return confirmationMessage;
-            }
-        });
-    },
-    onChange: function onChange(evt) {
-        this.html = evt.target.value;
-        this.setStateChange(true);
-    },
-    saveClicked: function saveClicked() {
-        var self = this;
-        self.setStateChange(false);
-        $.ajax({
-            url: this.props.saveApi,
-            data: {
-                text: $('.text-annotator').html(),
-                page: this.state.page_no
-            },
-            type: 'POST'
-        }).success(function (response) {
-            self.setState({ message: LANG.text_saved });
-            $('.text-annotator').html(response.message);
-            $('.text-annotator').animate({ scrollTop: $('.text-annotator').offset().top - $('.text-annotator').scrollTop() }, 'slow');
-        });
-    },
-    sanitizeTxt: function sanitizeTxt(text) {
-        //replace the <  and > with &lt;%gt if they are not one of the tags below
-        text = text.replace(/(<)(\/?)(?=span|div|p|br)([^>]*)(>)/g, "----lt----$2$3----gt----");
-        text = text.replace(/</g, "&lt;");
-        text = text.replace(/>/g, "&gt;");
-        text = text.replace(/----lt----/g, "<");
-        text = text.replace(/----gt----/g, ">");
-        return text;
-    },
-    render: function render() {
-        var text = this.sanitizeTxt(this.state.text);
-        var message = '';
-        if (this.state.message != '') {
-            message = React.createElement(
-                "div",
-                { className: "alert alert-info" },
-                this.state.message
-            );
-        }
-        return React.createElement(
-            "div",
-            { className: "text-panel" },
-            message,
-            React.createElement(TextEditor, {
-                onChange: this.onChange,
-                html: text }),
-            React.createElement(
-                "button",
-                { className: "btn btn-primary", onClick: this.saveClicked },
-                LANG.save
-            )
-        );
+    if (this.xhr && this.xhr.readystate != 4) {
+      //if the users clicks pagination quickly, abort previous ajax calls.
+      this.xhr.abort();
     }
+
+    this.xhr = $.ajax({
+      url: this.props.loadApi,
+      dataType: "json",
+      type: "GET",
+      data: {
+        page: this.props.contractApp.getCurrentPage()
+      }
+    }).done(function (response) {
+      self.props.contractApp.set({
+        pdf_url: response.pdf
+      });
+      self.setState({
+        text: response.message,
+        page_no: self.props.contractApp.getCurrentPage(),
+        message: ""
+      });
+    });
+  },
+  componentDidMount: function () {
+    var self = this;
+    this.props.contractApp.on("change:page_no", function () {
+      self.loadText();
+    });
+    window.addEventListener("beforeunload", function (e) {
+      var confirmationMessage = LANG.confirm_save;
+
+      if (self.getStateChange()) {
+        (e || window.event).returnValue = confirmationMessage;
+        return confirmationMessage;
+      }
+    });
+  },
+  onChange: function (evt) {
+    this.html = evt.target.value;
+    this.setStateChange(true);
+  },
+  saveClicked: function () {
+    var self = this;
+    self.setStateChange(false);
+    $.ajax({
+      url: this.props.saveApi,
+      data: {
+        text: $('.text-annotator').html(),
+        page: this.state.page_no
+      },
+      type: 'POST'
+    }).success(function (response) {
+      self.setState({
+        message: LANG.text_saved
+      });
+      $('.text-annotator').html(response.message);
+      $('.text-annotator').animate({
+        scrollTop: $('.text-annotator').offset().top - $('.text-annotator').scrollTop()
+      }, 'slow');
+    });
+  },
+  sanitizeTxt: function (text) {
+    //replace the <  and > with &lt;%gt if they are not one of the tags below
+    text = text.replace(/(<)(\/?)(?=span|div|p|br)([^>]*)(>)/g, "----lt----$2$3----gt----");
+    text = text.replace(/</g, "&lt;");
+    text = text.replace(/>/g, "&gt;");
+    text = text.replace(/----lt----/g, "<");
+    text = text.replace(/----gt----/g, ">");
+    return text;
+  },
+  render: function () {
+    var text = this.sanitizeTxt(this.state.text);
+    var message = '';
+
+    if (this.state.message != '') {
+      message = /*#__PURE__*/React.createElement("div", {
+        className: "alert alert-info"
+      }, this.state.message);
+    }
+
+    return /*#__PURE__*/React.createElement("div", {
+      className: "text-panel"
+    }, message, /*#__PURE__*/React.createElement(TextEditor, {
+      onChange: this.onChange,
+      html: text
+    }), /*#__PURE__*/React.createElement("button", {
+      className: "btn btn-primary",
+      onClick: this.saveClicked
+    }, LANG.save));
+  }
 });
 var TextEditor = React.createClass({
-    displayName: "TextEditor",
-
-    componentDidMount: function componentDidMount() {
-        if (this.props.html !== React.findDOMNode(this).innerHTML) {
-            React.findDOMNode(this).innerHTML = this.props.html;
-        }
-        $('div[contenteditable="true"]').keypress(function (event) {
-
-            if (event.which != 13) return true;
-
-            var docFragment = document.createDocumentFragment();
-
-            var newEle = document.createTextNode('\n');
-            docFragment.appendChild(newEle);
-
-            newEle = document.createElement('br');
-            docFragment.appendChild(newEle);
-
-            var range = window.getSelection().getRangeAt(0);
-            range.deleteContents();
-            range.insertNode(docFragment);
-
-            range = document.createRange();
-            range.setStartAfter(newEle);
-            range.collapse(true);
-
-            var sel = window.getSelection();
-            sel.removeAllRanges();
-            sel.addRange(range);
-
-            return false;
-        });
-    },
-    render: function render() {
-        return React.createElement("div", {
-            className: "text-annotator",
-            onInput: this.emitChange,
-            onBlue: this.emitChange,
-            contentEditable: "true",
-            dangerouslySetInnerHTML: { __html: this.props.html } });
-    },
-    emitChange: function emitChange(evt) {
-        var html = React.findDOMNode(this).innerHTML;
-        if (this.props.onChange && html != this.lastHtml) {
-            evt.target = { value: html };
-            this.props.onChange(evt);
-        }
-        this.lastHtml = html;
+  displayName: "TextEditor",
+  componentDidMount: function () {
+    if (this.props.html !== React.findDOMNode(this).innerHTML) {
+      React.findDOMNode(this).innerHTML = this.props.html;
     }
-});
-"use strict";
 
+    $('div[contenteditable="true"]').keypress(function (event) {
+      if (event.which != 13) return true;
+      var docFragment = document.createDocumentFragment();
+      var newEle = document.createTextNode('\n');
+      docFragment.appendChild(newEle);
+      newEle = document.createElement('br');
+      docFragment.appendChild(newEle);
+      var range = window.getSelection().getRangeAt(0);
+      range.deleteContents();
+      range.insertNode(docFragment);
+      range = document.createRange();
+      range.setStartAfter(newEle);
+      range.collapse(true);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      return false;
+    });
+  },
+  render: function () {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "text-annotator",
+      onInput: this.emitChange,
+      onBlue: this.emitChange,
+      contentEditable: "true",
+      dangerouslySetInnerHTML: {
+        __html: this.props.html
+      }
+    });
+  },
+  emitChange: function (evt) {
+    var html = React.findDOMNode(this).innerHTML;
+
+    if (this.props.onChange && html != this.lastHtml) {
+      evt.target = {
+        value: html
+      };
+      this.props.onChange(evt);
+    }
+
+    this.lastHtml = html;
+  }
+});
 var contractApp = new ContractApp(contractAppSetting);
 var searchResultsCollection = new SearchResultsCollection();
 searchResultsCollection.url = contractApp.getSearchUrl();
-
 var pdfPage = new PdfPage({
-    contractApp: contractApp
+  contractApp: contractApp
 });
-
 var api = {
-    save: saveApi,
-    load: loadApi
+  save: saveApi,
+  load: loadApi
 };
-/**
- * @jsx React.DOM
- */
-
 var MainApp = React.createClass({
-    displayName: "MainApp",
+  displayName: "MainApp",
+  getInitialState: function () {
+    return {
+      currentView: 'text'
+    };
+  },
+  default: function () {
+    contractApp.setView("text");
 
-    getInitialState: function getInitialState() {
-        return {
-            currentView: 'text'
-        };
-    },
-    "default": function _default() {
-        contractApp.setView("text");
-        if (!contractApp.getCurrentPage()) {
-            contractApp.setCurrentPage(1);
-        }
-        this.forceUpdate();
-    },
-    text: function text(page_no) {
-        contractApp.setView("text");
-        if (page_no) {
-            contractApp.setCurrentPage(page_no);
-        }
-        this.forceUpdate();
-    },
-    search: function search(query) {
-        contractApp.setView("search");
-        contractApp.setSearchQuery(query);
-        searchResultsCollection.fetch({
-            searchTerm: query,
-            reset: true
-        });
-        this.forceUpdate();
-    },
-    componentDidUpdate: function componentDidUpdate() {
-        // viewerCurrentPage.set({"page_no": 8});
-    },
-    componentDidMount: function componentDidMount() {
-        var router = Router({
-            '/': this["default"],
-            '/text': this.text,
-            '/text/page/:page_no': this.text,
-            '/search/:query': this.search
-        });
-        router.init();
-        contractApp.trigger("change:page_no");
-    },
-    getStyle: function getStyle(showFlag) {
-        var style = { display: "none" };
-        if (showFlag) style.display = "block";
-        return style;
-    },
-    render: function render() {
-        return React.createElement(
-            "div",
-            { className: "main-app" },
-            React.createElement(
-                "div",
-                { className: "title-wrap" },
-                React.createElement("a", { className: "back", href: back_url }),
-                React.createElement(
-                    "span",
-                    null,
-                    htmlDecode(contractTitle)
-                )
-            ),
-            React.createElement(
-                "div",
-                { className: "head-wrap" },
-                React.createElement(TextSearchForm, { contractApp: contractApp }),
-                React.createElement(TextPaginationView, {
-                    contractApp: contractApp }),
-                React.createElement(PdfZoom, {
-                    contractApp: contractApp })
-            ),
-            React.createElement(
-                "div",
-                { className: "document-wrap" },
-                React.createElement(TextSearchResultsList, {
-                    style: this.getStyle(contractApp.isViewVisible("TextSearchResultsList")),
-                    contractApp: contractApp,
-                    searchResultsCollection: searchResultsCollection }),
-                React.createElement(TextEditorContainer, {
-                    style: this.getStyle(true),
-                    contractApp: contractApp,
-                    showAnnotations: "false",
-                    saveApi: api.save,
-                    loadApi: api.load }),
-                React.createElement(PdfViewer, {
-                    pdfPage: pdfPage,
-                    style: this.getStyle(true),
-                    contractApp: contractApp,
-                    showAnnotations: "false" })
-            )
-        );
+    if (!contractApp.getCurrentPage()) {
+      contractApp.setCurrentPage(1);
     }
-});
 
-React.render(React.createElement(MainApp, null), document.getElementById('content'));
+    this.forceUpdate();
+  },
+  text: function (page_no) {
+    contractApp.setView("text");
+
+    if (page_no) {
+      contractApp.setCurrentPage(page_no);
+    }
+
+    this.forceUpdate();
+  },
+  search: function (query) {
+    contractApp.setView("search");
+    contractApp.setSearchQuery(query);
+    searchResultsCollection.fetch({
+      searchTerm: query,
+      reset: true
+    });
+    this.forceUpdate();
+  },
+  componentDidUpdate: function () {// viewerCurrentPage.set({"page_no": 8});
+  },
+  componentDidMount: function () {
+    var router = Router({
+      '/': this.default,
+      '/text': this.text,
+      '/text/page/:page_no': this.text,
+      '/search/:query': this.search
+    });
+    router.init();
+    contractApp.trigger("change:page_no");
+  },
+  getStyle: function (showFlag) {
+    var style = {
+      display: "none"
+    };
+    if (showFlag) style.display = "block";
+    return style;
+  },
+  render: function () {
+    return /*#__PURE__*/React.createElement("div", {
+      className: "main-app"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "title-wrap"
+    }, /*#__PURE__*/React.createElement("a", {
+      className: "back",
+      href: back_url
+    }), /*#__PURE__*/React.createElement("span", null, htmlDecode(contractTitle))), /*#__PURE__*/React.createElement("div", {
+      className: "head-wrap"
+    }, /*#__PURE__*/React.createElement(TextSearchForm, {
+      contractApp: contractApp
+    }), /*#__PURE__*/React.createElement(TextPaginationView, {
+      contractApp: contractApp
+    }), /*#__PURE__*/React.createElement(PdfZoom, {
+      contractApp: contractApp
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "document-wrap"
+    }, /*#__PURE__*/React.createElement(TextSearchResultsList, {
+      style: this.getStyle(contractApp.isViewVisible("TextSearchResultsList")),
+      contractApp: contractApp,
+      searchResultsCollection: searchResultsCollection
+    }), /*#__PURE__*/React.createElement(TextEditorContainer, {
+      style: this.getStyle(true),
+      contractApp: contractApp,
+      showAnnotations: "false",
+      saveApi: api.save,
+      loadApi: api.load
+    }), /*#__PURE__*/React.createElement(PdfViewer, {
+      pdfPage: pdfPage,
+      style: this.getStyle(true),
+      contractApp: contractApp,
+      showAnnotations: "false"
+    })));
+  }
+});
+React.render( /*#__PURE__*/React.createElement(MainApp, null), document.getElementById('content'));
 //# sourceMappingURL=review.js.map
