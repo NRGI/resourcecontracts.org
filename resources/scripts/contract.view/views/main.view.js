@@ -18,10 +18,6 @@ var pdfPage = new PdfPage({
     contractApp: contractApp
 });
 
-/**
- * @jsx React.DOM
- */
-
 var MainApp = React.createClass({
     getInitialState: function () {
         return {

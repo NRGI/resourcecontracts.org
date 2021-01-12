@@ -10,9 +10,6 @@ var api = {
     save: saveApi,
     load: loadApi
 };
-/**
- * @jsx React.DOM
- */
 
 var MainApp = React.createClass({
     getInitialState: function () {
