@@ -8,14 +8,14 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "laravel/framework": "^5.2.45",
-    "illuminate/html": "5.0.0",
+    "laravel/framework": "~5.2.45",
+    "laravelcollective/html": "~5.2.6",
     "zizaco/entrust": "1.9.1",
     "rap2hpoutre/laravel-log-viewer": "0.1.*",
-    "league/flysystem-aws-s3-v3": "^1.0",
-    "symfony/process": "^2.6",
-    "pda/pheanstalk": "^3.0",
-    "guzzlehttp/guzzle": "~5.0",
+    "league/flysystem-aws-s3-v3": "~1.0",
+    "symfony/process": "~2.6",
+    "pda/pheanstalk": "~3.0",
+    "guzzlehttp/guzzle": "~5.3.4",
     "phpoffice/phpword": "dev-master",
     "maatwebsite/excel": "~2.0",
     "ext-json": "*"
@@ -25,8 +25,9 @@
     "phpspec/phpspec": "~2.1",
     "mockery/mockery": "0.9.*",
     "barryvdh/laravel-ide-helper": "~2.0",
-    "laracasts/integrated": "^0.15.6",
-    "barryvdh/laravel-debugbar": "~2.0"
+    "barryvdh/laravel-debugbar": "~2.0",
+    "symfony/dom-crawler": "~3.0",
+    "symfony/css-selector": "~3.0"
   },
   "autoload": {
     "classmap": [
