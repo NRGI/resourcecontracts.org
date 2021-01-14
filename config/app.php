@@ -32,7 +32,7 @@ $providers = [
      */
     'Zizaco\Entrust\EntrustServiceProvider',
     'Illuminate\View\ViewServiceProvider',
-    'Illuminate\Html\HtmlServiceProvider',
+    'Collective\Html\HtmlServiceProvider',
     'Maatwebsite\Excel\ExcelServiceProvider',
 
     /*
@@ -209,8 +209,8 @@ return [
          * External Package
          */
         'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
-        'Form'      => 'Illuminate\Html\FormFacade',
-        'HTML'      => 'Illuminate\Html\HtmlFacade',
+        'Form'      => 'Collective\Html\FormFacade',
+        'HTML'      => 'Collective\Html\HtmlFacade',
     ],
 
 ];
