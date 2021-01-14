@@ -20,7 +20,7 @@
 		}
 		var LANG = {!! json_encode(trans('annotation'))!!};
 		var back_url = '{!!$back!!}';
-		var app_url = '{{url()}}';
+		var app_url = '{{url()->to("/")}}';
 		var contractTitle = "{{$contract->title}}";
 		var contractAppSetting = {
 			contract_id: '{{$contract->id}}',

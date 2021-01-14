@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{asset('css/datepicker.css')}}"/>
     <meta name="_token" content="{{ csrf_token() }}"/>
     <script>
-        var app_url = '{{url()}}';
+        var app_url = '{{url()->to("/")}}';
     </script>
     @yield('css')
 </head>
