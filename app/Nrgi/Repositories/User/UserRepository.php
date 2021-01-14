@@ -2,7 +2,7 @@
 
 use App\Nrgi\Entities\User\Role\Role;
 use App\Nrgi\Entities\User\User;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -87,7 +87,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getAllRoles()
     {
-        return $this->role->lists('display_name', 'name');
+        return $this->role->lists('display_name', 'name')->all();
     }
 
     /**
@@ -97,7 +97,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getCountryRoles()
     {
-        return $this->role->whereIn('name', config('nrgi.country_role'))->lists('display_name', 'name');
+        return $this->role->whereIn('name', config('nrgi.country_role'))->lists('display_name', 'name')->all();
     }
 
     /**
@@ -107,7 +107,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getList()
     {
-        return $this->user->lists('name', 'id');
+        return $this->user->lists('name', 'id')->all();
     }
 
     /**

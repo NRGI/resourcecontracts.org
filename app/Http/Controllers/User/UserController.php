@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserRequest;
 use App\Nrgi\Services\Contract\CountryService;
 use App\Nrgi\Services\User\UserService;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
 /**

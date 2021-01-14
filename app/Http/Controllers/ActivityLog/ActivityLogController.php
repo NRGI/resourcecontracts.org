@@ -6,7 +6,7 @@ use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\CountryService;
 use App\Nrgi\Services\User\UserService;
 use Illuminate\Http\Request;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 
 /**
  * Class ActivityController

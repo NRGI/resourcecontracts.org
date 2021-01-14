@@ -57,7 +57,7 @@ class UpdateMetadata extends Command
 
         if (is_null($contract_id)) {
             $contracts = $this->contract->getList();
-            $contracts->sortBy('id');
+            $contracts = $contracts->sortBy('id');
             foreach ($contracts as $contract) {
                 $this->updateMetadata($contract);
             }

@@ -5,7 +5,7 @@ use App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Language\LanguageService;
 use Exception;
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 use Psr\Log\LoggerInterface;
 
 /**

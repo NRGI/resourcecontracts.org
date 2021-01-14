@@ -12,7 +12,7 @@ use App\Nrgi\Services\Contract\CountryService;
 use App\Nrgi\Services\Contract\Discussion\DiscussionService;
 use App\Nrgi\Services\Download\DownloadService;
 use App\Nrgi\Services\Language\LanguageService;
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Http\Request;

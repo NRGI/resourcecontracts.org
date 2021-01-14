@@ -8,7 +8,7 @@ use App\Nrgi\Repositories\Contract\Comment\CommentRepositoryInterface;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Repositories\Contract\Discussion\DiscussionRepositoryInterface;
 use App\Nrgi\Repositories\User\UserRepositoryInterface;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Hashing\Hasher;
 use Psr\Log\LoggerInterface;
 use App\Nrgi\Entities\User\Role\Role;

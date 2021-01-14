@@ -1,6 +1,6 @@
 <?php namespace App\Nrgi\Services\Contract;
 
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 
 /**
  * Class CountryService

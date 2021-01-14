@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Services\Contract\Annotation\AnnotationService;
 use App\Nrgi\Services\Contract\ContractService;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
 /**

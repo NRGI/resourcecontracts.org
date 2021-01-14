@@ -1,7 +1,7 @@
 <?php namespace App\Nrgi\Repositories\Contract\Discussion;
 
 use App\Nrgi\Entities\Contract\Discussion\Discussion;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 

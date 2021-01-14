@@ -3,7 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\CountryService;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
 

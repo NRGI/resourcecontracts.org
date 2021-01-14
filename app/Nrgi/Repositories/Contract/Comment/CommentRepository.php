@@ -1,7 +1,7 @@
 <?php namespace App\Nrgi\Repositories\Contract\Comment;
 
 use App\Nrgi\Entities\Contract\Comment\Comment;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\Eloquent\Collection;
 
 /**

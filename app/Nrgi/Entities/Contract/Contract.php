@@ -472,7 +472,7 @@ class Contract extends Model
      */
     public function getSupportingContract()
     {
-        return DB::table('supporting_contracts')->where('contract_id', $this->id)->lists('supporting_contract_id');
+        return DB::table('supporting_contracts')->where('contract_id', $this->id)->lists('supporting_contract_id')->all();
     }
 
     /**

@@ -2,7 +2,7 @@
 
 use App\Nrgi\Entities\ActivityLog\ActivityLog;
 use App\Nrgi\Mturk\Entities\Activity;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 
 /**
  * Class ActivityRepository
