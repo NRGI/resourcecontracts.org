@@ -3,6 +3,7 @@
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Mail\MailQueue;
 use App\Nrgi\Services\Contract\ContractService;
+use Aws\Credentials\Credentials;
 use Aws\S3\S3Client;
 use Carbon\Carbon;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
@@ -349,11 +350,12 @@ class ProcessService
      */
     public function uploadPdfsToS3($id)
     {
-        $client = S3Client::factory(
+        $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
+        $client = new S3Client(
             [
-                'key'    => env('AWS_KEY'),
-                'secret' => env('AWS_SECRET'),
+                'version'=> '2006-03-01',
                 'region' => env('AWS_REGION'),
+                'credentials' => $credentials
             ]
         );
 
