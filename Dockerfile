@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y \
                     php5.6-pgsql \
                     php5.6-readline \
                     php5.6-xml \
+                    php5.6-zip \
                     beanstalkd \
                     pdftk \
                     poppler-utils \
