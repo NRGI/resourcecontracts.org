@@ -71,6 +71,7 @@ RUN git clone https://github.com/anjesh/pdf-processor.git
 RUN mkdir /shared_path \
  && mkdir -p /shared_path/rc-admin/data \
  && mkdir -p /shared_path/rc-admin/storage/logs \
+ && touch /shared_path/rc-admin/storage/logs/laravel.log \
  && mkdir -p /shared_path/rc-admin/storage/app \
  && mkdir -p /shared_path/rc-admin/storage/framework/cache \
  && mkdir -p /shared_path/rc-admin/storage/framework/sessions \
@@ -82,7 +83,8 @@ RUN mkdir /shared_path \
  && ln -s /shared_path/rc-admin/storage/ /var/www/rc-admin/storage \
  && ln -s /shared_path/rc-admin/data/ /var/www/rc-admin/public/data \
  && rm -rf /var/www/pdfprocessor/logs \
- && chown -R www-data: /var/www/rc-admin
+ && chown -R www-data: /var/www/rc-admin \
+ && chown -R www-data: /shared_path
 
 WORKDIR /var/www/rc-admin
 RUN php composer.phar dump-autoload --optimize \
