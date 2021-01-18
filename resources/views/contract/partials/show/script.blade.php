@@ -31,7 +31,8 @@
 
 <?php
 $pages = [];
-for ($i = 1; $i <= $contract->pages()->count(); $i++) {
+$page_count = $contract->pages()->count();
+for ($i = 1; $i <= $page_count; $i++) {
 	$pages[$i] = $i;
 }
 ?>
