@@ -8,10 +8,11 @@
 					$hash = ($view == 'show') ? '#language' : null;
 
 					if ($lang->defaultLang() == $l['code']):
-						$route      = route(sprintf('contract.%s', $view), ['id' => $contract->id]);
+						$route      = route(
+						        sprintf('contract.%s', $view), ['id' => $contract->id]);
 						$edit_route = route(
 								sprintf('contract.%s.trans', 'edit'),
-								['id' => $contract->id]
+								['id' => $contract->id, 'lang' => null]
 						);
 					else:
 						$route      = route(

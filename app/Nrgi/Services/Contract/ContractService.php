@@ -12,7 +12,7 @@ use App\Nrgi\Services\Contract\Page\PageService;
 use App\Nrgi\Services\Language\LanguageService;
 use Carbon\Carbon;
 use Exception;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Logging\Log;

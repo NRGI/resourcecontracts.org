@@ -1,25 +1,30 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Anjesh Tuladhar <anjesh@yipl.com.np>
 
 RUN apt-get update && apt-get install -y \
                     curl \
                     git \
+                    software-properties-common \
+                    unzip \
                     wget \
- && echo "deb http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu trusty main" > /etc/apt/sources.list.d/ondrej-php5-5_6-trusty.list \
+ && LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php \
  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C \
- && apt-get install -y \
+ && apt-get update && apt-get upgrade -y && apt-get install -y \
                     apache2 \
-                    php5 \
-                    php5-cli \
-                    php5-curl \
-                    php5-mcrypt \
-                    php5-pgsql \
-                    php5-readline \
+                    php5.6 \
+                    php5.6-cli \
+                    php5.6-curl \
+                    php5.6-mbstring \
+                    php5.6-mcrypt \
+                    php5.6-pgsql \
+                    php5.6-readline \
+                    php5.6-xml \
+                    php5.6-zip \
                     beanstalkd \
                     pdftk \
                     poppler-utils \
                     supervisor \
-		    gettext \
+		            gettext \
  && rm -rf /var/lib/apt/lists/* \
  && curl -O -L https://github.com/papertrail/remote_syslog2/releases/download/v0.20/remote_syslog_linux_amd64.tar.gz \
  && tar -zxf remote_syslog_linux_amd64.tar.gz \
@@ -28,9 +33,7 @@ RUN apt-get update && apt-get install -y \
  && rm -r remote_syslog 
 
 RUN a2enmod rewrite \
- && a2enmod php5 \
- && ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/apache2/conf.d/20-mcrypt.ini \
- && ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini
+ && a2enmod php5.6
 
 # Fetch composer packages before copying project code to leverage Docker caching
 RUN mkdir /var/www/rc-admin
@@ -55,9 +58,9 @@ COPY conf/logrotate.conf /etc/logrotate.d/rc-admin
 COPY conf/settings.config.template /var/container_init/settings.config.template
 
 # Configure PHP
-RUN sed -i "s/^post_max_size =.*/post_max_size = 5120M/" /etc/php5/apache2/php.ini \
- && sed -i "s/^upload_max_filesize =.*/upload_max_filesize = 5120M/" /etc/php5/apache2/php.ini \
- && sed -i "s/^memory_limit =.*/memory_limit = 256M/" /etc/php5/apache2/php.ini
+RUN sed -i "s/^post_max_size =.*/post_max_size = 5120M/" /etc/php/5.6/apache2/php.ini \
+ && sed -i "s/^upload_max_filesize =.*/upload_max_filesize = 5120M/" /etc/php/5.6/apache2/php.ini \
+ && sed -i "s/^memory_limit =.*/memory_limit = 256M/" /etc/php/5.6/apache2/php.ini
 
 COPY . /var/www/rc-admin
 
@@ -68,6 +71,7 @@ RUN git clone https://github.com/anjesh/pdf-processor.git
 RUN mkdir /shared_path \
  && mkdir -p /shared_path/rc-admin/data \
  && mkdir -p /shared_path/rc-admin/storage/logs \
+ && touch /shared_path/rc-admin/storage/logs/laravel.log \
  && mkdir -p /shared_path/rc-admin/storage/app \
  && mkdir -p /shared_path/rc-admin/storage/framework/cache \
  && mkdir -p /shared_path/rc-admin/storage/framework/sessions \
@@ -79,7 +83,8 @@ RUN mkdir /shared_path \
  && ln -s /shared_path/rc-admin/storage/ /var/www/rc-admin/storage \
  && ln -s /shared_path/rc-admin/data/ /var/www/rc-admin/public/data \
  && rm -rf /var/www/pdfprocessor/logs \
- && chown -R www-data: /var/www/rc-admin
+ && chown -R www-data: /var/www/rc-admin \
+ && chown -R www-data: /shared_path
 
 WORKDIR /var/www/rc-admin
 RUN php composer.phar dump-autoload --optimize \

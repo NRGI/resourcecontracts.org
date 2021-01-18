@@ -12,7 +12,7 @@ use App\Nrgi\Services\Contract\CountryService;
 use App\Nrgi\Services\Contract\Discussion\DiscussionService;
 use App\Nrgi\Services\Download\DownloadService;
 use App\Nrgi\Services\Language\LanguageService;
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Http\Request;
@@ -523,11 +523,14 @@ class ContractController extends Controller
     {
         if (auth()->user()->isAdmin()) {
             try {
-                $uri              = 'contract/published_at/update';
-                $url              = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $uri = 'contract/published_at/update';
+                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $recent_contracts = json_encode($this->activity->getPublishedContracts(true));
-                $request          = $this->http->post($url, null, ['recent_contracts' => $recent_contracts]);
-                $request->send();
+                $response = $this->http->post($url, [
+                    'body' => [
+                        'recent_contracts' => $recent_contracts
+                    ]
+                ]);
 
                 return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
             } catch (\Exception $e) {
@@ -549,11 +552,14 @@ class ContractController extends Controller
     {
         if (auth()->user()->isAdmin()) {
             try {
-                $uri         = 'contract/annotation_category/community_consultation/update';
-                $url         = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $uri = 'contract/annotation_category/community_consultation/update';
+                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $annotations = $this->annotation->getAllByAnnotation('community-consultation');
-                $request     = $this->http->post($url, null, ['annotations' => $annotations]);
-                $request->send();
+                $response = $this->http->post($url, [
+                    'body' => [
+                        'annotations' => $annotations
+                    ]
+                ]);
 
                 return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
             } catch (\Exception $e) {
@@ -575,10 +581,9 @@ class ContractController extends Controller
     {
         if (auth()->user()->isAdmin()) {
             try {
-                $uri     = 'contract/cluster/update';
-                $url     = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
-                $request = $this->http->post($url);
-                $request->send();
+                $uri = 'contract/cluster/update';
+                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $response = $this->http->post($url);
 
                 return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
             } catch (\Exception $e) {
@@ -602,10 +607,11 @@ class ContractController extends Controller
     {
         if (auth()->user()->isAdmin()) {
             try {
-                $uri     = 'contract/cluster/restore';
-                $url     = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
-                $request = $this->http->post($url, null, ['key' => $key]);
-                $request->send();
+                $uri = 'contract/cluster/restore';
+                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $response = $this->http->post($url, [
+                    'body' => ['key' => $key]
+                ]);
 
                 return redirect()->route('contract.index')->withSuccess('Elastic restored successfully');
             } catch (\Exception $e) {
@@ -627,17 +633,18 @@ class ContractController extends Controller
     {
         if (auth()->user()->isAdmin()) {
             try {
-                $uri                    = 'contract/supporting-doc/update';
-                $url                    = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
-                $request_payload        = ['get_master_pages'=>true];
-                $request                = $this->http->post($url, null, $request_payload);
-                $resp                   = $request->send();
-                $resp_json              = $resp->json();
+                $uri = 'contract/supporting-doc/update';
+                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $request_payload = ['get_master_pages' => true];
+                $response = $this->http->post($url, [
+                    'body' => $request_payload
+                ]);
+                $resp_json = $response->json();
 
-                echo 'The total pages are: '.$resp_json['result'];
+                echo 'The total pages are: ' . $resp_json['result'];
 
                 die();
-               
+
             } catch (\Exception $e) {
                 file_put_contents('supporting_doc_error.log', $e->getMessage(), FILE_APPEND);
 
@@ -662,12 +669,13 @@ class ContractController extends Controller
     {
         if (auth()->user()->isAdmin()) {
             try {
-                $uri                    = 'contract/supporting-doc/update';
-                $url                    = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
-                $request_payload        = ['add_to_master'=>$page];
-                $request                = $this->http->post($url, null, $request_payload);
-                $resp                   = $request->send();
-                $resp_json              = $resp->json();
+                $uri = 'contract/supporting-doc/update';
+                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $request_payload = ['add_to_master' => $page];
+                $response = $this->http->post($url, [
+                    'body' => $request_payload
+                ]);
+                $resp_json = $response->json();
 
                 if (!$resp_json['status']) {
                     file_put_contents('supporting_doc_error.log', $resp_json['result'], FILE_APPEND);
@@ -699,15 +707,16 @@ class ContractController extends Controller
     {
         if (auth()->user()->isAdmin()) {
             try {
-                $uri                    = 'contract/supporting-doc/update';
-                $url                    = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $uri = 'contract/supporting-doc/update';
+                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $parent_child_contracts = json_encode($this->contract->getParentChild());
-                $request_payload        = [
+                $request_payload = [
                     'parent_child_contracts' => $parent_child_contracts,
                 ];
-                $request                = $this->http->post($url, null, $request_payload);
-                $resp                   = $request->send();
-                $resp_json              = $resp->json();
+                $response = $this->http->post($url, [
+                    'body' => $request_payload
+                ]);
+                $resp_json = $response->json();
 
                 if (!$resp_json['status']) {
                     file_put_contents('supporting_doc_error.log', $resp_json['result'], FILE_APPEND);
@@ -745,9 +754,10 @@ class ContractController extends Controller
                 $request_payload        = [
                     'child_parent_contracts' => $child_parent_contracts
                 ];
-                $request                = $this->http->post($url, null, $request_payload);
-                $resp                   = $request->send();
-                $resp_json              = $resp->json();
+                $response                = $this->http->post($url, [
+                    'body' => $request_payload
+                ]);
+                $resp_json              = $response->json();
 
                 if (!$resp_json['status']) {
                     file_put_contents('supporting_doc_error.log', $resp_json['result'], FILE_APPEND);

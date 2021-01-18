@@ -3,7 +3,7 @@
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use Exception;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Logging\Log;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Filesystem\Filesystem;

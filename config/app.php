@@ -5,12 +5,10 @@ $providers = [
     /*
      * Laravel Framework Service Providers...
      */
-    'Illuminate\Foundation\Providers\ArtisanServiceProvider',
     'Illuminate\Auth\AuthServiceProvider',
     'Illuminate\Bus\BusServiceProvider',
     'Illuminate\Cache\CacheServiceProvider',
     'Illuminate\Foundation\Providers\ConsoleSupportServiceProvider',
-    'Illuminate\Routing\ControllerServiceProvider',
     'Illuminate\Cookie\CookieServiceProvider',
     'Illuminate\Database\DatabaseServiceProvider',
     'Illuminate\Encryption\EncryptionServiceProvider',
@@ -27,20 +25,19 @@ $providers = [
     'Illuminate\Translation\TranslationServiceProvider',
     'Illuminate\Validation\ValidationServiceProvider',
     'Illuminate\View\ViewServiceProvider',
+    'Illuminate\Broadcasting\BroadcastServiceProvider',
     /*
      * External Package
      */
     'Zizaco\Entrust\EntrustServiceProvider',
     'Illuminate\View\ViewServiceProvider',
-    'Illuminate\Html\HtmlServiceProvider',
+    'Collective\Html\HtmlServiceProvider',
     'Maatwebsite\Excel\ExcelServiceProvider',
 
     /*
      * Application Service Providers...
      */
     'App\Providers\AppServiceProvider',
-    'App\Providers\BusServiceProvider',
-    'App\Providers\ConfigServiceProvider',
     'App\Providers\EventServiceProvider',
     'App\Providers\RouteServiceProvider',
     'App\Providers\RepositoriesServiceProvider',
@@ -209,8 +206,8 @@ return [
          * External Package
          */
         'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
-        'Form'      => 'Illuminate\Html\FormFacade',
-        'HTML'      => 'Illuminate\Html\HtmlFacade',
+        'Form'      => 'Collective\Html\FormFacade',
+        'HTML'      => 'Collective\Html\HtmlFacade',
     ],
 
 ];
