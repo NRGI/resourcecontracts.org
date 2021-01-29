@@ -60,7 +60,8 @@ COPY conf/settings.config.template /var/container_init/settings.config.template
 # Configure PHP
 RUN sed -i "s/^post_max_size =.*/post_max_size = 5120M/" /etc/php/5.6/apache2/php.ini \
  && sed -i "s/^upload_max_filesize =.*/upload_max_filesize = 5120M/" /etc/php/5.6/apache2/php.ini \
- && sed -i "s/^memory_limit =.*/memory_limit = 512M/" /etc/php/5.6/apache2/php.ini
+ && sed -i "s/^memory_limit =.*/memory_limit = 512M/" /etc/php/5.6/apache2/php.ini \
+ && sed -i "s/^max_execution_time =.*/max_execution_time = 60/" /etc/php/5.6/apache2/php.ini
 
 COPY . /var/www/rc-admin
 
