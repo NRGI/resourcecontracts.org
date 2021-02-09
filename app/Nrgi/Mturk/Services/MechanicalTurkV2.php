@@ -2,8 +2,6 @@
 
 namespace App\Nrgi\Mturk\Services;
 
-use Carbon\Carbon;
-
 /**
  * Class MechanicalTurkV2
  */
@@ -349,12 +347,7 @@ class MechanicalTurkV2
             'headers'   => $headers,
         ];
 
-        $dt   = Carbon::now();
         $log  = new \Illuminate\Support\Facades\Log();
-        $file = storage_path().'/logs/'.'api-response'.$dt->format("Y-m-d").'-mturk.log';
-        $public_file = 'mturk-log/mturk.log';
-        $log::useFiles($file);
-        $log::useFiles($public_file);
         $log::info(json_encode($resp));
 
         return $resp;
