@@ -227,5 +227,7 @@ return [
     "Zinc-Lead"                        => "Plomb allié au zinc",
     "Zircon"                           => "Zircon",
     "Zirconium"                        => "Zirconium",
-
+    "Tobacco"                          => "Tabac",
+    "Solar energy"                     => "Energie solaire",
+    "Wind energy"                      => "Énergie éolienne",
 ];
