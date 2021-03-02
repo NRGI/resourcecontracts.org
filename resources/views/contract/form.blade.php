@@ -35,6 +35,8 @@ if (!empty($contract->metadata->government_entity)) {
         }
     }
 }
+$doc_type = (trans('codelist/documentType',[],null,$locale));
+asort($doc_type);
 ?>
 
 @if($action == 'add')
@@ -144,6 +146,7 @@ foreach ($resources as $item) {
 		$resourceList[$item] = $item;
 	}
 }
+asort($resourceList);
 ?>
 <div class="form-group">
     <label for="resource" class="col-sm-2 control-label">@lang('contract.resource') <span class="red">*</span></label>
@@ -244,9 +247,7 @@ foreach ($resources as $item) {
     ?>
     <label for="document_type" class="col-sm-2 control-label">@lang('contract.document_type') <span class="red">*</span></label>
     <div class="col-sm-7">
-
-         {!! Form::select('document_type',[''=>trans('Select')]+ trans('codelist/documentType',[],null,$locale),
-        $dt, ["class"=>"required form-control", "id"=>"document_type"])!!}
+         {!! Form::select('document_type',[''=>trans('Select')]+ $doc_type, $dt, ["class"=>"required form-control", "id"=>"document_type"])!!}
         @if($dt == 'Other')
             {!! Form::text('document_type',
             isset($contract->metadata->document_type)?$contract->metadata->document_type:null,
