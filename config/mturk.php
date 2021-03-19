@@ -59,6 +59,18 @@ return [
             'Reward'                      => '0.30',
             'LifetimeInSeconds'           => 10*24*60*60,
             'AssignmentDurationInSeconds' => 10*24*60*60,
+            'QualificationRequirements'   =>array(
+                [
+                    "QualificationTypeId"=>"00000000000000000040",
+                    "Comparator"=>"GreaterThan",
+                    "IntegerValues":[20]
+                ],
+                [
+                    "QualificationTypeId"=>"000000000000000000L0",
+                    "Comparator"=>"GreaterThan",
+                    "IntegerValues":[95]
+                ]
+            )
         ],
 
     ],
