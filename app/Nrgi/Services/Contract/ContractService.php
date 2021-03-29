@@ -12,6 +12,11 @@ use App\Nrgi\Services\Contract\Page\PageService;
 use App\Nrgi\Services\Language\LanguageService;
 use Carbon\Carbon;
 use Exception;
+use Aws\Credentials\Credentials;
+use Aws\S3\S3Client;
+use Aws\Exception\AwsException;
+use Aws\S3\MultipartUploader;
+use Aws\Exception\MultipartUploadException;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
@@ -1393,13 +1398,33 @@ class ContractService
             $this->logger->info('File name is valid');//remove
             $fileName    = $file->getClientOriginalName();
             $file_type   = $file->getClientOriginalExtension();
+            $file_path=$file->getRealPath();
             $newFileName = sprintf("%s.%s", sha1($fileName.time()), $file_type);
             try {
                 $this->logger->info('Trying to upload to s3');//remove
-                $data = $this->storage->disk('s3')->put(
-                    $newFileName,
-                    $this->filesystem->get($file)
+                $this->logger->info('File name is'.$newFileName);//remove
+                $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
+                $client = new S3Client(
+                    [
+                        'version'=> '2006-03-01',
+                        'region' => env('AWS_REGION'),
+                        'credentials' => $credentials
+                    ]
                 );
+                $this->logger->info('S3 client success');//remove
+                $uploader = new MultipartUploader($client, $file_path, [
+                    'bucket' => env('AWS_BUCKET'),
+                    'key' => $newFileName,
+                    'before_upload' => function(\Aws\Command $command) {
+                       gc_collect_cycles();
+                    }
+                 ]);
+                 $this->logger->info('uploader create success');//remove
+                 $data=$uploader->upload();
+                // $data = $this->storage->disk('s3')->put(
+                //     $newFileName,
+                //     $this->filesystem->get($file)
+                // );
                 $this->logger->info('S3 upload success');//remove
             } catch (Exception $e) {
                 $this->logger->error(sprintf('File could not be uploaded : %s', $e->getMessage()));
