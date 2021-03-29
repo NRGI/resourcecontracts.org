@@ -87,6 +87,7 @@ class ProcessService
      */
     public function execute($contractId)
     {
+        $this->logger->info('Executing contract process');//remove
         $this->contract_id = $contractId;
         $contract          = $this->contract->find($contractId);
         $startTime         = Carbon::now();
@@ -113,15 +114,16 @@ class ProcessService
                         'end_time'            => Carbon::now()->toDayDateTimeString(),
                     ]
                 );
-
+                $this->logger->info('Moving file to S3');//remove
                 $this->contract->moveS3File(
                     $contract->file,
                     sprintf('%s/%s', $contract->id, $contract->getS3PdfName())
                 );
 
                 $this->updateContractPdfStructure($contract, $writeFolderPath);
-
+                $this->logger->info('Uploading pdf to s3');//remove
                 $this->uploadPdfsToS3($contract->id);
+                $this->logger->info('PDF upload success');//remove
                 $this->deleteContractFolder($contract->id);
                 $this->fileSystem->delete($readFilePath);
 
@@ -132,6 +134,7 @@ class ProcessService
                 $contract->save();
 
                 $contract = $this->contract->find($contract->id);
+                $this->logger->info('Sending to elastic search');//remove
 
                 if ($contract->metadata_status == Contract::STATUS_PUBLISHED) {
                     $this->queue->push(

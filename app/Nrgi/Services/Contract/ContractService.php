@@ -289,8 +289,10 @@ class ContractService
      */
     public function saveContract(array $formData)
     {
+        $this->logger->info('Starting to upload contract');//remove
         if ($file = $this->uploadContract($formData['file'])) {
             try {
+                $this->logger->info('Contract process success');//remove
                 $metadata                        = $this->processMetadata($formData);
                 $metadata['file_size']           = $file['size'];
                 $metadata['open_contracting_id'] = $this->contract->generateOCID();
@@ -319,6 +321,7 @@ class ContractService
             }
 
             if ($contract) {
+                $this->logger->info('Pushing contract to process document');//remove
                 $this->queue->push('App\Nrgi\Services\Queue\ProcessDocumentQueue', ['contract_id' => $contract->id]);
             }
 
@@ -1387,14 +1390,17 @@ class ContractService
     protected function uploadContract(UploadedFile $file)
     {
         if ($file->isValid()) {
+            $this->logger->info('File name is valid');//remove
             $fileName    = $file->getClientOriginalName();
             $file_type   = $file->getClientOriginalExtension();
             $newFileName = sprintf("%s.%s", sha1($fileName.time()), $file_type);
             try {
+                $this->logger->info('Trying to upload to s3');//remove
                 $data = $this->storage->disk('s3')->put(
                     $newFileName,
                     $this->filesystem->get($file)
                 );
+                $this->logger->info('S3 upload success');//remove
             } catch (Exception $e) {
                 $this->logger->error(sprintf('File could not be uploaded : %s', $e->getMessage()));
 
