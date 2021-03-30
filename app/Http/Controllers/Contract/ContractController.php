@@ -17,6 +17,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Contracts\Logging\Log;
 
 /**
  * Class ContractController
@@ -46,6 +47,10 @@ class ContractController extends Controller
      */
     protected $comment;
     /**
+     * @var Log
+     */
+    protected $logger;
+    /**
      * @var AnnotationService
      */
     protected $annotation;
@@ -68,6 +73,7 @@ class ContractController extends Controller
      * @param ActivityService       $activity
      * @param DatabaseManager       $db
      * @param Client                $http
+     * @param Log                   $logger
      */
     public function __construct(
         ContractService $contract,
@@ -78,6 +84,7 @@ class ContractController extends Controller
         DownloadService $downloadService,
         ActivityService $activity,
         DatabaseManager $db,
+        Log $logger,
         Client $http
     ) {
         $this->middleware('auth');
@@ -90,6 +97,7 @@ class ContractController extends Controller
         $this->activity        = $activity;
         $this->db              = $db;
         $this->http            = $http;
+        $this->logger          = $logger;
     }
 
     /**
