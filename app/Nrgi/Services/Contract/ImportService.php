@@ -9,6 +9,11 @@ use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel;
+use Aws\Credentials\Credentials;
+use Aws\S3\S3Client;
+use Aws\Exception\AwsException;
+use Aws\S3\MultipartUploader;
+use Aws\Exception\MultipartUploadException;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Throwable;
 
@@ -570,10 +575,27 @@ class ImportService
 
                 $this->logger->info('Contract Key is'.$contract->file);//remove
                 $this->logger->info('PDF PATH IS'.$this->getFilePath($key, $contract->file));//remove
-                $this->storage->disk('s3')->put(
-                    $contract->file,
-                    $this->filesystem->get($this->getFilePath($key, $contract->file))
+                // $this->storage->disk('s3')->put(
+                //     $contract->file,
+                //     $this->filesystem->get($this->getFilePath($key, $contract->file))
+                // );
+                $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
+                $client = new S3Client(
+                    [
+                        'version'=> '2006-03-01',
+                        'region' => env('AWS_REGION'),
+                        'credentials' => $credentials
+                    ]
                 );
+                $uploader = new MultipartUploader($client, $file_path, [
+                    'bucket' => env('AWS_BUCKET'),
+                    'key' => $newFileName,
+                    'before_upload' => function(\Aws\Command $command) {
+                       gc_collect_cycles();
+                    }
+                 ]);
+                 $data=$uploader->upload();
+
             } catch (Exception $e) {
                 $this->logger->error(sprintf('File could not be uploaded : %s', $e->getMessage()));
 
