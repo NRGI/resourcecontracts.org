@@ -521,7 +521,7 @@ class ImportService
 
         $all_data  = $this->getJsonData($key);
         $contracts = [];
-
+        $this->logger->info('Save Contracts All data is'.json_encode($all_data));//remove
         foreach ($all_data as $data) {
             if (in_array($data->id, $ids) && $data->download_status == static::COMPLETED) {
                 $data->create_status = static::CREATE_PENDING;
@@ -555,6 +555,8 @@ class ImportService
 
                 $this->updateContractJsonByID($key, $contract->id, ['create_status' => static::CREATE_PROCESSING], 2);
 
+                $this->logger->info('Contract Key is'.$contract->file);//remove
+                $this->logger->info('PDF PATH IS'.$this->getFilePath($key, $contract->file));//remove
                 $this->storage->disk('s3')->put(
                     $contract->file,
                     $this->filesystem->get($this->getFilePath($key, $contract->file))
@@ -652,7 +654,7 @@ class ImportService
             $filename = $key . '.json';
             $data     = $this->filesystem->get($this->getFilePath($key, $filename));
             $data     = json_decode($data);
-
+            $this->logger->info('GET JSON DATA '.json_encode($data));//remove
             if ($contractOnly) {
                 return $data->contracts;
             }
