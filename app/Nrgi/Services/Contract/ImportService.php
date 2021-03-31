@@ -282,6 +282,10 @@ class ImportService
             //converts the shareable google drive link to downloadable link 
             $newPdf = $this->convertToDownloadableUrl($pdfArray, $results['document_url']);
             $contract['document_url'] = $newPdf;
+        } else if(in_array("www.dropbox.com", $pdfArray)){
+            //converts the shareable google drive link to downloadable link 
+            $newPdf = $this->convertToDownloadableUrlDropbox($pdfArray, $results['document_url']);
+            $contract['document_url'] = $newPdf;
         }
 
         $contract['download_status']  = static::PIPELINE;
@@ -501,6 +505,15 @@ class ImportService
                     $newPdf = sprintf("https://drive.google.com/uc?id=%s&export=download",$doc_id);
                 }
             }
+        }
+        return $newPdf;
+    }
+
+      protected function convertToDownloadableUrlDropbox($pdfArray, $docUrl) {
+        $newPdf = '';
+        if(strpos($docUrl, 'www.dropbox.com')!== false){
+            $newPdf = str_replace('www.dropbox.com', 'dl.dropboxusercontent.com', $docUrl);
+            $this->logger->info('New dropbox link is'.$newPdf);//remove
         }
         return $newPdf;
     }
