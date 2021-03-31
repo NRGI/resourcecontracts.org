@@ -119,7 +119,7 @@ class MTurkService extends MechanicalTurkV2
             $this->logger->info('Updated hit status after delete'.json_encode($hit['HIT']['HITStatus']));//remove
             return ($hit['HIT']['HITStatus'] == "Disposed");
         }
-        $this->logger->info('Cannot remove hit, returning false'));//remove
+        $this->logger->info('Cannot remove hit, returning false');//remove
         return false;
     }
 
