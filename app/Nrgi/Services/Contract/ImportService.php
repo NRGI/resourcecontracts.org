@@ -579,6 +579,8 @@ class ImportService
                 //     $contract->file,
                 //     $this->filesystem->get($this->getFilePath($key, $contract->file))
                 // );
+                $newFileName=$contract->file;
+                $file_path=$this->getFilePath($key, $contract->file);
                 $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
                 $client = new S3Client(
                     [
@@ -597,6 +599,7 @@ class ImportService
                  $data=$uploader->upload();
 
             } catch (Exception $e) {
+                $this->updateContractJsonByID($key, $contract->id, ['create_status' => static::CREATE_FAILED], 2);
                 $this->logger->error(sprintf('File could not be uploaded : %s', $e->getMessage()));
 
                 continue;
