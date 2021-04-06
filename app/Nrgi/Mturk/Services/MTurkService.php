@@ -111,15 +111,12 @@ class MTurkService extends MechanicalTurkV2
         $expiry_date = $this->carbon->createFromTimestamp(strtotime($hit['HIT']['Expiration']));
         $isExpired   = $expiry_date->diffInSeconds(null, false) > 1;
         $isRejected  = (isset($task->assignments->assignment->status) && $task->assignments->assignment->status == 'Rejected');
-        $this->logger->info('HIT Status'.json_encode($status).json_encode($isExpired).json_encode($isRejected));//remove
         if ($status == 'Assignable' || $isExpired || $isRejected) {
             $this->updateExpirationForHIT($hit_id, 0);
             $this->deleteHIT($hit_id);
             $hit = $this->getHit($hit_id);
-            $this->logger->info('Updated hit status after delete'.json_encode($hit['HIT']['HITStatus']));//remove
             return ($hit['HIT']['HITStatus'] == "Disposed");
         }
-        $this->logger->info('Cannot remove hit, returning false');//remove
         return false;
     }
 

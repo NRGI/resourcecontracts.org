@@ -160,7 +160,6 @@ class ContractController extends Controller
      */
     public function store(ContractRequest $request)
     {
-        $this->logger->info('Pushed to store contract');//remove
         if ($contract = $this->contract->saveContract($request->all())) {
             return redirect()->route('contract.show', ['id' => $contract->id])->with(
                 'success',

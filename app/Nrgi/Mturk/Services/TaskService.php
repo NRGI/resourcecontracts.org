@@ -605,7 +605,6 @@ class TaskService
 
         if ($task->hit_id != '') {
             try {
-                $this->logger->info('Removing HIT '.json_encode($task));//remove
                 if (!$this->turk->removeHIT($task)) {
                     return [
                         'result'  => false,

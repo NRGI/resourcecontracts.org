@@ -294,10 +294,8 @@ class ContractService
      */
     public function saveContract(array $formData)
     {
-        $this->logger->info('Starting to upload contract');//remove
         if ($file = $this->uploadContract($formData['file'])) {
             try {
-                $this->logger->info('Contract process success');//remove
                 $metadata                        = $this->processMetadata($formData);
                 $metadata['file_size']           = $file['size'];
                 $metadata['open_contracting_id'] = $this->contract->generateOCID();
@@ -326,7 +324,6 @@ class ContractService
             }
 
             if ($contract) {
-                $this->logger->info('Pushing contract to process document');//remove
                 $this->queue->push('App\Nrgi\Services\Queue\ProcessDocumentQueue', ['contract_id' => $contract->id]);
             }
 
@@ -1395,14 +1392,11 @@ class ContractService
     protected function uploadContract(UploadedFile $file)
     {
         if ($file->isValid()) {
-            $this->logger->info('File name is valid');//remove
             $fileName    = $file->getClientOriginalName();
             $file_type   = $file->getClientOriginalExtension();
             $file_path=$file->getRealPath();
             $newFileName = sprintf("%s.%s", sha1($fileName.time()), $file_type);
             try {
-                $this->logger->info('Trying to upload to s3');//remove
-                $this->logger->info('File name is'.$newFileName);//remove
                 $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
                 $client = new S3Client(
                     [
@@ -1411,7 +1405,6 @@ class ContractService
                         'credentials' => $credentials
                     ]
                 );
-                $this->logger->info('S3 client success');//remove
                 $uploader = new MultipartUploader($client, $file_path, [
                     'bucket' => env('AWS_BUCKET'),
                     'key' => $newFileName,
@@ -1419,13 +1412,11 @@ class ContractService
                        gc_collect_cycles();
                     }
                  ]);
-                 $this->logger->info('uploader create success');//remove
                  $data=$uploader->upload();
                 // $data = $this->storage->disk('s3')->put(
                 //     $newFileName,
                 //     $this->filesystem->get($file)
                 // );
-                $this->logger->info('S3 upload success');//remove
             } catch (Exception $e) {
                 $this->logger->error(sprintf('File could not be uploaded : %s', $e->getMessage()));
 
