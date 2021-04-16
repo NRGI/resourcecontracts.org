@@ -9,6 +9,11 @@ use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel;
+use Aws\Credentials\Credentials;
+use Aws\S3\S3Client;
+use Aws\Exception\AwsException;
+use Aws\S3\MultipartUploader;
+use Aws\Exception\MultipartUploadException;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Throwable;
 
@@ -282,6 +287,10 @@ class ImportService
             //converts the shareable google drive link to downloadable link 
             $newPdf = $this->convertToDownloadableUrl($pdfArray, $results['document_url']);
             $contract['document_url'] = $newPdf;
+        } else if(in_array("www.dropbox.com", $pdfArray)){
+            //converts the shareable google drive link to downloadable link 
+            $newPdf = $this->convertToDownloadableUrlDropbox($pdfArray, $results['document_url']);
+            $contract['document_url'] = $newPdf;
         }
 
         $contract['download_status']  = static::PIPELINE;
@@ -505,6 +514,14 @@ class ImportService
         return $newPdf;
     }
 
+      protected function convertToDownloadableUrlDropbox($pdfArray, $docUrl) {
+        $newPdf = '';
+        if(strpos($docUrl, 'www.dropbox.com')!== false){
+            $newPdf = str_replace('www.dropbox.com', 'dl.dropboxusercontent.com', $docUrl);
+        }
+        return $newPdf;
+    }
+
     /**
      * Save all Contracts
      *
@@ -521,7 +538,6 @@ class ImportService
 
         $all_data  = $this->getJsonData($key);
         $contracts = [];
-
         foreach ($all_data as $data) {
             if (in_array($data->id, $ids) && $data->download_status == static::COMPLETED) {
                 $data->create_status = static::CREATE_PENDING;
@@ -555,11 +571,31 @@ class ImportService
 
                 $this->updateContractJsonByID($key, $contract->id, ['create_status' => static::CREATE_PROCESSING], 2);
 
-                $this->storage->disk('s3')->put(
-                    $contract->file,
-                    $this->filesystem->get($this->getFilePath($key, $contract->file))
+                // $this->storage->disk('s3')->put(
+                //     $contract->file,
+                //     $this->filesystem->get($this->getFilePath($key, $contract->file))
+                // );
+                $newFileName=$contract->file;
+                $file_path=$this->getFilePath($key, $contract->file);
+                $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
+                $client = new S3Client(
+                    [
+                        'version'=> '2006-03-01',
+                        'region' => env('AWS_REGION'),
+                        'credentials' => $credentials
+                    ]
                 );
+                $uploader = new MultipartUploader($client, $file_path, [
+                    'bucket' => env('AWS_BUCKET'),
+                    'key' => $newFileName,
+                    'before_upload' => function(\Aws\Command $command) {
+                       gc_collect_cycles();
+                    }
+                 ]);
+                 $data=$uploader->upload();
+
             } catch (Exception $e) {
+                $this->updateContractJsonByID($key, $contract->id, ['create_status' => static::CREATE_FAILED], 2);
                 $this->logger->error(sprintf('File could not be uploaded : %s', $e->getMessage()));
 
                 continue;
@@ -652,7 +688,6 @@ class ImportService
             $filename = $key . '.json';
             $data     = $this->filesystem->get($this->getFilePath($key, $filename));
             $data     = json_decode($data);
-
             if ($contractOnly) {
                 return $data->contracts;
             }

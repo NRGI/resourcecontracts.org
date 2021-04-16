@@ -77,6 +77,7 @@ class MTurkService extends MechanicalTurkV2
             'LifetimeInSeconds'           => config('mturk.defaults.production.LifetimeInSeconds'),
             'Question'                    => $this->getQuestionXML($question_url),
             'MaxAssignments'              => config('mturk.defaults.production.MaxAssignments'),
+            'QualificationRequirements'   => config('mturk.defaults.production.QualificationRequirements')
         ];
 
         $result = $this->createHITByExternalQuestion($params);
@@ -110,15 +111,12 @@ class MTurkService extends MechanicalTurkV2
         $expiry_date = $this->carbon->createFromTimestamp(strtotime($hit['HIT']['Expiration']));
         $isExpired   = $expiry_date->diffInSeconds(null, false) > 1;
         $isRejected  = (isset($task->assignments->assignment->status) && $task->assignments->assignment->status == 'Rejected');
-
         if ($status == 'Assignable' || $isExpired || $isRejected) {
             $this->updateExpirationForHIT($hit_id, 0);
             $this->deleteHIT($hit_id);
             $hit = $this->getHit($hit_id);
-
             return ($hit['HIT']['HITStatus'] == "Disposed");
         }
-
         return false;
     }
 
