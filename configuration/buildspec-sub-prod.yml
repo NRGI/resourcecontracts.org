@@ -25,8 +25,8 @@ phases:
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$BRANCH_NAME.$CODEBUILD_RESOLVED_SOURCE_VERSION
       - echo $ECS_TASK_DEFINITION
-      - echo $ECS_TASK_DEFINITION > task.json
-      - sed -i 's+$IMAGE_NAME+'"$AWS_ACCOUNT_ID"'.dkr.ecr.'"$AWS_DEFAULT_REGION"'.amazonaws.com/'"$IMAGE_REPO_NAME"':'"$BRANCH_NAME"'.'"$CODEBUILD_RESOLVED_SOURCE_VERSION"'+g' task.json
+      - echo $ECS_TASK_DEFINITION > imagedefinitions.json
+      - sed -i 's+$IMAGE_NAME+'"$AWS_ACCOUNT_ID"'.dkr.ecr.'"$AWS_DEFAULT_REGION"'.amazonaws.com/'"$IMAGE_REPO_NAME"':'"$BRANCH_NAME"'.'"$CODEBUILD_RESOLVED_SOURCE_VERSION"'+g' imagedefinitions.json
 
 artifacts:
-  files: task.json
+  files: imagedefinitions.json
