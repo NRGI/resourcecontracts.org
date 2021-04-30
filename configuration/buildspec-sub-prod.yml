@@ -24,9 +24,8 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$BRANCH_NAME.$CODEBUILD_RESOLVED_SOURCE_VERSION
-      - echo $ECS_TASK_DEFINITION
-      - echo $ECS_TASK_DEFINITION > imagedefinitions.json
-      - sed -i 's+$IMAGE_NAME+'"$AWS_ACCOUNT_ID"'.dkr.ecr.'"$AWS_DEFAULT_REGION"'.amazonaws.com/'"$IMAGE_REPO_NAME"':'"$BRANCH_NAME"'.'"$CODEBUILD_RESOLVED_SOURCE_VERSION"'+g' imagedefinitions.json
+      - echo Writing image definitions file...
+      - printf '[{"name":"rc-admin-master-container","imageUri":"%s"}]' $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$BRANCH_NAME.$CODEBUILD_RESOLVED_SOURCE_VERSION > imagedefinitions.json
 
 artifacts:
   files: imagedefinitions.json
