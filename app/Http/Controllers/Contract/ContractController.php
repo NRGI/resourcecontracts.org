@@ -12,6 +12,7 @@ use App\Nrgi\Services\Contract\CountryService;
 use App\Nrgi\Services\Contract\Discussion\DiscussionService;
 use App\Nrgi\Services\Download\DownloadService;
 use App\Nrgi\Services\Language\LanguageService;
+use App\Nrgi\Services\CodeList\CodeListService;
 use GuzzleHttp\Client;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
@@ -55,6 +56,10 @@ class ContractController extends Controller
      */
     protected $annotation;
     /**
+     * @var CodeListService
+     */
+    protected $codeList;
+    /**
      * @var DatabaseManager
      */
     private $db;
@@ -71,6 +76,7 @@ class ContractController extends Controller
      * @param AnnotationService     $annotation
      * @param DownloadService       $downloadService
      * @param ActivityService       $activity
+     * @param CodeListService       $codeList
      * @param DatabaseManager       $db
      * @param Client                $http
      * @param Log                   $logger
@@ -83,6 +89,7 @@ class ContractController extends Controller
         AnnotationService $annotation,
         DownloadService $downloadService,
         ActivityService $activity,
+        CodeListService $codeList,
         DatabaseManager $db,
         Log $logger,
         Client $http
@@ -95,6 +102,7 @@ class ContractController extends Controller
         $this->annotation      = $annotation;
         $this->downloadService = $downloadService;
         $this->activity        = $activity;
+        $this->codeList        = $codeList;
         $this->db              = $db;
         $this->http            = $http;
         $this->logger          = $logger;
@@ -104,32 +112,36 @@ class ContractController extends Controller
      * Display a listing of the Contracts.
      *
      * @param Request $request
+     * @param LanguageService $lang
      *
      * @return \Illuminate\Foundation\Application|\Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request, LanguageService $lang)
     {
-        $filters        = $request->only(
-            'resource',
-            'year',
-            'country',
-            'category',
-            'resource',
-            'type',
-            'word',
-            'issue',
-            'status',
-            'download',
-            'disclosure',
-            'q'
-        );
-        $contracts      = $this->contractFilter->getAll($filters);
-        $years          = $this->contractFilter->getUniqueYears();
-        $countries      = $this->contractFilter->getUniqueCountries();
-        $resources      = $this->contractFilter->getUniqueResources();
-        $download_files = $this->contract->getDownloadTextFiles();
+        return view('errors.206');
 
-        return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files'));
+        // $filters        = $request->only(
+        //     'resource',
+        //     'year',
+        //     'country',
+        //     'category',
+        //     'resource',
+        //     'type',
+        //     'word',
+        //     'issue',
+        //     'status',
+        //     'download',
+        //     'disclosure',
+        //     'q'
+        // );
+        // $contracts      = $this->contractFilter->getAll($filters);
+        // $years          = $this->contractFilter->getUniqueYears();
+        // $countries      = $this->contractFilter->getUniqueCountries();
+        // $resources      = $this->contractFilter->getUniqueResources();
+        // $download_files = $this->contract->getDownloadTextFiles();
+        // $resourceList   = $this->codeList->getCodeList('resources',$lang->getSiteLang());
+
+        // return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList'));
     }
 
     /**
@@ -142,13 +154,16 @@ class ContractController extends Controller
      */
     public function create(Request $request, LanguageService $lang)
     {
-        $country     = $this->countries->all();
-        $contracts   = $this->contract->parentContracts();
-        $contract    = !is_null($request->get('parent')) ? $this->contract->find($request->get('parent')) : [];
-        $companyName = $this->contract->getCompanyNames();
-        $locale      = $lang->defaultLang();
+        $country          = $this->countries->all();
+        $contracts        = $this->contract->parentContracts();
+        $contract         = !is_null($request->get('parent')) ? $this->contract->find($request->get('parent')) : [];
+        $companyName      = $this->contract->getCompanyNames();
+        $locale           = $lang->defaultLang();
+        $resourceList     = $this->codeList->getCodeList('resources',$lang->getSiteLang());
+        $contractTypeList = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
+        $documentTypeList = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
 
-        return view('contract.create', compact('country', 'contracts', 'contract', 'companyName', 'locale'));
+        return view('contract.create', compact('country', 'contracts', 'contract', 'companyName', 'locale', 'resourceList', 'contractTypeList', 'documentTypeList'));
     }
 
     /**
@@ -182,52 +197,60 @@ class ContractController extends Controller
      */
     public function show($id, DiscussionService $discussion, LanguageService $lang, Request $request)
     {
-        $contract = $this->contract->findWithAnnotations($id, $withRelation = true);
+        return view('errors.206');
 
-        if (!$contract) {
-            abort('404');
-        }
+        // $contract = $this->contract->findWithAnnotations($id, $withRelation = true);
 
-        $associatedContracts          = $this->contract->getAssociatedContracts($contract);
-        $status                       = $this->contract->getStatus($id);
-        $annotations                  = $contract->annotations;
-        $contract->metadata_comment   = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
-        $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
-        $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
-        $publishedInformation         = $this->contract->getPublishedInformation($id);
-        $discussions                  = $discussion->getCount($id);
-        $discussion_status            = $discussion->getResolved($id);
-        $elementState                 = $this->activity->getElementState($id);
-        $annotationStatus             = $this->annotation->getStatus($id);
-        $annotationStatus             = $annotationStatus == '' ? $elementState['annotation'] : $annotationStatus;
-        $locale                       = $request->route()->getParameter('lang', $lang->defaultLang());
+        // if (!$contract) {
+        //     abort('404');
+        // }
 
-        if (!is_null($locale)) {
-            if (!$lang->isValidTranslationLang($locale)) {
-                abort(404);
-            }
+        // $associatedContracts          = $this->contract->getAssociatedContracts($contract);
+        // $status                       = $this->contract->getStatus($id);
+        // $annotations                  = $contract->annotations;
+        // $contract->metadata_comment   = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
+        // $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
+        // $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
+        // $publishedInformation         = $this->contract->getPublishedInformation($id);
+        // $discussions                  = $discussion->getCount($id);
+        // $discussion_status            = $discussion->getResolved($id);
+        // $elementState                 = $this->activity->getElementState($id);
+        // $annotationStatus             = $this->annotation->getStatus($id);
+        // $annotationStatus             = $annotationStatus == '' ? $elementState['annotation'] : $annotationStatus;
+        // $locale                       = $request->route()->getParameter('lang', $lang->defaultLang());
+        // $resourceList                 = $this->codeList->getCodeList('resources',$lang->getSiteLang());
+        // $contractTypeList             = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
+        // $documentTypeList             = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
 
-            if ($locale != $lang->defaultLang()) {
-                $contract->setLang($locale);
-            }
+        // if (!is_null($locale)) {
+        //     if (!$lang->isValidTranslationLang($locale)) {
+        //         abort(404);
+        //     }
 
-        }
+        //     if ($locale != $lang->defaultLang()) {
+        //         $contract->setLang($locale);
+        //     }
 
-        return view(
-            'contract.show',
-            compact(
-                'contract',
-                'status',
-                'annotations',
-                'annotationStatus',
-                'associatedContracts',
-                'discussions',
-                'discussion_status',
-                'publishedInformation',
-                'elementState',
-                'locale'
-            )
-        );
+        // }
+
+        // return view(
+        //     'contract.show',
+        //     compact(
+        //         'contract',
+        //         'status',
+        //         'annotations',
+        //         'annotationStatus',
+        //         'associatedContracts',
+        //         'discussions',
+        //         'discussion_status',
+        //         'publishedInformation',
+        //         'elementState',
+        //         'locale',
+        //         'resourceList',
+        //         'contractTypeList',
+        //         'documentTypeList'
+        //     )
+        // );
     }
 
     /**
@@ -247,6 +270,9 @@ class ContractController extends Controller
         $country            = $this->countries->all();
         $supportingDocument = $this->contract->getSupportingDocuments($id);
         $contracts          = $this->contract->getList($id);
+        $resourceList       = $this->codeList->getCodeList('resources',$lang->getSiteLang());
+        $contractTypeList   = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
+        $documentTypeList   = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
 
         $discussions       = $discussion->getCount($id);
         $discussion_status = $discussion->getResolved($id);
@@ -272,7 +298,10 @@ class ContractController extends Controller
                 'discussions',
                 'discussion_status',
                 'companyName',
-                'locale'
+                'locale',
+                'resourceList',
+                'contractTypeList',
+                'documentTypeList'
             )
         );
     }

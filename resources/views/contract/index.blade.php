@@ -53,8 +53,7 @@
 			Input::get('category') ,
 			['class' =>'form-control']) !!}
 
-			{!! Form::select('resource', ['all'=>trans('contract.resource')] + trans_array($resources,
-			'codelist/resource') ,
+			{!! Form::select('resource', ['all'=>trans('contract.resource')] + $resourceList ,
 			Input::get
 			('resource') ,
 			['class' =>'form-control']) !!}

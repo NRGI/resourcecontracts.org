@@ -153,5 +153,14 @@ class UserRepository implements UserRepositoryInterface
         return $list;
     }
 
+    /**
+     * Get All User Roles except superadmin editor
+     *
+     * @return array
+     */
+    public function getRolesExceptAdminEditor()
+    {
+        return $this->role->whereIn('name', config('nrgi.role_except_editor'))->lists('display_name', 'name')->all();
+    }
 
 }

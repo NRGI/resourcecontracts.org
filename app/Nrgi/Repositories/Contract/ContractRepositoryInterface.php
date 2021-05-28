@@ -396,4 +396,14 @@ interface ContractRepositoryInterface
     public function getParentChild();
     public function getChildParent();
 
+    /**
+     * Checks if the code list is already used
+     *
+     * @param $metadata
+     * @param $slug
+     * 
+     * @return boolean
+     */
+    public function isCodeListNotUsed($metadata, $slug);
+
 }
