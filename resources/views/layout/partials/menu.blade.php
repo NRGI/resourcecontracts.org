@@ -11,7 +11,7 @@
                         href="{{route('contract.index')}}">@lang('contract.all_contract')</a>
             </li>
 
-            @if($current_user->hasRole(['superadmin','admin','country-admin']))
+            @if($current_user->hasRole(['superadmin','admin','country-admin','superadmin-editor']))
                 <li>
                     <a {{in_array('user', Request::segments())? 'class=active' : ''}}
                             href="{{route('user.list')}}">@lang('contract.users')</a>
@@ -38,7 +38,13 @@
             <li>
                 <a {{in_array('disclosure', Request::segments())? 'class=active' : ''}}
                    href="{{route('disclosure.index')}}">@lang('contract.disclosure_mode')</a>
+            </li>      
+            @if($current_user->hasRole(['superadmin-editor']))
+            <li>
+                <a {{in_array('codelist', Request::segments())? 'class=active' : ''}}
+                   href="{{route('codelist.list','contract_types')}}">@lang('codelist.code_list')</a>
             </li>
+            @endif
         </ul>
     </div>
 @endif

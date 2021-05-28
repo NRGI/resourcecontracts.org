@@ -172,8 +172,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 						<span class="name"> <strong>@lang('contract.resource'): </strong></span>
                      <span class="value">
                         @if(is_array($contract->metadata->resource) && count($contract->metadata->resource)>0)
-							 {{join(', ', array_map(function($v)use($locale){return _l('codelist/resource.'.$v,
-							 $locale);},$contract->metadata->resource))}}
+							 {{join(', ', array_map(function($v)use($resourceList){return _l($resourceList[$v]);},$contract->metadata->resource))}}
 						 @endif
 						 {!! discussion($discussions,$discussion_status, $contract->id,'resource','metadata') !!}
                     </span>
@@ -204,7 +203,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
 					<li class="name-value-wrap">
 						<span class="name"><strong>@lang('contract.document_type'):</strong></span>
-                    <span class="value">{{ _l('codelist/documentType.'.$contract->metadata->document_type, $locale) }}
+                    <span class="value">{{ _l($documentTypeList[$contract->metadata->document_type]) }}
 						{!! discussion($discussions,$discussion_status, $contract->id,'document_type','metadata') !!}
                     </span>
 					</li>
@@ -214,7 +213,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     <strong>@lang('contract.type_of_contract'): </strong></span>
                      <span class="value">
                     @if(is_array($contract->metadata->type_of_contract) && count($contract->metadata->type_of_contract)>0)
-							 {{join(', ', array_map(function($v)use($locale){return _l('codelist/contract_type.'.$v, $locale);},
+							 {{join(', ', array_map(function($v)use($contractTypeList){return _l($contractTypeList[$v]);},
 							$contract->metadata->type_of_contract))}}
 						 @endif
 						 {!! discussion($discussions,$discussion_status, $contract->id,'type_of_contract','metadata') !!}

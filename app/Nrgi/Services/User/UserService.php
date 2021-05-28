@@ -114,8 +114,8 @@ class UserService
         if ($this->auth->user()->hasRole(config('nrgi.country_role'))) {
 
             return $this->user->getCountryUsers();
-        }
-
+        } 
+        
         return $this->user->all();
     }
 
@@ -152,6 +152,7 @@ class UserService
     {
         $formData['password'] = $this->hash->make($formData['password']);
         $role                 = $this->role->where('name', $role)->first();
+
         try {
             $user = $this->user->create($formData);
             $user->roles()->sync([$role->id]);
@@ -214,6 +215,8 @@ class UserService
     {
         if ($this->auth->user()->hasRole(config('nrgi.country_role'))) {
             return $this->user->getCountryRoles();
+        } else if(!$this->auth->user()->hasRole('superadmin-editor')){
+            return $this->user->getRolesExceptAdminEditor();
         }
 
         return $this->user->getAllRoles();
