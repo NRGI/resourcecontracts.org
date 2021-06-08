@@ -90,7 +90,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function can($permission, $requireAll = false)
     {
-        if ($this->hasRole(['superadmin', 'country-admin'])) {
+        if ($this->hasRole(['superadmin', 'country-admin', 'superadmin-editor'])) {
             return true;
         }
 
@@ -126,7 +126,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function isAdmin()
     {
-        if ($this->hasRole(['superadmin', 'country-admin'])) {
+        if ($this->hasRole(['superadmin', 'country-admin', 'superadmin-editor'])) {
             return true;
         }
 
@@ -170,7 +170,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function hasCountryRole()
     {
-        if ($this->hasRole(['superadmin'])) {
+        if ($this->hasRole(['superadmin', 'superadmin-editor'])) {
             return false;
         }
 
