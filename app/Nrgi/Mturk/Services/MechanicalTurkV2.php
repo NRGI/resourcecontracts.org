@@ -413,7 +413,7 @@ class MechanicalTurkV2
     public function updateExpirationForHIT($hit_id, $expire_at)
     {
         $this->content                         = json_encode(array('HITId' => $hit_id, 'ExpireAt' => $expire_at));
-        $log::info( 'content is'.json_encode($this->content   ))
+        $log::info( 'content is'.json_encode(array('HITId' => $hit_id, 'ExpireAt' => $expire_at)))
         $this->request_headers['x-amz-target'] = $this->metadata['targetPrefix'].".UpdateExpirationForHIT";
 
         $resp = $this->curlRequest();
@@ -431,7 +431,7 @@ class MechanicalTurkV2
     public function deleteHIT($hit_id)
     {
         $this->content                         = json_encode(array('HITId' => $hit_id));
-        $log::info( 'content inside deleteis'.json_encode($this->content))
+        $log::info( 'content inside deleteis'.json_encode(array('HITId' => $hit_id)))
         $this->request_headers['x-amz-target'] = $this->metadata['targetPrefix'].".DeleteHIT";
 
         $resp = $this->curlRequest();
