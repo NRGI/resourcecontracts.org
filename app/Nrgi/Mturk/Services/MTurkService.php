@@ -104,19 +104,27 @@ class MTurkService extends MechanicalTurkV2
          * disposeHIT
          * forceExpireHIT
          * */
-
+        $this->logger->info(' Task is '.json_encode($task));
         $hit_id      = $task->hit_id;
+        $this->logger->info(' HIT ID '.json_encode($hit_id));
         $hit         = $this->getHIT($hit_id);
+        $this->logger->info(' HIT'.json_encode( $hit ));
         $status      = $hit['HIT']['HITStatus'];
+        $this->logger->info('status'.json_encode( $status ));
         $expiry_date = $this->carbon->createFromTimestamp(strtotime($hit['HIT']['Expiration']));
+        $this->logger->info(' Expiry time'.json_encode( $expiry_date  ));
         $isExpired   = $expiry_date->diffInSeconds(null, false) > 1;
+        $this->logger->info(' isExpired'.json_encode($isExpired  ));
         $isRejected  = (isset($task->assignments->assignment->status) && $task->assignments->assignment->status == 'Rejected');
+        $this->logger->info(' isRejected'.json_encode( $isRejected   ));
         if ($status == 'Assignable' || $isExpired || $isRejected) {
             $this->updateExpirationForHIT($hit_id, 0);
             $this->deleteHIT($hit_id);
             $hit = $this->getHit($hit_id);
+            $this->logger->info(' Hit is '.json_encode( $hit ));
             return ($hit['HIT']['HITStatus'] == "Disposed");
         }
+        $this->logger->info('Returning code false');
         return false;
     }
 
