@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM public.ecr.aws/q3g6a5e0/base-image:ubuntu-18.04
 MAINTAINER Anjesh Tuladhar <anjesh@yipl.com.np>
 RUN apt-get update && apt-get install -y \
                     curl \
