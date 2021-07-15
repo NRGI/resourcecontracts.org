@@ -944,4 +944,27 @@ class ContractRepository implements ContractRepositoryInterface
                 ";
         return DB::select($sql);
     }
+
+    /**
+     * Checks if the code list is already
+     *
+     * @param $metadata
+     * @param $slug
+     * 
+     * @return boolean
+     */
+    public function isCodeListNotUsed($metadata, $slug)
+    {
+        $count = 0;
+
+        if($metadata == 'document_type') {
+            $count=$this->contract->whereRaw("contracts.metadata->>'".$metadata."' =  ?", [$slug])->count();
+        } else {
+                 $count = $this->contract->select('*')
+                            ->from($this->db->raw("contracts, json_array_elements(metadata->'".$metadata."') r"))
+                            ->whereRaw("trim(both '\"' from r::text) =  ?", [$slug])->count();
+        }
+
+        return $count>0 ? false :true ;
+    }
 }

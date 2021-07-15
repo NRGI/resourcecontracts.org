@@ -35,8 +35,7 @@ if (!empty($contract->metadata->government_entity)) {
         }
     }
 }
-$doc_type = (trans('codelist/documentType',[],null,$locale));
-asort($doc_type);
+asort($documentTypeList);
 ?>
 
 @if($action == 'add')
@@ -139,14 +138,12 @@ asort($doc_type);
 </div>
 <?php
 $resources = isset($contract->metadata->resource)?$contract->metadata->resource :[];
-$resourceList = trans('codelist/resource',[],null,$locale);
 
 foreach ($resources as $item) {
 	if(!isset($resourceList[$item])){
 		$resourceList[$item] = $item;
 	}
 }
-asort($resourceList);
 ?>
 <div class="form-group">
     <label for="resource" class="col-sm-2 control-label">@lang('contract.resource') <span class="red">*</span></label>
@@ -237,7 +234,7 @@ asort($resourceList);
     <?php
     if(isset($contract->file)){
         $dt = (isset($contract->metadata->document_type) && !isset($_GET['parent'])) ? $contract->metadata->document_type : old('document_type');
-        if (!array_key_exists($dt, trans('codelist/documentType',[],null,$locale)) AND $dt != '') {
+        if (!array_key_exists($dt, $documentTypeList) AND $dt != '') {
             $dt = 'Other';
         }
     }
@@ -247,7 +244,7 @@ asort($resourceList);
     ?>
     <label for="document_type" class="col-sm-2 control-label">@lang('contract.document_type') <span class="red">*</span></label>
     <div class="col-sm-7">
-         {!! Form::select('document_type',[''=>trans('Select')]+ $doc_type, $dt, ["class"=>"required form-control", "id"=>"document_type"])!!}
+         {!! Form::select('document_type',[''=>trans('Select')]+ $documentTypeList, $dt, ["class"=>"required form-control", "id"=>"document_type"])!!}
         @if($dt == 'Other')
             {!! Form::text('document_type',
             isset($contract->metadata->document_type)?$contract->metadata->document_type:null,
@@ -268,13 +265,13 @@ asort($resourceList);
         <?php
         $toc = (isset($contract->metadata->type_of_contract) && !(isset($_GET['parent'])) )? $contract->metadata->type_of_contract : old('type_of_contract');
         ?>
-        {!! Form::select('type_of_contract[]', trans('codelist/contract_type',[],null,$locale),
+        {!! Form::select('type_of_contract[]', $contractTypeList,
         $toc,
         ["multiple"=>"multiple", "class"=>" form-control", "id"=>"type_of_contract"])!!}
 		<?php
 			$isTocOther= $tocDiff = false;
 			if (!empty($toc)) {
-			    $intersect = array_intersect($toc, trans('codelist/contract_type',[],null,$locale));
+			    $intersect = array_intersect($toc, $contractTypeList);
                     foreach($intersect as $i ){
                         $tocDiff   = array_key_exists($i, $intersect);
                     }

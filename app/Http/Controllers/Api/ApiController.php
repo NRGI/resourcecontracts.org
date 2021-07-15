@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
+use App\Nrgi\Services\CodeList\CodeListService;
 
 /**
  * Class ApiController
@@ -18,6 +19,10 @@ class ApiController extends Controller
      * @var Guard
      */
     protected $auth;
+    /**
+     * @var CodeListService
+     */
+    protected $codelist;
 
     /**
      * ApiController constructor.
@@ -25,11 +30,12 @@ class ApiController extends Controller
      * @param Request $request
      * @param Guard   $auth
      */
-    public function __construct(Request $request, Guard $auth)
+    public function __construct(Request $request, Guard $auth, CodeListService $codelist)
     {
-        $this->request = $request;
-        $this->auth    = $auth;
-    }
+        $this->request  = $request;
+        $this->auth     = $auth;
+        $this->codelist = $codelist;
+  }
 
     /**
      * Login API
@@ -65,6 +71,34 @@ class ApiController extends Controller
                     'is_admin' => $this->auth->user()->isAdmin(),
                 ];
             }
+        }
+
+        return response()->json($response);
+    }
+
+    /**
+     * CodeList API
+     *
+     * @param $lang
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getCodeList($lang)
+    {
+        if($lang){
+            $codelist['resources']      = $this->codelist->getCodeList('resources',$lang);
+            $codelist['document_types'] = $this->codelist->getCodeList('document_types',$lang);
+            $codelist['contract_types'] = $this->codelist->getCodeList('contract_types',$lang);
+    
+            $response = [
+                'status'   => 'success',
+                'message'  => $codelist
+            ];
+        } else {
+            $response = [
+                'status'   => 'failed',
+                'message'  => 'Language is required'
+            ];
         }
 
         return response()->json($response);

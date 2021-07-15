@@ -1,7 +1,7 @@
 $(function () {
     $('select').select2({placeholder: lang_select, allowClear: true, theme: "classic"});
     $('.parent_company').select2({placeholder: lang_select, allowClear: true, tags: true, theme: "classic"});
-    $('.resource-list').select2({placeholder: lang_select, allowClear: true, tags: true, theme: "classic"});
+    $('.resource-list').select2({placeholder: lang_select, allowClear: true, theme: "classic"});
     $('.el_government_entity').select2({
         placeholder: lang_select, allowClear: true, tags: true, theme: "classic"
     });

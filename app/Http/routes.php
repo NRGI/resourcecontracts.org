@@ -12,6 +12,8 @@ $router->group(
     ['namespace' => 'Api', 'prefix' => 'api'],
     function ($router) {
         $router->post('login',['as' => 'api.login','uses'=>'ApiController@login']);
+
+        $router->get('codelist/{lang}',['as' => 'api.codelist','uses'=>'ApiController@getCodeList']);
     }
 );
 

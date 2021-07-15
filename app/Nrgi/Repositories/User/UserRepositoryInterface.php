@@ -53,5 +53,12 @@ interface UserRepositoryInterface
      */
     public function getCountryUsers();
 
+    /**
+     * Get All User Roles except superadmin editor
+     *
+     * @return array
+     */
+    public function getRolesExceptAdminEditor();
+   
 }
 

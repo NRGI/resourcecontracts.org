@@ -49,6 +49,7 @@
     if ($action == 'update') {
         $role = $user->roles->toArray();
         $old  = isset($role[0]['name']) ? $role[0]['name'] : null;
+        
     }
     ?>
     <div class="col-md-6">

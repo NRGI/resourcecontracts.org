@@ -396,4 +396,6 @@ interface ContractRepositoryInterface
     public function getParentChild();
     public function getChildParent();
 
+    public function isCodeListNotUsed($metadata, $slug);
+
 }
