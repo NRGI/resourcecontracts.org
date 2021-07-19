@@ -6,7 +6,6 @@
         <div class="panel-body">
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <strong>@lang('codelist.whoops')</strong> {{ trans('codelist.input_error') }}<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>

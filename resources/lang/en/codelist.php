@@ -50,4 +50,7 @@ return [
     'resources_in_use'                   => 'The resource is already in use. Deletion of this resource can only proceed after deleting the contracts using it.',
     'contract_types_in_use'              => 'The contract type is already in use. Deletion of this contract type can only proceed after deleting the contracts using it.',
     'document_types_in_use'              => 'The document type is already in use. Deletion of this document type can only proceed after deleting the contracts using it.',
+    'en_already_exist'                   => 'This English entry already exists in the database.',
+    'fr_already_exist'                   => 'This French entry already exists in the database.',
+    'ar_already_exist'                   => 'This Arabic entry already exists in the database.'
 ];

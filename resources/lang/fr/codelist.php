@@ -50,4 +50,7 @@ return [
     'resources_in_use'                   => 'La ressource est déjà utilisée. La suppression de cette ressource ne peut se poursuivre qu\'après la suppression des contrats l\'utilisant.',
     'contract_types_in_use'              => 'Le type de contrat est déjà utilisé. La suppression de ce type de contrat ne peut se poursuivre qu\'après la suppression des contrats l\'utilisant.',
     'document_types_in_use'              => 'Le type de document est déjà utilisé. La suppression de ce type de document ne peut se poursuivre qu\'après la suppression des contrats l\'utilisant.',
+    'en_already_exist'                   => 'L\'entrée en anglais existe déjà dans la base de données.',
+    'fr_already_exist'                   => 'L\'entrée française existe déjà dans la base de données.',
+    'ar_already_exist'                   => 'L\'entrée arabe existe déjà dans la base de données.'
 ];
