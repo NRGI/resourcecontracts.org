@@ -57,4 +57,20 @@ class CodeListRequest extends Request
             'ar' => trans('codelist.arabic_translation')
         ];
     }
+
+      /**
+     * Custom validation messages
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'en.unique' => trans('codelist.en_already_exist'),
+            'fr.unique' => trans('codelist.fr_already_exist'),
+            'ar.unique' => trans('codelist.ar_already_exist')       
+        ];
+    }
+
+
 }
