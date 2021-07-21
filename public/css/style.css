@@ -1,3 +1,4 @@
+huss
 html, body {
     height: 100%;
 }
@@ -1435,4 +1436,24 @@ a.edit-section{
     opacity: 0.75;
     padding-left: 20px;
     margin-bottom: 10px;
+}
+
+.code-list-panel-heading {
+    padding: 0;
+}
+
+.code-list-panel-heading__items.nav-tabs > li:not(.active) > a:hover {
+    border-color: transparent;
+}
+
+.code-list-table {
+    margin-top: 16px;
+}
+
+.code-list-panel {
+    border-radius: 0px 0px 4px 4px;
+}
+
+.form-cancel-btn {
+    margin-left: 8px;
 }

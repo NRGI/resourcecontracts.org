@@ -57,5 +57,18 @@ class RepositoriesServiceProvider extends ServiceProvider
             'App\Nrgi\Repositories\Contract\Discussion\DiscussionRepositoryInterface',
             'App\Nrgi\Repositories\Contract\Discussion\DiscussionRepository'
         );
+        $this->app->bind(
+            'App\Nrgi\Repositories\CodeList\ContractType\ContractTypeRepositoryInterface',
+            'App\Nrgi\Repositories\CodeList\ContractType\ContractTypeRepository'
+        );
+        $this->app->bind(
+            'App\Nrgi\Repositories\CodeList\Resource\ResourceRepositoryInterface',
+            'App\Nrgi\Repositories\CodeList\Resource\ResourceRepository'
+        );
+        $this->app->bind(
+            'App\Nrgi\Repositories\CodeList\DocumentType\DocumentTypeRepositoryInterface',
+            'App\Nrgi\Repositories\CodeList\DocumentType\DocumentTypeRepository'
+        );
     }
+
 }

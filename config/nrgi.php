@@ -24,6 +24,11 @@ return [
             'display_name' => 'Country Researcher',
             'description'  => 'Country specific researcher'
         ],
+        'superadmin-editor' => [
+            'name'          => 'superadmin-editor',
+            'display_name'  => 'SuperAdmin Editor',
+            'description'   => 'NRGI staff, YI. Should be able to do add, edit and delete codelist. '
+        ]
     ],
     'permissions'      => [
         'add-contract'           => [
@@ -120,14 +125,30 @@ return [
             'name'         => 'unpublished-annotation',
             'display_name' => 'Unpublish Annotation',
             'description'  => 'Unpublish Annotation'
+        ],
+        'add-codelist' => [
+            'name'         => 'add-codelist',
+            'display_name' => 'Add CodeList',
+            'description'  => 'Add CodeList'
+        ],
+        'edit-codelist' => [
+            'name'         => 'edit-codelist',
+            'display_name' => 'Edit CodeList',
+            'description'  => 'Edit CodeList'
+        ],
+        'delete-codelist' => [
+            'name'         => 'delete-codelist',
+            'display_name' => 'Delete CodeList',
+            'description'  => 'Delete CodeList'
         ]
 
     ],
-    'pdf_structure'    => ['structured', 'scanned', 'encrypted'],
-    'country_role'     => ['country-admin', 'country-researcher'],
-    'annotation_stage' => ['draft', 'completed', 'rejected', 'published', 'unpublished'],
-    'pdf_process_path' => env('PDF_PROCESSOR_PATH'),
-    'permission'       => [
+    'pdf_structure'      => ['structured', 'scanned', 'encrypted'],
+    'country_role'       => ['country-admin', 'country-researcher'],
+    'role_except_editor' => ['superadmin','researcher','country-admin', 'country-researcher'],
+    'annotation_stage'   => ['draft', 'completed', 'rejected', 'published', 'unpublished'],
+    'pdf_process_path'   => env('PDF_PROCESSOR_PATH'),
+    'permission'         => [
         'completed'   => 'complete',
         'rejected'    => 'reject',
         'published'   => 'publish',
