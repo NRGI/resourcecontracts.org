@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM public.ecr.aws/nrgi/base-image:ubuntu-16.04
 MAINTAINER Anjesh Tuladhar <anjesh@yipl.com.np>
 
 RUN apt-get update && apt-get install -y \
