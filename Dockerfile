@@ -1,15 +1,18 @@
-FROM public.ecr.aws/nrgi/base-image:ubuntu-16.04
+FROM public.ecr.aws/q3g6a5e0/base-image:ubuntu-18.04
 MAINTAINER Anjesh Tuladhar <anjesh@yipl.com.np>
-
 RUN apt-get update && apt-get install -y \
                     curl \
                     git \
                     software-properties-common \
                     unzip \
                     wget \
+                    apt-utils \
  && LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php \
- && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C \
- && apt-get update && apt-get upgrade -y && apt-get install -y \
+ && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
+
+ENV TZ=Europe/Kiev
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
                     apache2 \
                     php5.6 \
                     php5.6-cli \
@@ -21,11 +24,16 @@ RUN apt-get update && apt-get install -y \
                     php5.6-xml \
                     php5.6-zip \
                     beanstalkd \
-                    pdftk \
                     poppler-utils \
                     supervisor \
-		            gettext \
- && rm -rf /var/lib/apt/lists/* \
+                    gettext
+
+RUN wget http://launchpadlibrarian.net/383018194/pdftk-java_0.0.0+20180723.1-1_all.deb
+RUN apt install default-jre-headless libcommons-lang3-java libbcprov-java -y
+RUN dpkg -i pdftk-java_0.0.0+20180723.1-1_all.deb
+RUN which pdftk
+
+RUN rm -rf /var/lib/apt/lists/* \
  && curl -O -L https://github.com/papertrail/remote_syslog2/releases/download/v0.20/remote_syslog_linux_amd64.tar.gz \
  && tar -zxf remote_syslog_linux_amd64.tar.gz \
  && cp remote_syslog/remote_syslog /usr/local/bin \
