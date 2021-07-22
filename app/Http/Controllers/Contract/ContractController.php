@@ -118,30 +118,30 @@ class ContractController extends Controller
      */
     public function index(Request $request, LanguageService $lang)
     {
-        return view('errors.206');
+        //return view('errors.206');
 
-        // $filters        = $request->only(
-        //     'resource',
-        //     'year',
-        //     'country',
-        //     'category',
-        //     'resource',
-        //     'type',
-        //     'word',
-        //     'issue',
-        //     'status',
-        //     'download',
-        //     'disclosure',
-        //     'q'
-        // );
-        // $contracts      = $this->contractFilter->getAll($filters);
-        // $years          = $this->contractFilter->getUniqueYears();
-        // $countries      = $this->contractFilter->getUniqueCountries();
-        // $resources      = $this->contractFilter->getUniqueResources();
-        // $download_files = $this->contract->getDownloadTextFiles();
-        // $resourceList   = $this->codeList->getCodeList('resources',$lang->getSiteLang());
+        $filters        = $request->only(
+            'resource',
+            'year',
+            'country',
+            'category',
+            'resource',
+            'type',
+            'word',
+            'issue',
+            'status',
+            'download',
+            'disclosure',
+            'q'
+        );
+        $contracts      = $this->contractFilter->getAll($filters);
+        $years          = $this->contractFilter->getUniqueYears();
+        $countries      = $this->contractFilter->getUniqueCountries();
+        $resources      = $this->contractFilter->getUniqueResources();
+        $download_files = $this->contract->getDownloadTextFiles();
+        $resourceList   = $this->codeList->getCodeList('resources',$lang->getSiteLang());
 
-        // return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList'));
+        return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList'));
     }
 
     /**
@@ -197,60 +197,60 @@ class ContractController extends Controller
      */
     public function show($id, DiscussionService $discussion, LanguageService $lang, Request $request)
     {
-        return view('errors.206');
+        // return view('errors.206');
 
-        // $contract = $this->contract->findWithAnnotations($id, $withRelation = true);
+        $contract = $this->contract->findWithAnnotations($id, $withRelation = true);
 
-        // if (!$contract) {
-        //     abort('404');
-        // }
+        if (!$contract) {
+            abort('404');
+        }
 
-        // $associatedContracts          = $this->contract->getAssociatedContracts($contract);
-        // $status                       = $this->contract->getStatus($id);
-        // $annotations                  = $contract->annotations;
-        // $contract->metadata_comment   = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
-        // $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
-        // $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
-        // $publishedInformation         = $this->contract->getPublishedInformation($id);
-        // $discussions                  = $discussion->getCount($id);
-        // $discussion_status            = $discussion->getResolved($id);
-        // $elementState                 = $this->activity->getElementState($id);
-        // $annotationStatus             = $this->annotation->getStatus($id);
-        // $annotationStatus             = $annotationStatus == '' ? $elementState['annotation'] : $annotationStatus;
-        // $locale                       = $request->route()->getParameter('lang', $lang->defaultLang());
-        // $resourceList                 = $this->codeList->getCodeList('resources',$lang->getSiteLang());
-        // $contractTypeList             = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
-        // $documentTypeList             = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
+        $associatedContracts          = $this->contract->getAssociatedContracts($contract);
+        $status                       = $this->contract->getStatus($id);
+        $annotations                  = $contract->annotations;
+        $contract->metadata_comment   = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
+        $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
+        $contract->annotation_comment = $this->comment->getLatest($contract->id, Comment::TYPE_ANNOTATION);
+        $publishedInformation         = $this->contract->getPublishedInformation($id);
+        $discussions                  = $discussion->getCount($id);
+        $discussion_status            = $discussion->getResolved($id);
+        $elementState                 = $this->activity->getElementState($id);
+        $annotationStatus             = $this->annotation->getStatus($id);
+        $annotationStatus             = $annotationStatus == '' ? $elementState['annotation'] : $annotationStatus;
+        $locale                       = $request->route()->getParameter('lang', $lang->defaultLang());
+        $resourceList                 = $this->codeList->getCodeList('resources',$lang->getSiteLang());
+        $contractTypeList             = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
+        $documentTypeList             = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
 
-        // if (!is_null($locale)) {
-        //     if (!$lang->isValidTranslationLang($locale)) {
-        //         abort(404);
-        //     }
+        if (!is_null($locale)) {
+            if (!$lang->isValidTranslationLang($locale)) {
+                abort(404);
+            }
 
-        //     if ($locale != $lang->defaultLang()) {
-        //         $contract->setLang($locale);
-        //     }
+            if ($locale != $lang->defaultLang()) {
+                $contract->setLang($locale);
+            }
 
-        // }
+        }
 
-        // return view(
-        //     'contract.show',
-        //     compact(
-        //         'contract',
-        //         'status',
-        //         'annotations',
-        //         'annotationStatus',
-        //         'associatedContracts',
-        //         'discussions',
-        //         'discussion_status',
-        //         'publishedInformation',
-        //         'elementState',
-        //         'locale',
-        //         'resourceList',
-        //         'contractTypeList',
-        //         'documentTypeList'
-        //     )
-        // );
+        return view(
+            'contract.show',
+            compact(
+                'contract',
+                'status',
+                'annotations',
+                'annotationStatus',
+                'associatedContracts',
+                'discussions',
+                'discussion_status',
+                'publishedInformation',
+                'elementState',
+                'locale',
+                'resourceList',
+                'contractTypeList',
+                'documentTypeList'
+            )
+        );
     }
 
     /**
