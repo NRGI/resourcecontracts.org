@@ -7,8 +7,6 @@ use App\Nrgi\Entities\Contract\Contract;
         @if(count($annotations) > 0)
             @if($annotationStatus == Annotation::PUBLISHED)
                 <span class="state published">@lang('global.published')</span>
-            @elseif($annotationStatus == Annotation::COMPLETED)
-                <span class="state completed">@lang('global.completed')</span>
             @elseif($annotationStatus == Annotation::REJECTED)
                 <span class="state completed">@lang('global.rejected')</span>
             @else
@@ -69,7 +67,7 @@ use App\Nrgi\Entities\Contract\Contract;
     <td>
         @if($elementState['metadata']=='published')
 
-            @if($annotationStatus == Annotation::COMPLETED)
+            @if($annotationStatus == Annotation::DRAFT)
                 {!! Form::open(['route' => ['contract.annotations.status', $contract->id],
                 'class'=>'suggestion-form pull-left']) !!}
                 {!!Form::hidden('type', 'annotation')!!}
@@ -81,16 +79,6 @@ use App\Nrgi\Entities\Contract\Contract;
 
                 <button data-toggle="modal" data-status="rejected" data-target=".annotation-comment-modal" class="btn btn-danger annotation-status-comment">@lang("global.reject")
                 </button>
-            @endif
-            @if($annotationStatus == Annotation::DRAFT)
-                    {!! Form::open(['route' => ['contract.annotations.status', $contract->id],
-                    'class'=>'suggestion-form pull-left']) !!}
-                    {!!Form::hidden('type', 'annotation')!!}
-                    {!!Form::hidden('current-status', $annotationStatus)!!}
-                    {!!Form::hidden('status','completed', ['id'=>"status"])!!}
-                    <button type="submit" class="btn btn-info annotation-status-comment">@lang("global.complete")
-                    </button>
-                    {!! Form::close() !!}
             @endif
         @endif
 

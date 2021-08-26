@@ -629,7 +629,7 @@ class ContractService
             $old_status            = $contract->$status_key;
             $contract->$status_key = $status;
             if ($status == Contract::STATUS_UNPUBLISHED) {
-                $contract->$status_key = ($old_status == Contract::STATUS_PUBLISHED) ? 'completed' : $old_status;
+                $contract->$status_key = ($old_status == Contract::STATUS_PUBLISHED) ? 'draft' : $old_status;
             }
 
             $contract->save();
@@ -939,11 +939,11 @@ class ContractService
                 $id
             );
 
-            $contract->metadata_status = ($elementStatus['metadata_status'] == "published") ? Contract::STATUS_COMPLETED : $elementStatus['metadata_status'];
-            $contract->text_status     = ($elementStatus['text_status'] == "published") ? Contract::STATUS_COMPLETED : $elementStatus['text_status'];
+            $contract->metadata_status = ($elementStatus['metadata_status'] == "published") ? Contract::STATUS_DRAFT : $elementStatus['metadata_status'];
+            $contract->text_status     = ($elementStatus['text_status'] == "published") ? Contract::STATUS_DRAFT : $elementStatus['text_status'];
             $contract->save();
 
-            $annStatus = ($elementStatus['annotation_status'] == "published") ? Annotation::COMPLETED : $elementStatus['annotation_status'];
+            $annStatus = ($elementStatus['annotation_status'] == "published") ? Annotation::DRAFT : $elementStatus['annotation_status'];
             $this->annotation->updateStatus($annStatus, $id);
 
             return true;

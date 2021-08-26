@@ -279,7 +279,7 @@ class AnnotationService
     {
         $annStatus = $annotationStatus;
         if ($annotationStatus == Annotation::UNPUBLISH) {
-            $annStatus = ($currentAnnStatus == Annotation::PUBLISHED) ? 'completed' : $currentAnnStatus;
+            $annStatus = ($currentAnnStatus == Annotation::PUBLISHED) ? 'draft' : $currentAnnStatus;
         }
 
         $status = true;
