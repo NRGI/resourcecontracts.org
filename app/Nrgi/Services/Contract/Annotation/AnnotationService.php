@@ -101,6 +101,7 @@ class AnnotationService
     public function save($formData)
     {
         $formData = $this->updateFormData($formData);
+        $status = $this->annotation->getStatus($formData['contract']);
         $this->database->beginTransaction();
 
         if (is_null($formData['annotation_id'])) {
@@ -109,14 +110,14 @@ class AnnotationService
                 'category'    => $formData['category'],
                 'text'        => $formData['text'],
                 'text_trans'  => $formData['text_trans'],
-                'status'      => Annotation::DRAFT,
+                'status'      => $status == Annotation::PUBLISHED ? Annotation::PUBLISHED : Annotation::DRAFT,
             ];
             $annotation     = $this->annotation->create($annotationData);
         } else {
             $annotation             = $this->annotation->find($formData['annotation_id']);
             $annotation->text       = $formData['text'];
             $annotation->text_trans = $formData['text_trans'];
-            $annotation->status     = Annotation::DRAFT;
+            $annotation->status     = $status == Annotation::PUBLISHED ? Annotation::PUBLISHED : Annotation::DRAFT;
             $annotation->save();
         }
 
@@ -180,8 +181,6 @@ class AnnotationService
             if ($annotation->parent->child->count() == 1) {
                 $this->annotation->delete($annotation->parent->id);
             }
-
-            $this->updateStatusOrPublish($annotation->parent->contract_id);
 
             $this->logger->activity(
                 'annotation.annotation_deleted',
@@ -279,7 +278,7 @@ class AnnotationService
     {
         $annStatus = $annotationStatus;
         if ($annotationStatus == Annotation::UNPUBLISH) {
-            $annStatus = ($currentAnnStatus == Annotation::PUBLISHED) ? 'completed' : $currentAnnStatus;
+            $annStatus = ($currentAnnStatus == Annotation::PUBLISHED) ? 'draft' : $currentAnnStatus;
         }
 
         $status = true;
@@ -333,7 +332,9 @@ class AnnotationService
         $status = $this->updateStatus($annotationStatus, $currentAnnStatus, $contractId);
         if ($status) {
             try {
-                $this->comment->save($contractId, $message, "annotation", $annotationStatus);
+                if($message){
+                    $this->comment->save($contractId, $message, "annotation", $annotationStatus);
+                }
 
                 $this->logger->info(
                     'Comment successfully added.',
@@ -509,5 +510,28 @@ class AnnotationService
     public function getAllByAnnotation($category)
     {
         return $this->annotation->getAllByAnnotation($category);
+    }
+
+
+    /**
+     * Publish annotation
+     *
+     * @param $id
+     *
+     * @return bool
+     */
+    public function publishAnnotation($id)
+    {
+        if($this->getStatus($id) == Annotation::PUBLISHED){
+            $this->queue->push(
+                'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                ['contract_id' => $id, 'type' => 'annotation'],
+                'elastic_search'
+            );
+
+            return true;
+        }
+
+        return false;
     }
 }

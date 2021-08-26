@@ -150,7 +150,8 @@ class PageController extends Controller
 
         if ($this->page->saveText($id, $request->input('page'), $text)) {
             $contract              = $contract->find($id);
-            $contract->text_status = Contract::STATUS_DRAFT;
+            $text_status           = $contract->text_status;
+            $contract->text_status = $text_status == Contract::STATUS_PUBLISHED ? Contract::STATUS_PUBLISHED : Contract::STATUS_DRAFT;
             $contract->save();
 
             return response()->json(['result' => 'success', 'message' => $text]);
@@ -269,5 +270,34 @@ class PageController extends Controller
                 'results' => $this->page->fullTextSearch($contract_id, $request->input('q')),
             ]
         );
+    }
+
+    /**
+     * Publish Page text
+     *
+     * @param                 $id
+     * @param Request         $request
+     * @param ContractService $contract
+     *
+     * @return int
+     */
+    public function publish($id, Request $request, ContractService $contract)
+    {
+        $type = $request->input('type');
+        $status = false;
+
+        if ($contract = $contract->find($id)) {
+            if($type == 'text'){
+                $status = $this->contract->publishPage($id, $contract->text_status, $type);
+            }
+
+            if($type == 'annotation'){
+                $status = $this->annotation->publishAnnotation($id);
+            }
+
+            return response()->json(['result' => 'success', 'publish_status' => $status, 'message' => trans('contract.page.publish_success')]);
+        }
+
+        return response()->json(['result' => 'fail', 'message' => trans('contract.page.save_fail')]);
     }
 }

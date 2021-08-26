@@ -143,6 +143,7 @@ var PdfViewer = React.createClass({
             <div className="pdf-viewer pdf-annotator" style={this.props.style}>
                 <Pdf
                     contractApp={this.props.contractApp}
+
                     pdfPage={this.props.pdfPage}
                     page={1}
                     content={this.props.pdfPage.get("content")}
@@ -158,7 +159,8 @@ var PdfViewer = React.createClass({
                 el: ".pdf-annotator",
                 api: this.props.contractApp.getLoadAnnotationsUrl(),
                 enablePdfAnnotation: true,
-                contractApp: this.props.contractApp
+                contractApp: this.props.contractApp,
+                publishApi: this.props.publishApi
             });
             this.props.contractApp.setAnnotatorInstance(this.annotator);
         }

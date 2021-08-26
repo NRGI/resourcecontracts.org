@@ -39622,7 +39622,8 @@ var TextViewer = React.createClass({
         // collection: annotationCollection,
         annotationCategories: ["General information", "Country", "Local company name"],
         enablePdfAnnotation: false,
-        contractApp: this.props.contractApp
+        contractApp: this.props.contractApp,
+        publishApi: this.props.publishApi
       });
       this.props.contractApp.setAnnotatorInstance(this.annotator);
     }
@@ -44481,6 +44482,7 @@ var AnnotatorjsView = Backbone.View.extend({
             }
         };
         this.contractApp = options.contractApp;
+        this.publishApi = options.publishApi;
         this.content.annotator('addPlugin', 'AnnotatorNRGIViewer');
         this.content.annotator('addPlugin', 'Language');
         this.populateCategories();
@@ -44489,6 +44491,7 @@ var AnnotatorjsView = Backbone.View.extend({
         this.content.annotator('addPlugin', 'AnnotatorEvents');
 
         this.content.data('annotator').plugins.AnnotatorEvents.contractApp = options.contractApp;
+        this.content.data('annotator').plugins.AnnotatorEvents.publishApi = this.publishApi;
         this.content.data('annotator').plugins.AnnotatorNRGIViewer.contractApp = options.contractApp;
 
         // this.content.data('annotator').plugins.AnnotatorEvents.currentPage = this.currentPage;
@@ -44868,7 +44871,10 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         setTimeout(function (event) {
             self.contractApp.trigger('annotationCreated', annotation);
             self.notification.show(LANG.annotation_successfully_created, 'success');
+            publishAnnotation(self);
         }, 1000);
+
+
     };
     AnnotatorEvents.prototype.onAnnotationUpdated = function (annotation) {
         var self = this;
@@ -44876,7 +44882,8 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
             self.contractApp.setPdfLoaded(false);
             self.contractApp.trigger('annotationUpdated', annotation);
             self.notification.show(LANG.annotation_successfully_updated, 'success');
-        }, 1000);
+            publishAnnotation(self);
+        }, 1000);        
     };
     AnnotatorEvents.prototype.onAnnotationDeleted = function (annotation) {
         var self = this;
@@ -44885,6 +44892,7 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
                 self.contractApp.trigger('annotationDeleted', annotation);
                 self.notification.show(LANG.annotation_successfully_deleted, 'success');
             }
+            publishAnnotation(self);
         }, 1000);
     };
 
@@ -45004,6 +45012,20 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
             viewerEl.removeClass('annotator-invert-y');
             widgetEl.removeClass('annotator-invert-y');
         }
+    }
+
+    function publishAnnotation(self){
+        $.ajax({
+            url: self.publishApi,
+            data: {
+                type : 'annotation'
+            },
+            type: 'POST'
+        }).success(function(response){
+            if(response.publish_status){
+                self.notification.show(response.message, 'success');
+            }
+        });
     }
 
     return AnnotatorEvents;
@@ -45829,6 +45851,13 @@ var TextEditorContainer = React.createClass({
       $('.text-annotator').animate({
         scrollTop: $('.text-annotator').offset().top - $('.text-annotator').scrollTop()
       }, 'slow');
+      $.ajax({
+        url: self.props.publishApi,
+        data: {
+          type: 'text'
+        },
+        type: 'POST'
+      }).success(function (response) {});
     });
   },
   sanitizeTxt: function (text) {
@@ -45919,7 +45948,8 @@ var pdfPage = new PdfPage({
 });
 var api = {
   save: saveApi,
-  load: loadApi
+  load: loadApi,
+  publish: publishApi
 };
 var MainApp = React.createClass({
   displayName: "MainApp",
@@ -46001,6 +46031,7 @@ var MainApp = React.createClass({
       contractApp: contractApp,
       showAnnotations: "false",
       saveApi: api.save,
+      publishApi: api.publish,
       loadApi: api.load
     }), /*#__PURE__*/React.createElement(PdfViewer, {
       pdfPage: pdfPage,

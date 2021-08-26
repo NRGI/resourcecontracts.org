@@ -18,6 +18,10 @@ var pdfPage = new PdfPage({
     contractApp: contractApp
 });
 
+var api = {
+    publish: publishApi
+};
+
 var MainApp = React.createClass({
     getInitialState: function () {
         return {
@@ -125,10 +129,12 @@ var MainApp = React.createClass({
                     <TextViewer
                         style={this.getStyle(contractApp.isViewVisible("TextViewer"))}
                         contractApp={contractApp}
+                        publishApi={api.publish}
                         pagesCollection={pagesCollection}/>
                     <PdfViewer
                         pdfPage={pdfPage}
                         style={this.getStyle(contractApp.isViewVisible("PdfViewer"))}
+                        publishApi={api.publish}
                         contractApp={contractApp}
                         showAnnotations="true"/>
                 </div>
