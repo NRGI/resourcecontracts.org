@@ -742,13 +742,19 @@ class TaskService
         $contract               = $this->contract->find($contract_id);
         $contract->mturk_status = Contract::MTURK_COMPLETE;
         $contract->textType     = Contract::ACCEPTABLE;
+        $contract->text_status  = Contract::STATUS_PUBLISHED;
+        $is_updated             = $contract->save();
+
+        if($is_updated){
+            $this->queue->push('App\Nrgi\Services\Queue\ProcessDocumentQueue', ['contract_id' => $contract->id]);
+        }
 
         $this->logger->info('Contract text updated from MTurk', ['Contract id' => $contract_id]);
         $this->logger->activity('mturk.log.sent_to_rc', null, $contract_id);
         $this->logger->mTurkActivity('mturk.log.sent_to_rc', null, $contract_id);
 
 
-        return $contract->save();
+        return $is_updated;
     }
 
     /**
