@@ -78,7 +78,7 @@ $annotLastPublished   = isset($annotationArray[0]['last_published']) ? $annotati
             </div>
             <div class="state-wrap-title col-md-6 pull-right">
                 @if(!$current_user->isCountryResearch())
-                    @if($publishedInformation['metadata']['created_at'] !='' && $publishedInformation['text']['created_at']!='' && $publishedInformation['annotation']['created_at']!='')
+                    @if($publishedInformation['metadata']['created_at'] !='' && $publishedInformation['text']['created_at']!='' && $publishedInformation['annotation']['created_at']!='' && $contract->textType == Contract::ACCEPTABLE)
                         {!!Form::open(['route'=>['contract.unpublish', $contract->id], 'style'=>"float:right;  padding-left: 10px;",
                         'method'=>'post'])!!}
                         {!!Form::hidden('metadata_status',$contract->metadata_status  )!!}

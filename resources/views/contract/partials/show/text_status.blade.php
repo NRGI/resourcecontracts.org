@@ -6,8 +6,6 @@ use App\Nrgi\Entities\Contract\Contract;
 	<td>
 		@if($contract->text_status == Contract::STATUS_PUBLISHED)
 			<span class="state published">@lang('global.published')</span>
-		@elseif($contract->text_status == Contract::STATUS_COMPLETED)
-			<span class="state completed">@lang('global.completed')</span>
 		@elseif($contract->text_status == Contract::STATUS_DRAFT)
 			<span class="state draft">@lang('global.draft')</span>
 		@else
@@ -61,7 +59,7 @@ use App\Nrgi\Entities\Contract\Contract;
 	<td>
 		@if($elementState['metadata']=='published' )
 			@if($contract->textType == Contract::ACCEPTABLE)
-				@if($contract->text_status == Contract::STATUS_COMPLETED)
+				@if($contract->text_status == Contract::STATUS_DRAFT)
 					{!! Form::open(['route' => ['contract.status.comment', $contract->id],
 					'class'=>'suggestion-form pull-left']) !!}
 					{!!Form::hidden('type', 'text',[])!!}
@@ -73,15 +71,6 @@ use App\Nrgi\Entities\Contract\Contract;
 					<button data-toggle="modal" data-type="text" data-status="rejected" data-target=".status-modal"
 							class="btn btn-danger metadata-status-comment">@lang("global.reject")
 					</button>
-				@endif
-				@if($contract->text_status == Contract::STATUS_DRAFT)
-					{!! Form::open(['route' => ['contract.status.comment', $contract->id],
-					'class'=>'suggestion-form pull-left']) !!}
-					{!!Form::hidden('type', 'text',[])!!}
-					{!!Form::hidden('status', 'completed' , [])!!}
-					<button type="submit"
-							class="btn btn-info metadata-status-comment">@lang("global.complete")</button>
-					{!! Form::close() !!}
 				@endif
 			@endif
 		@endif
