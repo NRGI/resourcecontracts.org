@@ -333,7 +333,9 @@ class AnnotationService
         $status = $this->updateStatus($annotationStatus, $currentAnnStatus, $contractId);
         if ($status) {
             try {
-                $this->comment->save($contractId, $message, "annotation", $annotationStatus);
+                if($message){
+                    $this->comment->save($contractId, $message, "annotation", $annotationStatus);
+                }
 
                 $this->logger->info(
                     'Comment successfully added.',

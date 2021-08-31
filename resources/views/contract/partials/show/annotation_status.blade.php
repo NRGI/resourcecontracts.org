@@ -98,9 +98,13 @@ use App\Nrgi\Entities\Contract\Contract;
             @endif
             <a href="{{$link}}" target="_blank"><span class="glyphicon glyphicon-link" title="@lang('global.check_annotation_in_subsite')"></span></a>
 
-            <button data-toggle="modal" data-status="unpublished" data-target=".annotation-comment-modal"
-                         class="btn btn-danger annotation-status-comment re">@lang("global.unpublish")
-            </button>
+            {!! Form::open(['route' => ['contract.annotations.status', $contract->id],'style'=>"display:inline-block",
+			'class'=>'suggestion-form ']) !!}
+				{!!Form::hidden('status', 'unpublished' , [])!!} 
+				{!!Form::hidden('current-status', 'published' , [])!!} 
+				<button type="submit"
+						class="btn btn-danger metadata-status-comment">@lang("global.unpublish")</button>
+			{!! Form::close() !!}
         @else
             -
         @endif
