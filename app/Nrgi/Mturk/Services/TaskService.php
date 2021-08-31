@@ -740,13 +740,32 @@ class TaskService
 
         $this->contract->updateWordFile($contract_id);
         $contract               = $this->contract->find($contract_id);
+        $text_status            = $contract->text_status;
         $contract->mturk_status = Contract::MTURK_COMPLETE;
         $contract->textType     = Contract::ACCEPTABLE;
-        $contract->text_status  = Contract::STATUS_PUBLISHED;
         $is_updated             = $contract->save();
 
         if($is_updated){
-            $this->queue->push('App\Nrgi\Services\Queue\ProcessDocumentQueue', ['contract_id' => $contract->id]);
+            $this->queue->push(
+                'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                ['contract_id' => $contract->id, 'type' => 'text'],
+                'elastic_search'
+            );
+
+            $this->logger->activity(
+                'contract.log.status',
+                ['type' => 'text', 'old_status' => $text_status, 'new_status' => $contract->text_status],
+                $contract->id
+            );
+            $this->logger->info(
+                "Contract status updated",
+                [
+                    'Contract id' => $contract->id,
+                    'Status type' => 'text',
+                    'Old status'  => $text_status,
+                    'New Status'  => $contract->text_status,
+                ]
+            );        
         }
 
         $this->logger->info('Contract text updated from MTurk', ['Contract id' => $contract_id]);

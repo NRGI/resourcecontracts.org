@@ -84,9 +84,14 @@ use App\Nrgi\Entities\Contract\Contract;
 			@endif
 			<a href="{{$link}}" target="_blank"><span class="glyphicon glyphicon-link"
 													  title="@lang('global.check_metadata_in_subsite')"></span></a>
-			<button data-toggle="modal" data-type="metadata" data-status="unpublished" data-target=".status-modal"
-					class="btn btn-danger metadata-status-comment">@lang("global.unpublish")
-			</button>
+
+			{!! Form::open(['route' => ['contract.status.comment', $contract->id],  'style'=>"display:inline-block",
+			'class'=>'suggestion-form ']) !!}
+				{!!Form::hidden('type', 'metadata',[])!!}
+				{!!Form::hidden('status', 'unpublished' , [])!!}
+				<button type="submit"
+						class="btn btn-danger metadata-status-comment">@lang("global.unpublish")</button>
+			{!! Form::close() !!}
 		@else
 			-
 		@endif

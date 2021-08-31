@@ -394,6 +394,7 @@ class ContractService
 
             return false;
         }
+        $metadata_status                 = $contract->metadata_status;
         $metadata                        = $this->processMetadata($formData);
         $metadata['file_size']           = $contract->metadata->file_size;
         $metadata['open_contracting_id'] = $contract->metadata->open_contracting_id;
@@ -410,7 +411,7 @@ class ContractService
         }
         $contract->metadata        = $metadata;
         $contract->updated_by      = $this->auth->id();
-        $contract->metadata_status = Contract::STATUS_DRAFT;
+        $contract->metadata_status = $metadata_status == Contract::STATUS_PUBLISHED ? CONTRACT::STATUS_PUBLISHED : Contract::STATUS_DRAFT;
 
         $supporting_contract_model = new SupportingContract();
         $supporting_contract       = $supporting_contract_model->where('supporting_contract_id', '=', $contractID)->get()->first();
@@ -439,6 +440,29 @@ class ContractService
             }
             if (isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '0') {
                 $this->contract->removeAsSupportingContract($contract->id);
+            }
+
+            if ($contract->metadata_status == Contract::STATUS_PUBLISHED){
+                $this->queue->push(
+                    'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                    ['contract_id' => $contract->id, 'type' => 'metadata'],
+                    'elastic_search'
+                );
+
+                $this->logger->activity(
+                    'contract.log.status',
+                    ['type' => 'metadata', 'old_status' => $metadata_status, 'new_status' => $contract->metadata_status],
+                    $contract->id
+                );
+                $this->logger->info(
+                    "Contract status updated",
+                    [
+                        'Contract id' => $contract->id,
+                        'Status type' => 'metadata',
+                        'Old status'  => $metadata_status,
+                        'New Status'  => $contract->metadata_status,
+                    ]
+                );
             }
 
             $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
