@@ -13,6 +13,10 @@
     </style>
 @stop
 
+<?php
+use App\Nrgi\Entities\Contract\Contract;
+?>
+
 <table class="table table-striped table-responsive">
     <thead>
     <tr>
@@ -61,7 +65,7 @@
             @if(!$current_user->isCountryResearch())
             <td>
                 @if($contract->tasks->count() == $contract->count_status['total_approved'])
-                    @if($contract->mturk_status == 2)
+                    @if($contract->mturk_status == 2 || $contract->metadata_status == Contract::STATUS_DRAFT)
                         <button class="btn btn-default" disabled="disabled">@lang('mturk.sent_to_rc')</button>
                     @else
                         {!! Form::open(['url' =>route('mturk.contract.copy',$contract->id), 'method' => 'post']) !!}
