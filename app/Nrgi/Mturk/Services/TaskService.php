@@ -741,6 +741,7 @@ class TaskService
         $this->contract->updateWordFile($contract_id);
         $contract               = $this->contract->find($contract_id);
         $text_status            = $contract->text_status;
+        $contract->text_status  = Contract::STATUS_PUBLISHED;
         $contract->mturk_status = Contract::MTURK_COMPLETE;
         $contract->textType     = Contract::ACCEPTABLE;
         $is_updated             = $contract->save();
