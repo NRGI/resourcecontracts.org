@@ -12,6 +12,7 @@ var AnnotatorjsView = Backbone.View.extend({
             }
         };
         this.contractApp = options.contractApp;
+        this.publishApi = options.publishApi;
         this.content.annotator('addPlugin', 'AnnotatorNRGIViewer');
         this.content.annotator('addPlugin', 'Language');
         this.populateCategories();
@@ -20,6 +21,7 @@ var AnnotatorjsView = Backbone.View.extend({
         this.content.annotator('addPlugin', 'AnnotatorEvents');
 
         this.content.data('annotator').plugins.AnnotatorEvents.contractApp = options.contractApp;
+        this.content.data('annotator').plugins.AnnotatorEvents.publishApi = this.publishApi;
         this.content.data('annotator').plugins.AnnotatorNRGIViewer.contractApp = options.contractApp;
 
         // this.content.data('annotator').plugins.AnnotatorEvents.currentPage = this.currentPage;

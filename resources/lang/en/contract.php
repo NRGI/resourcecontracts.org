@@ -66,7 +66,7 @@ return [
     'needs_editing'                        => "Needs Editing",
     'needs_full_transcription'             => "Needs Full Transcription",
     'close'                                => "Close",
-    'save_changes'                         => "Save change",
+    'save_changes'                         => "Save changes",
     'created_on'                           => "Created on",
     'parent_company'                       => "Parent Company",
     'license_type'                         => "License Type",
