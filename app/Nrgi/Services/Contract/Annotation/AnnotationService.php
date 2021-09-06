@@ -101,6 +101,7 @@ class AnnotationService
     public function save($formData)
     {
         $formData = $this->updateFormData($formData);
+        $status = $this->annotation->getStatus($formData['contract']);
         $this->database->beginTransaction();
 
         if (is_null($formData['annotation_id'])) {
@@ -109,14 +110,14 @@ class AnnotationService
                 'category'    => $formData['category'],
                 'text'        => $formData['text'],
                 'text_trans'  => $formData['text_trans'],
-                'status'      => Annotation::DRAFT,
+                'status'      => $status == Annotation::PUBLISHED ? Annotation::PUBLISHED : Annotation::DRAFT,
             ];
             $annotation     = $this->annotation->create($annotationData);
         } else {
             $annotation             = $this->annotation->find($formData['annotation_id']);
             $annotation->text       = $formData['text'];
             $annotation->text_trans = $formData['text_trans'];
-            $annotation->status     = Annotation::DRAFT;
+            $annotation->status     = $status == Annotation::PUBLISHED ? Annotation::PUBLISHED : Annotation::DRAFT;
             $annotation->save();
         }
 
@@ -511,5 +512,28 @@ class AnnotationService
     public function getAllByAnnotation($category)
     {
         return $this->annotation->getAllByAnnotation($category);
+    }
+
+
+    /**
+     * Publish annotation
+     *
+     * @param $id
+     *
+     * @return bool
+     */
+    public function publishAnnotation($id)
+    {
+        if($this->getStatus($id) == Annotation::PUBLISHED){
+            $this->queue->push(
+                'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                ['contract_id' => $id, 'type' => 'annotation'],
+                'elastic_search'
+            );
+
+            return true;
+        }
+
+        return false;
     }
 }

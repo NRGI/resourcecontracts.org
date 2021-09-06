@@ -188,7 +188,8 @@ var TextViewer = React.createClass({
                 // collection: annotationCollection,
                 annotationCategories: ["General information", "Country", "Local company name"],
                 enablePdfAnnotation: false,
-                contractApp: this.props.contractApp
+                contractApp: this.props.contractApp,
+                publishApi: this.props.publishApi,
             });
             this.props.contractApp.setAnnotatorInstance(this.annotator);
         }

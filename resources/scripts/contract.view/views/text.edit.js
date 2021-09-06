@@ -77,6 +77,15 @@ var TextEditorContainer = React.createClass({
             self.setState({message: LANG.text_saved});
             $('.text-annotator').html(response.message);
             $('.text-annotator').animate({scrollTop: $('.text-annotator').offset().top - $('.text-annotator').scrollTop()}, 'slow');
+
+            $.ajax({
+                url: self.props.publishApi,
+                data: {
+                    type : 'text'
+                },
+                type: 'POST'
+            }).success(function(response){
+            });
         });
     },
     sanitizeTxt: function (text) {

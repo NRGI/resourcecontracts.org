@@ -52,6 +52,15 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
             self.contractApp.trigger('annotationCreated', annotation);
             self.notification.show(LANG.annotation_successfully_created, 'success');
         }, 1000);
+
+        $.ajax({
+            url: self.publishApi,
+            data: {
+                type : 'annotation'
+            },
+            type: 'POST'
+        }).success(function(response){
+        });
     };
     AnnotatorEvents.prototype.onAnnotationUpdated = function (annotation) {
         var self = this;
@@ -60,6 +69,15 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
             self.contractApp.trigger('annotationUpdated', annotation);
             self.notification.show(LANG.annotation_successfully_updated, 'success');
         }, 1000);
+
+        $.ajax({
+            url: self.publishApi,
+            data: {
+                type : 'annotation'
+            },
+            type: 'POST'
+        }).success(function(response){
+        });
     };
     AnnotatorEvents.prototype.onAnnotationDeleted = function (annotation) {
         var self = this;

@@ -448,21 +448,6 @@ class ContractService
                     ['contract_id' => $contract->id, 'type' => 'metadata'],
                     'elastic_search'
                 );
-
-                $this->logger->activity(
-                    'contract.log.status',
-                    ['type' => 'metadata', 'old_status' => $metadata_status, 'new_status' => $contract->metadata_status],
-                    $contract->id
-                );
-                $this->logger->info(
-                    "Contract status updated",
-                    [
-                        'Contract id' => $contract->id,
-                        'Status type' => 'metadata',
-                        'Old status'  => $metadata_status,
-                        'New Status'  => $contract->metadata_status,
-                    ]
-                );
             }
 
             $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
@@ -1670,5 +1655,29 @@ class ContractService
         }
 
         return $child_array;
+    }
+
+    /**
+     * Publish contract pdf
+     *
+     * @param $id
+     * @param $status
+     * @param $type
+     *
+     * @return bool
+     */
+    public function publishPage($id, $status, $type)
+    {
+        if($status == Contract::STATUS_PUBLISHED){
+            $this->queue->push(
+                'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                ['contract_id' => $id, 'type' => $type],
+                'elastic_search'
+            );
+
+            return true;
+        }
+
+        return false;
     }
 }

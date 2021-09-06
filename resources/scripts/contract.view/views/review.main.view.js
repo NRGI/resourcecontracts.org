@@ -8,7 +8,8 @@ var pdfPage = new PdfPage({
 
 var api = {
     save: saveApi,
-    load: loadApi
+    load: loadApi,
+    publish: publishApi
 };
 
 var MainApp = React.createClass({
@@ -82,6 +83,7 @@ var MainApp = React.createClass({
                         contractApp={contractApp}
                         showAnnotations="false"
                         saveApi={api.save}
+                        publishApi={api.publish}
                         loadApi={api.load}/>
                     <PdfViewer
                         pdfPage={pdfPage}
