@@ -603,18 +603,42 @@ class TaskService
             return false;
         }
 
-        if ($task->hit_id != '') {
+        if ($task->hit_id != '' && $task->hit_id != null) {
             try {
-                if (!$this->turk->removeHIT($task)) {
-                    return [
-                        'result'  => false,
-                        'message' => trans('HIT is in Reviewable state so can not be reset.'),
-                    ];
+                $response=$this->turk->removeHIT($task);
+                if($response['http_code']==400) {
+                    if(isset($response['response']) && isset($response['response']['TurkErrorCode'])) {
+                        if ($response['response']['TurkErrorCode'] != 'AWS.MechanicalTurk.HITDoesNotExist') {
+                            return [
+                                'result'  => false,
+                                'message' => $response['response']['Message'],
+                            ];
+                        }
+                    }
+                    $this->logger->error(
+                        'HIT delete failed MTurk Error. '.json_encode($response['response']),
+                        [
+                            'Contract id' => $contract_id,
+                            'hit id'      => $task->hit_id,
+                            'Task'        => $task_id,
+                            'Errors'      => $response['response']['Message'],
+                        ]
+                    );
                 }
-                $this->logger->info(
-                    'HIT successfully deleted',
-                    ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]
-                );
+                else {
+                    $removedHit = $response['response'];
+                    if ($removedHit['HIT']['HITStatus'] != "Disposed") {
+                        return [
+                            'result'  => false,
+                            'message' => trans('HIT is in Reviewable state so can not be reset.'),
+                        ];
+                    }
+                    $this->logger->info(
+                        'HIT successfully deleted',
+                        ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]
+                    );
+                }
+               
             } catch (MTurkException $e) {
                 if ($e->getErrors()['Error']['Code'] != 'AWS.MechanicalTurk.HITDoesNotExist') {
                     return [
