@@ -39614,8 +39614,6 @@ var TextViewer = React.createClass({
     $(e.target).parent().hide(500);
   },
   loadAnnotations: function (force) {
-    console.log('text', this.props);
-
     if (!this.annotator) {
       this.annotator = new AnnotatorjsView({
         el: ".text-annotator",
@@ -44870,19 +44868,24 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         annotation.page = this.contractApp.getCurrentPage();
         annotation.category = annotation.category.trim();
         var self = this;
+        console.log(self.contractApp);
+
         setTimeout(function (event) {
             self.contractApp.trigger('annotationCreated', annotation);
             self.notification.show(LANG.annotation_successfully_created, 'success');
-
-            $.ajax({
-                url: self.publishApi,
-                data: {
-                    type : 'text'
-                },
-                type: 'POST'
-            }).success(function(response){
-            });
+            console.log('inside timeout');
         }, 1000);
+
+        console.log('outside timeout');
+
+        $.ajax({
+            url: self.publishApi,
+            data: {
+                type : 'annotation'
+            },
+            type: 'POST'
+        }).success(function(response){
+        });
     };
     AnnotatorEvents.prototype.onAnnotationUpdated = function (annotation) {
         var self = this;
@@ -44891,6 +44894,15 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
             self.contractApp.trigger('annotationUpdated', annotation);
             self.notification.show(LANG.annotation_successfully_updated, 'success');
         }, 1000);
+
+        $.ajax({
+            url: self.publishApi,
+            data: {
+                type : 'annotation'
+            },
+            type: 'POST'
+        }).success(function(response){
+        });
     };
     AnnotatorEvents.prototype.onAnnotationDeleted = function (annotation) {
         var self = this;
