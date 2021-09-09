@@ -530,22 +530,43 @@ class TaskService
                             && isset($assignment['response']['Assignment']['AssignmentStatus'])) {
 
                             if ($assignment['response']['Assignment']['AssignmentStatus'] == 'Approved') {
-                                return [
-                                    'result'  => true,
-                                    'message' => trans('mturk.action.hit_approved_cannot_be_rejected'),
-                                ];
+                                return [ 'result'  => true, 'message' => trans('mturk.action.hit_approved_cannot_be_rejected')];
                             } elseif ($assignment['response']['Assignment']['AssignmentStatus'] == 'Rejected') {
                                 $this->rejectTaskInDb($task, $contract_id);
-
                                 return ['result' => true, 'message' => trans('mturk.action.has_already_rejected')];
                             }
                         }
+                        elseif($assignment['http_code'] == 400 ) {
+                            if(isset($assignment['response']) && isset($assignment['response']['TurkErrorCode'])) {
+                                if ($assignment['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.HITDoesNotExist') {
+                                    $this->logger->warning(
+                                        'HIT does not exist '.json_encode($assignment['response']),
+                                        [
+                                            'Contract id' => $contract_id,
+                                            'hit id'      => $task->hit_id,
+                                            'Task'        => $task_id,
+                                            'Errors'      => $assignment['response']['Message'],
+                                        ]
+                                    );
+                                    return $this->processHitAutoCreation($contract_id, $task_id,'mturk.action.hit_does_not_exists');
+                                    
+                                }
+                            }
+                        }
                     } elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.AssignmentDoesNotExist') {
-                        return ['result' => false, 'message' => trans('mturk.action.assignment_does_not_exists')];
+                        $this->logger->warning(
+                            'Assignments does not exist '.json_encode($response['response']),
+                            [
+                                'Contract id' => $contract_id,
+                                'hit id'      => $task->hit_id,
+                                'Task'        => $task_id,
+                                'Errors'      => $response['response']['Message'],
+                            ]
+                        );
+                        return $this->processHitAutoCreation($contract_id, $task_id,'mturk.action.assignment_does_not_exists');
                     } elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.HITDoesNotExist') {
-                        return ['result' => false, 'message' => trans('mturk.action.hit_does_not_exists')];
+                        return $this->processHitAutoCreation($contract_id, $task_id,'mturk.action.hit_does_not_exists');
                     }
-
                     return ['result' => false, 'message' => $response['response']['TurkErrorCode']];
                 }
 
@@ -555,6 +576,112 @@ class TaskService
 
         return false;
 
+    }
+
+    /**
+     * Auto creating new hit
+     *
+     * @param $contract_id
+     * @param $task_id
+     * @param $fallbackMessahe
+     *
+     * @return array|bool
+     */
+
+    public function processHitAutoCreation($contract_id, $task_id, $fallbackMessage) {
+        try {
+            $newHit = $this->createNewHit($contract_id, $task_id);
+            $result = is_bool($newHit) ? $newHit : $newHit['result'];
+            $resetMessage = is_bool($newHit) ? null : $newHit['message'];
+            if($result) {
+                return [ "result" => true, "message" => trans('mturk.action.prev_hit_does_not_exists_doing_auto_reset') ];
+            } else {
+                return [ "result "=> false, "message" => $resetMessage != null ? $resetMessage : trans($fallbackMessage) ];
+            }
+        } catch (Exception $e) {
+            $this->logger->error(
+                'HIT auto creation failed. '.$e->getMessage(),
+                ['Contract id' => $contract_id, 'Task' => $task_id,]
+            );
+            return false;
+        }
+        return false;
+    }
+
+    /**
+     * Create new hit
+     *
+     * @param $contract_id
+     * @param $task_id
+     *
+     * @return array|bool
+     */
+
+    public function createNewHit($contract_id, $task_id)
+    {
+       try {
+        $contract = $this->contract->find($contract_id);
+        $task = $this->task->getTask($contract_id, $task_id);
+       } catch (Exception $e) {
+        $this->logger->error(
+            'Task or contract does not exist '.$e->getMessage(),
+            ['Contract id' => $contract_id, 'Task' => $task_id]
+        );
+
+        return false;
+       }
+       $title       = sprintf(
+        "Transcription of Contract '%s' - Pg: %s Lang: %s",
+        str_limit($contract->title, 70),
+        $task->page_no,
+        $contract->metadata->language
+    );
+    $url         = $this->getMTurkUrl($task->pdf_url, $contract->metadata->language);
+    $description = config('mturk.defaults.production.Description');
+
+    try {
+        $ret = $this->turk->createHIT($title, $description, $url);
+    } catch (MTurkException $e) {
+        $this->logger->error(
+            'HIT create failed. '.$e->getMessage(),
+            [
+                'Contract id' => $contract_id,
+                'Task'        => $task_id,
+                'Page no'     => $task->page_no,
+                'Errors'      => $e->getErrors(),
+            ]
+        );
+
+        return ['result' => false, 'message' => $e->getErrors()];
+    } catch (Exception $e) {
+        $this->logger->error(
+            'HIT create failed. '.$e->getMessage(),
+            ['Contract id' => $contract_id, 'Task' => $task_id, 'Page no' => $task->page_no]
+        );
+
+        return false;
+    }
+
+    if ($ret) {
+        $update = [
+            'hit_id'      => $ret->hit_id,
+            'assignments' => null,
+            'status'      => 0,
+            'approved'    => 0,
+            'hit_type_id' => $ret->hit_type_id,
+            'created_at'  => date('Y-m-d H:i:s'),
+        ];
+
+        $this->task->update($task->contract_id, $task->page_no, $update);
+        $this->logger->info('HIT successfully reset', ['Contract id' => $contract_id, 'Task' => $task->toArray()]);
+        $this->logger->mTurkActivity('mturk.log.reset', null, $task->contract_id, $task->page_no);
+
+        return true;
+    }
+
+    $this->logger->error('Error in MTurk', ['Contract id' => $contract_id, 'Task' => $task->toArray()]);
+
+    return false;
     }
 
     /**
@@ -615,7 +742,7 @@ class TaskService
                             ];
                         }
                     }
-                    $this->logger->error(
+                    $this->logger->warning(
                         'HIT delete failed MTurk Error. '.json_encode($response['response']),
                         [
                             'Contract id' => $contract_id,
