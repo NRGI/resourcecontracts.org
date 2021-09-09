@@ -534,10 +534,7 @@ class TaskService
                             && isset($assignment['response']['Assignment']['AssignmentStatus'])) {
 
                             if ($assignment['response']['Assignment']['AssignmentStatus'] == 'Approved') {
-                                return [
-                                    'result'  => true,
-                                    'message' => trans('mturk.action.hit_approved_cannot_be_rejected'),
-                                ];
+                                return [ 'result'  => true, 'message' => trans('mturk.action.hit_approved_cannot_be_rejected')];
                             } elseif ($assignment['response']['Assignment']['AssignmentStatus'] == 'Rejected') {
                                 $this->rejectTaskInDb($task, $contract_id);
                                 return $this->processHitAutoReset($contract_id, $task_id,$hit_description,'mturk.action.reject_hit_auto_reset','mturk.action.has_already_rejected');
@@ -560,6 +557,23 @@ class TaskService
                                 }
                             }
                         }
+                        elseif($assignment['http_code'] == 400 ) {
+                            if(isset($assignment['response']) && isset($assignment['response']['TurkErrorCode'])) {
+                                if ($assignment['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.HITDoesNotExist') {
+                                    $this->logger->warning(
+                                        'HIT does not exist '.json_encode($assignment['response']),
+                                        [
+                                            'Contract id' => $contract_id,
+                                            'hit id'      => $task->hit_id,
+                                            'Task'        => $task_id,
+                                            'Errors'      => $assignment['response']['Message'],
+                                        ]
+                                    );
+                                    return $this->processHitAutoCreation($contract_id, $task_id,'mturk.action.hit_does_not_exists');
+                                    
+                                }
+                            }
+                        }
                     } elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.AssignmentDoesNotExist') {
                         $this->logger->warning(
                             'Assignments does not exist '.json_encode($response['response']),
@@ -574,7 +588,6 @@ class TaskService
                     } elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.HITDoesNotExist') {
                         return $this->processHitAutoCreation($contract_id, $task_id,$hit_description,'mturk.action.hit_auto_reset','mturk.action.hit_does_not_exists');
                     }
-
                     return ['result' => false, 'message' => $response['response']['TurkErrorCode']];
                 }
 
@@ -786,7 +799,7 @@ class TaskService
                             ];
                         }
                     }
-                    $this->logger->error(
+                    $this->logger->warning(
                         'HIT delete failed MTurk Error. '.json_encode($response['response']),
                         [
                             'Contract id' => $contract_id,
