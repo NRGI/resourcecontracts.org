@@ -77,7 +77,8 @@ class MTurkService extends MechanicalTurkV2
             'LifetimeInSeconds'           => config('mturk.defaults.production.LifetimeInSeconds'),
             'Question'                    => $this->getQuestionXML($question_url),
             'MaxAssignments'              => config('mturk.defaults.production.MaxAssignments'),
-            'QualificationRequirements'   => config('mturk.defaults.production.QualificationRequirements')
+            'QualificationRequirements'   => config('mturk.defaults.production.QualificationRequirements'),
+            'AutoApprovalDelayInSeconds' => config('mturk.defaults.production.AutoApprovalDelayInSeconds')
         ];
 
         $result = $this->createHITByExternalQuestion($params);
@@ -107,7 +108,11 @@ class MTurkService extends MechanicalTurkV2
         $this->logger->info(' Task is '.json_encode($task));
         $hit_id      = $task->hit_id;
         $this->logger->info(' HIT ID '.json_encode($hit_id));
-        $hit         = $this->getHIT($hit_id);
+        $hitResponse         = $this->getHIT($hit_id);
+        if($hitResponse['http_code'] == 400) {
+            return $hitResponse;
+        }
+        $hit = $hitResponse['response'];
         $this->logger->info(' HIT'.json_encode( $hit ));
         $status      = $hit['HIT']['HITStatus'];
         $this->logger->info('status'.json_encode( $status ));
@@ -120,12 +125,12 @@ class MTurkService extends MechanicalTurkV2
         if ($status == 'Assignable' || $isExpired || $isRejected) {
             $this->updateExpirationForHIT($hit_id, 0);
             $this->deleteHIT($hit_id);
-            $hit = $this->getHit($hit_id);
-            $this->logger->info(' Hit is '.json_encode( $hit ));
-            return ($hit['HIT']['HITStatus'] == "Disposed");
+            $hitResponse = $this->getHit($hit_id);
+            $this->logger->info(' Hit is '.json_encode( $hitResponse ));
+            return $hitResponse;
         }
-        $this->logger->info('Returning code false');
-        return false;
+        $this->logger->info('Returning code without deleting');
+        return $hitResponse;
     }
 
     /**

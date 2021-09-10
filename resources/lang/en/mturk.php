@@ -99,5 +99,6 @@
          'hit_approved_cannot_be_rejected' => 'Hit has been approved already and cannot be rejected. Please approve it once again to update in database',
          'has_already_rejected'   => 'HIT has already been rejected',
          'hit_rejected_cannot_be_approved' => 'Hit has been rejected and cannot be approved. Please reject it once again to update in database',
+         'prev_hit_does_not_exists_doing_auto_reset'   => 'Previous hit/assignment does not exist. Thus, new hit is created',
      ]
  ];
