@@ -77,7 +77,8 @@ class MTurkService extends MechanicalTurkV2
             'LifetimeInSeconds'           => config('mturk.defaults.production.LifetimeInSeconds'),
             'Question'                    => $this->getQuestionXML($question_url),
             'MaxAssignments'              => config('mturk.defaults.production.MaxAssignments'),
-            'QualificationRequirements'   => config('mturk.defaults.production.QualificationRequirements')
+            'QualificationRequirements'   => config('mturk.defaults.production.QualificationRequirements'),
+            'AutoApprovalDelayInSeconds' => config('mturk.defaults.production.AutoApprovalDelayInSeconds')
         ];
 
         $result = $this->createHITByExternalQuestion($params);
