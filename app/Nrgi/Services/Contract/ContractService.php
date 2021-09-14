@@ -572,7 +572,28 @@ class ContractService
     {
         $contract           = $this->contract->findContract($contractID);
         $contract->textType = $textType;
+        $status             = $contract->text_status;
+
+        if($textType==Contract::ACCEPTABLE){
+            $contract->text_status = Contract::STATUS_PUBLISHED;
+        }
+
         if ($contract->save()) {
+
+            if($textType==Contract::ACCEPTABLE){
+                $this->queue->push(
+                    'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                    ['contract_id' => $contract->id, 'type' => 'text'],
+                    'elastic_search'
+                );
+
+                $this->logger->activity(
+                    'contract.log.status',
+                    ['type' => 'text', 'old_status' => $status, 'new_status' => Contract::STATUS_PUBLISHED],
+                    $contract->id
+                );
+            }
+
             return $contract;
         }
 

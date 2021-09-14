@@ -53,7 +53,7 @@ $annotLastPublished   = isset($annotationArray[0]['last_published']) ? $annotati
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger"
                                     data-dismiss="modal">@lang('contract.close')</button>
-                            <button type="submit" class="btn btn-primary">@lang('contract.save_changes')s</button>
+                            <button type="submit" class="btn btn-primary">@lang('contract.save_changes')</button>
                         </div>
                         {!! Form::close() !!}
                     </div>
