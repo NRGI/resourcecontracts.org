@@ -574,13 +574,13 @@ class ContractService
         $contract->textType = $textType;
         $status             = $contract->text_status;
 
-        if($textType==Contract::ACCEPTABLE){
+        if($textType == Contract::ACCEPTABLE && $contract->metadata_status == Contract::STATUS_PUBLISHED){
             $contract->text_status = Contract::STATUS_PUBLISHED;
         }
 
         if ($contract->save()) {
 
-            if($textType==Contract::ACCEPTABLE){
+            if($contract->text_status == Contract::STATUS_PUBLISHED){
                 $this->queue->push(
                     'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
                     ['contract_id' => $contract->id, 'type' => 'text'],

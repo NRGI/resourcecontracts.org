@@ -44868,24 +44868,13 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
         annotation.page = this.contractApp.getCurrentPage();
         annotation.category = annotation.category.trim();
         var self = this;
-        console.log(self.contractApp);
-
         setTimeout(function (event) {
             self.contractApp.trigger('annotationCreated', annotation);
             self.notification.show(LANG.annotation_successfully_created, 'success');
-            console.log('inside timeout');
+            publishAnnotation(self);
         }, 1000);
 
-        console.log('outside timeout');
 
-        $.ajax({
-            url: self.publishApi,
-            data: {
-                type : 'annotation'
-            },
-            type: 'POST'
-        }).success(function(response){
-        });
     };
     AnnotatorEvents.prototype.onAnnotationUpdated = function (annotation) {
         var self = this;
@@ -44893,16 +44882,8 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
             self.contractApp.setPdfLoaded(false);
             self.contractApp.trigger('annotationUpdated', annotation);
             self.notification.show(LANG.annotation_successfully_updated, 'success');
-        }, 1000);
-
-        $.ajax({
-            url: self.publishApi,
-            data: {
-                type : 'annotation'
-            },
-            type: 'POST'
-        }).success(function(response){
-        });
+            publishAnnotation(self);
+        }, 1000);        
     };
     AnnotatorEvents.prototype.onAnnotationDeleted = function (annotation) {
         var self = this;
@@ -44911,6 +44892,7 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
                 self.contractApp.trigger('annotationDeleted', annotation);
                 self.notification.show(LANG.annotation_successfully_deleted, 'success');
             }
+            publishAnnotation(self);
         }, 1000);
     };
 
@@ -45030,6 +45012,21 @@ Annotator.Plugin.AnnotatorEvents = (function (_super) {
             viewerEl.removeClass('annotator-invert-y');
             widgetEl.removeClass('annotator-invert-y');
         }
+    }
+
+    function publishAnnotation(self){
+        $.ajax({
+            url: self.publishApi,
+            data: {
+                type : 'annotation'
+            },
+            type: 'POST'
+        }).success(function(response){
+            console.log(response.message);
+            if(response.publish_status){
+                self.notification.show(response.message, 'success');
+            }
+        });
     }
 
     return AnnotatorEvents;

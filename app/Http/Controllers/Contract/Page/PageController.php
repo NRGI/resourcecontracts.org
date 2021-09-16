@@ -284,17 +284,18 @@ class PageController extends Controller
     public function publish($id, Request $request, ContractService $contract)
     {
         $type = $request->input('type');
+        $status = false;
 
         if ($contract = $contract->find($id)) {
             if($type == 'text'){
-                $this->contract->publishPage($id, $contract->text_status, $type);
+                $status = $this->contract->publishPage($id, $contract->text_status, $type);
             }
 
             if($type == 'annotation'){
-                $this->annotation->publishAnnotation($id);
+                $status = $this->annotation->publishAnnotation($id);
             }
 
-            return response()->json(['result' => 'success', 'message' => 'Published successfully']);
+            return response()->json(['result' => 'success', 'publish_status' => $status, 'message' => trans('contract.page.publish_success')]);
         }
 
         return response()->json(['result' => 'fail', 'message' => trans('contract.page.save_fail')]);
