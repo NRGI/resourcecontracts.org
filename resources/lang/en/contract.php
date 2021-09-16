@@ -209,8 +209,9 @@ return [
         ],
     ],
     'page'                                 => [
-        'save'      => 'Your corrections / changes have been saved',
-        'save_fail' => 'Changes couldn\'t be saved',
+        'save'            => 'Your corrections / changes have been saved',
+        'save_fail'       => 'Changes couldn\'t be saved',
+        'publish_success' => "Published successfully",
     ],
     'publish'                              => [
         'all'     => 'Publish All',

@@ -182,8 +182,6 @@ class AnnotationService
                 $this->annotation->delete($annotation->parent->id);
             }
 
-            $this->updateStatusOrPublish($annotation->parent->contract_id);
-
             $this->logger->activity(
                 'annotation.annotation_deleted',
                 [
