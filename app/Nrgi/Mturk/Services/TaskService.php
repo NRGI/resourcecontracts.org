@@ -211,7 +211,7 @@ class TaskService
                 $contract->metadata->language
             );
             $url         = $this->getMTurkUrl($page->pdf_url, $contract->metadata->language);
-            $description = !is_null($hit_description)? $hit_description: config('mturk.defaults.production.Description');
+            $description = !is_null($hit_description) && strlen(trim($hit_description)) > 0? $hit_description: config('mturk.defaults.production.Description');
 
             try {
                 $ret = $this->turk->createHIT($title, $description, $url);
@@ -675,7 +675,7 @@ class TaskService
         $contract->metadata->language
     );
     $url         = $this->getMTurkUrl($task->pdf_url, $contract->metadata->language);
-    $description = !is_null($hit_description)? $hit_description: config('mturk.defaults.production.Description');
+    $description = !is_null($hit_description) && strlen(trim($hit_description)) > 0 ? $hit_description: config('mturk.defaults.production.Description');
 
     try {
         $ret = $this->turk->createHIT($title, $description, $url);
@@ -840,7 +840,7 @@ class TaskService
             $contract->metadata->language
         );
         $url         = $this->getMTurkUrl($task->pdf_url, $contract->metadata->language);
-        $description = !is_null($hit_description)? $hit_description: config('mturk.defaults.production.Description');
+        $description = !is_null($hit_description) && strlen(trim($hit_description)) > 0? $hit_description: config('mturk.defaults.production.Description');
 
         try {
             $ret = $this->turk->createHIT($title, $description, $url);
