@@ -540,7 +540,7 @@ class TaskService
                                 ];
                             } elseif ($assignment['response']['Assignment']['AssignmentStatus'] == 'Rejected') {
                                 $this->rejectTaskInDb($task, $contract_id);
-                                return  $this->resetHIT($contract_id, $task_id,$hit_description,'mturk.action.reject_hit_auto_reset');
+                                return $this->processHitAutoReset($contract_id, $task_id,$hit_description,'mturk.action.reject_hit_auto_reset','mturk.action.has_already_rejected');
                             }
                         }
                         elseif($assignment['http_code'] == 400 ) {
@@ -555,7 +555,7 @@ class TaskService
                                             'Errors'      => $assignment['response']['Message'],
                                         ]
                                     );
-                                    return $this->processHitAutoReset($contract_id, $task_id,$hit_description,'mturk.action.reject_hit_auto_reset','mturk.reject');
+                                    return $this->processHitAutoCreation($contract_id, $task_id, $hit_description,'mturk.action.hit_auto_reset','mturk.action.assignment_does_not_exists');
                                     
                                 }
                             }
@@ -592,7 +592,8 @@ class TaskService
      * @param $contract_id
      * @param $task_id
      * @param $hit_description
-     * @param $fallbackMessahe
+     * @param $sucess_message
+     * @param $fallbackMessage
      *
      * @return array|bool
      */
@@ -623,7 +624,8 @@ class TaskService
      * @param $contract_id
      * @param $task_id
      * @param $hit_description
-     * @param $fallbackMessahe
+     * @param $success_message
+     * @param $fallbackMessage
      *
      * @return array|bool
      */
@@ -751,10 +753,11 @@ class TaskService
      *
      * @param $contract_id
      * @param $task_id
+     * @param $hit_description
      *
      * @return bool
      */
-    public function resetHIT($contract_id, $task_id, $hit_description, $success_message=null)
+    public function resetHIT($contract_id, $task_id, $hit_description)
     {
         $contract = $this->contract->find($contract_id);
 
