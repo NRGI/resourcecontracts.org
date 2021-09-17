@@ -67,6 +67,9 @@
      'Pending'                  => 'Pending',
      'Approved'                 => 'Approved',
      'Rejected'                 => 'Rejected',
+     'hit_description'          => 'Write Hit Description',
+     'reject_task'              => 'Reject task',
+     'reset_task'              => 'Reset task',
 
 
 
@@ -99,5 +102,7 @@
          'hit_approved_cannot_be_rejected' => 'Hit has been approved already and cannot be rejected. Please approve it once again to update in database',
          'has_already_rejected'   => 'HIT has already been rejected',
          'hit_rejected_cannot_be_approved' => 'Hit has been rejected and cannot be approved. Please reject it once again to update in database',
+         'hit_auto_reset'   => 'Previous hit/assignment does not exist. Thus, new hit is created',
+         'reject_hit_auto_reset'   => 'Rejected prev hit and created new one successfully',
      ]
  ];

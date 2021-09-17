@@ -62,6 +62,7 @@ $annotLastPublished   = isset($annotationArray[0]['last_published']) ? $annotati
                 <div style="margin-left: 100px; padding-top: 6px; clear: both; overflow: hidden">
                     @if($contract->textType == 3 && is_null($contract->mturk_status))
                         {!! Form::open(['route' => ['mturk.add', $contract->id], 'method' => 'post']) !!}
+                        {!! Form::textarea('description', null, ['class' => 'form-control full-width-textarea' ,'placeholder' => trans('mturk.hit_description'), 'rows' => '3' ]) !!}
                         {!! Form::button(trans('Send to Manual Transcription tasks'), ['type' =>'submit', 'class' =>'btn
                         btn-gray confirm', 'data-confirm'=>'Are you sure you want to send this contract toMechanical Turk?']) !!}
                         {!! Form::close() !!}

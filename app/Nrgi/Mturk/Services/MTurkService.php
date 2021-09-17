@@ -83,7 +83,7 @@ class MTurkService extends MechanicalTurkV2
         $result = $this->createHITByExternalQuestion($params);
 
         if (isset($result['HIT'])) {
-            return (object) ['hit_id' => $result['HIT']['HITId'], 'hit_type_id' => $result['HIT']['HITTypeId']];
+            return (object) ['hit_id' => $result['HIT']['HITId'], 'hit_type_id' => $result['HIT']['HITTypeId'], 'description'=>$result['HIT']['Description']];
         }
 
         return false;
