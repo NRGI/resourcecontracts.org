@@ -145,7 +145,7 @@ class TaskService
      *
      * @return bool
      */
-    public function create($contract_id)
+    public function create($contract_id, $description)
     {
         $contract = $this->contract->findWithPages($contract_id);
 
@@ -168,7 +168,7 @@ class TaskService
             return false;
         }
 
-        $this->queue->push('App\Nrgi\Mturk\Services\Queue\MTurkQueue', ['contract_id' => $contract->id], 'mturk');
+        $this->queue->push('App\Nrgi\Mturk\Services\Queue\MTurkQueue', ['contract_id' => $contract->id, 'description' => $description ], 'mturk');
 
         return true;
     }
@@ -180,11 +180,13 @@ class TaskService
      *
      * @return bool
      */
-    public function mTurkProcess($contract_id)
+    public function mTurkProcess($data)
     {
+        $contract_id=$data['contract_id'];
+        $hit_description = $data['hit_description'];
         $contract = $this->contract->findWithPages($contract_id);
 
-        if ($this->sendToMTurk($contract)) {
+        if ($this->sendToMTurk($contract, $hit_description )) {
             return true;
         }
 
@@ -199,7 +201,7 @@ class TaskService
      * @return bool
      * @throws Exception
      */
-    public function sendToMTurk($contract)
+    public function sendToMTurk($contract, $hit_description=null)
     {
         foreach ($contract->pages as $key => $page) {
             $title       = sprintf(
@@ -209,7 +211,7 @@ class TaskService
                 $contract->metadata->language
             );
             $url         = $this->getMTurkUrl($page->pdf_url, $contract->metadata->language);
-            $description = config('mturk.defaults.production.Description');
+            $description = !is_null($hit_description)? $hit_description: config('mturk.defaults.production.Description');
 
             try {
                 $ret = $this->turk->createHIT($title, $description, $url);
@@ -232,7 +234,7 @@ class TaskService
             }
 
             if ($ret) {
-                $update = ['hit_id' => $ret->hit_id, 'hit_type_id' => $ret->hit_type_id];
+                $update = ['hit_id' => $ret->hit_id, 'hit_type_id' => $ret->hit_type_id, 'hit_description'=>$ret->description];
                 $this->task->update($page->contract_id, $page->page_no, $update);
                 $this->logger->info(
                     'createHIT:'.sprintf('HIT created for page no.%s', $page->page_no),
@@ -452,7 +454,7 @@ class TaskService
      *
      * @return array|bool
      */
-    public function rejectTask($contract_id, $task_id, $message)
+    public function rejectTask($contract_id, $task_id, $message, $hit_description=null)
     {
         try {
             $task = $this->task->getTask($contract_id, $task_id);
@@ -516,7 +518,9 @@ class TaskService
             }
 
             if ($response['http_code'] == 200) {
-                return $this->rejectTaskInDb($task, $contract_id);
+                $reject_status = $this->rejectTaskInDb($task, $contract_id);
+                 $reject_result = is_bool($reject_status) ? $reject_status : $reject_status['result'];
+                 return !$reject_result ? $reject_result : $this->processHitAutoReset($contract_id, $task_id,$hit_description,'mturk.action.reject_hit_auto_reset','mturk.reject');
             }
 
             if ($response['http_code'] == 400) {
@@ -533,7 +537,7 @@ class TaskService
                                 return [ 'result'  => true, 'message' => trans('mturk.action.hit_approved_cannot_be_rejected')];
                             } elseif ($assignment['response']['Assignment']['AssignmentStatus'] == 'Rejected') {
                                 $this->rejectTaskInDb($task, $contract_id);
-                                return ['result' => true, 'message' => trans('mturk.action.has_already_rejected')];
+                                return  $this->resetHIT($contract_id, $task_id,$hit_description,'mturk.action.reject_hit_auto_reset');
                             }
                         }
                         elseif($assignment['http_code'] == 400 ) {
@@ -548,7 +552,7 @@ class TaskService
                                             'Errors'      => $assignment['response']['Message'],
                                         ]
                                     );
-                                    return $this->processHitAutoCreation($contract_id, $task_id,'mturk.action.hit_does_not_exists');
+                                    return $this->processHitAutoReset($contract_id, $task_id,$hit_description,'mturk.action.reject_hit_auto_reset','mturk.reject');
                                     
                                 }
                             }
@@ -563,9 +567,9 @@ class TaskService
                                 'Errors'      => $response['response']['Message'],
                             ]
                         );
-                        return $this->processHitAutoCreation($contract_id, $task_id,'mturk.action.assignment_does_not_exists');
+                        return $this->processHitAutoCreation($contract_id, $task_id, $hit_description,'mturk.action.hit_auto_reset','mturk.action.assignment_does_not_exists');
                     } elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.HITDoesNotExist') {
-                        return $this->processHitAutoCreation($contract_id, $task_id,'mturk.action.hit_does_not_exists');
+                        return $this->processHitAutoCreation($contract_id, $task_id,$hit_description,'mturk.action.hit_auto_reset','mturk.action.hit_does_not_exists');
                     }
                     return ['result' => false, 'message' => $response['response']['TurkErrorCode']];
                 }
@@ -579,22 +583,54 @@ class TaskService
     }
 
     /**
-     * Auto creating new hit
+     * Auto resetting hit
      *
      * @param $contract_id
      * @param $task_id
+     * @param $hit_description
      * @param $fallbackMessahe
      *
      * @return array|bool
      */
 
-    public function processHitAutoCreation($contract_id, $task_id, $fallbackMessage) {
+    public function processHitAutoReset($contract_id, $task_id, $hit_description,$success_message, $fallbackMessage) {
         try {
-            $newHit = $this->createNewHit($contract_id, $task_id);
+            $newHit = $this->resetHIT($contract_id, $task_id, $hit_description);
             $result = is_bool($newHit) ? $newHit : $newHit['result'];
             $resetMessage = is_bool($newHit) ? null : $newHit['message'];
             if($result) {
-                return [ "result" => true, "message" => trans('mturk.action.prev_hit_does_not_exists_doing_auto_reset') ];
+                return [ "result" => true, "message" => trans($success_message) ];
+            } else {
+                return [ "result "=> false, "message" => $resetMessage != null ? $resetMessage : trans($fallbackMessage) ];
+            }
+        } catch (Exception $e) {
+            $this->logger->error(
+                'HIT auto creation failed. '.$e->getMessage(),
+                ['Contract id' => $contract_id, 'Task' => $task_id,]
+            );
+            return false;
+        }
+        return false;
+    }
+
+    /**
+     * Auto creating new hit
+     *
+     * @param $contract_id
+     * @param $task_id
+     * @param $hit_description
+     * @param $fallbackMessahe
+     *
+     * @return array|bool
+     */
+
+    public function processHitAutoCreation($contract_id, $task_id, $hit_description,$success_message, $fallbackMessage) {
+        try {
+            $newHit = $this->createNewHit($contract_id, $task_id, $hit_description);
+            $result = is_bool($newHit) ? $newHit : $newHit['result'];
+            $resetMessage = is_bool($newHit) ? null : $newHit['message'];
+            if($result) {
+                return [ "result" => true, "message" => trans($success_message) ];
             } else {
                 return [ "result "=> false, "message" => $resetMessage != null ? $resetMessage : trans($fallbackMessage) ];
             }
@@ -617,7 +653,7 @@ class TaskService
      * @return array|bool
      */
 
-    public function createNewHit($contract_id, $task_id)
+    public function createNewHit($contract_id, $task_id, $hit_description)
     {
        try {
         $contract = $this->contract->find($contract_id);
@@ -637,7 +673,7 @@ class TaskService
         $contract->metadata->language
     );
     $url         = $this->getMTurkUrl($task->pdf_url, $contract->metadata->language);
-    $description = config('mturk.defaults.production.Description');
+    $description = !is_null($hit_description)? $hit_description: config('mturk.defaults.production.Description');
 
     try {
         $ret = $this->turk->createHIT($title, $description, $url);
@@ -668,6 +704,7 @@ class TaskService
             'assignments' => null,
             'status'      => 0,
             'approved'    => 0,
+            'hit_description'=>$description,
             'hit_type_id' => $ret->hit_type_id,
             'created_at'  => date('Y-m-d H:i:s'),
         ];
@@ -713,7 +750,7 @@ class TaskService
      *
      * @return bool
      */
-    public function resetHIT($contract_id, $task_id)
+    public function resetHIT($contract_id, $task_id, $hit_description, $success_message=null)
     {
         $contract = $this->contract->find($contract_id);
 
@@ -800,7 +837,7 @@ class TaskService
             $contract->metadata->language
         );
         $url         = $this->getMTurkUrl($task->pdf_url, $contract->metadata->language);
-        $description = config('mturk.defaults.production.Description');
+        $description = !is_null($hit_description)? $hit_description: config('mturk.defaults.production.Description');
 
         try {
             $ret = $this->turk->createHIT($title, $description, $url);
@@ -832,6 +869,7 @@ class TaskService
                 'status'      => 0,
                 'approved'    => 0,
                 'hit_type_id' => $ret->hit_type_id,
+                'hit_description' =>$description,
                 'created_at'  => date('Y-m-d H:i:s'),
             ];
 
