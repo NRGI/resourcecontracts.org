@@ -29,7 +29,7 @@ class MTurkQueue
      */
     public function fire($job, $data)
     {
-        $this->task->mTurkProcess($data['contract_id']);
+        $this->task->mTurkProcess($data);
         $job->delete();
     }
 }

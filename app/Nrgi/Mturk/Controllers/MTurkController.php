@@ -115,9 +115,10 @@ class MTurkController extends Controller
      *
      * @return Redirect
      */
-    public function createTasks($id)
+    public function createTasks(Request $request, $id)
     {
-        if ($this->task->create($id)) {
+        $description = $request->get('description');
+        if ($this->task->create($id, $description)) {
             return redirect()->back()->withSuccess(trans('mturk.action.sent_to_mturk'));
         }
 
@@ -198,12 +199,13 @@ class MTurkController extends Controller
     public function reject($contract_id, $task_id, Request $request)
     {
         $message = $request->input('message');
+        $new_hit_description = $request->input('description');
 
         if ($message == '') {
             return redirect()->back()->withError(trans('mturk.action.reject_reason'));
         }
 
-        $status = $this->task->rejectTask($contract_id, $task_id, $message);
+        $status = $this->task->rejectTask($contract_id, $task_id, $message, $new_hit_description );
         $result = is_bool($status) ? $status : $status['result'];
 
         if ($result) {
@@ -224,13 +226,14 @@ class MTurkController extends Controller
      *
      * @return Redirect
      */
-    public function resetHit($contract_id, $task_id)
+    public function resetHit($contract_id, $task_id, Request $request)
     {
+        $new_hit_description=$request->get('description');
         if (!$this->task->isBalanceToCreateHIT()) {
             return redirect()->back()->withError(trans('mturk.action.reset_balance_low'));
         }
 
-        $resetStatus = $this->task->resetHIT($contract_id, $task_id);
+        $resetStatus = $this->task->resetHIT($contract_id, $task_id, $new_hit_description);
 
         if (is_array($resetStatus)) {
             return redirect()->back()->withError($resetStatus['message']);
