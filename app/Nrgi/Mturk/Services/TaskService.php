@@ -552,7 +552,7 @@ class TaskService
                                             'Errors'      => $assignment['response']['Message'],
                                         ]
                                     );
-                                    return $this->processHitAutoCreation($contract_id, $task_id, $hit_description,'mturk.action.hit_auto_reset','mturk.action.assignment_does_not_exists');
+                                    return $this->processHitAutoCreation($contract_id, $task_id, $hit_description,'mturk.action.hit_auto_reset','mturk.action.hit_does_not_exists');
                                     
                                 }
                             }
