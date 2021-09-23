@@ -108,11 +108,13 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                                                         <h4 class="modal-title" id="myModalLabel">@lang('mturk.reject_task')</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        {!! Form::textarea('message', null, ['id'=>"message","placeholder"=>trans('mturk.mturk_rejection'), 'rows'=>12,
-                                                        'style'=>'width:100%'])!!}
+                                                        {!! Form::label('message', trans('mturk.mturk_rejection'), ['class' => 'control-label']) !!}
+                                                        {!! Form::textarea('message', null, ['id'=>"message","placeholder"=>trans('mturk.write_mturk_rejection'), 'rows'=>12,
+                                                        'style'=>'width:100%; margin-top:0px;'])!!}
+                                                        {!! Form::label('description', trans('mturk.hit_description'), ['class' => 'control-label', 'style'=>'margin-top:10px;']) !!}
                                                         	{!! Form::textarea('description',  isset($task->hit_description) ? $task->hit_description : null, ['id'=>"message", 'rows'=>6,
-                                                            'placeholder'=>trans('mturk.hit_description'),
-                                                            'style'=>'width:100%; margin-top:10px;margin-bottom:10px'])!!}
+                                                            'placeholder'=>trans('mturk.write_hit_description'),
+                                                            'style'=>'width:100%;margin-top:0px; margin-bottom:10px'])!!}
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default"
@@ -145,9 +147,11 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                                                 <h4 class="modal-title" id="myModalLabel">@lang('mturk.reset_task')</h4>
                                             </div>
                                             <div class="modal-body">
+                                                   {!! Form::label('description', trans('mturk.hit_description'), ['class' => 'control-label']) !!}
                                                     {!! Form::textarea('description',  isset($task->hit_description) ? $task->hit_description : null, ['id'=>"message", 'rows'=>12,
-                                                    'placeholder'=>trans('mturk.hit_description'),
-                                                    'style'=>'width:100%; margin-top:10px;margin-bottom:10px'])!!}
+                                                    'placeholder'=>trans('mturk.write_hit_description'),
+                                                    'style'=>'width:100%; margin-top:0px; margin-bottom:10px'])!!}
+                                                    <p style="margin:10px; font-style:italic">@lang('mturk.reset_hitid')</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default"
