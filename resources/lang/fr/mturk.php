@@ -57,7 +57,8 @@
      'sure_send_to_rc'             => "Êtes-vous sûr de vouloir envoyer du texte au RC ?",
      'sent_to_rc'                  => "Envoyé à RC",
      'reset_hitid'                 => "Reseting cette HIT supprimera cette tâche et re-crée un nouveau pour cette page. Tout travailleur qui pourrait travailler, mais n'a pas présenté l'affectation de cette tâche sera rejetée. Sélectionnez Ok pour continuer.",
-     'mturk_rejection'             => "Ecrire raison du rejet.",
+     'mturk_rejection'             =>   "Motif de rejet",  
+     'write_mturk_rejection'       => "Ecrire raison du rejet.",
      'balance_check'               => "cliquez ici pour vérifier",
      'on'                          => "sur",
      'by'                          => "par",
@@ -67,8 +68,10 @@
      'Pending'                     => "En attente",
      'Approved'                    => "Approuvé",
      'Rejected'                    => "Rejeté",
-
-
+     'hit_description'             => "HIT description",
+     'writ_hit_description'        => "Rédiger la description du HIT", 
+     'reject_task'                => "Rejeter la tâche",
+     'reset_task'                  => 'Réinitialiser la tâche',
 
 
 
@@ -100,5 +103,8 @@
          'hit_approved_cannot_be_rejected' => "Le hit a déjà été approuvé et ne peut pas être rejeté. Veuillez l'approuver à nouveau pour mettre à jour dans la base de données",
          'has_already_rejected'   => 'HIT a déjà été rejeté',
          'hit_rejected_cannot_be_approved' => "Le hit a été rejeté et ne peut pas être approuvé. Veuillez le rejeter à nouveau pour mettre à jour dans la base de données",
+         'hit_auto_reset'  =>  "Le hit/l'affectation précédente n'existe pas. Ainsi, un nouveau hit est créé",
+         'reject_hit_auto_reset'=> "Hit précédent rejeté et créé un nouveau avec succès"
+
      ]
  ];
