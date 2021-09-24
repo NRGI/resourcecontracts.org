@@ -68,7 +68,7 @@
 								<div class="modal-body">
 									{!! Form::label('message', trans('mturk.mturk_rejection'), ['class' => 'control-label']) !!}
 									{!! Form::textarea('message', null, ['id'=>"message","placeholder"=>trans('mturk.write_mturk_rejection'), 'rows'=>12,
-									'placeholder'=>trans('mturk.rejection_reason'))
+									'placeholder'=>trans('mturk.rejection_reason'),
 									'style'=>'width:100%; margin-top:0px; '])!!}
 									 {!! Form::label('description', trans('mturk.hit_description'), ['class' => 'control-label', 'style'=>' margin-top:10px;']) !!}
 									{!! Form::textarea('description', isset($task->hit_description) ? $task->hit_description : null, ['id'=>"message", 'rows'=>6,
