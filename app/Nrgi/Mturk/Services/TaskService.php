@@ -534,10 +534,7 @@ class TaskService
                             && isset($assignment['response']['Assignment']['AssignmentStatus'])) {
 
                             if ($assignment['response']['Assignment']['AssignmentStatus'] == 'Approved') {
-                                return [
-                                    'result'  => true,
-                                    'message' => trans('mturk.action.hit_approved_cannot_be_rejected'),
-                                ];
+                                return [ 'result'  => true, 'message' => trans('mturk.action.hit_approved_cannot_be_rejected')];
                             } elseif ($assignment['response']['Assignment']['AssignmentStatus'] == 'Rejected') {
                                 $this->rejectTaskInDb($task, $contract_id);
                                 return $this->processHitAutoReset($contract_id, $task_id,$hit_description,'mturk.action.reject_hit_auto_reset','mturk.action.has_already_rejected');
@@ -574,7 +571,6 @@ class TaskService
                     } elseif ($response['response']['TurkErrorCode'] == 'AWS.MechanicalTurk.HITDoesNotExist') {
                         return $this->processHitAutoCreation($contract_id, $task_id,$hit_description,'mturk.action.hit_auto_reset','mturk.action.hit_does_not_exists');
                     }
-
                     return ['result' => false, 'message' => $response['response']['TurkErrorCode']];
                 }
 
@@ -774,18 +770,42 @@ class TaskService
             return false;
         }
 
-        if ($task->hit_id != '') {
+        if ($task->hit_id != '' && $task->hit_id != null) {
             try {
-                if (!$this->turk->removeHIT($task)) {
-                    return [
-                        'result'  => false,
-                        'message' => trans('HIT is in Reviewable state so can not be reset.'),
-                    ];
+                $response=$this->turk->removeHIT($task);
+                if($response['http_code']==400) {
+                    if(isset($response['response']) && isset($response['response']['TurkErrorCode'])) {
+                        if ($response['response']['TurkErrorCode'] != 'AWS.MechanicalTurk.HITDoesNotExist') {
+                            return [
+                                'result'  => false,
+                                'message' => $response['response']['Message'],
+                            ];
+                        }
+                    }
+                    $this->logger->warning(
+                        'HIT delete failed MTurk Error. '.json_encode($response['response']),
+                        [
+                            'Contract id' => $contract_id,
+                            'hit id'      => $task->hit_id,
+                            'Task'        => $task_id,
+                            'Errors'      => $response['response']['Message'],
+                        ]
+                    );
                 }
-                $this->logger->info(
-                    'HIT successfully deleted',
-                    ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]
-                );
+                else {
+                    $removedHit = $response['response'];
+                    if ($removedHit['HIT']['HITStatus'] != "Disposed") {
+                        return [
+                            'result'  => false,
+                            'message' => trans('HIT is in Reviewable state so can not be reset.'),
+                        ];
+                    }
+                    $this->logger->info(
+                        'HIT successfully deleted',
+                        ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]
+                    );
+                }
+               
             } catch (MTurkException $e) {
                 if ($e->getErrors()['Error']['Code'] != 'AWS.MechanicalTurk.HITDoesNotExist') {
                     return [
@@ -795,7 +815,7 @@ class TaskService
                 }
 
                 $this->logger->error(
-                    'HIT delete failed MTurk Error. '.$e->getMessage(),
+                    'HIT delete failed MTurk Error. '.json_encode($e).$e->getMessage(),
                     [
                         'Contract id' => $contract_id,
                         'hit id'      => $task->hit_id,
@@ -805,7 +825,7 @@ class TaskService
                 );
             } catch (Exception $e) {
                 $this->logger->error(
-                    'HIT delete failed. '.$e->getMessage(),
+                    'HIT delete failed. '.json_encode($e).$e->getMessage(),
                     ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]
                 );
 
@@ -912,15 +932,41 @@ class TaskService
 
         $this->contract->updateWordFile($contract_id);
         $contract               = $this->contract->find($contract_id);
+        $text_status            = $contract->text_status;
+        $contract->text_status  = Contract::STATUS_PUBLISHED;
         $contract->mturk_status = Contract::MTURK_COMPLETE;
         $contract->textType     = Contract::ACCEPTABLE;
+        $is_updated             = $contract->save();
+
+        if($is_updated){
+            $this->queue->push(
+                'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                ['contract_id' => $contract->id, 'type' => 'text'],
+                'elastic_search'
+            );
+
+            $this->logger->activity(
+                'contract.log.status',
+                ['type' => 'text', 'old_status' => $text_status, 'new_status' => $contract->text_status],
+                $contract->id
+            );
+            $this->logger->info(
+                "Contract status updated",
+                [
+                    'Contract id' => $contract->id,
+                    'Status type' => 'text',
+                    'Old status'  => $text_status,
+                    'New Status'  => $contract->text_status,
+                ]
+            );        
+        }
 
         $this->logger->info('Contract text updated from MTurk', ['Contract id' => $contract_id]);
         $this->logger->activity('mturk.log.sent_to_rc', null, $contract_id);
         $this->logger->mTurkActivity('mturk.log.sent_to_rc', null, $contract_id);
 
 
-        return $contract->save();
+        return $is_updated;
     }
 
     /**

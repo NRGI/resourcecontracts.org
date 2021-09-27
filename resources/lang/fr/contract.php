@@ -214,8 +214,9 @@ return [
         'save_fail' => "Modifications suvegardées/non sauvegardées",
     ],
     'publish'                              => [
-        'all'     => "Tout publier",
-        'confirm' => "Tout publier?",
+        'all'             => "Tout publier",
+        'confirm'         => "Tout publier?",
+        'publish_success' => "Publié avec succès",
     ],
     'unpublish'                            => [
         'all'     => "Non publié",

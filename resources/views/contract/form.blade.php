@@ -957,7 +957,7 @@ foreach ($resources as $item) {
 
 <div class="form-action">
     <div class="col-sm-7 col-lg-offset-3">
-        {!! Form::submit(trans('contract.submit'),['class'=>'btn btn-lg btn-primary' , 'id' => 'Submit']) !!}
+        {!! Form::submit($action == 'edit' ? trans('contract.save_changes') : trans('contract.submit'),['class'=>'btn btn-lg btn-primary' , 'id' => 'Submit']) !!}
         <a style="margin-left: 10px;" class="btn btn-lg  btn-danger back" href="{{route('contract.select.type')}}">@lang('contract.cancel')</a>
     </div>
 </div>
