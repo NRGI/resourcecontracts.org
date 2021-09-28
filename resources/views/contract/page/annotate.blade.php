@@ -52,6 +52,7 @@
 		};
 		var TRANSLATION_LANG = {!!json_encode($translationLang)!!};
 		var CURRENT_LANG = '{{Lang::locale()}}';
+		var publishApi = "{{route('contract.page.publish',['id'=>$contract->id])}}";
 	</script>
 	<script src="{{ asset('assets/js/app.js') }}"></script>
 @stop

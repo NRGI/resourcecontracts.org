@@ -394,6 +394,7 @@ class ContractService
 
             return false;
         }
+        $metadata_status                 = $contract->metadata_status;
         $metadata                        = $this->processMetadata($formData);
         $metadata['file_size']           = $contract->metadata->file_size;
         $metadata['open_contracting_id'] = $contract->metadata->open_contracting_id;
@@ -410,7 +411,7 @@ class ContractService
         }
         $contract->metadata        = $metadata;
         $contract->updated_by      = $this->auth->id();
-        $contract->metadata_status = Contract::STATUS_DRAFT;
+        $contract->metadata_status = $metadata_status == Contract::STATUS_PUBLISHED ? CONTRACT::STATUS_PUBLISHED : Contract::STATUS_DRAFT;
 
         $supporting_contract_model = new SupportingContract();
         $supporting_contract       = $supporting_contract_model->where('supporting_contract_id', '=', $contractID)->get()->first();
@@ -439,6 +440,14 @@ class ContractService
             }
             if (isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '0') {
                 $this->contract->removeAsSupportingContract($contract->id);
+            }
+
+            if ($contract->metadata_status == Contract::STATUS_PUBLISHED){
+                $this->queue->push(
+                    'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                    ['contract_id' => $contract->id, 'type' => 'metadata'],
+                    'elastic_search'
+                );
             }
 
             $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
@@ -563,7 +572,28 @@ class ContractService
     {
         $contract           = $this->contract->findContract($contractID);
         $contract->textType = $textType;
+        $status             = $contract->text_status;
+
+        if($textType == Contract::ACCEPTABLE && $contract->metadata_status == Contract::STATUS_PUBLISHED){
+            $contract->text_status = Contract::STATUS_PUBLISHED;
+        }
+
         if ($contract->save()) {
+
+            if($contract->text_status == Contract::STATUS_PUBLISHED){
+                $this->queue->push(
+                    'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                    ['contract_id' => $contract->id, 'type' => 'text'],
+                    'elastic_search'
+                );
+
+                $this->logger->activity(
+                    'contract.log.status',
+                    ['type' => 'text', 'old_status' => $status, 'new_status' => Contract::STATUS_PUBLISHED],
+                    $contract->id
+                );
+            }
+
             return $contract;
         }
 
@@ -629,7 +659,7 @@ class ContractService
             $old_status            = $contract->$status_key;
             $contract->$status_key = $status;
             if ($status == Contract::STATUS_UNPUBLISHED) {
-                $contract->$status_key = ($old_status == Contract::STATUS_PUBLISHED) ? 'completed' : $old_status;
+                $contract->$status_key = ($old_status == Contract::STATUS_PUBLISHED) ? 'draft' : $old_status;
             }
 
             $contract->save();
@@ -939,11 +969,11 @@ class ContractService
                 $id
             );
 
-            $contract->metadata_status = ($elementStatus['metadata_status'] == "published") ? Contract::STATUS_COMPLETED : $elementStatus['metadata_status'];
-            $contract->text_status     = ($elementStatus['text_status'] == "published") ? Contract::STATUS_COMPLETED : $elementStatus['text_status'];
+            $contract->metadata_status = ($elementStatus['metadata_status'] == "published") ? Contract::STATUS_DRAFT : $elementStatus['metadata_status'];
+            $contract->text_status     = ($elementStatus['text_status'] == "published") ? Contract::STATUS_DRAFT : $elementStatus['text_status'];
             $contract->save();
 
-            $annStatus = ($elementStatus['annotation_status'] == "published") ? Annotation::COMPLETED : $elementStatus['annotation_status'];
+            $annStatus = ($elementStatus['annotation_status'] == "published") ? Annotation::DRAFT : $elementStatus['annotation_status'];
             $this->annotation->updateStatus($annStatus, $id);
 
             return true;
@@ -1646,5 +1676,29 @@ class ContractService
         }
 
         return $child_array;
+    }
+
+    /**
+     * Publish contract pdf
+     *
+     * @param $id
+     * @param $status
+     * @param $type
+     *
+     * @return bool
+     */
+    public function publishPage($id, $status, $type)
+    {
+        if($status == Contract::STATUS_PUBLISHED){
+            $this->queue->push(
+                'App\Nrgi\Services\Queue\PostToElasticSearchQueue',
+                ['contract_id' => $id, 'type' => $type],
+                'elastic_search'
+            );
+
+            return true;
+        }
+
+        return false;
     }
 }
