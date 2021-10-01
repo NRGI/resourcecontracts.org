@@ -105,11 +105,16 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                                                     aria-hidden="true">&times;</span></button>
-                                                        <h4 class="modal-title" id="myModalLabel">@lang('mturk.mturk_rejection')</h4>
+                                                        <h4 class="modal-title" id="myModalLabel">@lang('mturk.reject_task')</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        {!! Form::textarea('message', null, ['id'=>"message", 'rows'=>12,
-                                                        'style'=>'width:100%'])!!}
+                                                        {!! Form::label('message', trans('mturk.mturk_rejection'), ['class' => 'control-label']) !!}
+                                                        {!! Form::textarea('message', null, ['id'=>"message","placeholder"=>trans('mturk.write_mturk_rejection'), 'rows'=>12,
+                                                        'style'=>'width:100%; margin-top:0px;'])!!}
+                                                        {!! Form::label('description', trans('mturk.hit_description'), ['class' => 'control-label', 'style'=>'margin-top:10px;']) !!}
+                                                        	{!! Form::textarea('description',  isset($task->hit_description) ? $task->hit_description : null, ['id'=>"message", 'rows'=>6,
+                                                            'placeholder'=>trans('mturk.write_hit_description'),
+                                                            'style'=>'width:100%;margin-top:0px; margin-bottom:10px'])!!}
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default"
@@ -125,9 +130,38 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
 
                             @endif
                             @if($task->approved == \App\Nrgi\Mturk\Entities\Task::REJECTED || $task->status == \App\Nrgi\Mturk\Entities\Task::PENDING)
-                                {!! Form::open(['url' =>route('mturk.task.reset',['contract_id'=>$contract->id, 'task_id'=>$task->id]), 'method' => 'post']) !!}
+                                {{-- {!! Form::open(['url' =>route('mturk.task.reset',['contract_id'=>$contract->id, 'task_id'=>$task->id]), 'method' => 'post']) !!}
                                 {!! Form::button(trans('mturk.reset'), ['type' =>'submit', 'class' => 'btn btn-primary confirm', 'data-confirm'=>trans('mturk.reset_hitid')])!!}
-                                {!! Form::close() !!}
+                                {!! Form::close() !!} --}}
+                                {!! Form::button(trans('mturk.reset'), ['type' =>'submit', 'class' => 'btn btn-primary', 'data-toggle'=>'modal', 'data-target'=>'.reset-modal-'.$task->id])!!}
+
+                                <div class="modal fade reset-modal-{{$task->id}}" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel-{{$task->id}}"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            {!! Form::open(['url' =>route('mturk.task.reset',['contract_id'=>$contract->id, 'task_id'=>$task->id]), 'method' => 'post']) !!}
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                            aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">@lang('mturk.reset_task')</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                   {!! Form::label('description', trans('mturk.hit_description'), ['class' => 'control-label']) !!}
+                                                    {!! Form::textarea('description',  isset($task->hit_description) ? $task->hit_description : null, ['id'=>"message", 'rows'=>12,
+                                                    'placeholder'=>trans('mturk.write_hit_description'),
+                                                    'style'=>'width:100%; margin-top:0px; margin-bottom:10px'])!!}
+                                                    <p style="margin:10px; font-style:italic">@lang('mturk.reset_hitid')</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default"
+                                                        data-dismiss="modal">@lang('global.form.cancel')</button>
+                                                {!! Form::button(trans('mturk.reset'), ['type' =>'submit', 'class' => 'btn btn-primary'])!!}
+                                            </div>
+                                            {!! Form::close() !!}
+                                        </div>
+                                    </div>
+                                </div>
                             @endif
                             </div>
                         </td>

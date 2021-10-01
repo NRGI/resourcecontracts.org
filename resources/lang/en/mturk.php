@@ -57,7 +57,8 @@
      'sure_send_to_rc'          => 'Are you sure you want to send text to RC ?',
      'sent_to_rc'               => 'Sent to RC',
      'reset_hitid'              => "Reseting this HIT will delete this task and re-creates a new one for this page. Any worker who might be working but hasn\'t submitted the assignment for this task will be rejected. Select Ok to continue.",
-     'mturk_rejection'          => 'Write reason for rejection.',
+     'mturk_rejection'          => "Rejection reason",
+     'write_mturk_rejection'    => 'Write reason for rejection.',
      'balance_check'            => 'click here to check',
      'on'                       => 'on',
      'by'                       => 'by',
@@ -67,6 +68,10 @@
      'Pending'                  => 'Pending',
      'Approved'                 => 'Approved',
      'Rejected'                 => 'Rejected',
+     'hit_description'          => 'Hit Description',
+     'write_hit_description'    => 'Write Hit Description',
+     'reject_task'              => 'Reject task',
+     'reset_task'              => 'Reset task',
 
 
 
@@ -99,5 +104,7 @@
          'hit_approved_cannot_be_rejected' => 'Hit has been approved already and cannot be rejected. Please approve it once again to update in database',
          'has_already_rejected'   => 'HIT has already been rejected',
          'hit_rejected_cannot_be_approved' => 'Hit has been rejected and cannot be approved. Please reject it once again to update in database',
+         'hit_auto_reset'   => 'Previous hit/assignment does not exist. Thus, new hit is created',
+         'reject_hit_auto_reset'   => 'Rejected prev hit and created new one successfully',
      ]
  ];

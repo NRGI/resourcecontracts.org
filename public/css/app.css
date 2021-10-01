@@ -2958,6 +2958,12 @@ output {
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
+.form-control.full-width-textarea {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+
 .form-control:focus {
     border-color: #66afe9;
     outline: 0;
