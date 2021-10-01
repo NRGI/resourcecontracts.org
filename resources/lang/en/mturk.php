@@ -68,8 +68,8 @@
      'Pending'                  => 'Pending',
      'Approved'                 => 'Approved',
      'Rejected'                 => 'Rejected',
-     'hit_description'          => 'Hit Description',
-     'write_hit_description'    => 'Write Hit Description',
+     'hit_description'          => 'HIT Description',
+     'write_hit_description'    => 'Write HIT Description',
      'reject_task'              => 'Reject task',
      'reset_task'              => 'Reset task',
 
@@ -100,11 +100,11 @@
          'already_approved_and_reset'   => 'HIT already approved on Mechanical Turk since no action was taken for 30 days after assignment submission. :reset to reset HIT',
          'has_already_approved'   => 'HIT has already been approved ',
          'assignment_does_not_exists'   => 'Assignment does not exists',
-         'hit_does_not_exists' => 'Hit does not exits',
-         'hit_approved_cannot_be_rejected' => 'Hit has been approved already and cannot be rejected. Please approve it once again to update in database',
+         'hit_does_not_exists' => 'HIT does not exits',
+         'hit_approved_cannot_be_rejected' => 'HIT has been approved already and cannot be rejected. Please approve it once again to update in database',
          'has_already_rejected'   => 'HIT has already been rejected',
-         'hit_rejected_cannot_be_approved' => 'Hit has been rejected and cannot be approved. Please reject it once again to update in database',
-         'hit_auto_reset'   => 'Previous hit/assignment does not exist. Thus, new hit is created',
-         'reject_hit_auto_reset'   => 'Rejected prev hit and created new one successfully',
+         'hit_rejected_cannot_be_approved' => 'HIT has been rejected and cannot be approved. Please reject it once again to update in database',
+         'hit_auto_reset'   => 'Previous HIT/assignment does not exist. Thus, new HIT is created',
+         'reject_hit_auto_reset'   => 'Rejected prev HIT and created new one successfully',
      ]
  ];
