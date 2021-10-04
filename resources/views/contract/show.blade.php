@@ -203,7 +203,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 
 					<li class="name-value-wrap">
 						<span class="name"><strong>@lang('contract.document_type'):</strong></span>
-                    <span class="value">{{ _l($documentTypeList[$contract->metadata->document_type]) }}
+                    <span class="value">{{ isset($documentTypeList[$contract->metadata->document_type])===TRUE? _l($documentTypeList[$contract->metadata->document_type]): "" }}
 						{!! discussion($discussions,$discussion_status, $contract->id,'document_type','metadata') !!}
                     </span>
 					</li>

@@ -211,11 +211,11 @@ class MTurkController extends Controller
         if ($result) {
             $message = isset($status['message']) ? $status['message'] : trans('mturk.action.reject');
 
-            return redirect()->back()->withSuccess($message);
+            return redirect()->route('mturk.tasks',['contract_id'=> $contract_id])->withSuccess($message);
         }
         $error_msg = isset($status['message']) ? $status['message'] : trans('mturk.action.reject_fail');
 
-        return redirect()->back()->withError($error_msg);
+        return redirect()->route('mturk.tasks',['contract_id'=> $contract_id])->withError($error_msg);
     }
 
     /**
