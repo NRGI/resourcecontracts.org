@@ -77,7 +77,8 @@ class MTurkService extends MechanicalTurkV2
             'LifetimeInSeconds'           => config('mturk.defaults.production.LifetimeInSeconds'),
             'Question'                    => $this->getQuestionXML($question_url),
             'MaxAssignments'              => config('mturk.defaults.production.MaxAssignments'),
-            'QualificationRequirements'   => config('mturk.defaults.production.QualificationRequirements')
+            'QualificationRequirements'   => config('mturk.defaults.production.QualificationRequirements'),
+            'AutoApprovalDelayInSeconds' => config('mturk.defaults.production.AutoApprovalDelayInSeconds')
         ];
 
         $result = $this->createHITByExternalQuestion($params);
@@ -106,7 +107,13 @@ class MTurkService extends MechanicalTurkV2
          * */
 
         $hit_id      = $task->hit_id;
-        $hit         = $this->getHIT($hit_id);
+        $this->logger->info(' HIT ID '.json_encode($hit_id));
+        $hitResponse         = $this->getHIT($hit_id);
+        if($hitResponse['http_code'] == 400) {
+            return $hitResponse;
+        }
+        $hit = $hitResponse['response'];
+        $this->logger->info(' HIT'.json_encode( $hit ));
         $status      = $hit['HIT']['HITStatus'];
         $expiry_date = $this->carbon->createFromTimestamp(strtotime($hit['HIT']['Expiration']));
         $isExpired   = $expiry_date->diffInSeconds(null, false) > 1;
@@ -114,10 +121,12 @@ class MTurkService extends MechanicalTurkV2
         if ($status == 'Assignable' || $isExpired || $isRejected) {
             $this->updateExpirationForHIT($hit_id, 0);
             $this->deleteHIT($hit_id);
-            $hit = $this->getHit($hit_id);
-            return ($hit['HIT']['HITStatus'] == "Disposed");
+            $hitResponse = $this->getHit($hit_id);
+            $this->logger->info(' Hit is '.json_encode( $hitResponse ));
+            return $hitResponse;
         }
-        return false;
+        $this->logger->info('Returning code without deleting');
+        return $hitResponse;
     }
 
     /**
