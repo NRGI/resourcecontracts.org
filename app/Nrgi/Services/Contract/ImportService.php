@@ -2,6 +2,9 @@
 
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
+use App\Nrgi\Repositories\CodeList\ContractType\ContractTypeRepositoryInterface;
+use App\Nrgi\Repositories\CodeList\DocumentType\DocumentTypeRepositoryInterface;
+use App\Nrgi\Repositories\CodeList\Resource\ResourceRepositoryInterface;
 use Exception;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Logging\Log;
@@ -68,6 +71,18 @@ class ImportService
      * @var CountryService
      */
     protected $country;
+     /**
+     * @var ContractTypeRepositoryInterface
+     */
+    protected $contractType;
+    /**
+     * @var DocumentTypeRepositoryInterface
+     */
+    protected $documentType;
+     /**
+     * @var ResourceRepositoryInterface
+     */
+    protected $resource;
 
     protected $contractService;
 
@@ -132,7 +147,10 @@ class ImportService
         Log $logger,
         Queue $queue,
         CountryService $country,
-        ContractService $contractService
+        ContractService $contractService,
+        ContractTypeRepositoryInterface $contractType,
+        DocumentTypeRepositoryInterface $documentType,
+        ResourceRepositoryInterface $resource
     )
     {
         $this->excel           = $excel;
@@ -144,7 +162,10 @@ class ImportService
         $this->storage         = $storage;
         $this->country         = $country;
         $this->contractService = $contractService;
-    }
+        $this->contractType    = $contractType;
+        $this->documentType    = $documentType;
+        $this->resource        = $resource;
+    }  
 
     /**
      * Import CSV File
@@ -157,7 +178,7 @@ class ImportService
     public function import(Request $request)
     {
         $import_key = md5(microtime());
-
+        
         try {
             $originalFileName = $request->file('file')->getClientOriginalName();
             $fileName         = $originalFileName;
@@ -305,7 +326,7 @@ class ImportService
 
         $contract['metadata']['company']          = $companies;
         $contract['metadata']['disclosure_mode']  = $results['disclosure_mode'];
-        $contract['metadata']['type_of_contract'] = [$results['contract_type']];
+        $contract['metadata']['type_of_contract'] = array_filter(explode($this->separator, $results['contract_type']));
         $contract['metadata']['date_retrieval']   = $this->dateFormat($results['retrieval_date'], 'Y-m-d');
 
         $license_name       = explode($this->separator, $results["license_name"]);
@@ -989,7 +1010,7 @@ class ImportService
         if (!empty($contract->metadata->language) && !array_key_exists($contract->metadata->language, $languages)) {
             $message .= '<p>Language is invalid.</p>';
         }
-        $resources     = trans('codelist/resource');
+        $resources     = $this->resource->getResources('en');
         $metaResources = !empty($contract->metadata->resource) ? $contract->metadata->resource : [];
 
         foreach ($metaResources as $metaResource) {
@@ -999,7 +1020,7 @@ class ImportService
             }
         }
         $meta_contract_types = !empty($contract->metadata->type_of_contract) ? $contract->metadata->type_of_contract : [];
-        $contract_types      = trans('codelist/contract_type');
+        $contract_types      = $this->contractType->getContractTypes('en');
 
         foreach ($meta_contract_types as $meta_contract_type) {
             if (!empty($meta_contract_type) &&
@@ -1011,7 +1032,7 @@ class ImportService
             }
         }
         $document_type  = $contract->metadata->document_type;
-        $document_types = trans('codelist/documentType');
+        $document_types = $this->documentType->getDocumentTypes('en');
 
         if (!empty($document_type) && !array_key_exists($document_type, $document_types)) {
             $message .= "<p>Document Type is invalid.</p>";
