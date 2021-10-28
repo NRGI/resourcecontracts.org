@@ -168,7 +168,7 @@ class TaskService
             return false;
         }
 
-        $this->queue->push('App\Nrgi\Mturk\Services\Queue\MTurkQueue', ['contract_id' => $contract->id, 'description' => $description ], 'mturk');
+        $this->queue->push('App\Nrgi\Mturk\Services\Queue\MTurkQueue', ['contract_id' => $contract->id, 'hit_description' => $description ], 'mturk');
 
         return true;
     }
