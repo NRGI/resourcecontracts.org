@@ -8,37 +8,38 @@ use Illuminate\Support\Facades\Route;
 class VerifyCsrfToken extends BaseVerifier
 {
 
-    protected $ignore_prefix= [
+    protected $except= [
         'api'
     ];
 
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure                 $next
-     *
-     * @return mixed
-     * @throws TokenMismatchException
-     */
-    public function handle($request, Closure $next)
-    {
-        if ($this->isReading($request) || $this->tokensMatch($request) || $this->isDisabledCSRF($request)) {
-            return $this->addCookieToResponse($request, $next($request));
-        }
+    // /**
+    //  * Handle an incoming request.
+    //  *
+    //  * @param  \Illuminate\Http\Request $request
+    //  * @param  \Closure                 $next
+    //  *
+    //  * @return mixed
+    //  * @throws TokenMismatchException
+    //  */
+    // public function handle($request, Closure $next)
+    // {
+    //     // dd($request, $next);/
+    //     if ($this->isReading($request) || $this->tokensMatch($request) || $this->isDisabledCSRF($request)) {
+    //         return $this->addCookieToResponse($request, $next($request));
+    //     }
 
-        throw new TokenMismatchException;
-    }
+    //     throw new TokenMismatchException;
+    // }
 
-    /**
-     * Determine if the route needs to disable CSRF
-     *
-     * @param $request
-     *
-     * @return bool
-     */
-    protected function isDisabledCSRF($request)
-    {
-        return in_array($request->segment(1), $this->ignore_prefix);
-    }
+    // /**
+    //  * Determine if the route needs to disable CSRF
+    //  *
+    //  * @param $request
+    //  *
+    //  * @return bool
+    //  */
+    // protected function isDisabledCSRF($request)
+    // {
+    //     return in_array($request->segment(1), $this->ignore_prefix);
+    // }
 }

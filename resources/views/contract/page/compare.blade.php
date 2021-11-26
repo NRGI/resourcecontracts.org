@@ -21,7 +21,7 @@
 @section('content')
 
     <div class="panel panel-default">
-        <div class="panel-heading"> @lang('contract.editing') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
+        <div class="panel-heading"> @lang('contract.editing') <span>{{$contract->metadata->contract_name ? $contract->metadata->contract_name : $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
 
         <div class="view-wrapper" style="background: #F6F6F6">
 

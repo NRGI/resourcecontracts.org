@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
  * Class UserRepository
  *
  * @method void orderby()
- * @method void lists()
+ * @method void pluck()
  * @method void whereIn()
  * @method void select()
  * @package App\Nrgi\Repositories\User
@@ -87,7 +87,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getAllRoles()
     {
-        return $this->role->lists('display_name', 'name')->all();
+        return $this->role->pluck('display_name', 'name')->all();
     }
 
     /**
@@ -97,7 +97,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getCountryRoles()
     {
-        return $this->role->whereIn('name', config('nrgi.country_role'))->lists('display_name', 'name')->all();
+        return $this->role->whereIn('name', config('nrgi.country_role'))->pluck('display_name', 'name')->all();
     }
 
     /**
@@ -107,7 +107,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getList()
     {
-        return $this->user->lists('name', 'id')->all();
+        return $this->user->pluck('name', 'id')->all();
     }
 
     /**
@@ -160,7 +160,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getRolesExceptAdminEditor()
     {
-        return $this->role->whereIn('name', config('nrgi.role_except_editor'))->lists('display_name', 'name')->all();
+        return $this->role->whereIn('name', config('nrgi.role_except_editor'))->pluck('display_name', 'name')->all();
     }
 
 }

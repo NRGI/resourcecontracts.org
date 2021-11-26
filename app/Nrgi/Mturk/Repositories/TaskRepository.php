@@ -2,7 +2,7 @@
 
 use App\Nrgi\Mturk\Entities\Task;
 use Illuminate\Database\Eloquent\Collection;
-
+use Arr;
 /**
  * Class TaskRepository
  *
@@ -44,7 +44,7 @@ class TaskRepository implements TaskRepositoryInterface
 
         $tasks = [];
         foreach ($tasks_collection as $key => $value) {
-            $tasks[] = array_only($value, ['contract_id', 'page_no', 'pdf_url']) + [
+            $tasks[] = Arr::only($value, ['contract_id', 'page_no', 'pdf_url']) + [
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ];

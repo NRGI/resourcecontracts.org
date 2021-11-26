@@ -61,7 +61,7 @@
                     </tr>
                 @endforelse
             </table>
-            {!!$data->appends(Input::all())->render()!!}
+            {!!$data->appends(Request::all())->render()!!}
         </div>
     </div>
 @endsection

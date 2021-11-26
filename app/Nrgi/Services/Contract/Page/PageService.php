@@ -1,10 +1,11 @@
-<?php namespace App\Nrgi\Services\Contract\Page;
+<?php 
+namespace App\Nrgi\Services\Contract\Page;
 
 use App\Nrgi\Entities\Contract\Page\Page;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Repositories\Contract\Page\PageRepositoryInterface;
 use Exception;
-use Illuminate\Contracts\Logging\Log;
+use App\Nrgi\Log\NrgiWriter as Log;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 

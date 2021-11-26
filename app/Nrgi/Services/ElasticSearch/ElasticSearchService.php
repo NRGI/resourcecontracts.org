@@ -393,7 +393,7 @@ class ElasticSearchService
     {
         $metadata_array = (array) $metadata;
 
-        $meta = array_only(
+        $meta = Arr::only(
             $metadata_array,
             ['category', 'contract_name', 'signature_date', 'resource', 'file_size', 'file_url', 'country']
         );

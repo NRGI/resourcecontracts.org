@@ -41,7 +41,7 @@ RUN rm -rf /var/lib/apt/lists/* \
  && rm -r remote_syslog 
 
 RUN a2enmod rewrite \
- && a2enmod php5.6
+ && a2enmod php7.4
 
 # Fetch composer packages before copying project code to leverage Docker caching
 RUN mkdir /var/www/rc-admin
@@ -66,10 +66,10 @@ COPY conf/logrotate.conf /etc/logrotate.d/rc-admin
 COPY conf/settings.config.template /var/container_init/settings.config.template
 
 # Configure PHP
-RUN sed -i "s/^post_max_size =.*/post_max_size = 5120M/" /etc/php/5.6/apache2/php.ini \
- && sed -i "s/^upload_max_filesize =.*/upload_max_filesize = 5120M/" /etc/php/5.6/apache2/php.ini \
- && sed -i "s/^memory_limit =.*/memory_limit = 512M/" /etc/php/5.6/apache2/php.ini \
- && sed -i "s/^max_execution_time =.*/max_execution_time = 60/" /etc/php/5.6/apache2/php.ini
+RUN sed -i "s/^post_max_size =.*/post_max_size = 5120M/" /etc/php/7.4/apache2/php.ini \
+ && sed -i "s/^upload_max_filesize =.*/upload_max_filesize = 5120M/" /etc/php/7.4/apache2/php.ini \
+ && sed -i "s/^memory_limit =.*/memory_limit = 512M/" /etc/php/7.4/apache2/php.ini \
+ && sed -i "s/^max_execution_time =.*/max_execution_time = 60/" /etc/php/7.4/apache2/php.ini
 
 COPY . /var/www/rc-admin
 

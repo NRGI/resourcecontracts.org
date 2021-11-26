@@ -10,13 +10,20 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $bootstrappers = [
-        'Illuminate\Foundation\Bootstrap\DetectEnvironment',
-        'Illuminate\Foundation\Bootstrap\LoadConfiguration',
+        // 'Illuminate\Foundation\Bootstrap\DetectEnvironment',
+        // 'Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables',
+        // 'Illuminate\Foundation\Bootstrap\LoadConfiguration',
         'App\Bootstrap\ConfigureLogging',
-        'Illuminate\Foundation\Bootstrap\HandleExceptions',
-        'Illuminate\Foundation\Bootstrap\RegisterFacades',
-        'Illuminate\Foundation\Bootstrap\RegisterProviders',
-        'Illuminate\Foundation\Bootstrap\BootProviders',
+        // 'Illuminate\Foundation\Bootstrap\HandleExceptions',
+        // 'Illuminate\Foundation\Bootstrap\RegisterFacades',
+        // 'Illuminate\Foundation\Bootstrap\RegisterProviders',
+        // 'Illuminate\Foundation\Bootstrap\BootProviders',
+        \Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables::class,
+        \Illuminate\Foundation\Bootstrap\LoadConfiguration::class,
+        \Illuminate\Foundation\Bootstrap\HandleExceptions::class,
+        \Illuminate\Foundation\Bootstrap\RegisterFacades::class,
+        \Illuminate\Foundation\Bootstrap\RegisterProviders::class,
+        \Illuminate\Foundation\Bootstrap\BootProviders::class,
     ];
 
     /**
@@ -32,7 +39,54 @@ class Kernel extends HttpKernel
         'Illuminate\View\Middleware\ShareErrorsFromSession',
         'App\Http\Middleware\VerifyCsrfToken',
         'App\Http\Middleware\Localization',
+        // // \App\Http\Middleware\EncryptCookies::class,
+        // \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        // \Illuminate\Session\Middleware\StartSession::class,
+        // // \Illuminate\Session\Middleware\AuthenticateSession::class,
+        // \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        // \App\Http\Middleware\VerifyCsrfToken::class,
+        // \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        // \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        // \App\Http\Middleware\Localization::class,
     ];
+
+    //    /**
+    //  * The application's route middleware groups.
+    //  *
+    //  * @var array
+    //  */
+    // protected $middlewareGroups = [
+    //     'web' => [
+    //         \App\Http\Middleware\EncryptCookies::class,
+    //         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+    //         \Illuminate\Session\Middleware\StartSession::class,
+    //         // \Illuminate\Session\Middleware\AuthenticateSession::class,
+    //         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    //         \App\Http\Middleware\VerifyCsrfToken::class,
+    //         \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    //         \App\Http\Middleware\Localization::class,
+    //         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    //     ],
+
+    //     'admin' => [
+    //         \App\Http\Middleware\EncryptCookies::class,
+    //         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+    //         \Illuminate\Session\Middleware\StartSession::class,
+    //         // \Illuminate\Session\Middleware\AuthenticateSession::class,
+    //         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    //         \App\Http\Middleware\VerifyCsrfToken::class,
+    //         \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    //         \App\Http\Middleware\Localization::class,
+    //         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    //     ],
+
+    //     'api' => [
+    //         'throttle:300,1',
+    //         \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    //         \App\Http\Middleware\Localization::class,
+    //         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    //     ],
+    // ];
 
     /**
      * The application's route middleware.

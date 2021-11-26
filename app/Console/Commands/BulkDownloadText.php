@@ -118,11 +118,11 @@ class BulkDownloadText extends Command
         $s3folder = static::S3_OBJECT_NAME;
         $bucket   = env('AWS_BUCKET');
 
-        $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
+        $credentials = new Credentials(env('AWS_ACCESS_KEY_ID'), env('AWS_SECRET_ACCESS_KEY'));
         $s3 = new S3Client(
             [
                 'version'=> '2006-03-01',
-                'region' => env('AWS_REGION'),
+                'region' => env('AWS_DEFAULT_REGION'),
                 'credentials' => $credentials
             ]
         );

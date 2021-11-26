@@ -73,23 +73,23 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
                                    ->orderby('id', 'desc')
                                    ->join('contracts', 'activity_logs.contract_id', '=', 'contracts.id');
 
-        if ($contract != '' && $contract != 'all') {
+        if (isset($filter['contract']) && $contract != '' && $contract != 'all') {
             $query = $query->where('activity_logs.contract_id', $contract);
         }
 
-        if ($user != '' && $user != 'all') {
+        if (isset($filter['user']) && $user != '' && $user != 'all') {
             $query = $query->where('activity_logs.user_id', $user);
         }
 
-        if ($status != '' && $status != 'all') {
+        if (isset($filter['status']) && $status != '' && $status != 'all') {
             $query = $query->where('activity_logs.message', $status);
         }
 
-        if ($category != '' && $category != 'all') {
+        if (isset($filter['category']) && $category != '' && $category != 'all') {
             $query->whereRaw("contracts.metadata->'category'->>0=?", [$category]);
         }
 
-        if ($country != null && $country !='all') {
+        if (isset($filter['country']) && $country != null && $country !='all') {
             $query->whereRaw("contracts.metadata->'country'->>'code'=?", [$country]);
         }
 

@@ -89,6 +89,8 @@ class MechanicalTurkV2
         $this->end_point                   = 'https://'.$this->host_name;
         $this->mturk_region                = 'us-east-1';
 
+        // dd($this->mturk_access_key_id, $this->mturk_secret_access_key, $this->host_name, $this->end_point, $this->mturk_region);
+
         if (!empty(env('MTURK_REGION'))) {
             $this->mturk_region = env('MTURK_REGION');
         }

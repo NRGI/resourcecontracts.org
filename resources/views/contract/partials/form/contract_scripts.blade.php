@@ -13,9 +13,9 @@
             placeholder: '@lang('contract.pdf_only')'
         });
         var lang_select = '@lang('global.select')';
-        var i = {{$i or 0}};
-        var j = {{$j or 0}};
-        var g = {{$g or 0}};
+        var i = {{isset($i)? $i : 0}};
+        var j = {{isset($j)? $j : 0}};
+        var g = {{isset($g)? $g : 0}};
         var country_list = {!!json_encode($country_list)!!};
         var contracts = {!!json_encode($contracts)!!};
         var docId = {!!json_encode($docId)!!};

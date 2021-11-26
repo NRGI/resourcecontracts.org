@@ -49,7 +49,7 @@ class DownloadService
 
         $filename = "export" . date('Y-m-d');
 
-        $this->excel->create(
+        $this->excel->store(
             $filename,
             function ($csv) use (&$data) {
                 $csv->sheet(

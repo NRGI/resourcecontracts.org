@@ -54,19 +54,19 @@ class ContractFilterService
      */
     public function getAll(array $filters, $limit = 25)
     {
-        if ($filters['type'] == "annotations" && $filters['status'] != '') {
+        if (isset($filters['type']) && isset($filters['status']) && $filters['type'] == "annotations" && $filters['status'] != '') {
             $annotations = $this->getContractByAnnotationStatus();
             $status      = isset($annotations[$filters['status']]) ? $annotations[$filters['status']] : [];
 
             return $this->contract->getContract($status, $limit);
         }
 
-        if ($filters['download'] == 1) {
+        if (isset($filters['download']) && $filters['download'] == 1) {
             $limit = 100000;
         }
         $contracts = $this->contract->getAll($filters, $limit);
 
-        if ($filters['download'] == 1) {
+        if (isset($filters['download']) && $filters['download'] == 1) {
             $this->downloadCSV->downloadData($contracts);
         }
 

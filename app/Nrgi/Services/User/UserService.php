@@ -12,6 +12,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Hashing\Hasher;
 use Psr\Log\LoggerInterface;
 use App\Nrgi\Entities\User\Role\Role;
+use Arr;
 
 /**
  * Class UserService
@@ -182,7 +183,7 @@ class UserService
             $user->password = $this->hash->make($formData['password']);
         }
 
-        $data = array_except($formData, 'password');
+        $data = Arr::except($formData, 'password');
 
         foreach ($data as $key => $value) {
             $user->$key = $value;
@@ -215,7 +216,7 @@ class UserService
     {
         if ($this->auth->user()->hasRole(config('nrgi.country_role'))) {
             return $this->user->getCountryRoles();
-        } else if(!$this->auth->user()->hasRole('superadmin-editor')){
+        } else if(!$this->auth->user()->hasRole('nrgi.superadmin-editor')){
             return $this->user->getRolesExceptAdminEditor();
         }
 
@@ -253,7 +254,7 @@ class UserService
      */
     public function hasNoActivity($user_id)
     {
-        $models = ['contract', 'annotation', 'comment', 'discussion', 'activity', 'mTurkActivity'];
+        $models = ['contract', 'comment', 'discussion', 'activity', 'mTurkActivity'];
 
         foreach ($models as $model) {
             $contract = $this->$model->countByUser($user_id);

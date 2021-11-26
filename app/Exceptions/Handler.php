@@ -1,16 +1,18 @@
 <?php namespace App\Exceptions;
 
+
 use App\Nrgi\Mail\MailQueue;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Facades\Request;
-use Psr\Log\LoggerInterface;
 
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -34,20 +36,26 @@ class Handler extends ExceptionHandler
     protected $dontSendEmailMessage = [
         'Symfony\Component\HttpKernel\Exception\NotFoundHttpException',
     ];
+
     /**
      * @var MailQueue
      */
     protected $mailer;
 
     /**
+     * @var Container
+     */
+    protected $container;
+
+    /**
      * Handler constructor.
      *
-     * @param LoggerInterface $log
      * @param MailQueue       $mailer
+     * @param Container       $container
      */
-    public function __construct(LoggerInterface $log, MailQueue $mailer)
+    public function __construct(Container $container, MailQueue $mailer)
     {
-        parent::__construct($log);
+        parent::__construct($container);
         $this->mailer = $mailer;
     }
 
@@ -60,7 +68,7 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-    public function report(Exception $e)
+    public function report(Throwable $e)
     {
         return parent::report($e);
     }
@@ -73,7 +81,7 @@ class Handler extends ExceptionHandler
      *
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $e)
+    public function render($request, Throwable $e)
     {
         if ($e instanceof HttpException) {
             return parent::render($request, $e);

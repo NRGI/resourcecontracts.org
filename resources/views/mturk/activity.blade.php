@@ -27,11 +27,11 @@
         <div class="panel-body">
             {!! Form::open(['route' => 'mturk.activity', 'method' => 'get', 'class'=>'form-inline']) !!}
             <label class="filter">@lang('activitylog.filterby')</label>
-            {!! Form::select('contract', ['all'=>trans('activitylog.all_contract')] + $contracts, Input::get('contract')
+            {!! Form::select('contract', ['all'=>trans('activitylog.all_contract')] + $contracts, Request::only('contract')
             ,
             ['class' =>'form-control']) !!}
 
-            {!! Form::select('user', ['all'=>trans('activitylog.all_user')] + $users , Input::get('user') ,
+            {!! Form::select('user', ['all'=>trans('activitylog.all_user')] + $users , Request::only('user') ,
             ['class' =>'form-control']) !!}
 
             {!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
@@ -50,8 +50,8 @@
                 <tbody>
                 @forelse($activities as $activity)
                     <tr>
-                        <td><a href="{{route('contract.show',$activity->contract_id)}}">{{ $activity->contract->metadata->contract_name or ''}}</a></td>
-                        <td>{{ $activity->page_no or ''}}</td>
+                        <td><a href="{{route('contract.show',$activity->contract_id)}}">{{ $activity->contract->metadata->contract_name ? $activity->contract->metadata->contract_name :''}}</a></td>
+                        <td>{{ $activity->page_no? $activity->page : ''}}</td>
 
                         <td>
                             {{ trans($activity->message,$activity->message_params) }} <br>
@@ -66,7 +66,7 @@
                 @endforelse
                 </tbody>
             </table>
-            {!!$activities->appends(Input::all())->render()!!}
+            {!!$activities->appends(Request::all())->render()!!}
         </div>
     </div>
 @endsection

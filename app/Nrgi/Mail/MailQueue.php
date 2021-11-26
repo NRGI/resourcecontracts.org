@@ -2,31 +2,30 @@
 namespace App\Nrgi\Mail;
 
 use Exception;
-use Illuminate\Contracts\Logging\Log;
-use Illuminate\Mail\Mailer;
+use Psr\Log\LoggerInterface as Log;
+use Illuminate\Support\Facades\Mail;
+// use Illuminate\Mail\Mailable;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
  * Class Mail Queue Manager
  * @package App\Nrgi\Mail
  */
-class MailQueue
+class MailQueue 
 {
-    /**
-     * @var Mailer
-     */
-    public $mailer;
+    use Queueable;
+
     /**
      * @var Log
      */
     private $log;
 
     /**
-     * @param Mailer $mailer
      * @param Log    $log
      */
-    public function __construct(Mailer $mailer, Log $log)
+    public function __construct(Log $log)
     {
-        $this->mailer = $mailer;
         $this->log    = $log;
     }
 
@@ -107,20 +106,30 @@ class MailQueue
         $from = $this->getFromEmail();
 
         try {
-            return $this->mailer->queueOn(
-                'queue-mail',
-                $view,
-                $data,
-                function ($message) use ($recipients, $subject, $from, $bcc) {
-                    $message->to($recipients);
-                    $message->subject($subject);
-                    $message->from($from);
+            return Mail::send($view, $data, function ($message) use ($recipients, $subject, $from, $bcc) {
+                $message->to($recipients);
+                $message->subject($subject);
+                $message->from($from);
 
-                    if (!empty($bcc)) {
-                        $message->bcc($bcc);
-                    }
+                if (!empty($bcc)) {
+                    $message->bcc($bcc);
                 }
-            );
+            });
+
+            // $this->mailable->queueOn(
+            //     'queue-mail',
+            //     $view,
+            //     $data,
+            //     function ($message) use ($recipients, $subject, $from, $bcc) {
+            //         $message->to($recipients);
+            //         $message->subject($subject);
+            //         $message->from($from);
+
+            //         if (!empty($bcc)) {
+            //             $message->bcc($bcc);
+            //         }
+            //     }
+            // );
         } catch (Exception $e) {
             $data = [
                 'to'      => $recipients,
@@ -153,7 +162,7 @@ class MailQueue
             (string) $exception
         );
         $from       = $this->getFromEmail();
-        $this->mailer->raw(
+        $this->mailable->raw(
             $body,
             function ($message) use ($recipients, $subject, $from) {
                 $message->subject($subject);

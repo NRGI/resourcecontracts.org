@@ -4,6 +4,7 @@ use App\Nrgi\Repositories\CodeList\ContractType\ContractTypeRepositoryInterface;
 use App\Nrgi\Repositories\CodeList\DocumentType\DocumentTypeRepositoryInterface;
 use App\Nrgi\Repositories\CodeList\Resource\ResourceRepositoryInterface;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
+use Illuminate\Support\Arr;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -161,7 +162,7 @@ class CodeListService
     public function updateResource($id,$formData)
     {
         $resource = $this->find($formData['type'], $id);
-        $data     = array_except($formData, 'type');
+        $data     = Arr::except($formData, 'type');
 
         foreach ($data as $key => $value) {
             $resource[$key] = $value;
@@ -193,7 +194,7 @@ class CodeListService
     public function updateContractType($id,$formData)
     {
         $contract_type = $this->find($formData['type'], $id);
-        $data          = array_except($formData, 'type');
+        $data          = Arr::except($formData, 'type');
 
         foreach ($data as $key => $value) {
             $contract_type[$key] = $value;
@@ -226,7 +227,7 @@ class CodeListService
     public function updateDocumentType($id,$formData)
     {
         $document_type = $this->find($formData['type'], $id);
-        $data          = array_except($formData, 'type');
+        $data          = Arr::except($formData, 'type');
 
         foreach ($data as $key => $value) {
             $document_type[$key] = $value;

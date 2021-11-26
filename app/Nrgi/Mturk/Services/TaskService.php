@@ -7,9 +7,10 @@ use App\Nrgi\Services\ActivityLog\ActivityLogService;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\Page\PageService;
 use Exception;
-use Illuminate\Contracts\Logging\Log;
+use App\Nrgi\Log\NrgiWriter as Log;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Database\Eloquent\Collection;
+use Str;
 
 /**
  * Class TaskService
@@ -206,7 +207,7 @@ class TaskService
         foreach ($contract->pages as $key => $page) {
             $title       = sprintf(
                 "Transcription of Contract '%s' - Pg: %s Lang: %s",
-                str_limit($contract->title, 70),
+                Str::limit($contract->title, 70),
                 $page->page_no,
                 $contract->metadata->language
             );
@@ -687,7 +688,7 @@ class TaskService
        }
        $title       = sprintf(
         "Transcription of Contract '%s' - Pg: %s Lang: %s",
-        str_limit($contract->title, 70),
+        Str::limit($contract->title, 70),
         $task->page_no,
         $contract->metadata->language
     );
@@ -852,7 +853,7 @@ class TaskService
 
         $title       = sprintf(
             "Transcription of Contract '%s' - Pg: %s Lang: %s",
-            str_limit($contract->title, 70),
+            Str::limit($contract->title, 70),
             $task->page_no,
             $contract->metadata->language
         );

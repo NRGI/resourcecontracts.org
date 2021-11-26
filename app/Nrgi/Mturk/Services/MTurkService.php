@@ -2,7 +2,8 @@
 
 use App\Nrgi\Mturk\Entities\Task;
 use Carbon\Carbon;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
+use Str;
 
 /**
  * Class MTurkService
@@ -49,10 +50,10 @@ class MTurkService extends MechanicalTurkV2
         } catch (\Exception $e) {
             $dt = Carbon::now();
             $this->logger->error($e->getMessage());
-            $log  = new \Illuminate\Support\Facades\Log();
-            $file = storage_path().'/logs/'.'mturk-'.$dt->format("Y-m-d").'.log';
-            $log::useFiles($file);
-            $log::info($e->getMessage());
+            $log  = new \Monolog\Logger('mturk');
+            $stream = new \Monolog\Handler\StreamHandler(storage_path('/logs/'.'mturk-'.$dt->format("Y-m-d").'.log'), \Monolog\Logger::INFO, false);
+            $log->pushHandler($stream);
+            $log->info($e->getMessage());
 
             return 0;
         }
@@ -70,7 +71,7 @@ class MTurkService extends MechanicalTurkV2
     public function createHIT($title, $description, $question_url)
     {
         $params = [
-            'Title'                       => str_limit($title, 128),
+            'Title'                       => Str::limit($title, 128),
             'Description'                 => $description,
             "Reward"                      => config('mturk.defaults.production.Reward'),
             'AssignmentDurationInSeconds' => config('mturk.defaults.production.AssignmentDurationInSeconds'),

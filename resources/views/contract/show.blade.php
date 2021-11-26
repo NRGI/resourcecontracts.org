@@ -97,7 +97,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 				<ul>
 					<li class="name-value-wrap">
 						<span class="name"><strong>@lang('contract.contracting_id'):</strong></span>
-						<span class="value"> {{$contract->metadata->open_contracting_id or ''}}</span>
+						<span class="value"> {{$contract->metadata->open_contracting_id ? $contract->metadata->open_contracting_id : ''}}</span>
 					</li>
 					<li class="name-value-wrap">
 						<span class="name"><strong>@lang('contract.created_by'):</strong></span>
@@ -126,7 +126,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 					<li class="name-value-wrap">
 						<span class="name"> <strong>@lang('contract.contract_name'):</strong></span>
                     <span class="value">
-                    {{$contract->metadata->contract_name or ''}}
+                    {{$contract->metadata->contract_name ? $contract->metadata->contract_name : ''}}
 						{!! discussion($discussions,$discussion_status, $contract->id,'contract_name','metadata') !!}
                     </span>
 					</li>
@@ -135,7 +135,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     <span class="name">
                         <strong>@lang('contract.contract_identifier'):</strong>
                     </span>
-                    <span class="value">{{$contract->metadata->contract_identifier or ''}}
+                    <span class="value">{{$contract->metadata->contract_identifier ? $contract->metadata->contract_identifier : ''}}
 						{!! discussion($discussions,$discussion_status, $contract->id,'contract_identifier','metadata') !!}
                     </span>
 					</li>
@@ -159,7 +159,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                             <strong>@lang('contract.country'):</strong>
                         </span>
                          <span class="value">{{_l('codelist/country.'.$contract->metadata->country->code, $locale)}}
-							 [{{$contract->metadata->country->code or ''}}]
+							 [{{$contract->metadata->country->code ? $contract->metadata->country->code : ''}}]
 							 @if(isset($contract->metadata->amla_url) && !empty($contract->metadata->amla_url))
 								 <a href="{{$contract->metadata->amla_url}}">{{trans('contract.amla',[],null,$locale)}}</a>
 							 @endif
@@ -184,7 +184,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 								<li class="name-value-wrap">
 									<span class="name"> <strong>@lang('contract.government_entity'):</strong></span>
                                 <span class="value">
-                                 {{$governmentEntity->entity or ''}}
+                                 {{$governmentEntity->entity ? $governmentEntity->entity : ''}}
 									{!! discussion($discussions,$discussion_status, $contract->id,'entity-'.$key,'metadata') !!}
                                 </span>
 								</li>
@@ -193,7 +193,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                                     <strong>@lang('contract.government_identifier'):</strong>
                                 </span>
                                 <span class="value">
-                                    {{$governmentEntity->identifier or ''}}
+                                    {{$governmentEntity->identifier ? $governmentEntity->identifier : ''}}
 									{!! discussion($discussions,$discussion_status, $contract->id,'identifier-'.$key,'metadata') !!}
                                 </span>
 								</li>
@@ -223,7 +223,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 					<li class="name-value-wrap">
 						<span class="name"><strong>@lang('contract.signature_date'):</strong></span>
                     <span class="value">
-                        {{$contract->metadata->signature_date or ''}}
+                        {{$contract->metadata->signature_date ? $contract->metadata->signature_date : ''}}
 						{!! discussion($discussions,$discussion_status, $contract->id,'signature_date','metadata') !!}
                     </span>
 					</li>
@@ -231,7 +231,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 					<li class="name-value-wrap">
 						<span class="name"> <strong>@lang('contract.signature_year'):</strong></span>
                      <span class="value">
-                        {{$contract->metadata->signature_year or ''}}
+                        {{$contract->metadata->signature_year ? $contract->metadata->signature_year : ''}}
 						 {!! discussion($discussions,$discussion_status, $contract->id,'signature_year','metadata') !!}
                     </span>
 					</li>
@@ -365,7 +365,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 						<li class="name-value-wrap">
 							<span class="name">   <strong>@lang('contract.project_name'):</strong></span>
                              <span class="value">
-                                {{$contract->metadata->project_title or ''}}
+                                {{$contract->metadata->project_title ? $contract->metadata->project_title : ''}}
 								 {!! discussion($discussions,$discussion_status, $contract->id,'project_title','metadata') !!}
                             </span>
 						</li>
@@ -373,7 +373,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 										<span class="name"> <strong>@lang('contract.project_identifier')
 												:</strong></span>
                             <span class="value">
-                                {{$contract->metadata->project_identifier or ''}}
+                                {{$contract->metadata->project_identifier ? $contract->metadata->project_identifier : ''}}
 								{!! discussion($discussions,$discussion_status, $contract->id,'project_identifier','metadata') !!}
                             </span>
 						</li>

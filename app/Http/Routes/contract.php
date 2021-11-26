@@ -27,14 +27,19 @@ $router->group(
         $router->get('contract/{id}/{lang}', ['as' => 'contract.show.trans', 'uses' => 'ContractController@show']);
         $router->get('contract/backup/meta/data', ['as' => 'contract.backup.meta.data', 'uses' => 'ContractController@backupMetadata']);
         $router->get('contract/update/meta/data', ['as' => 'contract.update.meta.data', 'uses' => 'ContractController@updateMetadata']);
-        $router->get('contract/restore/meta/data', ['as' => 'contract.update.meta.data', 'uses' => 'ContractController@restoreMetadata']);
+        $router->get('contract/restore/meta/data', ['as' => 'contract.restore.meta.data', 'uses' => 'ContractController@restoreMetadata']);
+        // $router->get('contract/restore/meta/data', ['as' => 'contract.update.meta.data', 'uses' => 'ContractController@restoreMetadata']);
         $router->get('contract/elasticsearch/update/published_at', ['as' => 'contract.elasticsearch.update.published_at', 'uses' => 'ContractController@updatePublishedAtIndex']);
         $router->get('contract/elasticsearch/update/annotation_category/community_consultation', ['as' => 'contract.elasticsearch.update.annotation_category', 'uses' => 'ContractController@updateAnnotationCategory']);
         $router->get('contract/elasticsearch/update/cluster', ['as' => 'contract.elasticsearch.update.size-of-concession-area.cluster', 'uses' => 'ContractController@updateAnnotationCluster']);
-        $router->get('contract/elasticsearch/restore/cluster/{key}', ['as' => 'contract.elasticsearch.update.size-of-concession-area.cluster', 'uses' => 'ContractController@restoreAnnotationCluster']);
+        $router->get('contract/elasticsearch/restore/cluster/{key}', ['as' => 'contract.elasticsearch.restore.size-of-concession-area.cluster', 'uses' => 'ContractController@restoreAnnotationCluster']);
+        // $router->get('contract/elasticsearch/restore/cluster/{key}', ['as' => 'contract.elasticsearch.update.size-of-concession-area.cluster', 'uses' => 'ContractController@restoreAnnotationCluster']);
         $router->get('contract/elasticsearch/update/supporting-doc/master/paginated', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@getPaginatedMasterIndex']);
-        $router->get('contract/elasticsearch/update/supporting-doc/master/{page}', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@updateMasterIndex']);
-        $router->get('contract/elasticsearch/update/supporting-doc/parent-child', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@updateParentChildDocIndex']);
-        $router->get('contract/elasticsearch/update/supporting-doc/child-parent', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@updateChildParentDocIndex']);
+        $router->get('contract/elasticsearch/update/supporting-doc/master/{page}', ['as' => 'contract.elasticsearch.update.supporting-doc.master', 'uses' => 'ContractController@updateMasterIndex']);
+        $router->get('contract/elasticsearch/update/supporting-doc/parent-child', ['as' => 'contract.elasticsearch.update.supporting-doc.parent', 'uses' => 'ContractController@updateParentChildDocIndex']);
+        $router->get('contract/elasticsearch/update/supporting-doc/child-parent', ['as' => 'contract.elasticsearch.update.supporting-doc.child', 'uses' => 'ContractController@updateChildParentDocIndex']);
+        // $router->get('contract/elasticsearch/update/supporting-doc/master/{page}', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@updateMasterIndex']);
+        // $router->get('contract/elasticsearch/update/supporting-doc/parent-child', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@updateParentChildDocIndex']);
+        // $router->get('contract/elasticsearch/update/supporting-doc/child-parent', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@updateChildParentDocIndex']);
     }
 );

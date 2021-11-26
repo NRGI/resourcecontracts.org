@@ -1,7 +1,7 @@
 <?php namespace App\Bootstrap;
 
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Foundation\Bootstrap\ConfigureLogging as BaseConfigureLogging;
+use Illuminate\Foundation\Bootstrap\LoadConfiguration as BaseConfigureLogging;
 use App\Nrgi\Log\NrgiWriter;
 use Monolog\Handler\LogEntriesHandler;
 use Monolog\Handler\LogglyHandler;

@@ -14,7 +14,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="wordwrap pull-left"> @lang('contract.editing')
-                <span>{{str_limit($contract->title, 100)}}</span>
+                <span>{{Str::limit($contract->title, 100)}}</span>
 
             <a href="{{route('contract.show', $contract->id)}}" class="go-back">@lang('contract.contract_detail')</a>
             </div>

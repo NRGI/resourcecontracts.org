@@ -44,7 +44,7 @@
 								@lang('contract.import.failed')
 							@endif
 						</td>
-						<td class="remarks">{!!$contract->create_remarks or ''!!}</td>
+						<td class="remarks">{!!$contract->create_remarks ? $contract->create_remarks : ''!!}</td>
 					</tr>
 				@endforeach
 				</tbody>
@@ -56,7 +56,7 @@
 @section('script')
 
 	<script>
-		var import_json = '{{$import_json or ''}}';
+		var import_json = '{{$import_json ? $import_json : ''}}';
 		$(function () {
 
 			var tracker = true;

@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 
 /**
  * Use for processing pages
@@ -108,7 +108,7 @@ class ProcessService
                     [
                         'contract_title'      => $contract->title,
                         'contract_id'         => $contract->id,
-                        'contract_detail_url' => route('contract.show', ["id" => $contract->id]),
+                        'contract_detail_url' => route('contract.show', ["contract" => $contract->id]),
                         'start_time'          => $startTime->toDayDateTimeString(),
                         'end_time'            => Carbon::now()->toDayDateTimeString(),
                     ]
@@ -153,7 +153,7 @@ class ProcessService
                 [
                     'contract_title'      => $contract->title,
                     'contract_id'         => $contract->id,
-                    'contract_detail_url' => route('contract.show', ["id" => $contract->id]),
+                    'contract_detail_url' => route('contract.show', ["contract" => $contract->id]),
                     'start_time'          => $startTime->toDayDateTimeString(),
                     'error'               => $e->getMessage(),
                 ]
@@ -348,11 +348,11 @@ class ProcessService
      */
     public function uploadPdfsToS3($id)
     {
-        $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
+        $credentials = new Credentials(env('AWS_ACCESS_KEY_ID'), env('AWS_SECRET_ACCESS_KEY'));
         $client = new S3Client(
             [
                 'version'=> '2006-03-01',
-                'region' => env('AWS_REGION'),
+                'region' => env('AWS_DEFAULT_REGION'),
                 'credentials' => $credentials
             ]
         );

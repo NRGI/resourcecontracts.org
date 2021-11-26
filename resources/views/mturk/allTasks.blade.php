@@ -1,7 +1,7 @@
 @extends('layout.app')
 <?php
-$status = \Input::get('status', null);
-$approved = \Input::get('approved', null);
+$status = Request::only('status', null);
+$approved = Request::only('approved', null);
 ?>
 @section('content')
     <div class="panel panel-default">

@@ -9,10 +9,10 @@
 
 					if ($lang->defaultLang() == $l['code']):
 						$route      = route(
-						        sprintf('contract.%s', $view), ['id' => $contract->id]);
+						        sprintf('contract.%s', $view), ['contract' => $contract->id]);
 						$edit_route = route(
 								sprintf('contract.%s.trans', 'edit'),
-								['id' => $contract->id, 'lang' => null]
+								['id' => $contract->id, 'lang' => $l['code']]
 						);
 					else:
 						$route      = route(

@@ -52,7 +52,7 @@
                                 Failed
                             @endif
                         </td>
-                        <td class="remarks">{!!$contract->download_remarks or ''!!}</td>
+                        <td class="remarks">{!!$contract->download_remarks ? $contract->download_remarks : ''!!}</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -76,7 +76,7 @@
 @section('script')
 
     <script>
-        var import_json = '{{$import_json or ''}}';
+        var import_json = '{{$import_json ? $import_json :  ''}}';
         $(function () {
 
             var tracker = true;

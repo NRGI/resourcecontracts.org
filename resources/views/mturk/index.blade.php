@@ -1,7 +1,7 @@
 @extends('layout.app')
 <?php
-$status = \Input::get('status', 1);
-$category = \Input::get('category', 'all');
+$status = \Request::only('status', 1);
+$category = \Request::only('category', 'all');
 ?>
 @section('content')
     <div class="panel panel-default">

@@ -36,7 +36,10 @@
 									<a href="{{url('/profile')}}">@lang('global.profile')</a>
 								</li>
 								<li>
-									<a href="{{url('/auth/logout')}}">@lang('global.logout')</a>
+									<a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">@lang('global.logout')</a>
+									{{Form::open(['url'=> route('logout'), 'method'=>'post','id'=>'logout-form'])}}
+									@csrf
+									{{Form::close()}}
 								</li>
 
 							</ul>

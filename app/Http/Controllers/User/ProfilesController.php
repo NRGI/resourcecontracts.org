@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Nrgi\Services\User\UserService;
-use Illuminate\Auth\Guard as Auth;
+use Auth;
 use Illuminate\Http\Request;
 
 /**
@@ -28,11 +28,10 @@ class ProfilesController extends Controller
      * @param UserService $user
      * @param Auth        $auth
      */
-    public function __construct(UserService $user, Auth $auth)
+    public function __construct(UserService $user)
     {
         $this->middleware('auth');
         $this->user = $user;
-        $this->auth = $auth;
     }
 
     /**
@@ -41,7 +40,8 @@ class ProfilesController extends Controller
      */
     public function profile()
     {
-        $userDetails = $this->auth->user();
+        // $userDetails = $this->auth->user();
+        $userDetails = Auth::user();
 
         return view('user.profile', compact('userDetails'));
     }
@@ -52,7 +52,7 @@ class ProfilesController extends Controller
      */
     public function editProfile()
     {
-        $userDetails = $this->auth->user();
+        $userDetails = Auth::user();
 
         return view('user.editProfile', compact('userDetails'));
 
@@ -69,7 +69,7 @@ class ProfilesController extends Controller
 
         $user_detail = $request->only('name', 'organization', 'password');
 
-        if ($this->user->update($this->auth->id(), $user_detail, null)) {
+        if ($this->user->update(Auth::user()->id, $user_detail, null)) {
             return redirect()->route('user.profile')->withSuccess(trans('user.update_success'));
         }
 

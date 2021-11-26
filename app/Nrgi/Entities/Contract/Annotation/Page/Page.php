@@ -84,7 +84,7 @@ class Page extends Model
         if (isset($this->article_reference_trans[$lang])) {
             $this->article_reference = $this->article_reference_trans[$lang];
         } else {
-            $this->article_reference = $this->getOriginal('article_reference');
+            $this->article_reference = $this->getRawOriginal('article_reference');
         }
     }
 

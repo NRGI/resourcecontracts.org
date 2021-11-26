@@ -18,7 +18,8 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
+use Str;
 
 /**
  * Class ContractController
@@ -174,7 +175,7 @@ class ContractController extends Controller
     public function store(ContractRequest $request)
     {
         if ($contract = $this->contract->saveContract($request->all())) {
-            return redirect()->route('contract.show', ['id' => $contract->id])->with(
+            return redirect()->route('contract.show', ['contract' => $contract->id])->with(
                 'success',
                 trans('contract.save_success')
             );
@@ -214,7 +215,7 @@ class ContractController extends Controller
          $elementState                 = $this->activity->getElementState($id);
          $annotationStatus             = $this->annotation->getStatus($id);
          $annotationStatus             = $annotationStatus == '' ? $elementState['annotation'] : $annotationStatus;
-         $locale                       = $request->route()->getParameter('lang', $lang->defaultLang());
+         $locale                       = $request->route()->parameter('lang', $lang->defaultLang());
          $resourceList                 = $this->codeList->getCodeList('resources',$lang->getSiteLang());
          $contractTypeList             = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
          $documentTypeList             = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
@@ -275,7 +276,7 @@ class ContractController extends Controller
         $discussion_status = $discussion->getResolved($id);
         $companyName       = $this->contract->getCompanyNames();
         $view              = 'contract.edit';
-        $locale            = $request->route()->getParameter('lang');
+        $locale            = $request->route()->parameter('lang');
 
         if (!is_null($locale)) {
             if (!$lang->isValidTranslationLang($locale) || $locale == $lang->defaultLang()) {
@@ -452,7 +453,7 @@ class ContractController extends Controller
             abort(404);
         }
 
-        $filename = sprintf('%s-%s', $contract->id, str_limit(str_slug($contract->title), 70));
+        $filename = sprintf('%s-%s', $contract->id, Str::limit(Str::slug($contract->title), 70));
 
         header("Content-type: application/vnd.ms-wordx");
         header("Content-Disposition: attachment;Filename=$filename.doc");

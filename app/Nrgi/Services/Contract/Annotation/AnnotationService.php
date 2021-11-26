@@ -9,7 +9,7 @@ use App\Nrgi\Services\Language\LanguageService;
 use Exception;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
-use Illuminate\Contracts\Logging\Log;
+use App\Nrgi\Log\NrgiWriter as Log;
 use Illuminate\Contracts\Queue\Queue;
 
 /**

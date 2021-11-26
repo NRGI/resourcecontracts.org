@@ -1,12 +1,10 @@
 <?php
-$router->get('/', 'Auth\AuthController@getLogin');
+
+$router->get('/', 'Auth\LoginController@showLoginForm');
+
+Auth::routes(['register'=>false]);
+
 $router->get('home', 'Dashboard\DashboardController@index');
-$router->controllers(
-    [
-        'auth' => 'Auth\AuthController',
-        'password' => 'Auth\PasswordController',
-    ]
-);
 
 $router->group(
     ['namespace' => 'Api', 'prefix' => 'api'],

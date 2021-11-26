@@ -16,7 +16,7 @@ $router->group(
         $router->post(
             'annotations/{id}',
             [
-                'as'   => 'annotation.delete',
+                'as'   => 'annotations.delete',
                 'uses' => 'ApiController@delete'
             ]
         );

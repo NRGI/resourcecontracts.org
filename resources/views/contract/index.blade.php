@@ -43,21 +43,20 @@
 
 		<div class="panel-body contract-filter">
 			{!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
-			{!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' =>
+			{!! Form::select('year', ['all'=>trans('contract.year')] + $years , isset($url['year'])??$url['year'] , ['class' =>
 			'form-control']) !!}
 
-			{!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Input::get('country') ,
+			{!! Form::select('country', ['all'=>trans('contract.country')] + $countries , isset($url['country']) ?? $url['country'] ,
 			['class' =>'form-control']) !!}
 
 			{!! Form::select('category', ['all'=>trans('contract.category')] + config('metadata.category'),
-			Input::get('category') ,
+			isset($url['category']) ?? $url['category'] ,
 			['class' =>'form-control']) !!}
 
 			{!! Form::select('resource', ['all'=>trans('contract.resource')] + $resourceList ,
-			Input::get
-			('resource') ,
+			isset($url['resource']) ?? $url['resource'] ,
 			['class' =>'form-control']) !!}
-			{!! Form::text('q', Input::get('q') , ['class' =>'form-control','placeholder'=>trans('contract.search_contract')]) !!}
+			{!! Form::text('q', isset($url['q']) ?? $url['q'] , ['class' =>'form-control','placeholder'=>trans('contract.search_contract')]) !!}
 
 			{!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
 			{!! Form::close() !!}
@@ -69,7 +68,9 @@
 						<td width="65%">
 							<i class="glyphicon glyphicon-file"></i>
 							<a href="{{route('contract.show', $contract->id)}}"
-							   class="contract-title">{{$contract->metadata->contract_name or $contract->metadata->project_title}}</a>
+							   class="contract-title">
+							   {{$contract->metadata->contract_name ? $contract->metadata->contract_name : $contract->metadata->project_title }}
+							</a>
 							<span class="label label-default">
 								<?php echo strtoupper(
 										$contract->metadata->language

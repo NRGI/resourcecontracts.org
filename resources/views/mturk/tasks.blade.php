@@ -15,8 +15,8 @@
 @stop
 
 <?php
-$get_status = \Input::get('status',null);
-$approved = \Input::get('approved',null);
+$get_status = \Request::only('status',null);
+$approved = \Request::only('approved',null);
 $requiring_action = $status['total_completed']-$status['total_approved']-$status['total_rejected'];
 ?>
 
@@ -30,11 +30,11 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
             <div class="row">
             <div class="col-md-6">
                 <ul>
-                    <li>{{ trans('mturk.total_pages') }}: {{$total_pages or '0'}}</li>
-                    <li>{{ trans('mturk.total_hit') }}: {{$total_hit or '0'}}</li>
-                    <li>{{ trans('mturk.completed') }}: {{$status['total_completed'] or '0'}}</li>
-                    <li>{{ trans('mturk.approved') }}: {{$status['total_approved'] or '0'}}</li>
-                    <li>{{ trans('mturk.rejected') }}: {{$status['total_rejected'] or '0'}}</li>
+                    <li>{{ trans('mturk.total_pages') }}: {{$total_pages ? $total_pages : '0'}}</li>
+                    <li>{{ trans('mturk.total_hit') }}: {{$total_hit ? $total_hit : '0'}}</li>
+                    <li>{{ trans('mturk.completed') }}: {{isset($status['total_completed']) ? $status['total_completed'] : 0}}</li>
+                    <li>{{ trans('mturk.approved') }}: {{isset($status['total_approved']) ? $status['total_approved'] : 0}}</li>
+                    <li>{{ trans('mturk.rejected') }}: {{isset($status['total_rejected']) ? $status['total_rejected'] : 0}}</li>
                     <li>{{ trans('mturk.requiring_action') }}: {{$requiring_action}}</li>
                 </ul>
                 @if($requiring_action > 1)

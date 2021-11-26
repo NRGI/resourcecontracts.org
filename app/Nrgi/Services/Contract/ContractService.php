@@ -20,7 +20,7 @@ use Aws\Exception\MultipartUploadException;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Contracts\Logging\Log;
+use App\Nrgi\Log\NrgiWriter as Log;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Lang;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Arr;
 
 /**
  * Class ContractService
@@ -343,7 +344,7 @@ class ContractService
      */
     public function updateContractTrans($contractID, array $formData)
     {
-        $data = array_only(
+        $data = Arr::only(
             $formData,
             [
                 'contract_name',
@@ -1227,7 +1228,7 @@ class ContractService
      */
     public function getContractForTranslation($con, $id)
     {
-        $data     = array_only(
+        $data     = Arr::only(
             (array) $con,
             [
                 'contract_name',
@@ -1383,7 +1384,7 @@ class ContractService
                 'OLC' => $download_files['olc'],
             ];
 
-            $countries = array_except($download_files, ['all', 'rc', 'olc']);
+            $countries = Arr::except($download_files, ['all', 'rc', 'olc']);
             ksort($countries);
             $countriesArr = [];
             foreach ($countries as $key => &$cn) {
@@ -1427,11 +1428,11 @@ class ContractService
             $file_path=$file->getRealPath();
             $newFileName = sprintf("%s.%s", sha1($fileName.time()), $file_type);
             try {
-                $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
+                $credentials = new Credentials(env('AWS_ACCESS_KEY_ID'), env('AWS_SECRET_ACCESS_KEY'));
                 $client = new S3Client(
                     [
                         'version'=> '2006-03-01',
-                        'region' => env('AWS_REGION'),
+                        'region' => env('AWS_DEFAULT_REGION'),
                         'credentials' => $credentials
                     ]
                 );
@@ -1496,7 +1497,7 @@ class ContractService
         $formData['government_entity'] = $this->removeKeys($formData['government_entity']);
         $formData['show_pdf_text']     = isset($formData['show_pdf_text']) ? $formData['show_pdf_text'] : Contract::SHOW_PDF_TEXT;;
         $formData['is_contract_signed'] = isset($formData['is_contract_signed']) ? $formData['is_contract_signed'] : 0;
-        $data                           = array_only(
+        $data                           = Arr::only(
             $formData,
             [
                 "contract_name",

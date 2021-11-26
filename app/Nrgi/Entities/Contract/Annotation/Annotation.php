@@ -75,7 +75,7 @@ class Annotation extends Model
         if (isset($this->text_trans[$lang])) {
             $this->text = $this->text_trans[$lang];
         } else {
-            $this->text = $this->getOriginal('text');
+            $this->text = $this->getRawOriginal('text');
         }
     }
 

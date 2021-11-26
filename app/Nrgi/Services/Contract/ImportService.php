@@ -4,7 +4,7 @@ use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use Exception;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
@@ -16,6 +16,8 @@ use Aws\S3\MultipartUploader;
 use Aws\Exception\MultipartUploadException;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Throwable;
+use Str;
+use App\Nrgi\Imports\ContractImport;
 
 /**
  * Class ImportService
@@ -168,7 +170,7 @@ class ImportService
         }
 
         try {
-            $excelData = $this->extractRecords($this->getFilePath($import_key, $fileName));
+            $excelData = $this->extractRecords($import_key, $this->getFilePath($import_key,$fileName));
             $contracts = $this->filterContracts($excelData[1]);
         } catch (Exception $e) {
             $this->logger->error('Import Error :' . $e->getMessage());
@@ -204,9 +206,11 @@ class ImportService
      *
      * @return array
      */
-    protected function extractRecords($file)
+    protected function extractRecords($import_key,$file)
     {
-        return $this->excel->load($file)->all()->toArray();
+        dd($this->excel->import(new ContractImport(),$file), $this->excel->toArray(new ContractImport(),$file));
+        // return $this->excel->import(new ContractImport(),$file);
+        // return $this->excel->load($file)->all()->toArray();
     }
 
     /**
@@ -402,7 +406,7 @@ class ImportService
                 $fileHash = getFileHash($this->getFilePath($import_key, $file));
 
                 if ($con = $this->contract->getContractByFileHash($fileHash)) {
-                    $title = sprintf('<a href="%s" target="_blank">%s</a>', route('contract.show', $con->id), str_limit($con->title, 25));
+                    $title = sprintf('<a href="%s" target="_blank">%s</a>', route('contract.show', $con->id), Str::limit($con->title, 25));
                     $this->updateContractJsonByID(
                         $import_key,
                         $contract->id,
@@ -577,11 +581,11 @@ class ImportService
                 // );
                 $newFileName=$contract->file;
                 $file_path=$this->getFilePath($key, $contract->file);
-                $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
+                $credentials = new Credentials(env('AWS_ACCESS_KEY_ID'), env('AWS_SECRET_ACCESS_KEY'));
                 $client = new S3Client(
                     [
                         'version'=> '2006-03-01',
-                        'region' => env('AWS_REGION'),
+                        'region' => env('AWS_DEFAULT_REGION'),
                         'credentials' => $credentials
                     ]
                 );
@@ -907,7 +911,7 @@ class ImportService
      */
     protected function isValidFormat($contracts)
     {
-        $titles = array_keys($contracts[0]);
+        $titles = array_values($contracts[0]);
         $diff   = array_diff($this->keys, $titles);
 
         if (count($diff) > 0) {

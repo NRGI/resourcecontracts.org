@@ -1,6 +1,7 @@
-<?php namespace App\Nrgi\Log;
+<?php 
+namespace App\Nrgi\Log;
 
-use Illuminate\Log\Writer;
+use Illuminate\Log\Logger;
 
 /**
  * NRGI logger class
@@ -8,7 +9,7 @@ use Illuminate\Log\Writer;
  * Class NrgiWriter
  * @package App\Nrgi\Log
  */
-class NrgiWriter extends Writer
+class NrgiWriter extends Logger
 {
     /**
      * @param       $message

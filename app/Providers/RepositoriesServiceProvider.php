@@ -22,52 +22,52 @@ class RepositoriesServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(
-            'App\Nrgi\Repositories\User\UserRepositoryInterface',
-            'App\Nrgi\Repositories\User\UserRepository'
+            \App\Nrgi\Repositories\User\UserRepositoryInterface::class,
+            \App\Nrgi\Repositories\User\UserRepository::class
         );
         $this->app->bind(
-            'App\Nrgi\Repositories\Contract\ContractRepositoryInterface',
-            'App\Nrgi\Repositories\Contract\ContractRepository'
+            \App\Nrgi\Repositories\Contract\ContractRepositoryInterface::class,
+            \App\Nrgi\Repositories\Contract\ContractRepository::class
         );
         $this->app->bind(
-            'App\Nrgi\Repositories\Contract\Page\PageRepositoryInterface',
-            'App\Nrgi\Repositories\Contract\Page\PageRepository'
+            \App\Nrgi\Repositories\Contract\Page\PageRepositoryInterface::class,
+            \App\Nrgi\Repositories\Contract\Page\PageRepository::class
         );
         $this->app->bind(
-            'App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface',
-            'App\Nrgi\Repositories\Contract\Annotation\AnnotationRepository'
+            \App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface::class,
+            \App\Nrgi\Repositories\Contract\Annotation\AnnotationRepository::class
         );
         $this->app->bind(
-            'App\Nrgi\Repositories\ActivityLog\ActivityLogRepositoryInterface',
-            'App\Nrgi\Repositories\ActivityLog\ActivityLogRepository'
+            \App\Nrgi\Repositories\ActivityLog\ActivityLogRepositoryInterface::class,
+            \App\Nrgi\Repositories\ActivityLog\ActivityLogRepository::class
         );
         $this->app->bind(
-            'App\Nrgi\Repositories\Contract\Comment\CommentRepositoryInterface',
-            'App\Nrgi\Repositories\Contract\Comment\CommentRepository'
+            \App\Nrgi\Repositories\Contract\Comment\CommentRepositoryInterface::class,
+            \App\Nrgi\Repositories\Contract\Comment\CommentRepository::class
         );
         $this->app->bind(
-            'App\Nrgi\Mturk\Repositories\TaskRepositoryInterface',
-            'App\Nrgi\Mturk\Repositories\TaskRepository'
+            \App\Nrgi\Mturk\Repositories\TaskRepositoryInterface::class,
+            \App\Nrgi\Mturk\Repositories\TaskRepository::class
         );
         $this->app->bind(
-            'App\Nrgi\Mturk\Repositories\Activity\ActivityRepositoryInterface',
-            'App\Nrgi\Mturk\Repositories\Activity\ActivityRepository'
+            \App\Nrgi\Mturk\Repositories\Activity\ActivityRepositoryInterface::class,
+            \App\Nrgi\Mturk\Repositories\Activity\ActivityRepository::class
         );
         $this->app->bind(
-            'App\Nrgi\Repositories\Contract\Discussion\DiscussionRepositoryInterface',
-            'App\Nrgi\Repositories\Contract\Discussion\DiscussionRepository'
+            \App\Nrgi\Repositories\Contract\Discussion\DiscussionRepositoryInterface::class,
+            \App\Nrgi\Repositories\Contract\Discussion\DiscussionRepository::class
         );
         $this->app->bind(
-            'App\Nrgi\Repositories\CodeList\ContractType\ContractTypeRepositoryInterface',
-            'App\Nrgi\Repositories\CodeList\ContractType\ContractTypeRepository'
+            \App\Nrgi\Repositories\CodeList\ContractType\ContractTypeRepositoryInterface::class,
+            \App\Nrgi\Repositories\CodeList\ContractType\ContractTypeRepository::class
         );
         $this->app->bind(
-            'App\Nrgi\Repositories\CodeList\Resource\ResourceRepositoryInterface',
-            'App\Nrgi\Repositories\CodeList\Resource\ResourceRepository'
+            \App\Nrgi\Repositories\CodeList\Resource\ResourceRepositoryInterface::class,
+            \App\Nrgi\Repositories\CodeList\Resource\ResourceRepository::class
         );
         $this->app->bind(
-            'App\Nrgi\Repositories\CodeList\DocumentType\DocumentTypeRepositoryInterface',
-            'App\Nrgi\Repositories\CodeList\DocumentType\DocumentTypeRepository'
+            \App\Nrgi\Repositories\CodeList\DocumentType\DocumentTypeRepositoryInterface::class,
+            \App\Nrgi\Repositories\CodeList\DocumentType\DocumentTypeRepository::class
         );
     }
 
