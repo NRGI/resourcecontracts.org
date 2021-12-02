@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Nrgi\Services\User\UserService;
-use Illuminate\Auth\Guard as Auth;
+use Illuminate\Contracts\Auth\Guard as Auth;
 use Illuminate\Http\Request;
 
 /**
