@@ -42,22 +42,48 @@
 		</div>
 
 		<div class="panel-body contract-filter">
+
 			{!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
-			{!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' =>
-			'form-control']) !!}
-
-			{!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Input::get('country') ,
-			['class' =>'form-control']) !!}
-
-			{!! Form::select('category', ['all'=>trans('contract.category')] + config('metadata.category'),
-			Input::get('category') ,
-			['class' =>'form-control']) !!}
-
-			{!! Form::select('resource', ['all'=>trans('contract.resource')] + $resourceList ,
-			Input::get
-			('resource') ,
-			['class' =>'form-control']) !!}
-			{!! Form::text('q', Input::get('q') , ['class' =>'form-control','placeholder'=>trans('contract.search_contract')]) !!}
+			<div class="row">
+				<div class="col-md-4 col-sm-6 col-xs-6">
+					{!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' =>
+					'form-control']) !!}
+				</div>
+				<div  class="col-md-4 col-sm-6 col-xs-6">
+					{!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Input::get('country') ,
+					['class' =>'form-control']) !!}
+				</div>
+				<div  class="col-md-4 col-sm-6 col-xs-6">
+					{!! Form::select('category', ['all'=>trans('contract.category')] + config('metadata.category'),
+					Input::get('category') ,
+					['class' =>'form-control']) !!}
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-6">
+					{!! Form::select('resource', ['all'=>trans('contract.resource')] + $resourceList ,
+					Input::get
+					('resource') ,
+					['class' =>'form-control']) !!}
+				</div>
+				<div  class="col-md-4 col-sm-6 col-xs-6">
+					{!! Form::select('document_type', ['all'=>trans('contract.document_type')] + $documentTypeList,
+					Input::get('document_type') ,
+					['class' =>'form-control']) !!}
+				</div>
+				<div  class="col-md-4 col-sm-6 col-xs-6">
+					{!! Form::select('type_of_contract', ['all'=>trans('contract.type_of_contract')] + $contractTypeList,
+					Input::get('type_of_contract') ,
+					['class' =>'form-control']) !!}
+				</div>
+				<div  class="col-md-4 col-sm-6 col-xs-6">
+					{!! Form::select('language', ['all'=>trans('contract.language')] + [''=>trans('codelist/language',[],null,$locale)['major'],
+					'Other'=>trans('codelist/language',[],null,$locale)['minor']],
+					Input::get('language') ,
+					['class' =>'form-control']) !!}
+				</div>
+				<div  class="col-md-4 col-sm-6 col-xs-6">
+					{!! Form::text('q', Input::get('q') , ['class' =>'form-control','placeholder'=>trans('contract.search_contract')]) !!}
+				</div>
+			</div>
 
 			{!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
 			{!! Form::close() !!}

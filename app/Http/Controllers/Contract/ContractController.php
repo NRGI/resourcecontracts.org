@@ -124,6 +124,9 @@ class ContractController extends Controller
              'country',
              'category',
              'resource',
+             'document_type',
+             'type_of_contract',
+             'language',
              'type',
              'word',
              'issue',
@@ -138,8 +141,11 @@ class ContractController extends Controller
          $resources      = $this->contractFilter->getUniqueResources();
          $download_files = $this->contract->getDownloadTextFiles();
          $resourceList   = $this->codeList->getCodeList('resources',$lang->getSiteLang());
+         $locale           = $lang->defaultLang();
+         $contractTypeList = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
+         $documentTypeList = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
 
-         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList'));
+         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList', 'contractTypeList','documentTypeList', 'locale' ));
     }
 
     /**

@@ -110,6 +110,20 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw("trim(both '\"' from cat::text) = '" . $category . "'");
         }
 
+        if (isset($document_type) && $document_type != '' && $document_type != 'all') {
+            $query->whereRaw("contracts.metadata->>'document_type' = ?", [$document_type]);
+        }
+
+        if (isset($type_of_contract) && $type_of_contract != '' && $type_of_contract != 'all') {
+            $from .= ",json_array_elements(contracts.metadata->'type_of_contract') cat";
+            $query->whereRaw("trim(both '\"' from cat::text) = '" . $type_of_contract . "'");
+        }
+
+        
+        if (isset($language) && $language != '' && $language != 'all') {
+            $query->whereRaw("contracts.metadata->>'language' = ?", [$language]);
+        }
+
         if (isset($type) && $type == "metadata" && $word != '' && $issue != '' && !in_array($word, $multipleField)) {
             if ($word == 'company') {
                 $query = $query->whereRaw(sprintf("contracts.metadata->'company'->0->>'name' %s ''", $operator));

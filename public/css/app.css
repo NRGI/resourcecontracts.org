@@ -7803,10 +7803,14 @@ table.table-contract tr:hover {
 }
 
 .contract-filter .select2 {
-    width: 14% !important;
-    float: left;
+    /* width: 14% !important;
+    float: left; */
     margin-right: 20px !important;
     margin-top: 4px !important;
+}
+
+.contract-filter .col-md-4 {
+    margin-bottom: 10px;
 }
 
 .index-lang {
