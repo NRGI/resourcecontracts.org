@@ -123,6 +123,10 @@ class ContractRepository implements ContractRepositoryInterface
         if (isset($language) && $language != '' && $language != 'all') {
             $query->whereRaw("contracts.metadata->>'language' = ?", [$language]);
         }
+        if (isset($company_name) && $company_name != '' && $company_name != 'all') {
+            $from .= ",json_array_elements(contracts.metadata->'company') comp";
+            $query->whereRaw("trim(both '\"' from comp->>'name'::text) = '" . $company_name . "'");
+        }
 
         if (isset($type) && $type == "metadata" && $word != '' && $issue != '' && !in_array($word, $multipleField)) {
             if ($word == 'company') {

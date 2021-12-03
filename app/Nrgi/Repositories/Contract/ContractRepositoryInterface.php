@@ -295,6 +295,15 @@ interface ContractRepositoryInterface
      */
     public function getCompanyName();
 
+      /**
+     * Get All Company names
+     * 
+     *  @param $contract_id
+     *
+     * @return array
+     */
+    public function getAllCompanyNames($contract_id);
+
     /**
      * Return all supporting Contract
      * @return array

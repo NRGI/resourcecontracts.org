@@ -75,6 +75,11 @@
 					['class' =>'form-control']) !!}
 				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
+					{!! Form::select('company_name', ['all'=>trans('contract.company_name')] + $companyNamesList,
+					Input::get('company_name') ,
+					['class' =>'form-control']) !!}
+				</div>
+				<div  class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::select('language', ['all'=>trans('contract.language')] + [''=>trans('codelist/language',[],null,$locale)['major'],
 					'Other'=>trans('codelist/language',[],null,$locale)['minor']],
 					Input::get('language') ,

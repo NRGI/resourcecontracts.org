@@ -126,6 +126,7 @@ class ContractController extends Controller
              'resource',
              'document_type',
              'type_of_contract',
+             'company_name',
              'language',
              'type',
              'word',
@@ -142,10 +143,14 @@ class ContractController extends Controller
          $download_files = $this->contract->getDownloadTextFiles();
          $resourceList   = $this->codeList->getCodeList('resources',$lang->getSiteLang());
          $locale           = $lang->defaultLang();
+         $companyNamesListRaw = $this->contract->getCompanyNames();
+         foreach($companyNamesListRaw as $company){
+             $companyNamesList[$company] = $company;
+         }
          $contractTypeList = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
          $documentTypeList = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
 
-         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList', 'contractTypeList','documentTypeList', 'locale' ));
+         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList','companyNamesList', 'contractTypeList','documentTypeList', 'locale' ));
     }
 
     /**
