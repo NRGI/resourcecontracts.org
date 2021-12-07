@@ -694,6 +694,7 @@ class ContractRepository implements ContractRepositoryInterface
         $from  = "contracts, json_array_elements(metadata->'company') as company";
 
         return $query->from($this->db->raw($from))
+             ->orderBy($this->db->raw("company->>'name'"), "ASC")
             ->get()
             ->toArray();
     }
