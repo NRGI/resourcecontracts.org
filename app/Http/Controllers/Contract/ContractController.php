@@ -133,13 +133,17 @@ class ContractController extends Controller
              'q'
          );
          $contracts      = $this->contractFilter->getAll($filters);
+         foreach($contracts as $contract){
+            $contract_ids[]=$contract->id;
+        }
+         $annotationStatusArray = $this->annotation->getStatusOfAllContracts($contract_ids);
          $years          = $this->contractFilter->getUniqueYears();
          $countries      = $this->contractFilter->getUniqueCountries();
          $resources      = $this->contractFilter->getUniqueResources();
          $download_files = $this->contract->getDownloadTextFiles();
          $resourceList   = $this->codeList->getCodeList('resources',$lang->getSiteLang());
 
-         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList'));
+         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList', 'annotationStatusArray'));
     }
 
     /**

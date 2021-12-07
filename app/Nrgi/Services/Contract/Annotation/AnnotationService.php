@@ -266,6 +266,18 @@ class AnnotationService
     }
 
     /**
+     * Get annotation status of multiple contracts
+     *
+     * @param $contractIdsArr
+     *
+     * @return array status
+     */
+    public function getStatusOfAllContracts($contractIdsArr)
+    {
+        return $this->annotation->getStatusOfAllContracts($contractIdsArr);
+    }
+
+    /**
      * Updates status of annotations of contract
      *
      * @param $annotationStatus

@@ -159,6 +159,25 @@ class AnnotationRepository implements AnnotationRepositoryInterface
         return $status;
     }
 
+     /**
+     * annotation status of multiple contracts
+     *
+     * @param $contractIdArr
+     *
+     * @return String
+     */
+    public function getStatusOfAllContracts($contractIdsArr)
+    {
+        $statusObjectArr = $this->annotation
+        ->selectRaw(' distinct(status), contract_id')
+        ->whereIn('contract_id', $contractIdsArr)->get()->toArray();
+        $status=[];
+        foreach($statusObjectArr as $statusObject) {
+            $status[$statusObject['contract_id']] = $this->checkStatus([$statusObject['status']]);
+        }
+    return $status;
+    }
+
     /**
      * Check annotation status in array
      *

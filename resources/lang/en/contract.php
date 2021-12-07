@@ -247,5 +247,8 @@ return [
     ],
     'text_quality'       => 'Text Quality',
     'published'          => 'Published',
+    'metadata_published'          => 'Metadata published',
+    'text_published'          => 'Text published',
+    'annotation_published'          => 'Annotation published',
     'translation_available_in'      => 'Translation available in:',
 ];

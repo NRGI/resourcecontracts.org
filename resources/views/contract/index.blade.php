@@ -78,7 +78,19 @@
 							@if($contract->metadata_status == \App\Nrgi\Entities\Contract\Contract::STATUS_PUBLISHED)
 								<span class="published">
 								<i class="glyphicon glyphicon-ok"></i>
-									@lang('contract.published')
+									@lang('contract.metadata_published')
+							</span>
+							@endif
+							@if($contract->text_status == \App\Nrgi\Entities\Contract\Contract::STATUS_PUBLISHED)
+								<span class="published">
+								<i class="glyphicon glyphicon-ok"></i>
+									@lang('contract.text_published')
+							</span>
+							@endif
+							@if(isset($annotationStatusArray) && isset($annotationStatusArray[$contract->id]) && $annotationStatusArray[$contract->id]  == \App\Nrgi\Entities\Contract\Contract::STATUS_PUBLISHED)
+								<span class="published">
+								<i class="glyphicon glyphicon-ok"></i>
+									@lang('contract.annotation_published')
 							</span>
 							@endif
 							<div class="contract-info-list">

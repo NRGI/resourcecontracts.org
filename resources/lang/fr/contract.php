@@ -248,5 +248,8 @@ return [
     ],
     'text_quality'       => "Qualité Texte",
     'published'          => "Publié",
+    'metadata_published'          => 'Métadonnées publiées',
+    'text_published'          => 'Texte publié',
+    'annotation_published'          => 'Annotation publiée',
     'translation_available_in'      => 'Traduction disponible en:',
 ];
