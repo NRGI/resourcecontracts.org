@@ -137,6 +137,7 @@ class ContractController extends Controller
              'q'
          );
          $contracts      = $this->contractFilter->getAll($filters);
+         $contract_ids = [];
          foreach($contracts as $contract){
             $contract_ids[]=$contract->id;
         }
