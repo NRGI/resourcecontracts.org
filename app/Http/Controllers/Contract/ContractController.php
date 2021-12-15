@@ -137,6 +137,11 @@ class ContractController extends Controller
              'q'
          );
          $contracts      = $this->contractFilter->getAll($filters);
+         $contract_ids = [];
+         foreach($contracts as $contract){
+            $contract_ids[]=$contract->id;
+        }
+         $annotationStatusArray = $this->annotation->getStatusOfAllContracts($contract_ids);
          $years          = $this->contractFilter->getUniqueYears();
          $countries      = $this->contractFilter->getUniqueCountries();
          $resources      = $this->contractFilter->getUniqueResources();
@@ -149,8 +154,7 @@ class ContractController extends Controller
          }
          $contractTypeList = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
          $documentTypeList = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
-
-         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList','companyNamesList', 'contractTypeList','documentTypeList', 'locale' ));
+         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList','companyNamesList', 'contractTypeList','documentTypeList', 'locale', 'annotationStatusArray' ));
     }
 
     /**
