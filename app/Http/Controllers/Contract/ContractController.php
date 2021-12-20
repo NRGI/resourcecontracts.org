@@ -154,7 +154,7 @@ class ContractController extends Controller
          }
          $contractTypeList = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
          $documentTypeList = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
-         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList','companyNamesList', 'contractTypeList','documentTypeList', 'locale', 'annotationStatusArray' ));
+         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList','companyNamesList', 'contractTypeList','documentTypeList', 'locale',  'annotationStatusArray' ));
     }
 
     /**

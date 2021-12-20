@@ -101,6 +101,7 @@ class ContractRepository implements ContractRepositoryInterface
         }
 
         if (isset($resource) && $resource != '' && $resource != 'all') {
+            $resource = str_replace("'","''", $resource);
             $from .= ",json_array_elements(contracts.metadata->'resource') r";
             $query->whereRaw("trim(both '\"' from r::text) = '" . $resource . "'");
         }
@@ -115,6 +116,7 @@ class ContractRepository implements ContractRepositoryInterface
         }
 
         if (isset($type_of_contract) && $type_of_contract != '' && $type_of_contract != 'all') {
+            $type_of_contract = str_replace("'","''", $type_of_contract);
             $from .= ",json_array_elements(contracts.metadata->'type_of_contract') cat";
             $query->whereRaw("trim(both '\"' from cat::text) = '" . $type_of_contract . "'");
         }
@@ -124,6 +126,7 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw("contracts.metadata->>'language' = ?", [$language]);
         }
         if (isset($company_name) && $company_name != '' && $company_name != 'all') {
+            $company_name = str_replace("'","''", $company_name);
             $from .= ",json_array_elements(contracts.metadata->'company') comp";
             $query->whereRaw("trim(both '\"' from comp->>'name'::text) = '" . $company_name . "'");
         }
