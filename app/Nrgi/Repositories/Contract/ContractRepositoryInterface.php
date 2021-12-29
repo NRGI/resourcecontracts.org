@@ -29,6 +29,15 @@ interface ContractRepositoryInterface
     public function getAll(array $filters, $limit);
 
     /**
+     * Get all Contracts
+     *
+     * @param array $filters
+     *
+     * @return Collection|null
+     */
+    public function getAllDownload(array $filters);
+
+    /**
      * Get Contract
      *
      * @param $contractId
