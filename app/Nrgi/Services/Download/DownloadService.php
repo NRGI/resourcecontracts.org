@@ -73,8 +73,8 @@ class DownloadService
             $contracts[$key]['Open Corporates Link']            = join(';', $this->makeSemicolonSeparated(json_decode($contract['Open Corporates Link']),'open_corporates_id'));
             $contracts[$key]['Incorporation Date']              = join(';', $this->makeSemicolonSeparated(json_decode($contract['Incorporation Date']),'company_founding_date'));
             $contracts[$key]['Operator']                        = join(';', $this->getOperator(json_decode($contract['Operator']), 'operator'));
+            $contracts[$key]['PDF URL']                         = getS3FileURL($contract['Contract Id'].'/'.$contract['PDF URL']);
         }
-
 
         //load testing
         sleep(60);

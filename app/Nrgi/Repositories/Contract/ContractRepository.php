@@ -222,7 +222,7 @@ class ContractRepository implements ContractRepositoryInterface
                                 metadata->>\'source_url\' as "Source URL",
                                 metadata->>\'disclosure_mode\' as "Disclosure Mode",
                                 metadata->>\'date_retrieval\' as "Retrieval Date",
-                                metadata->>\'file_url\' as "PDF URL",
+                                file as "PDF URL",
                                 id as "Associated Documents",
                                 pdf_structure as "PDF Type",
                                 "textType" as "Text Type",
