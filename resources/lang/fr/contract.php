@@ -8,7 +8,7 @@
 
 return [
     'add'                                  => "Ajouter un contrat",
-    'download'                             => 'Télécharger les contrats',
+    'download'                             => "Exporter les métadonnées",
     'whoops'                               => "Oups!",
     'problem'                              => " Votre entrée présente des problèmes",
     'select_pdf'                           => "Sélectionnez un PDF",

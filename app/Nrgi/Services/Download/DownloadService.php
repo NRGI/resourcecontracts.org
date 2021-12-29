@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Services\Download;
 
+use App\Nrgi\Services\User\UserService;
 use App\Nrgi\Services\Contract\Annotation\AnnotationService;
 use GuzzleHttp\Client;
 use App\Nrgi\Services\Contract\ContractService;
@@ -26,11 +27,12 @@ class DownloadService
      * @param AnnotationService $annotationService
      * @param Excel             $excel
      */
-    public function __construct(Client $client, ContractService $contractService, AnnotationService $annotationService, Excel $excel)
+    public function __construct(Client $client, ContractService $contractService, AnnotationService $annotationService, Excel $excel, UserService $userService)
     {
         $this->client            = $client;
         $this->contractService   = $contractService;
         $this->annotationService = $annotationService;
+        $this->userService       = $userService;
         $this->excel             = $excel;
     }
 
@@ -42,24 +44,52 @@ class DownloadService
     public function downloadData($contracts)
     {
         set_time_limit(0);
-        $data = [];
-        foreach ($contracts as $contract) {
-            $data[] = $this->getCSVData($contract);
+        $users = $this->userService->getAllUsersList();
+        $text_type = [
+                        1 => "Structured",
+                        2 => "Needs Editing",
+                        3 => "Needs Full Transcription",
+                    ];
+       
+        foreach ($contracts as $key => $contract) {
+            $contracts[$key]['Resource']                        = join(';', json_decode($contract['Resource']));
+            $contracts[$key]['Category']                        = join(';', json_decode($contract['Category']));
+            $contracts[$key]['Contract Type']                   = join(';', json_decode($contract['Contract Type']));
+            $contracts[$key]['Annotation Status']               = $this->annotationService->getStatus($contract["Contract ID"]);
+            $contracts[$key]['Text Type']                       = $contract['Text Type'] ? $text_type[$contract['Text Type']] : '';
+            $contracts[$key]['Show PDF Text']                   = $contracts[$key]['Show PDF Text'] == '0' ? 'No' : 'Yes';
+            $contracts[$key]['Associated Documents']            = join(';', $this->getSupportingDoc($contract["Contract ID"]));
+            $contracts[$key]['License Name']                    = join(';', $this->makeSemicolonSeparated(json_decode($contract["License Name"]),'license_name'));
+            $contracts[$key]['License Identifier']              = join(';', $this->makeSemicolonSeparated(json_decode($contract["License Identifier"]),'license_identifier'));
+            $contracts[$key]['Created by']                      = isset($users[$contract['Created by']]) ? $users[$contract['Created by']] : '';
+            $contracts[$key]['Government Entity']               = join(';', $this->makeSemicolonSeparated(json_decode($contract['Government Entity']),'entity'));
+            $contracts[$key]['Government Identifier']           = join(';', $this->makeSemicolonSeparated(json_decode($contract['Government Identifier']),'identifier'));
+            $contracts[$key]['Company Name']                    = join(';', $this->makeSemicolonSeparated(json_decode($contract['Company Name']),'name'));
+            $contracts[$key]['Jurisdiction of Incorporation']   = join(';', $this->makeSemicolonSeparated(json_decode($contract['Jurisdiction of Incorporation']),'jurisdiction_of_incorporation'));
+            $contracts[$key]['Registration Agency']             = join(';', $this->makeSemicolonSeparated(json_decode($contract['Registration Agency']),'registration_agency'));
+            $contracts[$key]['Company Number']                  = join(';', $this->makeSemicolonSeparated(json_decode($contract['Company Number']),'company_number'));
+            $contracts[$key]['Company Address']                 = join(';', $this->makeSemicolonSeparated(json_decode($contract['Company Address']),'company_address'));
+            $contracts[$key]['Participation Share']             = join(';', $this->makeSemicolonSeparated(json_decode($contract['Participation Share']),'participation_share'));
+            $contracts[$key]['Corporate Grouping']              = join(';', $this->makeSemicolonSeparated(json_decode($contract['Corporate Grouping']),'parent_company'));
+            $contracts[$key]['Open Corporates Link']            = join(';', $this->makeSemicolonSeparated(json_decode($contract['Open Corporates Link']),'open_corporates_id'));
+            $contracts[$key]['Incorporation Date']              = join(';', $this->makeSemicolonSeparated(json_decode($contract['Incorporation Date']),'company_founding_date'));
+            $contracts[$key]['Operator']                        = join(';', $this->getOperator(json_decode($contract['Operator']), 'operator'));
+            $contracts[$key]['PDF URL']                         = getS3FileURL($contract['Contract ID'].'/'.$contract['PDF URL']);
         }
-
+        
         $filename = "export" . date('Y-m-d');
 
         $this->excel->create(
             $filename,
-            function ($csv) use (&$data) {
+            function ($csv) use (&$contracts) {
                 $csv->sheet(
                     'sheetname',
-                    function ($sheet) use (&$data) {
-                        $sheet->fromArray($data);
+                    function ($sheet) use (&$contracts) {
+                        $sheet->fromArray($contracts);
                     }
                 );
             }
-        )->download('xls');
+        )->download('xls');        
     }
 
     /**
@@ -74,7 +104,7 @@ class DownloadService
         foreach ($contracts as $contract) {
             $data[] = $this->getCSVData($contract);
         }
-
+    
         return $data;
     }
 

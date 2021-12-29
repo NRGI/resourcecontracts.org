@@ -183,6 +183,169 @@ class ContractRepository implements ContractRepositoryInterface
     }
 
     /**
+     * Get All Contracts
+     *
+     * @param array $filters
+     *
+     * @return Array|static[]
+     */
+    public function getAllDownload(array $filters)
+    {
+        $query  = $this->contract->select(
+                        DB::raw('id as "Contract ID", 
+                        metadata->>\'open_contracting_id\' as "OCID",
+                        metadata->>\'category\' as "Category",
+                        metadata->>\'contract_name\' as "Contract Name",
+                        metadata->>\'contract_identifier\' as "Contract Identifier",
+                        metadata->>\'language\' as "Language",
+                        metadata->\'country\'->>\'name\' as "Country",
+                        metadata->>\'resource\' as "Resource",
+                        metadata->>\'type_of_contract\' as "Contract Type",
+                        metadata->>\'signature_date\' as "Signature Date",
+                        metadata->>\'document_type\' as "Document Type",
+                        metadata->\'government_entity\' as "Government Entity",
+                        metadata->\'government_entity\' as "Government Identifier",
+                        metadata->\'company\' as "Company Name",
+                        metadata->\'company\' as "Jurisdiction of Incorporation",
+                        metadata->\'company\' as "Registration Agency",
+                        metadata->\'company\' as "Company Number",
+                        metadata->\'company\' as "Company Address",
+                        metadata->\'company\' as "Participation Share",
+                        metadata->\'company\' as "Corporate Grouping",
+                        metadata->\'company\' as "Open Corporates Link",
+                        metadata->\'company\' as "Incorporation Date",
+                        metadata->\'company\' as "Operator",
+                        metadata->>\'project_title\' as "Project Title",
+                        metadata->>\'project_identifier\' as "Project Identifier",
+                        metadata->>\'concession\' as "License Name",
+                        metadata->>\'concession\' as "License Identifier",
+                        metadata->>\'source_url\' as "Source URL",
+                        metadata->>\'disclosure_mode\' as "Disclosure Mode",
+                        metadata->>\'date_retrieval\' as "Retrieval Date",
+                        file as "PDF URL",
+                        id as "Associated Documents",
+                        pdf_structure as "PDF Type",
+                        "textType" as "Text Type",
+                        metadata->>\'show_pdf_text\' as "Show PDF Text",
+                        metadata_status as "Metadata Status",
+                        id as "Annotation Status",
+                        text_status as "PDF Text Status",
+                        user_id as "Created by",
+                        created_datetime as "Created on"'));
+
+        $from          = "contracts" ;
+        $multipleField = ["resource", "category", "type_of_contract"];
+        $filters       = array_map('trim', $filters);
+        extract($filters);
+        $operator = (!empty($issue) && $issue == "present") ? "!=" : "=";
+
+        if (isset($year) && $year != '' && $year != 'all') {
+            $query->whereRaw("contracts.metadata->>'signature_year'=?", [$year]);
+        }
+
+        if (isset($type) && $type == 'metadata' && $status != '') {
+            $query->whereRaw("contracts.metadata_status=?", [$status]);
+        }
+
+        if (isset($type) && $type == 'ocr' && $status != '') {
+            if ($status == "null") {
+                $query->whereRaw("contracts.\"textType\" is null");
+            } else {
+                $query->whereRaw("contracts.\"textType\"=?", [$status]);
+            }
+        }
+
+        if (isset($type) && $type == 'pdftext' && $status != '') {
+            if ($status == "null") {
+                $query->whereRaw("contracts.text_status is null");
+            } else {
+                $query->whereRaw("contracts.text_status=?", [$status]);
+            }
+        }
+
+        if (isset($country) && $country != '' && $country != 'all') {
+            $query->whereRaw("contracts.metadata->'country'->>'code' = ?", [$country]);
+        }
+
+        if (isset($resource) && $resource != '' && $resource != 'all') {
+            $resource = str_replace("'","''", $resource);
+            $from .= ",json_array_elements(contracts.metadata->'resource') r";
+            $query->whereRaw("trim(both '\"' from r::text) = '" . $resource . "'");
+        }
+
+        if (isset($category) && $category != '' && $category != 'all') {
+            $from .= ",json_array_elements(contracts.metadata->'category') cat";
+            $query->whereRaw("trim(both '\"' from cat::text) = '" . $category . "'");
+        }
+
+        if (isset($document_type) && $document_type != '' && $document_type != 'all') {
+            $query->whereRaw("contracts.metadata->>'document_type' = ?", [$document_type]);
+        }
+
+        if (isset($type_of_contract) && $type_of_contract != '' && $type_of_contract != 'all') {
+            $type_of_contract = str_replace("'","''", $type_of_contract);
+            $from .= ",json_array_elements(contracts.metadata->'type_of_contract') cat";
+            $query->whereRaw("trim(both '\"' from cat::text) = '" . $type_of_contract . "'");
+        }
+
+        
+        if (isset($language) && $language != '' && $language != 'all') {
+            $query->whereRaw("contracts.metadata->>'language' = ?", [$language]);
+        }
+        if (isset($company_name) && $company_name != '' && $company_name != 'all') {
+            $company_name = str_replace("'","''", $company_name);
+            $from .= ",json_array_elements(contracts.metadata->'company') comp";
+            $query->whereRaw("trim(both '\"' from comp->>'name'::text) = '" . $company_name . "'");
+        }
+
+        if (isset($type) && $type == "metadata" && $word != '' && $issue != '' && !in_array($word, $multipleField)) {
+            if ($word == 'company') {
+                $query = $query->whereRaw(sprintf("contracts.metadata->'company'->0->>'name' %s ''", $operator));
+            } elseif ($word == 'concession') {
+                $query = $query->whereRaw(
+                    sprintf("contracts.metadata->'concession'->0->>'license_name' %s ''", $operator)
+                );
+            } elseif ($word == 'government_entity') {
+                $query = $query->whereRaw(
+                    sprintf("contracts.metadata->'government_entity'->0->>'entity' %s ''", $operator)
+                );
+            } else {
+                $query->whereRaw(sprintf("contracts.metadata->>'%s' %s''", $word, $operator));
+            }
+        }
+        if (isset($type) && $type == "metadata" && $word != '' && $issue != '' && in_array($word, $multipleField)) {
+            $query->whereRaw(sprintf(" json_array_length(metadata->'%s') %s 0", $word, $operator));
+        }
+        if (isset($type) && $type == 'annotations' && $status != '') {
+            $query->whereRaw("contracts.metadata_status=?", [$status]);
+        }
+        if (isset($type) && $type == "annotations" && $word != '' && $issue != '') {
+            $contractsId = DB::table('contract_annotations')->select(DB::raw('contract_id'))->whereRaw(
+                "category = ?",
+                [$word]
+            )->distinct('contract_id')->get();
+            $contracts   = [];
+            foreach ($contractsId as $contractId) {
+                array_push($contracts, $contractId->contract_id);
+            }
+            if ($issue == "present") {
+                $query->whereIn("id", $contracts);
+            } else {
+                $query->whereNotIn("id", $contracts);
+            }
+        }
+
+        if (isset($q) && $q != '') {
+            $q = '%' . $q . '%';
+            $query->whereRaw("(contracts.metadata->>'contract_name' ILIKE ? or contracts.metadata->>'open_contracting_id' ILIKE ?)", [$q,$q]);
+        }
+
+        $query->from($this->db->raw($from))->orderBy('created_datetime', 'DESC');
+
+        return $query->get()->toArray();
+    }
+
+    /**
      * Get unique contract years
      *
      * @return contract
