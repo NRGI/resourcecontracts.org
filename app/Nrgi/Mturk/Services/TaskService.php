@@ -767,10 +767,11 @@ class TaskService
      * @param $contract_id
      * @param $task_id
      * @param $hit_description
+     * @param $approved_hit
      *
      * @return bool
      */
-    public function resetHIT($contract_id, $task_id, $hit_description)
+    public function resetHIT($contract_id, $task_id, $hit_description, $approved_hit = false)
     {
         $contract = $this->contract->find($contract_id);
 
@@ -811,12 +812,14 @@ class TaskService
                 }
                 else {
                     $removedHit = $response['response'];
-                    if ($removedHit['HIT']['HITStatus'] != "Disposed") {
+
+                    if ($removedHit['HIT']['HITStatus'] != "Disposed" && !$approved_hit) {
                         return [
                             'result'  => false,
                             'message' => trans('HIT is in Reviewable state so can not be reset.'),
                         ];
                     }
+
                     $this->logger->info(
                         'HIT successfully deleted',
                         ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]
@@ -894,6 +897,13 @@ class TaskService
             ];
 
             $this->task->update($task->contract_id, $task->page_no, $update);
+
+            if($approved_hit){
+                $contract->mturk_status = Contract::MTURK_SENT;
+                $contract->textType     = Contract::NEEDS_FULL_TRANSCRIPTION;
+                $contract->save();
+            }
+
             $this->logger->info('HIT successfully reset', ['Contract id' => $contract_id, 'Task' => $task->toArray()]);
             $this->logger->mTurkActivity('mturk.log.reset', null, $task->contract_id, $task->page_no);
 
