@@ -13,3 +13,4 @@ $router->get('/mturk/{contract_id}/{task_id}', ['as' => 'mturk.task.detail', 'us
 $router->post('/mturk/{contract_id}/{task_id}/approve', ['as' => 'mturk.task.approve', 'uses' => 'MTurkController@approve']);
 $router->post('/mturk/{contract_id}/{task_id}/reject', ['as' => 'mturk.task.reject', 'uses' => 'MTurkController@reject']);
 $router->post('/mturk/{contract_id}/{task_id}/reset', ['as' => 'mturk.task.reset', 'uses' => 'MTurkController@resetHit']);
+$router->post('/mturk/{contract_id}/{task_id}/approved/reset', ['as' => 'mturk.task.approved.reset', 'uses' => 'MTurkController@resetApprovedHit']);

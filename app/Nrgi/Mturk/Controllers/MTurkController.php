@@ -246,6 +246,34 @@ class MTurkController extends Controller
         return redirect()->back()->withError(trans('mturk.action.reset_fail'));
     }
 
+        /**
+     * Reset HIT
+     *
+     * @param $contract_id
+     * @param $task_id
+     *
+     * @return Redirect
+     */
+    public function resetApprovedHit($contract_id, $task_id, Request $request)
+    {
+        $new_hit_description=$request->get('description');
+        if (!$this->task->isBalanceToCreateHIT()) {
+            return redirect()->back()->withError(trans('mturk.action.reset_balance_low'));
+        }
+
+        $resetStatus = $this->task->resetHIT($contract_id, $task_id, $new_hit_description, true);
+
+        if (is_array($resetStatus)) {
+            return redirect()->back()->withError($resetStatus['message']);
+        }
+
+        if ($resetStatus === true) {
+            return redirect()->back()->withSuccess(trans('mturk.action.reset'));
+        }
+
+        return redirect()->back()->withError(trans('mturk.action.reset_fail'));
+    }
+
     /**
      * Sent text to RC
      *
