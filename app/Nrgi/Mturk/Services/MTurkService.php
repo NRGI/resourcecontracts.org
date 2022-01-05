@@ -112,18 +112,21 @@ class MTurkService extends MechanicalTurkV2
         if($hitResponse['http_code'] == 400) {
             return $hitResponse;
         }
-        $hit = $hitResponse['response'];
+
+        $hit = $hitResponse['response'] ;
         $this->logger->info(' HIT'.json_encode( $hit ));
         $status      = $hit['HIT']['HITStatus'];
+        $this->logger->info('status'.json_encode( $status ));
         $expiry_date = $this->carbon->createFromTimestamp(strtotime($hit['HIT']['Expiration']));
+        $this->logger->info(' Expiry time'.json_encode( $expiry_date  ));
         $isExpired   = $expiry_date->diffInSeconds(null, false) > 1;
         $isRejected  = (isset($task->assignments->assignment->status) && $task->assignments->assignment->status == 'Rejected');
         if ($status == 'Assignable' || $isExpired || $isRejected) {
             $this->updateExpirationForHIT($hit_id, 0);
             $this->deleteHIT($hit_id);
-            $hitResponse = $this->getHit($hit_id);
-            $this->logger->info(' Hit is '.json_encode( $hitResponse ));
-            return $hitResponse;
+            $hit = $this->getHit($hit_id);
+            $this->logger->info(' Hit is '.json_encode( $hit ));
+            return ($hit['response']['HIT']['HITStatus'] == "Disposed");
         }
         $this->logger->info('Returning code without deleting');
         return $hitResponse;

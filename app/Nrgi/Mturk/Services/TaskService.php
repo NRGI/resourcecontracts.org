@@ -813,7 +813,7 @@ class TaskService
                 else {
                     $removedHit = $response['response'];
 
-                    if ($removedHit['HIT']['HITStatus'] != "Disposed" && !$approved_hit) {
+                    if ($removedHit && $removedHit['HIT']['HITStatus'] != "Disposed" && !$approved_hit) {
                         return [
                             'result'  => false,
                             'message' => trans('HIT is in Reviewable state so can not be reset.'),
@@ -876,7 +876,7 @@ class TaskService
             );
 
             return ['result' => false, 'message' => $e->getErrors()];
-        } catch (Exception $e) {
+        } catch (Exception $e) {         
             $this->logger->error(
                 'HIT create failed. '.$e->getMessage(),
                 ['Contract id' => $contract_id, 'Task' => $task_id, 'Page no' => $task->page_no]
