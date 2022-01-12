@@ -107,7 +107,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getList()
     {
-        return $this->user->lists('name', 'id')->all();
+        return $this->user->pluck('name', 'id')->all();
     }
 
     /**

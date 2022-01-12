@@ -524,6 +524,16 @@ class AnnotationService
         return $this->annotation->getAllByAnnotation($category);
     }
 
+    /**
+     * Get all annotation by annotation category
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getAllAnnotationStatus()
+    {
+        return $this->annotation->getAllAnnotationStatus();
+    }
+
 
     /**
      * Publish annotation

@@ -841,6 +841,20 @@ class ContractService
         return $contracts;
     }
 
+        /**
+     * Get the supporting Contracts
+     *
+     * @param $id
+     *
+     * @return array
+     */
+    public function getAllSupportingDocuments()
+    {
+        $contracts = $this->contract->getAllSupportingDocuments();
+
+        return $contracts;
+    }
+
     public function getParentDocument($child_contract_id)
     {
         $parentContract = $this->contract->getParentDocument($child_contract_id);

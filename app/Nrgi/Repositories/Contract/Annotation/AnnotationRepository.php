@@ -154,6 +154,7 @@ class AnnotationRepository implements AnnotationRepositoryInterface
             ->select('status')
             ->where('contract_id', $contractId)->get()->toArray();
 
+
         $status = $this->checkStatus(array_column($statusObject, 'status'));
 
         return $status;
@@ -178,6 +179,28 @@ class AnnotationRepository implements AnnotationRepositoryInterface
     return $status;
     }
 
+         /**
+     * annotation status of multiple contracts
+     *
+     * @param $contractIdArr
+     *
+     * @return String
+     */
+    public function getAllAnnotationStatus()
+    {
+        $statusObjectArr = $this->annotation
+        ->selectRaw(' distinct(status), contract_id')
+        ->get()->toArray();
+
+        $status=[];
+
+        foreach($statusObjectArr as $statusObject) {
+            $status[$statusObject['contract_id']] = $this->checkStatus([$statusObject['status']]);
+        }
+
+        return $status;
+    }
+
     /**
      * Check annotation status in array
      *
@@ -186,19 +209,8 @@ class AnnotationRepository implements AnnotationRepositoryInterface
      * @return string
      */
     public function checkStatus($status)
-    {
-        $annotationStatus = '';
-        if (in_array(Annotation::DRAFT, $status)) {
-            $annotationStatus = Annotation::DRAFT;
-        } elseif (in_array(Annotation::COMPLETED, $status)) {
-            $annotationStatus = Annotation::COMPLETED;
-        } elseif (in_array(Annotation::REJECTED, $status)) {
-            $annotationStatus = Annotation::REJECTED;
-        } elseif (in_array(Annotation::PUBLISHED, $status)) {
-            $annotationStatus = Annotation::PUBLISHED;
-        }
-
-        return $annotationStatus;
+    {     
+        return in_array(Annotation::DRAFT, $status)? Annotation::DRAFT :(in_array(Annotation::REJECTED, $status)? Annotation::REJECTED :Annotation::PUBLISHED);
     }
 
     /**
