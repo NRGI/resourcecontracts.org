@@ -44,24 +44,33 @@ class DownloadService
     public function downloadData($contracts)
     {
         set_time_limit(0);
-        $users = $this->userService->getAllUsersList();
-        $text_type = [
-                        1 => "Structured",
-                        2 => "Needs Editing",
-                        3 => "Needs Full Transcription",
-                    ];
-       
+
+        $users              = $this->userService->getAllUsersList();
+        $annotationStatus   = $this->annotationService->getAllAnnotationStatus();
+        $supportingDocs     = $this->contractService->getAllSupportingDocuments();
+        $text_type          = [
+                                1 => "Structured",
+                                2 => "Needs Editing",
+                                3 => "Needs Full Transcription",
+                            ];
+        $bucket_url         = substr(\Storage::disk('s3')
+                                ->getDriver()
+                                ->getAdapter()
+                                ->getClient()
+                                ->getObjectUrl(env('AWS_BUCKET'),'/'),0,-1);
+
         foreach ($contracts as $key => $contract) {
             $contracts[$key]['Resource']                        = join(';', json_decode($contract['Resource']));
             $contracts[$key]['Category']                        = join(';', json_decode($contract['Category']));
             $contracts[$key]['Contract Type']                   = join(';', json_decode($contract['Contract Type']));
-            $contracts[$key]['Annotation Status']               = $this->annotationService->getStatus($contract["Contract ID"]);
             $contracts[$key]['Text Type']                       = $contract['Text Type'] ? $text_type[$contract['Text Type']] : '';
             $contracts[$key]['Show PDF Text']                   = $contracts[$key]['Show PDF Text'] == '0' ? 'No' : 'Yes';
-            $contracts[$key]['Associated Documents']            = join(';', $this->getSupportingDoc($contract["Contract ID"]));
+            $contracts[$key]['Annotation Status']               = isset($annotationStatus[$contract["Contract ID"]])? $annotationStatus[$contract["Contract ID"]] : '';
+            $contracts[$key]['Associated Documents']            = isset($supportingDocs[$contract["Contract ID"]]) ? $supportingDocs[$contract["Contract ID"]] : '';
+            $contracts[$key]['Created by']                      = isset($users[$contract['Created by']]) ? $users[$contract['Created by']] : '';
+            $contracts[$key]['Operator']                        = join(';', $this->getOperator(json_decode($contract['Operator']), 'operator'));
             $contracts[$key]['License Name']                    = join(';', $this->makeSemicolonSeparated(json_decode($contract["License Name"]),'license_name'));
             $contracts[$key]['License Identifier']              = join(';', $this->makeSemicolonSeparated(json_decode($contract["License Identifier"]),'license_identifier'));
-            $contracts[$key]['Created by']                      = isset($users[$contract['Created by']]) ? $users[$contract['Created by']] : '';
             $contracts[$key]['Government Entity']               = join(';', $this->makeSemicolonSeparated(json_decode($contract['Government Entity']),'entity'));
             $contracts[$key]['Government Identifier']           = join(';', $this->makeSemicolonSeparated(json_decode($contract['Government Identifier']),'identifier'));
             $contracts[$key]['Company Name']                    = join(';', $this->makeSemicolonSeparated(json_decode($contract['Company Name']),'name'));
@@ -73,10 +82,9 @@ class DownloadService
             $contracts[$key]['Corporate Grouping']              = join(';', $this->makeSemicolonSeparated(json_decode($contract['Corporate Grouping']),'parent_company'));
             $contracts[$key]['Open Corporates Link']            = join(';', $this->makeSemicolonSeparated(json_decode($contract['Open Corporates Link']),'open_corporates_id'));
             $contracts[$key]['Incorporation Date']              = join(';', $this->makeSemicolonSeparated(json_decode($contract['Incorporation Date']),'company_founding_date'));
-            $contracts[$key]['Operator']                        = join(';', $this->getOperator(json_decode($contract['Operator']), 'operator'));
-            $contracts[$key]['PDF URL']                         = getS3FileURL($contract['Contract ID'].'/'.$contract['PDF URL']);
+            $contracts[$key]['PDF URL']                         = $bucket_url.$contract['Contract ID'].'/'.$contract['PDF URL'];
         }
-        
+
         $filename = "export" . date('Y-m-d');
 
         $this->excel->create(
@@ -109,61 +117,6 @@ class DownloadService
     }
 
     /**
-     * Return the format of csv
-     *
-     * @param       $contract
-     * @return array
-     *
-     *     */
-    private function getCSVData($contract)
-    {
-        $created_by = isset($contract->created_user()->first()->name) ? $contract->created_user()->first()->name : '';
-        $company_type = is_array($contract->metadata->type_of_contract) ? $contract->metadata->type_of_contract : [];
-        return [
-            'Contract ID'                   => $contract->id,
-            'OCID'                          => $contract->metadata->open_contracting_id,
-            'Category'                      => join(';', $contract->metadata->category),
-            'Contract Name'                 => $contract->metadata->contract_name,
-            'Contract Identifier'           => $contract->metadata->contract_identifier,
-            'Language'                      => $contract->metadata->language,
-            'Country Name'                  => $contract->metadata->country->name,
-            'Resource'                      => join(';', $contract->metadata->resource),
-            'Contract Type'                 => join(';', $company_type),
-            'Signature Date'                => $contract->metadata->signature_date,
-            'Document Type'                 => $contract->metadata->document_type,
-            'Government Entity'             => join(';', $this->makeSemicolonSeparated($contract->metadata->government_entity, 'entity')),
-            'Government Identifier'         => join(';', $this->makeSemicolonSeparated($contract->metadata->government_entity, 'identifier')),
-            'Company Name'                  => join(';', $this->makeSemicolonSeparated($contract->metadata->company, 'name')),
-            'Jurisdiction of Incorporation' => join(';', $this->makeSemicolonSeparated($contract->metadata->company, 'jurisdiction_of_incorporation')),
-            'Registration Agency'           => join(';', $this->makeSemicolonSeparated($contract->metadata->company, 'registration_agency')),
-            'Company Number'                => join(';', $this->makeSemicolonSeparated($contract->metadata->company, 'company_number')),
-            'Company Address'               => join(';', $this->makeSemicolonSeparated($contract->metadata->company, 'company_address')),
-            'Participation Share'           => join(';', $this->makeSemicolonSeparated($contract->metadata->company, 'participation_share')),
-            'Corporate Grouping'            => join(';', $this->makeSemicolonSeparated($contract->metadata->company, 'parent_company')),
-            'Open Corporates Link'          => join(';', $this->makeSemicolonSeparated($contract->metadata->company, 'open_corporate_id')),
-            'Incorporation Date'            => join(';', $this->makeSemicolonSeparated($contract->metadata->company, 'company_founding_date')),
-            'Operator'                      => join(';', $this->getOperator($contract->metadata->company, 'operator')),
-            'Project Title'                 => $contract->metadata->project_title,
-            'Project Identifier'            => $contract->metadata->project_identifier,
-            'License Name'                  => join(';', $this->makeSemicolonSeparated($contract->metadata->concession, 'license_name')),
-            'License Identifier'            => join(';', $this->makeSemicolonSeparated($contract->metadata->concession, 'license_identifier')),
-            'Source Url'                    => $contract->metadata->source_url,
-            'Disclosure Mode'               => $contract->metadata->disclosure_mode,
-            'Retrieval Date'                => $contract->metadata->date_retrieval,
-            'Pdf Url'                       => $contract->metadata->file_url,
-            'Associated Documents'          => join(';', $this->getSupportingDoc($contract->id)),
-            'Pdf Type'                      => $contract->pdf_structure,
-            'Show Pdf Text'                 => $this->getShowPDFText($contract->metadata->show_pdf_text),
-            'Text Type'                     => $this->getTextType($contract->textType),
-            'Metadata Status'               => $contract->metadata_status,
-            'Annotation Status'             => $this->annotationService->getStatus($contract->id),
-            'Pdf Text Status'               => $contract->text_status,
-            'Created by'                    => $created_by,
-            'Created on'                    => $contract->created_datetime,
-        ];
-    }
-
-    /**
      * Make the array semicolon separated for multiple data
      *
      * @param $arrays
@@ -173,13 +126,16 @@ class DownloadService
     private function makeSemicolonSeparated($arrays, $key)
     {
         $data = [];
+
         if ($arrays == null) {
             return $data;
         }
+
         foreach ($arrays as $array) {
             if (is_array($array) && array_key_exists($array, $key)) {
                 array_push($data, $array[$key]);
             }
+
             if (is_object($array) && property_exists($array, $key)) {
                 array_push($data, $array->$key);
             }
