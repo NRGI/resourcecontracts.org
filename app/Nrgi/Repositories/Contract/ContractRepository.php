@@ -698,6 +698,17 @@ class ContractRepository implements ContractRepositoryInterface
     }
 
     /**
+     * Return the Supporting contract id grouped by contract id
+     *
+     * @return array
+     */
+    public function getAllSupportingDocuments()
+    {
+        return $this->document->select('contract_id',DB::raw('string_agg(supporting_contract_id::text,\';\') as supporting_contract_id'))
+                ->groupBy('contract_id')->pluck('supporting_contract_id','contract_id')->toArray();
+    }
+
+    /**
      * Return the parent contract id
      *
      * @param $id

@@ -220,6 +220,13 @@ interface ContractRepositoryInterface
     public function getSupportingDocument($id);
 
     /**
+     * Return the Supporting contract id grouped by contract id
+     *
+     * @return array
+     */
+    public function getAllSupportingDocuments();
+
+    /**
      * Return the Parent contract id
      *
      * @param $id

@@ -67,7 +67,7 @@ interface AnnotationRepositoryInterface
     public function getStatus($contractId);
 
 
-        /**
+    /**
      * Annotation status of multiple contracts by contract ids
      *
      * @param $contractIdsArr
@@ -75,6 +75,13 @@ interface AnnotationRepositoryInterface
      * @return array
      */
     public function getStatusOfAllContracts($contractIdsArr);
+
+    /**
+     * annotation status of all contracts
+     *
+     * @return array
+     */
+    public function getAllAnnotationStatus();
 
     /**
      * Get Total Annotation status by type
