@@ -62,4 +62,14 @@ class DashboardController extends Controller
 
         return view('dashboard.index', compact('stats', 'recent_contracts', 'status', 'ocrStatusCount'));
     }
+
+    /**
+     * Dashboard Home
+     *
+     * @return string
+     */
+    public function version()
+    {
+        return '14th Jan,2021';
+    }
 }

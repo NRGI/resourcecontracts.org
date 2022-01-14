@@ -84,14 +84,14 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                         </td>
                         <td style="text-align:center;">{{$task->page_no}}</td>
                         <td>{{_l('mturk.'.$task->status())}}</td>
-                        <td>{{_l('mturk.'.$task->approved())}}</td>
+                        <td>{{$task->approved==1?($task->is_auto_approved?'A-':'M-'):''}}{{_l('mturk.'.$task->approved())}}</td>
                         <td>{{$task->created_at->format('Y-m-d h:i:s A')}}</td>
                         <td>
                             <div class="mturk-btn-group" role="group">
                                 @if($task->status != 0)
                                     <a href="{{route('mturk.task.detail',['contract_id'=>$contract->id, 'task_id'=>$task->id])}}"
                                        class="btn btn-default">@lang('mturk.review')</a>
-                                    @if($task->approved == 1)
+                                    @if($task->approved == 1 && $task->is_auto_approved)
                                        {!! Form::open(['url' =>route('mturk.task.approved.reset',['contract_id'=>$contract->id, 'task_id'=>$task->id]), 'method' => 'post']) !!}
                                         {!! Form::button(trans('mturk.reset'), ['type' =>'submit', 'class' => 'btn btn-primary confirm', 'data-confirm'=>trans('mturk.reset_hitid')])!!}
                                         {!! Form::close() !!}

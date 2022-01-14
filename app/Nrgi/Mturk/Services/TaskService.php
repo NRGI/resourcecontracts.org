@@ -395,6 +395,7 @@ class TaskService
                             && isset($assignment['response']['Assignment']['AssignmentStatus'])) {
 
                             if ($assignment['response']['Assignment']['AssignmentStatus'] == 'Approved') {
+                                $task->is_auto_approved = true;
                                 $this->updateApproveTask($task);
 
                                 return ['result' => true, 'message' => trans('mturk.action.has_already_approved')];
@@ -894,6 +895,7 @@ class TaskService
                 'hit_type_id' => $ret->hit_type_id,
                 'hit_description' =>$description,
                 'created_at'  => date('Y-m-d H:i:s'),
+                'is_auto_approved' => false,
             ];
 
             $this->task->update($task->contract_id, $task->page_no, $update);
