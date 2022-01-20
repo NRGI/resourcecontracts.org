@@ -98,6 +98,7 @@ RUN mkdir /shared_path \
 WORKDIR /var/www/rc-admin
 RUN php composer.phar dump-autoload --optimize \
  && php artisan clear-compiled
+ && php artisan migrate
 
 EXPOSE 80
 CMD cd /var/container_init && ./init.sh && /etc/init.d/beanstalkd start && supervisord -c /etc/supervisord.conf && /usr/sbin/apache2ctl -D FOREGROUND

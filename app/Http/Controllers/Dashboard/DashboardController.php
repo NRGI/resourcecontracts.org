@@ -70,6 +70,6 @@ class DashboardController extends Controller
      */
     public function version()
     {
-        return '14th Jan,2021';
+        return '20th Jan,2021';
     }
 }
