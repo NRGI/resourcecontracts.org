@@ -44,7 +44,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // if (strtolower(env('APP_ENV')) == 'staging') {
-            $schedule->command('migrate');
+            $schedule->command('migrate --force');
             $schedule->command('nrgi:mturk')->dailyAt('01:00');
             $schedule->command('nrgi:mturkbalance');
             // $schedule->command('nrgi:mturkbalance')->dailyAt('01:30');
