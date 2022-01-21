@@ -26,7 +26,9 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
                     beanstalkd \
                     poppler-utils \
                     supervisor \
-                    gettext
+                    gettext \
+                    cron -y \
+                    vim -y
 
 RUN wget http://launchpadlibrarian.net/383018194/pdftk-java_0.0.0+20180723.1-1_all.deb
 RUN apt install default-jre-headless libcommons-lang3-java libbcprov-java -y
@@ -57,6 +59,7 @@ RUN ln -s /etc/apache2/sites-available/rc-admin.conf /etc/apache2/sites-enabled/
  && rm -f /etc/apache2/sites-enabled/000-default.conf
 
 COPY conf/supervisord.conf /etc/supervisord.conf
+COPY conf/cronjob /etc/cron.d/rc_cronjob
 
 RUN mkdir -p /var/container_init
 COPY conf/init.sh /var/container_init/init.sh
@@ -98,7 +101,6 @@ RUN mkdir /shared_path \
 WORKDIR /var/www/rc-admin
 RUN php composer.phar dump-autoload --optimize \
  && php artisan clear-compiled
- && php artisan migrate
 
 EXPOSE 80
 CMD cd /var/container_init && ./init.sh && /etc/init.d/beanstalkd start && supervisord -c /etc/supervisord.conf && /usr/sbin/apache2ctl -D FOREGROUND

@@ -2,6 +2,7 @@
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Storage;
 
 class Kernel extends ConsoleKernel
 {
@@ -43,6 +44,21 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        if (strtolower(env('APP_ENV')) == 'staging') {
+            $schedule->command('migrate');
+            $schedule->command('nrgi:mturk')->dailyAt('01:00');
+            $schedule->command('nrgi:mturkbalance')->dailyAt('01:30');
+            $schedule->command('nrgi:updatemturktasks')->dailyAt('06:00');
+            $schedule->command('nrgi:renewmturktask')->dailyAt('02:00');
+            $schedule->command('nrgi:updategroup')->dailyAt('10:00');
+            $schedule->command('nrgi:updategovernmententities')->dailyAt('02:00');
+            $schedule->command('nrgi:bulktext')->weekly();
+
+            $myfile = fopen(public_path('test.txt'), "w");
+            fwrite($myfile, date('Y-m-d H:i:s'));
+            fclose($myfile);
+        }
+
         if (strtolower(env('APP_ENV')) == 'production') {
             $schedule->command('nrgi:mturk')->dailyAt('01:00');
             $schedule->command('nrgi:mturkbalance')->dailyAt('01:30');
