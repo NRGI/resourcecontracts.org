@@ -5,7 +5,7 @@ use Aws\S3\S3Client;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Filesystem\Filesystem;
-
+use Illuminate\Support\Facades\Log;
 /**
  * Bulk download of pdf text
  *
@@ -92,6 +92,7 @@ class BulkDownloadText extends Command
      */
     public function extractText($type = 'all')
     {
+        Log::info('extracting');
         $param = [
             $this->db['host'],
             $this->db['port'],
@@ -107,6 +108,7 @@ class BulkDownloadText extends Command
         }
 
         $this->command($type, join(' ', $param));
+        Log::info('File zipped');
         $this->info("File zipped");
     }
 
@@ -131,11 +133,22 @@ class BulkDownloadText extends Command
             $bucket,
             $s3folder.'/'
         );
+
         $this->info("Object - {$s3folder} deleted in s3");
-        $s3->uploadDirectory(storage_path("download"), $bucket, "/".$s3folder);
+        Log::info('Files deleted from server');
+
+        $s3->uploadDirectory(storage_path("download"), $bucket, "/".$s3folder,['before' => function(\AWS\Command $command){
+            $command['ACL'] = 'public-read';
+            $command['ContentDisposition'] = 'attachment';
+            }
+            ,]
+        );
+
+        Log::info('Files uploaded in server');
+
+        // $s3->uploadDirectory(storage_path("download"), $bucket, "/".$s3folder);
         $this->info("File uploaded in s3 => ".$s3folder);
     }
-
     /**
      * Delete files
      *
