@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Log;
+
 /**
  * Bulk download of pdf text
  *
@@ -74,6 +75,9 @@ class BulkDownloadText extends Command
      */
     public function fire()
     {
+        $file = storage_path().'/logs/scheduler.log';
+        Log::useFiles($file);
+
         $this->extractText();
         $this->extractText('rc');
         $this->extractText('olc');
@@ -148,6 +152,9 @@ class BulkDownloadText extends Command
 
         // $s3->uploadDirectory(storage_path("download"), $bucket, "/".$s3folder);
         $this->info("File uploaded in s3 => ".$s3folder);
+
+        
+        Log::info('Update Mturk assigm]nments command successfully executed.');
     }
     /**
      * Delete files

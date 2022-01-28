@@ -118,8 +118,6 @@ class MTurkNotificationService
                 ]
             );
         }
-
-        $this->logger->info("schedular balance check".strtolower(env('APP_ENV')));
     }
 
 }

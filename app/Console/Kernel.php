@@ -50,7 +50,7 @@ class Kernel extends ConsoleKernel
             $schedule->command('nrgi:renewmturktask')->dailyAt('02:00');
             $schedule->command('nrgi:updategroup')->dailyAt('10:00');
             $schedule->command('nrgi:updategovernmententities')->dailyAt('02:00');
-            $schedule->command('nrgi:bulktext')->dailyAt('05:20');
+            $schedule->command('nrgi:bulktext')->dailyAt('03:25');
 
             $myfile = fopen(public_path('test.txt'), "w");
             fwrite($myfile, 'date_now'.date('Y-m-d H:i:s'));

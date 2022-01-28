@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y \
                     git \
                     software-properties-common \
                     unzip \
+                    zip \
                     wget \
                     apt-utils \
  && LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php \
@@ -26,7 +27,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
                     beanstalkd \
                     poppler-utils \
                     supervisor \
-                    gettext
+                    gettext \
+                    postgresql 
 
 RUN wget http://launchpadlibrarian.net/383018194/pdftk-java_0.0.0+20180723.1-1_all.deb
 RUN apt install default-jre-headless libcommons-lang3-java libbcprov-java -y

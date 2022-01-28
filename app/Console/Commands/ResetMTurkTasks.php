@@ -4,6 +4,7 @@ use App\Nrgi\Mturk\Entities\Task;
 use App\Nrgi\Mturk\Services\TaskService;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
+use Illuminate\Support\Facades\Log;
 
 class ResetMTurkTasks extends Command {
 
@@ -55,6 +56,10 @@ class ResetMTurkTasks extends Command {
 		}
 
 		$this->info('Process Completed');
+
+		$file = storage_path().'/logs/scheduler.log';
+        Log::useFiles($file);
+		Log::info("Reset MTurk command successfully executed.");
 	}
 
 	/**
