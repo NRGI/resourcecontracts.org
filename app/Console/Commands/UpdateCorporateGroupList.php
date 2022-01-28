@@ -1,7 +1,7 @@
 <?php namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
+use Illuminate\Support\Facades\Log;
 /**
  * Class UpdateCorporateGroupList
  * @package App\Console\Commands
@@ -78,6 +78,10 @@ class UpdateCorporateGroupList extends Command
             file_put_contents($config, $this->generateConfig($groups));
             $this->info('Complete.');
         }
+
+        $file = storage_path().'/logs/scheduler.log';
+        Log::useFiles($file);
+        Log::info("Update corporate list command successfully executed");
     }
 
     /**

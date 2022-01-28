@@ -2,6 +2,7 @@
 
 use Illuminate\Console\Command;
 use GuzzleHttp;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -95,6 +96,10 @@ class UpdateGovernmentEntities extends Command
         $config = public_path() . '/../config/governmentEntities.php';
         file_put_contents($config, $text);
         $this->info('Complete.');
+
+        $file = storage_path().'/logs/scheduler.log';
+        Log::useFiles($file);
+        Log::info("Update government entities command successfully executed");
     }
 
     /**
