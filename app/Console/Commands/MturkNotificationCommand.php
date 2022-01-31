@@ -4,6 +4,7 @@ use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Mturk\Services\MTurkNotificationService;
 use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class MturkNotificationCommand
@@ -58,6 +59,10 @@ class MturkNotificationCommand extends Command
         foreach ($contracts as $contract) {
             $this->notify->process($contract->id);
         }
+
+        $file = storage_path().'/logs/scheduler.log';
+        Log::useFiles($file);
+        Log::info('Mturk command successfully executed. MTurk status of contracts send via email.');
     }
 
     /**

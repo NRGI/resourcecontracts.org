@@ -4,6 +4,7 @@ use App\Nrgi\Mturk\Entities\Task;
 use App\Nrgi\Mturk\Services\TaskService;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
+use Illuminate\Support\Facades\Log;
 
 class ResetMTurkTasks extends Command {
 
@@ -47,7 +48,7 @@ class ResetMTurkTasks extends Command {
 			$hit_id      = $page->hit_id;
 			$page_no     = $page->page_no;
 
-			if ($taskService->resetHIT($contract_id, $page->id)) {
+			if ($taskService->resetHIT($contract_id, $page->id,'')) {
 				$this->info(sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contract_id, $hit_id, $page_no));
 			} else {
 				$this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contract_id, $hit_id, $page_no));
@@ -55,6 +56,10 @@ class ResetMTurkTasks extends Command {
 		}
 
 		$this->info('Process Completed');
+
+		$file = storage_path().'/logs/scheduler.log';
+		Log::useFiles($file);
+		Log::info("Reset MTurk command successfully executed.");
 	}
 
 	/**

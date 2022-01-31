@@ -2,6 +2,7 @@
 
 use App\Nrgi\Mturk\Services\MTurkNotificationService;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class MTurkBalance
@@ -39,6 +40,10 @@ class MTurkBalanceNotification extends Command {
 	public function fire(MTurkNotificationService $mturk)
 	{
 		$mturk->checkBalance();
+
+		$file = storage_path().'/logs/scheduler.log';
+		Log::useFiles($file);
+		Log::info("MTurk balance check command successfully executed.");
 	}
 
 }

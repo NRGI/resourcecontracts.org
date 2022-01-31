@@ -5,6 +5,7 @@ use App\Nrgi\Mturk\Services\TaskService;
 use App\Nrgi\Services\Contract\ContractService;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
+use Illuminate\Support\Facades\Log;
 
 class UpdateMTurkAssignment extends Command
 {
@@ -62,6 +63,10 @@ class UpdateMTurkAssignment extends Command
                 $this->task->updateAssignment($page);
             }
         }
+
+        $file = storage_path().'/logs/scheduler.log';
+        Log::useFiles($file);
+        Log::info('Update Mturk assigmnments command successfully executed.');
     }
 
     /**

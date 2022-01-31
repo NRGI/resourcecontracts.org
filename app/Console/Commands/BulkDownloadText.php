@@ -5,6 +5,7 @@ use Aws\S3\S3Client;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Bulk download of pdf text
@@ -83,6 +84,10 @@ class BulkDownloadText extends Command
         }
         $this->updateFilesInS3();
         $this->deleteFiles();
+
+        $file = storage_path().'/logs/scheduler.log';
+        Log::useFiles($file);
+        Log::info('Block Download Text command successfully executed.');
     }
 
     /**
@@ -132,7 +137,13 @@ class BulkDownloadText extends Command
             $s3folder.'/'
         );
         $this->info("Object - {$s3folder} deleted in s3");
-        $s3->uploadDirectory(storage_path("download"), $bucket, "/".$s3folder);
+        
+        $s3->uploadDirectory(storage_path("download"), $bucket, "/".$s3folder,['before' => function(\AWS\Command $command){
+            $command['ACL'] = 'public-read';
+            $command['ContentDisposition'] = 'attachment';
+            }
+            ,]
+        );
         $this->info("File uploaded in s3 => ".$s3folder);
     }
 
