@@ -57,7 +57,7 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
 
         </div>
 
-            <ul style="margin: 5px 15px; color:grey; font-size:0.3em; display:flex; flex-direction:column; font-style:italic;"> 
+            <ul style="margin: 5px 15px; color:grey; font-size:small; display:flex; flex-direction:column; font-style:italic;"> 
                 {!! trans('mturk.text_explainer') !!}
             </ul>
 
