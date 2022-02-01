@@ -72,6 +72,14 @@
      'write_hit_description'    => 'Write HIT Description',
      'reject_task'              => 'Reject task',
      'reset_task'              => 'Reset task',
+     'text_explainer'          => ' <li><b>Note:</b></li>
+                                    <li><b>M-Approved</b> (Manually approved) refers to RC/OLC site
+                                        administrator-approved HITs.</li><li>
+                                        <b>A-Approved</b> (Automatically approved) refers to HITs that are automatically
+                                        approved by the MTurk system. HITs are automatically approved after 30 days
+                                        of assignment submission. A-Approved HITs can be reset and sent to MTurk
+                                        for retranscription.
+                                    </li>',
 
 
 
