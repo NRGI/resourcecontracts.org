@@ -1396,11 +1396,21 @@ class ContractService
                     'size' => $size,
                 ];
             }
-            $order = [
-                'All' => $download_files['all'],
-                'RC'  => $download_files['rc'],
-                'OLC' => $download_files['olc'],
-            ];
+
+            $files = [
+                    'all'=>'All',
+                    'rc'=>'RC' ,
+                    'olc'=>'OLC',
+                ];
+
+            foreach($files as $key => $file){
+
+                if(isset($download_files[$key]))
+                {
+                    $order[$files[$key]] = $download_files[$key];
+                }
+
+            }
 
             $countries = array_except($download_files, ['all', 'rc', 'olc']);
             ksort($countries);
@@ -1408,6 +1418,7 @@ class ContractService
             foreach ($countries as $key => &$cn) {
                 $countriesArr[ucfirst(trans('codelist/country.'.$key, [], null, 'en'))] = $cn;
             }
+
             $order          = $order + $countriesArr;
             $download_files = $order;
         }
