@@ -37,14 +37,14 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                     <li>{{ trans('mturk.rejected') }}: {{$status['total_rejected'] or '0'}}</li>
                     <li>{{ trans('mturk.requiring_action') }}: {{$requiring_action}}</li>
                 </ul>
+
                 @if($requiring_action > 1)
                     {!! Form::open(['url' =>route('mturk.task.approveAll',['contract_id'=>$contract->id]), 'method' => 'post']) !!}
-                    {!! Form::button(trans('mturk.approve_all'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>trans('mtruk.text_approve_all')])!!}
+                    {!! Form::button(trans('mturk.approve_all'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>trans('mturk.text_approve_all')])!!}
                     {!! Form::close() !!}
                 @endif
 
             </div>
-
                 <div class="btn-group col-md-6" style="margin-top: 50px;" role="group">
                     <a class="btn @if($get_status == null AND $approved == null) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}">{{ trans('mturk.all_hit') }}</a>
                     <a class="btn @if($get_status == 1 AND $approved == 0) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}?status=1&approved=0">{{  trans('mturk.requiring_action') }}</a>
@@ -55,6 +55,11 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
 
             </div>
 
+        </div>
+
+            <ul style="margin: 5px 15px; color:grey; font-size:small; display:flex; flex-direction:column; font-style:italic;"> 
+                {!! trans('mturk.text_explainer') !!}
+            </ul>
 
             <table class="table table-striped table-responsive">
                 <thead>
@@ -63,7 +68,7 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                     <th width="5%"></th>
                     <th style="text-align: center;">{{ trans('mturk.page_no') }}</th>
                     <th>{{ trans('mturk.status') }}</th>
-                    <th>{{ trans('mturk.approved') }}?</th>
+                    <th>{{ trans('mturk.approved') }}</th>
                     <th width="15%">{{ trans('user.created_on') }}</th>
                     <th>{{ trans('user.action') }}</th>
                 </tr>
@@ -83,13 +88,18 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                         </td>
                         <td style="text-align:center;">{{$task->page_no}}</td>
                         <td>{{_l('mturk.'.$task->status())}}</td>
-                        <td>{{_l('mturk.'.$task->approved())}}</td>
+                        <td>{{ $task->approved == 1 ? ($task->is_auto_approved?'A-':'M-') : ''}}{{_l('mturk.'.$task->approved())}}</td>
                         <td>{{$task->created_at->format('Y-m-d h:i:s A')}}</td>
                         <td>
                             <div class="mturk-btn-group" role="group">
                                 @if($task->status != 0)
                                     <a href="{{route('mturk.task.detail',['contract_id'=>$contract->id, 'task_id'=>$task->id])}}"
                                        class="btn btn-default">@lang('mturk.review')</a>
+                                    @if($task->approved == 1 && $task->is_auto_approved)
+                                        {!! Form::open(['url' =>route('mturk.task.approved.reset',['contract_id'=>$contract->id, 'task_id'=>$task->id]), 'method' => 'post']) !!}
+                                        {!! Form::button(trans('mturk.reset'), ['type' =>'submit', 'class' => 'btn btn-primary confirm', 'data-confirm'=>trans('mturk.reset_hitid')])!!}
+                                        {!! Form::close() !!}
+                                    @endif
                                     @if(empty($task->approved))
                                         {!! Form::open(['url' =>route('mturk.task.approve',['contract_id'=>$contract->id, 'task_id'=>$task->id]), 'method' => 'post']) !!}
                                         {!! Form::button(trans('mturk.approve'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>trans('mturk.mturk_approve')])!!}

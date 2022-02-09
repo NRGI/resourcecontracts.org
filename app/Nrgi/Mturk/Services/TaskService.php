@@ -395,6 +395,7 @@ class TaskService
                             && isset($assignment['response']['Assignment']['AssignmentStatus'])) {
 
                             if ($assignment['response']['Assignment']['AssignmentStatus'] == 'Approved') {
+                                $task->is_auto_approved = true;
                                 $this->updateApproveTask($task);
 
                                 return ['result' => true, 'message' => trans('mturk.action.has_already_approved')];
@@ -767,10 +768,11 @@ class TaskService
      * @param $contract_id
      * @param $task_id
      * @param $hit_description
+     * @param $approved_hit
      *
      * @return bool
      */
-    public function resetHIT($contract_id, $task_id, $hit_description)
+    public function resetHIT($contract_id, $task_id, $hit_description, $approved_hit = false)
     {
         $contract = $this->contract->find($contract_id);
 
@@ -811,12 +813,14 @@ class TaskService
                 }
                 else {
                     $removedHit = $response['response'];
-                    if ($removedHit['HIT']['HITStatus'] != "Disposed") {
+
+                    if ($removedHit && $removedHit['HIT']['HITStatus'] != "Disposed" && !$approved_hit) {
                         return [
                             'result'  => false,
                             'message' => trans('HIT is in Reviewable state so can not be reset.'),
                         ];
                     }
+
                     $this->logger->info(
                         'HIT successfully deleted',
                         ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]
@@ -873,7 +877,7 @@ class TaskService
             );
 
             return ['result' => false, 'message' => $e->getErrors()];
-        } catch (Exception $e) {
+        } catch (Exception $e) {         
             $this->logger->error(
                 'HIT create failed. '.$e->getMessage(),
                 ['Contract id' => $contract_id, 'Task' => $task_id, 'Page no' => $task->page_no]
@@ -891,9 +895,17 @@ class TaskService
                 'hit_type_id' => $ret->hit_type_id,
                 'hit_description' =>$description,
                 'created_at'  => date('Y-m-d H:i:s'),
+                'is_auto_approved' => false,
             ];
 
             $this->task->update($task->contract_id, $task->page_no, $update);
+
+            if($approved_hit){
+                $contract->mturk_status = Contract::MTURK_SENT;
+                $contract->textType     = Contract::NEEDS_FULL_TRANSCRIPTION;
+                $contract->save();
+            }
+
             $this->logger->info('HIT successfully reset', ['Contract id' => $contract_id, 'Task' => $task->toArray()]);
             $this->logger->mTurkActivity('mturk.log.reset', null, $task->contract_id, $task->page_no);
 

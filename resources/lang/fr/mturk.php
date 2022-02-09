@@ -72,9 +72,13 @@
      'writ_hit_description'        => "Rédiger la description du HIT", 
      'reject_task'                => "Rejeter la tâche",
      'reset_task'                  => 'Réinitialiser la tâche',
-
-
-
+     'text_explainer'          => ' <li><b>Noter:</b></li>
+                                    <li><b>M-Approved</b> (approuvé manuellement) fait référence aux HIT approuvés par 
+                                        l\'administrateur du site RC/OLC.</li><li>
+                                        <b>A-Approved</b> (approuvé automatiquement) fait référence aux HIT qui sont automatiquement approuvés par le système MTurk. 
+                                        Les HIT sont automatiquement approuvés 30 jours après la soumission du devoir. Les HIT approuvés A peuvent être réinitialisés
+                                        et envoyés à MTurk pour retranscription.
+                                    </li>',
      'log'           =>[
          'create'     => ":Contrat envoyé au Turc Mécanique",
          'reject'     => "HIT rejetée",
