@@ -1402,6 +1402,7 @@ class ContractService
                     'rc'=>'RC' ,
                     'olc'=>'OLC',
                 ];
+            $order = [];
 
             foreach($files as $key => $file){
 
