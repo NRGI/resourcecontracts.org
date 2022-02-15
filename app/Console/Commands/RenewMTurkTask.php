@@ -71,7 +71,7 @@ class RenewMTurkTask extends Command
             $pageNumber = $page->page_no;
             $pageId     = $page->id;
 
-            if ($task->resetHIT($contractId, $pageId)) {
+            if ($task->resetHIT($contractId, $pageId,'')) {
                 $availableBalance = $availableBalance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
                 $this->info(
                     sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contractId, $hitId, $pageNumber)
