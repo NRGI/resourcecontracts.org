@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Mturk\Repositories;
 
 use App\Nrgi\Mturk\Entities\Task;
+use App\Nrgi\Mturk\Entities\MturkTaskItem;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -23,12 +24,18 @@ class TaskRepository implements TaskRepositoryInterface
      */
     protected $task;
 
+        /**
+     * @var MturkTaskItem
+     */
+    protected $taskItem;
+
     /**
      * @param Task $task
      */
-    public function __construct(Task $task)
+    public function __construct(Task $task, MturkTaskItem $taskItem)
     {
         $this->task = $task;
+        $this->taskItem = $taskItem;
     }
 
     /**
@@ -38,18 +45,29 @@ class TaskRepository implements TaskRepositoryInterface
      *
      * @return bool
      */
-    public function createTasks($tasks)
+    public function createTasks($tasks, $task_items_per_task)
     {
         $tasks_collection = $tasks->toArray();
-
-        $tasks = [];
-        foreach ($tasks_collection as $key => $value) {
-            $tasks[] = array_only($value, ['contract_id', 'page_no', 'pdf_url']) + [
+        $per_task_count = isset($task_items_per_task) && !is_nan($task_items_per_task) && $task_items_per_task > 0 ? $task_items_per_task : 5;
+        $chunked_tasks = array_chunk($tasks_collection, $per_task_count);
+        $task_items = [];
+        foreach($chunked_tasks as $k => $task_item_group) {
+            if(count($task_item_group) < 1) {
+                continue;
+            }
+            $task =  array_only($task_item_group[0], ['contract_id']) + [
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+           $created_task = $this->task->insert($task);
+            foreach($task_item_group as $eleKey => $taskItemVal) {
+                $taskItems[] = array_only($taskItemVal, ['page_no', 'pdf_url']) + [
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
+                    'task_id' => $created_task->id,
                 ];
+            }
         }
-
         return $this->task->insert($tasks);
     }
 
@@ -64,9 +82,24 @@ class TaskRepository implements TaskRepositoryInterface
      */
     public function update($contract_id, $page_no, $update)
     {
-        return $this->task->where('contract_id', $contract_id)
-                          ->where('page_no', $page_no)
-                          ->update($update);
+        $task = $this->task->where('contract_id', $contact_id)->whereHas('taskItems',
+         function ($q) use($page_no) {
+           return $q->where('page_no', $page_no);})
+           ->update($update);
+    }
+
+     /**
+     * Update Task
+     *
+     * @param $contract_id
+     * @param $page_no
+     * @param $update
+     *
+     * @return mixed
+     */
+    public function updateWithId($contract_id, $task_id, $update)
+    {
+        $task = $this->task->where('contract_id', $contact_id)->where('id', $task_id)->update($update);
     }
 
     /**
@@ -91,7 +124,7 @@ class TaskRepository implements TaskRepositoryInterface
      */
     public function getTask($contract_id, $task_id)
     {
-        return $this->task->where('contract_id', $contract_id)->where('id', $task_id)->first();
+        return $this->task->where('contract_id', $contract_id)->where('id', $task_id)->with('taskItems')->first();
     }
 
     /**

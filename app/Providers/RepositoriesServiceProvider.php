@@ -50,6 +50,10 @@ class RepositoriesServiceProvider extends ServiceProvider
             'App\Nrgi\Mturk\Repositories\TaskRepository'
         );
         $this->app->bind(
+            'App\Nrgi\Mturk\Repositories\MturkTaskItem\MturkTaskItemRepositoryInterface',
+            'App\Nrgi\Mturk\Repositories\MturkTaskItem\MturkTaskItemRepository'
+        );
+        $this->app->bind(
             'App\Nrgi\Mturk\Repositories\Activity\ActivityRepositoryInterface',
             'App\Nrgi\Mturk\Repositories\Activity\ActivityRepository'
         );

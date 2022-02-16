@@ -412,7 +412,7 @@ class ContractRepository implements ContractRepositoryInterface
     {
         return $this->contract->with(
             [
-                'tasks' => function ($query) use ($status, $approved) {
+                'tasks.taskItems' => function ($query) use ($status, $approved) {
                     if (!is_null($status)) {
                         $query->where('status', $status);
                     }

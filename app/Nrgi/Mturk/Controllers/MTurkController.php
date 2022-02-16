@@ -12,6 +12,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
+use Illuminate\Contracts\Logging\Log;
 
 /**
  * Class MturkController
@@ -39,6 +40,10 @@ class MTurkController extends Controller
      * @var DatabaseManager
      */
     private $db;
+        /**
+     * @var Log
+     */
+    protected $logger;
 
     /**
      * @param TaskService     $task
@@ -46,13 +51,15 @@ class MTurkController extends Controller
      * @param ActivityService $activity
      * @param MTurkService    $mturk
      * @param DatabaseManager $db
+     * @param Log                   $logger
      */
     public function __construct(
         TaskService $task,
         ContractService $contract,
         ActivityService $activity,
         MTurkService $mturk,
-        DatabaseManager $db
+        DatabaseManager $db,
+        Log $logger
     ) {
         $this->middleware('auth', ['except' => 'publicPage']);
         $this->task     = $task;
@@ -60,6 +67,7 @@ class MTurkController extends Controller
         $this->activity = $activity;
         $this->mturk    = $mturk;
         $this->db    = $db;
+        $this->logger          = $logger;
     }
 
     /**
@@ -101,6 +109,7 @@ class MTurkController extends Controller
         $contractAll = $this->contract->findWithTasks($contract_id);
 
         $contract->tasks = $this->task->appendAssignment($contract->tasks);
+        $this->logger->info('Contract tasks'.json_encode($contract->tasks));
         $total_pages     = $contractAll->tasks->count();
         $total_hit       = $this->task->getTotalHits($contract_id);
         $status          = $this->task->getTotalByStatus($contract_id);
@@ -118,7 +127,7 @@ class MTurkController extends Controller
     public function createTasks(Request $request, $id)
     {
         $description = $request->get('description');
-        if ($this->task->create($id, $description)) {
+        if ($this->task->create($id, $description, 5)) {
             return redirect()->back()->withSuccess(trans('mturk.action.sent_to_mturk'));
         }
 
@@ -339,8 +348,20 @@ class MTurkController extends Controller
         $workerId     = $request->get('workerId');
         $langCode     = strtolower($request->get('lang', 'en'));
         $pdf          = $request->get('pdf');
-
-        return view('mturk.public', compact('assignmentId', 'workerId', 'langCode', 'pdf'));
+        $contractId   = $request->get('contractId');
+        $contractPages = $request->get('pages');
+        $bucket = $request->get('bucket');
+        $contractPdfUrls = [];
+        if(isset($pdf) && strlen($pdf) > 0) {
+            $contractPdfUrls = [$pdf];
+        } elseif(isset($bucket)&&isset($contractId) && isset($contractPages) && count($contractPages) > 0) {
+            $bucket = rtrim($bucket, '/');
+            $pages        = explode(',', $contractPages);
+            $bucket_url = $bucket.'/'.$contractId;
+            $contractPdfUrls = array_map(function($v) use($bucket_url) {return $bucket_url.'/'.$v.'.pdf'; }, $pages);
+        }
+        $this->logger->info('ContractPdfUrls'.json_encode($contractPdfUrls));
+        return view('mturk.public', compact('assignmentId', 'workerId', 'langCode', 'contractPdfUrls'));
     }
 
     /**

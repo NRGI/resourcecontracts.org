@@ -13,9 +13,10 @@ interface TaskRepositoryInterface
      * Create Tasks in MTurk
      *
      * @param $tasks
+     * @param $task_items_per_task
      * @return bool
      */
-    public function createTasks($tasks);
+    public function createTasks($tasks, $task_items_per_task);
 
     /**
      * Get All Task by Contract ID
@@ -35,6 +36,19 @@ interface TaskRepositoryInterface
      */
     public function update($contract_id, $page_no, $update);
 
+        /**
+     * Update Task
+     *
+     * @param $contract_id
+     * @param $page_no
+     * @param $update
+     * @return mixed
+     */
+    public function updateWithId($contract_id, $task_id, $update);
+
+
+
+    
     /**
      * Get Task detail
      *
