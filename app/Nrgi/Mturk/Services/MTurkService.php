@@ -166,7 +166,7 @@ class MTurkService extends MechanicalTurkV2
         foreach($taskItems as $key => $taskItem )
         {
             $this->logger->info('Task item'.json_encode($taskItem));
-            $feedback       = '';
+            $feedback       = array();
            
             if(isset($taskItem->answer)) 
             {
@@ -239,7 +239,7 @@ class MTurkService extends MechanicalTurkV2
                         if(count($values) > 1) {
                          
                             $page_no = $values[1];
-                            $this->logger->info('API ASSINGMENT PAGE NO.'.json_encode($page_no))
+                            $this->logger->info('API ASSINGMENT PAGE NO.'.json_encode($page_no));
                             $feedback[$page_no] = $ans['FreeText'];
         
                             if (is_array($feedback[$page_no])) {
@@ -262,7 +262,7 @@ class MTurkService extends MechanicalTurkV2
         /*updates assignment json column with answer if api returns answer*/
         if ($update_ans) {
             $taskItem->answer = json_decode(json_encode($db_assignment));
-            $this->logger->info('API ASSINGMENT ANSWER'.json_encode($taskItem->answer))
+            $this->logger->info('API ASSINGMENT ANSWER'.json_encode($taskItem->answer));
             $taskItem->save();
         }
     }
