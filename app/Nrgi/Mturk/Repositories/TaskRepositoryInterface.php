@@ -30,11 +30,11 @@ interface TaskRepositoryInterface
      * Update Task
      *
      * @param $contract_id
-     * @param $page_no
+     * @param $page_nos
      * @param $update
      * @return mixed
      */
-    public function update($contract_id, $page_no, $update);
+    public function update($contract_id, $page_nos, $update);
 
         /**
      * Update Task

@@ -1,4 +1,4 @@
-<?php namespace App\Nrgi\Mturk\Repositories;
+<?php namespace App\Nrgi\Mturk\Repositories\MturkTaskItem;
 
 use App\Nrgi\Mturk\Entities\MTurkTaskItem;
 use Illuminate\Database\Eloquent\Collection;

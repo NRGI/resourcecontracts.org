@@ -110,7 +110,10 @@ class MTurkController extends Controller
 
         $contract->tasks = $this->task->appendAssignment($contract->tasks);
         $this->logger->info('Contract tasks'.json_encode($contract->tasks));
-        $total_pages     = $contractAll->tasks->count();
+        $total_pages     = 0;
+        foreach($contractAll->tasks as $key=>$task ) {
+            $total_pages = $total_pages + count($task->taskItems);
+        }
         $total_hit       = $this->task->getTotalHits($contract_id);
         $status          = $this->task->getTotalByStatus($contract_id);
 

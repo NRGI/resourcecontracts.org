@@ -8,8 +8,15 @@
 		</div>
 
 		<div class="panel-body">
+		<?php
+		$taskItems = $task->taskItems->toArray();
+		$all_pages = array_map(function($el) { return $el['page_no'];}, $taskItems);
+		$min_page = min($all_pages); 
+		$max_page = max($all_pages);
+		$page_val = $min_page + $max_page>$min_page ? "-" + $max_page : ""
+		?>
 			<ul>
-				<li>@lang('mturk.page_no'): {{$task->page_no}}</li>
+				<li>@lang('mturk.page_no'): {{$page_val}}</li>
 				<li>@lang('mturk.hit'): {{$task->hit_id}}</li>
 				<li>@lang('mturk.status'): {{_l('mturk.'.$task->status())}}</li>
 				<li>@lang('mturk.approved'): {{_l('mturk.'.$task->approved())}} </li>

@@ -40,18 +40,18 @@ class ResetMTurkTasks extends Command {
 	public function fire(Task $task, TaskService $taskService)
 	{
 		$contract_id = $this->input->getArgument('id');
-		$contract_tasks = $task->pending()->where('contract_id',$contract_id)->get();
+		$contract_tasks = $task->pending()->where('contract_id',$contract_id)->with('taskItems')->get();
 
-		foreach($contract_tasks as $page)
+		foreach($contract_tasks as $mturk_task)
 		{
-			$contract_id = $page->contract_id;
-			$hit_id      = $page->hit_id;
-			$page_no     = $page->page_no;
+			$contract_id = $mturk_task->contract_id;
+			$hit_id      = $mturk_task->hit_id;
+			$all_pages_str     = join(',', $task->getAllPages($mturk_task->taskItems->toArray()));
 
-			if ($taskService->resetHIT($contract_id, $page->id,'')) {
-				$this->info(sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contract_id, $hit_id, $page_no));
+			if ($taskService->resetHIT($contract_id, $mturk_task->id,'')) {
+				$this->info(sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contract_id, $hit_id, $all_pages_str));
 			} else {
-				$this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contract_id, $hit_id, $page_no));
+				$this->error(sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contract_id, $hit_id, $all_pages_str));
 			}
 		}
 

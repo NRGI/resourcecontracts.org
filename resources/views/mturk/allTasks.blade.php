@@ -51,7 +51,13 @@ $approved = \Input::get('approved', null);
                 <tbody>
 
                 @forelse($tasks as $task)
-                    <?php $contract = json_decode($task->metadata);?>
+                    <?php $contract = json_decode($task->metadata); 
+                    $taskItems = $task->taskItems->toArray();
+                    $all_pages = array_map(function($el) { return $el['page_no'];}, $taskItems);
+                    $min_page = min($all_pages); 
+                    $max_page = max($all_pages);
+                    $page_val = $min_page + $max_page>$min_page ? "-" + $max_page : ""
+                    ?>
                     <tr>
                         <td><a href="{{route('contract.show',$task->contract_id)}}">
                                 {{$contract->contract_name}}
@@ -68,7 +74,7 @@ $approved = \Input::get('approved', null);
                             @endif
                             <a href="{{ hit_url($task->hit_id) }}" target="_blank" title="@lang('mturk.view_on_amazon')" data-toggle="tooltip"> <span class="glyphicon glyphicon-eye-open"></span></a>
                         </td>
-                        <td>{{$task->page_no}}</td>
+                        <td>{{min($all_pages)}}-{{max($all_pages)}}</td>
                         <td>{{_l('mturk.'. $task->status()) }} </td>
                         <td>{{_l('mturk.'.$task->approved())}} </td>
                         <td>{{$task->created_at->format('Y-m-d h:i:s A')}}</td>

@@ -29,10 +29,10 @@ class NrgiWriter extends Writer
      * @param null  $contractId
      * @return bool
      */
-    public function mTurkActivity($message, $params = array(), $contractId = null, $page_no= null)
+    public function mTurkActivity($message, $params = array(), $contractId = null, $pages= null)
     {
         $activity = app('App\Nrgi\Mturk\Services\ActivityService');
-        return $activity->save($message, $params, $contractId, $page_no);
+        return $activity->save($message, $params, $contractId, $pages);
     }
 
 }
