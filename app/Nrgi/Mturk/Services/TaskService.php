@@ -183,8 +183,9 @@ class TaskService
         }
 
         try {
-            // $contract->mturk_status = Contract::MTURK_SENT;
-            // $contract->save();
+            //TODO: REVERT MTURK STATUS SAVE
+            $contract->mturk_status = Contract::MTURK_SENT;
+            $contract->save();
         } catch (Exception $e) {
             $this->logger->error('Update Task Status:'.$e->getMessage(), ['Contract_id' => $contract->id]);
 

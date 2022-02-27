@@ -167,7 +167,7 @@ class MTurkService extends MechanicalTurkV2
         {
             $this->logger->info('Task item'.json_encode($taskItem));
             $feedback       = array();
-           
+            $update_ans     = false;
             if(isset($taskItem->answer)) 
             {
                 $db_assignment  = json_decode(json_encode($taskItem->answer), true);
