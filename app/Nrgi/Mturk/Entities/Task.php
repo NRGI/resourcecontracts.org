@@ -163,4 +163,11 @@ class Task extends Model
         return $query->where('status', '=', static::PENDING);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function taskItems()
+    {
+        return $this->hasMany('App\Nrgi\Mturk\Entities\MturkTaskItem', 'task_id');
+    }
 }

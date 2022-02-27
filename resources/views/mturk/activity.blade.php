@@ -49,9 +49,15 @@
                 </thead>
                 <tbody>
                 @forelse($activities as $activity)
+                <?php $all_pages = isset($activity->pages) ? explode(',', $activity->pages->toArray()) : []; 
+                $min_page = min($all_pages); 
+                $max_page = max($all_pages);
+                $page_val = $min_page + $max_page>$min_page ? "-" + $max_page : ""
+                 
+                 ?>
                     <tr>
                         <td><a href="{{route('contract.show',$activity->contract_id)}}">{{ $activity->contract->metadata->contract_name or ''}}</a></td>
-                        <td>{{ $activity->page_no or ''}}</td>
+                        <td>{{ $page_val}}</td>
 
                         <td>
                             {{ trans($activity->message,$activity->message_params) }} <br>

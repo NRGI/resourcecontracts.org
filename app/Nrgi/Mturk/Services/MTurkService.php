@@ -1,6 +1,7 @@
 <?php namespace App\Nrgi\Mturk\Services;
 
 use App\Nrgi\Mturk\Entities\Task;
+use App\Nrgi\Mturk\Entities\MturkTaskItem;
 use Carbon\Carbon;
 use Illuminate\Contracts\Logging\Log;
 
@@ -20,19 +21,26 @@ class MTurkService extends MechanicalTurkV2
     private $logger;
 
     /**
+     * @var MturkTaskItem
+     */
+    private $mturkTaskItem;
+
+    /**
      * MTurkService constructor.
      *
      * @param Carbon $carbon
      * @param Log    $logger
+    * @param MturkTaskItem    $mturkTaskItem
      *
      * @throws MTurkException
      */
-    public function __construct(Carbon $carbon, Log $logger)
+    public function __construct(Carbon $carbon, Log $logger, MturkTaskItem $mturkTaskItem)
     {
         parent::__construct();
 
         $this->carbon = $carbon;
         $this->logger = $logger;
+        $this->mturkTaskItem = $mturkTaskItem;
     }
 
     /**
@@ -154,9 +162,28 @@ class MTurkService extends MechanicalTurkV2
      */
     public function getAns($task)
     {
-        $feedback       = '';
-        $db_assignment  = json_decode(json_encode($task->assignments), true);
-        $update_ans     = false;
+        $taskItems = $task->taskItems->toArray();
+        foreach($taskItems as $key => $taskItem )
+        {
+            $this->logger->info('Task item'.json_encode($taskItem));
+            $feedback       = '';
+           
+            if(isset($taskItem->answer)) 
+            {
+                $db_assignment  = json_decode(json_encode($taskItem->answer), true);
+                $this->logger->info('DB assignment'.json_encode($db_assignment));
+                $update_ans     = false;
+                if (isset($db_assignment)) {
+                    if (!is_array($db_assignment)) {
+                        $feedback[$taskItem->page_no] = $db_assignment;
+                    } elseif (is_array($db_assignment) && isset($db_assignment['answer'])) {
+                        $feedback[$taskItem->page_no] = $db_assignment['answer'];
+                    }
+                }
+            }
+           
+
+
 
         /*
          * Checks if task assignment have answer in assignment json column
@@ -189,17 +216,11 @@ class MTurkService extends MechanicalTurkV2
             }
          * If api call returns answer then update the json column with answer for safety
         */
-        if (isset($db_assignment['assignment']) && isset($db_assignment['assignment']['answer'])) {
-            if (!is_array($db_assignment['assignment']['answer'])) {
-                $feedback = $db_assignment['assignment']['answer'];
-            } elseif (is_array($db_assignment['assignment']['answer']) && isset($db_assignment['assignment']['answer']['answer'])) {
-                $feedback = $db_assignment['assignment']['answer']['answer'];
-            }
-        }
+
 
         /*API CALL*/
         $api_assignment = $this->listAssignmentsForHIT($task->hit_id);
-
+        $this->logger->info('API ASSIGNMENT'.json_encode($api_assignment));
         if (array_key_exists('Assignments', $api_assignment) && is_array($api_assignment['Assignments']) && !empty($api_assignment['Assignments'])) {
             $assign = $api_assignment['Assignments'][0];
 
@@ -211,30 +232,40 @@ class MTurkService extends MechanicalTurkV2
                 $answers = $answers['Answer'];
 
                 foreach ($answers as $ans) {
-                    if ($ans['QuestionIdentifier'] == 'feedback') {
-                        $feedback = $ans['FreeText'];
-
-                        if (is_array($feedback)) {
-                            $feedback = $feedback[0];
+                    $this->logger->info('API ASSIGNMENT ANSWER'.json_encode($ans));
+                    $answerValue = $ans['QuestionIdentifier'];
+                    if (substr($answerValue, 0, strlen('feedback')) == 'feedback') {
+                        $values = explode('_', $key);
+                        if(count($values) > 1) {
+                         
+                            $page_no = $values[1];
+                            $this->logger->info('API ASSINGMENT PAGE NO.'.json_encode($page_no))
+                            $feedback[$page_no] = $ans['FreeText'];
+        
+                            if (is_array($feedback[$page_no])) {
+                                $feedback[$page_no] = $feedback[$page_no][0];
+                            }
+                            
+                            /* The assignment json is updated with answer for safety */
+                            if(is_array($db_assignment)) {
+                                $db_assignment['answer'] = $feedback[$page_no];
+                                $update_ans = true;
+                            }
+                            break;
                         }
-                        
-                        /* The assignment json is updated with answer for safety */
-                        if(is_array($db_assignment['assignment']['answer'])) {
-                            $db_assignment['assignment']['answer']['answer'] = $feedback;
-                            $update_ans                                      = true;
-                        }
-                        break;
-
                     }
+
                 }
             }
         }
 
         /*updates assignment json column with answer if api returns answer*/
         if ($update_ans) {
-            $task->assignments = json_decode(json_encode($db_assignment));
-            $task->save();
+            $taskItem->answer = json_decode(json_encode($db_assignment));
+            $this->logger->info('API ASSINGMENT ANSWER'.json_encode($taskItem->answer))
+            $taskItem->save();
         }
+    }
 
         return $feedback;
     }

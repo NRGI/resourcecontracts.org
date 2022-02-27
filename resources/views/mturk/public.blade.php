@@ -35,24 +35,35 @@
     <?php endif;?>
 
     <?php $external_mturk_url = (env('MTURK_SANDBOX')) ? "https://workersandbox.mturk.com/mturk/externalSubmit" : "https://www.mturk.com/mturk/externalSubmit"; ?>
-	<div class="left">
-		<form id="mturk_form" method="post" accept-charset="utf-8" action="<?php echo $external_mturk_url; ?>">
-			<input type="hidden" name="workerId" value="<?php echo $workerId;?>"/>
-			<input type="hidden" name="assignmentId" value="<?php echo $assignmentId;?>"/>
-			<textarea name="feedback" id="feedback" style="width: 100%" rows="38.5"
-					  placeholder="Write the text here"></textarea>
-			<br/>
+	<form id="mturk_form" method="post" accept-charset="utf-8" action="<?php echo $external_mturk_url; ?>">
+		<input type="hidden" name="workerId" value="<?php echo $workerId;?>" />
+		<input type="hidden" name="assignmentId" value="<?php echo $assignmentId;?>" />
+		@foreach($contractPdfUrls as $pdf)
+		<div class="form-group-wrapper">
+			<div class="form-group-item">
+				<?php
+				$arr = explode('/', rtrim($pdf, '.pdf'));
+				$pageNo = end($arr);
+				?>
+				<textarea name="feedback_{{$pageNo}}" id="feedback_{{$pageNo}}" style="width: 100%" rows="38.5"
+					placeholder="Write the text here"></textarea>
+			</div>
+			<div class="form-group-item">
+				<iframe width="100%" height="590" src="{{url('viewer/index.php')}}#<?php echo $pdf;?>"></iframe>
+			</div>
+		</div>
 
-            <?php if($assignmentId != 'ASSIGNMENT_ID_NOT_AVAILABLE'):?>
-			<button type="submit" value="Submit" class="button">Finish and Submit HIT</button>
-            <?php else:?>
-			<p>You must accept HIT before you can submit the result.</p>
-            <?php endif;?>
-		</form>
-	</div>
-	<div class="right">
-		<iframe width="100%" height="590" src="{{url('viewer/index.php')}}#<?php echo $pdf;?>"></iframe>
-	</div>
+		@endforeach
+		<div class="left">
+			<div class="left">
+				<?php if($assignmentId != 'ASSIGNMENT_ID_NOT_AVAILABLE'):?>
+				<button type="submit" value="Submit" class="button">Finish and Submit HIT</button>
+				<?php else:?>
+				<p>You must accept HIT before you can submit the result.</p>
+				<?php endif;?>
+			</div>
+		</div>
+        </form>
 </div>
 
 <?php if($assignmentId != 'ASSIGNMENT_ID_NOT_AVAILABLE'):?>

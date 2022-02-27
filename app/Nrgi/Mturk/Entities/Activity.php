@@ -14,7 +14,7 @@ class Activity extends Model
      * The fields that can be mass assigned
      * @var array
      */
-    protected $fillable = ['page_no', 'contract_id', 'user_id', 'message', 'message_params'];
+    protected $fillable = ['pages', 'contract_id', 'user_id', 'message', 'message_params'];
     /**
      * The database table used by the model.
      *

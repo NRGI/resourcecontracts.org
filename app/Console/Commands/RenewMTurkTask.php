@@ -43,9 +43,9 @@ class RenewMTurkTask extends Command
      */
     public function fire(TaskService $task)
     {
-        $expired_pages = $task->getExpired();
+        $expiredMturkTasks = $task->getExpired();
 
-        $pages = $this->setPriority($expired_pages);
+        $mturkTasks = $this->setPriority($expiredMturkTasks);
 
         $availableBalance = (int) $task->getMturkBalance();
 
@@ -53,12 +53,12 @@ class RenewMTurkTask extends Command
             return false;
         }
 
-        foreach ($pages as $key => $page) {
+        foreach ($mturkTasks as $key => $mturkTask) {
 
-            $page = $task->updateAssignment($page);
+            $mturkTask = $task->updateAssignment($mturkTask);
 
-            if ($page->status == Task::COMPLETED || $page->assignments['assignment']['status'] == 'Approved' ||
-                $page->assignments['assignment']['status'] == 'Rejected') {
+            if ($mturkTask->status == Task::COMPLETED || $mturkTask->assignments['assignment']['status'] == 'Approved' ||
+                $mturkTask->assignments['assignment']['status'] == 'Rejected') {
                 continue;
             }
 
@@ -66,19 +66,19 @@ class RenewMTurkTask extends Command
                 break;
             }
 
-            $contractId = $page->contract_id;
-            $hitId      = $page->hit_id;
-            $pageNumber = $page->page_no;
-            $pageId     = $page->id;
+            $contractId = $mturkTask->contract_id;
+            $hitId      = $mturkTask->hit_id;
+            $all_pages_str =  join(',', $task->getAllPages($task->taskItems->toArray()));
+            $pageId     = $mturkTask->id;
 
             if ($task->resetHIT($contractId, $pageId,'')) {
                 $availableBalance = $availableBalance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
                 $this->info(
-                    sprintf('Contract ID : %s with HIT: %s, Page no: %s updated', $contractId, $hitId, $pageNumber)
+                    sprintf('Contract ID : %s with HIT: %s, Page nos: %s updated', $contractId, $hitId, $all_pages_str)
                 );
             } else {
                 $this->error(
-                    sprintf('Contract ID : %s with HIT: %s, Page no: %s failed', $contractId, $hitId, $pageNumber)
+                    sprintf('Contract ID : %s with HIT: %s, Page nos: %s failed', $contractId, $hitId, $all_pages_str)
                 );
             }
         }
@@ -107,28 +107,32 @@ class RenewMTurkTask extends Command
      *
      * @return array
      */
-    private function setPriority($expiredPages)
+    private function setPriority($expiredMturkTasks)
     {
         $contracts = [];
-        foreach ($expiredPages as $page) {
-            $contracts[$page->contract_id][] = $page;
+        foreach ($expiredMturkTasks as $mturkTask) {
+            $contracts[$mturkTask->contract_id][] = $mturkTask;
         }
         $count = [];
 
         foreach ($contracts as $id => $contract) {
-            $count[$id] = count($contract);
+            $count[$id] = 0;
+            foreach($contract as $key =>$mturkTask) {
+                $taskItemsCount = count($mturkTask->taskItems);
+                $count[$id] = $count[$id]  + $taskItemsCount > 0 ? $taskItemsCount : 1;
+            }
 
         }
         asort($count);
-        $pages = [];
+        $mturkTasks = [];
 
         foreach ($count as $id => $v) {
             $cons = $contracts[$id];
-            foreach ($cons as $page) {
-                $pages[] = $page;
+            foreach ($cons as $mturkTask) {
+                $mturkTasks[] = $mturkTask;
             }
         }
 
-        return $pages;
+        return $mturkTasks;
     }
 }

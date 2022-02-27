@@ -332,6 +332,14 @@ class Contract extends Model
         return $this->hasMany('App\Nrgi\Mturk\Entities\Task');
     }
 
+     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function taskItems()
+    {
+        return $this->hasManyThrough('App\Nrgi\Mturk\Entities\MturkTaskItem', 'App\Nrgi\Mturk\Entities\Task', 'contract_id', 'task_id', 'id');
+    }
+
     /**
      * Get Text Type by Key
      *
