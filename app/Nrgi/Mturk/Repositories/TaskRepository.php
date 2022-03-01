@@ -118,7 +118,7 @@ class TaskRepository implements TaskRepositoryInterface
      */
     public function updateWithId($contract_id, $task_id, $update)
     {
-        $task = $this->task->where('contract_id', $contact_id)->where('id', $task_id)->update($update);
+        $task = $this->task->where('contract_id', $contract_id)->where('id', $task_id)->update($update);
     }
 
     /**
@@ -149,13 +149,13 @@ class TaskRepository implements TaskRepositoryInterface
     /**
      * Get Total Hits
      *
-     * @param $contact_id
+     * @param $contract_id
      *
      * @return int
      */
-    public function getTotalHits($contact_id)
+    public function getTotalHits($contract_id)
     {
-        return $this->task->where('contract_id', $contact_id)
+        return $this->task->where('contract_id', $contract_id)
                           ->where('hit_id', '!=', '')
                           ->where('hit_type_id', '!=', '')
                           ->count();
