@@ -11,9 +11,9 @@
 		<?php
 		$taskItems = $task->taskItems->toArray();
 		$all_pages = array_map(function($el) { return $el['page_no'];}, $taskItems);
-		$min_page = min($all_pages); 
-		$max_page = max($all_pages);
-		$page_val = $min_page + $max_page>$min_page ? "-" + $max_page : ""
+		$min_page = count($all_pages) > 0 ? min($all_pages) : ''; 
+		$max_page = count($all_pages) > 0 ? max($all_pages) : '';
+		$page_val = $min_page.($max_page>$min_page ? "-".$max_page : "")
 		?>
 			<ul>
 				<li>@lang('mturk.page_no'): {{$page_val}}</li>
@@ -34,25 +34,22 @@
                 ?>
 				<li>@lang('mturk.submit_time'): {{ $submit_time }}</li>
 			</ul>
-
+			@foreach($feedback as $page_no => $answer)
+			
 			<div class="row">
+				<div class="col-sm-12">
+				<h4>@lang('mturk.page_no') {{$page_no}} </h4>
+				</div>
 				<div class="col-md-6">
 					<div class="textarea" style="border: 1px solid #ccc; overflow: scroll; padding: 15px; height:580px">
-						{!! nl2br($feedback) !!}
+						{!! nl2br($answer) !!}
 					</div>
 				</div>
 				<div class="col-md-6">
-					<a href="{{$task->pdf_url}}" id="pdf_url"></a>
-					@section('script')
-						<script src="{{asset('js/jquery.gdocsviewer.min.js')}}"></script>
-						<script type="text/javascript">
-                            $(document).ready(function () {
-                                $('#pdf_url').gdocsViewer({width: 450, height: 580});
-                            });
-						</script>
-					@stop
+				<iframe width="100%" height="580px" src="{{url('viewer/index.php')}}#<?php echo $task->pdf_url;?>"></iframe>
 				</div>
 			</div>
+			@endforeach
 
 			@if(empty($task->approved))
 				<div class="mturk-btn-group">

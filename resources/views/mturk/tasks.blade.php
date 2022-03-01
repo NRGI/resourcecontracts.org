@@ -78,9 +78,9 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                 <?php
                 $taskItems = $task->taskItems->toArray();
                 $all_pages = array_map(function($el) { return $el['page_no'];}, $taskItems);
-                $min_page = min($all_pages); 
-                $max_page = max($all_pages);
-                $page_val = $min_page + $max_page>$min_page ? "-" + $max_page : ""
+                $min_page = count($all_pages) > 0 ? min($all_pages) : ''; 
+                $max_page = count($all_pages) > 0 ? max($all_pages) : '';
+                $page_val = $min_page.($max_page>$min_page ? "-".$max_page : "")
                 ?>
                     <tr>
                         <td>

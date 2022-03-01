@@ -75,12 +75,12 @@ class MTurkService extends MechanicalTurkV2
      *
      * @return bool|object
      */
-    public function createHIT($title, $description, $question_url)
+    public function createHIT($title, $description, $question_url, $tasks_count)
     {
         $params = [
             'Title'                       => str_limit($title, 128),
             'Description'                 => $description,
-            "Reward"                      => config('mturk.defaults.production.Reward'),
+            "Reward"                      => config('mturk.defaults.production.Reward') * $tasks_count,
             'AssignmentDurationInSeconds' => config('mturk.defaults.production.AssignmentDurationInSeconds'),
             'LifetimeInSeconds'           => config('mturk.defaults.production.LifetimeInSeconds'),
             'Question'                    => $this->getQuestionXML($question_url),
@@ -165,19 +165,20 @@ class MTurkService extends MechanicalTurkV2
         $taskItems = $task->taskItems->toArray();
         foreach($taskItems as $key => $taskItem )
         {
-            $this->logger->info('Task item'.json_encode($taskItem));
-            $feedback       = array();
-           
+            $this->logger->info('Task item'.$taskItem->answer.gettype($taskItem->answer));
+            $this->logger->info('Task item Answer'.$taskItem->answer);
+            $update_ans     = false;
             if(isset($taskItem->answer)) 
             {
-                $db_assignment  = json_decode(json_encode($taskItem->answer), true);
-                $this->logger->info('DB assignment'.json_encode($db_assignment));
+                $db_assignment  = json_decode($taskItem->answer);
+                $this->logger->info('DB assignment'.gettype($db_assignment));
+                $this->logger->info('DB assignment Resp'.json_encode($db_assignment));
                 $update_ans     = false;
                 if (isset($db_assignment)) {
-                    if (!is_array($db_assignment)) {
+                    if (is_string($db_assignment)) {
                         $feedback[$taskItem->page_no] = $db_assignment;
-                    } elseif (is_array($db_assignment) && isset($db_assignment['answer'])) {
-                        $feedback[$taskItem->page_no] = $db_assignment['answer'];
+                    } elseif (!is_string($db_assignment) && isset($db_assignment->answer)) {
+                        $feedback[$taskItem->page_no] = $db_assignment->answer;
                     }
                 }
             }

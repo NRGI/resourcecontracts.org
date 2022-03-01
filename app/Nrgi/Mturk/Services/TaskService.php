@@ -183,8 +183,9 @@ class TaskService
         }
 
         try {
-            // $contract->mturk_status = Contract::MTURK_SENT;
-            // $contract->save();
+            //TODO: REVERT MTURK STATUS SAVE
+            $contract->mturk_status = Contract::MTURK_SENT;
+            $contract->save();
         } catch (Exception $e) {
             $this->logger->error('Update Task Status:'.$e->getMessage(), ['Contract_id' => $contract->id]);
 
@@ -237,7 +238,7 @@ class TaskService
             $url         = $this->getMTurkUrl($contract->id, $all_pages_str, $contract->metadata->language);
             $description = !is_null($hit_description) && strlen(trim($hit_description)) > 0? $hit_description: config('mturk.defaults.production.Description');
             try {
-                $ret = $this->turk->createHIT($title, $description, $url);
+                $ret = $this->turk->createHIT($title, $description, $url, $per_task_items_count);
             } catch (MTurkException $e) {
                 $this->logger->error(
                     'createHIT: '.$e->getMessage(),
@@ -1279,7 +1280,8 @@ class TaskService
     }
     protected function getBucketUrl() 
     {
-        return env('AWS_S3_BUCKET_URL');
+        $s3Url = env('AWS_S3_BUCKET_URL');
+        return isset($s3Url) ? $s3Url : "https://".env('AWS_BUCKET')."s3.amazonaws.com";
     }
 
     /**
