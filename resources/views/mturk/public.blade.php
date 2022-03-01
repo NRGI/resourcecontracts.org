@@ -54,14 +54,15 @@
 		</div>
 
 		@endforeach
-		<div class="left">
-			<div class="left">
-				<?php if($assignmentId != 'ASSIGNMENT_ID_NOT_AVAILABLE'):?>
+		<div>
+		<?php if($assignmentId != 'ASSIGNMENT_ID_NOT_AVAILABLE'):?>
 				<button type="submit" value="Submit" class="button">Finish and Submit HIT</button>
 				<?php else:?>
 				<p>You must accept HIT before you can submit the result.</p>
-				<?php endif;?>
-			</div>
+		<?php endif;?>
+		</div>
+		<div>
+		<p style="font-size:12px; font-style:italic; font-weight: bold">(Incorrectly transcribed pages will result in the rejection of the entire HIT)</p>
 		</div>
         </form>
 </div>
