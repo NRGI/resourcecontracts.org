@@ -162,7 +162,8 @@ class MTurkService extends MechanicalTurkV2
      */
     public function getAns($task)
     {
-        $taskItems = $task->taskItems->toArray();
+        $taskItems = $task->taskItems;
+        $feedback       = array();
         foreach($taskItems as $key => $taskItem )
         {
             $this->logger->info('Task item'.$taskItem->answer.gettype($taskItem->answer));
