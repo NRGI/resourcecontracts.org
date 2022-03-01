@@ -958,7 +958,7 @@ class TaskService
         $description = !is_null($hit_description) && strlen(trim($hit_description)) > 0? $hit_description: config('mturk.defaults.production.Description');
 
         try {
-            $ret = $this->turk->createHIT($title, $description, $url);
+            $ret = $this->turk->createHIT($title, $description, $url, count($task->taskItems));
         } catch (MTurkException $e) {
             $this->logger->error(
                 'HIT create failed. '.$e->getMessage(),

@@ -47,7 +47,7 @@ interface MturkTaskItemRepositoryInterface
     /**
      * Get Total Task Items for Task
      *
-     * @param $contact_id
+     * @param $task_id
      * @return int
      */
     public function getTotalMturkTaskItems($task_id);

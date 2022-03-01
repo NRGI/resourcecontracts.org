@@ -110,7 +110,7 @@ class MturkTaskItemRepository implements MturkTaskItemRepositoryInterface
     /**
      * Get Total Hits
      *
-     * @param $contact_id
+     * @param $task_id
      *
      * @return int
      */

@@ -61,10 +61,10 @@ interface TaskRepositoryInterface
     /**
      * Get Total Hits
      *
-     * @param $contact_id
+     * @param $contract_id
      * @return int
      */
-    public function getTotalHits($contact_id);
+    public function getTotalHits($contract_id);
 
     /**
      * Get Total by status
