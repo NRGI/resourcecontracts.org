@@ -1299,7 +1299,7 @@ class TaskService
     protected function getBucketUrl() 
     {
         $s3Url = env('AWS_S3_BUCKET_URL');
-        return isset($s3Url) ? $s3Url : "https://".env('AWS_BUCKET')."s3.amazonaws.com";
+        return isset($s3Url) ? $s3Url : "https://".env('AWS_BUCKET').".s3.amazonaws.com";
     }
 
     /**
