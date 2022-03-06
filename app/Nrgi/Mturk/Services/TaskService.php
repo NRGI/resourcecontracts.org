@@ -238,7 +238,7 @@ class TaskService
             $url         = $this->getMTurkUrl($contract->id, $all_pages, $contract->metadata->language);
             $description = !is_null($hit_description) && strlen(trim($hit_description)) > 0? $hit_description: config('mturk.defaults.production.Description');
             try {
-                $ret = $this->turk->createHIT($title, $description, $url, $per_task_items_count);
+                $ret = $this->turk->createHIT($title, $description, $url, count($all_pages));
             } catch (MTurkException $e) {
                 $this->logger->error(
                     'createHIT: '.$e->getMessage(),
@@ -773,7 +773,7 @@ class TaskService
     $description = !is_null($hit_description) && strlen(trim($hit_description)) > 0 ? $hit_description: config('mturk.defaults.production.Description');
 
     try {
-        $ret = $this->turk->createHIT($title, $description, $url);
+        $ret = $this->turk->createHIT($title, $description, $url, count($all_pages));
     } catch (MTurkException $e) {
         $this->logger->error(
             'HIT create failed. '.$e->getMessage(),
@@ -853,8 +853,8 @@ class TaskService
     public function getMTurkTaskTitle($contract, $all_pages) 
     {
         $hasPages = count($all_pages) > 0;
-        $startPage = $hasPages ? $all_pages[0] : '';
-        $endPage = $hasPages ? $all_pages[count($all_pages) -1] : '';
+        $startPage = $hasPages ? min($all_pages) : '';
+        $endPage = $hasPages ? max($all_pages) : '';
        return sprintf(
             "Transcription of Contract '%s' - Pg: %s - %s Lang: %s",
             str_limit($contract->title, 70),
@@ -963,7 +963,7 @@ class TaskService
         $description = !is_null($hit_description) && strlen(trim($hit_description)) > 0? $hit_description: config('mturk.defaults.production.Description');
 
         try {
-            $ret = $this->turk->createHIT($title, $description, $url, count($task->taskItems));
+            $ret = $this->turk->createHIT($title, $description, $url, count($all_pages));
         } catch (MTurkException $e) {
             $this->logger->error(
                 'HIT create failed. '.$e->getMessage(),
@@ -1059,9 +1059,10 @@ class TaskService
             $taskItems = $task->taskItems->toArray();
             foreach($taskItems as $key => $taskItem) 
             {
-                $text     = is_string($textArray[$taskItem->page_no]) ? $textArray[$taskItem->page_no] : '';
+                $page_no = strval($taskItem['page_no']);
+                $text     = is_string($textArray[$page_no]) ? $textArray[$page_no] : '';
                 $pdf_text = nl2br($text);
-                $this->page->saveText($contract_id, $taskItem->page_no, $pdf_text, false);
+                $this->page->saveText($contract_id, $page_no, $pdf_text, false);
             }
         }
 

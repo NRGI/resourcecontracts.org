@@ -130,7 +130,8 @@ class MTurkController extends Controller
     public function createTasks(Request $request, $id)
     {
         $description = $request->get('description');
-        if ($this->task->create($id, $description, 5)) {
+        $per_task_items_count = config('mturk.defaults.production.TaskItemCount');
+        if ($this->task->create($id, $description, $per_task_items_count)) {
             return redirect()->back()->withSuccess(trans('mturk.action.sent_to_mturk'));
         }
 
