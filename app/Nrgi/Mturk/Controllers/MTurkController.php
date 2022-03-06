@@ -154,9 +154,20 @@ class MTurkController extends Controller
             return abort(404);
         }
 
-        $feedback = ($task->status == '1') ? $this->mturk->getAns($task) : '';
-
-        return view('mturk.detail', compact('contract', 'task', 'feedback'));
+        $feedbackObj = ($task->status == '1') ? $this->mturk->getAns($task) : array();
+        $taskItems = $task->taskItems->toArray();
+        foreach($taskItems as $taskItem) 
+        {
+            $page_no_str = strval($taskItem['page_no']);
+            if(isset($taskItem) && isset($taskItem['page_no']) && isset($feedbackObj[$page_no_str]))
+            {
+                $ans = $feedbackObj[$page_no_str];
+                $taskItem['answer'] = is_string($ans) ? $ans : '' ;
+            }
+        }
+        usort($taskItems, function($a, $b) {return $this ->task->compareAscendingSort($a, $b, 'page_no');});
+        
+        return view('mturk.detail', compact('contract', 'task', 'taskItems'));
     }
 
     /**
@@ -352,14 +363,15 @@ class MTurkController extends Controller
         $langCode     = strtolower($request->get('lang', 'en'));
         $pdf          = $request->get('pdf');
         $contractId   = $request->get('contractId');
-        $contractPages = $request->get('pages');
+        $startPage = $request->get('startPage');
+        $endPage = $request->get('endPage');
         $bucket = $request->get('bucket');
         $contractPdfUrls = [];
         if(isset($pdf) && strlen($pdf) > 0) {
             $contractPdfUrls = [$pdf];
-        } elseif(isset($bucket)&&isset($contractId) && isset($contractPages) && count($contractPages) > 0) {
+        } elseif(isset($bucket)&&isset($contractId) && isset($startPage) && isset($endPage)) {
             $bucket = rtrim($bucket, '/');
-            $pages        = explode(',', $contractPages);
+            $pages= range($startPage, $endPage, 1);
             $bucket_url = $bucket.'/'.$contractId;
             $contractPdfUrls = array_map(function($v) use($bucket_url) {return $bucket_url.'/'.$v.'.pdf'; }, $pages);
         }

@@ -53,10 +53,7 @@ $approved = \Input::get('approved', null);
                 @forelse($tasks as $task)
                     <?php $contract = json_decode($task->metadata); 
                     $taskItems = $task->taskItems->toArray();
-                    $all_pages = array_map(function($el) { return $el['page_no'];}, $taskItems);
-                    $min_page = count($all_pages) > 0 ? min($all_pages) : ''; 
-                    $max_page = count($all_pages) > 0 ? max($all_pages) : '';
-                    $page_val = $min_page.($max_page>$min_page ? "-".$max_page : "")
+                    $page_val = getPageRange($taskItems);
                     ?>
                     <tr>
                         <td><a href="{{route('contract.show',$task->contract_id)}}">

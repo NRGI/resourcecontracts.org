@@ -235,7 +235,7 @@ class TaskService
             $all_pages = $this->getAllPages($pages);
             $all_pages_str = join(',', $all_pages);
             $title       = $this->getMTurkTaskTitle($contract, $all_pages);
-            $url         = $this->getMTurkUrl($contract->id, $all_pages_str, $contract->metadata->language);
+            $url         = $this->getMTurkUrl($contract->id, $all_pages, $contract->metadata->language);
             $description = !is_null($hit_description) && strlen(trim($hit_description)) > 0? $hit_description: config('mturk.defaults.production.Description');
             try {
                 $ret = $this->turk->createHIT($title, $description, $url, $per_task_items_count);
@@ -327,7 +327,6 @@ class TaskService
      */
     public function updateAssignment(Task $task)
     {
-        $this->logger->info('Task in Update assignment is'.json_encode($task));
        $all_pages =  $this->getAllPages($task->taskItems->toArray());
        $all_pages_str = join(',', $all_pages);
         try {
@@ -382,15 +381,18 @@ class TaskService
      *
      * @return array|bool|mixed
      */
-    public function updateMTurkTaskItems($taskId, $answerObj) {
+    public function updateMTurkTaskItems($task_id, $answerObj) {
         try {
             foreach($answerObj as $page_no => $ans) {
                 $this->logger->info(
                     sprintf('Update Assignment Task Item for page no.%s', $page_no),
-                    ['task' => $task->toArray()]
+                    ['Answer' => $ans]
                 );
                try {
-                $this->taskItem->update($task_id, $page_no, $ans);
+                   $update = [
+                       'answer' => json_encode($ans)
+                   ];
+                $this->taskItem->update($task_id, $page_no, $update);
                }
                catch(Exception $e)  {
                 $this->logger->error('Assignment task items update failed. TaskId'.$task_id.'Page Number'.$page_no.$e->getMessage());
@@ -510,7 +512,7 @@ class TaskService
      */
     public function rejectTaskInDb($task, $contract_id)
     {
-        $all_pages_str = join(',', $this->getAllPages($task));
+        $all_pages_str = join(',', $this->getAllPages($task->taskItems->toArray()));
         $assignments                     = $task->assignments;
         $assignments->assignment->status = 'Rejected';
         $task->assignments               = $assignments;
@@ -767,7 +769,7 @@ class TaskService
     $all_pages = $this->getAllPages($task->taskItems->toArray());
     $title       = $this->getMTurkTaskTitle($contract, $all_pages);
     $all_pages_str = join(',', $all_pages );
-    $url         = $this->getMTurkUrl($contract_id,  $all_pages_str, $contract->metadata->language);
+    $url         = $this->getMTurkUrl($contract_id,  $all_pages, $contract->metadata->language);
     $description = !is_null($hit_description) && strlen(trim($hit_description)) > 0 ? $hit_description: config('mturk.defaults.production.Description');
 
     try {
@@ -850,11 +852,14 @@ class TaskService
 
     public function getMTurkTaskTitle($contract, $all_pages) 
     {
+        $hasPages = count($all_pages) > 0;
+        $startPage = $hasPages ? $all_pages[0] : '';
+        $endPage = $hasPages ? $all_pages[count($all_pages) -1] : '';
        return sprintf(
             "Transcription of Contract '%s' - Pg: %s - %s Lang: %s",
             str_limit($contract->title, 70),
-            $all_pages[0],
-            $all_pages[count($all_pages) -1],
+            $startPage,
+            $endPage,
             $contract->metadata->language
        );
     }
@@ -869,7 +874,7 @@ class TaskService
      *
      * @return bool
      */
-    public function resetHIT($contract_id, $task_id, $hit_description, $approved_hit = false)
+    public function resetHIT($contract_id, $task_id, $hit_description = '', $approved_hit = false)
     {
         $contract = $this->contract->find($contract_id);
 
@@ -954,7 +959,7 @@ class TaskService
         $all_pages = $this->getAllPages($task->taskItems->toArray());
         $title       = $this->getMTurkTaskTitle($contract, $all_pages);
         $all_pages_str = join(',', $all_pages );
-        $url         = $this->getMTurkUrl($contract_id,  $all_pages_str, $contract->metadata->language);
+        $url         = $this->getMTurkUrl($contract_id,  $all_pages, $contract->metadata->language);
         $description = !is_null($hit_description) && strlen(trim($hit_description)) > 0? $hit_description: config('mturk.defaults.production.Description');
 
         try {
@@ -1212,7 +1217,9 @@ class TaskService
      */
     public function getMTurkUrl($contract_id, $all_pages, $lang)
     {
-        return sprintf('%s?bucket=%s&amp;contractId=%s&amp;pages=%s&amp;lang=%s', $this->task_url, $this->bucket_url, $contract_id, $all_pages, $lang);
+        $startPage = isset($all_pages) && count($all_pages) > 0 ? min($all_pages) : 0;
+        $endPage = isset($all_pages) && count($all_pages) > 0 ? max($all_pages) : 0;
+        return sprintf('%s?bucket=%s&amp;contractId=%s&amp;startPage=%s&amp;endPage=%s&amp;lang=%s', $this->task_url, $this->bucket_url, $contract_id, $startPage, $endPage, $lang);
     }
 
     /**
@@ -1245,13 +1252,17 @@ class TaskService
 
         $answerObj = json_decode(json_encode(new \SimpleXMLElement($task_assignment['Answer']), true));
         $answer    = array();
-
-        foreach ($answerObj->Answer as $key => $ans) {
+        $this->logger->info('ANSWER OF HIT IS'.json_encode($answerObj));
+        foreach ($answerObj->Answer as $k => $ans) {
+            $key = $ans->QuestionIdentifier;
+            $text = $ans->FreeText;
+            $this->logger->info('ANSWER OF HIT IN LOOP IS'.json_encode($key).'ANSWER'.json_encode($ans).'SUB STR'.json_encode(substr($key, 0, strlen('feedback'))));
             if (substr($key, 0, strlen('feedback')) == 'feedback') {
                 $values = explode('_', $key);
+                $this->logger->info('ANSWER OF HIT IN LOOP IS COUNT'.json_encode($values).'COUNT'.json_encode(count($values)));
                 if(count($values) > 1) {
                     $page_no = $values[1];
-                    $answer[$page_no] = $ans;
+                    $answer[$page_no] = $text;
                 }
             }
         }
@@ -1263,6 +1274,7 @@ class TaskService
             'status'        => $task_assignment['AssignmentStatus'],
             'answer'        => $answer,
         ];
+        $this->logger->info('FINAL ANSWER OF HIT IS'.json_encode($answer));
 
         $data['total'] = $assignment['NumResults'];
 
@@ -1278,6 +1290,12 @@ class TaskService
     {
         return env('MTURK_TASK_URL');
     }
+
+    /**
+     * Get Bucket Url
+     *
+     * @return string
+     */
     protected function getBucketUrl() 
     {
         $s3Url = env('AWS_S3_BUCKET_URL');
@@ -1297,7 +1315,7 @@ class TaskService
         $assignments->assignment->status = 'Approved';
         $task->assignments               = $assignments;
         $task->approved                  = Task::APPROVED;
-        $all_pages_str = join(',', $this->getAllPages($task));
+        $all_pages_str = join(',', $this->getAllPages($task->taskItems->toArray()));
         $this->logger->info(
             sprintf('Assignment approved for page nos. %s', $all_pages_str),
             ['Task' => $task->toArray()]

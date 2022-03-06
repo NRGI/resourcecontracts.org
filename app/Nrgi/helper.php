@@ -370,3 +370,18 @@ function show_language($lang = 'en')
 
     return sprintf(" in <strong>%s</strong>", $language);
 }
+
+/**
+ * Get Formatted Page Numbers
+ *
+ * @return string
+ */
+
+function getPageRange($taskItems) 
+{
+    $all_pages = array_map(function($el) { return $el['page_no'];}, $taskItems);
+    $min_page = count($all_pages) > 0 ? min($all_pages) : ''; 
+    $max_page = count($all_pages) > 0 ? max($all_pages) : '';
+    $page_val = $min_page.($max_page>$min_page ? "-".$max_page : "");
+    return $page_val;
+}
