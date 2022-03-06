@@ -204,7 +204,7 @@ class TaskRepository implements TaskRepositoryInterface
             "status='0' AND (hit_id is null OR date(now()) >= date(created_at + interval '".config(
                 'mturk.hitRenewDay'
             )."' day))"
-        ).with('taskItems')->get();
+        )->with('taskItems')->get();
     }
 
     /**

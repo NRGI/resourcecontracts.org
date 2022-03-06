@@ -80,12 +80,12 @@ class MTurkService extends MechanicalTurkV2
         $params = [
             'Title'                       => str_limit($title, 128),
             'Description'                 => $description,
-            "Reward"                      => config('mturk.defaults.production.Reward'),
+            "Reward"                      => strval(config('mturk.defaults.production.Reward') * $tasks_count),
             'AssignmentDurationInSeconds' => config('mturk.defaults.production.AssignmentDurationInSeconds'),
             'LifetimeInSeconds'           => config('mturk.defaults.production.LifetimeInSeconds'),
             'Question'                    => $this->getQuestionXML($question_url),
             'MaxAssignments'              => config('mturk.defaults.production.MaxAssignments'),
-            'QualificationRequirements'   => config('mturk.defaults.production.QualificationRequirements'),
+            // 'QualificationRequirements'   => config('mturk.defaults.production.QualificationRequirements'),
             'AutoApprovalDelayInSeconds' => config('mturk.defaults.production.AutoApprovalDelayInSeconds')
         ];
 

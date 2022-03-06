@@ -544,7 +544,7 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getMTurkContracts(array $filter = [], $perPage = null)
     {
-        $query = $this->contract->with('tasks');
+        $query = $this->contract->with('tasks.taskItems');
 
         if (isset($filter['status']) && !is_null($filter['status'])) {
             $query->where('mturk_status', $filter['status']);

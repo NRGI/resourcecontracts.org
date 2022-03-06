@@ -56,9 +56,9 @@ class RenewMTurkTask extends Command
         foreach ($mturkTasks as $key => $mturkTask) {
 
             $mturkTask = $task->updateAssignment($mturkTask);
-
+            $allTaskItems = $mturkTask->taskItems->toArray();
             if ($mturkTask->status == Task::COMPLETED || $mturkTask->assignments['assignment']['status'] == 'Approved' ||
-                $mturkTask->assignments['assignment']['status'] == 'Rejected') {
+                $mturkTask->assignments['assignment']['status'] == 'Rejected' || count($allTaskItems) < 1) {
                 continue;
             }
 
@@ -68,10 +68,9 @@ class RenewMTurkTask extends Command
 
             $contractId = $mturkTask->contract_id;
             $hitId      = $mturkTask->hit_id;
-            $all_pages_str =  join(',', $task->getAllPages($task->taskItems->toArray()));
+            $all_pages_str =  join(',', $task->getAllPages($allTaskItems));
             $pageId     = $mturkTask->id;
-
-            if ($task->resetHIT($contractId, $pageId,'')) {
+            if ($task->resetHIT($contractId, $pageId, $mturkTask->hit_description)) {
                 $availableBalance = $availableBalance - (config('mturk.defaults.production.Reward.Amount') * 1.20);
                 $this->info(
                     sprintf('Contract ID : %s with HIT: %s, Page nos: %s updated', $contractId, $hitId, $all_pages_str)
