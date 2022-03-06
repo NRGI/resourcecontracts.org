@@ -938,7 +938,7 @@ class TaskService
                 }
 
                 $this->logger->error(
-                    'HIT delete failed MTurk Error. '.$e->getMessage(),
+                    'HIT delete failed MTurk Error. '.json_encode($e).$e->getMessage(),
                     [
                         'Contract id' => $contract_id,
                         'hit id'      => $task->hit_id,
@@ -948,7 +948,7 @@ class TaskService
                 );
             } catch (Exception $e) {
                 $this->logger->error(
-                    'HIT delete failed. '.$e->getMessage(),
+                    'HIT delete failed. '.json_encode($e).$e->getMessage(),
                     ['Contract id' => $contract_id, 'hit id' => $task->hit_id, 'Task' => $task_id]
                 );
 
