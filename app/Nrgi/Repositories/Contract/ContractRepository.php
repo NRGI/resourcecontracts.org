@@ -412,7 +412,7 @@ class ContractRepository implements ContractRepositoryInterface
     {
         return $this->contract->with(
             [
-                'tasks.taskItems' => function ($query) use ($status, $approved) {
+                'tasks' => function ($query) use ($status, $approved) {
                     if (!is_null($status)) {
                         $query->where('status', $status);
                     }
@@ -420,9 +420,10 @@ class ContractRepository implements ContractRepositoryInterface
                     if (!is_null($approved)) {
                         $query->where('approved', $approved);
                     }
-
-                    $query->orderBy('page_no', 'ASC');
                 },
+                'tasks.taskItems' => function ($query) {
+                     $query->orderBy('page_no', 'ASC');
+                }
             ]
         )->findOrFail($contractId);
     }
