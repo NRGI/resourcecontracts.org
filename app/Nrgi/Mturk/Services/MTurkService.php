@@ -123,7 +123,7 @@ class MTurkService extends MechanicalTurkV2
         $hit = $hitResponse['response'];
         $this->logger->info(' HIT'.json_encode( $hit ));
         $status      = $hit['HIT']['HITStatus'];
-        $expiry_date = $this->carbon->createFromTimestamp(strtotime($hit['HIT']['Expiration']));
+        $expiry_date = $this->carbon->createFromTimestamp($hit['HIT']['Expiration']);
         $isExpired   = $expiry_date->diffInSeconds(null, false) > 1;
         $isRejected  = (isset($task->assignments->assignment->status) && $task->assignments->assignment->status == 'Rejected');
         if ($status == 'Assignable' || $isExpired || $isRejected) {
