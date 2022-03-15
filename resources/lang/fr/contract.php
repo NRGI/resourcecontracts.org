@@ -196,6 +196,8 @@ return [
     'no_parent'                            => 'Aucun Parent',
     'is_contract_signed'                   => "Est-ce que la signature du contrat?",
     'disclosure_mode_text'                 => 'Mode de divulgation texte',
+    'publishing_year'                      => "Année de publication",
+    'reset'                                => "Réinitialiser",
     /*Logs*/
     'log'                                  => [
         'save'       => "Contrat créé",

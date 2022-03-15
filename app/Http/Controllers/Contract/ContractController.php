@@ -121,6 +121,7 @@ class ContractController extends Controller
          $filters        = $request->only(
              'resource',
              'year',
+             'publishing_year',
              'country',
              'category',
              'resource',
@@ -143,6 +144,7 @@ class ContractController extends Controller
         }
          $annotationStatusArray = $this->annotation->getStatusOfAllContracts($contract_ids);
          $years          = $this->contractFilter->getUniqueYears();
+         $publishingYears  = $this->contractFilter->getUniqueYears(false);
          $countries      = $this->contractFilter->getUniqueCountries();
          $resources      = $this->contractFilter->getUniqueResources();
          $download_files = $this->contract->getDownloadTextFiles();
@@ -154,7 +156,7 @@ class ContractController extends Controller
          }
          $contractTypeList = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
          $documentTypeList = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
-         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList','companyNamesList', 'contractTypeList','documentTypeList', 'locale',  'annotationStatusArray' ));
+         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList','companyNamesList', 'contractTypeList','documentTypeList', 'locale',  'annotationStatusArray', 'publishingYears' ));
     }
 
     /**
