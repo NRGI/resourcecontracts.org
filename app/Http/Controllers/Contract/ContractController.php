@@ -144,7 +144,7 @@ class ContractController extends Controller
         }
          $annotationStatusArray = $this->annotation->getStatusOfAllContracts($contract_ids);
          $years          = $this->contractFilter->getUniqueYears();
-         $publishingYears  = $this->contractFilter->getUniqueYears(false);
+         $publishingYears  = $this->contractFilter->getUniquePublishingYears(false);
          $countries      = $this->contractFilter->getUniqueCountries();
          $resources      = $this->contractFilter->getUniqueResources();
          $download_files = $this->contract->getDownloadTextFiles();

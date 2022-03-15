@@ -114,6 +114,23 @@ class ContractFilterService
         return $years;
     }
 
+         /**
+     * Get Unique Years
+     *
+     * @return array
+     */
+    public function getUniquePublishingYears()
+    {
+        $arr   = $this->contract->getUniquePublishingYears()->toArray();
+        $years = [];
+        foreach ($arr as $key => $value) {
+            $years[$value['years']] = $value['years'];
+
+        }
+        return $years;
+    }
+
+
     /**
      * Get Unique Resources
      *

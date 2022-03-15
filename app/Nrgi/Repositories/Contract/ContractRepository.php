@@ -375,6 +375,22 @@ class ContractRepository implements ContractRepositoryInterface
             ->orderBy($this->db->raw("metadata->>'signature_year'"), "DESC")->get();
     }
 
+         /**
+     * Get unique contract years
+     *
+     * @return contract
+     */
+    public function getUniquePublishingYears()
+    {
+        return $this->contract->select(
+            $this->db->raw("date_part('year',(contracts.publishing_date->'metadata'->>'datetime')::timestamp) years")
+        )
+            ->whereRaw("publishing_date->'metadata'->>'datetime' !=''")
+            ->groupBy($this->db->raw("years"))
+            ->orderBy($this->db->raw("years"), "DESC")->get();
+    }
+
+
     /**
      * Get unique countries
      *
