@@ -18,10 +18,9 @@
 </head>
 <body>
 <div class="wrapper">
-	<p>In this HIT, you are to transcribe the text <?php echo show_language($langCode);?> as shown in the scanned pdf on
-		the
-		right. It is possible that your HIT will be rejected if we find that there are number of spelling mistakes or
-		missing text in the transcribed text.</p>
+	<p>In this HIT, you are to transcribe the text <?php echo show_language($langCode);?> as shown in the PDF pages on the right.
+	Your HIT will be rejected if we find that there are spelling mistakes or missing text in the transcribed text. 
+	Any fraudulent transcriptions will result in you being automatically blocked from the site and you will be reported to Amazon.</p>
 
     <?php if($assignmentId == 'ASSIGNMENT_ID_NOT_AVAILABLE'):?>
 	<p class="disclaimer"><?php echo disclaimer($langCode);?></p>
@@ -58,11 +57,11 @@
 		<?php if($assignmentId != 'ASSIGNMENT_ID_NOT_AVAILABLE'):?>
 				<button type="submit" value="Submit" class="button">Finish and Submit HIT</button>
 				<?php else:?>
-				<p>You must accept HIT before you can submit the result.</p>
+				<p>Please click on the Accept button for your HIT to be submitted.</p>
 		<?php endif;?>
 		</div>
 		<div>
-		<p style="font-size:12px; font-style:italic; font-weight: bold">(Incorrectly transcribed pages will result in the rejection of the entire HIT)</p>
+		<h4 >(Incorrectly transcribed pages will result in the rejection of the entire HIT)</h4>
 		</div>
         </form>
 </div>
