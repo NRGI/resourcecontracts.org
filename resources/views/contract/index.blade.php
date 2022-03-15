@@ -96,8 +96,8 @@
 			<div style= "display: flex; justify-content: space-between;">
 			{!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
 			<a class="btn btn-primary" href="{{ url('/contract') }}">{{trans('contract.reset')}}</a>
-			{!! Form::close() !!}
 			</div>
+			{!! Form::close() !!}
 			<br/>
 			<br/>
 			<table class="table table-contract table-responsive contract-table">
