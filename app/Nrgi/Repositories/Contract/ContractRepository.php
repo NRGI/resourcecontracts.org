@@ -6,6 +6,7 @@ use App\Nrgi\Entities\SupportingContract\SupportingContract;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Logging\Log;
 
 /**
  * Class ContractRepository
@@ -29,17 +30,23 @@ class ContractRepository implements ContractRepositoryInterface
      * @var SupportingContract
      */
     protected $document;
+        /**
+     * @var Log
+     */
+    protected $logger;
 
     /**
      * @param Contract $contract
      * @param DatabaseManager $db
      * @param SupportingContract $document
+     * @param Log $logger
      */
-    public function __construct(Contract $contract, DatabaseManager $db, SupportingContract $document)
+    public function __construct(Contract $contract, DatabaseManager $db, SupportingContract $document, Log $logger)
     {
         $this->contract = $contract;
         $this->db       = $db;
         $this->document = $document;
+        $this->logger  = $logger;
     }
 
     /**
@@ -80,6 +87,14 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw("contracts.metadata_status=?", [$status]);
         }
 
+        if (isset($publishing_year) && $publishing_year != '' && $publishing_year != 'all') {
+            $contractPublishStatus = Contract::STATUS_PUBLISHED;
+            $query->whereRaw("contracts.publishing_date->'metadata'->>'status' =?", [$contractPublishStatus]);
+            $query->whereRaw("to_date(contracts.publishing_date->'metadata'->>'datetime', 'YYYY-MM-DD') >=?", [$publishing_year.'-01-01']);
+            $query->whereRaw("to_date(contracts.publishing_date->'metadata'->>'datetime', 'YYYY-MM-DD') <=?", [$publishing_year.'-12-31']);
+
+        }
+        
         if (isset($type) && $type == 'ocr' && $status != '') {
             if ($status == "null") {
                 $query->whereRaw("contracts.\"textType\" is null");
@@ -359,6 +374,22 @@ class ContractRepository implements ContractRepositoryInterface
             ->groupBy($this->db->raw("metadata->>'signature_year'"))
             ->orderBy($this->db->raw("metadata->>'signature_year'"), "DESC")->get();
     }
+
+         /**
+     * Get unique contract years
+     *
+     * @return contract
+     */
+    public function getUniquePublishingYears()
+    {
+        return $this->contract->select(
+            $this->db->raw("date_part('year',(contracts.publishing_date->'metadata'->>'datetime')::timestamp) years")
+        )
+            ->whereRaw("publishing_date->'metadata'->>'datetime' !=''")
+            ->groupBy($this->db->raw("years"))
+            ->orderBy($this->db->raw("years"), "DESC")->get();
+    }
+
 
     /**
      * Get unique countries

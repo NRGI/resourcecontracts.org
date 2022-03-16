@@ -127,6 +127,7 @@ class Contract extends Model
         'textType',
         'metadata_status',
         'text_status',
+        'publishing_date'
     ];
     /**
      * @var array
