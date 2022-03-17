@@ -662,7 +662,7 @@ class ContractService
                 $contract->$status_key = ($old_status == Contract::STATUS_PUBLISHED) ? 'draft' : $old_status;
             }
 
-            $publishing_date = isset($contract->publishing_date) ?json_decode($contract->publishing_date) : array();
+            $publishing_date = isset($contract->publishing_date) ?json_decode($contract->publishing_date, true) : array();
             $publishing_date[$type] = ['status' => $status, 'datetime' => $this->carbon->now()->toDateString()];
             $contract->publishing_date = json_encode($publishing_date);
             $contract->save();
