@@ -132,8 +132,8 @@ class ContractRepository implements ContractRepositoryInterface
 
         if (isset($type_of_contract) && $type_of_contract != '' && $type_of_contract != 'all') {
             $type_of_contract = str_replace("'","''", $type_of_contract);
-            $from .= ",json_array_elements(contracts.metadata->'type_of_contract') cat";
-            $query->whereRaw("trim(both '\"' from cat::text) = '" . $type_of_contract . "'");
+            $from .= ",json_array_elements(contracts.metadata->'type_of_contract') cat_type";
+            $query->whereRaw("trim(both '\"' from cat_type::text) = '" . $type_of_contract . "'");
         }
 
         
