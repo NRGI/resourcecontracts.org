@@ -93,9 +93,9 @@
 					{!! Form::text('q', Input::get('q') , ['class' =>'form-control','placeholder'=>trans('contract.search_contract')]) !!}
 				</div>
 			</div>
-			<div style= "display: flex; justify-content: space-between;">
+			<div style = "display: flex;">
 			{!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
-			<a class="btn btn-primary" href="{{ url('/contract') }}">{{trans('contract.reset')}}</a>
+			<a class="btn btn-primary" style="margin-left: 10px"  href="{{ url('/contract') }}">{{trans('contract.reset')}}</a>
 			</div>
 			{!! Form::close() !!}
 			<br/>
