@@ -420,9 +420,10 @@ class ContractRepository implements ContractRepositoryInterface
                     if (!is_null($approved)) {
                         $query->where('approved', $approved);
                     }
-
-                    $query->orderBy('page_no', 'ASC');
                 },
+                'tasks.taskItems' => function ($query) {
+                     $query->orderBy('page_no', 'ASC');
+                }
             ]
         )->findOrFail($contractId);
     }
@@ -544,7 +545,7 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getMTurkContracts(array $filter = [], $perPage = null)
     {
-        $query = $this->contract->with('tasks');
+        $query = $this->contract->with('tasks.taskItems');
 
         if (isset($filter['status']) && !is_null($filter['status'])) {
             $query->where('mturk_status', $filter['status']);

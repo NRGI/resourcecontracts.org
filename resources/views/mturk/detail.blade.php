@@ -9,7 +9,7 @@
 
 		<div class="panel-body">
 			<ul>
-				<li>@lang('mturk.page_no'): {{$task->page_no}}</li>
+				<li>@lang('mturk.page_no'): {{getPageRange($taskItems)}}</li>
 				<li>@lang('mturk.hit'): {{$task->hit_id}}</li>
 				<li>@lang('mturk.status'): {{_l('mturk.'.$task->status())}}</li>
 				<li>@lang('mturk.approved'): {{_l('mturk.'.$task->approved())}} </li>
@@ -27,25 +27,22 @@
                 ?>
 				<li>@lang('mturk.submit_time'): {{ $submit_time }}</li>
 			</ul>
-
+			@foreach($taskItems as $resp)
+			
 			<div class="row">
+				<div class="col-sm-12">
+				<h4>@lang('mturk.page_no') {{$resp['page_no']}} </h4>
+				</div>
 				<div class="col-md-6">
 					<div class="textarea" style="border: 1px solid #ccc; overflow: scroll; padding: 15px; height:580px">
-						{!! nl2br($feedback) !!}
+						{!! nl2br($resp['answer']) !!}
 					</div>
 				</div>
 				<div class="col-md-6">
-					<a href="{{$task->pdf_url}}" id="pdf_url"></a>
-					@section('script')
-						<script src="{{asset('js/jquery.gdocsviewer.min.js')}}"></script>
-						<script type="text/javascript">
-                            $(document).ready(function () {
-                                $('#pdf_url').gdocsViewer({width: 450, height: 580});
-                            });
-						</script>
-					@stop
+				<iframe width="100%" height="580px" src="{{url('viewer/index.php')}}#<?php echo $resp['pdf_url'];?>"></iframe>
 				</div>
 			</div>
+			@endforeach
 
 			@if(empty($task->approved))
 				<div class="mturk-btn-group">

@@ -75,6 +75,10 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                 </thead>
                 <tbody>
                 @forelse($contract->tasks as $task)
+                <?php
+                $taskItems = $task->taskItems->toArray();
+                $page_val =  getPageRange($taskItems);
+                ?>
                     <tr>
                         <td>
                             @if($task->status != 0)
@@ -86,7 +90,7 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                         <td>
                                 <a href="{{ hit_url($task->hit_id) }}" target="_blank" title="@lang('mturk.view_on_amazon')" data-toggle="tooltip"> <span class="glyphicon glyphicon-eye-open"></span></a>
                         </td>
-                        <td style="text-align:center;">{{$task->page_no}}</td>
+                        <td style="text-align:center;">{{$page_val}}</td>
                         <td>{{_l('mturk.'.$task->status())}}</td>
                         <td>{{ $task->approved == 1 ? ($task->is_auto_approved?'A-':'M-') : ''}}{{_l('mturk.'.$task->approved())}}</td>
                         <td>{{$task->created_at->format('Y-m-d h:i:s A')}}</td>

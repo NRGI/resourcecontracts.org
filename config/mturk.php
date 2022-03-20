@@ -56,10 +56,11 @@ return [
             'Description'                 => 'Transcription of the scanned contract pdf',
             'MaxAssignments'              => 1,
             //'Keywords'                    => ['transcription', 'pdf', 'language'],
-            'Reward'                      => '0.30',
+            'Reward'                      => 0.30,
             'LifetimeInSeconds'           => 10*24*60*60,
             'AssignmentDurationInSeconds' => 10*24*60*60,
             "AutoApprovalDelayInSeconds" =>  30*24*60*60,
+            'TaskItemCount'              => 15,
             'QualificationRequirements'   =>array(
                 [
                     "QualificationTypeId"=>"00000000000000000040",

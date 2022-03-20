@@ -18,10 +18,9 @@
 </head>
 <body>
 <div class="wrapper">
-	<p>In this HIT, you are to transcribe the text <?php echo show_language($langCode);?> as shown in the scanned pdf on
-		the
-		right. It is possible that your HIT will be rejected if we find that there are number of spelling mistakes or
-		missing text in the transcribed text.</p>
+	<p>In this HIT, you are to transcribe the text <?php echo show_language($langCode);?> as shown in the PDF pages on the right.
+	Your HIT will be rejected if we find that there are spelling mistakes or missing text in the transcribed text. 
+	Any fraudulent transcriptions will result in you being automatically blocked from the site and you will be reported to Amazon.</p>
 
     <?php if($assignmentId == 'ASSIGNMENT_ID_NOT_AVAILABLE'):?>
 	<p class="disclaimer"><?php echo disclaimer($langCode);?></p>
@@ -35,24 +34,36 @@
     <?php endif;?>
 
     <?php $external_mturk_url = (env('MTURK_SANDBOX')) ? "https://workersandbox.mturk.com/mturk/externalSubmit" : "https://www.mturk.com/mturk/externalSubmit"; ?>
-	<div class="left">
-		<form id="mturk_form" method="post" accept-charset="utf-8" action="<?php echo $external_mturk_url; ?>">
-			<input type="hidden" name="workerId" value="<?php echo $workerId;?>"/>
-			<input type="hidden" name="assignmentId" value="<?php echo $assignmentId;?>"/>
-			<textarea name="feedback" id="feedback" style="width: 100%" rows="38.5"
-					  placeholder="Write the text here"></textarea>
-			<br/>
+	<form id="mturk_form" method="post" accept-charset="utf-8" action="<?php echo $external_mturk_url; ?>">
+		<input type="hidden" name="workerId" value="<?php echo $workerId;?>" />
+		<input type="hidden" name="assignmentId" value="<?php echo $assignmentId;?>" />
+		@foreach($contractPdfUrls as $pdf)
+		<div class="form-group-wrapper">
+			<div class="form-group-item">
+				<?php
+				$arr = explode('/', rtrim($pdf, '.pdf'));
+				$pageNo = end($arr);
+				?>
+				<textarea name="feedback_{{$pageNo}}" id="feedback_{{$pageNo}}" style="width: 100%" rows="38.5"
+					placeholder="Write the text here"></textarea>
+			</div>
+			<div class="form-group-item">
+				<iframe width="100%" height="590" src="{{url('viewer/index.php')}}#<?php echo $pdf;?>"></iframe>
+			</div>
+		</div>
 
-            <?php if($assignmentId != 'ASSIGNMENT_ID_NOT_AVAILABLE'):?>
-			<button type="submit" value="Submit" class="button">Finish and Submit HIT</button>
-            <?php else:?>
-			<p>You must accept HIT before you can submit the result.</p>
-            <?php endif;?>
-		</form>
-	</div>
-	<div class="right">
-		<iframe width="100%" height="590" src="{{url('viewer/index.php')}}#<?php echo $pdf;?>"></iframe>
-	</div>
+		@endforeach
+		<div>
+		<?php if($assignmentId != 'ASSIGNMENT_ID_NOT_AVAILABLE'):?>
+				<button type="submit" value="Submit" class="button">Finish and Submit HIT</button>
+				<?php else:?>
+				<p>Please click on the Accept button for your HIT to be submitted.</p>
+		<?php endif;?>
+		</div>
+		<div>
+		<h4 >(Incorrectly transcribed pages will result in the rejection of the entire HIT)</h4>
+		</div>
+        </form>
 </div>
 
 <?php if($assignmentId != 'ASSIGNMENT_ID_NOT_AVAILABLE'):?>

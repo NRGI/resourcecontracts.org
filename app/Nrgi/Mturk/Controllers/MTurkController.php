@@ -12,6 +12,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
+use Illuminate\Contracts\Logging\Log;
 
 /**
  * Class MturkController
@@ -39,6 +40,10 @@ class MTurkController extends Controller
      * @var DatabaseManager
      */
     private $db;
+        /**
+     * @var Log
+     */
+    protected $logger;
 
     /**
      * @param TaskService     $task
@@ -46,13 +51,15 @@ class MTurkController extends Controller
      * @param ActivityService $activity
      * @param MTurkService    $mturk
      * @param DatabaseManager $db
+     * @param Log                   $logger
      */
     public function __construct(
         TaskService $task,
         ContractService $contract,
         ActivityService $activity,
         MTurkService $mturk,
-        DatabaseManager $db
+        DatabaseManager $db,
+        Log $logger
     ) {
         $this->middleware('auth', ['except' => 'publicPage']);
         $this->task     = $task;
@@ -60,6 +67,7 @@ class MTurkController extends Controller
         $this->activity = $activity;
         $this->mturk    = $mturk;
         $this->db    = $db;
+        $this->logger          = $logger;
     }
 
     /**
@@ -101,7 +109,11 @@ class MTurkController extends Controller
         $contractAll = $this->contract->findWithTasks($contract_id);
 
         $contract->tasks = $this->task->appendAssignment($contract->tasks);
-        $total_pages     = $contractAll->tasks->count();
+        $this->logger->info('Contract tasks'.json_encode($contract->tasks));
+        $total_pages     = 0;
+        foreach($contractAll->tasks as $key=>$task ) {
+            $total_pages = $total_pages + count($task->taskItems);
+        }
         $total_hit       = $this->task->getTotalHits($contract_id);
         $status          = $this->task->getTotalByStatus($contract_id);
 
@@ -118,7 +130,8 @@ class MTurkController extends Controller
     public function createTasks(Request $request, $id)
     {
         $description = $request->get('description');
-        if ($this->task->create($id, $description)) {
+        $per_task_items_count = config('mturk.defaults.production.TaskItemCount');
+        if ($this->task->create($id, $description, $per_task_items_count)) {
             return redirect()->back()->withSuccess(trans('mturk.action.sent_to_mturk'));
         }
 
@@ -142,9 +155,20 @@ class MTurkController extends Controller
             return abort(404);
         }
 
-        $feedback = ($task->status == '1') ? $this->mturk->getAns($task) : '';
-
-        return view('mturk.detail', compact('contract', 'task', 'feedback'));
+        $feedbackObj = ($task->status == '1') ? $this->mturk->getAns($task) : array();
+        $taskItems = $task->taskItems->toArray();
+        foreach($taskItems as $taskItem) 
+        {
+            $page_no_str = strval($taskItem['page_no']);
+            if(isset($taskItem) && isset($taskItem['page_no']) && isset($feedbackObj[$page_no_str]))
+            {
+                $ans = $feedbackObj[$page_no_str];
+                $taskItem['answer'] = is_string($ans) ? $ans : '' ;
+            }
+        }
+        usort($taskItems, function($a, $b) {return $this ->task->compareAscendingSort($a, $b, 'page_no');});
+        
+        return view('mturk.detail', compact('contract', 'task', 'taskItems'));
     }
 
     /**
@@ -339,8 +363,21 @@ class MTurkController extends Controller
         $workerId     = $request->get('workerId');
         $langCode     = strtolower($request->get('lang', 'en'));
         $pdf          = $request->get('pdf');
-
-        return view('mturk.public', compact('assignmentId', 'workerId', 'langCode', 'pdf'));
+        $contractId   = $request->get('contractId');
+        $startPage = $request->get('startPage');
+        $endPage = $request->get('endPage');
+        $bucket = $request->get('bucket');
+        $contractPdfUrls = [];
+        if(isset($pdf) && strlen($pdf) > 0) {
+            $contractPdfUrls = [$pdf];
+        } elseif(isset($bucket)&&isset($contractId) && isset($startPage) && isset($endPage)) {
+            $bucket = rtrim($bucket, '/');
+            $pages= range($startPage, $endPage, 1);
+            $bucket_url = $bucket.'/'.$contractId;
+            $contractPdfUrls = array_map(function($v) use($bucket_url) {return $bucket_url.'/'.$v.'.pdf'; }, $pages);
+        }
+        $this->logger->info('ContractPdfUrls'.json_encode($contractPdfUrls));
+        return view('mturk.public', compact('assignmentId', 'workerId', 'langCode', 'contractPdfUrls'));
     }
 
     /**

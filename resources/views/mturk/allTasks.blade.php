@@ -51,7 +51,10 @@ $approved = \Input::get('approved', null);
                 <tbody>
 
                 @forelse($tasks as $task)
-                    <?php $contract = json_decode($task->metadata);?>
+                    <?php $contract = json_decode($task->metadata); 
+                    $taskItems = $task->taskItems->toArray();
+                    $page_val = getPageRange($taskItems);
+                    ?>
                     <tr>
                         <td><a href="{{route('contract.show',$task->contract_id)}}">
                                 {{$contract->contract_name}}
@@ -68,7 +71,7 @@ $approved = \Input::get('approved', null);
                             @endif
                             <a href="{{ hit_url($task->hit_id) }}" target="_blank" title="@lang('mturk.view_on_amazon')" data-toggle="tooltip"> <span class="glyphicon glyphicon-eye-open"></span></a>
                         </td>
-                        <td>{{$task->page_no}}</td>
+                        <td>{{$page_val}}</td>
                         <td>{{_l('mturk.'. $task->status()) }} </td>
                         <td>{{_l('mturk.'.$task->approved())}} </td>
                         <td>{{$task->created_at->format('Y-m-d h:i:s A')}}</td>

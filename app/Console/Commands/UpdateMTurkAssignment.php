@@ -53,7 +53,7 @@ class UpdateMTurkAssignment extends Command
     {
         $contract_id = $this->input->getOption('id');
         if (!is_null($contract_id)) {
-            $contracts = Contract::with('tasks')->where('id', $contract_id)->where('mturk_status', Contract::MTURK_SENT)->get();
+            $contracts = Contract::with('tasks.taskItems')->where('id', $contract_id)->where('mturk_status', Contract::MTURK_SENT)->get();
         } else {
             $contracts = $this->contract->getMTurkContracts(['status' => Contract::MTURK_SENT]);
         }

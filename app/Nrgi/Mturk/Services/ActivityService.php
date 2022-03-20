@@ -32,11 +32,11 @@ class ActivityService
      * @param array $params
      * @param null  $contract_id
      *
-     * @param null  $page_no
+     * @param null  $pages
      *
      * @return bool
      */
-    public function save($message, $params = [], $contract_id = null, $page_no = null)
+    public function save($message, $params = [], $contract_id = null, $pages = null)
     {
         $activity            = [];
         $activity['message'] = $message;
@@ -49,8 +49,8 @@ class ActivityService
             $activity['contract_id'] = $contract_id;
         }
 
-        if (!is_null($page_no)) {
-            $activity['page_no'] = $page_no;
+        if (!is_null($pages)) {
+            $activity['pages'] = $pages;
         }
 
         return $this->activity->save($activity);
