@@ -157,7 +157,7 @@ class MTurkController extends Controller
 
         $feedbackObj = ($task->status == '1') ? $this->mturk->getAns($task) : array();
         $taskItems = $task->taskItems->toArray();
-        foreach($taskItems as $taskItem) 
+        $taskItems = array_map(function($taskItem) use($feedbackObj)
         {
             $page_no_str = strval($taskItem['page_no']);
             if(isset($taskItem) && isset($taskItem['page_no']) && isset($feedbackObj[$page_no_str]))
@@ -165,9 +165,9 @@ class MTurkController extends Controller
                 $ans = $feedbackObj[$page_no_str];
                 $taskItem['answer'] = is_string($ans) ? $ans : '' ;
             }
-        }
+            return $taskItem;
+        }, $taskItems);
         usort($taskItems, function($a, $b) {return $this ->task->compareAscendingSort($a, $b, 'page_no');});
-        
         return view('mturk.detail', compact('contract', 'task', 'taskItems'));
     }
 
