@@ -171,15 +171,15 @@ class MTurkService extends MechanicalTurkV2
             $update_ans     = false;
             if(isset($taskItem->answer)) 
             {
-                $db_assignment  = json_decode($taskItem->answer);
+                $db_assignment  = json_decode($taskItem->answer, true);
                 $this->logger->info('DB assignment'.gettype($db_assignment));
                 $this->logger->info('DB assignment Resp'.json_encode($db_assignment));
                 $update_ans     = false;
                 if (isset($db_assignment)) {
                     if (is_string($db_assignment)) {
                         $feedback[$taskItem->page_no] = $db_assignment;
-                    } elseif (!is_string($db_assignment) && isset($db_assignment->answer)) {
-                        $feedback[$taskItem->page_no] = $db_assignment->answer;
+                    } elseif (!is_string($db_assignment) && isset($db_assignment['answer'])) {
+                        $feedback[$taskItem->page_no] = $db_assignment['answer'];
                     }
                 }
             }
