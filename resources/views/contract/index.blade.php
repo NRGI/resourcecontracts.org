@@ -49,6 +49,10 @@
 					{!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' =>
 					'form-control']) !!}
 				</div>
+				<div class="col-md-4 col-sm-6 col-xs-6">
+					{!! Form::select('publishing_year', ['all'=>trans('contract.publishing_year')] + $publishingYears , Input::get('publishing_year') , ['class' =>
+					'form-control']) !!}
+				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Input::get('country') ,
 					['class' =>'form-control']) !!}
@@ -89,8 +93,10 @@
 					{!! Form::text('q', Input::get('q') , ['class' =>'form-control','placeholder'=>trans('contract.search_contract')]) !!}
 				</div>
 			</div>
-
+			<div style = "display: flex;">
 			{!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
+			<a class="btn btn-primary" style="margin-left: 10px"  href="{{ url('/contract') }}">{{trans('contract.reset')}}</a>
+			</div>
 			{!! Form::close() !!}
 			<br/>
 			<br/>

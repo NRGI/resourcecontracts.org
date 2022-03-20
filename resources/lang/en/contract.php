@@ -195,6 +195,8 @@ return [
     'no_parent'                            => 'No Parent',
     'is_contract_signed'                   => "Is contract signed?",
     'disclosure_mode_text'                 => 'Disclosure Mode Text',
+    'publishing_year'                      => "Publishing Year",
+    'reset'                                => "Reset",
     /*Logs*/
     'log'                                  => [
         'save'       => 'Contract created',
