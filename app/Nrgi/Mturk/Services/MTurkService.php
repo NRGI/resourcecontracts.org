@@ -252,7 +252,7 @@ class MTurkService extends MechanicalTurkV2
             }
             /* The assignment json is updated with answer for safety */
             if(is_array($db_assignment)) {
-                $db_assignment['answer'] = $feedback[$taskItem->page_no];
+                $db_assignment['answer'] = isset($feedback[$taskItem->page_no]) ? $feedback[$taskItem->page_no] : ' ';
                 $update_ans = true;
             }
      /*updates assignment json column with answer if api returns answer*/
