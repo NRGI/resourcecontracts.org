@@ -164,29 +164,6 @@ class MTurkService extends MechanicalTurkV2
     {
         $taskItems = $task->taskItems;
         $feedback       = array();
-        foreach($taskItems as $key => $taskItem )
-        {
-            $this->logger->info('Task item'.$taskItem->answer.gettype($taskItem->answer));
-            $this->logger->info('Task item Answer'.$taskItem->answer);
-            $update_ans     = false;
-            if(isset($taskItem->answer)) 
-            {
-                $db_assignment  = json_decode($taskItem->answer, true);
-                $this->logger->info('DB assignment'.gettype($db_assignment));
-                $this->logger->info('DB assignment Resp'.json_encode($db_assignment));
-                $update_ans     = false;
-                if (isset($db_assignment)) {
-                    if (is_string($db_assignment)) {
-                        $feedback[$taskItem->page_no] = $db_assignment;
-                    } elseif (!is_string($db_assignment) && isset($db_assignment['answer'])) {
-                        $feedback[$taskItem->page_no] = $db_assignment['answer'];
-                    }
-                }
-            }
-           
-
-
-
         /*
          * Checks if task assignment have answer in assignment json column
          * The old api saved assignment in assignment json column with format
@@ -218,8 +195,6 @@ class MTurkService extends MechanicalTurkV2
             }
          * If api call returns answer then update the json column with answer for safety
         */
-
-
         /*API CALL*/
         $api_assignment = $this->listAssignmentsForHIT($task->hit_id);
         $this->logger->info('API ASSIGNMENT'.json_encode($api_assignment));
@@ -237,38 +212,56 @@ class MTurkService extends MechanicalTurkV2
                     $this->logger->info('API ASSIGNMENT ANSWER'.json_encode($ans));
                     $answerValue = $ans['QuestionIdentifier'];
                     if (substr($answerValue, 0, strlen('feedback')) == 'feedback') {
-                        $values = explode('_', $key);
+                        $values = explode('_', $answerValue);
                         if(count($values) > 1) {
-                         
                             $page_no = $values[1];
-                            $this->logger->info('API ASSINGMENT PAGE NO.'.json_encode($page_no));
-                            $feedback[$page_no] = $ans['FreeText'];
-        
-                            if (is_array($feedback[$page_no])) {
-                                $feedback[$page_no] = $feedback[$page_no][0];
-                            }
-                            
-                            /* The assignment json is updated with answer for safety */
-                            if(is_array($db_assignment)) {
-                                $db_assignment['answer'] = $feedback[$page_no];
-                                $update_ans = true;
-                            }
-                            break;
+                        } else {
+                            //Catering for HITS before Mturk batch process feature
+                            $page_no = $task->page_no;
                         }
+                        $this->logger->info('API ASSINGMENT PAGE NO.'.json_encode($page_no));
+                        $feedback[$page_no] = $ans['FreeText'];
+    
+                        if (is_array($feedback[$page_no])) {
+                            $feedback[$page_no] = $feedback[$page_no][0];
+                        }
+                        
                     }
 
                 }
             }
         }
-
-        /*updates assignment json column with answer if api returns answer*/
-        if ($update_ans) {
-            $taskItem->answer = json_decode(json_encode($db_assignment));
-            $this->logger->info('API ASSINGMENT ANSWER'.json_encode($taskItem->answer));
-            $taskItem->save();
+        foreach($taskItems as $key => $taskItem )
+        {
+            $this->logger->info('Task item'.json_encode($taskItem->answer).gettype($taskItem->answer));
+            $this->logger->info('Task item Answer'.json_encode($taskItem->answer));
+            $update_ans     = false;
+            if(isset($taskItem->answer)) 
+            {
+                $db_assignment  = json_decode($taskItem->answer, true);
+                $this->logger->info('DB assignment'.gettype($db_assignment));
+                $this->logger->info('DB assignment Resp'.json_encode($db_assignment));
+                $update_ans     = false;
+                if (isset($db_assignment) && !isset($feedback[$taskItem->page_no])) {
+                    if (is_string($db_assignment)) {
+                        $feedback[$taskItem->page_no] = $db_assignment;
+                    } elseif (!is_string($db_assignment) && isset($db_assignment['answer'])) {
+                        $feedback[$taskItem->page_no] = $db_assignment['answer'];
+                    }
+                }
+            }
+            /* The assignment json is updated with answer for safety */
+            if(is_array($db_assignment)) {
+                $db_assignment['answer'] = $feedback[$taskItem->page_no];
+                $update_ans = true;
+            }
+     /*updates assignment json column with answer if api returns answer*/
+            if ($update_ans) {
+                $taskItem->answer = json_encode($db_assignment);
+                $this->logger->info('API ASSINGMENT ANSWER'.json_encode($taskItem->answer));
+                $taskItem->save();
+            }
         }
-    }
-
         return $feedback;
     }
 
