@@ -336,7 +336,7 @@ class TaskService
                     $task->status = Task::COMPLETED;
                     $this->logger->mTurkActivity('mturk.log.submitted', null, $task->contract_id, $all_pages_str);
 
-                    $updatedAssignment = $this->getFormattedAssignment($assignment);
+                    $updatedAssignment = $this->getFormattedAssignment($assignment, $task->page_no);
                     if ($updatedAssignment['assignment']['status'] == 'Approved') {
                         $task->approved = Task::APPROVED;
                         $this->logger->mTurkActivity('mturk.log.approve', null, $task->contract_id, $all_pages_str);
@@ -1246,7 +1246,7 @@ class TaskService
      *
      * @return array
      */
-    protected function getFormattedAssignment($assignment)
+    protected function getFormattedAssignment($assignment, $fallback_page_no)
     {
         $task_assignment = $assignment['Assignments'][0];
         $data            = [];
@@ -1263,8 +1263,12 @@ class TaskService
                 $this->logger->info('ANSWER OF HIT IN LOOP IS COUNT'.json_encode($values).'COUNT'.json_encode(count($values)));
                 if(count($values) > 1) {
                     $page_no = $values[1];
-                    $answer[$page_no] = $text;
                 }
+                else {
+                    //Catering for HITS before MTurk batch processing feature
+                    $page_no = $fallback_page_no;
+                }
+                    $answer[$page_no] = $text;
             }
         }
         $data['assignment'] = [
