@@ -250,6 +250,7 @@ class MTurkService extends MechanicalTurkV2
                     }
                 }
             }
+            $db_assignment = isset($db_assignment) ? $db_assignment : array();
             /* The assignment json is updated with answer for safety */
             if(is_array($db_assignment)) {
                 $db_assignment['answer'] = isset($feedback[$taskItem->page_no]) ? $feedback[$taskItem->page_no] : ' ';
