@@ -222,7 +222,7 @@ class MTurkService extends MechanicalTurkV2
                         $this->logger->info('API ASSINGMENT PAGE NO.'.json_encode($page_no));
                         $feedback[$page_no] = $ans['FreeText'];
     
-                        if (is_array($feedback[$page_no])) {
+                        if (is_array($feedback[$page_no]) && isset($feedback[$page_no][0])) {
                             $feedback[$page_no] = $feedback[$page_no][0];
                         }
                         
