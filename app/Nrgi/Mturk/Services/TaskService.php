@@ -1055,7 +1055,7 @@ class TaskService
             foreach($taskItems as $key => $taskItem) 
             {
                 $page_no = strval($taskItem['page_no']);
-                $text     = is_string($textArray[$page_no]) ? $textArray[$page_no] : '';
+                $text     = isset($textArray[$page_no]) && is_string($textArray[$page_no]) ? $textArray[$page_no] : '';
                 $pdf_text = nl2br($text);
                 $this->page->saveText($contract_id, $page_no, $pdf_text, false);
             }
