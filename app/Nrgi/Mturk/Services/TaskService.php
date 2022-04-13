@@ -304,17 +304,12 @@ class TaskService
     public function compareAscendingSort ($el1, $el2, $item_key) {
         $item1 = $el1[$item_key];
         $item2 = $el2[$item_key];
-        $this->logger->info('Task service:sortfunc'.json_encode($item1).json_encode($item_key));
-        $this->logger->info('Task service:sortfunc2'.json_encode($item2).json_encode($item_key));
         if(!isset($item1) || !isset($item2)) {
-            $this->logger->info('Returning 0'.json_encode($item1).json_encode($item2));
             return 0;
         }
         if($item1 == $item2) {
-            $this->logger->info('Returning 00'.json_encode($item1).json_encode($item2));
             return 0;
         }
-        $this->logger->info('Returning final'.json_encode($item1).json_encode($item2).json_encode($item1 < $item2 ? -1 : 1));
         return $item1 < $item2 ? -1 : 1;
     }
 
@@ -1253,14 +1248,11 @@ class TaskService
 
         $answerObj = json_decode(json_encode(new \SimpleXMLElement($task_assignment['Answer']), true));
         $answer    = array();
-        $this->logger->info('ANSWER OF HIT IS'.json_encode($answerObj));
         foreach ($answerObj->Answer as $k => $ans) {
             $key = $ans->QuestionIdentifier;
             $text = $ans->FreeText;
-            $this->logger->info('ANSWER OF HIT IN LOOP IS'.json_encode($key).'ANSWER'.json_encode($ans).'SUB STR'.json_encode(substr($key, 0, strlen('feedback'))));
             if (substr($key, 0, strlen('feedback')) == 'feedback') {
                 $values = explode('_', $key);
-                $this->logger->info('ANSWER OF HIT IN LOOP IS COUNT'.json_encode($values).'COUNT'.json_encode(count($values)));
                 if(count($values) > 1) {
                     $page_no = $values[1];
                 }
@@ -1279,7 +1271,6 @@ class TaskService
             'status'        => $task_assignment['AssignmentStatus'],
             'answer'        => $answer,
         ];
-        $this->logger->info('FINAL ANSWER OF HIT IS'.json_encode($answer));
 
         $data['total'] = $assignment['NumResults'];
 
