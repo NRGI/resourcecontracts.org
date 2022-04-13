@@ -209,7 +209,6 @@ class MTurkService extends MechanicalTurkV2
                 $answers = $answers['Answer'];
 
                 foreach ($answers as $ans) {
-                    $this->logger->info('API ASSIGNMENT ANSWER'.json_encode($ans));
                     $answerValue = $ans['QuestionIdentifier'];
                     if (substr($answerValue, 0, strlen('feedback')) == 'feedback') {
                         $values = explode('_', $answerValue);
@@ -219,7 +218,6 @@ class MTurkService extends MechanicalTurkV2
                             //Catering for HITS before Mturk batch process feature
                             $page_no = $task->page_no;
                         }
-                        $this->logger->info('API ASSINGMENT PAGE NO.'.json_encode($page_no));
                         $feedback[$page_no] = $ans['FreeText'];
     
                         if (is_array($feedback[$page_no]) && isset($feedback[$page_no][0])) {
@@ -233,14 +231,10 @@ class MTurkService extends MechanicalTurkV2
         }
         foreach($taskItems as $key => $taskItem )
         {
-            $this->logger->info('Task item'.json_encode($taskItem->answer).gettype($taskItem->answer));
-            $this->logger->info('Task item Answer'.json_encode($taskItem->answer));
             $update_ans     = false;
             if(isset($taskItem->answer)) 
             {
                 $db_assignment  = json_decode($taskItem->answer, true);
-                $this->logger->info('DB assignment'.gettype($db_assignment));
-                $this->logger->info('DB assignment Resp'.json_encode($db_assignment));
                 $update_ans     = false;
                 if (isset($db_assignment) && !isset($feedback[$taskItem->page_no])) {
                     if (is_string($db_assignment)) {
@@ -259,7 +253,6 @@ class MTurkService extends MechanicalTurkV2
      /*updates assignment json column with answer if api returns answer*/
             if ($update_ans) {
                 $taskItem->answer = json_encode($db_assignment);
-                $this->logger->info('API ASSINGMENT ANSWER'.json_encode($taskItem->answer));
                 $taskItem->save();
             }
         }
