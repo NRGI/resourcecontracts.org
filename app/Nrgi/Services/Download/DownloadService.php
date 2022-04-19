@@ -5,6 +5,7 @@ use App\Nrgi\Services\Contract\Annotation\AnnotationService;
 use GuzzleHttp\Client;
 use App\Nrgi\Services\Contract\ContractService;
 use Maatwebsite\Excel\Excel;
+use App\Nrgi\Entities\Contract\Contract;
 
 /**
  * Class APIService
@@ -82,6 +83,9 @@ class DownloadService
             $contracts[$key]['Corporate Grouping']              = join(';', $this->makeSemicolonSeparated(json_decode($contract['Corporate Grouping']),'parent_company'));
             $contracts[$key]['Open Corporates Link']            = join(';', $this->makeSemicolonSeparated(json_decode($contract['Open Corporates Link']),'open_corporates_id'));
             $contracts[$key]['Incorporation Date']              = join(';', $this->makeSemicolonSeparated(json_decode($contract['Incorporation Date']),'company_founding_date'));
+            $publishingDateObj                                  = json_decode($contract['Publish Date'], true);
+            $publishingDate                                     = isset($publishingDateObj['metadata']) && isset($publishingDateObj['metadata']['status']) && $publishingDateObj['metadata']['status'] === Contract::STATUS_PUBLISHED ? $publishingDateObj['metadata']['datetime'] : '';
+            $contracts[$key]['Publish Date']                    = isset($publishingDate) ? $publishingDate : '';
             $contracts[$key]['RC Admin Link']                   = isset($web_url) && isset($contract['Contract ID']) ? $web_url.'/contract/'.$contract['Contract ID'] : '';
             $contracts[$key]['PDF URL']                         = $bucket_url.$contract['Contract ID'].'/'.$contract['PDF URL'];
         }
