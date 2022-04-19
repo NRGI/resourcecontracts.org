@@ -45,7 +45,7 @@ class DownloadService
     public function downloadData($contracts)
     {
         set_time_limit(0);
-        $web_url            = env('WEB_URL');
+        $web_url            = env('APP_DOMAIN');
         $users              = $this->userService->getAllUsersList();
         $annotationStatus   = $this->annotationService->getAllAnnotationStatus();
         $supportingDocs     = $this->contractService->getAllSupportingDocuments();
