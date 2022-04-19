@@ -5,6 +5,7 @@ use App\Nrgi\Services\Contract\Annotation\AnnotationService;
 use GuzzleHttp\Client;
 use App\Nrgi\Services\Contract\ContractService;
 use Maatwebsite\Excel\Excel;
+use App\Nrgi\Entities\Contract\Contract;
 
 /**
  * Class APIService
