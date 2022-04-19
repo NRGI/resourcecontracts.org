@@ -262,6 +262,14 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw("contracts.metadata_status=?", [$status]);
         }
 
+        if (isset($publishing_year) && $publishing_year != '' && $publishing_year != 'all') {
+            $contractPublishStatus = Contract::STATUS_PUBLISHED;
+            $query->whereRaw("contracts.publishing_date->'metadata'->>'status' =?", [$contractPublishStatus]);
+            $query->whereRaw("to_date(contracts.publishing_date->'metadata'->>'datetime', 'YYYY-MM-DD') >=?", [$publishing_year.'-01-01']);
+            $query->whereRaw("to_date(contracts.publishing_date->'metadata'->>'datetime', 'YYYY-MM-DD') <=?", [$publishing_year.'-12-31']);
+
+        }
+        
         if (isset($type) && $type == 'ocr' && $status != '') {
             if ($status == "null") {
                 $query->whereRaw("contracts.\"textType\" is null");
@@ -299,8 +307,8 @@ class ContractRepository implements ContractRepositoryInterface
 
         if (isset($type_of_contract) && $type_of_contract != '' && $type_of_contract != 'all') {
             $type_of_contract = str_replace("'","''", $type_of_contract);
-            $from .= ",json_array_elements(contracts.metadata->'type_of_contract') cat";
-            $query->whereRaw("trim(both '\"' from cat::text) = '" . $type_of_contract . "'");
+            $from .= ",json_array_elements(contracts.metadata->'type_of_contract') cat_type";
+            $query->whereRaw("trim(both '\"' from cat_type::text) = '" . $type_of_contract . "'");
         }
 
         
