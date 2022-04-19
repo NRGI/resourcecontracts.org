@@ -44,7 +44,7 @@ class DownloadService
     public function downloadData($contracts)
     {
         set_time_limit(0);
-
+        $web_url            = env('WEB_URL');
         $users              = $this->userService->getAllUsersList();
         $annotationStatus   = $this->annotationService->getAllAnnotationStatus();
         $supportingDocs     = $this->contractService->getAllSupportingDocuments();
@@ -82,6 +82,7 @@ class DownloadService
             $contracts[$key]['Corporate Grouping']              = join(';', $this->makeSemicolonSeparated(json_decode($contract['Corporate Grouping']),'parent_company'));
             $contracts[$key]['Open Corporates Link']            = join(';', $this->makeSemicolonSeparated(json_decode($contract['Open Corporates Link']),'open_corporates_id'));
             $contracts[$key]['Incorporation Date']              = join(';', $this->makeSemicolonSeparated(json_decode($contract['Incorporation Date']),'company_founding_date'));
+            $contracts[$key]['RC Admin Link']                   = isset($web_url) && isset($contract['Contract ID']) ? $web_url.'/contract/'.$contract['Contract ID'] : '';
             $contracts[$key]['PDF URL']                         = $bucket_url.$contract['Contract ID'].'/'.$contract['PDF URL'];
         }
 
