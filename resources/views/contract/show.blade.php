@@ -213,7 +213,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     <strong>@lang('contract.type_of_contract'): </strong></span>
                      <span class="value">
                     @if(is_array($contract->metadata->type_of_contract) && count($contract->metadata->type_of_contract)>0)
-					        {{join(', ', array_filter($contract->metadata->type_of_contract, function($v)use($contractTypeList){ return isset($contractTypeList[$v])===TRUE ?_l($contractTypeList[$v]):'';}))}}
+					        {{join(', ', array_filter($contract->metadata->type_of_contract, function($v)use($contractTypeList){ return isset($contractTypeList[$v])===TRUE ?_l($contractTypeList[$v]): isset($v) ? $v : '';}))}}
 						 @endif
 						 {!! discussion($discussions,$discussion_status, $contract->id,'type_of_contract','metadata') !!}
                     </span>
