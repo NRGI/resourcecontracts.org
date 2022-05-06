@@ -263,27 +263,22 @@ foreach ($resources as $item) {
 
     <div class="col-sm-7">
         <?php
-        $toc = (isset($contract->metadata->type_of_contract) && !(isset($_GET['parent'])) )? $contract->metadata->type_of_contract : old('type_of_contract');
-        ?>
-        {!! Form::select('type_of_contract[]', $contractTypeList,
-        $toc,
-        ["multiple"=>"multiple", "class"=>" form-control", "id"=>"type_of_contract"])!!}
-		<?php
-			$isTocOther= $tocDiff = false;
-			if (!empty($toc)) {
-			    $intersect = array_intersect($toc, $contractTypeList);
-                    foreach($intersect as $i ){
-                        $tocDiff   = array_key_exists($i, $intersect);
-                    }
-			if (($tocDiff) AND !empty($toc)) {
-				$isTocOther = true;
-				}
-			}
-		?>
-        @if($isTocOther)
-			<span class="red input-required">*</span>
-			<input class="form-control required other_toc" value="{{isset($toc[1])?$toc[1]:''}}"  name="type_of_contract[]" type="text">
-		@endif
+            $toc = (isset($contract->metadata->type_of_contract) && !(isset($_GET['parent'])) )? $contract->metadata->type_of_contract : old('type_of_contract');
+            $ct = $toc;
+            $isTocOther = false;
+            if (isset($ct) && is_array($ct) && count($ct) === 1 && count(array_diff($ct, $contractTypeList)) > 0) {
+                $ct = array();
+                $ct[0] = 'Other';
+                $isTocOther = true;
+            }
+            ?>
+            {!! Form::select('type_of_contract[]', $contractTypeList,
+            $ct,
+            ["multiple"=>"multiple", "class"=>" form-control", "id"=>"type_of_contract"])!!}
+            @if($isTocOther)
+                <span class="red input-required">*</span>
+                <input class="form-control required other_toc" value="{{isset($toc[0])?$toc[0]:''}}"  name="type_of_contract[]" type="text">
+            @endif
 
         <label id="type_of_contract-error" class="error" for="type_of_contract"></label>
     </div>
