@@ -190,7 +190,7 @@ class ImportService
 
         try {
             $excelData = $this->extractRecords($this->getFilePath($import_key, $fileName));
-            $contracts = $this->filterContracts($excelData);
+            $contracts = $this->filterContracts($excelData[1]);
         } catch (Exception $e) {
             $this->logger->error('Import Error :' . $e->getMessage());
             $this->deleteImportFolder($import_key);
