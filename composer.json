@@ -26,7 +26,7 @@
     "rap2hpoutre/laravel-log-viewer": "0.1.*",
     "league/flysystem-aws-s3-v3": "~1.0",
     "pda/pheanstalk": "~3.0",
-    "guzzlehttp/guzzle": "~5.3.4",
+    "guzzlehttp/guzzle": "~6.5.7",
     "phpoffice/phpword": "dev-master",
     "maatwebsite/excel": "~2.0",
     "ext-json": "*"
