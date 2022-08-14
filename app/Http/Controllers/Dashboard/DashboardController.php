@@ -4,7 +4,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Middleware\Localization;
 use App\Nrgi\Mturk\Services\MTurkService;
 use App\Nrgi\Services\Dashboard\DashboardService;
-use Illuminate\Http\Response;
 
 /**
  * Class DashboardController
@@ -21,8 +20,10 @@ class DashboardController extends Controller
     protected $dashboard;
 
     protected $localization;
+
     /**
      * Create a new controller instance.
+     *
      * @param DashboardService $dashboard
      * @param Localization     $localization
      */
@@ -34,32 +35,37 @@ class DashboardController extends Controller
     }
 
     /**
-     * Dashboard Home
+     * Renders Dashboard page
      *
      * @param MTurkService $mTurk
      *
-     * @return Response
+     * @return \Illuminate\Foundation\Application|\Illuminate\View\View
      */
     public function index(MTurkService $mTurk)
     {
+        try {
+            $stats = [
+                'balance'    => config('mturk.currencyCode').$mTurk->getBalance(),
+                'total'      => $this->dashboard->countContractTotal(),
+                'last_month' => $this->dashboard->countContractTotal('last_month'),
+                'this_month' => $this->dashboard->countContractTotal('this_month'),
+                'yesterday'  => $this->dashboard->countContractTotal('yesterday'),
+                'today'      => $this->dashboard->countContractTotal('today'),
+            ];
 
-        $stats = [
-            'balance'    => config('mturk.currencyCode').$mTurk->getBalance(),
-            'total'      => $this->dashboard->countContractTotal(),
-            'last_month' => $this->dashboard->countContractTotal('last_month'),
-            'this_month' => $this->dashboard->countContractTotal('this_month'),
-            'yesterday'  => $this->dashboard->countContractTotal('yesterday'),
-            'today'      => $this->dashboard->countContractTotal('today'),
-        ];
+            list($metadata, $pdfText) = $this->dashboard->contractStatusCount();
 
-        list($metadata, $pdfText) = $this->dashboard->contractStatusCount();
+            $annotation       = $this->dashboard->annotationStatusCount();
+            $ocrStatusCount   = $this->dashboard->getOcrStatusCount();
+            $status           = compact('metadata', 'pdfText', 'annotation');
+            $recent_contracts = $this->dashboard->recent(static::NO_OF_RECENT_CONTRACTS);
 
-        $annotation     = $this->dashboard->annotationStatusCount();
-        $ocrStatusCount = $this->dashboard->getOcrStatusCount();
-        $status         = compact('metadata', 'pdfText', 'annotation');
+            return view('dashboard.index', compact('stats', 'recent_contracts', 'status', 'ocrStatusCount'));
 
-        $recent_contracts = $this->dashboard->recent(static::NO_OF_RECENT_CONTRACTS);
+        } catch (\Exception $e) {
+            logger()->error($e);
 
-        return view('dashboard.index', compact('stats', 'recent_contracts', 'status', 'ocrStatusCount'));
+            return view('errors.500');
+        }
     }
 }
