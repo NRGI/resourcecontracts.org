@@ -57,8 +57,8 @@ return [
             'MaxAssignments'              => 1,
             //'Keywords'                    => ['transcription', 'pdf', 'language'],
             'Reward'                      => 0.50,
-            'LifetimeInSeconds'           => 10*24*60*60,
-            'AssignmentDurationInSeconds' => 10*24*60*60,
+            'LifetimeInSeconds'           => 5*24*60*60,
+            'AssignmentDurationInSeconds' => 5*24*60*60,
             "AutoApprovalDelayInSeconds" =>  30*24*60*60,
             'TaskItemCount'              => 20,
             'QualificationRequirements'   =>array(
