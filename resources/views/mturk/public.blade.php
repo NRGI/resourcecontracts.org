@@ -61,6 +61,7 @@
 		<?php endif;?>
 		</div>
 		<div>
+		<h4 >Once you have accepted the HIT, it needs to be completed and submitted within 5 days</h4>
 		<h4 >(Incorrectly transcribed pages will result in the rejection of the entire HIT)</h4>
 		</div>
         </form>
