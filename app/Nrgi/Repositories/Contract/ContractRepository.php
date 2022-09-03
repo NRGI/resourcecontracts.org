@@ -851,7 +851,7 @@ class ContractRepository implements ContractRepositoryInterface
             ->whereRaw("metadata->>'is_supporting_document' ='0'")->orderByRaw(
                 "metadata->>'contract_name' ASC"
             )
-            ->lists('name', 'id')->all();
+            ->pluck('name', 'id')->all();
     }
 
     /**

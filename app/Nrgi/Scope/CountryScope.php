@@ -3,14 +3,14 @@ namespace App\Nrgi\Scope;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\ScopeInterface;
+use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Support\Facades\Auth;
 
 /**
  * Class CountryScope
  * @package app\Nrgi\Scope
  */
-class CountryScope implements ScopeInterface
+class CountryScope implements Scope
 {
     /**
      * Remove the scope from the given Eloquent query builder.

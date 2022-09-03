@@ -42,6 +42,7 @@ $providers = [
     'App\Providers\RouteServiceProvider',
     'App\Providers\RepositoriesServiceProvider',
     'App\Providers\ProxyServiceProvider',
+    // 'App\Providers\BroadcastServiceProvider',
 ];
 
 $localProviders = [
@@ -57,6 +58,8 @@ if (env('APP_ENV') == "local") {
 }
 
 return [
+
+    'name' => 'Resource contracts Admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -130,7 +133,7 @@ return [
     */
 
     'key'    => env('APP_KEY', 'SomeRandomString'),
-    'cipher' => MCRYPT_RIJNDAEL_128,
+    'cipher' => 'AES-256-CBC',
     /*
     |--------------------------------------------------------------------------
     | Logging Configuration

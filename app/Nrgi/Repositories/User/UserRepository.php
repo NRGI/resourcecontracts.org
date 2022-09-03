@@ -87,7 +87,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getAllRoles()
     {
-        return $this->role->lists('display_name', 'name')->all();
+        return $this->role->pluck('display_name', 'name')->all();
     }
 
     /**
@@ -97,7 +97,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getCountryRoles()
     {
-        return $this->role->whereIn('name', config('nrgi.country_role'))->lists('display_name', 'name')->all();
+        return $this->role->whereIn('name', config('nrgi.country_role'))->pluck('display_name', 'name')->all();
     }
 
     /**
@@ -160,7 +160,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getRolesExceptAdminEditor()
     {
-        return $this->role->whereIn('name', config('nrgi.role_except_editor'))->lists('display_name', 'name')->all();
+        return $this->role->whereIn('name', config('nrgi.role_except_editor'))->pluck('display_name', 'name')->all();
     }
 
 }

@@ -8,20 +8,20 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "laravel/framework": "~5.2.45",
+    "laravel/framework": "5.3.*",
 
-    "symfony/console": "~2.8.52",
-    "symfony/debug": "~2.8.52",
-    "symfony/event-dispatcher": "~2.8.52",
-    "symfony/finder": "~2.8.52",
-    "symfony/http-foundation": "~2.8.52",
-    "symfony/http-kernel": "~2.8.52",
-    "symfony/process": "~2.8.52",
-    "symfony/routing": "~2.8.52",
-    "symfony/translation": "~2.8.52",
-    "symfony/var-dumper": "~2.8.52",
+    "symfony/console": "3.1.*",
+    "symfony/debug": "3.1.*",
+    "symfony/event-dispatcher": "3.1.*",
+    "symfony/finder": "3.1.*",
+    "symfony/http-foundation": "3.1.*",
+    "symfony/http-kernel": "3.1.*",
+    "symfony/process": "3.1.*",
+    "symfony/routing": "3.1.*",
+    "symfony/translation": "3.1.*",
+    "symfony/var-dumper": "3.1.*",
 
-    "laravelcollective/html": "~5.2.6",
+    "laravelcollective/html": "5.3.*",
     "zizaco/entrust": "1.9.1",
     "rap2hpoutre/laravel-log-viewer": "0.1.*",
     "league/flysystem-aws-s3-v3": "~1.0",
@@ -37,8 +37,8 @@
     "mockery/mockery": "0.9.*",
     "barryvdh/laravel-ide-helper": "~2.0",
     "barryvdh/laravel-debugbar": "~2.0",
-    "symfony/dom-crawler": "~2.8.52",
-    "symfony/css-selector": "~2.8.52"
+    "symfony/dom-crawler": "3.1.*",
+    "symfony/css-selector": "3.1.*"
   },
   "autoload": {
     "classmap": [
@@ -71,6 +71,9 @@
     ]
   },
   "config": {
-    "preferred-install": "dist"
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "kylekatarnls/update-helper": true
+    }
   }
 }
