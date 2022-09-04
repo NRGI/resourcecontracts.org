@@ -181,7 +181,7 @@ class ImportContracts extends Command
      * Execute the console command.
      *
      */
-    public function fire()
+    public function handle()
     {
         if (file_exists(public_path('json.html'))) {
             $json = json_decode(file_get_contents(public_path('json.html')), true);

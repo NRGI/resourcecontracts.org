@@ -322,7 +322,7 @@ class MTurkController extends Controller
      */
     public function activity(Request $request, UserService $user)
     {
-        $filter     = $request->only('contract', 'user');
+        $filter     = $request->all('contract', 'user');
         $activities = $this->activity->getAll($filter);
         $users      = $user->getList();
         $contracts  = $this->task->getContractsList();

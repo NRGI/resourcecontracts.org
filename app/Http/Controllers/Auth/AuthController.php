@@ -49,14 +49,14 @@ class AuthController extends Controller
             ]
         );
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->all('email', 'password');
 
         if (Auth::attempt($credentials, $request->has('remember'))) {
             if (Auth::user()->status == 'false') {
                 Auth::logout();
 
                 return redirect($this->loginPath())
-                    ->withInput($request->only('email', 'remember'))
+                    ->withInput($request->all('email', 'remember'))
                     ->withErrors(
                         [
                             'email' => 'Account has not been activated',
@@ -68,7 +68,7 @@ class AuthController extends Controller
         }
 
         return redirect($this->loginPath())
-            ->withInput($request->only('email', 'remember'))
+            ->withInput($request->all('email', 'remember'))
             ->withErrors(
                 [
                     'email' => $this->getFailedLoginMessage(),

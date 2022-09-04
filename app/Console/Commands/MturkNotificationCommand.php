@@ -53,7 +53,7 @@ class MturkNotificationCommand extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $contracts = $this->contract->getMTurkContracts(['status' => Contract::MTURK_SENT]);
         foreach ($contracts as $contract) {

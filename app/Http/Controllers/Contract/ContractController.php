@@ -118,7 +118,7 @@ class ContractController extends Controller
      */
     public function index(Request $request, LanguageService $lang)
     {
-         $filters        = $request->only(
+         $filters        = $request->all(
              'resource',
              'year',
              'publishing_year',

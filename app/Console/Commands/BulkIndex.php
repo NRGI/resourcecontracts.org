@@ -78,7 +78,7 @@ class BulkIndex extends Command
     /**
      * Execute the console command.
      */
-    public function fire()
+    public function handle()
     {
         $category = $this->input->getOption('category');
         $skip = $this->input->getOption('skip');

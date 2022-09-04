@@ -84,7 +84,7 @@ class CodeListController extends Controller
     {
         $type = $request['type'];
 
-        if($this->codelist->store($request->only('en' ,'ar' ,'fr', 'type'))) {
+        if($this->codelist->store($request->all('en' ,'ar' ,'fr', 'type'))) {
 
             return redirect()->route('codelist.list', $type)->withSuccess(trans('codelist.'.$type.'_create_success'));
         }
@@ -119,7 +119,7 @@ class CodeListController extends Controller
     {
         $type = $request['type'];
 
-        if($this->codelist->update($id,$request->only('en' ,'ar' ,'fr', 'type'))){
+        if($this->codelist->update($id,$request->all('en' ,'ar' ,'fr', 'type'))){
 
             return redirect()->route('codelist.list',$type)->withSuccess(trans('codelist.'.$type.'_update_success'));
         }

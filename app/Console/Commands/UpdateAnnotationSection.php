@@ -45,7 +45,7 @@ class UpdateAnnotationSection extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $annotation_id = $this->input->getOption('id');
         $this->updateAnnotation($annotation_id);

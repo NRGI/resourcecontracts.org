@@ -39,7 +39,7 @@ class UpdateGovernmentEntities extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $client   = new GuzzleHttp\Client();
         $response = $client->get(

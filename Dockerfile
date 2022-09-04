@@ -15,15 +15,15 @@ ENV TZ=Europe/Kiev
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
                     apache2 \
-                    php5.6 \
-                    php5.6-cli \
-                    php5.6-curl \
-                    php5.6-mbstring \
-                    php5.6-mcrypt \
-                    php5.6-pgsql \
-                    php5.6-readline \
-                    php5.6-xml \
-                    php5.6-zip \
+                    php7.2 \
+                    php7.2-cli \
+                    php7.2-curl \
+                    php7.2-mbstring \
+                    php7.2-mcrypt \
+                    php7.2-pgsql \
+                    php7.2-readline \
+                    php7.2-xml \
+                    php7.2-zip \
                     beanstalkd \
                     poppler-utils \
                     supervisor \
@@ -43,7 +43,7 @@ RUN rm -rf /var/lib/apt/lists/* \
  && rm -r remote_syslog 
 
 RUN a2enmod rewrite \
- && a2enmod php5.6
+ && a2enmod php7.2
 
 # Fetch composer packages before copying project code to leverage Docker caching
 RUN mkdir /var/www/rc-admin
@@ -68,10 +68,10 @@ COPY conf/logrotate.conf /etc/logrotate.d/rc-admin
 COPY conf/settings.config.template /var/container_init/settings.config.template
 
 # Configure PHP
-RUN sed -i "s/^post_max_size =.*/post_max_size = 5120M/" /etc/php/5.6/apache2/php.ini \
- && sed -i "s/^upload_max_filesize =.*/upload_max_filesize = 5120M/" /etc/php/5.6/apache2/php.ini \
- && sed -i "s/^memory_limit =.*/memory_limit = 512M/" /etc/php/5.6/apache2/php.ini \
- && sed -i "s/^max_execution_time =.*/max_execution_time = 60/" /etc/php/5.6/apache2/php.ini
+RUN sed -i "s/^post_max_size =.*/post_max_size = 5120M/" /etc/php/7.2/apache2/php.ini \
+ && sed -i "s/^upload_max_filesize =.*/upload_max_filesize = 5120M/" /etc/php/7.2/apache2/php.ini \
+ && sed -i "s/^memory_limit =.*/memory_limit = 512M/" /etc/php/7.2/apache2/php.ini \
+ && sed -i "s/^max_execution_time =.*/max_execution_time = 180/" /etc/php/7.2/apache2/php.ini
 
 COPY . /var/www/rc-admin
 

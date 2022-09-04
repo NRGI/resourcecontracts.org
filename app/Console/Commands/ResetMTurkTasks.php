@@ -37,7 +37,7 @@ class ResetMTurkTasks extends Command {
 	 * @param TaskService $taskService
 	 * @return mixed
 	 */
-	public function fire(Task $task, TaskService $taskService)
+	public function handle(Task $task, TaskService $taskService)
 	{
 		$contract_id = $this->input->getArgument('id');
 		$contract_tasks = $task->pending()->where('contract_id',$contract_id)->with('taskItems')->get();

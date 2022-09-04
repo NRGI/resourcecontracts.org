@@ -67,7 +67,7 @@ class ProfilesController extends Controller
     public function updateUser(UpdateProfileRequest $request)
     {
 
-        $user_detail = $request->only('name', 'organization', 'password');
+        $user_detail = $request->all('name', 'organization', 'password');
 
         if ($this->user->update($this->auth->id(), $user_detail, null)) {
             return redirect()->route('user.profile')->withSuccess(trans('user.update_success'));
