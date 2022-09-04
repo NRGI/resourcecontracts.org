@@ -231,7 +231,7 @@ class ContractController extends Controller
          $elementState                 = $this->activity->getElementState($id);
          $annotationStatus             = $this->annotation->getStatus($id);
          $annotationStatus             = $annotationStatus == '' ? $elementState['annotation'] : $annotationStatus;
-         $locale                       = $request->route()->getParameter('lang', $lang->defaultLang());
+         $locale                       = $request->route()->parameter('lang', $lang->defaultLang());
          $resourceList                 = $this->codeList->getCodeList('resources',$lang->getSiteLang());
          $contractTypeList             = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
          $documentTypeList             = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
@@ -292,7 +292,7 @@ class ContractController extends Controller
         $discussion_status = $discussion->getResolved($id);
         $companyName       = $this->contract->getCompanyNames();
         $view              = 'contract.edit';
-        $locale            = $request->route()->getParameter('lang');
+        $locale            = $request->route()->parameter('lang');
 
         if (!is_null($locale)) {
             if (!$lang->isValidTranslationLang($locale) || $locale == $lang->defaultLang()) {
