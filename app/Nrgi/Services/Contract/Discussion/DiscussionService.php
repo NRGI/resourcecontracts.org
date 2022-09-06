@@ -2,7 +2,7 @@
 
 use App\Nrgi\Repositories\Contract\Discussion\DiscussionRepositoryInterface;
 use Exception;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 
 
 /**

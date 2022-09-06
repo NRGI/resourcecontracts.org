@@ -20,7 +20,7 @@ use Aws\Exception\MultipartUploadException;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;

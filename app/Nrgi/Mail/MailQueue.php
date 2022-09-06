@@ -2,7 +2,7 @@
 namespace App\Nrgi\Mail;
 
 use Exception;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 use Illuminate\Mail\Mailer;
 
 /**

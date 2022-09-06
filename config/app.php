@@ -57,15 +57,6 @@ if (env('APP_ENV') == "local") {
     $providers = array_merge($providers, $localProviders);
 }
 
-$app->configureMonologUsing(function ($monolog) use($app) {
-    if (env('APP_ENV') == 'production') {
-        $handler = new \Monolog\Handler\LogglyHandler(env('LOG_TOKEN'));
-        $handler->setTag('ResourceContracts');
-        $monolog->pushHandler($handler);
-    }
-});
-
-
 
 return [
 

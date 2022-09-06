@@ -7,7 +7,7 @@ use App\Nrgi\Repositories\CodeList\DocumentType\DocumentTypeRepositoryInterface;
 use App\Nrgi\Repositories\CodeList\Resource\ResourceRepositoryInterface;
 use Exception;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
