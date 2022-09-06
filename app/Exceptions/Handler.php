@@ -48,10 +48,10 @@ class Handler extends ExceptionHandler
      * @param LoggerInterface $log
      * @param MailQueue       $mailer
      */
-    public function __construct(Container $app, LoggerInterface $log, MailQueue $mailer)
+    public function __construct(Container $app, LoggerInterface $log)
     {
         parent::__construct($app);
-        $this->mailer = $mailer;
+        // $this->mailer = $mailer;
     }
 
     /**
@@ -108,7 +108,7 @@ class Handler extends ExceptionHandler
             }
         }
         $url = Request::fullUrl();
-        $this->mailer->sendErrorEmail($e, $url);
+        // $this->mailer->sendErrorEmail($e, $url);
     }
 
     /**

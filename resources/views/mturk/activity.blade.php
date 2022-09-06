@@ -56,7 +56,7 @@
                  
                  ?>
                     <tr>
-                        <td><a href="{{route('contract.show',$activity->contract_id)}}">{{ $activity->contract->metadata->contract_name or ''}}</a></td>
+                        <td><a href="{{route('contract.show',$activity->contract_id)}}">{{ $activity->contract->metadata->contract_name ?? ''}}</a></td>
                         <td>{{ $page_val}}</td>
 
                         <td>

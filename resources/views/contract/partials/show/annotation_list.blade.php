@@ -60,7 +60,7 @@
 											  data-params='{"lang" : "{{$locale}}" }'
 											  data-name="article_reference"
 											  data-url="{{route('annotation.update')}}" data-type="text"
-											  class="edit-annotation-section"> {{$child->article_reference or ''}}</span>
+											  class="edit-annotation-section"> {{$child->article_reference ?? ''}}</span>
 									@endif
 								</div>
 								<div class="col-md-2">

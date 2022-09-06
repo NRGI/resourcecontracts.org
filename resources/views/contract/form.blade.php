@@ -874,7 +874,7 @@ foreach ($resources as $item) {
 
 </div>
 <div class="form-group parent-document"
-     style="display: @if($action == 'edit' && isset($contract->metadata->is_supporting_document) &&  $contract->metadata->is_supporting_document==1 or ($is_supporting))block @else none @endif">
+     style="display: @if($action == 'edit' && isset($contract->metadata->is_supporting_document) &&  $contract->metadata->is_supporting_document==1 ?? ($is_supporting))block @else none @endif">
     {!! Form::label('translated_from', trans('contract.parent_document'), ['class'=>'col-sm-2 control-label parent-document-select'])!!}
     <?php
     $parent_contract = null;

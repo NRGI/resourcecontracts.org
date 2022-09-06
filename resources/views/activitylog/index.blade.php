@@ -67,7 +67,7 @@
 				@forelse($activityLogs as $activitylog)
 					<tr>
 						<td>
-							<a href="{{route('contract.show',$activitylog->contract_id)}}">{{ $activitylog->contract->metadata->contract_name or ''}}</a>
+							<a href="{{route('contract.show',$activitylog->contract_id)}}">{{ $activitylog->contract->metadata->contract_name ?? ''}}</a>
 						</td>
 						<td>
 							{{ trans($activitylog->message,$activitylog->message_params) }} <br>

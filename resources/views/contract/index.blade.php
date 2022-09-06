@@ -106,7 +106,7 @@
 						<td width="65%">
 							<i class="glyphicon glyphicon-file"></i>
 							<a href="{{route('contract.show', $contract->id)}}"
-							   class="contract-title">{{$contract->metadata->contract_name or $contract->metadata->project_title}}</a>
+							   class="contract-title">{{$contract->metadata->contract_name ?? $contract->metadata->project_title}}</a>
 							<span class="label label-default">
 								<?php echo strtoupper(
 										$contract->metadata->language

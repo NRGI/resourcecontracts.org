@@ -42,6 +42,7 @@ $providers = [
     'App\Providers\RouteServiceProvider',
     'App\Providers\RepositoriesServiceProvider',
     'App\Providers\ProxyServiceProvider',
+    'Illuminate\Notifications\NotificationServiceProvider'
     // 'App\Providers\BroadcastServiceProvider',
 ];
 
