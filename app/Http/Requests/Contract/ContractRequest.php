@@ -101,7 +101,7 @@ class ContractRequest extends Request
                         $message = trans("validation.file_already_exists");
                         $message .= sprintf(
                             "<div><a target='_blank' href='%s'>%s</a></div>",
-                            route('contract.show', $contract->id),
+                            route('contract.show',['contract' => $contract->id]),
                             $contract->title
                         );
 

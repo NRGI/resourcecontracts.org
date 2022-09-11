@@ -191,7 +191,7 @@ class ContractController extends Controller
     public function store(ContractRequest $request)
     {
         if ($contract = $this->contract->saveContract($request->all())) {
-            return redirect()->route('contract.show', ['id' => $contract->id])->with(
+            return redirect()->route('contract.show', ['contract' => $contract->id])->with(
                 'success',
                 trans('contract.save_success')
             );
@@ -331,10 +331,10 @@ class ContractController extends Controller
     public function update(ContractRequest $request, $contractID)
     {
         if ($this->contract->updateContract($contractID, $request->all())) {
-            return redirect()->route('contract.show', $contractID)->withSuccess(trans('contract.update_success'));
+            return redirect()->route('contract.show', ['contract' => $contractID])->withSuccess(trans('contract.update_success'));
         }
 
-        return redirect()->route('contract.show', $contractID)->withError(trans('contract.update_fail'));
+        return redirect()->route('contract.show', ['contract' => $contractID])->withError(trans('contract.update_fail'));
     }
 
     /**

@@ -40,7 +40,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 										   href="{{$contract->file_url}}">@lang('global.pdf')</a></li>
 									@if($contract->word_file !='')
 										<li><a class="name-value-wrap"
-											   href="{{route('contract.download', $contract->id)}}">@lang('global.word')</a>
+											   href="{{route('contract.download', ['id' => $contract->id])}}">@lang('global.word')</a>
 										</li>
 									@endif
 								</ul>
@@ -49,7 +49,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 					</div>
 					<div class="pull-left">
 						<div class="clearfix">
-							<a href="{{route('contract.edit', $contract->id)}}"
+							<a href="{{route('contract.edit',['contract' => $contract->id])}}"
 							   class="btn btn-default pull-left edit-btn">@lang('contract.edit_metadata')</a>
 							@if($status == $contract_processing_completed)
 								<div class="pull-left">
@@ -88,7 +88,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 					</div>
 				</div>
 				@include('contract.state')
-				<a class="btn btn-default" href="{{route('contract.comment.list',$contract->id)}}">
+				<a class="btn btn-default" href="{{route('contract.comment.list',['id' => $contract->id])}}">
 					@lang('contract.view_all')
 				</a>
 			</div>
@@ -213,7 +213,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
                     <strong>@lang('contract.type_of_contract'): </strong></span>
                      <span class="value">
                     @if(is_array($contract->metadata->type_of_contract) && count($contract->metadata->type_of_contract)>0)
-					        {{join(', ', array_filter($contract->metadata->type_of_contract, function($v)use($contractTypeList){ return isset($contractTypeList[$v])===TRUE ?_l($contractTypeList[$v]): isset($v) ? $v : '';}))}}
+					        {{join(', ', array_filter($contract->metadata->type_of_contract, function($v)use($contractTypeList){ return (isset($contractTypeList[$v])===TRUE ?_l($contractTypeList[$v]): isset($v)) ? $v : '';}))}}
 						 @endif
 						 {!! discussion($discussions,$discussion_status, $contract->id,'type_of_contract','metadata') !!}
                     </span>
@@ -491,7 +491,7 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 					@foreach($associatedContracts as $associatedContract)
 						<ul>
 							<li class="name-value-wrap">
-								<a href="{{route('contract.show',$associatedContract['contract']['id'])}}">
+								<a href="{{route('contract.show',['contract' => $associatedContract['contract']['id']])}}">
 									{{$associatedContract['contract']['contract_name']}}
 									@if($associatedContract['parent'])
 										(Main)

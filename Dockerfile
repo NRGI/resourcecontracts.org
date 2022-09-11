@@ -15,15 +15,18 @@ ENV TZ=Europe/Kiev
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
                     apache2 \
-                    php7.2 \
-                    php7.2-cli \
-                    php7.2-curl \
-                    php7.2-mbstring \
-                    php7.2-mcrypt \
-                    php7.2-pgsql \
-                    php7.2-readline \
-                    php7.2-xml \
-                    php7.2-zip \
+                    php7.4 \
+                    php7.4-cli \
+                    php7.4-curl \
+                    php7.4-mbstring \
+                    php7.4-mcrypt \
+                    php7.4-pgsql \
+                    php7.4-readline \
+                    php7.4-xml \
+                    php7.4-zip \
+                    php7.4-gd \
+                    php7.4-intl \
+                    php7.4-xsl \
                     beanstalkd \
                     poppler-utils \
                     supervisor \
@@ -43,7 +46,7 @@ RUN rm -rf /var/lib/apt/lists/* \
  && rm -r remote_syslog 
 
 RUN a2enmod rewrite \
- && a2enmod php7.2
+ && a2enmod php7.4
 
 # Fetch composer packages before copying project code to leverage Docker caching
 RUN mkdir /var/www/rc-admin
@@ -68,10 +71,10 @@ COPY conf/logrotate.conf /etc/logrotate.d/rc-admin
 COPY conf/settings.config.template /var/container_init/settings.config.template
 
 # Configure PHP
-RUN sed -i "s/^post_max_size =.*/post_max_size = 5120M/" /etc/php/7.2/apache2/php.ini \
- && sed -i "s/^upload_max_filesize =.*/upload_max_filesize = 5120M/" /etc/php/7.2/apache2/php.ini \
- && sed -i "s/^memory_limit =.*/memory_limit = 512M/" /etc/php/7.2/apache2/php.ini \
- && sed -i "s/^max_execution_time =.*/max_execution_time = 180/" /etc/php/7.2/apache2/php.ini
+RUN sed -i "s/^post_max_size =.*/post_max_size = 5120M/" /etc/php/7.4/apache2/php.ini \
+ && sed -i "s/^upload_max_filesize =.*/upload_max_filesize = 5120M/" /etc/php/7.4/apache2/php.ini \
+ && sed -i "s/^memory_limit =.*/memory_limit = 512M/" /etc/php/7.4/apache2/php.ini \
+ && sed -i "s/^max_execution_time =.*/max_execution_time = 180/" /etc/php/7.4/apache2/php.ini
 
 COPY . /var/www/rc-admin
 

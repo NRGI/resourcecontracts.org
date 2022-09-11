@@ -108,7 +108,7 @@ class ProcessService
                     [
                         'contract_title'      => $contract->title,
                         'contract_id'         => $contract->id,
-                        'contract_detail_url' => route('contract.show', ["id" => $contract->id]),
+                        'contract_detail_url' => route('contract.show', ["contract" => $contract->id]),
                         'start_time'          => $startTime->toDayDateTimeString(),
                         'end_time'            => Carbon::now()->toDayDateTimeString(),
                     ]
@@ -153,7 +153,7 @@ class ProcessService
                 [
                     'contract_title'      => $contract->title,
                     'contract_id'         => $contract->id,
-                    'contract_detail_url' => route('contract.show', ["id" => $contract->id]),
+                    'contract_detail_url' => route('contract.show', ["contract" => $contract->id]),
                     'start_time'          => $startTime->toDayDateTimeString(),
                     'error'               => $e->getMessage(),
                 ]

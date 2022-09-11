@@ -423,7 +423,7 @@ class ImportService
                 $fileHash = getFileHash($this->getFilePath($import_key, $file));
 
                 if ($con = $this->contract->getContractByFileHash($fileHash)) {
-                    $title = sprintf('<a href="%s" target="_blank">%s</a>', route('contract.show', $con->id), str_limit($con->title, 25));
+                    $title = sprintf('<a href="%s" target="_blank">%s</a>', route('contract.show', ['contract' => $con->id]), str_limit($con->title, 25));
                     $this->updateContractJsonByID(
                         $import_key,
                         $contract->id,

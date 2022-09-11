@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading">@lang("All Comments") - {{$contract->metadata->contract_name}} <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">@lang("global.back")</a></div>
+        <div class="panel-heading">@lang("All Comments") - {{$contract->metadata->contract_name}} <a class="btn btn-default pull-right" href="{{route('contract.show',['contract' => $contract->id])}}">@lang("global.back")</a></div>
         <div class="panel-body">
             <div class="" id="myTabs">
                 <ul class="nav nav-tabs">

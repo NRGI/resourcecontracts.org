@@ -4,17 +4,17 @@
 <div class="code-list-panel-heading">
     <ul class="nav nav-tabs code-list-panel-heading__items">
         <li {{in_array('contract_types', Request::segments())? 'class=active' : ''}}>
-            <a href="{{route('codelist.list', 'contract_types')}}">
+            <a href="{{route('codelist.list', ['type' => 'contract_types'])}}">
                 {{ trans('codelist.contract_types') }}
             </a>
         </li>
         <li {{in_array('document_types', Request::segments())? 'class=active' : ''}}>
-            <a href="{{route('codelist.list', 'document_types')}}">
+            <a href="{{route('codelist.list',['type' => 'document_types'])}}">
                 {{ trans('codelist.document_types') }}
             </a>
         </li>
         <li {{in_array('resources', Request::segments())? 'class=active' : ''}}>
-            <a href="{{route('codelist.list', 'resources')}}">
+            <a href="{{route('codelist.list',['type' => 'resources'])}}">
                 {{ trans('codelist.resources') }}
             </a>
         </li>
@@ -23,7 +23,7 @@
     <div class="panel panel-default code-list-panel">
         <div class="panel-body">
             <div class="clearfix">
-                <a class=" btn btn-primary pull-right" href="{{route('codelist.create', $type)}}">
+                <a class=" btn btn-primary pull-right" href="{{route('codelist.create',['type' => $type])}}">
                     {{ trans('codelist.add_'.$type) }}
                 </a>
             </div>
@@ -45,7 +45,7 @@
                         <td>{{$value->fr}}</td>
                         <td>{{$value->ar}}</td>
                         <td>
-                            <a href="{{route('codelist.edit', [$type,$value->id])}}" id="codelist_edit_{{$key}}" class="btn btn-primary">{{ trans('codelist.edit') }}</a>
+                            <a href="{{route('codelist.edit', ['type' =>  $type, 'id' => $value->id])}}" id="codelist_edit_{{$key}}" class="btn btn-primary">{{ trans('codelist.edit') }}</a>
 
                             {!!Form::open(['route'=>['codelist.destroy',$type, $value->id], 'style'=>"display:inline",'method'=>'delete'])!!}
                             {!!Form::button(trans('codelist.delete'), ['type'=>'submit','id'=>"codelist_delete_{{$key}}", 'class'=>'btn btn-danger confirm',
@@ -61,7 +61,7 @@
                     </tr>
                 @endforelse
             </table>
-            {!!$data->appends(Input::all())->render()!!}
+            {!!$data->appends(Request::all())->render()!!}
         </div>
     </div>
 @endsection

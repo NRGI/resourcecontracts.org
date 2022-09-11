@@ -42,7 +42,7 @@
 										<span class="annotation-type-icon annotation-text-icon"></span>
 									@endif
 									@if(property_exists($child->annotation, "shapes"))
-										<a href="{{route('contract.annotate',$contract->id)}}#/pdf/page/{{$child->page_no}}/annotation/{{$child->id}}"> @lang('annotation.page') </a>
+										<a href="{{route('contract.annotate',['id' => $contract->id])}}#/pdf/page/{{$child->page_no}}/annotation/{{$child->id}}"> @lang('annotation.page') </a>
 										<span data-pk="{{$child->id}}"
 											  data-name="page_no"
 											  data-url="{{route('annotation.update')}}"
@@ -50,7 +50,7 @@
 											  data-type="select"
 											  class="edit-annotation-page">{{$child->page_no}}</span>
 									@else
-										<a href="{{route('contract.annotate',$contract->id)}}#/text/page/{{$child->page_no}}/annotation/{{$child->id}}">  @lang('annotation.page') </a>
+										<a href="{{route('contract.annotate',['id' => $contract->id])}}#/text/page/{{$child->page_no}}/annotation/{{$child->id}}">  @lang('annotation.page') </a>
 										<span>{{$child->page_no}}</span>
 									@endif
 

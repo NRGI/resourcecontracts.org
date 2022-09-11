@@ -33,9 +33,9 @@
                         <td>{{$user->status == 'true' ? trans('user.active') : trans('user.inactive')}}</td>
                         <td>{{$user->createdDate('F d Y \a\t h:i A')}}</td>
                         <td>
-                            <a href="{{route('user.edit', $user->id)}}" id="user_edit_{{$key}}" class="btn btn-primary">{{ trans('user.edit') }}</a>
+                            <a href="{{route('user.edit',[ 'id' => $user->id])}}" id="user_edit_{{$key}}" class="btn btn-primary">{{ trans('user.edit') }}</a>
 
-                            {!!Form::open(['route'=>['user.destroy', $user->id], 'style'=>"display:inline",
+                            {!!Form::open(['route'=>['user.destroy',['id' => $user->id]], 'style'=>"display:inline",
               'method'=>'delete'])!!}
                             {!!Form::button(trans('user.delete'), ['type'=>'submit','id'=>"user_delete_{{$key}}", 'class'=>'btn btn-danger confirm',
                             'data-confirm'=>trans('user.confirm_text_user_delete')])!!}

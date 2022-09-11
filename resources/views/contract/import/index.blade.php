@@ -26,12 +26,12 @@
                     <tr>
                         @if($job['step'] == 1)
                          <td>{{date( 'd F, Y H:i A', $job['file']['created_at'])}}</td>
-                         <td><a href="{{route('contract.import.confirm', $job['key'])}}">{{$job['file']['name']}}</a></td>
+                         <td><a href="{{route('contract.import.confirm',['key' => $job['key']])}}">{{$job['file']['name']}}</a></td>
                         @endif
 
                         @if($job['step'] == 2)
                            <td>{{date( 'Y-m-d H:i:s', $job['file']['created_at'])}}</td>
-                           <td><a href="{{route('contract.import.status', $job['key'])}}">{{$job['file']['name']}}</a></td>
+                           <td><a href="{{route('contract.import.status',['key' => $job['key']])}}">{{$job['file']['name']}}</a></td>
                             <td></td>
                         @endif
                     </tr>

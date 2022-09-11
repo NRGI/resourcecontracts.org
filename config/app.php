@@ -187,6 +187,7 @@ return [
         'DB'        => 'Illuminate\Support\Facades\DB',
         'Eloquent'  => 'Illuminate\Database\Eloquent\Model',
         'Event'     => 'Illuminate\Support\Facades\Event',
+        'Excel'     =>  'Maatwebsite\Excel\Facades\Excel',
         'File'      => 'Illuminate\Support\Facades\File',
         'Hash'      => 'Illuminate\Support\Facades\Hash',
         'Input'     => 'Illuminate\Support\Facades\Input',

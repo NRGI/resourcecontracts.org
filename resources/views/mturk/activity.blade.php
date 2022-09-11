@@ -27,11 +27,11 @@
         <div class="panel-body">
             {!! Form::open(['route' => 'mturk.activity', 'method' => 'get', 'class'=>'form-inline']) !!}
             <label class="filter">@lang('activitylog.filterby')</label>
-            {!! Form::select('contract', ['all'=>trans('activitylog.all_contract')] + $contracts, Input::get('contract')
+            {!! Form::select('contract', ['all'=>trans('activitylog.all_contract')] + $contracts, Request::input('contract')
             ,
             ['class' =>'form-control']) !!}
 
-            {!! Form::select('user', ['all'=>trans('activitylog.all_user')] + $users , Input::get('user') ,
+            {!! Form::select('user', ['all'=>trans('activitylog.all_user')] + $users , Request::input('user') ,
             ['class' =>'form-control']) !!}
 
             {!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
@@ -56,7 +56,7 @@
                  
                  ?>
                     <tr>
-                        <td><a href="{{route('contract.show',$activity->contract_id)}}">{{ $activity->contract->metadata->contract_name ?? ''}}</a></td>
+                        <td><a href="{{route('contract.show',['contract' => $activity->contract_id])}}">{{ $activity->contract->metadata->contract_name ?? ''}}</a></td>
                         <td>{{ $page_val}}</td>
 
                         <td>
@@ -72,7 +72,7 @@
                 @endforelse
                 </tbody>
             </table>
-            {!!$activities->appends(Input::all())->render()!!}
+            {!!$activities->appends(Request::all())->render()!!}
         </div>
     </div>
 @endsection

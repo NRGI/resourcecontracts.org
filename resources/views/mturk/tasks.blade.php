@@ -15,8 +15,8 @@
 @stop
 
 <?php
-$get_status = \Input::get('status',null);
-$approved = \Input::get('approved',null);
+$get_status = \Request::input('status',null);
+$approved = \Request::input('approved',null);
 $requiring_action = $status['total_completed']-$status['total_approved']-$status['total_rejected'];
 ?>
 
@@ -46,11 +46,11 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
 
             </div>
                 <div class="btn-group col-md-6" style="margin-top: 50px;" role="group">
-                    <a class="btn @if($get_status == null AND $approved == null) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}">{{ trans('mturk.all_hit') }}</a>
-                    <a class="btn @if($get_status == 1 AND $approved == 0) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}?status=1&approved=0">{{  trans('mturk.requiring_action') }}</a>
-                    <a class="btn @if($get_status == 1 AND $approved == 1) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}?status=1&approved=1">{{ trans('mturk.approved') }}</a>
-                    <a class="btn @if($get_status == 1 AND $approved == 2) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}?status=1&approved=2">{{ trans('mturk.rejected') }}</a>
-                    <a class="btn @if($get_status == '0' AND $approved == '0') btn-primary @else btn-default @endif" href="{{route('mturk.tasks', $contract->id)}}?status=0&approved=0">{{ trans('mturk.pending') }}</a>
+                    <a class="btn @if($get_status == null AND $approved == null) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', [ 'contract_id' =>  $contract->id])}}">{{ trans('mturk.all_hit') }}</a>
+                    <a class="btn @if($get_status == 1 AND $approved == 0) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', [ 'contract_id' =>  $contract->id])}}?status=1&approved=0">{{  trans('mturk.requiring_action') }}</a>
+                    <a class="btn @if($get_status == 1 AND $approved == 1) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', [ 'contract_id' =>  $contract->id])}}?status=1&approved=1">{{ trans('mturk.approved') }}</a>
+                    <a class="btn @if($get_status == 1 AND $approved == 2) btn-primary @else btn-default @endif" href="{{route('mturk.tasks', [ 'contract_id' =>  $contract->id])}}?status=1&approved=2">{{ trans('mturk.rejected') }}</a>
+                    <a class="btn @if($get_status == '0' AND $approved == '0') btn-primary @else btn-default @endif" href="{{route('mturk.tasks', [ 'contract_id' =>  $contract->id])}}?status=0&approved=0">{{ trans('mturk.pending') }}</a>
                 </div>
 
             </div>

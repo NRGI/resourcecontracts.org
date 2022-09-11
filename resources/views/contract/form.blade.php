@@ -896,7 +896,7 @@ foreach ($resources as $item) {
     @if(!empty($supportingDocument))
         @foreach($supportingDocument as $doc)
             <div class="document">
-                <a href="{{route('contract.edit',$doc['id'])}}">{{$doc['contract_name']}}</a><br>
+                <a href="{{route('contract.edit',['contract' => $doc['id']])}}">{{$doc['contract_name']}}</a><br>
                 <input type="hidden" name="supporting_document[]" value="{{$doc['id']}}">
                 <?php
                 array_push($docId, $doc['id']);

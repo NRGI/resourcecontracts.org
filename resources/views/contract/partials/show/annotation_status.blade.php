@@ -52,7 +52,7 @@ use App\Nrgi\Entities\Contract\Contract;
                             @endforelse
                         </div>
                         <div class="modal-footer">
-                            <a href="{{route('contract.comment.list',$contract->id)}}"
+                            <a href="{{route('contract.comment.list',['id' => $contract->id])}}"
                                class="btn btn-default pull-left">@lang('global.view_all')</a>
                             <button type="button" class="btn btn-default"
                                     data-dismiss="modal">@lang('contract.close')</button>
