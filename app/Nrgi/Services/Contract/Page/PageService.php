@@ -7,6 +7,7 @@ use Exception;
 use Psr\Log\LoggerInterface as Log;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
+use App\Nrgi\Log\NrgiLogService;
 
 /**
  * Class PageService
@@ -30,19 +31,25 @@ class PageService
      * @var Log
      */
     protected $logger;
+    /**
+     * @var NrgiLogService
+     */
+    protected $nrgiLogService;
 
     /**
      * @param ContractRepositoryInterface $contract
      * @param PageRepositoryInterface     $page
      * @param Filesystem                  $fileSystem
      * @param Log                         $logger
+     * @param NrgiLogService              $nrgiLogService
      */
-    public function __construct(ContractRepositoryInterface $contract, PageRepositoryInterface $page, Filesystem $fileSystem, Log $logger)
+    public function __construct(ContractRepositoryInterface $contract, PageRepositoryInterface $page, Filesystem $fileSystem, Log $logger, NrgiLogService $nrgiLogService)
     {
         $this->fileSystem = $fileSystem;
         $this->contract   = $contract;
         $this->page       = $page;
         $this->logger     = $logger;
+        $this->nrgiLogService     = $nrgiLogService;
     }
 
     /**
@@ -146,7 +153,7 @@ class PageService
             $this->page->updateOrCreate($page_detail);
 
             if ($log) {
-                $this->logger->activity(
+                $this->nrgiLogService->activity(
                     'contract.log.save_page',
                     ['page' => $page_no],
                     $contractID

@@ -11,6 +11,7 @@ use Psr\Log\LoggerInterface as Log;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
+use App\Nrgi\Log\NrgiLogService;
 
 /**
  * Class ImportContracts
@@ -146,6 +147,10 @@ class ImportContracts extends Command
      * @var ContractService
      */
     protected $contractService;
+    /**
+     * @var NrgiLogService
+     */
+    protected $nrgiLogService;
 
     /**
      * Create a new command instance.
@@ -157,6 +162,7 @@ class ImportContracts extends Command
      * @param Filesystem                  $filesystem
      * @param Log                         $log
      * @param Queue                       $queue
+     * @param NrgiLogService              $nrgiLogService
      */
     public function __construct(
         ContractRepositoryInterface $contract,
@@ -165,7 +171,8 @@ class ImportContracts extends Command
         Storage $storage,
         Filesystem $filesystem,
         Log $log,
-        Queue $queue
+        Queue $queue,
+        NrgiLogService $nrgiLogService
     ) {
         parent::__construct();
         $this->country         = $country;
@@ -175,6 +182,7 @@ class ImportContracts extends Command
         $this->storage         = $storage;
         $this->queue           = $queue;
         $this->contractService = $contractService;
+        $this->nrgiLogService  = $nrgiLogService;
     }
 
     /**
@@ -263,7 +271,7 @@ class ImportContracts extends Command
                 $con = $this->contract->save($contract_data);
                 $this->updateContractName($con);
                 $this->updateTransMetadata($con);
-                $this->log->activity('contract.log.save', ['contract' => $con->id], $con->id, $con->user_id);
+                $this->nrgiLogService->activity('contract.log.save', ['contract' => $con->id], $con->id, $con->user_id);
 
                 if ($con->metadata->is_supporting_document) {
                     $this->handleAssociatedDocument($con, $data);

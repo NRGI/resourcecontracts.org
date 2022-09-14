@@ -2,6 +2,7 @@
 
 use App\Nrgi\Mail\MailQueue;
 use Exception;
+use Throwable;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Facades\Request;
@@ -63,7 +64,7 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-    public function report(Exception $e)
+    public function report(Throwable $e)
     {
         return parent::report($e);
     }
@@ -76,7 +77,7 @@ class Handler extends ExceptionHandler
      *
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $e)
+    public function render($request, Throwable $e)
     {
         if ($e instanceof HttpException) {
             return parent::render($request, $e);

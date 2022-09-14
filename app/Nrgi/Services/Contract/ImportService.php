@@ -19,6 +19,8 @@ use Aws\S3\MultipartUploader;
 use Aws\Exception\MultipartUploadException;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Throwable;
+use App\Nrgi\Log\NrgiLogService;
+
 
 /**
  * Class ImportService
@@ -83,6 +85,10 @@ class ImportService
      * @var ResourceRepositoryInterface
      */
     protected $resource;
+    /**
+     * @var NrgiLogService
+     */
+    protected $nrgiLogService;
 
     protected $contractService;
 
@@ -137,6 +143,7 @@ class ImportService
      * @param Queue $queue
      * @param CountryService $country
      * @param ContractService $contractService
+     * @param NrgiLogService $nrgiLogService
      */
     public function __construct(
         ContractRepositoryInterface $contract,
@@ -150,7 +157,8 @@ class ImportService
         ContractService $contractService,
         ContractTypeRepositoryInterface $contractType,
         DocumentTypeRepositoryInterface $documentType,
-        ResourceRepositoryInterface $resource
+        ResourceRepositoryInterface $resource,
+        NrgiLogService $nrgiLogService
     )
     {
         $this->excel           = $excel;
@@ -165,6 +173,7 @@ class ImportService
         $this->contractType    = $contractType;
         $this->documentType    = $documentType;
         $this->resource        = $resource;
+        $this->nrgiLogService  = $nrgiLogService;
     }  
 
     /**
@@ -638,7 +647,7 @@ class ImportService
                     $con->syncSupportingContracts($supportContract->id);
                 }
 
-                $this->logger->activity('contract.log.save', ['contract' => $con->id], $con->id, $con->user_id);
+                $this->nrgiLogService->activity('contract.log.save', ['contract' => $con->id], $con->id, $con->user_id);
                 $this->updateContractJsonByID($key, $contract->id, ['create_status' => static::CREATE_COMPLETED], 2);
 
                 if ($con) {

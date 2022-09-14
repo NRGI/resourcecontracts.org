@@ -200,7 +200,7 @@ class Contract extends Model
             return true;
         }
 
-        $metadata = json_decode($this->getOriginal('metadata_trans'), true);
+        $metadata = json_decode($this->getRawOriginal('metadata_trans'), true);
         if (isset($metadata[$locale])) {
             return true;
         }

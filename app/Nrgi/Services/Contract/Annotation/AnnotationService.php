@@ -11,6 +11,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
 use Psr\Log\LoggerInterface as Log;
 use Illuminate\Contracts\Queue\Queue;
+use App\Nrgi\Log\NrgiLogService;
 
 /**
  * Class AnnotationService
@@ -54,6 +55,10 @@ class AnnotationService
      * @var LanguageService
      */
     protected $lang;
+    /**
+     * @var NrgiLogService
+     */
+    protected $nrgiLogService;
 
     /**
      * Constructor
@@ -67,6 +72,7 @@ class AnnotationService
      * @param Queue                         $queue
      * @param PageService                   $annotation_child
      * @param LanguageService               $lang
+     * @param NrgiLogService                $nrgiLogService 
      */
 
     public function __construct(
@@ -78,7 +84,8 @@ class AnnotationService
         ContractService $contract,
         Queue $queue,
         PageService $annotation_child,
-        LanguageService $lang
+        LanguageService $lang,
+        NrgiLogService $nrgiLogService
     ) {
         $this->annotation       = $annotation;
         $this->auth             = $auth;
@@ -89,6 +96,7 @@ class AnnotationService
         $this->queue            = $queue;
         $this->annotation_child = $annotation_child;
         $this->lang             = $lang;
+        $this->nrgiLogService   = $nrgiLogService;
     }
 
     /**
@@ -156,7 +164,7 @@ class AnnotationService
 
         $this->annotation->deleteIfChildNotFound($formData['annotation_id']);
 
-        $this->logger->activity(
+        $this->nrgiLogService->activity(
             'annotation.annotation_'.$action,
             ['contract' => $formData['contract'], 'page' => $formData['page']],
             $formData['contract']
@@ -182,7 +190,7 @@ class AnnotationService
                 $this->annotation->delete($annotation->parent->id);
             }
 
-            $this->logger->activity(
+            $this->nrgiLogService->activity(
                 'annotation.annotation_deleted',
                 [
                     'contract' => $annotation->parent->contract_id,
@@ -314,7 +322,7 @@ class AnnotationService
                     'elastic_search'
                 );
             }
-            $this->logger->activity(
+            $this->nrgiLogService->activity(
                 "contract.log.status",
                 ['type' => 'annotation', 'old_status' => $currentAnnStatus, 'new_status' => $annotationStatus],
                 $contractId
@@ -442,7 +450,7 @@ class AnnotationService
                 $this->annotation->updateStatus(Annotation::DRAFT, $contract_id);
             }
 
-            $this->logger->activity(
+            $this->nrgiLogService->activity(
                 "annotation.annotation_updated",
                 ['contract' => $contract_id, 'page' => $page_no],
                 $contract_id
@@ -475,7 +483,7 @@ class AnnotationService
                 $this->updateStatus(Annotation::UNPUBLISH, Annotation::PUBLISHED, $id);
             }
         } catch (\Exception $e) {
-            $this->logger->activity(
+            $this->nrgiLogService->activity(
                 "contract.log.status",
                 ['type' => 'annotation', 'new_status' => Annotation::UNPUBLISH],
                 $id

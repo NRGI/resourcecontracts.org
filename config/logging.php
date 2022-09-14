@@ -3,6 +3,7 @@
 <?php
 
 use Monolog\Handler\StreamHandler;
+use Monolog\Handler\LogglyHandler;
 
 return [
 
@@ -41,8 +42,13 @@ return [
         ],
 
         'custom' => [
-            'driver' => 'custom',
-            'via' => App\Nrgi\Log\LogglyHandler::class,
+            'driver' => 'monolog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'handler' => LogglyHandler::class,
+            'with' => [
+                'token' => env('LOG_TOKEN'),
+                'tag' => "ResourceContracts"
+            ],
         ],
 
         'single' => [

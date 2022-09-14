@@ -107,7 +107,7 @@ class MailQueue
         $from = $this->getFromEmail();
 
         try {
-            return $this->mailer->queueOn(
+            return $this->mailer->onQueue(
                 'queue-mail',
                 $view,
                 $data,
