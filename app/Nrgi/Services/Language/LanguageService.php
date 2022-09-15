@@ -167,7 +167,7 @@ class LanguageService
      */
     public function current_translation()
     {
-        $code = $this->request->route()->getParameter('lang');
+        $code = $this->request->route()->parameter('lang');
 
         if (!is_null($code) && $this->isValidTranslationLang($code)) {
             return $code;

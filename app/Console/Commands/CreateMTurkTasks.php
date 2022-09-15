@@ -40,7 +40,7 @@ class CreateMTurkTasks extends Command {
 	 * @param TaskService     $task
 	 * @return mixed
 	 */
-	public function fire(ContractService $contract,TaskService $task)
+	public function handle(ContractService $contract,TaskService $task)
 	{
 		$contract_id = $this->input->getArgument('id');
 

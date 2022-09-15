@@ -1,7 +1,7 @@
 @extends('layout.app')
 <?php
-$status = \Input::get('status', null);
-$approved = \Input::get('approved', null);
+$status = \Request::input('status', null);
+$approved = \Request::input('approved', null);
 ?>
 @section('content')
     <div class="panel panel-default">
@@ -56,7 +56,7 @@ $approved = \Input::get('approved', null);
                     $page_val = getPageRange($taskItems);
                     ?>
                     <tr>
-                        <td><a href="{{route('contract.show',$task->contract_id)}}">
+                        <td><a href="{{route('contract.show',['contract' => $task->contract_id])}}">
                                 {{$contract->contract_name}}
                             </a>
                             - {{$contract->country->name}}

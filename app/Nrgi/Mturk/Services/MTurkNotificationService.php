@@ -2,7 +2,7 @@
 
 use App\Nrgi\Mail\MailQueue;
 use App\Nrgi\Services\Contract\ContractService;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 
 /**
  * Class MTurkNotificationService

@@ -31,21 +31,21 @@
 			</div>
 			<div class="row filter-option">
 				<div class="col-md-4 col-sm-6 col-xs-6">
-					{!! Form::select('contract', ['all'=>trans('activitylog.all_contract')] + $contracts, Input::get('contract'),['class' =>'form-control']) !!}
+					{!! Form::select('contract', ['all'=>trans('activitylog.all_contract')] + $contracts, Request::input('contract'),['class' =>'form-control']) !!}
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-6">
-					{!! Form::select('user', ['all'=>trans('activitylog.all_user')] + $users , Input::get('user') ,	['class' =>'form-control']) !!}
+					{!! Form::select('user', ['all'=>trans('activitylog.all_user')] + $users , Request::input('user') ,	['class' =>'form-control']) !!}
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-6">
-					{!! Form::select('category', ['all'=>trans('activitylog.all_category')] + $categories , Input::get('category') , ['class' =>'form-control']) !!}
+					{!! Form::select('category', ['all'=>trans('activitylog.all_category')] + $categories , Request::input('category') , ['class' =>'form-control']) !!}
 				</div>
 				@if(!is_null($countries))
 					<div class="col-md-4 col-sm-6 col-xs-6">
-						{!! Form::select('country', ['all'=>trans('activitylog.all_country')] + $countries , Input::get('country') , ['class' =>'form-control']) !!}
+						{!! Form::select('country', ['all'=>trans('activitylog.all_country')] + $countries , Request::input('country') , ['class' =>'form-control']) !!}
 					</div>
 				@endif
 				<div class="col-md-4 col-sm-6 col-xs-6">
-					{!! Form::select('status', ['all'=>trans('activitylog.all_status')] + $status , Input::get('status') ,['class' =>'form-control']) !!}
+					{!! Form::select('status', ['all'=>trans('activitylog.all_status')] + $status , Request::input('status') ,['class' =>'form-control']) !!}
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::submit(trans('contract.search'), ['class' => 'btn btn-primary']) !!}
@@ -67,7 +67,7 @@
 				@forelse($activityLogs as $activitylog)
 					<tr>
 						<td>
-							<a href="{{route('contract.show',$activitylog->contract_id)}}">{{ $activitylog->contract->metadata->contract_name or ''}}</a>
+							<a href="{{route('contract.show', ['contract' => $activitylog->contract_id])}}">{{ $activitylog->contract->metadata->contract_name ?? ''}}</a>
 						</td>
 						<td>
 							{{ trans($activitylog->message,$activitylog->message_params) }} <br>
@@ -82,7 +82,7 @@
 				@endforelse
 				</tbody>
 			</table>
-			{!!$activityLogs->appends(Input::all())->render()!!}
+			{!!$activityLogs->appends(Request::all())->render()!!}
 		</div>
 	</div>
 @endsection

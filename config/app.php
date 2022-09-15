@@ -42,6 +42,8 @@ $providers = [
     'App\Providers\RouteServiceProvider',
     'App\Providers\RepositoriesServiceProvider',
     'App\Providers\ProxyServiceProvider',
+    'Illuminate\Notifications\NotificationServiceProvider'
+    // 'App\Providers\BroadcastServiceProvider',
 ];
 
 $localProviders = [
@@ -56,7 +58,10 @@ if (env('APP_ENV') == "local") {
     $providers = array_merge($providers, $localProviders);
 }
 
+
 return [
+
+    'name' => 'Resource contracts Admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -130,7 +135,7 @@ return [
     */
 
     'key'    => env('APP_KEY', 'SomeRandomString'),
-    'cipher' => MCRYPT_RIJNDAEL_128,
+    'cipher' => 'AES-256-CBC',
     /*
     |--------------------------------------------------------------------------
     | Logging Configuration
@@ -144,7 +149,7 @@ return [
     |
     */
 
-    'log' => 'custom',
+    'log' => 'single',
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -182,6 +187,7 @@ return [
         'DB'        => 'Illuminate\Support\Facades\DB',
         'Eloquent'  => 'Illuminate\Database\Eloquent\Model',
         'Event'     => 'Illuminate\Support\Facades\Event',
+        'Excel'     =>  'Maatwebsite\Excel\Facades\Excel',
         'File'      => 'Illuminate\Support\Facades\File',
         'Hash'      => 'Illuminate\Support\Facades\Hash',
         'Input'     => 'Illuminate\Support\Facades\Input',

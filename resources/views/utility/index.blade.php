@@ -30,7 +30,7 @@
 						<tbody>
 						@foreach($contracts as &$contract)
 							<tr>
-								<td><a target="_blank" href="{{route('contract.show', $contract['id'])}}">{{
+								<td><a target="_blank" href="{{route('contract.show', ['contract' => $contract['id']])}}">{{
 								$contract['id']
 								}}</a></td>
 								<td>{{ $contract['old'] }}</td>

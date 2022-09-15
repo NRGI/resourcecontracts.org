@@ -49,7 +49,7 @@ class UpdateMTurkAssignment extends Command
      * Execute the console command.
      *
      */
-    public function fire()
+    public function handle()
     {
         $contract_id = $this->input->getOption('id');
         if (!is_null($contract_id)) {

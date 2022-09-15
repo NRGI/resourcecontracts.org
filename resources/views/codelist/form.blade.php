@@ -34,7 +34,7 @@
         <button type="submit" class="btn btn-primary">
             {{ trans('codelist.submit') }}
         </button>
-        <a href={{ route('codelist.list', $type) }} class="btn btn-danger form-cancel-btn">
+        <a href={{ route('codelist.list', ['type' => $type]) }} class="btn btn-danger form-cancel-btn">
             {{ trans('Cancel') }}
         </a>
     </div>

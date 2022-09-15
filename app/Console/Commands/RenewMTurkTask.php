@@ -41,7 +41,7 @@ class RenewMTurkTask extends Command
      *
      * @return bool
      */
-    public function fire(TaskService $task)
+    public function handle(TaskService $task)
     {
         $expiredMturkTasks = $task->getExpired();
 

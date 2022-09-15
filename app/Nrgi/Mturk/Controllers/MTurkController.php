@@ -12,7 +12,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 
 /**
  * Class MturkController
@@ -322,7 +322,7 @@ class MTurkController extends Controller
      */
     public function activity(Request $request, UserService $user)
     {
-        $filter     = $request->only('contract', 'user');
+        $filter     = $request->all('contract', 'user');
         $activities = $this->activity->getAll($filter);
         $users      = $user->getList();
         $contracts  = $this->task->getContractsList();

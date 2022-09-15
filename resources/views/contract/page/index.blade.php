@@ -16,7 +16,7 @@
             <div class="wordwrap pull-left"> @lang('contract.editing')
                 <span>{{str_limit($contract->title, 100)}}</span>
 
-            <a href="{{route('contract.show', $contract->id)}}" class="go-back">@lang('contract.contract_detail')</a>
+            <a href="{{route('contract.show',['contract' => $contract->id])}}" class="go-back">@lang('contract.contract_detail')</a>
             </div>
             <div class="pull-right">
                 <a class="btn btn-default btn-annotation pull-right" href='#'>@lang('annotation.annotations')</a>

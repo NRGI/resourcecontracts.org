@@ -1,6 +1,7 @@
 <?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Request;
 
 /**
  * Class ProxyServiceProvider
@@ -24,6 +25,6 @@ class ProxyServiceProvider extends ServiceProvider
     {
         $request = $this->app['request'];
         $proxies = [$request->getClientIp()];
-        $request->setTrustedProxies($proxies);
+        $request->setTrustedProxies($proxies,  Request::HEADER_X_FORWARDED_ALL);
     }
 }

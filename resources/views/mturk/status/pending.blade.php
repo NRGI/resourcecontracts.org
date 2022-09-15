@@ -38,7 +38,7 @@ use App\Nrgi\Entities\Contract\Contract;
     @forelse($contracts as $contract)
         <?php $total_ra = $contract->count_status['total_completed'] - $contract->count_status['total_approved'] - $contract->count_status['total_rejected'];?>
         <tr>
-            <td><a href="{{route('mturk.tasks', $contract->id)}}">{{$contract->title}}</a>
+            <td><a href="{{route('mturk.tasks',['contract_id' => $contract->id])}}">{{$contract->title}}</a>
                 - {{$contract->metadata->country->name}}
             </td>
             <td>{{strtoupper($contract->metadata->category[0])}}</td>
@@ -54,7 +54,7 @@ use App\Nrgi\Entities\Contract\Contract;
             <td class="number_center">{{$contract->count_status['total_approved']}}</td>
             @if($total_ra > 0)
                 <td class="requiring_action">
-                    <a href="{{route('mturk.tasks', $contract->id)}}?status=1&approved=0">{{$total_ra}}</a>
+                    <a href="{{route('mturk.tasks',['contract_id' => $contract->id])}}?status=1&approved=0">{{$total_ra}}</a>
                 </td>
             @else
                 <td class="number_center">
@@ -68,7 +68,7 @@ use App\Nrgi\Entities\Contract\Contract;
                     @if($contract->mturk_status == 2 || $contract->metadata_status == Contract::STATUS_DRAFT)
                         <button class="btn btn-default" disabled="disabled">@lang('mturk.sent_to_rc')</button>
                     @else
-                        {!! Form::open(['url' =>route('mturk.contract.copy',$contract->id), 'method' => 'post']) !!}
+                        {!! Form::open(['url' =>route('mturk.contract.copy',['contract_id' => $contract->id]), 'method' => 'post']) !!}
                         {!! Form::button(trans('mturk.send_to_rc'), ['type' =>'submit', 'class' => 'btn btn-success confirm', 'data-confirm'=>trans('mturk.sure_send_to_rc')])!!}
                         {!! Form::close() !!}
                     @endif
