@@ -26,7 +26,7 @@
 			contract_id: '{{$contract->id}}',
 			total_pages: '{{$contract->pages->count()}}',
 			allpage_url: "{{route('contract.allpage.get', ['id'=>$contract->id])}}",
-			annotation_url: "{{route('contract.annotations', ['id'=>$contract->id])}}",
+			annotation_url: "{{route('contract.annotations', ['contractId'=>$contract->id])}}",
 			search_url: "{{route('contract.page.search', ['id'=>$contract->id])}}",
 			page_no: 1
 		};

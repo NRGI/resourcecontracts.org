@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use App\Nrgi\Services\Contract\ContractService;
 use Maatwebsite\Excel\Excel;
 use App\Nrgi\Entities\Contract\Contract;
+use App\Exports\NrgiExport;
 
 /**
  * Class APIService
@@ -90,19 +91,11 @@ class DownloadService
             $contracts[$key]['PDF URL']                         = $bucket_url.$contract['Contract ID'].'/'.$contract['PDF URL'];
         }
 
-        $filename = "export" . date('Y-m-d');
-
-        $this->excel->create(
-            $filename,
-            function ($csv) use (&$contracts) {
-                $csv->sheet(
-                    'sheetname',
-                    function ($sheet) use (&$contracts) {
-                        $sheet->fromArray($contracts);
-                    }
-                );
-            }
-        )->download('xls');        
+        $filename = "export" . date('Y-m-d').'.xlsx';
+        $export = new NrgiExport($contracts);
+        ob_end_clean();
+        ob_start();
+        return $this->excel->download($export, $filename, \Maatwebsite\Excel\Excel::XLSX);     
     }
 
     /**
