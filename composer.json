@@ -28,7 +28,7 @@
     "pda/pheanstalk": "~4.0",
     "guzzlehttp/guzzle": "~6.3.1",
     "phpoffice/phpword": "dev-master",
-    "maatwebsite/excel": "~3.1.33",
+    "maatwebsite/excel": "^3.1",
     "ext-json": "*",
     "laravel/helpers": "^1.5",
     "laravel/ui": "2.5.0"

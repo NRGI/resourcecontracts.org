@@ -63,7 +63,7 @@ class ContractFilterService
 
         if ($filters['download'] == 1) {
             $contracts = $this->contract->getAllDownload($filters);
-            $this->downloadCSV->downloadData($contracts);
+            return $this->downloadCSV->downloadData($contracts);
         }
 
         $contracts = $this->contract->getAll($filters, $limit);

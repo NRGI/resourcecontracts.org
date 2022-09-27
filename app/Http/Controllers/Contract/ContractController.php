@@ -137,6 +137,9 @@ class ContractController extends Controller
              'disclosure',
              'q'
          );
+         if($filters['download'] == 1) {
+            return $this->contractFilter->getAll($filters);
+         }
          $contracts      = $this->contractFilter->getAll($filters);
          $contract_ids = [];
          foreach($contracts as $contract){

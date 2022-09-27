@@ -20,6 +20,7 @@ use Aws\Exception\MultipartUploadException;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Throwable;
 use App\Nrgi\Log\NrgiLogService;
+use App\Imports\NrgiImport;
 
 
 /**
@@ -235,8 +236,8 @@ class ImportService
      * @return array
      */
     protected function extractRecords($file)
-    {
-        return $this->excel->load($file)->all()->toArray();
+    { 
+        return $this->excel->toArray(new NrgiImport, $file);
     }
 
     /**
@@ -254,8 +255,9 @@ class ImportService
             $contract['id'] = $key + 1;
             $data[]         = $contract;
         }
-
+        $this->logger->info('UPDATING JSON');
         $this->updateJson($import_key, $data);
+        $this->logger->info('JSON UPDATE COMPLETED');
     }
 
     /**
@@ -576,7 +578,7 @@ class ImportService
         }
 
         $this->updateJson($key, $contracts, 2);
-
+        $this->logger->info('JSON UPDATE COMPLETED');
         $this->queue->push(
             'App\Nrgi\Services\Queue\UploadBulkPdf',
             ['key' => $key],
@@ -744,6 +746,7 @@ class ImportService
         $data_string = json_encode(['step' => $step, 'contracts' => $contracts]);
         $fileName    = $key . '.json';
         $filePath    = $this->getFilePath($key, $fileName);
+        $this->logger->info('UPDATING CONTENTS AT'.$filePath);
 
         return $this->filesystem->put($filePath, $data_string);
     }
