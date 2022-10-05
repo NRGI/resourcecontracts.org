@@ -1457,3 +1457,9 @@ a.edit-section{
 .form-cancel-btn {
     margin-left: 8px;
 }
+
+#publishing_year_date_range{
+    width: 100%; 
+    height: 30px;
+    margin-top: 2px;
+}
