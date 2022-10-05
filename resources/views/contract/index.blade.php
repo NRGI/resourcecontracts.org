@@ -50,8 +50,7 @@
 					'form-control']) !!}
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-6">
-					{!! Form::select('publishing_year', ['all'=>trans('contract.publishing_year')] + $publishingYears , Request::input('publishing_year') , ['class' =>
-					'form-control']) !!}
+				{!! Form::text('publishing_year_date_range', Input::get('publishing_year_date_range') , ['class' =>'form-control date-range-picker-input', 'id' => 'publishing_year_date_range', 'placeholder'=>trans('contract.search_contract')]) !!}
 				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Request::input('country') ,
@@ -177,9 +176,25 @@
 @endsection
 @section('script')
 	<link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
+	<link href="{{asset('css/daterangepicker.css')}}" rel="stylesheet"/>
 	<script src="{{asset('js/select2.min.js')}}"></script>
+	<script src="{{asset('js/moment.min.js')}}"></script>
+	<script src="{{asset('js/daterangepicker.min.js')}}"></script>
 	<script type="text/javascript">
 		var lang_select = '@lang('global.select')';
 		$('select').select2({placeholder: lang_select, allowClear: true, theme: "classic"});
+	</script>
+	<script>
+		$(function() {
+			$( document ).ready(function() {
+			$('#publishing_year_date_range').daterangepicker({
+			opens: 'left',
+			locale: {
+				format: 'YYYY-MM-DD'
+			}
+		}, function(start, end, label) {
+		});
+		});
+});
 	</script>
 @stop
