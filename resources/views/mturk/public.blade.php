@@ -19,7 +19,7 @@
 <body>
 <div class="wrapper">
 	<p>In this HIT, you are to transcribe the text <?php echo show_language($langCode);?> as shown in the PDF pages on the right.
-	Your HIT will be rejected if we find that there are spelling mistakes or missing text in the transcribed text. 
+	Your HIT will be rejected if we find that there are spelling mistakes ?? missing text in the transcribed text. 
 	Any fraudulent transcriptions will result in you being automatically blocked from the site and you will be reported to Amazon.</p>
 
     <?php if($assignmentId == 'ASSIGNMENT_ID_NOT_AVAILABLE'):?>

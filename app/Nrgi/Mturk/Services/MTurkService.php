@@ -3,7 +3,7 @@
 use App\Nrgi\Mturk\Entities\Task;
 use App\Nrgi\Mturk\Entities\MturkTaskItem;
 use Carbon\Carbon;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 
 /**
  * Class MTurkService

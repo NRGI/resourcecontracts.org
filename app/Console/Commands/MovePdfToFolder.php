@@ -40,7 +40,7 @@ class MovePdfToFolder extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $contract_id = $this->input->getOption('id');
         $this->movePdFToFolder($contract_id);

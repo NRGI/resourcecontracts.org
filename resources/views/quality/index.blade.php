@@ -37,19 +37,19 @@
         </div>
         <div class="quality-form">
             {!! Form::open(['route' => 'quality.index', 'method' => 'get', 'class'=>'form-inline']) !!}
-            {!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' =>
+            {!! Form::select('year', ['all'=>trans('contract.year')] + $years , Request::input('year') , ['class' =>
             'form-control','style'=>'width:200px']) !!}
 
-            {!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Input::get('country') ,
+            {!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Request::input('country') ,
             ['class' =>'form-control','style'=>'width:200px']) !!}
 
             {!! Form::select('category', ['all'=>trans('contract.category')] + config('metadata.category'),
-            Input::get('category') ,
+            Request::input('category') ,
             ['class' =>'form-control','style'=>'width:200px']) !!}
 
             {!! Form::select('resource', ['all'=>trans('contract.resource')] + trans_array($resources,
             'codelist/resource') ,
-            Input::get
+            Request::input
             ('resource') ,
             ['class' =>'form-control','style'=>'width:200px']) !!}
 

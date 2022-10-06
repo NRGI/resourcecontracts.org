@@ -11,7 +11,7 @@
     <tbody>
     @forelse($contracts as $contract)
         <tr>
-            <td><a href="{{route('mturk.tasks', $contract->id)}}">{{$contract->title}}</a></td>
+            <td><a href="{{route('mturk.tasks',['contract_id' => $contract->id])}}">{{$contract->title}}</a></td>
             <td>{{strtoupper($contract->metadata->category[0])}}</td>
             <td>
                 @if($contract->mturk_created_at)

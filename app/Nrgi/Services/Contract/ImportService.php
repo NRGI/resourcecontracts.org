@@ -7,7 +7,7 @@ use App\Nrgi\Repositories\CodeList\DocumentType\DocumentTypeRepositoryInterface;
 use App\Nrgi\Repositories\CodeList\Resource\ResourceRepositoryInterface;
 use Exception;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
@@ -19,6 +19,9 @@ use Aws\S3\MultipartUploader;
 use Aws\Exception\MultipartUploadException;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Throwable;
+use App\Nrgi\Log\NrgiLogService;
+use App\Imports\NrgiImport;
+
 
 /**
  * Class ImportService
@@ -83,6 +86,10 @@ class ImportService
      * @var ResourceRepositoryInterface
      */
     protected $resource;
+    /**
+     * @var NrgiLogService
+     */
+    protected $nrgiLogService;
 
     protected $contractService;
 
@@ -137,6 +144,7 @@ class ImportService
      * @param Queue $queue
      * @param CountryService $country
      * @param ContractService $contractService
+     * @param NrgiLogService $nrgiLogService
      */
     public function __construct(
         ContractRepositoryInterface $contract,
@@ -150,7 +158,8 @@ class ImportService
         ContractService $contractService,
         ContractTypeRepositoryInterface $contractType,
         DocumentTypeRepositoryInterface $documentType,
-        ResourceRepositoryInterface $resource
+        ResourceRepositoryInterface $resource,
+        NrgiLogService $nrgiLogService
     )
     {
         $this->excel           = $excel;
@@ -165,6 +174,7 @@ class ImportService
         $this->contractType    = $contractType;
         $this->documentType    = $documentType;
         $this->resource        = $resource;
+        $this->nrgiLogService  = $nrgiLogService;
     }  
 
     /**
@@ -226,8 +236,8 @@ class ImportService
      * @return array
      */
     protected function extractRecords($file)
-    {
-        return $this->excel->load($file)->all()->toArray();
+    { 
+        return $this->excel->toArray(new NrgiImport, $file);
     }
 
     /**
@@ -245,8 +255,9 @@ class ImportService
             $contract['id'] = $key + 1;
             $data[]         = $contract;
         }
-
+        $this->logger->info('UPDATING JSON');
         $this->updateJson($import_key, $data);
+        $this->logger->info('JSON UPDATE COMPLETED');
     }
 
     /**
@@ -423,7 +434,7 @@ class ImportService
                 $fileHash = getFileHash($this->getFilePath($import_key, $file));
 
                 if ($con = $this->contract->getContractByFileHash($fileHash)) {
-                    $title = sprintf('<a href="%s" target="_blank">%s</a>', route('contract.show', $con->id), str_limit($con->title, 25));
+                    $title = sprintf('<a href="%s" target="_blank">%s</a>', route('contract.show', ['contract' => $con->id]), str_limit($con->title, 25));
                     $this->updateContractJsonByID(
                         $import_key,
                         $contract->id,
@@ -567,7 +578,7 @@ class ImportService
         }
 
         $this->updateJson($key, $contracts, 2);
-
+        $this->logger->info('JSON UPDATE COMPLETED');
         $this->queue->push(
             'App\Nrgi\Services\Queue\UploadBulkPdf',
             ['key' => $key],
@@ -638,7 +649,7 @@ class ImportService
                     $con->syncSupportingContracts($supportContract->id);
                 }
 
-                $this->logger->activity('contract.log.save', ['contract' => $con->id], $con->id, $con->user_id);
+                $this->nrgiLogService->activity('contract.log.save', ['contract' => $con->id], $con->id, $con->user_id);
                 $this->updateContractJsonByID($key, $contract->id, ['create_status' => static::CREATE_COMPLETED], 2);
 
                 if ($con) {
@@ -735,6 +746,7 @@ class ImportService
         $data_string = json_encode(['step' => $step, 'contracts' => $contracts]);
         $fileName    = $key . '.json';
         $filePath    = $this->getFilePath($key, $fileName);
+        $this->logger->info('UPDATING CONTENTS AT'.$filePath);
 
         return $this->filesystem->put($filePath, $data_string);
     }

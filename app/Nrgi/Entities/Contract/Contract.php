@@ -200,7 +200,7 @@ class Contract extends Model
             return true;
         }
 
-        $metadata = json_decode($this->getOriginal('metadata_trans'), true);
+        $metadata = json_decode($this->getRawOriginal('metadata_trans'), true);
         if (isset($metadata[$locale])) {
             return true;
         }
@@ -481,7 +481,7 @@ class Contract extends Model
      */
     public function getSupportingContract()
     {
-        return DB::table('supporting_contracts')->where('contract_id', $this->id)->lists('supporting_contract_id')->all();
+        return DB::table('supporting_contracts')->where('contract_id', $this->id)->pluck('supporting_contract_id')->all();
     }
 
     /**

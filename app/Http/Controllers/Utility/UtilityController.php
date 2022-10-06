@@ -49,7 +49,7 @@ class UtilityController extends Controller
         if (!($auth->user()->isAdmin())) {
             return back()->withErrors(trans('contract.permission_denied'));
         }
-        $filters   = $request->only('category', 'country');
+        $filters   = $request->all('category', 'country');
         $country   = $this->countryService->all();
         $confirm   = false;
         $contracts = [];

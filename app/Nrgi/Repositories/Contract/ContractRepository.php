@@ -6,7 +6,7 @@ use App\Nrgi\Entities\SupportingContract\SupportingContract;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 
 /**
  * Class ContractRepository
@@ -855,7 +855,7 @@ class ContractRepository implements ContractRepositoryInterface
             ->whereRaw("metadata->>'is_supporting_document' ='0'")->orderByRaw(
                 "metadata->>'contract_name' ASC"
             )
-            ->lists('name', 'id')->all();
+            ->pluck('name', 'id')->all();
     }
 
     /**

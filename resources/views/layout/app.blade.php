@@ -36,7 +36,7 @@
 									<a href="{{url('/profile')}}">@lang('global.profile')</a>
 								</li>
 								<li>
-									<a href="{{url('/auth/logout')}}">@lang('global.logout')</a>
+									<a href="{{url('/logout')}}">@lang('global.logout')</a>
 								</li>
 
 							</ul>

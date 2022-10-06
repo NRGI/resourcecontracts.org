@@ -18,7 +18,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 
 /**
  * Class ContractController
@@ -118,7 +118,7 @@ class ContractController extends Controller
      */
     public function index(Request $request, LanguageService $lang)
     {
-         $filters        = $request->only(
+         $filters        = $request->all(
              'resource',
              'year',
              'publishing_year',
@@ -137,6 +137,9 @@ class ContractController extends Controller
              'disclosure',
              'q'
          );
+         if($filters['download'] == 1) {
+            return $this->contractFilter->getAll($filters);
+         }
          $contracts      = $this->contractFilter->getAll($filters);
          $contract_ids = [];
          foreach($contracts as $contract){
@@ -191,7 +194,7 @@ class ContractController extends Controller
     public function store(ContractRequest $request)
     {
         if ($contract = $this->contract->saveContract($request->all())) {
-            return redirect()->route('contract.show', ['id' => $contract->id])->with(
+            return redirect()->route('contract.show', ['contract' => $contract->id])->with(
                 'success',
                 trans('contract.save_success')
             );
@@ -231,7 +234,7 @@ class ContractController extends Controller
          $elementState                 = $this->activity->getElementState($id);
          $annotationStatus             = $this->annotation->getStatus($id);
          $annotationStatus             = $annotationStatus == '' ? $elementState['annotation'] : $annotationStatus;
-         $locale                       = $request->route()->getParameter('lang', $lang->defaultLang());
+         $locale                       = $request->route()->parameter('lang', $lang->defaultLang());
          $resourceList                 = $this->codeList->getCodeList('resources',$lang->getSiteLang());
          $contractTypeList             = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
          $documentTypeList             = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
@@ -292,7 +295,7 @@ class ContractController extends Controller
         $discussion_status = $discussion->getResolved($id);
         $companyName       = $this->contract->getCompanyNames();
         $view              = 'contract.edit';
-        $locale            = $request->route()->getParameter('lang');
+        $locale            = $request->route()->parameter('lang');
 
         if (!is_null($locale)) {
             if (!$lang->isValidTranslationLang($locale) || $locale == $lang->defaultLang()) {
@@ -331,10 +334,10 @@ class ContractController extends Controller
     public function update(ContractRequest $request, $contractID)
     {
         if ($this->contract->updateContract($contractID, $request->all())) {
-            return redirect()->route('contract.show', $contractID)->withSuccess(trans('contract.update_success'));
+            return redirect()->route('contract.show', ['contract' => $contractID])->withSuccess(trans('contract.update_success'));
         }
 
-        return redirect()->route('contract.show', $contractID)->withError(trans('contract.update_fail'));
+        return redirect()->route('contract.show', ['contract' => $contractID])->withError(trans('contract.update_fail'));
     }
 
     /**

@@ -2,13 +2,14 @@
 
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Mturk\Entities\Task;
+use App\Nrgi\Log\NrgiLogService;
 use App\Nrgi\Mturk\Repositories\TaskRepositoryInterface;
 use App\Nrgi\Mturk\Repositories\MturkTaskItem\MturkTaskItemRepositoryInterface;
 use App\Nrgi\Services\ActivityLog\ActivityLogService;
 use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\Page\PageService;
 use Exception;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -62,6 +63,10 @@ class TaskService
      * @var ActivityLogService
      */
     protected $logService;
+        /**
+     * @var NrgiLogService
+     */
+    protected $nrgiLogService;
 
     /**
      * @param TaskRepositoryInterface $task
@@ -72,6 +77,7 @@ class TaskService
      * @param PageService             $page
      * @param Queue                   $queue
      * @param ActivityLogService      $logService
+     * @param NrgiLogService          $nrgiLogService
      */
     public function __construct(
         TaskRepositoryInterface $task,
@@ -81,7 +87,8 @@ class TaskService
         MTurkService $turk,
         PageService $page,
         Queue $queue,
-        ActivityLogService $logService
+        ActivityLogService $logService,
+        NrgiLogService $nrgiLogService
     ) {
         $this->task       = $task;
         $this->taskItem   = $taskItem;
@@ -93,6 +100,7 @@ class TaskService
         $this->logService = $logService;
         $this->task_url   = $this->getMTurkPageUrl();
         $this->bucket_url = $this->getBucketUrl();
+        $this->nrgiLogService = $nrgiLogService;
     }
 
     /**
@@ -175,7 +183,7 @@ class TaskService
 
             $this->task->createTasks($contract_pages, $per_task_items_count);
             $this->logger->info('Tasks added in database', ['Contract_id' => $contract_id]);
-            $this->logger->mTurkActivity('mturk.log.create', ['contract' => $contract->title], $contract->id);
+            $this->nrgiLogService->mTurkActivity('mturk.log.create', ['contract' => $contract->title], $contract->id);
         } catch (Exception $e) {
             $this->logger->error('Create Task:'.$e->getMessage(), ['Contract_id' => $contract_id]);
 
@@ -329,12 +337,12 @@ class TaskService
                 $assignment = $this->turk->assignment($task->hit_id);
                 if (!is_null($assignment) && $assignment['NumResults'] > 0) {
                     $task->status = Task::COMPLETED;
-                    $this->logger->mTurkActivity('mturk.log.submitted', null, $task->contract_id, $all_pages_str);
+                    $this->nrgiLogService->mTurkActivity('mturk.log.submitted', null, $task->contract_id, $all_pages_str);
 
                     $updatedAssignment = $this->getFormattedAssignment($assignment, $task->page_no);
                     if ($updatedAssignment['assignment']['status'] == 'Approved') {
                         $task->approved = Task::APPROVED;
-                        $this->logger->mTurkActivity('mturk.log.approve', null, $task->contract_id, $all_pages_str);
+                        $this->nrgiLogService->mTurkActivity('mturk.log.approve', null, $task->contract_id, $all_pages_str);
                     }
                     $this->updateMTurkTaskItems($task->id, $updatedAssignment['assignment']['answer']);
                     unset($updatedAssignment['assignment']['answer']);
@@ -516,7 +524,7 @@ class TaskService
             sprintf('Assignment rejected for page no.%s', $all_pages_str),
             ['Task' => $task->toArray()]
         );
-        $this->logger->mTurkActivity('mturk.log.reject', null, $contract_id, $all_pages_str);
+        $this->nrgiLogService->mTurkActivity('mturk.log.reject', null, $contract_id, $all_pages_str);
 
         return $task->save();
     }
@@ -807,7 +815,7 @@ class TaskService
         $this->task->updateWithId($task->contract_id, $task->id, $update);
         $this->taskItem->updateAllTaskItems($task->id, $task_items_update);
         $this->logger->info('HIT successfully reset', ['Contract id' => $contract_id, 'Task' => $task->toArray()]);
-        $this->logger->mTurkActivity('mturk.log.reset', null, $task->contract_id, $all_pages_str);
+        $this->nrgiLogService->mTurkActivity('mturk.log.reset', null, $task->contract_id, $all_pages_str);
 
         return true;
     }
@@ -1004,7 +1012,7 @@ class TaskService
             }
 
             $this->logger->info('HIT successfully reset', ['Contract id' => $contract_id, 'Task' => $task->toArray()]);
-            $this->logger->mTurkActivity('mturk.log.reset', null, $task->contract_id, $all_pages_str);
+            $this->nrgiLogService->mTurkActivity('mturk.log.reset', null, $task->contract_id, $all_pages_str);
 
             return true;
         }
@@ -1076,7 +1084,7 @@ class TaskService
                 'elastic_search'
             );
 
-            $this->logger->activity(
+            $this->nrgiLogService->activity(
                 'contract.log.status',
                 ['type' => 'text', 'old_status' => $text_status, 'new_status' => $contract->text_status],
                 $contract->id
@@ -1093,8 +1101,8 @@ class TaskService
         }
 
         $this->logger->info('Contract text updated from MTurk', ['Contract id' => $contract_id]);
-        $this->logger->activity('mturk.log.sent_to_rc', null, $contract_id);
-        $this->logger->mTurkActivity('mturk.log.sent_to_rc', null, $contract_id);
+        $this->nrgiLogService->activity('mturk.log.sent_to_rc', null, $contract_id);
+        $this->nrgiLogService->mTurkActivity('mturk.log.sent_to_rc', null, $contract_id);
         return $is_updated;
     }
 
@@ -1316,7 +1324,7 @@ class TaskService
             sprintf('Assignment approved for page nos. %s', $all_pages_str),
             ['Task' => $task->toArray()]
         );
-        $this->logger->mTurkActivity('mturk.log.approve', null, $task->contract_id, $all_pages_str);
+        $this->nrgiLogService->mTurkActivity('mturk.log.approve', null, $task->contract_id, $all_pages_str);
 
         return $task->save();
     }

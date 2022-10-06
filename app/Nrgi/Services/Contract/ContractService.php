@@ -20,7 +20,7 @@ use Aws\Exception\MultipartUploadException;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Lang;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Nrgi\Log\NrgiLogService;
 
 /**
  * Class ContractService
@@ -47,6 +48,7 @@ class ContractService
      * @var ContractRepositoryInterface
      */
     protected $contract;
+    
     /**
      * @var Guard
      */
@@ -99,6 +101,10 @@ class ContractService
      * @var Carbon
      */
     protected $carbon;
+    /**
+     * @var NrgiLogService
+     */
+    protected $nrgiLogService;
 
     /**
      * @param ContractRepositoryInterface   $contract
@@ -119,6 +125,7 @@ class ContractService
      * @param AnnotationRepositoryInterface $annotation
      * @param LanguageService               $lang
      * @param Carbon                        $carbon
+     * @param NrgiLogService                $nrgiLogService
      */
     public function __construct(
         ContractRepositoryInterface $contract,
@@ -137,7 +144,8 @@ class ContractService
         ActivityService $activityService,
         AnnotationRepositoryInterface $annotation,
         LanguageService $lang,
-        Carbon $carbon
+        Carbon $carbon,
+        NrgiLogService $nrgiLogService
     ) {
         $this->contract        = $contract;
         $this->auth            = $auth;
@@ -156,6 +164,7 @@ class ContractService
         $this->annotation      = $annotation;
         $this->lang            = $lang;
         $this->carbon          = $carbon;
+        $this->nrgiLogService  = $nrgiLogService;
     }
 
     /**
@@ -310,7 +319,7 @@ class ContractService
                 if (isset($metadata['is_supporting_document']) && $metadata['is_supporting_document'] == '1' && isset($formData['translated_from'])) {
                     $contract->syncSupportingContracts($formData['translated_from']);
                 }
-                $this->logger->activity('contract.log.save', ['contract' => $contract->title], $contract->id);
+                $this->nrgiLogService->activity('contract.log.save', ['contract' => $contract->title], $contract->id);
 
                 $this->logger->info(
                     'Contract successfully created.',
@@ -407,7 +416,7 @@ class ContractService
             $contract->save();
             $this->queue->push('App\Nrgi\Services\Queue\ProcessDocumentQueue', ['contract_id' => $contract->id]);
             $this->logger->info('Contract pdf re-uploaded', ['Contract ID' => $contractID]);
-            $this->logger->activity('contract.log.pdfupdate', ['contract' => $contract->title], $contract->id);
+            $this->nrgiLogService->activity('contract.log.pdfupdate', ['contract' => $contract->title], $contract->id);
         }
         $contract->metadata        = $metadata;
         $contract->updated_by      = $this->auth->id();
@@ -451,7 +460,7 @@ class ContractService
             }
 
             $this->logger->info('Contract successfully updated', ['Contract ID' => $contractID]);
-            $this->logger->activity('contract.log.update', ['contract' => $contract->title], $contract->id);
+            $this->nrgiLogService->activity('contract.log.update', ['contract' => $contract->title], $contract->id);
 
             return true;
         } catch (Exception $e) {
@@ -484,7 +493,7 @@ class ContractService
 
         if ($this->contract->delete($contract->id)) {
             $this->logger->info('Contract successfully deleted.', ['Contract Id' => $id]);
-            $this->logger->activity(
+            $this->nrgiLogService->activity(
                 'contract.log.delete',
                 ['contract' => $contract->title, 'id' => $contract->id],
                 null
@@ -587,7 +596,7 @@ class ContractService
                     'elastic_search'
                 );
 
-                $this->logger->activity(
+                $this->nrgiLogService->activity(
                     'contract.log.status',
                     ['type' => 'text', 'old_status' => $status, 'new_status' => Contract::STATUS_PUBLISHED],
                     $contract->id
@@ -683,7 +692,7 @@ class ContractService
                     'elastic_search'
                 );
             }
-            $this->logger->activity(
+            $this->nrgiLogService->activity(
                 'contract.log.status',
                 ['type' => $type, 'old_status' => $old_status, 'new_status' => $status],
                 $contract->id
@@ -965,9 +974,9 @@ class ContractService
         )
         ) {
             $this->logger->info('Contract successfully deleted.', ['Contract Id' => $id]);
-            $this->logger->activity('contract.log.unpublish', ['contract' => $contract->title], $id);
+            $this->nrgiLogService->activity('contract.log.unpublish', ['contract' => $contract->title], $id);
 
-            $this->logger->activity(
+            $this->nrgiLogService->activity(
                 'contract.log.status',
                 [
                     'type'       => 'metadata',
@@ -976,12 +985,12 @@ class ContractService
                 ],
                 $id
             );
-            $this->logger->activity(
+            $this->nrgiLogService->activity(
                 'contract.log.status',
                 ['type' => 'text', 'old_status' => $elementStatus['text_status'], 'new_status' => 'unpublished'],
                 $id
             );
-            $this->logger->activity(
+            $this->nrgiLogService->activity(
                 'contract.log.status',
                 [
                     'type'       => 'annotation',

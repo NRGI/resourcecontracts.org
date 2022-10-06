@@ -76,7 +76,7 @@ class ProcessDocument extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $this->info('processing contract document');
         $contractId = $this->input->getArgument('contract_id');

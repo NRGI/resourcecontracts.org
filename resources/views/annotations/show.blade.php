@@ -12,7 +12,7 @@ use App\Nrgi\Entities\Contract\Annotation;
 
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading"> @lang('contract.annotation_list') <span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show', $contract->id)}}">Back</a> </div>
+        <div class="panel-heading"> @lang('contract.annotation_list') <span>{{$contract->metadata->contract_name ?? $contract->metadata->project_title}}</span>   <a class="btn btn-default pull-right" href="{{route('contract.show',['contract' => $contract->id])}}">Back</a> </div>
 
         <div class="view-wrapper" style="background: #F6F6F6">
             <div id="pagination"></div>
@@ -46,7 +46,7 @@ use App\Nrgi\Entities\Contract\Annotation;
                                     @forelse($contract->annotations as $annotation)
                                         <li>
                                             <span>
-                                                <a href="{{route('contract.annotations.list',$contract->id)}}?page={{$annotation->document_page_no}}">
+                                                <a href="{{route('contract.annotations.list',['key' => $contract->id])}}?page={{$annotation->document_page_no}}">
                                                     {{$annotation->annotation->quote}}
                                                 </a>
                                                 [Page {{$annotation->document_page_no}}]
@@ -65,7 +65,7 @@ use App\Nrgi\Entities\Contract\Annotation;
                                 {!!Form::hidden('state', 'completed')!!}
                                 {!!Form::button(trans('Complete'), ['type'=>'submit','class'=>'btn btn-primary confirm','data-confirm'=>trans('Are you sure you want to marked complete these annotations ?')])!!}
                                 {!!Form::close()!!}
-                            @elseif($status === Annotation::COMPLETED and ($current_user->can('publish-annotation') or $current_user->can('reject-annotation') ))
+                            @elseif($status === Annotation::COMPLETED and ($current_user->can('publish-annotation') ?? $current_user->can('reject-annotation') ))
                                 {!!Form::open(['route'=>['contract.annotations.status', $contract->id], 'style'=>"display:inline",'method'=>'post'])!!}
                                 {!!Form::hidden('state', 'published')!!}
                                 {!!Form::button(trans('Publish'), ['type'=>'submit','class'=>'btn btn-success confirm','data-confirm'=>trans('Are you sure you want to marked publish these annotations ?')])!!}

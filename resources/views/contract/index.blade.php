@@ -17,7 +17,7 @@
 						<ul class="dropdown-menu">
 							@foreach($download_files as $key => $file)
 								<li>
-									<a href="{{route('bulk.text.download', $file['path'])}}">
+									<a href="{{route('bulk.text.download',['file' => $file['path']])}}">
 										{{$key}}
 										<div>
 											<small>({{$file['size']}})</small>
@@ -46,50 +46,50 @@
 			{!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
 			<div class="row">
 				<div class="col-md-4 col-sm-6 col-xs-6">
-					{!! Form::select('year', ['all'=>trans('contract.year')] + $years , Input::get('year') , ['class' =>
+					{!! Form::select('year', ['all'=>trans('contract.year')] + $years , Request::input('year') , ['class' =>
 					'form-control']) !!}
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-6">
-				{!! Form::text('publishing_year_date_range', Input::get('publishing_year_date_range') , ['class' =>'form-control date-range-picker-input', 'id' => 'publishing_year_date_range', 'placeholder'=>trans('contract.search_contract')]) !!}
+				{!! Form::text('publishing_year_date_range', Request::input('publishing_year_date_range') , ['class' =>'form-control date-range-picker-input', 'id' => 'publishing_year_date_range', 'placeholder'=>trans('contract.search_contract')]) !!}
 				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
-					{!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Input::get('country') ,
+					{!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Request::input('country') ,
 					['class' =>'form-control']) !!}
 				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::select('category', ['all'=>trans('contract.category')] + config('metadata.category'),
-					Input::get('category') ,
+					Request::input('category') ,
 					['class' =>'form-control']) !!}
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::select('resource', ['all'=>trans('contract.resource')] + $resourceList ,
-					Input::get
+					Request::input
 					('resource') ,
 					['class' =>'form-control']) !!}
 				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::select('document_type', ['all'=>trans('contract.document_type')] + $documentTypeList,
-					Input::get('document_type') ,
+					Request::input('document_type') ,
 					['class' =>'form-control']) !!}
 				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::select('type_of_contract', ['all'=>trans('contract.type_of_contract')] + $contractTypeList,
-					Input::get('type_of_contract') ,
+					Request::input('type_of_contract') ,
 					['class' =>'form-control']) !!}
 				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::select('company_name', ['all'=>trans('contract.company_name')] + $companyNamesList,
-					Input::get('company_name') ,
+					Request::input('company_name') ,
 					['class' =>'form-control']) !!}
 				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::select('language', ['all'=>trans('contract.language')] + [''=>trans('codelist/language',[],null,$locale)['major'],
 					'Other'=>trans('codelist/language',[],null,$locale)['minor']],
-					Input::get('language') ,
+					Request::input('language') ,
 					['class' =>'form-control']) !!}
 				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
-					{!! Form::text('q', Input::get('q') , ['class' =>'form-control','placeholder'=>trans('contract.search_contract')]) !!}
+					{!! Form::text('q', Request::input('q') , ['class' =>'form-control','placeholder'=>trans('contract.search_contract')]) !!}
 				</div>
 			</div>
 			<div style = "display: flex;">
@@ -104,8 +104,8 @@
 					<tr>
 						<td width="65%">
 							<i class="glyphicon glyphicon-file"></i>
-							<a href="{{route('contract.show', $contract->id)}}"
-							   class="contract-title">{{$contract->metadata->contract_name or $contract->metadata->project_title}}</a>
+							<a href="{{route('contract.show', ['contract' => $contract->id])}}"
+							   class="contract-title">{{$contract->metadata->contract_name ?? $contract->metadata->project_title}}</a>
 							<span class="label label-default">
 								<?php echo strtoupper(
 										$contract->metadata->language

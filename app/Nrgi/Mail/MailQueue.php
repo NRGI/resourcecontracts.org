@@ -2,7 +2,7 @@
 namespace App\Nrgi\Mail;
 
 use Exception;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 use Illuminate\Mail\Mailer;
 
 /**
@@ -107,7 +107,7 @@ class MailQueue
         $from = $this->getFromEmail();
 
         try {
-            return $this->mailer->queueOn(
+            return $this->mailer->onQueue(
                 'queue-mail',
                 $view,
                 $data,

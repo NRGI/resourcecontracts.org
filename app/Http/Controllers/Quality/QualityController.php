@@ -41,7 +41,7 @@ class QualityController extends Controller
      */
     public function index(Request $request)
     {
-        $filters = $request->only('year', 'country', 'category', 'resource');
+        $filters = $request->all('year', 'country', 'category', 'resource');
         $data    = [
             'metadata'    => $this->quality->getMetadataQuality($filters),
             'annotations' => $this->quality->getAnnotationsQuality($filters),

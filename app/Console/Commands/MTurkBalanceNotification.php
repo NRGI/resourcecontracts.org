@@ -37,7 +37,7 @@ class MTurkBalanceNotification extends Command {
 	 * Execute the console command.
 	 * @param MTurkNotificationService $mturk
 	 */
-	public function fire(MTurkNotificationService $mturk)
+	public function handle(MTurkNotificationService $mturk)
 	{
 		$mturk->checkBalance();
 
