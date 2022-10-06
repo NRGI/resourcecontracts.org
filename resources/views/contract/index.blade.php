@@ -50,7 +50,7 @@
 					'form-control']) !!}
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-6">
-				{!! Form::text('publishing_year_date_range', Input::get('publishing_year_date_range') , ['class' =>'form-control date-range-picker-input', 'id' => 'publishing_year_date_range', 'placeholder'=>trans('contract.search_contract')]) !!}
+				{!! Form::text('publishing_year_date_range', Request::input('publishing_year_date_range') , ['class' =>'form-control date-range-picker-input', 'id' => 'publishing_year_date_range', 'placeholder'=>trans('contract.search_contract')]) !!}
 				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Request::input('country') ,
