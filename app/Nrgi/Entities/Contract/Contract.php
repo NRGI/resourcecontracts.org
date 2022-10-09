@@ -166,7 +166,7 @@ class Contract extends Model
     public function setLang($lang)
     {
         if (isset($this->metadata_trans->$lang)) {
-            $metadata_en    = json_decode($this->getOriginal('metadata'), true);
+            $metadata_en    = json_decode($this->getRawOriginal('metadata'), true);
             $metadata_trans = (array)$this->metadata_trans->$lang;
             $metadata       = array_replace_recursive($metadata_en, $metadata_trans);
 
@@ -183,7 +183,7 @@ class Contract extends Model
             }
             $this->metadata = $metadata;
         } else {
-            $this->metadata = json_decode($this->getOriginal('metadata'), true);
+            $this->metadata = json_decode($this->getRawOriginal('metadata'), true);
         }
     }
 
