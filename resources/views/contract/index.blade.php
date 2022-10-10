@@ -187,13 +187,34 @@
 	<script>
 		$(function() {
 			$( document ).ready(function() {
-			$('#publishing_year_date_range').daterangepicker({
-			opens: 'left',
-			locale: {
-				format: 'YYYY-MM-DD'
-			}
-		}, function(start, end, label) {
-		});
+				var urlParams = new URLSearchParams(window.location.search);
+				var dateRange = urlParams.get('publishing_year_date_range');
+				let dateFormat = 'YYYY-MM-DD';
+				let minDate = new Date()
+				let maxDate = new Date();
+				if(dateRange) {
+					let dateArray = dateRange.split('to').map(v => v.trim());
+					if(dateArray.length === 2 && moment(dateArray[0], dateFormat).isValid() && moment(dateArray[1], dateFormat).isValid()) {
+						minDate = moment(dateArray[0], dateFormat).toDate();
+						maxDate = moment(dateArray[1], dateFormat).toDate();
+					}
+				}
+				$('input[name="publishing_year_date_range"]').daterangepicker({
+					opens: 'left',
+					startDate: minDate,
+					endDate: maxDate,
+					autoUpdateInput: false,
+					locale: {
+						cancelLabel: 'Clear',
+					}
+				});
+
+				$('input[name="publishing_year_date_range"]').on('apply.daterangepicker', function(ev, picker) {
+					$(this).val(picker.startDate.format(dateFormat) + ' to ' + picker.endDate.format(dateFormat));
+				});
+				$('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+					$(this).val('');
+				});
 		});
 });
 	</script>
