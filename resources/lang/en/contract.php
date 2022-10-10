@@ -196,6 +196,7 @@ return [
     'is_contract_signed'                   => "Is contract signed?",
     'disclosure_mode_text'                 => 'Disclosure Mode Text',
     'publishing_year'                      => "Publishing Year",
+    'date'                                 => "Date",
     'reset'                                => "Reset",
     /*Logs*/
     'log'                                  => [
