@@ -121,7 +121,7 @@ class ContractController extends Controller
          $filters        = $request->all(
              'resource',
              'year',
-             'publishing_year',
+             'publishing_year_date_range',
              'country',
              'category',
              'resource',
