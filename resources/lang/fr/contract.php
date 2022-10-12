@@ -107,6 +107,8 @@ return [
     'change'                               => "Modifier",
     'on_process'                           => "En cours de traitement",
     'search_contract'                      => "Rechercher selon le titre du contrat or OCID",
+    'search_publishing_date'               => 'Rechercher la plage de dates de publication',
+    'publishing_year'                      => 'Année de publication',
     'showing'                              => "En cours de projection",
     'of'                                   => "de",
     'to'                                   => "à",
