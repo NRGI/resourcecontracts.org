@@ -46,11 +46,11 @@
 			{!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
 			<div class="row">
 				<div class="col-md-4 col-sm-6 col-xs-6">
-					{!! Form::select('year', ['all'=>trans('contract.year')] + $years , Request::input('year') , ['class' =>
+					{!! Form::select('year', ['all'=>trans('contract.publishing_year')] + $years , Request::input('year') , ['class' =>
 					'form-control']) !!}
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-6">
-				{!! Form::text('publishing_year_date_range', Request::input('publishing_year_date_range') , ['class' =>'form-control date-range-picker-input', 'id' => 'publishing_year_date_range', 'placeholder'=>trans('contract.date')]) !!}
+				{!! Form::text('publishing_year_date_range', Request::input('publishing_year_date_range') , ['class' =>'form-control date-range-picker-input', 'id' => 'publishing_year_date_range', 'placeholder'=>trans('contract.search_publishing_date')]) !!}
 				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Request::input('country') ,

@@ -107,6 +107,8 @@ return [
     'change'                               => 'Change',
     'on_process'                           => 'On processing',
     'search_contract'                      => 'Search by contract title or OCID',
+    'search_publishing_date'               => 'Search publishing date range',
+    'publishing_year'                      => 'Publishing Year',
     'showing'                              => 'Showing',
     'of'                                   => 'of',
     'to'                                   => 'to',
