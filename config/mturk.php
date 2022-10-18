@@ -61,18 +61,18 @@ return [
             'AssignmentDurationInSeconds' => 5*24*60*60,
             "AutoApprovalDelayInSeconds" =>  30*24*60*60,
             'TaskItemCount'              => 20,
-            'QualificationRequirements'   =>array(
-                [
-                    "QualificationTypeId"=>"00000000000000000040",
-                    "Comparator"=>"GreaterThan",
-                    "IntegerValues"=>[50]
-                ],
-                [
-                    "QualificationTypeId"=>"000000000000000000L0",
-                    "Comparator"=>"GreaterThan",
-                    "IntegerValues"=>[95]
-                ]
-            )
+            // 'QualificationRequirements'   =>array(
+            //     [
+            //         "QualificationTypeId"=>"00000000000000000040",
+            //         "Comparator"=>"GreaterThan",
+            //         "IntegerValues"=>[50]
+            //     ],
+            //     [
+            //         "QualificationTypeId"=>"000000000000000000L0",
+            //         "Comparator"=>"GreaterThan",
+            //         "IntegerValues"=>[95]
+            //     ]
+            // )
         ],
 
     ],
