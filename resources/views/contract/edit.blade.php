@@ -5,7 +5,7 @@
 
 	<div class="panel panel-default">
 		<div class="panel-heading"> Editing
-			<span>{{$contract->metadata->contract_name or $contract->metadata->project_title}}</span></div>
+			<span>{{$contract->metadata->contract_name ?? $contract->metadata->project_title}}</span></div>
 
 		<div class="panel-body contract-wrapper">
 			@if (count($errors) > 0)

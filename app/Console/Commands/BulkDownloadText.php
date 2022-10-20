@@ -73,7 +73,7 @@ class BulkDownloadText extends Command
     /**
      * Execute bash file for all contracts , rc and olc
      */
-    public function fire()
+    public function handle()
     {
         $this->extractText();
         $this->extractText('rc');

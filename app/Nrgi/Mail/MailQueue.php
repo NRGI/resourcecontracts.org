@@ -2,8 +2,12 @@
 namespace App\Nrgi\Mail;
 
 use Exception;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 use Illuminate\Mail\Mailer;
+use App\Mail\MTurkNotify;
+use App\Mail\MTurkBalance;
+use App\Mail\EmailsProcessSuccess;
+use App\Mail\EmailsProcessError;
 
 /**
  * Class Mail Queue Manager
@@ -107,20 +111,20 @@ class MailQueue
         $from = $this->getFromEmail();
 
         try {
-            return $this->mailer->queueOn(
-                'queue-mail',
-                $view,
-                $data,
-                function ($message) use ($recipients, $subject, $from, $bcc) {
-                    $message->to($recipients);
-                    $message->subject($subject);
-                    $message->from($from);
-
-                    if (!empty($bcc)) {
-                        $message->bcc($bcc);
-                    }
-                }
-            );
+            $messageVal = null;
+            if($view === 'mturk.email.notify') {
+                $messageVal = (new MTurkNotify($data, $from, $subject));
+            } else if($view === 'mturk.email.balance') {
+                $messageVal = (new MTurkBalance($data, $from, $subject));
+            } else if($view === 'emails.process_success') {
+                $messageVal = (new EmailsProcessSuccess($data, $from, $subject));
+            } else if($view === 'emails.process_error') {
+                $messageVal = (new EmailsProcessError($data, $from, $subject));
+            }
+            if($messageVal) {
+                $messageVal = $messageVal->onQueue('queue-mail');
+            }
+            return $this->mailer->to($recipients)->queue($messageVal);
         } catch (Exception $e) {
             $data = [
                 'to'      => $recipients,
@@ -153,12 +157,12 @@ class MailQueue
             (string) $exception
         );
         $from       = $this->getFromEmail();
-        $this->mailer->raw(
-            $body,
-            function ($message) use ($recipients, $subject, $from) {
+        $this->mailer->send([], [],
+            function ($message) use ($recipients, $subject, $from, $body) {
                 $message->subject($subject);
                 $message->to($recipients);
                 $message->from($from);
+                $message->setBody($body);
             }
         );
     }

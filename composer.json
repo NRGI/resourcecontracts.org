@@ -8,37 +8,40 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "laravel/framework": "~5.2.45",
+    "php": "^7.4",
+    "laravel/framework": "^7.30.5",
+    "symfony/console": "~5.4.12",
+    "symfony/debug": "4.4.44",
+    "symfony/event-dispatcher": "~5.4.9",
+    "symfony/finder": "~5.4.11",
+    "symfony/http-foundation": "~5.4.12",
+    "symfony/http-kernel": "~5.4.12",
+    "symfony/process": "~5.4.11",
+    "symfony/routing": "~5.4.11",
+    "symfony/translation": "~5.4.12",
+    "symfony/var-dumper": "~5.4.11",
 
-    "symfony/console": "~2.8.52",
-    "symfony/debug": "~2.8.52",
-    "symfony/event-dispatcher": "~2.8.52",
-    "symfony/finder": "~2.8.52",
-    "symfony/http-foundation": "~2.8.52",
-    "symfony/http-kernel": "~2.8.52",
-    "symfony/process": "~2.8.52",
-    "symfony/routing": "~2.8.52",
-    "symfony/translation": "~2.8.52",
-    "symfony/var-dumper": "~2.8.52",
-
-    "laravelcollective/html": "~5.2.6",
-    "zizaco/entrust": "1.9.1",
-    "rap2hpoutre/laravel-log-viewer": "0.1.*",
+    "laravelcollective/html": "^6.2",
+    "gghughunishvili/entrust": "~4.0.0",
+    "rap2hpoutre/laravel-log-viewer": "2.0.0",
     "league/flysystem-aws-s3-v3": "~1.0",
-    "pda/pheanstalk": "~3.0",
-    "guzzlehttp/guzzle": "~5.3.4",
+    "pda/pheanstalk": "~4.0",
+    "guzzlehttp/guzzle": "~6.3.1",
     "phpoffice/phpword": "dev-master",
-    "maatwebsite/excel": "~2.0",
-    "ext-json": "*"
+    "maatwebsite/excel": "^3.1",
+    "ext-json": "*",
+    "laravel/helpers": "^1.5",
+    "laravel/ui": "2.5.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.0",
-    "phpspec/phpspec": "~2.1",
-    "mockery/mockery": "0.9.*",
-    "barryvdh/laravel-ide-helper": "~2.0",
-    "barryvdh/laravel-debugbar": "~2.0",
-    "symfony/dom-crawler": "~2.8.52",
-    "symfony/css-selector": "~2.8.52"
+    "phpunit/phpunit": "^8.5.8|^9.3.3",
+    "phpspec/phpspec": "~6.1.0",
+    "mockery/mockery": "^1.0",
+    "barryvdh/laravel-ide-helper": "~2.8",
+    "barryvdh/laravel-debugbar": "~3.6.4",
+    "symfony/dom-crawler": "~5.4.12",
+    "symfony/css-selector": "~5.4.11"
+
   },
   "autoload": {
     "classmap": [
@@ -58,19 +61,24 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "php artisan clear-compiled",
-      "php artisan optimize"
+      "php artisan clear-compiled"
     ],
     "post-update-cmd": [
-      "php artisan clear-compiled",
-      "php artisan optimize"
+      "php artisan clear-compiled"
     ],
     "post-create-project-cmd": [
       "php -r \"copy('.env.example', '.env');\"",
       "php artisan key:generate"
+    ],
+    "post-autoload-dump": [
+      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+      "@php artisan package:discover"
     ]
   },
   "config": {
-    "preferred-install": "dist"
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "kylekatarnls/update-helper": true
+    }
   }
 }

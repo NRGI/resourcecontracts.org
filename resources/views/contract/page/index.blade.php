@@ -16,7 +16,7 @@
             <div class="wordwrap pull-left"> @lang('contract.editing')
                 <span>{{str_limit($contract->title, 100)}}</span>
 
-            <a href="{{route('contract.show', $contract->id)}}" class="go-back">@lang('contract.contract_detail')</a>
+            <a href="{{route('contract.show',['contract' => $contract->id])}}" class="go-back">@lang('contract.contract_detail')</a>
             </div>
             <div class="pull-right">
                 <a class="btn btn-default btn-annotation pull-right" href='#'>@lang('annotation.annotations')</a>
@@ -239,7 +239,7 @@ var metadataButtonView = new MetadataButtonView({
         el: "#annotatorjs",
         model: pageModel,
         contractModel: contract,
-        api: "{{route('contract.annotations', ['id'=>$contract->id])}}",
+        api: "{{route('contract.annotations', ['contractId'=>$contract->id])}}",
         availableTags: {!! json_encode(trans("codelist/annotation.tags")) !!},
         collection: annotationCollection,
         annotationCategories: annotationCategories,
@@ -249,7 +249,7 @@ var metadataButtonView = new MetadataButtonView({
         el: "#annotator-pdf",
         model: pageModel,
         contractModel: contract,
-        api: "{{route('contract.annotations', ['id'=>$contract->id])}}",
+        api: "{{route('contract.annotations', ['contractId'=>$contract->id])}}",
         availableTags: {!! json_encode(trans("codelist/annotation.tags")) !!},
         collection: annotationCollection,
         annotationCategories: annotationCategories,

@@ -35,7 +35,7 @@ class AnnotationHarmonization extends Command
      *
      * @return mixed
      */
-    public function fire()
+    public function handle()
     {
         $contracts      = $this->getContractId();
         foreach ($contracts as $contract) {

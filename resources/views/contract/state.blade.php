@@ -69,7 +69,7 @@ $annotLastPublished   = isset($annotationArray[0]['last_published']) ? $annotati
                     @endif
 
                     @if($contract->mturk_status  == \App\Nrgi\Entities\Contract\Contract::MTURK_SENT)
-                        @lang('global.mturk_sent') <a class="btn btn-gray"  href="{{route('mturk.tasks', $contract->id)}}">@lang('global.view')</a>
+                        @lang('global.mturk_sent') <a class="btn btn-gray"  href="{{route('mturk.tasks',['contract_id' => $contract->id])}}">@lang('global.view')</a>
                     @endif
 
                     @if($contract->mturk_status  == \App\Nrgi\Entities\Contract\Contract::MTURK_COMPLETE)

@@ -80,7 +80,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $user_detail = $request->only('name', 'email', 'password', 'organization', 'status', 'country');
+        $user_detail = $request->all('name', 'email', 'password', 'organization', 'status', 'country');
         $role        = $request->input('role');
 
         if ($this->user->create($user_detail, $role)) {
@@ -114,7 +114,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
-        $user_detail = $request->only('name', 'email', 'password', 'organization', 'status', 'country');
+        $user_detail = $request->all('name', 'email', 'password', 'organization', 'status', 'country');
         $role        = $request->input('role');
 
         if ($this->user->update($id, $user_detail, $role)) {

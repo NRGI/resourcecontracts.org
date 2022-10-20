@@ -43,7 +43,7 @@ class UpdateCorporateGroupList extends Command
      *
      * @return void
      */
-    public function fire()
+    public function handle()
     {
         $url = sprintf('%s?q=&per_page=%s', $this->api_url, 100);
         try {

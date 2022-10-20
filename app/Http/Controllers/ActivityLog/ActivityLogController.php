@@ -50,7 +50,7 @@ class ActivityLogController extends Controller
         ContractService $contract
     ) {
         $user         = $this->auth->user();
-        $filter       = $request->only('contract', 'user', 'category', 'country', 'status');
+        $filter       = $request->all('contract', 'user', 'category', 'country', 'status');
         $activityLogs = $this->activity->getAll($filter);
         $users        = (!$user->isCountryUser()) ? $userService->getList() : $userService->getAllUsersList();
         $contracts    = $contract->getList();

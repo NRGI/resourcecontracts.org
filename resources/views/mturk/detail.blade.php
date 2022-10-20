@@ -4,7 +4,7 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">{{$contract->title}}
 			<a class="btn btn-default pull-right"
-			   href="{{route('mturk.allTasks', $contract->id)}}">@lang('mturk.back')</a>
+			   href="{{route('mturk.allTasks', ['contract_id' => $contract->id])}}">@lang('mturk.back')</a>
 		</div>
 
 		<div class="panel-body">

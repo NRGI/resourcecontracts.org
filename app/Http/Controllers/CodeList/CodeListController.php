@@ -84,12 +84,12 @@ class CodeListController extends Controller
     {
         $type = $request['type'];
 
-        if($this->codelist->store($request->only('en' ,'ar' ,'fr', 'type'))) {
+        if($this->codelist->store($request->all('en' ,'ar' ,'fr', 'type'))) {
 
-            return redirect()->route('codelist.list', $type)->withSuccess(trans('codelist.'.$type.'_create_success'));
+            return redirect()->route('codelist.list', ['type' => $type])->withSuccess(trans('codelist.'.$type.'_create_success'));
         }
 
-        return redirect()->route('codelist.list', $type)->withSuccess(trans('codelist.'.$type.'_create_fail'));
+        return redirect()->route('codelist.list', ['type' => $type])->withSuccess(trans('codelist.'.$type.'_create_fail'));
     }
 
     /**
@@ -119,12 +119,12 @@ class CodeListController extends Controller
     {
         $type = $request['type'];
 
-        if($this->codelist->update($id,$request->only('en' ,'ar' ,'fr', 'type'))){
+        if($this->codelist->update($id,$request->all('en' ,'ar' ,'fr', 'type'))){
 
-            return redirect()->route('codelist.list',$type)->withSuccess(trans('codelist.'.$type.'_update_success'));
+            return redirect()->route('codelist.list',['type' => $type])->withSuccess(trans('codelist.'.$type.'_update_success'));
         }
 
-        return redirect()->route('codelist.list',$type)->withSuccess(trans('codelist.'.$type.'_update_fail'));
+        return redirect()->route('codelist.list',['type' => $type])->withSuccess(trans('codelist.'.$type.'_update_fail'));
     }
 
     /**
@@ -140,13 +140,13 @@ class CodeListController extends Controller
 
             if ($this->codelist->delete($type, $id)) {
 
-                return redirect()->route('codelist.list',$type)->withSuccess(trans('codelist.'.$type.'_delete_success'));
+                return redirect()->route('codelist.list',['type' => $type])->withSuccess(trans('codelist.'.$type.'_delete_success'));
             }
 
-            return redirect()->route('codelist.list', $type)->withError(trans('codelist.'.$type.'_delete_fail'));
+            return redirect()->route('codelist.list', ['type' => $type])->withError(trans('codelist.'.$type.'_delete_fail'));
 
         }
 
-        return redirect()->route('codelist.list', $type)->withError(trans('codelist.'.$type.'_in_use'));
+        return redirect()->route('codelist.list', ['type' => $type])->withError(trans('codelist.'.$type.'_in_use'));
     }
 }

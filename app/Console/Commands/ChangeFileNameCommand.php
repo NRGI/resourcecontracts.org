@@ -52,7 +52,7 @@ class ChangeFileNameCommand extends Command
     /**
      * Execute the console command.
      */
-    public function fire()
+    public function handle()
     {
         $contracts = Contract::all();
         foreach ($contracts as $key => $contract) {

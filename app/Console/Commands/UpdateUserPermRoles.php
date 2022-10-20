@@ -41,7 +41,7 @@ class UpdateUserPermRoles extends Command
     /**
      * Execute the console command
      */
-    public function fire()
+    public function handle()
     {
         $this->updateUserPermission();
     }

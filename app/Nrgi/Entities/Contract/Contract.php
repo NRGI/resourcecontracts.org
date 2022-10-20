@@ -166,7 +166,7 @@ class Contract extends Model
     public function setLang($lang)
     {
         if (isset($this->metadata_trans->$lang)) {
-            $metadata_en    = json_decode($this->getOriginal('metadata'), true);
+            $metadata_en    = json_decode($this->getRawOriginal('metadata'), true);
             $metadata_trans = (array)$this->metadata_trans->$lang;
             $metadata       = array_replace_recursive($metadata_en, $metadata_trans);
 
@@ -183,7 +183,7 @@ class Contract extends Model
             }
             $this->metadata = $metadata;
         } else {
-            $this->metadata = json_decode($this->getOriginal('metadata'), true);
+            $this->metadata = json_decode($this->getRawOriginal('metadata'), true);
         }
     }
 
@@ -200,7 +200,7 @@ class Contract extends Model
             return true;
         }
 
-        $metadata = json_decode($this->getOriginal('metadata_trans'), true);
+        $metadata = json_decode($this->getRawOriginal('metadata_trans'), true);
         if (isset($metadata[$locale])) {
             return true;
         }
@@ -481,7 +481,7 @@ class Contract extends Model
      */
     public function getSupportingContract()
     {
-        return DB::table('supporting_contracts')->where('contract_id', $this->id)->lists('supporting_contract_id')->all();
+        return DB::table('supporting_contracts')->where('contract_id', $this->id)->pluck('supporting_contract_id')->all();
     }
 
     /**

@@ -77,7 +77,7 @@ class ImportController extends Controller
         if ($json = $this->contractImport->getJsonData($import_key, false)) {
 
             if ($json->step == 2) {
-                return redirect()->route('contract.import.status', $import_key);
+                return redirect()->route('contract.import.status', ['key' => $import_key]);
             }
 
             $import_json = route('contract.import.notify', $import_key);
@@ -99,7 +99,7 @@ class ImportController extends Controller
     public function confirmPost($key, Request $request)
     {
         if ($this->contractImport->saveContracts($key, $request->input('id'))) {
-            return redirect()->route('contract.import.status', $key);
+            return redirect()->route('contract.import.status', ['key' => $key]);
         }
 
         return redirect()->route('contract.import')->withError(trans('contract.import.fail'));
@@ -116,10 +116,10 @@ class ImportController extends Controller
         if ($json = $this->contractImport->getJsonData($import_key, false)) {
 
             if ($json->step == 1) {
-                return redirect()->route('contract.import.confirm', $import_key);
+                return redirect()->route('contract.import.confirm', ['key' => $import_key]);
             }
 
-            $import_json = route('contract.import.notify', $import_key);
+            $import_json = route('contract.import.notify', ['key' => $import_key]);
             $contracts   = $json->contracts;
 
             return view('contract.import.status', compact('contracts', 'import_key', 'import_json'));

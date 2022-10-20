@@ -51,7 +51,7 @@ class UpdateMetadata extends Command
      * Execute the console command.
      *
      */
-    public function fire()
+    public function handle()
     {
         $contract_id = $this->input->getOption('id');
 

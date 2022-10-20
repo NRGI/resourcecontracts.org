@@ -57,7 +57,7 @@
     </div>
 </div>
 
-<div class="form-group country" style="display: @if(in_array(old('role'), config("nrgi.country_role")) or in_array($old, config("nrgi.country_role")) or $current_user->hasRole(config("nrgi.country_role"))) block @else none @endif" >
+<div class="form-group country" style="display: @if(in_array(old('role'), config("nrgi.country_role")) ?? in_array($old, config("nrgi.country_role")) ?? $current_user->hasRole(config("nrgi.country_role"))) block @else none @endif" >
     <label for="country" class="col-md-4 control-label">@lang('contract.country')<span class="red">*</span></label>
     <div class="col-sm-6">
         {!! Form::select('country[]', ['' => 'select'] + $country ,

@@ -18,7 +18,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
 
 /**
  * Class ContractController
@@ -118,7 +118,7 @@ class ContractController extends Controller
      */
     public function index(Request $request, LanguageService $lang)
     {
-         $filters        = $request->only(
+         $filters        = $request->all(
              'resource',
              'year',
              'publishing_year',
@@ -137,6 +137,9 @@ class ContractController extends Controller
              'disclosure',
              'q'
          );
+         if($filters['download'] == 1) {
+            return $this->contractFilter->getAll($filters);
+         }
          $contracts      = $this->contractFilter->getAll($filters);
          $contract_ids = [];
          foreach($contracts as $contract){
@@ -191,7 +194,7 @@ class ContractController extends Controller
     public function store(ContractRequest $request)
     {
         if ($contract = $this->contract->saveContract($request->all())) {
-            return redirect()->route('contract.show', ['id' => $contract->id])->with(
+            return redirect()->route('contract.show', ['contract' => $contract->id])->with(
                 'success',
                 trans('contract.save_success')
             );
@@ -231,7 +234,7 @@ class ContractController extends Controller
          $elementState                 = $this->activity->getElementState($id);
          $annotationStatus             = $this->annotation->getStatus($id);
          $annotationStatus             = $annotationStatus == '' ? $elementState['annotation'] : $annotationStatus;
-         $locale                       = $request->route()->getParameter('lang', $lang->defaultLang());
+         $locale                       = $request->route()->parameter('lang', $lang->defaultLang());
          $resourceList                 = $this->codeList->getCodeList('resources',$lang->getSiteLang());
          $contractTypeList             = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
          $documentTypeList             = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
@@ -292,7 +295,7 @@ class ContractController extends Controller
         $discussion_status = $discussion->getResolved($id);
         $companyName       = $this->contract->getCompanyNames();
         $view              = 'contract.edit';
-        $locale            = $request->route()->getParameter('lang');
+        $locale            = $request->route()->parameter('lang');
 
         if (!is_null($locale)) {
             if (!$lang->isValidTranslationLang($locale) || $locale == $lang->defaultLang()) {
@@ -331,10 +334,10 @@ class ContractController extends Controller
     public function update(ContractRequest $request, $contractID)
     {
         if ($this->contract->updateContract($contractID, $request->all())) {
-            return redirect()->route('contract.show', $contractID)->withSuccess(trans('contract.update_success'));
+            return redirect()->route('contract.show', ['contract' => $contractID])->withSuccess(trans('contract.update_success'));
         }
 
-        return redirect()->route('contract.show', $contractID)->withError(trans('contract.update_fail'));
+        return redirect()->route('contract.show', ['contract' => $contractID])->withError(trans('contract.update_fail'));
     }
 
     /**
@@ -578,7 +581,7 @@ class ContractController extends Controller
                 $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $recent_contracts = json_encode($this->activity->getPublishedContracts(true));
                 $response = $this->http->post($url, [
-                    'body' => [
+                    'form_params' => [
                         'recent_contracts' => $recent_contracts
                     ]
                 ]);
@@ -607,7 +610,7 @@ class ContractController extends Controller
                 $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $annotations = $this->annotation->getAllByAnnotation('community-consultation');
                 $response = $this->http->post($url, [
-                    'body' => [
+                    'form_params' => [
                         'annotations' => $annotations
                     ]
                 ]);
@@ -661,7 +664,7 @@ class ContractController extends Controller
                 $uri = 'contract/cluster/restore';
                 $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $response = $this->http->post($url, [
-                    'body' => ['key' => $key]
+                    'form_params' => ['key' => $key]
                 ]);
 
                 return redirect()->route('contract.index')->withSuccess('Elastic restored successfully');
@@ -688,7 +691,7 @@ class ContractController extends Controller
                 $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $request_payload = ['get_master_pages' => true];
                 $response = $this->http->post($url, [
-                    'body' => $request_payload
+                    'form_params' => $request_payload
                 ]);
                 $resp_json = $response->json();
 
@@ -724,7 +727,7 @@ class ContractController extends Controller
                 $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $request_payload = ['add_to_master' => $page];
                 $response = $this->http->post($url, [
-                    'body' => $request_payload
+                    'form_params' => $request_payload
                 ]);
                 $resp_json = $response->json();
 
@@ -765,7 +768,7 @@ class ContractController extends Controller
                     'parent_child_contracts' => $parent_child_contracts,
                 ];
                 $response = $this->http->post($url, [
-                    'body' => $request_payload
+                    'form_params' => $request_payload
                 ]);
                 $resp_json = $response->json();
 
@@ -806,7 +809,7 @@ class ContractController extends Controller
                     'child_parent_contracts' => $child_parent_contracts
                 ];
                 $response                = $this->http->post($url, [
-                    'body' => $request_payload
+                    'form_params' => $request_payload
                 ]);
                 $resp_json              = $response->json();
 

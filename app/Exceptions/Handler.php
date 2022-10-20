@@ -2,6 +2,7 @@
 
 use App\Nrgi\Mail\MailQueue;
 use Exception;
+use Throwable;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Facades\Request;
@@ -11,6 +12,8 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Container\Container;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -42,12 +45,12 @@ class Handler extends ExceptionHandler
     /**
      * Handler constructor.
      *
-     * @param LoggerInterface $log
+     * @param Container $app
      * @param MailQueue       $mailer
      */
-    public function __construct(LoggerInterface $log, MailQueue $mailer)
+    public function __construct(Container $app, MailQueue $mailer)
     {
-        parent::__construct($log);
+        parent::__construct($app);
         $this->mailer = $mailer;
     }
 
@@ -60,7 +63,7 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-    public function report(Exception $e)
+    public function report(Throwable $e)
     {
         return parent::report($e);
     }
@@ -73,7 +76,7 @@ class Handler extends ExceptionHandler
      *
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $e)
+    public function render($request, Throwable $e)
     {
         if ($e instanceof HttpException) {
             return parent::render($request, $e);
@@ -106,5 +109,21 @@ class Handler extends ExceptionHandler
         }
         $url = Request::fullUrl();
         $this->mailer->sendErrorEmail($e, $url);
+    }
+
+    /**
+     * Convert an authentication exception into an unauthenticated response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @return \Illuminate\Http\Response
+     */
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
+    
+        return redirect()->guest('login');
     }
 }

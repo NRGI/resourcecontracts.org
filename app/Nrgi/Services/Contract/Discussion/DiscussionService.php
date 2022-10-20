@@ -2,7 +2,8 @@
 
 use App\Nrgi\Repositories\Contract\Discussion\DiscussionRepositoryInterface;
 use Exception;
-use Illuminate\Contracts\Logging\Log;
+use Psr\Log\LoggerInterface as Log;
+use App\Nrgi\Log\NrgiLogService;
 
 
 /**
@@ -19,15 +20,21 @@ class DiscussionService
      * @var DiscussionRepositoryInterface
      */
     protected $discussion;
+    /**
+     * @var NrgiLogService
+     */
+    protected $nrgiLogService;
 
     /**
      * @param DiscussionRepositoryInterface $discussion
      * @param Log                           $logger
+     * @param LNrgiLogServiceog             $nrgiLogService
      */
-    public function __construct(DiscussionRepositoryInterface $discussion, Log $logger)
+    public function __construct(DiscussionRepositoryInterface $discussion, Log $logger, NrgiLogService $nrgiLogService)
     {
         $this->logger     = $logger;
         $this->discussion = $discussion;
+        $this->nrgiLogService = $nrgiLogService;
     }
 
     /**
@@ -52,7 +59,7 @@ class DiscussionService
                 ]
             );
 
-            $this->logger->activity('contract.log.discussion.save', $data, $contract_id);
+            $this->nrgiLogService->activity('contract.log.discussion.save', $data, $contract_id);
 
             return true;
         } catch (Exception $e) {
