@@ -87,12 +87,14 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw("contracts.metadata_status=?", [$status]);
         }
 
-        if (isset($publishing_year) && $publishing_year != '' && $publishing_year != 'all') {
+        if (isset($publishing_year_date_range) && $publishing_year_date_range != '' && $publishing_year_date_range != 'all') {
             $contractPublishStatus = Contract::STATUS_PUBLISHED;
-            $query->whereRaw("contracts.publishing_date->'metadata'->>'status' =?", [$contractPublishStatus]);
-            $query->whereRaw("to_date(contracts.publishing_date->'metadata'->>'datetime', 'YYYY-MM-DD') >=?", [$publishing_year.'-01-01']);
-            $query->whereRaw("to_date(contracts.publishing_date->'metadata'->>'datetime', 'YYYY-MM-DD') <=?", [$publishing_year.'-12-31']);
-
+            $publishing_year_arr = array_map('trim', explode('to', strtolower($publishing_year_date_range)));
+            if(count($publishing_year_arr) >= 2) 
+            {
+                $query->whereRaw("contracts.publishing_date->'metadata'->>'status' =?", [$contractPublishStatus]);
+                $query->whereBetween(DB::raw("DATE(contracts.created_datetime)"), [$publishing_year_arr[0], $publishing_year_arr[1]]);
+            }
         }
         
         if (isset($type) && $type == 'ocr' && $status != '') {
@@ -263,12 +265,14 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw("contracts.metadata_status=?", [$status]);
         }
 
-        if (isset($publishing_year) && $publishing_year != '' && $publishing_year != 'all') {
+        if (isset($publishing_year_date_range) && $publishing_year_date_range != '' && $publishing_year_date_range != 'all') {
             $contractPublishStatus = Contract::STATUS_PUBLISHED;
-            $query->whereRaw("contracts.publishing_date->'metadata'->>'status' =?", [$contractPublishStatus]);
-            $query->whereRaw("to_date(contracts.publishing_date->'metadata'->>'datetime', 'YYYY-MM-DD') >=?", [$publishing_year.'-01-01']);
-            $query->whereRaw("to_date(contracts.publishing_date->'metadata'->>'datetime', 'YYYY-MM-DD') <=?", [$publishing_year.'-12-31']);
-
+            $publishing_year_arr = array_map('trim', explode('to', strtolower($publishing_year_date_range)));
+            if(count($publishing_year_arr) >= 2) 
+            {
+                $query->whereRaw("contracts.publishing_date->'metadata'->>'status' =?", [$contractPublishStatus]);
+                $query->whereBetween(DB::raw("DATE(contracts.created_datetime)"), [$publishing_year_arr[0], $publishing_year_arr[1]]);
+            }
         }
         
         if (isset($type) && $type == 'ocr' && $status != '') {

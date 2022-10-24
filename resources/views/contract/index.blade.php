@@ -46,12 +46,11 @@
 			{!! Form::open(['route' => 'contract.index', 'method' => 'get', 'class'=>'form-inline']) !!}
 			<div class="row">
 				<div class="col-md-4 col-sm-6 col-xs-6">
-					{!! Form::select('year', ['all'=>trans('contract.year')] + $years , Request::input('year') , ['class' =>
+					{!! Form::select('year', ['all'=>trans('contract.publishing_year')] + $years , Request::input('year') , ['class' =>
 					'form-control']) !!}
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-6">
-					{!! Form::select('publishing_year', ['all'=>trans('contract.publishing_year')] + $publishingYears , Request::input('publishing_year') , ['class' =>
-					'form-control']) !!}
+				{!! Form::text('publishing_year_date_range', Request::input('publishing_year_date_range') , ['class' =>'form-control date-range-picker-input', 'id' => 'publishing_year_date_range', 'placeholder'=>trans('contract.search_publishing_date')]) !!}
 				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::select('country', ['all'=>trans('contract.country')] + $countries , Request::input('country') ,
@@ -177,9 +176,46 @@
 @endsection
 @section('script')
 	<link href="{{asset('css/select2.min.css')}}" rel="stylesheet"/>
+	<link href="{{asset('css/daterangepicker.css')}}" rel="stylesheet"/>
 	<script src="{{asset('js/select2.min.js')}}"></script>
+	<script src="{{asset('js/moment.min.js')}}"></script>
+	<script src="{{asset('js/daterangepicker.min.js')}}"></script>
 	<script type="text/javascript">
 		var lang_select = '@lang('global.select')';
 		$('select').select2({placeholder: lang_select, allowClear: true, theme: "classic"});
+	</script>
+	<script>
+		$(function() {
+			$( document ).ready(function() {
+				var urlParams = new URLSearchParams(window.location.search);
+				var dateRange = urlParams.get('publishing_year_date_range');
+				let dateFormat = 'YYYY-MM-DD';
+				let minDate = new Date()
+				let maxDate = new Date();
+				if(dateRange) {
+					let dateArray = dateRange.split('to').map(v => v.trim());
+					if(dateArray.length === 2 && moment(dateArray[0], dateFormat).isValid() && moment(dateArray[1], dateFormat).isValid()) {
+						minDate = moment(dateArray[0], dateFormat).toDate();
+						maxDate = moment(dateArray[1], dateFormat).toDate();
+					}
+				}
+				$('input[name="publishing_year_date_range"]').daterangepicker({
+					opens: 'left',
+					startDate: minDate,
+					endDate: maxDate,
+					autoUpdateInput: false,
+					locale: {
+						cancelLabel: 'Clear',
+					}
+				});
+
+				$('input[name="publishing_year_date_range"]').on('apply.daterangepicker', function(ev, picker) {
+					$(this).val(picker.startDate.format(dateFormat) + ' to ' + picker.endDate.format(dateFormat));
+				});
+				$('input[name="publishing_year_date_range"]').on('cancel.daterangepicker', function(ev, picker) {
+					$(this).val('');
+				});
+		});
+});
 	</script>
 @stop

@@ -107,6 +107,8 @@ return [
     'change'                               => 'Change',
     'on_process'                           => 'On processing',
     'search_contract'                      => 'Search by contract title or OCID',
+    'search_publishing_date'               => 'Search publishing date range',
+    'publishing_year'                      => 'Publishing Year',
     'showing'                              => 'Showing',
     'of'                                   => 'of',
     'to'                                   => 'to',
@@ -196,6 +198,7 @@ return [
     'is_contract_signed'                   => "Is contract signed?",
     'disclosure_mode_text'                 => 'Disclosure Mode Text',
     'publishing_year'                      => "Publishing Year",
+    'date'                                 => "Date",
     'reset'                                => "Reset",
     /*Logs*/
     'log'                                  => [
