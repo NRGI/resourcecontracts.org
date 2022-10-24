@@ -581,7 +581,7 @@ class ContractController extends Controller
                 $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $recent_contracts = json_encode($this->activity->getPublishedContracts(true));
                 $response = $this->http->post($url, [
-                    'body' => [
+                    'form_params' => [
                         'recent_contracts' => $recent_contracts
                     ]
                 ]);
@@ -610,7 +610,7 @@ class ContractController extends Controller
                 $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $annotations = $this->annotation->getAllByAnnotation('community-consultation');
                 $response = $this->http->post($url, [
-                    'body' => [
+                    'form_params' => [
                         'annotations' => $annotations
                     ]
                 ]);
@@ -664,7 +664,7 @@ class ContractController extends Controller
                 $uri = 'contract/cluster/restore';
                 $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $response = $this->http->post($url, [
-                    'body' => ['key' => $key]
+                    'form_params' => ['key' => $key]
                 ]);
 
                 return redirect()->route('contract.index')->withSuccess('Elastic restored successfully');
@@ -691,7 +691,7 @@ class ContractController extends Controller
                 $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $request_payload = ['get_master_pages' => true];
                 $response = $this->http->post($url, [
-                    'body' => $request_payload
+                    'form_params' => $request_payload
                 ]);
                 $resp_json = $response->json();
 
@@ -727,7 +727,7 @@ class ContractController extends Controller
                 $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
                 $request_payload = ['add_to_master' => $page];
                 $response = $this->http->post($url, [
-                    'body' => $request_payload
+                    'form_params' => $request_payload
                 ]);
                 $resp_json = $response->json();
 
@@ -768,7 +768,7 @@ class ContractController extends Controller
                     'parent_child_contracts' => $parent_child_contracts,
                 ];
                 $response = $this->http->post($url, [
-                    'body' => $request_payload
+                    'form_params' => $request_payload
                 ]);
                 $resp_json = $response->json();
 
@@ -809,7 +809,7 @@ class ContractController extends Controller
                     'child_parent_contracts' => $child_parent_contracts
                 ];
                 $response                = $this->http->post($url, [
-                    'body' => $request_payload
+                    'form_params' => $request_payload
                 ]);
                 $resp_json              = $response->json();
 

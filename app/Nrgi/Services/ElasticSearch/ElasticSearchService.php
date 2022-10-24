@@ -167,9 +167,9 @@ class ElasticSearchService
         }
         try {
             $response  = $this->http->post($this->apiURL('contract/metadata'), [
-                'body' => $metadata
+                'form_params' => $metadata
             ]);
-            $this->logger->info('Metadata submitted to Elastic Search.', $response->json());
+            $this->logger->info('Metadata submitted to Elastic Search.', [json_decode($response->getBody())]);
             if (!$showText) {
                 $this->postText($id, false);
             }
@@ -202,9 +202,9 @@ class ElasticSearchService
                 $this->contract->updateWordFile($contract->id);
             }
             $response  = $this->http->post($this->apiURL('contract/pdf-text'), [
-                'body' => $pages
+                'form_params' => $pages
             ]);
-            $this->logger->info('Pdf Text submitted to Elastic Search.', $response->json());
+            $this->logger->info('Pdf Text submitted to Elastic Search.', [json_decode($response->getBody())]);
             if ($showText) {
                 $this->postMetadata($id);
             }
@@ -254,9 +254,9 @@ class ElasticSearchService
         try {
             $this->deleteAnnotation($contractId);
             $response  = $this->http->post($this->apiURL('contract/annotations'), [
-                'body' => $data
+                'form_params' => $data
             ]);
-            $this->logger->info('Annotation submitted to Elastic Search.', [$response->json()]);
+            $this->logger->info('Annotation submitted to Elastic Search.', [$json_decode($response->getBody())]);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
@@ -271,9 +271,9 @@ class ElasticSearchService
     {
         try {
             $response  = $this->http->post($this->apiURL('contract/delete'), [
-                'body' => ['id' => $contract_id]
+                'form_params' => ['id' => $contract_id]
             ]);
-            $this->logger->info('Contract deleted from Elastic Search.', $response->json());
+            $this->logger->info('Contract deleted from Elastic Search.', [json_decode($response->getBody())]);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
@@ -327,9 +327,9 @@ class ElasticSearchService
     {
         try {
             $response  = $this->http->post($this->apiURL('contract/delete/metadata'), [
-                'body' => ['contract_id' => $id]
+                'form_params' => ['contract_id' => $id]
             ]);
-            $this->logger->info('Metadata deleted from Elastic Search.', [$response->json()]);
+            $this->logger->info('Metadata deleted from Elastic Search.', [json_decode($response->getBody())]);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
@@ -360,9 +360,9 @@ class ElasticSearchService
     {
         try {
             $response = $this->http->post($this->apiURL('contract/delete/annotation'), [
-                'body' => ["contract_id" => $contract_id]
+                'form_params' => ["contract_id" => $contract_id]
             ]);
-            $this->logger->info('Annotations deleted', [$response->json()]);
+            $this->logger->info('Annotations deleted', [json_decode($response->getBody())]);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
