@@ -6,6 +6,7 @@ use App\Nrgi\Entities\SupportingContract\SupportingContract;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
+use App\Nrgi\Mturk\Entities\Task;
 use Psr\Log\LoggerInterface as Log;
 
 /**
@@ -600,7 +601,10 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw("metadata->'category'->>0 ='" . $filter['category'] . "'");
         }
 
-        $query->orderBy('created_datetime', 'DESC');
+        $query->orderBy(
+        Task::select('created_at')
+        ->whereColumn('mturk_tasks.contract_id', 'contracts.id')
+        ->limit(1), 'ASC');
 
         if (!is_null($perPage)) {
             return $query->paginate($perPage);
