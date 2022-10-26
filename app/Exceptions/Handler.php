@@ -46,6 +46,7 @@ class Handler extends ExceptionHandler
      * Handler constructor.
      *
      * @param Container $app
+
      * @param MailQueue       $mailer
      */
     public function __construct(Container $app, MailQueue $mailer)
@@ -108,7 +109,23 @@ class Handler extends ExceptionHandler
             }
         }
         $url = Request::fullUrl();
-        $this->mailer->sendErrorEmail($e, $url);
+        // $this->mailer->sendErrorEmail($e, $url);
+    }
+
+    /**
+     * Convert an authentication exception into an unauthenticated response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @return \Illuminate\Http\Response
+     */
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
+    
+        return redirect()->guest('login');
     }
 
     /**

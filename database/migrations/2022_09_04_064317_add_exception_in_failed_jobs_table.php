@@ -14,8 +14,7 @@ class AddExceptionInFailedJobsTable extends Migration
     public function up()
     {
         Schema::table('failed_jobs', function (Blueprint $table) {
-            //
-            $table->longText('exception');
+            $table->longText('exception')->nullable();
         });
     }
 
