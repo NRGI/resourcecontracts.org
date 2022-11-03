@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Middleware\Localization;
 use App\Nrgi\Mturk\Services\MTurkService;
 use App\Nrgi\Services\Dashboard\DashboardService;
+use App\Nrgi\Services\Abby\AbbyService;
 use Illuminate\Http\Response;
 
 /**
@@ -21,16 +22,19 @@ class DashboardController extends Controller
     protected $dashboard;
 
     protected $localization;
+
+    protected $abby;
     /**
      * Create a new controller instance.
      * @param DashboardService $dashboard
      * @param Localization     $localization
      */
-    public function __construct(DashboardService $dashboard, Localization $localization)
+    public function __construct(DashboardService $dashboard, Localization $localization, AbbyService $abby)
     {
         $this->middleware('auth');
         $this->dashboard    = $dashboard;
         $this->localization = $localization;
+        $this->abby = $abby;
     }
 
     /**
@@ -50,6 +54,7 @@ class DashboardController extends Controller
             'this_month' => $this->dashboard->countContractTotal('this_month'),
             'yesterday'  => $this->dashboard->countContractTotal('yesterday'),
             'today'      => $this->dashboard->countContractTotal('today'),
+            'abby_info'  => $this->abby->getApplicationInfo()
         ];
 
         list($metadata, $pdfText) = $this->dashboard->contractStatusCount();

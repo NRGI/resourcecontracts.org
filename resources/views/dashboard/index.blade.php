@@ -64,7 +64,10 @@
 	</div>
 
 		<div class="col-md-12">
-	<div class="balance">@lang('global.mturk_available_balance'): {{$stats['balance'] ?? '-'}}</div>
+	<div class="balance">@lang('global.mechanical_turk_balance'): {{$stats['balance'] ?? '-'}}</div>
+	@if(isset($stats['abby_info']))
+		<div class="balance">@lang('global.abby_balance'): {{$stats['abby_info']['pages'] ?? '-'}} @lang('global.pages')</div>
+	@endif
 		</div>
 	<div class="clearfix row-dashboard">
 		<div class="col-md-3 col-sm-6 col-xs-12">
