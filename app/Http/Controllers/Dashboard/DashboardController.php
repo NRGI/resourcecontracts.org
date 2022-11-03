@@ -28,6 +28,7 @@ class DashboardController extends Controller
      * Create a new controller instance.
      * @param DashboardService $dashboard
      * @param Localization     $localization
+     * @param AbbyService      $abby
      */
     public function __construct(DashboardService $dashboard, Localization $localization, AbbyService $abby)
     {
