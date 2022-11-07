@@ -6,6 +6,9 @@
 			background-color: #fff;
 			margin-bottom: 20px;
 		}
+		.abby-balance {
+			margin-bottom: 0px;
+		}
 
 		.contract-list .media {
 			margin-bottom: 20px;
@@ -64,7 +67,11 @@
 	</div>
 
 		<div class="col-md-12">
-	<div class="balance">@lang('global.mturk_available_balance'): {{$stats['balance'] ?? '-'}}</div>
+			<div class="balance"><p>@lang('global.mechanical_turk_balance'): {{$stats['balance'] ?? '-'}}</p>
+				@if(isset($stats['abby_info']))
+					<p class="abby-balance">@lang('global.abby_balance'): {{$stats['abby_info']['pages'] ?? '-'}} @lang('global.pages')</p>
+				@endif
+			</div>
 		</div>
 	<div class="clearfix row-dashboard">
 		<div class="col-md-3 col-sm-6 col-xs-12">
