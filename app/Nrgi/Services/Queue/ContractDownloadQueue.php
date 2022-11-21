@@ -29,7 +29,7 @@ class ContractDownloadQueue
      */
     public function fire($job, $data)
     {
-        $this->import->download($data['import_key']);
+        $this->import->download($data['import_key'], $data['one_drive_data']);
         $job->delete();
     }
 }

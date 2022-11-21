@@ -21,6 +21,7 @@ use Illuminate\Contracts\Filesystem\Factory as Storage;
 use Throwable;
 use App\Nrgi\Log\NrgiLogService;
 use App\Imports\NrgiImport;
+use App\Nrgi\Services\Microsoft\MicrosoftService;
 
 
 /**
@@ -159,7 +160,8 @@ class ImportService
         ContractTypeRepositoryInterface $contractType,
         DocumentTypeRepositoryInterface $documentType,
         ResourceRepositoryInterface $resource,
-        NrgiLogService $nrgiLogService
+        NrgiLogService $nrgiLogService,
+        MicrosoftService $microsoft_service
     )
     {
         $this->excel           = $excel;
@@ -175,6 +177,7 @@ class ImportService
         $this->documentType    = $documentType;
         $this->resource        = $resource;
         $this->nrgiLogService  = $nrgiLogService;
+        $this->microsoft_service = $microsoft_service;
     }  
 
     /**
@@ -188,6 +191,7 @@ class ImportService
     public function import(Request $request)
     {
         $import_key = md5(microtime());
+        $one_drive_data = session('ONE_DRIVE_AUTH', null);
         
         try {
             $originalFileName = $request->file('file')->getClientOriginalName();
@@ -221,7 +225,7 @@ class ImportService
 
         $this->queue->push(
             'App\Nrgi\Services\Queue\ContractDownloadQueue',
-            ['import_key' => $import_key],
+            ['import_key' => $import_key, 'one_drive_data' => $one_drive_data],
             'contract_download'
         );
 
@@ -314,7 +318,7 @@ class ImportService
 
         $contract['document_url']     = $results['document_url'];
         $pdfArray = explode("/", $results['document_url']);
-
+        $is_one_drive_file = false;
         if(in_array("drive.google.com", $pdfArray)){
             //converts the shareable google drive link to downloadable link 
             $newPdf = $this->convertToDownloadableUrl($pdfArray, $results['document_url']);
@@ -407,7 +411,7 @@ class ImportService
      *
      * @param $import_key
      */
-    public function download($import_key)
+    public function download($import_key, $one_drive_data)
     {
         $contracts = $this->getJsonData($import_key);
 
@@ -423,9 +427,14 @@ class ImportService
                     $this->updateContractJsonByID($import_key, $contract->id, ['download_remarks' => $message, 'download_status' => static::FAILED]);
                     continue;
                 }
-
-                $file = $this->downloadPdf($import_key, $contract->document_url);
-
+                $this->logger->info('PROCESSING FOR One drive pdf'.$contract->document_url);
+                if(strpos($contract->document_url, 'sharepoint.com') !== false) {
+                    $this->logger->info('PROCESSING FOR SHAREPOINT');
+                    $file = $this->downloadOneDriveFile($import_key, $contract->document_url, $one_drive_data);
+                } else {
+                    $file = $this->downloadPdf($import_key, $contract->document_url);
+                }
+                
                 if (is_null($file)) {
                     $this->updateContractJsonByID($import_key, $contract->id, ['download_remarks' => trans('File could not be downloaded'), 'download_status' => static::FAILED]);
                     continue;
@@ -492,9 +501,7 @@ class ImportService
 
         return $this->updateJson($key, $contracts, $step);
     }
-
-    /**
-     * Download a Pdf File
+    /* Download a Pdf File
      *
      * @param $key
      * @param $pdf
@@ -510,6 +517,33 @@ class ImportService
             copy($pdf, $temp_path);
 
             return $pdf_name;
+        } catch (\Exception $e) {
+            $this->logger->error('PDF Download Error:' . $e->getMessage());
+
+            return null;
+        }
+    }
+    /**
+     * Download a Pdf File
+     *
+     * @param $key
+     * @param $pdf
+     *
+     * @return null|string
+     */
+    protected function downloadOneDriveFile($key, $pdf, $one_drive_data)
+    {
+        $pdf_name  = sha1(str_random()) . '.pdf';
+        $temp_path = $this->getFilePath($key, $pdf_name);
+        try {
+            $this->logger->info('Downloading One drive pdf' . $pdf);
+           $is_download_success = $this->microsoft_service->downloadFile($pdf, $temp_path, $one_drive_data);
+           if($is_download_success) 
+           {
+            return $pdf_name;
+           }
+           $this->logger->error('ONE DRIVE PDF DOWNLOAD Error:');
+           return null;
         } catch (\Exception $e) {
             $this->logger->error('PDF Download Error:' . $e->getMessage());
 
