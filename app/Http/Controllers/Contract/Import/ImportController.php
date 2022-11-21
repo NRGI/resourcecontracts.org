@@ -7,6 +7,7 @@ use App\Nrgi\Services\Contract\ContractService;
 use App\Nrgi\Services\Contract\ImportService;
 use Illuminate\Http\Request;
 use Throwable;
+use App\Nrgi\Services\Microsoft\MicrosoftService;
 
 /**
  * Class ImportController
@@ -23,15 +24,18 @@ class ImportController extends Controller
      */
     protected $contractImport;
 
+    protected $microsoftService;
+
     /**
      * @param ContractService $contract
      * @param ImportService   $contractImport
      */
-    public function __construct(ContractService $contract, ImportService $contractImport)
+    public function __construct(ContractService $contract, ImportService $contractImport, MicrosoftService $microsoftService)
     {
         $this->middleware('auth');
         $this->contract       = $contract;
         $this->contractImport = $contractImport;
+        $this->microsoftService = $microsoftService;
     }
 
     /**
@@ -39,11 +43,16 @@ class ImportController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->has('code')) {
+            $this->microsoftService->getAccessToken($request->get('code'));
+        }
         $jobs = $this->contractImport->getImportJobByUser();
-
-        return view('contract.import.index', compact('jobs'));
+        $is_one_drive_authenticated = $this->microsoftService->hasAuthenticatedToken();
+        $one_drive_auth_link = $this->microsoftService->getAuthLink();
+        
+        return view('contract.import.index', compact('jobs', 'one_drive_auth_link', 'is_one_drive_authenticated'));
     }
 
     /**

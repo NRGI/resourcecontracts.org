@@ -7846,3 +7846,7 @@ table.contract-table tr td {
 body {
     overflow-x: hidden;
 }
+
+.one-drive-auth-wrapper {
+    margin-bottom: 10px;
+}
