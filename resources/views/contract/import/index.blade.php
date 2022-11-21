@@ -14,8 +14,8 @@
                     </ul>
                 </div>
             @endif
-            @if(!jobs->isEmpty())
-              @include('view.partials.one_drive_button')
+            @if(count($jobs))
+              @include('contract.partials.form.one_drive_button')
             @endif
             @forelse($jobs as $job)
                 <table class="table">
@@ -60,7 +60,7 @@
             </div>
             <div class="form-action">
                 <div class="col-sm-7 col-lg-offset-2 one-drive-auth-wrapper">
-                   @include('view.partials.one_drive_button')
+                   @include('contract.partials.form.one_drive_button')
                 </div>
             </div>
             <div class="form-action">

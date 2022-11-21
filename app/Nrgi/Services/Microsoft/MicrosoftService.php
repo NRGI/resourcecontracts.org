@@ -171,11 +171,13 @@ class MicrosoftService
                 $this->logger->error('ONE_DRIVE_NOT_AUTHENTICATED'.$this->access_token);
                 return false;
             }
+            $delim = "/Documents/";
+            $filePath = substr($url, strpos($url, $delim) + strlen($delim));
             $urlArr = explode('/Documents/', $url);
-            if(count($urlArr) != 2) {
+            if(strlen(trim($filePath)) === 0) {
                 return null;
             }
-            $download_url = 'https://graph.microsoft.com/v1.0/me/drive/root:/'.$urlArr[1].':/content';
+            $download_url = 'https://graph.microsoft.com/v1.0/me/drive/root:/'.$filePath.':/content';
             $authorization = "Authorization: Bearer ".$this->access_token; // Prepare the authorisation token
             $guzzle = new \GuzzleHttp\Client(['headers' => ['Authorization' => "Bearer ".$this->access_token]]);
             $guzzle->get($download_url, ['sink' => $save_file_loc]);
@@ -185,51 +187,6 @@ class MicrosoftService
             $this->logger->error('Error downloading fiel'.$e->getMessage());
             return false;
         }
-    }
-    //Not working
-    public function downloadFileV2($url, $save_file_loc, $one_drive_data) 
-    {
-        $this->setAccessToken($one_drive_data);
-        if(!is_string($this->access_token)) {
-            return false;
-        }
-        $urlArr = explode('/Documents/', $url);
-        if(count($urlArr) != 2) {
-            return null;
-        }
-        $download_url = 'https://graph.microsoft.com/v1.0/me/drive/root:/'.$urlArr[1].':/content';
-        $authorization = "Authorization: Bearer ".$this->access_token; // Prepare the authorisation token
-        $curlHandle = curl_init();
-        // Initialize a file URL to the variable
-        curl_setopt($curlHandle, CURLOPT_URL, $download_url);
-        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization )); // Inject the token into the header
-        curl_setopt($curlHandle, CURLOPT_USERAGENT, "Resource Contracts");
-        curl_setopt($curlHandle, CURLOPT_FAILONERROR, true);
-        
-        // Open file
-        $fp = fopen($save_file_loc, 'wb');
-        
-        // It set an option for a cURL transfer
-        curl_setopt($curlHandle, CURLOPT_FILE, $fp);
-        curl_setopt($curlHandle, CURLOPT_HEADER, 0);
-        
-        // Perform a cURL session
-        curl_exec($curlHandle);
-        $err = curl_error($curlHandle);
-        
-        // Closes a cURL session and frees all resources
-        curl_close($curlHandle);
-        
-        // Close file
-        fclose($fp);
-
-        $this->logger->info('ERROR FOR ONE DRIVE FILE DOWNLOAD IS'.json_encode($err));
-        if($err) 
-        {
-            return false;
-        }
-        return true;
     }
 
     /**
