@@ -14,6 +14,9 @@
                     </ul>
                 </div>
             @endif
+            @if(count($jobs))
+              @include('contract.partials.form.one_drive_button')
+            @endif
             @forelse($jobs as $job)
                 <table class="table">
                     <thead>
@@ -53,6 +56,11 @@
                 <div class="col-sm-7">
                     {!! Form::file('file', ['class'=>'required'])!!}
                     <p class="help-block">@lang('contract.import.help', ['format' => sprintf('<a target="_blank" href="%s">format</a>', url('backend_import_template.xls') )]).</p>
+                </div>
+            </div>
+            <div class="form-action">
+                <div class="col-sm-7 col-lg-offset-2 one-drive-auth-wrapper">
+                   @include('contract.partials.form.one_drive_button')
                 </div>
             </div>
             <div class="form-action">

@@ -200,6 +200,9 @@ return [
     'publishing_year'                      => "Publishing Year",
     'date'                                 => "Date",
     'reset'                                => "Reset",
+    'one_drive'                            => "Authenticate with OneDrive",
+    'one_drive_authenticated'              => "You are authenticated with OneDrive. ",
+    'authenticate_again'                   => "Authenticate again", 
     /*Logs*/
     'log'                                  => [
         'save'       => 'Contract created',
@@ -249,6 +252,7 @@ return [
         'btn_import'     => 'Import',
         'btn_cancel'     => 'Cancel and upload another file',
         'fail'           => 'Could not found any contract to import.',
+        'one_drive_help' => 'Please authenticate with OneDrive that will allow system to download files from OneDrive. This option is only required, if the CSV that we are uploading, contains links from OneDrive',
     ],
     'text_quality'       => 'Text Quality',
     'published'          => 'Published',

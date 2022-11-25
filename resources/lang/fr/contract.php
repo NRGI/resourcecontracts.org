@@ -201,6 +201,9 @@ return [
     'publishing_year'                      => "Année de publication",
     'date'                                 => "Date",
     'reset'                                => "Réinitialiser",
+    'one_drive'                            => "Authentification avec OneDrive",
+    'one_drive_authenticated'              => "Vous êtes authentifié avec OneDrive. ",
+    'authenticate_again'                   => "Authentifiez-vous à nouveau", 
     /*Logs*/
     'log'                                  => [
         'save'       => "Contrat créé",
@@ -250,6 +253,7 @@ return [
         'btn_import'     => "Importer",
         'btn_cancel'     => "Annuler et téléverser un autre fichier",
         'fail'           => "Aucun contrat trouvé pour être importé",
+        'one_drive_help' => "Veuillez vous authentifier auprès de OneDrive qui permettra au système de télécharger des fichiers à partir de OneDrive. Cette option n'est requise que si le CSV que nous téléchargeons contient des liens d'un lecteur",
     ],
     'text_quality'       => "Qualité Texte",
     'published'          => "Publié",
