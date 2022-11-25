@@ -66,7 +66,6 @@ class MicrosoftService
         if(!isset($value) || !is_string($value)) {
         $value = session('ONE_DRIVE_AUTH', null);
         }
-        $this->logger->info('ONE_DRIVE_SET_ACCESS_TOKEN'.json_encode($value));
         $is_one_drive_authenticated = false;
         $this->access_token = null;
         if(isset($value) && is_string($value) && strlen($value) > 0) {
@@ -74,12 +73,11 @@ class MicrosoftService
             $auth_data = json_decode($value, true);
             if(isset($auth_data['expiry_date'])) {
                 $is_one_drive_authenticated = $this->isTokenDateLeft($auth_data['expiry_date']);
-                $this->logger->info('ONE_DRIVE_AUTH_CHECK'.json_encode($is_one_drive_authenticated));
+
             }
             if(!$is_one_drive_authenticated) {
                 $this->access_token = null;
             } else if(isset($auth_data['one_drive_token'])) {
-                $this->logger->info('ONE_DRIVE_TOKEN_FOUND'.json_encode($auth_data['one_drive_token']));
                 $this->access_token = $auth_data['one_drive_token'];
             }
         }
