@@ -6,6 +6,7 @@ use App\Nrgi\Repositories\CodeList\ContractType\ContractTypeRepositoryInterface;
 use App\Nrgi\Repositories\CodeList\DocumentType\DocumentTypeRepositoryInterface;
 use App\Nrgi\Repositories\CodeList\Resource\ResourceRepositoryInterface;
 use Exception;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Guard;
 use Psr\Log\LoggerInterface as Log;
 use Illuminate\Contracts\Queue\Queue;
@@ -954,15 +955,21 @@ class ImportService
      *
      * @return string
      */
-    public function dateFormat($date, $format = 'Y-m-d')
+    public function dateFormat($date, $format = 'Y-m-d', $date_format = 'Y-m-d')
     {
-        $time = strtotime($date);
-
-        if ($time != '') {
-            return date($format, $time);
+        try {
+            if($date === '') {
+                return $date;
+            }
+            $formatted_date    = \DateTime::createFromFormat($date_format, $date);
+            if(!$formatted_date && $date) {
+                $excel_date = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($date));
+                return $excel_date ? $excel_date->format($format) : '';
+            }
+            return $formatted_date ? $formatted_date->format($format) : '';      
+        } catch (Exception $e) {
+            return '';
         }
-
-        return '';
     }
 
     /**
