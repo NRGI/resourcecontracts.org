@@ -60,7 +60,7 @@ return [
             'LifetimeInSeconds'           => 5*24*60*60,
             'AssignmentDurationInSeconds' => 5*24*60*60,
             "AutoApprovalDelayInSeconds" =>  30*24*60*60,
-            'TaskItemCount'              => 20,
+            'TaskItemCount'              => 15,
             // 'QualificationRequirements'   =>array(
             //     [
             //         "QualificationTypeId"=>"00000000000000000040",
