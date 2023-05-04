@@ -23,6 +23,7 @@ use Throwable;
 use App\Nrgi\Log\NrgiLogService;
 use App\Imports\NrgiImport;
 use App\Nrgi\Services\Microsoft\MicrosoftService;
+use App\Nrgi\Services\Queue\ContractDownloadQueueV2;
 
 
 /**
@@ -223,12 +224,8 @@ class ImportService
         }
 
         $this->exportToJson($import_key, $contracts);
-
-        $this->queue->push(
-            'App\Nrgi\Services\Queue\ContractDownloadQueue',
-            ['import_key' => $import_key, 'one_drive_data' => $one_drive_data],
-            'contract_download'
-        );
+        $this->logger->info('STARTING CONTRACT DOWNLOAD QUEUE');
+        ContractDownloadQueueV2::dispatch(['import_key' => $import_key, 'one_drive_data' => $one_drive_data])->onQueue('contract_download');
 
         return $import_key;
     }
