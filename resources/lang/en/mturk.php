@@ -70,6 +70,8 @@
      'Rejected'                 => 'Rejected',
      'hit_description'          => 'HIT Description',
      'write_hit_description'    => 'Write HIT Description',
+     'qualification_id'         => 'Qualification Id',
+     'write_qualification_id'   => '(Qualification ID is Optional). For using default MTurk qualifications, please leave this field blank',
      'reject_task'              => 'Reject task',
      'reset_task'              => 'Reset task',
      'text_explainer'          => ' <li><b>Note:</b></li>

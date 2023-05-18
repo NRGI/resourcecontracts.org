@@ -67,6 +67,28 @@ class MTurkService extends MechanicalTurkV2
     }
 
     /**
+     * Get associated Hit Data
+     *
+     * @param $key_to_look
+     * @param $associated_hit_data
+     *
+     * @return mixed
+     */
+    public function getAssociatedData($key_to_look = null, $associated_hit_data = array()) {
+        if(!$key_to_look) {
+            return null;
+        }
+        if($key_to_look === 'description') {
+            $hit_description = isset($associated_hit_data['description']) ? $associated_hit_data['description'] : null;
+           return !is_null($hit_description) && strlen(trim($hit_description)) > 0 ? $hit_description : config('mturk.defaults.production.Description');
+        }
+        if($key_to_look === 'qualification_id') {
+            return isset($associated_hit_data['qualification_id']) ? $associated_hit_data['qualification_id'] : null;
+        }
+        return null;
+    }
+
+    /**
      * Create HIT
      *
      * @param $title
@@ -75,8 +97,14 @@ class MTurkService extends MechanicalTurkV2
      *
      * @return bool|object
      */
-    public function createHIT($title, $description, $question_url, $tasks_count)
+    public function createHIT($title, $associated_hit_data, $question_url, $tasks_count)
     {
+        $description = $this->getAssociatedData('description', $associated_hit_data);
+        $qualification_id = $this->getAssociatedData('qualification_id', $associated_hit_data);
+        $qualification_array = config('mturk.defaults.production.QualificationRequirements');
+        if($qualification_id) {
+            $qualification_array = array("QualificationTypeId" => $qualification_id, "Comparator" => "EqualTo", "IntegerValues" => [1]);
+        }
         $params = [
             'Title'                       => str_limit($title, 128),
             'Description'                 => $description,
@@ -85,7 +113,7 @@ class MTurkService extends MechanicalTurkV2
             'LifetimeInSeconds'           => config('mturk.defaults.production.LifetimeInSeconds'),
             'Question'                    => $this->getQuestionXML($question_url),
             'MaxAssignments'              => config('mturk.defaults.production.MaxAssignments'),
-            'QualificationRequirements'   => config('mturk.defaults.production.QualificationRequirements'),
+            'QualificationRequirements'   => $qualification_array,
             'AutoApprovalDelayInSeconds' => config('mturk.defaults.production.AutoApprovalDelayInSeconds')
         ];
 

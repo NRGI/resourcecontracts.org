@@ -128,7 +128,11 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                                                         {!! Form::label('description', trans('mturk.hit_description'), ['class' => 'control-label', 'style'=>'margin-top:10px;']) !!}
                                                         	{!! Form::textarea('description',  isset($task->hit_description) ? $task->hit_description : null, ['id'=>"message", 'rows'=>6,
                                                             'placeholder'=>trans('mturk.write_hit_description'),
-                                                            'style'=>'width:100%;margin-top:0px; margin-bottom:10px'])!!}
+                                                            'style'=>'width:100%;margin-top:0px; margin-bottom:0px'])!!}
+                                                            {!! Form::label('qualification_id', trans('mturk.qualification_id'), ['class' => 'control-label', 'style'=>' margin-top:10px;']) !!}
+                                                            {!! Form::textarea('qualification_id', isset($task->qualification_id) ? $task->qualification_id : null, ['id'=>"message", 'rows'=>6,
+                                                            'placeholder'=>trans('mturk.write_qualification_id'),
+                                                            'style'=>'width:100%;margin-top:0px;  margin-bottom:10px'])!!}
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default"
@@ -165,6 +169,10 @@ $requiring_action = $status['total_completed']-$status['total_approved']-$status
                                                     {!! Form::textarea('description',  isset($task->hit_description) ? $task->hit_description : null, ['id'=>"message", 'rows'=>12,
                                                     'placeholder'=>trans('mturk.write_hit_description'),
                                                     'style'=>'width:100%; margin-top:0px; margin-bottom:10px'])!!}
+                                                    {!! Form::label('qualification_id', trans('mturk.qualification_id'), ['class' => 'control-label', 'style'=>' margin-top:10px;']) !!}
+                                                    {!! Form::textarea('qualification_id', isset($task->qualification_id) ? $task->qualification_id : null, ['id'=>"message", 'rows'=>6,
+                                                    'placeholder'=>trans('mturk.write_qualification_id'),
+                                                    'style'=>'width:100%;margin-top:0px;  margin-bottom:10px'])!!}
                                                     <p style="margin:10px; font-style:italic">@lang('mturk.reset_hitid')</p>
                                             </div>
                                             <div class="modal-footer">
