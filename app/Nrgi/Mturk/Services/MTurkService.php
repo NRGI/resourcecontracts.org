@@ -103,7 +103,7 @@ class MTurkService extends MechanicalTurkV2
         $qualification_id = $this->getAssociatedData('qualification_id', $associated_hit_data);
         $qualification_array = config('mturk.defaults.production.QualificationRequirements');
         if($qualification_id) {
-            $qualification_array = array("QualificationTypeId" => $qualification_id, "Comparator" => "EqualTo", "IntegerValues" => [1]);
+            $qualification_array = array(["QualificationTypeId" => $qualification_id, "Comparator" => "EqualTo", "IntegerValues" => [1]]);
         }
         $params = [
             'Title'                       => str_limit($title, 128),
@@ -116,7 +116,7 @@ class MTurkService extends MechanicalTurkV2
             'QualificationRequirements'   => $qualification_array,
             'AutoApprovalDelayInSeconds' => config('mturk.defaults.production.AutoApprovalDelayInSeconds')
         ];
-
+        $this->logger->info('PARAMS ARE'.json_encode($params));
         $result = $this->createHITByExternalQuestion($params);
 
         if (isset($result['HIT'])) {
