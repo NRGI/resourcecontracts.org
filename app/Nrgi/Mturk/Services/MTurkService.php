@@ -116,7 +116,6 @@ class MTurkService extends MechanicalTurkV2
             'QualificationRequirements'   => $qualification_array,
             'AutoApprovalDelayInSeconds' => config('mturk.defaults.production.AutoApprovalDelayInSeconds')
         ];
-        $this->logger->info('PARAMS ARE'.json_encode($params));
         $result = $this->createHITByExternalQuestion($params);
 
         if (isset($result['HIT'])) {

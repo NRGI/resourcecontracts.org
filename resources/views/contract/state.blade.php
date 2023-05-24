@@ -64,7 +64,7 @@ $annotLastPublished   = isset($annotationArray[0]['last_published']) ? $annotati
                         {!! Form::open(['route' => ['mturk.add', $contract->id], 'method' => 'post']) !!}
                         {!! Form::textarea('description', null, ['class' => 'form-control full-width-textarea' ,'placeholder' => trans('mturk.hit_description'), 'rows' => '3' ]) !!}
                         {!! Form::textarea('qualification_id', null, ['class' => 'form-control full-width-textarea' ,'placeholder' => trans('mturk.write_qualification_id'), 'rows' => '3' ]) !!}
-                        {!! Form::button(trans('Send to Manual Transcription tasks'), ['type' =>'submit', 'class' =>'btn
+                        {!! Form::button(trans('Send to Mechanical Turk'), ['type' =>'submit', 'class' =>'btn
                         btn-gray confirm', 'data-confirm'=>'Are you sure you want to send this contract toMechanical Turk?']) !!}
                         {!! Form::close() !!}
                     @endif
