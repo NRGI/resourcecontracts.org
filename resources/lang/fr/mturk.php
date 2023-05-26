@@ -70,6 +70,8 @@
      'Rejected'                    => "Rejeté",
      'hit_description'             => "HIT description",
      'writ_hit_description'        => "Rédiger la description du HIT", 
+     'qualification_id'            => 'Qualification Id',
+     'write_qualification_id'      => "(La identificación de calificación es opcional). Para usar las calificaciones predeterminadas de Mechanical Turk, deje este campo en blanco",
      'reject_task'                => "Rejeter la tâche",
      'reset_task'                  => 'Réinitialiser la tâche',
      'text_explainer'          => ' <li><b>Noter:</b></li>
