@@ -89,6 +89,11 @@
 					['class' =>'form-control']) !!}
 				</div>
 				<div  class="col-md-4 col-sm-6 col-xs-6">
+					{!! Form::select('ocr_status', ['all' => trans('contract.ocr_status')] + $ocrStatusList,
+					Request::input('ocr_status'),
+					['class' =>'form-control']) !!}
+				</div>
+				<div  class="col-md-4 col-sm-6 col-xs-6">
 					{!! Form::text('q', Request::input('q') , ['class' =>'form-control','placeholder'=>trans('contract.search_contract')]) !!}
 				</div>
 			</div>

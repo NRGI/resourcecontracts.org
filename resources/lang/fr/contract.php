@@ -204,6 +204,7 @@ return [
     'one_drive'                            => "Authentification avec OneDrive",
     'one_drive_authenticated'              => "Vous êtes authentifié avec OneDrive. ",
     'authenticate_again'                   => "Authentifiez-vous à nouveau", 
+    'ocr_status'                           => "Estado de OCR", 
     /*Logs*/
     'log'                                  => [
         'save'       => "Contrat créé",
