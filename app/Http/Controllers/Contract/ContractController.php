@@ -135,7 +135,8 @@ class ContractController extends Controller
              'status',
              'download',
              'disclosure',
-             'q'
+             'q',
+             'ocr_status'
          );
          if($filters['download'] == 1) {
             return $this->contractFilter->getAll($filters);
@@ -157,9 +158,10 @@ class ContractController extends Controller
          foreach($companyNamesListRaw as $company){
              $companyNamesList[$company] = $company;
          }
+         $ocrStatusList = trans('ocr_status', [], null, $locale);
          $contractTypeList = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
          $documentTypeList = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
-         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList','companyNamesList', 'contractTypeList','documentTypeList', 'locale',  'annotationStatusArray', 'publishingYears' ));
+         return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList','companyNamesList', 'contractTypeList','documentTypeList', 'locale',  'annotationStatusArray', 'publishingYears', 'ocrStatusList' ));
     }
 
     /**

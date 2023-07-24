@@ -88,6 +88,15 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw("contracts.metadata_status=?", [$status]);
         }
 
+        if(isset($ocr_status) && $ocr_status != 'all' && $ocr_status != '') {
+            if($ocr_status === 'non') {
+                $query->whereRaw("contracts.\"textType\" is null");
+            } else {
+                $query->whereRaw("contracts.\"textType\"=?", [$ocr_status]);
+            }
+
+        }
+
         if (isset($publishing_year_date_range) && $publishing_year_date_range != '' && $publishing_year_date_range != 'all') {
             $contractPublishStatus = Contract::STATUS_PUBLISHED;
             $publishing_year_arr = array_map('trim', explode('to', strtolower($publishing_year_date_range)));
