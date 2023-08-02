@@ -203,6 +203,7 @@ return [
     'one_drive'                            => "Authenticate with OneDrive",
     'one_drive_authenticated'              => "You are authenticated with OneDrive. ",
     'authenticate_again'                   => "Authenticate again", 
+    'ocr_status'                           => "OCR Status", 
     /*Logs*/
     'log'                                  => [
         'save'       => 'Contract created',
