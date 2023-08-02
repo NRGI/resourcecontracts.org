@@ -4,8 +4,6 @@ namespace App\Nrgi\Services\Microsoft;
 use GuzzleHttp\Client;
 use GuzzleHttp\Message\Response;
 use Psr\Log\LoggerInterface;
-
-use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
 /**
@@ -106,17 +104,16 @@ class MicrosoftService
                 'grant_type' => 'authorization_code',
             ],
         ])->getBody()->getContents());
-        $this->logger->info('ACCESS_DATA'.json_encode($token));
         if(!isset($token->access_token)) {
             $this->error = true;
         } else {
             $this->access_token = $token->access_token;
-            $this->logger->info('ACCESS_DATA_token'.json_encode($this->access_token));
             $this->storeAccessTokenData($token);
         }
         return !$this->error;
         }
         catch(\Exception $e) {
+            $this->logger->error('Error in Microsoft Service'.json_encode($e->getMessage()));
             $this->error = true;
             return !$this->error;
         }
