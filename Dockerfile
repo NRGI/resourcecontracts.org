@@ -63,6 +63,8 @@ COPY conf/rc-admin.conf /etc/apache2/sites-available/rc-admin.conf
 RUN ln -s /etc/apache2/sites-available/rc-admin.conf /etc/apache2/sites-enabled/rc-admin.conf \
  && rm -f /etc/apache2/sites-enabled/000-default.conf
 
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
 COPY conf/supervisord.conf /etc/supervisord.conf
 
 RUN mkdir -p /var/container_init
@@ -82,7 +84,7 @@ COPY . /var/www/rc-admin
 
 WORKDIR /var/www/
 # Clone pdf-processor after copying project files to make sure we defeat the cache to get latest code
-RUN git clone https://github.com/anjesh/pdf-processor.git
+RUN git clone -b feature/abby-code-update https://github.com/mabuturabcloudelligent/pdf-processor.git
 
 RUN mkdir /shared_path \
  && mkdir -p /shared_path/rc-admin/data \
