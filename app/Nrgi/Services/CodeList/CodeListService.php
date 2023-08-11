@@ -140,7 +140,7 @@ class CodeListService
     public function update($id,$data)
     {
         $type = $data['type'];
-
+        $data['slug'] = trim($data['en']);
         if($type =='resources'){
             return $this->updateResource($id,$data);
         } elseif($type == 'document_types'){
