@@ -835,4 +835,17 @@ class ContractController extends Controller
 
         return redirect()->route('contract.index')->withSuccess('Access denied');
     }
+
+     /**
+     * Display a listing of the Contracts.
+     *
+     * @param Request $request
+     * @param LanguageService $lang
+     *
+     * @return \Illuminate\Foundation\Application|\Illuminate\View\View
+     */
+    public function getPageCountForAllContracts(Request $request, LanguageService $lang)
+    {
+         return $this->contract->getPageCountForAllContracts();
+    }
 }
