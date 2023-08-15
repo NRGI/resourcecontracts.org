@@ -73,11 +73,11 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getAll(array $filters, $limit = null)
     {
+        $filters       = array_map('trim', $filters);
+        extract($filters);
         $query         = $this->contract->select('*');
         $from          = "contracts ";
         $multipleField = ["resource", "category", "type_of_contract"];
-        $filters       = array_map('trim', $filters);
-        extract($filters);
         $operator = (!empty($issue) && $issue == "present") ? "!=" : "=";
 
         if (isset($year) && $year != '' && $year != 'all') {
@@ -204,6 +204,9 @@ class ContractRepository implements ContractRepositoryInterface
 
         if (is_null($limit)) {
             return $query->get();
+        }
+        if ($count_pages) {
+            return $query->get()->pluck('id');
         }
 
         return $query->paginate($limit);

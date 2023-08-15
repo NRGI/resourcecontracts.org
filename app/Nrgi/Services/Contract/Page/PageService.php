@@ -188,6 +188,15 @@ class PageService
     {
         return $this->page->fullTextSearch($contract_id, $query);
     }
+    /**
+     * Get Total number of pages for all contracts
+     *
+     * @return array
+     */
+    public function getPageCountForAllContracts($contract_ids)
+    {
+        return $this->page->getPageCountForAllContracts($contract_ids);
+    }
 
     /**
      * Check is page exists for a contract

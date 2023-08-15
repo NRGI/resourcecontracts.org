@@ -136,10 +136,14 @@ class ContractController extends Controller
              'download',
              'disclosure',
              'q',
-             'ocr_status'
+             'ocr_status',
+             'count_pages'
          );
          if($filters['download'] == 1) {
             return $this->contractFilter->getAll($filters);
+         }
+         if($filters['count_pages']) {
+            return response()->json($this->contractFilter->getAll($filters));
          }
          $contracts      = $this->contractFilter->getAll($filters);
          $contract_ids = [];
