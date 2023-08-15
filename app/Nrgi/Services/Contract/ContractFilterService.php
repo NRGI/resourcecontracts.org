@@ -5,6 +5,8 @@ use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\Annotation\AnnotationRepositoryInterface;
 use App\Nrgi\Repositories\Contract\ContractRepositoryInterface;
 use App\Nrgi\Services\Download\DownloadService;
+use App\Nrgi\Services\Contract\Page\PageService;
+
 
 /**
  * Class ContractFilterService
@@ -21,6 +23,10 @@ class ContractFilterService
      */
     protected $countryService;
     /**
+     * @var PageService
+     */
+    protected $pages;
+    /**
      * @var AnnotationRepositoryInterface
      */
     protected $annotation;
@@ -36,12 +42,14 @@ class ContractFilterService
         ContractRepositoryInterface $contract,
         CountryService $countryService,
         AnnotationRepositoryInterface $annotations,
-        DownloadService $downloadCSV
+        DownloadService $downloadCSV,
+        PageService $pages
     ) {
         $this->contract       = $contract;
         $this->countryService = $countryService;
         $this->annotation     = $annotations;
         $this->downloadCSV    = $downloadCSV;
+        $this->pages           = $pages;
     }
 
     /**
@@ -67,8 +75,21 @@ class ContractFilterService
         }
 
         $contracts = $this->contract->getAll($filters, $limit);
+        if(isset($filters['count_pages'])) {
+            return $this->getPageCountForAllContracts($contracts);
+        }
 
         return $contracts;
+    }
+
+    /**
+     * Returns child parent contracts
+     *
+     * @return array
+     */
+    public function getPageCountForAllContracts($contract_ids)
+    {
+        return $this->pages->getPageCountForAllContracts($contract_ids);
     }
 
     /**
