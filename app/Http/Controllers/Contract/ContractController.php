@@ -136,10 +136,14 @@ class ContractController extends Controller
              'download',
              'disclosure',
              'q',
-             'ocr_status'
+             'ocr_status',
+             'count_pages'
          );
          if($filters['download'] == 1) {
             return $this->contractFilter->getAll($filters);
+         }
+         if($filters['count_pages']) {
+            return response()->json($this->contractFilter->getAll($filters));
          }
          $contracts      = $this->contractFilter->getAll($filters);
          $contract_ids = [];
@@ -834,18 +838,5 @@ class ContractController extends Controller
         }
 
         return redirect()->route('contract.index')->withSuccess('Access denied');
-    }
-
-     /**
-     * Display a listing of the Contracts.
-     *
-     * @param Request $request
-     * @param LanguageService $lang
-     *
-     * @return \Illuminate\Foundation\Application|\Illuminate\View\View
-     */
-    public function getPageCountForAllContracts(Request $request, LanguageService $lang)
-    {
-         return $this->contract->getPageCountForAllContracts();
     }
 }

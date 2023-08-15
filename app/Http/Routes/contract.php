@@ -36,6 +36,5 @@ $router->group(
         $router->get('contract/elasticsearch/update/supporting-doc/master/{page}', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@updateMasterIndex']);
         $router->get('contract/elasticsearch/update/supporting-doc/parent-child', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@updateParentChildDocIndex']);
         $router->get('contract/elasticsearch/update/supporting-doc/child-parent', ['as' => 'contract.elasticsearch.update.supporting-doc', 'uses' => 'ContractController@updateChildParentDocIndex']);
-        $router->get('pagecount', ['as' => 'contract.all_pages', 'uses' => 'ContractController@getPageCountForAllContracts']);
     }
 );

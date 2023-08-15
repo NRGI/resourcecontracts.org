@@ -1721,16 +1721,6 @@ class ContractService
         return $child_array;
     }
 
-        /**
-     * Returns child parent contracts
-     *
-     * @return array
-     */
-    public function getPageCountForAllContracts()
-    {
-        return $this->pages->getPageCountForAllContracts();
-    }
-
     /**
      * Publish contract pdf
      *

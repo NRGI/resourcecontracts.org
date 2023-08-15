@@ -193,9 +193,9 @@ class PageService
      *
      * @return array
      */
-    public function getPageCountForAllContracts()
+    public function getPageCountForAllContracts($contract_ids)
     {
-        return $this->page->getPageCountForAllContracts();
+        return $this->page->getPageCountForAllContracts($contract_ids);
     }
 
     /**
