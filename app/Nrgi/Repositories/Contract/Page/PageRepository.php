@@ -73,6 +73,16 @@ class PageRepository implements PageRepositoryInterface
         return $this->page->where('contract_id', $contractID)->count();
     }
 
+      /**
+     * Get Total Page
+     * @param $contractID
+     * @return Int
+     */
+    public function getPageCountForAllContracts()
+    {
+        return $this->page->count();
+    }
+
     /**
      * Update or create page
      *
