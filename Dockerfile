@@ -84,7 +84,7 @@ COPY . /var/www/rc-admin
 
 WORKDIR /var/www/
 # Clone pdf-processor after copying project files to make sure we defeat the cache to get latest code
-RUN git clone https://github.com/NRGI/pdf-processor.git
+RUN git clone --branch feature/abby-ocr-container https://github.com/NRGI/pdf-processor.git
 
 RUN mkdir /shared_path \
  && mkdir -p /shared_path/rc-admin/data \
