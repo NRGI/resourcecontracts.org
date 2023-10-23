@@ -68,6 +68,13 @@ use App\Nrgi\Entities\Contract\Contract;
 			<button data-toggle="modal" data-type="metadata" data-status="rejected" data-target=".status-modal"
 					class="btn btn-danger metadata-status-comment">@lang("global.reject")
 			</button>
+		@elseif($contract->metadata_status == Contract::STATUS_REJECTED)
+			<!-- New Reset Button -->
+			{!! Form::open(['route' => ['contract.status.comment', $contract->id], 'class'=>'suggestion-form pull-left']) !!}
+			{!!Form::hidden('type', 'metadata',[])!!}
+			{!!Form::hidden('status', 'draft' , [])!!}
+			<button type="submit" class="btn btn-warning metadata-status-comment">@lang("global.reset")</button>
+			{!! Form::close() !!}
 		@endif
 	</td>
 	<td>
