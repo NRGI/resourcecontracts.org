@@ -73,6 +73,13 @@ use App\Nrgi\Entities\Contract\Contract;
 					</button>
 				@endif
 			@endif
+			@if($contract->text_status == Contract::STATUS_REJECTED)
+				{!! Form::open(['route' => ['contract.status.comment', $contract->id], 'class'=>'suggestion-form pull-left']) !!}
+				{!!Form::hidden('type', 'text',[])!!}
+				{!!Form::hidden('status', 'draft' , [])!!}
+				<button type="submit" class="btn btn-warning text-status-reset">@lang("global.reset")</button>
+				{!! Form::close() !!}
+       		@endif
 		@endif
 	</td>
 
