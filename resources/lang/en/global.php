@@ -85,5 +85,6 @@ return [
     'date_not_captured'           => "Published date not captured.",
     "check_metadata_in_subsite"   => "Check metadata in subsite.",
     "check_text_in_subsite"       => "Check text in subsite.",
-    "check_annotation_in_subsite" => "Check annotation in subsite."
+    "check_annotation_in_subsite" => "Check annotation in subsite.",
+    "reset"                      =>  "Reset"
 ];

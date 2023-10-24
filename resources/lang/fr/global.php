@@ -86,6 +86,7 @@ return [
     'date_not_captured'       => "Date de publication non capturé.",
     "check_metadata_in_subsite"   => "Vérifiez les métadonnées dans subsite.",
     "check_text_in_subsite"       => "Vérifiez le texte dans subsite.",
-    "check_annotation_in_subsite" => "Vérifiez annotation dans subsite."
+    "check_annotation_in_subsite" => "Vérifiez annotation dans subsite.",
+    "reset"                  =>  "Réinitialiser"
 
 ];
