@@ -76,6 +76,7 @@ public function getApplicationInfo()
 
     try {
         $resp = $this->curlRequest();
+        var_dump(json_encode($resp));
         if (isset($resp['response']) && isset($resp['response']['Value'])) {
             $pageCount = $resp['response']['Value'];
             return ['pages' => config('nrgi.abbyy_yearly_quota') - $pageCount];
