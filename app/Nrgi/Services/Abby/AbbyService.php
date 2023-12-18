@@ -27,7 +27,7 @@ class AbbyService
     {
         $this->abby_app_id       = env('ABBYY_APP_ID');
         $this->abby_app_password = env('ABBYY_PASSWORD');
-        $this->service_url       = 'https://cloud-eu.ocrsdk.com/v2';
+        $this->service_url       = env('ABBYY_OCR_URL');
     }
 
     /**
@@ -43,9 +43,12 @@ class AbbyService
         $password = $this->abby_app_password;
         curl_setopt($curlHandle, CURLOPT_URL, $url);
         curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curlHandle, CURLOPT_USERPWD, "$applicationId:$password");
+        // curl_setopt($curlHandle, CURLOPT_USERPWD, "$applicationId:$password");
         curl_setopt($curlHandle, CURLOPT_USERAGENT, "Resource Contracts");
         curl_setopt($curlHandle, CURLOPT_FAILONERROR, true);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
+        
 
         $response  = curl_exec($curlHandle);
         $err       = curl_error($curlHandle);
@@ -62,18 +65,26 @@ class AbbyService
         return $resp;
     }
 
-    /**
-     * Returns application info
-     *
-     * @return mixed
-     */
-    public function getApplicationInfo()
-    {
-        $this->end_point = '/getApplicationInfo';
+/**
+ * Returns application info
+ *
+ * @return mixed
+ */
+public function getApplicationInfo()
+{
+    $this->end_point = '/api/v1/License/pageCount';
 
+    try {
         $resp = $this->curlRequest();
-
-        return $resp['response'];
+        if (isset($resp['response']) && isset($resp['response']['Value'])) {
+            $pageCount = $resp['response']['Value'];
+            return ['pages' => config('nrgi.abbyy_yearly_quota') - $pageCount];
+        } else {
+            return ['pages' => 'N/A'];
+        }
+    } catch (Exception $e) {
+        return ['pages' => 'N/A'];
     }
+}
 
 }

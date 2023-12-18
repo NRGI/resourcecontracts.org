@@ -225,12 +225,14 @@ class ProcessService
     {
         set_time_limit(0);
         $commandPath = config('nrgi.pdf_process_path');
-        $command     = sprintf(
-            'python %s/run.py -i %s -o %s -l %s',
-            $commandPath,
-            $readFilePath,
-            $writeFolderPath,
-            $lang
+        $abbyyOcrUrl = env('ABBYY_OCR_URL');
+        $command = sprintf(
+            'ABBYY_OCR_URL=%s python %s/run.py -i %s -o %s -l %s',
+            escapeshellarg($abbyyOcrUrl),
+            escapeshellarg($commandPath),
+            escapeshellarg($readFilePath),
+            escapeshellarg($writeFolderPath),
+            escapeshellarg($lang)
         );
         $this->logger->info("Executing python command", ['command' => $command]);
 
