@@ -27,7 +27,7 @@ class AbbyService
     {
         $this->abby_app_id       = env('ABBYY_APP_ID');
         $this->abby_app_password = env('ABBYY_PASSWORD');
-        $this->service_url       = env('ABBY_OCR_URL');
+        $this->service_url       = env('ABBYY_OCR_URL');
     }
 
     /**
@@ -46,6 +46,9 @@ class AbbyService
         // curl_setopt($curlHandle, CURLOPT_USERPWD, "$applicationId:$password");
         curl_setopt($curlHandle, CURLOPT_USERAGENT, "Resource Contracts");
         curl_setopt($curlHandle, CURLOPT_FAILONERROR, true);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 0);
+        
 
         $response  = curl_exec($curlHandle);
         $err       = curl_error($curlHandle);
@@ -69,13 +72,13 @@ class AbbyService
  */
 public function getApplicationInfo()
 {
-    $this->end_point = '/License/pageCount';
+    $this->end_point = '/api/v1/License/pageCount';
 
     try {
         $resp = $this->curlRequest();
         if (isset($resp['response']) && isset($resp['response']['Value'])) {
             $pageCount = $resp['response']['Value'];
-            return ['pages' => $pageCount];
+            return ['pages' => config('nrgi.abbyy_yearly_quota') - $pageCount];
         } else {
             return ['pages' => 'N/A'];
         }
