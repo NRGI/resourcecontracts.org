@@ -350,7 +350,7 @@ foreach ($resources as $item) {
                         <div class="col-sm-7">
                             {!! Form::text("company[$i][name]",
                             isset($v->name)?$v->name:null,
-                            ["class"=>"required form-control company_name"] )!!}
+                            ["class"=>"form-control company_name"] )!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'name-'.$k,'metadata') !!}
@@ -505,7 +505,7 @@ foreach ($resources as $item) {
             <div class="form-group">
                 <label for="company_name" class="col-sm-2 control-label">@lang('contract.company_name') <span class="red">*</span></label>
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][name]",null,["class"=>"form-control required company_name" , "id"=> "company_0_name"])!!}
+                    {!! Form::text("company[0][name]",null,["class"=>"form-control company_name" , "id"=> "company_0_name"])!!}
                 </div>
             </div>
             <div class="form-group">
