@@ -121,8 +121,8 @@ class ProcessService
 
                 $this->updateContractPdfStructure($contract, $writeFolderPath);
                 $this->uploadPdfsToS3($contract->id);
-                // $this->deleteContractFolder($contract->id);
-                // $this->fileSystem->delete($readFilePath);
+                $this->deleteContractFolder($contract->id);
+                $this->fileSystem->delete($readFilePath);
 
                 $this->contract->updateFileName($contract);
                 $this->contract->updateWordFile($contract->id);
@@ -292,7 +292,7 @@ class ProcessService
             $this->logger->error($e->getMessage(), ['contract id' => $contract->id, 'file' => $contract->file]);
         }
         $this->storage->disk('local')->put($contract->file, $pdfFile);
-        $this->logger->info('Download completed...', ['file' => $pdfFile]);
+        $this->logger->info('Download completed...');
 
         if (!$this->fileSystem->isDirectory($this->getContractDirectory($contract->id))) {
             $this->addDirectory($contract->id, $this->getWriteDirectory());
