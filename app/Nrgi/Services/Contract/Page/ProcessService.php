@@ -100,6 +100,7 @@ class ProcessService
 
             if ($this->process($writeFolderPath, $readFilePath, $ocr_lang)) {
                 $pages = $this->page->buildPages($writeFolderPath);
+                $this->logger->info('Pages processed for contract'.json_encode($pages),['contractId' => $contractId]);
                 $this->page->savePages($contractId, $pages);
                 $this->mailer->send(
                     $contract->created_user->email,
@@ -120,8 +121,8 @@ class ProcessService
 
                 $this->updateContractPdfStructure($contract, $writeFolderPath);
                 $this->uploadPdfsToS3($contract->id);
-                $this->deleteContractFolder($contract->id);
-                $this->fileSystem->delete($readFilePath);
+                // $this->deleteContractFolder($contract->id);
+                // $this->fileSystem->delete($readFilePath);
 
                 $this->contract->updateFileName($contract);
                 $this->contract->updateWordFile($contract->id);
