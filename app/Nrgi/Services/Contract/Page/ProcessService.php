@@ -387,7 +387,7 @@ class ProcessService
             'fr' => 'french',
             'es' => 'spanish',
             'en' => 'english',
-            "pt" => "portuguese",
+            "pt" => "portuguesestandard",
             "ar" => "arabic",
         ];
 
