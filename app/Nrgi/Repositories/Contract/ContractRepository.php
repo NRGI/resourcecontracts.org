@@ -124,8 +124,13 @@ class ContractRepository implements ContractRepositoryInterface
         }
 
         if (isset($country) && $country != '' && $country != 'all') {
-            $query->whereRaw("contracts.metadata->'country'->>'code' = ?", [$country]);
+            $query->whereRaw("exists (
+                select 1 
+                from json_array_elements(contracts.metadata->'countries') as country 
+                where country->>'code' = ?
+            )", [$country]);
         }
+        
 
         if (isset($resource) && $resource != '' && $resource != 'all') {
             $resource = str_replace("'","''", $resource);
@@ -228,7 +233,7 @@ class ContractRepository implements ContractRepositoryInterface
                         metadata->>\'contract_name\' as "Contract Name",
                         metadata->>\'contract_identifier\' as "Contract Identifier",
                         metadata->>\'language\' as "Language",
-                        metadata->\'country\'->>\'name\' as "Country",
+                        (SELECT string_agg(country->>\'name\', \', \') FROM jsonb_array_elements(contracts.metadata->\'countries\') AS country) as "Country",
                         metadata->>\'resource\' as "Resource",
                         metadata->>\'type_of_contract\' as "Contract Type",
                         metadata->>\'signature_date\' as "Signature Date",
@@ -305,8 +310,13 @@ class ContractRepository implements ContractRepositoryInterface
         }
 
         if (isset($country) && $country != '' && $country != 'all') {
-            $query->whereRaw("contracts.metadata->'country'->>'code' = ?", [$country]);
+            $query->whereRaw("exists (
+                select 1 
+                from json_array_elements(contracts.metadata->'countries') as country 
+                where country->>'code' = ?
+            )", [$country]);
         }
+        
 
         if (isset($resource) && $resource != '' && $resource != 'all') {
             $resource = str_replace("'","''", $resource);
@@ -425,12 +435,19 @@ class ContractRepository implements ContractRepositoryInterface
     public function getUniqueCountries()
     {
         return $this->contract->select(
-            $this->db->raw("metadata->'country'->>'code' countries, count(metadata->'country'->>'code')")
-        )
-            ->whereRaw("metadata->'country'->>'code' !=''")
-            ->groupBy($this->db->raw("metadata->'country'->>'code'"))
-            ->orderBy($this->db->raw("metadata->'country'->>'code'"), "ASC")->get();
+                $this->db->raw("country_data.code as countries, count(country_data.code)")
+            )
+            ->fromSub(function ($query) {
+                $query->from('contracts')
+                      ->selectRaw("json_array_elements(metadata->'countries')->>'code' as code")
+                      ->whereRaw("metadata->'countries' is not null");
+            }, 'country_data')
+            ->groupBy('country_data.code')
+            ->orderBy('country_data.code', 'ASC')
+            ->get();
     }
+    
+
 
     /**
      * Get unique resources
@@ -657,7 +674,11 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw("trim(both '\"' from r::text) = '" . $filters['resource'] . "'");
         }
         if (isset($filters['country']) && $filters['country'] != '' && $filters['country'] != 'all') {
-            $query->whereRaw("contracts.metadata->'country'->>'code' = ?", [$filters['country']]);
+            $query->whereRaw("exists (
+                select 1 
+                from json_array_elements(contracts.metadata->'countries') as country 
+                where country->>'code' = ?
+            )", [$filters['country']]);
         }
         if (isset($filters['category']) && $filters['category'] != '' && $filters['category'] != 'all') {
             $from .= ",json_array_elements(contracts.metadata->'category') cat";
@@ -908,7 +929,11 @@ class ContractRepository implements ContractRepositoryInterface
             $query->whereRaw("trim(both '\"' from r::text) = '" . $filters['resource'] . "'");
         }
         if (isset($filters['country']) && $filters['country'] != '' && $filters['country'] != 'all') {
-            $query->whereRaw("contracts.metadata->'country'->>'code' = ?", [$filters['country']]);
+            $query->whereRaw("exists (
+                select 1 
+                from json_array_elements(contracts.metadata->'countries') as country 
+                where country->>'code' = ?
+            )", [$filters['country']]);
         }
         if (isset($filters['category']) && $filters['category'] != '' && $filters['category'] != 'all') {
             $from .= ",json_array_elements(contracts.metadata->'category') cat";
@@ -1021,18 +1046,25 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getDisclosureModeCount($type = '')
     {
-        $counts = $this->contract->selectRaw("metadata->'country'->>'code' code, count(metadata->'country'->>'code')")
-            ->whereRaw("metadata->>'disclosure_mode' ='" . $type . "'")
-            ->groupBy($this->db->raw("metadata->'country'->>'code'"))
-            ->orderBy($this->db->raw("metadata->'country'->>'code'"), "ASC")
+        $counts = $this->contract
+            ->selectRaw("country.code, count(country.code)")
+            ->fromSub(function ($query) {
+                $query->from('contracts')
+                    ->selectRaw("json_array_elements(metadata->'countries')->>'code' as code")
+                    ->whereRaw("metadata->>'disclosure_mode' ='" . $type . "'");
+            }, 'country')
+            ->groupBy('country.code')
+            ->orderBy('country.code', 'ASC')
             ->get();
-        $mode   = [];
+    
+        $mode = [];
         foreach ($counts as $c) {
             $mode[$c->code] = $c->count;
         }
-
+    
         return $mode;
     }
+
 
     /**
      * Get UnKnown Disclosure mode Count
@@ -1041,11 +1073,11 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getUnknownDisclosureModeCount()
     {
-        $counts = $this->contract->selectRaw("metadata->'country'->>'code' code,count(metadata->'country'->>'code')")
+        $counts = $this->contract->selectRaw("jsonb_array_elements(metadata->'countries')->>'code' as code, count(jsonb_array_elements(metadata->'countries')->>'code')")
             ->whereRaw("metadata->>'disclosure_mode' !='" . 'Government' . "'")
             ->whereRaw("metadata->>'disclosure_mode' !='" . 'Company' . "'")
-            ->groupBy($this->db->raw("metadata->'country'->>'code'"))
-            ->orderBy($this->db->raw("metadata->'country'->>'code'"), "ASC")
+            ->groupBy($this->db->raw("jsonb_array_elements(metadata->'countries')->>'code'"))
+            ->orderBy($this->db->raw("jsonb_array_elements(metadata->'countries')->>'code'"), "ASC")
             ->get();
 
         $mode = [];

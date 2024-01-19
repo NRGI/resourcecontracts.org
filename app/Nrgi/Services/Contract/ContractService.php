@@ -1529,7 +1529,11 @@ class ContractService
         }
 
         $formData['company']           = $this->removeKeys($formData['company']);
-        $formData['country']           = $this->countryService->getInfoByCode($formData['country'], 'en');
+        // Assuming $formData['countries'] is an array of country codes
+        $formData['countries'] = array_map(function($code) {
+            return $this->countryService->getInfoByCode($code, 'en');
+        }, $formData['countries']);
+
         $formData['resource']          = (!empty($formData['resource'])) ? $formData['resource'] : [];
         $formData['category']          = (!empty($formData['category'])) ? $formData['category'] : [];
         $formData['type_of_contract']  = (isset($formData['type_of_contract'])) ? $this->removeKeys(
@@ -1548,7 +1552,7 @@ class ContractService
                 "deal_number",
                 "matrix_page",
                 "language",
-                "country",
+                "countries",
                 "resource",
                 "government_entity",
                 "type_of_contract",

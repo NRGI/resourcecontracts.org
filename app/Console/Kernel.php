@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\Inspire',
         'App\Console\Commands\ProcessDocument',
         'App\Console\Commands\MovePdfToFolder',
+        'App\Console\Commands\MigrateCountryToCountries',
         'App\Console\Commands\GenerateWordFile',
         'App\Console\Commands\BulkIndex',
         'App\Console\Commands\ChangeFileNameCommand',

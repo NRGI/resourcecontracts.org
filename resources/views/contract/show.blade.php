@@ -153,18 +153,22 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 						</li>
 					@endif
 
-					@if(isset($contract->metadata->country->name))
+					@if(isset($contract->metadata->countries) && is_array($contract->metadata->countries) && count($contract->metadata->countries) > 0)
 						<li class="name-value-wrap">
-                        <span class="name">
-                            <strong>@lang('contract.country'):</strong>
-                        </span>
-                         <span class="value">{{_l('codelist/country.'.$contract->metadata->country->code, $locale)}}
-							 [{{$contract->metadata->country->code ?? ''}}]
-							 @if(isset($contract->metadata->amla_url) && !empty($contract->metadata->amla_url))
-								 <a href="{{$contract->metadata->amla_url}}">{{trans('contract.amla',[],null,$locale)}}</a>
-							 @endif
-							 {!! discussion($discussions,$discussion_status, $contract->id,'country','metadata') !!}
-                        </span>
+							<span class="name">
+								<strong>@lang('contract.country'):</strong>
+							</span>
+							<span class="value">
+								@foreach($contract->metadata->countries as $country)
+									{{ _l('codelist/country.' . $country->code, $locale) }}
+									[{{ $country->code ?? '' }}]
+									@if(!$loop->last), @endif
+								@endforeach
+								@if(isset($contract->metadata->amla_url) && !empty($contract->metadata->amla_url))
+									<a href="{{ $contract->metadata->amla_url }}">{{ trans('contract.amla', [], null, $locale) }}</a>
+								@endif
+								{!! discussion($discussions, $discussion_status, $contract->id, 'country', 'metadata') !!}
+							</span>
 						</li>
 					@endif
 

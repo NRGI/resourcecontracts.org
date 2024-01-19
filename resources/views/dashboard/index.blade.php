@@ -192,10 +192,16 @@
 			@forelse($recent_contracts as $contract)
 				<tr>
 					<td>
-						<h5 class="media-heading user_name">{{$contract->metadata->contract_name ?? ''}}
-							, {{$contract->metadata->country->name ?? ''}}
-							, {{$contract->metadata->signature_year ?? ''}}</h5>
-						<span>- {{$contract->created_user->name}}</span>
+						<h5 class="media-heading user_name">
+							{{ $contract->metadata->contract_name ?? '' }}
+							@if(isset($contract->metadata->countries) && is_array($contract->metadata->countries))
+								@foreach($contract->metadata->countries as $country)
+									, {{ $country->name ?? '' }}@if(!$loop->last),@endif
+								@endforeach
+							@endif
+							, {{ $contract->metadata->signature_year ?? '' }}
+						</h5>
+						<span>- {{ $contract->created_user->name }}</span>
 					</td>
 					<td style="width: 250px;text-align: right;">
 						<small><?php echo $contract->createdDate('F d, Y \a\t H:i A');?></small>
@@ -207,6 +213,7 @@
 				</tr>
 			@endforelse
 		</table>
+
 		</div>
 	</div>
 	</div>

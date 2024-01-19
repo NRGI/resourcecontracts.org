@@ -23,7 +23,7 @@ class ContractRequest extends Request
 
         $rules = [
             'contract_name'  => 'required',
-            'country'        => 'required',
+            'countries'        => 'required',
             'signature_year' => 'required|integer|digits:4',
             'file'           => 'required|mimes:pdf|max:1048576',
             'language'       => 'required',
@@ -48,7 +48,7 @@ class ContractRequest extends Request
             unset($rules['file']);
             $trans_code = $this->input('trans');
             if ($lang->isValidTranslationLang($trans_code)) {
-                unset($rules['country'], $rules['signature_year'], $rules['language'],
+                unset($rules['countries'], $rules['signature_year'], $rules['language'],
                     $rules['resource'], $rules['category'], $rules['document_type']);
             }
         }

@@ -38,9 +38,13 @@ use App\Nrgi\Entities\Contract\Contract;
     @forelse($contracts as $contract)
         <?php $total_ra = $contract->count_status['total_completed'] - $contract->count_status['total_approved'] - $contract->count_status['total_rejected'];?>
         <tr>
-            <td><a href="{{route('mturk.tasks',['contract_id' => $contract->id])}}">{{$contract->title}}</a>
-                - {{$contract->metadata->country->name}}
-            </td>
+        <td>
+            <a href="{{ route('mturk.tasks', ['contract_id' => $contract->id]) }}">{{ $contract->title }}</a>
+            @if(isset($contract->metadata->countries) && is_array($contract->metadata->countries))
+                - {{ implode(', ', array_map(function ($country) { return $country->name ?? ''; }, $contract->metadata->countries)) }}
+            @endif
+        </td>
+
             <td>{{strtoupper($contract->metadata->category[0])}}</td>
             <td>
                 @if($contract->mturk_created_at)
