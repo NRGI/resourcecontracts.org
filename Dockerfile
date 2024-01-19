@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM 730782991910.dkr.ecr.us-east-1.amazonaws.com/rc-ubuntu:20.04
 MAINTAINER Anjesh Tuladhar <anjesh@yipl.com.np>
 
 ARG DEBIAN_FRONTEND=noninteractive
