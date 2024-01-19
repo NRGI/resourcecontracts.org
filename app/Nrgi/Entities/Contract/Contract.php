@@ -218,12 +218,34 @@ class Contract extends Model
     public function getMetadataAttribute($metaData)
     {
         $metaData            = json_decode($metaData);
-        $metaData->amla_url  = $this->getAmlaUrl($metaData->country->code, $metaData->resource);
+        $metaData->amla_url = $this->generateAmlaUrlsString(isset($metaData->countries) ? $metaData->countries : [], $metaData->resource);
+
         $metaData->file_url  = $this->file_url;
         $metaData->word_file = $this->word_file;
 
         return $this->makeNullField($metaData);
     }
+
+    /**
+     * Generate a single string of AMLA URLs for each country in the metadata, separated by commas.
+     *
+     * @param array $countries
+     * @param string $resource
+     *
+     * @return string
+     */
+    protected function generateAmlaUrlsString($countries, $resource)
+    {
+        $urls = [];
+        foreach ($countries as $country) {
+            if (isset($country->code) && !empty($country->code)) {
+                $urls[] = $this->getAmlaUrl($country->code, $resource);
+            }
+        }
+        return implode(', ', $urls);
+    }
+
+
 
     /**
      * Get pdf url

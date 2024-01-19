@@ -141,7 +141,7 @@
 								</span>
 								<span class="info">
 									<i class="glyphicon glyphicon glyphicon-map-marker"></i>
-									{{$contract->metadata->country->name}}
+									{{ collect($contract->metadata->countries)->pluck('name')->join(', ') }}
 								</span>
 								<span class="info">
 									<i class="glyphicon glyphicon-comment"></i>

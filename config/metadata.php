@@ -23,9 +23,11 @@ return [
             'contract_name'              => '',
             'contract_identifier'        => '',
             'language'                   => '',
-            'country'                    => [
-                'code' => '',
-                'name' => '',
+            'countries'           => [
+                [
+                    'code' => '',
+                    'name' => '',
+                ],
             ],
             'resource'                   => [],
             'government_entity'          => [

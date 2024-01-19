@@ -42,7 +42,7 @@ class ImportContracts extends Command
         "is_new",
         "source_url",
         "government_entity",
-        "country",
+        "countries",
         "language",
         "resource_1",
         "resource_2",
@@ -118,7 +118,7 @@ class ImportContracts extends Command
     /**
      * @var CountryService
      */
-    protected $country;
+    protected $countries;
     /**
      * @var Log
      */
@@ -477,7 +477,7 @@ class ImportContracts extends Command
         $contract['metadata']['concession'][0]['license_identifier'] = $results["license_identifier"];
         $contract['metadata']['government_entity'][0]['entity']      = $results["government_entity"];
         $contract['metadata']['government_entity'][0]['identifier']  = '';
-        $contract['metadata']['country']                             = $this->getCountry($results['country']);
+        $contract['metadata']['countries']                             = $this->getCountries($results['countries']);
         $contract['metadata']['signature_date']                      = $this->dateFormat($results['signature_date']);
         $contract['metadata']['signature_year']                      = $this->dateFormat(
             $results['signature_date'],
@@ -513,6 +513,29 @@ class ImportContracts extends Command
         $country = $this->country->getInfoByCode(strtoupper($code), 'en');
 
         return is_array($country) ? $country : ['code' => '', 'name' => ''];
+    }
+
+    /**
+     * Get countries' code and name for an array of codes.
+     *
+     * @param array $codes
+     *
+     * @return array
+     */
+    protected function getCountries(array $codes)
+    {
+        $countries = [];
+        foreach ($codes as $code) {
+            $country = $this->country->getInfoByCode(strtoupper($code), 'en');
+            if (is_array($country)) {
+                $countries[] = $country;
+            } else {
+                // If country not found, you can choose to either include a placeholder or skip it
+                $countries[] = ['code' => '', 'name' => ''];
+            }
+        }
+
+        return $countries;
     }
 
     /**

@@ -19,7 +19,12 @@ $groups = ['' => trans('Select')] + $groups + ['Other' => 'Other'];
 $govt_entity = [];
 $govEntityOnly = [];
 $govEntity = config('governmentEntities');
-$country_code = old('country', isset($contract->metadata->country->code) ? $contract->metadata->country->code : '');
+$country_code = '';
+$countries = isset($contract->metadata->countries) && is_array($contract->metadata->countries) && count($contract->metadata->countries) > 0 ? $contract->metadata->countries : old('countries', []);
+if (isset($countries) && is_array($countries) && count($countries) > 0) {
+    $firstCountry = $countries[0];
+    $country_code = isset($firstCountry->code) ? $firstCountry->code : '';
+}
 $govEntityOnly = isset($govEntity->$country_code) ? $govEntity->$country_code : [];
 
 if (!empty($govEntityOnly)) {
@@ -115,7 +120,17 @@ asort($documentTypeList);
         {!! discussion($discussions,$discussion_status, $contract->id,'language','metadata') !!}
     @endif
 </div>
-
+<?php
+$countries = isset($contract->metadata->countries) ? $contract->metadata->countries :[];
+$selected_countries = [];
+foreach ($countries as $item) {
+	if(isset($item->code)) {
+        if(!isset($country_list[$item->code])){
+            $selected_countries[] = $item->code;
+        }
+    }
+}
+?>
 <div class="form-group">
     <label for="country" class="col-sm-2 control-label">@lang('contract.country') <span class="red">*</span></label>
 
@@ -127,8 +142,8 @@ asort($documentTypeList);
                 }
 
         $country_list = ['' => trans('global.select')] + $country;?>
-        {!! Form::select('country', $country_list ,
-        isset($contract->metadata->country->code)?$contract->metadata->country->code:null, ["class"=>"required
+        {!! Form::select('country[]', $country_list ,
+            $selected_countries, ['multiple'=>'multiple', "class"=>"required
         form-control" , "id" => "country"])!!}
         <label id="country-error" class="error" for="country"></label>
     </div>
@@ -350,7 +365,7 @@ foreach ($resources as $item) {
                         <div class="col-sm-7">
                             {!! Form::text("company[$i][name]",
                             isset($v->name)?$v->name:null,
-                            ["class"=>"required form-control company_name"] )!!}
+                            ["class"=>"form-control company_name"] )!!}
                         </div>
                         @if($action == 'edit')
                             {!! discussion($discussions,$discussion_status, $contract->id,'name-'.$k,'metadata') !!}
@@ -503,9 +518,9 @@ foreach ($resources as $item) {
     @else
         <div class="item">
             <div class="form-group">
-                <label for="company_name" class="col-sm-2 control-label">@lang('contract.company_name') <span class="red">*</span></label>
+                <label for="company_name" class="col-sm-2 control-label">@lang('contract.company_name')</label>
                 <div class="col-sm-7">
-                    {!! Form::text("company[0][name]",null,["class"=>"form-control required company_name" , "id"=> "company_0_name"])!!}
+                    {!! Form::text("company[0][name]",null,["class"=>"form-control company_name" , "id"=> "company_0_name"])!!}
                 </div>
             </div>
             <div class="form-group">
