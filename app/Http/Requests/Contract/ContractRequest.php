@@ -35,7 +35,7 @@ class ContractRequest extends Request
 
         ];
         foreach ($this->request->get('company') as $key => $val) {
-            $rules['company.'.$key.'.name']                  = 'required';
+            // $rules['company.'.$key.'.name']                  = 'required';
             $rules['company.'.$key.'.company_founding_date'] = 'date';
             $rules['company.'.$key.'.participation_share']   = 'numeric|min:0|max:1';
         }
