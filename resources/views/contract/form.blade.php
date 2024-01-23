@@ -142,7 +142,7 @@ foreach ($countries as $item) {
                 }
 
         $country_list = ['' => trans('global.select')] + $country;?>
-        {!! Form::select('country[]', $country_list ,
+        {!! Form::select('countries[]', $country_list ,
             $selected_countries, ['multiple'=>'multiple', "class"=>"required
         form-control" , "id" => "country"])!!}
         <label id="country-error" class="error" for="country"></label>
