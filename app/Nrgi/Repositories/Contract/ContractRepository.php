@@ -227,47 +227,48 @@ class ContractRepository implements ContractRepositoryInterface
     public function getAllDownload(array $filters)
     {
         $query  = $this->contract->select(
-                        DB::raw('id as "Contract ID", 
-                        metadata->>\'open_contracting_id\' as "OCID",
-                        metadata->>\'category\' as "Category",
-                        metadata->>\'contract_name\' as "Contract Name",
-                        metadata->>\'contract_identifier\' as "Contract Identifier",
-                        metadata->>\'language\' as "Language",
-                        (SELECT string_agg(country->>\'name\', \', \') FROM jsonb_array_elements(contracts.metadata->\'countries\') AS country) as "Country",
-                        metadata->>\'resource\' as "Resource",
-                        metadata->>\'type_of_contract\' as "Contract Type",
-                        metadata->>\'signature_date\' as "Signature Date",
-                        metadata->>\'document_type\' as "Document Type",
-                        metadata->\'government_entity\' as "Government Entity",
-                        metadata->\'government_entity\' as "Government Identifier",
-                        metadata->\'company\' as "Company Name",
-                        metadata->\'company\' as "Jurisdiction of Incorporation",
-                        metadata->\'company\' as "Registration Agency",
-                        metadata->\'company\' as "Company Number",
-                        metadata->\'company\' as "Company Address",
-                        metadata->\'company\' as "Participation Share",
-                        metadata->\'company\' as "Corporate Grouping",
-                        metadata->\'company\' as "Open Corporates Link",
-                        metadata->\'company\' as "Incorporation Date",
-                        metadata->\'company\' as "Operator",
-                        metadata->>\'project_title\' as "Project Title",
-                        metadata->>\'project_identifier\' as "Project Identifier",
-                        metadata->>\'concession\' as "License Name",
-                        metadata->>\'concession\' as "License Identifier",
-                        metadata->>\'source_url\' as "Source URL",
-                        metadata->>\'disclosure_mode\' as "Disclosure Mode",
-                        metadata->>\'date_retrieval\' as "Retrieval Date",
-                        publishing_date as "Publish Date",
-                        file as "PDF URL",
-                        id as "Associated Documents",
-                        pdf_structure as "PDF Type",
-                        "textType" as "Text Type",
-                        metadata->>\'show_pdf_text\' as "Show PDF Text",
-                        metadata_status as "Metadata Status",
-                        id as "Annotation Status",
-                        text_status as "PDF Text Status",
-                        user_id as "Created by",
-                        created_datetime as "Created on"'));
+            DB::raw('id as "Contract ID", 
+            metadata->>\'open_contracting_id\' as "OCID",
+            metadata->>\'category\' as "Category",
+            metadata->>\'contract_name\' as "Contract Name",
+            metadata->>\'contract_identifier\' as "Contract Identifier",
+            metadata->>\'language\' as "Language",
+            (SELECT string_agg(country->>\'name\', \', \') FROM json_array_elements(contracts.metadata->\'countries\') AS country) as "Country",
+            metadata->>\'resource\' as "Resource",
+            metadata->>\'type_of_contract\' as "Contract Type",
+            metadata->>\'signature_date\' as "Signature Date",
+            metadata->>\'document_type\' as "Document Type",
+            metadata->\'government_entity\' as "Government Entity",
+            metadata->\'government_entity\' as "Government Identifier",
+            metadata->\'company\' as "Company Name",
+            metadata->\'company\' as "Jurisdiction of Incorporation",
+            metadata->\'company\' as "Registration Agency",
+            metadata->\'company\' as "Company Number",
+            metadata->\'company\' as "Company Address",
+            metadata->\'company\' as "Participation Share",
+            metadata->\'company\' as "Corporate Grouping",
+            metadata->\'company\' as "Open Corporates Link",
+            metadata->\'company\' as "Incorporation Date",
+            metadata->\'company\' as "Operator",
+            metadata->>\'project_title\' as "Project Title",
+            metadata->>\'project_identifier\' as "Project Identifier",
+            metadata->>\'concession\' as "License Name",
+            metadata->>\'concession\' as "License Identifier",
+            metadata->>\'source_url\' as "Source URL",
+            metadata->>\'disclosure_mode\' as "Disclosure Mode",
+            metadata->>\'date_retrieval\' as "Retrieval Date",
+            publishing_date as "Publish Date",
+            file as "PDF URL",
+            id as "Associated Documents",
+            pdf_structure as "PDF Type",
+            "textType" as "Text Type",
+            metadata->>\'show_pdf_text\' as "Show PDF Text",
+            metadata_status as "Metadata Status",
+            id as "Annotation Status",
+            text_status as "PDF Text Status",
+            user_id as "Created by",
+            created_datetime as "Created on"'));
+        
 
         $from          = "contracts" ;
         $multipleField = ["resource", "category", "type_of_contract"];
@@ -1073,12 +1074,16 @@ class ContractRepository implements ContractRepositoryInterface
      */
     public function getUnknownDisclosureModeCount()
     {
-        $counts = $this->contract->selectRaw("jsonb_array_elements(metadata->'countries')->>'code' as code, count(jsonb_array_elements(metadata->'countries')->>'code')")
-            ->whereRaw("metadata->>'disclosure_mode' !='" . 'Government' . "'")
-            ->whereRaw("metadata->>'disclosure_mode' !='" . 'Company' . "'")
-            ->groupBy($this->db->raw("jsonb_array_elements(metadata->'countries')->>'code'"))
-            ->orderBy($this->db->raw("jsonb_array_elements(metadata->'countries')->>'code'"), "ASC")
-            ->get();
+        $counts = $counts = $this->contract->fromSub(function ($query) {
+            $query->from('contracts')
+                  ->selectRaw("json_array_elements(metadata->'countries')->>'code' as code")
+                  ->whereRaw("metadata->>'disclosure_mode' != 'Government'")
+                  ->whereRaw("metadata->>'disclosure_mode' != 'Company'");
+        }, 'subquery')
+        ->selectRaw("code, COUNT(code) as count")
+        ->groupBy('code')
+        ->orderBy('code', 'ASC')
+        ->get();
 
         $mode = [];
         foreach ($counts as $c) {
