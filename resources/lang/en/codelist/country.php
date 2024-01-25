@@ -78,6 +78,7 @@ return [
     "ER" => "Eritrea",
     "EE" => "Estonia",
     "ET" => "Ethiopia",
+    "EU" => "European Union",
     "FK" => "Falkland Islands (Malvinas)",
     "FO" => "Faroe Islands",
     "FJ" => "Fiji",
