@@ -221,7 +221,7 @@ foreach ($resources as $item) {
     @else
         <div class="government-item">
             <div class="form-group">
-                <label for="entity" class="col-sm-2 control-label">@lang('contract.government_entity') <span class="red">*</span></label>
+                <label for="entity" class="col-sm-2 control-label">@lang('contract.government_entity')</label>
 
                 <div class="col-sm-7">
                     {!! Form::select("government_entity[0][entity]",[''=>trans('Select')] + $govt_entity,null,
