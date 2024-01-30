@@ -395,7 +395,7 @@ class ElasticSearchService
 
         $meta = array_only(
             $metadata_array,
-            ['category', 'contract_name', 'signature_date', 'resource', 'file_size', 'file_url', 'country']
+            ['category', 'contract_name', 'signature_date', 'resource', 'file_size', 'file_url', 'countries']
         );
 
         return $array ? $meta : json_encode($meta);

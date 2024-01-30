@@ -350,8 +350,13 @@ class ImportService
             $contract['metadata']['concession'][$i]['license_name']       = isset($license_name[$i]) ? $license_name[$i] : '';
             $contract['metadata']['concession'][$i]['license_identifier'] = isset($license_identifier[$i]) ? $license_identifier[$i] : '';
         }
-        $countryCode                            = $this->getCountry($results['country_code']);
-        $contract['metadata']['country']        = $countryCode;
+        $countryCodes = explode(',', $results['country_code']);
+        $countryCodes = array_map('trim', $countryCodes); // Trim each code to remove any extra spaces
+
+        $countryDetails = $this->getCountries($countryCodes);
+
+        $contract['metadata']['countries'] = $countryDetails;
+
 
         $contract['metadata']['signature_year'] = $results['signature_year'];
 
@@ -913,6 +918,28 @@ class ImportService
     }
 
     /**
+     * Get Country code and name for multiple codes.
+     *
+     * @param array $codes
+     *
+     * @return array
+     */
+    protected function getCountries($codes)
+    {
+        $countries = [];
+        foreach ($codes as $code) {
+            $country = $this->country->getInfoByCode(strtoupper($code), 'en');
+            if (is_array($country)) {
+                $countries[] = $country;
+            } else {
+                // If country not found, you can choose to either include a placeholder or skip it
+                $countries[] = ['code' => '', 'name' => ''];
+            }
+        }
+        return $countries;
+    }
+
+    /**
      * Delete Import Folder
      *
      * @param $key
@@ -1002,7 +1029,7 @@ class ImportService
             "contract_name",
             "signature_year",
             "language",
-            "country",
+            "countries",
             "document_type",
             "resource",
             "government_entity",
@@ -1016,15 +1043,20 @@ class ImportService
                 $message .= '<p>' . ucwords(str_replace('_', ' ', $key)) . ' is required.</p>';
             }
         }
-        $countryCode = $contract->metadata->country->code;
-        $countries   = trans('codelist/country');
+        $countryObjects = $contract->metadata->countries;
+        $countries      = trans('codelist/country');
+        $validCodes     = array_keys($countries);
+        
+        $invalidCountryCodes = array_filter($countryObjects, function($country) use ($validCodes) {
+            return !in_array($country->code, $validCodes);
+        });
 
         if (empty($contract->document_url)) {
             $message .= '<p>Document file url is required.</p>';
         }
 
-        if ($countryCode == '' && !array_key_exists($countryCode, $countries)) {
-            $message .= '<p>Country Code is invalid.</p>';
+        if (!empty($invalidCountryCodes)) {
+            $message .= '<p>One or more Country Codes are invalid.</p>';
         }
         $companies           = $contract->metadata->company;
         $government_entities = $contract->metadata->government_entity;

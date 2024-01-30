@@ -44,7 +44,7 @@ class QualityService
         unset($metadataSchema['file_size']);
         foreach ($metadataSchema as $key => $value) {
             $count = $this->contract->getMetadataQuality($key, $filters);
-            if (is_array($value) && $key != "country" && !in_array($key, ['company', 'concession', 'government_entity'])) {
+            if (is_array($value) && $key != "countries" && !in_array($key, ['company', 'concession', 'government_entity'])) {
 
                 $count = $this->contract->getResourceAndCategoryIssue($key, $filters);
             }

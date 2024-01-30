@@ -89,9 +89,14 @@ class ActivityLogRepository implements ActivityLogRepositoryInterface
             $query->whereRaw("contracts.metadata->'category'->>0=?", [$category]);
         }
 
-        if ($country != null && $country !='all') {
-            $query->whereRaw("contracts.metadata->'country'->>'code'=?", [$country]);
+        if ($country != null && $country != 'all') {
+            $query->whereRaw("exists (
+                select 1 
+                from json_array_elements(contracts.metadata->'countries') as country 
+                where country->>'code' = ?
+            )", [$country]);
         }
+        
 
         return $query->paginate($limit);
     }

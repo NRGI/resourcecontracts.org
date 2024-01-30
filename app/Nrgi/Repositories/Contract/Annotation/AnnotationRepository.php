@@ -351,7 +351,11 @@ class AnnotationRepository implements AnnotationRepositoryInterface
             $query->whereRaw("trim(both '\"' from r::text) = '".$filters['resource']."'");
         }
         if (isset($filters['country']) && $filters['country'] != '' && $filters['country'] != 'all') {
-            $query->whereRaw("contracts.metadata->'country'->>'code' = ?", [$filters['country']]);
+            $query->whereRaw("exists (
+                select 1 
+                from json_array_elements(contracts.metadata->'countries') as country 
+                where country->>'code' = ?
+            )", [$filters['country']]);
         }
         if (isset($filters['category']) && $filters['category'] != '' && $filters['category'] != 'all') {
             $query->whereRaw("trim(both '\"' from cat::text) = '".$filters['category']."'");
