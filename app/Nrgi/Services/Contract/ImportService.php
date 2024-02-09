@@ -376,7 +376,7 @@ class ImportService
         for ($i = 0; $i < $count; $i++) {
             $govEntity                                                   = isset($government_entity[$i]) ? $government_entity[$i] : '';
             $contract['metadata']['government_entity'][$i]['entity']     = $govEntity;
-            $contract['metadata']['government_entity'][$i]['identifier'] = $this->getGovernmentIdentifier($govEntity, $countryCode);
+            $contract['metadata']['government_entity'][$i]['identifier'] = $this->getGovernmentIdentifier($govEntity, $countryDetails);
         }
 
         if (empty($contract['metadata']['contract_name'])) {
@@ -1214,24 +1214,33 @@ class ImportService
     }
 
     /**
-     * Get government identifier by government entity
+     * Get government identifier by government entity for a list of countries
      *
      * @param $govEntity
-     * @param $country
+     * @param $countries array
      *
      * @return string
      */
-    private function getGovernmentIdentifier($govEntity, $country)
+    private function getGovernmentIdentifier($govEntity, $countries)
     {
-        $countryCode            = $country['code'];
-        $govEntities            = config('governmentEntities');
-        $identifier             = '';
-        $govEntitiesCountryWise = isset($govEntities->{$countryCode}) ? $govEntities->{$countryCode} : [];
+        $govEntities = config('governmentEntities');
+        $identifier = '';
 
-        foreach ($govEntitiesCountryWise as $row) {
-            if ($row->entity == $govEntity) {
-                $identifier = isset($row->identifier) ? $row->identifier : '';
-                break;
+        // Iterate over the list of countries
+        foreach ($countries as $country) {
+            $countryCode = $country['code'];
+            $govEntitiesCountryWise = isset($govEntities->{$countryCode}) ? $govEntities->{$countryCode} : [];
+
+            // Iterate over government entities for the current country
+            foreach ($govEntitiesCountryWise as $row) {
+                if ($row->entity == $govEntity) {
+                    $identifier = isset($row->identifier) ? $row->identifier : '';
+
+                    // If identifier is found, break out of both loops
+                    if (!empty($identifier)) {
+                        return $identifier;
+                    }
+                }
             }
         }
 
