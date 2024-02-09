@@ -226,6 +226,7 @@ class Contract extends Model
         return $this->makeNullField($metaData);
     }
 
+
     /**
      * Generate a single string of AMLA URLs for each country in the metadata, separated by commas.
      *
@@ -238,11 +239,11 @@ class Contract extends Model
     {
         $urls = [];
         foreach ($countries as $country) {
-            if (isset($country->code) && !empty($country->code)) {
+            if (isset($country->code) && !empty($country->code) && $this->getAmlaUrl($country->code, $resource)) {
                 $urls[] = $this->getAmlaUrl($country->code, $resource);
             }
         }
-        return implode(', ', $urls);
+        return implode(',', $urls);
     }
 
 
