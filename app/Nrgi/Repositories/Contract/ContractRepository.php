@@ -1048,21 +1048,21 @@ class ContractRepository implements ContractRepositoryInterface
     public function getDisclosureModeCount($type = '')
     {
         $counts = $this->contract
-            ->selectRaw("country.code, count(country.code)")
-            ->fromSub(function ($query) {
+            ->selectRaw("country.code, count(country.code) as count")
+            ->fromSub(function ($query) use ($type) { // Use 'use' to import $type into the closure
                 $query->from('contracts')
                     ->selectRaw("json_array_elements(metadata->'countries')->>'code' as code")
-                    ->whereRaw("metadata->>'disclosure_mode' ='" . $type . "'");
+                    ->whereRaw("metadata->>'disclosure_mode' = ?", [$type]); // Use parameter binding
             }, 'country')
             ->groupBy('country.code')
             ->orderBy('country.code', 'ASC')
             ->get();
-    
+
         $mode = [];
         foreach ($counts as $c) {
             $mode[$c->code] = $c->count;
         }
-    
+
         return $mode;
     }
 
