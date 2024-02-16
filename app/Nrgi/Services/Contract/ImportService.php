@@ -350,7 +350,7 @@ class ImportService
             $contract['metadata']['concession'][$i]['license_name']       = isset($license_name[$i]) ? $license_name[$i] : '';
             $contract['metadata']['concession'][$i]['license_identifier'] = isset($license_identifier[$i]) ? $license_identifier[$i] : '';
         }
-        $countryCodes = explode(',', $results['country_code']);
+        $countryCodes = explode($this->separator, $results['country_code']);
         $countryCodes = array_map('trim', $countryCodes); // Trim each code to remove any extra spaces
 
         $countryDetails = $this->getCountries($countryCodes);
@@ -1032,7 +1032,6 @@ class ImportService
             "countries",
             "document_type",
             "resource",
-            "government_entity",
             "company",
             
         ];
@@ -1060,13 +1059,13 @@ class ImportService
         }
         $companies           = $contract->metadata->company;
         $government_entities = $contract->metadata->government_entity;
+        // foreach ($government_entities as $government_entity) {
+        //     if (empty($government_entity->entity)) {
+        //         $message .= '<p>Government Entity is invalid.</p>';
+        //         break;
+        //     }
+        // }
 
-        foreach ($government_entities as $government_entity) {
-            if (empty($government_entity->entity)) {
-                $message .= '<p>Government Entity is invalid.</p>';
-                break;
-            }
-        }
 
         foreach ($companies as $company) {
             if (
