@@ -148,6 +148,7 @@ return [
     'role_except_editor' => ['superadmin','researcher','country-admin', 'country-researcher'],
     'annotation_stage'   => ['draft', 'completed', 'rejected', 'published', 'unpublished'],
     'pdf_process_path'   => env('PDF_PROCESSOR_PATH'),
+    'abbyy_yearly_quota' => 50000,
     'permission'         => [
         'completed'   => 'complete',
         'rejected'    => 'reject',
