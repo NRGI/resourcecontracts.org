@@ -40,17 +40,21 @@ class CountryScope implements Scope
             }
     
             // JSONB query with parameter binding
-            $jsonQuery = '[{"code": ?}]::jsonb';
+            $jsonQuery = '[{"code": ?}]';  // Corrected: removed "::jsonb" here
     
             if ($builder->getModel()->getTable() == "activity_logs" || $builder->getModel()->getTable() == "contract_annotations") {
                 $builder->whereHas('contract', function ($q) use ($countryCode, $jsonQuery) {
-                    $q->whereRaw("metadata->'countries' @> $jsonQuery", [$countryCode]);
+                    $q->whereRaw("metadata->'countries' @> ?::jsonb", [$jsonQuery]); // Corrected: moved "::jsonb" to whereRaw parameter
+                    $q->setBindings([$countryCode]);  // Ensure that the correct bindings are set
                 });
             } else {
-                $builder->whereRaw("metadata->'countries' @> $jsonQuery", [$countryCode]);
+                $builder->whereRaw("metadata->'countries' @> ?::jsonb", [$jsonQuery]); // Corrected: moved "::jsonb" to whereRaw parameter
+                $builder->setBindings([$countryCode]); // Ensure that the correct bindings are set
             }
         }
     }
+    
+
     
 
 }
