@@ -32,24 +32,14 @@ class CountryScope implements Scope
     public function apply(Builder $builder, Model $model)
     {
         if (!Auth::guest() && Auth::user()->hasCountryRole()) {
-            $country = Auth::user()->country;
+            $countryCode = Auth::user()->country; // Assuming 'country_code' holds a single country code string
 
-            if ($builder->getModel()->getTable() == "activity_logs") {
-                $builder->whereHas(
-                    'contract',
-                    function ($q) use ($country) {
-                        $q->whereRaw("contracts.metadata->'country'->>'code' in (?)", $country);
-                    }
-                );
-            } elseif ($builder->getModel()->getTable() == "contract_annotations") {
-                $builder->whereHas(
-                    'contract',
-                    function ($q) use ($country) {
-                        $q->whereRaw("contracts.metadata->'country'->>'code' in (?)", $country);
-                    }
-                );
+            if ($builder->getModel()->getTable() == "activity_logs" || $builder->getModel()->getTable() == "contract_annotations") {
+                $builder->whereHas('contract', function ($q) use ($countryCode) {
+                    $q->whereRaw("metadata->'countries' @> '[{\"code\":\"$countryCode\"}]'::jsonb");
+                });
             } else {
-                $builder->whereRaw("contracts.metadata->'country'->>'code' in (?)", $country);
+                $builder->whereRaw("metadata->'countries' @> '[{\"code\":\"$countryCode\"}]'::jsonb");
             }
         }
     }
