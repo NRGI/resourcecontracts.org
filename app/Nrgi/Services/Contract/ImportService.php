@@ -1067,7 +1067,6 @@ class ImportService
         // }
 
 
-
         foreach ($companies as $company) {
             if (
                 !empty($company->jurisdiction_of_incorporation) &&
