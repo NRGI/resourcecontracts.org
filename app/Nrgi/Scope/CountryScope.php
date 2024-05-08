@@ -32,16 +32,25 @@ class CountryScope implements Scope
     public function apply(Builder $builder, Model $model)
     {
         if (!Auth::guest() && Auth::user()->hasCountryRole()) {
-            $countryCode = Auth::user()->country; // Assuming 'country_code' holds a single country code string
-
+            $countryCode = Auth::user()->country; // Get the country code, which should be a string
+    
+            // Check if countryCode accidentally is an array or object
+            if (is_array($countryCode) || is_object($countryCode)) {
+                $countryCode = is_array($countryCode) ? $countryCode[0] : (string) $countryCode;  // Simple fallback for example
+            }
+    
+            // JSONB query with parameter binding
+            $jsonQuery = '[{"code": ?}]::jsonb';
+    
             if ($builder->getModel()->getTable() == "activity_logs" || $builder->getModel()->getTable() == "contract_annotations") {
-                $builder->whereHas('contract', function ($q) use ($countryCode) {
-                    $q->whereRaw("metadata->'countries' @> '[{\"code\":\"$countryCode\"}]'::jsonb");
+                $builder->whereHas('contract', function ($q) use ($countryCode, $jsonQuery) {
+                    $q->whereRaw("metadata->'countries' @> $jsonQuery", [$countryCode]);
                 });
             } else {
-                $builder->whereRaw("metadata->'countries' @> '[{\"code\":\"$countryCode\"}]'::jsonb");
+                $builder->whereRaw("metadata->'countries' @> $jsonQuery", [$countryCode]);
             }
         }
     }
+    
 
 }
