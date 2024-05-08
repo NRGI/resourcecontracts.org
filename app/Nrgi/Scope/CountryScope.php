@@ -32,27 +32,26 @@ class CountryScope implements Scope
     public function apply(Builder $builder, Model $model)
     {
         if (!Auth::guest() && Auth::user()->hasCountryRole()) {
-            $countryCode = Auth::user()->country; // Get the country code, which should be a string
+            $countryCode = Auth::user()->country; // Ensure this is a string.
     
             // Check if countryCode accidentally is an array or object
             if (is_array($countryCode) || is_object($countryCode)) {
-                $countryCode = is_array($countryCode) ? $countryCode[0] : (string) $countryCode;  // Simple fallback for example
+                $countryCode = is_array($countryCode) ? $countryCode[0] : (string) $countryCode;
             }
     
-            // JSONB query with parameter binding
-            $jsonQuery = '[{"code": ?}]';  // Corrected: removed "::jsonb" here
+            // Correctly prepare JSON string for query
+            $jsonQuery = json_encode([["code" => $countryCode]]); // Encode as JSON string
     
             if ($builder->getModel()->getTable() == "activity_logs" || $builder->getModel()->getTable() == "contract_annotations") {
-                $builder->whereHas('contract', function ($q) use ($countryCode, $jsonQuery) {
-                    $q->whereRaw("metadata->'countries' @> ?::jsonb", [$jsonQuery]); // Corrected: moved "::jsonb" to whereRaw parameter
-                    $q->setBindings([$countryCode]);  // Ensure that the correct bindings are set
+                $builder->whereHas('contract', function ($q) use ($jsonQuery) {
+                    $q->whereRaw("metadata->'countries'::jsonb @> ?", [$jsonQuery]); // Cast 'countries' to jsonb and bind JSON as parameter
                 });
             } else {
-                $builder->whereRaw("metadata->'countries' @> ?::jsonb", [$jsonQuery]); // Corrected: moved "::jsonb" to whereRaw parameter
-                $builder->setBindings([$countryCode]); // Ensure that the correct bindings are set
+                $builder->whereRaw("metadata->'countries'::jsonb @> ?", [$jsonQuery]); // Cast 'countries' to jsonb and bind JSON as parameter
             }
         }
     }
+    
 
     
 
