@@ -158,7 +158,7 @@ class Contract extends Model
     }
 
     public static function booted() {
-        // static::addGlobalScope(new CountryScope);
+        static::addGlobalScope(new CountryScope);
     }
 
     /**

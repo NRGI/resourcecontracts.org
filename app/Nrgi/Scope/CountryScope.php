@@ -55,11 +55,11 @@ class CountryScope implements Scope
                 });
             } else {
                 $builder->whereRaw("
-                    EXISTS (
-                        SELECT 1 
-                        FROM json_array_elements(metadata->'countries') AS country 
-                        WHERE country->>'code' = ?
-                    )
+                exists (
+                    select 1 
+                    from json_array_elements(contracts.metadata->'countries') as country 
+                    where country->>'code' = ?
+                )
                 ", [$countryCode]);
             }
         }
