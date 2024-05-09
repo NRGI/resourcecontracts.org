@@ -74,6 +74,9 @@ class ActivityLog extends Model
     public static function boot()
     {
         parent::boot();
-        static::addGlobalScope(new CountryScope);
+    }
+
+    public static function booted() {
+        // static::addGlobalScope(new CountryScope);
     }
 }

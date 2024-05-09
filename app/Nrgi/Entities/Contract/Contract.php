@@ -145,7 +145,6 @@ class Contract extends Model
     public static function boot()
     {
         parent::boot();
-        static::addGlobalScope(new CountryScope);
         static::creating(
             function ($contract) {
                 $contract->metadata_status    = static::STATUS_DRAFT;
@@ -156,6 +155,10 @@ class Contract extends Model
                 return true;
             }
         );
+    }
+
+    public static function booted() {
+        static::addGlobalScope(new CountryScope);
     }
 
     /**
