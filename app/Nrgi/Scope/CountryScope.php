@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Nrgi\Scope;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -22,37 +23,46 @@ class CountryScope implements Scope
      */
     public function remove(Builder $builder, Model $model)
     {
-        // TODO: Implement remove() method.
+        // Implementation for removing scope if needed
     }
 
     /**
+     * Apply the scope to a given Eloquent query builder.
+     *
      * @param Builder $builder
      * @param Model   $model
      */
     public function apply(Builder $builder, Model $model)
     {
         if (!Auth::guest() && Auth::user()->hasCountryRole()) {
-            $countryCode = Auth::user()->country; // Ensure this is a string.
-    
-            // Check if countryCode accidentally is an array or object
+            $countryCode = Auth::user()->country; // Get the country code
+
+            // Check if countryCode is accidentally an array or object
             if (is_array($countryCode) || is_object($countryCode)) {
-                $countryCode = is_array($countryCode) ? $countryCode[0] : (string) $countryCode;
+                $countryCode = is_array($countryCode) ? $countryCode[0] : (string) $countryCode; // Simple fallback
             }
-    
-            // Correctly prepare JSON string for query
-            $jsonQuery = json_encode([["code" => $countryCode]]); // Encode as JSON string
-    
+
+            // Apply the scope depending on the model
             if ($builder->getModel()->getTable() == "activity_logs" || $builder->getModel()->getTable() == "contract_annotations") {
-                $builder->whereHas('contract', function ($q) use ($jsonQuery) {
-                    $q->whereRaw("metadata->'countries'::jsonb @> ?", [$jsonQuery]); // Cast 'countries' to jsonb and bind JSON as parameter
+                $builder->whereHas('contract', function ($q) use ($countryCode) {
+                    $q->whereRaw("
+                        EXISTS (
+                            SELECT 1 
+                            FROM json_array_elements(metadata->'countries') AS country 
+                            WHERE country->>'code' = ?
+                        )
+                    ", [$countryCode]);
                 });
             } else {
-                $builder->whereRaw("metadata->'countries'::jsonb @> ?", [$jsonQuery]); // Cast 'countries' to jsonb and bind JSON as parameter
+                $builder->whereRaw("
+                    EXISTS (
+                        SELECT 1 
+                        FROM json_array_elements(metadata->'countries') AS country 
+                        WHERE country->>'code' = ?
+                    )
+                ", [$countryCode]);
             }
         }
     }
-    
-
-    
-
 }
+
