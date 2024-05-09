@@ -48,7 +48,7 @@ class CountryScope implements Scope
                     $q->whereRaw("
                         EXISTS (
                             SELECT 1 
-                            FROM json_array_elements(metadata->'countries') AS country 
+                            FROM json_array_elements(contracts.metadata->'countries') AS country 
                             WHERE country->>'code' = ?
                         )
                     ", [$countryCode]);
@@ -57,7 +57,7 @@ class CountryScope implements Scope
                 $builder->whereRaw("
                     EXISTS (
                         SELECT 1 
-                        FROM json_array_elements(metadata->'countries') AS country 
+                        FROM json_array_elements(contracts.metadata->'countries') AS country 
                         WHERE country->>'code' = ?
                     )
                 ", [$countryCode]);
@@ -65,4 +65,3 @@ class CountryScope implements Scope
         }
     }
 }
-
