@@ -433,21 +433,21 @@ class ContractRepository implements ContractRepositoryInterface
      *
      * @return contract
      */
-    public function getUniqueCountries()
-    {
-        return $this->contract->select(
-            $this->db->raw("country_data.code as countries, count(country_data.code)")
-        )
-        ->fromSub(function ($query) {
-            $query->from('contracts')
-                  ->withoutGlobalScope(CountryScope::class) // Disable scope for subquery
-                  ->selectRaw("json_array_elements(metadata->'countries')->>'code' as code, metadata")
-                  ->whereRaw("metadata->'countries' is not null");
-        }, 'country_data')
-        ->groupBy('country_data.code')
-        ->orderBy('country_data.code', 'ASC')
-        ->get();
-    }
+
+public function getUniqueCountries()
+{
+    return $this->contract->select(
+        DB::raw("country_data.code as countries, count(country_data.code)")
+    )
+    ->fromSub(function ($query) {
+        $query->from(DB::table('contracts'))
+              ->selectRaw("json_array_elements(metadata->'countries')->>'code' as code, metadata")
+              ->whereRaw("metadata->'countries' is not null");
+    }, 'country_data')
+    ->groupBy('country_data.code')
+    ->orderBy('country_data.code', 'ASC')
+    ->get();
+}
     
     
 
