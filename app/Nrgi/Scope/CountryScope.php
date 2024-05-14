@@ -60,7 +60,7 @@ class CountryScope implements Scope
                     from json_array_elements(contracts.metadata->'countries') as country 
                     where country->>'code' = ?
                 )
-                ", [$countryCode]);
+            ", [$countryCode]);
             }
         }
     }
