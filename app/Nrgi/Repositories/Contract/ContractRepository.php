@@ -440,8 +440,8 @@ public function getUniqueCountries()
         DB::raw("country_data.code as countries, count(country_data.code)")
     )
     ->fromSub(function ($query) {
-        $query->from(DB::table('contracts'))
-              ->selectRaw("json_array_elements(metadata->'countries')->>'code' as code, metadata")
+        $query->selectRaw("json_array_elements(metadata->'countries')->>'code' as code, metadata")
+              ->from('contracts')
               ->whereRaw("metadata->'countries' is not null");
     }, 'country_data')
     ->groupBy('country_data.code')
