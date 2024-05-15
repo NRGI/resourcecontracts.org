@@ -99,7 +99,7 @@ class ContractFilterService
      */
     public function getUniqueCountries($withcount = true)
     {
-        $arr       = $this->contract->getUniqueCountries()->toArray();
+        $arr       = $this->contract->getUniqueCountries();
         $countries = [];
         foreach ($arr as $key => $value) {
             $country = $this->countryService->getInfoByCode($value['countries']);
