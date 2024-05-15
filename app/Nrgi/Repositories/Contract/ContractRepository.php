@@ -23,6 +23,7 @@ class ContractRepository implements ContractRepositoryInterface
      * @var Contract
      */
     protected $contract;
+    protected contractWithoutScope;
     /**
      * @var DatabaseManager
      */
@@ -48,6 +49,7 @@ class ContractRepository implements ContractRepositoryInterface
         $this->db       = $db;
         $this->document = $document;
         $this->logger  = $logger;
+        $this->contractWithoutScope = Contract::withoutGlobalScope(CountryScope::class);
     }
 
     /**
