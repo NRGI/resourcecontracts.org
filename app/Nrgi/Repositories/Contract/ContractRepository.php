@@ -441,14 +441,19 @@ class ContractRepository implements ContractRepositoryInterface
             ->selectRaw("json_array_elements(metadata->'countries')->>'code' as code, metadata")
             ->whereRaw("metadata->'countries' is not null");
     
-        return DB::table(DB::raw("({$subQuery->toSql()}) as country_data"))
-            ->mergeBindings($subQuery)
+        $results = DB::table(DB::raw("({$subQuery->toSql()}) as country_data"))
+            ->mergeBindings($subQuery) // Merge bindings to ensure parameters are correctly passed
             ->select(
                 DB::raw("country_data.code as countries, count(country_data.code)")
             )
             ->groupBy('country_data.code')
             ->orderBy('country_data.code', 'ASC')
             ->get();
+    
+        // Convert the results to an array
+        return $results->map(function ($item) {
+            return (array) $item;
+        })->toArray();
     }
     
     
