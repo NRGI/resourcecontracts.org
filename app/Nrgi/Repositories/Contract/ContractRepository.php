@@ -23,7 +23,7 @@ class ContractRepository implements ContractRepositoryInterface
      * @var Contract
      */
     protected $contract;
-    protected contractWithoutScope;
+    protected $contractWithoutScope;
     /**
      * @var DatabaseManager
      */
