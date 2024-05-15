@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Nrgi\Scope;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -22,36 +23,45 @@ class CountryScope implements Scope
      */
     public function remove(Builder $builder, Model $model)
     {
-        // TODO: Implement remove() method.
+        // Implementation for removing scope if needed
     }
 
     /**
+     * Apply the scope to a given Eloquent query builder.
+     *
      * @param Builder $builder
      * @param Model   $model
      */
     public function apply(Builder $builder, Model $model)
     {
         if (!Auth::guest() && Auth::user()->hasCountryRole()) {
-            $country = Auth::user()->country;
+            $countryCode = Auth::user()->country; // Get the country code
 
-            if ($builder->getModel()->getTable() == "activity_logs") {
-                $builder->whereHas(
-                    'contract',
-                    function ($q) use ($country) {
-                        $q->whereRaw("contracts.metadata->'country'->>'code' in (?)", $country);
-                    }
-                );
-            } elseif ($builder->getModel()->getTable() == "contract_annotations") {
-                $builder->whereHas(
-                    'contract',
-                    function ($q) use ($country) {
-                        $q->whereRaw("contracts.metadata->'country'->>'code' in (?)", $country);
-                    }
-                );
+            // Check if countryCode is accidentally an array or object
+            if (is_array($countryCode) || is_object($countryCode)) {
+                $countryCode = is_array($countryCode) ? $countryCode[0] : (string) $countryCode; // Simple fallback
+            }
+
+            // Apply the scope depending on the model
+            if ($builder->getModel()->getTable() == "activity_logs" || $builder->getModel()->getTable() == "contract_annotations") {
+                $builder->whereHas('contract', function ($q) use ($countryCode) {
+                    $q->whereRaw("
+                        EXISTS (
+                            SELECT 1 
+                            FROM json_array_elements(contracts.metadata->'countries') AS country 
+                            WHERE country->>'code' = ?
+                        )
+                    ", [$countryCode]);
+                });
             } else {
-                $builder->whereRaw("contracts.metadata->'country'->>'code' in (?)", $country);
+                $builder->whereRaw("
+                    EXISTS (
+                        SELECT 1 
+                        FROM json_array_elements(contracts.metadata->'countries') AS country 
+                        WHERE country->>'code' = ?
+                    )
+                ", [$countryCode]);
             }
         }
     }
-
 }
