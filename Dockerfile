@@ -50,10 +50,20 @@ RUN rm -rf /var/lib/apt/lists/* \
 RUN a2enmod rewrite \
  && a2enmod php7.4
 
+# Preconfigure New Relic license key and application name
+ARG NEW_RELIC_LICENSE_KEY
+ARG NEW_RELIC_APP_NAME
+RUN echo "newrelic-php5 newrelic-php5/application-name string ${NEW_RELIC_APP_NAME}" | debconf-set-selections \
+ && echo "newrelic-php5 newrelic-php5/license-key string ${NEW_RELIC_LICENSE_KEY}" | debconf-set-selections
+
+# Add New Relic GPG key and repository
+RUN curl -sL https://download.newrelic.com/548C16BF.gpg | apt-key add - \
+ && echo "deb [arch=amd64] http://apt.newrelic.com/debian/ newrelic non-free" | tee /etc/apt/sources.list.d/newrelic.list
+
 # Install New Relic PHP agent
-RUN curl -L https://download.newrelic.com/php_agent/release/newrelic-php5-10.7.0.323-linux.tar.gz -o /tmp/newrelic.tar.gz \
- && tar -C /tmp -xzf /tmp/newrelic.tar.gz \
- && sh /tmp/newrelic-php5-*/newrelic-install install
+RUN apt-get update \
+ && apt-get install -y newrelic-php5 \
+ && NR_INSTALL_SILENT=1 newrelic-install install
 
 # Fetch composer packages before copying project code to leverage Docker caching
 RUN mkdir /var/www/rc-admin
@@ -112,16 +122,6 @@ RUN mkdir /shared_path \
 WORKDIR /var/www/rc-admin
 RUN php composer.phar dump-autoload --optimize \
  && php artisan clear-compiled
-
-# Configure New Relic
-RUN sed -i \
-    -e "s/newrelic.appname =.*/newrelic.appname = \"${NEW_RELIC_APP_NAME}\"/" \
-    -e "s/newrelic.license =.*/newrelic.license = \"${NEW_RELIC_LICENSE_KEY}\"/" \
-    /etc/php/7.4/cli/conf.d/newrelic.ini \
- && sed -i \
-    -e "s/newrelic.appname =.*/newrelic.appname = \"${NEW_RELIC_APP_NAME}\"/" \
-    -e "s/newrelic.license =.*/newrelic.license = \"${NEW_RELIC_LICENSE_KEY}\"/" \
-    /etc/php/7.4/apache2/conf.d/newrelic.ini
 
 EXPOSE 80
 CMD cd /var/container_init && ./init.sh && /etc/init.d/beanstalkd start && supervisord -c /etc/supervisord.conf && /usr/sbin/apache2ctl -D FOREGROUND
