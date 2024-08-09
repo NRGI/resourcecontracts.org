@@ -54,7 +54,10 @@ RUN a2enmod rewrite \
 ARG NEW_RELIC_LICENSE_KEY
 ARG NEW_RELIC_APP_NAME
 RUN echo "newrelic-php5 newrelic-php5/application-name string ${NEW_RELIC_APP_NAME}" | debconf-set-selections \
- && echo "newrelic-php5 newrelic-php5/license-key string ${NEW_RELIC_LICENSE_KEY}" | debconf-set-selections
+ && echo "newrelic-php5 newrelic-php5/license-key string ${NEW_RELIC_LICENSE_KEY}" | debconf-set-selections \
+ && echo "New Relic configuration applied with APP_NAME=${NEW_RELIC_APP_NAME} and LICENSE_KEY=${NEW_RELIC_LICENSE_KEY}" \
+ || echo "Failed to apply New Relic configuration" >&2
+
 
 # Add New Relic GPG key and repository
 RUN curl -sL https://download.newrelic.com/548C16BF.gpg | apt-key add - \
