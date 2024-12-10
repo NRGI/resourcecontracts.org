@@ -79,6 +79,8 @@ return [
     'contract_identifier'                  => "Contract Identifier",
     'contract_file'                        => "Contract File",
     'annotate_contract'                    => "Annotate Contract",
+    'annotate_contract_with_AI'            => "Annotate Contract With AI",
+    'annotating_with_AI'                   => "Annotating With AI",
     'editing'                              => "Editing",
     'created_by'                           => "Created By",
     'last_modified_by'                     => "Last modified by",

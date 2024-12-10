@@ -230,6 +230,7 @@ class ContractController extends Controller
 
          $associatedContracts          = $this->contract->getAssociatedContracts($contract);
          $status                       = $this->contract->getStatus($id);
+         $auto_annotation_status       = $contract->auto_annotation_status ?? null;
          $annotations                  = $contract->annotations;
          $contract->metadata_comment   = $this->comment->getLatest($contract->id, Comment::TYPE_METADATA);
          $contract->text_comment       = $this->comment->getLatest($contract->id, Comment::TYPE_TEXT);
@@ -271,7 +272,8 @@ class ContractController extends Controller
                  'locale',
                  'resourceList',
                  'contractTypeList',
-                 'documentTypeList'
+                 'documentTypeList',
+                 'auto_annotation_status'
              )
          );
     }
