@@ -285,6 +285,30 @@ class AnnotationService
         return $this->annotation->getStatusOfAllContracts($contractIdsArr);
     }
 
+
+    public function autoAnnotate($contractId)
+    {
+        $lambdaClient = new \Aws\Lambda\LambdaClient([
+            'version' => 'latest',
+            'region'  => env('AWS_REGION'),
+            'credentials' => [
+                'key'    => env('AWS_KEY'),
+                'secret' => env('AWS_SECRET'),
+            ],
+        ]);
+
+        $payload = json_encode(['contractId' => $contractId]);
+
+        try {
+            $lambdaClient->invokeAsync([
+                'FunctionName' => env("AUTO_ANNOTATE_LAMBDA_FUNCTION"),
+                'InvokeArgs'   => $payload,
+            ]);
+        } catch (Exception $e) {
+            $this->logger->error('Failed to invoke Lambda function: ' . $e->getMessage());
+        }
+    }
+
     /**
      * Updates status of annotations of contract
      *

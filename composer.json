@@ -31,7 +31,8 @@
     "maatwebsite/excel": "^3.1",
     "ext-json": "*",
     "laravel/helpers": "^1.5",
-    "laravel/ui": "2.5.0"
+    "laravel/ui": "2.5.0",
+    "aws/aws-sdk-php": "^3.226"
   },
   "require-dev": {
     "phpunit/phpunit": "^8.5.8|^9.3.3",

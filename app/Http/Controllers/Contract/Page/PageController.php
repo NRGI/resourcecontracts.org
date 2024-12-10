@@ -228,6 +228,26 @@ class PageController extends Controller
         );
     }
 
+           /**
+     * Auto Annotate Contract by AI -> Execute Lambda Function
+     *
+     * @param Request         $request
+     * @param                 $contractId
+     * @param LanguageService $lang
+     *
+     * @return \Illuminate\View\View|void
+     */
+    public function autoAnnotate(Request $request, $contractId, LanguageService $lang)
+    {
+        try {
+            $this->annotation->autoAnnotate($contractId);
+        } catch (\Exception $e) {
+            return abort(404);
+        }
+
+        return redirect()->back()->with('success', 'Auto annotation started successfully.');
+    }
+
     /**
      * Display Review Page
      *

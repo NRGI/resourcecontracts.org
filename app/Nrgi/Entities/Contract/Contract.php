@@ -83,6 +83,11 @@ class Contract extends Model
      * Contract process failed
      */
     const PROCESSING_FAILED = 3;
+
+      /**
+     * Contract process failed
+     */
+    const PROCESSING_NOT_STARTED= 4;
     /**
      * OCR Text send to MTurk
      */
@@ -112,6 +117,7 @@ class Contract extends Model
      *
      * @var string
      */
+    
     protected $table = 'contracts';
     /**
      * The attributes that are mass assignable.
@@ -127,7 +133,8 @@ class Contract extends Model
         'textType',
         'metadata_status',
         'text_status',
-        'publishing_date'
+        'publishing_date',
+        'auto_annotation_status'
     ];
     /**
      * @var array
@@ -150,6 +157,7 @@ class Contract extends Model
                 $contract->metadata_status    = static::STATUS_DRAFT;
                 $contract->text_status        = null;
                 $contract->pdf_process_status = static::PROCESSING_PIPELINE;
+                $contract->auto_annotation_status = static::PROCESSING_NOT_STARTED;
                 $contract->mturk_status       = null;
 
                 return true;

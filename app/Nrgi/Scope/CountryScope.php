@@ -48,19 +48,19 @@ class CountryScope implements Scope
                     $q->whereRaw("
                         EXISTS (
                             SELECT 1 
-                            FROM json_array_elements(metadata->'countries') AS country 
+                            FROM json_array_elements(contracts.metadata->'countries') AS country 
                             WHERE country->>'code' = ?
                         )
                     ", [$countryCode]);
                 });
             } else {
                 $builder->whereRaw("
-                exists (
-                    select 1 
-                    from json_array_elements(contracts.metadata->'countries') as country 
-                    where country->>'code' = ?
-                )
-            ", [$countryCode]);
+                    EXISTS (
+                        SELECT 1 
+                        FROM json_array_elements(contracts.metadata->'countries') AS country 
+                        WHERE country->>'code' = ?
+                    )
+                ", [$countryCode]);
             }
         }
     }

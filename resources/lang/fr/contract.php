@@ -79,6 +79,8 @@ return [
     'contract_identifier'                  => "Identifiant du contrat",
     'contract_file'                        => "Fichier du contrat",
     'annotate_contract'                    => "Annoter le contrat",
+    'annotate_contract_with_AI'            => "Annoter le contrat avec l'IA",
+    'annotating_with_AI'                   => "Annoter avec l'IA",
     'editing'                              => "Révision",
     'created_by'                           => "Créé par",
     'last_modified_by'                     => "Dernière modification par",
