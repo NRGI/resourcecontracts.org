@@ -65,7 +65,10 @@ RUN curl -sL https://download.newrelic.com/548C16BF.gpg | apt-key add - \
 
 # Install New Relic PHP agent
 RUN apt-get update \
- && apt-get install -y newrelic-php5=11.0.0.13 \
+ && apt-get install -y \
+    newrelic-php5=11.0.0.13 \
+    newrelic-php5-common=11.0.0.13 \
+    newrelic-daemon=11.0.0.13 \
  && NR_INSTALL_SILENT=1 newrelic-install install
 
 # Fetch composer packages before copying project code to leverage Docker caching
