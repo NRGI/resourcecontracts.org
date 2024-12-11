@@ -300,10 +300,11 @@ class AnnotationService
         $payload = json_encode(['contractId' => $contractId]);
 
         try {
-            $lambdaClient->invokeAsync([
+            $lambdaClient->invoke([
                 'FunctionName' => env("AUTO_ANNOTATE_LAMBDA_FUNCTION"),
-                'InvokeArgs'   => $payload,
-            ]);
+                'InvocationType' => 'Event',
+                'Payload'   => $payload,
+                ]);
         } catch (Exception $e) {
             $this->logger->error('Failed to invoke Lambda function: ' . $e->getMessage());
         }
