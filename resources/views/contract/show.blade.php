@@ -60,7 +60,7 @@ $contract_not_started_pipeline = \App\Nrgi\Entities\Contract\Contract::PROCESSIN
 									</a>
 									<a href="{{route('contract.annotate', ['id'=>$contract->id])}}"
 									   class="btn btn-default">
-										@lang('contract.annotate_contract')
+										@lang('contract.manual_annotation')
 									</a>
 									@if(isset($auto_annotation_status) && $auto_annotation_status == $contract_processing_running)
 											<a href="#" disabled class="btn btn-default">
@@ -68,9 +68,13 @@ $contract_not_started_pipeline = \App\Nrgi\Entities\Contract\Contract::PROCESSIN
 											</a>
 										@else
 											<a href="{{route('contract.autoannotate', ['id'=>$contract->id])}}" class="btn btn-default">
-												@lang('contract.annotate_contract_with_AI')
+												@lang('contract.ai_annotation')
 											</a>
 										@endif
+									<a href="{{route('contract.annotate', ['id'=>$contract->id])}}"
+									   class="btn btn-default">
+										@lang('contract.view_annotation')
+									</a>
 								</div>
 							@elseif($status == $contract_processing_failed)
 								<div class="status"><strong>@lang('contract.status')</strong>: @lang('Failed')
