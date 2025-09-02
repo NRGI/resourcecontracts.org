@@ -2,14 +2,73 @@
 /node_modules
 .env
 .idea
-.DS_STORE
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Laravel specific
 /public/uploads
 /public/data
 /public/mturk-log
 /storage/debugbar
+/storage/logs/*.log
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/app/*
+/bootstrap/cache/*
+
+# Composer
+composer.phar
+composer.lock
+
+# Environment files
+.env.*
+!.env.example
+
+# IDE and editor files
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Log files
+*.log
 /log
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# Build and cache files
 *.map
+*.cache
+*.tmp
+
+# Database files
+*.sql
+*.sqlite
+*.db
+
+# Backup files
+*.bak
+*.backup
+*_backup_*
+
+# Temporary files
+tmp/
+temp/
