@@ -96,9 +96,9 @@ class ProcessService
             $this->processStatus(Contract::PROCESSING_RUNNING);
             $this->logger->info("Processing Contract", ['contractId' => $contractId]);
 
-            list($writeFolderPath, $readFilePath) = $this->setup($contract);
+            list($writeFolderPath, $readFilePath, $s3FilePath) = $this->setup($contract);
 
-            if ($this->process($writeFolderPath, $readFilePath, $ocr_lang)) {
+            if ($this->process($writeFolderPath, $readFilePath, $s3FilePath, $ocr_lang)) {
                 $pages = $this->page->buildPages($writeFolderPath);
                 $this->logger->info('Pages processed for contract'.json_encode($pages),['contractId' => $contractId]);
                 $this->page->savePages($contractId, $pages);
@@ -192,12 +192,12 @@ class ProcessService
      *
      * @return bool|null
      */
-    public function process($writeFolderPath, $readFilePath, $lang)
+    public function process($writeFolderPath, $readFilePath, $s3FilePath, $lang)
     {
         try {
             $this->processStatus(Contract::PROCESSING_RUNNING);
             $this->logger->info("Python script running");
-            $this->processContractDocument($writeFolderPath, $readFilePath, $lang);
+            $this->processContractDocument($writeFolderPath, $s3FilePath, $lang);
             $this->logger->info("Python script completed");
 
             return true;
@@ -207,6 +207,7 @@ class ProcessService
                 [
                     'write_folder_path' => $writeFolderPath,
                     'read_file_path'    => $readFilePath,
+                    's3_file_path'      => $s3FilePath,
                 ]
             );
 
@@ -216,26 +217,34 @@ class ProcessService
 
     /**
      * @param $writeFolderPath
-     * @param $readFilePath
-     *
+     * @param $s3FilePath
      * @param $lang
      *
      * @return bool
      */
-    public function processContractDocument($writeFolderPath, $readFilePath, $lang)
+    public function processContractDocument($writeFolderPath, $s3FilePath, $lang)
     {
         set_time_limit(0);
         $commandPath = config('nrgi.pdf_process_path');
-        $abbyyOcrUrl = env('ABBYY_OCR_URL');
+        
+        // Set AWS environment variables for Textract
+        $awsRegion = env('AWS_REGION');
+        $awsAccessKey = env('AWS_KEY');
+        $awsSecretKey = env('AWS_SECRET');
+        
+        
         $command = sprintf(
-            'ABBYY_OCR_URL=%s python %s/run.py -i %s -o %s -l %s',
-            escapeshellarg($abbyyOcrUrl),
+            'AWS_ACCESS_KEY_ID=%s AWS_SECRET_ACCESS_KEY=%s AWS_DEFAULT_REGION=%s python %s/run.py -i %s -o %s -l %s',
+            escapeshellarg($awsAccessKey),
+            escapeshellarg($awsSecretKey),
+            escapeshellarg($awsRegion),
             escapeshellarg($commandPath),
-            escapeshellarg($readFilePath),
+            escapeshellarg($s3FilePath),
             escapeshellarg($writeFolderPath),
             escapeshellarg($lang)
         );
-        $this->logger->info("Executing python command", ['command' => $command]);
+        
+        $this->logger->info("Executing python command with Textract", ['command' => $command]);
 
         try {
             exec($command, $output);
@@ -245,6 +254,36 @@ class ProcessService
             $this->logger->error("error while executing command : {$e->getMessage()}", ['command' => $command]);
 
             return false;
+        }
+    }
+
+    /**
+     * Build S3 URL from contract file information
+     *
+     * @param string $localFilePath
+     * @param object $contract
+     * @return string
+     */
+    protected function buildS3Url($localFilePath, $contract = null)
+    {
+        // Extract the filename from the local path
+        $filename = basename($localFilePath);
+        
+        // Use provided contract or fall back to current contract_id
+        $contractId = $contract ? $contract->id : $this->contract_id;
+        
+        // Construct S3 URL based on how files are stored
+        $bucket = env('AWS_BUCKET');
+        
+        // Check if the file exists in the root of the bucket or in a contract-specific folder
+        if ($this->storage->disk('s3')->exists($filename)) {
+            $s3Url = "s3://{$bucket}/{$filename}";
+            $this->logger->info("File found in root bucket", ['s3Url' => $s3Url]);
+            return $s3Url;
+        } else {
+            $s3Url = "s3://{$bucket}/{$contractId}/{$filename}";
+            $this->logger->info("File found in contract folder", ['s3Url' => $s3Url]);
+            return $s3Url;
         }
     }
 
@@ -300,8 +339,11 @@ class ProcessService
 
         $writeFolderPath = $this->getContractDirectory($contract->id);
         $readFilePath    = sprintf('%s/app/%s', storage_path(), $contract->file);
+        
+        // Also construct the S3 path for Textract processing
+        $s3FilePath = $this->buildS3Url($readFilePath, $contract);
 
-        return [$writeFolderPath, $readFilePath];
+        return [$writeFolderPath, $readFilePath, $s3FilePath];
     }
 
     /**
