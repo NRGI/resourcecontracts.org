@@ -34,7 +34,8 @@ RUN apt-get update && apt-get install -y \
                     gettext \
                     python3 \
                     python3-pip \
-                    python3-venv 
+                    python3-venv \
+                    cron 
 
 RUN wget http://launchpadlibrarian.net/383018194/pdftk-java_0.0.0+20180723.1-1_all.deb
 RUN apt install default-jre-headless libcommons-lang3-java libbcprov-java -y
