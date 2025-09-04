@@ -256,35 +256,6 @@ class ProcessService
         }
     }
 
-    /**
-     * Build S3 URL from contract file information
-     *
-     * @param string $localFilePath
-     * @param object $contract
-     * @return string
-     */
-    protected function buildS3Url($localFilePath, $contract = null)
-    {
-        // Extract the filename from the local path
-        $filename = basename($localFilePath);
-        
-        // Use provided contract or fall back to current contract_id
-        $contractId = $contract ? $contract->id : $this->contract_id;
-        
-        // Construct S3 URL based on how files are stored
-        $bucket = env('AWS_BUCKET');
-        
-        // Check if the file exists in the root of the bucket or in a contract-specific folder
-        if ($this->storage->disk('s3')->exists($filename)) {
-            $s3Url = "s3://{$bucket}/{$filename}";
-            $this->logger->info("File found in root bucket", ['s3Url' => $s3Url]);
-            return $s3Url;
-        } else {
-            $s3Url = "s3://{$bucket}/{$contractId}/{$filename}";
-            $this->logger->info("File found in contract folder", ['s3Url' => $s3Url]);
-            return $s3Url;
-        }
-    }
 
     /**
      * @param $contractId
@@ -320,11 +291,15 @@ class ProcessService
     {
         $this->logger->info('Download started...', ['file' => $contract->file]);
         $pdfFile = '';
+        $bucket = env('AWS_BUCKET');
+        $s3FilePath = '';
         try {
             if ($this->storage->disk('s3')->exists($contract->file)) {
                 $pdfFile = $this->storage->disk('s3')->get($contract->file);
+                $s3FilePath = "s3://{$bucket}/{$contract->file}";
             } else {
                 $pdfFile = $this->storage->disk('s3')->get($contract->id.'/'.$contract->file);
+                $s3FilePath = "s3://{$bucket}/{$contract->id}/{$contract->file}";
             }
         } catch (\Exception $e) {
             $this->logger->error($e->getMessage(), ['contract id' => $contract->id, 'file' => $contract->file]);
@@ -339,8 +314,6 @@ class ProcessService
         $writeFolderPath = $this->getContractDirectory($contract->id);
         $readFilePath    = sprintf('%s/app/%s', storage_path(), $contract->file);
         
-        // Also construct the S3 path for Textract processing
-        $s3FilePath = $this->buildS3Url($readFilePath, $contract);
 
         return [$writeFolderPath, $readFilePath, $s3FilePath];
     }
