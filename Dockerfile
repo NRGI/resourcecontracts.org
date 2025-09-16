@@ -15,13 +15,12 @@ RUN apt-get update && apt-get install -y \
  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+RUN apt-get update && apt-get install -y \
                     apache2 \
                     php7.4 \
                     php7.4-cli \
                     php7.4-curl \
                     php7.4-mbstring \
-                    php7.4-mcrypt \
                     php7.4-pgsql \
                     php7.4-readline \
                     php7.4-xml \
@@ -33,7 +32,10 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
                     poppler-utils \
                     supervisor \
                     gettext \
-                    postgresql 
+                    python3 \
+                    python3-pip \
+                    python3-venv \
+                    cron 
 
 RUN wget http://launchpadlibrarian.net/383018194/pdftk-java_0.0.0+20180723.1-1_all.deb
 RUN apt install default-jre-headless libcommons-lang3-java libbcprov-java -y
@@ -84,7 +86,12 @@ COPY . /var/www/rc-admin
 
 WORKDIR /var/www/
 # Clone pdf-processor after copying project files to make sure we defeat the cache to get latest code
-RUN git clone https://github.com/NRGI/pdf-processor.git
+RUN git clone -b feature/textract https://github.com/NRGI/pdf-processor.git
+
+# Install Python dependencies for pdf-processor
+WORKDIR /var/www/pdf-processor
+RUN python3 -m pip install -r requirements.txt
+WORKDIR /var/www/
 
 RUN mkdir /shared_path \
  && mkdir -p /shared_path/rc-admin/data \
