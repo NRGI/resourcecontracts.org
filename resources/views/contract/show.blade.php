@@ -61,6 +61,9 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 									   class="btn btn-default">
 										@lang('contract.annotate_contract')
 									</a>
+									<a href="#" class="btn btn-default">
+										@lang('contract.translate_contract')
+									</a>
 								</div>
 							@elseif($status == $contract_processing_failed)
 								<div class="status"><strong>@lang('contract.status')</strong>: @lang('Failed')
@@ -91,6 +94,33 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 				<a class="btn btn-default" href="{{route('contract.comment.list',['id' => $contract->id])}}">
 					@lang('contract.view_all')
 				</a>
+			</div>
+
+			<div class="translation-status-wrapper block block__user">
+				<ul>
+					<li class="name-value-wrap">
+						<span class="name"><strong>@lang('contract.translation_status'):</strong></span>
+						<span class="value">
+							@if($contract->translation_status)
+								@lang('contract.translation_status_' . strtolower($contract->translation_status->status ?? 'not_started'))
+							@else
+								@lang('contract.translation_status_not_started')
+							@endif
+						</span>
+					</li>
+					@if($contract->translation_status && $contract->translation_status->last_initiated)
+					<li class="name-value-wrap">
+						<span class="name"><strong>@lang('contract.translation_last_initiated'):</strong></span>
+						<span class="value">{{ $contract->translation_status->last_initiated }}</span>
+					</li>
+					@endif
+					@if($contract->translation_status && !is_null($contract->translation_status->pages_translated))
+					<li class="name-value-wrap">
+						<span class="name"><strong>@lang('contract.translation_pages_translated'):</strong></span>
+						<span class="value">{{ $contract->translation_status->pages_translated }}</span>
+					</li>
+					@endif
+				</ul>
 			</div>
 
 			<div class="user-wrapper block block__user">

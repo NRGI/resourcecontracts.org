@@ -93,6 +93,7 @@ class PageRepository implements PageRepositoryInterface
     {
         $page       = $this->page->firstOrNew(['contract_id' => $pageDetail['contract_id'], 'page_no' => $pageDetail['page_no']]);
         $page->text = $pageDetail['text'];
+        $page->is_translation_valid = false;
         return $page->save();
     }
 

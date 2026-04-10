@@ -23,6 +23,7 @@ use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
  * @property int updated_by
  * @property string metadata_status
  * @property string text_status
+ * @property object translation_status
  * @property int created_user
  * @property string file_url
  * @property string slug
@@ -108,6 +109,13 @@ class Contract extends Model
      */
     const NEEDS_FULL_TRANSCRIPTION = 3;
     /**
+     * Translation statuses
+     */
+    const TRANSLATION_NOT_STARTED = 'NOT_STARTED';
+    const TRANSLATION_IN_PROGRESS = 'IN_PROGRESS';
+    const TRANSLATION_COMPLETED   = 'COMPLETED';
+    const TRANSLATION_FAILED      = 'FAILED';
+    /**
      * The database table used by the model.
      *
      * @var string
@@ -127,13 +135,15 @@ class Contract extends Model
         'textType',
         'metadata_status',
         'text_status',
-        'publishing_date'
+        'publishing_date',
+        'translation_status',
     ];
     /**
      * @var array
      */
     protected $casts = [
-        'metadata_trans' => 'object',
+        'metadata_trans'     => 'object',
+        'translation_status' => 'object',
     ];
 
     /**
