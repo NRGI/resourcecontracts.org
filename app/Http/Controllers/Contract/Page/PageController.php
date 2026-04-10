@@ -171,11 +171,11 @@ class PageController extends Controller
     public function getText($contractID, Request $request)
     {
         $page_no = $request->input('page');
-        $lang    = $request->input('lang');
+        $lang    = $request->input('translationLang');
         $page    = $this->page->getText($contractID, $page_no);
 
         $langField = in_array($lang, ['en', 'es', 'fr']) ? 'text_' . $lang : null;
-        $text      = ($langField && !empty($page->$langField)) ? $page->$langField : $page->text;
+        $text      = $langField ? ($page->$langField ?? '') : $page->text;
 
         return response()->json(
             [
@@ -246,7 +246,12 @@ class PageController extends Controller
     public function review(Request $request, $contractId, LanguageService $lang)
     {
         try {
-            $back     = $request->server('HTTP_REFERER');
+            $referer    = $request->server('HTTP_REFERER');
+            $sessionKey = 'review_back_' . $contractId;
+            if ($referer && strpos($referer, route('contract.review', $contractId)) === false) {
+                session([$sessionKey => $referer]);
+            }
+            $back = session($sessionKey, $referer);
             $page     = $this->page->getText($contractId, $request->input('page', '1'));
             $contract = $this->contract->findWithPages($contractId);
             $pages    = $contract->pages;

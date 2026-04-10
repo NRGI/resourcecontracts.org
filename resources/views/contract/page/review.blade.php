@@ -5,14 +5,6 @@
 	<link rel="stylesheet" href="{{ url('css/contract-review.css') }}">
 @stop
 @section('content')
-	<div style="padding: 6px 12px; background: #f5f5f5; border-bottom: 1px solid #ddd;">
-		<select id="translation-variant-select" class="form-control" style="display:inline-block; width:auto;">
-			<option value="" {{ request('lang') == '' ? 'selected' : '' }}>@lang('contract.original_text')</option>
-			<option value="en" {{ request('lang') == 'en' ? 'selected' : '' }}>English</option>
-			<option value="es" {{ request('lang') == 'es' ? 'selected' : '' }}>Spanish</option>
-			<option value="fr" {{ request('lang') == 'fr' ? 'selected' : '' }}>French</option>
-		</select>
-	</div>
 	<div id="content"></div>
 @endsection
 @section('script')
@@ -40,21 +32,13 @@
 		};
 		var TRANSLATION_LANG = {!!json_encode($translationLang)!!};
 		var saveApi = "{{route('contract.page.store', ['id'=>$contract->id])}}";
-		var translationVariant = "{{ request('lang', '') }}";
-		var loadApi = "{{route('contract.page.get', ['id'=>$contract->id])}}" + (translationVariant ? "?lang=" + translationVariant : "");
+		var translationVariant = "{{ request('translationLang', '') }}";
+		var loadApi = "{{route('contract.page.get', ['id'=>$contract->id])}}" + (translationVariant ? "?translationLang=" + translationVariant : "");
 		var publishApi = "{{route('contract.page.publish',['id'=>$contract->id])}}";
 	</script>
 	<script src="{{ asset('assets/js/review.js') }}"></script>
 	<script>
-		document.getElementById('translation-variant-select').addEventListener('change', function () {
-			var lang = this.value;
-			var url  = new URL(window.location.href);
-			if (lang) {
-				url.searchParams.set('lang', lang);
-			} else {
-				url.searchParams.delete('lang');
-			}
-			window.location.href = url.toString();
-		});
+		window.translationSelectLabel = '{{ trans('contract.original_text') }}';
 	</script>
+	<script src="{{ asset('js/translation-select.js') }}"></script>
 @stop
