@@ -171,14 +171,19 @@ class PageController extends Controller
     public function getText($contractID, Request $request)
     {
         $page_no = $request->input('page');
+        $lang    = $request->input('lang');
         $page    = $this->page->getText($contractID, $page_no);
+
+        $langField = in_array($lang, ['en', 'es', 'fr']) ? 'text_' . $lang : null;
+        $text      = ($langField && !empty($page->$langField)) ? $page->$langField : $page->text;
 
         return response()->json(
             [
-                'result'  => 'success',
-                'id'      => $page->id,
-                'pdf'     => $page->pdf_url,
-                'message' => $page->text,
+                'result'               => 'success',
+                'id'                   => $page->id,
+                'pdf'                  => $page->pdf_url,
+                'message'              => $text,
+                'is_translation_valid' => $page->is_translation_valid,
             ]
         );
     }
