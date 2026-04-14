@@ -1,5 +1,9 @@
 {
   "private": true,
+  "overrides": {
+    "lodash": "4.18.1",
+    "lodash.template": "4.18.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
