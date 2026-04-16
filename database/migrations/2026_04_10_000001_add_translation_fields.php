@@ -13,7 +13,7 @@ class AddTranslationFields extends Migration
     public function up()
     {
         Schema::table('contracts', function (Blueprint $table) {
-            $table->json('translation_status')->nullable()->after('publishing_date');
+            $table->enum('translation_status', ['PENDING', 'IN_PROGRESS', 'COMPLETED', 'FAILED'])->nullable()->after('publishing_date');
         });
     }
 

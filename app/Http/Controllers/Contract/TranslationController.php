@@ -62,11 +62,7 @@ class TranslationController extends Controller
         }
 
         try {
-            $contract->translation_status = [
-                'status'           => Contract::TRANSLATION_IN_PROGRESS,
-                'last_initiated'   => now()->toIso8601String(),
-                'pages_translated' => 0,
-            ];
+            $contract->translation_status = Contract::TRANSLATION_IN_PROGRESS;
             $contract->save();
 
             $lambda = LambdaClient::factory([
@@ -98,11 +94,7 @@ class TranslationController extends Controller
                 'error'       => $e->getMessage(),
             ]);
 
-            $contract->translation_status = [
-                'status'           => Contract::TRANSLATION_FAILED,
-                'last_initiated'   => $contract->translation_status->last_initiated ?? null,
-                'pages_translated' => $contract->translation_status->pages_translated ?? 0,
-            ];
+            $contract->translation_status = Contract::TRANSLATION_FAILED;
             $contract->save();
 
             return response()->json(['result' => 'fail', 'message' => trans('contract.translation_failed')], 500);

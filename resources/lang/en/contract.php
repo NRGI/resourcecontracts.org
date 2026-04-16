@@ -83,6 +83,7 @@ return [
     'original_text'                        => "Original Text",
     'translation_status'                   => "Translation Status",
     'translation_status_not_started'       => "Not Started",
+    'translation_status_pending'           => "Pending",
     'translation_status_in_progress'       => "In Progress",
     'translation_status_completed'         => "Completed",
     'translation_status_failed'            => "Failed",
