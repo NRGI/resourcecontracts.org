@@ -142,7 +142,7 @@ class Contract extends Model
         'metadata_status',
         'text_status',
         'publishing_date',
-        'auto_annotation_status'
+        'auto_annotation_status',
         'translation_status',
     ];
     /**
