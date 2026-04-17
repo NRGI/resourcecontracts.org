@@ -23,6 +23,7 @@ $router->group(
         $router->get('contract/{id}/annotate', ['as' => 'contract.annotate', 'uses' => 'Page\PageController@annotate']);
         $router->get('contract/{id}/autoannotate', ['as' => 'contract.autoannotate', 'uses' => 'Page\PageController@autoAnnotate']);
         $router->get('contract/{id}/review', ['as' => 'contract.review', 'uses' => 'Page\PageController@review']);
+        $router->post('contract/{id}/translate', ['as' => 'contract.translate', 'uses' => 'TranslationController@invoke']);
         $router->get('contract/select/type', ['as' => 'contract.select.type', 'uses' => 'ContractController@contractType']);
         $router->any('contract/generate/name',['as' => 'contract.generate.name', 'uses' =>'ContractController@getContractName']);
         $router->get('contract/{id}/{lang}', ['as' => 'contract.show.trans', 'uses' => 'ContractController@show']);

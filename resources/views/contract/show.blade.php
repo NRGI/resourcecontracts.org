@@ -75,6 +75,9 @@ $contract_not_started_pipeline = \App\Nrgi\Entities\Contract\Contract::PROCESSIN
 									   class="btn btn-default">
 										@lang('contract.view_annotation')
 									</a>
+									<button class="btn btn-default" data-toggle="modal" data-target=".translate-contract-modal">
+										@lang('contract.translate_contract')
+									</button>
 								</div>
 							@elseif($status == $contract_processing_failed)
 								<div class="status"><strong>@lang('contract.status')</strong>: @lang('Failed')
@@ -105,6 +108,21 @@ $contract_not_started_pipeline = \App\Nrgi\Entities\Contract\Contract::PROCESSIN
 				<a class="btn btn-default" href="{{route('contract.comment.list',['id' => $contract->id])}}">
 					@lang('contract.view_all')
 				</a>
+			</div>
+
+			<div class="translation-status-wrapper block block__user">
+				<ul>
+					<li class="name-value-wrap">
+						<span class="name"><strong>@lang('contract.translation_status'):</strong></span>
+						<span class="value">
+							@lang('contract.translation_status_' . strtolower($contract->translation_status ?? 'not_started'))
+						</span>
+					</li>
+					<li class="name-value-wrap">
+						<span class="name"><strong>@lang('contract.translation_pages_translated'):</strong></span>
+						<span class="value">{{ $contract->translated_pages_count }}</span>
+					</li>
+				</ul>
 			</div>
 
 			<div class="user-wrapper block block__user">
@@ -558,6 +576,30 @@ $contract_not_started_pipeline = \App\Nrgi\Entities\Contract\Contract::PROCESSIN
 		</div>
 		@include('contract.partials.show.annotation_list')
 	</div>
+
+    {{-- Translate Contract Modal --}}
+    <div class="modal fade translate-contract-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">@lang('contract.translate_contract')</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="translate-modal-message">@lang('contract.translation_confirm')</p>
+                </div>
+                <div class="modal-footer" id="translate-modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@lang('contract.close')</button>
+                    <button type="button" class="btn btn-primary" id="translate-confirm-btn"
+                            data-url="{{ route('contract.translate', ['id' => $contract->id]) }}">
+                        @lang('global.form.ok')
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 
 @include('contract.partials.show.script')

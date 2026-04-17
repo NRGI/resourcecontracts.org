@@ -154,6 +154,30 @@ for ($i = 1; $i <= $page_count; $i++) {
 				$(".annotation-comment-modal #status").val(status);
 			});
 
+			$('#translate-confirm-btn').on('click', function () {
+				var btn = $(this);
+				btn.prop('disabled', true).text('@lang('contract.translation_initiating')');
+
+				$.ajax({
+					url: btn.data('url'),
+					type: 'POST',
+					dataType: 'json',
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+					},
+					success: function () {
+						$('#translate-modal-message').text('@lang('contract.translation_request_sent')');
+						$('#translate-modal-footer').html(
+							'<button type="button" class="btn btn-default" data-dismiss="modal">@lang('contract.close')</button>'
+						);
+					},
+					error: function () {
+						$('#translate-modal-message').text('@lang('contract.translation_failed')');
+						btn.prop('disabled', false).text('@lang('global.form.ok')');
+					}
+				});
+			});
+
 		})
 	</script>
 @stop

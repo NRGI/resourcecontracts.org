@@ -23,6 +23,7 @@ use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
  * @property int updated_by
  * @property string metadata_status
  * @property string text_status
+ * @property string translation_status
  * @property int created_user
  * @property string file_url
  * @property string slug
@@ -113,6 +114,13 @@ class Contract extends Model
      */
     const NEEDS_FULL_TRANSCRIPTION = 3;
     /**
+     * Translation statuses
+     */
+    const TRANSLATION_PENDING     = 'PENDING';
+    const TRANSLATION_IN_PROGRESS = 'IN_PROGRESS';
+    const TRANSLATION_COMPLETED   = 'COMPLETED';
+    const TRANSLATION_FAILED      = 'FAILED';
+    /**
      * The database table used by the model.
      *
      * @var string
@@ -135,12 +143,14 @@ class Contract extends Model
         'text_status',
         'publishing_date',
         'auto_annotation_status'
+        'translation_status',
     ];
     /**
      * @var array
      */
     protected $casts = [
-        'metadata_trans' => 'object',
+        'metadata_trans'     => 'object',
+        'translation_status' => 'string',
     ];
 
     /**
@@ -321,6 +331,11 @@ class Contract extends Model
     public function pages()
     {
         return $this->hasMany('App\Nrgi\Entities\Contract\Page\Page');
+    }
+
+    public function getTranslatedPagesCountAttribute()
+    {
+        return $this->pages()->where('translation_status', self::TRANSLATION_COMPLETED)->count();
     }
 
     /**

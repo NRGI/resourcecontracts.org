@@ -32,8 +32,13 @@
 		};
 		var TRANSLATION_LANG = {!!json_encode($translationLang)!!};
 		var saveApi = "{{route('contract.page.store', ['id'=>$contract->id])}}";
-		var loadApi = "{{route('contract.page.get', ['id'=>$contract->id])}}";
+		var translationVariant = "{{ request('translationLang', '') }}";
+		var loadApi = "{{route('contract.page.get', ['id'=>$contract->id])}}" + (translationVariant ? "?translationLang=" + translationVariant : "");
 		var publishApi = "{{route('contract.page.publish',['id'=>$contract->id])}}";
 	</script>
 	<script src="{{ asset('assets/js/review.js') }}"></script>
+	<script>
+		window.translationSelectLabel = '{{ trans('contract.original_text') }}';
+	</script>
+	<script src="{{ asset('js/translation-select.js') }}"></script>
 @stop

@@ -76,7 +76,7 @@ function getS3FileURL($fileName = '')
                    ->getDriver()
                    ->getAdapter()
                    ->getClient()
-                   ->getObjectUrl(env('AWS_BUCKET'), $fileName);
+                   ->getObjectUrl(config('filesystems.disks.s3.bucket'), $fileName);
 }
 
 /**
