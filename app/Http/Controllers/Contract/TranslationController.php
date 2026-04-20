@@ -67,10 +67,10 @@ class TranslationController extends Controller
 
             $lambda = LambdaClient::factory([
                 'version' => 'latest',
-                'region'  => env('AWS_DEFAULT_REGION', 'us-east-1'),
+                'region'  => env('AWS_REGION', 'us-east-1'),
                 'credentials' => [
-                    'key'    => env('AWS_ACCESS_KEY_ID'),
-                    'secret' => env('AWS_SECRET_ACCESS_KEY'),
+                    'key'    => env('AWS_KEY'),
+                    'secret' => env('AWS_SECRET'),
                 ],
             ]);
 
