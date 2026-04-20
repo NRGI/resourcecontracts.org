@@ -101,12 +101,16 @@ $contract_processing_pipline = \App\Nrgi\Entities\Contract\Contract::PROCESSING_
 					<li class="name-value-wrap">
 						<span class="name"><strong>@lang('contract.translation_status'):</strong></span>
 						<span class="value">
-							@lang('contract.translation_status_' . strtolower($contract->translation_status ?? 'not_started'))
+							@if($contract->translation_status === 'COMPLETED' && $contract->translated_pages_count < $contract->total_translatable_pages_count)
+								@lang('contract.translation_status_completed_partial')
+							@else
+								@lang('contract.translation_status_' . strtolower($contract->translation_status ?? 'not_started'))
+							@endif
 						</span>
 					</li>
 					<li class="name-value-wrap">
 						<span class="name"><strong>@lang('contract.translation_pages_translated'):</strong></span>
-						<span class="value">{{ $contract->translated_pages_count }}</span>
+						<span class="value">{{ $contract->translated_pages_count }}/{{ $contract->total_translatable_pages_count }}</span>
 					</li>
 				</ul>
 			</div>

@@ -327,6 +327,11 @@ class Contract extends Model
         return $this->pages()->where('translation_status', self::TRANSLATION_COMPLETED)->count();
     }
 
+    public function getTotalTranslatablePagesCountAttribute()
+    {
+        return $this->pages()->whereNotNull('text')->where('text', '!=', '')->count();
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
