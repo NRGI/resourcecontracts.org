@@ -90,6 +90,7 @@ return [
     'translation_status_pending'           => "Pending",
     'translation_status_in_progress'       => "In Progress",
     'translation_status_completed'         => "Completed",
+    'translation_status_completed_partial' => "Completed — Some pages failed",
     'translation_status_failed'            => "Failed",
     'translation_last_initiated'           => "Last Initiated",
     'translation_pages_translated'         => "Pages Translated",
