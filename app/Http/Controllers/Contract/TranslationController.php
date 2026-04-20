@@ -97,7 +97,7 @@ class TranslationController extends Controller
             $contract->translation_status = Contract::TRANSLATION_FAILED;
             $contract->save();
 
-            return response()->json(['result' => 'fail', 'message' => trans('contract.translation_failed')], 500);
+            return response()->json(['result' => 'fail', 'message' => trans('contract.translation_failed'), 'error' => $e->getMessage()], 500);
         }
     }
 }
