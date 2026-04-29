@@ -45840,7 +45840,8 @@ var TextEditorContainer = React.createClass({
       url: this.props.saveApi,
       data: {
         text: $('.text-annotator').html(),
-        page: this.state.page_no
+        page: this.state.page_no,
+        translationLang: (typeof translationVariant !== 'undefined' ? translationVariant : '')
       },
       type: 'POST'
     }).success(function (response) {

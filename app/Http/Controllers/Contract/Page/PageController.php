@@ -147,8 +147,9 @@ class PageController extends Controller
     {
         $text = preg_replace('/(<[^>]+) style=".*?"/i', '$1', $request->input('text'));
         $text = strip_tags($text, "<br><br/><p>");
+        $lang = $request->input('translationLang');
 
-        if ($this->page->saveText($id, $request->input('page'), $text)) {
+        if ($this->page->saveText($id, $request->input('page'), $text, true, $lang)) {
             $contract              = $contract->find($id);
             $text_status           = $contract->text_status;
             $contract->text_status = $text_status == Contract::STATUS_PUBLISHED ? Contract::STATUS_PUBLISHED : Contract::STATUS_DRAFT;
