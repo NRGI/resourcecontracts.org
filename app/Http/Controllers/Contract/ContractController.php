@@ -427,8 +427,11 @@ class ContractController extends Controller
     public function contractComment($contract_id, Request $request, Guard $auth)
     {
         $status = $request->get('status');
+        $type   = $request->get('type');
+        # Translation publish/unpublish piggybacks on text permissions.
+        $permissionType = $type === 'translation' ? 'text' : $type;
 
-        if (!$auth->user()->can(sprintf('%s-%s', config('nrgi.permission')[$status], $request->get('type')))) {
+        if (!$auth->user()->can(sprintf('%s-%s', config('nrgi.permission')[$status], $permissionType))) {
             return back()->withError('Permission denied.');
         }
 
@@ -511,6 +514,21 @@ class ContractController extends Controller
         }
         $status = "published";
         $types  = ["metadata", "text"];
+
+        # Include translation in publish-all when its lifecycle is past the
+        # Lambda phase. PENDING / IN_PROGRESS / FAILED / null mean it isn't
+        # ready or doesn't exist; COMPLETED, published, and unpublished all
+        # represent a translation that can be (re-)published.
+        $contract = $this->contract->find($contract_id);
+        $translationPublishable = [
+            \App\Nrgi\Entities\Contract\Contract::TRANSLATION_COMPLETED,
+            \App\Nrgi\Entities\Contract\Contract::STATUS_PUBLISHED,
+            \App\Nrgi\Entities\Contract\Contract::STATUS_UNPUBLISHED,
+        ];
+        if ($contract && in_array($contract->translation_status, $translationPublishable, true)) {
+            $types[] = "translation";
+        }
+
         foreach ($types as $type) {
             if (!$this->contract->updateStatus($contract_id, $status, $type)
             ) {

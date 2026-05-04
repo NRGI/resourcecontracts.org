@@ -188,12 +188,13 @@ class ElasticSearchService
      */
     public function postText($id, $showText = true, $generateWord = true)
     {
-        $contract = $this->contract->findWithPages($id);
+        $contract        = $this->contract->findWithPages($id);
+        $showTranslation = $contract->translation_status == \App\Nrgi\Entities\Contract\Contract::STATUS_PUBLISHED;
         $pages    = [
             'contract_id'         => $contract->id,
             'open_contracting_id' => $contract->metadata->open_contracting_id,
             'total_pages'         => $contract->pages->count(),
-            'pages'               => $this->formatPdfTextPages($contract, $showText),
+            'pages'               => $this->formatPdfTextPages($contract, $showText, $showTranslation),
             'metadata'            => $this->getMetadataForES($contract->metadata),
         ];
 
@@ -263,6 +264,17 @@ class ElasticSearchService
     }
 
     /**
+     * Re-index pages so translation columns appear/disappear in ES
+     * based on the current translation_status.
+     *
+     * @param $id
+     */
+    public function postTranslation($id)
+    {
+        $this->postText($id, true, false);
+    }
+
+    /**
      * Delete contract in elastic search
      *
      * @param $contract_id
@@ -286,16 +298,21 @@ class ElasticSearchService
      *
      * @return string
      */
-    public function formatPdfTextPages($contract, $showText)
+    public function formatPdfTextPages($contract, $showText, $showTranslation = false)
     {
-        if ($showText) {
-            return $contract->pages->toJson();
-        }
-
         $contractPagesArray = [];
 
         foreach ($contract->pages->toArray() as $array) {
-            $array['text']        = "";
+            if (!$showText) {
+                $array['text'] = "";
+            }
+
+            if (!$showTranslation) {
+                $array['text_en'] = null;
+                $array['text_es'] = null;
+                $array['text_fr'] = null;
+            }
+
             $contractPagesArray[] = $array;
         }
 
@@ -346,6 +363,22 @@ class ElasticSearchService
             $this->postText($id, false);
             $this->postMetadata($id);
             $this->logger->info('Text deleted from Elastic Search.');
+        } catch (Exception $e) {
+            $this->logger->error($e->getMessage());
+        }
+    }
+
+    /**
+     * Strip translation columns from elasticsearch by re-indexing
+     * with translation_status no longer at 'published'.
+     *
+     * @param $id
+     */
+    public function deleteTranslation($id)
+    {
+        try {
+            $this->postText($id, true, false);
+            $this->logger->info('Translation removed from Elastic Search.');
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }

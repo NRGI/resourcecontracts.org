@@ -142,15 +142,21 @@ class PageService
      * @param bool $log
      * @return bool
      */
-    public function saveText($contractID, $page_no, $text, $log = true)
+    public function saveText($contractID, $page_no, $text, $log = true, $lang = null)
     {
+        $field       = in_array($lang, ['en', 'es', 'fr']) ? 'text_' . $lang : 'text';
         $page_detail = [
             'contract_id' => $contractID,
             'page_no'     => $page_no,
-            'text'        => $text
+            'field'       => $field,
+            'text'        => $text,
         ];
         try {
-            $this->page->updateOrCreate($page_detail);
+            $page = $this->page->updateOrCreate($page_detail);
+
+            if (!$page) {
+                return false;
+            }
 
             if ($log) {
                 $this->nrgiLogService->activity(
@@ -165,10 +171,11 @@ class PageService
                 [
                     'Contract id' => $contractID,
                     'Page id '    => $page_no,
+                    'field'       => $field,
                 ]
             );
 
-            return true;
+            return $page;
 
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());

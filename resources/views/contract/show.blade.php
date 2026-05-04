@@ -75,9 +75,16 @@ $contract_not_started_pipeline = \App\Nrgi\Entities\Contract\Contract::PROCESSIN
 									   class="btn btn-default">
 										@lang('contract.view_annotation')
 									</a>
-									<button class="btn btn-default" data-toggle="modal" data-target=".translate-contract-modal">
-										@lang('contract.translate_contract')
-									</button>
+									@if($contract->translation_status === \App\Nrgi\Entities\Contract\Contract::STATUS_PUBLISHED)
+										<button class="btn btn-default" disabled
+												title="@lang('contract.translation_block_published')">
+											@lang('contract.translate_contract')
+										</button>
+									@else
+										<button class="btn btn-default" data-toggle="modal" data-target=".translate-contract-modal">
+											@lang('contract.translate_contract')
+										</button>
+									@endif
 								</div>
 							@elseif($status == $contract_processing_failed)
 								<div class="status"><strong>@lang('contract.status')</strong>: @lang('Failed')
@@ -115,7 +122,7 @@ $contract_not_started_pipeline = \App\Nrgi\Entities\Contract\Contract::PROCESSIN
 					<li class="name-value-wrap">
 						<span class="name"><strong>@lang('contract.translation_status'):</strong></span>
 						<span class="value">
-							@if($contract->translation_status === 'COMPLETED' && $contract->translated_pages_count < $contract->total_translatable_pages_count)
+							@if($contract->translation_status === \App\Nrgi\Entities\Contract\Contract::TRANSLATION_COMPLETED && $contract->translated_pages_count < $contract->total_translatable_pages_count)
 								@lang('contract.translation_status_completed_partial')
 							@else
 								@lang('contract.translation_status_' . strtolower($contract->translation_status ?? 'not_started'))

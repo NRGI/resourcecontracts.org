@@ -668,7 +668,13 @@ class ContractService
             $old_status            = $contract->$status_key;
             $contract->$status_key = $status;
             if ($status == Contract::STATUS_UNPUBLISHED) {
-                $contract->$status_key = ($old_status == Contract::STATUS_PUBLISHED) ? 'draft' : $old_status;
+                # Translation has no review pipeline, so 'unpublished' is its
+                # own resting state. Other types collapse unpublished → draft.
+                if ($type === 'translation') {
+                    $contract->$status_key = Contract::STATUS_UNPUBLISHED;
+                } else {
+                    $contract->$status_key = ($old_status == Contract::STATUS_PUBLISHED) ? 'draft' : $old_status;
+                }
             }
 
             $publishing_date = isset($contract->publishing_date) ?json_decode($contract->publishing_date, true) : array();
@@ -1000,8 +1006,25 @@ class ContractService
                 $id
             );
 
+            if (!empty($elementStatus['translation_status']) && $elementStatus['translation_status'] == "published") {
+                $this->nrgiLogService->activity(
+                    'contract.log.status',
+                    [
+                        'type'       => 'translation',
+                        'old_status' => $elementStatus['translation_status'],
+                        'new_status' => 'unpublished',
+                    ],
+                    $id
+                );
+            }
+
             $contract->metadata_status = ($elementStatus['metadata_status'] == "published") ? Contract::STATUS_DRAFT : $elementStatus['metadata_status'];
             $contract->text_status     = ($elementStatus['text_status'] == "published") ? Contract::STATUS_DRAFT : $elementStatus['text_status'];
+            # Only flip translation back to unpublished if it was actually published.
+            # Lambda lifecycle states (PENDING / IN_PROGRESS / COMPLETED / FAILED) are preserved.
+            if (isset($elementStatus['translation_status']) && $elementStatus['translation_status'] == "published") {
+                $contract->translation_status = Contract::STATUS_UNPUBLISHED;
+            }
             $contract->save();
 
             $annStatus = ($elementStatus['annotation_status'] == "published") ? Annotation::DRAFT : $elementStatus['annotation_status'];

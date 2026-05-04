@@ -91,10 +91,11 @@ class PageRepository implements PageRepositoryInterface
      */
     public function updateOrCreate(array $pageDetail)
     {
-        $page       = $this->page->firstOrNew(['contract_id' => $pageDetail['contract_id'], 'page_no' => $pageDetail['page_no']]);
-        $page->text = $pageDetail['text'];
+        $page        = $this->page->firstOrNew(['contract_id' => $pageDetail['contract_id'], 'page_no' => $pageDetail['page_no']]);
+        $field       = $pageDetail['field'] ?? 'text';
+        $page->$field = $pageDetail['text'];
         $page->is_translation_valid = false;
-        return $page->save();
+        return $page->save() ? $page : false;
     }
 
 
