@@ -54,6 +54,16 @@ class TranslationController extends Controller
             return response()->json(['result' => 'fail', 'message' => trans('contract.not_found')], 404);
         }
 
+        # Translations that are live in ES must be unpublished before retranslating.
+        # Lambda lifecycle states (PENDING / IN_PROGRESS / FAILED) are intentionally
+        # NOT blocked — editors need an escape hatch when a Lambda run gets stuck.
+        if ($contract->translation_status === Contract::STATUS_PUBLISHED) {
+            return response()->json([
+                'result'  => 'fail',
+                'message' => trans('contract.translation_block_published'),
+            ], 409);
+        }
+
         $lambdaArn = env('TRANSLATION_LAMBDA_FUNCTION');
 
         if (empty($lambdaArn)) {

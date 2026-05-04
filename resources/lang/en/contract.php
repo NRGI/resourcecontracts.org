@@ -88,6 +88,8 @@ return [
     'translation_status_completed'         => "Completed",
     'translation_status_completed_partial' => "Completed — Some pages failed",
     'translation_status_failed'            => "Failed",
+    'translation_status_published'         => "Published",
+    'translation_status_unpublished'       => "Unpublished",
     'translation_last_initiated'           => "Last Initiated",
     'translation_pages_translated'         => "Pages Translated",
     'translation_confirm'                  => "Are you sure you want to initiate translation of this contract?",
@@ -95,6 +97,7 @@ return [
     'translation_request_sent'             => "Request successfully sent for translating this contract.",
     'translation_failed'                   => "Translation could not be initiated. Please try again.",
     'translation_not_configured'           => "Translation service is not configured.",
+    'translation_block_published'          => "Unpublish the translation before retranslating.",
     'editing'                              => "Editing",
     'created_by'                           => "Created By",
     'last_modified_by'                     => "Last modified by",
@@ -277,4 +280,6 @@ return [
     'text_published'          => 'Text published',
     'annotation_published'          => 'Annotation published',
     'translation_available_in'      => 'Translation available in:',
+    'translation'                   => 'Translation',
+    'translation_published'         => 'Translation published',
 ];

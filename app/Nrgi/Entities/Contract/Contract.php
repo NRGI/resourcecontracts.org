@@ -111,10 +111,10 @@ class Contract extends Model
     /**
      * Translation statuses
      */
-    const TRANSLATION_PENDING     = 'PENDING';
-    const TRANSLATION_IN_PROGRESS = 'IN_PROGRESS';
-    const TRANSLATION_COMPLETED   = 'COMPLETED';
-    const TRANSLATION_FAILED      = 'FAILED';
+    const TRANSLATION_PENDING     = 'pending';
+    const TRANSLATION_IN_PROGRESS = 'in_progress';
+    const TRANSLATION_COMPLETED   = 'completed';
+    const TRANSLATION_FAILED      = 'failed';
     /**
      * The database table used by the model.
      *

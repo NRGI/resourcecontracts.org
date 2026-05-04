@@ -86,6 +86,7 @@ $annotLastPublished   = isset($annotationArray[0]['last_published']) ? $annotati
                         {!!Form::hidden('metadata_status',$contract->metadata_status  )!!}
                         {!!Form::hidden('text_status', $contract->text_status )!!}
                         {!!Form::hidden('annotation_status', $annotationStatus )!!}
+                        {!!Form::hidden('translation_status', $contract->translation_status )!!}
                         {!!Form::button(trans('contract.unpublish.all'), ['type'=>'submit','class'=>'btn btn-danger btn-sm confirm',
                         'data-confirm'=>trans('contract.unpublish.confirm')])!!}
                         {!!Form::close()!!}
@@ -131,6 +132,12 @@ $annotLastPublished   = isset($annotationArray[0]['last_published']) ? $annotati
                 <strong>@lang('annotation.annotation'):</strong>
             </td>
             @include('contract.partials.show.annotation_status')
+        </tr>
+        <tr>
+            <td>
+                <strong>@lang('contract.translation'):</strong>
+            </td>
+            @include('contract.partials.show.translation_status')
         </tr>
 
         </tbody>
