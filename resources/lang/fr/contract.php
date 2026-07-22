@@ -264,5 +264,6 @@ return [
     'metadata_published'          => 'Métadonnées publiées',
     'text_published'          => 'Texte publié',
     'annotation_published'          => 'Annotation publiée',
+    'translation_published'         => 'Traduction publiée',
     'translation_available_in'      => 'Traduction disponible en:',
 ];

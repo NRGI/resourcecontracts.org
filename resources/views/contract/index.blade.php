@@ -134,6 +134,12 @@
 									@lang('contract.annotation_published')
 							</span>
 							@endif
+							@if($contract->translation_status == \App\Nrgi\Entities\Contract\Contract::STATUS_PUBLISHED)
+								<span class="published">
+								<i class="glyphicon glyphicon-ok"></i>
+									@lang('contract.translation_published')
+							</span>
+							@endif
 							<div class="contract-info-list">
 								<span class="info">
 									<i class="glyphicon glyphicon-time"></i>
