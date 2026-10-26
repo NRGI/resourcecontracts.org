@@ -33,7 +33,7 @@
 	<p><a href="#instructions" class="see_other_instruction">See other instructions</a></p>
     <?php endif;?>
 
-    <?php $external_mturk_url = (env('MTURK_SANDBOX')) ? "https://workersandbox.mturk.com/mturk/externalSubmit" : "https://www.mturk.com/mturk/externalSubmit"; ?>
+    <?php $external_mturk_url = (config('mturk.sandbox_mode')) ? "https://workersandbox.mturk.com/mturk/externalSubmit" : "https://www.mturk.com/mturk/externalSubmit"; ?>
 	<form id="mturk_form" method="post" accept-charset="utf-8" action="<?php echo $external_mturk_url; ?>">
 		<input type="hidden" name="workerId" value="<?php echo $workerId;?>" />
 		<input type="hidden" name="assignmentId" value="<?php echo $assignmentId;?>" />

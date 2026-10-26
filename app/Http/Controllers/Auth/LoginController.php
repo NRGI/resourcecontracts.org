@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -27,63 +28,31 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
-        /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $loginPath = '/login';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-        /**
-     * Handle a login request to the application.
+    /**
+     * The user has been authenticated.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * Deactivated accounts (status = false) are logged out again immediately.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Nrgi\Entities\User\User  $user
+     * @return \Illuminate\Http\RedirectResponse|null
      */
-    public function postLogin(Request $request)
+    protected function authenticated(Request $request, $user)
     {
-        $this->validate(
-            $request,
-            [
-                'email'    => 'required|email',
-                'password' => 'required',
-            ]
-        );
+        if ($user->status === false || $user->status === 'false' || $user->status === 0) {
+            $this->guard()->logout();
+            $request->session()->invalidate();
 
-        $credentials = $request->all('email', 'password');
-
-        if (Auth::attempt($credentials, $request->filled('remember'))) {
-            if (Auth::user()->status == 'false') {
-                Auth::logout();
-
-                return redirect($this->loginPath())
-                    ->withInput($request->all('email', 'remember'))
-                    ->withErrors(
-                        [
-                            'email' => 'Account has not been activated',
-                        ]
-                    );
-            }
-
-            return redirect()->intended($this->redirectPath());
+            return redirect('/login')
+                ->withInput($request->only('email', 'remember'))
+                ->withErrors(['email' => 'Account has not been activated']);
         }
 
-        return redirect($this->loginPath())
-            ->withInput($request->all('email', 'remember'))
-            ->withErrors(
-                [
-                    'email' => $this->getFailedLoginMessage(),
-                ]
-            );
+        return null;
     }
 }

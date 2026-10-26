@@ -1,23 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="bootstrap/autoload.php"
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
          colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="true"
-         syntaxCheck="false">
+>
     <testsuites>
-        <testsuite name="Application Test Suite">
-            <directory>./tests/</directory>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
     </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">./app</directory>
+        </include>
+    </source>
     <php>
-        <env name="APP_ENV" value="testing"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="SESSION_DRIVER" value="array"/>
-        <env name="QUEUE_DRIVER" value="sync"/>
+        <server name="APP_ENV" value="testing"/>
+        <server name="APP_DOMAIN" value="http://localhost"/>
+        <server name="APP_URL" value="http://localhost"/>
+        <server name="AWS_BUCKET" value="test-bucket"/>
+        <server name="AWS_REGION" value="us-east-1"/>
+        <server name="AWS_KEY" value="test"/>
+        <server name="AWS_SECRET" value="test"/>
+        <server name="ELASTIC_SEARCH_URL" value="http://127.0.0.1:9/"/>
+        <server name="APP_KEY" value="base64:kMOznWn9NXYpq9NoDVj6hhf6YSom6UYd1JM/Pa8VY0s="/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="CACHE_DRIVER" value="array"/>
+        <server name="MAIL_MAILER" value="array"/>
+        <server name="MAIL_DRIVER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="SESSION_DRIVER" value="array"/>
+        <server name="LOG_CHANNEL" value="single"/>
+        <server name="DB_CONNECTION" value="pgsql"/>
+        <server name="DB_HOST" value="127.0.0.1"/>
+        <server name="DB_PORT" value="5433"/>
+        <server name="DB_DATABASE" value="rc_admin_test"/>
+        <server name="DB_USERNAME" value="rc"/>
+        <server name="DB_PASSWORD" value="rc"/>
     </php>
 </phpunit>

@@ -30,6 +30,8 @@ return [
     |
     */
     'sandbox_mode' => env('MTURK_SANDBOX', true),
+    'region'       => env('MTURK_REGION'),
+    'task_url'     => env('MTURK_TASK_URL'),
     /*
      |--------------------------------------------------------------------------
      | Mturk Defaults

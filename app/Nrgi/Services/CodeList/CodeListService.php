@@ -78,7 +78,7 @@ class CodeListService
      * 
      * @return array
      */
-    public function getCodeList($type="contract_types", $lang)
+    public function getCodeList($type, $lang)
     {
         if($type == 'resources'){
             return $this->resource->getResources($lang);
@@ -97,7 +97,7 @@ class CodeListService
      * 
      * @return Resources|Contract_types|Document_types
      */
-    public function find($type="contract_types", $id)
+    public function find($type, $id)
     {
         if($type == 'resources'){
             return $this->resource->find($id);

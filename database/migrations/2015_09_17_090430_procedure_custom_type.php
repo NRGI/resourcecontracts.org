@@ -13,6 +13,8 @@ class ProcedureCustomType extends Migration
      */
     public function up()
     {
+        // migrate:fresh drops tables but not custom types, so make this idempotent.
+        DB::statement("DROP TYPE IF EXISTS quality CASCADE");
         DB::statement("CREATE TYPE quality AS (company_no integer,concession_no integer,government_no integer)");
     }
 

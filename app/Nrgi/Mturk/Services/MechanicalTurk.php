@@ -1,7 +1,6 @@
 <?php namespace App\Nrgi\Mturk\Services;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Message\Response;
 
 class MechanicalTurk
 {

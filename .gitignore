@@ -24,7 +24,6 @@ Thumbs.db
 
 # Composer
 composer.phar
-composer.lock
 
 # Environment files
 .env.*
@@ -72,3 +71,9 @@ Thumbs.db
 # Temporary files
 tmp/
 temp/
+
+# Test / analysis artifacts
+/storage/framework/testing/*
+/.phpunit.cache
+/.phpunit.result.cache
+/phpstan-baseline.neon

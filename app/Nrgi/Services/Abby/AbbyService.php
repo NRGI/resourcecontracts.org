@@ -2,6 +2,7 @@
 
 namespace App\Nrgi\Services\Abby;
 
+use Exception;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -25,9 +26,9 @@ class AbbyService
      */
     public function __construct()
     {
-        $this->abby_app_id       = env('ABBYY_APP_ID');
-        $this->abby_app_password = env('ABBYY_PASSWORD');
-        $this->service_url       = env('ABBYY_OCR_URL');
+        $this->abby_app_id       = config('services.abbyy.app_id');
+        $this->abby_app_password = config('services.abbyy.password');
+        $this->service_url       = config('services.abbyy.url');
     }
 
     /**

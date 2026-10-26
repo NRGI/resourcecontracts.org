@@ -30,8 +30,7 @@ $providers = [
      * External Package
      */
     'Zizaco\Entrust\EntrustServiceProvider',
-    'Illuminate\View\ViewServiceProvider',
-    'Collective\Html\HtmlServiceProvider',
+    'App\Support\Html\HtmlServiceProvider',
     'Maatwebsite\Excel\ExcelServiceProvider',
 
     /*
@@ -41,27 +40,20 @@ $providers = [
     'App\Providers\EventServiceProvider',
     'App\Providers\RouteServiceProvider',
     'App\Providers\RepositoriesServiceProvider',
-    'App\Providers\ProxyServiceProvider',
     'Illuminate\Notifications\NotificationServiceProvider'
     // 'App\Providers\BroadcastServiceProvider',
 ];
 
-$localProviders = [
-    /*
-    * Service Providers for development
-    */
-    'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-    'Barryvdh\Debugbar\ServiceProvider',
-];
-
-if (env('APP_ENV') == "local") {
-    $providers = array_merge($providers, $localProviders);
-}
 
 
 return [
 
     'name' => 'Resource contracts Admin',
+
+    /*
+    | Application environment (local, staging, production, testing).
+    */
+    'env' => env('APP_ENV', 'production'),
 
     /*
     |--------------------------------------------------------------------------
@@ -212,8 +204,8 @@ return [
          * External Package
          */
         'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
-        'Form'      => 'Collective\Html\FormFacade',
-        'HTML'      => 'Collective\Html\HtmlFacade',
+        'Form'      => 'App\Support\Html\FormFacade',
+        'HTML'      => 'App\Support\Html\HtmlFacade',
     ],
 
 ];

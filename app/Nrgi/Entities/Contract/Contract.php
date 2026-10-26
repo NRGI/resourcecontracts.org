@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Collection;
 use App\Nrgi\Scope\CountryScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
+use InvalidArgumentException;
 
 /**
  * Class Contract

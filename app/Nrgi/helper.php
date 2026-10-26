@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Lang;
  */
 function getFileSize($bytes)
 {
+    // PHP 8: arithmetic on a non-numeric string throws a TypeError.
+    $bytes = is_numeric($bytes) ? $bytes + 0 : 0;
+
     switch ($bytes):
         case ($bytes >= 1073741824):
             $bytes = number_format($bytes / 1073741824, 2).' GB';
@@ -55,7 +58,7 @@ function getFileHash($file)
 function _l($key, $locale = 'en')
 {
     if (Lang::has($key)) {
-        return trans($key, [], null, $locale);
+        return trans($key, [], $locale);
     }
     $array = explode('.', $key);
 
@@ -72,11 +75,8 @@ function _l($key, $locale = 'en')
  */
 function getS3FileURL($fileName = '')
 {
-    return \Storage::disk('s3')
-                   ->getDriver()
-                   ->getAdapter()
-                   ->getClient()
-                   ->getObjectUrl(env('AWS_BUCKET'), $fileName);
+    // Storage::url() works for the real S3 adapter and for Storage::fake() in tests.
+    return \Storage::disk('s3')->url($fileName);
 }
 
 /**
@@ -89,7 +89,7 @@ function getS3FileURL($fileName = '')
  */
 function getLanguageName($code, $locale = 'en')
 {
-    $lang = trans('codelist/language', [], null, $locale);
+    $lang = trans('codelist/language', [], $locale);
     $lang = $lang['major'] + $lang['minor'];
     $code = strtolower($code);
 
@@ -123,7 +123,7 @@ function str_random_number($length)
  */
 function hit_url($hitID)
 {
-    $subDomain = env('MTURK_SANDBOX') ? 'requestersandbox' : 'requester';
+    $subDomain = config('mturk.sandbox_mode') ? 'requestersandbox' : 'requester';
 
     return sprintf("https://%s.mturk.com/mturk/manageHIT?HITId=%s", $subDomain, $hitID);
 }
@@ -360,7 +360,7 @@ function other_instructions($lang = 'en')
  */
 function show_language($lang = 'en')
 {
-    $langConfig = trans('codelist/language', [], null, 'en');
+    $langConfig = trans('codelist/language', [], 'en');
     $lang_list  = $langConfig['major'] + $langConfig['minor'];
     $language   = 'English';
 

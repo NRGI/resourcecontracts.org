@@ -39,9 +39,13 @@ class UserController extends Controller
         $this->user = $user;
         $this->auth = $auth;
 
-        if ($this->auth->user() && !$this->auth->user()->hasRole(['superadmin', 'admin', 'country-admin', 'superadmin-editor'])) {
-            return redirect('/home')->withError(trans('contract.permission_denied'))->send();
-        }
+        $this->middleware(function ($request, $next) {
+            if ($request->user() && !$request->user()->hasRole(['superadmin', 'admin', 'country-admin', 'superadmin-editor'])) {
+                return redirect('/home')->withError(trans('contract.permission_denied'));
+            }
+
+            return $next($request);
+        });
 
         $this->countries = $countries;
     }

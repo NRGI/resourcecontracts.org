@@ -46,13 +46,13 @@ class UpdateGovernmentEntities extends Command
             $this->api,
             [
                 'auth' => [
-                    env('SPARQL_USERNAME'),
-                    env('SPARQL_PASSWORD')
+                    config('services.sparql.username'),
+                    config('services.sparql.password')
                 ]
             ]
         );
 
-        $output = $response->json();
+        $output = json_decode($response->getBody(), true);
         $countries          = [];
         $governmentEntities = [];
 
@@ -97,8 +97,6 @@ class UpdateGovernmentEntities extends Command
         file_put_contents($config, $text);
         $this->info('Complete.');
 
-        $file = storage_path().'/logs/scheduler.log';
-        Log::useFiles($file);
         Log::info("Update government entities command successfully executed");
     }
 

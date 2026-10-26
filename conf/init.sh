@@ -1,16 +1,32 @@
 #!/bin/sh
+set -e
 
-#IMPORTANT!: Note that we do envsubst for all env variables for env.template. Take care with '$' characters in env.template, strings that start with $ will be treated like env vars.
+# IMPORTANT: envsubst substitutes every ${VAR} in the templates. Take care with '$' characters.
 
-#rc-admin
+cd /var/container_init
+
+# rc-admin .env
 envsubst < ./env.template > /var/www/rc-admin/.env
 
-#log_files
+# Papertrail log shipping
 envsubst '${DEPLOYMENT_TYPE}' < ./log_files.yml.template > /etc/log_files.yml
 
-#pdf-processor
+# pdf-processor
 envsubst < ./settings.config.template > /var/www/pdf-processor/settings.config
 
-#add mturk/updates cronjob
+# Laravel caches (config is derived from the generated .env, so cache at container start, not build time)
+cd /var/www/rc-admin
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+chown -R www-data: bootstrap/cache
+
+# Scheduler (MTurk / codelist updates)
 echo "* * * * * www-data /usr/bin/php /var/www/rc-admin/artisan schedule:run 1>> /dev/null 2>&1" > /etc/cron.d/mturk_and_updates
-cron restart
+chmod 0644 /etc/cron.d/mturk_and_updates
+service cron start
+
+/etc/init.d/beanstalkd start
+supervisord -c /etc/supervisord.conf
+
+exec /usr/sbin/apache2ctl -D FOREGROUND

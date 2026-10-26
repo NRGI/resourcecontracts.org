@@ -44,7 +44,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        if (strtolower(env('APP_ENV')) == 'production') {
+        if ($this->app->environment('production')) {
             $schedule->command('nrgi:mturk')->dailyAt('01:00');
             $schedule->command('nrgi:mturkbalance')->dailyAt('01:30');
             $schedule->command('nrgi:updatemturktasks')->dailyAt('06:00');

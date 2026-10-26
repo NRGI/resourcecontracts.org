@@ -28,6 +28,10 @@ use Psr\Log\LoggerInterface as Log;
 class ContractController extends Controller
 {
     /**
+     * @var mixed
+     */
+    protected $downloadService;
+    /**
      * @var ActivityService
      */
     protected $activity;
@@ -159,10 +163,11 @@ class ContractController extends Controller
          $resourceList   = $this->codeList->getCodeList('resources',$lang->getSiteLang());
          $locale           = $lang->defaultLang();
          $companyNamesListRaw = $this->contract->getCompanyNames();
+         $companyNamesList    = [];
          foreach($companyNamesListRaw as $company){
              $companyNamesList[$company] = $company;
          }
-         $ocrStatusList = trans('ocr_status', [], null, $locale);
+         $ocrStatusList = trans('ocr_status', [], $locale);
          $contractTypeList = $this->codeList->getCodeList('contract_types',$lang->getSiteLang());
          $documentTypeList = $this->codeList->getCodeList('document_types',$lang->getSiteLang());
          return view('contract.index', compact('contracts', 'years', 'countries', 'resources', 'download_files', 'resourceList','companyNamesList', 'contractTypeList','documentTypeList', 'locale',  'annotationStatusArray', 'publishingYears', 'ocrStatusList' ));
@@ -584,7 +589,7 @@ class ContractController extends Controller
         if (auth()->user()->isAdmin()) {
             try {
                 $uri = 'contract/published_at/update';
-                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $url = sprintf('%s%s', rtrim(config('services.elastic_search.url')), $uri);
                 $recent_contracts = json_encode($this->activity->getPublishedContracts(true));
                 $response = $this->http->post($url, [
                     'form_params' => [
@@ -613,7 +618,7 @@ class ContractController extends Controller
         if (auth()->user()->isAdmin()) {
             try {
                 $uri = 'contract/annotation_category/community_consultation/update';
-                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $url = sprintf('%s%s', rtrim(config('services.elastic_search.url')), $uri);
                 $annotations = $this->annotation->getAllByAnnotation('community-consultation');
                 $response = $this->http->post($url, [
                     'form_params' => [
@@ -642,7 +647,7 @@ class ContractController extends Controller
         if (auth()->user()->isAdmin()) {
             try {
                 $uri = 'contract/cluster/update';
-                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $url = sprintf('%s%s', rtrim(config('services.elastic_search.url')), $uri);
                 $response = $this->http->post($url);
 
                 return redirect()->route('contract.index')->withSuccess('Elastic updated successfully');
@@ -668,7 +673,7 @@ class ContractController extends Controller
         if (auth()->user()->isAdmin()) {
             try {
                 $uri = 'contract/cluster/restore';
-                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $url = sprintf('%s%s', rtrim(config('services.elastic_search.url')), $uri);
                 $response = $this->http->post($url, [
                     'form_params' => ['key' => $key]
                 ]);
@@ -694,12 +699,12 @@ class ContractController extends Controller
         if (auth()->user()->isAdmin()) {
             try {
                 $uri = 'contract/supporting-doc/update';
-                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $url = sprintf('%s%s', rtrim(config('services.elastic_search.url')), $uri);
                 $request_payload = ['get_master_pages' => true];
                 $response = $this->http->post($url, [
                     'form_params' => $request_payload
                 ]);
-                $resp_json = $response->json();
+                $resp_json = json_decode($response->getBody(), true);
 
                 echo 'The total pages are: ' . $resp_json['result'];
 
@@ -730,12 +735,12 @@ class ContractController extends Controller
         if (auth()->user()->isAdmin()) {
             try {
                 $uri = 'contract/supporting-doc/update';
-                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $url = sprintf('%s%s', rtrim(config('services.elastic_search.url')), $uri);
                 $request_payload = ['add_to_master' => $page];
                 $response = $this->http->post($url, [
                     'form_params' => $request_payload
                 ]);
-                $resp_json = $response->json();
+                $resp_json = json_decode($response->getBody(), true);
 
                 if (!$resp_json['status']) {
                     file_put_contents('supporting_doc_error.log', $resp_json['result'], FILE_APPEND);
@@ -768,7 +773,7 @@ class ContractController extends Controller
         if (auth()->user()->isAdmin()) {
             try {
                 $uri = 'contract/supporting-doc/update';
-                $url = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $url = sprintf('%s%s', rtrim(config('services.elastic_search.url')), $uri);
                 $parent_child_contracts = json_encode($this->contract->getParentChild());
                 $request_payload = [
                     'parent_child_contracts' => $parent_child_contracts,
@@ -776,7 +781,7 @@ class ContractController extends Controller
                 $response = $this->http->post($url, [
                     'form_params' => $request_payload
                 ]);
-                $resp_json = $response->json();
+                $resp_json = json_decode($response->getBody(), true);
 
                 if (!$resp_json['status']) {
                     file_put_contents('supporting_doc_error.log', $resp_json['result'], FILE_APPEND);
@@ -809,7 +814,7 @@ class ContractController extends Controller
         if (auth()->user()->isAdmin()) {
             try {
                 $uri                    = 'contract/supporting-doc/update';
-                $url                    = sprintf('%s%s', rtrim(env('ELASTIC_SEARCH_URL')), $uri);
+                $url                    = sprintf('%s%s', rtrim(config('services.elastic_search.url')), $uri);
                 $child_parent_contracts = json_encode($this->contract->getChildParent());
                 $request_payload        = [
                     'child_parent_contracts' => $child_parent_contracts
@@ -817,7 +822,7 @@ class ContractController extends Controller
                 $response                = $this->http->post($url, [
                     'form_params' => $request_payload
                 ]);
-                $resp_json              = $response->json();
+                $resp_json              = json_decode($response->getBody(), true);
 
                 if (!$resp_json['status']) {
                     file_put_contents('supporting_doc_error.log', $resp_json['result'], FILE_APPEND);

@@ -15,6 +15,10 @@ use App\Nrgi\Services\Contract\Page\PageService;
 class ContractFilterService
 {
     /**
+     * @var mixed
+     */
+    protected $downloadCSV;
+    /**
      * @var ContractRepositoryInterface
      */
     protected $contract;

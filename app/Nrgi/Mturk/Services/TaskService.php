@@ -1292,7 +1292,7 @@ class TaskService
      */
     protected function getMTurkPageUrl()
     {
-        return env('MTURK_TASK_URL');
+        return config('mturk.task_url');
     }
 
     /**
@@ -1302,8 +1302,8 @@ class TaskService
      */
     protected function getBucketUrl() 
     {
-        $s3Url = env('AWS_S3_BUCKET_URL');
-        return isset($s3Url) ? $s3Url : "https://".env('AWS_BUCKET').".s3.amazonaws.com";
+        $s3Url = config('filesystems.disks.s3.url');
+        return isset($s3Url) ? $s3Url : "https://".config('filesystems.disks.s3.bucket').".s3.amazonaws.com";
     }
 
     /**

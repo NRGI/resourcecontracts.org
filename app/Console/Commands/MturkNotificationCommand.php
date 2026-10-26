@@ -60,8 +60,6 @@ class MturkNotificationCommand extends Command
             $this->notify->process($contract->id);
         }
 
-        $file = storage_path().'/logs/scheduler.log';
-        Log::useFiles($file);
         Log::info('Mturk command successfully executed. MTurk status of contracts send via email.');
     }
 

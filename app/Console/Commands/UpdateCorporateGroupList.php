@@ -79,8 +79,6 @@ class UpdateCorporateGroupList extends Command
             $this->info('Complete.');
         }
 
-        $file = storage_path().'/logs/scheduler.log';
-        Log::useFiles($file);
         Log::info("Update corporate list command successfully executed");
     }
 

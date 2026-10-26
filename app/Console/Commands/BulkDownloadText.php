@@ -62,11 +62,11 @@ class BulkDownloadText extends Command
         $this->storage    = $storage;
         $this->filesystem = $filesystem;
         $this->db         = [
-            'host'     => env('DB_HOST'),
-            'port'     => env('DB_PORT'),
-            'user'     => env('DB_USERNAME'),
-            'database' => env('DB_DATABASE'),
-            'password' => str_replace("&", "\&", env('DB_PASSWORD')),
+            'host'     => config('database.connections.pgsql.host'),
+            'port'     => config('database.connections.pgsql.port'),
+            'user'     => config('database.connections.pgsql.username'),
+            'database' => config('database.connections.pgsql.database'),
+            'password' => str_replace("&", "\&", config('database.connections.pgsql.password')),
         ];
     }
 
@@ -85,8 +85,6 @@ class BulkDownloadText extends Command
         $this->updateFilesInS3();
         $this->deleteFiles();
 
-        $file = storage_path().'/logs/scheduler.log';
-        Log::useFiles($file);
         Log::info('Block Download Text command successfully executed.');
     }
 
@@ -121,13 +119,13 @@ class BulkDownloadText extends Command
     public function updateFilesInS3()
     {
         $s3folder = static::S3_OBJECT_NAME;
-        $bucket   = env('AWS_BUCKET');
+        $bucket   = config('filesystems.disks.s3.bucket');
 
-        $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
+        $credentials = new Credentials(config('filesystems.disks.s3.key'), config('filesystems.disks.s3.secret'));
         $s3 = new S3Client(
             [
                 'version'=> '2006-03-01',
-                'region' => env('AWS_REGION'),
+                'region' => config('filesystems.disks.s3.region'),
                 'credentials' => $credentials
             ]
         );
@@ -138,7 +136,7 @@ class BulkDownloadText extends Command
         );
         $this->info("Object - {$s3folder} deleted in s3");
         
-        $s3->uploadDirectory(storage_path("download"), $bucket, "/".$s3folder,['before' => function(\AWS\Command $command){
+        $s3->uploadDirectory(storage_path("download"), $bucket, "/".$s3folder,['before' => function(\Aws\Command $command){
             $command['ACL'] = 'public-read';
             $command['ContentDisposition'] = 'attachment';
             }

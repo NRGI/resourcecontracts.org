@@ -41,7 +41,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map(Router $router)
     {
-        $router->group(['namespace' => $this->namespace], function ($router) {
+        $router->group(['middleware' => 'web', 'namespace' => $this->namespace], function ($router) {
             require app_path('Http/routes.php');
             require app_path('Http/Routes/import.php');
             require app_path('Http/Routes/contract.php');
@@ -54,7 +54,7 @@ class RouteServiceProvider extends ServiceProvider
             require app_path('Http/Routes/codelist.php');
         });
 
-        $router->group(['namespace' => $this->mturk_namespace], function ($router) {
+        $router->group(['middleware' => 'web', 'namespace' => $this->mturk_namespace], function ($router) {
             require app_path('Nrgi/Mturk/routes.php');
         });
     }

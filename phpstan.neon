@@ -1,0 +1,13 @@
+includes:
+    - ./vendor/larastan/larastan/extension.neon
+
+parameters:
+    paths:
+        - app
+    level: 1
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        - identifier: missingType.iterableValue
+        - identifier: missingType.generics
+        # Legacy repositories rely on extract($filter); variables are provided at runtime.
+        - '#Variable \$[a-zA-Z_]+ might not be defined#'

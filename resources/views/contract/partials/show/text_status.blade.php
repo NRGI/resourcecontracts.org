@@ -85,9 +85,9 @@ use App\Nrgi\Entities\Contract\Contract;
 
 	<td>
 		<?php
-		$link = "http://".env('RC_LINK')."/contract/".$contract->metadata->open_contracting_id."/view#text";
+		$link = "http://".config('services.sites.rc')."/contract/".$contract->metadata->open_contracting_id."/view#text";
 		if (in_array('olc', $contract->metadata->category)) {
-			$link = "http://".env('OLC_LINK')."/contract/".$contract->metadata->open_contracting_id."/view#text";
+			$link = "http://".config('services.sites.olc')."/contract/".$contract->metadata->open_contracting_id."/view#text";
 		}
 		?>
 		@if($elementState['metadata']=='published' && $elementState['text']=='published')

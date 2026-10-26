@@ -40,10 +40,13 @@ class CodeListController extends Controller
         $this->db       = $db;
         $this->auth = $auth;
 
-        if ($this->auth->user() && !$this->auth->user()->hasRole(['superadmin-editor'])) {
+        $this->middleware(function ($request, $next) {
+            if ($request->user() && !$request->user()->hasRole(['superadmin-editor'])) {
+                return redirect('/home')->withError(trans('contract.permission_denied'));
+            }
 
-            return redirect('/home')->withError(trans('contract.permission_denied'))->send();
-        }
+            return $next($request);
+        });
     }
 
     /**

@@ -4,6 +4,7 @@ use App\Nrgi\Entities\Contract\Comment\Comment;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Repositories\Contract\Comment\CommentRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Exception;
 use Psr\Log\LoggerInterface;
 
 /**

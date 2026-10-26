@@ -1,4 +1,4 @@
-<?php namespace app\Http\Controllers\ActivityLog;
+<?php namespace App\Http\Controllers\ActivityLog;
 
 use App\Http\Controllers\Controller;
 use App\Nrgi\Services\ActivityLog\ActivityLogService;
@@ -12,10 +12,18 @@ use Illuminate\Contracts\Auth\Guard;
  * Class ActivityController
  * @property CountryService country
  * @property Guard          auth
- * @package app\Http\Controllers\ActivityLog
+ * @package App\Http\Controllers\ActivityLog
  */
 class ActivityLogController extends Controller
 {
+    /**
+     * @var mixed
+     */
+    protected $country;
+    /**
+     * @var mixed
+     */
+    protected $auth;
     /**
      * @var ActivityLogService
      */

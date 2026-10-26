@@ -91,8 +91,8 @@ class MechanicalTurkV2
         $this->end_point                   = 'https://'.$this->host_name;
         $this->mturk_region                = 'us-east-1';
 
-        if (!empty(env('MTURK_REGION'))) {
-            $this->mturk_region = env('MTURK_REGION');
+        if (!empty(config('mturk.region'))) {
+            $this->mturk_region = config('mturk.region');
         }
 
         $this->aws_service_name = $this->metadata['endpointPrefix'];

@@ -1,119 +1,107 @@
-FROM 526742496553.dkr.ecr.us-east-1.amazonaws.com/rc-ubuntu:20.04
-MAINTAINER Anjesh Tuladhar <anjesh@yipl.com.np>
+# ResourceContracts.org admin (rc-admin)
+# PHP 8.4 / Laravel 13 on Ubuntu 24.04 LTS (Apache mod_php, beanstalkd, supervisor, cron)
+FROM ubuntu:24.04
+LABEL org.opencontainers.image.source="https://github.com/NRGI/resourcecontracts.org"
 
 ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Europe/Kiev
-RUN apt-get update && apt-get install -y \
-                    curl \
-                    git \
-                    software-properties-common \
-                    unzip \
-                    zip \
-                    wget \
-                    apt-utils \
- && LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php \
- && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
+ARG PHP_VERSION=8.4
+ENV TZ=Europe/Kiev \
+    PHP_VERSION=${PHP_VERSION} \
+    COMPOSER_ALLOW_SUPERUSER=1
 
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN apt-get update && apt-get install -y \
-                    apache2 \
-                    php7.4 \
-                    php7.4-cli \
-                    php7.4-curl \
-                    php7.4-mbstring \
-                    php7.4-pgsql \
-                    php7.4-readline \
-                    php7.4-xml \
-                    php7.4-zip \
-                    php7.4-gd \
-                    php7.4-intl \
-                    php7.4-xsl \
-                    beanstalkd \
-                    poppler-utils \
-                    supervisor \
-                    gettext \
-                    python3 \
-                    python3-pip \
-                    python3-venv \
-                    cron 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        ca-certificates curl git gnupg software-properties-common unzip zip wget apt-utils tzdata \
+ && LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php \
+ && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
+ && apt-get update && apt-get install -y --no-install-recommends \
+        apache2 \
+        libapache2-mod-php${PHP_VERSION} \
+        php${PHP_VERSION} \
+        php${PHP_VERSION}-cli \
+        php${PHP_VERSION}-bcmath \
+        php${PHP_VERSION}-curl \
+        php${PHP_VERSION}-gd \
+        php${PHP_VERSION}-intl \
+        php${PHP_VERSION}-mbstring \
+        php${PHP_VERSION}-pgsql \
+        php${PHP_VERSION}-readline \
+        php${PHP_VERSION}-xml \
+        php${PHP_VERSION}-xsl \
+        php${PHP_VERSION}-zip \
+        beanstalkd \
+        poppler-utils \
+        pdftk-java \
+        supervisor \
+        gettext-base \
+        python3 \
+        python3-pip \
+        python3-venv \
+        cron \
+ && rm -rf /var/lib/apt/lists/*
 
-RUN wget http://launchpadlibrarian.net/383018194/pdftk-java_0.0.0+20180723.1-1_all.deb
-RUN apt install default-jre-headless libcommons-lang3-java libbcprov-java -y
-RUN dpkg -i pdftk-java_0.0.0+20180723.1-1_all.deb
-RUN which pdftk
+# Papertrail remote_syslog2
+RUN curl -sSL -o /tmp/remote_syslog.tar.gz https://github.com/papertrail/remote_syslog2/releases/download/v0.21/remote_syslog_linux_amd64.tar.gz \
+ && tar -zxf /tmp/remote_syslog.tar.gz -C /tmp \
+ && cp /tmp/remote_syslog/remote_syslog /usr/local/bin/ \
+ && rm -rf /tmp/remote_syslog /tmp/remote_syslog.tar.gz
 
-RUN rm -rf /var/lib/apt/lists/* \
- && curl -O -L https://github.com/papertrail/remote_syslog2/releases/download/v0.20/remote_syslog_linux_amd64.tar.gz \
- && tar -zxf remote_syslog_linux_amd64.tar.gz \
- && cp remote_syslog/remote_syslog /usr/local/bin \
- && rm -r remote_syslog_linux_amd64.tar.gz \
- && rm -r remote_syslog 
+# Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN a2enmod rewrite \
- && a2enmod php7.4
+RUN a2enmod rewrite && a2enmod php${PHP_VERSION}
 
-# Fetch composer packages before copying project code to leverage Docker caching
-RUN mkdir /var/www/rc-admin
-COPY composer.json /var/www/rc-admin
-COPY composer.lock /var/www/rc-admin
-
+# Install PHP dependencies before copying the code so the layer is cached.
 WORKDIR /var/www/rc-admin
-RUN curl -s http://getcomposer.org/installer | php \
- && php composer.phar install --prefer-dist --no-scripts --no-autoloader
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --prefer-dist --no-scripts --no-autoloader --no-interaction --no-progress
 
 COPY conf/rc-admin.conf /etc/apache2/sites-available/rc-admin.conf
 RUN ln -s /etc/apache2/sites-available/rc-admin.conf /etc/apache2/sites-enabled/rc-admin.conf \
  && rm -f /etc/apache2/sites-enabled/000-default.conf
 
-RUN ln -s /usr/bin/python3 /usr/bin/python
-
 COPY conf/supervisord.conf /etc/supervisord.conf
-
-RUN mkdir -p /var/container_init
-COPY conf/init.sh /var/container_init/init.sh
-COPY conf/env.template /var/container_init/env.template
-COPY conf/log_files.yml.template /var/container_init/log_files.yml.template
 COPY conf/logrotate.conf /etc/logrotate.d/rc-admin
-COPY conf/settings.config.template /var/container_init/settings.config.template
+RUN mkdir -p /var/container_init
+COPY conf/init.sh conf/env.template conf/log_files.yml.template conf/settings.config.template /var/container_init/
+RUN chmod +x /var/container_init/init.sh
 
-# Configure PHP
-RUN sed -i "s/^post_max_size =.*/post_max_size = 5120M/" /etc/php/7.4/apache2/php.ini \
- && sed -i "s/^upload_max_filesize =.*/upload_max_filesize = 5120M/" /etc/php/7.4/apache2/php.ini \
- && sed -i "s/^memory_limit =.*/memory_limit = 512M/" /etc/php/7.4/apache2/php.ini \
- && sed -i "s/^max_execution_time =.*/max_execution_time = 180/" /etc/php/7.4/apache2/php.ini
+# PHP settings (web + cli so queue workers get the same limits)
+RUN for sapi in apache2 cli; do \
+      ini=/etc/php/${PHP_VERSION}/${sapi}/php.ini; \
+      sed -i "s/^post_max_size =.*/post_max_size = 5120M/" $ini \
+   && sed -i "s/^upload_max_filesize =.*/upload_max_filesize = 5120M/" $ini \
+   && sed -i "s/^memory_limit =.*/memory_limit = 512M/" $ini \
+   && sed -i "s/^max_execution_time =.*/max_execution_time = 180/" $ini; \
+    done
 
 COPY . /var/www/rc-admin
 
-WORKDIR /var/www/
-# Clone pdf-processor after copying project files to make sure we defeat the cache to get latest code
-RUN git clone -b feature/textract https://github.com/NRGI/pdf-processor.git
+# pdf-processor (Python, Textract) in its own virtualenv; `python` on PATH is used by ProcessService.
+WORKDIR /var/www
+RUN git clone --depth 1 -b feature/textract https://github.com/NRGI/pdf-processor.git \
+ && python3 -m venv /opt/pdf-processor-venv \
+ && /opt/pdf-processor-venv/bin/pip install --no-cache-dir -r /var/www/pdf-processor/requirements.txt \
+ && ln -sf /opt/pdf-processor-venv/bin/python /usr/local/bin/python
 
-# Install Python dependencies for pdf-processor
-WORKDIR /var/www/pdf-processor
-RUN python3 -m pip install -r requirements.txt
-WORKDIR /var/www/
-
-RUN mkdir /shared_path \
- && mkdir -p /shared_path/rc-admin/data \
- && mkdir -p /shared_path/rc-admin/storage/logs \
+# Shared, writable runtime state
+RUN mkdir -p /shared_path/rc-admin/data \
+             /shared_path/rc-admin/storage/logs \
+             /shared_path/rc-admin/storage/app \
+             /shared_path/rc-admin/storage/framework/cache \
+             /shared_path/rc-admin/storage/framework/sessions \
+             /shared_path/rc-admin/storage/framework/views \
+             /var/log/supervisor \
  && touch /shared_path/rc-admin/storage/logs/laravel.log \
- && mkdir -p /shared_path/rc-admin/storage/app \
- && mkdir -p /shared_path/rc-admin/storage/framework/cache \
- && mkdir -p /shared_path/rc-admin/storage/framework/sessions \
- && mkdir -p /shared_path/rc-admin/storage/framework/views \
- && mkdir -p /var/log/supervisor \
- && chmod -R 777 /shared_path \
- && rm -rf /var/www/html \
- && rm -rf /var/www/rc-admin/storage \
+ && rm -rf /var/www/html /var/www/rc-admin/storage \
  && ln -s /shared_path/rc-admin/storage/ /var/www/rc-admin/storage \
  && ln -s /shared_path/rc-admin/data/ /var/www/rc-admin/public/data \
- && rm -rf /var/www/pdfprocessor/logs \
- && chown -R www-data: /var/www/rc-admin \
- && chown -R www-data: /shared_path
+ && rm -rf /var/www/pdf-processor/logs \
+ && chown -R www-data: /var/www/rc-admin /var/www/pdf-processor /shared_path \
+ && chmod -R 775 /shared_path
 
 WORKDIR /var/www/rc-admin
-RUN php composer.phar dump-autoload --optimize \
- && php artisan clear-compiled
+RUN composer dump-autoload --optimize --no-dev --classmap-authoritative \
+ && php artisan package:discover --ansi
 
 EXPOSE 80
-CMD cd /var/container_init && ./init.sh && /etc/init.d/beanstalkd start && supervisord -c /etc/supervisord.conf && /usr/sbin/apache2ctl -D FOREGROUND
+CMD ["/var/container_init/init.sh"]

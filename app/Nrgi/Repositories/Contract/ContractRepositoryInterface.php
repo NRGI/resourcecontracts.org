@@ -156,7 +156,7 @@ interface ContractRepositoryInterface
      *
      * @return Collection
      */
-    public function getMTurkContracts(array $filter = [], $perPage);
+    public function getMTurkContracts(array $filter, $perPage);
 
     /**
      * Get Contract with pdf process status

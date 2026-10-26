@@ -20,6 +20,10 @@ use App\Nrgi\Log\NrgiLogService;
 class ImportContracts extends Command
 {
     /**
+     * @var mixed
+     */
+    protected $country;
+    /**
      * The console command name.
      *
      * @var string
@@ -652,7 +656,7 @@ class ImportContracts extends Command
             return "";
         }
 
-        $countries = trans('codelist/country', [], null, 'fr');
+        $countries = trans('codelist/country', [], 'fr');
 
         foreach ($countries as $code => $name) {
             if (strcasecmp($joi, $name) == 0) {

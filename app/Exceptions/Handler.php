@@ -38,21 +38,12 @@ class Handler extends ExceptionHandler
         'Symfony\Component\HttpKernel\Exception\NotFoundHttpException',
     ];
     /**
-     * @var MailQueue
+     * Resolve the mail queue lazily: the handler is built very early during
+     * bootstrap, before the mail service provider is registered.
      */
-    protected $mailer;
-
-    /**
-     * Handler constructor.
-     *
-     * @param Container $app
-
-     * @param MailQueue       $mailer
-     */
-    public function __construct(Container $app, MailQueue $mailer)
+    protected function mailer(): MailQueue
     {
-        parent::__construct($app);
-        $this->mailer = $mailer;
+        return $this->container->make(MailQueue::class);
     }
 
     /**
@@ -87,7 +78,7 @@ class Handler extends ExceptionHandler
             return redirect()->back()->withError("Your page session has been expired. Please try again.");
         }
 
-        if (env('APP_ENV') === 'production') {
+        if (app()->environment('production')) {
             $this->sendErrorMessage($e);
         }
 
@@ -109,7 +100,7 @@ class Handler extends ExceptionHandler
             }
         }
         $url = Request::fullUrl();
-        // $this->mailer->sendErrorEmail($e, $url);
+        // $this->mailer()->sendErrorEmail($e, $url);
     }
 
     /**

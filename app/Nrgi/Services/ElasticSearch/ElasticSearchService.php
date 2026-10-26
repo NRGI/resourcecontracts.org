@@ -256,7 +256,7 @@ class ElasticSearchService
             $response  = $this->http->post($this->apiURL('contract/annotations'), [
                 'form_params' => $data
             ]);
-            $this->logger->info('Annotation submitted to Elastic Search.', [$json_decode($response->getBody())]);
+            $this->logger->info('Annotation submitted to Elastic Search.', [json_decode($response->getBody())]);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
         }
@@ -377,7 +377,7 @@ class ElasticSearchService
      */
     protected function apiURL($request)
     {
-        return trim(env('ELASTIC_SEARCH_URL'), '/').'/'.$request;
+        return trim(config('services.elastic_search.url'), '/').'/'.$request;
     }
 
     /**

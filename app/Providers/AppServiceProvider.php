@@ -4,6 +4,7 @@ use App\Nrgi\Services\Language\LanguageService;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,6 +16,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
+
         View::composer('*', function ($view) {
            $data = [
                 'current_user' => auth()->user(),
@@ -39,9 +42,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(
-            'Illuminate\Contracts\Auth\Registrar',
-            'App\Services\Registrar'
-        );
+        //
     }
 }

@@ -32,6 +32,10 @@ use App\Nrgi\Services\Queue\ContractDownloadQueueV2;
  */
 class ImportService
 {
+    /**
+     * @var mixed
+     */
+    protected $microsoft_service;
     const UPLOAD_FOLDER = 'app';
     const PIPELINE = 0;
     const PROCESSING = 1;
@@ -646,16 +650,16 @@ class ImportService
                 // );
                 $newFileName=$contract->file;
                 $file_path=$this->getFilePath($key, $contract->file);
-                $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
+                $credentials = new Credentials(config('filesystems.disks.s3.key'), config('filesystems.disks.s3.secret'));
                 $client = new S3Client(
                     [
                         'version'=> '2006-03-01',
-                        'region' => env('AWS_REGION'),
+                        'region' => config('filesystems.disks.s3.region'),
                         'credentials' => $credentials
                     ]
                 );
                 $uploader = new MultipartUploader($client, $file_path, [
-                    'bucket' => env('AWS_BUCKET'),
+                    'bucket' => config('filesystems.disks.s3.bucket'),
                     'key' => $newFileName,
                     'before_upload' => function(\Aws\Command $command) {
                        gc_collect_cycles();

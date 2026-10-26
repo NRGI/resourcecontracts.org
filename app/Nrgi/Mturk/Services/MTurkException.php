@@ -17,7 +17,7 @@ class MTurkException extends Exception
      * @param int       $code
      * @param Exception $previous
      */
-    public function __construct($message, $errors = null, $code = 500, Exception $previous = null)
+    public function __construct($message, $errors = null, $code = 500, ?Exception $previous = null)
     {
         $this->errors = $errors;
         parent::__construct($message, $code, $previous);

@@ -15,6 +15,18 @@ use App\Exports\NrgiExport;
 class DownloadService
 {
     /**
+     * @var mixed
+     */
+    protected $contractService;
+    /**
+     * @var mixed
+     */
+    protected $annotationService;
+    /**
+     * @var mixed
+     */
+    protected $userService;
+    /**
      * @var Client
      */
     protected $client;
@@ -46,7 +58,7 @@ class DownloadService
     public function downloadData($contracts)
     {
         set_time_limit(0);
-        $web_url            = env('APP_DOMAIN');
+        $web_url            = config('app.url');
         $users              = $this->userService->getAllUsersList();
         $annotationStatus   = $this->annotationService->getAllAnnotationStatus();
         $supportingDocs     = $this->contractService->getAllSupportingDocuments();
@@ -55,11 +67,7 @@ class DownloadService
                                 2 => "Needs Editing",
                                 3 => "Needs Full Transcription",
                             ];
-        $bucket_url         = substr(\Storage::disk('s3')
-                                ->getDriver()
-                                ->getAdapter()
-                                ->getClient()
-                                ->getObjectUrl(env('AWS_BUCKET'),'/'),0,-1);
+        $bucket_url         = rtrim(\Storage::disk('s3')->url(''), '/').'/';
 
         foreach ($contracts as $key => $contract) {
             $contracts[$key]['Resource']                        = join(';', json_decode($contract['Resource']));

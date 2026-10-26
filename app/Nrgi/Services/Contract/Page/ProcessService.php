@@ -227,9 +227,9 @@ class ProcessService
         $commandPath = config('nrgi.pdf_process_path');
         
         // Set AWS environment variables for Textract
-        $awsRegion = env('AWS_REGION');
-        $awsAccessKey = env('AWS_KEY');
-        $awsSecretKey = env('AWS_SECRET');
+        $awsRegion = config('filesystems.disks.s3.region');
+        $awsAccessKey = config('filesystems.disks.s3.key');
+        $awsSecretKey = config('filesystems.disks.s3.secret');
         
         
         $command = sprintf(
@@ -277,7 +277,7 @@ class ProcessService
     {
         if (!$this->fileSystem->makeDirectory($path.'/'.$directory, 0777, true)) {
             $this->logger->error(sprintf("error while creating director.%s/%s", $path, $directory));
-            throw new \Exception(sprintf('could not make directory.%s/%s'), $path, $directory);
+            throw new \Exception(sprintf('could not make directory.%s/%s', $path, $directory));
         }
     }
 
@@ -291,7 +291,7 @@ class ProcessService
     {
         $this->logger->info('Download started...', ['file' => $contract->file]);
         $pdfFile = '';
-        $bucket = env('AWS_BUCKET');
+        $bucket = config('filesystems.disks.s3.bucket');
         $s3FilePath = '';
         try {
             if ($this->storage->disk('s3')->exists($contract->file)) {
@@ -365,17 +365,17 @@ class ProcessService
      */
     public function uploadPdfsToS3($id)
     {
-        $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
+        $credentials = new Credentials(config('filesystems.disks.s3.key'), config('filesystems.disks.s3.secret'));
         $client = new S3Client(
             [
                 'version'=> '2006-03-01',
-                'region' => env('AWS_REGION'),
+                'region' => config('filesystems.disks.s3.region'),
                 'credentials' => $credentials
             ]
         );
 
-        $client->uploadDirectory(sprintf('%s/%s/pages/', $this->getWriteDirectory(), $id), env('AWS_BUCKET'), $id);
-        $this->logger->info(sprintf("Pdf uploaded to S3 {%s}", env('AWS_BUCKET')));
+        $client->uploadDirectory(sprintf('%s/%s/pages/', $this->getWriteDirectory(), $id), config('filesystems.disks.s3.bucket'), $id);
+        $this->logger->info(sprintf("Pdf uploaded to S3 {%s}", config('filesystems.disks.s3.bucket')));
     }
 
     /**

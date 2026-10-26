@@ -2,7 +2,6 @@
 
 namespace App\Nrgi\Services\Microsoft;
 use GuzzleHttp\Client;
-use GuzzleHttp\Message\Response;
 use Psr\Log\LoggerInterface;
 use Carbon\Carbon;
 
@@ -35,10 +34,10 @@ class MicrosoftService
      */
     public function __construct(LoggerInterface $logger)
     {
-        $this->tenant_id = env('ONE_DRIVE_TENANT_ID');
-        $this->client_id = env('ONE_DRIVE_CLIENT_ID');
-        $this->client_secret = env('ONE_DRIVE_CLIENT_SECRET');
-        $this->redirect_uri = env('ONE_DRIVE_AUTH_REDIRECT');
+        $this->tenant_id = config('services.one_drive.tenant_id');
+        $this->client_id = config('services.one_drive.client_id');
+        $this->client_secret = config('services.one_drive.client_secret');
+        $this->redirect_uri = config('services.one_drive.redirect');
         $this->logger = $logger;
     }
 
@@ -46,7 +45,7 @@ class MicrosoftService
     public function setup() 
     {
         $guzzle = new \GuzzleHttp\Client();
-        $url = 'https://login.microsoftonline.com/' . $tenant_id . '/oauth2/v2.0/token';
+        $url = 'https://login.microsoftonline.com/' . $this->tenant_id . '/oauth2/v2.0/token';
         $token = json_decode($guzzle->post($url, [
             'form_params' => [
                 'client_id' => $this->client_id,
@@ -184,36 +183,5 @@ class MicrosoftService
         }
     }
 
-    /**
-     * Curls the request
-     *
-     * @return array
-     */
-    public function curlRequest()
-    {
-        $curlHandle = curl_init();
-        $url = $this->service_url.$this->end_point;
-        $applicationId = $this->abby_app_id;
-        $password = $this->abby_app_password;
-        curl_setopt($curlHandle, CURLOPT_URL, $url);
-        curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curlHandle, CURLOPT_USERPWD, "$applicationId:$password");
-        curl_setopt($curlHandle, CURLOPT_USERAGENT, "Resource Contracts");
-        curl_setopt($curlHandle, CURLOPT_FAILONERROR, true);
-
-        $response  = curl_exec($curlHandle);
-        $err       = curl_error($curlHandle);
-        $http_code = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
-        $headers   = curl_getinfo($curlHandle, CURLINFO_HEADER_OUT);
-
-        $resp = [
-            'response'  => json_decode($response, true),
-            'http_code' => $http_code,
-            'error'     => $err,
-            'headers'   => $headers,
-        ];
-
-        return $resp;
-    }
 
 }

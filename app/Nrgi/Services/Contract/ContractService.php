@@ -37,6 +37,14 @@ use App\Nrgi\Log\NrgiLogService;
 class ContractService
 {
     /**
+     * @var mixed
+     */
+    protected $database;
+    /**
+     * @var mixed
+     */
+    protected $comment;
+    /**
      * Contract upload folder
      */
     const UPLOAD_FOLDER = 'data';
@@ -1153,7 +1161,7 @@ class ContractService
                 $abb_toc = config('abbreviation_toc');
                 $type    = isset($abb_toc[$type]) ? $abb_toc[$type] : $type;
             } elseif (Lang::has(sprintf('codelist/contract_type.%s', $type), $lang)) {
-                $type = trans('codelist/contract_type.'.$type, [], null, $lang);
+                $type = trans('codelist/contract_type.'.$type, [], $lang);
             }
 
             $trans_toc[] = $type;
@@ -1175,7 +1183,7 @@ class ContractService
         $documentType = trim($documentType);
 
         if (!empty($documentType) && Lang::has(sprintf('codelist/documentType.%s', $documentType), $lang)) {
-            $documentType = trans('codelist/documentType.'.$documentType, [], null, $lang);
+            $documentType = trans('codelist/documentType.'.$documentType, [], $lang);
         }
 
         return $documentType;
@@ -1429,7 +1437,7 @@ class ContractService
             ksort($countries);
             $countriesArr = [];
             foreach ($countries as $key => &$cn) {
-                $countriesArr[ucfirst(trans('codelist/country.'.$key, [], null, 'en'))] = $cn;
+                $countriesArr[ucfirst(trans('codelist/country.'.$key, [], 'en'))] = $cn;
             }
 
             $order          = $order + $countriesArr;
@@ -1470,16 +1478,16 @@ class ContractService
             $file_path=$file->getRealPath();
             $newFileName = sprintf("%s.%s", sha1($fileName.time()), $file_type);
             try {
-                $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
+                $credentials = new Credentials(config('filesystems.disks.s3.key'), config('filesystems.disks.s3.secret'));
                 $client = new S3Client(
                     [
                         'version'=> '2006-03-01',
-                        'region' => env('AWS_REGION'),
+                        'region' => config('filesystems.disks.s3.region'),
                         'credentials' => $credentials
                     ]
                 );
                 $uploader = new MultipartUploader($client, $file_path, [
-                    'bucket' => env('AWS_BUCKET'),
+                    'bucket' => config('filesystems.disks.s3.bucket'),
                     'key' => $newFileName,
                     'before_upload' => function(\Aws\Command $command) {
                        gc_collect_cycles();
@@ -1609,7 +1617,7 @@ class ContractService
     protected function deleteFileFromS3($file)
     {
         if (!$this->storage->disk('s3')->exists($file)) {
-            throw new FileNotFoundException(sprintf(' % not found', $file));
+            throw new FileNotFoundException(sprintf('%s not found', $file));
         }
 
         return $this->storage->disk('s3')->delete($file);

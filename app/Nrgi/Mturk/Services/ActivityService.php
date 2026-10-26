@@ -11,6 +11,10 @@ use Illuminate\Database\Eloquent\Collection;
 class ActivityService
 {
     /**
+     * @var mixed
+     */
+    protected $annotation;
+    /**
      * @var ActivityRepositoryInterface
      */
     protected $activity;

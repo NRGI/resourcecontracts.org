@@ -41,8 +41,6 @@ class MTurkBalanceNotification extends Command {
 	{
 		$mturk->checkBalance();
 
-		$file = storage_path().'/logs/scheduler.log';
-		Log::useFiles($file);
 		Log::info("MTurk balance check command successfully executed.");
 	}
 

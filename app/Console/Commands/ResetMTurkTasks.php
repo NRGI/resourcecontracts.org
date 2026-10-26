@@ -57,8 +57,6 @@ class ResetMTurkTasks extends Command {
 
 		$this->info('Process Completed');
 
-		$file = storage_path().'/logs/scheduler.log';
-		Log::useFiles($file);
 		Log::info("Reset MTurk command successfully executed.");
 	}
 

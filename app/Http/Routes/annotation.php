@@ -30,7 +30,7 @@ $router->group(
         $router->post(
             'annotation/{id}/delete',
             [
-                'as'   => 'annotation.delete',
+                'as'   => 'annotation.delete.by-id',
                 'uses' => 'ApiController@delete'
             ]
         );

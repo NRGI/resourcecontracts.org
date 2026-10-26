@@ -91,7 +91,7 @@ class MturkTaskItemRepository implements MturkTaskItemRepositoryInterface
      */
     public function getAll($task_id)
     {
-        return $this->task->where('task_id', $task_id)->get();
+        return $this->taskItem->where('task_id', $task_id)->get();
     }
 
     /**
@@ -104,7 +104,7 @@ class MturkTaskItemRepository implements MturkTaskItemRepositoryInterface
      */
     public function getMturkTaskItem($task_id, $task_item_id)
     {
-        return $this->task->where('task_id', $task_id)->where('id', $task_item_id)->first();
+        return $this->taskItem->where('task_id', $task_id)->where('id', $task_item_id)->first();
     }
 
     /**
@@ -116,6 +116,6 @@ class MturkTaskItemRepository implements MturkTaskItemRepositoryInterface
      */
     public function getTotalMturkTaskItems($task_id)
     {
-        return $this->task->where('task_id', $task_id)->count();
+        return $this->taskItem->where('task_id', $task_id)->count();
     }
 }

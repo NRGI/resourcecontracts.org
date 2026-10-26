@@ -4,23 +4,21 @@ This repository contains the Dockerfile of [ResouceContracts.org](http://github.
 
 ### Base Docker Image
 
-[Ubuntu 14.04](http://dockerfile.github.io/#/ubuntu)
+Ubuntu 24.04 LTS with PHP 8.4 (ondrej/php PPA)
 
 ### Installation
 
 1. Install [Docker](https://www.docker.com/).
-2. Clone this repo `git clone https://github.com/younginnovations/docker-resourcecontracts.org.git`
-3. Go to the cloned folder `docker-resourcecontracts.org`
-4. Copy `conf/.env.example` to `conf/.env` with configurations
-5. Build an image from Dockerfile `docker build -t=resourcecontracts .
+2. Clone this repo `git clone https://github.com/NRGI/resourcecontracts.org.git`
+3. Build an image from the Dockerfile: `docker build -t rc-admin .`
+4. Provide the variables listed in `conf/env.template` as container environment variables (ECS task definition or `--env-file`)
 
 ### Usage
 
-* Run `docker run -p 80:80 -d resourcecontracts`
-* Access the system from the browser at http://xxx/rc/public/index.php
+* Run `docker run -p 80:80 --env-file rc-admin.env -d rc-admin`
+* Access the system from the browser at http://localhost/
 
-### TODO
+### Notes
 
-* Update the apache configuration so that the system could be accessed from the base IP http://xxx 
-* Mount the system temporary folder to the host folder to preserve the temporary files and logs
-* Currently system is run using root, need to use appropriate users for running the servers and applications.
+* Queue workers and the scheduler run as `www-data` (supervisor / cron); Apache runs as usual.
+* `/shared_path` holds `storage/` and `public/data`; mount it as a volume to keep uploads and logs across deployments.

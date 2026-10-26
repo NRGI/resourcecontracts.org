@@ -51,7 +51,7 @@ class CountryService
         $countries = $this->countries;
 
         if (!is_null($locale)) {
-            $countries = trans('codelist/country', [], null, $locale);
+            $countries = trans('codelist/country', [], $locale);
         }
 
         return isset($countries[$code]) ? ['code' => $code, 'name' => $countries[$code]] : '';

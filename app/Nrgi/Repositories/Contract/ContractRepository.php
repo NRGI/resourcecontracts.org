@@ -3,6 +3,7 @@
 use App\Nrgi\Entities\Contract\Annotation\Annotation;
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Entities\SupportingContract\SupportingContract;
+use App\Nrgi\Scope\CountryScope;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
@@ -671,7 +672,7 @@ class ContractRepository implements ContractRepositoryInterface
      *
      * @return collection
      */
-    public function getMetadataQuality($metadata = '', $filters)
+    public function getMetadataQuality($metadata, $filters)
     {
         $from  = "contracts ";
         $query = $this->contract->select('*');

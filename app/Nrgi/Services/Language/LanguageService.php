@@ -1,5 +1,6 @@
 <?php namespace App\Nrgi\Services\Language;
 
+use Illuminate\Support\Facades\Cookie;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -71,7 +72,7 @@ class LanguageService
     public function getSiteLang($lang = null)
     {
         if (empty($lang)) {
-            $lang = isset($_COOKIE[$this->key]) ? $_COOKIE[$this->key] : $this->defaultLang();
+            $lang = request()->cookie($this->key, $this->defaultLang());
         }
 
         return $lang;
@@ -88,7 +89,7 @@ class LanguageService
     {
         $lang = $this->getValidLang($lang);
         app()->setLocale($lang);
-        setcookie($this->key, $lang, $this->carbon->now()->addYear(1)->timestamp, '/');
+        Cookie::queue(cookie($this->key, $lang, 60 * 24 * 365, '/'));
     }
 
     /**

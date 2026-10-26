@@ -77,7 +77,7 @@ class MailQueue
      */
     public function getEmailsFromEnv($key)
     {
-        $emails = env($key);
+        $emails = config('mail.notify.'.$key);
 
         if (empty($emails)) {
             return [];
@@ -162,7 +162,7 @@ class MailQueue
                 $message->subject($subject);
                 $message->to($recipients);
                 $message->from($from);
-                $message->setBody($body);
+                $message->text($body);
             }
         );
     }
@@ -174,7 +174,7 @@ class MailQueue
      */
     protected function getFromEmail()
     {
-        return env('FROM_EMAIL');
+        return config('mail.from.address');
     }
 
 }

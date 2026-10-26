@@ -3,7 +3,6 @@
 use App\Http\Requests\Request;
 use App\Nrgi\Services\Language\LanguageService;
 use DateTime;
-use Illuminate\Http\Response;
 
 /**
  * Class ContractRequest
@@ -130,7 +129,7 @@ class ContractRequest extends Request
      */
     public function forbiddenResponse()
     {
-        return Response::make('Permission denied !', 403);
+        return response('Permission denied !', 403);
     }
 
     /**

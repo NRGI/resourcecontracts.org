@@ -54,6 +54,7 @@ return [
 			'secret' => env('AWS_SECRET', 'AWS_SECRET'),
 			'region' => env('AWS_REGION', 'AWS_REGION'),
 			'bucket' => env('AWS_BUCKET', 'AWS_BUCKET'),
+			'url'    => env('AWS_S3_BUCKET_URL'),
 		],
 
 		'rackspace' => [
