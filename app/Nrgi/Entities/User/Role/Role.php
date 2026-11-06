@@ -1,13 +1,13 @@
 <?php namespace App\Nrgi\Entities\User\Role;
 
-use Zizaco\Entrust\EntrustRole;
+use Spatie\Permission\Models\Role as SpatieRole;
 
-class Role extends EntrustRole
+class Role extends SpatieRole
 {
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'display_name', 'description'];
+    protected $fillable = ['name', 'display_name', 'description', 'guard_name'];
 }

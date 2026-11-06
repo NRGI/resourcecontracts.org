@@ -1,31 +1,33 @@
 <?php namespace App\Nrgi\Services\Queue;
 
 use App\Nrgi\Services\Contract\ImportService;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
-class UploadBulkPdf
+class UploadBulkPdf implements ShouldQueue
 {
-    /**
-     * @var ImportService
-     */
-    protected $import;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    private string $key;
 
     /**
-     * @param ImportService $import
+     * @param string $key
      */
-    public function __construct(ImportService $import)
+    public function __construct(string $key)
     {
-        $this->import = $import;
+        $this->key = $key;
     }
 
     /**
-     * Start download queue
+     * Execute the job
      *
-     * @param $job
-     * @param $data
+     * @param ImportService $import
      */
-    public function fire($job, $data)
+    public function handle(ImportService $import): void
     {
-        $this->import->uploadPdfToS3AndCreateContracts($data['key']);
-        $job->delete();
+        $import->uploadPdfToS3AndCreateContracts($this->key);
     }
 }

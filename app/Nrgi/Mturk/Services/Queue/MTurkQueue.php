@@ -1,35 +1,37 @@
 <?php namespace App\Nrgi\Mturk\Services\Queue;
 
 use App\Nrgi\Mturk\Services\TaskService;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 /**
  * Class MTurkQueue
  * @package App\Nrgi\Mturk\Services\Queue
  */
-class MTurkQueue
+class MTurkQueue implements ShouldQueue
 {
-    /**
-     * @var TaskService
-     */
-    protected $task;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    private array $data;
 
     /**
-     * @param TaskService $task
+     * @param array $data
      */
-    public function __construct(TaskService $task)
+    public function __construct(array $data)
     {
-        $this->task = $task;
+        $this->data = $data;
     }
 
     /**
-     * Execute the queue
+     * Execute the queue job.
      *
-     * @param $job
-     * @param $data
+     * @param TaskService $task
      */
-    public function fire($job, $data)
+    public function handle(TaskService $task): void
     {
-        $this->task->mTurkProcess($data);
-        $job->delete();
+        $task->mTurkProcess($this->data);
     }
 }

@@ -4,18 +4,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | PDO Fetch Style
-    |--------------------------------------------------------------------------
-    |
-    | By default, database results will be returned as instances of the PHP
-    | stdClass object; however, you may desire to retrieve records in an
-    | array format for simplicity. Here you can tweak the fetch style.
-    |
-    */
-
-    'fetch'       => PDO::FETCH_CLASS,
-    /*
-    |--------------------------------------------------------------------------
     | Default Database Connection Name
     |--------------------------------------------------------------------------
     |
@@ -61,15 +49,16 @@ return [
             'strict'    => false,
         ],
         'pgsql'  => [
-            'driver'   => 'pgsql',
-            'host'     => env('DB_HOST', 'DB_HOST'),
-            'database' => env('DB_DATABASE', 'DB_DATABASE'),
-            'port'     => env('DB_PORT', '5432'),
-            'username' => env('DB_USERNAME', 'DB_USERNAME'),
-            'password' => env('DB_PASSWORD', 'DB_PASSWORD'),
-            'charset'  => 'utf8',
-            'prefix'   => '',
-            'schema'   => 'public',
+            'driver'      => 'pgsql',
+            'host'        => env('DB_HOST', 'DB_HOST'),
+            'database'    => env('DB_DATABASE', 'DB_DATABASE'),
+            'port'        => env('DB_PORT', '5432'),
+            'username'    => env('DB_USERNAME', 'DB_USERNAME'),
+            'password'    => env('DB_PASSWORD', 'DB_PASSWORD'),
+            'charset'     => 'utf8',
+            'prefix'      => '',
+            'search_path' => 'public',
+            'sslmode'     => 'prefer',
         ],
         'sqlsrv' => [
             'driver'   => 'sqlsrv',

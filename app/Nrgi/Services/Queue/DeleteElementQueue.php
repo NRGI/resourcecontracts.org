@@ -1,25 +1,36 @@
 <?php namespace App\Nrgi\Services\Queue;
 
 use App\Nrgi\Services\ElasticSearch\ElasticSearchService;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
-class DeleteElementQueue
+class DeleteElementQueue implements ShouldQueue
 {
-    /**
-     * @var ElasticSearchService
-     */
-    public $elastic;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    private int $contractId;
+    private string $type;
 
     /**
-     * @param ElasticSearchService $elastic
+     * @param int $contractId
+     * @param string $type
      */
-    public function __construct(ElasticSearchService $elastic)
+    public function __construct(int $contractId, string $type)
     {
-        $this->elastic = $elastic;
+        $this->contractId = $contractId;
+        $this->type = $type;
     }
 
-    public function fire($job,$data)
+    /**
+     * Execute the job
+     *
+     * @param ElasticSearchService $elastic
+     */
+    public function handle(ElasticSearchService $elastic): void
     {
-        $this->elastic->deleteElement($data['contract_id'],$data['type']);
-        $job->delete();
+        $elastic->deleteElement($this->contractId, $this->type);
     }
 }

@@ -12,29 +12,29 @@ use App\Nrgi\Services\Contract\ImportService;
 class ContractDownloadQueueV2 implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    public $timeout = 60 * 10;
-    protected $import_data;
+
+    public $timeout = 600; // 10 minutes
+
+    private array $importData;
+
     /**
      * Create a new job instance.
      *
-     * @return void
+     * @param array $importData
      */
-    public function __construct($import_data)
+    public function __construct(array $importData)
     {
-        //
-        $this->import_data = $import_data;
+        $this->importData = $importData;
     }
 
     /**
      * Execute the job.
      *
-     * @return void
+     * @param ImportService $import
      */
-    public function handle(ImportService $import)
+    public function handle(ImportService $import): void
     {
-        //
-        $data = $this->import_data;
+        $data = $this->importData;
         $import->download($data['import_key'], $data['one_drive_data']);
-
     }
 }

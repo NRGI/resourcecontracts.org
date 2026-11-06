@@ -2,34 +2,39 @@
 namespace App\Nrgi\Services\Queue;
 
 use App\Nrgi\Services\ElasticSearch\ElasticSearchService;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 /**
- * Queue for posting to  Elastic Search
- * Class PostToElasticSearch
- * @package App\Nrgi\Services\Queue
+ * Queue for posting to Elastic Search
  */
-class PostToElasticSearchQueue
+class PostToElasticSearchQueue implements ShouldQueue
 {
-    /**
-     * @var ElasticSearchService
-     */
-    public $elasticSearch;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    private int $contractId;
+    private string $type;
 
     /**
-     * @param ElasticSearchService $elasticSearchService
+     * @param int $contractId
+     * @param string $type
      */
-    public function __construct(ElasticSearchService $elasticSearch)
+    public function __construct(int $contractId, string $type)
     {
-        $this->elasticSearch = $elasticSearch;
+        $this->contractId = $contractId;
+        $this->type = $type;
     }
 
     /**
-     * @param $job
-     * @param $data
+     * Execute the job
+     *
+     * @param ElasticSearchService $elasticSearch
      */
-    public function fire($job, $data)
+    public function handle(ElasticSearchService $elasticSearch): void
     {
-        $this->elasticSearch->post($data['contract_id'], $data['type']);
-        $job->delete();
+        $elasticSearch->post($this->contractId, $this->type);
     }
 }

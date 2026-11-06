@@ -41,6 +41,6 @@ class UserTableSeeder extends Seeder
 
         $permission_name = ['add-contract', 'edit-contract', 'edit-text', 'complete-text', 'complete-metadata',  'add-annotation', 'edit-annotation', 'complete-annotation',];
         $permissions = Permission::whereIn('name', $permission_name)->get();
-        $researcherRole->perms()->sync($permissions);
+        $researcherRole->syncPermissions($permissions);
     }
 }

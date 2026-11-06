@@ -1,18 +1,14 @@
 <?php namespace App\Exceptions;
 
-use App\Nrgi\Mail\MailQueue;
 use Exception;
 use Throwable;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Facades\Request;
-use Psr\Log\LoggerInterface;
-
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Illuminate\Container\Container;
 use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
@@ -37,32 +33,14 @@ class Handler extends ExceptionHandler
     protected $dontSendEmailMessage = [
         'Symfony\Component\HttpKernel\Exception\NotFoundHttpException',
     ];
-    /**
-     * @var MailQueue
-     */
-    protected $mailer;
-
-    /**
-     * Handler constructor.
-     *
-     * @param Container $app
-
-     * @param MailQueue       $mailer
-     */
-    public function __construct(Container $app, MailQueue $mailer)
-    {
-        parent::__construct($app);
-        $this->mailer = $mailer;
-    }
 
     /**
      * Report or log an exception.
      *
-     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
-     *
-     * @param  \Exception $e
-     *
+     * @param Throwable $e
      * @return void
+     *
+     * @throws Exception
      */
     public function report(Throwable $e)
     {
@@ -72,9 +50,8 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Exception               $e
-     *
+     * @param \Illuminate\Http\Request $request
+     * @param Throwable $e
      * @return \Illuminate\Http\Response
      */
     public function render($request, Throwable $e)
@@ -97,26 +74,27 @@ class Handler extends ExceptionHandler
     /**
      * Send Error message in email
      *
-     * @param $e
-     *
+     * @param Throwable $e
      * @return bool
      */
-    public function sendErrorMessage($e)
+    public function sendErrorMessage(Throwable $e): bool
     {
         foreach ($this->dontSendEmailMessage as $type) {
             if ($e instanceof $type) {
                 return true;
             }
         }
-        $url = Request::fullUrl();
+        // $url = Request::fullUrl();
         // $this->mailer->sendErrorEmail($e, $url);
+        
+        return false;
     }
 
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @param \Illuminate\Http\Request $request
+     * @param AuthenticationException $exception
      * @return \Illuminate\Http\Response
      */
     protected function unauthenticated($request, AuthenticationException $exception)

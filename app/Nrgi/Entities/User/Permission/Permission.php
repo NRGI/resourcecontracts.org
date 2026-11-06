@@ -1,10 +1,9 @@
 <?php namespace App\Nrgi\Entities\User\Permission;
 
-use Zizaco\Entrust\EntrustPermission;
+use Spatie\Permission\Models\Permission as SpatiePermission;
 
-class Permission extends EntrustPermission
+class Permission extends SpatiePermission
 {
-
     /**
      * The database table used by the model.
      *
@@ -17,5 +16,5 @@ class Permission extends EntrustPermission
      *
      * @var array
      */
-    protected $fillable = ['name', 'display_name', 'description'];
+    protected $fillable = ['name', 'display_name', 'description', 'guard_name'];
 }

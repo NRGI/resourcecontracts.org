@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * @property Collection roles
@@ -17,7 +17,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
     use Authenticatable, CanResetPassword;
-    use EntrustUserTrait;
+    use HasRoles;
     use DateTrait;
 
     /**
@@ -108,7 +108,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             return $requireAll;
         } else {
             foreach ($this->roles as $role) {
-                foreach ($role->perms as $perm) {
+                // Spatie uses 'permissions' relationship (Entrust used 'perms')
+                foreach ($role->permissions as $perm) {
                     if ($perm->name == $permission) {
                         return true;
                     }

@@ -1,61 +1,33 @@
 <?php namespace App\Providers;
 
-use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * This namespace is applied to the controller routes in your routes file.
-     *
-     * In addition, it is set as the URL generator's root namespace.
-     *
-     * @var string
-     */
-    protected $namespace = 'App\Http\Controllers';
-
-    /**
-     * This namespace is applied to the controller routes for Mechanical turk.
+     * The path to your application's "home" route.
+     * Typically, users are redirected here after authentication.
      *
      * @var string
      */
-    protected $mturk_namespace = 'App\Nrgi\Mturk\Controllers';
+    public const HOME = '/home';
 
     /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @param  \Illuminate\Routing\Router  $router
-     * @return void
+     * Define your route model bindings, pattern filters, and other route configuration.
      */
-    public function boot()
+    public function boot(): void
     {
-        parent::boot();
-    }
-
-    /**
-     * Define the routes for the application.
-     *
-     * @param  \Illuminate\Routing\Router  $router
-     * @return void
-     */
-    public function map(Router $router)
-    {
-        $router->group(['namespace' => $this->namespace], function ($router) {
-            require app_path('Http/routes.php');
-            require app_path('Http/Routes/import.php');
-            require app_path('Http/Routes/contract.php');
-            require app_path('Http/Routes/annotation.php');
-            require app_path('Http/Routes/activitylog.php');
-            require app_path('Http/Routes/user.php');
-            require app_path('Http/Routes/quality.php');
-            require app_path('Http/Routes/utility.php');
-            require app_path('Http/Routes/disclosure.php');
-            require app_path('Http/Routes/codelist.php');
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
 
-        $router->group(['namespace' => $this->mturk_namespace], function ($router) {
-            require app_path('Nrgi/Mturk/routes.php');
+        $this->routes(function () {
+            Route::middleware('web')
+                ->group(base_path('routes/web.php'));
         });
     }
 }

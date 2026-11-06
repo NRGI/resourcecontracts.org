@@ -1,35 +1,39 @@
 <?php namespace App\Nrgi\Services\Queue;
 
 use App\Nrgi\Services\Contract\ImportService;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 /**
  * Class ContractDownloadQueue
- * @package App\Nrgi\Services\Queue
  */
-class ContractDownloadQueue
+class ContractDownloadQueue implements ShouldQueue
 {
-    /**
-     * @var ImportService
-     */
-    protected $import;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    private string $importKey;
+    private array $oneDriveData;
 
     /**
-     * @param ImportService $import
+     * @param string $importKey
+     * @param array $oneDriveData
      */
-    public function __construct(ImportService $import)
+    public function __construct(string $importKey, array $oneDriveData)
     {
-        $this->import = $import;
+        $this->importKey = $importKey;
+        $this->oneDriveData = $oneDriveData;
     }
 
     /**
-     * Start download queue
+     * Execute the job
      *
-     * @param $job
-     * @param $data
+     * @param ImportService $import
      */
-    public function fire($job, $data)
+    public function handle(ImportService $import): void
     {
-        $this->import->download($data['import_key'], $data['one_drive_data']);
-        $job->delete();
+        $import->download($this->importKey, $this->oneDriveData);
     }
 }

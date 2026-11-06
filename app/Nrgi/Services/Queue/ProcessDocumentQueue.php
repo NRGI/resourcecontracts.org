@@ -1,34 +1,37 @@
 <?php namespace App\Nrgi\Services\Queue;
 
 use App\Nrgi\Services\Contract\Page\ProcessService;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 /**
  * Class ProcessDocumentQueue
- * @package App\Services\Queue
  */
-class ProcessDocumentQueue
+class ProcessDocumentQueue implements ShouldQueue
 {
-    /**
-     * @var ProcessService
-     */
-    protected $process;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    private int $contractId;
 
     /**
      * Constructor
-     * @param ProcessService $process
+     * @param int $contractId
      */
-    public function __construct(ProcessService $process)
+    public function __construct(int $contractId)
     {
-        $this->process = $process;
+        $this->contractId = $contractId;
     }
 
     /**
-     * @param $job
-     * @param $data
+     * Execute the job
+     *
+     * @param ProcessService $process
      */
-    public function fire($job, $data)
+    public function handle(ProcessService $process): void
     {
-        $this->process->execute($data['contract_id']);
-        $job->delete();
+        $process->execute($this->contractId);
     }
 }
