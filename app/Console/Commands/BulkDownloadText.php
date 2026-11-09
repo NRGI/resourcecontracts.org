@@ -1,6 +1,5 @@
 <?php namespace App\Console\Commands;
 
-use Aws\Credentials\Credentials;
 use Aws\S3\S3Client;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
@@ -123,12 +122,10 @@ class BulkDownloadText extends Command
         $s3folder = static::S3_OBJECT_NAME;
         $bucket   = env('AWS_BUCKET');
 
-        $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
         $s3 = new S3Client(
             [
                 'version'=> '2006-03-01',
                 'region' => env('AWS_REGION'),
-                'credentials' => $credentials
             ]
         );
 

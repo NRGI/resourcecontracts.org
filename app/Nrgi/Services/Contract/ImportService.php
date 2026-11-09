@@ -13,7 +13,6 @@ use Illuminate\Contracts\Queue\Queue;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel;
-use Aws\Credentials\Credentials;
 use Aws\S3\S3Client;
 use Aws\Exception\AwsException;
 use Aws\S3\MultipartUploader;
@@ -646,12 +645,10 @@ class ImportService
                 // );
                 $newFileName=$contract->file;
                 $file_path=$this->getFilePath($key, $contract->file);
-                $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
                 $client = new S3Client(
                     [
                         'version'=> '2006-03-01',
                         'region' => env('AWS_REGION'),
-                        'credentials' => $credentials
                     ]
                 );
                 $uploader = new MultipartUploader($client, $file_path, [

@@ -3,7 +3,6 @@
 use App\Nrgi\Entities\Contract\Contract;
 use App\Nrgi\Mail\MailQueue;
 use App\Nrgi\Services\Contract\ContractService;
-use Aws\Credentials\Credentials;
 use Aws\S3\S3Client;
 use Carbon\Carbon;
 use Illuminate\Contracts\Filesystem\Factory as Storage;
@@ -228,14 +227,9 @@ class ProcessService
         
         // Set AWS environment variables for Textract
         $awsRegion = env('AWS_REGION');
-        $awsAccessKey = env('AWS_KEY');
-        $awsSecretKey = env('AWS_SECRET');
-        
         
         $command = sprintf(
-            'AWS_ACCESS_KEY_ID=%s AWS_SECRET_ACCESS_KEY=%s AWS_DEFAULT_REGION=%s python %s/run.py -i %s -o %s -l %s',
-            escapeshellarg($awsAccessKey),
-            escapeshellarg($awsSecretKey),
+            'AWS_DEFAULT_REGION=%s python %s/run.py -i %s -o %s -l %s',
             escapeshellarg($awsRegion),
             escapeshellarg($commandPath),
             escapeshellarg($s3FilePath),
@@ -365,12 +359,10 @@ class ProcessService
      */
     public function uploadPdfsToS3($id)
     {
-        $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
         $client = new S3Client(
             [
                 'version'=> '2006-03-01',
                 'region' => env('AWS_REGION'),
-                'credentials' => $credentials
             ]
         );
 

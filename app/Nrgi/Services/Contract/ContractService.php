@@ -1470,12 +1470,10 @@ class ContractService
             $file_path=$file->getRealPath();
             $newFileName = sprintf("%s.%s", sha1($fileName.time()), $file_type);
             try {
-                $credentials = new Credentials(env('AWS_KEY'), env('AWS_SECRET'));
                 $client = new S3Client(
                     [
                         'version'=> '2006-03-01',
                         'region' => env('AWS_REGION'),
-                        'credentials' => $credentials
                     ]
                 );
                 $uploader = new MultipartUploader($client, $file_path, [
