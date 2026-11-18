@@ -11,6 +11,11 @@ return [
             'code' => 'fr',
             'name' => 'French',
         ],
+        [
+            'dir'  => 'ltr',
+            'code' => 'es',
+            'name' => 'Spanish',
+        ],
     ],
     'translation' => [
         [

@@ -20,6 +20,8 @@
 		foreach ($translationLang as $lang) {
 			$categories[$lang['code']] = _l("codelist/annotation.annotation_category", $lang['code']);
 		}
+		// Categories in the interface language, which may not be a translation language
+		$categories[Lang::locale()] = _l("codelist/annotation.annotation_category", Lang::locale());
 		?>
 		function nl2br(str, is_xhtml) {
 			var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';

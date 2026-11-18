@@ -54,7 +54,9 @@ class LanguageService
     {
         $code = $this->browserLang();
 
-        if (!is_null($code) && $this->isValidLang($code)) {
+        // The default language is also the base language of contract metadata and annotations,
+        // so only use the browser language when it is a metadata translation language too.
+        if (!is_null($code) && $this->isValidLang($code) && $this->isValidTranslationLang($code)) {
             return $code;
         }
 

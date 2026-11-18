@@ -73,6 +73,9 @@ class ResourceRepository implements ResourceRepositoryInterface
      */
     public function getResources($lang)
     {
+       // Fall back to English when the table has no column for the locale
+       $lang = in_array($lang, ['en', 'fr', 'ar']) ? $lang : 'en';
+
        return $this->resource->orderBy('en','ASC')->pluck($lang,'slug')->all();
     }
 
