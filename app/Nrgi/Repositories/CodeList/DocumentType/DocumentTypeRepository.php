@@ -74,6 +74,9 @@ class DocumentTypeRepository implements DocumentTypeRepositoryInterface
      */
     public function getDocumentTypes($lang)
     {
+       // Fall back to English when the table has no column for the locale
+       $lang = in_array($lang, ['en', 'fr', 'ar']) ? $lang : 'en';
+
        return $this->documentType->orderBy('en','ASC')->pluck($lang,'slug')->all();
     }
 
